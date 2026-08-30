@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 140 | Converting Java habits into Cambridge pseudocode</title>
+    <title>AS9618 Lesson 140 | Robust program design: validation and modularity</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Converting Java habits into Cambridge pseudocode</h1>
+        <h1>Robust program design: validation and modularity</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,23 +29,21 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#standard">Exam standard</a>
-        <a href="#assignment">Assignment</a>
-        <a href="#io">Input/output</a>
-        <a href="#selection">Selection</a>
-        <a href="#loops">Loops</a>
-        <a href="#arrays">Arrays</a>
-        <a href="#subroutines">Subroutines</a>
-        <a href="#converter">Converter</a>
-        <a href="#spotter">Java spotter</a>
+        <a href="#robust">Robust design</a>
+        <a href="#validation">Validation</a>
+        <a href="#checks">Check types</a>
+        <a href="#modularity">Modularity</a>
+        <a href="#parameters">Parameters</a>
+        <a href="#integration">Combine ideas</a>
+        <a href="#java">Java support</a>
+        <a href="#validator">Validator</a>
+        <a href="#module-tool">Module chooser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
-        <a href="#checkpoint">Checkpoint</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -53,417 +51,352 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Translate descriptions into Cambridge pseudocode</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.</p>
-            <p>The answer must be Cambridge pseudocode, not Java: use assignment arrow, THEN/ENDIF, FOR...NEXT, WHILE...ENDWHILE or REPEAT...UNTIL as appropriate. Trace both versions with the same data to confirm equivalence.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Flowchart sum loop</h3>
-            <p>A flowchart sets Total to 0 and repeats input/add until Value = -1. Pseudocode uses Total &lt;- 0; REPEAT; INPUT Value; IF Value &lt;&gt; -1 THEN Total &lt;- Total + Value; ENDIF; UNTIL Value = -1; OUTPUT Total.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start standard -->
-        <section class="panel explanation-panel" id="explanation-standard" data-explains="standard" data-explanation-kind="process" aria-labelledby="explanation-standard-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="standard">
-          <h2 class="explanation-sr-only" id="explanation-standard-title">Translate a flowchart or structured English into pseudocode</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translate a flowchart or structured English into pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Translate a flowchart or structured English into pseudocode: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.</li><li><strong>Lesson fact:</strong> From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.</li><li><strong>Lesson fact:</strong> Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end standard -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Translate descriptions into Cambridge pseudocode: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How is a flowchart decision normally translated?</p>
-              <details><summary>Show answer</summary><p>As a selection or loop condition, depending on where arrows reconnect.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What check confirms a translation is equivalent?</p>
-              <details><summary>Show answer</summary><p>Dry-run both with the same inputs and compare outputs/control path.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Should Java braces appear in a Cambridge pseudocode answer?</p>
-              <details><summary>Show answer</summary><p>No; use Cambridge keywords and terminators.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Translate this structured-English design into Cambridge pseudocode: input five temperatures; count those below zero; output the count.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>initialises count to 0</td><td>Do not accept Java syntax such as int, braces or System.out as Cambridge pseudocode.</td><td>1</td></tr>
-                  <tr><td>uses a five-iteration count-controlled loop with INPUT</td><td></td><td>1</td></tr>
-                  <tr><td>tests Temperature &lt; 0 and increments count</td><td></td><td>1</td></tr>
-                  <tr><td>outputs count after the loop with coherent Cambridge syntax</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 140 | 45 minutes | Paper 2 Section 11 | 5-minute quiz and monthly checkpoint</p>
-            <h2>Java can help you practise. It must not hijack your pseudocode answer.</h2>
+            <p class="lesson-meta">Lesson 140 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Robust programs expect trouble and still behave politely.</h2>
             <p>
-              Cambridge pseudocode is designed for clear algorithm expression. Java is stricter about syntax, braces,
-              semicolons and library calls. This lesson trains you to translate Java habits into Cambridge-style pseudocode
-              without losing the algorithm. Chinese support: pseudocode 伪代码, assignment 赋值, syntax 语法, library call 库调用。
+              Robust design means writing programs that cope with invalid input, reduce avoidable errors and remain easy to
+              understand. This lesson links <strong>validation</strong> with <strong>modularity</strong>: check data before using it,
+              and split the solution into clear procedures and functions. Chinese support: robust 健壮的, validation 验证,
+              modularity 模块化, parameter 参数。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Translate</strong><span>common Java syntax into Cambridge-style pseudocode</span></div>
-              <div><strong>Remove</strong><span>Java-only details such as braces, semicolons and class wrappers</span></div>
-              <div><strong>Write</strong><span>clear exam answers using pseudocode conventions</span></div>
+              <div><strong>Validate</strong><span>input using range, type, length and presence checks</span></div>
+              <div><strong>Modularise</strong><span>split a program into focused procedures/functions</span></div>
+              <div><strong>Justify</strong><span>how robust design improves reliability and maintainability</span></div>
             </div>
           </div>
-          <div class="syntax-visual" aria-label="Java to pseudocode visual">
-            <div><strong>Java</strong><span>System.out.println(x);</span><em>language-specific</em></div>
-            <div><strong>Pseudocode</strong><span>OUTPUT x</span><em>exam-friendly</em></div>
-            <div><strong>Java</strong><span>if (...) { }</span><em>braces and condition syntax</em></div>
-            <div><strong>Pseudocode</strong><span>IF ... THEN / ENDIF</span><em>structured keywords</em></div>
+          <div class="robust-visual" aria-label="Robust design visual">
+            <div><strong>INPUT</strong><span>Mark</span><em>do not trust it yet</em></div>
+            <div><strong>VALIDATE</strong><span>0 to 100</span><em>reject impossible data</em></div>
+            <div><strong>PROCESS</strong><span>CalculateGrade()</span><em>single clear job</em></div>
+            <div><strong>OUTPUT</strong><span>Grade</span><em>after checks pass</em></div>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 marks reward clear pseudocode logic. Java-only syntax can obscure the algorithm and may not match Cambridge conventions.</p>
+            <p>Exam answers often need causes and consequences: validation prevents invalid data being processed; modularity makes code easier to test and maintain.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p><code>System.out.println()</code>, <code>public static void main</code>, braces and semicolons are Java habits, not Cambridge pseudocode requirements.</p>
+            <p>Validation is not the same as verification. Validation checks whether data is reasonable; verification checks whether data was copied or entered accurately.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which answer is Cambridge-style pseudocode?</h2>
-            <p>Question: output the value stored in <code>Total</code>.</p>
+            <h2>A user enters <code>banana</code> as a mark. What should a robust program do first?</h2>
+            <p>The program should not attempt arithmetic with fruit. Choose the strongest first action.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="java">System.out.println(Total);</button>
-            <button class="choice-card" type="button" data-hook="pseudo">OUTPUT Total</button>
-            <button class="choice-card" type="button" data-hook="console">console.log(Total)</button>
-            <button class="choice-card" type="button" data-hook="print">print(Total);</button>
+            <button class="choice-card" type="button" data-hook="calculate">Calculate grade immediately</button>
+            <button class="choice-card" type="button" data-hook="validate">Validate the input type and range</button>
+            <button class="choice-card" type="button" data-hook="ignore">Ignore the input and output A</button>
+            <button class="choice-card" type="button" data-hook="verify">Ask another user to verify the mark</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the form expected in Cambridge-style pseudocode.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the action that prevents invalid data being processed.</div>
         </section>
 
-        <section class="panel" id="standard" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section class="panel" id="robust" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="robust">
           <div class="section-title">
-            <p class="eyebrow">Exam standard</p>
-            <h2>Cambridge pseudocode uses readable algorithm keywords</h2>
-            <p>It is not Java with the class declaration removed. It has its own conventions for assignment, input/output, loops, selection and subroutines.</p>
+            <p class="eyebrow">Robust design</p>
+            <h2>A robust program handles expected misuse without collapsing</h2>
           </div>
-          <div class="data-table three-col" role="table" aria-label="Java and pseudocode comparison">
-            <div class="table-row table-head"><div>Purpose</div><div>Java habit</div><div>Cambridge-style pseudocode</div></div>
-            <div class="table-row"><div>Assignment</div><div><code>total = total + mark;</code></div><div><code>Total &lt;- Total + Mark</code></div></div>
-            <div class="table-row"><div>Output</div><div><code>System.out.println(total);</code></div><div><code>OUTPUT Total</code></div></div>
-            <div class="table-row"><div>Selection</div><div><code>if (...) { ... }</code></div><div><code>IF ... THEN ... ENDIF</code></div></div>
-            <div class="table-row"><div>Loop</div><div><code>for (...) { ... }</code></div><div><code>FOR ... TO ... NEXT</code></div></div>
+          <div class="card-grid">
+            <article><h3>Input checks</h3><p>Reject or handle invalid values before they affect processing.</p></article>
+            <article><h3>Clear modules</h3><p>Give each procedure or function one focused responsibility.</p></article>
+            <article><h3>Useful messages</h3><p>Tell the user what is wrong and what valid input is expected.</p></article>
           </div>
         </section>
 
-        <section class="panel" id="assignment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <!-- stage10-explanation:start robust -->
+        <section class="panel explanation-panel" id="explanation-robust" data-explains="robust" data-explanation-kind="mechanism" aria-labelledby="explanation-robust-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="robust">
+          <h2 class="explanation-sr-only" id="explanation-robust-title">A robust program handles expected misuse without collapsing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-robust.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A robust program handles expected misuse without collapsing with a structured visual model." />
+            <figcaption class="explanation-sr-only">A robust program handles expected misuse without collapsing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Robust design</li><li><strong>Lesson fact:</strong> Input checks</li><li><strong>Lesson fact:</strong> Reject or handle invalid values before they affect processing.</li><li><strong>Lesson fact:</strong> Clear modules</li><li><strong>Lesson fact:</strong> Give each procedure or function one focused responsibility.</li><li><strong>Lesson fact:</strong> Useful messages</li><li><strong>Lesson fact:</strong> Tell the user what is wrong and what valid input is expected.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end robust -->
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
-            <p class="eyebrow">Assignment</p>
-            <h2>Use the assignment arrow for storing a value</h2>
+            <p class="eyebrow">Validation</p>
+            <h2>Validation checks whether data is acceptable for the program</h2>
           </div>
           <div class="code-grid">
-            <article>
-              <h3>Java support example only</h3>
-              <pre><code>total = total + mark;</code></pre>
-            </article>
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>Total &lt;- Total + Mark</code></pre>
+              <pre><code>REPEAT
+    INPUT Mark
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        Valid &lt;- TRUE
+    ELSE
+        OUTPUT "Enter a mark from 0 to 100"
+        Valid &lt;- FALSE
+    ENDIF
+UNTIL Valid = TRUE</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <p>The loop repeats until acceptable data is entered. The program does not calculate a grade from invalid data.</p>
+              <div class="callout">Robustness is not guessing what the user meant. It is refusing bad data with a calm face.</div>
             </article>
           </div>
-          <div class="callout">A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</div>
         </section>
 
-        <!-- stage10-explanation:start assignment -->
-        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-assignment-title">Use the assignment arrow for storing a value</h2>
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether data is acceptable for the program</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-assignment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the assignment arrow for storing a value with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the assignment arrow for storing a value: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether data is acceptable for the program with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation checks whether data is acceptable for the program: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> total = total + mark;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Place INPUT Mark inside REPEAT so every retry reads a new value.</li><li><strong>Lesson fact:</strong> Set Valid to TRUE only when Mark is between 0 and 100 inclusive.</li><li><strong>Lesson fact:</strong> Otherwise output the valid range, set Valid to FALSE and repeat.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF and terminate with UNTIL Valid = TRUE.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end assignment -->
-        <section class="panel" id="io" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <!-- stage10-explanation:end validation -->
+        <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
           <div class="section-title">
-            <p class="eyebrow">Input and output</p>
-            <h2>Replace library calls with algorithm keywords</h2>
+            <p class="eyebrow">Validation check types</p>
+            <h2>Pick the check that matches the rule</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Validation checks">
+            <div class="table-row table-head"><div>Check</div><div>Use</div><div>Example</div><div>Rejects</div></div>
+            <div class="table-row"><div>Range check</div><div>value inside limits</div><div>0 to 100</div><div>-1, 101</div></div>
+            <div class="table-row"><div>Type check</div><div>correct data type</div><div>INTEGER mark</div><div>"banana"</div></div>
+            <div class="table-row"><div>Length check</div><div>correct number of characters</div><div>password 8 to 20</div><div>short or very long password</div></div>
+            <div class="table-row"><div>Presence check</div><div>required data exists</div><div>name not blank</div><div>empty input</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start checks -->
+        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="checks">
+          <h2 class="explanation-sr-only" id="explanation-checks-title">Pick the check that matches the rule</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pick the check that matches the rule with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pick the check that matches the rule: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation check types</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> value inside limits</li><li><strong>Lesson fact:</strong> 0 to 100</li><li><strong>Lesson fact:</strong> Type check</li><li><strong>Lesson fact:</strong> correct data type</li><li><strong>Lesson fact:</strong> INTEGER mark</li><li><strong>Lesson fact:</strong> &quot;banana&quot;</li><li><strong>Lesson fact:</strong> Length check</li><li><strong>Lesson fact:</strong> correct number of characters</li><li><strong>Lesson fact:</strong> password 8 to 20</li><li><strong>Lesson fact:</strong> short or very long password</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checks -->
+        <section class="panel" id="modularity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modularity">
+          <div class="section-title">
+            <p class="eyebrow">Modularity</p>
+            <h2>Modular design splits a solution into smaller named parts</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Java support example only</h3>
-              <pre><code>Scanner input = new Scanner(System.in);
-mark = input.nextInt();
-System.out.println(mark);</code></pre>
+              <h3>Less robust structure</h3>
+              <p>All input, validation, calculation and output in one long block. Harder to test, reuse and debug.</p>
             </article>
             <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>INPUT Mark
-OUTPUT Mark</code></pre>
+              <h3>More robust structure</h3>
+              <pre><code>Mark &lt;- GetValidMark()
+Grade &lt;- CalculateGrade(Mark)
+OUTPUT Grade</code></pre>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start io -->
-        <section class="panel explanation-panel" id="explanation-io" data-explains="io" data-explanation-kind="process" aria-labelledby="explanation-io-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-io-title">Replace library calls with algorithm keywords</h2>
+        <!-- stage10-explanation:start modularity -->
+        <section class="panel explanation-panel" id="explanation-modularity" data-explains="modularity" data-explanation-kind="mechanism" aria-labelledby="explanation-modularity-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="modularity">
+          <h2 class="explanation-sr-only" id="explanation-modularity-title">Modular design splits a solution into smaller named parts</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-io.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Replace library calls with algorithm keywords with a structured visual model." />
-            <figcaption class="explanation-sr-only">Replace library calls with algorithm keywords: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-modularity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Modular design splits a solution into smaller named parts with a structured visual model." />
+            <figcaption class="explanation-sr-only">Modular design splits a solution into smaller named parts: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input and output</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> Scanner input = new Scanner(System.in);</li><li><strong>Lesson fact:</strong> mark = input.nextInt();</li><li><strong>Lesson fact:</strong> System.out.println(mark);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> OUTPUT Mark</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Modularity</li><li><strong>Lesson fact:</strong> Less robust structure</li><li><strong>Lesson fact:</strong> All input, validation, calculation and output in one long block. Harder to test, reuse and debug.</li><li><strong>Lesson fact:</strong> More robust structure</li><li><strong>Lesson fact:</strong> Mark &lt;- GetValidMark()</li><li><strong>Lesson fact:</strong> Grade &lt;- CalculateGrade(Mark)</li><li><strong>Lesson fact:</strong> OUTPUT Grade</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end io -->
-        <section class="panel" id="selection" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <!-- stage10-explanation:end modularity -->
+        <section class="panel" id="parameters" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
           <div class="section-title">
-            <p class="eyebrow">Selection</p>
-            <h2>Use <code>IF</code>, <code>THEN</code>, <code>ELSE</code>, <code>ENDIF</code></h2>
+            <p class="eyebrow">Parameters and return values</p>
+            <h2>Pass data into a module and return only what is needed</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Module responsibilities">
+            <div class="table-row table-head"><div>Module</div><div>Responsibility</div><div>Returns / effect</div></div>
+            <div class="table-row"><div><code>GetValidMark()</code></div><div>input and validate mark</div><div>valid integer mark</div></div>
+            <div class="table-row"><div><code>CalculateGrade(Mark)</code></div><div>turn mark into grade</div><div>grade character/string</div></div>
+            <div class="table-row"><div><code>DisplayResult(Grade)</code></div><div>format output</div><div>output to screen</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start parameters -->
+        <section class="panel explanation-panel" id="explanation-parameters" data-explains="parameters" data-explanation-kind="mechanism" aria-labelledby="explanation-parameters-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="parameters">
+          <h2 class="explanation-sr-only" id="explanation-parameters-title">Pass data into a module and return only what is needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-parameters.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pass data into a module and return only what is needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pass data into a module and return only what is needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> GetValidMark inputs and validates a mark, then returns a valid INTEGER.</li><li><strong>Lesson fact:</strong> CalculateGrade receives Mark and returns a grade character.</li><li><strong>Lesson fact:</strong> DisplayResult is a procedure that performs OUTPUT and returns no value.</li><li><strong>Lesson fact:</strong> Return values and screen-output effects must not be conflated.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parameters -->
+        <section class="panel" id="integration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integration">
+          <div class="section-title">
+            <p class="eyebrow">Combine ideas</p>
+            <h2>Validation and modularity support each other</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Java support example only</h3>
-              <pre><code>if (mark &gt;= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
-}</code></pre>
+              <h3>Function example</h3>
+              <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        RETURN TRUE
+    ELSE
+        RETURN FALSE
+    ENDIF
+ENDFUNCTION</code></pre>
             </article>
             <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF</code></pre>
+              <h3>Why this is robust</h3>
+              <p>The validation rule is written once and can be tested separately. Other code can call the function instead of repeating the condition.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start selection -->
-        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="mechanism" aria-labelledby="explanation-selection-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-selection-title">Use IF , THEN , ELSE , ENDIF</h2>
+        <!-- stage10-explanation:start integration -->
+        <section class="panel explanation-panel" id="explanation-integration" data-explains="integration" data-explanation-kind="mechanism" aria-labelledby="explanation-integration-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="integration">
+          <h2 class="explanation-sr-only" id="explanation-integration-title">Validation and modularity support each other</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IF , THEN , ELSE , ENDIF with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use IF , THEN , ELSE , ENDIF: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-integration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation and modularity support each other with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation and modularity support each other: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> IsValidMark returns TRUE only for marks from 0 to 100 inclusive.</li><li><strong>Lesson fact:</strong> Close the valid branch with ENDIF before the false return.</li><li><strong>Lesson fact:</strong> Close the reusable function with ENDFUNCTION.</li><li><strong>Lesson fact:</strong> Call the function instead of repeating the validation condition.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end selection -->
-        <section class="panel" id="loops" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <!-- stage10-explanation:end integration -->
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
-            <p class="eyebrow">Loops</p>
-            <h2>Choose the loop keyword that matches the logic</h2>
-          </div>
-          <div class="data-table four-col" role="table" aria-label="Loop translations">
-            <div class="table-row table-head"><div>Java habit</div><div>Meaning</div><div>Pseudocode form</div><div>Warning</div></div>
-            <div class="table-row"><div><code>for (int i = 1; i &lt;= 5; i++)</code></div><div>known count</div><div><code>FOR I &lt;- 1 TO 5</code></div><div>do not keep Java brackets</div></div>
-            <div class="table-row"><div><code>while (valid == false)</code></div><div>repeat while condition true</div><div><code>WHILE Valid = FALSE</code></div><div>end with <code>ENDWHILE</code></div></div>
-            <div class="table-row"><div><code>do { ... } while (...)</code></div><div>post-condition loop</div><div><code>REPEAT ... UNTIL ...</code></div><div>condition may be inverted</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start loops -->
-        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-loops-title">Choose the loop keyword that matches the logic</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the loop keyword that matches the logic with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the loop keyword that matches the logic: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Use FOR when a counter range determines the number of iterations.</li><li><strong>Lesson fact:</strong> Use WHILE when the condition is checked before each iteration.</li><li><strong>Lesson fact:</strong> Use REPEAT, then the body, then UNTIL Condition for a post-condition loop.</li><li><strong>Lesson fact:</strong> Do not use DO...ENDWHILE as the Cambridge post-condition form.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end loops -->
-        <section class="panel" id="arrays" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <div class="section-title">
-            <p class="eyebrow">Arrays</p>
-            <h2>Use Cambridge array notation consistently</h2>
+            <p class="eyebrow">Java support only</p>
+            <h2>Java methods can model modularity, but Cambridge pseudocode remains the exam format</h2>
           </div>
           <div class="code-grid">
-            <article>
-              <h3>Java support example only</h3>
-              <pre><code>scores[0] = 72;
-System.out.println(scores[0]);</code></pre>
-            </article>
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>Scores[1] &lt;- 72
-OUTPUT Scores[1]</code></pre>
-            </article>
-          </div>
-          <div class="callout">Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</div>
-        </section>
-
-        <!-- stage10-explanation:start arrays -->
-        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-arrays-title">Use Cambridge array notation consistently</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge array notation consistently with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use Cambridge array notation consistently: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> scores[0] = 72;</li><li><strong>Lesson fact:</strong> System.out.println(scores[0]);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Scores[1] &lt;- 72</li><li><strong>Lesson fact:</strong> OUTPUT Scores[1]</li><li><strong>Lesson fact:</strong> Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end arrays -->
-        <section class="panel" id="subroutines" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <div class="section-title">
-            <p class="eyebrow">Subroutines</p>
-            <h2>Use <code>PROCEDURE</code> and <code>FUNCTION</code> instead of Java method wrappers</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Java support example only</h3>
-              <pre><code>static boolean isValidMark(int mark) {
-    return mark &gt;= 0 &amp;&amp; mark &lt;= 100;
-}</code></pre>
-            </article>
             <article>
               <h3>Cambridge-style pseudocode</h3>
               <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
     RETURN Mark &gt;= 0 AND Mark &lt;= 100
 ENDFUNCTION</code></pre>
             </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>static boolean isValidMark(int mark) {
+    return mark &gt;= 0 &amp;&amp; mark &lt;= 100;
+}</code></pre>
+            </article>
           </div>
+          <div class="callout">Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.</div>
         </section>
-
-        <!-- stage10-explanation:start subroutines -->
-        <section class="panel explanation-panel" id="explanation-subroutines" data-explains="subroutines" data-explanation-kind="mechanism" aria-labelledby="explanation-subroutines-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-subroutines-title">Use PROCEDURE and FUNCTION instead of Java method wrappers</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-subroutines.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use PROCEDURE and FUNCTION instead of Java method wrappers with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use PROCEDURE and FUNCTION instead of Java method wrappers: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Subroutines</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static boolean isValidMark(int mark) {</li><li><strong>Lesson fact:</strong> return mark &gt;= 0 &amp;&amp; mark &lt;= 100;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end subroutines -->
-        <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section class="panel" id="validator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
           <div class="section-title">
-            <p class="eyebrow">Interactive converter</p>
-            <h2>Choose a Java habit and convert it</h2>
+            <p class="eyebrow">Interactive validator</p>
+            <h2>Check whether a mark input is robustly acceptable</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Java habit
-              <select id="convertSelect">
-                <option value="output">System.out.println(Total);</option>
-                <option value="assign">total = total + mark;</option>
-                <option value="if">if (mark >= 50) { ... }</option>
-                <option value="for">for (int i = 1; i &lt;= 5; i++)</option>
-                <option value="function">static boolean isValidMark(int mark)</option>
-              </select>
+              Input
+              <input id="markInput" type="text" value="banana" />
             </label>
-            <button class="primary-button" type="button" id="convertBtn">Convert</button>
+            <button class="primary-button" type="button" id="validateBtn">Validate</button>
           </div>
-          <div id="convertOutput" class="trace-output" aria-live="polite"></div>
+          <div class="trace-output" id="validateOutput" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="spotter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <!-- stage10-explanation:start validator -->
+        <section class="panel explanation-panel" id="explanation-validator" data-explains="validator" data-explanation-kind="mechanism" aria-labelledby="explanation-validator-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="validator">
+          <h2 class="explanation-sr-only" id="explanation-validator-title">Check whether a mark input is robustly acceptable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-validator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Check whether a mark input is robustly acceptable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Check whether a mark input is robustly acceptable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive validator</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validator -->
+        <section class="panel" id="module-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="module-tool">
           <div class="section-title">
-            <p class="eyebrow">Java spotter</p>
-            <h2>Spot the Java-only syntax in an exam answer</h2>
+            <p class="eyebrow">Module chooser</p>
+            <h2>Choose a module for each responsibility</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Suspicious answer fragment
-              <select id="spotSelect">
-                <option value="semicolon">OUTPUT Total;</option>
-                <option value="brace">IF Mark >= 50 {</option>
-                <option value="main">public static void main(String[] args)</option>
-                <option value="scanner">Scanner input = new Scanner(System.in);</option>
+              Responsibility
+              <select id="moduleSelect">
+                <option value="input">Get and validate a mark</option>
+                <option value="grade">Calculate the grade from a valid mark</option>
+                <option value="output">Display the result</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="spotBtn">Explain</button>
+            <button class="primary-button" type="button" id="moduleBtn">Choose module</button>
           </div>
-          <div id="spotOutput" class="trace-output" aria-live="polite"></div>
+          <div id="moduleOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start spotter -->
-        <section class="panel explanation-panel" id="explanation-spotter" data-explains="spotter" data-explanation-kind="mechanism" aria-labelledby="explanation-spotter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-spotter-title">Spot the Java-only syntax in an exam answer</h2>
+        <!-- stage10-explanation:start module-tool -->
+        <section class="panel explanation-panel" id="explanation-module-tool" data-explains="module-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-module-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="module-tool">
+          <h2 class="explanation-sr-only" id="explanation-module-tool-title">Choose a module for each responsibility</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-spotter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spot the Java-only syntax in an exam answer with a structured visual model." />
-            <figcaption class="explanation-sr-only">Spot the Java-only syntax in an exam answer: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-module-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a module for each responsibility with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose a module for each responsibility: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java spotter</li><li><strong>Lesson fact:</strong> Suspicious answer fragment</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Module chooser</li><li><strong>Lesson fact:</strong> Responsibility</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end spotter -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <!-- stage10-explanation:end module-tool -->
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Translate by purpose, not punctuation</h2>
+            <h2>Design robust code one responsibility at a time</h2>
           </div>
           <div class="tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab-button active" type="button" data-example="if">IF statement</button>
-            <button class="tab-button" type="button" data-example="loop">FOR loop</button>
-            <button class="tab-button" type="button" data-example="function">Function</button>
+            <button class="tab-button active" type="button" data-example="validate">Validation loop</button>
+            <button class="tab-button" type="button" data-example="module">Module split</button>
+            <button class="tab-button" type="button" data-example="explain">Explain benefits</button>
           </div>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
-            <h2>Instant checking: short conversion answers</h2>
+            <h2>Instant checking: answer first, reveal second</h2>
           </div>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Remove Java leakage before it costs marks</h2>
+            <h2>Fix weak design decisions</h2>
           </div>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style wording with expandable MS</h2>
@@ -472,60 +405,35 @@ ENDFUNCTION</code></pre>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="checkpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <div class="section-title">
-            <p class="eyebrow">Monthly checkpoint</p>
-            <h2>5-minute quiz focus</h2>
-          </div>
-          <div class="card-grid">
-            <article><h3>Conversion</h3><p>Translate one Java selection, one loop and one output statement.</p></article>
-            <article><h3>Explanation</h3><p>Explain why Java syntax is support only, not the Paper 2 answer format.</p></article>
-            <article><h3>Accuracy</h3><p>Check that the algorithm meaning is unchanged after conversion.</p></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start checkpoint -->
-        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
-          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">5-minute quiz focus</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 5-minute quiz focus with a structured visual model." />
-            <figcaption class="explanation-sr-only">5-minute quiz focus: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> Conversion</li><li><strong>Lesson fact:</strong> Translate one Java selection, one loop and one output statement.</li><li><strong>Lesson fact:</strong> Explanation</li><li><strong>Lesson fact:</strong> Explain why Java syntax is support only, not the Paper 2 answer format.</li><li><strong>Lesson fact:</strong> Accuracy</li><li><strong>Lesson fact:</strong> Check that the algorithm meaning is unchanged after conversion.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end checkpoint -->
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-140">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Use keywords</strong><span>INPUT, OUTPUT, IF, FOR, WHILE, PROCEDURE and FUNCTION</span></div>
-            <div><strong>Remove Java noise</strong><span>no class wrapper, braces, semicolons or Java library calls required</span></div>
-            <div><strong>Preserve logic</strong><span>the converted pseudocode must keep the same algorithmic meaning</span></div>
+            <div><strong>Validation</strong><span>checks that input is acceptable before processing</span></div>
+            <div><strong>Modularity</strong><span>splits code into focused procedures and functions</span></div>
+            <div><strong>Robustness</strong><span>makes programs more reliable, testable and maintainable</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Translate cleanly</h2>
+            <h2>Design before coding</h2>
           </div>
           <ol class="homework-list">
-            <li>Convert a Java grade program containing input, selection and output into Cambridge-style pseudocode.</li>
-            <li>Write five “Java habit -> pseudocode convention” flashcards, including assignment, output and subroutine syntax.</li>
-            <li>Answer a 6-mark question explaining why Java support examples must not replace Cambridge pseudocode in Paper 2.</li>
+            <li>Write Cambridge-style pseudocode for <code>GetValidAge()</code>, where age must be an integer from 11 to 18 inclusive.</li>
+            <li>Split a quiz program into at least four named procedures/functions and state each responsibility.</li>
+            <li>Answer a 6-mark question explaining how validation and modularity both improve robust program design.</li>
           </ol>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

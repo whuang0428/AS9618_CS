@@ -1,137 +1,122 @@
-const riskMatches = {
-  lostLaptop: {
-    best: "encryption",
-    result: "Best match: encryption, ideally with strong device login and remote wipe as extra controls.",
-    reason: "The main risk is disclosure of sensitive data if the laptop is found or stolen. Encryption makes the stored data unreadable without the key.",
-    trap: "Do not choose backups as the main answer here. Backups help recovery, but the privacy breach is caused by unauthorised reading.",
+const scenarioMap = {
+  school: {
+    result: "Suitable: frequent incremental backups plus regular full backups, with offsite copies.",
+    method: "The database changes during the day, so incremental backups reduce possible data loss and storage use; full backups simplify restore points.",
+    trap: "Do not keep the only backup on the same server as the live database.",
   },
-  wrongEmail: {
-    best: "verification",
-    result: "Best match: verification before sending.",
-    reason: "The risk is inaccurate transfer of data to the wrong recipient. Verification checks that the entered email address matches the intended source.",
-    trap: "Validation may only check that the email has a valid format. A valid email address can still be the wrong address.",
+  photos: {
+    result: "Suitable: full archive backup after project completion, with offsite/cloud storage.",
+    method: "Finished photo projects change rarely, so a full archived copy with clear retention is practical.",
+    trap: "Do not confuse archive copies with frequent operational backups for changing data.",
   },
-  sharedAdmin: {
-    best: "uniqueAccounts",
-    result: "Best match: unique accounts and access rights.",
-    reason: "Unique accounts identify who performed actions. Access rights reduce unnecessary privileges for each user.",
-    trap: "An audit trail is much weaker if several people share one account, because accountability is lost.",
+  hospital: {
+    result: "Suitable: very frequent backups/replication and a tested disaster recovery plan.",
+    method: "Patient systems have low tolerance for data loss and downtime, so RPO/RTO must be small.",
+    trap: "Do not recommend weekly backup only for a system needed continuously.",
   },
-  deletedMarks: {
-    best: "backups",
-    result: "Best match: tested backups.",
-    reason: "The main risk is data loss. A recent tested backup allows the deleted marks to be restored accurately.",
-    trap: "Authentication may reduce unauthorised deletion, but it does not recover data already lost.",
+  ransomware: {
+    result: "Suitable: isolated/offline or immutable offsite backups.",
+    method: "If ransomware can reach connected drives, backups must be separated so the same attack cannot encrypt every copy.",
+    trap: "Do not leave the only backup permanently connected to the infected network.",
   },
-  suspiciousEdit: {
-    best: "auditTrail",
-    result: "Best match: audit trail.",
-    reason: "The problem is investigation and accountability. An audit trail records user ID, timestamp and action so the edit can be traced.",
-    trap: "A backup may restore an earlier value, but it does not explain who changed the record.",
-  },
-  fakeLogin: {
-    best: "training2fa",
-    result: "Best match: user training plus two-factor authentication.",
-    reason: "The risk is phishing and credential misuse. Training helps users recognise fake pages; 2FA reduces the damage if a password is revealed.",
-    trap: "Hashing stored passwords does not stop a user typing their real password into a fake website.",
+  laptop: {
+    result: "Suitable: automatic cloud/offsite backup plus local sync checks.",
+    method: "A portable device can be lost, stolen or damaged, so local files need copies away from the device.",
+    trap: "Do not rely only on the laptop's internal drive as a backup of itself.",
   },
 };
 
-const diagnostics = {
-  cannotAccess: {
-    result: "Risk family: loss of availability.",
-    reason: "Suitable route: disaster recovery, backups, redundancy and restore testing. The issue is service access after failure, so the answer should link to reduced downtime.",
+const rpoMap = {
+  hour: {
+    result: "Suggested frequency: hourly or near-continuous backup/replication.",
+    reason: "If only about one hour of data loss is acceptable, the backup interval must be short enough to meet that RPO.",
   },
-  viewPrivate: {
-    result: "Risk family: unauthorised access / confidentiality breach.",
-    reason: "Suitable route: authentication plus role-based access rights. The answer must say which users should be allowed to view which records.",
+  day: {
+    result: "Suggested frequency: daily backups, with clear timing.",
+    reason: "Daily backup may be acceptable if losing work since the last backup would not exceed the business tolerance.",
   },
-  badInput: {
-    result: "Risk family: invalid input affecting data integrity.",
-    reason: "Suitable route: validation such as range or presence checks. The control rejects values that do not meet acceptable rules.",
+  week: {
+    result: "Suggested frequency: weekly full backup may be enough for low-change data.",
+    reason: "This is suitable only when the data changes slowly or can be recreated without major impact.",
   },
-  copiedWrong: {
-    result: "Risk family: inaccurate data transfer.",
-    reason: "Suitable route: verification, for example double entry or visual check against the source. The original value may be valid but copied wrongly.",
-  },
-  passwordFile: {
-    result: "Risk family: credential disclosure.",
-    reason: "Suitable route: password hashing with salt, access restriction and incident response. Do not describe hashes as being decrypted.",
+  none: {
+    result: "Suggested approach: replication/high availability plus tested backups.",
+    reason: "If meaningful data loss is not acceptable, ordinary periodic backups alone are not enough.",
   },
 };
 
 const examples = {
+  ransomware: {
+    title: "Example 1: Ransomware and isolated backups",
+    problem: "A shared drive and connected USB backup are both encrypted by ransomware.",
+    steps: [
+      "The backup was reachable by the same attack as the live data.",
+      "A better strategy includes offline, offsite or immutable backups.",
+      "Recent versions should be retained so clean data can be restored.",
+      "Restores must be tested so the organisation knows the backup is usable.",
+    ],
+  },
   hospital: {
-    title: "Example 1: Hospital records and role-based access",
-    problem: "A hospital stores patient records. Reception staff need contact details, but not full clinical notes.",
+    title: "Example 2: Hospital disaster recovery",
+    problem: "A hospital patient system becomes unavailable after a server failure.",
     steps: [
-      "Risk: unauthorised viewing of sensitive medical data.",
-      "Control: authentication plus role-based access rights.",
-      "Mechanism: users log in, and their role limits which fields or records they can open.",
-      "Consequence: confidentiality and privacy are protected because staff only access data needed for their job.",
+      "The disaster recovery plan should identify critical systems and responsibilities.",
+      "Recent backups or replication reduce possible patient data loss.",
+      "A standby server or cloud recovery can reduce downtime.",
+      "After restoration, staff must check that records are complete and accessible.",
     ],
   },
-  email: {
-    title: "Example 2: Wrong email address",
-    problem: "A clerk enters a parent's email address before sending a report.",
+  audit: {
+    title: "Example 3: Audit trail investigation",
+    problem: "A customer record was deleted and the company needs to know what happened.",
     steps: [
-      "Risk: personal data may be sent to the wrong recipient.",
-      "Control: verification, such as checking against the original form or asking the parent to confirm.",
-      "Mechanism: the entered value is compared with the intended source.",
-      "Consequence: this reduces inaccurate transfer; validation alone may only check the email format.",
+      "An audit trail can show the user account that deleted the record.",
+      "It can include timestamp, device/IP address and action performed.",
+      "This supports accountability and incident investigation.",
+      "The audit trail does not restore the record; a backup may be needed for recovery.",
     ],
   },
-  password: {
-    title: "Example 3: Stolen password file",
-    problem: "An attacker copies a server file containing stored password data.",
+  testing: {
+    title: "Example 4: Testing backup restores",
+    problem: "A school has nightly backups but has never restored from them.",
     steps: [
-      "Risk: attacker may use stored credentials to access accounts.",
-      "Control: salted password hashing.",
-      "Mechanism: the system stores hash values, not plaintext passwords, and a salt reduces lookup-table attacks.",
-      "Consequence: stolen data is less useful, though accounts may still need resets after the breach.",
-    ],
-  },
-  outage: {
-    title: "Example 4: Service outage after server failure",
-    problem: "An online booking system is unavailable after a server failure.",
-    steps: [
-      "Risk: loss of availability and possible data loss.",
-      "Control: disaster recovery plan and tested backups.",
-      "Mechanism: staff follow known steps to restore systems and recover recent data.",
-      "Consequence: downtime and lost transactions are reduced because recovery is planned, not improvised.",
+      "A backup strategy is incomplete unless restore testing is performed.",
+      "A test restore checks that backup files are not corrupted or missing.",
+      "Testing also reveals how long recovery takes.",
+      "Results can be used to improve the disaster recovery plan.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which control checks that a user is who they claim to be?", accepted: ["authentication"], answer: "Authentication" },
-  { id: "p2", prompt: "Which control limits what an authenticated user can read, edit or delete?", accepted: ["access rights", "access levels", "permissions", "authorisation", "authorization"], answer: "Access rights / permissions" },
-  { id: "p3", prompt: "Which control protects confidentiality by making data unreadable without a key?", accepted: ["encryption"], answer: "Encryption" },
-  { id: "p4", prompt: "Which control checks input follows rules such as range or format?", accepted: ["validation"], answer: "Validation" },
-  { id: "p5", prompt: "Which control checks data has been copied or entered accurately?", accepted: ["verification"], answer: "Verification" },
-  { id: "p6", prompt: "Which control restores data after deletion or corruption?", accepted: ["backup", "backups", "tested backup", "tested backups"], answer: "Backup / tested backups" },
-  { id: "p7", prompt: "Which record helps identify who changed a file and when?", accepted: ["audit trail", "audit log", "log"], answer: "Audit trail / audit log" },
-  { id: "p8", prompt: "What security property is mainly affected when a service cannot be accessed?", accepted: ["availability"], answer: "Availability" },
-  { id: "p9", prompt: "A value can be valid but still copied from the source incorrectly. Which check is needed?", accepted: ["verification"], answer: "Verification" },
-  { id: "p10", prompt: "A password hash is one-way. Should an answer say it is decrypted? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p1", prompt: "What is a separate copy of data used for recovery called?", accepted: ["backup", "back up"], answer: "Backup" },
+  { id: "p2", prompt: "Which backup type copies all selected data?", accepted: ["full backup", "full"], answer: "Full backup" },
+  { id: "p3", prompt: "Which backup type copies only data changed since the last backup?", accepted: ["incremental backup", "incremental"], answer: "Incremental backup" },
+  { id: "p4", prompt: "Where should a copy be stored to reduce risk from fire or theft at the main site?", accepted: ["offsite", "off-site", "cloud", "remote location"], answer: "Offsite / cloud / remote location" },
+  { id: "p5", prompt: "What plan describes how systems and services are restored after a major incident?", accepted: ["disaster recovery plan", "disaster recovery", "dr plan"], answer: "Disaster recovery plan" },
+  { id: "p6", prompt: "What record shows who performed an action and when?", accepted: ["audit trail", "audit log", "log"], answer: "Audit trail / audit log" },
+  { id: "p7", prompt: "What does RPO describe: acceptable data loss or restore time?", accepted: ["acceptable data loss", "data loss"], answer: "Acceptable data loss" },
+  { id: "p8", prompt: "What does RTO describe: acceptable data loss or restore time?", accepted: ["restore time", "recovery time", "time to restore"], answer: "Restore/recovery time" },
+  { id: "p9", prompt: "Does an audit trail restore deleted files by itself? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one reason backups should be tested.", accepted: ["corrupt", "corrupted", "usable", "restore works", "missing files", "recovery time", "verify"], answer: "To check backups are usable, not corrupted/missing, and that recovery time is acceptable" },
 ];
 
 const mistakes = [
   {
-    wrong: "Use encryption so only authorised users can log in.",
-    fix: "Encryption protects confidentiality of data by making it unreadable without a key. Logging in is authentication; deciding what a logged-in user can do is authorisation/access rights.",
+    wrong: "A backup is useful even if it has never been restored.",
+    fix: "A backup must be tested by restoring data. Otherwise the organisation may not know whether the backup is complete, uncorrupted or usable.",
   },
   {
-    wrong: "Use validation to check the email address is the correct parent's email.",
-    fix: "Validation may check that the email address has an acceptable format. Verification is needed to compare the typed email with the intended source or confirm it with the parent.",
+    wrong: "An audit trail can recover deleted files.",
+    fix: "An audit trail records actions and supports investigation. A backup is needed to restore the deleted data.",
   },
   {
-    wrong: "An audit trail will bring back deleted data.",
-    fix: "An audit trail records who did what and when. A backup is needed to restore deleted data; the audit trail may explain how the deletion happened.",
+    wrong: "Keeping a backup on the same server is enough.",
+    fix: "A same-server copy can be lost in the same hardware failure, theft, fire or ransomware attack. At least one copy should be isolated or offsite.",
   },
   {
-    wrong: "Hashing encrypts passwords and the system decrypts them during login.",
-    fix: "Hashing is one-way. During login, the entered password is hashed and compared with the stored hash. Do not describe hash values as being decrypted.",
+    wrong: "Incremental backup is always better than full backup.",
+    fix: "Incremental backup is faster and smaller, but restore can be more complex because a full backup and later increments may be needed.",
   },
 ];
 
@@ -144,98 +129,93 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A school stores pupil records online. Explain three controls that could reduce risks to this data.",
-    answer: "Authentication can require users to prove their identity before accessing the system, reducing unauthorised access. Access rights can limit each user's permissions so staff only see or edit records needed for their role, protecting confidentiality and integrity. Encryption can protect data if it is intercepted or a device is stolen because the data is unreadable without the key. Tested backups can also restore records after deletion or corruption.",
+    marks: "4 marks",
+    prompt: "Describe two factors that should be considered when designing a backup strategy for a school database.",
+    answer: "The backup frequency should match how often the data changes and how much data loss is acceptable. If the database is updated throughout the day, frequent backups reduce possible loss. The backup location should include an offsite or isolated copy so fire, theft or ransomware at the main site does not destroy every copy. The strategy should also include retention and testing restores.",
     marking: [
-      { mark: "B1", text: "valid control named, such as authentication/access rights/encryption/backup/audit trail" },
-      { mark: "B1", text: "mechanism of first control explained" },
-      { mark: "B1", text: "second valid control named" },
-      { mark: "B1", text: "mechanism of second control explained" },
-      { mark: "B1", text: "third valid control named" },
-      { mark: "B1", text: "mechanism of third control explained in relation to pupil records" },
+      { mark: "B1", text: "frequency considered" },
+      { mark: "B1", text: "frequency linked to data changes or acceptable data loss/RPO" },
+      { mark: "B1", text: "location/offsite/isolated backup considered" },
+      { mark: "B1", text: "location linked to site disaster/ransomware/theft/hardware failure" },
     ],
     strict: [
-      "Do not award repeated controls stated in different words as separate B marks.",
-      "Do not accept vague 'make it secure' without mechanism.",
-      "Allow any relevant Section 6 control if linked to a risk.",
+      "Do not accept only 'make backups regularly' without scenario reason.",
+      "Do not award offsite mark for a copy on the same server.",
+      "Allow cloud storage if offsite/remote idea is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "A company asks staff to verify customer email addresses before sending invoices. Explain why verification is more suitable than validation for this task.",
-    answer: "Validation can check that an email address has an acceptable format, such as containing an @ symbol, but a correctly formatted email may still belong to the wrong customer. Verification compares the entered email address with the source document or confirms it with the customer. This reduces the risk that an invoice is sent to the wrong person, protecting confidentiality and reducing errors.",
+    prompt: "Compare full and incremental backups.",
+    answer: "A full backup copies all selected data, so it usually takes more time and storage, but restoration is simpler because the full copy contains the complete dataset. An incremental backup copies only data changed since the previous backup, so it is faster and uses less storage. However, restoring may require the last full backup plus each later incremental backup, making recovery more complex if one part is missing or corrupted.",
     marking: [
-      { mark: "B1", text: "validation checks against rules/range/format/type/presence" },
-      { mark: "B1", text: "valid formatted value can still be wrong in this scenario" },
-      { mark: "B1", text: "verification checks accuracy against source or by confirmation" },
-      { mark: "B1", text: "verification linked to correct customer/email recipient" },
-      { mark: "B1", text: "consequence such as reduced disclosure/error/confidentiality risk" },
+      { mark: "B1", text: "full backup copies all selected data" },
+      { mark: "B1", text: "full backup uses more time/storage or simpler restore" },
+      { mark: "B1", text: "incremental backup copies changes since previous backup" },
+      { mark: "B1", text: "incremental uses less time/storage" },
+      { mark: "B1", text: "incremental restore complexity/needs chain/part missing risk" },
     ],
     strict: [
-      "Do not accept 'validation is checking' without saying rules or acceptability.",
-      "Do not accept 'verification is better' without comparison.",
-      "Allow double entry or visual check as verification if source comparison is clear.",
+      "Do not accept incremental as copying all data.",
+      "Do not award comparison marks for vague 'better' or 'faster' without which method.",
+      "Allow changed since last backup for incremental.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "An attacker obtains a copy of a stored password file. Describe how hashing and salting help protect users.",
-    answer: "A hash is a one-way value calculated from a password, so the system should store the hash rather than the plaintext password. During login, the entered password is hashed and compared with the stored hash. A salt is a random value added before hashing, so identical passwords have different stored hashes and precomputed lookup tables are less useful. This reduces the usefulness of the stolen file, although passwords may still need to be reset.",
+    prompt: "Explain why a disaster recovery plan is needed after a major server failure.",
+    answer: "A disaster recovery plan sets out the actions needed to restore systems and services after a major incident. It identifies critical systems, people responsible, communication steps and the order of recovery. It should include restoring data from backups and checking that restored data is complete and usable. It reduces downtime and supports availability because staff do not have to invent a response during the incident.",
     marking: [
-      { mark: "B1", text: "hashing is one-way / not reversible" },
-      { mark: "B1", text: "stored hash rather than plaintext password" },
-      { mark: "B1", text: "entered password is hashed and compared at login" },
-      { mark: "B1", text: "salt is additional/random value added before hashing" },
-      { mark: "B1", text: "salt makes identical passwords have different hashes or reduces lookup/rainbow table usefulness" },
-      { mark: "B1", text: "consequence linked to stolen file being less useful / reduced credential disclosure" },
+      { mark: "B1", text: "DR plan restores systems/services after major incident" },
+      { mark: "B1", text: "critical systems or recovery order identified" },
+      { mark: "B1", text: "roles/responsibilities or communication described" },
+      { mark: "B1", text: "restore from backup described" },
+      { mark: "B1", text: "testing/checking restored data/system described" },
+      { mark: "B1", text: "consequence linked to reduced downtime/availability/organised response" },
     ],
     strict: [
-      "Do not accept that hashes are decrypted.",
-      "Do not award salt mark for simply saying 'extra security' without mechanism.",
-      "Allow 'lookup table' or 'rainbow table' wording.",
+      "Do not accept only 'use a backup' as a complete disaster recovery plan.",
+      "Do not award communication mark for vague 'tell people' without role/user/staff context.",
+      "Allow alternative valid DR actions such as standby hardware or alternative site.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A database shows suspicious edits to customer addresses. Explain how audit trails and access rights could help.",
-    answer: "An audit trail records details such as user ID, action performed, timestamp and affected record. This helps identify which account changed the customer addresses and supports investigation or accountability. Access rights can limit who is allowed to edit address fields, so users without a suitable role cannot make those changes. Together they reduce unauthorised changes and help preserve data integrity.",
+    marks: "4 marks",
+    prompt: "Describe what an audit trail may record and how it can be used after unauthorised changes to data.",
+    answer: "An audit trail may record the user account, action performed, timestamp, device or IP address, and the data record affected. After unauthorised changes, it can show who changed the data and when the change occurred. This helps investigate the incident, identify whether an account was misused and provide evidence for accountability. It does not restore the original data by itself, so a backup may also be needed.",
     marking: [
-      { mark: "B1", text: "audit trail records valid item such as user/action/time/record/device/IP" },
-      { mark: "B1", text: "audit trail used to identify/investigate/account for suspicious edit" },
-      { mark: "B1", text: "access rights/permissions/authorisation named" },
-      { mark: "B1", text: "access rights restrict editing to permitted users/roles" },
-      { mark: "B1", text: "link to integrity or preventing unauthorised changes" },
+      { mark: "B1", text: "valid recorded item such as user/account/action/timestamp/device/IP/record" },
+      { mark: "B1", text: "second distinct recorded item" },
+      { mark: "B1", text: "used to identify who/when/what changed" },
+      { mark: "B1", text: "used for investigation/accountability/evidence/misuse detection" },
     ],
     strict: [
-      "Do not accept audit trail as a backup.",
-      "Do not award access-rights mechanism for authentication alone.",
+      "Do not accept audit trail as a copy of all files.",
+      "Do not award both recorded-item marks for two wordings of time only.",
       "Allow audit log as audit trail.",
     ],
   },
   {
     title: "Question 5",
-    marks: "8 marks",
-    prompt: "A small business suffers a ransomware attack. Discuss suitable Section 6 controls before, during and after the incident.",
-    answer: "Before the incident, staff training can reduce phishing risk and two-factor authentication can limit account misuse if a password is revealed. Access rights can reduce the damage by limiting user permissions. The business should keep isolated or offsite backups so ransomware cannot encrypt every copy, and retain versions so a clean copy can be restored. During the incident, infected systems should be isolated. Afterward, a disaster recovery plan should guide restoration to clean systems, the restored data should be checked, and audit trails can help investigate which accounts or systems were affected.",
+    marks: "6 marks",
+    prompt: "A company is attacked by ransomware. Suggest backup and recovery measures.",
+    answer: "The company should keep isolated or offsite backups so ransomware cannot encrypt every backup copy. Backups should be frequent enough to meet the acceptable data loss, and several versions should be retained so the company can restore a clean copy from before the infection. The restore process should be tested. The disaster recovery plan should isolate infected systems, restore data to clean systems, verify the restored data and communicate with users.",
     marking: [
-      { mark: "B1", text: "training/phishing awareness or 2FA control before incident" },
-      { mark: "B1", text: "mechanism linked to reducing credential misuse/phishing impact" },
-      { mark: "B1", text: "access rights/least privilege control" },
-      { mark: "B1", text: "mechanism linked to limiting ransomware damage/spread" },
-      { mark: "B1", text: "isolated/offsite/offline backups or version retention" },
-      { mark: "B1", text: "mechanism linked to clean restore because ransomware cannot reach every copy" },
-      { mark: "B1", text: "DR action such as isolate systems/restore to clean systems/check restored data" },
-      { mark: "B1", text: "audit trail/investigation or overall consequence linked to recovery and reduced disruption" },
+      { mark: "B1", text: "isolated/offline/offsite backup recommended" },
+      { mark: "B1", text: "reason linked to ransomware not reaching/encrypting all copies" },
+      { mark: "B1", text: "frequency or RPO linked to acceptable data loss" },
+      { mark: "B1", text: "retention/versioning to restore clean pre-infection copy" },
+      { mark: "B1", text: "restore testing/verify restored data described" },
+      { mark: "B1", text: "DR response action such as isolate infected systems/clean restore/communication" },
     ],
     strict: [
-      "Do not accept paying the ransom as a suitable Section 6 control.",
-      "Do not award backup isolation mark for a permanently connected drive.",
-      "Allow other relevant Section 6 controls if mechanism and ransomware context are clear.",
-      "Award each phase independently; an answer does not need the words before/during/after if the sequence is clear.",
+      "Do not accept paying the ransom as a recovery strategy.",
+      "Do not award isolation mark for permanently connected backup drive.",
+      "Allow immutable backup if isolation from ransomware is clear.",
+      "Award each measure independently.",
     ],
   },
 ];
@@ -251,10 +231,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    backup: "Correct. The main risk is data loss after drive failure, so tested backups address recovery.",
-    password: "No. Strong passwords may reduce unauthorised access, but they do not restore lost coursework.",
-    hashing: "No. Hashing is useful for password storage, not recovering coursework files.",
-    ethics: "No. Ethics matters in the next section, but this scenario asks for a Section 6 recovery control.",
+    offsite: "Correct. A backup reachable by the same ransomware is not sufficiently isolated.",
+    audit: "No. Audit trails help investigation, but they do not restore encrypted files.",
+    validation: "No. Validation checks input rules; it does not protect backup copies from ransomware.",
+    frequency: "No. Frequency matters, but connection and isolation matter in this scenario.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -265,43 +245,39 @@ function setupHook() {
   });
 }
 
-function setupMatcher() {
-  const scenario = document.querySelector("#scenarioInput");
-  const control = document.querySelector("#controlInput");
-  const result = document.querySelector("#matchResult");
-  const reason = document.querySelector("#matchReason");
-  const trap = document.querySelector("#matchTrap");
-  function check() {
-    const item = riskMatches[scenario.value];
-    const isCorrect = control.value === item.best;
-    result.textContent = isCorrect ? `Correct. ${item.result}` : `Not the best match. ${item.result}`;
-    reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
+function setupSimulator() {
+  const select = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#simulateResult");
+  const method = document.querySelector("#simulateMethod");
+  const trap = document.querySelector("#simulateTrap");
+  function simulate() {
+    const item = scenarioMap[select.value];
+    result.textContent = item.result;
+    method.innerHTML = `<strong>Reasoning:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  scenario.addEventListener("change", check);
-  control.addEventListener("change", check);
-  document.querySelector("#matchBtn").addEventListener("click", check);
-  check();
+  select.addEventListener("change", simulate);
+  document.querySelector("#simulateBtn").addEventListener("click", simulate);
+  simulate();
 }
 
-function setupDiagnostic() {
-  const select = document.querySelector("#diagnosticInput");
-  const result = document.querySelector("#diagnosticResult");
-  const reason = document.querySelector("#diagnosticReason");
-  function diagnose() {
-    const item = diagnostics[select.value];
+function setupRpoTool() {
+  const select = document.querySelector("#rpoInput");
+  const result = document.querySelector("#rpoResult");
+  const reason = document.querySelector("#rpoReason");
+  function suggest() {
+    const item = rpoMap[select.value];
     result.textContent = item.result;
-    reason.innerHTML = `<strong>Control route:</strong> ${item.reason}`;
+    reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
   }
-  select.addEventListener("change", diagnose);
-  document.querySelector("#diagnosticBtn").addEventListener("click", diagnose);
-  diagnose();
+  select.addEventListener("change", suggest);
+  document.querySelector("#rpoBtn").addEventListener("click", suggest);
+  suggest();
 }
 
 function renderExample(key) {
   const example = examples[key];
-  const box = document.querySelector("#exampleBox");
-  box.innerHTML = `
+  document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
     <ol>${example.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
@@ -309,14 +285,14 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  document.querySelectorAll("[data-example]").forEach((button) => {
+  document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
+      document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
       button.classList.add("active");
       renderExample(button.dataset.example);
     });
   });
-  renderExample("hospital");
+  renderExample("ransomware");
 }
 
 function renderPractice() {
@@ -325,36 +301,33 @@ function renderPractice() {
     <article class="practice-item">
       <p><strong>${item.id.toUpperCase()}.</strong> ${item.prompt}</p>
       <div class="practice-row">
-        <input type="text" id="${item.id}" autocomplete="off" placeholder="Type your answer" aria-label="${item.prompt}" />
-        <span class="mark" id="${item.id}-mark">Not checked</span>
+        <input type="text" aria-label="Answer for ${item.id}" data-practice="${item.id}" />
+        <span class="mark" id="${item.id}Mark">Not checked</span>
       </div>
       <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
-      <div class="answer-panel" id="${item.id}-answer"><strong>Answer:</strong> ${item.answer}</div>
+      <div class="answer-panel" id="${item.id}Answer"><strong>Answer:</strong> ${item.answer}</div>
     </article>
   `).join("");
 
-  practice.forEach((item) => {
-    const input = document.querySelector(`#${item.id}`);
-    const mark = document.querySelector(`#${item.id}-mark`);
+  document.querySelectorAll("[data-practice]").forEach((input) => {
     input.addEventListener("input", () => {
+      const item = practice.find((entry) => entry.id === input.dataset.practice);
+      const mark = document.querySelector(`#${item.id}Mark`);
       const value = normalise(input.value);
-      const correct = item.accepted.some((answer) => value === normalise(answer) || value.includes(normalise(answer)));
+      const correct = item.accepted.some((answer) => value === normalise(answer));
       if (!value) {
         mark.textContent = "Not checked";
         mark.className = "mark";
-      } else if (correct) {
-        mark.textContent = "Correct";
-        mark.className = "mark correct";
-      } else {
-        mark.textContent = "Try again";
-        mark.className = "mark incorrect";
+        return;
       }
+      mark.textContent = correct ? "Correct" : "Try again";
+      mark.className = correct ? "mark correct" : "mark incorrect";
     });
   });
 
   document.querySelectorAll("[data-answer]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.answer}-answer`);
+      const panel = document.querySelector(`#${button.dataset.answer}Answer`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer";
     });
@@ -362,18 +335,16 @@ function renderPractice() {
 }
 
 function renderMistakes() {
-  const grid = document.querySelector("#mistakeGrid");
-  grid.innerHTML = mistakes.map((item, index) => `
+  document.querySelector("#mistakeGrid").innerHTML = mistakes.map((item, index) => `
     <article>
-      <p class="wrong"><strong>Weak answer:</strong> ${item.wrong}</p>
-      <button class="answer-toggle" type="button" data-correction="${index}">Show correction</button>
-      <div class="answer-panel" id="correction-${index}"><strong>Correction:</strong> ${item.fix}</div>
+      <p class="wrong"><strong>Wrong:</strong> ${item.wrong}</p>
+      <button class="answer-toggle" type="button" data-fix="${index}">Show correction</button>
+      <div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div>
     </article>
   `).join("");
-
-  document.querySelectorAll("[data-correction]").forEach((button) => {
+  document.querySelectorAll("[data-fix]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#correction-${button.dataset.correction}`);
+      const panel = document.querySelector(`#fix${button.dataset.fix}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
     });
@@ -381,8 +352,7 @@ function renderMistakes() {
 }
 
 function renderExam() {
-  const list = document.querySelector("#examList");
-  list.innerHTML = examQuestions.map((item, index) => `
+  document.querySelector("#examList").innerHTML = examQuestions.map((item, index) => `
     <article class="exam-card">
       <div class="exam-head">
         <h3>${item.title}</h3>
@@ -390,32 +360,27 @@ function renderExam() {
       </div>
       <p>${item.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
-      <div class="ms-panel" id="ms-${index}">
+      <div class="ms-panel" id="ms${index}">
         <h4>Mark scheme</h4>
-        <p><strong>Answer:</strong> ${item.answer}</p>
+        <p><strong>Model answer:</strong> ${item.answer}</p>
         ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");
-
   document.querySelectorAll("[data-ms]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#ms-${button.dataset.ms}`);
+      const panel = document.querySelector(`#ms${button.dataset.ms}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
     });
   });
 }
 
-function init() {
-  setupPrint();
-  setupHook();
-  setupMatcher();
-  setupDiagnostic();
-  setupExamples();
-  renderPractice();
-  renderMistakes();
-  renderExam();
-}
-
-init();
+setupPrint();
+setupHook();
+setupSimulator();
+setupRpoTool();
+setupExamples();
+renderPractice();
+renderMistakes();
+renderExam();

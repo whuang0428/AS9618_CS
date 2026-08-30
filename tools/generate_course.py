@@ -1308,7 +1308,7 @@ def course_map(lessons: list[dict[str, str | int]]) -> str:
         - Short quiz: lessons {", ".join(str(x) for x in assessment_points)}.
         - Monthly assessment checkpoints: lessons 020, 040, 060, 080, 100, 120, 140.
         - Stage reviews: lessons 015, 026, 040, 051, 061, 071, 077, 089, 097, 112, 125, 141, 146, 150.
-        - Midterm and final examinations are not included in this 150-lesson pack.
+        - Midterm and final examinations are not included in this 151-lesson pack.
 
         ## Implementation Notes
 

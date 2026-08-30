@@ -27,9 +27,22 @@ function riskFlags(item) {
   return flags.length ? flags.join(";") : "conceptual";
 }
 
-const defectsByKey = Map.groupBy(semanticDefects, (item) => item.key);
-const calculationResults = semanticCalculations.map((check) => ({ ...check, passed: evaluateSemanticCalculation(check) }));
-const calculationsByKey = Map.groupBy(calculationResults, (item) => item.key);
+const explanationByDeliveryKey = new Map(explanations.map((item) => [`${item.lesson}/${item.targetId}`, item]));
+const explanationBySourceKey = new Map(explanations.map((item) => [`${item.sourceLesson ?? item.lesson}/${item.sourceTargetId ?? item.targetId}`, item]));
+const explanationByLegacySourceKey = new Map(explanations
+  .filter((item) => Number(item.sourceLesson ?? item.lesson) >= 11)
+  .map((item) => [`${String(Number(item.sourceLesson ?? item.lesson) - 1).padStart(3, "0")}/${item.sourceTargetId ?? item.targetId}`, item]));
+const deliveryKeyForReference = (key) => {
+  const item = explanationByDeliveryKey.get(key) ?? explanationBySourceKey.get(key) ?? explanationByLegacySourceKey.get(key);
+  return item ? `${item.lesson}/${item.targetId}` : key;
+};
+const defectsByKey = Map.groupBy(semanticDefects, (item) => deliveryKeyForReference(item.key));
+const calculationResults = semanticCalculations.map((check) => ({
+  ...check,
+  deliveryKey: deliveryKeyForReference(check.key),
+  passed: evaluateSemanticCalculation(check),
+}));
+const calculationsByKey = Map.groupBy(calculationResults, (item) => item.deliveryKey);
 const rows = explanations.map((item) => {
   const key = `${item.lesson}/${item.targetId}`;
   const asset = path.basename(item.visual.src);
@@ -69,7 +82,7 @@ fs.writeFileSync(path.join(auditDirectory, "stage10-semantic-review-register.csv
 const defectHeader = ["defect_id", "lesson", "target_id", "asset", "region", "category", "visible_content", "expected_content", "source", "severity", "confidence", "blocks_release", "resolved", "proposed_fix"];
 const defectRows = semanticDefects.map((item) => {
   const [lesson, targetId] = item.key.split("/");
-  const asset = rows.find((row) => row.key === item.key)?.asset ?? "";
+  const asset = rows.find((row) => row.key === deliveryKeyForReference(item.key))?.asset ?? "";
   return [item.id, lesson, targetId, asset, item.region, item.category, item.visibleContent, item.expectedContent, item.source, item.severity, item.confidence, item.blocksRelease, item.resolved, item.proposedFix];
 });
 const defectsCsv = [defectHeader, ...defectRows].map((row) => row.map(csv).join(",")).join("\n");
@@ -85,7 +98,7 @@ const riskTable = riskNames.map((risk) => {
   const matching = rows.filter((row) => row.riskFlags.split(";").includes(risk));
   return `| ${risk} | ${matching.length} | ${matching.filter((row) => row.status !== "Approved").length} |`;
 }).join("\n");
-const lessonTable = Array.from({ length: 150 }, (_, index) => String(index + 1).padStart(3, "0")).map((lesson) => {
+const lessonTable = Array.from({ length: 151 }, (_, index) => String(index + 1).padStart(3, "0")).map((lesson) => {
   const matching = rows.filter((row) => row.lesson === lesson);
   return `| ${lesson} | ${matching.length} | ${matching.filter((row) => row.status === "Approved").length} | ${matching.filter((row) => row.status === "DefectCritical").length} | ${matching.filter((row) => row.status === "DefectMajor").length} | ${matching.filter((row) => row.status === "DefectMinor").length} |`;
 }).join("\n");

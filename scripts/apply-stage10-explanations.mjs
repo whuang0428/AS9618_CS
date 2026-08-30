@@ -109,7 +109,7 @@ for (const item of explanations) {
 
 let changedPages = 0;
 let changedMarkdown = 0;
-for (let number = 1; number <= 150; number += 1) {
+for (let number = 1; number <= 151; number += 1) {
   const lesson = String(number).padStart(3, "0");
   const htmlPath = path.join(root, "web", `lesson-${lesson}`, "index.html");
   const original = fs.readFileSync(htmlPath, "utf8");

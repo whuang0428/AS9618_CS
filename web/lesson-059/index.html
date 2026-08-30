@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 059 | Error types: syntax, logic, runtime and translation diagnostics</title>
+    <title>AS9618 Lesson 059 | Linkers, loaders and libraries</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Error types: syntax, logic, runtime and translation diagnostics</h1>
+        <h1>Linkers, loaders and libraries</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,12 +30,12 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#concept">Core idea</a>
-        <a href="#syntax">Syntax errors</a>
-        <a href="#logic">Logic errors</a>
-        <a href="#runtime">Runtime errors</a>
-        <a href="#diagnostics">Diagnostics</a>
+        <a href="#libraries">Libraries</a>
+        <a href="#linkers">Linkers</a>
+        <a href="#loaders">Loaders</a>
+        <a href="#static-dynamic">Static/dynamic</a>
         <a href="#compare">Comparison</a>
-        <a href="#tool">Error tool</a>
+        <a href="#tool">Pipeline tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -52,223 +52,224 @@
         <!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
-          <p>early Section 12 error-classification treatment inside Section 5. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S12.01 lifecycle before S12.04 fault exposure, location and correction.</p>
+          <p>linker, loader, static-linking and extended dynamic-linking mechanics. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S5.03 program libraries and benefits of dynamically linked library files.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 059 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>Not all errors are equal. Some stop translation, some crash at run time, and some smile while giving the wrong answer.</h2>
+            <h2>Object code is not always ready to run. It may still need friends, addresses and memory.</h2>
             <p>
-              This lesson classifies syntax, logic and runtime errors, then connects them to compiler and interpreter diagnostics.
-              The goal is to diagnose the error from evidence: when it happens, what the translator reports, and whether the program still runs.
+              After compilation, a program may depend on other object modules and library routines.
+              Linkers combine the pieces. Loaders place the program into memory and prepare it for execution.
+              Libraries provide reusable routines so programmers do not rewrite common code from scratch.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>syntax, logic and runtime errors from short scenarios</span></div>
-              <div><strong>Explain</strong><span>how compiler and interpreter diagnostics help programmers</span></div>
-              <div><strong>Justify</strong><span>why an error belongs to a category using evidence</span></div>
+              <div><strong>Describe</strong><span>the purpose of libraries, linkers and loaders</span></div>
+              <div><strong>Sequence</strong><span>object code, linking, executable code, loading and execution</span></div>
+              <div><strong>Apply</strong><span>static/dynamic linking ideas and common common errors</span></div>
             </div>
           </div>
-          <div class="error-card" aria-label="Error type sketch">
-            <div class="error-stack">
-              <span>Syntax: grammar broken</span>
-              <span>Logic: runs, wrong result</span>
-              <span>Runtime: fails while running</span>
-              <span>Diagnostics: messages to locate/fix</span>
+          <div class="link-card" aria-label="Linking and loading pathway">
+            <div class="link-stack">
+              <span>object modules</span>
+              <span>+ library routines</span>
+              <span>linker -> executable</span>
+              <span>loader -> memory</span>
+              <span>program runs</span>
             </div>
-            <p>The compiler can complain loudly. The worst logic error just nods and lies.</p>
+            <p>The executable does not appear by wishing politely at object code.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam answers need a category plus a reason. "There is an error" is not a diagnosis.</p>
+            <p>Marks often depend on separating linker and loader roles. "Makes it run" is too vague for full credit.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not call every incorrect answer a runtime error. If the program completes but calculates wrongly, it is usually a logic error.</p>
+            <p>Do not say a library is a folder of books. It is reusable program code such as routines or modules.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A program calculates a bill, runs without crashing, but charges everyone double. What type of error is most likely?</h2>
-            <p>Click the best answer. The program is confident, fast, and absolutely wrong.</p>
+            <h2>Your object file calls <code>SQRT()</code>, but the routine is not inside your code. What helps?</h2>
+            <p>Click the best answer. The computer will not invent square root because it feels mathematical today.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="logic">Logic error</button>
-            <button class="choice-card" type="button" data-hook="syntax">Syntax error</button>
-            <button class="choice-card" type="button" data-hook="runtime">Runtime error</button>
-            <button class="choice-card" type="button" data-hook="linker">Linker error</button>
+            <button class="choice-card" type="button" data-hook="linker">A linker connects the object code to the library routine.</button>
+            <button class="choice-card" type="button" data-hook="loader">A loader writes the missing routine.</button>
+            <button class="choice-card" type="button" data-hook="syntax">Syntax analysis creates the library.</button>
+            <button class="choice-card" type="button" data-hook="antivirus">Antivirus scans the missing routine into existence.</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The timing and symptom of the error matter.
+            Choose one. External references need to be resolved before the program can run correctly.
           </div>
         </section>
 
         <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Error classification depends on when and how the fault appears</h2>
+            <h2>The post-compilation pathway connects code and prepares execution</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Before execution</strong><span>Syntax and translation errors may stop a program from being translated or run.</span></article>
-            <article><strong>During execution</strong><span>Runtime errors occur while the program is running.</span></article>
-            <article><strong>After execution</strong><span>Logic errors may allow completion but produce an incorrect result.</span></article>
-            <article><strong>Diagnostics</strong><span>Error messages and locations help the programmer identify and correct faults.</span></article>
+            <article><strong>Object code</strong><span>Translated output from compilation or assembly, not always a complete executable.</span></article>
+            <article><strong>External reference</strong><span>A call to code or data defined in another module or library.</span></article>
+            <article><strong>Executable file</strong><span>A program file with required code linked and arranged for execution.</span></article>
+            <article><strong>In memory</strong><span>Code and data must be placed into main memory before the CPU can execute it.</span></article>
           </div>
-          <div class="callout">Chinese support: syntax error = 语法错误；logic error = 逻辑错误；runtime error = 运行时错误；diagnostic message = 诊断信息；debugging = 调试。</div>
+          <div class="callout">Chinese support: linker = 连接器；loader = 装入程序；library = 库；library routine = 库例程；object module = 目标模块；executable = 可执行文件。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
         <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Error classification depends on when and how the fault appears</h2>
+          <h2 class="explanation-sr-only" id="explanation-concept-title">The post-compilation pathway connects code and prepares execution</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Error classification depends on when and how the fault appears with a structured visual model." />
-            <figcaption class="explanation-sr-only">Error classification depends on when and how the fault appears: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The post-compilation pathway connects code and prepares execution with a structured visual model." />
+            <figcaption class="explanation-sr-only">The post-compilation pathway connects code and prepares execution: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Before execution Syntax and translation errors may stop a program from being translated or run.</li><li><strong>Lesson fact:</strong> During execution Runtime errors occur while the program is running.</li><li><strong>Lesson fact:</strong> After execution Logic errors may allow completion but produce an incorrect result.</li><li><strong>Lesson fact:</strong> Diagnostics Error messages and locations help the programmer identify and correct faults.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Object code Translated output from compilation or assembly, not always a complete executable.</li><li><strong>Lesson fact:</strong> External reference A call to code or data defined in another module or library.</li><li><strong>Lesson fact:</strong> Executable file A program file with required code linked and arranged for execution.</li><li><strong>Lesson fact:</strong> In memory Code and data must be placed into main memory before the CPU can execute it.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="syntax" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
+        <section class="panel" id="libraries" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Syntax errors break the grammar rules of the language</h2>
+            <h2>Libraries provide reusable routines and modules</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Meaning</strong><span>The code structure does not follow the language grammar.</span></article>
-            <article><strong>Examples</strong><span>Missing brackets, missing keywords, invalid statement structure or misplaced punctuation.</span></article>
-            <article><strong>Detection</strong><span>Detected by translator syntax analysis or parser before successful translation/execution.</span></article>
-            <article><strong>Diagnostic</strong><span>Usually reports a line number or location near the invalid syntax.</span></article>
+            <article><strong>Purpose</strong><span>Provide pre-written, tested routines that programs can use.</span></article>
+            <article><strong>Examples</strong><span>Mathematical functions, input/output routines, graphics or string-handling routines.</span></article>
+            <article><strong>Benefits</strong><span>Saves development time, reduces duplication and may improve reliability.</span></article>
+            <article><strong>Requirement</strong><span>Calls to library routines must be linked or made available at run time.</span></article>
           </div>
         </section>
-
-        <!-- stage10-explanation:start syntax -->
-        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
-          <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax errors break the grammar rules of the language</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax errors break the grammar rules of the language with a structured visual model." />
-            <figcaption class="explanation-sr-only">Syntax errors break the grammar rules of the language: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Meaning The code structure does not follow the language grammar.</li><li><strong>Lesson fact:</strong> Examples Missing brackets, missing keywords, invalid statement structure or misplaced punctuation.</li><li><strong>Lesson fact:</strong> Detection Detected by translator syntax analysis or parser before successful translation/execution.</li><li><strong>Lesson fact:</strong> Diagnostic Usually reports a line number or location near the invalid syntax.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end syntax -->
-        <section class="panel" id="logic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
+        <section class="panel" id="linkers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Logic errors make the program do the wrong thing</h2>
+            <h2>Linkers combine object modules and resolve references</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Meaning</strong><span>The code is syntactically valid and may run, but the algorithm or condition is wrong.</span></article>
-            <article><strong>Examples</strong><span>Using <code>&lt;</code> instead of <code>&lt;=</code>, wrong formula, wrong loop condition or off-by-one error.</span></article>
-            <article><strong>Detection</strong><span>Usually found by testing, tracing or comparing actual output with expected output.</span></article>
-            <article><strong>Common error</strong><span>A translator may not detect it because the instructions are legal.</span></article>
+            <article><strong>Input</strong><span>Object code modules and required library routines or references.</span></article>
+            <article><strong>Action</strong><span>Resolves external references between modules and libraries.</span></article>
+            <article><strong>Output</strong><span>Produces executable code or a linked object file.</span></article>
+            <article><strong>Error</strong><span>Can report unresolved external references if a required routine cannot be found.</span></article>
           </div>
         </section>
 
-        <section class="panel" id="runtime" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
+        <!-- stage10-explanation:start linkers -->
+        <section class="panel explanation-panel" id="explanation-linkers" data-explains="linkers" data-explanation-kind="mechanism" aria-labelledby="explanation-linkers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
+          <h2 class="explanation-sr-only" id="explanation-linkers-title">Linkers combine object modules and resolve references</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-linkers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linkers combine object modules and resolve references with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linkers combine object modules and resolve references: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input Object code modules and required library routines or references.</li><li><strong>Lesson fact:</strong> Action Resolves external references between modules and libraries.</li><li><strong>Lesson fact:</strong> Output Produces executable code or a linked object file.</li><li><strong>Lesson fact:</strong> Error Can report unresolved external references if a required routine cannot be found.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end linkers -->
+        <section class="panel" id="loaders" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Runtime errors occur while the program is executing</h2>
+            <h2>Loaders place executable code into memory</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Meaning</strong><span>The program starts running but fails because of an event or invalid operation during execution.</span></article>
-            <article><strong>Examples</strong><span>Division by zero, file not found, array index out of range or insufficient memory.</span></article>
-            <article><strong>Result</strong><span>The program may crash, halt, raise an exception or display an error message.</span></article>
-            <article><strong>Handling</strong><span>Robust programs may use validation and exception handling to reduce runtime failure.</span></article>
+            <article><strong>Input</strong><span>An executable program or loadable program image.</span></article>
+            <article><strong>Action</strong><span>Loads code and data into main memory and prepares it to run.</span></article>
+            <article><strong>Addresses</strong><span>May allocate memory and adjust addresses depending on where the program is loaded.</span></article>
+            <article><strong>Boundary</strong><span>A loader does not translate source code or combine object modules.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start runtime -->
-        <section class="panel explanation-panel" id="explanation-runtime" data-explains="runtime" data-explanation-kind="mechanism" aria-labelledby="explanation-runtime-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
-          <h2 class="explanation-sr-only" id="explanation-runtime-title">Runtime errors occur while the program is executing</h2>
+        <!-- stage10-explanation:start loaders -->
+        <section class="panel explanation-panel" id="explanation-loaders" data-explains="loaders" data-explanation-kind="mechanism" aria-labelledby="explanation-loaders-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
+          <h2 class="explanation-sr-only" id="explanation-loaders-title">Loaders place executable code into memory</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-runtime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Runtime errors occur while the program is executing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Runtime errors occur while the program is executing: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-loaders.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loaders place executable code into memory with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loaders place executable code into memory: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Meaning The program starts running but fails because of an event or invalid operation during execution.</li><li><strong>Lesson fact:</strong> Examples Division by zero, file not found, array index out of range or insufficient memory.</li><li><strong>Lesson fact:</strong> Result The program may crash, halt, raise an exception or display an error message.</li><li><strong>Lesson fact:</strong> Handling Robust programs may use validation and exception handling to reduce runtime failure.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Input An executable program or loadable program image.</li><li><strong>Lesson fact:</strong> Action Loads code and data into main memory and prepares it to run.</li><li><strong>Lesson fact:</strong> Addresses May allocate memory and adjust addresses depending on where the program is loaded.</li><li><strong>Lesson fact:</strong> Boundary A loader does not translate source code or combine object modules.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end runtime -->
-        <section class="panel" id="diagnostics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
+        <!-- stage10-explanation:end loaders -->
+        <section class="panel" id="static-dynamic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Translation diagnostics help locate and correct errors</h2>
+            <h2>Static and dynamic linking affect when library code is connected</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Compiler</strong><span>May report a list of errors after attempting translation.</span></article>
-            <article><strong>Interpreter</strong><span>May stop at or near the statement being translated/executed.</span></article>
-            <article><strong>Useful details</strong><span>Error type, line number, token, expected symbol or explanation of the fault.</span></article>
-            <article><strong>Limitation</strong><span>The reported line may be near the cause, not always the exact cause.</span></article>
+            <article><strong>Static linking</strong><span>Library code is copied into the executable at link time.</span></article>
+            <article><strong>Static trade-off</strong><span>Executable can be more self-contained but may be larger.</span></article>
+            <article><strong>Dynamic linking</strong><span>Library code is linked at load time or run time from a shared library.</span></article>
+            <article><strong>Dynamic trade-off</strong><span>Can reduce duplication, but the required shared library must be available and compatible.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start diagnostics -->
-        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
-          <h2 class="explanation-sr-only" id="explanation-diagnostics-title">Translation diagnostics help locate and correct errors</h2>
+        <!-- stage10-explanation:start static-dynamic -->
+        <section class="panel explanation-panel" id="explanation-static-dynamic" data-explains="static-dynamic" data-explanation-kind="mechanism" aria-labelledby="explanation-static-dynamic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
+          <h2 class="explanation-sr-only" id="explanation-static-dynamic-title">Static and dynamic linking affect when library code is connected</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-diagnostics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation diagnostics help locate and correct errors with a structured visual model." />
-            <figcaption class="explanation-sr-only">Translation diagnostics help locate and correct errors: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-static-dynamic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Static and dynamic linking affect when library code is connected with a structured visual model." />
+            <figcaption class="explanation-sr-only">Static and dynamic linking affect when library code is connected: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Compiler May report a list of errors after attempting translation.</li><li><strong>Lesson fact:</strong> Interpreter May stop at or near the statement being translated/executed.</li><li><strong>Lesson fact:</strong> Useful details Error type, line number, token, expected symbol or explanation of the fault.</li><li><strong>Lesson fact:</strong> Limitation The reported line may be near the cause, not always the exact cause.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Static linking Library code is copied into the executable at link time.</li><li><strong>Lesson fact:</strong> Static trade-off Executable can be more self-contained but may be larger.</li><li><strong>Lesson fact:</strong> Dynamic linking Library code is linked at load time or run time from a shared library.</li><li><strong>Lesson fact:</strong> Dynamic trade-off Can reduce duplication, but the required shared library must be available and compatible.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end diagnostics -->
+        <!-- stage10-explanation:end static-dynamic -->
         <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
-            <h2>Compare error types by evidence</h2>
+            <h2>Compare the roles without blending them</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Error type comparison">
+          <div class="comparison-table" role="table" aria-label="Linker loader library comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Error type</div>
-              <div role="columnheader">When noticed</div>
-              <div role="columnheader">Evidence</div>
-              <div role="columnheader">Example</div>
+              <div role="columnheader">Item</div>
+              <div role="columnheader">Main role</div>
+              <div role="columnheader">Typical input</div>
+              <div role="columnheader">Typical output/result</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Syntax</div>
-              <div role="cell">Translation/parsing time</div>
-              <div role="cell">Invalid grammar or structure.</div>
-              <div role="cell">Missing bracket or malformed IF statement.</div>
+              <div role="cell">Library</div>
+              <div role="cell">Stores reusable routines/modules.</div>
+              <div role="cell">Calls from a program.</div>
+              <div role="cell">Routine code can be linked or used at run time.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Logic</div>
-              <div role="cell">Testing/output checking</div>
-              <div role="cell">Program runs but result is incorrect.</div>
-              <div role="cell">Average calculated with wrong divisor.</div>
+              <div role="cell">Linker</div>
+              <div role="cell">Combines object modules and resolves external references.</div>
+              <div role="cell">Object files and library references.</div>
+              <div role="cell">Executable/linked object code.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Runtime</div>
-              <div role="cell">While executing</div>
-              <div role="cell">Program fails due to operation or resource problem.</div>
-              <div role="cell">Division by zero or file not found.</div>
+              <div role="cell">Loader</div>
+              <div role="cell">Places executable program into main memory.</div>
+              <div role="cell">Executable file/program image.</div>
+              <div role="cell">Program ready for execution in memory.</div>
             </div>
           </div>
         </section>
 
         <!-- stage10-explanation:start compare -->
         <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare error types by evidence</h2>
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare the roles without blending them</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare error types by evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare error types by evidence: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare the roles without blending them with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare the roles without blending them: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Error type</li><li><strong>Lesson fact:</strong> When noticed</li><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Translation/parsing time</li><li><strong>Lesson fact:</strong> Invalid grammar or structure.</li><li><strong>Lesson fact:</strong> Missing bracket or malformed IF statement.</li><li><strong>Lesson fact:</strong> Testing/output checking</li><li><strong>Lesson fact:</strong> Program runs but result is incorrect.</li><li><strong>Lesson fact:</strong> Average calculated with wrong divisor.</li><li><strong>Lesson fact:</strong> While executing</li><li><strong>Lesson fact:</strong> Program fails due to operation or resource problem.</li><li><strong>Lesson fact:</strong> Division by zero or file not found.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Main role</li><li><strong>Lesson fact:</strong> Typical input</li><li><strong>Lesson fact:</strong> Typical output/result</li><li><strong>Lesson fact:</strong> Stores reusable routines/modules.</li><li><strong>Lesson fact:</strong> Calls from a program.</li><li><strong>Lesson fact:</strong> Routine code can be linked or used at run time.</li><li><strong>Lesson fact:</strong> Combines object modules and resolves external references.</li><li><strong>Lesson fact:</strong> Object files and library references.</li><li><strong>Lesson fact:</strong> Executable/linked object code.</li><li><strong>Lesson fact:</strong> Places executable program into main memory.</li><li><strong>Lesson fact:</strong> Executable file/program image.</li><li><strong>Lesson fact:</strong> Program ready for execution in memory.</li></ol>
 
           </div>
         </section>
@@ -276,22 +277,22 @@
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Error diagnosis tool</h2>
-            <p>Select a symptom and classify the most likely error type.</p>
+            <h2>Post-compilation pipeline selector</h2>
+            <p>Select a situation and identify whether it involves a library, linker or loader.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Symptom
+              Situation
               <select id="scenarioInput">
-                <option value="missing">Translator reports: expected ) before ENDIF</option>
-                <option value="double">Program runs but doubles every price by mistake</option>
-                <option value="zero">Program crashes when denominator is 0</option>
-                <option value="file">Program starts but fails because a file is missing</option>
-                <option value="offbyone">Loop runs one fewer time than intended</option>
-                <option value="line">Diagnostic points to the line after the real missing symbol</option>
+                <option value="math">A program calls a pre-written square root routine</option>
+                <option value="combine">Several object modules must become one executable</option>
+                <option value="missing">Build fails because a referenced routine cannot be found</option>
+                <option value="memory">The executable must be placed into RAM before running</option>
+                <option value="static">Library code is copied into the executable file</option>
+                <option value="dynamic">A shared library is used when the program loads</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Diagnose</button>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
@@ -301,13 +302,13 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Diagnose from code behaviour</h2>
+            <h2>From object files to running program</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="syntax">Syntax</button>
-            <button class="tab" type="button" data-example="logic">Logic</button>
-            <button class="tab" type="button" data-example="runtime">Runtime</button>
-            <button class="tab" type="button" data-example="diagnostic">Diagnostic</button>
+            <button class="tab active" type="button" data-example="library">Library</button>
+            <button class="tab" type="button" data-example="linker">Linker</button>
+            <button class="tab" type="button" data-example="loader">Loader</button>
+            <button class="tab" type="button" data-example="dynamic">Dynamic linking</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
@@ -341,15 +342,15 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Error diagnosis memory map</h2>
+            <h2>Post-compilation memory map</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Syntax</strong><span>Grammar invalid; translator can detect before successful running.</span></div>
-            <div><strong>Logic</strong><span>Program runs but algorithm gives wrong output.</span></div>
-            <div><strong>Runtime</strong><span>Program fails during execution.</span></div>
-            <div><strong>Compiler</strong><span>May report a list of errors after translation attempt.</span></div>
-            <div><strong>Interpreter</strong><span>May stop at the statement being executed.</span></div>
-            <div><strong>Exam rule</strong><span>Classify, justify with evidence, then give a relevant example.</span></div>
+            <div><strong>Library</strong><span>Reusable routines/modules that programs can call.</span></div>
+            <div><strong>Linker</strong><span>Combines object code and resolves external references.</span></div>
+            <div><strong>Loader</strong><span>Places executable code into memory and prepares it to run.</span></div>
+            <div><strong>Static</strong><span>Library code copied into executable at link time.</span></div>
+            <div><strong>Dynamic</strong><span>Shared library linked at load/run time.</span></div>
+            <div><strong>Exam rule</strong><span>Use the correct stage: compile, link, load, execute.</span></div>
           </div>
         </section>
 
@@ -360,24 +361,24 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Error evidence table</strong>
-              <span>Create a table for syntax, logic and runtime errors: when noticed, symptom, example and how to detect it.</span>
+              <strong>Task 1: Role table</strong>
+              <span>Create a table for library, linker and loader: input, action, output/result, one common error.</span>
             </article>
             <article>
-              <strong>Task 2: Classification set</strong>
-              <span>Write five short code-behaviour scenarios and classify each error type with one-sentence evidence.</span>
+              <strong>Task 2: Pipeline explanation</strong>
+              <span>Write a 6-mark answer explaining how object modules and library routines become a running program.</span>
             </article>
             <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Explain how translation diagnostics help programmers find errors, and why logic errors may still require testing.</span>
+              <strong>Task 3: Static vs dynamic</strong>
+              <span>Write two advantages and two limitations across static and dynamic linking. Use precise wording about file size, sharing and availability.</span>
             </article>
           </div>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -1,47 +1,47 @@
 const examples = {
-  stereo: {
-    title: "Example 1: stereo calculation",
-    problem: "Calculate the size of a 10-second stereo clip sampled at 8000 Hz with 16-bit sampling resolution.",
+  basic: {
+    title: "Example 1: 8000 Hz, 16-bit, 10 seconds",
+    problem: "Calculate the size of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sampling resolution.",
     steps: [
-      "Stereo has 2 channels.",
-      "Size in bits = 8000 × 16 × 10 × 2.",
-      "This gives 2 560 000 bits.",
-      "Bytes = 2 560 000 ÷ 8 = 320 000 bytes.",
+      "Sampling rate: 8000 samples per second.",
+      "Each sample uses 16 bits.",
+      "Duration is 10 seconds.",
+      "Size = 8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes.",
     ],
   },
-  kib: {
-    title: "Example 2: convert bytes to KiB",
-    problem: "Convert 160 000 bytes to KiB.",
+  rate: {
+    title: "Example 2: increasing sampling rate",
+    problem: "A clip changes from 8000 Hz to 16 000 Hz while sampling resolution and duration stay the same.",
     steps: [
-      "Use 1 KiB = 1024 bytes.",
-      "160 000 ÷ 1024 = 156.25.",
-      "So 160 000 bytes = 156.25 KiB.",
-      "Do not divide by 1000 when the unit is KiB.",
+      "The sampling rate has doubled.",
+      "Twice as many samples are stored each second.",
+      "File size doubles if sampling resolution and duration are unchanged.",
+      "Quality may improve because the wave is measured more frequently.",
     ],
   },
-  compare: {
-    title: "Example 3: compare mono and stereo",
-    problem: "A mono clip and a stereo clip have the same sampling rate, sampling resolution and duration. Compare their file sizes.",
+  resolution: {
+    title: "Example 3: increasing sampling resolution",
+    problem: "A clip changes from 8-bit samples to 16-bit samples while sampling rate and duration stay the same.",
     steps: [
-      "Mono has 1 channel.",
-      "Stereo has 2 channels.",
-      "Stereo stores twice as many sample values.",
-      "Therefore the stereo file size is twice the mono file size if all other factors match.",
+      "The number of bits per sample has doubled.",
+      "Each sample can represent more amplitude levels.",
+      "File size doubles if sampling rate and duration are unchanged.",
+      "Quality may improve because amplitudes can be stored more precisely.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "How many channels are used in mono sound?", accepted: ["1", "one", "1 channel"], answer: "1 channel" },
-  { id: "p2", prompt: "How many channels are used in stereo sound?", accepted: ["2", "two", "2 channels"], answer: "2 channels" },
-  { id: "p3", prompt: "Calculate bits for 8000 Hz, 16-bit, 10 seconds, stereo.", accepted: ["2560000", "2560000 bits", "2 560 000 bits"], answer: "2 560 000 bits" },
-  { id: "p4", prompt: "Convert 2 560 000 bits to bytes.", accepted: ["320000", "320000 bytes", "320 000 bytes"], answer: "320 000 bytes" },
-  { id: "p5", prompt: "Convert 160 000 bytes to KiB.", accepted: ["156.25", "156.25 kib"], answer: "156.25 KiB" },
-  { id: "p6", prompt: "What happens to file size if channels double and all other factors stay the same?", accepted: ["doubles", "double", "it doubles"], answer: "It doubles." },
-  { id: "p7", prompt: "What is the full sound file size formula in bits?", accepted: ["sampling rate × sampling resolution × duration × channels", "rate × resolution × duration × channels"], answer: "sampling rate × sampling resolution × duration × channels" },
-  { id: "p8", prompt: "Which unit conversion uses 1024 bytes?", accepted: ["kib", "kibibyte", "bytes to kib"], answer: "Bytes to KiB" },
-  { id: "p9", prompt: "State one precise exam keyword connected to Sound file size calculations.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
-  { id: "p10", prompt: "What should an exam answer about Sound file size calculations include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
+  { id: "p1", prompt: "What does sampling rate measure?", accepted: ["samples per second", "number of samples per second", "samples each second"], answer: "Samples per second." },
+  { id: "p2", prompt: "What unit is commonly used for sampling rate?", accepted: ["hz", "hertz"], answer: "Hz / hertz" },
+  { id: "p3", prompt: "What does sampling resolution mean?", accepted: ["bits per sample", "number of bits per sample", "bits used per sample"], answer: "Bits per sample." },
+  { id: "p4", prompt: "Calculate bits for 8000 Hz, 16-bit, 10 seconds mono sound.", accepted: ["1280000", "1280000 bits", "1 280 000 bits"], answer: "1 280 000 bits" },
+  { id: "p5", prompt: "Convert 1 280 000 bits to bytes.", accepted: ["160000", "160000 bytes", "160 000 bytes"], answer: "160 000 bytes" },
+  { id: "p6", prompt: "How many possible amplitude levels can 8-bit sampling resolution represent?", accepted: ["256", "256 levels", "2^8", "2⁸"], answer: "256 levels" },
+  { id: "p7", prompt: "If duration doubles and other parameters stay the same, what happens to file size?", accepted: ["doubles", "double", "it doubles"], answer: "It doubles." },
+  { id: "p8", prompt: "Which parameter controls how often the wave is measured?", accepted: ["sampling rate", "sample rate"], answer: "Sampling rate" },
+  { id: "p9", prompt: "State one precise exam keyword connected to Digital sound: sampling rate, sampling resolution and duration.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
+  { id: "p10", prompt: "What should an exam answer about Digital sound: sampling rate, sampling resolution and duration include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
 
@@ -54,86 +54,85 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Calculate the size in bytes of a 10-second stereo sound clip sampled at 8000 Hz with 16-bit sampling resolution.",
-    answer: "8000 x 16 x 10 x 2 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
+    prompt: "Calculate the size in bytes of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sampling resolution.",
+    answer: "8000 x 16 x 10 x 1 = 1 280 000 bits. 1 280 000 / 8 = 160 000 bytes.",
     marking: [
-      { mark: "M1", text: "uses sampling rate 8000 and duration 10 seconds" },
-      { mark: "M1", text: "multiplies by 16 bits per sample" },
-      { mark: "M1", text: "multiplies by 2 channels for stereo" },
-      { mark: "A1", text: "320 000 bytes" },
+      { mark: "M1", text: "uses sampling rate 8000 samples per second" },
+      { mark: "M1", text: "multiplies by sampling resolution 16 bits" },
+      { mark: "M1", text: "multiplies by duration 10 seconds" },
+      { mark: "A1", text: "160 000 bytes" },
     ],
     strict: [
-      "Do not award final A1 for 2 560 000 bytes.",
-      "Allow 2 560 000 bits as working.",
-      "Do not omit the stereo channel factor.",
+      "Do not award final A1 for 1 280 000 bytes.",
+      "Allow 1 280 000 bits as working, but final answer must be bytes.",
+      "Do not multiply by channels; this question states mono.",
     ],
   },
   {
     title: "Question 2",
     marks: "3 marks",
-    prompt: "Calculate 160 000 bytes in KiB.",
-    answer: "1 KiB = 1024 bytes, so 160 000 / 1024 = 156.25 KiB.",
+    prompt: "Explain the effect of increasing the sampling rate of a sound recording.",
+    answer: "Increasing sampling rate takes more samples per second. This can make the digital recording more accurate, but increases file size because more sample values are stored.",
     marking: [
-      { mark: "M1", text: "uses 1024 bytes per KiB" },
-      { mark: "M1", text: "divides 160 000 by 1024" },
-      { mark: "A1", text: "156.25 KiB" },
+      { mark: "B1", text: "more samples are taken per second" },
+      { mark: "B1", text: "sound may be represented more accurately / quality may improve" },
+      { mark: "B1", text: "file size increases because more samples are stored" },
     ],
     strict: [
-      "Do not accept 160 KiB from division by 1000.",
-      "Allow 156.3 KiB only if the question permits rounding.",
-      "Unit must be KiB or clearly equivalent.",
+      "Do not accept only 'sound is better'.",
+      "Do not confuse with sampling resolution / bits per sample.",
+      "Quality mark requires a link to more frequent measurement or accuracy.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain why a stereo sound file is larger than a matching mono sound file.",
-    answer: "Stereo has two channels while mono has one. If sampling rate, sampling resolution and duration are the same, stereo stores twice as many sample values, so the file size is doubled.",
+    marks: "3 marks",
+    prompt: "Explain the effect of increasing the sampling resolution of a sound recording.",
+    answer: "Increasing sampling resolution uses more bits for each sample. This allows more possible amplitude values, which can improve accuracy, but it increases file size.",
     marking: [
-      { mark: "B1", text: "mono has 1 channel" },
-      { mark: "B1", text: "stereo has 2 channels" },
-      { mark: "B1", text: "same rate / resolution / duration means only channel factor changes" },
-      { mark: "B1", text: "stereo file size is twice mono size / larger because more sample values are stored" },
+      { mark: "B1", text: "more bits are used for each sample" },
+      { mark: "B1", text: "more possible amplitude levels / more precise sample values" },
+      { mark: "B1", text: "file size increases" },
     ],
     strict: [
-      "Do not accept only 'stereo is better'.",
-      "Do not award full marks unless channels are explicitly discussed.",
-      "Accept left and right channel explanation.",
+      "Do not accept answers about pixels or image resolution.",
+      "Do not accept only 'more samples'. That describes sampling rate.",
+      "Accept bit depth as equivalent wording for sampling resolution.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "A 60-second stereo clip is sampled at 44 100 Hz using 16-bit sampling resolution. Calculate the uncompressed size in MiB.",
-    answer: "44 100 x 16 x 60 x 2 = 84 672 000 bits. Divide by 8 to obtain 10 584 000 bytes, then divide by 1 048 576 to obtain approximately 10.09 MiB.",
+    prompt: "A 5-second mono sound clip is sampled at 4000 Hz using 8-bit sampling resolution. Calculate its size in bytes.",
+    answer: "4000 x 8 x 5 x 1 = 160 000 bits. 160 000 / 8 = 20 000 bytes.",
     marking: [
-      { mark: "M1", text: "uses 44 100 × 16 × 60 × 2" },
-      { mark: "A1", text: "84 672 000 bits / 10 584 000 bytes" },
-      { mark: "M1", text: "converts bytes to MiB using 1024 × 1024" },
-      { mark: "A1", text: "approximately 10.09 MiB" },
+      { mark: "M1", text: "uses 4000 samples per second" },
+      { mark: "M1", text: "multiplies by 8 bits per sample" },
+      { mark: "M1", text: "multiplies by 5 seconds and converts bits to bytes" },
+      { mark: "A1", text: "20 000 bytes" },
     ],
     strict: [
-      "Do not divide by 1000 × 1000 for MiB.",
-      "Answer may be rounded sensibly if working is shown.",
-      "Allow FT from the candidate's earlier byte total only when it is subsequently divided by 1 048 576 to obtain MiB.",
+      "Allow 160 000 bits as intermediate working.",
+      "Do not include compression or metadata.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "State two changes that would reduce the file size of an uncompressed sound recording and explain one effect of each.",
-    answer: "Reducing sampling rate stores fewer samples per second, reducing file size but may reduce accuracy. Reducing sampling resolution uses fewer bits per sample, reducing file size but may reduce amplitude precision.",
+    marks: "3 marks",
+    prompt: "A candidate says that sampling rate and sampling resolution are the same thing. Explain why this is incorrect.",
+    answer: "Sampling rate is how many samples are taken each second. Sampling resolution is how many bits are used to store each sample. They affect different parts of the calculation.",
     marking: [
-      { mark: "B1", text: "valid size-reducing change, e.g. lower sampling rate / lower sampling resolution / shorter duration / fewer channels" },
-      { mark: "B1", text: "valid effect of that change" },
-      { mark: "B1", text: "second valid size-reducing change" },
-      { mark: "B1", text: "valid effect of second change" },
+      { mark: "B1", text: "sampling rate is samples per second / how often samples are taken" },
+      { mark: "B1", text: "sampling resolution is bits per sample" },
+      { mark: "B1", text: "clear distinction or consequence in calculation / quality" },
     ],
     strict: [
-      "Do not accept compression as the main answer for this uncompressed calculation question.",
-      "Do not accept only 'make quality worse' without naming the parameter.",
-      "Effects may include reduced quality, reduced accuracy, fewer amplitude levels or shorter recording.",
+      "Do not award full marks for only giving one definition.",
+      "Do not accept image resolution examples as the main explanation.",
+      "Accept bit depth as equivalent to sampling resolution.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
@@ -144,17 +143,14 @@ function normalise(value) {
 }
 
 function formatNumber(value) {
-  return new Intl.NumberFormat("en-GB", { maximumFractionDigits: 4 }).format(value);
+  return new Intl.NumberFormat("en-GB").format(value);
 }
 
-function calculateSound(rate, resolution, duration, channels) {
-  const samplesPerChannel = rate * duration;
-  const totalSamples = samplesPerChannel * channels;
-  const bits = totalSamples * resolution;
+function calculateSound(rate, resolution, duration) {
+  const samples = rate * duration;
+  const bits = samples * resolution;
   const bytes = bits / 8;
-  const kib = bytes / 1024;
-  const mib = kib / 1024;
-  return { samplesPerChannel, totalSamples, bits, bytes, kib, mib };
+  return { samples, bits, bytes };
 }
 
 function setupPrint() {
@@ -167,18 +163,28 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "double"
-        ? "Correct. Stereo uses two channels, so it doubles the mono size when everything else matches."
-        : "Not quite. If only the channel count changes from mono to stereo, the size doubles.";
+      if (button.dataset.hook === "rate") {
+        feedback.textContent = "Correct. Sampling rate controls how many samples are taken every second.";
+      } else if (button.dataset.hook === "resolution") {
+        feedback.textContent = "Close but different. Sampling resolution controls bits per sample, not samples per second.";
+      } else {
+        feedback.textContent = "Not this one. The phrase 'every second' points to sampling rate.";
+      }
     });
   });
+}
+
+function setupSampleStrip() {
+  const strip = document.querySelector("#sampleStrip");
+  strip.innerHTML = Array.from({ length: 16 }, (_, index) => `
+    <span class="${index % 2 === 0 ? "active" : ""}" style="--height:${30 + (index % 5) * 12}%"></span>
+  `).join("");
 }
 
 function setupCalculator() {
   const rate = document.querySelector("#rateInput");
   const resolution = document.querySelector("#resolutionInput");
   const duration = document.querySelector("#durationInput");
-  const channels = document.querySelector("#channelInput");
   const result = document.querySelector("#calcResult");
   const method = document.querySelector("#calcMethod");
 
@@ -186,19 +192,18 @@ function setupCalculator() {
     const r = Number(rate.value);
     const b = Number(resolution.value);
     const d = Number(duration.value);
-    const c = Number(channels.value);
     if (!Number.isInteger(r) || !Number.isInteger(d) || r <= 0 || d <= 0) {
       result.textContent = "Enter positive whole-number sampling rate and duration.";
-      method.textContent = "This calculator assumes uncompressed sound.";
+      method.textContent = "This calculator uses mono sound and ignores compression.";
       return;
     }
-    const size = calculateSound(r, b, d, c);
-    result.textContent = `${formatNumber(size.bits)} bits = ${formatNumber(size.bytes)} bytes = ${formatNumber(size.kib)} KiB = ${formatNumber(size.mib)} MiB`;
-    method.textContent = `${r} × ${b} × ${d} × ${c} = ${formatNumber(size.bits)} bits; ÷8 = ${formatNumber(size.bytes)} bytes; ÷1024 = ${formatNumber(size.kib)} KiB; ÷1024 = ${formatNumber(size.mib)} MiB.`;
+    const size = calculateSound(r, b, d);
+    result.textContent = `${formatNumber(size.bits)} bits = ${formatNumber(size.bytes)} bytes`;
+    method.textContent = `${r} samples/s × ${d} s = ${formatNumber(size.samples)} samples; ${formatNumber(size.samples)} × ${b} bits = ${formatNumber(size.bits)} bits; ${formatNumber(size.bits)} ÷ 8 = ${formatNumber(size.bytes)} bytes.`;
   }
 
   [rate, duration].forEach((control) => control.addEventListener("input", calculate));
-  [resolution, channels].forEach((control) => control.addEventListener("change", calculate));
+  resolution.addEventListener("change", calculate);
   document.querySelector("#calculateBtn").addEventListener("click", calculate);
   calculate();
 }
@@ -220,7 +225,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("stereo");
+  renderExample("basic");
 }
 
 function renderPractice() {
@@ -264,7 +269,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check channels and unit conversions before the final answer.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check whether the wording asks for rate, resolution, bits or bytes.`;
   });
 }
 
@@ -301,6 +306,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
+  setupSampleStrip();
   setupCalculator();
   setupExamples();
   renderPractice();

@@ -4,7 +4,7 @@ Audit date: 21 July 2026
 
 ## Scope
 
-Stage 4 delivers the complete formative and checkpoint assessment bank for the 150-lesson AS9618 course. Questions are original Cambridge-style practice; they do not reproduce Cambridge past-paper questions. Official Cambridge syllabus and past-paper mark schemes remain the authority for final syllabus interpretation and wording calibration.
+Stage 4 delivers the complete formative and checkpoint assessment bank for the 151-lesson AS9618 course. Questions are original Cambridge-style practice; they do not reproduce Cambridge past-paper questions. Official Cambridge syllabus and past-paper mark schemes remain the authority for final syllabus interpretation and wording calibration.
 
 ## Acceptance Matrix
 

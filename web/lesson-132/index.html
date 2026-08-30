@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 132 | Scope, lifetime, and local/global variables</title>
+    <title>AS9618 Lesson 132 | Parameters: by value and by reference</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Scope, lifetime, and local/global variables</h1>
+        <h1>Parameters: by value and by reference</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,15 +29,15 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#scope">Scope</a>
-        <a href="#lifetime">Lifetime</a>
-        <a href="#local">Local variables</a>
-        <a href="#global">Global variables</a>
-        <a href="#shadowing">Same-name variable error</a>
+        <a href="#terms">Terms</a>
+        <a href="#value">By value</a>
+        <a href="#reference">BYREF</a>
         <a href="#compare">Compare</a>
+        <a href="#trace">Trace table</a>
+        <a href="#use">When to use</a>
         <a href="#java">Java support</a>
         <a href="#simulator">Trace simulator</a>
-        <a href="#chooser">Variable chooser</a>
+        <a href="#chooser">Mode chooser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -54,306 +54,284 @@
 <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 132 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
-            <h2>Variables have borders. Some passports are very local.</h2>
+            <h2>Does the subroutine get a copy, or the original?</h2>
             <p>
-              Scope is where an identifier can be used. Lifetime is how long its value exists while the program runs.
-              Local variables belong to a subroutine or block; global variables can be accessed more widely. The exam
-              point is not just naming them, but tracing which variable is being changed.
+              A parameter can receive a copied value, or it can be linked to the caller's variable using
+              <code>BYREF</code>. That one word decides whether a change inside the procedure survives after the
+              call. In other words, this is the lesson where a variable can leave the room and come back wearing
+              a new value.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>scope, lifetime, local variable and global variable</span></div>
-              <div><strong>Trace</strong><span>variable values inside and outside subroutines</span></div>
-              <div><strong>Correct</strong><span>bugs caused by inaccessible variables or accidental global changes</span></div>
+              <div><strong>Define</strong><span>parameter, argument, by value and by reference</span></div>
+              <div><strong>Trace</strong><span>caller variables before, during and after a subroutine call</span></div>
+              <div><strong>Write</strong><span>Cambridge-style headers using typed parameters and <code>BYREF</code></span></div>
             </div>
           </div>
-          <div class="scope-visual" aria-label="Scope visual">
-            <div><strong>Global</strong><span>visible widely</span><em>longer lifetime</em></div>
-            <div><strong>Local</strong><span>inside subroutine</span><em>created on call</em></div>
-            <div><strong>Trace</strong><span>which variable?</span><em>name alone is not enough</em></div>
-            <p>A variable can share a name with another variable and still be a different storage location.</p>
+          <div class="pass-visual" aria-label="By value and BYREF visual">
+            <div><strong>By value</strong><span>copy only</span><em>original unchanged</em></div>
+            <div><strong>BYREF</strong><span>linked variable</span><em>original may change</em></div>
+            <div><strong>Exam trace</strong><span>before → call → after</span><em>show final caller values</em></div>
+            <p>Cambridge pseudocode uses <code>BYREF</code>; Java syntax is support only.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 trace questions often use local and global variables to test whether candidates follow the actual data, not just the names.</p>
+            <p>Paper 2 questions often test whether a procedure updates data outside itself, especially in trace and debug tasks.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A local variable with the same name as a global variable does not automatically change the global variable.</p>
+            <p>Changing a parameter inside a procedure does not automatically change the argument. It only does that with <code>BYREF</code>.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which <code>Count</code> is being output?</h2>
-            <p>Two variables can have the same name in different scopes. This is where casual reading gets expensive.</p>
+            <h2>Will <code>Score</code> change?</h2>
+            <p>Start with <code>Score = 9</code>. After this call, what is the caller's <code>Score</code>?</p>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Code fragment</h3>
-              <pre><code>Count &lt;- 10
-
-PROCEDURE ShowCount()
-    Count &lt;- 3
-    OUTPUT Count
+              <h3>Version A</h3>
+              <pre><code>PROCEDURE Increase(Score : INTEGER)
+    Score &lt;- Score + 1
 ENDPROCEDURE
 
-CALL ShowCount()
-OUTPUT Count</code></pre>
+CALL Increase(Score)</code></pre>
             </article>
             <article>
-              <h3>Assumption for this warm-up</h3>
-              <p>The assignment inside <code>ShowCount</code> creates or uses a local <code>Count</code> for the procedure.</p>
-              <p>Predict the two outputs before pressing a choice.</p>
+              <h3>Version B</h3>
+              <pre><code>PROCEDURE Increase(BYREF Score : INTEGER)
+    Score &lt;- Score + 1
+ENDPROCEDURE
+
+CALL Increase(Score)</code></pre>
             </article>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="3-3">Outputs 3 then 3</button>
-            <button class="choice-card" type="button" data-hook="3-10">Outputs 3 then 10</button>
-            <button class="choice-card" type="button" data-hook="10-3">Outputs 10 then 3</button>
-            <button class="choice-card" type="button" data-hook="error">Always gives an error</button>
+            <button class="choice-card" type="button" data-hook="a9">Version A leaves caller Score as 9</button>
+            <button class="choice-card" type="button" data-hook="a10">Version A changes caller Score to 10</button>
+            <button class="choice-card" type="button" data-hook="b9">Version B leaves caller Score as 9</button>
+            <button class="choice-card" type="button" data-hook="b10">Version B changes caller Score to 10</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the output pair.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose one claim and check the passing mode.</div>
         </section>
 
-        <section class="panel" id="scope" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scope">
+        <section class="panel" id="terms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="terms">
           <div class="section-title">
-            <p class="eyebrow">Scope</p>
-            <h2>Scope means where a variable or identifier can be accessed</h2>
-            <p>Chinese support: scope 作用域, access 访问, identifier 标识符。</p>
+            <p class="eyebrow">Parameter and argument</p>
+            <h2>The header names the parameter. The call supplies the argument.</h2>
+            <p>Chinese support: parameter 参数, argument 实参, procedure 过程, caller 调用者。</p>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Inside scope</h3>
-              <pre><code>PROCEDURE DisplayTotal()
-    Total &lt;- 25
-    OUTPUT Total
+              <h3>Parameter in the procedure header</h3>
+              <pre><code>PROCEDURE DisplayMessage(Message : STRING)
+    OUTPUT Message
 ENDPROCEDURE</code></pre>
-              <p><code>Total</code> is accessible inside <code>DisplayTotal</code>.</p>
+              <p><code>Message</code> is the parameter. It is a named input expected by the procedure.</p>
             </article>
             <article>
-              <h3>Outside scope</h3>
-              <pre><code>CALL DisplayTotal()
-OUTPUT Total</code></pre>
-              <p>If <code>Total</code> was local to the procedure, the main algorithm cannot use it directly.</p>
+              <h3>Argument in the call</h3>
+              <pre><code>CALL DisplayMessage("Ready")
+
+Text &lt;- "Saved"
+CALL DisplayMessage(Text)</code></pre>
+              <p><code>"Ready"</code> and <code>Text</code> are arguments. They are the actual values supplied.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start scope -->
-        <section class="panel explanation-panel" id="explanation-scope" data-explains="scope" data-explanation-kind="mechanism" aria-labelledby="explanation-scope-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="scope">
-          <h2 class="explanation-sr-only" id="explanation-scope-title">Scope means where a variable or identifier can be accessed</h2>
+        <!-- stage10-explanation:start terms -->
+        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="terms">
+          <h2 class="explanation-sr-only" id="explanation-terms-title">The header names the parameter. The call supplies the argument.</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-scope.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Scope means where a variable or identifier can be accessed with a structured visual model." />
-            <figcaption class="explanation-sr-only">Scope means where a variable or identifier can be accessed: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The header names the parameter. The call supplies the argument. with a structured visual model." />
+            <figcaption class="explanation-sr-only">The header names the parameter. The call supplies the argument.: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Inside scope</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayTotal()</li><li><strong>Lesson fact:</strong> Total &lt;- 25</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Total is accessible inside DisplayTotal .</li><li><strong>Lesson fact:</strong> Outside scope</li><li><strong>Lesson fact:</strong> CALL DisplayTotal()</li><li><strong>Lesson fact:</strong> If Total was local to the procedure, the main algorithm cannot use it directly.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Parameter and argument</li><li><strong>Lesson fact:</strong> Parameter in the procedure header</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayMessage(Message : STRING)</li><li><strong>Lesson fact:</strong> OUTPUT Message</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Message is the parameter. It is a named input expected by the procedure.</li><li><strong>Lesson fact:</strong> Argument in the call</li><li><strong>Lesson fact:</strong> CALL DisplayMessage(&quot;Ready&quot;)</li><li><strong>Lesson fact:</strong> Text &lt;- &quot;Saved&quot;</li><li><strong>Lesson fact:</strong> CALL DisplayMessage(Text)</li><li><strong>Lesson fact:</strong> &quot;Ready&quot; and Text are arguments. They are the actual values supplied.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end scope -->
-        <section class="panel" id="lifetime" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifetime">
+        <!-- stage10-explanation:end terms -->
+        <section class="panel" id="value" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="value">
           <div class="section-title">
-            <p class="eyebrow">Lifetime</p>
-            <h2>Lifetime means how long a variable exists during execution</h2>
-          </div>
-          <div class="timeline">
-            <div><strong>Main program starts</strong><span>global variables may be created and keep their values</span></div>
-            <div><strong>Procedure is called</strong><span>local variables are created for that call</span></div>
-            <div><strong>Procedure ends</strong><span>local variables are destroyed or become inaccessible</span></div>
-            <div><strong>Main continues</strong><span>global variables still exist unless the program ends</span></div>
-          </div>
-          <div class="callout">A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</div>
-        </section>
-
-        <!-- stage10-explanation:start lifetime -->
-        <section class="panel explanation-panel" id="explanation-lifetime" data-explains="lifetime" data-explanation-kind="mechanism" aria-labelledby="explanation-lifetime-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="lifetime">
-          <h2 class="explanation-sr-only" id="explanation-lifetime-title">Lifetime means how long a variable exists during execution</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-lifetime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lifetime means how long a variable exists during execution with a structured visual model." />
-            <figcaption class="explanation-sr-only">Lifetime means how long a variable exists during execution: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Lifetime</li><li><strong>Lesson fact:</strong> Main program starts global variables may be created and keep their values</li><li><strong>Lesson fact:</strong> Procedure is called local variables are created for that call</li><li><strong>Lesson fact:</strong> Procedure ends local variables are destroyed or become inaccessible</li><li><strong>Lesson fact:</strong> Main continues global variables still exist unless the program ends</li><li><strong>Lesson fact:</strong> A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lifetime -->
-        <section class="panel" id="local" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="local">
-          <div class="section-title">
-            <p class="eyebrow">Local variables</p>
-            <h2>Local variables are declared inside a subroutine or block</h2>
+            <p class="eyebrow">Passing by value</p>
+            <h2>By value means the subroutine works with a copy</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PROCEDURE CalculateBonus(Mark : INTEGER)
-    Bonus &lt;- Mark DIV 10
-    OUTPUT Bonus
-ENDPROCEDURE</code></pre>
-            </article>
-            <article>
-              <h3>Reasoning</h3>
-              <div class="trace-list">
-                <div><strong><code>Mark</code></strong><span>parameter local to this procedure call</span></div>
-                <div><strong><code>Bonus</code></strong><span>local variable used only inside the procedure</span></div>
-                <div><strong>After call</strong><span><code>Bonus</code> is not directly available in the main algorithm</span></div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start local -->
-        <section class="panel explanation-panel" id="explanation-local" data-explains="local" data-explanation-kind="mechanism" aria-labelledby="explanation-local-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="local">
-          <h2 class="explanation-sr-only" id="explanation-local-title">Local variables are declared inside a subroutine or block</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-local.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local variables are declared inside a subroutine or block with a structured visual model." />
-            <figcaption class="explanation-sr-only">Local variables are declared inside a subroutine or block: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Local variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE CalculateBonus(Mark : INTEGER)</li><li><strong>Lesson fact:</strong> Bonus &lt;- Mark DIV 10</li><li><strong>Lesson fact:</strong> OUTPUT Bonus</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Mark parameter local to this procedure call</li><li><strong>Lesson fact:</strong> Bonus local variable used only inside the procedure</li><li><strong>Lesson fact:</strong> After call Bonus is not directly available in the main algorithm</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end local -->
-        <section class="panel" id="global" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="global">
-          <div class="section-title">
-            <p class="eyebrow">Global variables</p>
-            <h2>Global variables are declared outside subroutines and can be accessed widely</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>Total &lt;- 0
-
-PROCEDURE AddScore(Score : INTEGER)
-    Total &lt;- Total + Score
-ENDPROCEDURE</code></pre>
-            </article>
-            <article>
-              <h3>Reasoning</h3>
-              <p><code>Total</code> is declared outside the procedure, so it is global in this fragment.</p>
-              <div class="callout">Global variables can make updates convenient, but they can also make tracing harder because many parts of a program may change the value.</div>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start global -->
-        <section class="panel explanation-panel" id="explanation-global" data-explains="global" data-explanation-kind="mechanism" aria-labelledby="explanation-global-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="global">
-          <h2 class="explanation-sr-only" id="explanation-global-title">Global variables are declared outside subroutines and can be accessed widely</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-global.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Global variables are declared outside subroutines and can be accessed widely with a structured visual model." />
-            <figcaption class="explanation-sr-only">Global variables are declared outside subroutines and can be accessed widely: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Global variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> PROCEDURE AddScore(Score : INTEGER)</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Score</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Total is declared outside the procedure, so it is global in this fragment.</li><li><strong>Lesson fact:</strong> Global variables can make updates convenient, but they can also make tracing harder because many parts of a program may change the value.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end global -->
-        <section class="panel" id="shadowing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shadowing">
-          <div class="section-title">
-            <p class="eyebrow">Same-name variable error</p>
-            <h2>A local variable can hide a global variable with the same name</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Trace this carefully</h3>
-              <pre><code>Score &lt;- 50
-
-PROCEDURE ChangeScore()
-    Score &lt;- 80
-    OUTPUT Score
+              <pre><code>PROCEDURE AddOne(Number : INTEGER)
+    Number &lt;- Number + 1
 ENDPROCEDURE
 
-CALL ChangeScore()
-OUTPUT Score</code></pre>
+X &lt;- 5
+CALL AddOne(X)
+OUTPUT X</code></pre>
             </article>
             <article>
-              <h3>Exam explanation</h3>
-              <p>If the procedure's <code>Score</code> is local, the procedure outputs <code>80</code>, but the main program still outputs the global <code>50</code>.</p>
-              <p>The identifier is the same, but the local and global variables occupy different storage locations.</p>
+              <h3>Trace reasoning</h3>
+              <div class="trace-list">
+                <div><strong>Before call</strong><span><code>X = 5</code></span></div>
+                <div><strong>Inside procedure</strong><span>local <code>Number</code> becomes <code>6</code></span></div>
+                <div><strong>After call</strong><span>caller's <code>X</code> is still <code>5</code></span></div>
+              </div>
+              <div class="callout">No <code>BYREF</code> means do not update the original caller variable.</div>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start shadowing -->
-        <section class="panel explanation-panel" id="explanation-shadowing" data-explains="shadowing" data-explanation-kind="mechanism" aria-labelledby="explanation-shadowing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="shadowing">
-          <h2 class="explanation-sr-only" id="explanation-shadowing-title">A local variable can hide a global variable with the same name</h2>
+        <!-- stage10-explanation:start value -->
+        <section class="panel explanation-panel" id="explanation-value" data-explains="value" data-explanation-kind="mechanism" aria-labelledby="explanation-value-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="value">
+          <h2 class="explanation-sr-only" id="explanation-value-title">By value means the subroutine works with a copy</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-shadowing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A local variable can hide a global variable with the same name with a structured visual model." />
-            <figcaption class="explanation-sr-only">A local variable can hide a global variable with the same name: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-value.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining By value means the subroutine works with a copy with a structured visual model." />
+            <figcaption class="explanation-sr-only">By value means the subroutine works with a copy: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Declare a global Score and set it to 50.</li><li><strong>Lesson fact:</strong> Inside ChangeScore, explicitly declare a separate local Score and set it to 80.</li><li><strong>Lesson fact:</strong> The local Score hides the global Score only inside the procedure.</li><li><strong>Lesson fact:</strong> The procedure outputs 80, while the main program later outputs the unchanged global 50.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Passing by value</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE AddOne(Number : INTEGER)</li><li><strong>Lesson fact:</strong> Number &lt;- Number + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL AddOne(X)</li><li><strong>Lesson fact:</strong> OUTPUT X</li><li><strong>Lesson fact:</strong> Trace reasoning</li><li><strong>Lesson fact:</strong> Before call X = 5</li><li><strong>Lesson fact:</strong> Inside procedure local Number becomes 6</li><li><strong>Lesson fact:</strong> After call caller's X is still 5</li><li><strong>Lesson fact:</strong> No BYREF means do not update the original caller variable.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end shadowing -->
+        <!-- stage10-explanation:end value -->
+        <section class="panel" id="reference" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reference">
+          <div class="section-title">
+            <p class="eyebrow">Passing by reference</p>
+            <h2><code>BYREF</code> links the parameter back to the caller's variable</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE AddOne(BYREF Number : INTEGER)
+    Number &lt;- Number + 1
+ENDPROCEDURE
+
+X &lt;- 5
+CALL AddOne(X)
+OUTPUT X</code></pre>
+            </article>
+            <article>
+              <h3>Trace reasoning</h3>
+              <div class="trace-list">
+                <div><strong>Before call</strong><span><code>X = 5</code></span></div>
+                <div><strong>Inside procedure</strong><span><code>Number</code> is linked to <code>X</code></span></div>
+                <div><strong>After call</strong><span>caller's <code>X</code> becomes <code>6</code></span></div>
+              </div>
+              <div class="callout"><code>BYREF</code> is useful when a procedure must update the caller's variable directly.</div>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start reference -->
+        <section class="panel explanation-panel" id="explanation-reference" data-explains="reference" data-explanation-kind="mechanism" aria-labelledby="explanation-reference-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="reference">
+          <h2 class="explanation-sr-only" id="explanation-reference-title">BYREF links the parameter back to the caller's variable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-reference.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining BYREF links the parameter back to the caller's variable with a structured visual model." />
+            <figcaption class="explanation-sr-only">BYREF links the parameter back to the caller's variable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Passing by reference</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE AddOne(BYREF Number : INTEGER)</li><li><strong>Lesson fact:</strong> Number &lt;- Number + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL AddOne(X)</li><li><strong>Lesson fact:</strong> OUTPUT X</li><li><strong>Lesson fact:</strong> Trace reasoning</li><li><strong>Lesson fact:</strong> Before call X = 5</li><li><strong>Lesson fact:</strong> Inside procedure Number is linked to X</li><li><strong>Lesson fact:</strong> After call caller's X becomes 6</li><li><strong>Lesson fact:</strong> BYREF is useful when a procedure must update the caller's variable directly.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end reference -->
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
-            <p class="eyebrow">Compare</p>
-            <h2>Local and global variables differ by accessibility and lifetime</h2>
+            <p class="eyebrow">Side-by-side comparison</p>
+            <h2>Same procedure body, different final result</h2>
           </div>
-          <div class="data-table compare-table" role="table" aria-label="Local and global comparison">
-            <div class="table-row table-head"><div>Feature</div><div>Local variable</div><div>Global variable</div></div>
-            <div class="table-row"><div>Declared</div><div>inside a subroutine or block</div><div>outside subroutines</div></div>
-            <div class="table-row"><div>Scope</div><div>limited to that subroutine or block</div><div>available more widely in the program</div></div>
-            <div class="table-row"><div>Lifetime</div><div>usually while the subroutine call is active</div><div>usually while the program is running</div></div>
-            <div class="table-row"><div>Main risk</div><div>using it outside scope</div><div>unexpected changes from different program parts</div></div>
+          <div class="data-table compare-table" role="table" aria-label="By value and BYREF comparison">
+            <div class="table-row table-head"><div>Feature</div><div>By value</div><div>By reference</div></div>
+            <div class="table-row"><div>Header clue</div><div><code>Number : INTEGER</code></div><div><code>BYREF Number : INTEGER</code></div></div>
+            <div class="table-row"><div>What is passed</div><div>a copy of the value</div><div>a reference to the caller's variable</div></div>
+            <div class="table-row"><div>Change inside subroutine</div><div>affects local parameter only</div><div>can affect original variable</div></div>
+            <div class="table-row"><div>Typical exam wording</div><div>value is passed to a parameter</div><div>procedure updates the value of the argument</div></div>
+          </div>
+        </section>
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace table</p>
+            <h2>Follow caller value, parameter value and passing mode</h2>
+          </div>
+          <div class="data-table trace-table" role="table" aria-label="Trace table">
+            <div class="table-row table-head"><div>Step</div><div>Caller variable</div><div>Parameter</div><div>Reason</div></div>
+            <div class="table-row"><div>Before call</div><div><code>X = 5</code></div><div>not created yet</div><div>main algorithm owns <code>X</code></div></div>
+            <div class="table-row"><div>By value call</div><div><code>X = 5</code></div><div><code>Number = 5</code></div><div>parameter receives a copy</div></div>
+            <div class="table-row"><div>By value after increment</div><div><code>X = 5</code></div><div><code>Number = 6</code></div><div>only copy changes</div></div>
+            <div class="table-row"><div>BYREF after increment</div><div><code>X = 6</code></div><div><code>Number</code> linked to <code>X</code></div><div>change is applied to original variable</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Local and global variables differ by accessibility and lifetime</h2>
+        <section class="panel" id="use" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="use">
+          <div class="section-title">
+            <p class="eyebrow">When to use BYREF</p>
+            <h2>Use it when the procedure must deliberately update caller data</h2>
+          </div>
+          <div class="use-grid">
+            <article>
+              <h3>Good use</h3>
+              <p><code>IncrementScore(BYREF Score : INTEGER)</code> updates a stored score in the main algorithm.</p>
+            </article>
+            <article>
+              <h3>Good use</h3>
+              <p><code>Swap(BYREF A : INTEGER, BYREF B : INTEGER)</code> must change both original variables.</p>
+            </article>
+            <article>
+              <h3>Avoid if unnecessary</h3>
+              <p>If the subroutine only needs to read a value, by value is clearer and reduces accidental changes.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start use -->
+        <section class="panel explanation-panel" id="explanation-use" data-explains="use" data-explanation-kind="mechanism" aria-labelledby="explanation-use-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="use">
+          <h2 class="explanation-sr-only" id="explanation-use-title">Use it when the procedure must deliberately update caller data</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local and global variables differ by accessibility and lifetime with a structured visual model." />
-            <figcaption class="explanation-sr-only">Local and global variables differ by accessibility and lifetime: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-use.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use it when the procedure must deliberately update caller data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use it when the procedure must deliberately update caller data: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Local variable</li><li><strong>Lesson fact:</strong> Global variable</li><li><strong>Lesson fact:</strong> Declared</li><li><strong>Lesson fact:</strong> inside a subroutine or block</li><li><strong>Lesson fact:</strong> outside subroutines</li><li><strong>Lesson fact:</strong> limited to that subroutine or block</li><li><strong>Lesson fact:</strong> available more widely in the program</li><li><strong>Lesson fact:</strong> Lifetime</li><li><strong>Lesson fact:</strong> usually while the subroutine call is active</li><li><strong>Lesson fact:</strong> usually while the program is running</li><li><strong>Lesson fact:</strong> Main risk</li><li><strong>Lesson fact:</strong> using it outside scope</li></ol>
+            <ol><li><strong>Lesson fact:</strong> When to use BYREF</li><li><strong>Lesson fact:</strong> Good use</li><li><strong>Lesson fact:</strong> IncrementScore(BYREF Score : INTEGER) updates a stored score in the main algorithm.</li><li><strong>Lesson fact:</strong> Swap(BYREF A : INTEGER, BYREF B : INTEGER) must change both original variables.</li><li><strong>Lesson fact:</strong> Avoid if unnecessary</li><li><strong>Lesson fact:</strong> If the subroutine only needs to read a value, by value is clearer and reduces accidental changes.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
+        <!-- stage10-explanation:end use -->
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
-            <h2>Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
+            <h2>Do not replace Cambridge <code>BYREF</code> with Java syntax</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PROCEDURE PrintLocal()
-    Value &lt;- 7
-    OUTPUT Value
+              <h3>Cambridge exam answer format</h3>
+              <pre><code>PROCEDURE Increase(BYREF Score : INTEGER)
+    Score &lt;- Score + 1
 ENDPROCEDURE</code></pre>
             </article>
             <article>
-              <h3>Java support example only</h3>
-              <pre><code>static void printLocal() {
-    int value = 7;
-    System.out.println(value);
+              <h3>Java support note</h3>
+              <pre><code>// Java support example only, not exam pseudocode
+static void increase(int score) {
+    score = score + 1;
 }</code></pre>
-              <p>Do not answer Paper 2 with Java braces, semicolons or access modifiers unless the question specifically asks for Java.</p>
+              <p>Java primitive parameters are passed by value. Do not use this as evidence that Cambridge <code>BYREF</code> is absent.</p>
             </article>
           </div>
         </section>
 
         <!-- stage10-explanation:start java -->
         <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="java">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
+          <h2 class="explanation-sr-only" id="explanation-java-title">Do not replace Cambridge BYREF with Java syntax</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java helps illustrate scope, but Cambridge pseudocode remains the answer format with a structured visual model." />
-            <figcaption class="explanation-sr-only">Java helps illustrate scope, but Cambridge pseudocode remains the answer format: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not replace Cambridge BYREF with Java syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not replace Cambridge BYREF with Java syntax: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE PrintLocal()</li><li><strong>Lesson fact:</strong> Value &lt;- 7</li><li><strong>Lesson fact:</strong> OUTPUT Value</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static void printLocal() {</li><li><strong>Lesson fact:</strong> int value = 7;</li><li><strong>Lesson fact:</strong> System.out.println(value);</li><li><strong>Lesson fact:</strong> Do not answer Paper 2 with Java braces, semicolons or access modifiers unless the question specifically asks for Java.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge exam answer format</li><li><strong>Lesson fact:</strong> PROCEDURE Increase(BYREF Score : INTEGER)</li><li><strong>Lesson fact:</strong> Score &lt;- Score + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Java support note</li><li><strong>Lesson fact:</strong> // Java support example only, not exam pseudocode</li><li><strong>Lesson fact:</strong> static void increase(int score) {</li><li><strong>Lesson fact:</strong> score = score + 1;</li><li><strong>Lesson fact:</strong> Java primitive parameters are passed by value. Do not use this as evidence that Cambridge BYREF is absent.</li></ol>
 
           </div>
         </section>
@@ -361,35 +339,31 @@ ENDPROCEDURE</code></pre>
         <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive trace simulator</p>
-            <h2>Trace local versus global updates</h2>
-            <p>Start with a global <code>Count</code>. The procedure sets <code>Count &lt;- NewValue</code>. Choose whether that procedure variable is local or global.</p>
+            <h2>Predict the final caller value</h2>
+            <p>Enter a starting value and choose the passing mode. The procedure runs <code>Number &lt;- Number + 1</code>.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Global Count before call
-              <input id="globalInput" type="number" step="1" value="10" />
+              Starting value of caller variable X
+              <input id="startValue" type="number" min="-999" max="999" step="1" value="5" />
             </label>
             <label>
-              Procedure assignment value
-              <input id="localInput" type="number" step="1" value="3" />
-            </label>
-            <label>
-              Procedure variable scope
-              <select id="scopeMode">
-                <option value="local">local Count</option>
-                <option value="global">global Count</option>
+              Passing mode
+              <select id="passMode">
+                <option value="value">by value</option>
+                <option value="ref">BYREF</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+            <button class="primary-button" type="button" id="traceBtn">Trace call</button>
           </div>
-          <div class="trace-output" id="traceResult" aria-live="polite">Choose values and trace the final global Count.</div>
+          <div class="trace-output" id="traceResult" aria-live="polite">Choose a mode and trace the call.</div>
         </section>
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
-            <p class="eyebrow">Variable chooser</p>
-            <h2>Should this be local or global?</h2>
-            <p>Select a scenario to see the recommended scope and exam reasoning.</p>
+            <p class="eyebrow">Mode chooser</p>
+            <h2>Which passing mode should the procedure use?</h2>
+            <p>Select a scenario to see the exam reasoning.</p>
           </div>
           <div class="scenario-grid" id="scenarioGrid"></div>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
@@ -398,7 +372,7 @@ ENDPROCEDURE</code></pre>
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trace the variable, not just the name</h2>
+            <h2>Trace before you explain</h2>
           </div>
           <div class="tabs" id="exampleTabs" role="tablist"></div>
           <div class="example-output" id="exampleOutput"></div>
@@ -407,8 +381,8 @@ ENDPROCEDURE</code></pre>
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Definitions and trace values</h2>
-            <p>Use exact vocabulary for definitions. For trace questions, type the final value or key term.</p>
+            <h2>Short answers, strict terms</h2>
+            <p>Type the final value or keyword. Use <code>BYREF</code> where the question asks for Cambridge syntax.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -416,7 +390,7 @@ ENDPROCEDURE</code></pre>
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the scope error</h2>
+            <h2>Find the exact misconception</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -424,8 +398,8 @@ ENDPROCEDURE</code></pre>
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then expand the MS</h2>
-            <p>Questions are original Cambridge-style practice. MS notes are strict about scope, lifetime and final values.</p>
+            <h2>Answer, then expand the MS</h2>
+            <p>Questions are original Cambridge-style practice. Marking notes are deliberately strict about wording and final values.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -433,34 +407,36 @@ ENDPROCEDURE</code></pre>
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Three statements to keep</h2>
+            <h2>Three sentences to leave with</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Scope</strong><span>where an identifier can be accessed in the program.</span></div>
-            <div><strong>Lifetime</strong><span>how long a variable exists while the program executes.</span></div>
-            <div><strong>Trace rule</strong><span>same name does not always mean same variable.</span></div>
+            <div><strong>By value</strong><span>The parameter receives a copy; local changes do not alter the caller variable.</span></div>
+            <div><strong>BYREF</strong><span>The parameter is linked to the caller variable; changes can be visible after the call.</span></div>
+            <div><strong>Exam answer</strong><span>State the mechanism, trace the final values, and use Cambridge pseudocode keywords.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Define, trace, correct</h2>
+            <h2>Trace, write, explain</h2>
           </div>
           <ol class="homework-list">
-            <li>Write definitions for scope, lifetime, local variable and global variable. Add one Chinese support note for the hardest term.</li>
-            <li>Trace the same-name <code>Score</code> example twice: once where the procedure variable is local, once where it updates the global variable.</li>
-            <li>Write one Cambridge-style procedure that uses a local variable correctly and explain why the variable should not be global.</li>
-            <li>Answer a 4-mark question: explain two problems caused by unnecessary global variables, using a trace or debugging example.</li>
+            <li>Trace the by-value and <code>BYREF</code> versions of <code>AddOne</code> for starting values <code>0</code>, <code>12</code> and <code>-3</code>. Show before, inside and after-call values.</li>
+            <li>Write Cambridge-style pseudocode for <code>PROCEDURE Reset(BYREF Count : INTEGER)</code> that sets <code>Count</code> to <code>0</code>, then show one valid call.</li>
+            <li>Write a 4-mark explanation: compare passing by value and passing by reference, including one example where <code>BYREF</code> is necessary.</li>
+            <li>Correct this bug in two sentences: a swap procedure uses <code>PROCEDURE Swap(A : INTEGER, B : INTEGER)</code> and the caller values do not change.</li>
           </ol>
-          <div class="callout">Marking focus: definitions need mechanism, not slogans. "Global is everywhere" is too vague unless access and lifetime are explained.</div>
+          <div class="callout">
+            Marking focus: use the terms parameter, argument, caller variable, by value, by reference and <code>BYREF</code> accurately.
+          </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

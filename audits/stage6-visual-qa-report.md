@@ -6,9 +6,9 @@ Academic-theme re-review: 18 August 2026
 
 ## Scope
 
-Stage 6 reviews the rendered web course after the syllabus, assessment and mark-scheme stages. The inventory contains 153 pages:
+Stage 6 reviews the rendered web course after the syllabus, assessment and mark-scheme stages. The inventory contains 154 pages:
 
-- 150 lesson pages;
+- 151 lesson pages;
 - the course index;
 - the assessment bank;
 - the resource centre.
@@ -20,13 +20,13 @@ Every page was rendered after JavaScript execution at both 1440 x 900 desktop an
 | Requirement | Evidence | Status |
 |---|---|---|
 | Complete page inventory | 150 numbered lessons and three hub pages | Pass |
-| Desktop rendering | 153 pages at 1440 x 900 | Pass |
-| Mobile rendering | 153 pages at 390 x 844 | Pass |
+| Desktop rendering | 154 pages at 1440 x 900 | Pass |
+| Mobile rendering | 154 pages at 390 x 844 | Pass |
 | Horizontal containment | Document width does not exceed viewport width at either reviewed size | Pass |
 | Page structure | One title, one `h1`, one `main`, language and viewport metadata on every page | Pass |
 | Internal navigation | All same-page fragment targets and local page/assets references resolve | Pass |
 | Runtime health | No page-level console errors or broken images during the 306 render checks | Pass |
-| JavaScript syntax | Course index, assessment bank and all 150 lesson scripts parse successfully | Pass |
+| JavaScript syntax | Course index, assessment bank and all 151 lesson scripts parse successfully | Pass |
 | Interaction samples | Course search/clear, assessment filtering/MS disclosure, resource disclosure, lesson hook and converter | Pass |
 | Review integrity | Per-page SHA-256 hashes in `stage6-page-review-register.csv` | Pass |
 
@@ -34,7 +34,7 @@ Every page was rendered after JavaScript execution at both 1440 x 900 desktop an
 
 The first render pass found 61 viewport-specific failures across 55 unique lesson pages:
 
-- six desktop overflows in Lessons 131-136;
+- six desktop overflows in Lessons 132-136;
 - 55 mobile overflows, concentrated in long pseudocode, multi-column teaching cards and Paper 2 lessons;
 - repeated grid min-content expansion that allowed nested cards or code to widen the whole document.
 
@@ -52,7 +52,7 @@ The browser review included direct interaction with each shared delivery surface
 
 ## Academic Editorial Theme Re-review
 
-The shared `web/academic-theme.css` layer was reviewed after it was linked last on all 153 pages. A fresh application-browser pass rendered every page at both 1440 x 900 and 390 x 844. All 306 page/viewport combinations had a non-empty document title, `h1` and main body; exactly one academic-theme link; no broken image; no page-level horizontal overflow; and no console warning or error.
+The shared `web/academic-theme.css` layer was reviewed after it was linked last on all 154 pages. A fresh application-browser pass rendered every page at both 1440 x 900 and 390 x 844. All 308 page/viewport combinations had a non-empty document title, `h1` and main body; exactly one academic-theme link; no broken image; no page-level horizontal overflow; and no console warning or error.
 
 The first mobile re-review isolated two residual document overflows in Lessons 019 and 057. Their 720 px Stage 10 infographics remain horizontally scrollable inside their own figure containers, while the shared theme now clips only document-level overflow. The repeated 153-page mobile pass then reported zero failures. Lesson 001's heading and page controls do not intersect at 390 px; the controls form two columns and the contents toggle spans the full row.
 

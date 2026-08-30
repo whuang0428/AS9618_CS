@@ -23,18 +23,18 @@
     "lessons": 13,
     "lessonIds": [
       "L006",
-      "L011",
-      "L018",
+      "L012",
       "L019",
-      "L021",
-      "L030",
-      "L054",
-      "L057",
+      "L020",
+      "L022",
+      "L031",
+      "L055",
       "L058",
       "L059",
-      "L113",
-      "L144",
-      "L145"
+      "L060",
+      "L114",
+      "L145",
+      "L146"
     ],
     "excludedFromCoverage": true
   },
@@ -52,11 +52,11 @@
     "problemCount": 39,
     "sequenceProblemCount": 25,
     "criticalIds": [
-      "CRIT-L049-PERFORMANCE-FACTORS",
-      "CRIT-L107-CHAR-FUNCTION-TYPE",
-      "CRIT-L121-PROVIDED-FUNCTIONS",
-      "CRIT-L133-CHAR-FUNCTION-TYPE",
-      "CRIT-L133-PROVIDED-FUNCTION"
+      "CRIT-L050-PERFORMANCE-FACTORS",
+      "CRIT-L108-CHAR-FUNCTION-TYPE",
+      "CRIT-L122-PROVIDED-FUNCTIONS",
+      "CRIT-L134-CHAR-FUNCTION-TYPE",
+      "CRIT-L134-PROVIDED-FUNCTION"
     ]
   },
   "resolvedStage2Issues": [

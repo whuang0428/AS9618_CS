@@ -12,7 +12,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - Credit clear equivalent wording unless a specific syllabus term or representation is required.
 - Do not award repeated, self-contradictory or vague statements as separate points.
 
-## Checkpoint at Lesson 020: Information representation and communication
+## Checkpoint at Lesson 021: Information representation and communication
 
 **Syllabus:** Sections 1, 2
 
@@ -89,7 +89,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Checkpoint at Lesson 040: Communication and hardware
+## Checkpoint at Lesson 041: Communication and hardware
 
 **Syllabus:** Sections 2, 3
 
@@ -166,7 +166,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Checkpoint at Lesson 060: Processor fundamentals and system software
+## Checkpoint at Lesson 061: Processor fundamentals and system software
 
 **Syllabus:** Sections 4, 5
 
@@ -243,7 +243,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Checkpoint at Lesson 080: Security, ethics and database foundations
+## Checkpoint at Lesson 081: Security, ethics and database foundations
 
 **Syllabus:** Sections 6, 7, 8
 
@@ -320,7 +320,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Checkpoint at Lesson 100: Paper 1 review and algorithm design
+## Checkpoint at Lesson 101: Paper 1 review and algorithm design
 
 **Syllabus:** Sections 1-9
 
@@ -397,7 +397,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Checkpoint at Lesson 120: Algorithms and data structures
+## Checkpoint at Lesson 121: Algorithms and data structures
 
 **Syllabus:** Sections 9, 10
 
@@ -474,7 +474,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Checkpoint at Lesson 140: Programming and robust program design
+## Checkpoint at Lesson 141: Programming and robust program design
 
 **Syllabus:** Sections 11
 

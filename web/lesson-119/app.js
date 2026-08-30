@@ -1,85 +1,111 @@
-const students = [
-  { Name: "Ali", Mark: 72, Enrolled: "TRUE" },
-  { Name: "Bea", Mark: 64, Enrolled: "TRUE" },
-  { Name: "Chen", Mark: 85, Enrolled: "FALSE" },
-];
+const student = {
+  Name: "Ali",
+  DateOfBirth: "12/04/2010",
+  Mark: "72",
+  Enrolled: "TRUE",
+};
+
+const builderMap = {
+  student: {
+    title: "Student details",
+    code: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE DateOfBirth : DATE\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE",
+    reason: "The record groups different fields about one student.",
+  },
+  book: {
+    title: "Library book",
+    code: "TYPE TBook\n    DECLARE ISBN : STRING\n    DECLARE Title : STRING\n    DECLARE Pages : INTEGER\n    DECLARE Available : BOOLEAN\nENDTYPE",
+    reason: "ISBN is a STRING because it is an identifier; Pages is an INTEGER count.",
+  },
+  booking: {
+    title: "Booking details",
+    code: "TYPE TBooking\n    DECLARE BookingID : STRING\n    DECLARE BookingDate : DATE\n    DECLARE NumberOfGuests : INTEGER\n    DECLARE Paid : BOOLEAN\nENDTYPE",
+    reason: "The fields describe one booking but use different data types.",
+  },
+  product: {
+    title: "Product stock item",
+    code: "TYPE TProduct\n    DECLARE ProductCode : STRING\n    DECLARE Description : STRING\n    DECLARE Price : REAL\n    DECLARE QuantityInStock : INTEGER\nENDTYPE",
+    reason: "A product record keeps identifying, descriptive and numeric fields together.",
+  },
+};
 
 const examples = {
-  declare: {
-    title: "Example 1: Declare an array of records",
-    problem: "Store 30 students, each with Name, Mark and Enrolled fields.",
+  student: {
+    title: "Example 1: Student record",
+    problem: "Model one student's details.",
     rows: [
-      ["Record type", "TStudent", "shape of one student record"],
-      ["Array", "Students[1:30]", "30 student records"],
-      ["Access", "Students[1].Name", "field inside one indexed record"],
+      ["Name", "STRING", "text value"],
+      ["DateOfBirth", "DATE", "calendar date"],
+      ["Mark", "INTEGER", "whole-number mark"],
+      ["Enrolled", "BOOLEAN", "TRUE/FALSE state"],
     ],
-    code: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE\n\nDECLARE Students : ARRAY[1:30] OF TStudent",
-    points: ["Define the record type before declaring the array.", "The array element type is TStudent.", "Each element has the same fields."],
+    code: builderMap.student.code,
+    points: ["Fields can have different types.", "The type describes the shape of the record.", "A variable must still be declared using the record type."],
   },
-  search: {
-    title: "Example 2: Search by name",
-    problem: "Find and output the mark for a student whose name matches TargetName.",
+  book: {
+    title: "Example 2: Book record",
+    problem: "Model one library book.",
     rows: [
-      ["Initialise", "Found <- FALSE", "tracks search success"],
-      ["Compare field", "Students[Index].Name = TargetName", "checks current record"],
-      ["Output field", "Students[Index].Mark", "uses the matching record"],
+      ["ISBN", "STRING", "preserves digits and hyphens"],
+      ["Title", "STRING", "text"],
+      ["Pages", "INTEGER", "whole-number count"],
+      ["Available", "BOOLEAN", "available or not"],
     ],
-    code: "Found <- FALSE\nFOR Index <- 1 TO 30\n    IF Students[Index].Name = TargetName THEN\n        OUTPUT Students[Index].Mark\n        Found <- TRUE\n    ENDIF\nNEXT Index",
-    points: ["The loop visits records, not separate arrays.", "The condition tests a field.", "The output can use another field from the same record."],
-  },
-  count: {
-    title: "Example 3: Count enrolled students",
-    problem: "Count how many students are currently enrolled.",
-    rows: [
-      ["Counter", "Count <- 0", "must start before the loop"],
-      ["Condition", "Students[Index].Enrolled = TRUE", "Boolean field test"],
-      ["Update", "Count <- Count + 1", "only inside the IF"],
-    ],
-    code: "Count <- 0\nFOR Index <- 1 TO 30\n    IF Students[Index].Enrolled = TRUE THEN\n        Count <- Count + 1\n    ENDIF\nNEXT Index\nOUTPUT Count",
-    points: ["Initialise the counter once.", "Increment only when the current record meets the condition.", "Output after the loop."],
+    code: builderMap.book.code,
+    points: ["A record suits mixed-type fields.", "ISBN is not an INTEGER just because it contains digits.", "Available is a Boolean flag."],
   },
   update: {
-    title: "Example 4: Update a field",
-    problem: "Add 5 bonus marks to every enrolled student.",
+    title: "Example 3: Update a field",
+    problem: "Change a student's mark and output the name.",
     rows: [
-      ["Traverse", "FOR Index <- 1 TO 30", "visits each record"],
-      ["Test", "Students[Index].Enrolled = TRUE", "checks current record"],
-      ["Update", "Students[Index].Mark <- Students[Index].Mark + 5", "changes one field"],
+      ["Declare", "DECLARE Student1 : TStudent", "creates one record variable"],
+      ["Update", "Student1.Mark <- 80", "changes one field"],
+      ["Output", "OUTPUT Student1.Name", "reads one field"],
     ],
-    code: "FOR Index <- 1 TO 30\n    IF Students[Index].Enrolled = TRUE THEN\n        Students[Index].Mark <- Students[Index].Mark + 5\n    ENDIF\nNEXT Index",
-    points: ["The assignment reads and writes the same field.", "Only enrolled students are changed.", "Do not update the whole record when only one field changes."],
+    code: "DECLARE Student1 : TStudent\nStudent1.Mark <- 80\nOUTPUT Student1.Name",
+    points: ["Dot notation selects a field.", "Updating Mark does not change Name.", "Use the variable name and field name together."],
+  },
+  compare: {
+    title: "Example 4: Array or record?",
+    problem: "Choose between Scores[1:5] and a Student record.",
+    rows: [
+      ["Scores[1:5]", "Array", "five similar INTEGER values"],
+      ["Student details", "Record", "Name, DateOfBirth, Mark, Enrolled"],
+      ["Reason", "different types", "field names are clearer than numeric indexes"],
+    ],
+    code: "DECLARE Scores : ARRAY[1:5] OF INTEGER\nDECLARE Student1 : TStudent",
+    points: ["Arrays are for many similar values.", "Records are for related mixed fields.", "Lesson 120 combines these ideas as arrays of records."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What structure stores many records of the same record type?", accepted: ["array of records", "arrays of records"], answer: "Array of records." },
-  { id: "p2", prompt: "Which expression accesses the Mark field of the second student: Students[2].Mark or Students.Mark[2]?", accepted: ["students2.mark", "students[2].mark", "index then field"], answer: "Students[2].Mark." },
-  { id: "p3", prompt: "What does the index select in Students[Index].Name?", accepted: ["record", "one record", "student record", "array element"], answer: "The index selects one record / array element." },
-  { id: "p4", prompt: "What does .Name select in Students[Index].Name?", accepted: ["field", "name field"], answer: "The Name field inside the selected record." },
-  { id: "p5", prompt: "Which declaration creates 30 student records: ARRAY[1:30] OF TStudent or TStudent[Name:Mark]?", accepted: ["array[1:30] of tstudent", "declare students array[1:30] of tstudent"], answer: "DECLARE Students : ARRAY[1:30] OF TStudent." },
-  { id: "p6", prompt: "In a loop FOR Index <- 1 TO 30, should Students[30] be processed? yes or no.", accepted: ["yes"], answer: "Yes. The upper bound 30 is included." },
-  { id: "p7", prompt: "What should be initialised before counting enrolled students?", accepted: ["count", "counter"], answer: "The counter, for example Count <- 0." },
-  { id: "p8", prompt: "For searching by name, which field is normally compared with TargetName?", accepted: ["name", "students[index].name"], answer: "Students[Index].Name." },
-  { id: "p9", prompt: "Is Java's zero-based index rule automatically used in Cambridge pseudocode? yes or no.", accepted: ["no"], answer: "No. Follow the pseudocode array bounds in the question." },
-  { id: "p10", prompt: "Write the general access pattern in words.", accepted: ["array name index dot field", "array index dot field", "index then field"], answer: "Array name, index, dot, field." },
+  { id: "p1", prompt: "What structure groups named fields that may have different types?", accepted: ["record"], answer: "Record." },
+  { id: "p2", prompt: "What is one named item inside a record called?", accepted: ["field"], answer: "Field." },
+  { id: "p3", prompt: "Which notation accesses a student's mark: Student1.Mark or Student1[Mark]?", accepted: ["student1.mark", "dot notation"], answer: "Student1.Mark." },
+  { id: "p4", prompt: "Can fields in a record have different data types? yes or no.", accepted: ["yes"], answer: "Yes." },
+  { id: "p5", prompt: "Which keyword begins a record type definition in the examples?", accepted: ["type"], answer: "TYPE." },
+  { id: "p6", prompt: "Which keyword ends a record type definition?", accepted: ["endtype"], answer: "ENDTYPE." },
+  { id: "p7", prompt: "For a phone number field inside a record, INTEGER or STRING is usually better?", accepted: ["string"], answer: "STRING, because arithmetic is not needed and leading zeroes may matter." },
+  { id: "p8", prompt: "Use array or record for five test scores of the same type?", accepted: ["array"], answer: "Array." },
+  { id: "p9", prompt: "Use array or record for one customer's name, balance and active status?", accepted: ["record"], answer: "Record." },
+  { id: "p10", prompt: "Is Java class syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
   {
-    wrong: "I wrote Students.Mark[2] to get the second student's mark.",
-    fix: "Use Students[2].Mark. The index selects a record first; the field name selects the value inside that record.",
+    wrong: "I used Student1[1] to access the name field.",
+    fix: "Use the field name with dot notation, for example Student1.Name.",
   },
   {
-    wrong: "I declared DECLARE Students : ARRAY[1:30] OF STRING because names are strings.",
-    fix: "Use ARRAY[1:30] OF TStudent when each element must hold multiple fields such as Name, Mark and Enrolled.",
+    wrong: "I put every record field into an ARRAY OF STRING.",
+    fix: "Use a record when fields need different types, such as DATE, INTEGER and BOOLEAN.",
   },
   {
-    wrong: "I put Count <- 0 inside the FOR loop.",
-    fix: "Initialise Count before the loop. If it is inside the loop, the count resets every iteration.",
+    wrong: "I declared a TYPE but never declared a variable of that type.",
+    fix: "After defining TYPE TStudent, declare a variable such as DECLARE Student1 : TStudent.",
   },
   {
-    wrong: "I used Java index 0 in pseudocode after declaring ARRAY[1:30].",
-    fix: "Use the declared Cambridge pseudocode bounds. If the array is declared 1:30, loop from 1 to 30.",
+    wrong: "I wrote Java class syntax in a Cambridge pseudocode answer.",
+    fix: "Use clear TYPE, field declarations and ENDTYPE-style pseudocode unless Java is explicitly requested.",
   },
 ];
 
@@ -93,94 +119,95 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A school stores 30 students. Each student has Name, Mark and Enrolled fields. Define a suitable record type and declare an array to store all 30 students.",
-    answer: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE\n\nDECLARE Students : ARRAY[1:30] OF TStudent",
+    prompt: "Define a record type TStudent with fields Name, DateOfBirth, Mark and Enrolled. Suggest suitable data types.",
+    answer: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE DateOfBirth : DATE\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE",
     marking: [
-      { mark: "B1", text: "defines a record/type for one student" },
+      { mark: "B1", text: "uses a record/type definition for TStudent" },
       { mark: "B1", text: "declares Name as STRING" },
+      { mark: "B1", text: "declares DateOfBirth as DATE" },
       { mark: "B1", text: "declares Mark as INTEGER or suitable numeric type" },
       { mark: "B1", text: "declares Enrolled as BOOLEAN" },
-      { mark: "B1", text: "declares an array with suitable bounds for 30 students" },
-      { mark: "B1", text: "uses the record type as the array element type" },
+      { mark: "B1", text: "closes the record definition clearly, e.g. ENDTYPE" },
     ],
     strict: [
-      "Do not award the array-of-records mark for three separate arrays only.",
+      "Do not award record-definition mark for four unrelated variables only.",
       "Allow equivalent field names if meaning is clear.",
-      "Do not accept ARRAY[1:30] OF STRING as it cannot store all fields with suitable types.",
+      "Do not accept STRING for all fields without justification.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Write pseudocode to output the names of all students whose Mark is 70 or more.",
-    answer: "FOR Index <- 1 TO 30\n    IF Students[Index].Mark >= 70 THEN\n        OUTPUT Students[Index].Name\n    ENDIF\nNEXT Index",
+    marks: "6 marks",
+    prompt: "Write declarations for a variable Student1 of type TStudent. Assign Ali to the Name field and 72 to the Mark field, then output the Mark field.",
+    answer: "DECLARE Student1 : TStudent\nStudent1.Name <- \"Ali\"\nStudent1.Mark <- 72\nOUTPUT Student1.Mark",
     marking: [
-      { mark: "M1", text: "uses a loop with suitable bounds for all 30 records" },
-      { mark: "M1", text: "accesses the Mark field using index then dot notation" },
-      { mark: "A1", text: "uses correct comparison with 70 or more" },
-      { mark: "M1", text: "outputs the Name field from the same indexed record" },
-      { mark: "A1", text: "places output inside the IF condition" },
+      { mark: "B1", text: "declares Student1 as TStudent" },
+      { mark: "B1", text: "uses dot notation for Name field" },
+      { mark: "B1", text: "assigns Ali to Student1.Name" },
+      { mark: "B1", text: "uses dot notation for Mark field" },
+      { mark: "B1", text: "assigns 72 to Student1.Mark" },
+      { mark: "B1", text: "outputs Student1.Mark" },
     ],
     strict: [
-      "Do not award field-access marks for Students.Mark[Index].",
-      "Allow > 69 as equivalent to >= 70 for integer marks.",
-      "Do not award full marks if the code outputs every name regardless of mark.",
+      "Do not award field access marks for Student1[Name].",
+      "Allow different valid string quotation style.",
+      "Do not award output mark for OUTPUT Student1 without field if Mark is required.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Write pseudocode to count the number of students where Enrolled is TRUE, then output the count.",
-    answer: "Count <- 0\nFOR Index <- 1 TO 30\n    IF Students[Index].Enrolled = TRUE THEN\n        Count <- Count + 1\n    ENDIF\nNEXT Index\nOUTPUT Count",
+    marks: "6 marks",
+    prompt: "Explain why a record is more suitable than an array for storing one patient's name, date of birth, height and registered status.",
+    answer: "A record is more suitable because the fields describe one patient but have different meanings and data types. Name is a STRING, date of birth is a DATE, height may be REAL, and registered status is BOOLEAN. A record gives each field a meaningful name, whereas an array is better for many similar values of the same type accessed by index.",
     marking: [
-      { mark: "B1", text: "initialises Count before the loop" },
-      { mark: "M1", text: "uses a loop over the array of records" },
-      { mark: "M1", text: "tests the Enrolled field of the current indexed record" },
-      { mark: "A1", text: "increments Count only when the condition is met" },
-      { mark: "B1", text: "outputs Count after the loop" },
+      { mark: "B1", text: "states fields describe one patient/entity" },
+      { mark: "B1", text: "recognises fields have different meanings" },
+      { mark: "B1", text: "recognises fields may have different data types" },
+      { mark: "B1", text: "gives suitable example types for at least two fields" },
+      { mark: "B1", text: "states record fields have meaningful names" },
+      { mark: "B1", text: "contrasts with array as same-type/indexed structure" },
     ],
     strict: [
-      "Do not award initialisation mark if Count is reset inside the loop.",
-      "Allow IF Students[Index].Enrolled THEN if Boolean syntax is otherwise clear.",
-      "Do not accept counting Name or Mark field instead of Enrolled.",
+      "Do not award full credit for only saying 'record is better'.",
+      "Allow composite data language.",
+      "Do not claim arrays cannot store any related data; the key contrast is same-type indexed elements.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A student writes Students.Name[Index] <- \"Ali\". Explain the error and give the corrected assignment for record 5.",
-    answer: "The error is that the array index must select one record before a field is accessed. Students.Name[Index] treats Name like an array field. The corrected assignment is Students[5].Name <- \"Ali\".",
+    prompt: "A student writes Student1[1] <- \"Ali\" for a record variable Student1. Explain the error and correct it.",
+    answer: "The error is that record fields are accessed by field name, not by numeric index. Student1[1] is array-style access and does not identify the Name field. The corrected statement is Student1.Name <- \"Ali\".",
     marking: [
-      { mark: "B1", text: "identifies Students is an array of records" },
-      { mark: "B1", text: "explains the index must select an array element / record first" },
-      { mark: "B1", text: "explains the field is accessed after the indexed record" },
-      { mark: "B1", text: "gives corrected Students[5].Name access" },
+      { mark: "B1", text: "identifies Student1 is a record variable" },
+      { mark: "B1", text: "states records use field names/dot notation" },
+      { mark: "B1", text: "explains numeric index is array-style access" },
+      { mark: "B1", text: "gives corrected Student1.Name access" },
       { mark: "B1", text: "assigns Ali to the Name field" },
     ],
     strict: [
-      "Do not award correction mark for Students[Name].5 or Students.Name[5].",
-      "Allow another valid record index only if the answer also explicitly addresses record 5.",
-      "Do not accept only 'syntax is wrong' without explaining order of access.",
+      "Do not award correction for Student1[Name].",
+      "Allow equivalent field name if scenario clearly names it.",
+      "Do not accept only 'syntax is wrong' without explaining field access.",
     ],
   },
   {
     title: "Question 5",
-    marks: "7 marks",
-    prompt: "Write pseudocode to search for TargetName in Students. If found, increase that student's Mark by 5 and output Updated. If no matching student is found, output Not found.",
-    answer: "Found <- FALSE\nFOR Index <- 1 TO 30\n    IF Students[Index].Name = TargetName THEN\n        Students[Index].Mark <- Students[Index].Mark + 5\n        Found <- TRUE\n        OUTPUT \"Updated\"\n    ENDIF\nNEXT Index\nIF Found = FALSE THEN\n    OUTPUT \"Not found\"\nENDIF",
+    marks: "6 marks",
+    prompt: "Define a record type TProduct with ProductCode, Description, Price and QuantityInStock fields. Give suitable data types and one reason for ProductCode.",
+    answer: "TYPE TProduct\n    DECLARE ProductCode : STRING\n    DECLARE Description : STRING\n    DECLARE Price : REAL\n    DECLARE QuantityInStock : INTEGER\nENDTYPE\nProductCode is STRING because it is an identifier and may contain leading zeroes or letters; arithmetic is not performed on it.",
     marking: [
-      { mark: "B1", text: "initialises Found to FALSE before the loop" },
-      { mark: "M1", text: "loops through the array of records using suitable bounds" },
-      { mark: "M1", text: "compares Students[Index].Name with TargetName" },
-      { mark: "A1", text: "updates Students[Index].Mark for the matching record" },
-      { mark: "B1", text: "sets Found to TRUE when a match is found" },
-      { mark: "B1", text: "outputs Updated for a match" },
-      { mark: "A1", text: "outputs Not found only if no match was found" },
+      { mark: "B1", text: "defines TProduct as a record/type" },
+      { mark: "B1", text: "declares ProductCode as STRING" },
+      { mark: "B1", text: "declares Description as STRING" },
+      { mark: "B1", text: "declares Price as REAL or suitable numeric currency type" },
+      { mark: "B1", text: "declares QuantityInStock as INTEGER" },
+      { mark: "B1", text: "gives one valid reason for ProductCode as STRING: identifier/not arithmetic or preserves letters/leading zeroes" },
     ],
     strict: [
-      "Do not award update mark for changing every student's mark.",
-      "Allow early loop exit if logically correct and clearly shown.",
-      "Do not accept searching Students[Index] without naming the Name field.",
+      "Do not accept INTEGER for ProductCode when reason involves leading zeroes/letters.",
+      "Allow ProductID for ProductCode if meaning is clear.",
+      "Do not award reason marks for only saying 'it is code'.",
     ],
   },
 ];
@@ -195,7 +222,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9.[\\]: -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9. -]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -213,121 +240,95 @@ function setupPrint() {
 
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
-  const messages = {
-    separate: "Possible in the same way carrying 30 cups of tea by hand is possible: technically yes, structurally terrible.",
-    arrayOfString: "This stores many strings, but loses clear types for Mark and Enrolled.",
-    arrayRecords: "Correct. Each element is a TStudent record, so the class register stays structured.",
-    single: "One record is enough for one student, not for the whole class.",
+  const responses = {
+    array: "An ARRAY OF STRING would force all fields into text and lose useful types such as DATE and BOOLEAN.",
+    record: "Correct. A record groups related fields with different types.",
+    integer: "INTEGER can store one whole number, not a full set of mixed student details.",
+    constant: "A constant is fixed and cannot model several fields.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = messages[button.dataset.hook];
+      feedback.textContent = responses[button.dataset.hook];
     });
   });
 }
 
-function setupExplorer() {
-  const indexSelect = document.querySelector("#recordIndex");
-  const fieldSelect = document.querySelector("#recordField");
+function setupFieldLookup() {
+  const input = document.querySelector("#fieldInput");
   const result = document.querySelector("#fieldResult");
-  document.querySelector("#readFieldBtn").addEventListener("click", () => {
-    const index = Number(indexSelect.value);
-    const field = fieldSelect.value;
-    const record = students[index - 1];
-    result.innerHTML = `<p><code>Students[${index}].${escapeHtml(field)}</code> = <strong>${escapeHtml(record[field])}</strong></p>`;
+  document.querySelector("#fieldBtn").addEventListener("click", () => {
+    const field = input.value;
+    result.innerHTML = `<p>Student1.${escapeHtml(field)} = <strong>${escapeHtml(student[field])}</strong></p>`;
   });
 }
 
-function setupLoopTrace() {
-  let position = 0;
-  let count = 0;
-  const output = document.querySelector("#loopTrace");
-  const render = (message) => {
-    const rows = students
-      .map((student, index) => `${index + 1}. ${student.Name}: Mark ${student.Mark}${student.Mark >= 70 ? " -> count" : ""}`)
-      .join("<br>");
-    output.innerHTML = `<p>${message}</p><p>${rows}</p><p><strong>Current Count = ${count}</strong></p>`;
-  };
-  document.querySelector("#stepBtn").addEventListener("click", () => {
-    if (position >= students.length) {
-      render("Loop complete. All records have been processed.");
-      return;
-    }
-    const student = students[position];
-    if (student.Mark >= 70) {
-      count += 1;
-      render(`Index = ${position + 1}. ${student.Name}'s mark is ${student.Mark}, so Count increases.`);
-    } else {
-      render(`Index = ${position + 1}. ${student.Name}'s mark is ${student.Mark}, so Count does not change.`);
-    }
-    position += 1;
-  });
-  document.querySelector("#resetTraceBtn").addEventListener("click", () => {
-    position = 0;
-    count = 0;
-    output.textContent = "Ready: Count = 0, Index has not started.";
+function setupBuilder() {
+  const input = document.querySelector("#builderInput");
+  const result = document.querySelector("#builderResult");
+  document.querySelector("#builderBtn").addEventListener("click", () => {
+    const item = builderMap[input.value];
+    result.innerHTML = `
+      <h3>${escapeHtml(item.title)}</h3>
+      <pre><code>${escapeHtml(item.code)}</code></pre>
+      <p>${escapeHtml(item.reason)}</p>
+    `;
   });
 }
 
 function renderExample(key) {
   const example = examples[key];
-  document.querySelector("#exampleOutput").innerHTML = `
-    <article class="worked-card">
-      <h3>${escapeHtml(example.title)}</h3>
-      <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-      ${tableMarkup(["Step", "Pseudocode", "Reason"], example.rows)}
-      <p><strong>Cambridge-style pseudocode:</strong></p>
-      <pre><code>${escapeHtml(example.code)}</code></pre>
-      <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
-    </article>
+  document.querySelector("#exampleBox").innerHTML = `
+    <h3>${escapeHtml(example.title)}</h3>
+    <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
+    ${tableMarkup(["Field / focus", "Type / code", "Reason"], example.rows)}
+    <p><strong>Cambridge-style pseudocode:</strong></p>
+    <pre><code>${escapeHtml(example.code)}</code></pre>
+    <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
   `;
 }
 
 function setupExamples() {
-  renderExample("declare");
-  document.querySelectorAll(".tab").forEach((button) => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-      renderExample(button.dataset.example);
+  renderExample("student");
+  document.querySelectorAll("[data-example]").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
+      tab.classList.add("active");
+      renderExample(tab.dataset.example);
     });
   });
 }
 
 function renderPractice() {
-  const list = document.querySelector("#practiceList");
-  list.innerHTML = practice
-    .map((item, index) => `
-      <article class="practice-card">
-        <label for="${item.id}"><strong>${index + 1}. ${escapeHtml(item.prompt)}</strong></label>
-        <div class="answer-row">
-          <input id="${item.id}" type="text" autocomplete="off" />
-          <button type="button" class="check-btn" data-practice="${item.id}">Check</button>
-        </div>
-        <p class="mark" id="${item.id}-mark" aria-live="polite"></p>
-        <button type="button" class="answer-toggle" data-answer="${item.id}">Show answer</button>
-        <div class="answer-panel" id="${item.id}-answer">${escapeHtml(item.answer)}</div>
-      </article>
-    `)
-    .join("");
+  const container = document.querySelector("#practiceList");
+  container.innerHTML = practice.map((item, index) => `
+    <article class="practice-item">
+      <h3>${index + 1}. ${escapeHtml(item.prompt)}</h3>
+      <div class="practice-row">
+        <input type="text" id="${item.id}" aria-label="Answer for practice question ${index + 1}" />
+        <button class="primary-button" type="button" data-check="${item.id}">Check</button>
+      </div>
+      <div class="mark" id="${item.id}Mark" aria-live="polite"></div>
+      <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
+      <div class="answer-panel" id="${item.id}Answer">${escapeHtml(item.answer)}</div>
+    </article>
+  `).join("");
 
-  document.querySelectorAll("[data-practice]").forEach((button) => {
+  document.querySelectorAll("[data-check]").forEach((button) => {
     button.addEventListener("click", () => {
-      const item = practice.find((entry) => entry.id === button.dataset.practice);
-      const input = document.querySelector(`#${item.id}`);
-      const mark = document.querySelector(`#${item.id}-mark`);
-      const response = normalise(input.value);
-      const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. The access pattern is clear." : "Not quite. Check whether the answer needs the array index, field name, or loop bound.";
-      mark.className = `mark ${correct ? "correct" : "incorrect"}`;
+      const item = practice.find((entry) => entry.id === button.dataset.check);
+      const value = normalise(document.querySelector(`#${item.id}`).value);
+      const correct = item.accepted.some((answer) => value === normalise(answer));
+      const mark = document.querySelector(`#${item.id}Mark`);
+      mark.textContent = correct ? "Correct. The record vocabulary is precise." : "Not quite. Check whether this needs a field name, type, or record variable.";
+      mark.className = correct ? "mark correct" : "mark incorrect";
     });
   });
 
   document.querySelectorAll("[data-answer]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.answer}-answer`);
+      const panel = document.querySelector(`#${button.dataset.answer}Answer`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer";
     });
@@ -335,20 +336,18 @@ function renderPractice() {
 }
 
 function renderMistakes() {
-  document.querySelector("#mistakeGrid").innerHTML = mistakes
-    .map((item, index) => `
-      <article>
-        <h3>Mistake ${index + 1}</h3>
-        <p>${escapeHtml(item.wrong)}</p>
-        <button class="answer-toggle" type="button" data-fix="${index}">Show correction</button>
-        <div class="answer-panel" id="fix-${index}">${escapeHtml(item.fix)}</div>
-      </article>
-    `)
-    .join("");
+  document.querySelector("#mistakeGrid").innerHTML = mistakes.map((item, index) => `
+    <article>
+      <h3>Mistake ${index + 1}</h3>
+      <p class="wrong">${escapeHtml(item.wrong)}</p>
+      <button class="answer-toggle" type="button" data-fix="${index}">Show correction</button>
+      <div class="answer-panel" id="fix${index}">${escapeHtml(item.fix)}</div>
+    </article>
+  `).join("");
 
   document.querySelectorAll("[data-fix]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#fix-${button.dataset.fix}`);
+      const panel = document.querySelector(`#fix${button.dataset.fix}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
     });
@@ -356,28 +355,27 @@ function renderMistakes() {
 }
 
 function renderExam() {
-  document.querySelector("#examList").innerHTML = examQuestions
-    .map((question, index) => `
-      <article class="exam-card">
-        <div class="exam-head">
-          <h3>${escapeHtml(question.title)}</h3>
-          <span>${escapeHtml(question.marks)}</span>
-        </div>
-        <p>${escapeHtml(question.prompt)}</p>
-        <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
-        <div class="ms-panel" id="ms-${index}">
-          <p><strong>Answer:</strong></p>
-          <pre><code>${escapeHtml(question.answer)}</code></pre>
-          <p><strong>Mark scheme:</strong></p>
-          ${renderStudentMarkPoints(question)}
-        </div>
-      </article>
-    `)
-    .join("");
+  const container = document.querySelector("#examList");
+  container.innerHTML = examQuestions.map((question, index) => `
+    <article class="exam-card">
+      <div class="exam-head">
+        <h3>${escapeHtml(question.title)}</h3>
+        <span>${escapeHtml(question.marks)}</span>
+      </div>
+      <p>${escapeHtml(question.prompt)}</p>
+      <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
+      <div class="ms-panel" id="ms${index}">
+        <p><strong>Answer:</strong></p>
+        <pre><code>${escapeHtml(question.answer)}</code></pre>
+        <p><strong>Mark scheme:</strong></p>
+        ${renderStudentMarkPoints(question)}
+      </div>
+    </article>
+  `).join("");
 
   document.querySelectorAll("[data-ms]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#ms-${button.dataset.ms}`);
+      const panel = document.querySelector(`#ms${button.dataset.ms}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
     });
@@ -386,8 +384,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupExplorer();
-setupLoopTrace();
+setupFieldLookup();
+setupBuilder();
 setupExamples();
 renderPractice();
 renderMistakes();

@@ -1,82 +1,141 @@
-const checkerMap = {
-  assignment: { title: "Cambridge-style assignment", detail: "The arrow <- clearly stores the new value in Total." },
-  output: { title: "Cambridge-style output", detail: "OUTPUT names what is displayed without Java method syntax." },
-  selection: { title: "Cambridge-style selection", detail: "IF, THEN and ENDIF make the block boundary visible." },
-  java: { title: "Java support syntax", detail: "This is useful when running Java, but Paper 2 pseudocode should use OUTPUT Total." },
+const chooserMap = {
+  sortedSearch: {
+    title: "Binary search can be suitable",
+    detail: "Because the list is sorted, binary search can discard about half the remaining values after each comparison.",
+  },
+  unsortedSearch: {
+    title: "Linear search is safer unless sorted first",
+    detail: "Binary search is not valid on unsorted data. Linear search can check each item without a sorted precondition.",
+  },
+  table: {
+    title: "Nested-loop work",
+    detail: "Every row-column combination is processed, so 20 x 20 = 400 cell visits.",
+  },
+  copy: {
+    title: "Space cost",
+    detail: "Copying the list uses extra memory proportional to the number of items, even if the later processing is simple.",
+  },
 };
 
-const cleanerMap = {
-  assign: {
-    before: "total = total + mark;",
-    after: "Total <- Total + Mark",
-    note: "Replace Java assignment and semicolon with Cambridge-style assignment arrow.",
-  },
-  print: {
-    before: "System.out.println(total);",
-    after: "OUTPUT Total",
-    note: "State the output directly.",
-  },
-  if: {
-    before: "if (mark >= 50) { passCount++; }",
-    after: "IF Mark >= 50 THEN\n    PassCount <- PassCount + 1\nENDIF",
-    note: "Use IF/THEN/ENDIF and expand ++ into a clear assignment.",
-  },
-  for: {
-    before: "for (int i = 1; i <= 5; i++) { input mark; }",
-    after: "FOR Index <- 1 TO 5\n    INPUT Mark\nNEXT Index",
-    note: "Use a readable loop variable and show the loop ending.",
-  },
-};
+function binaryWorstChecks(size) {
+  return Math.ceil(Math.log2(size)) + 1;
+}
+
+function estimateWork(size, pattern) {
+  if (pattern === "linear") {
+    return {
+      title: "Linear search worst case",
+      rows: [["Input size", String(size)], ["Maximum comparisons", String(size)], ["Reason", "may check every item if target is last or absent"]],
+    };
+  }
+  if (pattern === "binary") {
+    return {
+      title: "Binary search worst case",
+      rows: [["Input size", String(size)], ["Approx. comparisons", String(binaryWorstChecks(size))], ["Reason", "remaining search area is repeatedly halved"]],
+    };
+  }
+  if (pattern === "nested") {
+    return {
+      title: "n by n nested loop",
+      rows: [["Rows", String(size)], ["Columns", String(size)], ["Cell visits", String(size * size)]],
+    };
+  }
+  return {
+    title: "Bubble sort rough comparison count",
+    rows: [["Input size", String(size)], ["Rough comparisons", String((size * (size - 1)) / 2)], ["Reason", "several passes compare adjacent items"]],
+  };
+}
+
+function binaryTrace(values, target) {
+  let low = 0;
+  let high = values.length - 1;
+  const rows = [];
+  let step = 0;
+  while (low <= high) {
+    step += 1;
+    const mid = Math.floor((low + high) / 2);
+    const value = values[mid];
+    let action = "found";
+    if (value < target) {
+      action = "search right half";
+      low = mid + 1;
+    } else if (value > target) {
+      action = "search left half";
+      high = mid - 1;
+    }
+    rows.push([String(step), String(low + 1), String(high + 1), String(mid + 1), String(value), action]);
+    if (value === target) break;
+  }
+  return {
+    headers: ["Step", "Low", "High", "Mid position", "Compared value", "Action"],
+    rows,
+    note: `Target ${target} found in ${rows.length} comparison(s) if present in this trace.`,
+  };
+}
 
 const examples = {
-  assignment: {
-    title: "Example 1: Assignment and output",
-    problem: "Clean up Java-like assignment and output.",
-    before: "total = total + mark;\nSystem.out.println(total);",
-    after: "Total <- Total + Mark\nOUTPUT Total",
-    points: ["Use <- for assignment.", "Remove semicolons.", "Use OUTPUT instead of System.out.println."],
+  linear: {
+    title: "Example 1: Linear search cases",
+    problem: "A list has 8 items. Compare best and worst case for linear search.",
+    trace: {
+      headers: ["Case", "Target position", "Comparisons", "Explanation"],
+      rows: [
+        ["Best", "first item", "1", "target is found immediately"],
+        ["Worst", "last item or absent", "8", "each item may be checked"],
+      ],
+      note: "Linear search does not need sorted data, but the worst case grows with the number of items.",
+    },
+    points: ["Use best/worst case language.", "Count comparisons.", "Avoid saying 'always slow'."],
   },
-  selection: {
-    title: "Example 2: Selection block",
-    problem: "Rewrite a Java-style pass test as Cambridge pseudocode.",
-    before: "if (mark >= 50) {\n    output pass;\n} else {\n    output resit;\n}",
-    after: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
-    points: ["Use IF ... THEN.", "Indent both branches.", "Close the selection with ENDIF."],
+  binary: {
+    title: "Example 2: Binary search trace",
+    problem: "Trace binary search for 52 in [3, 8, 11, 18, 25, 31, 40, 52].",
+    trace: binaryTrace([3, 8, 11, 18, 25, 31, 40, 52], 52),
+    points: ["Data must be sorted.", "Each comparison discards part of the list.", "Efficiency comes from halving the search area."],
   },
-  loop: {
-    title: "Example 3: Count-controlled loop",
-    problem: "Write a readable loop to input five marks.",
-    before: "for (int i = 0; i < 5; i++) {\n    mark = input.nextInt();\n}",
-    after: "FOR Index <- 1 TO 5\n    INPUT Mark\nNEXT Index",
-    points: ["Use FOR/NEXT.", "Use a meaningful loop variable.", "Avoid Java's 0-based loop habit unless specified."],
+  nested: {
+    title: "Example 3: Nested loop count",
+    problem: "A 10 by 10 grid is processed cell by cell. Estimate the number of visits.",
+    trace: {
+      headers: ["Rows", "Columns", "Visits", "Reason"],
+      rows: [["10", "10", "100", "inner column loop runs for every row"]],
+      note: "Nested-loop work multiplies when every inner repetition occurs for every outer repetition.",
+    },
+    points: ["Count structure, not lines of code only.", "Rows x columns gives cell visits.", "This is more work than a single loop over 10 values."],
   },
-  full: {
-    title: "Example 4: Full clean-up",
-    problem: "Convert a Java-like fragment that counts passing marks.",
-    before: "int passCount = 0;\nfor (int i = 0; i < 5; i++) {\n    if (marks[i] >= 50) { passCount++; }\n}",
-    after: "PassCount <- 0\nFOR Index <- 1 TO 5\n    IF Mark[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index",
-    points: ["Initialise before the loop.", "Keep IF inside the loop.", "Use visible ENDIF and NEXT Index."],
+  space: {
+    title: "Example 4: Space trade-off",
+    problem: "An algorithm copies a 500-item list before processing it.",
+    trace: {
+      headers: ["Resource", "Effect", "Explanation"],
+      rows: [
+        ["Time", "extra copying step", "each item must be copied before processing"],
+        ["Space", "extra list stored", "memory is needed for another 500 items"],
+      ],
+      note: "Efficiency can refer to memory as well as time.",
+    },
+    points: ["Mention extra storage.", "Mention extra processing if copied item by item.", "Do not discuss only speed when memory is relevant."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which symbol is used for Cambridge-style assignment in this course?", accepted: ["<-", "arrow", "left arrow"], answer: "<-" },
-  { id: "p2", prompt: "What keyword is used to display a value in Cambridge-style pseudocode?", accepted: ["output"], answer: "OUTPUT" },
-  { id: "p3", prompt: "What keyword closes an IF block?", accepted: ["endif", "end if"], answer: "ENDIF" },
-  { id: "p4", prompt: "What keyword closes a FOR loop?", accepted: ["next", "next index", "next loop"], answer: "NEXT" },
-  { id: "p5", prompt: "Convert `total = total + mark;` into Cambridge-style assignment.", accepted: ["total <- total + mark"], answer: "Total <- Total + Mark" },
-  { id: "p6", prompt: "Convert `System.out.println(total);` into Cambridge-style output.", accepted: ["output total"], answer: "OUTPUT Total" },
-  { id: "p7", prompt: "Is `passCount++` clear Cambridge-style pseudocode? yes or no.", accepted: ["no"], answer: "No. Write PassCount <- PassCount + 1." },
-  { id: "p8", prompt: "Should nested statements usually be indented? yes or no.", accepted: ["yes"], answer: "Yes" },
-  { id: "p9", prompt: "Which is clearer in an exam answer: `x` or `PassCount`?", accepted: ["passcount", "pass count"], answer: "PassCount" },
-  { id: "p10", prompt: "Is Java the expected Paper 2 answer format unless explicitly requested? yes or no.", accepted: ["no"], answer: "No. Cambridge pseudocode is the exam answer format." },
+  { id: "p1", prompt: "In worst-case linear search of 10 items, how many comparisons may be needed?", accepted: ["10", "ten"], answer: "10" },
+  { id: "p2", prompt: "What condition must be true before binary search can be used?", accepted: ["sorted", "sorted data", "list sorted", "the list is sorted", "data sorted"], answer: "The data/list must be sorted." },
+  { id: "p3", prompt: "A 5 by 6 nested loop processes every cell. How many cell visits?", accepted: ["30", "thirty"], answer: "30" },
+  { id: "p4", prompt: "For linear search, target at first item is best case or worst case?", accepted: ["best", "best case"], answer: "Best case" },
+  { id: "p5", prompt: "For linear search, target absent is usually best case or worst case?", accepted: ["worst", "worst case"], answer: "Worst case" },
+  { id: "p6", prompt: "Does copying a list use extra memory? yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p7", prompt: "Which search repeatedly halves the search area?", accepted: ["binary", "binary search"], answer: "Binary search" },
+  { id: "p8", prompt: "One loop over n items does about n or n x n visits?", accepted: ["n"], answer: "n" },
+  { id: "p9", prompt: "Two nested loops each running n times do about n or n x n visits?", accepted: ["n x n", "n*n", "n squared", "n^2", "nxn"], answer: "n x n" },
+  { id: "p10", prompt: "Is 'it is faster' enough for a full efficiency explanation? yes or no.", accepted: ["no"], answer: "No. Give a measurable reason such as fewer comparisons." },
 ];
 
 const mistakes = [
-  { wrong: "I used `total = total + mark;` throughout my Paper 2 answer.", fix: "Use `Total <- Total + Mark` so assignment is clear in Cambridge-style pseudocode." },
-  { wrong: "I opened an IF but did not write ENDIF.", fix: "Close each selection block with ENDIF so the marker can see the block boundary." },
-  { wrong: "I wrote all lines against the left margin.", fix: "Indent statements inside IF, FOR and WHILE blocks to show control structure." },
-  { wrong: "I used `i`, `j`, `x`, `y` everywhere in a word problem.", fix: "Use meaningful identifiers such as Student, Mark, Total or PassCount unless short counters are clearly defined." },
+  { wrong: "Binary search is always better.", fix: "Binary search is only suitable when the data is sorted. Linear search may be needed for unsorted data." },
+  { wrong: "This algorithm is efficient because it is faster.", fix: "State what is reduced: comparisons, loop iterations, passes or memory use." },
+  { wrong: "A nested loop with 5 rows and 5 columns runs 10 times.", fix: "If every column is processed for every row, it runs 5 x 5 = 25 times." },
+  { wrong: "Only time matters when comparing algorithms.", fix: "Space can also matter, especially when an algorithm copies lists or stores extra structures." },
 ];
 
 
@@ -88,98 +147,98 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "3 marks",
-    prompt: "Write this Java-like fragment in Cambridge-style pseudocode: `total = total + mark; System.out.println(total);`",
-    answer: "Total <- Total + Mark\nOUTPUT Total",
+    marks: "5 marks",
+    prompt: "Compare linear search and binary search for finding a value in a sorted list of 100 items.",
+    answer: "Linear search may compare the target with each item one by one, so in the worst case it may require up to 100 comparisons. Binary search can be used because the list is sorted; it compares with a middle value and discards about half of the remaining values each time. Therefore binary search usually requires fewer comparisons for a large sorted list.",
     marking: [
-      { mark: "M1", text: "uses correct Cambridge-style update Total <- Total + Mark" },
-      { mark: "B1", text: "uses OUTPUT Total" },
-      { mark: "A1", text: "places OUTPUT after the update" },
+      { mark: "B1", text: "linear search checks items one by one" },
+      { mark: "B1", text: "linear worst case may check all 100 items" },
+      { mark: "B1", text: "binary search requires sorted data / sorted list condition recognised" },
+      { mark: "B1", text: "binary search compares with middle value / halves search area" },
+      { mark: "B1", text: "explains binary search usually uses fewer comparisons for this sorted large list" },
     ],
     strict: [
-      "Do not award assignment notation mark for Java-only equals and semicolon.",
-      "Allow lower-case variable names if consistent.",
-      "Do not require a surrounding loop.",
+      "Do not accept 'binary search is faster' without reason.",
+      "Allow approximate comparison counts for binary search if halving is explained.",
+      "Do not award binary suitability mark if sorted precondition is ignored.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Write this logic as readable Cambridge-style pseudocode: if mark is at least 50 output Pass, otherwise output Resit.",
-    answer: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
+    marks: "5 marks",
+    prompt: "A nested loop processes every cell in a table with 12 rows and 5 columns. Explain how many times the inner statement executes.",
+    answer: "The inner statement executes once for each column in each row. There are 5 column executions for each of the 12 rows, so the total number of executions is 12 x 5 = 60.",
     marking: [
-      { mark: "M1", text: "uses IF with condition Mark >= 50 or equivalent" },
-      { mark: "B1", text: "uses THEN / clear true branch" },
-      { mark: "A1", text: "outputs Pass for true condition" },
-      { mark: "B1", text: "uses ELSE / clear false branch" },
-      { mark: "A1", text: "outputs Resit for false condition" },
-      { mark: "B1", text: "closes selection with ENDIF / clear block boundary" },
+      { mark: "B1", text: "identifies rows and columns as two loop dimensions" },
+      { mark: "B1", text: "explains inner loop runs for each row" },
+      { mark: "B1", text: "uses multiplication rather than addition" },
+      { mark: "B1", text: "calculates 12 x 5" },
+      { mark: "B1", text: "final answer 60 executions" },
     ],
     strict: [
-      "Do not require quotation marks around Pass/Resit if output values are clear.",
-      "Allow > 49 for integer marks.",
-      "Do not award block-boundary mark for unmatched braces only.",
+      "Do not accept 17 from adding rows and columns.",
+      "Allow columns and rows reversed if calculation is consistent.",
+      "Do not require Big O notation.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input five marks and output their total.",
-    answer: "Total <- 0\nFOR Index <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Index\nOUTPUT Total",
+    marks: "5 marks",
+    prompt: "Explain best case and worst case for linear search.",
+    answer: "In the best case, the target value is the first item checked, so only one comparison is needed. In the worst case, the target is the last item or is not in the list, so every item may need to be checked. This means the amount of work in the worst case grows with the number of items in the list.",
     marking: [
-      { mark: "B1", text: "initialises Total to 0" },
-      { mark: "M1", text: "uses count-controlled loop for five marks" },
-      { mark: "M1", text: "inputs Mark inside loop" },
-      { mark: "A1", text: "updates Total with Total <- Total + Mark" },
-      { mark: "B1", text: "uses NEXT / clear loop ending" },
-      { mark: "A1", text: "outputs final Total after the loop" },
+      { mark: "B1", text: "best case identified as target first / found immediately" },
+      { mark: "B1", text: "best case uses one comparison" },
+      { mark: "B1", text: "worst case identified as target last or absent" },
+      { mark: "B1", text: "worst case may check every item" },
+      { mark: "B1", text: "links work to number of items / input size" },
     ],
     strict: [
-      "Do not award final-output mark if OUTPUT Total is inside the loop and only final total is requested.",
-      "Allow WHILE with correctly controlled counter.",
-      "Do not award notation mark for Java-only for-loop syntax.",
+      "Do not accept best/worst labels without a search scenario.",
+      "Allow 'not found' for absent target.",
+      "Do not require average case.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain why indentation and meaningful identifiers improve pseudocode readability in an exam answer.",
-    answer: "Indentation shows which statements belong inside a selection or loop, so the marker can see the control structure. Meaningful identifiers such as Total, Mark and PassCount show the purpose of each variable. This reduces ambiguity and makes it easier to award marks for initialisation, updates and outputs.",
+    prompt: "An algorithm copies a list into a new list before searching it. Discuss one time efficiency issue and one space efficiency issue.",
+    answer: "Copying the list takes extra time because each item has to be copied before the search begins. It also uses extra memory because a second list must be stored. If the copied list has the same number of items as the original, the additional memory needed grows as the list size grows. This may be unnecessary if the original list could be searched directly.",
     marking: [
-      { mark: "B1", text: "states indentation shows block/control-structure ownership" },
-      { mark: "B1", text: "explains this helps distinguish inside vs outside loop/IF" },
-      { mark: "B1", text: "states meaningful identifiers show variable purpose" },
-      { mark: "B1", text: "explains this reduces ambiguity / helps trace logic" },
+      { mark: "B1", text: "identifies copying adds extra processing/time" },
+      { mark: "B1", text: "explains items must be copied before or in addition to searching" },
+      { mark: "B1", text: "identifies extra memory/space use" },
+      { mark: "B1", text: "explains second list / copied data must be stored" },
     ],
     strict: [
-      "Do not accept only 'it looks nicer'.",
-      "Allow 'layout' for indentation if meaning is clear.",
-      "Do not require specific variable names.",
+      "Do not award both time and space marks for only saying 'inefficient'.",
+      "Allow 'storage' for memory.",
+      "Do not require exact memory units.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Identify and correct three Java features that should not appear in a Cambridge pseudocode answer unless Java is requested.",
-    answer: "Examples include semicolons, braces, Java method calls such as System.out.println, ++ shorthand, Java for-loop headers and 0-based array habits. Corrections include using OUTPUT, IF/ENDIF, FOR/NEXT, explicit assignment such as Count <- Count + 1, and clearly defined pseudocode indexing.",
+    prompt: "A student says: 'Bubble sort and linear search are equally efficient because both use loops.' Evaluate this statement.",
+    answer: "The statement is not valid. Both algorithms use loops, but the amount of work is different. Linear search checks items until the target is found or the list ends, so in the worst case it may check each item once. Bubble sort uses repeated passes and compares adjacent items many times to sort the whole list. Therefore the number of comparisons and the purpose of the algorithms are different.",
     marking: [
-      { mark: "M1", text: "identifies one Java-only feature such as semicolon/braces/System.out.println/++" },
-      { mark: "A1", text: "gives a suitable Cambridge-style correction for first feature" },
-      { mark: "M1", text: "identifies second distinct Java-only feature" },
-      { mark: "A1", text: "gives suitable correction for second feature" },
-      { mark: "M1", text: "identifies third distinct Java-only feature" },
-      { mark: "A1", text: "gives suitable correction for third feature" },
+      { mark: "B1", text: "recognises both use loops but that is not enough to judge efficiency" },
+      { mark: "B1", text: "linear search checks items for a target" },
+      { mark: "B1", text: "linear search worst case may check each item once" },
+      { mark: "B1", text: "bubble sort uses repeated passes / adjacent comparisons" },
+      { mark: "B1", text: "explains bubble sort performs many comparisons to sort the whole list" },
+      { mark: "B1", text: "clear evaluative conclusion that they are not equally efficient for that reason" },
     ],
     strict: [
-      "Do not award separate identification marks for repeated examples of the same feature.",
-      "Allow charAt, scanner input or array index examples if corrected clearly.",
-      "Do not say Java is never useful; it is support, not the default exam format.",
+      "Do not accept 'bubble sort is slower' without mechanism.",
+      "Allow insertion sort comparison only if bubble sort is still addressed.",
+      "Do not require formal Big O notation.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9\\[\\] <>+=.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9\\[\\] <>+=.*^-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -198,10 +257,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    arrow: "Correct. The assignment arrow is the clearest Cambridge-style notation here.",
-    equals: "That is Java-style assignment with a semicolon. The logic is familiar, but the exam style should use <-.",
-    plus: "That is not a clear assignment. Write the full update.",
-    print: "That is output syntax, not assignment.",
+    linear: "That works, but it may take hundreds of checks if you start at page 1.",
+    binary: "Correct. Halving the search area is the useful efficiency idea.",
+    random: "Random pages may work by luck, but the worst case is not controlled.",
+    sort: "The pages are already ordered by number; sorting is unnecessary extra work.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -212,27 +271,22 @@ function setupHook() {
   });
 }
 
-function setupChecker() {
-  const input = document.querySelector("#checkerInput");
-  const result = document.querySelector("#checkerResult");
-  document.querySelector("#checkerBtn").addEventListener("click", () => {
-    const item = checkerMap[input.value];
+function setupChooser() {
+  const input = document.querySelector("#chooserInput");
+  const result = document.querySelector("#chooserResult");
+  document.querySelector("#chooserBtn").addEventListener("click", () => {
+    const item = chooserMap[input.value];
     result.innerHTML = `<strong>${item.title}</strong><span>${item.detail}</span>`;
   });
 }
 
-function setupCleaner() {
-  const input = document.querySelector("#cleanerInput");
-  const result = document.querySelector("#cleanerResult");
-  document.querySelector("#cleanerBtn").addEventListener("click", () => {
-    const item = cleanerMap[input.value];
-    result.innerHTML = `
-      <p><strong>Before:</strong></p>
-      <pre><code>${item.before}</code></pre>
-      <p><strong>Cambridge-style:</strong></p>
-      <pre><code>${item.after}</code></pre>
-      <p>${item.note}</p>
-    `;
+function setupEstimator() {
+  const sizeInput = document.querySelector("#sizeInput");
+  const patternInput = document.querySelector("#patternInput");
+  const result = document.querySelector("#estimateResult");
+  document.querySelector("#estimateBtn").addEventListener("click", () => {
+    const estimate = estimateWork(Number(sizeInput.value), patternInput.value);
+    result.innerHTML = `<h3>${estimate.title}</h3>${tableMarkup(["Measure", "Value"], estimate.rows)}`;
   });
 }
 
@@ -241,10 +295,8 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <div class="code-grid">
-      <article><h3>Before</h3><pre><code>${example.before}</code></pre></article>
-      <article><h3>After</h3><pre><code>${example.after}</code></pre></article>
-    </div>
+    ${tableMarkup(example.trace.headers, example.trace.rows)}
+    <p>${example.trace.note}</p>
     <ul>${example.points.map((point) => `<li>${point}</li>`).join("")}</ul>
   `;
 }
@@ -257,7 +309,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("assignment");
+  renderExample("linear");
 }
 
 function setupPractice() {
@@ -345,8 +397,8 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupChecker();
-setupCleaner();
+setupChooser();
+setupEstimator();
 setupExamples();
 setupPractice();
 setupMistakes();

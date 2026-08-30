@@ -1,131 +1,43 @@
-const sorterMap = {
-  split: {
-    topic: "Decomposition",
-    detail: "The large booking problem is being divided into sub-problems that can be planned and tested separately.",
-  },
-  ignore: {
-    topic: "Abstraction",
-    detail: "The printed ticket colour does not change the algorithm's input, process, output or constraints.",
-  },
-  keep: {
-    topic: "Abstraction",
-    detail: "PlacesLeft is relevant because it changes whether the booking should be accepted or rejected.",
-  },
-  bad: {
-    topic: "Trap",
-    detail: "A module should have a useful purpose. Splitting every assignment line creates noise, not a clearer design.",
-  },
+const classifierMap = {
+  pass: { topic: "Decision requirement", detail: "The plan must compare the mark with the stated pass level and produce one of two required messages." },
+  total: { topic: "Fixed quantity", detail: "The plan must account for exactly ten supplied prices and calculate one total." },
+  capacity: { topic: "Capacity constraint", detail: "The plan must compare the request with the remaining capacity and reject an oversized request." },
+  highest: { topic: "Tracking requirement", detail: "The plan must retain the highest score seen while all supplied scores are considered." },
+  validate: { topic: "Range constraint", detail: "The stated range -20 to 50 must be checked before the temperature is accepted for further processing." },
 };
 
-const filterItems = [
-  { id: "places", text: "PlacesLeft in an event booking system", keep: true, reason: "It controls whether the booking can be accepted." },
-  { id: "poster", text: "Poster colour used to advertise the event", keep: false, reason: "It does not affect the booking algorithm." },
-  { id: "age", text: "StudentAge when only ages 11-18 are allowed", keep: true, reason: "It is needed to check the stated eligibility rule." },
-  { id: "desk", text: "The desk where the organiser sits", keep: false, reason: "It is real-world context but not part of the algorithm." },
-  { id: "price", text: "TicketPrice used to calculate TotalCost", keep: true, reason: "It affects the calculation and output." },
-  { id: "logo", text: "School logo shape on the ticket", keep: false, reason: "It does not change any processing step in the algorithm." },
-];
-
-const scenarioPlans = {
-  average: {
-    title: "Class average from marks",
-    modules: ["Receive marks", "Check each mark is 0-100", "Calculate Total", "Calculate Average", "Produce Average"],
-    abstraction: "Keep marks, number of marks and valid range. Ignore student handwriting, classroom layout and display colour.",
-  },
-  booking: {
-    title: "Event booking with limited places",
-    modules: ["Receive booking request", "Check required details", "Check PlacesLeft", "Calculate TotalCost", "Update PlacesLeft", "Produce confirmation"],
-    abstraction: "Keep requested tickets, price, age rule and places left. Ignore poster design and room decoration.",
-  },
-  login: {
-    title: "Login attempt check",
-    modules: ["Input username and password", "Check blank input", "Compare stored username", "Compare stored password", "Output access decision"],
-    abstraction: "Keep entered credentials, stored credentials and attempt result. Ignore keyboard colour and background image.",
-  },
-  shop: {
-    title: "Small shop receipt total",
-    modules: ["Receive item prices", "Check prices are not negative", "Calculate Total", "Apply discount rule", "Produce receipt total"],
-    abstraction: "Keep prices, discount rule and total. Ignore shelf position unless the question uses it as an input.",
-  },
+const ipocMap = {
+  pass: { input: "Mark", process: "Compare Mark with the pass level of 50", output: 'Either "Pass" or "Resit needed"', constraint: "Mark is supplied as an integer from 0 to 100" },
+  average: { input: "Five numeric values", process: "Add all five values and divide the total by 5", output: "Average", constraint: "Exactly five values are supplied" },
+  valid: { input: "Age", process: "Check whether Age is within the accepted range", output: 'Either "Valid" or "Invalid"', constraint: "Accepted ages are 11 to 18 inclusive" },
+  maximum: { input: "Six scores", process: "Compare the supplied scores and retain the largest", output: "Highest score", constraint: "Exactly six scores are supplied" },
 };
 
 const examples = {
-  average: {
-    title: "Example 1: Class average",
-    problem: "A program inputs 20 marks and outputs the class average.",
-    steps: [
-      "Decompose: ReceiveMarks, CheckMarks, CalculateTotal, CalculateAverage, ProduceAverage.",
-      "Abstract: keep Mark, Count, Total, Average and the 0-100 range.",
-      "Ignore: student's name if the average only needs marks; desk order; screen colour.",
-      "Responsibility plan: receive all 20 marks, check the stated range, calculate the total, calculate the average, produce the result.",
-      "Review focus: every sub-problem has a clear input, responsibility and output.",
-    ],
-  },
-  booking: {
-    title: "Example 2: Event booking",
-    problem: "A student books places for an event. The system must reject a booking if there are not enough places.",
-    steps: [
-      "Decompose: InputRequest, CheckEligibility, CheckPlaces, CalculateCost, UpdatePlaces, OutputDecision.",
-      "Abstract: keep RequestedPlaces, PlacesLeft and TicketPrice because they affect decisions and calculations.",
-      "Ignore: poster font, exact colour of the ticket and the organiser's desk.",
-      "Decision responsibility: compare RequestedPlaces with PlacesLeft before accepting and updating the booking.",
-      "Trap: outputting confirmation before checking places creates a false booking.",
-    ],
-  },
-  login: {
-    title: "Example 3: Login check",
-    problem: "A user enters a username and password. The program outputs Access granted or Access denied.",
-    steps: [
-      "Decompose: InputCredentials, ValidateNotBlank, CompareUsername, ComparePassword, OutputResult.",
-      "Abstract: keep EnteredUsername, EnteredPassword, StoredUsername and StoredPassword.",
-      "Ignore: the shape of the login button; it is interface design, not algorithm logic.",
-      "Comparison responsibility: compare both entered credential values with the stored values.",
-      "Security note: do not print the password as an output.",
-    ],
-  },
-  receipt: {
-    title: "Example 4: Receipt total",
-    problem: "A shop plan receives four item prices and produces the total.",
-    steps: [
-      "Decompose: ReceivePrices, CheckPrices, CalculateTotal, ApplyDiscount, ProduceReceipt.",
-      "Abstract: keep the four prices, any stated discount rule and the required total.",
-      "Ignore: shelf colour and cashier name unless the question makes them required outputs.",
-      "Quantity constraint: exactly four prices are supplied.",
-      "Review focus: the sub-problems collectively account for every required calculation and output.",
-    ],
-  },
+  pass: { title: "Example 1: pass decision", problem: "A mark produces either Pass or Resit needed.", steps: ["Input: Mark.", "Output: one of the two stated messages.", "Constraint: Mark is an integer from 0 to 100.", "Process: compare Mark with the stated pass level of 50.", "Assumption: one valid mark is supplied."] },
+  average: { title: "Example 2: average of five values", problem: "Five values are supplied and their average is required.", steps: ["Input: five numeric values.", "Output: Average.", "Constraint: exactly five values are supplied.", "Process: add the five values, then divide the total by 5.", "Check: the plan accounts for every supplied value and the final division."] },
+  validate: { title: "Example 3: accepted age", problem: "State whether an age is within 11 to 18 inclusive.", steps: ["Input: Age.", "Output: Valid or Invalid.", "Constraint: both 11 and 18 are accepted.", "Process: compare the age with both limits.", "Assumption: Age is supplied as a whole number."] },
+  max: { title: "Example 4: highest score", problem: "Six supplied scores produce one highest score.", steps: ["Input: six scores.", "Output: Highest score.", "Constraint: exactly six scores are supplied.", "Process: compare the scores while retaining the greatest value.", "Check: no score may be omitted from the plan."] },
 };
 
 const practice = [
-  { id: "p1", prompt: "What term means splitting a problem into smaller sub-problems?", accepted: ["decomposition"], answer: "Decomposition" },
-  { id: "p2", prompt: "What term means keeping relevant details and ignoring irrelevant details?", accepted: ["abstraction"], answer: "Abstraction" },
-  { id: "p3", prompt: "In a booking system, should PlacesLeft be kept or ignored?", accepted: ["kept", "keep"], answer: "Keep it because it affects whether a booking is accepted." },
-  { id: "p4", prompt: "In an average mark solution, name one useful sub-problem.", accepted: ["receive marks", "receivemarks", "check marks", "checkmarks", "calculate total", "calculatetotal", "calculate average", "calculateaverage", "produce average", "produceaverage"], answer: "For example: Receive marks, Check marks, Calculate total, Calculate average or Produce average." },
-  { id: "p5", prompt: "Should poster colour usually be kept in an event-booking algorithm? yes or no.", accepted: ["no"], answer: "No. It normally does not affect the algorithm." },
-  { id: "p6", prompt: "Which is a better sub-problem name: ProcessData or CheckMarkRange?", accepted: ["checkmarkrange", "check mark range"], answer: "CheckMarkRange / Check mark range, because it states a clear purpose." },
-  { id: "p7", prompt: "What should you identify before writing sub-problems: required input or decorative detail?", accepted: ["required input", "input", "inputs"], answer: "Required input / inputs." },
-  { id: "p8", prompt: "Give one reason decomposition helps testing.", accepted: ["each part can be tested", "test separately", "tested separately", "easier to test", "find errors"], answer: "Each sub-problem can be tested separately, making errors easier to find." },
-  { id: "p9", prompt: "Should each sub-problem state a clear responsibility? yes or no.", accepted: ["yes"], answer: "Yes. A clear responsibility prevents overlap and omissions." },
-  { id: "p10", prompt: "Should a decorative detail be kept when it does not affect the required result? yes or no.", accepted: ["no"], answer: "No. Abstraction removes details that do not affect the result." },
+  { id: "p1", prompt: "What does IPOC stand for?", accepted: ["input process output constraints", "input process output constraint"], answer: "Input, Process, Output, Constraints" },
+  { id: "p2", prompt: "Which term describes data supplied to an algorithm?", accepted: ["input", "inputs"], answer: "Input" },
+  { id: "p3", prompt: "Which term describes the result produced by an algorithm?", accepted: ["output", "outputs"], answer: "Output" },
+  { id: "p4", prompt: "Which term describes a rule or limit such as 0 to 100?", accepted: ["constraint", "constraints"], answer: "Constraint" },
+  { id: "p5", prompt: "What term describes something treated as true when planning?", accepted: ["assumption", "assumptions"], answer: "Assumption" },
+  { id: "p6", prompt: "Should the required output be defined before choosing a representation? yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p7", prompt: "For an average of five values, how many inputs must the plan account for?", accepted: ["5", "five"], answer: "Five" },
+  { id: "p8", prompt: "For an accepted range of 11 to 18 inclusive, is 11 accepted? yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p9", prompt: "Which IPOC part contains 'calculate the total'?", accepted: ["process", "processing"], answer: "Process" },
+  { id: "p10", prompt: "What check confirms that every problem requirement appears in the plan?", accepted: ["completeness", "completeness check", "requirement check"], answer: "A completeness or requirement check" },
 ];
 
 const mistakes = [
-  {
-    wrong: "I decomposed a program into modules called Part1, Part2 and Part3.",
-    fix: "Use meaningful verb-based names such as ReceiveMarks, CheckMarkRange and CalculateAverage so the purpose is clear.",
-  },
-  {
-    wrong: "I kept the poster colour because it was mentioned in the story.",
-    fix: "Only keep a detail if it affects input, processing, output or constraints. Mentioned does not always mean relevant.",
-  },
-  {
-    wrong: "I made every tiny action a separate sub-problem.",
-    fix: "A sub-problem should represent a useful task that can be understood and tested, not one tiny statement.",
-  },
-  {
-    wrong: "I started coding the whole solution before deciding the sub-problems.",
-    fix: "Plan meaningful sub-problems first and state how their responsibilities and outputs connect.",
-  },
+  { wrong: "I planned several calculations but never defined the required result.", fix: "State the output first, then include only processing steps that produce it." },
+  { wrong: "I assumed ten values would be supplied, but the problem never says how many.", fix: "Record only supported assumptions. If quantity is unknown, identify it as missing information." },
+  { wrong: "My plan says 'process the data' without naming the required transformation.", fix: "Replace vague wording with a precise action such as calculate total, compare with a limit or find the greatest value." },
+  { wrong: "The stated range is 0 to 100, but my plan checks only the upper limit.", fix: "Record both the lower and upper limits so the complete constraint is represented." },
 ];
 
 
@@ -138,276 +50,121 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A program is required to process event bookings. It must input the number of requested places, check if enough places are available, calculate the total cost and output a booking decision. Decompose this problem into four suitable sub-problems.",
-    answer: "Suitable sub-problems include input booking request / requested places, check available places, calculate total cost, update places left and output booking decision. The names should describe the purpose of each part.",
+    prompt: "A program receives a Mark and produces Pass when the mark is at least 50. Identify the input, output, process and one constraint.",
+    answer: "Input: Mark. Output: Pass or Resit needed. Process: compare Mark with 50 and choose the required message. Constraint: Mark is an integer from 0 to 100.",
     marking: [
-      { mark: "B1", text: "identifies input/request sub-problem" },
-      { mark: "B1", text: "identifies check available places / validation sub-problem" },
-      { mark: "B1", text: "identifies calculate total cost sub-problem" },
-      { mark: "B1", text: "identifies output booking decision/confirmation sub-problem" },
+      { mark: "B1", text: "identifies Mark as input" },
+      { mark: "B1", text: "identifies the required output messages" },
+      { mark: "B1", text: "describes comparison with 50" },
+      { mark: "B1", text: "states a valid mark range/type constraint" },
     ],
     strict: [
-      "Do not award a mark for vague names such as DoStuff unless purpose is explained.",
-      "Allow update PlacesLeft as an additional valid sub-problem.",
-      "Do not require implementation syntax.",
+      "Do not accept vague 'number' without linking it to Mark.",
+      "Allow equivalent output wording.",
+      "Do not award a constraint that merely repeats the output.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Explain abstraction using the event booking problem. Give two details that should be kept and two details that can be ignored.",
-    answer: "Abstraction means selecting details relevant to the algorithm and ignoring irrelevant details. RequestedPlaces and PlacesLeft should be kept because they decide whether the booking is accepted. TicketPrice should also be kept if total cost is required. Poster colour and room decoration can be ignored because they do not change the input, processing, output or constraints.",
+    marks: "5 marks",
+    prompt: "Complete an IPOC plan for a problem that receives Length and Width and produces the rectangle Area.",
+    answer: "Input: Length and Width. Process: multiply Length by Width. Output: Area. Constraints: both dimensions are positive numeric values and use the same unit. Assumption: the shape is a rectangle.",
     marking: [
-      { mark: "B1", text: "defines abstraction as keeping relevant details / ignoring irrelevant details" },
-      { mark: "B1", text: "identifies RequestedPlaces or equivalent as relevant" },
-      { mark: "B1", text: "identifies PlacesLeft or TicketPrice as relevant" },
-      { mark: "B1", text: "identifies a suitable irrelevant detail such as poster colour" },
-      { mark: "B1", text: "identifies a second suitable irrelevant detail such as room decoration" },
-      { mark: "B1", text: "explains relevance in terms of algorithm logic, not personal preference" },
+      { mark: "B1", text: "Length input" },
+      { mark: "B1", text: "Width input" },
+      { mark: "B1", text: "multiplication process" },
+      { mark: "B1", text: "Area output" },
+      { mark: "B1", text: "valid constraint or assumption" },
     ],
     strict: [
-      "Do not accept 'important details' alone without saying relevant to the algorithm.",
-      "Allow other details if clearly tied to decision, calculation, input or output.",
-      "Do not award irrelevant-detail marks for details that affect the stated output.",
+      "Do not award addition as the area process.",
+      "Allow equivalent positive-dimension constraints.",
+      "Do not require notation or code.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A student decomposes a class-average program into InputMarks, ValidateMark, CalculateTotal, CalculateAverage and OutputAverage. Explain why this decomposition is useful when designing and testing the algorithm.",
-    answer: "The decomposition separates the problem into smaller tasks with clear purposes. Receiving and checking marks can be reviewed before calculations. CalculateTotal and CalculateAverage can be checked with known values. ProduceAverage can be checked against the required output. Errors can therefore be located in one sub-problem.",
+    prompt: "A problem supplies five numbers and requires their average. Describe the inputs, output, constraints and ordered processing steps.",
+    answer: "The inputs are five numeric values and the output is their average. Exactly five values are supplied. Add all five values to obtain a total, divide that total by 5, then provide the average.",
     marking: [
-      { mark: "B1", text: "states problem is split into smaller tasks/sub-problems" },
-      { mark: "B1", text: "links named modules to clear purposes" },
-      { mark: "B1", text: "explains mark checking can be reviewed before calculations" },
-      { mark: "B1", text: "explains calculation sub-problems can be checked separately" },
-      { mark: "B1", text: "explains errors can be located/corrected more easily" },
-      { mark: "B1", text: "uses the class-average context rather than a generic claim only" },
+      { mark: "B1", text: "identifies five numeric inputs" },
+      { mark: "B1", text: "identifies average output" },
+      { mark: "B1", text: "states exactly-five constraint" },
+      { mark: "B1", text: "adds all values" },
+      { mark: "B1", text: "divides total by 5" },
+      { mark: "B1", text: "places steps in a coherent order" },
     ],
     strict: [
-      "Do not award repeated vague claims such as 'it is better' without cause.",
-      "Allow maintainability/readability if linked to a named sub-problem.",
-      "Do not require every listed module to be discussed.",
+      "Do not require control-structure notation.",
+      "Allow Sum instead of Total.",
+      "Do not accept division before the total is formed.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A login algorithm uses EnteredUsername, EnteredPassword, StoredUsername and StoredPassword. State whether each is part of the abstraction and explain one detail that should not be included.",
-    answer: "All four named values are part of the abstraction because they are required to compare entered credentials with stored credentials. A detail such as the colour of the login button or background image should not be included because it does not affect the comparison or the access decision.",
+    prompt: "A booking system has 30 places. Analyse a request using IPOC and state one assumption that must be confirmed.",
+    answer: "Input: RequestedPlaces and PlacesRemaining. Process: compare the request with the remaining capacity and calculate a cost if accepted. Output: accepted/rejected decision and any required cost. Constraint: the request cannot exceed remaining capacity. Assumption to confirm: ticket price or whether partial bookings are allowed.",
     marking: [
-      { mark: "B1", text: "states EnteredUsername is relevant" },
-      { mark: "B1", text: "states EnteredPassword is relevant" },
-      { mark: "B1", text: "states stored username/password values are relevant" },
-      { mark: "B1", text: "gives a suitable irrelevant interface/detail example" },
-      { mark: "B1", text: "explains relevance using comparison/access decision" },
+      { mark: "B1", text: "identifies booking request input" },
+      { mark: "B1", text: "identifies remaining-capacity input" },
+      { mark: "B1", text: "describes capacity comparison" },
+      { mark: "B1", text: "identifies decision output" },
+      { mark: "B1", text: "states a relevant unsupported assumption" },
     ],
     strict: [
-      "Do not require discussion of hashing/encryption; this is an abstraction question.",
-      "Allow credential values as a grouped explanation.",
-      "Do not accept ignoring passwords because they are private; privacy does not make them irrelevant to this algorithm.",
+      "Do not invent a ticket price as a confirmed fact.",
+      "Allow another relevant booking assumption.",
+      "Do not require implementation notation.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "Describe five sub-problems for a mark-processing solution and state the responsibility of each.",
-    answer: "ReceiveMarks obtains the required values; CheckMarks checks the stated range; CalculateTotal combines the accepted values; CalculateAverage uses the total and number of marks; ProduceResult provides the required average.",
+    marks: "4 marks",
+    prompt: "Define an algorithm and explain why 'process the data' alone is not a complete algorithm.",
+    answer: "An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must state an unambiguous action and the sequence must lead from the supplied data to the required result. 'Process the data' does not identify the operation, order or output, so it is not a defined sequence that can be followed.",
     marking: [
-      { mark: "B1", text: "receives the required marks" },
-      { mark: "B1", text: "checks marks against the stated requirement" },
-      { mark: "B1", text: "calculates the total" },
-      { mark: "B1", text: "calculates the average" },
-      { mark: "B1", text: "produces the required result" },
+      { mark: "B1", text: "states that an algorithm is a solution to a problem" },
+      { mark: "B1", text: "states that it is expressed as a sequence of defined steps" },
+      { mark: "B1", text: "explains that each step must be unambiguous/capable of being carried out" },
+      { mark: "B1", text: "explains that 'process the data' omits the operation, order or required result" },
     ],
     strict: [
-      "Do not require implementation notation.",
-      "Allow equivalent verb-based sub-problem names.",
-      "Do not award vague labels without responsibilities.",
+      "Do not accept only 'a list of instructions'.",
+      "Allow precise equivalent wording for defined/unambiguous steps.",
+      "Do not award an example that never defines the term algorithm.",
     ],
   },
 ];
 
-function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9 ]/g, "");
-}
-
-function setupPrint() {
-  document.querySelector("#printBtn").addEventListener("click", () => window.print());
-}
-
+function normalise(value) { return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";"); }
+function setupPrint() { document.querySelector("#printBtn").addEventListener("click", () => window.print()); }
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
-  const responses = {
-    places: "Keep it. PlacesLeft affects whether the booking can be accepted.",
-    font: "Ignore it. The poster font does not change the booking algorithm.",
-    age: "Keep it if eligibility depends on age. It becomes an eligibility constraint.",
-    weather: "Ignore it unless the question explicitly makes weather a condition. Nice photo, not useful logic.",
-  };
-  document.querySelectorAll("[data-hook]").forEach((button) => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
-      button.classList.add("selected");
-      feedback.textContent = responses[button.dataset.hook];
-    });
-  });
+  const responses = { input: "Fault: required input or assumption is missing.", output: "Fault: the plan has activity but no defined result.", constraint: "Fault: a required rule or limit is missing.", process: "Fault: the process needs precise ordered actions, not a vague command." };
+  document.querySelectorAll("[data-hook]").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected")); button.classList.add("selected"); feedback.textContent = responses[button.dataset.hook]; }));
 }
-
-function setupSorter() {
-  const input = document.querySelector("#sorterInput");
-  const result = document.querySelector("#sorterResult");
-  document.querySelector("#sorterBtn").addEventListener("click", () => {
-    const item = sorterMap[input.value];
-    result.innerHTML = `<strong>${item.topic}</strong><span>${item.detail}</span>`;
-  });
+function setupClassifier() {
+  const input = document.querySelector("#classifierInput");
+  const result = document.querySelector("#classifyResult");
+  const show = () => { const item = classifierMap[input.value]; result.innerHTML = `<strong>${item.topic}</strong><br />${item.detail}`; };
+  input.addEventListener("change", show); document.querySelector("#classifyBtn").addEventListener("click", show); show();
 }
-
-function setupFilter() {
-  const grid = document.querySelector("#filterGrid");
-  grid.innerHTML = filterItems.map((item) => `
-    <article class="filter-card">
-      <h3>${item.text}</h3>
-      <div class="button-row">
-        <button type="button" data-filter="${item.id}" data-choice="keep">Keep</button>
-        <button type="button" data-filter="${item.id}" data-choice="ignore">Ignore</button>
-      </div>
-      <p id="filter-${item.id}" aria-live="polite">Choose keep or ignore.</p>
-    </article>
-  `).join("");
-
-  grid.querySelectorAll("button[data-filter]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const item = filterItems.find((entry) => entry.id === button.dataset.filter);
-      const chosenKeep = button.dataset.choice === "keep";
-      const correct = chosenKeep === item.keep;
-      const target = document.querySelector(`#filter-${item.id}`);
-      target.innerHTML = `<strong class="${correct ? "mark correct" : "mark incorrect"}">${correct ? "Correct" : "Not quite"}</strong> ${item.reason}`;
-    });
-  });
-}
-
 function setupBuilder() {
-  const input = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#builderResult");
-  document.querySelector("#buildBtn").addEventListener("click", () => {
-    const plan = scenarioPlans[input.value];
-    result.innerHTML = `
-      <strong>${plan.title}</strong>
-      <span><strong>Sub-problems:</strong> ${plan.modules.join(" -> ")}</span>
-      <span><strong>Abstraction:</strong> ${plan.abstraction}</span>
-    `;
-  });
+  const input = document.querySelector("#problemInput"); const result = document.querySelector("#builderResult");
+  const show = () => { const item = ipocMap[input.value]; result.innerHTML = `<strong>Input:</strong> ${item.input}<br /><strong>Process:</strong> ${item.process}<br /><strong>Output:</strong> ${item.output}<br /><strong>Constraint:</strong> ${item.constraint}`; };
+  input.addEventListener("change", show); document.querySelector("#buildBtn").addEventListener("click", show); show();
 }
-
-function renderExample(key) {
-  const example = examples[key];
-  document.querySelector("#exampleBox").innerHTML = `
-    <h3>${example.title}</h3>
-    <p><strong>Problem:</strong> ${example.problem}</p>
-    <ol>${example.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
-  `;
-}
-
-function setupExamples() {
-  document.querySelectorAll("[data-example]").forEach((tab) => {
-    tab.addEventListener("click", () => {
-      document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
-      tab.classList.add("active");
-      renderExample(tab.dataset.example);
-    });
-  });
-  renderExample("average");
-}
-
-function setupPractice() {
+function renderExample(key) { const example = examples[key]; document.querySelector("#exampleBox").innerHTML = `<h3>${example.title}</h3><p><strong>Problem:</strong> ${example.problem}</p><ol>${example.steps.map((step) => `<li>${step}</li>`).join("")}</ol>`; }
+function setupExamples() { document.querySelectorAll("[data-example]").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active")); button.classList.add("active"); renderExample(button.dataset.example); })); renderExample("pass"); }
+function renderPractice() {
   const list = document.querySelector("#practiceList");
-  list.innerHTML = practice.map((item) => `
-    <article class="practice-item">
-      <p><strong>${item.id.toUpperCase()}.</strong> ${item.prompt}</p>
-      <div class="practice-row">
-        <input id="${item.id}" type="text" autocomplete="off" />
-        <button class="primary-button" type="button" data-check="${item.id}">Check</button>
-      </div>
-      <div class="mark" id="${item.id}-mark" aria-live="polite"></div>
-      <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
-      <div class="answer-panel" id="${item.id}-answer">${item.answer}</div>
-    </article>
-  `).join("");
-
-  list.querySelectorAll("[data-check]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const item = practice.find((entry) => entry.id === button.dataset.check);
-      const value = normalise(document.querySelector(`#${item.id}`).value);
-      const accepted = item.accepted.map(normalise);
-      const isCorrect = accepted.includes(value);
-      const mark = document.querySelector(`#${item.id}-mark`);
-      mark.textContent = isCorrect ? "Correct" : "Try again, then use Show answer.";
-      mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
-    });
-  });
-
-  list.querySelectorAll("[data-answer]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.answer}-answer`);
-      panel.classList.toggle("visible");
-      button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer";
-    });
-  });
+  list.innerHTML = practice.map((item, index) => `<article class="practice-item"><p><strong>${index + 1}.</strong> ${item.prompt}</p><div class="practice-row"><input type="text" id="${item.id}" autocomplete="off" aria-label="Answer for question ${index + 1}" /><span class="mark" id="${item.id}Mark">Not checked</span></div><button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button><div class="answer-panel" id="${item.id}Answer"><strong>Answer:</strong> ${item.answer}</div></article>`).join("");
+  practice.forEach((item) => { const input = document.querySelector(`#${item.id}`); const mark = document.querySelector(`#${item.id}Mark`); input.addEventListener("input", () => { const value = normalise(input.value); const correct = item.accepted.some((answer) => normalise(answer) === value); mark.textContent = value.length === 0 ? "Not checked" : correct ? "Correct" : "Try again"; mark.classList.toggle("correct", correct); mark.classList.toggle("incorrect", value.length > 0 && !correct); }); });
+  document.querySelectorAll("[data-answer]").forEach((button) => button.addEventListener("click", () => { const panel = document.querySelector(`#${button.dataset.answer}Answer`); panel.classList.toggle("visible"); button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer"; }));
 }
-
-function setupMistakes() {
-  const grid = document.querySelector("#mistakeGrid");
-  grid.innerHTML = mistakes.map((item, index) => `
-    <article>
-      <p class="wrong"><strong>Mistake ${index + 1}:</strong> ${item.wrong}</p>
-      <button class="answer-toggle" type="button" data-fix="${index}">Show correction</button>
-      <div class="answer-panel" id="fix-${index}">${item.fix}</div>
-    </article>
-  `).join("");
-
-  grid.querySelectorAll("[data-fix]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const panel = document.querySelector(`#fix-${button.dataset.fix}`);
-      panel.classList.toggle("visible");
-      button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
-    });
-  });
-}
-
-function setupExam() {
-  const list = document.querySelector("#examList");
-  list.innerHTML = examQuestions.map((question, index) => `
-    <article class="exam-card">
-      <div class="exam-head">
-        <h3>${question.title}</h3>
-        <span>${question.marks}</span>
-      </div>
-      <p>${question.prompt}</p>
-      <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
-      <div class="ms-panel" id="ms-${index}">
-        <p><strong>Answer:</strong></p>
-        <pre><code>${question.answer}</code></pre>
-        <p><strong>Mark scheme:</strong></p>
-        ${renderStudentMarkPoints(question)}
-      </div>
-    </article>
-  `).join("");
-
-  list.querySelectorAll("[data-ms]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const panel = document.querySelector(`#ms-${button.dataset.ms}`);
-      panel.classList.toggle("visible");
-      button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
-    });
-  });
-}
-
-setupPrint();
-setupHook();
-setupSorter();
-setupFilter();
-setupBuilder();
-setupExamples();
-setupPractice();
-setupMistakes();
-setupExam();
+function renderMistakes() { const grid = document.querySelector("#mistakeGrid"); grid.innerHTML = mistakes.map((item, index) => `<article><p class="wrong"><strong>Weak design ${index + 1}:</strong> ${item.wrong}</p><button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button><div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div></article>`).join(""); document.querySelectorAll("[data-fix]").forEach((button) => button.addEventListener("click", () => { const panel = document.querySelector(`#${button.dataset.fix}`); panel.classList.toggle("visible"); button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction"; })); }
+function renderExamQuestions() { const list = document.querySelector("#examList"); list.innerHTML = examQuestions.map((question, index) => `<article class="exam-card"><div class="exam-head"><h3>${question.title}</h3><span>${question.marks}</span></div><p>${question.prompt}</p><button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button><div class="ms-panel" id="ms${index}"><p><strong>Answer:</strong></p><p>${question.answer}</p><h4>Mark scheme</h4>${renderStudentMarkPoints(question)}</div></article>`).join(""); document.querySelectorAll("[data-ms]").forEach((button) => button.addEventListener("click", () => { const panel = document.querySelector(`#${button.dataset.ms}`); panel.classList.toggle("visible"); button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS"; })); }
+function init() { setupPrint(); setupHook(); setupClassifier(); setupBuilder(); setupExamples(); renderPractice(); renderMistakes(); renderExamQuestions(); }
+init();

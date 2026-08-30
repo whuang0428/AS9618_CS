@@ -599,31 +599,31 @@ def current_repair_specs() -> dict[str, dict]:
         # These titles are part of the reviewed deterministic asset contract.
         # The target register title is editorial metadata and may be regenerated;
         # it must not silently change already-approved pixels.
-        "016/topologies": "Network topologies",
-        "030/cache-vm": "Cache and virtual memory affect performance in opposite directions",
-        "105/bubble": "Bubble sort: compare adjacent items and swap if needed",
+        "017/topologies": "Network topologies",
+        "031/cache-vm": "Cache and virtual memory affect performance in opposite directions",
+        "106/bubble": "Bubble sort: compare adjacent items and swap if needed",
         "074/ip": "What intellectual property can protect",
-        "083/normal-forms": "From 1NF to 3NF",
-        "111/analyser": "Stepwise refinement: from task to modules",
+        "084/normal-forms": "From 1NF to 3NF",
+        "112/analyser": "Stepwise refinement: from task to modules",
         "113/pseudocode": "The eight Cambridge pseudocode type names",
-        "118/declare": "Define, save and read a record",
-        "122/concept": "An ADT combines data and operations",
-        "122/implementation": "Array implementations of three ADTs",
+        "119/declare": "Define, save and read a record",
+        "123/concept": "An ADT combines data and operations",
+        "123/implementation": "Array implementations of three ADTs",
         "123/pseudocode": "Justify the data structure in Cambridge answers",
         "130/procedure": "A procedure performs actions and returns no value",
-        "133/substring": "Use the supplied string-function definition",
-        "140/standard": "From design description to pseudocode",
+        "134/substring": "Use the supplied string-function definition",
+        "141/standard": "From design description to pseudocode",
         "137/validation": "Testing checks validation against expected results",
         "145/evaluation": "Evaluation uses requirements and measurable success criteria",
     }
     subtitle_overrides = {
-        "083/normal-forms": "Each normal form removes a different dependency problem while preserving the represented facts.",
-        "111/analyser": "Each level replaces a complex step with a smaller, more precise and implementable sequence.",
+        "084/normal-forms": "Each normal form removes a different dependency problem while preserving the represented facts.",
+        "112/analyser": "Each level replaces a complex step with a smaller, more precise and implementable sequence.",
     }
     footer_overrides = {
-        "083/normal-forms": "Check in order: atomic values and no repeating groups -> no partial dependency -> no transitive dependency.",
-        "111/analyser": "Preserve the parent purpose at every level; all refined modules must still form one complete solution.",
-        "069/checks": "Range check • Format check • Length check • Presence check • Existence check • Limit check • Check digit.",
+        "084/normal-forms": "Check in order: atomic values and no repeating groups -> no partial dependency -> no transitive dependency.",
+        "112/analyser": "Preserve the parent purpose at every level; all refined modules must still form one complete solution.",
+        "070/checks": "Range check • Format check • Length check • Presence check • Existence check • Limit check • Check digit.",
     }
     specs: dict[str, dict] = {}
     for key, facts in facts_by_key.items():
@@ -1138,6 +1138,21 @@ SPECS.update({
         "ENDIF closes the function's selection before ENDFUNCTION closes the function.",
     ),
 })
+
+for current_key, source_key in {
+    "050/concept": "049/concept",
+    "108/pseudocode": "107/pseudocode",
+    "122/parse": "121/parse",
+    "122/pseudocode": "121/pseudocode",
+    "122/types": "121/types",
+    "134/case": "133/case",
+    "134/concat": "133/concat",
+    "134/java": "133/java",
+    "139/bug": "138/bug",
+    "145/algorithms": "144/algorithms",
+    "146/changeover": "145/changeover",
+}.items():
+    SPECS[current_key] = SPECS[source_key]
 
 
 def render(key: str, spec: dict, destination: Path) -> None:

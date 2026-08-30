@@ -10,19 +10,19 @@ const root = path.resolve(import.meta.dirname, "..");
 const webRoot = path.join(root, "web");
 
 const lessonSection = (lesson) => {
-  if (lesson <= 15) return "1";
-  if (lesson <= 26) return "2";
-  if (lesson <= 40) return "3";
-  if (lesson <= 51) return "4";
-  if (lesson <= 61) return "5";
-  if (lesson <= 71) return "6";
-  if (lesson <= 77) return "7";
-  if (lesson <= 89) return "8";
-  if (lesson <= 97) return "1-8";
-  if (lesson <= 112) return "9";
-  if (lesson <= 125) return "10";
-  if (lesson <= 141) return "11";
-  if (lesson <= 146) return "12";
+  if (lesson <= 16) return "1";
+  if (lesson <= 27) return "2";
+  if (lesson <= 41) return "3";
+  if (lesson <= 52) return "4";
+  if (lesson <= 62) return "5";
+  if (lesson <= 72) return "6";
+  if (lesson <= 78) return "7";
+  if (lesson <= 90) return "8";
+  if (lesson <= 98) return "1-8";
+  if (lesson <= 113) return "9";
+  if (lesson <= 126) return "10";
+  if (lesson <= 142) return "11";
+  if (lesson <= 147) return "12";
   return "9-12";
 };
 
@@ -120,10 +120,10 @@ export const dependencyQuestion = (prompt) => /\b(calculate|convert|add|subtract
 export const secondReviewDomain = (question) => {
   const sections = String(question.section).split(/[^0-9]+/).filter(Boolean).map(Number);
   if (question.source === "lesson") {
-    if (question.lesson >= 52 && question.lesson <= 61) return "System Software";
-    if (question.lesson >= 62 && question.lesson <= 71) return "Security";
-    if (question.lesson >= 72 && question.lesson <= 77) return "Ethics";
-    if (question.lesson >= 78 && question.lesson <= 89) return "Databases";
+    if (question.lesson >= 53 && question.lesson <= 62) return "System Software";
+    if (question.lesson >= 63 && question.lesson <= 72) return "Security";
+    if (question.lesson >= 73 && question.lesson <= 78) return "Ethics";
+    if (question.lesson >= 79 && question.lesson <= 90) return "Databases";
   }
   if (sections.includes(5)) return "System Software";
   if (sections.includes(6)) return "Security";

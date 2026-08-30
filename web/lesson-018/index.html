@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 018 | Packet switching, routing and packet structure</title>
+    <title>AS9618 Lesson 018 | Bus, star, mesh and hybrid topologies</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -18,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Packet switching, routing and packet structure</h1>
+        <h1>Bus, star, mesh and hybrid topologies</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,11 +29,11 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#switching">Packet switching</a>
-        <a href="#structure">Packet structure</a>
-        <a href="#routing">Routing</a>
-        <a href="#packet-journey">Packet journey</a>
-        <a href="#tool">Route tool</a>
+        <a href="#roles">Roles</a>
+        <a href="#model-visual">Visual model</a>
+        <a href="#compare">Comparison</a>
+        <a href="#usecases">Use cases</a>
+        <a href="#tool">Model tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
@@ -47,66 +46,57 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-        <!-- remediation-v2-optional:start -->
+<!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
           <p>general packet switching, routing and packet structure beyond packet paths for the named topologies. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
           <p><strong>Formal AS prerequisite:</strong> S2.04 bus, star, mesh and hybrid topologies.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
+
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Packet transmission between two hosts in each required topology</h2>
+            <h2>Bus, star, mesh and hybrid topologies</h2>
           </div>
           <div class="stage2-explanation">
-            <p>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</p>
-            <p>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</p>
-            <p>To justify a topology, link the packet path, dependence on central hardware, alternative routes and failure behaviour to the given situation.</p>
+            <p>A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.</p>
+            <p>Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Send a patient record across a hybrid hospital network</h3>
-            <p>The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p>
+            <h3>Worked example: Compare failure paths</h3>
+            <p>After one end-device cable fails, only that device normally loses access in a star. If the central switch fails, every attached device loses access. A mesh can retain an alternative path after one link fails.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Packet transmission between two hosts in each required topology: apply and assess</h2>
+            <h2>Bus, star, mesh and hybrid topologies: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> How is a transmission carried between two hosts in a bus topology?</p>
-              <details><summary>Show answer</summary><p>The signal travels along the shared backbone and the attached hosts inspect it.</p></details>
+              <p><strong>1.</strong> Describe the path followed in a star topology.</p>
+              <details><summary>Show answer</summary><p>A frame travels from the sender to the central switch and then to the destination.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Where does a frame pass in a star network?</p>
-              <details><summary>Show answer</summary><p>Through the central switch.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why can a mesh continue after one link fails?</p>
-              <details><summary>Show answer</summary><p>Packets may use an alternative link or route.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Describe one possible packet path through a hybrid made from two stars.</p>
-              <details><summary>Show answer</summary><p>Source to its switch, across the link between star segments, then through the destination switch to the receiving host.</p></details>
+              <p><strong>2.</strong> Why can a mesh be more resilient than a bus?</p>
+              <details><summary>Show answer</summary><p>Its multiple links can provide an alternative route after one link fails.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Compare star and mesh topologies for a hospital network and justify one choice.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>star packet/frame passes through a central switch</td><td>Do not accept 'mesh is better' without a packet-path or failure consequence.</td><td>1</td></tr>
-                  <tr><td>mesh provides multiple interconnected paths / possible routes</td><td></td><td>1</td></tr>
-                  <tr><td>star switch is a single point of failure</td><td></td><td>1</td></tr>
-                  <tr><td>mesh can use an alternative route when a link fails</td><td></td><td>1</td></tr>
-                  <tr><td>choice is justified from the stated fault-sensitivity and a path consequence</td><td></td><td>1</td></tr>
+                  <tr><td>accurate star path</td><td>Do not credit a topology name without an accurate connection pattern and consequence.</td><td>1</td></tr>
+                  <tr><td>accurate mesh path</td><td></td><td>1</td></tr>
+                  <tr><td>developed failure or cost comparison</td><td></td><td>1</td></tr>
+                  <tr><td>scenario-linked justification</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -117,245 +107,301 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 018 | 45 minutes | Paper 1 Section 2</p>
-            <h2>The internet does not send your file as one heroic lump.</h2>
+            <h2>Who serves, who asks, and who secretly does both?</h2>
             <p>
-              Data is split into packets. Each packet carries control information and
-              payload, may travel by different routes, and is reassembled at the
-              destination using sequence information and error checks.
+              Network models describe roles. In a client-server model, clients request
+              services from one or more servers. In a peer-to-peer model, devices can
+              act as both clients and servers, sharing resources directly with each other.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>why packet switching splits data into packets</span></div>
-              <div><strong>Identify</strong><span>source address, destination address, sequence number, checksum and payload</span></div>
-              <div><strong>Trace</strong><span>routing, out-of-order arrival and retransmission in scenarios</span></div>
+              <div><strong>Define</strong><span>client, server and peer using precise network vocabulary</span></div>
+              <div><strong>Compare</strong><span>client-server and peer-to-peer models by management, cost and reliability</span></div>
+              <div><strong>Choose</strong><span>a suitable model for realistic school, office and sharing scenarios</span></div>
             </div>
           </div>
-          <div class="packet-card" aria-label="Packet concept">
-            <span>header | payload | trailer</span>
-            <p>The payload contains the transmitted data; the header contains information needed to deliver and reassemble it.</p>
+          <div class="model-card" aria-label="Network model concept">
+            <span>request -> service -> response</span>
+            <p>A server is not “the big computer”. It is the device or software providing a service.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Network explanation marks often come from naming the metadata and explaining exactly what it is used for.</p>
+            <p>Cambridge questions often ask for advantages and disadvantages; marks depend on linking each point to a model feature.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Packets do not have to follow the same path or arrive in order. That is why sequence numbers matter.</p>
+            <p>Client-server and peer-to-peer are not topologies. They describe how services and resources are organised.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A 30 MB video is sent across a network. Why split it into packets?</h2>
+            <h2>A student downloads a file from a school file server. What is the student's computer?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="routes">Packets can be routed and handled separately</button>
-            <button class="choice-card" type="button" data-hook="hide">So the file becomes invisible</button>
-            <button class="choice-card" type="button" data-hook="one">So it must use one fixed path</button>
-            <button class="choice-card" type="button" data-hook="noaddress">So addresses are not needed</button>
+            <button class="choice-card" type="button" data-hook="client">Client</button>
+            <button class="choice-card" type="button" data-hook="server">Server</button>
+            <button class="choice-card" type="button" data-hook="peer">Peer only</button>
+            <button class="choice-card" type="button" data-hook="router">Router</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the answer that helps networks share capacity and recover from problems.
+            Pick the role. The device requesting a service is the client, even if it looks very important on a desk.
           </div>
         </section>
 
-        <section class="panel" id="switching" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+        <section class="panel" id="roles" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Packet switching</h2>
+            <h2>Core roles</h2>
           </div>
-          <div class="concept-grid">
+          <div class="role-grid">
             <article>
-              <h3>Split</h3>
-              <p>A message or file is divided into smaller packets before transmission.</p>
+              <h3>Client</h3>
+              <p>A client requests a service or resource, such as a web page, file, login or print job.</p>
             </article>
             <article>
-              <h3>Share</h3>
-              <p>Packets from many users can share network links instead of one message reserving a whole route.</p>
+              <h3>Server</h3>
+              <p>A server provides a service or resource to clients, often with central control over data and access.</p>
             </article>
             <article>
-              <h3>Route</h3>
-              <p>Each packet can be routed independently through available paths.</p>
+              <h3>Peer</h3>
+              <p>A peer can request and provide resources directly, so devices share responsibility instead of relying on one central server.</p>
             </article>
             <article>
-              <h3>Reassemble</h3>
-              <p>The destination uses sequence numbers to put packets back in the correct order.</p>
+              <h3>Service</h3>
+              <p>A service is the function provided, such as file storage, authentication, email, printing or web hosting.</p>
             </article>
           </div>
-          <div class="callout">Chinese support: packet = 数据包；payload = 有效载荷/实际数据；routing = 路由；reassemble = 重新组装。</div>
+          <div class="callout">Chinese support: client = 客户端；server = 服务器；peer = 对等节点；service = 服务。</div>
         </section>
 
-        <!-- stage10-explanation:start switching -->
-        <section class="panel explanation-panel" id="explanation-switching" data-explains="switching" data-explanation-kind="mechanism" aria-labelledby="explanation-switching-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
-          <h2 class="explanation-sr-only" id="explanation-switching-title">Packet switching</h2>
+        <!-- stage10-explanation:start roles -->
+        <section class="panel explanation-panel" id="explanation-roles" data-explains="roles" data-explanation-kind="mechanism" aria-labelledby="explanation-roles-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+          <h2 class="explanation-sr-only" id="explanation-roles-title">Core roles</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-switching.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet switching with a structured visual model." />
-            <figcaption class="explanation-sr-only">Packet switching: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-roles.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core roles with a structured visual model." />
+            <figcaption class="explanation-sr-only">Core roles: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A message or file is divided into smaller packets before transmission.</li><li><strong>Lesson fact:</strong> Packets from many users can share network links instead of one message reserving a whole route.</li><li><strong>Lesson fact:</strong> Each packet can be routed independently through available paths.</li><li><strong>Lesson fact:</strong> Reassemble</li><li><strong>Lesson fact:</strong> The destination uses sequence numbers to put packets back in the correct order.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A client requests a service or resource, such as a web page, file, login or print job.</li><li><strong>Lesson fact:</strong> A server provides a service or resource to clients, often with central control over data and access.</li><li><strong>Lesson fact:</strong> A peer can request and provide resources directly, so devices share responsibility instead of relying on one central server.</li><li><strong>Lesson fact:</strong> A service is the function provided, such as file storage, authentication, email, printing or web hosting.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end switching -->
-        <section class="panel" id="structure" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Packet structure</h2>
-          </div>
-          <div class="packet-diagram" aria-label="Packet structure diagram">
-            <div class="packet-part header">
-              <h3>Header</h3>
-              <p>Source address, destination address, sequence number, protocol/control data.</p>
-            </div>
-            <div class="packet-part payload">
-              <h3>Payload</h3>
-              <p>The actual data being sent, such as part of a file or message.</p>
-            </div>
-            <div class="packet-part trailer">
-              <h3>Trailer</h3>
-              <p>Error-checking information such as checksum, depending on the protocol.</p>
-            </div>
-          </div>
-          <div class="trap-card inline">
-            <h3>Common error</h3>
-            <p>Do not describe the header as “extra information” only. Name what is inside it and what each item does.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start structure -->
-        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
-          <h2 class="explanation-sr-only" id="explanation-structure-title">Packet structure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Packet structure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Source address, destination address, sequence number, protocol/control data.</li><li><strong>Lesson fact:</strong> The actual data being sent, such as part of a file or message.</li><li><strong>Lesson fact:</strong> Error-checking information such as checksum, depending on the protocol.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Do not describe the header as “extra information” only. Name what is inside it and what each item does.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end structure -->
-        <section class="panel" id="routing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Routing and arrival</h2>
-          </div>
-          <div class="route-grid">
-            <article><strong>Router decision</strong><span>Routers forward packets based on destination address and routing information.</span></article>
-            <article><strong>Different paths</strong><span>Packets from the same message may take different routes through the network.</span></article>
-            <article><strong>Out of order</strong><span>Packets may arrive in a different order because routes have different delays.</span></article>
-            <article><strong>Error handling</strong><span>Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start routing -->
-        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
-          <h2 class="explanation-sr-only" id="explanation-routing-title">Routing and arrival</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-routing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Routing and arrival with a structured visual model." />
-            <figcaption class="explanation-sr-only">Routing and arrival: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Router decision Routers forward packets based on destination address and routing information.</li><li><strong>Lesson fact:</strong> Different paths Packets from the same message may take different routes through the network.</li><li><strong>Lesson fact:</strong> Out of order Packets may arrive in a different order because routes have different delays.</li><li><strong>Lesson fact:</strong> Error handling Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end routing -->
-        <section class="panel visual-explainer" id="packet-journey" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+        <!-- stage10-explanation:end roles -->
+        <section class="panel" id="model-visual" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Visual explanation</p>
-            <h2>One message, several routes, one reassembled result</h2>
-            <p>Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</p>
+            <h2>One model has equal peers; the other has dedicated service roles</h2>
+            <p>Follow the arrows and identify which devices can provide a resource.</p>
           </div>
-          <figure class="concept-figure">
-            <svg class="concept-svg" viewBox="0 0 960 500" role="img" aria-labelledby="packetJourneyTitle packetJourneyDesc">
-              <title id="packetJourneyTitle">Packet switching journey across alternative routes</title>
-              <desc id="packetJourneyDesc">A sender splits a message into three numbered packets. Routers send packets one and three on the upper route and packet two on the lower route. The receiver reorders the packets to recreate the message.</desc>
-              <defs>
-                <marker id="packetArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
-              </defs>
-              <rect class="svg-node svg-node--accent" x="24" y="170" width="170" height="150" rx="18" />
-              <text class="svg-node-label" x="109" y="205">Sender</text>
-              <text class="svg-node-detail" x="109" y="234">Message split into</text>
-              <g aria-hidden="true">
-                <rect class="svg-badge" x="53" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="70" y="272">1</text>
-                <rect class="svg-badge" x="92" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="109" y="272">2</text>
-                <rect class="svg-badge" x="131" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="148" y="272">3</text>
-              </g>
-              <rect class="svg-node svg-node--ink" x="270" y="188" width="130" height="114" rx="18" />
-              <text class="svg-node-label svg-on-dark" x="335" y="232">Router A</text>
-              <text class="svg-node-detail svg-on-dark" x="335" y="258">chooses next hop</text>
-              <rect class="svg-node svg-node--accent" x="500" y="68" width="130" height="90" rx="18" />
-              <text class="svg-node-label" x="565" y="108">Router B</text>
-              <text class="svg-node-detail" x="565" y="133">upper route</text>
-              <rect class="svg-node svg-node--warm" x="500" y="342" width="130" height="90" rx="18" />
-              <text class="svg-node-label" x="565" y="382">Router C</text>
-              <text class="svg-node-detail" x="565" y="407">lower route</text>
-              <rect class="svg-node svg-node--green" x="750" y="170" width="186" height="150" rx="18" />
-              <text class="svg-node-label" x="843" y="205">Receiver</text>
-              <text class="svg-node-detail" x="843" y="234">reorders by sequence</text>
-              <text class="svg-node-label" x="843" y="278">1 · 2 · 3</text>
-              <path class="svg-line" d="M194 245 H270" marker-end="url(#packetArrow)" />
-              <path class="svg-line" d="M400 218 C445 218 445 113 500 113" marker-end="url(#packetArrow)" />
-              <path class="svg-line svg-line--warm" d="M400 272 C445 272 445 387 500 387" marker-end="url(#packetArrow)" />
-              <path class="svg-line" d="M630 113 C690 113 690 215 750 215" marker-end="url(#packetArrow)" />
-              <path class="svg-line svg-line--warm" d="M630 387 C690 387 690 275 750 275" marker-end="url(#packetArrow)" />
-              <g aria-hidden="true">
-                <circle class="svg-badge" cx="438" cy="153" r="19" /><text class="svg-badge-text" x="438" y="153">1</text>
-                <circle class="svg-badge" cx="694" cy="158" r="19" /><text class="svg-badge-text" x="694" y="158">3</text>
-                <circle cx="438" cy="342" r="19" fill="#c26710" stroke="#fff" stroke-width="3" /><text class="svg-badge-text" x="438" y="342">2</text>
-              </g>
-            </svg>
-            <ol class="visual-steps">
-              <li><strong>1. Split and label</strong><span>Each packet carries payload plus control data such as addresses and a sequence number.</span></li>
-              <li><strong>2. Choose next hop</strong><span>Each router uses the destination address and routing information.</span></li>
-              <li><strong>3. Travel independently</strong><span>Different routes can produce different arrival times.</span></li>
-              <li><strong>4. Reassemble</strong><span>The receiver uses sequence numbers to restore the original order.</span></li>
-            </ol>
-          </figure>
+
+          <div class="network-visual-grid">
+            <figure class="network-figure">
+              <h3>Peer-to-peer: every device can request and provide</h3>
+              <div class="peer-visual">
+                <img
+                  src="../assets/diagrams/lesson-018-peer-devices.jpg"
+                  width="1672"
+                  height="941"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Four equally sized computers, each displaying upload and download controls to show that every peer can provide and request files."
+                />
+                <svg class="peer-links" viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
+                  <defs>
+                    <marker id="peerArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+                      <path d="M 0 0 L 18 9 L 0 18 z" fill="#0f766e"></path>
+                    </marker>
+                  </defs>
+                  <path class="peer-link" d="M 500 250 C 720 180 950 180 1165 250"></path>
+                  <path class="peer-link" d="M 410 395 C 360 485 360 545 410 625"></path>
+                  <path class="peer-link" d="M 1260 405 C 1310 490 1310 550 1260 630"></path>
+                  <path class="peer-link" d="M 520 735 C 735 805 945 805 1150 735"></path>
+                </svg>
+              </div>
+              <figcaption>
+                The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.
+              </figcaption>
+              <ul class="visual-facts">
+                <li>No dedicated central server is required.</li>
+                <li>Each peer can request a file and provide one.</li>
+                <li>A peer going offline can make its shared resource unavailable.</li>
+              </ul>
+            </figure>
+
+            <figure class="network-figure">
+              <h3>Client-server: clients request a managed service</h3>
+              <svg class="client-server-diagram" viewBox="0 0 560 360" role="img" aria-labelledby="clientServerTitle clientServerDesc">
+                <title id="clientServerTitle">Client-server network model</title>
+                <desc id="clientServerDesc">Four clients exchange requests and responses with one central server that provides a managed service.</desc>
+                <defs>
+                  <marker id="serviceArrow" markerWidth="16" markerHeight="16" refX="8" refY="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+                    <path d="M 0 0 L 16 8 L 0 16 z" fill="#2563eb"></path>
+                  </marker>
+                </defs>
+                <path class="service-link" d="M 150 82 L 225 145"></path>
+                <path class="service-link" d="M 410 82 L 335 145"></path>
+                <path class="service-link" d="M 150 278 L 225 215"></path>
+                <path class="service-link" d="M 410 278 L 335 215"></path>
+                <g class="client-node">
+                  <rect x="35" y="48" width="120" height="68" rx="12"></rect>
+                  <text x="95" y="88">Client</text>
+                </g>
+                <g class="client-node">
+                  <rect x="405" y="48" width="120" height="68" rx="12"></rect>
+                  <text x="465" y="88">Client</text>
+                </g>
+                <g class="client-node">
+                  <rect x="35" y="244" width="120" height="68" rx="12"></rect>
+                  <text x="95" y="284">Client</text>
+                </g>
+                <g class="client-node">
+                  <rect x="405" y="244" width="120" height="68" rx="12"></rect>
+                  <text x="465" y="284">Client</text>
+                </g>
+                <g class="server-node">
+                  <rect x="205" y="128" width="150" height="104" rx="14"></rect>
+                  <text class="server-title" x="280" y="174">Server</text>
+                  <text class="server-subtitle" x="280" y="203">provides service</text>
+                </g>
+              </svg>
+              <figcaption>
+                Requests go to the server and responses return to clients. The server role may be performed by hardware or software.
+              </figcaption>
+              <ul class="visual-facts">
+                <li>Accounts, permissions and backups can be managed centrally.</li>
+                <li>Dedicated server resources and administration add cost.</li>
+                <li>Server failure can affect many clients unless redundancy is used.</li>
+              </ul>
+            </figure>
+          </div>
+
           <details class="diagram-check">
-            <summary>Check the diagram: why can packet 2 arrive after packet 3?</summary>
-            <p>Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</p>
+            <summary>Check your reading: why is peer-to-peer not the same as mesh?</summary>
+            <p>Peer-to-peer describes what devices do: each peer can request and provide resources. Mesh describes how nodes are connected. A peer-to-peer network does not need every device to connect directly to every other device.</p>
           </details>
         </section>
 
-        <!-- stage10-explanation:start packet-journey -->
-        <section class="panel explanation-panel" id="explanation-packet-journey" data-explains="packet-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-packet-journey-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
-          <h2 class="explanation-sr-only" id="explanation-packet-journey-title">One message, several routes, one reassembled result</h2>
+        <!-- stage10-explanation:start model-visual -->
+        <section class="panel explanation-panel" id="explanation-model-visual" data-explains="model-visual" data-explanation-kind="comparison" aria-labelledby="explanation-model-visual-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+          <h2 class="explanation-sr-only" id="explanation-model-visual-title">One model has equal peers; the other has dedicated service roles</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-packet-journey.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One message, several routes, one reassembled result with a structured visual model." />
-            <figcaption class="explanation-sr-only">One message, several routes, one reassembled result: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-model-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One model has equal peers; the other has dedicated service roles with a structured visual model." />
+            <figcaption class="explanation-sr-only">One model has equal peers; the other has dedicated service roles: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</li><li><strong>Lesson fact:</strong> 1. Split and label Each packet carries payload plus control data such as addresses and a sequence number.</li><li><strong>Lesson fact:</strong> 2. Choose next hop Each router uses the destination address and routing information.</li><li><strong>Lesson fact:</strong> 3. Travel independently Different routes can produce different arrival times.</li><li><strong>Lesson fact:</strong> 4. Reassemble The receiver uses sequence numbers to restore the original order.</li><li><strong>Lesson fact:</strong> Check the diagram: why can packet 2 arrive after packet 3?</li><li><strong>Lesson fact:</strong> Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Follow the arrows and identify which devices can provide a resource.</li><li><strong>Lesson fact:</strong> Peer-to-peer: every device can request and provide</li><li><strong>Lesson fact:</strong> The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.</li><li><strong>Lesson fact:</strong> No dedicated central server is required.</li><li><strong>Lesson fact:</strong> Each peer can request a file and provide one.</li><li><strong>Lesson fact:</strong> A peer going offline can make its shared resource unavailable.</li><li><strong>Lesson fact:</strong> Client-server: clients request a managed service</li><li><strong>Lesson fact:</strong> Requests go to the server and responses return to clients. The server role may be performed by hardware or software.</li><li><strong>Lesson fact:</strong> Accounts, permissions and backups can be managed centrally.</li><li><strong>Lesson fact:</strong> Dedicated server resources and administration add cost.</li><li><strong>Lesson fact:</strong> Server failure can affect many clients unless redundancy is used.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end packet-journey -->
+        <!-- stage10-explanation:end model-visual -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Client-server vs peer-to-peer</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Client-server and peer-to-peer comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Client-server</div>
+              <div role="columnheader">Peer-to-peer</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Control</div>
+              <div role="cell">Centralised management, security, backups and permissions.</div>
+              <div role="cell">Decentralised control; each peer may manage its own resources.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Cost</div>
+              <div role="cell">May need dedicated server hardware, software and administration.</div>
+              <div role="cell">Can be cheaper for small networks because no dedicated server is required.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Reliability</div>
+              <div role="cell">Server failure may affect many clients unless redundancy is used.</div>
+              <div role="cell">No single central server, but availability depends on peers being online.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Typical use</div>
+              <div role="cell">School login, file server, web server, email server.</div>
+              <div role="cell">Small file sharing, local collaboration, distributed sharing.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Client-server vs peer-to-peer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Client-server vs peer-to-peer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Client-server vs peer-to-peer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Client-server</li><li><strong>Lesson fact:</strong> Peer-to-peer</li><li><strong>Lesson fact:</strong> Centralised management, security, backups and permissions.</li><li><strong>Lesson fact:</strong> Decentralised control; each peer may manage its own resources.</li><li><strong>Lesson fact:</strong> May need dedicated server hardware, software and administration.</li><li><strong>Lesson fact:</strong> Can be cheaper for small networks because no dedicated server is required.</li><li><strong>Lesson fact:</strong> Reliability</li><li><strong>Lesson fact:</strong> Server failure may affect many clients unless redundancy is used.</li><li><strong>Lesson fact:</strong> No single central server, but availability depends on peers being online.</li><li><strong>Lesson fact:</strong> Typical use</li><li><strong>Lesson fact:</strong> School login, file server, web server, email server.</li><li><strong>Lesson fact:</strong> Small file sharing, local collaboration, distributed sharing.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
+        <section class="panel" id="usecases" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Scenario choices</h2>
+          </div>
+          <div class="scenario-grid">
+            <article>
+              <h3>School accounts</h3>
+              <p>Client-server fits because logins, permissions and backups can be centrally managed.</p>
+            </article>
+            <article>
+              <h3>Small home sharing</h3>
+              <p>Peer-to-peer may fit when a few devices share files directly without a dedicated server.</p>
+            </article>
+            <article>
+              <h3>Public web app</h3>
+              <p>Client-server fits because many clients request data from managed servers.</p>
+            </article>
+            <article>
+              <h3>Distributed file sharing</h3>
+              <p>Peer-to-peer can spread sharing across peers, reducing reliance on one central source.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start usecases -->
+        <section class="panel explanation-panel" id="explanation-usecases" data-explains="usecases" data-explanation-kind="mechanism" aria-labelledby="explanation-usecases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
+          <h2 class="explanation-sr-only" id="explanation-usecases-title">Scenario choices</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-usecases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Scenario choices with a structured visual model." />
+            <figcaption class="explanation-sr-only">Scenario choices: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> School accounts</li><li><strong>Lesson fact:</strong> Client-server fits because logins, permissions and backups can be centrally managed.</li><li><strong>Lesson fact:</strong> Small home sharing</li><li><strong>Lesson fact:</strong> Peer-to-peer may fit when a few devices share files directly without a dedicated server.</li><li><strong>Lesson fact:</strong> Public web app</li><li><strong>Lesson fact:</strong> Client-server fits because many clients request data from managed servers.</li><li><strong>Lesson fact:</strong> Distributed file sharing</li><li><strong>Lesson fact:</strong> Peer-to-peer can spread sharing across peers, reducing reliance on one central source.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end usecases -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Packet route simulator</h2>
+            <h2>Network model recommendation helper</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Network condition
-              <select id="routeInput">
-                <option value="normal">Normal route</option>
-                <option value="congested">One route is congested</option>
-                <option value="lost">One packet is lost</option>
-                <option value="corrupt">One packet is corrupt</option>
+              Scenario
+              <select id="scenarioInput">
+                <option value="school">School network with accounts and permissions</option>
+                <option value="home">Three home computers sharing files directly</option>
+                <option value="web">Public website serving many users</option>
+                <option value="distributed">Distributed file sharing with many peers</option>
               </select>
             </label>
-            <button type="button" id="routeBtn">Simulate</button>
+            <button type="button" id="recommendBtn">Recommend</button>
           </div>
-          <div class="route-visual" id="routeVisual" aria-live="polite"></div>
-          <div class="result-box" id="routeResult"></div>
-          <div class="method-box" id="routeMethod"></div>
+          <div class="result-box" id="recommendResult" aria-live="polite"></div>
+          <div class="method-box" id="recommendMethod"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
@@ -364,9 +410,9 @@
             <h2>Worked examples</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="structure">Packet structure</button>
-            <button class="tab" type="button" data-example="order">Out-of-order arrival</button>
-            <button class="tab" type="button" data-example="checksum">Checksum</button>
+            <button class="tab active" type="button" data-example="school">School server</button>
+            <button class="tab" type="button" data-example="home">Home sharing</button>
+            <button class="tab" type="button" data-example="failure">Failure analysis</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -384,18 +430,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak packet answer</h2>
+            <h2>Fix the weak model answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">“Packets arrive in order because the internet sends them one by one.”</p>
+              <p class="wrong">“Client-server is better because it is faster.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Packets may take different routes and arrive out of order. Sequence numbers allow the destination to reassemble them correctly.</p>
+              <p class="answer" id="mistake1">Client-server can be suitable because data, access rights and backups can be centrally managed; do not claim "faster" unless performance is explained.</p>
             </article>
             <article>
-              <p class="wrong">“A packet only contains data.”</p>
+              <p class="wrong">“Peer-to-peer means every computer is connected to every other computer.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">A packet contains payload plus control information such as source address, destination address, sequence number and error-checking data.</p>
+              <p class="answer" id="mistake2">Peer-to-peer describes the role of devices: peers can request and provide resources. It is not the same as mesh topology.</p>
             </article>
           </div>
         </section>
@@ -404,7 +450,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Cambridge-style answers must name the packet item and its purpose.</p>
+            <p>Attempt first, then expand the mark scheme. Give model feature plus scenario consequence.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -412,13 +458,13 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Packets need labels, order and checks</h2>
+            <h2>Model = roles and control</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>1</strong><span>Packet switching splits data into smaller packets for transmission.</span></div>
-            <div><strong>2</strong><span>Headers carry metadata such as source, destination and sequence number.</span></div>
-            <div><strong>3</strong><span>Packets may take different routes and arrive out of order.</span></div>
-            <div><strong>4</strong><span>Checksums/error checks help detect corruption; missing packets may be resent.</span></div>
+            <div><strong>1</strong><span>A client requests a service; a server provides a service.</span></div>
+            <div><strong>2</strong><span>Client-server gives central control but depends heavily on server availability.</span></div>
+            <div><strong>3</strong><span>Peer-to-peer can be cheaper and decentralised, but is harder to manage consistently.</span></div>
+            <div><strong>4</strong><span>Do not confuse network model with physical or logical topology.</span></div>
           </div>
         </section>
 
@@ -428,25 +474,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Draw a packet and label header, payload and trailer. Add one example item inside each where appropriate.</li>
-            <li>Explain why sequence numbers are needed if packets may arrive out of order.</li>
-            <li>Write a 4-mark answer explaining two advantages of packet switching.</li>
-            <li>Write a 5-mark answer explaining how a receiver can detect and respond to missing or corrupt packets.</li>
+            <li>Write definitions for client, server and peer. Include one example service for each model.</li>
+            <li>Compare client-server and peer-to-peer using cost, management and reliability.</li>
+            <li>Choose a model for a school network with 600 users and justify it with two reasons.</li>
+            <li>Write a 5-mark answer explaining one advantage and one disadvantage of peer-to-peer networking.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Packet drawing:</strong> include named metadata, not only "extra information".</p>
-            <p><strong>Sequence numbers:</strong> link them to reassembly in correct order.</p>
-            <p><strong>Advantages:</strong> mention sharing links, alternative routes and avoiding one large transmission failure.</p>
-            <p><strong>Error response:</strong> mention checksum/error check and retransmission request.</p>
+            <p><strong>Definitions:</strong> focus on request/provide roles, not device size.</p>
+            <p><strong>Comparison:</strong> use a basis such as central management, cost, backups, security or availability.</p>
+            <p><strong>School:</strong> client-server is likely suitable because accounts, permissions and backups need central control.</p>
+            <p><strong>P2P answer:</strong> one advantage could be lower cost; one disadvantage could be harder security/backup management.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

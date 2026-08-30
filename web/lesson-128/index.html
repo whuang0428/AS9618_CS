@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 128 | Count-controlled loops</title>
+    <title>AS9618 Lesson 128 | Complete Cambridge pseudocode statements</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Count-controlled loops</h1>
+        <h1>Complete Cambridge pseudocode statements</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,14 +29,14 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#for">FOR loop</a>
-        <a href="#counter">Counter</a>
-        <a href="#trace">Trace table</a>
-        <a href="#arrays">Array loops</a>
-        <a href="#bounds">Bounds</a>
+        <a href="#if">IF</a>
+        <a href="#case">CASE</a>
+        <a href="#nested">Nested IF</a>
+        <a href="#choice">IF or CASE</a>
+        <a href="#trace">Trace</a>
         <a href="#java">Java support</a>
-        <a href="#builder">Trace builder</a>
-        <a href="#chooser">Loop chooser</a>
+        <a href="#path">Path tracer</a>
+        <a href="#chooser">Construct chooser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -55,65 +55,65 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Write and justify a count-controlled loop</h2>
+            <h2>Complete Cambridge pseudocode statements</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.</p>
-            <p>Match the loop bounds to the declared data. Initialise accumulators before the loop, update them inside it and output a final result after the loop unless intermediate output is explicitly required.</p>
-            <p>Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.</p>
+            <p>Section 11.1 requires pseudocode for the declaration and initialisation of constants, declaration of variables, assignment of values, arithmetic or logical expressions entered from the keyboard, and input to or output from the console. These are connected statements, not isolated vocabulary.</p>
+            <p>CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.</p>
+            <p>Arithmetic expressions use operators such as +, -, *, /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and &lt;- for assignment.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Total a fixed array</h3>
-            <p>For Marks[1:30], set Total &lt;- 0, use FOR Index &lt;- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed.</p>
+            <h3>Worked example: Declare, input, calculate and output</h3>
+            <p>CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed &lt;- Mark &gt;= PassMark assigns the result of a logical expression; OUTPUT Mark * 2 and OUTPUT Passed send arithmetic and Boolean results to the console.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start for -->
-        <section class="panel explanation-panel" id="explanation-for" data-explains="for" data-explanation-kind="mechanism" aria-labelledby="explanation-for-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="for">
-          <h2 class="explanation-sr-only" id="explanation-for-title">A FOR loop has a counter, a start value and an end value</h2>
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The symbol changes, the update idea does not</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A FOR loop has a counter, a start value and an end value with a structured visual model." />
-            <figcaption class="explanation-sr-only">A FOR loop has a counter, a start value and an end value: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The symbol changes, the update idea does not with a structured visual model." />
+            <figcaption class="explanation-sr-only">The symbol changes, the update idea does not: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> FOR loop structure</li><li><strong>Lesson fact:</strong> General pattern</li><li><strong>Lesson fact:</strong> FOR Counter &lt;- StartValue TO EndValue</li><li><strong>Lesson fact:</strong> // repeated statements</li><li><strong>Lesson fact:</strong> NEXT Counter</li><li><strong>Lesson fact:</strong> Concrete example</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Count</li><li><strong>Lesson fact:</strong> NEXT Count</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Use a FOR loop when the number of repetitions is known before the loop starts.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> CONSTANT PassMark = 50</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Passed : BOOLEAN</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Passed &lt;- Mark &gt;= PassMark</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> final int PASS_MARK = 50;</li><li><strong>Lesson fact:</strong> int mark = input.nextInt();</li><li><strong>Lesson fact:</strong> boolean passed = mark &gt;= PASS_MARK;</li><li><strong>Lesson fact:</strong> Paper 2 reminder: use Cambridge-style assignment &lt;- in pseudocode. Java uses = for assignment.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end for -->
+        <!-- stage10-explanation:end pseudocode -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Write and justify a count-controlled loop: apply and assess</h2>
+            <h2>Complete Cambridge pseudocode statements: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Why is FOR suitable for Marks[1:30]?</p>
-              <details><summary>Show answer</summary><p>The 30 iterations and valid index bounds are known before the loop starts.</p></details>
+              <p><strong>1.</strong> What is the difference between = and &lt;-?</p>
+              <details><summary>Show answer</summary><p>= compares values; &lt;- assigns the evaluated right-hand value to a variable.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Where is Total initialised?</p>
-              <details><summary>Show answer</summary><p>Once before the loop.</p></details>
+              <p><strong>2.</strong> Which statement obtains keyboard input?</p>
+              <details><summary>Show answer</summary><p>INPUT followed by the target variable.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which keyword closes the count-controlled loop?</p>
-              <details><summary>Show answer</summary><p>NEXT followed by the counter name.</p></details>
+              <p><strong>3.</strong> What type of result does Mark &gt;= PassMark produce?</p>
+              <details><summary>Show answer</summary><p>A BOOLEAN result, TRUE or FALSE.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Write Cambridge pseudocode to input and total exactly 12 monthly values, then output the total. Explain why the selected loop is count-controlled.</p>
+            <p>Write Cambridge pseudocode that defines and initialises constant TaxRate as 0.20, declares Price and Tax as REAL, inputs Price, assigns Price * TaxRate to Tax, and outputs Tax.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>initialises Total before repetition</td><td>Do not use an eleven- or thirteen-iteration bound or reset the accumulator inside the loop.</td><td>1</td></tr>
-                  <tr><td>uses FOR Month &lt;- 1 TO 12 or an equivalent twelve-iteration range</td><td></td><td>1</td></tr>
-                  <tr><td>inputs a value and adds it inside the loop</td><td></td><td>1</td></tr>
-                  <tr><td>closes with NEXT and outputs Total after the loop</td><td></td><td>1</td></tr>
-                  <tr><td>justifies FOR because the repetition count is known in advance</td><td></td><td>1</td></tr>
+                  <tr><td>CONSTANT TaxRate = 0.20</td><td>Do not use = for assignment, omit the constant initial value, or replace INPUT/OUTPUT with Java library calls.</td><td>1</td></tr>
+                  <tr><td>declares Price and Tax as REAL</td><td></td><td>1</td></tr>
+                  <tr><td>INPUT Price before the calculation</td><td></td><td>1</td></tr>
+                  <tr><td>Tax &lt;- Price * TaxRate</td><td></td><td>1</td></tr>
+                  <tr><td>OUTPUT Tax after assignment</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -124,219 +124,217 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 128 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
-            <h2>Use a count-controlled loop when the number of repeats is known.</h2>
+            <h2>Selection is the algorithm saying, "Depends."</h2>
             <p>
-              A FOR loop is the tidy classroom register of repetition: start here, finish there, do the same block each
-              time. It is perfect for fixed ranges, totals, arrays and trace-table questions. The usual mark loss is
-              caused by an off-by-one error in the loop bounds.
+              IF handles conditions. CASE handles clear choices from one expression. Nested selection handles decisions
+              inside decisions. The exam skill is not just writing keywords; it is making every possible input land on
+              the correct path without falling through a missing ELSE like a badly labelled lift.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Write</strong><span>Cambridge-style FOR...NEXT loops with clear bounds</span></div>
-              <div><strong>Trace</strong><span>counter values and accumulator changes through each iteration</span></div>
-              <div><strong>Choose</strong><span>FOR loops when repetition count is known, not guessed</span></div>
+              <div><strong>Write</strong><span>IF, CASE and nested IF in Cambridge-style pseudocode</span></div>
+              <div><strong>Choose</strong><span>the most suitable selection structure for a scenario</span></div>
+              <div><strong>Trace</strong><span>which branch runs for normal, boundary and invalid inputs</span></div>
             </div>
           </div>
-          <div class="loop-visual" aria-label="Count-controlled loop visual">
-            <div><strong>Start</strong><span>Count &lt;- 1</span></div>
-            <div><strong>Stop</strong><span>TO 5</span></div>
-            <div><strong>Repeat</strong><span>NEXT Count</span></div>
-            <p>The counter is not decoration. It decides exactly how many times the block runs.</p>
+          <div class="selection-visual" aria-label="Selection visual">
+            <div><strong>IF</strong><span>true path / false path</span></div>
+            <div><strong>CASE</strong><span>choice A / B / OTHERWISE</span></div>
+            <div><strong>Nested</strong><span>decision inside a decision</span></div>
+            <p>Every branch needs a reason to exist and a way to end.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>FOR loops appear in tracing, array processing, totals, counts, searching and validation preparation.</p>
+            <p>Selection errors often appear only on boundary or invalid test data, exactly where exam questions like to stand.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>If the loop runs from 1 TO 10, it normally runs 10 times. Do not import Java's zero-based habits automatically.</p>
+            <p>CASE is suitable only when one expression is compared with discrete values. It works best when one expression has clear discrete values.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>How many times does this loop run?</h2>
-            <p>Click the correct answer for this Cambridge-style pseudocode.</p>
+            <h2>Which output appears?</h2>
+            <p>Given <code>Mark = 50</code>, click the branch that should run.</p>
           </div>
           <div class="code-grid">
             <article>
               <h3>Pseudocode</h3>
-              <pre><code>FOR Count &lt;- 1 TO 5
-    OUTPUT Count
-NEXT Count</code></pre>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
             </article>
             <article>
-              <h3>Choose the count</h3>
+              <h3>Choose the path</h3>
               <div class="hook-grid">
-                <button class="choice-card" type="button" data-hook="four">4 times</button>
-                <button class="choice-card" type="button" data-hook="five">5 times</button>
-                <button class="choice-card" type="button" data-hook="six">6 times</button>
-                <button class="choice-card" type="button" data-hook="unknown">unknown times</button>
+                <button class="choice-card" type="button" data-hook="pass">Pass branch</button>
+                <button class="choice-card" type="button" data-hook="resit">Resit branch</button>
+                <button class="choice-card" type="button" data-hook="both">Both branches</button>
+                <button class="choice-card" type="button" data-hook="none">No branch</button>
               </div>
             </article>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose how many counter values are output.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the branch for Mark = 50.</div>
         </section>
 
-        <section class="panel" id="for" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+        <section class="panel" id="if" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
-            <p class="eyebrow">FOR loop structure</p>
-            <h2>A FOR loop has a counter, a start value and an end value</h2>
-            <p>Chinese support: counter 计数器, iteration 一次循环, bound 边界, accumulator 累加器。</p>
+            <p class="eyebrow">IF selection</p>
+            <h2>Use IF when a Boolean condition decides the route</h2>
+            <p>Chinese support: condition 条件, branch 分支, boundary value 边界值。</p>
+          </div>
+          <div class="data-table if-table" role="table" aria-label="IF selection forms">
+            <div class="table-row table-head"><div>Form</div><div>Use when</div><div>Cambridge-style pattern</div></div>
+            <div class="table-row"><div>IF only</div><div>action is needed only when condition is true</div><div><code>IF Found THEN ... ENDIF</code></div></div>
+            <div class="table-row"><div>IF...ELSE</div><div>two paths are needed</div><div><code>IF Mark &gt;= 50 THEN ... ELSE ... ENDIF</code></div></div>
+            <div class="table-row"><div>Nested IF</div><div>a second decision depends on the first decision</div><div><code>IF Age &gt;= 18 THEN IF Member THEN ... ENDIF ENDIF</code></div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start if -->
+        <section class="panel explanation-panel" id="explanation-if" data-explains="if" data-explanation-kind="mechanism" aria-labelledby="explanation-if-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+          <h2 class="explanation-sr-only" id="explanation-if-title">Use IF when a Boolean condition decides the route</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-if.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IF when a Boolean condition decides the route with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IF when a Boolean condition decides the route: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> IF selection</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Cambridge-style pattern</li><li><strong>Lesson fact:</strong> action is needed only when condition is true</li><li><strong>Lesson fact:</strong> IF Found THEN ... ENDIF</li><li><strong>Lesson fact:</strong> IF...ELSE</li><li><strong>Lesson fact:</strong> two paths are needed</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN ... ELSE ... ENDIF</li><li><strong>Lesson fact:</strong> Nested IF</li><li><strong>Lesson fact:</strong> a second decision depends on the first decision</li><li><strong>Lesson fact:</strong> IF Age &gt;= 18 THEN IF Member THEN ... ENDIF ENDIF</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end if -->
+        <section class="panel" id="case" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+          <div class="section-title">
+            <p class="eyebrow">CASE selection</p>
+            <h2>Use CASE for clear values of one expression</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>General pattern</h3>
-              <pre><code>FOR Counter &lt;- StartValue TO EndValue
-    // repeated statements
-NEXT Counter</code></pre>
+              <h3>Menu choice</h3>
+              <pre><code>INPUT Choice
+CASE Choice OF
+    1 : OUTPUT "Add record"
+    2 : OUTPUT "Delete record"
+    3 : OUTPUT "Search"
+    OTHERWISE OUTPUT "Invalid choice"
+ENDCASE</code></pre>
             </article>
             <article>
-              <h3>Concrete example</h3>
-              <pre><code>Total &lt;- 0
-FOR Count &lt;- 1 TO 5
-    Total &lt;- Total + Count
-NEXT Count
-OUTPUT Total</code></pre>
+              <h3>Why CASE fits</h3>
+              <p>One variable, <code>Choice</code>, is compared with several discrete values. OTHERWISE handles unexpected input.</p>
+              <div class="callout">If each branch needs a different complex condition, IF is usually clearer than CASE.</div>
             </article>
           </div>
-          <div class="callout">Use a FOR loop when the number of repetitions is known before the loop starts.</div>
         </section>
-
-        <section class="panel" id="counter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+        <section class="panel" id="nested" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
-            <p class="eyebrow">Counter and accumulator</p>
-            <h2>Do not confuse the counter with the running total</h2>
+            <p class="eyebrow">Nested selection</p>
+            <h2>A decision inside another decision</h2>
           </div>
-          <div class="data-table counter-table" role="table" aria-label="Counter and accumulator">
-            <div class="table-row table-head"><div>Variable</div><div>Role</div><div>Example</div></div>
-            <div class="table-row"><div>Count</div><div>loop counter; controls the current iteration</div><div>1, 2, 3, 4, 5</div></div>
-            <div class="table-row"><div>Total</div><div>accumulator; stores a running total</div><div>0, 1, 3, 6, 10, 15</div></div>
-            <div class="table-row"><div>Limit</div><div>bound; controls where the loop stops</div><div>5 in <code>1 TO 5</code></div></div>
+          <div class="code-grid">
+            <article>
+              <h3>Discount example</h3>
+              <pre><code>IF Age &gt;= 18 THEN
+    IF Member = TRUE THEN
+        Discount &lt;- 0.20
+    ELSE
+        Discount &lt;- 0.10
+    ENDIF
+ELSE
+    Discount &lt;- 0.05
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Trace the paths</h3>
+              <div class="data-table trace-table" role="table" aria-label="Nested IF paths">
+                <div class="table-row table-head"><div>Age</div><div>Member</div><div>Discount</div></div>
+                <div class="table-row"><div>20</div><div>TRUE</div><div>0.20</div></div>
+                <div class="table-row"><div>20</div><div>FALSE</div><div>0.10</div></div>
+                <div class="table-row"><div>17</div><div>TRUE</div><div>0.05</div></div>
+              </div>
+            </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start counter -->
-        <section class="panel explanation-panel" id="explanation-counter" data-explains="counter" data-explanation-kind="mechanism" aria-labelledby="explanation-counter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
-          <h2 class="explanation-sr-only" id="explanation-counter-title">Do not confuse the counter with the running total</h2>
+        <!-- stage10-explanation:start nested -->
+        <section class="panel explanation-panel" id="explanation-nested" data-explains="nested" data-explanation-kind="mechanism" aria-labelledby="explanation-nested-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+          <h2 class="explanation-sr-only" id="explanation-nested-title">A decision inside another decision</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-counter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not confuse the counter with the running total with a structured visual model." />
-            <figcaption class="explanation-sr-only">Do not confuse the counter with the running total: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-nested.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A decision inside another decision with a structured visual model." />
+            <figcaption class="explanation-sr-only">A decision inside another decision: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Counter and accumulator</li><li><strong>Lesson fact:</strong> Variable</li><li><strong>Lesson fact:</strong> loop counter; controls the current iteration</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4, 5</li><li><strong>Lesson fact:</strong> accumulator; stores a running total</li><li><strong>Lesson fact:</strong> 0, 1, 3, 6, 10, 15</li><li><strong>Lesson fact:</strong> bound; controls where the loop stops</li><li><strong>Lesson fact:</strong> 5 in 1 TO 5</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Nested selection</li><li><strong>Lesson fact:</strong> Discount example</li><li><strong>Lesson fact:</strong> IF Age &gt;= 18 THEN</li><li><strong>Lesson fact:</strong> IF Member = TRUE THEN</li><li><strong>Lesson fact:</strong> Discount &lt;- 0.20</li><li><strong>Lesson fact:</strong> Discount &lt;- 0.10</li><li><strong>Lesson fact:</strong> Discount &lt;- 0.05</li><li><strong>Lesson fact:</strong> Trace the paths</li><li><strong>Lesson fact:</strong> Discount</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end counter -->
+        <!-- stage10-explanation:end nested -->
+        <section class="panel" id="choice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+          <div class="section-title">
+            <p class="eyebrow">Choosing IF or CASE</p>
+            <h2>Start with the shape of the decision</h2>
+          </div>
+          <div class="data-table choose-table" role="table" aria-label="IF CASE choice">
+            <div class="table-row table-head"><div>Situation</div><div>Usually better</div><div>Reason</div></div>
+            <div class="table-row"><div>Pass if mark is at least 50</div><div>IF</div><div>uses a relational comparison</div></div>
+            <div class="table-row"><div>Menu option 1, 2, 3 or invalid</div><div>CASE</div><div>one variable has discrete values</div></div>
+            <div class="table-row"><div>Adult members get one discount; adult non-members another</div><div>Nested IF</div><div>second decision depends on the first</div></div>
+            <div class="table-row"><div>Grade A/B/C/D with ranges of marks</div><div>IF or nested IF</div><div>ranges require comparisons</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start choice -->
+        <section class="panel explanation-panel" id="explanation-choice" data-explains="choice" data-explanation-kind="mechanism" aria-labelledby="explanation-choice-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+          <h2 class="explanation-sr-only" id="explanation-choice-title">Start with the shape of the decision</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-choice.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Start with the shape of the decision with a structured visual model." />
+            <figcaption class="explanation-sr-only">Start with the shape of the decision: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Choosing IF or CASE</li><li><strong>Lesson fact:</strong> Situation</li><li><strong>Lesson fact:</strong> Usually better</li><li><strong>Lesson fact:</strong> Pass if mark is at least 50</li><li><strong>Lesson fact:</strong> uses a relational comparison</li><li><strong>Lesson fact:</strong> Menu option 1, 2, 3 or invalid</li><li><strong>Lesson fact:</strong> one variable has discrete values</li><li><strong>Lesson fact:</strong> Adult members get one discount; adult non-members another</li><li><strong>Lesson fact:</strong> Nested IF</li><li><strong>Lesson fact:</strong> second decision depends on the first</li><li><strong>Lesson fact:</strong> Grade A/B/C/D with ranges of marks</li><li><strong>Lesson fact:</strong> IF or nested IF</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end choice -->
         <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
-            <p class="eyebrow">Trace table</p>
-            <h2>Trace after the update, not before it</h2>
+            <p class="eyebrow">Trace method</p>
+            <h2>Test normal, boundary and invalid values</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Pseudocode</h3>
-              <pre><code>Total &lt;- 0
-FOR Count &lt;- 1 TO 4
-    Total &lt;- Total + Count
-NEXT Count
-OUTPUT Total</code></pre>
-            </article>
-            <article>
-              <h3>Trace</h3>
-              <div class="data-table trace-table" role="table" aria-label="FOR loop trace">
-                <div class="table-row table-head"><div>Count</div><div>Total after update</div></div>
-                <div class="table-row"><div>1</div><div>1</div></div>
-                <div class="table-row"><div>2</div><div>3</div></div>
-                <div class="table-row"><div>3</div><div>6</div></div>
-                <div class="table-row"><div>4</div><div>10</div></div>
-              </div>
-            </article>
+          <div class="audit-list">
+            <div><strong>Normal</strong><span>a typical value in a branch, for example Mark = 72</span></div>
+            <div><strong>Boundary</strong><span>a value on the edge, for example Mark = 50</span></div>
+            <div><strong>Invalid</strong><span>a value that should be rejected or handled by OTHERWISE</span></div>
           </div>
         </section>
 
-        <section class="panel" id="arrays" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
-          <div class="section-title">
-            <p class="eyebrow">Array processing</p>
-            <h2>FOR loops are natural for fixed array bounds</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Output all marks</h3>
-              <pre><code>FOR Index &lt;- 1 TO 30
-    OUTPUT Marks[Index]
-NEXT Index</code></pre>
-            </article>
-            <article>
-              <h3>Total all marks</h3>
-              <pre><code>Total &lt;- 0
-FOR Index &lt;- 1 TO 30
-    Total &lt;- Total + Marks[Index]
-NEXT Index</code></pre>
-            </article>
-          </div>
-          <div class="callout">The loop bounds should match the declared array bounds unless the question gives a reason not to.</div>
-        </section>
-
-        <!-- stage10-explanation:start arrays -->
-        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
-          <h2 class="explanation-sr-only" id="explanation-arrays-title">FOR loops are natural for fixed array bounds</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining FOR loops are natural for fixed array bounds with a structured visual model." />
-            <figcaption class="explanation-sr-only">FOR loops are natural for fixed array bounds: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Array processing</li><li><strong>Lesson fact:</strong> Output all marks</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 30</li><li><strong>Lesson fact:</strong> OUTPUT Marks[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Total all marks</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Marks[Index]</li><li><strong>Lesson fact:</strong> The loop bounds should match the declared array bounds unless the question gives a reason not to.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end arrays -->
-        <section class="panel" id="bounds" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
-          <div class="section-title">
-            <p class="eyebrow">Bounds and off-by-one errors</p>
-            <h2>One wrong bound can miss or invent an iteration</h2>
-          </div>
-          <div class="data-table bounds-table" role="table" aria-label="Bounds examples">
-            <div class="table-row table-head"><div>Loop</div><div>Counter values</div><div>Iterations</div><div>Common issue</div></div>
-            <div class="table-row"><div><code>1 TO 5</code></div><div>1, 2, 3, 4, 5</div><div>5</div><div>none</div></div>
-            <div class="table-row"><div><code>0 TO 4</code></div><div>0, 1, 2, 3, 4</div><div>5</div><div>only if array uses 0-based bounds</div></div>
-            <div class="table-row"><div><code>1 TO 4</code></div><div>1, 2, 3, 4</div><div>4</div><div>misses item 5 if five items are required</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start bounds -->
-        <section class="panel explanation-panel" id="explanation-bounds" data-explains="bounds" data-explanation-kind="mechanism" aria-labelledby="explanation-bounds-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
-          <h2 class="explanation-sr-only" id="explanation-bounds-title">One wrong bound can miss or invent an iteration</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-bounds.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One wrong bound can miss or invent an iteration with a structured visual model." />
-            <figcaption class="explanation-sr-only">One wrong bound can miss or invent an iteration: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Bounds and off-by-one errors</li><li><strong>Lesson fact:</strong> Counter values</li><li><strong>Lesson fact:</strong> Iterations</li><li><strong>Lesson fact:</strong> Common issue</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4, 5</li><li><strong>Lesson fact:</strong> 0, 1, 2, 3, 4</li><li><strong>Lesson fact:</strong> only if array uses 0-based bounds</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4</li><li><strong>Lesson fact:</strong> misses item 5 if five items are required</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end bounds -->
         <section class="panel" id="java" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
-            <h2>Java for loops are useful, but not the exam answer format</h2>
+            <h2>Same idea, different syntax</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>FOR Count &lt;- 1 TO 5
-    OUTPUT Count
-NEXT Count</code></pre>
+              <pre><code>CASE Choice OF
+    1 : OUTPUT "Add"
+    2 : OUTPUT "Delete"
+    OTHERWISE OUTPUT "Invalid"
+ENDCASE</code></pre>
             </article>
             <article>
               <h3>Java support example only</h3>
-              <pre><code>for (int count = 1; count &lt;= 5; count++) {
-    System.out.println(count);
+              <pre><code>switch (choice) {
+    case 1 -> System.out.println("Add");
+    case 2 -> System.out.println("Delete");
+    default -> System.out.println("Invalid");
 }</code></pre>
             </article>
           </div>
@@ -344,40 +342,56 @@ NEXT Count</code></pre>
 
         <!-- stage10-explanation:start java -->
         <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Java for loops are useful, but not the exam answer format</h2>
+          <h2 class="explanation-sr-only" id="explanation-java-title">Same idea, different syntax</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java for loops are useful, but not the exam answer format with a structured visual model." />
-            <figcaption class="explanation-sr-only">Java for loops are useful, but not the exam answer format: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same idea, different syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same idea, different syntax: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> OUTPUT Count</li><li><strong>Lesson fact:</strong> NEXT Count</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> for (int count = 1; count &lt;= 5; count++) {</li><li><strong>Lesson fact:</strong> System.out.println(count);</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Cambridge pseudocode uses CASE...OF, OTHERWISE and ENDCASE.</li><li><strong>Lesson fact:</strong> Java switch syntax may support understanding but is not Cambridge pseudocode.</li><li><strong>Lesson fact:</strong> Both forms must preserve the same branch meanings.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+        <section class="panel" id="path" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
-            <p class="eyebrow">Interactive trace builder</p>
-            <h2>Build the trace table</h2>
+            <p class="eyebrow">Interactive path tracer</p>
+            <h2>Trace a nested IF</h2>
           </div>
           <div class="converter-grid">
-            <label for="startInput">
-              Start
-              <input id="startInput" type="number" value="1" />
+            <label for="ageInput">
+              Age
+              <input id="ageInput" type="number" value="20" />
             </label>
-            <label for="endInput">
-              End
-              <input id="endInput" type="number" value="5" />
+            <label for="memberSelect">
+              Member
+              <select id="memberSelect">
+                <option value="true">TRUE</option>
+                <option value="false">FALSE</option>
+              </select>
             </label>
-            <button class="primary-button" type="button" id="traceBtn">Trace total</button>
+            <button class="primary-button" type="button" id="traceBtn">Trace path</button>
           </div>
-          <div class="trace-output" id="traceResult">Enter bounds to trace <code>Total &lt;- Total + Count</code>.</div>
+          <div class="trace-output" id="traceResult">Enter values to trace which branch runs.</div>
         </section>
 
+        <!-- stage10-explanation:start path -->
+        <section class="panel explanation-panel" id="explanation-path" data-explains="path" data-explanation-kind="mechanism" aria-labelledby="explanation-path-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
+          <h2 class="explanation-sr-only" id="explanation-path-title">Trace a nested IF</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-path.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace a nested IF with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace a nested IF: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive path tracer</li><li><strong>Lesson fact:</strong> Enter values to trace which branch runs.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end path -->
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
-            <p class="eyebrow">Loop chooser</p>
-            <h2>Is a FOR loop suitable?</h2>
+            <p class="eyebrow">Construct chooser</p>
+            <h2>IF, CASE or nested IF?</h2>
           </div>
           <div class="converter-grid two-control">
             <label for="scenarioSelect">
@@ -386,19 +400,19 @@ NEXT Count</code></pre>
             </label>
             <button class="primary-button" type="button" id="chooseBtn">Choose</button>
           </div>
-          <div class="trace-output" id="chooseResult">Choose a scenario to decide whether a count-controlled loop fits.</div>
+          <div class="trace-output" id="chooseResult">Choose a scenario to see the recommended selection structure.</div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>FOR loops in exam-style contexts</h2>
+            <h2>Selection examples with trace thinking</h2>
           </div>
           <div class="tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="sum">Sum 1 to 5</button>
-            <button class="tab" type="button" data-example="array">Array total</button>
-            <button class="tab" type="button" data-example="count">Count matches</button>
-            <button class="tab" type="button" data-example="offByOne">Off-by-one</button>
+            <button class="tab active" type="button" data-example="ifPass">IF pass mark</button>
+            <button class="tab" type="button" data-example="caseMenu">CASE menu</button>
+            <button class="tab" type="button" data-example="nestedDiscount">Nested discount</button>
+            <button class="tab" type="button" data-example="rangeGrade">Grade ranges</button>
           </div>
           <div class="example-output" id="exampleOutput"></div>
         </section>
@@ -407,7 +421,7 @@ NEXT Count</code></pre>
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>10 quick checks</h2>
-            <p>Use short answers for checking. Expand the answer for fuller marking wording.</p>
+            <p>Use short answers for the check box. Expand the answer for full wording.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -415,7 +429,7 @@ NEXT Count</code></pre>
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Loop mistakes that look harmless until traced</h2>
+            <h2>Selection mistakes that cost marks</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -423,7 +437,7 @@ NEXT Count</code></pre>
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Count-controlled loops and trace tables</h2>
+            <h2>IF, CASE and nested selection</h2>
             <p>Original Cambridge-style questions. Try first, then expand the MS.</p>
           </div>
           <div class="exam-list" id="examList"></div>
@@ -432,33 +446,33 @@ NEXT Count</code></pre>
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-128">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>FOR loop checklist</h2>
+            <h2>Selection checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Known count</strong><span>Is the number of repetitions known before the loop starts?</span></div>
-            <div><strong>Correct bounds</strong><span>Do the start and end values include exactly the required items?</span></div>
-            <div><strong>Trace safely</strong><span>Are accumulators initialised and updated once per iteration?</span></div>
+            <div><strong>Condition</strong><span>What exact expression decides the path?</span></div>
+            <div><strong>Coverage</strong><span>Do all normal, boundary and invalid inputs have a route?</span></div>
+            <div><strong>Closure</strong><span>Are IF, CASE and nested blocks closed correctly?</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Count-controlled loop practice</h2>
+            <h2>Selection practice</h2>
           </div>
           <ol class="homework-list">
-            <li><strong>Trace table</strong><span>Trace a loop that totals the numbers 1 TO 6. Show Count and Total after each iteration.</span></li>
-            <li><strong>Array task</strong><span>Write pseudocode to output all 20 values in <code>Temperatures[1:20]</code>.</span></li>
-            <li><strong>Debug task</strong><span>Explain why <code>FOR Index &lt;- 1 TO 19</code> is wrong when 20 array elements must be processed.</span></li>
-            <li><strong>Java comparison</strong><span>Write the same loop in Java as support only, then circle the syntax that must not appear in Cambridge pseudocode.</span></li>
+            <li><strong>IF task</strong><span>Write pseudocode for a login attempt: output Allowed only if UsernameFound = TRUE and PasswordCorrect = TRUE.</span></li>
+            <li><strong>CASE task</strong><span>Write a menu CASE for choices 1 to 4 and an OTHERWISE invalid choice branch.</span></li>
+            <li><strong>Trace task</strong><span>Trace the nested discount example for Age = 18 / Member = TRUE and Age = 17 / Member = FALSE.</span></li>
+            <li><strong>Boundary task</strong><span>Write three test values for a grade boundary at 70 and state the expected branch for each.</span></li>
           </ol>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

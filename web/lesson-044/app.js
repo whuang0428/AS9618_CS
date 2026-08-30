@@ -1,98 +1,99 @@
-const busMap = {
-  address500: {
-    result: "Address bus",
-    method: "500 identifies a memory location, so it is carried on the address bus.",
-    trap: "Do not treat an address as the data stored at that address.",
+const registerMap = {
+  pc: {
+    role: "PC / Program Counter: holds the address of the next instruction to be fetched.",
+    method: "Used at the start of fetch. Its contents are copied to the MAR, then the PC is normally incremented or updated.",
+    trap: "Do not say the PC holds the current instruction. That is the CIR.",
   },
-  instruction: {
-    result: "Data bus",
-    method: "An instruction transferred from memory to CPU is the value being transferred, so it travels on the data bus.",
-    trap: "Instructions can travel on the data bus because they are transferred as bit patterns.",
+  cir: {
+    role: "CIR / Current Instruction Register: holds the instruction currently being decoded or executed.",
+    method: "After an instruction is fetched from memory through the MDR, it is copied to the CIR for decoding by the control unit.",
+    trap: "Do not use CIR for the address of the next instruction. That is the PC.",
   },
-  read: {
-    result: "Control bus",
-    method: "A read signal tells memory what operation to perform, so it is a control signal.",
-    trap: "Do not put read/write signals on the address bus.",
+  mar: {
+    role: "MAR / Memory Address Register: holds the address of the memory location being accessed.",
+    method: "The address in the MAR is placed on the address bus during memory read or write operations.",
+    trap: "Do not say the MAR holds the data or instruction value. That is the MDR.",
   },
-  write: {
-    result: "Control bus",
-    method: "A write signal controls the operation that stores data into memory.",
-    trap: "The data being written is on the data bus; the write command is on the control bus.",
+  mdr: {
+    role: "MDR / Memory Data Register: holds data or an instruction being transferred to or from memory.",
+    method: "During fetch, the instruction read from memory is transferred into the MDR before being copied to the CIR.",
+    trap: "Do not say the MDR holds the memory address. That is the MAR.",
   },
-  interrupt: {
-    result: "Control bus",
-    method: "Interrupts are control signals used to get the processor's attention.",
-    trap: "An interrupt is not the same as the data produced by a device.",
+  acc: {
+    role: "ACC / Accumulator: holds intermediate or final results from ALU operations.",
+    method: "After an arithmetic or logical operation, the ALU result may be stored in the accumulator for further use.",
+    trap: "Do not describe the ACC as storing every instruction. It is mainly associated with ALU results.",
   },
-  width16: {
-    result: "2^16 = 65,536 addresses",
-    method: "With 16 address lines, there are 2^16 possible binary address combinations.",
-    trap: "Do not confuse address bus width with data bus width.",
+  sr: {
+    role: "Status register: holds flags about the result of an operation or CPU state.",
+    method: "Flags such as zero, carry, overflow or negative can be set after an ALU operation and then used by later instructions.",
+    trap: "Do not say the status register stores the actual calculation result. It stores flags about the result.",
   },
 };
 
 const examples = {
-  read: {
-    title: "Example 1: memory read",
-    problem: "The CPU reads the value stored at address 120.",
+  fetch: {
+    title: "Example 1: fetch roles",
+    problem: "A fetch trace says: PC = 300. Explain which registers are used.",
     steps: [
-      "Address bus: carries address 120 from the CPU to memory.",
-      "Control bus: carries a read signal.",
-      "Data bus: carries the value stored at address 120 from memory back to the CPU.",
-      "Exam sentence: the address identifies where; the data bus carries what is returned.",
+      "The PC holds address 300, the address of the next instruction.",
+      "The address 300 is copied into the MAR because MAR holds the memory address being accessed.",
+      "The instruction read from memory is placed into the MDR because MDR holds the transferred instruction/data.",
+      "The instruction is copied into the CIR because CIR holds the current instruction for decoding.",
+      "The PC is normally incremented or updated to point to the next instruction.",
     ],
   },
-  write: {
-    title: "Example 2: memory write",
-    problem: "The CPU writes value 37 to address 900.",
+  addition: {
+    title: "Example 2: ACC and flags",
+    problem: "An ADD instruction produces result 0. Which registers might show this?",
     steps: [
-      "Address bus: carries address 900 to select the memory location.",
-      "Data bus: carries value 37 to memory.",
-      "Control bus: carries a write signal.",
-      "Memory stores value 37 at the selected address.",
+      "The ALU performs the addition.",
+      "The result may be stored in the ACC as an intermediate or final result.",
+      "The zero flag in the status register may be set because the result is 0.",
+      "The status register stores flags about the result, not the result value itself.",
     ],
   },
-  width: {
-    title: "Example 3: address bus width",
-    problem: "How many memory locations can a 12-bit address bus address?",
+  compare: {
+    title: "Example 3: compare MAR and MDR",
+    problem: "Explain the difference between MAR and MDR.",
     steps: [
-      "An n-bit address bus can represent 2^n addresses.",
-      "Here n = 12.",
-      "2^12 = 4096.",
-      "A 12-bit address bus can address 4096 different memory locations.",
+      "MAR holds a memory address, such as address 120.",
+      "MDR holds the data or instruction transferred to or from that address.",
+      "Memory address goes on the address bus; transferred data/instruction goes on the data bus.",
+      "Exam sentence: MAR identifies where; MDR temporarily holds what is transferred.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which bus carries a memory address?", accepted: ["address bus"], answer: "Address bus" },
-  { id: "p2", prompt: "Which bus carries data or instructions?", accepted: ["data bus"], answer: "Data bus" },
-  { id: "p3", prompt: "Which bus carries read/write signals?", accepted: ["control bus"], answer: "Control bus" },
-  { id: "p4", prompt: "During a memory read, which bus carries the requested value back to the CPU?", accepted: ["data bus"], answer: "Data bus" },
-  { id: "p5", prompt: "During a memory write, which bus carries the target memory location?", accepted: ["address bus"], answer: "Address bus" },
-  { id: "p6", prompt: "During a memory write, which bus carries the value to be stored?", accepted: ["data bus"], answer: "Data bus" },
-  { id: "p7", prompt: "Which bus carries an interrupt signal?", accepted: ["control bus"], answer: "Control bus" },
-  { id: "p8", prompt: "A 10-bit address bus can address how many locations?", accepted: ["1024", "1,024"], answer: "1024" },
-  { id: "p9", prompt: "A 16-bit address bus can address how many locations?", accepted: ["65536", "65,536"], answer: "65,536" },
-  { id: "p10", prompt: "Is the data bus usually bidirectional? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p1", prompt: "Which register holds the address of the next instruction?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
+  { id: "p2", prompt: "Which register holds the current instruction?", accepted: ["cir", "current instruction register"], answer: "CIR / Current Instruction Register" },
+  { id: "p3", prompt: "Which register holds the memory address being accessed?", accepted: ["mar", "memory address register"], answer: "MAR / Memory Address Register" },
+  { id: "p4", prompt: "Which register holds data or an instruction transferred to/from memory?", accepted: ["mdr", "memory data register"], answer: "MDR / Memory Data Register" },
+  { id: "p5", prompt: "Which register holds intermediate ALU results?", accepted: ["acc", "accumulator"], answer: "ACC / Accumulator" },
+  { id: "p6", prompt: "Which register holds flags such as zero, carry or overflow?", accepted: ["status register", "sr", "flag register", "flags register"], answer: "Status register" },
+  { id: "p7", prompt: "Which register is copied to the MAR at the start of fetch?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
+  { id: "p8", prompt: "Which register receives the fetched instruction before it is copied to the CIR?", accepted: ["mdr", "memory data register"], answer: "MDR / Memory Data Register" },
+  { id: "p9", prompt: "Which register is normally incremented after fetching an instruction?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
+  { id: "p10", prompt: "Which register stores flags about a comparison result?", accepted: ["status register", "sr", "flag register", "flags register"], answer: "Status register" },
 ];
 
 const mistakes = [
   {
-    wrong: "The address bus carries the data stored in memory.",
-    fix: "The address bus carries the location/address. The data bus carries the data or instruction value.",
+    wrong: "The PC stores the current instruction while it is decoded.",
+    fix: "The PC stores the address of the next instruction. The CIR stores the current instruction while it is decoded.",
   },
   {
-    wrong: "The data bus carries read and write commands.",
-    fix: "The control bus carries read and write signals. The data bus carries transferred data or instructions.",
+    wrong: "The MAR stores the instruction copied from memory.",
+    fix: "The MAR stores the memory address. The MDR stores the instruction or data transferred from memory.",
   },
   {
-    wrong: "A wider data bus means the CPU can address more memory locations.",
-    fix: "A wider address bus increases the number of addressable locations. A wider data bus transfers more bits at once.",
+    wrong: "The accumulator stores flags such as carry and overflow.",
+    fix: "The accumulator stores intermediate or final ALU results. The status register stores flags such as carry and overflow.",
   },
   {
-    wrong: "During a memory read, only the data bus is used.",
-    fix: "A memory read uses the address bus for the location, the control bus for the read signal and the data bus for the returned value.",
+    wrong: "The status register stores the answer to an addition.",
+    fix: "The status register stores flags about the result. The actual result may be stored in the ACC or another register.",
   },
 ];
 
@@ -106,90 +107,93 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Describe the roles of the address bus, data bus and control bus.",
-    answer: "The address bus carries the address of the memory or I/O location to be accessed. The data bus carries data or instructions being transferred between the CPU, memory and other components. The control bus carries control and timing signals, such as read, write or interrupt signals, so that the transfer is coordinated.",
+    prompt: "Describe the roles of the PC, MAR and MDR during the fetch stage.",
+    answer: "The PC holds the address of the next instruction to be fetched. This address is copied to the MAR, which holds the memory address being accessed. The address in the MAR is used to read from memory. The instruction returned from memory is held in the MDR because the MDR holds data or instructions being transferred to or from memory. The PC is normally incremented or updated after the fetch.",
     marking: [
-      { mark: "B1", text: "address bus carries address/location" },
-      { mark: "B1", text: "address is for memory or I/O location being accessed" },
-      { mark: "B1", text: "data bus carries data/instructions" },
-      { mark: "B1", text: "data bus transfer is between CPU, memory or components/devices" },
-      { mark: "B1", text: "control bus carries control/timing signals" },
-      { mark: "B1", text: "valid signal example such as read, write, interrupt or clock/timing" },
+      { mark: "B1", text: "PC holds address of next instruction" },
+      { mark: "B1", text: "address copied from PC to MAR" },
+      { mark: "B1", text: "MAR holds memory address being accessed" },
+      { mark: "B1", text: "memory is read using address in MAR" },
+      { mark: "B1", text: "MDR holds instruction/data transferred from memory" },
+      { mark: "B1", text: "PC incremented/updated after fetch" },
     ],
     strict: [
-      "Do not accept 'bus carries information' for all three without distinguishing roles.",
-      "Do not accept address bus carries data value.",
-      "Allow instructions on data bus because instructions are transferred as bit patterns.",
-      "Award each bus independently.",
+      "Do not accept PC holds the instruction.",
+      "Do not accept MAR holds the instruction value.",
+      "Allow data/instruction wording for MDR because instructions are transferred as data values.",
+      "Award each register role independently if other parts of the sequence are weak.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Complete a trace table for how the system buses are used when the CPU reads data from memory.",
-    answer: "The CPU places the required memory address on the address bus. A read signal is sent on the control bus. Memory uses the address to locate the data. The data is placed on the data bus and transferred from memory to the CPU, often into the MDR.",
+    marks: "4 marks",
+    prompt: "Explain the difference between the CIR and the PC.",
+    answer: "The PC holds the address of the next instruction to be fetched, while the CIR holds the instruction currently being decoded or executed. The PC is used to locate the next instruction in memory, whereas the CIR is used by the control unit to interpret the current instruction.",
     marking: [
-      { mark: "B1", text: "CPU places required address on address bus" },
-      { mark: "B1", text: "read signal sent on control bus" },
-      { mark: "B1", text: "memory uses address to locate data/instruction" },
-      { mark: "B1", text: "data/instruction placed on data bus" },
-      { mark: "B1", text: "data transferred from memory to CPU/MDR" },
+      { mark: "B1", text: "PC holds address of next instruction" },
+      { mark: "B1", text: "CIR holds current instruction" },
+      { mark: "B1", text: "PC used to locate/fetch next instruction" },
+      { mark: "B1", text: "CIR used for decoding/executing current instruction" },
     ],
     strict: [
-      "Do not award read-signal mark if answer puts read command on data bus.",
-      "Do not require MDR unless the question asks for registers.",
-      "Allow instruction read as a valid memory read.",
+      "Do not award marks for simply expanding the abbreviations without roles.",
+      "Do not accept PC holds the current instruction.",
+      "Allow 'instruction being decoded' or 'instruction being executed' for CIR.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "Complete a trace table for how the system buses are used when the CPU writes data to memory.",
-    answer: "The CPU places the target memory address on the address bus. It places the data to be stored on the data bus. A write signal is sent on the control bus. Memory uses the address to select the location and stores the data at that location.",
+    prompt: "Describe the purpose of the accumulator and the status register.",
+    answer: "The accumulator is a register that stores intermediate or final results from ALU operations. For example, after an addition, the result may be placed in the accumulator. The status register stores flags that describe the result or CPU state, such as zero, carry, overflow or negative flags. These flags can be used by later instructions, for example conditional branch instructions.",
     marking: [
-      { mark: "B1", text: "target address placed on address bus" },
-      { mark: "B1", text: "data/value to be stored placed on data bus" },
-      { mark: "B1", text: "write signal sent on control bus" },
-      { mark: "B1", text: "memory uses address to select location" },
-      { mark: "B1", text: "data stored/written at selected location" },
+      { mark: "B1", text: "ACC/accumulator stores intermediate or final results" },
+      { mark: "B1", text: "result is from ALU/arithmetic/logical operation" },
+      { mark: "B1", text: "status register stores flags" },
+      { mark: "B1", text: "valid flag example such as zero, carry, overflow, negative" },
+      { mark: "B1", text: "flags can affect later/conditional instructions or indicate CPU/result state" },
     ],
     strict: [
-      "Do not accept data bus for the address.",
-      "Do not accept address bus for the value being stored.",
-      "Allow any sensible ordering of address/data/control if roles are clear.",
+      "Do not accept status register stores the actual arithmetic result.",
+      "Do not require all listed flag examples.",
+      "Allow 'flag register' if role matches status register.",
     ],
   },
   {
     title: "Question 4",
-    marks: "2 marks",
-    prompt: "A processor has a 16-bit address bus. Calculate the maximum number of different memory addresses it can represent.",
-    answer: "An n-bit address bus can represent 2^n addresses. For n = 16, 2^16 = 65,536. Therefore it can represent 65,536 different memory addresses.",
+    marks: "5 marks",
+    prompt: "A CPU executes an instruction that adds two values and produces zero. Explain the possible roles of ACC and the status register.",
+    answer: "The ALU performs the addition. The accumulator may store the result of the addition as an intermediate or final value. Since the result is zero, the zero flag in the status register may be set. Other flags may also be updated depending on the operation and architecture. The status register records conditions about the result, which can be used by later instructions such as a conditional branch.",
     marking: [
-      { mark: "M1", text: "uses 2^16 for the number of address patterns" },
-      { mark: "A1", text: "65,536 different addresses/locations" },
+      { mark: "B1", text: "ALU performs the addition" },
+      { mark: "B1", text: "ACC stores result/intermediate result" },
+      { mark: "B1", text: "zero flag/status flag set or updated" },
+      { mark: "B1", text: "status register stores flags/conditions about result" },
+      { mark: "B1", text: "flags may be used by later/conditional instructions" },
     ],
     strict: [
-      "Do not award full marks for 16 x 2 or 16^2.",
-      "Do not require conversion to KiB unless memory location size is specified.",
-      "Allow 65536 without comma.",
+      "Do not award zero flag mark if candidate says ACC is the zero flag.",
+      "Do not require exact binary values.",
+      "Allow 'may be set' because flag behaviour depends on architecture.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A candidate writes: 'The address bus carries instructions, the data bus carries addresses, and the control bus stores data.' Explain why this is incorrect and give the correct roles.",
-    answer: "The statement is incorrect because the bus roles are confused. The address bus carries the address of the memory or I/O location being accessed. The data bus carries the data or instructions being transferred. The control bus carries control signals such as read or write; it does not store data. Buses transfer signals rather than permanently storing values.",
+    marks: "6 marks",
+    prompt: "Compare general-purpose from special-purpose registers, then state the roles of ACC, PC, MAR, MDR and IX.",
+    answer: "A general-purpose register can hold values for varied operations, whereas a special-purpose register has a defined processor role. ACC holds intermediate or final ALU results. PC holds the address of the next instruction. MAR holds the address currently accessed. MDR holds data or an instruction transferred to or from memory. IX holds an offset used to form an indexed effective address.",
     marking: [
-      { mark: "B1", text: "address bus carries address/location" },
-      { mark: "B1", text: "data bus carries data/instructions being transferred" },
-      { mark: "B1", text: "control bus carries control signals" },
-      { mark: "B1", text: "valid control signal example such as read/write" },
-      { mark: "B1", text: "buses transfer signals/do not store data permanently" },
+      { mark: "B1", text: "general-purpose register can hold values for varied operations; special-purpose register has a defined role" },
+      { mark: "B1", text: "ACC holds intermediate/final ALU results" },
+      { mark: "B1", text: "PC holds the address of the next instruction" },
+      { mark: "B1", text: "MAR holds the address being accessed and MDR holds transferred data/instruction" },
+      { mark: "B1", text: "IX holds an offset/index used in effective-address calculation" },
+      { mark: "B1", text: "Cambridge assembly questions assume ACC as the available general-purpose working register" },
     ],
     strict: [
-      "Do not accept 'control bus controls the computer' without signal wording.",
-      "Do not reject instructions on data bus if the answer explains they are transferred as data.",
-      "Allow 'commands' for control signals only if read/write/control meaning is clear.",
+      "Do not swap MAR with MDR or state that IX stores an array element by definition.",
+      "Do not accept only the expanded register names without roles.",
+      "Allow equivalent wording that distinguishes flexible temporary use from a defined processor role.",
     ],
   },
 ];
@@ -205,10 +209,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    address: "Correct. 500 is the memory location, so it travels on the address bus.",
-    data: "Not this time. The data bus carries the value stored at address 500, not the address 500 itself.",
-    control: "The control bus can carry the read signal, but not the address 500.",
-    register: "MDR may hold transferred data, but the question asks which bus carries the address.",
+    "mar-mdr": "Correct. MAR holds the memory address; MDR holds the data or instruction being transferred.",
+    "mdr-mar": "Swapped. MDR is for data/instruction transfer; MAR is for memory address.",
+    "pc-cir": "Swapped. PC holds the next instruction address; CIR holds the current instruction.",
+    "acc-status": "Swapped. ACC holds an ALU result; the status register holds flags.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -220,19 +224,19 @@ function setupHook() {
 }
 
 function setupMapper() {
-  const select = document.querySelector("#busInput");
+  const select = document.querySelector("#registerInput");
   const result = document.querySelector("#mapResult");
   const method = document.querySelector("#mapMethod");
   const trap = document.querySelector("#mapTrap");
-  function mapBus() {
-    const item = busMap[select.value];
-    result.textContent = item.result;
-    method.innerHTML = `<strong>Reason:</strong> ${item.method}`;
+  function mapRegister() {
+    const item = registerMap[select.value];
+    result.textContent = item.role;
+    method.innerHTML = `<strong>When used:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  select.addEventListener("change", mapBus);
-  document.querySelector("#mapBtn").addEventListener("click", mapBus);
-  mapBus();
+  select.addEventListener("change", mapRegister);
+  document.querySelector("#mapBtn").addEventListener("click", mapRegister);
+  mapRegister();
 }
 
 function renderExample(key) {
@@ -252,7 +256,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("read");
+  renderExample("fetch");
 }
 
 function setupAnswerToggles(scope = document) {

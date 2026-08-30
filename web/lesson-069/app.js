@@ -1,156 +1,122 @@
-const checkRules = {
-  range: {
-    test: (value) => Number.isFinite(Number(value)) && Number(value) >= 0 && Number(value) <= 75,
-    pass: "Pass: the mark is numeric and within 0-75.",
-    fail: "Fail: a range check rejects values outside 0-75, or non-numeric input.",
-    limitation: "A mark of 57 passes the rule, but it could still be the wrong mark for that student.",
+const scenarioMap = {
+  https: {
+    result: "Allow: normal outbound HTTPS.",
+    method: "The rule can permit internal users to access secure websites using TCP port 443.",
+    trap: "Do not assume allowed traffic is automatically safe; other controls may still inspect or log it.",
   },
-  length: {
-    test: (value) => value.length === 8,
-    pass: "Pass: the student ID has exactly 8 characters.",
-    fail: "Fail: a length check rejects IDs that are not exactly 8 characters.",
-    limitation: "An 8-character ID can still belong to the wrong student.",
+  sshExternal: {
+    result: "Block and log: unsolicited admin access attempt.",
+    method: "Unknown external SSH traffic to a school server should normally be denied because it targets a sensitive admin service.",
+    trap: "Do not leave admin ports open to the whole internet for convenience.",
   },
-  type: {
-    test: (value) => /^-?\d+$/.test(value.trim()),
-    pass: "Pass: the quantity is a whole number.",
-    fail: "Fail: a type check rejects values that are not whole numbers.",
-    limitation: "A whole number can still be unrealistic unless range or other checks are also used.",
+  mailServer: {
+    result: "Allow: approved mail server SMTP.",
+    method: "The mail server needs port 25 to send mail, so a specific rule can allow it.",
+    trap: "Do not allow every device to send SMTP just because the mail server needs it.",
   },
-  format: {
-    test: (value) => /^[A-Za-z]{2}\d{4}$/.test(value.trim()),
-    pass: "Pass: the input follows two letters then four digits.",
-    fail: "Fail: a format check rejects input that does not match the required pattern.",
-    limitation: "A correctly formatted code can still be a code that does not exist.",
+  studentSmtp: {
+    result: "Block or log: student laptop SMTP.",
+    method: "A student laptop normally should not send direct SMTP traffic; blocking can reduce spam or malware misuse.",
+    trap: "Do not block the entire network's email service when only unauthorised sources should be denied.",
   },
-  presence: {
-    test: (value) => value.trim().length > 0,
-    pass: "Pass: the required field is not blank.",
-    fail: "Fail: a presence check rejects blank required fields.",
-    limitation: "Typing 'unknown' may pass presence but still be poor or false data.",
-  },
-  existence: {
-    test: (value) => ["P100", "P200", "P350"].includes(value.trim().toUpperCase()),
-    pass: "Pass: the product code exists in the stored practice lookup list.",
-    fail: "Fail: an existence check rejects a value that is not found in the specified stored list.",
-    limitation: "An existing product code can still be the wrong product code for this transaction.",
-  },
-  limit: {
-    test: (value) => Number.isFinite(Number(value)) && Number(value) <= 10,
-    pass: "Pass: the value satisfies the one stated upper limit of 10 MiB.",
-    fail: "Fail: an upper limit check rejects a value greater than 10 MiB.",
-    limitation: "A limit check uses one upper or lower limit; a range check uses both a lower and an upper bound.",
-  },
-  checkDigit: {
-    test: (value) => /^\d{6}$/.test(value.trim())
-      && Number(value.trim()[5]) === [...value.trim().slice(0, 5)].reduce((sum, digit) => sum + Number(digit), 0) % 10,
-    pass: "Pass: the final digit matches the digit calculated from the other five digits.",
-    fail: "Fail: the calculated check digit does not match the entered final digit.",
-    limitation: "A matching check digit detects many entry errors but does not prove that this is the intended identifier.",
+  adminSubnet: {
+    result: "Allow if authenticated and from approved subnet.",
+    method: "Admin access can be restricted to a management subnet so only expected sources reach the admin panel.",
+    trap: "A firewall source rule is not a substitute for strong authentication and permissions.",
   },
 };
 
-const verifyMap = {
-  password: {
-    result: "Verification by double entry / repeat entry.",
-    reason: "The second entry is compared with the first to detect typing errors before the value is accepted.",
+const eventMap = {
+  category: {
+    result: "Most relevant: proxy filtering.",
+    reason: "A proxy can inspect web requests and block categories or URLs according to policy.",
   },
-  paper: {
-    result: "Verification by visual check.",
-    reason: "A person compares the entered address with the original paper source to detect copying errors.",
+  cache: {
+    result: "Most relevant: proxy caching.",
+    reason: "A proxy can store a copy of a frequently requested resource to reduce bandwidth and improve response time.",
   },
-  typedTwice: {
-    result: "Verification by double entry.",
-    reason: "Two entries of the same data are compared. A mismatch suggests a data entry error.",
+  spike: {
+    result: "Most relevant: network monitoring.",
+    reason: "Monitoring observes traffic volume and can alert staff when it crosses a threshold or pattern.",
   },
-  copy: {
-    result: "Verification by checksum after transfer.",
-    reason: "The receiver recalculates a checksum from the received data block and compares it with the transmitted checksum.",
-  },
-  parityByte: {
-    result: "Verification by parity check on a byte.",
-    reason: "The receiver checks whether the byte, including its parity bit, has the agreed odd or even parity. A mismatch indicates a likely transmission error.",
-  },
-  blockParity: {
-    result: "Verification by block parity.",
-    reason: "Parity is checked across rows and columns of a block of bytes, allowing many single-bit errors to be detected and located.",
+  logs: {
+    result: "Most relevant: proxy or firewall logs.",
+    reason: "Logs can show user, time, source, destination and whether a request was allowed or blocked.",
   },
 };
 
 const examples = {
-  range: {
-    title: "Example 1: Range check for exam marks",
-    problem: "A paper is marked out of 75. A user enters 82.",
+  firewall: {
+    title: "Example 1: Firewall blocking inbound access",
+    problem: "A school server receives connection attempts from unknown external IP addresses.",
     steps: [
-      "A range check tests whether the mark is between 0 and 75.",
-      "82 is rejected because it is outside the allowed range.",
-      "This prevents an impossible mark entering the system.",
-      "It would not detect a wrong but possible mark, such as 62 instead of 52.",
+      "A firewall can inspect source address, destination address, protocol and port.",
+      "Rules can block unsolicited inbound traffic that is not needed for the service.",
+      "Denied attempts can be logged for investigation.",
+      "Limitation: allowed traffic can still carry attacks, so patching and monitoring are still needed.",
     ],
   },
-  format: {
-    title: "Example 2: Format check for a student code",
-    problem: "A student code must use two letters followed by four digits.",
+  proxy: {
+    title: "Example 2: Proxy enforcing web policy",
+    problem: "Students should not access gaming sites during lessons, but should still use approved learning sites.",
     steps: [
-      "A format check tests the pattern of the data.",
-      "AB1234 passes because it has two letters then four digits.",
-      "A12345 fails because it does not match the required pattern.",
-      "A code can pass the format check but still not belong to a real student.",
+      "Client web requests are sent through the proxy.",
+      "The proxy checks the URL or category against a policy.",
+      "Blocked requests can be denied and logged; allowed pages are forwarded.",
+      "The proxy may also cache frequently used learning resources.",
     ],
   },
-  double: {
-    title: "Example 3: Double entry for a new password",
-    problem: "A website asks users to enter a new password twice.",
+  monitoring: {
+    title: "Example 3: Monitoring suspicious traffic",
+    problem: "The network shows a sudden spike in outgoing traffic at night.",
     steps: [
-      "This is verification because two entries are compared.",
-      "If the entries do not match, a typing error is likely.",
-      "The method does not check whether the password is strong unless validation rules are also applied.",
-      "A user can type the same weak password twice, so the data is verified but still poor.",
+      "Monitoring tools can record traffic volume, source devices and destinations.",
+      "An alert can be generated when traffic exceeds a threshold or matches a pattern.",
+      "Logs help staff identify the device or account involved.",
+      "Monitoring supports detection and response; it does not automatically remove the cause.",
     ],
   },
-  combined: {
-    title: "Example 4: Admissions form using both methods",
-    problem: "A school admissions form records date of birth and postcode.",
+  layered: {
+    title: "Example 4: Layering controls",
+    problem: "A company wants to reduce risk from malware calling out to command servers.",
     steps: [
-      "Validation can check date format and whether the date is within a sensible range.",
-      "Validation can check the postcode follows an expected format.",
-      "Verification can compare the entered data with the original application document.",
-      "Both reduce errors, but neither proves the applicant gave truthful information.",
+      "A firewall can block known unwanted ports or destinations.",
+      "A proxy can filter suspicious web requests and log user activity.",
+      "Monitoring can alert staff to unusual outbound traffic.",
+      "Anti-malware, patching and user training are still needed because one control is not enough.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which method checks input against rules before it is accepted?", accepted: ["validation", "data validation"], answer: "Validation / data validation" },
-  { id: "p2", prompt: "Which method checks that data has been copied or entered accurately?", accepted: ["verification", "data verification"], answer: "Verification / data verification" },
-  { id: "p3", prompt: "Which validation check tests whether a value is between allowed limits?", accepted: ["range", "range check"], answer: "Range check" },
-  { id: "p4", prompt: "Which validation check tests the number of characters?", accepted: ["length", "length check"], answer: "Length check" },
-  { id: "p5", prompt: "Which validation check tests whether data follows a required pattern?", accepted: ["format", "format check"], answer: "Format check" },
-  { id: "p6", prompt: "Which validation check tests whether required data has been entered?", accepted: ["presence", "presence check"], answer: "Presence check" },
-  { id: "p7", prompt: "Which validation check can detect common transcription errors in long numbers such as barcodes?", accepted: ["check digit", "check digit check"], answer: "Check digit" },
-  { id: "p8", prompt: "Entering data twice and comparing the two entries is what method?", accepted: ["double entry", "verification", "data verification"], answer: "Double entry verification" },
-  { id: "p9", prompt: "Can validation prove data is true? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Can verification prove the original source data was true? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p11", prompt: "Which check tests one stated maximum or minimum rather than two bounds?", accepted: ["limit", "limit check", "upper limit check", "lower limit check"], answer: "Limit check" },
-  { id: "p12", prompt: "Which check confirms that a code is present in a specified stored lookup file?", accepted: ["existence", "existence check"], answer: "Existence check" },
+  { id: "p1", prompt: "Which control filters network traffic using rules?", accepted: ["firewall", "firewalls"], answer: "Firewall" },
+  { id: "p2", prompt: "Name one property a firewall rule may inspect.", accepted: ["ip address", "source ip", "destination ip", "port", "port number", "protocol", "state"], answer: "Source/destination IP address, port number, protocol or connection state" },
+  { id: "p3", prompt: "Which control acts as an intermediary between client and destination?", accepted: ["proxy", "proxy server"], answer: "Proxy / proxy server" },
+  { id: "p4", prompt: "Which proxy feature stores frequently requested resources?", accepted: ["cache", "caching"], answer: "Caching" },
+  { id: "p5", prompt: "Which process observes traffic and events to detect suspicious behaviour?", accepted: ["network monitoring", "monitoring"], answer: "Network monitoring" },
+  { id: "p6", prompt: "What record can show allowed and blocked traffic events?", accepted: ["log", "logs", "audit log", "firewall log", "proxy log"], answer: "Log / firewall log / proxy log" },
+  { id: "p7", prompt: "What should monitoring generate when suspicious thresholds are met?", accepted: ["alert", "alerts", "warning"], answer: "Alert / warning" },
+  { id: "p8", prompt: "Does a firewall guarantee that all allowed traffic is safe? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p9", prompt: "Name one benefit of using a proxy server.", accepted: ["filtering", "filter", "caching", "cache", "logging", "anonymity", "policy enforcement", "block sites"], answer: "Filtering, caching, logging or policy enforcement" },
+  { id: "p10", prompt: "Name one limitation of network monitoring.", accepted: ["false positives", "needs response", "needs review", "too many alerts", "does not prevent", "privacy"], answer: "False positives, needs human/automated response, too many alerts, privacy concerns or detection without prevention" },
 ];
 
 const mistakes = [
   {
-    wrong: "Validation checks that the data is correct.",
-    fix: "Validation checks that data follows rules. It can reject impossible or unsuitable data, but valid data can still be factually wrong.",
+    wrong: "A firewall stops every attack.",
+    fix: "A firewall filters traffic based on rules. Allowed traffic can still contain attacks, and incorrect rules can create gaps.",
   },
   {
-    wrong: "Verification is a range check.",
-    fix: "A range check is validation. Verification checks that data has been copied or entered accurately, often by comparison.",
+    wrong: "A proxy and a firewall are exactly the same.",
+    fix: "A firewall allows or blocks traffic using rules. A proxy acts as an intermediary that forwards, filters, caches or logs requests.",
   },
   {
-    wrong: "A presence check proves the entered email address is real.",
-    fix: "A presence check only proves the field is not blank. Format or other checks may be needed, and even then the email may not belong to the user.",
+    wrong: "Network monitoring prevents attacks automatically.",
+    fix: "Monitoring detects and records suspicious activity. Prevention requires a response, such as blocking traffic, isolating a device or changing rules.",
   },
   {
-    wrong: "Double entry guarantees the value is true.",
-    fix: "Double entry can detect typing differences. If the same wrong value is entered twice, the data can still be false.",
+    wrong: "Logs are useful only after an attack is over.",
+    fix: "Logs support investigation after events, but they can also feed real-time alerts and help detect suspicious patterns early.",
   },
 ];
 
@@ -163,96 +129,94 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Explain the difference between validation and verification and how both methods help protect data integrity.",
-    answer: "Validation checks that input data follows rules before it is accepted, such as a range, length, type or format rule. Verification checks that data has been entered, copied or transferred accurately compared with a source or a second entry. By detecting or preventing many input, copying and transfer errors, both methods reduce the chance that inaccurate or corrupted data are accepted and therefore help protect data integrity. Neither method proves that the original data is true.",
+    marks: "4 marks",
+    prompt: "Describe how a firewall can reduce security risks on a school network.",
+    answer: "A firewall filters traffic entering or leaving the network using rules. The rules may inspect source or destination IP address, port number, protocol or connection state. Unwanted traffic, such as unsolicited inbound connections to admin services, can be blocked or logged. This reduces the risk of unauthorised access attempts and provides evidence for investigation, but allowed traffic may still need other controls.",
     marking: [
-      { mark: "B1", text: "validation checks data against rules/criteria" },
-      { mark: "B1", text: "valid validation example, e.g. range/length/type/format/presence" },
-      { mark: "B1", text: "verification checks entered/copied/transferred data against source/repeat entry" },
-      { mark: "B1", text: "valid verification example, e.g. double entry/visual check/comparison" },
-      { mark: "B1", text: "both reduce input/copy/transfer errors and therefore help protect data integrity" },
+      { mark: "B1", text: "firewall filters/controls network traffic" },
+      { mark: "B1", text: "rules inspect valid property such as IP/port/protocol/state" },
+      { mark: "B1", text: "traffic can be allowed/blocked/rejected/logged" },
+      { mark: "B1", text: "risk reduced linked to unauthorised access/unwanted traffic" },
     ],
     strict: [
-      "Do not accept validation and verification as the same process.",
-      "Do not award validation mark for only saying 'checks it is correct'.",
-      "Allow 'reasonable' for validation only when rule/criteria idea is clear.",
-      "Do not award the integrity mark for merely repeating the word integrity without an error-reduction link.",
+      "Do not accept 'makes the network secure' without mechanism.",
+      "Do not award rule mark for only saying 'checks data' without property.",
+      "Allow host-based or network firewall if filtering role is clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "7 marks",
-    prompt: "A school form accepts an age from 3 to 19, a file no larger than 10 MiB, a fixed-format student ID, a required email address and a product code that must already be stored in the product file. Suggest suitable validation checks and Compare the age rule from the file-size rule.",
-    answer: "Age should use a range check because both a lower bound of 3 and an upper bound of 19 apply. File size should use an upper limit check because there is one maximum of 10 MiB. The student ID can use a length check and a format check for its fixed pattern. The email address can use a presence check so it is not blank and a format check for the required pattern. The product code should use an existence check against the stored product file.",
+    marks: "5 marks",
+    prompt: "Explain two functions of a proxy server.",
+    answer: "A proxy server acts as an intermediary between a client and a destination server. It can filter web requests by checking URLs, categories or content against a policy and blocking unsuitable requests. It can cache frequently requested resources so later requests can be served faster and use less bandwidth. It can also log requests for audit and investigation.",
     marking: [
-      { mark: "B1", text: "age linked to a range check" },
-      { mark: "B1", text: "range check explained as applying lower and upper bounds 3 and 19" },
-      { mark: "B1", text: "file size linked to an upper limit check with maximum 10 MiB" },
-      { mark: "B1", text: "student ID linked to length and/or format check with its rule explained" },
-      { mark: "B1", text: "email linked to a presence check" },
-      { mark: "B1", text: "email linked to a format check with an expected pattern" },
-      { mark: "B1", text: "product code linked to an existence check against the stored product file" },
+      { mark: "B1", text: "proxy described as intermediary between client and destination/server" },
+      { mark: "B1", text: "filtering function described with URL/category/content/policy" },
+      { mark: "B1", text: "filtering consequence such as blocking unsuitable sites/policy enforcement" },
+      { mark: "B1", text: "caching or logging function described" },
+      { mark: "B1", text: "valid consequence of caching/logging such as bandwidth reduction/audit/investigation" },
     ],
     strict: [
-      "Do not award marks for verification methods when validation is requested.",
-      "Do not call the one-sided file maximum a two-bound range check.",
-      "Do not accept vague 'check it is right' without naming and explaining the rule.",
-      "Award each field independently.",
+      "Do not accept proxy as only 'a firewall' without intermediary idea.",
+      "Do not award caching mark for backing up files.",
+      "Allow anonymity/masking internal addresses as an additional valid proxy function.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Describe two verification methods used to reduce data entry errors.",
-    answer: "Double entry requires the same data to be entered twice, possibly by the same user or by two different operators. The two entries are compared and a mismatch suggests an input error. A visual check involves comparing the entered data with the original source document or screen. This can detect typing or copying errors, but depends on the person checking carefully.",
+    marks: "5 marks",
+    prompt: "A company uses network monitoring. Explain what may be monitored and how the information can be used.",
+    answer: "Network monitoring can observe traffic volumes, source and destination addresses, connection attempts, failed logins, blocked requests or unusual patterns. The information can be logged and compared with thresholds or signatures. Alerts can notify staff of possible attacks, misconfiguration or malware activity. Logs can then be used to investigate the time, source and nature of suspicious activity.",
     marking: [
-      { mark: "B1", text: "double entry described as entering same data twice" },
-      { mark: "B1", text: "two entries compared/mismatch detected" },
-      { mark: "B1", text: "visual check described as comparing entered data with original/source" },
-      { mark: "B1", text: "detects typing/copying/transcription errors" },
+      { mark: "B1", text: "valid monitored item such as traffic volume/source/destination/connections/failed attempts" },
+      { mark: "B1", text: "second distinct monitored item" },
+      { mark: "B1", text: "comparison with thresholds/patterns/signatures or unusual behaviour" },
+      { mark: "B1", text: "alerts or notifications generated for staff/response" },
+      { mark: "B1", text: "logs used for investigation/evidence/source/time identification" },
     ],
     strict: [
-      "Do not accept range/format/type check as verification method.",
-      "Do not award comparison mark for only 'enter it carefully'.",
-      "Allow proofreading if source comparison is clear.",
+      "Do not accept only 'watch the network' without what is monitored.",
+      "Do not say monitoring automatically fixes the attack unless response is described.",
+      "Allow bandwidth usage, failed login attempts or denied connections as monitored items.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Explain how a check digit can help detect errors in a long number such as a barcode.",
-    answer: "A check digit is an extra digit calculated from the other digits in the number using a defined method. When the number is entered or scanned, the system recalculates the check digit and compares it with the entered check digit. If they do not match, the number is likely to contain an error such as a mistyped digit. It can detect many common transcription errors, but it does not prove the number belongs to the correct item.",
+    marks: "6 marks",
+    prompt: "Compare firewalls and proxies as network security controls.",
+    answer: "A firewall filters traffic based on rules, such as source or destination address, port number or protocol. It can allow, block or log traffic at a network boundary or host. A proxy acts as an intermediary between a client and destination server. It can forward requests, filter web access, cache resources and log user requests. Both can reduce risk and provide logs, but neither guarantees safety because misconfiguration or allowed traffic can still cause problems.",
     marking: [
-      { mark: "B1", text: "check digit described as extra/calculated digit" },
-      { mark: "B1", text: "calculated from other digits using a method/algorithm" },
-      { mark: "B1", text: "system recalculates and compares with entered/provided check digit" },
-      { mark: "B1", text: "mismatch indicates likely input/transcription/scanning error" },
+      { mark: "B1", text: "firewall filters traffic using rules" },
+      { mark: "B1", text: "valid firewall rule property or decision, e.g. IP/port/protocol/allow/block/log" },
+      { mark: "B1", text: "proxy is intermediary between client and destination" },
+      { mark: "B1", text: "valid proxy function such as forward/filter/cache/log" },
+      { mark: "B1", text: "valid similarity such as both reduce risk/control access/log traffic" },
+      { mark: "B1", text: "valid limitation such as misconfiguration/allowed traffic/need for layered controls" },
     ],
     strict: [
-      "Do not accept check digit as just 'the last digit' without calculated/comparison idea.",
-      "Do not require a specific arithmetic algorithm unless question asks for it.",
-      "Allow barcode/account number/ISBN examples.",
+      "Do not make proxy and firewall identical for all marks.",
+      "Do not award firewall property for proxy-only web category filtering unless firewall role is stated.",
+      "Allow content filtering firewall as extra detail, but proxy intermediary mark must be separate.",
     ],
   },
   {
     title: "Question 5",
-    marks: "7 marks",
-    prompt: "Describe how parity check on a byte, block parity and a checksum can detect errors during data transfer.",
-    answer: "A parity check adds or uses a parity bit so each received byte should have the agreed odd or even parity; a mismatch indicates a likely error. Block parity arranges bytes as rows and checks parity across rows and columns, so many single-bit errors can be detected and located. For a checksum, the sender calculates a value from the data block and sends it; the receiver recalculates the checksum from the received block and compares the values. These methods detect many errors but do not automatically correct every error.",
+    marks: "6 marks",
+    prompt: "A school wants to block unsuitable websites, reduce repeated downloads and detect unusual traffic spikes. Suggest suitable controls.",
+    answer: "A proxy server can block unsuitable websites by checking requested URLs or categories against the school's policy. The proxy can also cache frequently downloaded resources so repeated downloads use less bandwidth and load faster. Network monitoring can detect unusual traffic spikes by observing traffic volume and comparing it with normal behaviour or thresholds. Alerts and logs can help staff investigate the source and take action.",
     marking: [
-      { mark: "B1", text: "byte parity uses a parity bit and an agreed odd/even rule" },
-      { mark: "B1", text: "receiver checks parity and a mismatch indicates a likely transfer error" },
-      { mark: "B1", text: "block parity applies parity across rows and columns of a block" },
-      { mark: "B1", text: "row/column evidence can locate many single-bit errors" },
-      { mark: "B1", text: "sender calculates and transmits a checksum for the data block" },
-      { mark: "B1", text: "receiver recalculates and compares the checksum" },
-      { mark: "B1", text: "methods detect many errors but do not automatically correct every error" },
+      { mark: "B1", text: "proxy recommended for blocking unsuitable websites" },
+      { mark: "B1", text: "proxy filtering mechanism linked to URL/category/policy" },
+      { mark: "B1", text: "proxy caching recommended for repeated downloads" },
+      { mark: "B1", text: "caching consequence linked to bandwidth/speed/reduced repeated external requests" },
+      { mark: "B1", text: "network monitoring recommended for unusual traffic spikes" },
+      { mark: "B1", text: "monitoring mechanism linked to thresholds/alerts/logs/investigation" },
     ],
     strict: [
-      "Do not substitute a validation check digit for a transfer checksum.",
-      "Do not merge byte parity and block parity into one unexplained use of the word parity.",
-      "Do not claim that error detection automatically corrects the transferred data.",
+      "Do not award caching marks for backup or file storage unrelated to repeated requests.",
+      "Do not award monitoring mark for validation of user input.",
+      "Allow firewall as additional control, but proxy and monitoring are required by the scenario.",
+      "Award each scenario requirement independently.",
     ],
   },
 ];
@@ -268,10 +232,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    validation: "Correct. A range rule is being applied before accepting the input.",
-    verification: "No. Verification compares entered data with a source or repeated entry.",
-    truth: "No. Passing or failing a validation rule does not prove real-world truth.",
-    backup: "No. Backup is recovery; this is input checking.",
+    firewall: "Correct. The rule filters traffic by source and port.",
+    proxy: "No. A proxy is an intermediary for requests; the clue is port/source filtering.",
+    hashing: "No. Hashing creates a digest for comparison; it does not block network ports.",
+    validation: "No. Validation checks input data; this is a network traffic rule.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -282,47 +246,33 @@ function setupHook() {
   });
 }
 
-function setupRuleTester() {
-  const type = document.querySelector("#checkType");
-  const input = document.querySelector("#checkInput");
-  const result = document.querySelector("#checkResult");
-  const reason = document.querySelector("#checkReason");
-  const defaults = {
-    range: "76",
-    length: "STU12345",
-    type: "12.5",
-    format: "AB1234",
-    presence: "",
-    existence: "P200",
-    limit: "12",
-    checkDigit: "123455",
-  };
-  function test() {
-    const rule = checkRules[type.value];
-    const pass = rule.test(input.value);
-    result.textContent = pass ? rule.pass : rule.fail;
-    reason.innerHTML = `<strong>Limitation:</strong> ${rule.limitation}`;
+function setupSimulator() {
+  const select = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#simulateResult");
+  const method = document.querySelector("#simulateMethod");
+  const trap = document.querySelector("#simulateTrap");
+  function simulate() {
+    const item = scenarioMap[select.value];
+    result.textContent = item.result;
+    method.innerHTML = `<strong>Reasoning:</strong> ${item.method}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  type.addEventListener("change", () => {
-    input.value = defaults[type.value];
-    test();
-  });
-  input.addEventListener("input", test);
-  document.querySelector("#checkBtn").addEventListener("click", test);
-  test();
+  select.addEventListener("change", simulate);
+  document.querySelector("#simulateBtn").addEventListener("click", simulate);
+  simulate();
 }
 
-function setupVerifyTool() {
-  const select = document.querySelector("#verifyInput");
-  const result = document.querySelector("#verifyResult");
-  const reason = document.querySelector("#verifyReason");
+function setupEventTool() {
+  const select = document.querySelector("#eventInput");
+  const result = document.querySelector("#eventResult");
+  const reason = document.querySelector("#eventReason");
   function classify() {
-    const item = verifyMap[select.value];
+    const item = eventMap[select.value];
     result.textContent = item.result;
     reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
   }
   select.addEventListener("change", classify);
-  document.querySelector("#verifyBtn").addEventListener("click", classify);
+  document.querySelector("#eventBtn").addEventListener("click", classify);
   classify();
 }
 
@@ -343,7 +293,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("range");
+  renderExample("firewall");
 }
 
 function renderPractice() {
@@ -429,8 +379,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupRuleTester();
-setupVerifyTool();
+setupSimulator();
+setupEventTool();
 setupExamples();
 renderPractice();
 renderMistakes();

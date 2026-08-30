@@ -131,7 +131,7 @@ const examQuestions = [
     strict: [
       "Do not accept only 'ASCII is old'.",
       "Do not require naming Unicode, although it may be used as a contrast.",
-      "Accept '7-bit limitation' as equivalent to 128-code limitation.",
+      "Accept '7-bit limitation' as equivalent to 129-code limitation.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },

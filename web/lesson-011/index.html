@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 011 | Sound file size calculations</title>
+    <title>AS9618 Lesson 011 | Sound sampling, sampling resolution, accuracy and storage</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Sound file size calculations</h1>
+        <h1>Sound sampling, sampling resolution, accuracy and storage</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,19 +29,25 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
+        <a href="#sampling">Sampling</a>
+        <a href="#rate">Sample rate</a>
+        <a href="#resolution">Resolution</a>
+        <a href="#duration">Duration</a>
         <a href="#formula">Formula</a>
-        <a href="#channels">Channels</a>
-        <a href="#units">Units</a>
-        <a href="#tradeoffs">Trade-offs</a>
         <a href="#tool">Calculator</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <!-- remediation-v2-optional:start -->
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
           <p>sound-file-size calculations. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
@@ -49,196 +55,290 @@
         </aside>
         <!-- remediation-v2-optional:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Sound sampling, sampling resolution, accuracy and storage</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An analogue sound wave varies continuously. Analogue-to-digital sampling measures its amplitude at regular time intervals, quantises each measurement to one permitted level and stores the resulting sample value as a binary number. The sequence of binary sample values is the digital representation of the sound.</p>
+            <p>Sampling rate is the number of samples taken per second, measured in hertz (Hz). Sampling resolution is the number of bits used for each sample and therefore controls how many amplitude levels are available. 'Sample resolution' is a common synonym, but sampling resolution is the official syllabus term.</p>
+            <p>Increasing sampling rate stores more measurements each second, which can improve time accuracy and increases file size. Increasing sampling resolution stores more bits for each sample, which gives more amplitude levels, can improve amplitude accuracy and increases file size. The syllabus requires these effects, not a sound-file-size calculation formula.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Compare two recordings</h3>
+            <p>Recording A uses 8000 samples per second at 8-bit sampling resolution. Recording B uses 16000 samples per second at 16-bit sampling resolution. B records amplitude twice as often and has more amplitude levels, so it can represent the original sound more accurately, but it stores more data and therefore has a larger file size for the same duration and channels.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start sampling -->
+        <section class="panel explanation-panel" id="explanation-sampling" data-explains="sampling" data-explanation-kind="mechanism" aria-labelledby="explanation-sampling-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sampling">
+          <h2 class="explanation-sr-only" id="explanation-sampling-title">Sampling turns an analogue wave into digital values</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-sampling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling turns an analogue wave into digital values with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sampling turns an analogue wave into digital values: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Analogue sound</li><li><strong>Lesson fact:</strong> A continuous wave. The pressure changes smoothly over time.</li><li><strong>Lesson fact:</strong> A measurement of the wave amplitude at one moment in time.</li><li><strong>Lesson fact:</strong> Digital sound</li><li><strong>Lesson fact:</strong> A sequence of sample values stored as binary numbers.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sampling -->
+
+        <!-- stage10-explanation:start resolution -->
+        <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
+          <h2 class="explanation-sr-only" id="explanation-resolution-title">Sampling resolution: bits per sample</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling resolution: bits per sample with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sampling resolution: bits per sample: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Sampling resolution is the official syllabus term; sample resolution is a common synonym.</li><li><strong>Lesson fact:</strong> An 8-bit sampling resolution provides 2^8 = 256 possible amplitude levels.</li><li><strong>Lesson fact:</strong> A 16-bit sampling resolution provides 2^16 = 65,536 possible amplitude levels.</li><li><strong>Lesson fact:</strong> More bits per sample can represent amplitude more precisely, but use more storage.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end resolution -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Sound sampling, sampling resolution, accuracy and storage: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the official term for the number of bits used to store each sound sample?</p>
+              <details><summary>Show answer</summary><p>Sampling resolution; sample resolution is a common synonym.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does a higher sampling rate affect the stored data?</p>
+              <details><summary>Show answer</summary><p>It stores more measurements each second, which can improve time accuracy and increases file size.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does a higher sampling resolution affect the stored data?</p>
+              <details><summary>Show answer</summary><p>It provides more possible amplitude levels, which can improve amplitude accuracy and increases file size.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain how increasing (i) sampling rate and (ii) sampling resolution can affect the accuracy and file size of a digital sound recording.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>higher sampling rate means more samples are stored each second</td><td>Do not interchange sampling rate and sampling resolution; rate controls measurements per second, while resolution controls bits/levels per measurement.</td><td>1</td></tr>
+                  <tr><td>higher sampling rate can improve time accuracy and increases file size</td><td></td><td>1</td></tr>
+                  <tr><td>higher sampling resolution means more bits/amplitude levels per sample</td><td></td><td>1</td></tr>
+                  <tr><td>higher sampling resolution can improve amplitude accuracy and increases file size</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 011 | 45 minutes | Informal questioning</p>
-            <h2>Sound file size is multiplication with consequences.</h2>
+            <p class="lesson-meta">Lesson 011 | 45 minutes | 5-minute quiz</p>
+            <h2>Sound becomes data when we measure it again and again.</h2>
             <p>
-              This lesson extends the basic mono calculation by adding channels and
-              multi-step unit conversion. The key habit is to keep each factor visible:
-              sampling rate, sampling resolution, duration and number of channels.
+              Digital sound is created by sampling an analogue sound wave at regular intervals.
+              Each sample is stored as a binary value. The sample rate, sampling resolution and
+              duration determine how much data is stored.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div>
-                <strong>Calculate</strong>
-                <span>mono and stereo uncompressed sound file sizes</span>
-              </div>
-              <div>
-                <strong>Convert</strong>
-                <span>bits to bytes, KiB and MiB using binary units</span>
+                <strong>Describe</strong>
+                <span>how analogue sound is sampled and stored digitally</span>
               </div>
               <div>
                 <strong>Explain</strong>
-                <span>how changing each parameter affects quality and storage</span>
+                <span>sample rate, sampling resolution and duration</span>
+              </div>
+              <div>
+                <strong>Calculate</strong>
+                <span>basic mono sound file size in bits and bytes</span>
               </div>
             </div>
           </div>
-          <div class="formula-card" aria-label="Sound file size formula">
-            <span>rate × resolution × duration × channels</span>
-            <p>Stereo is not a vibe. It is another channel in the calculation.</p>
+          <div class="wave-card" aria-label="Digital sound focus">
+            <svg viewBox="0 0 360 180" role="img" aria-label="Sampled sound wave">
+              <path class="wave" d="M10 92 C45 20, 80 20, 115 92 S185 164, 220 92 S290 20, 350 92" />
+              <g class="samples">
+                <circle cx="25" cy="66" r="5" /><circle cx="65" cy="33" r="5" />
+                <circle cx="105" cy="75" r="5" /><circle cx="145" cy="133" r="5" />
+                <circle cx="185" cy="146" r="5" /><circle cx="225" cy="82" r="5" />
+                <circle cx="265" cy="37" r="5" /><circle cx="305" cy="45" r="5" />
+                <circle cx="345" cy="85" r="5" />
+              </g>
+            </svg>
+            <p>Each dot is a sample. The computer stores numbers, not tiny screams in a box.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style marks often reward method steps separately from the final number.</p>
+            <p>Better sound quality usually needs more samples or more bits per sample, so file size increases.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>If the question says stereo, multiply by 2 channels. If it says mono, do not.</p>
+            <p>Do not confuse sampling resolution with screen resolution. Here it means bits per sound sample.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A mono clip becomes stereo. What happens to size?</h2>
+            <h2>Which change stores more measurements every second?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="same">It stays the same</button>
-            <button class="choice-card" type="button" data-hook="double">It doubles</button>
-            <button class="choice-card" type="button" data-hook="half">It halves</button>
-            <button class="choice-card" type="button" data-hook="unknown">It cannot be calculated</button>
+            <button class="choice-card" type="button" data-hook="rate">Increase sample rate</button>
+            <button class="choice-card" type="button" data-hook="resolution">Increase sampling resolution</button>
+            <button class="choice-card" type="button" data-hook="duration">Increase duration</button>
+            <button class="choice-card" type="button" data-hook="volume">Increase speaker volume</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. Stereo stores two channels, so the channel factor matters.
+            Pick an answer. “How often do we measure?” points to sample rate.
           </div>
         </section>
 
-        <section class="panel" id="formula" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section class="panel" id="sampling" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>The full uncompressed sound formula</h2>
+            <h2>Sampling turns an analogue wave into digital values</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <h3>Analogue sound</h3>
+              <p>A continuous wave. The pressure changes smoothly over time.</p>
+            </article>
+            <article>
+              <h3>Sample</h3>
+              <p>A measurement of the wave amplitude at one moment in time.</p>
+            </article>
+            <article>
+              <h3>Digital sound</h3>
+              <p>A sequence of sample values stored as binary numbers.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: sampling = 采样；sample = 样本/采样值；amplitude = 振幅。</div>
+        </section>
+
+        <section class="panel" id="rate" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Sampling rate: samples per second</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Definition</h3>
+              <p>Sampling rate is the number of samples taken each second.</p>
+              <p>It is commonly measured in hertz, `Hz`.</p>
+            </article>
+            <article>
+              <h3>Effect</h3>
+              <p>A higher sampling rate records more measurements each second.</p>
+              <p>This can improve accuracy, but increases file size.</p>
+            </article>
+          </div>
+          <div class="sample-strip" id="sampleStrip" aria-label="Sampling rate visual"></div>
+        </section>
+
+        <!-- stage10-explanation:start rate -->
+        <section class="panel explanation-panel" id="explanation-rate" data-explains="rate" data-explanation-kind="mechanism" aria-labelledby="explanation-rate-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
+          <h2 class="explanation-sr-only" id="explanation-rate-title">Sampling rate: samples per second</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-rate.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling rate: samples per second with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sampling rate: samples per second: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Sampling rate is the number of samples taken each second.</li><li><strong>Lesson fact:</strong> It is commonly measured in hertz, Hz.</li><li><strong>Lesson fact:</strong> A higher sampling rate records more measurements each second.</li><li><strong>Lesson fact:</strong> This can improve accuracy, but increases file size.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rate -->
+        <section class="panel" id="resolution" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Sampling resolution: bits per sample</h2>
+          </div>
+          <div class="resolution-grid">
+            <article>
+              <h3>8-bit sampling resolution</h3>
+              <p>`2⁸ = 256` possible amplitude levels.</p>
+            </article>
+            <article>
+              <h3>16-bit sampling resolution</h3>
+              <p>`2¹⁶ = 65 536` possible amplitude levels.</p>
+            </article>
+            <article>
+              <h3>Quality trade-off</h3>
+              <p>More bits per sample can store amplitude more precisely, but uses more storage.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="duration" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Duration: how long the sound lasts</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Seconds matter</h3>
+              <p>A 10-second clip stores ten times as many samples as a 1-second clip if the sample rate is unchanged.</p>
+            </article>
+            <article>
+              <h3>Mono for today</h3>
+              <p>This lesson uses mono sound, so there is one channel. Stereo channels are handled in the next calculation lesson.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start duration -->
+        <section class="panel explanation-panel" id="explanation-duration" data-explains="duration" data-explanation-kind="mechanism" aria-labelledby="explanation-duration-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
+          <h2 class="explanation-sr-only" id="explanation-duration-title">Duration: how long the sound lasts</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-duration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Duration: how long the sound lasts with a structured visual model." />
+            <figcaption class="explanation-sr-only">Duration: how long the sound lasts: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Seconds matter</li><li><strong>Lesson fact:</strong> A 10-second clip stores ten times as many samples as a 1-second clip if the sample rate is unchanged.</li><li><strong>Lesson fact:</strong> Mono for today</li><li><strong>Lesson fact:</strong> This lesson uses mono sound, so there is one channel. Stereo channels are handled in the next calculation lesson.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end duration -->
+        <section class="panel" id="formula" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Basic mono sound file size formula</h2>
           </div>
           <div class="formula-box">
-            <strong>size in bits = sampling rate × sampling resolution × duration × channels</strong>
+            <strong>size in bits = sampling rate × sampling resolution × duration</strong>
             <span>size in bytes = bits ÷ 8</span>
-            <span>KiB = bytes ÷ 1024; MiB = KiB ÷ 1024</span>
           </div>
-          <div class="chain-grid">
-            <article><strong>Sampling rate</strong><span>samples per second, measured in Hz</span></article>
-            <article><strong>Sampling resolution</strong><span>bits used for each sample</span></article>
-            <article><strong>Duration</strong><span>length of the sound in seconds</span></article>
-            <article><strong>Channels</strong><span>mono = 1, stereo = 2</span></article>
-          </div>
+          <div class="worked-line">`8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes`</div>
         </section>
 
         <!-- stage10-explanation:start formula -->
-        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
-          <h2 class="explanation-sr-only" id="explanation-formula-title">The full uncompressed sound formula</h2>
+        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
+          <h2 class="explanation-sr-only" id="explanation-formula-title">Basic mono sound file size formula</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The full uncompressed sound formula with a structured visual model." />
-            <figcaption class="explanation-sr-only">The full uncompressed sound formula: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Basic mono sound file size formula with a structured visual model." />
+            <figcaption class="explanation-sr-only">Basic mono sound file size formula: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> size in bits = sampling rate × sampling resolution × duration × channels</li><li><strong>Lesson fact:</strong> size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> KiB = bytes ÷ 1024; MiB = KiB ÷ 1024</li><li><strong>Lesson fact:</strong> Sampling rate samples per second, measured in Hz</li><li><strong>Lesson fact:</strong> Sampling resolution bits used for each sample</li><li><strong>Lesson fact:</strong> Duration length of the sound in seconds</li><li><strong>Lesson fact:</strong> Channels mono = 1, stereo = 2</li></ol>
+            <ol><li><strong>Lesson fact:</strong> size in bits = sampling rate × sampling resolution × duration</li><li><strong>Lesson fact:</strong> size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> 8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end formula -->
-        <section class="panel" id="channels" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Channels: mono and stereo</h2>
-          </div>
-          <div class="channel-grid">
-            <article>
-              <h3>Mono</h3>
-              <p>One channel of audio. Use channel factor `1`.</p>
-              <p class="mini-formula">`rate × resolution × duration × 1`</p>
-            </article>
-            <article>
-              <h3>Stereo</h3>
-              <p>Two channels, commonly left and right. Use channel factor `2`.</p>
-              <p class="mini-formula">`rate × resolution × duration × 2`</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: channel = 声道；mono = 单声道；stereo = 立体声/双声道。</div>
-        </section>
-
-        <!-- stage10-explanation:start channels -->
-        <section class="panel explanation-panel" id="explanation-channels" data-explains="channels" data-explanation-kind="mechanism" aria-labelledby="explanation-channels-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
-          <h2 class="explanation-sr-only" id="explanation-channels-title">Channels: mono and stereo</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-channels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Channels: mono and stereo with a structured visual model." />
-            <figcaption class="explanation-sr-only">Channels: mono and stereo: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> One channel of audio. Use channel factor 1.</li><li><strong>Lesson fact:</strong> rate × resolution × duration × 1</li><li><strong>Lesson fact:</strong> Two channels, commonly left and right. Use channel factor 2.</li><li><strong>Lesson fact:</strong> rate × resolution × duration × 2</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end channels -->
-        <section class="panel" id="units" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Unit conversion without changing the answer</h2>
-          </div>
-          <div class="unit-grid">
-            <article><h3>Bits</h3><p>The formula gives bits first.</p></article>
-            <article><h3>Bytes</h3><p>`8 bits = 1 byte`.</p></article>
-            <article><h3>KiB</h3><p>`1 KiB = 1024 bytes`.</p></article>
-            <article><h3>MiB</h3><p>`1 MiB = 1024 KiB`.</p></article>
-          </div>
-          <div class="callout warning">Do not divide by 1000 when the question asks for KiB or MiB.</div>
-        </section>
-
-        <!-- stage10-explanation:start units -->
-        <section class="panel explanation-panel" id="explanation-units" data-explains="units" data-explanation-kind="mechanism" aria-labelledby="explanation-units-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
-          <h2 class="explanation-sr-only" id="explanation-units-title">Unit conversion without changing the answer</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-units.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unit conversion without changing the answer with a structured visual model." />
-            <figcaption class="explanation-sr-only">Unit conversion without changing the answer: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The formula gives bits first.</li><li><strong>Lesson fact:</strong> 8 bits = 1 byte.</li><li><strong>Lesson fact:</strong> 1 KiB = 1024 bytes.</li><li><strong>Lesson fact:</strong> 1 MiB = 1024 KiB.</li><li><strong>Lesson fact:</strong> Do not divide by 1000 when the question asks for KiB or MiB.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end units -->
-        <section class="panel" id="tradeoffs" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Parameter changes and consequences</h2>
-          </div>
-          <div class="tradeoff-grid">
-            <article>
-              <h3>Higher sampling rate</h3>
-              <p>More samples per second; may improve accuracy; increases file size.</p>
-            </article>
-            <article>
-              <h3>Higher sampling resolution</h3>
-              <p>More bits per sample; more amplitude levels; increases file size.</p>
-            </article>
-            <article>
-              <h3>Longer duration</h3>
-              <p>More seconds of samples; increases file size in direct proportion.</p>
-            </article>
-            <article>
-              <h3>More channels</h3>
-              <p>More separate audio streams; stereo doubles mono size when other factors match.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start tradeoffs -->
-        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
-          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Parameter changes and consequences</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Parameter changes and consequences with a structured visual model." />
-            <figcaption class="explanation-sr-only">Parameter changes and consequences: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Higher sampling rate</li><li><strong>Lesson fact:</strong> More samples per second; may improve accuracy; increases file size.</li><li><strong>Lesson fact:</strong> Higher sampling resolution</li><li><strong>Lesson fact:</strong> More bits per sample; more amplitude levels; increases file size.</li><li><strong>Lesson fact:</strong> Longer duration</li><li><strong>Lesson fact:</strong> More seconds of samples; increases file size in direct proportion.</li><li><strong>Lesson fact:</strong> More channels</li><li><strong>Lesson fact:</strong> More separate audio streams; stereo doubles mono size when other factors match.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tradeoffs -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Sound file size calculator</h2>
+            <h2>Mono sound size calculator</h2>
           </div>
           <div class="converter-grid">
             <label>
@@ -257,33 +357,26 @@
               Duration / seconds
               <input id="durationInput" type="number" min="1" value="10" />
             </label>
-            <label>
-              Channels
-              <select id="channelInput">
-                <option value="1">Mono / 1</option>
-                <option value="2" selected>Stereo / 2</option>
-              </select>
-            </label>
             <button type="button" id="calculateBtn">Calculate</button>
           </div>
           <div class="result-box" id="calcResult" aria-live="polite"></div>
           <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="stereo">Stereo calculation</button>
-            <button class="tab" type="button" data-example="kib">Bytes to KiB</button>
-            <button class="tab" type="button" data-example="compare">Compare clips</button>
+            <button class="tab active" type="button" data-example="basic">8000 Hz, 16-bit, 10 s</button>
+            <button class="tab" type="button" data-example="rate">Higher sample rate</button>
+            <button class="tab" type="button" data-example="resolution">Higher resolution</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -293,26 +386,26 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the missing factor</h2>
+            <h2>Fix the sound calculation</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">Stereo clip: `8000 × 16 × 10 = 1 280 000 bits`</p>
+              <p class="wrong">`8000 × 16 × 10 = 1 280 000 bytes`</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Stereo has 2 channels, so multiply by 2: `8000 × 16 × 10 × 2 = 2 560 000 bits`.</p>
+              <p class="answer" id="mistake1">The product is in bits. `1 280 000 bits ÷ 8 = 160 000 bytes`.</p>
             </article>
             <article>
-              <p class="wrong">`160 000 bytes = 160 KiB`</p>
+              <p class="wrong">“Sampling resolution is how many samples are taken each second.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">For KiB, divide by 1024: `160 000 ÷ 1024 = 156.25 KiB`.</p>
+              <p class="answer" id="mistake2">That is sampling rate. Sampling resolution is the number of bits used to store each sample.</p>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -324,16 +417,16 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-011">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-011">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Write every factor before every answer</h2>
+            <h2>Sound file size has three levers today</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>1</strong><span>Bits = rate × resolution × duration × channels.</span></div>
-            <div><strong>2</strong><span>Mono uses 1 channel; stereo uses 2 channels.</span></div>
-            <div><strong>3</strong><span>Bytes = bits ÷ 8; KiB = bytes ÷ 1024.</span></div>
-            <div><strong>4</strong><span>Higher rate, resolution, duration or channels increases file size.</span></div>
+            <div><strong>1</strong><span>Sampling measures an analogue wave at regular intervals.</span></div>
+            <div><strong>2</strong><span>Sampling rate is samples per second, measured in Hz.</span></div>
+            <div><strong>3</strong><span>Sampling resolution is bits per sample.</span></div>
+            <div><strong>4</strong><span>Bits = sampling rate × sampling resolution × duration for mono sound.</span></div>
           </div>
         </section>
 
@@ -343,25 +436,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Calculate the size in bytes of a 10-second stereo clip sampled at 8000 Hz with 16-bit sampling resolution.</li>
-            <li>Convert 160 000 bytes to KiB.</li>
-            <li>Calculate the size in MiB of a 60-second stereo clip sampled at 44 100 Hz with 16-bit sampling resolution.</li>
-            <li>Write a 4-mark explanation of why a stereo sound file is larger than a matching mono sound file.</li>
+            <li>Define sampling, sampling rate and sampling resolution.</li>
+            <li>Calculate the size of a 5-second mono clip sampled at 4000 Hz with 8-bit sampling resolution.</li>
+            <li>Calculate the size of a 20-second mono clip sampled at 8000 Hz with 16-bit sampling resolution.</li>
+            <li>Write a 4-mark explanation of how increasing sampling rate affects quality and file size.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Task 1:</strong> `8000 × 16 × 10 × 2 = 2 560 000 bits = 320 000 bytes`.</p>
-            <p><strong>Task 2:</strong> `160 000 ÷ 1024 = 156.25 KiB`.</p>
-            <p><strong>Task 3:</strong> `44 100 × 16 × 60 × 2 = 84 672 000 bits = 10 584 000 bytes ≈ 10.09 MiB`.</p>
-            <p><strong>Explanation focus:</strong> stereo stores two channels, so it stores twice as many sample values as mono when rate, resolution and duration match.</p>
+            <p><strong>Definitions:</strong> sampling measures the wave; sampling rate is samples per second; sampling resolution is bits per sample.</p>
+            <p><strong>Task 2:</strong> `4000 × 8 × 5 = 160 000 bits = 20 000 bytes`.</p>
+            <p><strong>Task 3:</strong> `8000 × 16 × 20 = 2 560 000 bits = 320 000 bytes`.</p>
+            <p><strong>Explanation focus:</strong> higher sampling rate takes more measurements per second, which can improve accuracy but increases file size.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

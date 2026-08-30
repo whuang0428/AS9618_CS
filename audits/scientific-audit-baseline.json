@@ -39,13 +39,13 @@
     }
   },
   "scope": {
-    "lessons": 150,
-    "pages": 153,
-    "pageViews": 306,
-    "questions": 963,
+    "lessons": 151,
+    "pages": 154,
+    "pageViews": 308,
+    "questions": 968,
     "assessmentSets": 51,
-    "stage10Images": 783,
-    "visualObjects": 969,
+    "stage10Images": 784,
+    "visualObjects": 971,
     "syllabusRequirements": 121
   },
   "mutationTests": [
@@ -58,19 +58,19 @@
     },
     {
       "id": "MUT-COV-002",
-      "mutation": "Changed every L050 CORE region to OPTIONAL in the same temporary mirror.",
+      "mutation": "Changed every L051 CORE region to OPTIONAL in the same temporary mirror.",
       "expected": "Fail S4.15",
       "actual": "Verifier failed S4.15 CORE sections",
       "result": "DetectionConfirmedForOverride"
     }
   ],
   "pixelOcr": {
-    "method": "macOS Vision fast recognition over the actual 783 JPEG assets; run outside the restricted sandbox after the in-sandbox CVPixelBuffer failure was diagnosed.",
+    "method": "macOS Vision fast recognition over the actual 784 JPEG assets; run outside the restricted sandbox after the in-sandbox CVPixelBuffer failure was diagnosed.",
     "rawLedger": "/tmp/as9618-scientific-audit/stage10-ocr-pixel-pass.csv",
     "rawLedgerBytes": 844884,
     "rawLedgerSha256": "005f3cf849967e9dca9dcb66dfdcd2633079295a52bb9737619c45274b303d07",
-    "images": 783,
-    "nonEmptyTranscripts": 783,
+    "images": 784,
+    "nonEmptyTranscripts": 784,
     "prohibitedWordingFlags": 0,
     "semanticApproval": false,
     "targetedEvidence": {

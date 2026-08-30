@@ -5,7 +5,7 @@
 
 ## Change summary
 
-- Preserved all 150 lesson numbers, URLs and question IDs while relocating generated CORE blocks into official first-use order.
+- Established 151 canonical lesson numbers and URLs, including the dedicated L010 Vector lesson, while relocating generated CORE blocks into official first-use order.
 - All 121 requirements retain Complete teaching, worked-example, practice and direct-assessment evidence; Optional legacy lesson bodies do not establish first use.
 - Section 2 now orders network models/topology/cloud/media/hardware/Ethernet/streaming/internet/IP-URL; Sections 4 and 9-12 follow the required prerequisite sequence.
 - Seven stable lesson questions were rewritten at their existing IDs and marks to provide dependency-safe direct assessment after the relocated teaching.
@@ -18,10 +18,10 @@
 | RV2-GATE-002 | Resolved | audits/remediation-v2-current-decision.json is the sole current release-decision artifact; scripts/verify-scientific-audit.mjs classifies both earlier scientific reports as historical evidence |
 | RV2-COV-001 | Resolved | scripts/syllabus-official-as-mapping.mjs maps all 121 logical requirements to verbatim candidate statements and adjacent Notes on pages 14-31; scripts/verify-syllabus-coverage.mjs validates each mapping, review round and content hash; S1.08/S1.10/S1.11 no longer contain unrelated Notes |
 | RV2-COV-002 | Resolved | L005 CORE teaching now includes a worked 8-bit one's-complement conversion and direct targeted practice; L005-Q1 is a stable four-mark direct one's-complement conversion and S1.03 maps it explicitly |
-| RV2-SCOPE-001 | Resolved | S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production; L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment |
+| RV2-SCOPE-001 | Resolved | S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production; L012, L145 construction practice and L146 production practice are retained only as labelled Optional enrichment |
 | RV2-SCOPE-002 | Resolved | scripts/remediation-v2-optional-enrichment.mjs records 13 lesson dispositions with formal AS prerequisites and exclusion policy; Markdown and HTML show visible Optional enrichment notices; listed HTML sections are OPTIONAL/EXTEND and excluded by the coverage evaluator |
 | RV2-SEQ-001 | Resolved | 121/121 official requirements now have reviewed Stage 3 first-use evidence; 109 official adjacent-order edges and 81 prerequisite edges pass; 963-question sequence register records 520 formal and 443 Optional enrichment questions with zero before-CORE violations |
-| RV2-ID-001 | Resolved | All 150 stable lesson IDs and URLs are preserved; Markdown titles, HTML h1, course catalogue, paper and section ranges reconcile; L137 no longer claims Section 12 ownership inside the Section 11 lesson range; L137/L138 legacy bodies are Optional enrichment |
+| RV2-ID-001 | Resolved | All 150 stable lesson IDs and URLs are preserved; Markdown titles, HTML h1, course catalogue, paper and section ranges reconcile; L138 no longer claims Section 12 ownership inside the Section 11 lesson range; L138/L139 legacy bodies are Optional enrichment |
 | RV2-WORD-001 | Open | Stage 4 |
 | RV2-MS-001 | Open | Stage 4 |
 | RV2-CONT-001 | Open | Stage 5 |
@@ -40,7 +40,7 @@
 
 - Mutation tests deliberately invert an official first-use edge, invert rows inside one CORE lesson, move a formal assessment before teaching and corrupt a first-use evidence hash; every mutation must be rejected.
 - Full semantic gate remains Blocked with 24 later-stage technical/image findings and 0 sequence findings.
-- Remaining critical IDs: CRIT-L049-PERFORMANCE-FACTORS, CRIT-L107-CHAR-FUNCTION-TYPE, CRIT-L121-PROVIDED-FUNCTIONS, CRIT-L133-CHAR-FUNCTION-TYPE, CRIT-L133-PROVIDED-FUNCTION.
+- Remaining critical IDs: CRIT-L050-PERFORMANCE-FACTORS, CRIT-L108-CHAR-FUNCTION-TYPE, CRIT-L122-PROVIDED-FUNCTIONS, CRIT-L134-CHAR-FUNCTION-TYPE, CRIT-L134-PROVIDED-FUNCTION.
 
 ## Command evidence
 
@@ -54,7 +54,7 @@
 
 - Remaining defect register: 5 Open; P0=3; P1=2.
 - Stage 4 CIE wording and student mark-scheme presentation remain open.
-- Stage 5 L049 processor factors and L107/L121/L133 pseudocode/function defects remain open.
+- Stage 5 L050 processor factors and L108/L122/L134 pseudocode/function defects remain open.
 
 ## Unverified
 

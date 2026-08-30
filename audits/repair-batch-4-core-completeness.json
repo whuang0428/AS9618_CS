@@ -8,7 +8,7 @@
       "severity": "P1",
       "confidence": "High",
       "status": "Resolved",
-      "locations": ["lessons/049-performance-factors-cores-cache-clock-speed-and-word-length.md", "web/lesson-049/index.html", "web/lesson-049/app.js", "scripts/stage4-quizzes-data.mjs"],
+      "locations": ["lessons/050-performance-factors-cores-cache-clock-speed-and-word-length.md", "web/lesson-050/index.html", "web/lesson-050/app.js", "scripts/stage4-quizzes-data.mjs"],
       "resolution": "Added processor type as an architecture/instruction-set/workload factor alongside cores, bus width, clock and cache, with direct lesson and quiz evidence."
     },
     {
@@ -16,7 +16,7 @@
       "severity": "P1",
       "confidence": "High",
       "status": "Resolved",
-      "locations": ["lessons/053-operating-system-roles-process-memory-file-and-device-management.md", "web/lesson-053/index.html", "web/lesson-053/app.js"],
+      "locations": ["lessons/054-operating-system-roles-process-memory-file-and-device-management.md", "web/lesson-054/index.html", "web/lesson-054/app.js"],
       "resolution": "Made security management and hardware management explicit and distinguished OS security management from antivirus utilities."
     },
     {
@@ -24,7 +24,7 @@
       "severity": "P1",
       "confidence": "High",
       "status": "Resolved",
-      "locations": ["lessons/069-data-validation-and-verification.md", "web/lesson-069/index.html", "web/lesson-069/app.js"],
+      "locations": ["lessons/070-data-validation-and-verification.md", "web/lesson-070/index.html", "web/lesson-070/app.js"],
       "resolution": "Defined a one-sided limit check, contrasted it with a two-bound range check, and added worked, practice and assessment evidence."
     },
     {
@@ -32,31 +32,31 @@
       "severity": "P1",
       "confidence": "High",
       "status": "Resolved",
-      "locations": ["lessons/137-testing-with-normal-boundary-and-erroneous-data.md", "web/lesson-137/index.html", "web/lesson-137/app.js"],
+      "locations": ["lessons/138-testing-with-normal-boundary-and-erroneous-data.md", "web/lesson-138/index.html", "web/lesson-138/app.js"],
       "resolution": "Established normal, abnormal and extreme/boundary as the official categories and classified outside-range values as abnormal."
     },
     {
-      "id": "B4-L139-FORBIDDEN-TERM",
+      "id": "B4-L140-FORBIDDEN-TERM",
       "severity": "P1",
       "confidence": "High",
       "status": "Resolved",
-      "locations": ["web/lesson-139/app.js"],
+      "locations": ["web/lesson-140/app.js"],
       "resolution": "Removed the old normal/boundary/erroneous category sequence from the robustness mark scheme."
     },
     {
-      "id": "B4-L137-IDENTITY",
+      "id": "B4-L138-IDENTITY",
       "severity": "P2",
       "confidence": "High",
       "status": "Resolved",
-      "locations": ["lessons/137-testing-with-normal-boundary-and-erroneous-data.md", "web/lesson-137/index.html"],
+      "locations": ["lessons/138-testing-with-normal-boundary-and-erroneous-data.md", "web/lesson-138/index.html"],
       "resolution": "Corrected every student-visible lesson identity from Section 11 to Paper 2 Section 12.3 without changing its URL or number."
     },
     {
-      "id": "B4-L137-FINITE-TESTING-CLAIM",
+      "id": "B4-L138-FINITE-TESTING-CLAIM",
       "severity": "P1",
       "confidence": "High",
       "status": "Resolved",
-      "locations": ["web/lesson-137/index.html", "scripts/stage10-rollout-jobs.json"],
+      "locations": ["web/lesson-138/index.html", "scripts/stage10-rollout-jobs.json"],
       "resolution": "Removed the claim that testing proves a validation rule works and replaced it with comparison of actual and expected results for selected cases."
     },
     {

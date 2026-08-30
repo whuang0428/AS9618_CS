@@ -1,108 +1,108 @@
 const scenarioMap = {
-  debug: {
-    result: "Best fit: interpreter.",
-    method: "An interpreter translates and executes statement by statement, so it can give useful feedback during development.",
-    trap: "Do not choose a compiler only because the finished program will later be distributed; the scenario is currently development.",
+  missing: {
+    result: "Most likely: syntax error.",
+    method: "The translator has found invalid grammar or structure, such as a missing bracket or keyword.",
+    trap: "Do not call this a logic error because the program has not successfully run and produced a wrong result.",
   },
-  deploy: {
-    result: "Best fit: compiler.",
-    method: "A compiler translates the whole program before execution and can produce object/executable code for distribution.",
-    trap: "Do not choose an interpreter if the key requirement is running without providing source code to users.",
+  double: {
+    result: "Most likely: logic error.",
+    method: "The program runs but the algorithm or formula is wrong, so the output is incorrect.",
+    trap: "Do not call this a runtime error if the program completes without crashing.",
   },
-  assembly: {
-    result: "Best fit: assembler.",
-    method: "An assembler translates assembly language mnemonics into machine code/object code.",
-    trap: "Do not use assembler for high-level languages or Cambridge pseudocode.",
+  zero: {
+    result: "Most likely: runtime error.",
+    method: "Division by zero occurs while the program is executing and may cause a crash or exception.",
+    trap: "Do not call it syntax if the expression is grammatically valid but fails for a value at run time.",
   },
-  modules: {
-    result: "Best fit: linker.",
-    method: "A linker combines object modules and resolves references to library routines.",
-    trap: "Do not call this compilation if object code already exists.",
+  file: {
+    result: "Most likely: runtime error.",
+    method: "A missing file is an external condition that causes failure while the program is running.",
+    trap: "Do not assume the translator can always know at translation time whether a file will exist later.",
   },
-  run: {
-    result: "Best fit: loader.",
-    method: "A loader places executable code and data into main memory ready for execution.",
-    trap: "Do not say a loader translates source code or resolves library references.",
+  offbyone: {
+    result: "Most likely: logic error.",
+    method: "An off-by-one loop condition is usually legal code that runs but gives the wrong number of iterations.",
+    trap: "Do not classify every loop problem as runtime; look at whether it crashes or gives the wrong result.",
   },
-  logic: {
-    result: "Need testing/tracing, not a different translator by itself.",
-    method: "A logic error may remain after successful compilation; known test data and tracing help find the wrong algorithm.",
-    trap: "Do not assume successful translation proves the program is correct.",
+  line: {
+    result: "Diagnostic limitation.",
+    method: "A translator diagnostic may point near the error, not always exactly at the original cause.",
+    trap: "Do not assume the reported line is always the line that must be edited.",
   },
 };
 
 const examples = {
-  debug: {
-    title: "Example 1: Development choice",
-    problem: "A beginner is writing a program and wants to test small parts as they go.",
+  syntax: {
+    title: "Example 1: Syntax error",
+    problem: "IF score > 50 PRINT \"pass\" has a missing THEN in a language that requires THEN.",
     steps: [
-      "An interpreter is suitable during development.",
-      "It translates and executes statements as the program runs.",
-      "It can stop at or near a faulty statement, giving quick diagnostic feedback.",
-      "A limitation is that interpreted execution may be slower and the interpreter/source code may be needed.",
+      "The statement does not follow the grammar rules of the language.",
+      "The translator/parser can detect the invalid statement structure.",
+      "The program may not translate or execute successfully until the syntax is corrected.",
+      "A diagnostic might report an expected keyword near the IF statement.",
     ],
   },
-  deploy: {
-    title: "Example 2: Deployment choice",
-    problem: "A company wants to distribute a finished program to customers without giving source code.",
+  logic: {
+    title: "Example 2: Logic error",
+    problem: "A program calculates average = total / 4 even when there are 5 values.",
     steps: [
-      "A compiler is suitable for the final version.",
-      "It translates the whole high-level program before execution.",
-      "It can produce object or executable code that users can run without the source code.",
-      "The program may also need linking with libraries and loading into memory before it runs.",
+      "The expression is syntactically valid.",
+      "The program can run without crashing.",
+      "The result is wrong because the algorithm uses the wrong divisor.",
+      "Testing with known data or tracing variable values can reveal the fault.",
     ],
   },
-  assembly: {
-    title: "Example 3: Assembly language choice",
-    problem: "A systems programmer writes instructions such as LDA, ADD and STA.",
+  runtime: {
+    title: "Example 3: Runtime error",
+    problem: "A program calculates total / count and count is 0 for one input set.",
     steps: [
-      "The input is assembly language, so an assembler is suitable.",
-      "Assembly mnemonics represent low-level processor instructions.",
-      "The assembler converts them into machine code/object code.",
-      "A compiler or interpreter is not the precise tool for assembly-language mnemonics.",
+      "The expression may be syntactically valid.",
+      "The fault appears while the program is executing with a particular value.",
+      "Division by zero can cause the program to halt, crash or raise an exception.",
+      "Validation could prevent count from being 0 before division.",
     ],
   },
-  pipeline: {
-    title: "Example 4: Mixed pipeline",
-    problem: "A compiled program has object modules and uses a maths library before it is run.",
+  diagnostic: {
+    title: "Example 4: Translation diagnostic",
+    problem: "A compiler reports: line 12, expected ')' before ';'.",
     steps: [
-      "The compiler produces object code from high-level source code.",
-      "The linker combines object modules and resolves references to the maths library.",
-      "The linked executable can then be loaded into main memory by the loader.",
-      "Logic errors may still require testing even if all translation steps succeed.",
+      "The message gives a location and expected symbol, which helps the programmer search for the fault.",
+      "The real cause may be earlier than the reported line, especially with missing brackets.",
+      "A compiler may report several errors after a translation attempt.",
+      "An interpreter may stop at or near the statement currently being translated and executed.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Best tool for line-by-line development feedback?", accepted: ["interpreter"], answer: "Interpreter" },
-  { id: "p2", prompt: "Best tool for producing executable/object code for final deployment?", accepted: ["compiler"], answer: "Compiler" },
-  { id: "p3", prompt: "Best tool for assembly language mnemonics?", accepted: ["assembler"], answer: "Assembler" },
-  { id: "p4", prompt: "Best tool for combining object modules and resolving external references?", accepted: ["linker"], answer: "Linker" },
-  { id: "p5", prompt: "Best tool for placing executable code into main memory?", accepted: ["loader"], answer: "Loader" },
-  { id: "p6", prompt: "Does an interpreter normally produce a standalone executable for distribution? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p7", prompt: "Name one advantage of using a compiler for deployment.", accepted: ["executable", "object code", "source code not needed", "without source", "faster", "run repeatedly"], answer: "Executable/object code can run without giving users the source code" },
-  { id: "p8", prompt: "Name one advantage of an interpreter during development.", accepted: ["debug", "debugging", "line by line", "statement by statement", "immediate feedback", "errors"], answer: "Statement-by-statement execution can give quick debugging feedback" },
-  { id: "p9", prompt: "If object files refer to library routines, what tool resolves those references?", accepted: ["linker"], answer: "Linker" },
-  { id: "p10", prompt: "If a program translates successfully but calculates the wrong result, what should still be used to find the fault?", accepted: ["testing", "test data", "tracing", "trace", "dry run", "debugging"], answer: "Testing with known data, tracing or debugging" },
+  { id: "p1", prompt: "Which error type breaks the grammar rules of a programming language?", accepted: ["syntax", "syntax error"], answer: "Syntax error" },
+  { id: "p2", prompt: "Which error type allows a program to run but gives the wrong result?", accepted: ["logic", "logic error", "logical"], answer: "Logic error" },
+  { id: "p3", prompt: "Which error type occurs while the program is executing?", accepted: ["runtime", "run time", "runtime error", "run-time"], answer: "Runtime error" },
+  { id: "p4", prompt: "Classify: missing closing bracket.", accepted: ["syntax", "syntax error"], answer: "Syntax error" },
+  { id: "p5", prompt: "Classify: division by zero when a user enters 0.", accepted: ["runtime", "run time", "runtime error", "run-time"], answer: "Runtime error" },
+  { id: "p6", prompt: "Classify: program uses the wrong formula but does not crash.", accepted: ["logic", "logic error"], answer: "Logic error" },
+  { id: "p7", prompt: "What information might a diagnostic message provide?", accepted: ["line", "line number", "error type", "expected", "message", "location", "token"], answer: "Line/location, error type, unexpected token or expected symbol" },
+  { id: "p8", prompt: "Does successful compilation prove a program has no logic errors? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p9", prompt: "Which translator may stop at the statement currently being executed?", accepted: ["interpreter"], answer: "Interpreter" },
+  { id: "p10", prompt: "Name one method for finding logic errors.", accepted: ["testing", "trace", "tracing", "dry run", "test data", "debugging"], answer: "Testing with known data, tracing or debugging" },
 ];
 
 const mistakes = [
   {
-    wrong: "Use an assembler to translate Java because it sounds close to machine code.",
-    fix: "An assembler translates assembly language mnemonics. Java/high-level source code needs a compiler, interpreter or a language-specific translation process.",
+    wrong: "A logic error is detected automatically by the compiler because the answer is wrong.",
+    fix: "A compiler can detect grammar and some translation errors, but it usually cannot know the intended algorithm. Logic errors are often found by testing or tracing.",
   },
   {
-    wrong: "A compiler is always best because compiled programs are finished.",
-    fix: "A compiler may suit deployment, but an interpreter can be better during development when line-by-line feedback is useful.",
+    wrong: "Division by zero is always a syntax error.",
+    fix: "The expression may be valid grammar. If the failure happens while executing with a zero value, it is a runtime error.",
   },
   {
-    wrong: "A loader fixes unresolved library routines.",
-    fix: "A linker resolves external references to object modules or library routines. A loader places executable code into memory.",
+    wrong: "A runtime error means the program gives the wrong output.",
+    fix: "A runtime error occurs while the program runs and may halt or crash. Wrong output without crashing is usually a logic error.",
   },
   {
-    wrong: "If compilation succeeds, testing is no longer necessary.",
-    fix: "Successful compilation does not prove the algorithm is correct. Logic errors may only be found through testing or tracing.",
+    wrong: "The diagnostic line number is always exactly where the original fault was typed.",
+    fix: "A diagnostic points to where the translator noticed a problem. The cause may be earlier, such as a missing bracket on a previous line.",
   },
 ];
 
@@ -115,97 +115,91 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A programmer is developing a program and wants quick feedback on errors. The finished program will later be distributed to users. Explain suitable translation approaches for both stages.",
-    answer: "During development, an interpreter may be suitable because it translates and executes statements as the program runs, so the programmer can test small parts and receive feedback near the faulty statement. For the finished program, a compiler may be suitable because it translates the whole high-level program before execution and can produce object or executable code. The executable can be distributed to users without providing the source code and may run repeatedly without retranslation.",
+    marks: "5 marks",
+    prompt: "Describe syntax, logic and runtime errors.",
+    answer: "A syntax error occurs when code breaks the grammar rules of the programming language, such as a missing bracket or invalid statement structure. A logic error occurs when the program runs but the algorithm is wrong, so the output is incorrect. A runtime error occurs while the program is executing, for example division by zero or file not found, and may cause the program to halt or raise an exception.",
     marking: [
-      { mark: "B1", text: "interpreter selected for development" },
-      { mark: "B1", text: "interpreter translates/executes statement by statement" },
-      { mark: "B1", text: "development benefit such as quick feedback/debugging/testing small parts" },
-      { mark: "B1", text: "compiler selected for finished/deployed program" },
-      { mark: "B1", text: "compiler translates whole program before execution and/or produces object/executable code" },
-      { mark: "B1", text: "deployment benefit such as source code not needed or repeated execution without retranslation" },
+      { mark: "B1", text: "syntax error linked to grammar/language rule violation" },
+      { mark: "B1", text: "valid syntax example such as missing bracket/keyword or invalid structure" },
+      { mark: "B1", text: "logic error linked to program running but wrong result/algorithm" },
+      { mark: "B1", text: "runtime error linked to failure during execution" },
+      { mark: "B1", text: "valid runtime example or consequence such as crash/exception" },
     ],
     strict: [
-      "Do not accept 'compiler is better' without scenario-linked reason.",
-      "Do not award interpreter marks for producing standalone executable code.",
-      "Allow line by line for statement by statement.",
-      "Award each stage independently if one choice is wrong but the other is correct.",
+      "Do not accept 'syntax means spelling mistake' unless grammar of code is clear.",
+      "Do not accept logic error as a crash unless wrong-result behaviour is also described.",
+      "Allow run-time as runtime.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Explain why an assembler, a linker and a loader are different tools.",
-    answer: "An assembler translates assembly language mnemonics into machine code or object code. A linker combines object modules and resolves external references, including references to library routines, to produce linked/executable code. A loader places executable code and data into main memory and prepares the program for execution. They act at different points in the process, so their roles should not be merged.",
+    marks: "3 marks",
+    prompt: "A program runs without crashing but calculates discounts incorrectly. Explain the most likely error type.",
+    answer: "This is most likely a logic error. The program can be translated and executed, so the syntax is likely valid and it is not failing during execution. The problem is that the algorithm, formula or condition used to calculate the discount is wrong. The error would usually be found by testing with known input and expected output or by tracing the calculation.",
     marking: [
-      { mark: "B1", text: "assembler translates assembly language/mnemonics" },
-      { mark: "B1", text: "assembler output is machine code/object code" },
-      { mark: "B1", text: "linker combines object modules and/or resolves external references" },
-      { mark: "B1", text: "loader places executable/program/data into main memory" },
-      { mark: "B1", text: "prepares for execution or clearly distinguishes the sequence/roles" },
+      { mark: "B1", text: "logic error identified" },
+      { mark: "B1", text: "program runs/does not crash or can execute" },
+      { mark: "B1", text: "output/calculation/result is incorrect due to algorithm/formula/condition" },
     ],
     strict: [
-      "Do not accept assembler as translator of all high-level source code.",
-      "Do not accept linker as loading into memory unless resolving/combining is also clear.",
-      "Allow RAM for main memory.",
-      "Award each tool role independently.",
+      "Do not award identification mark for runtime error in this scenario.",
+      "Do not accept 'computer mistake' without program logic cause.",
+      "Allow wrong formula as algorithm error.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "A program compiles successfully but produces an incorrect total. Explain why changing translator may not solve the problem.",
-    answer: "The problem is likely a logic error because the program can be translated and run but the algorithm or formula gives the wrong result. A compiler may not detect this because the code can be syntactically valid and still have the wrong calculation. Changing from a compiler to an interpreter would not automatically correct the algorithm. The programmer should test with known data, trace variable values or debug the calculation.",
+    prompt: "Explain how translation diagnostics help a programmer correct errors.",
+    answer: "Translation diagnostics are messages produced by a compiler or interpreter to describe errors found during translation or execution of statements. They may include the line number, error type, unexpected token or expected symbol. This helps the programmer locate the part of the source code that needs checking. However, the reported location may be near the problem rather than the exact cause, for example after a missing bracket.",
     marking: [
-      { mark: "B1", text: "logic error identified or described" },
-      { mark: "B1", text: "program translates/runs but result/calculation is wrong" },
-      { mark: "B1", text: "translator may not detect intended algorithm/formula error" },
-      { mark: "B1", text: "testing/tracing/debugging with known data suggested" },
+      { mark: "B1", text: "diagnostics are messages/reports from compiler/interpreter/translator" },
+      { mark: "B1", text: "include useful detail such as line number/location/error type/token/expected symbol" },
+      { mark: "B1", text: "help programmer locate or correct the source of error" },
+      { mark: "B1", text: "limitation stated, such as location may not be exact or may be near the cause" },
     ],
     strict: [
-      "Do not accept syntax error if the program compiles successfully in the scenario.",
-      "Do not accept 'use a better compiler' as a fix without testing/algorithm change.",
-      "Allow dry run as tracing.",
+      "Do not accept 'it fixes the code automatically' as diagnostic purpose.",
+      "Do not require all listed details; one valid diagnostic detail is enough for the detail mark.",
+      "Allow error message for diagnostic message.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Explain why Java in console mode is described as partly compiled and partly interpreted. Then describe two IDE features that help a programmer present or debug code.",
-    answer: "A Java compiler first translates Java source code into bytecode. The Java Virtual Machine then interprets the bytecode, or may just-in-time compile parts of it for the host processor, so Java uses both compilation and interpretation rather than compiling directly to universal machine code. An IDE can prettyprint code to make indentation and layout consistent, and a breakpoint can pause execution at a selected statement so variable values or expressions can be inspected. Other valid pairs include expand/collapse, single stepping, dynamic syntax checks, context-sensitive prompts and a report window, provided each effect is explained.",
+    prompt: "Compare how a compiler and an interpreter may report errors.",
+    answer: "A compiler translates the whole program before execution and may produce a list of errors after attempting compilation. The programmer may need to correct errors before the program can run. An interpreter translates and executes statements as the program runs and may stop at or near the statement where an error is found. This can give immediate feedback during development, but it may only reveal later errors when execution reaches those statements.",
     marking: [
-      { mark: "B1", text: "Java source code is compiled" },
-      { mark: "B1", text: "compiler output is bytecode" },
-      { mark: "B1", text: "JVM interprets the bytecode and/or JIT-compiles it for the host" },
-      { mark: "B1", text: "one valid IDE feature is named and its presentation/debugging effect is explained" },
-      { mark: "B1", text: "a second distinct IDE feature is named and its presentation/debugging effect is explained" },
+      { mark: "B1", text: "compiler translates/checks whole program before execution" },
+      { mark: "B1", text: "compiler may produce a list of errors after compilation attempt" },
+      { mark: "B1", text: "interpreter translates/executes statement by statement" },
+      { mark: "B1", text: "interpreter may stop at/near current statement with immediate error feedback" },
+      { mark: "B1", text: "valid consequence such as later errors found only when reached or development usefulness" },
     ],
     strict: [
-      "Do not accept that Java is compiled directly into universal machine code.",
-      "Do not award an IDE feature without its effect, and do not award the same feature twice.",
-      "Do not accept that syntax checks or prompts prove that the algorithm is correct.",
-      "Allow JIT compilation as part of the JVM execution stage, not as a replacement for the source-to-bytecode stage.",
+      "Do not accept 'compiler finds all errors' because logic errors may remain.",
+      "Do not accept 'interpreter has no errors' as a comparison.",
+      "Allow line by line for statement by statement.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, Suggest the most suitable tool and justify it: high-level program for final distribution; assembly-language routine for a processor; beginner testing code statement by statement.",
-    answer: "For a high-level program for final distribution, a compiler is suitable because it translates the whole program before execution and can produce executable/object code that runs without source code. For an assembly-language routine, an assembler is suitable because it translates assembly mnemonics into machine code. For a beginner testing code statement by statement, an interpreter is suitable because it translates and executes statements during running and can provide immediate feedback near errors.",
+    prompt: "Identify each error and justify it: missing ENDIF; array index outside the valid range while running; using < instead of <= so the final item is skipped.",
+    answer: "A missing ENDIF is a syntax error because the program structure does not follow the grammar rules for the selection statement. An array index outside the valid range while running is a runtime error because the program fails during execution for a particular value or state. Using < instead of <= so the final item is skipped is a logic error because the code may run without crashing, but the algorithm gives the wrong result.",
     marking: [
-      { mark: "B1", text: "compiler selected for final distribution" },
-      { mark: "B1", text: "compiler justification linked to whole program/executable/object code/source code not needed" },
-      { mark: "B1", text: "assembler selected for assembly-language routine" },
-      { mark: "B1", text: "assembler justification linked to mnemonics/machine code" },
-      { mark: "B1", text: "interpreter selected for statement-by-statement beginner testing" },
-      { mark: "B1", text: "interpreter justification linked to statement-by-statement execution/immediate error feedback" },
+      { mark: "B1", text: "missing ENDIF classified as syntax error" },
+      { mark: "B1", text: "syntax justification linked to grammar/structure/selection statement" },
+      { mark: "B1", text: "array index outside range while running classified as runtime error" },
+      { mark: "B1", text: "runtime justification linked to failure during execution/value at run time" },
+      { mark: "B1", text: "< instead of <= final item skipped classified as logic error" },
+      { mark: "B1", text: "logic justification linked to valid running code but wrong algorithm/result" },
     ],
     strict: [
-      "Do not award selection mark if the tool is matched to the wrong scenario.",
-      "Do not accept vague 'faster/easier' without technical mechanism.",
-      "Allow line-by-line for statement-by-statement.",
-      "Award each scenario independently.",
+      "Do not award justification mark for repeating only the category name.",
+      "Do not classify skipped final item as syntax if the expression is valid code.",
+      "Allow out-of-bounds for array index outside valid range.",
+      "Award each classification and justification independently.",
     ],
   },
 ];
@@ -221,10 +215,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    interpreter: "Correct. An interpreter can support statement-by-statement testing and quick diagnostics during development.",
-    compiler: "Not best for this stage. A compiler may suit final deployment, but the scenario asks for step-by-step development feedback.",
-    assembler: "No. An assembler translates assembly language, not ordinary high-level source code.",
-    loader: "No. A loader places executable code into memory; it does not find syntax errors in source code.",
+    logic: "Correct. It runs, but the algorithm or formula is wrong.",
+    syntax: "No. A syntax error would break grammar and usually be caught before successful running.",
+    runtime: "No. A runtime error happens during execution and may halt or crash the program.",
+    linker: "No. Linker errors involve unresolved references after object code, not a wrong bill formula.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -268,7 +262,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("debug");
+  renderExample("syntax");
 }
 
 function renderPractice() {

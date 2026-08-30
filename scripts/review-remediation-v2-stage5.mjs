@@ -8,6 +8,7 @@ import { evaluateAuditIntegrity } from "./remediation-v2-audit-integrity-gate.mj
 import { parseCsv, wordingReviewHeaders } from "./remediation-v2-review-gate.mjs";
 import { evaluateStage5TechnicalControls, stage5VisualKeys, stage5VisualSnapshot } from "./remediation-v2-stage5-gate.mjs";
 import { explanations } from "./stage10-explanations-data.mjs";
+import { unitForLesson } from "./course-structure.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
@@ -20,27 +21,34 @@ const pageBasis = (requirement) => {
   const pages = requirement.officialReference.pages;
   return `syllabus:p${Math.min(...pages)}${Math.max(...pages) === Math.min(...pages) ? "" : `-${Math.max(...pages)}`}`;
 };
-const sectionForLesson = (lesson) => lesson <= 15 ? 1 : lesson <= 26 ? 2 : lesson <= 40 ? 3 : lesson <= 51 ? 4 : lesson <= 61 ? 5 : lesson <= 71 ? 6 : lesson <= 77 ? 7 : lesson <= 89 ? 8 : lesson <= 112 ? 9 : lesson <= 125 ? 10 : lesson <= 141 ? 11 : 12;
+const sectionForLesson = (lesson) => {
+  const unit = unitForLesson(lesson);
+  if (unit?.id === "paper-1-review") return 8;
+  if (unit?.id === "paper-2-review") return 12;
+  const section = Number.parseInt(unit?.section.replace("Section ", ""), 10);
+  if (!Number.isInteger(section)) throw new Error(`Lesson ${lesson}: no syllabus section mapping`);
+  return section;
+};
 const sectionBasis = new Map(coverage.requirements.map((entry) => [entry.section, pageBasis(entry)]));
 
 const expectedChangedQuestionIds = Object.freeze([
-  "AM120-Q3",
-  "L049-Q4",
-  "L080-Q2",
+  "AM121-Q3",
+  "L050-Q4",
   "L081-Q2",
-  "L093-Q4",
-  "L107-Q2",
-  "L107-Q4",
-  "L121-Q1",
-  "L121-Q2",
-  "L121-Q4",
-  "L121-Q5",
-  "L124-Q1",
+  "L082-Q2",
+  "L094-Q4",
+  "L108-Q2",
+  "L108-Q4",
+  "L122-Q1",
+  "L122-Q2",
+  "L122-Q4",
+  "L122-Q5",
   "L125-Q1",
-  "L125-Q2",
-  "L133-Q1",
-  "L133-Q4",
-  "L133-Q5",
+  "L126-Q1",
+  "L126-Q2",
+  "L134-Q1",
+  "L134-Q4",
+  "L134-Q5",
 ]);
 
 const technical = evaluateStage5TechnicalControls();
@@ -239,7 +247,7 @@ for (const row of wording.rows) {
       row.evidence_location = `audits/remediation-v2-stage5-visual-review.json#${row.id}`;
       row.reviewer_id = "stage5-targeted-visual-semantic-review";
       row.review_round = "R6";
-      row.review_note = "Maintained transcript and exact critical-image semantics reviewed in forward and reverse target order; full 783-image review remains Stage 6.";
+      row.review_note = "Maintained transcript and exact critical-image semantics reviewed in forward and reverse target order; full 784-image review remains Stage 6.";
       infographicRefreshCount += 1;
     }
   }
@@ -271,7 +279,7 @@ fs.writeFileSync(semanticPath, `${[semantic.headers, ...semantic.rows.map((row) 
 writeJson("audits/remediation-v2-stage5-visual-review.json", {
   schemaVersion: 1,
   stage: 5,
-  scope: "Eight critical Stage 5 images only; not the Stage 6 783-image census.",
+  scope: "Eight critical Stage 5 images only; not the Stage 6 784-image census.",
   reviewMethod: "Original/high-resolution visual inspection against maintained transcript, official technical boundary and deterministic renderer source.",
   firstPassOrder: stage5VisualKeys,
   secondPassOrder: [...stage5VisualKeys].reverse(),

@@ -1,83 +1,47 @@
-const scenarios = {
-  dns: {
-    result: "DNS / addressing",
-    method: "DNS resolves a domain name to an IP address so the browser can contact the correct server. Do not answer with HTTP unless the question asks how the web page is requested after resolution.",
-  },
-  imap: {
-    result: "IMAP / email protocol",
-    method: "IMAP accesses and synchronises email stored on a mail server across devices. SMTP sends email; POP3 downloads email to a client.",
-  },
-  fibre: {
-    result: "Transmission media",
-    method: "Fibre-optic cable carries data as light pulses and is suitable for high bandwidth, long distance and low electromagnetic interference.",
-  },
-  router: {
-    result: "Network hardware",
-    method: "A router connects different networks and forwards packets using IP addresses and routing information.",
-  },
-  latency: {
-    result: "Network performance",
-    method: "Small data but late response suggests latency, not bandwidth. Explain delay before response and link it to the user symptom.",
-  },
-  mesh: {
-    result: "Topology / resilience",
-    method: "A mesh topology can provide alternative paths, so communication may continue if one link fails.",
-  },
-  cloud: {
-    result: "Cloud services",
-    method: "Cloud storage uses remote servers accessed over a network, supporting access from different locations but creating provider/security/dependence considerations.",
-  },
-};
-
 const examples = {
-  protocol: {
-    title: "Example 1: HTTPS precision",
-    problem: "Explain why HTTPS is used for an online payment page.",
-    answer: "HTTPS encrypts communication between the browser and web server, helping protect sensitive payment details while they are transmitted.",
-    annotations: [
-      "HTTPS named correctly for secure web communication.",
-      "Encrypts communication is the mechanism.",
-      "Browser and web server gives the communication context.",
-      "Payment details in transit links to the scenario and consequence.",
+  download: {
+    title: "Example 1: ideal download time",
+    problem: "A 60 MB update is downloaded over a 30 Mbps connection.",
+    steps: [
+      "Convert file size to megabits: 60 MB x 8 = 480 Mb.",
+      "Use transfer time = file size / bandwidth.",
+      "480 Mb / 30 Mbps = 16 seconds.",
+      "State that real time may be longer due to overheads, congestion or lower throughput.",
     ],
   },
-  hardware: {
-    title: "Example 2: switch vs router precision",
-    problem: "Compare a switch and a router.",
-    answer: "A switch forwards frames inside a LAN using MAC addresses, while a router forwards packets between different networks using IP addresses and routing information.",
-    annotations: [
-      "Switch boundary: inside a LAN.",
-      "Switch mechanism: forwards frames using MAC addresses.",
-      "Router boundary: between networks.",
-      "Router mechanism: forwards packets using IP addresses/routing information.",
+  gaming: {
+    title: "Example 2: online game delay",
+    problem: "An online game has small data packets but feels delayed.",
+    steps: [
+      "The amount of data per packet may be small, so bandwidth may not be the main issue.",
+      "High latency delays the response between player action and server reply.",
+      "Distance, route, server load and wireless interference can increase latency.",
+      "A good answer links delay to gameplay consequence, such as late movement updates.",
     ],
   },
-  performance: {
-    title: "Example 3: congestion precision",
-    problem: "Explain why downloads become slow when many users stream video.",
-    answer: "Many users share the same network capacity, causing congestion. Packets may be queued, delayed or lost, reducing throughput and causing slow downloads or buffering.",
-    annotations: [
-      "Many users share capacity gives the cause.",
-      "Congestion names the concept.",
-      "Queued, delayed or lost packets gives mechanism.",
-      "Reduced throughput and buffering gives consequence.",
+  congestion: {
+    title: "Example 3: shared school network",
+    problem: "Downloads become slower when many students stream video at lunchtime.",
+    steps: [
+      "Many users share the same network capacity.",
+      "Traffic can exceed the capacity of a link or device, causing congestion.",
+      "Queues form, throughput per user falls, and packets may be delayed or lost.",
+      "The symptom is slower downloads, buffering or lag.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which device forwards frames inside a LAN using MAC addresses?", accepted: ["switch"], answer: "Switch" },
-  { id: "p2", prompt: "Which protocol sends email?", accepted: ["smtp"], answer: "SMTP" },
-  { id: "p3", prompt: "Which protocol synchronises email across devices?", accepted: ["imap"], answer: "IMAP" },
-  { id: "p4", prompt: "Which service resolves a domain name to an IP address?", accepted: ["dns"], answer: "DNS" },
-  { id: "p5", prompt: "Which term means delay before a response is received?", accepted: ["latency"], answer: "Latency" },
-  { id: "p6", prompt: "Which network gives controlled access to selected external users?", accepted: ["extranet"], answer: "Extranet" },
-  { id: "p7", prompt: "Which transmission medium uses light pulses?", accepted: ["fibre", "fiber", "fibre optic", "fiber optic", "fibre-optic cable", "fiber-optic cable"], answer: "Fibre-optic cable" },
-  { id: "p8", prompt: "Which topology has all devices connected to a central switch or hub?", accepted: ["star", "star topology"], answer: "Star topology" },
-  { id: "p9", prompt: "Which protocol transfers web pages without the secure encryption distinction?", accepted: ["http"], answer: "HTTP" },
-  { id: "p10", prompt: "Which term means actual successful data transfer rate?", accepted: ["throughput"], answer: "Throughput" },
-  { id: "p11", prompt: "Which device connects different networks using IP addresses?", accepted: ["router"], answer: "Router" },
-  { id: "p12", prompt: "Which addressing term identifies a network interface/device on a local network?", accepted: ["mac", "mac address", "mac addresses"], answer: "MAC address" },
+  { id: "p1", prompt: "Which term means the maximum amount of data that can be transmitted per second?", accepted: ["bandwidth"], answer: "Bandwidth" },
+  { id: "p2", prompt: "Which term means delay before a response or before data starts to arrive?", accepted: ["latency"], answer: "Latency" },
+  { id: "p3", prompt: "Which term means too much traffic using part of the network?", accepted: ["congestion", "network congestion"], answer: "Congestion" },
+  { id: "p4", prompt: "Which is normally measured in ms: bandwidth or latency?", accepted: ["latency"], answer: "Latency" },
+  { id: "p5", prompt: "Which is normally measured in Mbps or Gbps: bandwidth or latency?", accepted: ["bandwidth"], answer: "Bandwidth" },
+  { id: "p6", prompt: "Convert 10 MB to megabits.", accepted: ["80", "80 mb", "80 megabits"], answer: "80 Mb" },
+  { id: "p7", prompt: "A 10 MB file over 8 Mbps takes how many seconds ideally?", accepted: ["10", "10 seconds", "10s"], answer: "10 seconds" },
+  { id: "p8", prompt: "Name one effect of congestion.", accepted: ["delay", "latency", "packet loss", "lower throughput", "slower download", "buffering", "lag"], answer: "Delay / packet loss / lower throughput / buffering / lag" },
+  { id: "p9", prompt: "Does high bandwidth always mean low latency? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "What is the actual successful data transfer rate called?", accepted: ["throughput"], answer: "Throughput" },
 ];
 
 
@@ -89,103 +53,94 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A student says: 'A switch and a router are the same because they both send data.' Develop this answer.",
-    answer: "A switch and router both forward data, but they work at different network boundaries. A switch connects devices inside a LAN and forwards frames to the correct port using MAC addresses. A router connects different networks, such as a LAN and the internet, and forwards packets using IP addresses and routing information.",
+    marks: "4 marks",
+    prompt: "Compare bandwidth and latency.",
+    answer: "Bandwidth is the amount of data that can be transmitted per second, often measured in Mbps or Gbps. Latency is the delay before data starts to arrive or before a response is received, often measured in milliseconds. A connection can have high bandwidth but still have high latency.",
     marking: [
-      { mark: "B1", text: "states they are not the same / have different roles" },
-      { mark: "B1", text: "switch works within a LAN/local network" },
-      { mark: "B1", text: "switch uses MAC addresses/ports to forward frames/data" },
-      { mark: "B1", text: "router connects different networks / LAN to internet" },
-      { mark: "B1", text: "router uses IP addresses/routing information" },
-      { mark: "B1", text: "clear scenario or boundary comparison" },
+      { mark: "B1", text: "bandwidth is data capacity/rate per second" },
+      { mark: "B1", text: "higher bandwidth allows more data to be transferred in a given time" },
+      { mark: "B1", text: "latency is delay/response time" },
+      { mark: "B1", text: "high latency causes a longer wait for a response even when bandwidth is high" },
     ],
     strict: [
-      "Do not award for only saying one is faster or more powerful.",
-      "Allow frame/packet wording variation if address type and boundary are correct.",
-      "Do not require OSI layer names.",
+      "Do not accept only 'bandwidth is speed' without data-rate idea.",
+      "Do not accept latency as the amount of data sent.",
+      "Allow 'time taken for data to travel' if delay is clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "A school wants students to access files from home and school using a cloud service. Discuss benefits and risks.",
-    answer: "A cloud service stores or processes data on remote servers accessed over a network. Benefits include access from different locations/devices and easier collaboration or backup. Risks include dependence on the internet connection/provider, possible downtime, and security or privacy concerns for student data.",
+    marks: "4 marks",
+    prompt: "A 75 MB file is transferred over a 25 Mbps connection. Calculate the ideal transfer time.",
+    answer: "75 MB = 75 x 8 = 600 Mb. Transfer time = 600 Mb / 25 Mbps = 24 seconds.",
     marking: [
-      { mark: "B1", text: "cloud uses remote servers/resources accessed over a network" },
-      { mark: "B1", text: "benefit: access from home and school/different devices" },
-      { mark: "B1", text: "benefit: collaboration/backup/reduced local maintenance" },
-      { mark: "B1", text: "risk: internet/provider dependence or downtime" },
-      { mark: "B1", text: "risk: security/privacy/compliance concern" },
-      { mark: "B1", text: "links points to school/student-file scenario" },
+      { mark: "M1", text: "converts MB to megabits by multiplying by 8" },
+      { mark: "A1", text: "600 Mb" },
+      { mark: "M1", text: "divides file size in bits by bandwidth in bits per second" },
+      { mark: "A1", text: "24 seconds with suitable unit" },
     ],
     strict: [
-      "Do not accept 'stored in the cloud' without remote server/network mechanism.",
-      "Do not accept only generic 'cheap/easy' without explanation.",
-      "Award balanced answers that discuss both benefits and risks.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not award final A1 if answer is 3 seconds from confusing MB with Mb.",
+      "Ignore real-world overheads unless the question asks for actual transfer time.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Explain the protocols involved when a user sends an email and then reads it on both a phone and laptop.",
-    answer: "SMTP is used to send the email from the client to a mail server and may be used between mail servers. IMAP is suitable for reading email on both phone and laptop because it accesses and synchronises email stored on the server across devices. POP3 would normally download messages to a client and is less suitable for keeping devices synchronised.",
+    marks: "5 marks",
+    prompt: "Explain how congestion can affect users on a school network at lunchtime.",
+    answer: "At lunchtime many users may stream videos or download files at the same time. The traffic may exceed the capacity of a link, router, access point or internet connection, causing congestion. Packets may be queued, delayed or lost, so throughput per user falls and users experience buffering, lag or slow downloads.",
     marking: [
-      { mark: "B1", text: "SMTP used to send email from client to mail server" },
-      { mark: "B1", text: "SMTP may be used between mail servers" },
-      { mark: "B1", text: "IMAP used to access/read email on server" },
-      { mark: "B1", text: "IMAP synchronises across multiple devices" },
-      { mark: "B1", text: "POP3 downloads messages to client / contrast with IMAP" },
-      { mark: "B1", text: "clear separation between sending and receiving/accessing email" },
+      { mark: "B1", text: "many users/devices generate high traffic at same time" },
+      { mark: "B1", text: "traffic exceeds/shared capacity of link/device/connection" },
+      { mark: "B1", text: "queues/delays occur" },
+      { mark: "B1", text: "packet loss/retransmission or reduced throughput" },
+      { mark: "B1", text: "valid user symptom such as buffering/lag/slow download linked to lunchtime scenario" },
     ],
     strict: [
-      "Do not award SMTP for retrieving or reading email.",
-      "Do not award POP3 for sending email.",
-      "Do not require both POP3 and IMAP in a real system, but contrast earns credit here.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not accept only 'more users make it slower' for full credit.",
+      "Do not require a specific congestion-control algorithm.",
+      "Allow access point/router/server as bottleneck if cause and effect are clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Explain the format and use of IPv4 and IPv6 addresses, and Compare public/private and static/dynamic addresses.",
-    answer: "IPv4 uses 32-bit addresses and IPv6 uses 128-bit addresses. An IP address is associated with a network interface so packets can be routed. A public address is reachable across the internet, while a private address is used inside a local network. A static address remains fixed; a dynamic address is allocated and may change. Possessing an IP address does not by itself guarantee security.",
+    marks: "4 marks",
+    prompt: "Compare real-time bit streaming from on-demand bit streaming and explain why broadband speed must normally exceed the stream bit rate.",
+    answer: "Real-time bit streaming carries a live event with minimal delay, whereas on-demand bit streaming sends stored content selected by the user. The stream bit rate is the number of bits consumed each second. Available broadband speed must normally exceed that rate and allow for overhead or variation; otherwise the playback buffer eventually empties and playback pauses or quality is reduced.",
     marking: [
-      { mark: "B1", text: "IPv4 is 32-bit" },
-      { mark: "B1", text: "IPv6 is 128-bit" },
-      { mark: "B1", text: "address associated with a network interface / used for routing" },
-      { mark: "B1", text: "public and private distinction" },
-      { mark: "B1", text: "static and dynamic distinction" },
-      { mark: "B1", text: "IP addressing does not guarantee security" },
+      { mark: "B1", text: "real-time streaming carries live content with minimal delay" },
+      { mark: "B1", text: "on-demand streaming sends stored content chosen by the user" },
+      { mark: "B1", text: "broadband/arrival rate must normally exceed the stream bit rate / bits consumed per second" },
+      { mark: "B1", text: "otherwise the buffer empties and playback pauses or quality is reduced" },
     ],
     strict: [
-      "Do not credit decimal digit counts as the address bit width.",
-      "Do not claim that a private address alone makes a device secure.",
+      "Do not define real-time as merely fast playback; it must be linked to live content.",
+      "Do not accept 'better internet is needed' without comparing broadband speed with stream bit rate.",
+      "A starting buffer delays a shortage but does not fix a sustained arrival rate below the stream bit rate.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "For the URL https://school.example.org/results/index.html, identify the scheme, domain name and path, then explain how DNS helps locate the WWW resource.",
-    answer: "The scheme is https, the domain name is school.example.org and the path is /results/index.html. DNS resolves the domain name to an IP address. The browser can then send packets toward the web server and request the named WWW resource.",
+    marks: "5 marks",
+    prompt: "Describe factors that could reduce the actual throughput of a network below its advertised bandwidth.",
+    answer: "Actual throughput may be lower than advertised bandwidth because many users share the same connection, causing congestion. Wireless interference or weak signal can cause errors and retransmission. Protocol overheads such as headers, error checking and encryption use some capacity. Slow network hardware or overloaded servers can also become bottlenecks.",
     marking: [
-      { mark: "B1", text: "scheme is https" },
-      { mark: "B1", text: "domain is school.example.org" },
-      { mark: "B1", text: "path is /results/index.html" },
-      { mark: "B1", text: "DNS resolves the domain name" },
-      { mark: "B1", text: "resolution returns/finds an IP address" },
-      { mark: "B1", text: "browser uses the location to request the WWW resource" },
+      { mark: "B1", text: "many users/shared connection/congestion" },
+      { mark: "B1", text: "wireless interference/weak signal/errors" },
+      { mark: "B1", text: "packet loss/retransmission reduces effective rate" },
+      { mark: "B1", text: "protocol overheads such as headers/encryption/error checking" },
+      { mark: "B1", text: "hardware/server bottleneck or overloaded device" },
     ],
     strict: [
-      "Do not describe DNS as storing the webpage.",
-      "Require the URL components to be matched to the supplied URL.",
+      "Do not accept a list of vague words without explaining effect.",
+      "Do not require all factors; award any valid distinct factors up to the mark limit.",
+      "Allow environmental obstacles if linked to wireless performance.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/[-\s]+/g, " ");
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
 function setupPrint() {
@@ -194,33 +149,51 @@ function setupPrint() {
 
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
-  const responses = {
-    latency: "Topic: network performance. Mark phrase: latency is delay before response/data arrival.",
-    switch: "Topic: network hardware. Mark phrase: a switch forwards frames inside a LAN using MAC addresses/ports.",
-    extranet: "Topic: network services. Mark phrase: controlled access for selected external users.",
-    http: "Topic: application protocols. Mark phrase: HTTP transfers web pages/resources between browser and web server.",
-  };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = responses[button.dataset.hook];
+      feedback.textContent = button.dataset.hook === "latency"
+        ? "Correct. Long pauses are a delay problem, so latency is the first suspect."
+        : "Not quite. The clue is delay between replies, not just how much data can be carried.";
     });
   });
 }
 
-function setupTopicTool() {
-  const select = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#topicResult");
-  const method = document.querySelector("#topicMethod");
-  function choose() {
-    const item = scenarios[select.value];
-    result.textContent = item.result;
-    method.textContent = item.method;
+function convertToMegabits(size, unit) {
+  if (unit === "MB") return size * 8;
+  if (unit === "MiB") return size * 8.388608;
+  return size;
+}
+
+function setupCalculator() {
+  const fileSize = document.querySelector("#fileSizeInput");
+  const fileUnit = document.querySelector("#fileUnitInput");
+  const bandwidth = document.querySelector("#bandwidthInput");
+  const latency = document.querySelector("#latencyInput");
+  const result = document.querySelector("#calcResult");
+  const method = document.querySelector("#calcMethod");
+
+  function calculate() {
+    const size = Number(fileSize.value);
+    const speed = Number(bandwidth.value);
+    const latencyMs = Number(latency.value);
+    if (!Number.isFinite(size) || !Number.isFinite(speed) || size < 0 || speed <= 0) {
+      result.textContent = "Enter a non-negative file size and a bandwidth greater than 0.";
+      method.textContent = "";
+      return;
+    }
+    const megabits = convertToMegabits(size, fileUnit.value);
+    const transferSeconds = megabits / speed;
+    const latencySeconds = latencyMs / 1000;
+    const roughTotal = transferSeconds + latencySeconds;
+    result.textContent = `Ideal estimate: ${roughTotal.toFixed(2)} seconds`;
+    method.textContent = `${size} ${fileUnit.value} = ${megabits.toFixed(2)} Mb. ${megabits.toFixed(2)} Mb / ${speed} Mbps = ${transferSeconds.toFixed(2)} s. Add one latency estimate of ${latencySeconds.toFixed(3)} s. Real throughput may be lower.`;
   }
-  select.addEventListener("change", choose);
-  document.querySelector("#chooseBtn").addEventListener("click", choose);
-  choose();
+
+  [fileSize, fileUnit, bandwidth, latency].forEach((control) => control.addEventListener("input", calculate));
+  document.querySelector("#calculateBtn").addEventListener("click", calculate);
+  calculate();
 }
 
 function renderExample(key) {
@@ -228,9 +201,7 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <p><strong>Worked answer:</strong> ${example.answer}</p>
-    <h4>Why it earns marks</h4>
-    <ul>${example.annotations.map((item) => `<li>${item}</li>`).join("")}</ul>
+    <ol>${example.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
   `;
 }
 
@@ -242,7 +213,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("protocol");
+  renderExample("download");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -290,7 +261,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For missed items, write the topic and one mark-scheme phrase before retrying.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check whether the question asks about capacity, delay, traffic load or actual throughput.`;
   });
 }
 
@@ -327,7 +298,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupTopicTool();
+  setupCalculator();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

@@ -9,12 +9,12 @@ export function evaluateStage6Artifacts({ imageReview, visualReview, browserEvid
   const require = (condition, message) => { if (!condition) failures.push(message); };
 
   require(imageReview?.sourceApprovalImported === false, "image review must explicitly reject inherited approvals");
-  require(imageReview?.imageCount === 783, "image review must contain 783 current Stage 10 images");
-  require(imageReview?.records?.length === 783, "image review record count is not 783");
-  require(imageReview?.forwardOrder?.length === 783, "forward image pass is incomplete");
-  require(imageReview?.reverseOrder?.length === 783, "reverse image pass is incomplete");
+  require(imageReview?.imageCount === 784, "image review must contain 784 current Stage 10 images");
+  require(imageReview?.records?.length === 784, "image review record count is not 784");
+  require(imageReview?.forwardOrder?.length === 784, "forward image pass is incomplete");
+  require(imageReview?.reverseOrder?.length === 784, "reverse image pass is incomplete");
   require(JSON.stringify(imageReview?.reverseOrder ?? []) === JSON.stringify([...(imageReview?.forwardOrder ?? [])].reverse()), "second image pass is not the exact reverse order");
-  require(new Set(imageReview?.forwardOrder ?? []).size === 783, "forward image pass contains duplicate keys");
+  require(new Set(imageReview?.forwardOrder ?? []).size === 784, "forward image pass contains duplicate keys");
   require(JSON.stringify(imageReview?.records?.map(({ key }) => key) ?? []) === JSON.stringify(imageReview?.forwardOrder ?? []), "image records do not match the recorded forward review order");
   require(imageReview?.pending === 0, "image review contains pending records");
   require(imageReview?.disagreements === 0, "image review contains unresolved pass disagreements");
@@ -30,10 +30,10 @@ export function evaluateStage6Artifacts({ imageReview, visualReview, browserEvid
   }
 
   require(visualReview?.sourceApprovalImported === false, "visual-object review must explicitly reject inherited approvals");
-  require(visualReview?.visualObjectCount === 969, "visual-object review must contain 969 objects");
-  require(visualReview?.records?.length === 969, "visual-object record count is not 969");
-  require(visualReview?.rasterCount === 786, "visual-object review must contain 786 raster images");
-  require(visualReview?.stage10RasterCount === 783, "visual-object review must link all 783 Stage 10 raster images");
+  require(visualReview?.visualObjectCount === 971, "visual-object review must contain 971 objects");
+  require(visualReview?.records?.length === 971, "visual-object review record count is not 971");
+  require(visualReview?.rasterCount === 787, "visual-object review must contain 787 raster images");
+  require(visualReview?.stage10RasterCount === 784, "visual-object review must link all 784 Stage 10 raster images");
   require(visualReview?.pending === 0, "visual-object review contains pending records");
   const imageByKey = new Map((imageReview?.records ?? []).map((row) => [row.key, row]));
   for (const row of visualReview?.records ?? []) {
@@ -50,9 +50,9 @@ export function evaluateStage6Artifacts({ imageReview, visualReview, browserEvid
   }
 
   require(browserEvidence?.sourceApprovalImported === false, "browser evidence must explicitly reject inherited approvals");
-  require(browserEvidence?.pageCount === 153, "browser evidence must cover 153 pages");
-  require(browserEvidence?.viewportRecordCount === 306, "browser evidence must contain 306 viewport records");
-  require(browserEvidence?.records?.length === 306, "browser record count is not 306");
+  require(browserEvidence?.pageCount === 154, "browser evidence must cover 154 pages");
+  require(browserEvidence?.viewportRecordCount === 308, "browser evidence must contain 308 viewport records");
+  require(browserEvidence?.records?.length === 308, "browser record count is not 308");
   require(browserEvidence?.failedRecords === 0, "browser evidence contains failed viewport records");
   const routeViewportKeys = new Set();
   for (const row of browserEvidence?.records ?? []) {
@@ -60,13 +60,13 @@ export function evaluateStage6Artifacts({ imageReview, visualReview, browserEvid
     require(row.status === "Pass", `${row.page}/${row.viewport}: browser status failed`);
     require(row.sourceHash?.length === 64, `${row.page}/${row.viewport}: current page hash is missing`);
     require(row.documentOverflow === false && row.clippedCount === 0 && row.tableOverflowCount === 0 && row.offscreenCount === 0, `${row.page}/${row.viewport}: responsive layout failed`);
-    require(row.brokenImageCount === 0 && row.emptyVisibleAltCount === 0, `${row.page}/${row.viewport}: image loading or alt check failed`);
+    require(row.brokenImageCount === 0 && row.emptyVisibleAltCount === 0, `${row.page}/${row.viewport}: loaded-image or alt check failed`);
     require(row.consoleWarningErrorCount === 0 && row.frameworkOverlay === false, `${row.page}/${row.viewport}: console or framework overlay failed`);
     require(row.visualFallback === true && row.hasTitle && row.hasH1 && row.hasMainText, `${row.page}/${row.viewport}: page semantics or mobile text fallback failed`);
   }
-  require(routeViewportKeys.size === 306, "browser matrix contains duplicate or missing route/viewport keys");
+  require(routeViewportKeys.size === 308, "browser matrix contains duplicate or missing route/viewport keys");
   require(browserEvidence?.interactions?.home?.searchState?.cards === 1, "course search interaction was not verified");
-  require(browserEvidence?.interactions?.home?.resetState?.cards === 150, "course search reset was not verified");
+  require(browserEvidence?.interactions?.home?.resetState?.cards === 151, "course search reset was not verified");
   require(browserEvidence?.interactions?.home?.mapOpen?.open === true && browserEvidence?.interactions?.home?.mapClosed?.open === false, "course map open/close was not verified");
   require(browserEvidence?.interactions?.assessments?.monthly?.visible === 7, "Assessment Bank type filter was not verified");
   require(browserEvidence?.interactions?.assessments?.combo?.visible === 3, "Assessment Bank combined filters were not verified");
@@ -88,5 +88,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     browserEvidence: read("remediation-v2-stage6-browser-evidence.json"),
   });
   if (result.status !== "Ready") throw new Error(result.failures.join("\n"));
-  console.log("Remediation v2 Stage 6 gate passed: 783 current-pixel images, 969 current-source visual objects and 306 live browser records.");
+  console.log("Remediation v2 Stage 6 gate passed: 784 current-pixel images, 971 current-source visual objects and 308 live browser records.");
 }

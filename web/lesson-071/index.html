@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 071 | Section 6 review: matching risks to controls</title>
+    <title>AS9618 Lesson 071 | Backup strategies, disaster recovery, and audit trails</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Section 6 review: matching risks to controls</h1>
+        <h1>Backup strategies, disaster recovery, and audit trails</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,12 +29,14 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#review-map">Review map</a>
-        <a href="#method">Answer method</a>
-        <a href="#controls">Controls</a>
+        <a href="#core">Core idea</a>
+        <a href="#backups">Backups</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#recovery">Recovery</a>
+        <a href="#audit-trails">Audit trails</a>
         <a href="#compare">Compare</a>
-        <a href="#matcher">Risk matcher</a>
-        <a href="#diagnostic">Diagnostic</a>
+        <a href="#tool">Strategy tool</a>
+        <a href="#rpo-tool">RPO/RTO tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -46,319 +48,309 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 071 | 45 minutes | Paper 1 Section 6 | Stage review</p>
-            <h2>The right control depends on the risk, not on the fanciest keyword.</h2>
+            <p class="lesson-meta">Lesson 071 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Backups are useful only if recovery actually works.</h2>
             <p>
-              This review lesson connects Section 6 topics: threats, vulnerabilities, confidentiality,
-              integrity, availability, privacy, authentication, encryption, backup, disaster recovery
-              and audit trails. The exam skill is to diagnose the problem first, then choose and justify
-              a proportionate control.
+              Backup strategies create recoverable copies of data. Disaster recovery plans describe how an
+              organisation restores systems after serious failure. Audit trails record who did what, when and
+              where, so changes can be investigated instead of guessed with unsupported assumptions.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>risk type: access, loss, corruption, disclosure or disruption</span></div>
-              <div><strong>Match</strong><span>each risk to a suitable control and clear mechanism</span></div>
-              <div><strong>Correct</strong><span>vague answers into mark-worthy scenario explanations</span></div>
+              <div><strong>Explain</strong><span>backup strategies, disaster recovery and audit trails</span></div>
+              <div><strong>Compare</strong><span>full, incremental, onsite, offsite and cloud backups</span></div>
+              <div><strong>Apply</strong><span>recovery objectives and audit trail evidence to scenarios</span></div>
             </div>
           </div>
-          <div class="review-card" aria-label="Risk control chain">
-            <div class="review-stack">
-              <span>Asset</span>
-              <span>Threat</span>
-              <span>Vulnerability</span>
-              <span>Impact</span>
-              <span>Control</span>
-              <span>Consequence</span>
+          <div class="recovery-card" aria-label="Recovery map">
+            <div class="recovery-stack">
+              <span>Backup -> copy data</span>
+              <span>Restore -> recover usable data</span>
+              <span>DR plan -> restore service</span>
+              <span>Audit trail -> trace actions</span>
             </div>
-            <p>"Use encryption" is not a personality. Explain what it protects and why.</p>
+            <p>A backup nobody tests is a motivational poster, not a recovery plan.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style marks often reward the link between a control and the specific scenario, not a memorised list.</p>
+            <p>Exam answers need a specific strategy. "Make a backup" is a start, not a finished answer.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Students often prescribe encryption for everything. Encryption protects confidentiality; it does not prove identity, restore data or stop weak behaviour.</p>
+            <p>Audit trails are not backups. They show events and accountability; they do not restore deleted files by themselves.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A school loses coursework because a shared drive failed. Which control best addresses the main risk?</h2>
-            <p>If the answer is "stronger passwords", the files remain impressively inaccessible to everyone.</p>
+            <h2>A ransomware attack encrypts the main server and the connected backup drive. What was wrong with the backup strategy?</h2>
+            <p>The backup was "safe" in the same way a spare key taped to the front door is secure.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="backup">Regular tested backups with an offsite copy</button>
-            <button class="choice-card" type="button" data-hook="password">Longer passwords for all users</button>
-            <button class="choice-card" type="button" data-hook="hashing">Hashing the coursework folder names</button>
-            <button class="choice-card" type="button" data-hook="ethics">Writing an ethics policy about coursework ownership</button>
+            <button class="choice-card" type="button" data-hook="offsite">The backup was not isolated/offsite, so the same incident affected it</button>
+            <button class="choice-card" type="button" data-hook="audit">An audit trail was missing, so files could not be restored</button>
+            <button class="choice-card" type="button" data-hook="validation">Validation should have checked the encrypted files were valid</button>
+            <button class="choice-card" type="button" data-hook="frequency">Daily backups are always enough, regardless of connection</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Identify the risk before admiring the control.
+            Choose one. Look for the shared failure point.
           </div>
         </section>
 
-        <section class="panel" id="review-map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review-map">
+        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Section 6 review map: risk families and likely controls</h2>
-          </div>
-          <div class="risk-table" role="table" aria-label="Section 6 risk families">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Risk family</div>
-              <div role="columnheader">Typical problem</div>
-              <div role="columnheader">Useful controls</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Unauthorised access</div>
-              <div role="cell">A user enters a system or data they should not access.</div>
-              <div role="cell">Authentication, access levels, strong passwords, two-factor authentication.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Disclosure</div>
-              <div role="cell">Sensitive data is read or intercepted by an unauthorised party.</div>
-              <div role="cell">Encryption in transit/at rest, access rights, staff training.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Corruption / inaccurate data</div>
-              <div role="cell">Data is changed incorrectly, accidentally or maliciously.</div>
-              <div role="cell">Validation, verification, permissions, audit trails, backups.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Loss / unavailability</div>
-              <div role="cell">Data or service cannot be accessed after failure or attack.</div>
-              <div role="cell">Backups, disaster recovery, redundancy, restore testing.</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: risk = 风险；control/safeguard = 控制措施/保护措施；mechanism = 作用机制；consequence = 后果。</div>
-        </section>
-
-        <!-- stage10-explanation:start review-map -->
-        <section class="panel explanation-panel" id="explanation-review-map" data-explains="review-map" data-explanation-kind="synthesis" aria-labelledby="explanation-review-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="review-map">
-          <h2 class="explanation-sr-only" id="explanation-review-map-title">Section 6 review map: risk families and likely controls</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-review-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 6 review map: risk families and likely controls with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 6 review map: risk families and likely controls: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Risk family</li><li><strong>Lesson fact:</strong> Typical problem</li><li><strong>Lesson fact:</strong> Useful controls</li><li><strong>Lesson fact:</strong> Unauthorised access</li><li><strong>Lesson fact:</strong> A user enters a system or data they should not access.</li><li><strong>Lesson fact:</strong> Authentication, access levels, strong passwords, two-factor authentication.</li><li><strong>Lesson fact:</strong> Disclosure</li><li><strong>Lesson fact:</strong> Sensitive data is read or intercepted by an unauthorised party.</li><li><strong>Lesson fact:</strong> Encryption in transit/at rest, access rights, staff training.</li><li><strong>Lesson fact:</strong> Corruption / inaccurate data</li><li><strong>Lesson fact:</strong> Data is changed incorrectly, accidentally or maliciously.</li><li><strong>Lesson fact:</strong> Validation, verification, permissions, audit trails, backups.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end review-map -->
-        <section class="panel" id="method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Use the four-part answer chain</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Name the risk</strong><span>Example: unauthorised users may view medical records.</span></article>
-            <article><strong>2. Choose a control</strong><span>Example: role-based access levels and authentication.</span></article>
-            <article><strong>3. Explain mechanism</strong><span>Example: only authenticated staff with the correct role can open the record.</span></article>
-            <article><strong>4. Link consequence</strong><span>Example: this protects confidentiality and reduces privacy breaches.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Answer frame:</strong>
-            <span>[Control] reduces [risk] because [mechanism]. In this scenario, this matters because [impact/consequence].</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="synthesis" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="method">
-          <h2 class="explanation-sr-only" id="explanation-method-title">Use the four-part answer chain</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the four-part answer chain with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the four-part answer chain: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Name the risk Example: unauthorised users may view medical records.</li><li><strong>Lesson fact:</strong> 2. Choose a control Example: role-based access levels and authentication.</li><li><strong>Lesson fact:</strong> 3. Explain mechanism Example: only authenticated staff with the correct role can open the record.</li><li><strong>Lesson fact:</strong> 4. Link consequence Example: this protects confidentiality and reduces privacy breaches.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> [Control] reduces [risk] because [mechanism]. In this scenario, this matters because [impact/consequence].</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end method -->
-        <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Controls have different jobs</h2>
+            <h2>Recovery planning is about availability, integrity and accountability</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Authentication</strong><span>Checks identity before access. It does not decide every permission by itself.</span></article>
-            <article><strong>Access rights</strong><span>Limit what an authenticated user can read, edit, delete or approve.</span></article>
-            <article><strong>Encryption</strong><span>Makes data unreadable without the key, protecting confidentiality.</span></article>
-            <article><strong>Validation</strong><span>Checks input follows rules such as type, range, length or format.</span></article>
-            <article><strong>Verification</strong><span>Checks data has been copied or entered accurately, often by comparison.</span></article>
-            <article><strong>Backup</strong><span>Provides recoverable copies after deletion, corruption or hardware failure.</span></article>
-            <article><strong>Disaster recovery</strong><span>Plans how systems and services are restored after a major incident.</span></article>
-            <article><strong>Audit trail</strong><span>Records actions for investigation, accountability and evidence.</span></article>
+            <article><strong>Backup</strong><span>A separate copy of data that can be used to restore the original after loss or corruption.</span></article>
+            <article><strong>Restore</strong><span>The process of recovering data or systems from a backup.</span></article>
+            <article><strong>Disaster recovery</strong><span>Planned actions to restore systems and services after a major incident.</span></article>
+            <article><strong>Audit trail</strong><span>A chronological record of actions, changes and access events.</span></article>
           </div>
+          <div class="callout">Chinese support: backup = 备份；restore = 恢复；disaster recovery = 灾难恢复；audit trail = 审计追踪/审计日志。</div>
         </section>
 
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="synthesis" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="controls">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">Controls have different jobs</h2>
+        <!-- stage10-explanation:start core -->
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="core">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Recovery planning is about availability, integrity and accountability</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls have different jobs with a structured visual model." />
-            <figcaption class="explanation-sr-only">Controls have different jobs: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Recovery planning is about availability, integrity and accountability with a structured visual model." />
+            <figcaption class="explanation-sr-only">Recovery planning is about availability, integrity and accountability: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Verification checks that copied, entered or transferred data agrees with the source or repeated entry.</li><li><strong>Lesson fact:</strong> Double entry and visual checking can reduce copying errors.</li><li><strong>Lesson fact:</strong> Matching values may still be false, so verification does not guarantee accuracy or truth.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Backup A separate copy of data that can be used to restore the original after loss or corruption.</li><li><strong>Lesson fact:</strong> Restore The process of recovering data or systems from a backup.</li><li><strong>Lesson fact:</strong> Disaster recovery Planned actions to restore systems and services after a major incident.</li><li><strong>Lesson fact:</strong> Audit trail A chronological record of actions, changes and access events.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end controls -->
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <!-- stage10-explanation:end core -->
+        <section class="panel" id="backups" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backups">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Backup type affects speed, storage and recovery complexity</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Full backup</strong><span>Copies all selected data. Simple to restore, but uses more time and storage.</span></article>
+            <article><strong>Incremental backup</strong><span>Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.</span></article>
+            <article><strong>Differential idea</strong><span>Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.</span></article>
+            <article><strong>Testing</strong><span>Backups must be tested by restoring sample data, not only by checking that a file exists.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start backups -->
+        <section class="panel explanation-panel" id="explanation-backups" data-explains="backups" data-explanation-kind="mechanism" aria-labelledby="explanation-backups-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="backups">
+          <h2 class="explanation-sr-only" id="explanation-backups-title">Backup type affects speed, storage and recovery complexity</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-backups.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backup type affects speed, storage and recovery complexity with a structured visual model." />
+            <figcaption class="explanation-sr-only">Backup type affects speed, storage and recovery complexity: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Full backup Copies all selected data. Simple to restore, but uses more time and storage.</li><li><strong>Lesson fact:</strong> Incremental backup Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.</li><li><strong>Lesson fact:</strong> Differential idea Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.</li><li><strong>Lesson fact:</strong> Testing Backups must be tested by restoring sample data, not only by checking that a file exists.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end backups -->
+        <section class="panel" id="strategy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strategy">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>A strategy defines location, frequency, retention and security</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Onsite</strong><span>Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.</span></article>
+            <article><strong>Offsite</strong><span>Stored in a different physical location, reducing site-wide disaster risk.</span></article>
+            <article><strong>Cloud</strong><span>Remote provider storage; useful for offsite copies but needs network access and access control.</span></article>
+            <article><strong>Retention</strong><span>How long versions are kept, so accidental deletion or corruption can be rolled back.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start strategy -->
+        <section class="panel explanation-panel" id="explanation-strategy" data-explains="strategy" data-explanation-kind="tradeoff" aria-labelledby="explanation-strategy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="strategy">
+          <h2 class="explanation-sr-only" id="explanation-strategy-title">A strategy defines location, frequency, retention and security</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-strategy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A strategy defines location, frequency, retention and security with a structured visual model." />
+            <figcaption class="explanation-sr-only">A strategy defines location, frequency, retention and security: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Onsite Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.</li><li><strong>Lesson fact:</strong> Offsite Stored in a different physical location, reducing site-wide disaster risk.</li><li><strong>Lesson fact:</strong> Cloud Remote provider storage; useful for offsite copies but needs network access and access control.</li><li><strong>Lesson fact:</strong> Retention How long versions are kept, so accidental deletion or corruption can be rolled back.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end strategy -->
+        <section class="panel" id="recovery" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="recovery">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Similar-looking controls: choose by mechanism</h2>
+            <h2>Disaster recovery is more than data copying</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Similar controls comparison">
+          <div class="flow-grid">
+            <article><strong>1. Identify incident</strong><span>Detect failure, confirm scope and prevent further damage.</span></article>
+            <article><strong>2. Communicate</strong><span>Notify staff/users and assign responsibilities.</span></article>
+            <article><strong>3. Restore systems</strong><span>Recover data, applications, hardware/network access and configuration.</span></article>
+            <article><strong>4. Test and review</strong><span>Check service works, document lessons and improve the plan.</span></article>
+          </div>
+          <div class="callout">Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</div>
+        </section>
+
+        <!-- stage10-explanation:start recovery -->
+        <section class="panel explanation-panel" id="explanation-recovery" data-explains="recovery" data-explanation-kind="mechanism" aria-labelledby="explanation-recovery-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="recovery">
+          <h2 class="explanation-sr-only" id="explanation-recovery-title">Disaster recovery is more than data copying</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-recovery.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Disaster recovery is more than data copying with a structured visual model." />
+            <figcaption class="explanation-sr-only">Disaster recovery is more than data copying: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Identify incident Detect failure, confirm scope and prevent further damage.</li><li><strong>Lesson fact:</strong> 2. Communicate Notify staff/users and assign responsibilities.</li><li><strong>Lesson fact:</strong> 3. Restore systems Recover data, applications, hardware/network access and configuration.</li><li><strong>Lesson fact:</strong> 4. Test and review Check service works, document lessons and improve the plan.</li><li><strong>Lesson fact:</strong> Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end recovery -->
+        <section class="panel" id="audit-trails" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="audit-trails">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Audit trails support accountability and investigation</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Who</strong><span>User ID, account, device or process involved.</span></article>
+            <article><strong>What</strong><span>Action such as login, read, edit, delete, approve or restore.</span></article>
+            <article><strong>When/where</strong><span>Timestamp, location, device or IP address.</span></article>
+            <article><strong>Use</strong><span>Trace errors, detect misuse, investigate incidents and prove compliance.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start audit-trails -->
+        <section class="panel explanation-panel" id="explanation-audit-trails" data-explains="audit-trails" data-explanation-kind="mechanism" aria-labelledby="explanation-audit-trails-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="audit-trails">
+          <h2 class="explanation-sr-only" id="explanation-audit-trails-title">Audit trails support accountability and investigation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-audit-trails.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Audit trails support accountability and investigation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Audit trails support accountability and investigation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Who User ID, account, device or process involved.</li><li><strong>Lesson fact:</strong> What Action such as login, read, edit, delete, approve or restore.</li><li><strong>Lesson fact:</strong> When/where Timestamp, location, device or IP address.</li><li><strong>Lesson fact:</strong> Use Trace errors, detect misuse, investigate incidents and prove compliance.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end audit-trails -->
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare by purpose, not by "security word"</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Backup recovery audit comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Pair</div>
-              <div role="columnheader">Difference</div>
-              <div role="columnheader">Common error</div>
+              <div role="columnheader">Control</div>
+              <div role="columnheader">Main purpose</div>
+              <div role="columnheader">Limitation</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Validation vs verification</div>
-              <div role="cell">Validation checks rule acceptability; verification checks accurate transfer/copying.</div>
-              <div role="cell">A valid value can still be the wrong value.</div>
+              <div role="cell">Backup</div>
+              <div role="cell">Restore data after deletion, corruption, hardware failure or ransomware.</div>
+              <div role="cell">May be too old, corrupted, inaccessible or affected by same incident.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Authentication vs authorisation</div>
-              <div role="cell">Authentication confirms identity; authorisation/access rights decide permitted actions.</div>
-              <div role="cell">Logging in does not mean full access should be granted.</div>
+              <div role="cell">Disaster recovery plan</div>
+              <div role="cell">Restore systems and services in a planned order after major disruption.</div>
+              <div role="cell">Needs testing, clear roles and updated documentation.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Encryption vs hashing</div>
-              <div role="cell">Encryption is reversible with a key; hashing is one-way and often used for password storage.</div>
-              <div role="cell">Do not say hashed data can be decrypted.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Backup vs audit trail</div>
-              <div role="cell">Backup restores data; audit trail explains what happened.</div>
-              <div role="cell">An audit log is not a copy of the lost file.</div>
+              <div role="cell">Audit trail</div>
+              <div role="cell">Record actions for accountability, investigation and evidence.</div>
+              <div role="cell">Does not restore data by itself and must be protected from tampering.</div>
             </div>
           </div>
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="synthesis" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Similar-looking controls: choose by mechanism</h2>
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by purpose, not by &quot;security word&quot;</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Similar-looking controls: choose by mechanism with a structured visual model." />
-            <figcaption class="explanation-sr-only">Similar-looking controls: choose by mechanism: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by purpose, not by &quot;security word&quot; with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare by purpose, not by &quot;security word&quot;: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Difference</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Validation vs verification</li><li><strong>Lesson fact:</strong> Validation checks rule acceptability; verification checks accurate transfer/copying.</li><li><strong>Lesson fact:</strong> A valid value can still be the wrong value.</li><li><strong>Lesson fact:</strong> Authentication vs authorisation</li><li><strong>Lesson fact:</strong> Authentication confirms identity; authorisation/access rights decide permitted actions.</li><li><strong>Lesson fact:</strong> Logging in does not mean full access should be granted.</li><li><strong>Lesson fact:</strong> Encryption vs hashing</li><li><strong>Lesson fact:</strong> Encryption is reversible with a key; hashing is one-way and often used for password storage.</li><li><strong>Lesson fact:</strong> Do not say hashed data can be decrypted.</li><li><strong>Lesson fact:</strong> Backup vs audit trail</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Main purpose</li><li><strong>Lesson fact:</strong> Limitation</li><li><strong>Lesson fact:</strong> Restore data after deletion, corruption, hardware failure or ransomware.</li><li><strong>Lesson fact:</strong> May be too old, corrupted, inaccessible or affected by same incident.</li><li><strong>Lesson fact:</strong> Disaster recovery plan</li><li><strong>Lesson fact:</strong> Restore systems and services in a planned order after major disruption.</li><li><strong>Lesson fact:</strong> Needs testing, clear roles and updated documentation.</li><li><strong>Lesson fact:</strong> Audit trail</li><li><strong>Lesson fact:</strong> Record actions for accountability, investigation and evidence.</li><li><strong>Lesson fact:</strong> Does not restore data by itself and must be protected from tampering.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-        <section class="panel" id="matcher" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matcher">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
           <div class="section-title">
-            <p class="eyebrow">Interactive risk matcher</p>
-            <h2>Select the best control for the scenario</h2>
-            <p>The best answer is the one whose mechanism directly addresses the named risk.</p>
+            <p class="eyebrow">Interactive backup strategy selector</p>
+            <h2>Choose a proportionate strategy</h2>
+            <p>Select a scenario and compare the recommendation with the reason and common wrong answer.</p>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="lostLaptop">A teacher loses a laptop containing pupil medical information.</option>
-                <option value="wrongEmail">A clerk types the wrong email address for a parent.</option>
-                <option value="sharedAdmin">Several staff share one admin account.</option>
-                <option value="deletedMarks">Exam marks are deleted accidentally.</option>
-                <option value="suspiciousEdit">A customer record is changed at midnight.</option>
-                <option value="fakeLogin">A user tricks staff into entering credentials on a fake page.</option>
+                <option value="school">School database updated throughout each day.</option>
+                <option value="photos">Small design studio archives finished project photos monthly.</option>
+                <option value="hospital">Hospital patient system must recover quickly after failure.</option>
+                <option value="ransomware">Ransomware can reach connected drives.</option>
+                <option value="laptop">Teacher laptop contains local coursework files.</option>
               </select>
             </label>
-            <label>
-              Control
-              <select id="controlInput">
-                <option value="encryption">Encryption</option>
-                <option value="verification">Verification</option>
-                <option value="uniqueAccounts">Unique accounts and access rights</option>
-                <option value="backups">Tested backups</option>
-                <option value="auditTrail">Audit trail</option>
-                <option value="training2fa">User training plus two-factor authentication</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="matchBtn">Check match</button>
+            <button class="primary-button" type="button" id="simulateBtn">Recommend</button>
           </div>
-          <div class="result-box" id="matchResult" aria-live="polite"></div>
-          <div class="method-box" id="matchReason"></div>
-          <div class="reject-box" id="matchTrap"></div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <!-- stage10-explanation:start matcher -->
-        <section class="panel explanation-panel" id="explanation-matcher" data-explains="matcher" data-explanation-kind="synthesis" aria-labelledby="explanation-matcher-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="matcher">
-          <h2 class="explanation-sr-only" id="explanation-matcher-title">Select the best control for the scenario</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-matcher.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Select the best control for the scenario with a structured visual model." />
-            <figcaption class="explanation-sr-only">Select the best control for the scenario: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive risk matcher</li><li><strong>Lesson fact:</strong> The best answer is the one whose mechanism directly addresses the named risk.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end matcher -->
-        <section class="panel" id="diagnostic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostic">
+        <section class="panel" id="rpo-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rpo-tool">
           <div class="section-title">
-            <p class="eyebrow">Interactive diagnostic</p>
-            <h2>Identify the risk family first</h2>
-            <p>Choose the broad risk family. Then compare the suggested control route.</p>
+            <p class="eyebrow">Interactive recovery objective tool</p>
+            <h2>Match backup frequency to acceptable data loss</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Symptom
-              <select id="diagnosticInput">
-                <option value="cannotAccess">Users cannot access the service after a server failure.</option>
-                <option value="viewPrivate">A user can view records outside their job role.</option>
-                <option value="badInput">A date of birth is entered as 31/02/2010.</option>
-                <option value="copiedWrong">A correct source value is copied incorrectly into another system.</option>
-                <option value="passwordFile">A password file is stolen from a server.</option>
+              Maximum acceptable data loss
+              <select id="rpoInput">
+                <option value="hour">About one hour</option>
+                <option value="day">About one day</option>
+                <option value="week">About one week</option>
+                <option value="none">No meaningful data loss acceptable</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="diagnosticBtn">Diagnose</button>
+            <button class="primary-button" type="button" id="rpoBtn">Suggest</button>
           </div>
-          <div class="result-box" id="diagnosticResult" aria-live="polite"></div>
-          <div class="method-box" id="diagnosticReason"></div>
+          <div class="result-box" id="rpoResult" aria-live="polite"></div>
+          <div class="method-box" id="rpoReason"></div>
         </section>
 
-        <!-- stage10-explanation:start diagnostic -->
-        <section class="panel explanation-panel" id="explanation-diagnostic" data-explains="diagnostic" data-explanation-kind="synthesis" aria-labelledby="explanation-diagnostic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="diagnostic">
-          <h2 class="explanation-sr-only" id="explanation-diagnostic-title">Identify the risk family first</h2>
+        <!-- stage10-explanation:start rpo-tool -->
+        <section class="panel explanation-panel" id="explanation-rpo-tool" data-explains="rpo-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-rpo-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="rpo-tool">
+          <h2 class="explanation-sr-only" id="explanation-rpo-tool-title">Match backup frequency to acceptable data loss</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-diagnostic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify the risk family first with a structured visual model." />
-            <figcaption class="explanation-sr-only">Identify the risk family first: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-rpo-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match backup frequency to acceptable data loss with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match backup frequency to acceptable data loss: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive diagnostic</li><li><strong>Lesson fact:</strong> Choose the broad risk family. Then compare the suggested control route.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive recovery objective tool</li><li><strong>Lesson fact:</strong> Maximum acceptable data loss</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end diagnostic -->
+        <!-- stage10-explanation:end rpo-tool -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers that turn labels into marks</h2>
+            <h2>Four model answers with risk-control matching</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="hospital">Hospital records</button>
-            <button class="tab" type="button" data-example="email">Wrong email</button>
-            <button class="tab" type="button" data-example="password">Password file</button>
-            <button class="tab" type="button" data-example="outage">Service outage</button>
+            <button class="tab active" type="button" data-example="ransomware">Ransomware</button>
+            <button class="tab" type="button" data-example="hospital">Hospital</button>
+            <button class="tab" type="button" data-example="audit">Audit trail</button>
+            <button class="tab" type="button" data-example="testing">Testing</button>
           </div>
-          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+          <div class="example-box" id="exampleBox"></div>
         </section>
 
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Use precise vocabulary, then expand into full explanations</h2>
+            <h2>Short answers: recovery and evidence</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -366,7 +358,7 @@
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix answers that sound secure but do not earn enough marks</h2>
+            <h2>Fix the sentence before it loses marks</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -374,8 +366,8 @@
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style Section 6 review questions with expandable MS</h2>
-            <p>Attempt first. Then open the mark scheme and check whether the mechanism and scenario link are present.</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -383,35 +375,32 @@
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Section 6 review in six exam-ready sentences</h2>
+            <h2>Recovery needs copies, plans and evidence</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Risk first</strong><span>Identify what can go wrong before naming a control.</span></div>
-            <div><strong>Mechanism earns marks</strong><span>Explain how the control reduces the risk.</span></div>
-            <div><strong>Scenario matters</strong><span>Link the answer to the data, user or organisation given.</span></div>
-            <div><strong>Different controls</strong><span>Authentication, encryption, validation, backup and audit trail solve different problems.</span></div>
-            <div><strong>Do not overclaim</strong><span>No control removes all risk; describe what it reduces.</span></div>
-            <div><strong>Use consequences</strong><span>Connect to confidentiality, integrity, availability, privacy or accountability.</span></div>
+            <div><strong>Backups</strong><span>Recover data if copies are current, isolated and tested.</span></div>
+            <div><strong>DR plan</strong><span>Restores systems, people, communication and priorities.</span></div>
+            <div><strong>Audit trails</strong><span>Show who did what, when and where.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Make the review useful, not decorative</h2>
+            <h2>Homework tasks</h2>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Risk-control table</strong>
-              <span>Create a 12-row table with columns: scenario, risk family, suitable control, mechanism, consequence. Use at least six different Section 6 controls.</span>
+              <strong>Task 1: Strategy table</strong>
+              <span>Design a backup strategy for a school database: type, location, frequency, retention, security and restore testing.</span>
             </article>
             <article>
-              <strong>Task 2: Rewrite weak answers</strong>
-              <span>Rewrite these into mark-worthy answers: "Use encryption", "Make backups", "Use validation", "Use passwords". Each rewrite must include because + scenario consequence.</span>
+              <strong>Task 2: Disaster recovery sequence</strong>
+              <span>Write six ordered recovery actions after a ransomware attack. Include communication and testing restored data.</span>
             </article>
             <article>
-              <strong>Task 3: Timed exam response</strong>
-              <span>Answer: "A school stores pupil records online. Discuss security measures that could reduce risks to this data." Write 8-10 marks worth of points using Section 6 vocabulary.</span>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain how backup strategies and audit trails help an organisation recover from and investigate data loss." Use precise consequences.</span>
             </article>
           </div>
         </section>
@@ -419,8 +408,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -19,11 +19,11 @@ const optionalMutation = evaluateRequirement(bitManipulation, {
 if (!optionalMutation.messages.some((message) => message.startsWith("visible CORE HTML missing required concept group"))) failures.push("S4.15: CORE-to-OPTIONAL mutation escaped");
 
 const assessmentMutation = evaluateRequirement(bitManipulation, {
-  questionTransform: (question) => question.id === "AQ050-Q4"
+  questionTransform: (question) => question.id === "AQ051-Q4"
     ? JSON.parse(JSON.stringify(question).replaceAll(/arithmetic right shift|cyclic right shift/gi, "unrelated operation"))
     : question,
 });
-if (!assessmentMutation.messages.some((message) => message.startsWith("assessment AQ050-Q4 missing concept group"))) failures.push("S4.15: direct assessment concept mutation escaped");
+if (!assessmentMutation.messages.some((message) => message.startsWith("assessment AQ051-Q4 missing concept group"))) failures.push("S4.15: direct assessment concept mutation escaped");
 
 const sequenceMutation = structuredClone(coverageContract);
 sequenceMutation.requirements.find(({ id }) => id === "S1.01").teachingLessons = [9];

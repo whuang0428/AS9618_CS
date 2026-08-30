@@ -34,14 +34,14 @@ const answerReplacements = new Map(Object.entries({
   "L009-Q1": "100 x 80 = 8000 pixels. 8000 x 8 = 64 000 bits. 64 000 / 8 = 8000 bytes.",
   "L009-Q2": "Use the 8000-byte pixel data from Question 1 and add the 512-byte metadata: 8000 + 512 = 8512 bytes.",
   "L009-Q5": "128 x 128 x 8 = 131 072 bits. 131 072 / 8 = 16 384 bytes of pixel data. Add 1024 bytes of metadata to obtain 17 408 bytes. 17 408 / 1024 = 17 KiB.",
-  "L010-Q1": "8000 x 16 x 10 x 1 = 1 280 000 bits. 1 280 000 / 8 = 160 000 bytes.",
-  "L010-Q4": "4000 x 8 x 5 x 1 = 160 000 bits. 160 000 / 8 = 20 000 bytes.",
-  "L011-Q1": "8000 x 16 x 10 x 2 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
-  "L011-Q2": "1 KiB = 1024 bytes, so 160 000 / 1024 = 156.25 KiB.",
-  "L011-Q4": "44 100 x 16 x 60 x 2 = 84 672 000 bits. Divide by 8 to obtain 10 584 000 bytes, then divide by 1 048 576 to obtain approximately 10.09 MiB.",
-  "L012-Q3": "The compression ratio is 2400:600 = 4:1. The amount saved is 2400 - 600 = 1800 KB, so the percentage saved is 1800 / 2400 x 100 = 75%.",
-  "L013-Q1": "The data contains runs of six A characters, four B characters and eight C characters. Using count-symbol pairs gives 6A4B8C.",
-  "L013-Q2": "Expand each count-symbol pair: 3A -> AAA, 2B -> BB and 1C -> C. The decoded data is AAABBC.",
+  "L011-Q1": "8000 x 16 x 10 x 1 = 1 280 000 bits. 1 280 000 / 8 = 160 000 bytes.",
+  "L011-Q4": "4000 x 8 x 5 x 1 = 160 000 bits. 160 000 / 8 = 20 000 bytes.",
+  "L012-Q1": "8000 x 16 x 10 x 2 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
+  "L012-Q2": "1 KiB = 1024 bytes, so 160 000 / 1024 = 156.25 KiB.",
+  "L012-Q4": "44 100 x 16 x 60 x 2 = 84 672 000 bits. Divide by 8 to obtain 10 584 000 bytes, then divide by 1 048 576 to obtain approximately 10.09 MiB.",
+  "L013-Q3": "The compression ratio is 2400:600 = 4:1. The amount saved is 2400 - 600 = 1800 KB, so the percentage saved is 1800 / 2400 x 100 = 75%.",
+  "L014-Q1": "The data contains runs of six A characters, four B characters and eight C characters. Using count-symbol pairs gives 6A4B8C.",
+  "L014-Q2": "Expand each count-symbol pair: 3A -> AAA, 2B -> BB and 1C -> C. The decoded data is AAABBC.",
   "L001-Q4": "MB uses decimal powers of 1000, while MiB uses binary powers of 1024. The same byte count is therefore expressed using different numerical scales, so the operating system's number in MiB is lower even though no data has disappeared.",
   "L002-Q4": "Both values equal 10 because leading zeros contribute no value: the active columns are 8 and 2 in each representation. However, 00001010₂ explicitly uses eight bit positions, whereas 1010₂ uses four.",
   "L005-Q5": "27 is 00011011₂, so -27 is 11100101₂. Add 00010010₂ + 11100101₂ = 11110111₂, which represents -9.",
@@ -55,16 +55,16 @@ const ftGuidanceById = new Map(Object.entries({
   "L009-Q1": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
   "L009-Q2": "Allow FT from the candidate's answer to Question 1 only when 512 bytes of metadata is subsequently added.",
   "L009-Q5": "Allow FT from the candidate's earlier pixel-data total only when metadata is added and the resulting bytes are subsequently converted to KiB.",
-  "L010-Q4": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
-  "L011-Q4": "Allow FT from the candidate's earlier byte total only when it is subsequently divided by 1 048 576 to obtain MiB.",
-  "L012-Q3": "Allow FT for the percentage saved from the candidate's earlier compressed-size value only when the percentage method is otherwise correct.",
-  "L015-Q1": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
-  "L090-Q1": "Allow FT from the candidate's earlier bit total only when the subsequent conversions to bytes and KiB are correct.",
-  "L094-Q1": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
+  "L011-Q4": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
+  "L012-Q4": "Allow FT from the candidate's earlier byte total only when it is subsequently divided by 1 048 576 to obtain MiB.",
+  "L013-Q3": "Allow FT for the percentage saved from the candidate's earlier compressed-size value only when the percentage method is otherwise correct.",
+  "L016-Q1": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
+  "L091-Q1": "Allow FT from the candidate's earlier bit total only when the subsequent conversions to bytes and KiB are correct.",
   "L095-Q1": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
+  "L096-Q1": "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
 }));
 
-const removeFtIds = new Set(["L015-Q2", "L116-Q4", "L135-Q5"]);
+const removeFtIds = new Set(["L016-Q2", "L117-Q4", "L136-Q5"]);
 
 const genuineFtQuestion = (prompt) => /\b(calculate|trace|truth table|find Q|using your answer|question 1|compression ratio|percentage saved)\b/i.test(prompt);
 const genuineFtNote = (note) => /\b(value|total|result|output|row|column|intermediate|percentage|byte|bit|pixel|arithmetic|calculation)\b/i.test(note);

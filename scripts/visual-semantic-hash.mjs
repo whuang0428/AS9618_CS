@@ -50,10 +50,10 @@ function assetPath(lesson, source) {
   return path.posix.normalize(path.posix.join(`web/lesson-${lesson}`, clean));
 }
 
-export function scanVisualSemanticHashes(readText, readBinary) {
+export function scanVisualSemanticHashes(readText, readBinary, { lessonCount = 151 } = {}) {
   const records = [];
   const seen = new Set();
-  for (let number = 1; number <= 150; number += 1) {
+  for (let number = 1; number <= lessonCount; number += 1) {
     const lesson = String(number).padStart(3, "0");
     const html = readText(`web/lesson-${lesson}/index.html`);
     const css = readText(`web/lesson-${lesson}/styles.css`);

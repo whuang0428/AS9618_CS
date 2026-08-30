@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 030 | Primary storage: RAM, ROM, cache and virtual memory</title>
+    <title>AS9618 Lesson 030 | Microphone, touchscreen and VR headset operation</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Primary storage: RAM, ROM, cache and virtual memory</h1>
+        <h1>Microphone, touchscreen and VR headset operation</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,9 +29,9 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#primary">Primary storage</a>
-        <a href="#ram-rom">RAM vs ROM</a>
-        <a href="#cache-vm">Cache and VM</a>
+        <a href="#purpose">Output purpose</a>
+        <a href="#devices">Output devices</a>
+        <a href="#feedback">Feedback types</a>
         <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -46,65 +46,63 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-        <!-- remediation-v2-optional:start -->
+<!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
           <p>cache and virtual-memory detail in the hardware section. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
           <p><strong>Formal AS prerequisite:</strong> S3.05-S3.07 RAM, ROM, SRAM, DRAM, PROM, EPROM and EEPROM; cache belongs to S4.05.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
+
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>RAM, ROM and their principal technologies</h2>
+            <h2>Microphone, touchscreen and VR headset operation</h2>
           </div>
           <div class="stage2-explanation">
-            <p>RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.</p>
-            <p>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</p>
-            <p>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.</p>
+            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
+            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
+            <p>A buffer temporarily holds data when producer and consumer operate at different speeds, reducing loss or interruption caused by the rate difference.</p>
+            <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose memory for a computer system</h3>
-            <p>Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.</p>
+            <h3>Worked example: Turn head in VR</h3>
+            <p>Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>RAM, ROM and their principal technologies: apply and assess</h2>
+            <h2>Microphone, touchscreen and VR headset operation: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Compare RAM from ROM by volatility and use.</p>
-              <details><summary>Show answer</summary><p>RAM is volatile and holds current programs/data; ROM is non-volatile and holds persistent firmware or start-up instructions.</p></details>
+              <p><strong>1.</strong> What converts a microphone's analogue signal into digital samples?</p>
+              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Why is DRAM refreshed?</p>
-              <details><summary>Show answer</summary><p>Charge in its storage capacitors leaks and must be restored.</p></details>
+              <p><strong>2.</strong> What does a capacitive touchscreen detect?</p>
+              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is SRAM used for cache while DRAM is used for main memory?</p>
-              <details><summary>Show answer</summary><p>SRAM is faster and needs no refresh; DRAM is denser and cheaper per bit for a larger capacity.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Compare PROM, EPROM and EEPROM.</p>
-              <details><summary>Show answer</summary><p>PROM is programmed once; EPROM is erased with ultraviolet light; EEPROM is erased and rewritten electrically.</p></details>
+              <p><strong>3.</strong> Why does a VR headset track head movement?</p>
+              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Compare SRAM and DRAM and explain why DRAM is normally used for main memory.</p>
+            <p>Describe how a microphone captures sound for storage in a computer.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>SRAM is faster / does not require refresh</td><td>Do not award both comparison marks for merely expanding the abbreviations.</td><td>1</td></tr>
-                  <tr><td>DRAM requires refresh / is slower</td><td></td><td>1</td></tr>
-                  <tr><td>DRAM has greater density / lower cost per bit</td><td></td><td>1</td></tr>
-                  <tr><td>main memory needs large capacity, making DRAM more economical</td><td></td><td>1</td></tr>
+                  <tr><td>sound waves vibrate a diaphragm</td><td>Do not accept that the microphone directly records binary without an analogue signal and conversion stage.</td><td>1</td></tr>
+                  <tr><td>transducer converts vibration to an analogue electrical signal</td><td></td><td>1</td></tr>
+                  <tr><td>ADC samples/measures the signal</td><td></td><td>1</td></tr>
+                  <tr><td>sample values are encoded/stored as binary</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -115,187 +113,200 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 030 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Primary storage is the computer's working desk, not its filing cabinet.</h2>
+            <h2>Output is how the computer stops silently thinking and actually tells someone.</h2>
             <p>
-              This lesson explains RAM, ROM, cache and virtual memory. The main exam skill
-              is explaining what each type is used for, whether it is volatile, and how it
-              affects performance.
+              This lesson focuses on output devices and user feedback. You will learn how
+              to choose an output device for a scenario, explain the form of output, and
+              avoid vague answers such as "use a screen because it is good".
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Distinguish</strong><span>RAM, ROM, cache and virtual memory</span></div>
-              <div><strong>Explain</strong><span>volatility, speed and purpose using precise terms</span></div>
-              <div><strong>Apply</strong><span>primary storage ideas to startup, multitasking and performance scenarios</span></div>
+              <div><strong>Describe</strong><span>the purpose of common output devices</span></div>
+              <div><strong>Compare</strong><span>visual, audio, printed and physical output</span></div>
+              <div><strong>Justify</strong><span>output choices using audience, environment, permanence and urgency</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Primary storage hierarchy">
-            <span>cache -> RAM -> virtual memory</span>
-            <p>Closer to the CPU usually means faster, smaller and more expensive. Convenient, like a front-row seat with a tiny desk.</p>
+          <div class="system-card" aria-label="Output feedback chain">
+            <span>processed data -> output device -> user/action</span>
+            <p>A warning nobody can notice is not feedback; it is just decoration with extra electricity.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style answers often require exact contrasts. "RAM is temporary" is weaker than "RAM is volatile and stores data/instructions currently in use."</p>
+            <p>Hardware questions often require justification. "Speaker" is not enough; "speaker because the warning must be noticed without looking at a screen" is exam-shaped.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Virtual memory is not extra physical RAM. It uses secondary storage as if it were memory, which is slower than RAM.</p>
+            <p>An actuator is an output device when it causes physical movement or action. It does not display information like a monitor.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Your laptop has 30 browser tabs, a video call and an IDE open. Which memory areas are being stressed?</h2>
+            <h2>A car detects an obstacle. It beeps, flashes a dashboard warning, vibrates the steering wheel and may apply the brakes. Which outputs are being used?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="ram">RAM holds active programs and data</button>
-            <button class="choice-card" type="button" data-hook="cache">Cache keeps frequently used data close to the CPU</button>
-            <button class="choice-card" type="button" data-hook="vm">Virtual memory helps when RAM is insufficient</button>
-            <button class="choice-card" type="button" data-hook="rom">ROM handled startup instructions earlier</button>
+            <button class="choice-card" type="button" data-hook="speaker">Speaker gives audio warning</button>
+            <button class="choice-card" type="button" data-hook="screen">Display gives visual feedback</button>
+            <button class="choice-card" type="button" data-hook="haptic">Haptic motor gives physical feedback</button>
+            <button class="choice-card" type="button" data-hook="actuator">Actuator causes braking action</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one memory area. The useful exam habit is linking storage type -> role -> consequence.
+            Click one output. The useful exam habit is linking output form to user need or physical action.
           </div>
         </section>
 
-        <section class="panel" id="primary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Primary storage is directly involved in current processing</h2>
+            <h2>What output devices do</h2>
           </div>
           <div class="flow-grid">
-            <article><strong>RAM</strong><span>Stores programs, data and instructions currently in use. It is volatile.</span></article>
-            <article><strong>ROM</strong><span>Stores startup/boot instructions. It is non-volatile and normally read-only.</span></article>
-            <article><strong>Cache</strong><span>Very fast memory close to/on the CPU for frequently used data and instructions.</span></article>
-            <article><strong>Virtual memory</strong><span>Uses part of secondary storage when RAM is full, but access is slower.</span></article>
+            <article><strong>1. Present</strong><span>Output devices present processed data to a user, such as text, images or sound.</span></article>
+            <article><strong>2. Record</strong><span>Some output creates a physical record, such as a printout or receipt.</span></article>
+            <article><strong>3. Act</strong><span>Actuators convert computer output into physical movement or control.</span></article>
           </div>
-          <div class="callout">Chinese support: primary storage = 主存/主存储；volatile = 易失性；non-volatile = 非易失性；cache = 高速缓存；virtual memory = 虚拟内存。</div>
+          <div class="callout">Chinese support: output device = 输出设备；user feedback = 用户反馈；actuator = 执行器；hard copy = 硬拷贝/纸质输出。</div>
         </section>
 
-        <!-- stage10-explanation:start primary -->
-        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" aria-labelledby="explanation-primary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
-          <h2 class="explanation-sr-only" id="explanation-primary-title">Why active data stays close to the CPU</h2>
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">What output devices do</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-primary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why active data stays close to the CPU through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why active data stays close to the CPU: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What output devices do with a structured visual model." />
+            <figcaption class="explanation-sr-only">What output devices do: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The CPU repeatedly requests current instructions and data.</li><li><strong>Reason:</strong> Nearby electronic storage answers with less delay than secondary storage.</li><li><strong>Result:</strong> Faster access prevents the processor waiting as often.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> 1. Present Output devices present processed data to a user, such as text, images or sound.</li><li><strong>Lesson fact:</strong> 2. Record Some output creates a physical record, such as a printout or receipt.</li><li><strong>Lesson fact:</strong> 3. Act Actuators convert computer output into physical movement or control.</li></ol>
 
-            <p><strong>Analogy:</strong> Keep today's papers on the desk, not in a distant archive.</p>
-            <p><strong>Boundary:</strong> Closer and faster storage is smaller and more expensive per byte.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end primary -->
-        <section class="panel" id="ram-rom" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
+        <!-- stage10-explanation:end purpose -->
+        <section class="panel" id="devices" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>RAM and ROM: similar letters, very different jobs</h2>
+            <h2>Common output devices and when they fit</h2>
           </div>
-          <div class="compare-table" role="table" aria-label="RAM and ROM comparison">
+          <div class="device-table" role="table" aria-label="Output devices comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">RAM</div>
-              <div role="columnheader">ROM</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Purpose</div>
-              <div role="cell">Holds data, programs and instructions currently being used.</div>
-              <div role="cell">Stores firmware/startup instructions needed to boot the computer.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Volatility</div>
-              <div role="cell">Volatile: contents are lost when power is off.</div>
-              <div role="cell">Non-volatile: contents remain when power is off.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Write access</div>
-              <div role="cell">Can be read from and written to during normal use.</div>
-              <div role="cell">Normally read-only or not easily changed by the user.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start ram-rom -->
-        <section class="panel explanation-panel" id="explanation-ram-rom" data-explains="ram-rom" data-explanation-kind="comparison" aria-labelledby="explanation-ram-rom-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
-          <h2 class="explanation-sr-only" id="explanation-ram-rom-title">Why RAM changes while ROM remains stable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-ram-rom.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why RAM changes while ROM remains stable through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why RAM changes while ROM remains stable: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> RAM holds the changing state of running programs.</li><li><strong>Reason:</strong> Most RAM needs continuous power to preserve that state.</li><li><strong>Result:</strong> ROM retains fixed startup instructions when power is removed.</li></ol>
-
-            <p><strong>Analogy:</strong> A working notepad changes constantly; a printed reference card should not.</p>
-            <p><strong>Boundary:</strong> ROM can sometimes be updated, but not as ordinary working memory.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end ram-rom -->
-        <section class="panel" id="cache-vm" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Cache and virtual memory affect performance in opposite directions</h2>
-          </div>
-          <div class="memory-stack" aria-label="Memory hierarchy">
-            <div><strong>Cache</strong><span>Fastest, smallest, closest to CPU</span></div>
-            <div><strong>RAM</strong><span>Fast working memory for active programs</span></div>
-            <div><strong>Virtual memory</strong><span>Slower extension using secondary storage</span></div>
-            <div><strong>Secondary storage</strong><span>Persistent storage, covered next lesson</span></div>
-          </div>
-          <div class="compare-table" role="table" aria-label="Cache and virtual memory comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Concept</div>
-              <div role="columnheader">Why it is useful</div>
+              <div role="columnheader">Device</div>
+              <div role="columnheader">Output form</div>
+              <div role="columnheader">Good use</div>
               <div role="columnheader">Exam warning</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Cache</div>
-              <div role="cell">Stores frequently/recently used data or instructions so the CPU can access them faster than from RAM.</div>
-              <div role="cell">Do not say cache permanently stores user files.</div>
+              <div role="cell">Monitor / screen</div>
+              <div role="cell">Visual soft copy</div>
+              <div role="cell">Live results, interfaces, dashboards, maps</div>
+              <div role="cell">Not suitable when permanent paper evidence is required</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Virtual memory</div>
-              <div role="cell">Allows the system to continue running more/larger programs than RAM alone can hold.</div>
-              <div role="cell">Do not say it is as fast as RAM; using it heavily can slow the system.</div>
+              <div role="cell">Printer</div>
+              <div role="cell">Hard copy on paper or labels</div>
+              <div role="cell">Receipts, reports, tickets, labels</div>
+              <div role="cell">Usually slower and uses consumables</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Speaker / buzzer</div>
+              <div role="cell">Audio output</div>
+              <div role="cell">Warnings, accessibility, spoken instructions</div>
+              <div role="cell">May be unsuitable in noisy or quiet environments</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Projector</div>
+              <div role="cell">Large visual display</div>
+              <div role="cell">Classroom, meeting room, large audience</div>
+              <div role="cell">Needs suitable surface and lighting conditions</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Actuator</div>
+              <div role="cell">Physical movement/action</div>
+              <div role="cell">Opening valves, moving motors, applying brakes</div>
+              <div role="cell">It outputs action, not information for reading</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start cache-vm -->
-        <section class="panel explanation-panel" id="explanation-cache-vm" data-explains="cache-vm" data-explanation-kind="comparison" aria-labelledby="explanation-cache-vm-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
-          <h2 class="explanation-sr-only" id="explanation-cache-vm-title">Why cache helps and virtual memory slows</h2>
+        <!-- stage10-explanation:start devices -->
+        <section class="panel explanation-panel" id="explanation-devices" data-explains="devices" data-explanation-kind="mechanism" aria-labelledby="explanation-devices-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
+          <h2 class="explanation-sr-only" id="explanation-devices-title">Common output devices and when they fit</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-cache-vm.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why cache helps and virtual memory slows through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why cache helps and virtual memory slows: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-devices.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common output devices and when they fit with a structured visual model." />
+            <figcaption class="explanation-sr-only">Common output devices and when they fit: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Cache holds copies of recently or frequently used instructions and data close to the CPU.</li><li><strong>Reason:</strong> A cache hit avoids a slower main-memory access.</li><li><strong>Result:</strong> Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Output form</li><li><strong>Lesson fact:</strong> Good use</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Monitor / screen</li><li><strong>Lesson fact:</strong> Visual soft copy</li><li><strong>Lesson fact:</strong> Live results, interfaces, dashboards, maps</li><li><strong>Lesson fact:</strong> Not suitable when permanent paper evidence is required</li><li><strong>Lesson fact:</strong> Hard copy on paper or labels</li><li><strong>Lesson fact:</strong> Receipts, reports, tickets, labels</li><li><strong>Lesson fact:</strong> Usually slower and uses consumables</li><li><strong>Lesson fact:</strong> Speaker / buzzer</li><li><strong>Lesson fact:</strong> Audio output</li></ol>
 
-            <p><strong>Analogy:</strong> A desk tray saves a walk; using the archive as desk space creates walks.</p>
-            <p><strong>Boundary:</strong> Virtual memory increases capacity, not physical RAM speed.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end cache-vm -->
+        <!-- stage10-explanation:end devices -->
+        <section class="panel" id="feedback" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>User feedback must fit the situation</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Feedback types comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feedback type</div>
+              <div role="columnheader">Strength</div>
+              <div role="columnheader">Limitation</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Visual</div>
+              <div role="cell">Detailed information, menus, diagrams, maps.</div>
+              <div role="cell">User must be able to see and look at the display.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Audio</div>
+              <div role="cell">Immediate warning without needing to look.</div>
+              <div role="cell">Can be missed in noise or disruptive in quiet spaces.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Printed</div>
+              <div role="cell">Permanent portable evidence.</div>
+              <div role="cell">Not ideal for rapidly changing information.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Physical action</div>
+              <div role="cell">Controls the real world automatically.</div>
+              <div role="cell">Needs safety controls because it changes the environment.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start feedback -->
+        <section class="panel explanation-panel" id="explanation-feedback" data-explains="feedback" data-explanation-kind="mechanism" aria-labelledby="explanation-feedback-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
+          <h2 class="explanation-sr-only" id="explanation-feedback-title">User feedback must fit the situation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-feedback.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining User feedback must fit the situation with a structured visual model." />
+            <figcaption class="explanation-sr-only">User feedback must fit the situation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Display, auditory and haptic feedback are alternative output forms, not inputs.</li><li><strong>Lesson fact:</strong> Printed records and actuator actions are separate output types rather than downstream results of display, sound or touch feedback.</li><li><strong>Lesson fact:</strong> Haptic feedback requires physical contact and may be missed when vibration is weak or the device is not being held.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end feedback -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Choose the memory concept</h2>
+            <h2>Choose the output device</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="active">A program and its current data are being edited</option>
-                <option value="boot">The computer needs startup instructions before the OS loads</option>
-                <option value="repeat">The CPU repeatedly needs the same instructions in a tight loop</option>
-                <option value="full">Many applications are open and RAM is nearly full</option>
-                <option value="power">Power is turned off and contents are lost</option>
-                <option value="slow">System becomes slow because pages are swapped to disk frequently</option>
+                <option value="receipt">A shop must give customers a transaction record</option>
+                <option value="driver">A driver needs route directions while moving</option>
+                <option value="alarm">A factory worker must notice an urgent warning</option>
+                <option value="classroom">A teacher shows a diagram to a whole class</option>
+                <option value="greenhouse">A system opens a vent when it gets too hot</option>
+                <option value="exam">An exam office displays candidate seat numbers during entry</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Identify concept</button>
+            <button type="button" id="chooseBtn">Recommend device</button>
           </div>
           <div class="result-box" id="componentResult" aria-live="polite"></div>
           <div class="method-box" id="componentMethod"></div>
@@ -304,12 +315,12 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Precise explanations for primary storage</h2>
+            <h2>From device name to scenario-linked output</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="ram">RAM</button>
-            <button class="tab" type="button" data-example="rom">ROM</button>
-            <button class="tab" type="button" data-example="virtual">Virtual memory</button>
+            <button class="tab active" type="button" data-example="receipt">Receipt printer</button>
+            <button class="tab" type="button" data-example="alarm">Warning system</button>
+            <button class="tab" type="button" data-example="greenhouse">Actuator</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -327,18 +338,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak memory answer</h2>
+            <h2>Fix the weak output answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"ROM is faster RAM that stores open programs."</p>
+              <p class="wrong">"Use a printer because it is better."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">ROM is non-volatile memory used for firmware/startup instructions. RAM stores currently running programs and data and is volatile.</p>
+              <p class="answer" id="mistake1">This is too vague. A stronger answer is: use a printer because it produces a hard copy receipt that the customer can keep as evidence of the transaction.</p>
             </article>
             <article>
-              <p class="wrong">"Virtual memory gives the computer more real RAM."</p>
+              <p class="wrong">"A sensor is an output device because it tells the system the temperature."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Virtual memory uses part of secondary storage as if it were RAM. It can let more programs run, but it is slower than RAM and heavy use reduces performance.</p>
+              <p class="answer" id="mistake2">A sensor is an input device because it captures data from the environment. An actuator is an output device when it opens a vent or turns a motor in response.</p>
             </article>
           </div>
         </section>
@@ -347,7 +358,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on exact terms: volatile, non-volatile, currently in use, startup instructions and slower secondary storage.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on output form and scenario-linked suitability.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -355,15 +366,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-030">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Primary storage in six exam sentences</h2>
+            <h2>Output choices depend on who needs the result</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>RAM</strong><span>Volatile memory for programs/data currently in use.</span></div>
-            <div><strong>ROM</strong><span>Non-volatile memory for startup/firmware instructions.</span></div>
-            <div><strong>Cache</strong><span>Very fast memory for frequently used data/instructions.</span></div>
-            <div><strong>Virtual memory</strong><span>Uses secondary storage when RAM is insufficient.</span></div>
-            <div><strong>Performance</strong><span>More cache/RAM can improve performance; heavy virtual memory use can slow it.</span></div>
-            <div><strong>Common error</strong><span>Primary storage is not the same as long-term secondary storage.</span></div>
+            <div><strong>Output device</strong><span>Presents processed data or causes a physical action.</span></div>
+            <div><strong>Screen</strong><span>Best for changing visual information and interaction.</span></div>
+            <div><strong>Printer</strong><span>Best for permanent hard copy output.</span></div>
+            <div><strong>Speaker</strong><span>Best for alerts or information that can be heard.</span></div>
+            <div><strong>Actuator</strong><span>Best when the system must physically control something.</span></div>
+            <div><strong>Suitability</strong><span>Link output form to urgency, permanence, audience and environment.</span></div>
           </div>
         </section>
 
@@ -373,25 +384,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a comparison table for RAM, ROM, cache and virtual memory: purpose, volatility and performance effect.</li>
-            <li>Write a 4-mark answer explaining why a computer may slow down when virtual memory is used heavily.</li>
-            <li>Explain why ROM is needed during startup in two precise sentences.</li>
-            <li>Write one common misconception and correct it using the terms volatile or non-volatile.</li>
+            <li>Create a table of five output devices, the form of output, and one suitable scenario.</li>
+            <li>Write a 4-mark answer explaining why a printer is suitable for receipts but not ideal for live traffic directions.</li>
+            <li>Choose two output methods for a hospital alarm system and justify each choice.</li>
+            <li>Write one sentence explaining why an actuator is an output device.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Comparison:</strong> RAM = current volatile working memory; ROM = non-volatile startup instructions; cache = very fast frequently used data; virtual memory = slower secondary storage used when RAM is full.</p>
-            <p><strong>Virtual memory:</strong> it involves moving data between RAM and secondary storage, which is slower than accessing RAM directly.</p>
-            <p><strong>ROM startup:</strong> ROM retains boot instructions when power is off, so the system can start before the operating system is loaded.</p>
-            <p><strong>Misconception:</strong> "RAM keeps files after power off" is wrong because RAM is volatile.</p>
+            <p><strong>Device table:</strong> include monitor -> visual soft copy; printer -> hard copy; speaker -> audio; projector -> large visual output; actuator -> physical action.</p>
+            <p><strong>Printer comparison:</strong> receipts need permanent paper evidence; traffic directions change quickly and need live visual/audio feedback.</p>
+            <p><strong>Hospital alarm:</strong> combine audio warning for urgency with visual display/light for location or message detail.</p>
+            <p><strong>Actuator:</strong> it converts a computer output signal into physical movement or control.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

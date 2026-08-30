@@ -47,22 +47,22 @@ for (const id of scopedRequirements) {
   expect(evaluation.status === "Complete", `${id}: ${evaluation.messages.join("; ")}`);
 }
 
-const soundMarkdown = read("lessons/010-digital-sound-sampling-rate-sample-resolution-and-duration.md");
-const soundHtml = read("web/lesson-010/index.html");
+const soundMarkdown = read("lessons/011-sound-sampling-sampling-resolution-accuracy-and-storage.md");
+const soundHtml = read("web/lesson-011/index.html");
 const soundCore = sectionHtml(soundHtml, "stage2-completion");
-includesAll(soundMarkdown, ["sampling resolution", "official syllabus term", "analogue-to-digital sampling", "accuracy"], "L010 Markdown");
-includesAll(soundCore, ["sampling resolution", "sample resolution", "common synonym", "analogue-to-digital sampling", "accuracy"], "L010 visible CORE teaching");
-includesAll(questionText("AQ010-Q5"), ["sampling rate", "sampling resolution", "bits/levels"], "Quiz 10 terminology");
-expect(!/\bsample resolution\b/i.test(questionText("AQ010-Q5")), "Quiz 10 still uses the non-primary term sample resolution");
+includesAll(soundMarkdown, ["sampling resolution", "official syllabus term", "analogue-to-digital sampling", "accuracy"], "L011 Markdown");
+includesAll(soundCore, ["sampling resolution", "sample resolution", "common synonym", "analogue-to-digital sampling", "accuracy"], "L011 visible CORE teaching");
+includesAll(questionText("L011-Q5"), ["sampling rate", "sampling resolution", "bits per sample"], "L011-Q5 terminology");
+expect(!/\bsample resolution\b/i.test(questionText("L011-Q5")), "L011-Q5 still uses the non-primary term sample resolution");
 
-const l137Html = read("web/lesson-137/index.html");
+const l137Html = read("web/lesson-138/index.html");
 const l137Transcript = sectionHtml(l137Html, "explanation-java");
-includesAll(l137Transcript, ["Infographic text alternative", "ELSE", "ENDIF"], "L137 Java visual transcript");
-includesAll((sourceFactOverrides["137/java"] ?? []).join(" "), ["ELSE", "ENDIF"], "L137 maintained source facts");
+includesAll(l137Transcript, ["Infographic text alternative", "ELSE", "ENDIF"], "L138 Java visual transcript");
+includesAll((sourceFactOverrides["138/java"] ?? []).join(" "), ["ELSE", "ENDIF"], "L138 maintained source facts");
 
-includesAll((sourceFactOverrides["034/sensors"] ?? []).join(" "), ["temperature", "pressure", "infra-red", "sound sensor"], "sensor visual facts");
-includesAll((sourceFactOverrides["055/compare"] ?? []).join(" "), ["disk formatter", "virus checker", "defragmenter", "disk contents analysis/repair", "compression", "backup"], "utility visual facts");
-includesAll((sourceFactOverrides["130/parameters"] ?? []).join(" "), ["interface", "header", "parameter", "argument", "return value"], "subprogram visual facts");
+includesAll((sourceFactOverrides["035/sensors"] ?? []).join(" "), ["temperature", "pressure", "infra-red", "sound sensor"], "sensor visual facts");
+includesAll((sourceFactOverrides["056/compare"] ?? []).join(" "), ["disk formatter", "virus checker", "defragmenter", "disk contents analysis/repair", "compression", "backup"], "utility visual facts");
+includesAll((sourceFactOverrides["131/parameters"] ?? []).join(" "), ["interface", "header", "parameter", "argument", "return value"], "subprogram visual facts");
 
 for (const [id, term] of [
   ["S1.10", "sampling resolution"],
@@ -95,4 +95,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Batch 5 verification passed: eight coverage rows are Complete, official sound terminology is primary, the L137 transcript is complete and seven mutations are rejected.");
+console.log("Batch 5 verification passed: eight coverage rows are Complete, official sound terminology is primary, the L138 transcript is complete and seven mutations are rejected.");

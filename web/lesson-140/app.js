@@ -1,112 +1,83 @@
-const conversions = {
+const moduleAdvice = {
+  input: {
+    module: "GetValidMark()",
+    responsibility: "input a mark, apply validation, repeat until valid",
+    reason: "Input validation is isolated, so the rest of the program receives only acceptable data.",
+  },
+  grade: {
+    module: "CalculateGrade(Mark)",
+    responsibility: "convert a valid mark into a grade",
+    reason: "The function has one calculation responsibility and can be tested separately.",
+  },
   output: {
-    java: "System.out.println(Total);",
-    pseudo: "OUTPUT Total",
-    note: "Replace Java's library output call with the OUTPUT keyword.",
-  },
-  assign: {
-    java: "total = total + mark;",
-    pseudo: "Total <- Total + Mark",
-    note: "Use the assignment arrow in Cambridge-style pseudocode.",
-  },
-  if: {
-    java: "if (mark >= 50) { ... }",
-    pseudo: "IF Mark >= 50 THEN ... ENDIF",
-    note: "Remove brackets and braces; use IF, THEN and ENDIF.",
-  },
-  for: {
-    java: "for (int i = 1; i <= 5; i++)",
-    pseudo: "FOR I <- 1 TO 5 ... NEXT I",
-    note: "A count-controlled Java loop becomes a FOR ... TO ... NEXT loop.",
-  },
-  function: {
-    java: "static boolean isValidMark(int mark)",
-    pseudo: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN",
-    note: "Use FUNCTION, parameter types and RETURNS instead of Java method modifiers.",
-  },
-};
-
-const spotter = {
-  semicolon: {
-    issue: "The semicolon is a Java/C-style habit.",
-    fix: "Use OUTPUT Total without the semicolon.",
-  },
-  brace: {
-    issue: "The brace is Java-style block syntax.",
-    fix: "Use IF Mark >= 50 THEN and close the block with ENDIF.",
-  },
-  main: {
-    issue: "The main method wrapper is Java-specific.",
-    fix: "Start directly with the algorithm steps unless the question asks for a procedure or function.",
-  },
-  scanner: {
-    issue: "Scanner is a Java library class.",
-    fix: "Use INPUT Variable in Cambridge-style pseudocode.",
+    module: "DisplayResult(Grade)",
+    responsibility: "format and output the result",
+    reason: "Output formatting is kept separate from validation and calculation logic.",
   },
 };
 
 const examples = {
-  if: {
-    title: "Example 1: Convert a Java IF statement",
-    java: "if (mark >= 50) {\n    System.out.println(\"Pass\");\n} else {\n    System.out.println(\"Resit needed\");\n}",
-    pseudo: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
+  validate: {
+    title: "Example 1: Validation loop",
+    problem: "Write pseudocode to keep asking for a mark until the value is from 0 to 100 inclusive.",
+    code: "REPEAT\n    INPUT Mark\n    IF Mark >= 0 AND Mark <= 100 THEN\n        Valid <- TRUE\n    ELSE\n        OUTPUT \"Enter a mark from 0 to 100\"\n        Valid <- FALSE\n    ENDIF\nUNTIL Valid = TRUE",
     points: [
-      "The condition is preserved.",
-      "Java braces are replaced by THEN, ELSE and ENDIF.",
-      "System.out.println becomes OUTPUT.",
+      "The range check prevents invalid marks from being processed.",
+      "The loop continues until the data is acceptable.",
+      "The error message states the valid range.",
     ],
   },
-  loop: {
-    title: "Example 2: Convert a count-controlled loop",
-    java: "for (int i = 1; i <= 5; i++) {\n    total = total + scores[i];\n}",
-    pseudo: "FOR I <- 1 TO 5\n    Total <- Total + Scores[I]\nNEXT I",
+  module: {
+    title: "Example 2: Module split",
+    problem: "Split a grade program into focused modules.",
+    code: "Mark <- GetValidMark()\nGrade <- CalculateGrade(Mark)\nDisplayResult(Grade)",
     points: [
-      "The known count maps naturally to FOR ... TO ... NEXT.",
-      "Assignment uses the left arrow.",
-      "Follow the question's array indexing convention.",
+      "GetValidMark handles input and validation.",
+      "CalculateGrade handles processing only.",
+      "DisplayResult handles output only.",
     ],
   },
-  function: {
-    title: "Example 3: Convert a Java method",
-    java: "static boolean isValidMark(int mark) {\n    return mark >= 0 && mark <= 100;\n}",
-    pseudo: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN\n    RETURN Mark >= 0 AND Mark <= 100\nENDFUNCTION",
+  explain: {
+    title: "Example 3: Explain benefits",
+    problem: "Explain why validation and modularity improve robust design.",
+    code: "Validation reduces the chance of invalid data being processed.\nModularity makes each part easier to test, debug, reuse and maintain.\nTogether, they reduce faults and make the program easier to adapt.",
     points: [
-      "Java modifiers such as static are removed.",
-      "The parameter type is still clear.",
-      "The Boolean expression keeps the same meaning.",
+      "Use cause and consequence in exam answers.",
+      "Avoid vague claims such as 'better' without saying why.",
+      "Mention testing and maintenance when discussing modularity.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Convert System.out.println(Total);", accepted: ["output total"], answer: "OUTPUT Total." },
-  { id: "p2", prompt: "Convert total = total + mark;", accepted: ["total <- total + mark", "total ← total + mark"], answer: "Total <- Total + Mark." },
-  { id: "p3", prompt: "Which pseudocode keyword replaces Java Scanner input?", accepted: ["input"], answer: "INPUT." },
-  { id: "p4", prompt: "Which keyword closes an IF block in Cambridge-style pseudocode?", accepted: ["endif"], answer: "ENDIF." },
-  { id: "p5", prompt: "Which keyword pair usually closes a WHILE loop?", accepted: ["endwhile"], answer: "ENDWHILE." },
-  { id: "p6", prompt: "What does Java && usually become in pseudocode?", accepted: ["and"], answer: "AND." },
-  { id: "p7", prompt: "What does Java || usually become in pseudocode?", accepted: ["or"], answer: "OR." },
-  { id: "p8", prompt: "Convert static boolean isValidMark(int mark) as a Cambridge-style header keyword.", accepted: ["function"], answer: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN." },
-  { id: "p9", prompt: "Should public static void main be included in a normal pseudocode answer? true or false", accepted: ["false"], answer: "False." },
-  { id: "p10", prompt: "What should be preserved when converting Java into pseudocode: exact punctuation or algorithm meaning?", accepted: ["meaning", "algorithm", "logic"], answer: "Preserve the algorithm meaning / logic." },
+  { id: "p1", prompt: "What term describes checking that data is acceptable before processing?", accepted: ["validation"], answer: "Validation." },
+  { id: "p2", prompt: "Which validation check confirms a value is between minimum and maximum limits?", accepted: ["range", "range check"], answer: "Range check." },
+  { id: "p3", prompt: "Which validation check confirms that required data is not blank?", accepted: ["presence", "presence check"], answer: "Presence check." },
+  { id: "p4", prompt: "Which validation check confirms that a mark is an INTEGER?", accepted: ["type", "type check"], answer: "Type check." },
+  { id: "p5", prompt: "What design approach splits a program into procedures/functions?", accepted: ["modularity", "modular", "modular design"], answer: "Modularity / modular design." },
+  { id: "p6", prompt: "What should GetValidMark() return?", accepted: ["valid mark", "mark", "integer"], answer: "A valid integer mark." },
+  { id: "p7", prompt: "Why should validation occur before calculating a grade?", accepted: ["invalid", "processed", "prevent", "reject"], answer: "It prevents invalid data from being processed." },
+  { id: "p8", prompt: "Validation and verification mean the same thing. true or false?", accepted: ["false"], answer: "False." },
+  { id: "p9", prompt: "Name one benefit of modularity.", accepted: ["test", "debug", "reuse", "maintain", "read"], answer: "It can make code easier to test, debug, reuse, read or maintain." },
+  { id: "p10", prompt: "In Cambridge exams, Java method syntax should replace pseudocode function syntax. true or false?", accepted: ["false"], answer: "False." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes public static void main(String[] args) at the start of a pseudocode answer.",
-    fix: "Remove the Java wrapper. Write the algorithm steps directly, or use PROCEDURE/FUNCTION only if appropriate.",
+    wrong: "The program calculates Grade before checking whether Mark is from 0 to 100.",
+    fix: "Validate Mark first. Only pass a valid mark to CalculateGrade.",
   },
   {
-    wrong: "A student writes System.out.println(Result); throughout the answer.",
-    fix: "Use OUTPUT Result in Cambridge-style pseudocode.",
+    wrong: "A student says validation checks whether two people typed the same data.",
+    fix: "That describes verification. Validation checks whether data is reasonable or allowed by the program rules.",
   },
   {
-    wrong: "A student keeps Java braces around an IF block.",
-    fix: "Use IF condition THEN, ELSE if needed, and ENDIF to close the block.",
+    wrong: "All input, validation, calculation and output are placed inside one long procedure.",
+    fix: "Split responsibilities into modules such as GetValidMark, CalculateGrade and DisplayResult.",
   },
   {
-    wrong: "A student changes the loop bounds while translating from Java.",
-    fix: "The syntax can change, but the algorithm meaning must not. Check start value, end value and whether the end is included.",
+    wrong: "A validation function outputs the grade, changes global variables and asks for another input.",
+    fix: "Keep the function focused. A function such as IsValidMark should return TRUE or FALSE and avoid unrelated side effects.",
   },
 ];
 
@@ -120,98 +91,95 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A flowchart inputs Mark, tests Mark >= 50, outputs Pass on the Yes branch and Resit needed on the No branch. Write equivalent Cambridge-style pseudocode.",
-    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
+    prompt: "Explain how validation can make a mark-processing program more robust. Use the range 0 to 100 inclusive in your answer.",
+    answer: "Validation checks that the input is acceptable before it is processed. A range check can reject marks below 0 or above 100. A type check can reject non-integer input. This prevents invalid data being used to calculate a grade and allows an error message to ask the user for valid input.",
     marking: [
-      { mark: "B1", text: "translates the flowchart input as INPUT Mark" },
-      { mark: "M1", text: "uses IF with the correct decision Mark >= 50" },
-      { mark: "B1", text: "outputs Pass in the true branch using OUTPUT or equivalent pseudocode" },
-      { mark: "B1", text: "uses ELSE for the false branch" },
-      { mark: "B1", text: "outputs Resit needed in the false branch" },
-      { mark: "A1", text: "closes the selection and preserves both flowchart branches" },
+      { mark: "B1", text: "states validation checks data is acceptable/reasonable before processing" },
+      { mark: "B1", text: "identifies a range check for 0 to 100 inclusive" },
+      { mark: "B1", text: "states values below 0 or above 100 should be rejected" },
+      { mark: "B1", text: "identifies type check or equivalent for integer input" },
+      { mark: "B1", text: "explains invalid data is prevented from being processed" },
+      { mark: "B1", text: "links validation to robustness, reliability or suitable user feedback" },
     ],
     strict: [
-      "Do not award full marks for Java code or for omitting the flowchart input.",
-      "Allow equivalent variable capitalisation if consistent.",
-      "Do not require exact indentation, but both flowchart paths must be clear.",
+      "Do not award range mark for an exclusive 0 to 100 range unless the scenario states it.",
+      "Allow length or presence checks only if used as additional relevant examples.",
+      "Do not accept verification as a synonym for validation.",
     ],
   },
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Write this Java loop in Cambridge-style pseudocode: for (int i = 1; i <= 5; i++) { total = total + scores[i]; }",
-    answer: "FOR I <- 1 TO 5\n    Total <- Total + Scores[I]\nNEXT I",
+    prompt: "Write Cambridge-style pseudocode for a function IsValidMark that returns TRUE if Mark is from 0 to 100 inclusive and FALSE otherwise.",
+    answer: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN\n    IF Mark >= 0 AND Mark <= 100 THEN\n        RETURN TRUE\n    ELSE\n        RETURN FALSE\n    ENDIF\nENDFUNCTION",
     marking: [
-      { mark: "B1", text: "uses a FOR loop or equivalent count-controlled loop" },
-      { mark: "B1", text: "initialises loop counter to 1" },
-      { mark: "B1", text: "uses final value 5 inclusively" },
-      { mark: "M1", text: "updates Total inside the loop" },
-      { mark: "A1", text: "adds the correct array element Scores[I] or equivalent" },
-      { mark: "B1", text: "uses pseudocode assignment rather than Java-only syntax" },
-      { mark: "A1", text: "closes the loop with NEXT or clear equivalent" },
+      { mark: "B1", text: "uses a function header with a meaningful name" },
+      { mark: "B1", text: "uses Mark as a parameter" },
+      { mark: "B1", text: "specifies or implies a BOOLEAN return" },
+      { mark: "M1", text: "checks Mark >= 0 or equivalent lower bound" },
+      { mark: "M1", text: "checks Mark <= 100 or equivalent upper bound" },
+      { mark: "A1", text: "returns TRUE when both bounds are satisfied" },
+      { mark: "A1", text: "returns FALSE otherwise and ends the function correctly" },
     ],
     strict: [
-      "Do not award inclusive end mark if the answer loops only to 4.",
-      "Allow Index instead of I if used consistently.",
-      "Do not accept Java loop syntax alone as Cambridge pseudocode.",
+      "Do not award both boundary method marks if OR is used incorrectly for the valid condition.",
+      "Allow direct return of the Boolean expression if clear.",
+      "Do not accept Java-only method syntax as Cambridge pseudocode.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Explain why Java support examples should not simply be copied as answers to Cambridge pseudocode questions.",
-    answer: "Java is a programming language with language-specific syntax such as braces, semicolons, class wrappers and library calls. Cambridge pseudocode uses readable algorithm keywords such as INPUT, OUTPUT, IF, ENDIF and FUNCTION. Copying Java may obscure the algorithm and may not meet the expected pseudocode conventions.",
+    prompt: "A quiz program contains one long block for input, validation, scoring and output. Explain how modularity could improve the design.",
+    answer: "The program can be split into modules such as GetValidAnswer, CheckAnswer, UpdateScore and DisplayResult. Each module has one responsibility, making the program easier to read, test and debug. Modules can also be reused or changed without rewriting the whole program.",
     marking: [
-      { mark: "B1", text: "states Java has language-specific syntax" },
-      { mark: "B1", text: "gives a suitable Java-specific example such as braces, semicolons, main method or System.out.println" },
-      { mark: "B1", text: "states Cambridge pseudocode uses algorithmic keywords/conventions" },
-      { mark: "B1", text: "gives a suitable pseudocode example such as INPUT, OUTPUT, IF/ENDIF or FUNCTION" },
-      { mark: "B1", text: "explains copied Java may not match the required answer format" },
-      { mark: "B1", text: "links clear pseudocode to communicating the algorithm rather than language syntax" },
+      { mark: "B1", text: "states the program can be split into procedures/functions/modules" },
+      { mark: "B1", text: "gives at least two suitable module examples" },
+      { mark: "B1", text: "explains each module can have one clear responsibility" },
+      { mark: "B1", text: "states modularity improves readability or understandability" },
+      { mark: "B1", text: "states modularity makes testing/debugging easier" },
+      { mark: "B1", text: "states modules can be reused or maintained/changed independently" },
     ],
     strict: [
-      "Do not award full marks for saying only 'Java is wrong'.",
-      "Allow 'exam standard' or 'Cambridge convention' as wording for required format.",
-      "Do not accept claims that Java can never be used for learning; Java is support only here.",
+      "Do not award module example mark for vague names such as DoStuff.",
+      "Allow procedure, function, subroutine or module as equivalent terms.",
+      "Do not accept 'shorter code' alone without a design benefit.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "Write Cambridge-style pseudocode for a function IsValidMark that returns TRUE if Mark is from 0 to 100 inclusive. Do not use Java method syntax.",
-    answer: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN\n    IF Mark >= 0 AND Mark <= 100 THEN\n        RETURN TRUE\n    ELSE\n        RETURN FALSE\n    ENDIF\nENDFUNCTION",
+    marks: "4 marks",
+    prompt: "State the difference between validation and verification, and give one example of each.",
+    answer: "Validation checks whether data is acceptable or reasonable, for example checking a mark is from 0 to 100. Verification checks whether data has been copied or entered accurately, for example double entry of an email address or visual checking against a source document.",
     marking: [
-      { mark: "B1", text: "uses FUNCTION header with meaningful name" },
-      { mark: "B1", text: "includes Mark as a parameter with suitable type or clear meaning" },
-      { mark: "B1", text: "states or implies BOOLEAN return type" },
-      { mark: "M1", text: "checks lower bound Mark >= 0" },
-      { mark: "M1", text: "checks upper bound Mark <= 100" },
-      { mark: "A1", text: "returns TRUE for valid marks and FALSE otherwise" },
-      { mark: "A1", text: "uses pseudocode structure and ends with ENDFUNCTION or clear equivalent" },
+      { mark: "B1", text: "defines validation as checking data is acceptable/reasonable" },
+      { mark: "B1", text: "gives suitable validation example" },
+      { mark: "B1", text: "defines verification as checking data has been accurately entered/copied" },
+      { mark: "B1", text: "gives suitable verification example" },
     ],
     strict: [
-      "Do not award final structure mark for Java-only static boolean syntax.",
-      "Allow direct RETURN Mark >= 0 AND Mark <= 100 if the function header is clear.",
-      "Do not accept OR for the valid range condition.",
+      "Do not award full marks if validation and verification are treated as identical.",
+      "Allow proofreading, double entry or parity with source document as verification examples where appropriate.",
+      "Do not accept 'validation checks it is correct' without explaining acceptable/reasonable.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A candidate writes OUTPUT Total; and IF Mark >= 50 { OUTPUT \"Pass\" }. Identify the Java habits and correct them.",
-    answer: "The semicolon after OUTPUT Total is a Java/C-style habit and should be removed. The brace after the IF condition is Java-style block syntax. The corrected pseudocode should use IF Mark >= 50 THEN, then OUTPUT \"Pass\", and close with ENDIF.",
+    prompt: "Explain why using a function such as IsValidMark(Mark) can improve robustness and maintainability.",
+    answer: "The validation rule is stored in one function, so the same check can be reused wherever a mark is needed. The function can be tested separately using normal, abnormal and extreme/boundary data. If the valid range changes, the condition can be updated in one place, reducing inconsistent checks and maintenance errors.",
     marking: [
-      { mark: "B1", text: "identifies semicolon as unnecessary Java/C-style punctuation" },
-      { mark: "B1", text: "corrects output to OUTPUT Total" },
-      { mark: "B1", text: "identifies brace as Java-style block syntax" },
-      { mark: "B1", text: "uses THEN after IF condition" },
-      { mark: "B1", text: "keeps OUTPUT Pass in the true branch" },
-      { mark: "B1", text: "closes the IF block with ENDIF or clear equivalent" },
+      { mark: "B1", text: "states the validation rule is placed in one named function" },
+      { mark: "B1", text: "states the function can be reused" },
+      { mark: "B1", text: "explains this avoids repeated or inconsistent validation code" },
+      { mark: "B1", text: "states the function can be tested separately" },
+      { mark: "B1", text: "links testing to normal/abnormal/extreme or boundary data, or to fault detection" },
+      { mark: "B1", text: "explains a change to the rule can be made in one place" },
     ],
     strict: [
-      "Do not penalise harmless capitalisation differences.",
-      "Allow removal of semicolon without naming Java if the correction is clear.",
-      "Do not award brace correction mark unless a pseudocode block ending is supplied.",
+      "Do not award maintainability marks for saying only 'it is easier'.",
+      "Allow procedure if the design clearly returns or reports a valid/invalid result.",
+      "Do not accept global-variable side effects as a benefit unless controlled and explained.",
     ],
   },
 ];
@@ -229,6 +197,15 @@ function normalise(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
+function tableMarkup(headers, rows) {
+  return `
+    <div class="result-table" style="--cols: ${headers.length}">
+      <div class="table-row table-head">${headers.map((head) => `<div>${escapeHtml(head)}</div>`).join("")}</div>
+      ${rows.map((row) => `<div class="table-row">${row.map((cell) => `<div>${escapeHtml(cell)}</div>`).join("")}</div>`).join("")}
+    </div>
+  `;
+}
+
 function setupPrint() {
   document.querySelector("#printBtn").addEventListener("click", () => window.print());
 }
@@ -236,10 +213,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    java: { text: "This is valid Java support syntax, but not the Cambridge-style pseudocode form.", correct: false },
-    pseudo: { text: "Correct. OUTPUT Total is the Cambridge-style pseudocode form.", correct: true },
-    console: { text: "That is JavaScript-style output, another language habit.", correct: false },
-    print: { text: "This is language-like syntax, not the standard form used in these lessons.", correct: false },
+    calculate: { text: "Not robust. Calculation should happen only after input has passed validation.", correct: false },
+    validate: { text: "Correct. Type and range validation prevents invalid data being processed.", correct: true },
+    ignore: { text: "Tempting for tired software, but not a valid design. Output must be based on valid input.", correct: false },
+    verify: { text: "Verification checks accurate entry. Here the first issue is whether the input is even acceptable.", correct: false },
   };
 
   document.querySelectorAll("[data-hook]").forEach((button) => {
@@ -253,33 +230,46 @@ function setupHook() {
   });
 }
 
-function setupConverter() {
-  const select = document.querySelector("#convertSelect");
-  const output = document.querySelector("#convertOutput");
+function setupValidator() {
+  const input = document.querySelector("#markInput");
+  const output = document.querySelector("#validateOutput");
   const render = () => {
-    const item = conversions[select.value];
-    output.innerHTML = `
-      <p><strong>Java habit:</strong> <code>${escapeHtml(item.java)}</code></p>
-      <p><strong>Cambridge-style pseudocode:</strong> <code>${escapeHtml(item.pseudo)}</code></p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.note)}</p>
-    `;
+    const raw = input.value.trim();
+    let rows;
+    let verdict;
+    if (raw === "") {
+      rows = [["Presence check", "Fail", "input is blank"], ["Type check", "Not reached", "no value to check"], ["Range check", "Not reached", "no value to check"]];
+      verdict = "Rejected: enter a mark from 0 to 100.";
+    } else if (!/^-?\d+$/.test(raw)) {
+      rows = [["Presence check", "Pass", "input exists"], ["Type check", "Fail", "not an integer"], ["Range check", "Not reached", "wrong data type"]];
+      verdict = "Rejected: mark must be an integer.";
+    } else {
+      const value = Number.parseInt(raw, 10);
+      const inRange = value >= 0 && value <= 100;
+      rows = [["Presence check", "Pass", "input exists"], ["Type check", "Pass", "integer"], ["Range check", inRange ? "Pass" : "Fail", inRange ? "inside 0 to 100" : "outside 0 to 100"]];
+      verdict = inRange ? "Accepted: safe to process." : "Rejected: enter a mark from 0 to 100.";
+    }
+    output.innerHTML = `${tableMarkup(["Check", "Result", "Reason"], rows)}<p><strong>Verdict:</strong> ${escapeHtml(verdict)}</p>`;
   };
-  document.querySelector("#convertBtn").addEventListener("click", render);
-  select.addEventListener("change", render);
+  document.querySelector("#validateBtn").addEventListener("click", render);
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") render();
+  });
   render();
 }
 
-function setupSpotter() {
-  const select = document.querySelector("#spotSelect");
-  const output = document.querySelector("#spotOutput");
+function setupModuleChooser() {
+  const select = document.querySelector("#moduleSelect");
+  const output = document.querySelector("#moduleOutput");
   const render = () => {
-    const item = spotter[select.value];
+    const advice = moduleAdvice[select.value];
     output.innerHTML = `
-      <p><strong>Issue:</strong> ${escapeHtml(item.issue)}</p>
-      <p><strong>Correction:</strong> ${escapeHtml(item.fix)}</p>
+      <p><strong>Module:</strong> ${escapeHtml(advice.module)}</p>
+      <p><strong>Responsibility:</strong> ${escapeHtml(advice.responsibility)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(advice.reason)}</p>
     `;
   };
-  document.querySelector("#spotBtn").addEventListener("click", render);
+  document.querySelector("#moduleBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -289,16 +279,8 @@ function renderExample(key) {
   document.querySelector("#exampleOutput").innerHTML = `
     <article class="example-card">
       <h3>${escapeHtml(example.title)}</h3>
-      <div class="code-grid">
-        <div>
-          <h4>Java support example only</h4>
-          <pre><code>${escapeHtml(example.java)}</code></pre>
-        </div>
-        <div>
-          <h4>Cambridge-style pseudocode</h4>
-          <pre><code>${escapeHtml(example.pseudo)}</code></pre>
-        </div>
-      </div>
+      <p>${escapeHtml(example.problem)}</p>
+      <pre><code>${escapeHtml(example.code)}</code></pre>
       <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
     </article>
   `;
@@ -312,7 +294,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("if");
+  renderExample("validate");
 }
 
 function setupPractice() {
@@ -337,7 +319,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const value = normalise(input.value);
       const correct = item.accepted.some((answer) => value.includes(answer));
-      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and compare the convention.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and tighten the term.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -383,7 +365,7 @@ function setupExam() {
       <button class="ms-toggle" type="button" data-ms="q${index}">Show MS</button>
       <div class="ms-panel hidden" id="q${index}-ms">
         <h4>Answer</h4>
-        <pre><code>${escapeHtml(question.answer)}</code></pre>
+        <p>${escapeHtml(question.answer)}</p>
         <h4>Mark scheme</h4>
         ${renderStudentMarkPoints(question)}
       </div>
@@ -402,8 +384,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupConverter();
-  setupSpotter();
+  setupValidator();
+  setupModuleChooser();
   setupExamples();
   setupPractice();
   setupMistakes();

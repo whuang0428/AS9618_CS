@@ -1,93 +1,63 @@
-const linearList = [13, 42, 56, 70];
-const binaryList = [13, 21, 42, 56, 70, 88, 91];
-
 const classifierMap = {
-  unsorted: { title: "Linear search", detail: "The data is unsorted, so binary search cannot safely discard half the list." },
-  "sorted-large": { title: "Binary search", detail: "The data is sorted and large, so binary search is efficient." },
-  small: { title: "Linear search is acceptable", detail: "With only four values, checking sequentially is simple and low cost." },
-  unknown: { title: "Linear search unless sorted is confirmed", detail: "Binary search requires sorted data; if order is not stated, do not assume it." },
+  range: { title: "Range check", detail: "The value must be between a lower and upper limit." },
+  presence: { title: "Presence check", detail: "The field must not be blank." },
+  length: { title: "Length check", detail: "The input must have a required number of characters." },
+  format: { title: "Format check", detail: "The input must match a required pattern such as DD/MM/YYYY." },
+  digit: { title: "Check digit", detail: "A calculated digit helps detect many transcription errors." },
 };
 
-function linearTrace(target) {
-  const rows = [];
-  let found = false;
-  for (let index = 0; index < linearList.length; index += 1) {
-    const value = linearList[index];
-    found = value === target;
-    rows.push([String(index + 1), String(value), value === target ? "match" : "no match", found ? "TRUE" : "FALSE"]);
-    if (found) break;
-  }
-  return { headers: ["Index", "Value", "Comparison", "Found"], rows, note: found ? `Target ${target} found.` : `Target ${target} not found after checking all items.` };
-}
-
-function binaryTrace(target) {
-  const rows = [];
-  let low = 1;
-  let high = binaryList.length;
-  let found = false;
-  while (low <= high && !found) {
-    const mid = Math.floor((low + high) / 2);
-    const value = binaryList[mid - 1];
-    let action = "found";
-    if (value === target) {
-      found = true;
-    } else if (target < value) {
-      action = "target smaller: High <- Mid - 1";
-      high = mid - 1;
-    } else {
-      action = "target larger: Low <- Mid + 1";
-      low = mid + 1;
-    }
-    rows.push([String(low), String(mid), String(high), String(value), action]);
-  }
-  return { headers: ["Low", "Mid", "High", "List[Mid]", "Action"], rows, note: found ? `Target ${target} found.` : `Target ${target} not found when Low > High.` };
-}
+const builderMap = {
+  mark: "REPEAT\n    INPUT Mark\n    IF Mark < 0 OR Mark > 100 THEN\n        OUTPUT \"Invalid mark\"\n    ENDIF\nUNTIL Mark >= 0 AND Mark <= 100",
+  age: "REPEAT\n    INPUT Age\n    IF Age < 11 OR Age > 18 THEN\n        OUTPUT \"Invalid age\"\n    ENDIF\nUNTIL Age >= 11 AND Age <= 18",
+  name: "REPEAT\n    INPUT Name\n    IF Name = \"\" THEN\n        OUTPUT \"Name required\"\n    ENDIF\nUNTIL Name <> \"\"",
+  password: "REPEAT\n    INPUT Password\n    IF LENGTH(Password) < 8 THEN\n        OUTPUT \"Password too short\"\n    ENDIF\nUNTIL LENGTH(Password) >= 8",
+};
 
 const examples = {
-  "linear-found": {
-    title: "Example 1: Linear search found",
-    problem: "Find 42 in [13, 42, 56, 70].",
-    trace: linearTrace(42),
-    points: ["Check 13 first.", "42 is the second item, so stop when found.", "Two comparisons are made."],
+  range: {
+    title: "Example 1: Range check",
+    problem: "A mark must be from 0 to 100 inclusive.",
+    rule: "Valid when Mark >= 0 AND Mark <= 100.",
+    code: builderMap.mark,
   },
-  "linear-absent": {
-    title: "Example 2: Linear search absent",
-    problem: "Find 99 in [13, 42, 56, 70].",
-    trace: linearTrace(99),
-    points: ["Every item must be checked.", "Found remains FALSE.", "The final result is not found."],
+  presence: {
+    title: "Example 2: Presence check",
+    problem: "A name field must not be blank.",
+    rule: "Valid when Name <> \"\".",
+    code: builderMap.name,
   },
-  "binary-found": {
-    title: "Example 3: Binary search found",
-    problem: "Find 42 in sorted list [13, 21, 42, 56, 70, 88, 91].",
-    trace: binaryTrace(42),
-    points: ["Start at the middle.", "Discard the half that cannot contain the target.", "The data must be sorted for this to be valid."],
+  length: {
+    title: "Example 3: Length check",
+    problem: "A password must be at least 8 characters.",
+    rule: "Valid when LENGTH(Password) >= 8.",
+    code: builderMap.password,
   },
-  "binary-absent": {
-    title: "Example 4: Binary search absent",
-    problem: "Find 15 in sorted list [13, 21, 42, 56, 70, 88, 91].",
-    trace: binaryTrace(15),
-    points: ["Check middle values and update bounds.", "Stop when Low > High.", "Result is not found."],
+  format: {
+    title: "Example 4: Format check",
+    problem: "A date must use the pattern DD/MM/YYYY.",
+    rule: "Valid when the string matches two digits, slash, two digits, slash, four digits.",
+    code: "INPUT DateString\nIF DateString matches \"DD/MM/YYYY\" THEN\n    OUTPUT \"Valid format\"\nELSE\n    OUTPUT \"Invalid format\"\nENDIF",
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which search checks each item one by one?", accepted: ["linear", "linear search"], answer: "Linear search" },
-  { id: "p2", prompt: "Which search requires sorted data?", accepted: ["binary", "binary search"], answer: "Binary search" },
-  { id: "p3", prompt: "Linear search for 42 in [13, 42, 56, 70]: how many comparisons?", accepted: ["2", "two"], answer: "2 comparisons" },
-  { id: "p4", prompt: "Linear search for 99 in [13, 42, 56, 70]: final result?", accepted: ["not found", "false", "found false"], answer: "Not found / Found = FALSE" },
-  { id: "p5", prompt: "Binary search first checks which position in a sorted list of 7 items?", accepted: ["4", "position 4", "index 4", "middle", "mid"], answer: "Position/index 4, the middle item" },
-  { id: "p6", prompt: "If target is smaller than List[Mid], which bound changes: Low or High?", accepted: ["high"], answer: "High changes to Mid - 1" },
-  { id: "p7", prompt: "If target is larger than List[Mid], which bound changes: Low or High?", accepted: ["low"], answer: "Low changes to Mid + 1" },
-  { id: "p8", prompt: "When does unsuccessful binary search stop?", accepted: ["low > high", "low greater than high", "low is greater than high"], answer: "When Low > High" },
-  { id: "p9", prompt: "Can binary search safely be used on unsorted data? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p1", prompt: "Which validation check tests whether Mark is between 0 and 100?", accepted: ["range", "range check"], answer: "Range check" },
+  { id: "p2", prompt: "Which validation check tests that Name is not blank?", accepted: ["presence", "presence check"], answer: "Presence check" },
+  { id: "p3", prompt: "Which validation check tests that Password has at least 8 characters?", accepted: ["length", "length check"], answer: "Length check" },
+  { id: "p4", prompt: "Which validation check tests a pattern such as DD/MM/YYYY?", accepted: ["format", "format check"], answer: "Format check" },
+  { id: "p5", prompt: "Write the valid condition for Mark from 0 to 100 inclusive.", accepted: ["mark >= 0 and mark <= 100", "mark<=100 and mark>=0", "mark >=0 and mark <=100"], answer: "Mark >= 0 AND Mark <= 100" },
+  { id: "p6", prompt: "For invalid Mark outside 0-100, should the condition use AND or OR: Mark < 0 ___ Mark > 100?", accepted: ["or"], answer: "OR" },
+  { id: "p7", prompt: "Can validation prove that data is true? yes or no.", accepted: ["no"], answer: "No. It checks acceptability, not truth." },
+  { id: "p8", prompt: "Which Cambridge loop can run at least once and stop when valid?", accepted: ["repeat until", "repeat", "repeat...until"], answer: "REPEAT...UNTIL" },
+  { id: "p9", prompt: "Which keyword displays an invalid input message in Cambridge pseudocode?", accepted: ["output"], answer: "OUTPUT" },
   { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
-  { wrong: "I used binary search on an unsorted list because it is faster.", fix: "Binary search is only valid on sorted data. Speed does not help if the method is logically invalid." },
-  { wrong: "My linear search continued after the target was found.", fix: "Once the target is found, set Found to TRUE and stop or ensure the loop condition stops further checking." },
-  { wrong: "When the target was smaller than the middle value, I increased Low.", fix: "If target is smaller, discard the right half by setting High <- Mid - 1." },
-  { wrong: "I said binary search sorts the list.", fix: "Binary search does not sort. It requires the list to already be sorted." },
+  { wrong: "I used Mark >= 0 OR Mark <= 100 as the valid condition.", fix: "Use AND. The mark must satisfy both limits: Mark >= 0 AND Mark <= 100." },
+  { wrong: "I accepted a blank name because the program did not crash.", fix: "Use a presence check. Acceptable input is not the same as no runtime error." },
+  { wrong: "I wrote the invalid condition as Mark < 0 AND Mark > 100.", fix: "No value can be below 0 and above 100 at the same time. Use OR for invalid outside-range checks." },
+  { wrong: "I validated age 11-18 and claimed it proves the user is 15.", fix: "Validation only checks the value follows the rule. It cannot prove the real-world truth of the data." },
 ];
 
 
@@ -100,107 +70,97 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Complete a trace table for a linear search for 42 in [13, 42, 56, 70]. State the comparisons and final result.",
-    answer: "Compare 42 with 13: no match. Compare 42 with 42: match. Found becomes TRUE and the search stops. The target is found at position 2.",
+    prompt: "A program inputs a Mark. The mark must be from 0 to 100 inclusive. Identify the validation check and write a valid condition.",
+    answer: "Use a range check. The valid condition is Mark >= 0 AND Mark <= 100.",
     marking: [
-      { mark: "M1", text: "first comparison with 13 shown as no match and search advances" },
-      { mark: "B1", text: "second comparison with 42 shown as match" },
-      { mark: "B1", text: "sets/states Found becomes TRUE" },
-      { mark: "B1", text: "states search stops when found" },
-      { mark: "A1", text: "states correct position/index 2 using 1-based pseudocode indexing" },
+      { mark: "B1", text: "identifies range check" },
+      { mark: "B1", text: "uses lower limit 0" },
+      { mark: "B1", text: "uses upper limit 100" },
+      { mark: "M1", text: "combines valid limits using AND" },
+      { mark: "A1", text: "condition is inclusive and logically correct" },
     ],
     strict: [
-      "Do not require a formal trace table if comparisons are ordered clearly.",
-      "Allow index 1 if candidate explicitly uses Java-style 0-based indexing.",
-      "Do not award comparisons after 42 if candidate claims the algorithm stops when found.",
+      "Do not accept OR for the valid condition.",
+      "Allow equivalent comparisons such as Mark > -1 AND Mark < 101 if integer marks are clear.",
+      "Do not require full pseudocode.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Explain why binary search requires sorted data and why linear search can be used on unsorted data.",
-    answer: "Binary search compares the target with the middle item and then discards one half of the list. This is only valid if the data is sorted, because order tells the algorithm which half cannot contain the target. Linear search can be used on unsorted data because it checks each item one by one and does not rely on order.",
+    marks: "6 marks",
+    prompt: "Write Cambridge-style pseudocode to repeatedly input Age until it is from 11 to 18 inclusive. Output an error message when the age is invalid.",
+    answer: "REPEAT\n    INPUT Age\n    IF Age < 11 OR Age > 18 THEN\n        OUTPUT \"Invalid age\"\n    ENDIF\nUNTIL Age >= 11 AND Age <= 18",
     marking: [
-      { mark: "B1", text: "states binary search checks middle item" },
-      { mark: "B1", text: "states binary search discards half / adjusts search bounds" },
-      { mark: "B1", text: "explains discarding half depends on sorted order" },
-      { mark: "B1", text: "states linear search checks items sequentially" },
-      { mark: "B1", text: "explains linear search does not rely on order" },
+      { mark: "B1", text: "uses repeated input loop" },
+      { mark: "B1", text: "inputs Age inside the loop" },
+      { mark: "M1", text: "tests invalid lower/upper range or equivalent valid range" },
+      { mark: "A1", text: "outputs error message when invalid" },
+      { mark: "M1", text: "loop terminates only when Age is valid" },
+      { mark: "B1", text: "uses Cambridge-style keywords rather than Java-only syntax" },
     ],
     strict: [
-      "Do not accept 'binary is faster' as the reason sorted data is required.",
-      "Allow ascending or descending order if the bound updates match the order.",
-      "Do not say linear search requires sorted data.",
+      "Do not award termination mark if invalid ages are accepted.",
+      "Allow WHILE version if it correctly repeats input until valid.",
+      "Do not require exact wording of error message.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Complete a trace table for binary search for 88 in sorted list [13, 21, 42, 56, 70, 88, 91] using 1-based indexing.",
-    answer: "Low = 1, High = 7, Mid = 4, List[4] = 56. Target 88 is larger, so Low becomes 5. Low = 5, High = 7, Mid = 6, List[6] = 88. Target found at position 6.",
+    marks: "4 marks",
+    prompt: "Explain the difference between validation and proving that data is true. Use an age example.",
+    answer: "Validation checks whether data follows a rule or is acceptable for processing. It does not prove the data is true. For example, an age of 15 passes a range check for 11-18, but the user might not really be 15.",
     marking: [
-      { mark: "B1", text: "initial Low 1 and High 7" },
-      { mark: "B1", text: "first Mid calculated as 4" },
-      { mark: "M1", text: "compares target with List[4] = 56" },
-      { mark: "A1", text: "updates Low to 5 because target is larger" },
-      { mark: "B1", text: "second Mid calculated as 6" },
-      { mark: "A1", text: "identifies 88 found at position 6" },
+      { mark: "B1", text: "states validation checks data against a rule" },
+      { mark: "B1", text: "states validation does not prove truth/accuracy" },
+      { mark: "B1", text: "gives valid age range example" },
+      { mark: "B1", text: "explains the example clearly in context" },
     ],
     strict: [
-      "Do not accept discarding the right half after comparing with 56.",
-      "Allow equivalent trace if candidate uses 0-based indexing consistently.",
-      "Do not require formula for Mid if values are correct.",
+      "Do not accept 'validation makes data correct'.",
+      "Allow other realistic examples if acceptability vs truth is clear.",
+      "Do not require discussion of verification.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Write Cambridge-style pseudocode outline for linear search using variables Found, Index, Target and List.",
-    answer: "Found <- FALSE\nIndex <- 1\nWHILE Found = FALSE AND Index <= Length\n    IF List[Index] = Target THEN\n        Found <- TRUE\n    ELSE\n        Index <- Index + 1\n    ENDIF\nENDWHILE",
+    prompt: "For each input, Identify a suitable validation check: surname must not be blank; password at least 8 characters; date in DD/MM/YYYY; barcode final digit detects errors; score 1 to 5.",
+    answer: "Surname: presence check. Password: length check. Date: format check. Barcode final digit: check digit. Score 1 to 5: range check.",
     marking: [
-      { mark: "B1", text: "initialises Found to FALSE" },
-      { mark: "B1", text: "initialises Index/start position" },
-      { mark: "M1", text: "loop continues while not found and items remain" },
-      { mark: "M1", text: "compares List[Index] with Target" },
-      { mark: "A1", text: "sets Found TRUE when target matches" },
+      { mark: "B1", text: "surname identified as presence check" },
+      { mark: "B1", text: "password identified as length check" },
+      { mark: "B1", text: "date identified as format check" },
+      { mark: "B1", text: "barcode identified as check digit" },
+      { mark: "B1", text: "score identified as range check" },
     ],
     strict: [
-      "Do not require exact variable name Length if list bound is clear.",
-      "Allow loop with RETURN position if logic is equivalent.",
-      "Do not award full credit if Index is never changed when no match occurs.",
+      "Do not accept type check for DD/MM/YYYY unless format/pattern is also clear.",
+      "Allow size check for length check if meaning is clear.",
+      "Do not award check digit for simply checking a digit exists.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student says: 'Binary search is always better than linear search because it is faster.' Evaluate this statement.",
-    answer: "Binary search is usually faster for large sorted lists because it repeatedly halves the search area. However, it is not always better because it requires sorted data. If the data is unsorted, linear search can be used immediately, while binary search would need the data to be sorted first. For small lists, linear search may also be simple enough.",
+    prompt: "A student writes Mark < 0 AND Mark > 100 to detect an invalid mark. Explain the error and correct it.",
+    answer: "The condition can never be true because a mark cannot be less than 0 and greater than 100 at the same time. To detect an invalid mark outside the range, use Mark < 0 OR Mark > 100. The valid condition would be Mark >= 0 AND Mark <= 100.",
     marking: [
-      { mark: "B1", text: "states binary search can be faster / halves search area" },
-      { mark: "B1", text: "states binary search requires sorted data" },
-      { mark: "B1", text: "explains unsorted data may make linear search more suitable" },
-      { mark: "B1", text: "mentions small data sets or simplicity as a valid factor" },
-      { mark: "B1", text: "clear conclusion that 'always better' is incorrect" },
+      { mark: "B1", text: "identifies AND condition can never be true" },
+      { mark: "B1", text: "explains value cannot be below lower limit and above upper limit simultaneously" },
+      { mark: "B1", text: "correct invalid condition uses OR" },
+      { mark: "B1", text: "gives correct valid condition using AND" },
+      { mark: "B1", text: "uses inclusive limits correctly" },
     ],
     strict: [
-      "Do not award full marks for 'binary is faster' only.",
-      "Allow discussion of cost of sorting before binary search.",
-      "Do not require Big O notation at AS level.",
+      "Do not accept Mark < 0 OR Mark < 100 as corrected invalid condition.",
+      "Allow equivalent integer comparisons if limits remain 0 and 100 inclusive.",
+      "Do not require full loop pseudocode.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9> -]/g, "");
-}
-
-function tableMarkup(headers, rows) {
-  return `
-    <div class="result-table" style="--cols: ${headers.length}">
-      <div class="table-row table-head">${headers.map((head) => `<div>${head}</div>`).join("")}</div>
-      ${rows.map((row) => `<div class="table-row">${row.map((cell) => `<div>${cell}</div>`).join("")}</div>`).join("")}
-    </div>
-  `;
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9<>=, -]/g, "");
 }
 
 function setupPrint() {
@@ -210,10 +170,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    linear: "Correct. If the pile is unsorted, checking one by one is safe.",
-    binary: "Not safe. Binary search only works when order lets you discard half.",
-    sort: "Possible, but this is a sorting step first. If you need one quick search, linear may be simpler.",
-    guess: "Tempting during revision week, but not an algorithm.",
+    presence: "Not enough. Presence checks that something was entered, but 900 is still present.",
+    range: "Correct. A range check can reject values outside a sensible age interval.",
+    length: "Not the best rule. 900 has a length, but the value is the problem.",
+    format: "Not the best rule. 900 is numeric-looking, but the accepted range is the issue.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -233,21 +193,25 @@ function setupClassifier() {
   });
 }
 
-function setupLinearTool() {
-  const input = document.querySelector("#linearInput");
-  const result = document.querySelector("#linearResult");
-  document.querySelector("#linearBtn").addEventListener("click", () => {
-    const trace = linearTrace(Number(input.value));
-    result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
+function setupTester() {
+  const input = document.querySelector("#markInput");
+  const result = document.querySelector("#testResult");
+  document.querySelector("#testBtn").addEventListener("click", () => {
+    const mark = Number(input.value);
+    if (Number.isNaN(mark)) {
+      result.innerHTML = "<strong>Invalid</strong><span>Input must be numeric for this test.</span>";
+      return;
+    }
+    const valid = mark >= 0 && mark <= 100;
+    result.innerHTML = `<strong>${valid ? "Valid" : "Invalid"}</strong><span>${mark} ${valid ? "is within" : "is outside"} the inclusive range 0-100.</span>`;
   });
 }
 
-function setupBinaryTool() {
-  const input = document.querySelector("#binaryInput");
-  const result = document.querySelector("#binaryResult");
-  document.querySelector("#binaryBtn").addEventListener("click", () => {
-    const trace = binaryTrace(Number(input.value));
-    result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
+function setupBuilder() {
+  const input = document.querySelector("#builderInput");
+  const result = document.querySelector("#builderResult");
+  document.querySelector("#buildBtn").addEventListener("click", () => {
+    result.innerHTML = `<pre><code>${builderMap[input.value]}</code></pre>`;
   });
 }
 
@@ -256,9 +220,8 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    ${tableMarkup(example.trace.headers, example.trace.rows)}
-    <p>${example.trace.note}</p>
-    <ul>${example.points.map((point) => `<li>${point}</li>`).join("")}</ul>
+    <p><strong>Rule:</strong> ${example.rule}</p>
+    <pre><code>${example.code}</code></pre>
   `;
 }
 
@@ -270,7 +233,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("linear-found");
+  renderExample("range");
 }
 
 function setupPractice() {
@@ -359,8 +322,8 @@ function setupExam() {
 setupPrint();
 setupHook();
 setupClassifier();
-setupLinearTool();
-setupBinaryTool();
+setupTester();
+setupBuilder();
 setupExamples();
 setupPractice();
 setupMistakes();

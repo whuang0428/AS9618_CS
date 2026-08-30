@@ -49,7 +49,9 @@ function parseCsv(text) {
 }
 
 function jpegDimensions(relativePath) {
-  const buffer = fs.readFileSync(path.join(root, relativePath));
+  const filePath = path.join(root, relativePath);
+  if (!fs.existsSync(filePath)) return null;
+  const buffer = fs.readFileSync(filePath);
   let offset = 2;
   while (offset + 9 < buffer.length) {
     if (buffer[offset] !== 0xff) { offset += 1; continue; }
@@ -75,10 +77,11 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["142", ["waterfall", "iterative", "RAD", "rapid prototyping", "time-box", "user involvement"]],
+  ["143", ["waterfall", "iterative", "RAD", "rapid prototyping", "time-box", "user involvement"]],
   ["144", ["structure chart", "parameters", "derive equivalent pseudocode", "state-transition diagram", "persistent states", "event-driven changes"]],
-  ["138", ["syntax error", "logic error", "run-time error", "exposed", "locate", "correct", "existing program", "enhances functionality", "MeritCount"]],
-  ["145", [
+  ["145", ["syntax error", "logic error", "run-time error", "exposed", "locate", "correct"]],
+  ["146", ["existing program", "enhances functionality", "MeritCount"]],
+  ["146", [
     "dry run", "walkthrough", "white-box", "black-box", "integration", "alpha", "beta", "acceptance", "stub", "test strategy", "test plan",
     "maintenance continues", "corrective", "adaptive", "perfective", "regression",
   ]],
@@ -92,21 +95,21 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["L144-Q1", ["structure chart", "derive", "pseudocode", "state-transition"]],
-  ["AQ145-Q4", ["structure chart", "header", "call", "state-transition"]],
-  ["L059-Q1", ["syntax", "logic", "runtime"]],
-  ["AQ150-Q5", ["initialisation", "correction"]],
-  ["L145-Q1", ["dry run", "walkthrough", "white-box", "black-box", "integration", "stub"]],
-  ["AR146-Q1", ["alpha", "beta", "acceptance"]],
-  ["L145-Q2", ["test strategy", "test-plan", "expected", "actual", "pass/fail"]],
-  ["AR146-Q2", ["test-plan", "regression", "corrective maintenance"]],
-  ["L145-Q4", ["corrective", "adaptive", "perfective"]],
-  ["L138-Q1", ["existing program", "analyse", "amendment", "MeritCount", "regression"]],
-  ["AQ145-Q1", ["existing program", "analysis", "amending", "regression"]],
+  ["L145-Q1", ["structure chart", "derive", "pseudocode", "state-transition"]],
+  ["AQ146-Q4", ["structure chart", "header", "call", "state-transition"]],
+  ["L060-Q1", ["syntax", "logic", "runtime"]],
+  ["AQ151-Q5", ["initialisation", "correction"]],
+  ["L146-Q1", ["dry run", "walkthrough", "white-box", "black-box", "integration", "stub"]],
+  ["AR147-Q1", ["alpha", "beta", "acceptance"]],
+  ["L146-Q2", ["test strategy", "test-plan", "expected", "actual", "pass/fail"]],
+  ["AR147-Q2", ["test-plan", "regression", "corrective maintenance"]],
+  ["L146-Q4", ["corrective", "adaptive", "perfective"]],
+  ["L139-Q1", ["existing program", "analyse", "amendment", "MeritCount", "regression"]],
+  ["AQ146-Q1", ["existing program", "analysis", "amending", "regression"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 12 assessment`);
 
-const acceptedSection12 = [...questions.values()].filter(({ id }) => /^(?:L(?:059|137|138|142|144|145|146)-Q|AQ145-Q|AQ150-Q5|AR146-Q)/.test(id))
+const acceptedSection12 = [...questions.values()].filter(({ id }) => /^(?:L(?:060|138|139|143|144|145|146|147)-Q|AQ146-Q|AQ151-Q5|AR147-Q)/.test(id))
   .map((question) => [question.prompt, question.answer, ...(question.points ?? []).flat(), ...(question.guidance ?? [])].join(" ")).join("\n");
 for (const [pattern, label] of [
   [/a structure chart is (?:the same as|a type of) flowchart/i, "structure chart is falsely equated with a flowchart"],
@@ -120,7 +123,7 @@ for (const [pattern, label] of [
   [/amend(?:ing|ment)? means? rewrit(?:e|ing) from scratch/i, "program amendment is falsely defined as a full rewrite"],
 ]) expect(!pattern.test(acceptedSection12), `forbidden Section 12 assessment semantics: ${label}`);
 
-const visualKeys = ["138/bug", "144/algorithms", "145/changeover"];
+const visualKeys = ["139/bug", "145/algorithms", "146/changeover"];
 const semanticRows = parseCsv(read("audits/stage10-semantic-review-register.csv"));
 const targetRows = parseCsv(read("audits/stage10-explanation-target-register.csv"));
 const visualFacts = read("scripts/stage10-visual-repair-facts.json");
@@ -129,8 +132,9 @@ for (const key of visualKeys) {
   const visualPath = `web/assets/diagrams/stage10-infographics/stage10-lesson-${lesson}-${targetId}.jpg`;
   const dimensions = jpegDimensions(visualPath);
   expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${visualPath}: expected 1536x1024 JPEG`);
-  const visualHash = sha256(fs.readFileSync(path.join(root, visualPath)));
-  const semanticRow = semanticRows.find((row) => row.lesson === lesson && row.target_id === targetId);
+  const visualFile = path.join(root, visualPath);
+  const visualHash = fs.existsSync(visualFile) ? sha256(fs.readFileSync(visualFile)) : "";
+  const semanticRow = semanticRows.find((row) => row.asset === path.basename(visualPath));
   expect(semanticRow?.sha256 === visualHash, `${key}: semantic review hash does not match the current image`);
   expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", `${key}: visual lacks two approved semantic review passes`);
   const deliveryLesson = visualDeliveryLesson(lesson, targetId);
@@ -160,9 +164,9 @@ for (const [id, pattern] of mutationPatterns) {
 }
 
 for (const [requirementId, questionIds, pattern] of [
-  ["S12.02", ["L144-Q1", "AQ145-Q4"], /structure|parameter|derive|pseudocode/gi],
-  ["S12.05", ["L145-Q1", "AR146-Q1", "AQ145-Q5"], /dry run|walkthrough|white-box|black-box|integration|alpha|beta|acceptance|stub|testing/gi],
-  ["S12.09", ["L146-Q5"], /analyse|analysis|amend|existing|program|enhance/gi],
+  ["S12.02", ["L145-Q1", "AQ146-Q4"], /structure|parameter|derive|pseudocode/gi],
+  ["S12.05", ["L146-Q1", "AR147-Q1", "AQ146-Q5"], /dry run|walkthrough|white-box|black-box|integration|alpha|beta|acceptance|stub|testing/gi],
+  ["S12.09", ["L147-Q5"], /analyse|analysis|amend|existing|program|enhance/gi],
 ]) {
   const mutation = evaluateRequirement(requirements.get(requirementId), {
     questionTransform: (question) => questionIds.includes(question.id) ? {

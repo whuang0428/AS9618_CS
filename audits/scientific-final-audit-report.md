@@ -5,11 +5,11 @@
 ## Passed
 
 - Syllabus: 121/121 requirements are Complete and independently Reviewed, with visible CORE teaching, worked/practice evidence, direct assessment and visual evidence where required.
-- Sequence: 121 requirement nodes, 82 prerequisite edges and 257 assessment first-use checks are Ready with no backward dependency.
-- Lessons: 150/150 Markdown and student HTML identities are current; all repair batches and semantic checks are closed.
-- Assessment: 963/963 questions are Approved by current content hash; 963/963 carry reviewed question-level AO mappings; A-without-M and FT-with-B-only flags are zero.
-- Visuals: 969/969 objects pass inventory/display checks; 783/783 Stage 10 images have two Reviewed semantic passes and Approved status. Mobile Stage 10 panels use the full transcript instead of a 720 px overflow container.
-- Browser/accessibility: 153 pages / 306 viewport rows are Approved in the Stage 6 and Stage 7 ledgers.
+- Sequence: 121 requirement nodes, 81 prerequisite edges and 229 assessment first-use checks are Ready with no backward dependency.
+- Lessons: 151/151 Markdown and student HTML identities are current; all repair batches and semantic checks are closed.
+- Assessment: 968/968 questions are Approved by current content hash; 968/968 carry reviewed question-level AO mappings; A-without-M and FT-with-B-only flags are zero.
+- Visuals: 971/971 objects pass inventory/display checks; 784/784 Stage 10 images have two Reviewed semantic passes and Approved status. Mobile Stage 10 panels use the full transcript instead of a 720 px overflow container.
+- Browser/accessibility: 154 pages / 308 viewport rows are Approved in the Stage 6 and Stage 7 ledgers.
 - Defects: all 30 frozen defects are reconciled as Resolved with P0=0, P1=0, P2=0, P3=0 and Unknown=0.
 
 ## Failed

@@ -1,103 +1,103 @@
 const scenarioMap = {
-  payment: {
-    result: "Best fit: encryption.",
-    method: "Payment data needs confidentiality while transmitted, so it should be converted into ciphertext that eavesdroppers cannot read.",
-    trap: "Do not use hashing if the shop must read the payment details at the other end.",
+  studentOwn: {
+    result: "Allow: read own timetable.",
+    method: "The student needs this information for normal school work, and read-only access does not let them alter data.",
+    trap: "Do not grant wider access to all student records just because the user is authenticated.",
   },
-  password: {
-    result: "Best fit: hashing.",
-    method: "The stored value should be a digest. During login, the entered password is hashed and compared with the stored hash.",
-    trap: "Do not store decryptable passwords if only verification is needed.",
+  studentMarks: {
+    result: "Deny: no write permission for exam marks.",
+    method: "Editing marks is not required for the student role and would threaten data integrity.",
+    trap: "Do not confuse viewing a result with being allowed to modify the official record.",
   },
-  download: {
-    result: "Best fit: hashing.",
-    method: "A hash of the downloaded file can be compared with the expected hash to detect whether the file has changed.",
-    trap: "A hash does not hide the file contents; it helps detect change.",
+  teacherClass: {
+    result: "Allow: write marks for own class only.",
+    method: "The teacher role needs write access for assigned classes, but should not have unnecessary access to unrelated classes.",
+    trap: "Do not give all teachers global admin access; least privilege still applies.",
   },
-  bank: {
-    result: "Best fit: digital certificate.",
-    method: "The certificate links the bank's identity to its public key and is checked by the browser.",
-    trap: "The certificate supports trust and authentication; it is not the same thing as the encrypted payment data.",
+  teacherAll: {
+    result: "Deny: excessive confidential access.",
+    method: "Viewing all medical records is not needed for ordinary teaching and would risk confidentiality.",
+    trap: "Do not solve this with encryption alone; permission rules still decide who may view the data.",
   },
-  lostLaptop: {
-    result: "Best fit: encryption.",
-    method: "Local file or disk encryption can keep files unreadable to someone without the key or login credentials.",
-    trap: "A digital certificate does not protect local files by itself.",
+  adminTemp: {
+    result: "Deny permanent admin; allow time-limited specific rights if justified.",
+    method: "Temporary work should receive only the permissions needed for the task and then be removed.",
+    trap: "Do not leave temporary privileges active after the job is complete.",
   },
 };
 
 const examples = {
-  password: {
-    title: "Example 1: Password verification using a hash",
-    problem: "A website needs to check passwords without storing the actual passwords.",
+  grades: {
+    title: "Example 1: Exam marks in a school database",
+    problem: "Students can view final published results but cannot change marks.",
     steps: [
-      "When the account is created, the password is processed by a hash algorithm.",
-      "The resulting digest is stored instead of the plaintext password.",
-      "At login, the entered password is hashed again.",
-      "If the new hash matches the stored hash, the password is accepted.",
+      "Students may receive read access to their own published result.",
+      "They must not receive write access to marks because that would threaten integrity.",
+      "Teachers may write marks only for their own classes.",
+      "Audit logs can record who changed a mark and when.",
     ],
   },
-  payment: {
-    title: "Example 2: Encrypting payment data in transit",
-    problem: "A customer sends card details to an online shop.",
+  files: {
+    title: "Example 2: Shared project files",
+    problem: "A project team shares files with managers, editors and viewers.",
     steps: [
-      "The data must remain confidential while travelling across the network.",
-      "Encryption converts the readable card details into ciphertext.",
-      "Only the intended recipient with the correct key should be able to recover the plaintext.",
-      "This does not remove the need for correct access rights and secure storage.",
+      "Viewers receive read permission so they can see the file but not edit it.",
+      "Editors receive write permission because changing the file is part of their role.",
+      "Only selected managers may delete archived files.",
+      "This limits accidental deletion and protects availability.",
     ],
   },
-  certificate: {
-    title: "Example 3: Browser checks a certificate",
-    problem: "A user visits an online banking site over HTTPS.",
+  temporary: {
+    title: "Example 3: Temporary technician",
+    problem: "A technician needs to install software on ten computers for one afternoon.",
     steps: [
-      "The site sends a digital certificate to the browser.",
-      "The certificate contains the site's public key and identity information.",
-      "The browser checks the issuer, expiry date, domain name and trust chain.",
-      "If trusted, the public key can be used as part of establishing secure communication.",
+      "Grant the minimum admin rights needed for that task.",
+      "Limit the permission by time, device or task where possible.",
+      "Remove the permission after the installation is complete.",
+      "Leaving admin rights active increases the damage if the account is misused.",
     ],
   },
-  integrity: {
-    title: "Example 4: File integrity using a hash",
-    problem: "A software download page publishes a hash for an installer file.",
+  leaver: {
+    title: "Example 4: Employee leaves the company",
+    problem: "A staff member leaves but their account still has access to customer records.",
     steps: [
-      "The user calculates the hash of the downloaded file.",
-      "The calculated hash is compared with the published hash.",
-      "If the hashes match, the file is likely unchanged from the published version.",
-      "If they differ, the file may be corrupted or tampered with.",
+      "The account should be disabled or removed when the user leaves.",
+      "Any shared credentials should be changed or revoked.",
+      "This prevents later unauthorised viewing or changing of customer data.",
+      "A leaver process supports confidentiality, integrity and accountability.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which method converts plaintext into ciphertext?", accepted: ["encryption", "encrypt"], answer: "Encryption" },
-  { id: "p2", prompt: "Which method converts ciphertext back into readable plaintext?", accepted: ["decryption", "decrypt"], answer: "Decryption" },
-  { id: "p3", prompt: "Which method creates a one-way fixed digest?", accepted: ["hashing", "hash"], answer: "Hashing" },
-  { id: "p4", prompt: "Which security goal is mainly protected by encrypting data?", accepted: ["confidentiality"], answer: "Confidentiality" },
-  { id: "p5", prompt: "Should stored passwords normally be encrypted or hashed for verification?", accepted: ["hashed", "hashing", "hash"], answer: "Hashed" },
-  { id: "p6", prompt: "What document links a website identity to a public key?", accepted: ["digital certificate", "certificate", "ssl certificate", "tls certificate"], answer: "Digital certificate" },
-  { id: "p7", prompt: "What trusted organisation issues or signs digital certificates?", accepted: ["certificate authority", "ca", "certification authority"], answer: "Certificate authority" },
-  { id: "p8", prompt: "What key must be kept secret by its owner?", accepted: ["private key"], answer: "Private key" },
-  { id: "p9", prompt: "Can a hash normally be decrypted to recover the original password? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Name one certificate problem that can trigger a browser warning.", accepted: ["expired", "wrong domain", "mismatched domain", "untrusted", "revoked", "invalid signature", "not trusted"], answer: "Expired, wrong domain, untrusted issuer, revoked or invalid signature" },
+  { id: "p1", prompt: "What is the term for a permission to perform an action on a resource?", accepted: ["access right", "access rights", "permission"], answer: "Access right / permission" },
+  { id: "p2", prompt: "Which permission allows a user to view data but not change it?", accepted: ["read", "read access", "read permission"], answer: "Read permission" },
+  { id: "p3", prompt: "Which permission allows a user to change data?", accepted: ["write", "modify", "write access", "write permission", "modify permission"], answer: "Write / modify permission" },
+  { id: "p4", prompt: "What principle means users should receive only the permissions needed for their role?", accepted: ["least privilege", "principle of least privilege", "minimum privilege"], answer: "Principle of least privilege" },
+  { id: "p5", prompt: "Does successful authentication automatically mean full access? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p6", prompt: "Name one security goal protected by restricting read access.", accepted: ["confidentiality"], answer: "Confidentiality" },
+  { id: "p7", prompt: "Name one security goal protected by restricting write access.", accepted: ["integrity"], answer: "Integrity" },
+  { id: "p8", prompt: "What is a job-based permission set called?", accepted: ["role", "role based access", "role-based access", "rbac"], answer: "Role / role-based access" },
+  { id: "p9", prompt: "What record can show who accessed or changed data?", accepted: ["audit log", "log", "access log", "audit trail"], answer: "Audit log / access log / audit trail" },
+  { id: "p10", prompt: "Name one action needed when a user leaves an organisation.", accepted: ["disable account", "remove account", "revoke access", "remove permissions", "delete account", "change password"], answer: "Disable/remove account, revoke permissions or change shared credentials" },
 ];
 
 const mistakes = [
   {
-    wrong: "Passwords should be encrypted so the website can decrypt them during login.",
-    fix: "For password verification, store a hash. At login, hash the entered password and compare the digests; the original password should not need to be recovered.",
+    wrong: "If a user has logged in, they should be able to access all data.",
+    fix: "Logging in authenticates identity. Access rights still limit what the user is authorised to view or change.",
   },
   {
-    wrong: "Hashing protects confidentiality because it hides the file contents.",
-    fix: "Hashing is mainly used for comparison or integrity checking. It does not encrypt the file contents for later reading.",
+    wrong: "Least privilege means no one should have administrator rights.",
+    fix: "Least privilege means users get only the permissions needed for their role. Some administrators need admin rights, but not everyone and not permanently.",
   },
   {
-    wrong: "A digital certificate encrypts all the data on a website by itself.",
-    fix: "A certificate helps authenticate the website and bind its identity to a public key. Encryption is then used for the secure communication.",
+    wrong: "Read and write permissions protect the same thing.",
+    fix: "Restricting read access mainly protects confidentiality. Restricting write or delete access mainly protects integrity and availability.",
   },
   {
-    wrong: "Encryption proves that data has not changed.",
-    fix: "Encryption protects confidentiality. Integrity needs a suitable check, such as a hash or other integrity mechanism.",
+    wrong: "Temporary permissions can be left active in case they are useful later.",
+    fix: "Temporary permissions should be removed when no longer needed; stale privileges increase risk if the account is misused.",
   },
 ];
 
@@ -111,91 +111,93 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Explain the difference between encryption and hashing.",
-    answer: "Encryption converts plaintext into ciphertext using an algorithm and key so that the data is unreadable without the correct key. It is reversible by decryption if the correct key is available. Hashing creates a fixed digest from data and is designed to be one-way. It is used for comparison, such as password verification or checking whether data has changed, not for recovering the original data.",
+    prompt: "Explain the difference between authentication and access rights.",
+    answer: "Authentication verifies a user's identity, for example by checking a password or token. Access rights define what that authenticated user is allowed to do, such as read, write or delete a file. A user may log in successfully but still be denied permission to edit exam marks. This separation helps protect data by limiting actions to those required for the user's role.",
     marking: [
-      { mark: "B1", text: "encryption converts plaintext/readable data into ciphertext/unreadable data" },
-      { mark: "B1", text: "encryption uses key/algorithm and can be decrypted with correct key" },
-      { mark: "B1", text: "hashing creates a digest/hash value from input data" },
-      { mark: "B1", text: "hashing is one-way/not intended to recover original data" },
-      { mark: "B1", text: "valid use comparison, e.g. encryption for confidentiality; hashing for password verification/integrity" },
+      { mark: "B1", text: "authentication verifies identity/claim of user" },
+      { mark: "B1", text: "access rights define allowed actions/resources" },
+      { mark: "B1", text: "valid permission example such as read/write/delete/execute" },
+      { mark: "B1", text: "logged-in user may still be denied an action" },
+      { mark: "B1", text: "security consequence linked to limiting role-based actions" },
     ],
     strict: [
-      "Do not accept 'hashing is encryption' as a distinction.",
-      "Do not award hash reversibility; hashes are not normally decrypted.",
-      "Allow ciphertext described as scrambled/unreadable form.",
+      "Do not accept definitions that make authentication and access rights identical.",
+      "Do not award permission example for only 'secure'.",
+      "Allow authorisation as the process of checking access rights.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Describe how hashing can be used to verify a password without storing the plaintext password.",
-    answer: "When a password is first set, a hash algorithm is applied to the password and the resulting hash is stored. At login, the password entered by the user is hashed using the same process. The new hash is compared with the stored hash. If they match, the password is accepted. This avoids storing the plaintext password and reduces the damage if the password file is accessed.",
+    marks: "6 marks",
+    prompt: "A school database stores student records and exam marks. Describe how access rights should be used for students, teachers and administrators.",
+    answer: "Students should have read access only to their own permitted information and no write access to exam marks. Teachers should have access to records and marks needed for their own classes, with write access only where entering or updating marks is part of their role. Administrators should manage accounts and system settings but should not automatically have unlimited access to all sensitive data unless required. This applies least privilege and protects confidentiality and integrity.",
     marking: [
-      { mark: "B1", text: "password is processed by hash algorithm when set/registered" },
-      { mark: "B1", text: "hash/digest rather than plaintext password is stored" },
-      { mark: "B1", text: "entered password is hashed at login" },
-      { mark: "B1", text: "new hash compared with stored hash" },
-      { mark: "B1", text: "security benefit linked to not storing plaintext/reduced exposure" },
+      { mark: "B1", text: "students limited to own/read-only relevant information" },
+      { mark: "B1", text: "students denied write access to marks or sensitive records" },
+      { mark: "B1", text: "teachers given class/role-related access" },
+      { mark: "B1", text: "teacher write access limited to relevant marks/data" },
+      { mark: "B1", text: "administrator permissions described without assuming unlimited data access" },
+      { mark: "B1", text: "least privilege/security goal linked to confidentiality/integrity" },
     ],
     strict: [
-      "Do not accept decrypting the stored hash to check the password.",
-      "Do not award storage mark for storing the actual password.",
-      "Allow digest/checksum wording if one-way comparison is clear.",
+      "Do not award full marks for saying 'give each user a password' only.",
+      "Do not accept unlimited administrator access without role justification.",
+      "Allow groups or roles as a way to manage the access rights.",
+      "Award each role independently.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain the role of a digital certificate when a browser connects to a banking website.",
-    answer: "A digital certificate links the website identity to a public key. It contains information such as the domain/owner, public key, issuer and expiry date. The browser checks that the certificate is issued by a trusted certificate authority, matches the domain and is valid. This helps authenticate the website and supports setting up encrypted HTTPS communication.",
+    marks: "3 marks",
+    prompt: "Explain the principle of least privilege and give two benefits.",
+    answer: "The principle of least privilege means giving users only the minimum permissions needed to perform their role or task. It reduces confidentiality risk because users cannot view unnecessary sensitive data. It reduces integrity risk because users cannot change data outside their responsibility. It can also reduce damage from compromised accounts because the attacker receives only the permissions of that account.",
     marking: [
-      { mark: "B1", text: "certificate links website/domain identity to public key" },
-      { mark: "B1", text: "valid certificate content, e.g. public key/domain/owner/issuer/expiry/signature" },
-      { mark: "B1", text: "browser checks trusted issuer/certificate authority" },
-      { mark: "B1", text: "browser checks validity such as domain match/expiry/signature" },
-      { mark: "B1", text: "consequence: authenticates site and/or supports encrypted HTTPS communication" },
+      { mark: "B1", text: "least privilege means minimum permissions needed for role/task" },
+      { mark: "B1", text: "benefit linked to confidentiality/read restriction" },
+      { mark: "B1", text: "benefit linked to integrity/write/change restriction" },
     ],
     strict: [
-      "Do not accept certificate as simply 'a password for a website'.",
-      "Do not say the certificate alone encrypts all data.",
-      "Allow CA for certificate authority.",
+      "Do not accept 'no access for everyone' as least privilege.",
+      "Do not award benefits for vague 'more secure' without mechanism.",
+      "Allow availability benefit if delete/admin rights are restricted.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "An online shop stores passwords and sends payment data over the internet. State which security method should be used for each and justify your choices.",
-    answer: "Stored passwords should be hashed because the shop only needs to verify an entered password by comparing hashes and should not need to recover the plaintext password. Payment data sent over the internet should be encrypted because the data must remain confidential while in transit and must be recoverable by the intended recipient.",
+    marks: "5 marks",
+    prompt: "A temporary worker needs access to a folder for one week. Describe how the permissions should be managed.",
+    answer: "The worker should be given only the permissions needed for the task, such as read or write access to the specific folder rather than wider system access. The permissions should be time-limited or reviewed at the end of the week. They should be removed when the task ends. Audit logs can record access or changes. This reduces the risk of later unauthorised access or accidental changes.",
     marking: [
-      { mark: "B1", text: "stored passwords use hashing" },
-      { mark: "B1", text: "justification linked to one-way comparison/no plaintext recovery needed" },
-      { mark: "B1", text: "payment data in transit uses encryption" },
-      { mark: "B1", text: "justification linked to confidentiality and intended recipient can decrypt/read" },
+      { mark: "B1", text: "permissions limited to required task/folder" },
+      { mark: "B1", text: "specific access type stated, e.g. read/write rather than admin/all access" },
+      { mark: "B1", text: "time-limited or reviewed after one week" },
+      { mark: "B1", text: "permissions removed/revoked when no longer needed" },
+      { mark: "B1", text: "risk reduction linked to unauthorised access/changes or audit logging" },
     ],
     strict: [
-      "Do not award password mark for encrypting passwords unless hashing is also clearly stated as the storage method.",
-      "Do not award payment mark for hashing payment data if the recipient must read the details.",
-      "Allow SSL/TLS certificate as digital certificate.",
-      "Award each method independently.",
+      "Do not accept permanent admin rights without justification.",
+      "Do not award removal mark for only 'check it' without revoking/reducing access.",
+      "Allow temporary group membership if removal is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A download website publishes a hash value for a software installer. Explain how this helps users detect tampering.",
-    answer: "The user can calculate the hash of the downloaded installer and compare it with the published hash value. If the values match, the file is likely unchanged from the published version. If they differ, the file may have been altered, corrupted or tampered with. This works because a change to the file should produce a different hash value.",
+    marks: "6 marks",
+    prompt: "For each permission, state what it allows and one security risk if given too widely: read; write; delete.",
+    answer: "Read permission allows a user to view or open data; if given too widely it can break confidentiality by exposing sensitive information. Write permission allows a user to create or change data; if given too widely it can damage integrity through unauthorised or accidental changes. Delete permission allows a user to remove data; if given too widely it can affect availability or integrity because important records may be removed.",
     marking: [
-      { mark: "B1", text: "user calculates hash of downloaded file" },
-      { mark: "B1", text: "calculated hash compared with published/expected hash" },
-      { mark: "B1", text: "matching hashes indicate file likely unchanged" },
-      { mark: "B1", text: "different hashes indicate changed/corrupted/tampered file" },
-      { mark: "B1", text: "reason linked to changed input producing different hash value" },
+      { mark: "B1", text: "read permission allows viewing/opening data" },
+      { mark: "B1", text: "read risk linked to confidentiality/exposure" },
+      { mark: "B1", text: "write permission allows creating/changing/modifying data" },
+      { mark: "B1", text: "write risk linked to integrity/unauthorised changes" },
+      { mark: "B1", text: "delete permission allows removing data" },
+      { mark: "B1", text: "delete risk linked to availability/integrity/loss of records" },
     ],
     strict: [
-      "Do not accept hash as hiding the installer contents.",
-      "Do not award comparison mark for only saying 'look at the file size'.",
-      "Allow digest/checksum if the comparison idea is clear.",
+      "Do not award risk marks for repeating only 'it is dangerous'.",
+      "Do not confuse read with write; viewing is not changing.",
+      "Allow execute/admin only as extra detail, not a substitute for the three requested permissions.",
+      "Award each permission independently.",
     ],
   },
 ];
@@ -211,10 +213,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    hashing: "Correct. A digest is stored and later compared; it is not meant to be reversed.",
-    encryption: "No. Encryption is reversible with a key. Password storage normally uses hashing for verification.",
-    certificate: "No. A certificate helps prove website identity and public key trust, not store a password digest.",
-    backup: "No. Backup is recovery; a hash is for verification/comparison.",
+    permissions: "Correct. The student is authenticated, but access rights deny write access to exam grades.",
+    authentication: "Not enough. Login proves identity; this question asks why the edit action is denied.",
+    encryption: "No. Encryption may protect stored or transmitted data, but it is not the permission decision.",
+    backup: "No. Backup helps recovery; it does not decide whether a student may edit marks.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -241,29 +243,6 @@ function setupSimulator() {
   simulate();
 }
 
-function toyDigest(value) {
-  let total = 2166136261;
-  for (let index = 0; index < value.length; index += 1) {
-    total ^= value.charCodeAt(index);
-    total = Math.imul(total, 16777619) >>> 0;
-  }
-  return total.toString(16).padStart(8, "0");
-}
-
-function setupHashDemo() {
-  const input = document.querySelector("#hashInput");
-  const result = document.querySelector("#hashResult");
-  const advice = document.querySelector("#hashAdvice");
-  function update() {
-    const digest = toyDigest(input.value);
-    result.textContent = `Toy digest: ${digest}`;
-    advice.innerHTML = "<strong>Exam point:</strong> a real cryptographic hash is designed for one-way comparison; this classroom digest is only a visual model.";
-  }
-  input.addEventListener("input", update);
-  document.querySelector("#hashBtn").addEventListener("click", update);
-  update();
-}
-
 function renderExample(key) {
   const example = examples[key];
   document.querySelector("#exampleBox").innerHTML = `
@@ -281,7 +260,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("password");
+  renderExample("grades");
 }
 
 function renderPractice() {
@@ -368,7 +347,6 @@ function renderExam() {
 setupPrint();
 setupHook();
 setupSimulator();
-setupHashDemo();
 setupExamples();
 renderPractice();
 renderMistakes();

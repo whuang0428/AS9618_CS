@@ -126,8 +126,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 .data-table, .mini-result {
   display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
 }
-.review-table .table-row, .sql-table .table-row { grid-template-columns: 0.9fr 1fr 1.6fr; }
-.customer-table .table-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.review-table .table-row { grid-template-columns: 0.95fr 1fr 1.55fr; }
 .mini-result .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
 .table-row { display: grid; }
 .table-row > div { padding: 14px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); overflow-wrap: anywhere; }
@@ -135,13 +134,12 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 .table-row:last-child > div { border-bottom: 0; }
 .table-head { background: var(--accent-soft); color: var(--accent-dark); font-weight: 850; }
 
-.converter-grid, .builder-grid {
+.converter-grid {
   display: grid; grid-template-columns: minmax(220px, 1fr) auto;
   gap: 12px; align-items: end; margin-top: 14px;
 }
-.builder-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; }
-.converter-grid label, .builder-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 750; }
-.converter-grid select, .builder-grid select, .practice-row input {
+.converter-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 750; }
+.converter-grid select, .practice-row input {
   width: 100%; border: 1px solid var(--line); border-radius: 8px;
   padding: 11px 12px; background: #ffffff; color: var(--ink);
 }
@@ -179,18 +177,18 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 .homework-list strong { display: block; color: var(--accent-dark); margin-bottom: 4px; }
 
 @media (max-width: 1120px) {
-  .summary-grid, .clause-grid, .retrieval-grid, .builder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .review-table .table-row, .sql-table .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summary-grid, .clause-grid, .retrieval-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .review-table .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .table-row > div:nth-child(2n) { border-right: 0; }
 }
 @media (max-width: 980px) {
   .layout, .hero, .guidance-grid, .objective-grid, .hook-grid,
-  .clause-grid, .converter-grid, .builder-grid, .summary-grid, .retrieval-grid {
+  .clause-grid, .converter-grid, .summary-grid, .retrieval-grid {
     grid-template-columns: 1fr;
   }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .topbar { position: static; }
-  .review-table .table-row, .sql-table .table-row, .customer-table .table-row, .mini-result .table-row { grid-template-columns: 1fr; }
+  .review-table .table-row, .mini-result .table-row { grid-template-columns: 1fr; }
   .table-row > div { border-right: 0; }
 }
 @media (max-width: 560px) {

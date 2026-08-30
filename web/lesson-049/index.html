@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 049 | Performance factors: cores, cache, clock speed and word length</title>
+    <title>AS9618 Lesson 049 | Section 4 semantic checkpoint</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Performance factors: cores, cache, clock speed and word length</h1>
+        <h1>Section 4 semantic checkpoint</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,12 +30,11 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#concept">Core idea</a>
-        <a href="#clock">Clock speed</a>
-        <a href="#cores">Cores</a>
-        <a href="#cache">Cache</a>
-        <a href="#word">Word length</a>
-        <a href="#limits">Limits</a>
-        <a href="#tool">Performance tool</a>
+        <a href="#sources">Sources</a>
+        <a href="#cycle">Interrupt cycle</a>
+        <a href="#priority">Priority</a>
+        <a href="#polling">Polling</a>
+        <a href="#tool">ISR simulator</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -54,70 +53,54 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Complete processor performance factors</h2>
+            <h2>Section 4 semantic checkpoint</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.</p>
-            <p>More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.</p>
-            <p>No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.</p>
+            <p>Read each instruction by its specified effect: LDR #n loads the immediate value n into IX; CMI &lt;address&gt; compares ACC with a value reached by indirect addressing; JPE &lt;address&gt; jumps after a True comparison; JPN &lt;address&gt; jumps after a False comparison.</p>
+            <p>For bit manipulation, identify the fixed width and bit numbering before tracing. AND tests or clears selected bits, OR sets selected bits, XOR toggles selected bits, and logical, arithmetic and cyclic shifts differ in fill and rotation behaviour.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Compare two processors for two workloads</h3>
-            <p>Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.</p>
+            <h3>Worked example: Resolve four instruction cards</h3>
+            <p>Match LDR #4 to IX &lt;- 4, trace CMI POINTER through the address stored at POINTER, send a True comparison to JPE MATCH and a False comparison to JPN DIFFERENT. None of the four names should be decoded by an English guess.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start width -->
-        <section class="panel explanation-panel" id="explanation-width" data-explains="width" data-explanation-kind="mechanism" aria-labelledby="explanation-width-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="width">
-          <h2 class="explanation-sr-only" id="explanation-width-title">Bus width and addressable locations</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bus width and addressable locations with a structured visual model." />
-            <figcaption class="explanation-sr-only">Bus width and addressable locations: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Address bus width</li><li><strong>Lesson fact:</strong> If the address bus has n lines, it can represent 2^n different addresses.</li><li><strong>Lesson fact:</strong> A 16-bit address bus can address 2^16 = 65,536 memory locations.</li><li><strong>Lesson fact:</strong> Data bus width</li><li><strong>Lesson fact:</strong> A wider data bus can transfer more bits at once, which can affect throughput.</li><li><strong>Lesson fact:</strong> Precision</li><li><strong>Lesson fact:</strong> Address bus width affects address range; data bus width affects transfer size.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end width -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Complete processor performance factors: apply and assess</h2>
+            <h2>Section 4 semantic checkpoint: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What does processor type mean as a performance factor?</p>
-              <details><summary>Show answer</summary><p>The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.</p></details>
+              <p><strong>1.</strong> What does LDR #6 change?</p>
+              <details><summary>Show answer</summary><p>It loads the immediate value 6 into IX.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Why do more cores not always improve one program?</p>
-              <details><summary>Show answer</summary><p>The program must contain independent threads or tasks that can run in parallel.</p></details>
+              <p><strong>2.</strong> How does CMI &lt;address&gt; obtain the comparison value?</p>
+              <details><summary>Show answer</summary><p>It uses indirect addressing: the operand location contains the address of the value compared with ACC.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> How can bus width affect performance?</p>
-              <details><summary>Show answer</summary><p>A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.</p></details>
+              <p><strong>3.</strong> Which branch follows a True comparison, and which follows a False comparison?</p>
+              <details><summary>Show answer</summary><p>JPE follows True; JPN follows False.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why can cache improve performance?</p>
-              <details><summary>Show answer</summary><p>A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.</p></details>
+              <p><strong>4.</strong> Which operation toggles selected device bits?</p>
+              <details><summary>Show answer</summary><p>XOR with a mask containing 1 at each bit to toggle.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>State the exact effects of LDR #n, CMI &lt;address&gt;, JPE &lt;address&gt; and JPN &lt;address&gt;.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>processor type linked to architecture/instruction-set/execution design and workload</td><td>Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.</td><td>1</td></tr>
-                  <tr><td>cores linked to available parallel threads/tasks</td><td></td><td>1</td></tr>
-                  <tr><td>bus width linked accurately to bits transferred or address space</td><td></td><td>1</td></tr>
-                  <tr><td>clock speed linked to cycles per second</td><td></td><td>1</td></tr>
-                  <tr><td>cache linked to reducing slower main-memory access</td><td></td><td>1</td></tr>
-                  <tr><td>conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed</td><td></td><td>1</td></tr>
+                  <tr><td>LDR loads immediate n into IX</td><td>Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics.</td><td>1</td></tr>
+                  <tr><td>CMI obtains the comparison value by indirect addressing</td><td></td><td>1</td></tr>
+                  <tr><td>CMI compares that value with ACC</td><td></td><td>1</td></tr>
+                  <tr><td>JPE branches after a True comparison</td><td></td><td>1</td></tr>
+                  <tr><td>JPN branches after a False comparison</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -128,294 +111,279 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 049 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>Processor performance depends on several interacting factors.</h2>
+            <h2>An interrupt is the CPU's polite emergency bell.</h2>
             <p>
-              The official factors are processor type and number of cores, bus width,
-              clock speed and cache memory. Each can contribute to performance, but
-              only when the architecture, memory system, workload and software can benefit.
+              A processor normally follows the fetch-decode-execute cycle. An interrupt
+              signal asks it to pause that flow, save its current state, run an
+              interrupt service routine, and then return to the interrupted program.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>how processor type, cores, bus width, clock speed and cache affect performance</span></div>
-              <div><strong>Judge</strong><span>when a factor may not improve performance</span></div>
-              <div><strong>Write</strong><span>Cambridge-style cause-and-consequence answers</span></div>
+              <div><strong>Define</strong><span>interrupt, ISR, interrupt flag and processor state</span></div>
+              <div><strong>Trace</strong><span>the steps taken when an interrupt is accepted</span></div>
+              <div><strong>Compare</strong><span>interrupt-driven input with polling</span></div>
             </div>
           </div>
-          <div class="performance-card" aria-label="Performance factors sketch">
-            <div class="perf-stack">
-              <span>Processor type: architecture and execution design</span>
-              <span>Cores: parallel execution</span>
-              <span>Bus width: bits transferred per transfer</span>
-              <span>Clock speed: cycles per second</span>
-              <span>Cache: faster repeated access</span>
+          <div class="interrupt-card" aria-label="Interrupt handling sketch">
+            <div class="isr-stack">
+              <span>Current program</span>
+              <span>Interrupt signal</span>
+              <span>Save state</span>
+              <span>Run ISR</span>
+              <span>Restore state</span>
             </div>
-            <p>Performance is a team sport. One superstar part can still meet a bottleneck.</p>
+            <p>The CPU is interrupted. The plan is not destroyed; it is bookmarked.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam answers must explain mechanism and limitation. Vague phrases like "better performance" are usually not enough.</p>
+            <p>Section 4 questions often ask for a sequence. Marks are lost when answers say only "the CPU stops and deals with it".</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not rank CPUs using one number only. A higher clock speed does not guarantee a faster system in every task.</p>
+            <p>An interrupt is not an error by definition. It is a signal that can come from hardware, software, a timer or an exception.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A laptop has twice as many cores. Will every program run twice as fast?</h2>
-            <p>Click the best answer. The CPU marketing department may be optimistic; the exam mark scheme is not.</p>
+            <h2>The keyboard needs attention while a program is running. What should the CPU do?</h2>
+            <p>Click the best answer. The wrong choices are what computers would do if they had no manners.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="depends">Not always: the program must be able to use the extra cores</button>
-            <button class="choice-card" type="button" data-hook="yes">Yes: twice the cores always means twice the speed</button>
-            <button class="choice-card" type="button" data-hook="cache">Only if cache is removed</button>
-            <button class="choice-card" type="button" data-hook="bus">Only if the data bus is removed</button>
+            <button class="choice-card" type="button" data-hook="save">Pause, save state, run ISR, then resume</button>
+            <button class="choice-card" type="button" data-hook="delete">Delete the current program and start again</button>
+            <button class="choice-card" type="button" data-hook="ignore">Ignore every device until the program finishes</button>
+            <button class="choice-card" type="button" data-hook="random">Jump to a random memory address</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Performance answers need a cause, a consequence and a sensible condition.
+            Choose one. A good interrupt explanation keeps the interrupted program recoverable.
           </div>
         </section>
 
         <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Processor type and number of cores, bus width, clock speed and cache memory</h2>
+            <h2>What an interrupt is</h2>
           </div>
           <div class="concept-grid">
             <article>
-              <strong>Processor type</strong>
-              <span>Architecture and execution design affect how much useful work is completed for a workload.</span>
+              <strong>Interrupt</strong>
+              <span>A signal that causes the processor to pause normal execution and deal with an event.</span>
             </article>
             <article>
-              <strong>Number of cores</strong>
-              <span>Processing units that can execute instructions independently, allowing parallel work.</span>
+              <strong>Interrupt service routine</strong>
+              <span>A program routine that handles a specific interrupt.</span>
             </article>
             <article>
-              <strong>Bus width</strong>
-              <span>A wider data bus can transfer more bits in one transfer when the rest of the system can use them.</span>
+              <strong>Processor state</strong>
+              <span>The information needed to continue later, such as PC, registers and status flags.</span>
             </article>
             <article>
-              <strong>Clock speed</strong>
-              <span>How many clock cycles the CPU can perform per second, commonly measured in Hz/GHz.</span>
-            </article>
-            <article>
-              <strong>Cache memory</strong>
-              <span>Small, fast memory storing frequently or recently used data and instructions close to the CPU.</span>
+              <strong>Interrupt flag</strong>
+              <span>A stored indication that an interrupt has occurred or is waiting to be handled.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: processor type = 处理器类型；core = 核心；bus width = 总线宽度；clock speed = 时钟频率；cache = 高速缓存。</div>
+          <div class="callout">Chinese support: interrupt = 中断信号；ISR = 中断服务程序；processor state = 处理器当前状态；resume = 恢复继续执行。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">The official processor performance factors</h2>
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">What an interrupt is</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The official processor performance factors with a structured visual model." />
-            <figcaption class="explanation-sr-only">The official processor performance factors: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What an interrupt is with a structured visual model." />
+            <figcaption class="explanation-sr-only">What an interrupt is: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The official performance factors are processor type and number of cores, bus width, clock speed and cache memory.</li><li><strong>Lesson fact:</strong> Processor type affects how much useful work can be completed for a workload, while more cores help only when work can run in parallel.</li><li><strong>Lesson fact:</strong> A wider bus transfers more bits per transfer; a higher clock speed provides more cycles per second; cache reduces slower main-memory accesses when required data or instructions are present.</li><li><strong>Lesson fact:</strong> No single factor guarantees that one computer will be faster for every program.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interrupt</li><li><strong>Lesson fact:</strong> A signal that causes the processor to pause normal execution and deal with an event.</li><li><strong>Lesson fact:</strong> Interrupt service routine</li><li><strong>Lesson fact:</strong> A program routine that handles a specific interrupt.</li><li><strong>Lesson fact:</strong> Processor state</li><li><strong>Lesson fact:</strong> The information needed to continue later, such as PC, registers and status flags.</li><li><strong>Lesson fact:</strong> Interrupt flag</li><li><strong>Lesson fact:</strong> A stored indication that an interrupt has occurred or is waiting to be handled.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="clock" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+        <section class="panel" id="sources" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Clock speed: more cycles per second</h2>
+            <h2>Where interrupts come from</h2>
           </div>
-          <div class="factor-grid">
+          <div class="source-grid">
             <article>
-              <strong>Mechanism</strong>
-              <span>A higher clock speed means more fetch-decode-execute cycle steps can be started per second, if other parts keep up.</span>
+              <strong>Input/output device</strong>
+              <span>A keyboard, printer or network interface signals that it needs CPU attention.</span>
+              <em>Example: key pressed; printer buffer ready.</em>
             </article>
             <article>
-              <strong>Example</strong>
-              <span>3.6 GHz means 3.6 billion clock cycles per second, not automatically 3.6 billion completed programs.</span>
+              <strong>Timer</strong>
+              <span>A timer interrupt lets an operating system share CPU time between tasks.</span>
+              <em>Example: scheduler checks whether another process should run.</em>
             </article>
             <article>
-              <strong>Limitation</strong>
-              <span>Memory access, heat, power use and CPU architecture can limit the real improvement.</span>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start clock -->
-        <section class="panel explanation-panel" id="explanation-clock" data-explains="clock" data-explanation-kind="process" aria-labelledby="explanation-clock-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-clock-title">Clock speed: more cycles per second</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-clock.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Clock speed: more cycles per second with a structured visual model." />
-            <figcaption class="explanation-sr-only">Clock speed: more cycles per second: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism</li><li><strong>Lesson fact:</strong> A higher clock speed means more fetch-decode-execute cycle steps can be started per second, if other parts keep up.</li><li><strong>Lesson fact:</strong> 3.6 GHz means 3.6 billion clock cycles per second, not automatically 3.6 billion completed programs.</li><li><strong>Lesson fact:</strong> Limitation</li><li><strong>Lesson fact:</strong> Memory access, heat, power use and CPU architecture can limit the real improvement.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end clock -->
-        <section class="panel" id="cores" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Cores: more independent processing units</h2>
-          </div>
-          <div class="compare-grid">
-            <article>
-              <h3>Where extra cores help</h3>
-              <ul>
-                <li>Several programs running at the same time.</li>
-                <li>Tasks that can be split into parallel threads.</li>
-                <li>Background tasks while a foreground task remains responsive.</li>
-              </ul>
+              <strong>Hardware fault</strong>
+              <span>A device or hardware condition signals a problem that must be handled.</span>
+              <em>Example: power warning or device failure signal.</em>
             </article>
             <article>
-              <h3>Where extra cores may not help much</h3>
-              <ul>
-                <li>A single-threaded program that cannot be divided.</li>
-                <li>A task waiting for disk, network or memory.</li>
-                <li>Software that was not designed for parallel processing.</li>
-              </ul>
+              <strong>Software / exception</strong>
+              <span>A program event requires special handling.</span>
+              <em>Example: division by zero or system call, depending on architecture.</em>
             </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start cores -->
-        <section class="panel explanation-panel" id="explanation-cores" data-explains="cores" data-explanation-kind="process" aria-labelledby="explanation-cores-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-cores-title">Cores: more independent processing units</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cores.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cores: more independent processing units with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cores: more independent processing units: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> One thread can execute on only one core at a time.</li><li><strong>Lesson fact:</strong> A single-threaded task cannot run its own instructions concurrently across several cores.</li><li><strong>Lesson fact:</strong> Other cores may still execute operating-system work or other processes; they are not necessarily idle.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cores -->
-        <section class="panel" id="cache" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Cache: reduce slow memory access</h2>
-          </div>
-          <div class="cache-flow" aria-label="Cache access flow">
-            <div><strong>1. CPU requests data</strong><span>The CPU needs an instruction or data item.</span></div>
-            <div><strong>2. Cache checked first</strong><span>Cache is much faster than main memory.</span></div>
-            <div><strong>3. Cache hit</strong><span>If found, access is fast and the CPU waits less.</span></div>
-            <div><strong>4. Cache miss</strong><span>If not found, data is fetched from slower main memory and may be copied into cache.</span></div>
           </div>
           <div class="trap-card inline-card">
             <h3>Common error</h3>
-            <p>Cache is not the same as RAM capacity. It is smaller, faster and used to reduce repeated slow access to main memory.</p>
+            <p>Do not write that all interrupts are "high priority errors". Some are routine, such as timer and I/O interrupts.</p>
           </div>
         </section>
 
-        <!-- stage10-explanation:start cache -->
-        <section class="panel explanation-panel" id="explanation-cache" data-explains="cache" data-explanation-kind="mechanism" aria-labelledby="explanation-cache-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-cache-title">Cache: reduce slow memory access</h2>
+        <!-- stage10-explanation:start sources -->
+        <section class="panel explanation-panel" id="explanation-sources" data-explains="sources" data-explanation-kind="mechanism" aria-labelledby="explanation-sources-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+          <h2 class="explanation-sr-only" id="explanation-sources-title">Where interrupts come from</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cache.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cache: reduce slow memory access with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cache: reduce slow memory access: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-sources.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Where interrupts come from with a structured visual model." />
+            <figcaption class="explanation-sr-only">Where interrupts come from: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. CPU requests data The CPU needs an instruction or data item.</li><li><strong>Lesson fact:</strong> 2. Cache checked first Cache is much faster than main memory.</li><li><strong>Lesson fact:</strong> 3. Cache hit If found, access is fast and the CPU waits less.</li><li><strong>Lesson fact:</strong> 4. Cache miss If not found, data is fetched from slower main memory and may be copied into cache.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Cache is not the same as RAM capacity. It is smaller, faster and used to reduce repeated slow access to main memory.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Input/output device</li><li><strong>Lesson fact:</strong> A keyboard, printer or network interface signals that it needs CPU attention.</li><li><strong>Lesson fact:</strong> Example: key pressed; printer buffer ready.</li><li><strong>Lesson fact:</strong> A timer interrupt lets an operating system share CPU time between tasks.</li><li><strong>Lesson fact:</strong> Example: scheduler checks whether another process should run.</li><li><strong>Lesson fact:</strong> Hardware fault</li><li><strong>Lesson fact:</strong> A device or hardware condition signals a problem that must be handled.</li><li><strong>Lesson fact:</strong> Example: power warning or device failure signal.</li><li><strong>Lesson fact:</strong> Software / exception</li><li><strong>Lesson fact:</strong> A program event requires special handling.</li><li><strong>Lesson fact:</strong> Example: division by zero or system call, depending on architecture.</li><li><strong>Lesson fact:</strong> Common error</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end cache -->
-        <section class="panel" id="word" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+        <!-- stage10-explanation:end sources -->
+        <section class="panel" id="cycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
-            <p class="eyebrow">Optional enrichment — not part of this syllabus performance-factor list</p>
-            <h2>Word length: bits processed as a unit</h2>
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>The interrupt handling cycle</h2>
           </div>
-          <div class="word-table" role="table" aria-label="Word length effects">
+          <div class="timeline" aria-label="Interrupt handling sequence">
+            <div><strong>1. Execute instruction</strong><span>The CPU finishes the current instruction before accepting most maskable interrupts.</span></div>
+            <div><strong>2. Check interrupt</strong><span>The control unit checks whether an interrupt is pending and enabled.</span></div>
+            <div><strong>3. Save state</strong><span>Important registers, PC and status information are stored, often on a stack.</span></div>
+            <div><strong>4. Find ISR</strong><span>The interrupt type is used to locate the correct interrupt service routine.</span></div>
+            <div><strong>5. Run ISR</strong><span>The routine handles the event, such as reading a key or acknowledging a device.</span></div>
+            <div><strong>6. Restore and return</strong><span>The saved state is restored and the interrupted program continues.</span></div>
+          </div>
+          <div class="why-card inline-card">
+            <h3>Why this matters</h3>
+            <p>Saving state is the "bookmark". Without it, the CPU may not know where or how to resume the interrupted program.</p>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start cycle -->
+        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+          <h2 class="explanation-sr-only" id="explanation-cycle-title">The interrupt handling cycle</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The interrupt handling cycle with a structured visual model." />
+            <figcaption class="explanation-sr-only">The interrupt handling cycle: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.</li><li><strong>Lesson fact:</strong> 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.</li><li><strong>Lesson fact:</strong> 3. Save state Important registers, PC and status information are stored, often on a stack.</li><li><strong>Lesson fact:</strong> 4. Find ISR The interrupt type is used to locate the correct interrupt service routine.</li><li><strong>Lesson fact:</strong> 5. Run ISR The routine handles the event, such as reading a key or acknowledging a device.</li><li><strong>Lesson fact:</strong> 6. Restore and return The saved state is restored and the interrupted program continues.</li><li><strong>Lesson fact:</strong> Why this matters</li><li><strong>Lesson fact:</strong> Saving state is the &quot;bookmark&quot;. Without it, the CPU may not know where or how to resume the interrupted program.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cycle -->
+        <section class="panel" id="priority" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Priority and masking</h2>
+          </div>
+          <div class="priority-table" role="table" aria-label="Interrupt priority">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Effect</div>
-              <div role="columnheader">Explanation</div>
+              <div role="columnheader">Idea</div>
+              <div role="columnheader">Meaning</div>
               <div role="columnheader">Exam-safe wording</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Larger values</div>
-              <div role="cell">More bits can represent larger numbers in one word.</div>
-              <div role="cell">A longer word can process larger data values in a single operation.</div>
+              <div role="cell">Priority</div>
+              <div role="cell">Some interrupts are more urgent than others.</div>
+              <div role="cell">A higher-priority interrupt may be handled before a lower-priority one.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">More precision</div>
-              <div role="cell">More bits can support greater numeric precision where relevant.</div>
-              <div role="cell">Useful for calculations needing larger or more precise operands.</div>
+              <div role="cell">Maskable interrupt</div>
+              <div role="cell">Can be disabled or delayed by the processor.</div>
+              <div role="cell">Used when a less urgent event can wait.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Addressing</div>
-              <div role="cell">In some architectures, word/register/address size can affect addressable memory.</div>
-              <div role="cell">Do not claim this without linking it to the architecture or address size.</div>
+              <div role="cell">Non-maskable interrupt</div>
+              <div role="cell">Cannot normally be ignored.</div>
+              <div role="cell">Used for critical events such as serious hardware faults.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Limitation</div>
-              <div role="cell">Longer word length alone does not make all programs faster.</div>
-              <div role="cell">The software and data type must benefit from the larger word.</div>
+              <div role="cell">Nested interrupt</div>
+              <div role="cell">An interrupt occurs while another ISR is running.</div>
+              <div role="cell">Only handled immediately if the system allows it and priority rules permit it.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start word -->
-        <section class="panel explanation-panel" id="explanation-word" data-explains="word" data-explanation-kind="process" aria-labelledby="explanation-word-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-word-title">Word length: bits processed as a unit</h2>
+        <!-- stage10-explanation:start priority -->
+        <section class="panel explanation-panel" id="explanation-priority" data-explains="priority" data-explanation-kind="mechanism" aria-labelledby="explanation-priority-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+          <h2 class="explanation-sr-only" id="explanation-priority-title">Priority and masking</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-word.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Word length: bits processed as a unit with a structured visual model." />
-            <figcaption class="explanation-sr-only">Word length: bits processed as a unit: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-priority.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Priority and masking with a structured visual model." />
+            <figcaption class="explanation-sr-only">Priority and masking: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Explanation</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Larger values</li><li><strong>Lesson fact:</strong> More bits can represent larger numbers in one word.</li><li><strong>Lesson fact:</strong> A longer word can process larger data values in a single operation.</li><li><strong>Lesson fact:</strong> More precision</li><li><strong>Lesson fact:</strong> More bits can support greater numeric precision where relevant.</li><li><strong>Lesson fact:</strong> Useful for calculations needing larger or more precise operands.</li><li><strong>Lesson fact:</strong> Addressing</li><li><strong>Lesson fact:</strong> In some architectures, word/register/address size can affect addressable memory.</li><li><strong>Lesson fact:</strong> Do not claim this without linking it to the architecture or address size.</li><li><strong>Lesson fact:</strong> Limitation</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Priority</li><li><strong>Lesson fact:</strong> Some interrupts are more urgent than others.</li><li><strong>Lesson fact:</strong> A higher-priority interrupt may be handled before a lower-priority one.</li><li><strong>Lesson fact:</strong> Maskable interrupt</li><li><strong>Lesson fact:</strong> Can be disabled or delayed by the processor.</li><li><strong>Lesson fact:</strong> Used when a less urgent event can wait.</li><li><strong>Lesson fact:</strong> Non-maskable interrupt</li><li><strong>Lesson fact:</strong> Cannot normally be ignored.</li><li><strong>Lesson fact:</strong> Used for critical events such as serious hardware faults.</li><li><strong>Lesson fact:</strong> Nested interrupt</li><li><strong>Lesson fact:</strong> An interrupt occurs while another ISR is running.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end word -->
-        <section class="panel" id="limits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+        <!-- stage10-explanation:end priority -->
+        <section class="panel" id="polling" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Performance is limited by bottlenecks</h2>
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Interrupts versus polling</h2>
           </div>
-          <div class="limit-grid">
-            <article><strong>Memory bottleneck</strong><span>A fast CPU still waits if data arrives slowly from memory.</span></article>
-            <article><strong>Software bottleneck</strong><span>Single-threaded code cannot fully use many cores.</span></article>
-            <article><strong>Heat and power</strong><span>Higher clock speed can require more power and produce more heat.</span></article>
-            <article><strong>Architecture</strong><span>Different CPU designs may do different amounts of work per clock cycle.</span></article>
+          <div class="compare-grid">
+            <article>
+              <h3>Interrupt-driven input</h3>
+              <p>The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</p>
+              <ul>
+                <li>Efficient when events are unpredictable.</li>
+                <li>Requires interrupt handling and state saving.</li>
+                <li>Good exam phrase: "CPU does not continually check the device."</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Polling</h3>
+              <p>The CPU repeatedly checks a device or flag to see whether attention is needed.</p>
+              <ul>
+                <li>Simple to understand and implement.</li>
+                <li>Can waste processor time if checks are frequent and no event has occurred.</li>
+                <li>Good exam phrase: "regularly checks the status of the device."</li>
+              </ul>
+            </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start limits -->
-        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="tradeoff" aria-labelledby="explanation-limits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-limits-title">Performance is limited by bottlenecks</h2>
+        <!-- stage10-explanation:start polling -->
+        <section class="panel explanation-panel" id="explanation-polling" data-explains="polling" data-explanation-kind="mechanism" aria-labelledby="explanation-polling-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+          <h2 class="explanation-sr-only" id="explanation-polling-title">Interrupts versus polling</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Performance is limited by bottlenecks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Performance is limited by bottlenecks: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-polling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interrupts versus polling with a structured visual model." />
+            <figcaption class="explanation-sr-only">Interrupts versus polling: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Memory bottleneck A fast CPU still waits if data arrives slowly from memory.</li><li><strong>Lesson fact:</strong> Software bottleneck Single-threaded code cannot fully use many cores.</li><li><strong>Lesson fact:</strong> Heat and power Higher clock speed can require more power and produce more heat.</li><li><strong>Lesson fact:</strong> Architecture Different CPU designs may do different amounts of work per clock cycle.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interrupt-driven input</li><li><strong>Lesson fact:</strong> The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</li><li><strong>Lesson fact:</strong> Efficient when events are unpredictable.</li><li><strong>Lesson fact:</strong> Requires interrupt handling and state saving.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;CPU does not continually check the device.&quot;</li><li><strong>Lesson fact:</strong> The CPU repeatedly checks a device or flag to see whether attention is needed.</li><li><strong>Lesson fact:</strong> Simple to understand and implement.</li><li><strong>Lesson fact:</strong> Can waste processor time if checks are frequent and no event has occurred.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;regularly checks the status of the device.&quot;</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end limits -->
+        <!-- stage10-explanation:end polling -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Performance factor selector</h2>
-            <p>Select a scenario and see which factor is most relevant. This is not a benchmark; it is an exam-answer thinking tool.</p>
+            <h2>Interrupt handling simulator</h2>
+            <p>Select an event. Follow what is saved, which ISR runs and what happens after the service routine finishes.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="single">Single-threaded program doing one long calculation</option>
-                <option value="multi">Video export split into many parallel tasks</option>
-                <option value="loop">Program repeatedly reads the same array data</option>
-                <option value="large">Program works with very large integer values</option>
-                <option value="memory">CPU often waits for data from main memory</option>
+              Interrupt scenario
+              <select id="interruptInput">
+                <option value="keyboard">Keyboard key pressed</option>
+                <option value="timer">Timer tick for multitasking</option>
+                <option value="printer">Printer ready signal</option>
+                <option value="fault">Critical hardware fault</option>
               </select>
             </label>
-            <button type="button" id="simulateBtn">Analyse</button>
+            <button type="button" id="simulateBtn">Simulate</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
@@ -425,13 +393,12 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Explain the factor and the condition</h2>
+            <h2>Trace the interrupt, not just the device</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="clock">Clock speed</button>
-            <button class="tab" type="button" data-example="cores">Cores</button>
-            <button class="tab" type="button" data-example="cache">Cache</button>
-            <button class="tab" type="button" data-example="word">Word length</button>
+            <button class="tab active" type="button" data-example="keyboard">Keyboard input</button>
+            <button class="tab" type="button" data-example="timer">Timer interrupt</button>
+            <button class="tab" type="button" data-example="polling">Polling comparison</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -440,7 +407,7 @@
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
-            <p>Short answers are accepted, but "faster" without the reason is still wearing a disguise.</p>
+            <p>Short answers are fine, but they must name the mechanism. "It sorts itself out" is still not a processor feature.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -448,7 +415,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the performance claim</h2>
+            <h2>Repair the interrupt explanation</h2>
           </div>
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
@@ -457,7 +424,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about mechanism, scenario and limitations.</p>
+            <p>These are original Cambridge-style questions. MS notes are strict about pause, save state, ISR, restore and resume.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -465,36 +432,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Explain performance with conditions</h2>
+            <h2>Interrupts are controlled pauses</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Clock speed</strong><span>More cycles per second can allow more instructions to be processed.</span></div>
-            <div><strong>Cores</strong><span>More cores help when work can be run in parallel.</span></div>
-            <div><strong>Cache</strong><span>Fast memory reduces repeated access to slower main memory.</span></div>
-            <div><strong>Word length</strong><span>More bits can be processed as a unit for suitable data.</span></div>
-            <div><strong>Bottleneck</strong><span>The slowest limiting part may reduce the real benefit.</span></div>
-            <div><strong>Exam habit</strong><span>State factor, mechanism, condition and consequence.</span></div>
+            <div><strong>Interrupt</strong><span>A signal requesting processor attention.</span></div>
+            <div><strong>ISR</strong><span>The routine that handles a specific interrupt.</span></div>
+            <div><strong>State saving</strong><span>Stores PC, registers and flags so execution can resume.</span></div>
+            <div><strong>Priority</strong><span>More urgent interrupts may be serviced first.</span></div>
+            <div><strong>Polling</strong><span>CPU repeatedly checks device status instead of waiting for a signal.</span></div>
+            <div><strong>Exam habit</strong><span>Write the sequence: finish instruction, check, save, service, restore, resume.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Turn vague performance claims into mark-worthy explanations</h2>
+            <h2>Make the interrupt sequence exam-ready</h2>
           </div>
           <ol class="homework-list">
-            <li>Define processor type, number of cores, bus width, clock speed and cache memory in one sentence each.</li>
-            <li>Write a 4-mark answer explaining why more cores may not speed up a single-threaded program.</li>
-            <li>Explain how cache can improve performance when a program repeatedly accesses the same data.</li>
-            <li>Correct this sentence: "A 4 GHz CPU is always faster than a 3 GHz CPU."</li>
-            <li>Choose one real task, such as gaming, video export or web browsing, and identify the most likely performance bottleneck.</li>
+            <li>Define interrupt and interrupt service routine in one sentence each.</li>
+            <li>Write the six-step sequence used when a keyboard interrupt is accepted.</li>
+            <li>Explain why saving the program counter and registers is necessary before running an ISR.</li>
+            <li>Compare interrupt-driven input with polling in a 4-mark answer.</li>
+            <li>Correct this sentence: "An interrupt always means the current program has crashed."</li>
           </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

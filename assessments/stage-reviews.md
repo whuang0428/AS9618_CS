@@ -12,7 +12,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - Credit clear equivalent wording unless a specific syllabus term or representation is required.
 - Do not award repeated, self-contradictory or vague statements as separate points.
 
-## Lesson 015: Section 1 representation calculations
+## Lesson 016: Section 1 representation calculations
 
 **Syllabus:** Sections 1
 
@@ -91,7 +91,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 026: Section 2 communication explanations
+## Lesson 027: Section 2 communication explanations
 
 **Syllabus:** Sections 2
 
@@ -170,7 +170,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 040: Section 3 hardware comparisons
+## Lesson 041: Section 3 hardware comparisons
 
 **Syllabus:** Sections 3
 
@@ -249,7 +249,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 051: Section 4 processor tracing
+## Lesson 052: Section 4 processor tracing
 
 **Syllabus:** Sections 4
 
@@ -328,7 +328,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 061: Section 5 system software comparisons
+## Lesson 062: Section 5 system software comparisons
 
 **Syllabus:** Sections 5
 
@@ -407,7 +407,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 071: Section 6 security controls
+## Lesson 072: Section 6 security controls
 
 **Syllabus:** Sections 6
 
@@ -486,7 +486,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 077: Section 7 ethical evaluation
+## Lesson 078: Section 7 ethical evaluation
 
 **Syllabus:** Sections 7
 
@@ -565,7 +565,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 089: Section 8 database design and SQL
+## Lesson 090: Section 8 database design and SQL
 
 **Syllabus:** Sections 8
 
@@ -644,7 +644,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 097: Paper 1 integrated response technique
+## Lesson 098: Paper 1 integrated response technique
 
 **Syllabus:** Sections 1-8
 
@@ -723,7 +723,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 112: Section 9 algorithm design
+## Lesson 113: Section 9 algorithm design
 
 **Syllabus:** Sections 9
 
@@ -802,7 +802,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 125: Section 10 data structures
+## Lesson 126: Section 10 data structures
 
 **Syllabus:** Sections 10
 
@@ -881,7 +881,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 141: Section 11 programming
+## Lesson 142: Section 11 programming
 
 **Syllabus:** Sections 11
 
@@ -960,7 +960,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 146: Section 12 software development
+## Lesson 147: Section 12 software development
 
 **Syllabus:** Sections 12
 
@@ -1039,7 +1039,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Lesson 150: Paper 2 integrated pseudocode practice
+## Lesson 151: Paper 2 integrated pseudocode practice
 
 **Syllabus:** Sections 9-12
 

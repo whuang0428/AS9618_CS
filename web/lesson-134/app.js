@@ -1,124 +1,124 @@
 const scenarios = [
   {
-    id: "rows",
-    text: "Find how many complete boxes are needed when each full box contains 12 items.",
-    recommendation: "DIV for full boxes, with MOD to check leftovers",
-    reason: "DIV gives the number of complete groups. MOD tells whether there are items left over.",
+    id: "length",
+    text: "Check whether a password has at least 8 characters.",
+    recommendation: "LENGTH(Password)",
+    reason: "LENGTH returns the number of characters, so it can be compared with 8.",
   },
   {
-    id: "even",
-    text: "Check whether a number is even.",
-    recommendation: "Number MOD 2",
-    reason: "If Number MOD 2 = 0, there is no remainder after division by 2, so the number is even.",
+    id: "initials",
+    text: "Create a code from the first three letters of a surname.",
+    recommendation: "MID(Surname, 1, 3)",
+    reason: "MID starts at position 1 and returns three characters as a STRING.",
   },
   {
-    id: "average",
-    text: "Calculate a mean that may contain a decimal part.",
-    recommendation: "/",
-    reason: "Real division keeps the fractional part; DIV would discard it.",
+    id: "extension",
+    text: "Check whether a filename ends in .txt.",
+    recommendation: "RIGHT(FileName, 4)",
+    reason: "RIGHT extracts characters from the end of the string.",
   },
   {
-    id: "minutes",
-    text: "Convert 145 minutes into hours and remaining minutes.",
-    recommendation: "DIV and MOD",
-    reason: "145 DIV 60 gives whole hours; 145 MOD 60 gives the leftover minutes.",
+    id: "case",
+    text: "Accept y or Y as the same menu response.",
+    recommendation: "DECLARE Response : CHAR; UCASE(Response)",
+    reason: "UCASE accepts and returns one CHAR, so the menu response must be declared as CHAR.",
   },
 ];
 
 const examples = {
-  rows: {
-    title: "Example 1: Full rows and leftovers",
-    problem: "17 students sit in rows of 5. Find full rows and leftovers.",
+  length: {
+    title: "Example 1: Validate string length",
+    problem: "Check whether a password is long enough.",
     rows: [
-      ["Real division", "17 / 5 = 3.4", "not a whole number of full rows"],
-      ["Integer division", "17 DIV 5 = 3", "three complete rows"],
-      ["Remainder", "17 MOD 5 = 2", "two students left over"],
-      ["Check", "5 * 3 + 2 = 17", "identity confirms the result"],
+      ["Input", "Password = \"secure7\"", "7 characters"],
+      ["Function", "LENGTH(Password)", "returns 7"],
+      ["Comparison", "7 >= 8", "FALSE"],
+      ["Output", "\"Too short\"", "validation fails"],
     ],
-    code: "Students <- 17\nSeatsPerRow <- 5\nFullRows <- Students DIV SeatsPerRow\nLeftOver <- Students MOD SeatsPerRow\nOUTPUT FullRows\nOUTPUT LeftOver",
+    code: "INPUT Password\nIF LENGTH(Password) >= 8 THEN\n    OUTPUT \"Accepted\"\nELSE\n    OUTPUT \"Too short\"\nENDIF",
     points: [
-      "DIV returns the whole-number quotient.",
-      "MOD returns the remainder.",
-      "Use both when the scenario needs complete groups and leftovers.",
+      "LENGTH returns an integer.",
+      "The returned value is used in a comparison.",
+      "Spaces count as characters unless the algorithm removes them first.",
     ],
   },
-  even: {
-    title: "Example 2: Even or odd",
-    problem: "Use MOD to test whether a number is even.",
+  mid: {
+    title: "Example 2: Extract a substring",
+    problem: "Trace MID(\"COMPUTER\", 4, 3).",
     rows: [
-      ["Number", "24", "input value"],
-      ["Operation", "24 MOD 2", "divide by 2 and keep the remainder"],
-      ["Result", "0", "no remainder"],
-      ["Conclusion", "even", "remainder 0 means divisible by 2"],
+      ["Positions", "1:C 2:O 3:M 4:P 5:U 6:T 7:E 8:R", "1-based pseudocode positions"],
+      ["Start", "4", "start at P"],
+      ["Count", "3", "take P, U, T"],
+      ["Returned value", "\"PUT\"", "substring result"],
     ],
-    code: "INPUT Number\nIF Number MOD 2 = 0 THEN\n    OUTPUT \"Even\"\nELSE\n    OUTPUT \"Odd\"\nENDIF",
+    code: "Word <- \"COMPUTER\"\nPart <- MID(Word, 4, 3)\nOUTPUT Part",
     points: [
-      "MOD 2 is a common parity check.",
-      "A remainder of 0 means exactly divisible.",
-      "A remainder of 1 means odd for positive integers.",
+      "Write positions before extracting.",
+      "The third argument is the number of characters in this lesson's convention.",
+      "Do not use Java's 0-based indexing here.",
     ],
   },
-  time: {
-    title: "Example 3: Convert minutes",
-    problem: "Convert 145 minutes into hours and minutes.",
+  case: {
+    title: "Example 3: Convert case before comparison",
+    problem: "Accept user input y or Y as yes.",
     rows: [
-      ["Hours", "145 DIV 60 = 2", "two complete hours"],
-      ["Minutes", "145 MOD 60 = 25", "twenty-five minutes left"],
-      ["Output", "2 hours 25 minutes", "combined result"],
+      ["Input", "Response = 'y'", "CHAR input"],
+      ["Function", "UCASE(Response)", "returns 'Y'"],
+      ["Comparison", "'Y' = 'Y'", "TRUE"],
     ],
-    code: "TotalMinutes <- 145\nHours <- TotalMinutes DIV 60\nMinutes <- TotalMinutes MOD 60\nOUTPUT Hours\nOUTPUT Minutes",
+    code: "DECLARE Response : CHAR\nINPUT Response\nResponse <- UCASE(Response)\nIF Response = 'Y' THEN\n    OUTPUT \"Continue\"\nENDIF",
     points: [
-      "DIV gives the larger unit.",
-      "MOD gives the leftover smaller unit.",
-      "This pattern also works for seconds, pages and grouped items.",
+      "UCASE accepts CHAR and returns CHAR.",
+      "Assign the returned value if the converted version is needed later.",
+      "Case conversion does not validate meaning by itself.",
     ],
   },
-  precedence: {
-    title: "Example 4: Operator precedence",
-    problem: "Trace 4 + 18 MOD 5 * 2.",
+  nested: {
+    title: "Example 4: Extract then concatenate",
+    problem: "Trace MID(\"NETWORK\", 1, 3) & \"29\".",
     rows: [
-      ["First", "18 MOD 5 = 3", "MOD evaluated before addition"],
-      ["Second", "3 * 2 = 6", "multiplication before addition"],
-      ["Third", "4 + 6 = 10", "final result"],
+      ["Function call", "MID(\"NETWORK\", 1, 3)", "returns \"NET\""],
+      ["Returned type", "STRING", "can be concatenated"],
+      ["Concatenate", "\"NET\" & \"29\"", "returns \"NET29\""],
     ],
-    code: "Result <- 4 + 18 MOD 5 * 2\nOUTPUT Result",
+    code: "Code <- MID(\"NETWORK\", 1, 3) & \"29\"\nOUTPUT Code",
     points: [
-      "If the intended order is unclear, use brackets.",
-      "Trace one operation at a time.",
-      "Never treat MOD as the same as real division.",
+      "Evaluate MID before concatenation.",
+      "MID returns STRING, which can be used in a STRING expression.",
+      "Keep numeric-looking text in quotes if it is being joined as a string.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is 17 DIV 5?", accepted: ["3"], answer: "3." },
-  { id: "p2", prompt: "What is 17 MOD 5?", accepted: ["2"], answer: "2." },
-  { id: "p3", prompt: "What is 17 / 5?", accepted: ["3.4"], answer: "3.4." },
-  { id: "p4", prompt: "What is 23 DIV 6?", accepted: ["3"], answer: "3." },
-  { id: "p5", prompt: "What is 23 MOD 6?", accepted: ["5"], answer: "5." },
-  { id: "p6", prompt: "What is 24 MOD 2?", accepted: ["0"], answer: "0, so 24 is even." },
-  { id: "p7", prompt: "What is 145 DIV 60?", accepted: ["2"], answer: "2." },
-  { id: "p8", prompt: "What is 145 MOD 60?", accepted: ["25"], answer: "25." },
-  { id: "p9", prompt: "Which operator returns a remainder: DIV or MOD?", accepted: ["mod"], answer: "MOD." },
-  { id: "p10", prompt: "Evaluate 2 + 3 * 4.", accepted: ["14"], answer: "14, because multiplication is evaluated before addition." },
+  { id: "p1", prompt: "What is LENGTH(\"DATA\")?", accepted: ["4"], answer: "4." },
+  { id: "p2", prompt: "What does UCASE('e') return?", accepted: ["E"], answer: "The CHAR 'E'." },
+  { id: "p3", prompt: "What does LCASE('C') return?", accepted: ["c"], answer: "The CHAR 'c'." },
+  { id: "p4", prompt: "What does MID(\"NETWORK\", 1, 3) return?", accepted: ["NET"], answer: "NET." },
+  { id: "p5", prompt: "What does RIGHT(\"NETWORK\", 4) return?", accepted: ["WORK"], answer: "WORK." },
+  { id: "p6", prompt: "Using 1-based positions, what does MID(\"COMPUTER\", 4, 3) return?", accepted: ["PUT"], answer: "PUT." },
+  { id: "p7", prompt: "What operator is used in this course to concatenate strings: & or DIV?", accepted: ["&", "ampersand"], answer: "&." },
+  { id: "p8", prompt: "What does MID(\"ada\", 1, 2) return?", accepted: ["ad"], answer: "ad." },
+  { id: "p9", prompt: "Java strings use zero-based indexes. Cambridge-style examples here use positions starting at what number?", accepted: ["1", "one"], answer: "1." },
+  { id: "p10", prompt: "What does MID(\"NETWORK\", 1, 3) & \"29\" return?", accepted: ["NET29"], answer: "NET29." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student says 17 DIV 5 is 3.4.",
-    fix: "17 / 5 is 3.4. 17 DIV 5 is the whole-number quotient, so it is 3.",
+    wrong: "A student writes Java code name.substring(0, 3) as the Cambridge pseudocode answer.",
+    fix: "Use the guide function MID(Name, 1, 3), or follow a different complete function definition supplied by the question.",
   },
   {
-    wrong: "A student says 17 MOD 5 is 3 because 5 goes into 17 three times.",
-    fix: "That value is the quotient. MOD returns the remainder: 17 - 15 = 2.",
+    wrong: "A student treats LENGTH(\"A B\") as 2 because there are two letters.",
+    fix: "The space is also a character, so LENGTH(\"A B\") is 3 unless the algorithm removes spaces first.",
   },
   {
-    wrong: "A student uses Java % in a Cambridge pseudocode answer.",
-    fix: "Use MOD in Cambridge-style pseudocode. Java % is a support-language equivalent, not the exam operator.",
+    wrong: "A student traces MID(\"MONITOR\", 2, 3) as \"NIT\" by starting from Java index 2.",
+    fix: "Use the stated convention. With 1-based positions and count 3, start at O and return \"ONI\".",
   },
   {
-    wrong: "A student evaluates 2 + 3 * 4 as 20 without brackets.",
-    fix: "Multiplication is evaluated before addition, so 2 + 12 = 14. Use (2 + 3) * 4 if 20 is intended.",
+    wrong: "A student passes the STRING Answer to UCASE.",
+    fix: "UCASE accepts CHAR. Declare Answer as CHAR for a one-character response, assign the returned CHAR, and compare it with a CHAR literal such as 'Y'.",
   },
 ];
 
@@ -131,99 +131,95 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Complete a trace table for the values assigned by this pseudocode. Number <- 23\nDivisor <- 6\nQ <- Number DIV Divisor\nR <- Number MOD Divisor\nOUTPUT Q\nOUTPUT R",
-    answer: "23 DIV 6 gives 3 because there are three complete groups of 6. 23 MOD 6 gives 5 because 23 - 18 = 5. The outputs are 3 then 5.",
+    marks: "3 marks",
+    prompt: "Complete a trace table for the output. Word <- \"NETWORK\"\nPart <- MID(Word, 1, 3)\nCode <- Part & \"29\"\nOUTPUT Code",
+    answer: "MID(\"NETWORK\", 1, 3) returns \"NET\". Concatenating \"29\" returns \"NET29\". The output is NET29.",
     marking: [
-      { mark: "B1", text: "states Q is 3" },
-      { mark: "B1", text: "states R is 5" },
-      { mark: "M1", text: "explains DIV gives the whole-number quotient" },
-      { mark: "M1", text: "explains MOD gives the remainder" },
-      { mark: "A1", text: "outputs values in the correct order" },
+      { mark: "B1", text: "identifies MID(Word, 1, 3) returns NET" },
+      { mark: "M1", text: "concatenates NET with the STRING 29" },
+      { mark: "A1", text: "states final output is NET29" },
     ],
     strict: [
-      "Do not award Q mark for 3.833 or other real division result.",
-      "Allow remainder explanation using 23 = 6 * 3 + 5.",
-      "Do not accept MOD as another name for division.",
+      "Do not award final output mark for NET without the concatenated 29.",
+      "Allow quotation marks around returned strings.",
+      "Do not accept Java method syntax alone.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode that inputs TotalMinutes and outputs whole hours and remaining minutes.",
-    answer: "INPUT TotalMinutes\nHours <- TotalMinutes DIV 60\nMinutes <- TotalMinutes MOD 60\nOUTPUT Hours\nOUTPUT Minutes",
+    prompt: "The question states that LENGTH(Text) returns the number of characters in Text. A password must contain at least 8 characters. Write Cambridge-style pseudocode that inputs Password and outputs Accepted or Too short.",
+    answer: "INPUT Password\nIF LENGTH(Password) >= 8 THEN\n    OUTPUT \"Accepted\"\nELSE\n    OUTPUT \"Too short\"\nENDIF",
     marking: [
-      { mark: "B1", text: "inputs or obtains TotalMinutes" },
-      { mark: "M1", text: "uses DIV 60 to calculate whole hours" },
-      { mark: "A1", text: "assigns the quotient to Hours or equivalent" },
-      { mark: "M1", text: "uses MOD 60 to calculate remaining minutes" },
-      { mark: "A1", text: "assigns the remainder to Minutes or equivalent" },
-      { mark: "B1", text: "outputs both calculated values" },
+      { mark: "B1", text: "inputs or otherwise obtains Password" },
+      { mark: "M1", text: "uses LENGTH(Password) or equivalent string length function" },
+      { mark: "A1", text: "compares length with 8 using >= or equivalent at-least logic" },
+      { mark: "B1", text: "outputs Accepted when the length requirement is met" },
+      { mark: "B1", text: "outputs Too short or equivalent when the requirement is not met" },
+      { mark: "A1", text: "uses correct IF/ELSE/ENDIF structure" },
     ],
     strict: [
-      "Do not award hours calculation mark for real division only.",
-      "Allow variable names such as WholeHours and RemainingMinutes.",
-      "Do not accept Java % alone as Cambridge pseudocode for MOD.",
-      "Allow an equivalent variable if it is used consistently.",
+      "Do not award comparison mark for > 8 because exactly 8 should be accepted.",
+      "Allow variable names other than Password if clear.",
+      "Do not accept counting only alphabetic letters unless stated in the question.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Explain how MOD can be used to check whether a positive integer is even. Include pseudocode.",
-    answer: "A number is even if it divides exactly by 2. MOD returns the remainder after division, so if Number MOD 2 = 0 then there is no remainder and the number is even.\n\nIF Number MOD 2 = 0 THEN\n    OUTPUT \"Even\"\nELSE\n    OUTPUT \"Odd\"\nENDIF",
+    prompt: "Using positions starting at 1, Complete a trace table for this pseudocode. Code <- \"COMPUTER\"\nOUTPUT MID(Code, 4, 3)\nOUTPUT RIGHT(Code, 2)",
+    answer: "MID(\"COMPUTER\", 4, 3) starts at position 4, P, and returns three characters: PUT. RIGHT(\"COMPUTER\", 2) returns ER.",
     marking: [
-      { mark: "B1", text: "states MOD returns a remainder" },
-      { mark: "M1", text: "explains even numbers have no remainder when divided by 2" },
-      { mark: "A1", text: "uses condition Number MOD 2 = 0 or equivalent" },
-      { mark: "B1", text: "outputs or identifies Even for the true branch" },
-      { mark: "B1", text: "outputs or identifies Odd for the false branch" },
-      { mark: "A1", text: "uses clear IF/ELSE/ENDIF Cambridge-style structure" },
+      { mark: "B1", text: "uses positions starting at 1" },
+      { mark: "M1", text: "identifies position 4 in COMPUTER as P" },
+      { mark: "A1", text: "states MID result is PUT" },
+      { mark: "M1", text: "identifies RIGHT(Code, 2) extracts the last two characters" },
+      { mark: "A1", text: "states RIGHT result is ER" },
+      { mark: "B1", text: "presents outputs in the correct order" },
     ],
     strict: [
-      "Do not award condition mark for Number DIV 2 = 0.",
-      "Allow TRUE/FALSE assignment instead of output if logic is clear.",
-      "Do not accept testing only the last digit unless the MOD method is also explained.",
+      "Do not award MID result mark for M in Java index 4 style.",
+      "Allow characters shown with or without quotation marks.",
+      "Do not accept a single combined output unless both parts are clearly shown.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Complete a trace table for the expression Result <- 4 + 18 MOD 5 * 2. Demonstrate the working.",
-    answer: "18 MOD 5 = 3. Then 3 * 2 = 6. Then 4 + 6 = 10. Result is 10.",
+    marks: "7 marks",
+    prompt: "Write pseudocode to input the STRING values Surname and YearGroup, then create UserID from the first three letters of Surname followed by YearGroup. Output UserID.",
+    answer: "INPUT Surname\nINPUT YearGroup\nSurnamePart <- MID(Surname, 1, 3)\nUserID <- SurnamePart & YearGroup\nOUTPUT UserID",
     marking: [
-      { mark: "M1", text: "evaluates 18 MOD 5" },
-      { mark: "A1", text: "states 18 MOD 5 = 3" },
-      { mark: "M1", text: "multiplies the MOD result by 2 before addition" },
-      { mark: "A1", text: "states 3 * 2 = 6" },
-      { mark: "M1", text: "adds 4 to the intermediate result" },
-      { mark: "A1", text: "states final Result is 10" },
+      { mark: "B1", text: "inputs or obtains Surname" },
+      { mark: "B1", text: "inputs or obtains YearGroup" },
+      { mark: "M1", text: "uses MID(Surname, 1, 3) or equivalent guide-supported extraction" },
+      { mark: "A1", text: "uses start position 1 and count 3 to obtain the first three letters" },
+      { mark: "M1", text: "concatenates surname part with YearGroup" },
+      { mark: "A1", text: "assigns the result to UserID or equivalent" },
+      { mark: "B1", text: "outputs UserID" },
     ],
     strict: [
-      "Do not award final mark for 12 or 4 if caused by ignoring precedence.",
-      "Allow use of brackets in working if it preserves the original order of operations.",
-      "Do not accept a final answer with no working for full marks.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award extraction mark for RIGHT(Surname, 3).",
+      "Do not require case conversion because the question does not request it.",
+      "Do not accept Java String method calls alone as Cambridge pseudocode.",
     ],
   },
   {
     title: "Question 5",
-    marks: "7 marks",
-    prompt: "A positive integer Number has three digits. Write pseudocode to output the last digit and the first two digits. For example, 384 should output 4 and 38.",
-    answer: "INPUT Number\nLastDigit <- Number MOD 10\nFirstTwo <- Number DIV 10\nOUTPUT LastDigit\nOUTPUT FirstTwo",
+    marks: "4 marks",
+    prompt: "A candidate writes Part <- Word.substring(0, 3) in a Cambridge pseudocode answer. Explain the problem and give a corrected Cambridge-style expression.",
+    answer: "The problem is that substring(0, 3) is Java-style method syntax and uses zero-based indexes. The Cambridge guide expression Part <- MID(Word, 1, 3) uses start position 1 and returns three characters.",
     marking: [
-      { mark: "B1", text: "inputs or obtains Number" },
-      { mark: "M1", text: "uses MOD 10 to find the last digit" },
-      { mark: "A1", text: "assigns Number MOD 10 to LastDigit or equivalent" },
-      { mark: "M1", text: "uses DIV 10 to remove the last digit" },
-      { mark: "A1", text: "assigns Number DIV 10 to FirstTwo or equivalent" },
-      { mark: "B1", text: "outputs the last digit" },
-      { mark: "B1", text: "outputs the first two digits" },
+      { mark: "B1", text: "identifies substring(0, 3) as Java-style syntax / not Cambridge-style pseudocode" },
+      { mark: "M1", text: "explains Java indexes start at 0 or differ from the course pseudocode position convention" },
+      { mark: "M1", text: "states the intended result is the first three characters" },
+      { mark: "A1", text: "gives corrected expression MID(Word, 1, 3) or follows a complete function definition supplied in the question" },
     ],
     strict: [
-      "Do not award last digit mark for DIV 10.",
-      "Allow any clear variable names.",
-      "Do not accept string slicing as the intended arithmetic-operator solution unless question allows it.",
+      "Do not award correction mark for another Java expression.",
+      "Allow MID(Word, 1, 3) as an equivalent Cambridge-style correction.",
+      "Do not accept only 'syntax error' without explaining the pseudocode/Java difference.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
 ];
@@ -238,7 +234,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9.+\-*/:<>=\[\] %_.-]/g, "");
+  return value.trim().toLowerCase().replace(/^["']|["']$/g, "").replace(/\s+/g, " ").replace(/[^a-z0-9&:<>=\[\] %_.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -257,10 +253,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    "3-2": "Correct. 17 DIV 5 = 3 and 17 MOD 5 = 2.",
-    "2-3": "Not quite. Two rows use only 10 seats; there is room for another full row.",
-    "3-5": "A remainder must be smaller than the divisor. Five left over would make another full row.",
-    "3.4": "That is real division. DIV and MOD split the result into full groups and leftover.",
+    mon: "Not quite. Starting at position 2 means start at O, not M.",
+    oni: "Correct. Position 2 is O, then take three characters: O, N, I.",
+    oni0: "Close start, wrong count. The third argument is 3 characters here, so return ONI.",
+    nit: "That looks like a Java-index habit. This pseudocode trace uses positions starting at 1.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -271,33 +267,54 @@ function setupHook() {
   });
 }
 
-function setupCalculator() {
-  const result = document.querySelector("#calcResult");
-  document.querySelector("#calcBtn").addEventListener("click", () => {
-    const number = Number(document.querySelector("#numberInput").value);
-    const divisor = Number(document.querySelector("#divisorInput").value);
-    const operation = document.querySelector("#operationInput").value;
+function runStringFunction(text, func, start, count) {
+  if (func === "length") return String(text.length);
+  if (func === "right") return count <= text.length ? text.slice(text.length - count) : text;
+  if (func === "mid") return text.slice(start - 1, start - 1 + count);
+  if (func === "ucase") return text.toUpperCase();
+  if (func === "lcase") return text.toLowerCase();
+  return "";
+}
 
-    if (!Number.isInteger(number) || !Number.isInteger(divisor) || number < 0 || divisor <= 0) {
-      result.textContent = "Enter a non-negative integer Number and a positive integer Divisor.";
+function setupStringLab() {
+  const result = document.querySelector("#labResult");
+  document.querySelector("#runBtn").addEventListener("click", () => {
+    const text = document.querySelector("#textInput").value;
+    const func = document.querySelector("#functionInput").value;
+    const start = Number(document.querySelector("#startInput").value);
+    const count = Number(document.querySelector("#countInput").value);
+
+    if (text.length === 0) {
+      result.textContent = "Enter a non-empty string.";
+      return;
+    }
+    if ((func === "ucase" || func === "lcase") && text.length !== 1) {
+      result.textContent = "UCASE and LCASE require exactly one CHAR. Enter one character.";
+      return;
+    }
+    if (!Number.isInteger(start) || !Number.isInteger(count) || start < 1 || count < 1) {
+      result.textContent = "Start and n must be positive integers.";
+      return;
+    }
+    if (func === "mid" && start > text.length) {
+      result.textContent = "For this lab, the MID start position must be within the string.";
       return;
     }
 
-    const real = number / divisor;
-    const quotient = Math.floor(number / divisor);
-    const remainder = number % divisor;
-    const identity = divisor * quotient + remainder;
-    const rows = {
-      all: [
-        `<p><strong>${number} / ${divisor}</strong> = ${real}</p>`,
-        `<p><strong>${number} DIV ${divisor}</strong> = ${quotient}</p>`,
-        `<p><strong>${number} MOD ${divisor}</strong> = ${remainder}</p>`,
-      ],
-      div: [`<p><strong>${number} DIV ${divisor}</strong> = ${quotient}</p><p>Whole groups only.</p>`],
-      mod: [`<p><strong>${number} MOD ${divisor}</strong> = ${remainder}</p><p>Left over after complete groups.</p>`],
-      identity: [`<p><strong>${number}</strong> = ${divisor} * ${quotient} + ${remainder} = ${identity}</p>`],
-    };
-    result.innerHTML = rows[operation].join("");
+    const value = runStringFunction(text, func, start, count);
+    const call = {
+      length: `LENGTH("${text}")`,
+      right: `RIGHT("${text}", ${count})`,
+      mid: `MID("${text}", ${start}, ${count})`,
+      ucase: `UCASE('${text}')`,
+      lcase: `LCASE('${text}')`,
+    }[func];
+
+    result.innerHTML = `
+      <p><strong>Function call:</strong> ${escapeHtml(call)}</p>
+      <p><strong>Returned value:</strong> ${escapeHtml(value)}</p>
+      <p><strong>Note:</strong> A built-in function returns a value, so assign it or use it in an expression.</p>
+    `;
   });
 }
 
@@ -330,7 +347,7 @@ function setupExamples() {
       <article class="worked-card">
         <h3>${escapeHtml(example.title)}</h3>
         <p>${escapeHtml(example.problem)}</p>
-        ${tableMarkup(["Step", "Value", "Reason"], example.rows)}
+        ${tableMarkup(["Step", "Value / result", "Reason"], example.rows)}
         <pre><code>${escapeHtml(example.code)}</code></pre>
         <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
       </article>
@@ -371,7 +388,7 @@ function setupPractice() {
       const feedback = list.querySelector(`[data-feedback="${item.id}"]`);
       const answer = normalise(input.value);
       const correct = item.accepted.some((accepted) => normalise(accepted) === answer);
-      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the exact operator/result.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the returned value exactly.";
       feedback.classList.toggle("correct", correct);
       feedback.classList.toggle("incorrect", !correct);
     });
@@ -447,7 +464,7 @@ function setupExamQuestions() {
 
 setupPrint();
 setupHook();
-setupCalculator();
+setupStringLab();
 setupScenarioChooser();
 setupExamples();
 setupPractice();

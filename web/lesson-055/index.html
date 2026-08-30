@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 055 | Utility software: backup, compression, encryption, defragmentation and antivirus</title>
+    <title>AS9618 Lesson 055 | Libraries and dynamically linked library files</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Utility software: backup, compression, encryption, defragmentation and antivirus</h1>
+        <h1>Libraries and dynamically linked library files</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,13 +30,12 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#concept">Core idea</a>
-        <a href="#backup">Backup</a>
-        <a href="#compression">Compression</a>
-        <a href="#encryption">Encryption</a>
-        <a href="#defrag">Defragmentation</a>
-        <a href="#antivirus">Antivirus</a>
+        <a href="#cli">CLI</a>
+        <a href="#gui">GUI</a>
+        <a href="#menu">Menu-driven</a>
+        <a href="#natural">Natural language</a>
         <a href="#compare">Comparison</a>
-        <a href="#tool">Utility tool</a>
+        <a href="#tool">Interface tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -51,68 +50,81 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>command-line, graphical, menu-driven and natural-language user-interface taxonomy. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S5.01 operating-system purpose and management roles.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Required utility software</h2>
+            <h2>Libraries and dynamically linked library files</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.</p>
-            <p>A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.</p>
-            <p>Required utilities include defragmentation software and disk contents analysis/disk repair software; defragmentation rearranges file blocks, while analysis/repair checks and attempts to repair file-system faults.</p>
+            <p>Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.</p>
+            <p>Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.</p>
+            <p>DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.</p>
+            <p>A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.</p>
+            <p>One benefit of a program library is that a developer can reuse existing tested code while software is under development.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose the utility from the fault</h3>
-            <p>Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.</p>
+            <h3>Worked example: Three programs use one graphics DLL</h3>
+            <p>All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Choose the required utility by its operation</h2>
+        <!-- stage10-explanation:start libraries -->
+        <section class="panel explanation-panel" id="explanation-libraries" data-explains="libraries" data-explanation-kind="mechanism" aria-labelledby="explanation-libraries-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="libraries">
+          <h2 class="explanation-sr-only" id="explanation-libraries-title">Libraries provide reusable routines and modules</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the required utility by its operation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the required utility by its operation: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-libraries.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Libraries provide reusable routines and modules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Libraries provide reusable routines and modules: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A disk formatter prepares a storage medium with file-system structures.</li><li><strong>Lesson fact:</strong> A virus checker scans for, quarantines and removes malware.</li><li><strong>Lesson fact:</strong> A disk defragmenter rearranges fragmented file blocks on a magnetic disk.</li><li><strong>Lesson fact:</strong> A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.</li><li><strong>Lesson fact:</strong> Compression reduces file size; backup creates a separate recoverable copy.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Purpose Provide pre-written, tested routines that programs can use.</li><li><strong>Lesson fact:</strong> Examples Mathematical functions, input/output routines, graphics or string-handling routines.</li><li><strong>Lesson fact:</strong> Benefits Saves development time, reduces duplication and may improve reliability.</li><li><strong>Lesson fact:</strong> Requirement Calls to library routines must be linked or made available at run time.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
+        <!-- stage10-explanation:end libraries -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required utility software: apply and assess</h2>
+            <h2>Libraries and dynamically linked library files: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which utility prepares file-system structures on a storage medium?</p>
-              <details><summary>Show answer</summary><p>A disk formatter.</p></details>
+              <p><strong>1.</strong> How do program libraries support software under development?</p>
+              <details><summary>Show answer</summary><p>They supply existing reusable routines or modules, avoiding the need to write common code again.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which utility checks file-system structures and attempts repairs?</p>
-              <details><summary>Show answer</summary><p>A disk contents analysis/repair utility.</p></details>
+              <p><strong>2.</strong> When is a dynamically linked library connected to a program?</p>
+              <details><summary>Show answer</summary><p>At load time or run time when required.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is compression not a backup?</p>
-              <details><summary>Show answer</summary><p>Compression reduces size; a backup creates a separate copy that can be restored.</p></details>
+              <p><strong>3.</strong> Give one storage benefit of dynamic linking.</p>
+              <details><summary>Show answer</summary><p>Library code need not be copied into every executable.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one DLL risk.</p>
+              <details><summary>Show answer</summary><p>A missing/incompatible version can prevent execution or cause faults.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A computer has a new storage medium and another disk reports file-system errors. Identify the utility for each task and explain its purpose.</p>
+            <p>Explain two benefits and one drawback of using a dynamically linked library.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>disk formatter for the new medium</td><td>Do not accept defragmentation as formatting or as a general file-system repair operation.</td><td>1</td></tr>
-                  <tr><td>formatter creates/prepares file-system structures</td><td></td><td>1</td></tr>
-                  <tr><td>disk contents analysis/repair utility for the faulty disk</td><td></td><td>1</td></tr>
-                  <tr><td>it examines structures and reports/attempts repair of faults</td><td></td><td>1</td></tr>
+                  <tr><td>shared reusable code / avoids rewriting</td><td>Do not accept 'saves space' unless duplication or executable size is explained.</td><td>1</td></tr>
+                  <tr><td>smaller executables or reduced duplicate memory/storage</td><td></td><td>1</td></tr>
+                  <tr><td>shared library can be updated once</td><td></td><td>1</td></tr>
+                  <tr><td>missing/incompatible DLL can stop or alter programs</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -123,274 +135,254 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 055 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>Utility software is the toolkit that keeps a system usable, recoverable and safer.</h2>
+            <h2>An interface is the conversation style between user and computer.</h2>
             <p>
-              Utility programs perform maintenance, protection and management tasks.
-              They are system software, but they are not the operating system itself.
-              The exam expects the exact purpose of each utility, plus a scenario where it is appropriate.
+              A user interface lets a person interact with a computer system.
+              Different interfaces suit different users, tasks and environments.
+              The exam rewards specific advantages and limitations, not "GUI is nicer".
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>backup, compression, encryption, defragmentation and antivirus utilities</span></div>
-              <div><strong>Apply</strong><span>the correct utility to a user or organisation scenario</span></div>
-              <div><strong>Explain</strong><span>benefits, limitations and common common errors precisely</span></div>
+              <div><strong>Identify</strong><span>CLI, GUI, menu-driven and natural language interfaces</span></div>
+              <div><strong>Compare</strong><span>advantages and limitations for realistic scenarios</span></div>
+              <div><strong>Justify</strong><span>which interface is suitable for a given user and task</span></div>
             </div>
           </div>
-          <div class="utility-card" aria-label="Utility software sketch">
-            <div class="utility-stack">
-              <span>Backup: recover data</span>
-              <span>Compression: reduce file size</span>
-              <span>Encryption: protect confidentiality</span>
-              <span>Defrag: rearrange fragmented files</span>
-              <span>Antivirus: detect and remove malware</span>
+          <div class="ui-card" aria-label="Interface types sketch">
+            <div class="ui-stack">
+              <span>CLI: type commands</span>
+              <span>GUI: windows, icons, menus, pointer</span>
+              <span>Menu-driven: choose from options</span>
+              <span>Natural language: speak or type ordinary language</span>
             </div>
-            <p>Name the specific task performed by the utility software.</p>
+            <p>The best interface is not the fanciest one. It is the one that fits the task.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge questions often give a scenario. Marks come from matching the utility to the exact problem.</p>
+            <p>Scenario questions often ask for suitability. Students must link interface features to the user, not just list features.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not write "secure" or "efficient" alone. Explain what is protected, reduced, recovered or detected.</p>
+            <p>Do not write that GUI is always best. CLI can be efficient for expert users and automation.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A student deletes their coursework folder five minutes before the deadline. Which utility matters most?</h2>
-            <p>Click the best answer. At this point, "I was going to save it later" is not a recovery strategy.</p>
+            <h2>A technician needs to rename 500 files with one command. Which interface is likely best?</h2>
+            <p>Click the best answer. Dragging 500 files one by one is a hobby, not a workflow.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="backup">Backup utility</button>
-            <button class="choice-card" type="button" data-hook="compression">Compression utility</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption utility</button>
-            <button class="choice-card" type="button" data-hook="defrag">Defragmentation utility</button>
+            <button class="choice-card" type="button" data-hook="cli">Command line interface</button>
+            <button class="choice-card" type="button" data-hook="gui">Graphical interface only</button>
+            <button class="choice-card" type="button" data-hook="menu">A three-button menu with no batch option</button>
+            <button class="choice-card" type="button" data-hook="natural">Natural language interface with vague wording</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The best utility depends on the problem being solved.
+            Choose one. Efficient interface choice depends on user skill and task type.
           </div>
         </section>
 
         <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Utility software performs maintenance and support tasks</h2>
+            <h2>A user interface allows interaction with a computer system</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>System software</strong><span>Software that supports the operation and management of the computer system.</span></article>
-            <article><strong>Utility software</strong><span>System software designed for a specific maintenance, protection or management task.</span></article>
-            <article><strong>Not application software</strong><span>It supports the system rather than directly producing user documents, games or media.</span></article>
-            <article><strong>Scenario link</strong><span>The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</span></article>
+            <article><strong>User interface</strong><span>The method by which a user communicates with a computer system.</span></article>
+            <article><strong>Usability</strong><span>How easy and effective an interface is for a specific user and task.</span></article>
+            <article><strong>Accessibility</strong><span>How well an interface can be used by people with different needs or abilities.</span></article>
+            <article><strong>Context</strong><span>The environment, user skill level and task determine suitability.</span></article>
           </div>
-          <div class="callout">Chinese support: utility software = 实用程序；backup = 备份；compression = 压缩；encryption = 加密；defragmentation = 磁盘碎片整理；antivirus = 防病毒软件。</div>
+          <div class="callout">Chinese support: user interface = 用户界面；command line = 命令行；graphical = 图形化；menu-driven = 菜单驱动；natural language = 自然语言。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
         <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Utility software performs maintenance and support tasks</h2>
+          <h2 class="explanation-sr-only" id="explanation-concept-title">A user interface allows interaction with a computer system</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software performs maintenance and support tasks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Utility software performs maintenance and support tasks: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A user interface allows interaction with a computer system with a structured visual model." />
+            <figcaption class="explanation-sr-only">A user interface allows interaction with a computer system: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> System software Software that supports the operation and management of the computer system.</li><li><strong>Lesson fact:</strong> Utility software System software designed for a specific maintenance, protection or management task.</li><li><strong>Lesson fact:</strong> Not application software It supports the system rather than directly producing user documents, games or media.</li><li><strong>Lesson fact:</strong> Scenario link The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> User interface The method by which a user communicates with a computer system.</li><li><strong>Lesson fact:</strong> Usability How easy and effective an interface is for a specific user and task.</li><li><strong>Lesson fact:</strong> Accessibility How well an interface can be used by people with different needs or abilities.</li><li><strong>Lesson fact:</strong> Context The environment, user skill level and task determine suitability.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="backup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+        <section class="panel" id="cli" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Backup utilities create copies so data can be restored</h2>
+            <h2>Command line interface: precise text commands</h2>
           </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Create copies of files or systems in another location or storage medium.</span></article>
-            <article><strong>Benefit</strong><span>Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</span></article>
-            <article><strong>Good practice</strong><span>Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</span></article>
-            <article><strong>Limitation</strong><span>A backup is only useful if it is recent, complete and can actually be restored.</span></article>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>The user types commands and parameters at a prompt.</span></article>
+            <article><strong>Advantages</strong><span>Fast for experts, supports automation/scripts, can use fewer system resources.</span></article>
+            <article><strong>Limitations</strong><span>Users must know exact commands; errors can occur from mistyped syntax.</span></article>
+            <article><strong>Good fit</strong><span>System administration, batch operations, remote servers and repeatable tasks.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start backup -->
-        <section class="panel explanation-panel" id="explanation-backup" data-explains="backup" data-explanation-kind="mechanism" aria-labelledby="explanation-backup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
-          <h2 class="explanation-sr-only" id="explanation-backup-title">Backup utilities create copies so data can be restored</h2>
+        <!-- stage10-explanation:start cli -->
+        <section class="panel explanation-panel" id="explanation-cli" data-explains="cli" data-explanation-kind="mechanism" aria-labelledby="explanation-cli-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+          <h2 class="explanation-sr-only" id="explanation-cli-title">Command line interface: precise text commands</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-backup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backup utilities create copies so data can be restored with a structured visual model." />
-            <figcaption class="explanation-sr-only">Backup utilities create copies so data can be restored: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-cli.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Command line interface: precise text commands with a structured visual model." />
+            <figcaption class="explanation-sr-only">Command line interface: precise text commands: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Create copies of files or systems in another location or storage medium.</li><li><strong>Lesson fact:</strong> Benefit Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</li><li><strong>Lesson fact:</strong> Good practice Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</li><li><strong>Lesson fact:</strong> Limitation A backup is only useful if it is recent, complete and can actually be restored.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> How it works The user types commands and parameters at a prompt.</li><li><strong>Lesson fact:</strong> Advantages Fast for experts, supports automation/scripts, can use fewer system resources.</li><li><strong>Lesson fact:</strong> Limitations Users must know exact commands; errors can occur from mistyped syntax.</li><li><strong>Lesson fact:</strong> Good fit System administration, batch operations, remote servers and repeatable tasks.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end backup -->
-        <section class="panel" id="compression" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+        <!-- stage10-explanation:end cli -->
+        <section class="panel" id="gui" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Compression utilities reduce file size</h2>
+            <h2>Graphical user interface: visual objects and pointer actions</h2>
           </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Encode data so it takes up fewer bits than the original file.</span></article>
-            <article><strong>Uses</strong><span>Save storage space, reduce upload/download time and fit within attachment limits.</span></article>
-            <article><strong>Lossless</strong><span>Original data can be reconstructed exactly, suitable for text, programs and archives.</span></article>
-            <article><strong>Lossy</strong><span>Some detail is discarded, often suitable for media where small quality loss is acceptable.</span></article>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>Uses windows, icons, menus and a pointer/touch input.</span></article>
+            <article><strong>Advantages</strong><span>Intuitive for many users, easy to learn, supports visual feedback and direct manipulation.</span></article>
+            <article><strong>Limitations</strong><span>Can use more memory/processing power; repetitive actions may be slower than commands.</span></article>
+            <article><strong>Good fit</strong><span>General desktop use, creative work, browsing files and visual tasks.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compression -->
-        <section class="panel explanation-panel" id="explanation-compression" data-explains="compression" data-explanation-kind="mechanism" aria-labelledby="explanation-compression-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
-          <h2 class="explanation-sr-only" id="explanation-compression-title">Compression utilities reduce file size</h2>
+        <!-- stage10-explanation:start gui -->
+        <section class="panel explanation-panel" id="explanation-gui" data-explains="gui" data-explanation-kind="mechanism" aria-labelledby="explanation-gui-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+          <h2 class="explanation-sr-only" id="explanation-gui-title">Graphical user interface: visual objects and pointer actions</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-compression.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression utilities reduce file size with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compression utilities reduce file size: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-gui.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Graphical user interface: visual objects and pointer actions with a structured visual model." />
+            <figcaption class="explanation-sr-only">Graphical user interface: visual objects and pointer actions: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Encode data so it takes up fewer bits than the original file.</li><li><strong>Lesson fact:</strong> Uses Save storage space, reduce upload/download time and fit within attachment limits.</li><li><strong>Lesson fact:</strong> Lossless Original data can be reconstructed exactly, suitable for text, programs and archives.</li><li><strong>Lesson fact:</strong> Lossy Some detail is discarded, often suitable for media where small quality loss is acceptable.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> How it works Uses windows, icons, menus and a pointer/touch input.</li><li><strong>Lesson fact:</strong> Advantages Intuitive for many users, easy to learn, supports visual feedback and direct manipulation.</li><li><strong>Lesson fact:</strong> Limitations Can use more memory/processing power; repetitive actions may be slower than commands.</li><li><strong>Lesson fact:</strong> Good fit General desktop use, creative work, browsing files and visual tasks.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compression -->
-        <section class="panel" id="encryption" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+        <!-- stage10-explanation:end gui -->
+        <section class="panel" id="menu" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Encryption utilities protect confidentiality</h2>
+            <h2>Menu-driven interface: choose from fixed options</h2>
           </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Scramble plaintext into ciphertext using an algorithm and a key.</span></article>
-            <article><strong>Benefit</strong><span>Unauthorised users cannot read the data without the correct key.</span></article>
-            <article><strong>Examples</strong><span>Encrypting a laptop drive, a backup archive or files sent over a network.</span></article>
-            <article><strong>Limitation</strong><span>Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</span></article>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>The user selects from displayed options, often step by step.</span></article>
+            <article><strong>Advantages</strong><span>Reduces memorisation, restricts invalid choices, useful for simple repeated tasks.</span></article>
+            <article><strong>Limitations</strong><span>Can be slow for expert users; limited to available options; nested menus can frustrate users.</span></article>
+            <article><strong>Good fit</strong><span>ATMs, ticket machines, phone menus and kiosks.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start encryption -->
-        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
-          <h2 class="explanation-sr-only" id="explanation-encryption-title">Encryption utilities protect confidentiality</h2>
+        <!-- stage10-explanation:start menu -->
+        <section class="panel explanation-panel" id="explanation-menu" data-explains="menu" data-explanation-kind="mechanism" aria-labelledby="explanation-menu-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+          <h2 class="explanation-sr-only" id="explanation-menu-title">Menu-driven interface: choose from fixed options</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-encryption.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Encryption utilities protect confidentiality with a structured visual model." />
-            <figcaption class="explanation-sr-only">Encryption utilities protect confidentiality: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-menu.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Menu-driven interface: choose from fixed options with a structured visual model." />
+            <figcaption class="explanation-sr-only">Menu-driven interface: choose from fixed options: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Scramble plaintext into ciphertext using an algorithm and a key.</li><li><strong>Lesson fact:</strong> Benefit Unauthorised users cannot read the data without the correct key.</li><li><strong>Lesson fact:</strong> Examples Encrypting a laptop drive, a backup archive or files sent over a network.</li><li><strong>Lesson fact:</strong> Limitation Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> How it works The user selects from displayed options, often step by step.</li><li><strong>Lesson fact:</strong> Advantages Reduces memorisation, restricts invalid choices, useful for simple repeated tasks.</li><li><strong>Lesson fact:</strong> Limitations Can be slow for expert users; limited to available options; nested menus can frustrate users.</li><li><strong>Lesson fact:</strong> Good fit ATMs, ticket machines, phone menus and kiosks.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end encryption -->
-        <section class="panel" id="defrag" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+        <!-- stage10-explanation:end menu -->
+        <section class="panel" id="natural" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Defragmentation rearranges fragmented files on magnetic disks</h2>
+            <h2>Natural language interface: ordinary language input</h2>
           </div>
-          <div class="utility-grid">
-            <article><strong>Fragmentation</strong><span>Parts of a file are stored in non-contiguous blocks across a disk.</span></article>
-            <article><strong>Purpose</strong><span>Rearrange file blocks so related parts are stored closer together.</span></article>
-            <article><strong>Benefit</strong><span>Can reduce mechanical disk head movement and improve hard disk access time.</span></article>
-            <article><strong>Boundary</strong><span>Do not apply the same benefit to SSDs; they have no moving disk head.</span></article>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>The user speaks or types instructions in ordinary human language.</span></article>
+            <article><strong>Advantages</strong><span>Can be accessible, hands-free and intuitive for simple requests.</span></article>
+            <article><strong>Limitations</strong><span>May misinterpret ambiguous wording, accents, noise or context.</span></article>
+            <article><strong>Good fit</strong><span>Voice assistants, search queries, smart speakers and accessibility support.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start defrag -->
-        <section class="panel explanation-panel" id="explanation-defrag" data-explains="defrag" data-explanation-kind="mechanism" aria-labelledby="explanation-defrag-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
-          <h2 class="explanation-sr-only" id="explanation-defrag-title">Defragmentation rearranges fragmented files on magnetic disks</h2>
+        <!-- stage10-explanation:start natural -->
+        <section class="panel explanation-panel" id="explanation-natural" data-explains="natural" data-explanation-kind="mechanism" aria-labelledby="explanation-natural-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+          <h2 class="explanation-sr-only" id="explanation-natural-title">Natural language interface: ordinary language input</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-defrag.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Defragmentation rearranges fragmented files on magnetic disks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Defragmentation rearranges fragmented files on magnetic disks: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-natural.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Natural language interface: ordinary language input with a structured visual model." />
+            <figcaption class="explanation-sr-only">Natural language interface: ordinary language input: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Fragmentation Parts of a file are stored in non-contiguous blocks across a disk.</li><li><strong>Lesson fact:</strong> Purpose Rearrange file blocks so related parts are stored closer together.</li><li><strong>Lesson fact:</strong> Benefit Can reduce mechanical disk head movement and improve hard disk access time.</li><li><strong>Lesson fact:</strong> Boundary Do not apply the same benefit to SSDs; they have no moving disk head.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> How it works The user speaks or types instructions in ordinary human language.</li><li><strong>Lesson fact:</strong> Advantages Can be accessible, hands-free and intuitive for simple requests.</li><li><strong>Lesson fact:</strong> Limitations May misinterpret ambiguous wording, accents, noise or context.</li><li><strong>Lesson fact:</strong> Good fit Voice assistants, search queries, smart speakers and accessibility support.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end defrag -->
-        <section class="panel" id="antivirus" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Antivirus utilities detect, quarantine and remove malware</h2>
-          </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Scan files, memory or downloads for malware signatures or suspicious behaviour.</span></article>
-            <article><strong>Actions</strong><span>Warn the user, quarantine infected files, delete malware or block malicious activity.</span></article>
-            <article><strong>Updates</strong><span>Definitions and detection rules should be updated to recognise newer threats.</span></article>
-            <article><strong>Limitation</strong><span>Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start antivirus -->
-        <section class="panel explanation-panel" id="explanation-antivirus" data-explains="antivirus" data-explanation-kind="mechanism" aria-labelledby="explanation-antivirus-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
-          <h2 class="explanation-sr-only" id="explanation-antivirus-title">Antivirus utilities detect, quarantine and remove malware</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-antivirus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Antivirus utilities detect, quarantine and remove malware with a structured visual model." />
-            <figcaption class="explanation-sr-only">Antivirus utilities detect, quarantine and remove malware: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Scan files, memory or downloads for malware signatures or suspicious behaviour.</li><li><strong>Lesson fact:</strong> Actions Warn the user, quarantine infected files, delete malware or block malicious activity.</li><li><strong>Lesson fact:</strong> Updates Definitions and detection rules should be updated to recognise newer threats.</li><li><strong>Lesson fact:</strong> Limitation Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end antivirus -->
+        <!-- stage10-explanation:end natural -->
         <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Choose the utility by diagnosing the problem</h2>
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare interface suitability by scenario</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Utility software comparison">
+          <div class="comparison-table" role="table" aria-label="Interface comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Problem</div>
-              <div role="columnheader">Most relevant utility</div>
-              <div role="columnheader">Exam-quality reason</div>
+              <div role="columnheader">Scenario</div>
+              <div role="columnheader">Likely suitable interface</div>
+              <div role="columnheader">Reason</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Deleted work needs recovery</div>
-              <div role="cell">Backup</div>
-              <div role="cell">A previous copy can be restored if it was made before the loss.</div>
+              <div role="cell">Expert admin repeats a file operation</div>
+              <div role="cell">CLI</div>
+              <div role="cell">Commands/scripts are efficient for repeatable precise tasks.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">File is too large to email</div>
-              <div role="cell">Compression</div>
-              <div role="cell">Reduces file size, saving transmission time and storage space.</div>
+              <div role="cell">Novice edits photos</div>
+              <div role="cell">GUI</div>
+              <div role="cell">Visual feedback and direct manipulation support the task.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Sensitive file may be stolen</div>
-              <div role="cell">Encryption</div>
-              <div role="cell">Turns readable data into ciphertext that needs a key to read.</div>
+              <div role="cell">Customer buys a train ticket</div>
+              <div role="cell">Menu-driven</div>
+              <div role="cell">Fixed choices guide the user and reduce input errors.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Old HDD opens files slowly</div>
-              <div role="cell">Defragmentation</div>
-              <div role="cell">Rearranges scattered file blocks to reduce disk head movement.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Downloaded file may contain malware</div>
-              <div role="cell">Antivirus</div>
-              <div role="cell">Scans, quarantines or removes malicious code.</div>
+              <div role="cell">Driver asks for directions hands-free</div>
+              <div role="cell">Natural language</div>
+              <div role="cell">Speech input can be used without touching the device.</div>
             </div>
           </div>
         </section>
 
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare interface suitability by scenario</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare interface suitability by scenario with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare interface suitability by scenario: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Likely suitable interface</li><li><strong>Lesson fact:</strong> Expert admin repeats a file operation</li><li><strong>Lesson fact:</strong> Commands/scripts are efficient for repeatable precise tasks.</li><li><strong>Lesson fact:</strong> Novice edits photos</li><li><strong>Lesson fact:</strong> Visual feedback and direct manipulation support the task.</li><li><strong>Lesson fact:</strong> Customer buys a train ticket</li><li><strong>Lesson fact:</strong> Menu-driven</li><li><strong>Lesson fact:</strong> Fixed choices guide the user and reduce input errors.</li><li><strong>Lesson fact:</strong> Driver asks for directions hands-free</li><li><strong>Lesson fact:</strong> Natural language</li><li><strong>Lesson fact:</strong> Speech input can be used without touching the device.</li></ol>
 
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Utility selector</h2>
-            <p>Select a problem and identify the most suitable utility.</p>
+            <h2>Interface selector</h2>
+            <p>Select a scenario and classify the most suitable interface.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Problem scenario
+              Scenario
               <select id="scenarioInput">
-                <option value="deleted">Coursework folder was deleted</option>
-                <option value="email">Video file is too large to upload</option>
-                <option value="stolen">A laptop with customer data may be stolen</option>
-                <option value="slowhdd">An old magnetic hard disk opens files slowly</option>
-                <option value="malware">A suspicious attachment may contain malware</option>
-                <option value="ssd">A laptop with SSD storage feels slow</option>
+                <option value="admin">Expert renames many files repeatedly</option>
+                <option value="photo">Novice edits and arranges photos</option>
+                <option value="atm">Customer withdraws cash from an ATM</option>
+                <option value="voice">User controls a smart speaker by speech</option>
+                <option value="server">Technician manages a remote server with low bandwidth</option>
+                <option value="kiosk">Museum visitor chooses an exhibit guide</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Diagnose</button>
+            <button type="button" id="simulateBtn">Choose interface</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
@@ -400,23 +392,22 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>From scenario to utility choice</h2>
+            <h2>Choose the interface and justify the trade-off</h2>
           </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="backup">Backup</button>
-            <button class="tab" type="button" data-example="compression">Compression</button>
-            <button class="tab" type="button" data-example="encryption">Encryption</button>
-            <button class="tab" type="button" data-example="defrag">Defrag</button>
-            <button class="tab" type="button" data-example="antivirus">Antivirus</button>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="cli">CLI admin</button>
+            <button class="tab" type="button" data-example="gui">GUI novice</button>
+            <button class="tab" type="button" data-example="menu">Menu kiosk</button>
+            <button class="tab" type="button" data-example="natural">Voice assistant</button>
           </div>
-          <div class="example-box" id="exampleBox"></div>
+          <article class="example-box" id="exampleBox"></article>
         </section>
 
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Use the answer button if you need the expected wording.</p>
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Type the interface type or key term. Use exact vocabulary.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -424,16 +415,16 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the almost-right answers</h2>
+            <h2>Fix the interface claim</h2>
           </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
+          <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes use strict wording notes to train exam precision.</p>
+            <h2>Cambridge-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about scenario-linked advantages and limitations.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -441,43 +432,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>The one-line memory map</h2>
+            <h2>Interface choice depends on task and user</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Backup</strong><span>Recover data from a copy.</span></div>
-            <div><strong>Compression</strong><span>Reduce file size.</span></div>
-            <div><strong>Encryption</strong><span>Protect confidentiality with ciphertext and a key.</span></div>
-            <div><strong>Defrag</strong><span>Rearrange file blocks on magnetic disks.</span></div>
-            <div><strong>Antivirus</strong><span>Detect, quarantine and remove malware.</span></div>
-            <div><strong>Exam rule</strong><span>Utility + mechanism + scenario consequence.</span></div>
+            <div><strong>CLI</strong><span>Typed commands; efficient for experts and automation.</span></div>
+            <div><strong>GUI</strong><span>Visual objects; easier for many users and visual tasks.</span></div>
+            <div><strong>Menu-driven</strong><span>Fixed options; guides users through limited choices.</span></div>
+            <div><strong>Natural language</strong><span>Speech/text in ordinary language; useful but can misinterpret.</span></div>
+            <div><strong>Suitability</strong><span>Depends on user skill, task, environment and constraints.</span></div>
+            <div><strong>Exam habit</strong><span>Give one advantage and one limitation tied to the scenario.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Clear output, not vague revision</h2>
+            <h2>Make interface comparisons scenario-specific</h2>
           </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Five utility flashcards</strong>
-              <span>Create one flashcard for each utility. Front: utility name. Back: purpose, one scenario, one limitation.</span>
-            </article>
-            <article>
-              <strong>Task 2: Scenario paragraph</strong>
-              <span>Write a 6-mark answer recommending two utilities for a small business that stores customer data and has suffered malware before.</span>
-            </article>
-            <article>
-              <strong>Task 3: Marking check</strong>
-              <span>Underline each mechanism word in your answer: restore, reduce, encrypt, rearrange, scan, quarantine or remove.</span>
-            </article>
-          </div>
+          <ol class="homework-list">
+            <li>Define CLI, GUI, menu-driven interface and natural language interface.</li>
+            <li>Create a comparison table with one advantage and one limitation for each interface.</li>
+            <li>Write a 4-mark answer recommending an interface for a public ticket machine.</li>
+            <li>Correct this sentence: "GUI is always the best interface because it has pictures."</li>
+            <li>Find one real device/app for each interface type and explain why it fits.</li>
+          </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

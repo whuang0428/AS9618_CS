@@ -49,7 +49,9 @@ function parseCsv(text) {
 }
 
 function jpegDimensions(relativePath) {
-  const buffer = fs.readFileSync(path.join(root, relativePath));
+  const filePath = path.join(root, relativePath);
+  if (!fs.existsSync(filePath)) return null;
+  const buffer = fs.readFileSync(filePath);
   let offset = 2;
   while (offset + 9 < buffer.length) {
     if (buffer[offset] !== 0xff) { offset += 1; continue; }
@@ -75,15 +77,16 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["113", ["INTEGER", "REAL", "CHAR", "STRING", "BOOLEAN", "DATE", "ARRAY", "FILE"]],
-  ["118", ["different data types", "one identifier", "TYPE", "ENDTYPE", "Student1.Mark", "save", "read"]],
-  ["115", ["index", "lower bound", "upper bound", "one-dimensional", "two-dimensional", "DECLARE"]],
-  ["116", ["two-dimensional array", "DECLARE", "FOR", "row", "column"]],
-  ["104", ["linear search", "bubble sort", "repeated passes", "swap", "ARRAY"]],
+  ["114", ["INTEGER", "REAL", "CHAR", "STRING", "BOOLEAN", "DATE", "ARRAY", "FILE"]],
+  ["115", ["different data types", "one identifier", "TYPE", "ENDTYPE", "Student1.Mark", "save", "read"]],
+  ["116", ["index", "lower bound", "upper bound", "one-dimensional", "two-dimensional", "DECLARE"]],
+  ["117", ["two-dimensional array", "DECLARE", "FOR", "row", "column"]],
+  ["119", ["linear search", "bubble sort", "repeated passes", "swap", "ARRAY"]],
   ["120", ["persistent", "OPENFILE", "READFILE", "WRITEFILE", "EOF", "CLOSEFILE"]],
-  ["122", ["collection of data and a set of operations", "stack", "queue", "linked list", "add", "edit", "delete", "array", "does not require pseudocode"]],
-  ["123", ["LIFO", "FIFO", "linked list", "justify"]],
-  ["125", ["Section 10", "record", "array", "file", "stack", "queue"]],
+  ["121", ["collection of data and a set of operations", "stack", "queue", "linked list", "add", "edit", "delete", "array", "does not require pseudocode"]],
+  ["122", ["linked list", "justify"]],
+  ["123", ["LIFO", "FIFO"]],
+  ["126", ["Section 10", "record", "array", "file", "stack", "queue"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -94,17 +97,17 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["AQ115-Q3", ["CHAR", "DATE", "middle initial", "date of birth"]],
-  ["AQ120-Q1", ["one-dimensional", "two-dimensional", "30", "4", "DECLARE"]],
-  ["AQ120-Q3", ["Student1.Mark", "save", "read"]],
-  ["AM120-Q2", ["bubble sort", "ascending", "pseudocode", "swap"]],
-  ["AQ125-Q3", ["linked-list", "Data", "Next", "edit"]],
-  ["AR125-Q2", ["stack", "queue", "linked-list", "add", "edit", "delete", "array", "pseudocode"]],
-  ["L105-Q5", ["bubble sort", "pseudocode", "swap"]],
+  ["AQ116-Q3", ["CHAR", "DATE", "middle initial", "date of birth"]],
+  ["AQ121-Q1", ["one-dimensional", "two-dimensional", "30", "4", "DECLARE"]],
+  ["AQ121-Q3", ["Student1.Mark", "save", "read"]],
+  ["AM121-Q2", ["bubble sort", "ascending", "pseudocode", "swap"]],
+  ["AQ126-Q3", ["linked-list", "Data", "Next", "edit"]],
+  ["AR126-Q2", ["stack", "queue", "linked-list", "add", "edit", "delete", "array", "pseudocode"]],
+  ["L106-Q5", ["bubble sort", "pseudocode", "swap"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 10 assessment`);
 
-const acceptedSection10 = [...questions.values()].filter(({ id }) => /^(?:L(?:104|105|113|115|116|118|120|122|123|125)-Q|AQ(?:115|120|125)-Q|AM120-Q|AR125-Q)/.test(id))
+const acceptedSection10 = [...questions.values()].filter(({ id }) => /^(?:L(?:105|106|114|115|116|117|118|119|120|121|122|123|124|125|126)-Q|AQ(?:115|120|125)-Q|AM121-Q|AR126-Q)/.test(id))
   .map((question) => [question.prompt, question.answer, ...question.points.flat(), ...question.guidance].join(" ")).join("\n");
 for (const [pattern, label] of [
   [/array (?:indexes|indices) are always zero-based/i, "arrays are falsely required to be zero-based"],
@@ -114,7 +117,7 @@ for (const [pattern, label] of [
   [/candidates? must write pseudocode for (?:a )?(?:stack|queue|linked list)/i, "ADT pseudocode is falsely required"],
 ]) expect(!pattern.test(acceptedSection10), `forbidden Section 10 assessment semantics: ${label}`);
 
-const visualKeys = ["113/pseudocode", "118/declare", "122/concept", "122/implementation"];
+const visualKeys = ["114/pseudocode", "119/declare", "123/concept", "123/implementation"];
 const semanticRows = parseCsv(read("audits/stage10-semantic-review-register.csv"));
 const targetRows = parseCsv(read("audits/stage10-explanation-target-register.csv"));
 const visualFacts = read("scripts/stage10-visual-repair-facts.json");
@@ -123,8 +126,9 @@ for (const key of visualKeys) {
   const visualPath = `web/assets/diagrams/stage10-infographics/stage10-lesson-${lesson}-${targetId}.jpg`;
   const dimensions = jpegDimensions(visualPath);
   expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${visualPath}: expected 1536x1024 JPEG`);
-  const visualHash = sha256(fs.readFileSync(path.join(root, visualPath)));
-  const semanticRow = semanticRows.find((row) => row.lesson === lesson && row.target_id === targetId);
+  const visualFile = path.join(root, visualPath);
+  const visualHash = fs.existsSync(visualFile) ? sha256(fs.readFileSync(visualFile)) : "";
+  const semanticRow = semanticRows.find((row) => row.asset === path.basename(visualPath));
   expect(semanticRow?.sha256 === visualHash, `${key}: semantic review hash does not match the current image`);
   expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", `${key}: visual lacks two approved semantic review passes`);
   const deliveryLesson = visualDeliveryLesson(lesson, targetId);
@@ -154,9 +158,9 @@ for (const [id, pattern] of mutationPatterns) {
 }
 
 for (const [requirementId, questionIds, pattern] of [
-  ["S10.01", ["AQ115-Q3"], /CHAR|DATE|middle initial|date of birth/gi],
-  ["S10.06", ["L105-Q5", "AM120-Q2"], /bubble sort|ascending|pseudocode|swap/gi],
-  ["S10.10", ["AQ125-Q3", "AR125-Q2"], /stack|queue|linked list|add|edit|delete|array|Data|Next/gi],
+  ["S10.01", ["AQ116-Q3"], /CHAR|DATE|middle initial|date of birth/gi],
+  ["S10.06", ["L106-Q5", "AM121-Q2"], /bubble sort|ascending|pseudocode|swap/gi],
+  ["S10.10", ["AQ126-Q3", "AR126-Q2"], /stack|queue|linked list|add|edit|delete|array|Data|Next/gi],
 ]) {
   const mutation = evaluateRequirement(requirements.get(requirementId), {
     questionTransform: (question) => questionIds.includes(question.id) ? {

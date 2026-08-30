@@ -7,7 +7,7 @@ import { evaluateRequirement, lessonPaths, root } from "./syllabus-coverage-eval
 import { optionalEnrichment } from "./remediation-v2-optional-enrichment.mjs";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 
-const requiredOptionalLessons = [6, 11, 18, 19, 21, 30, 54, 57, 58, 59, 113, 144, 145];
+const requiredOptionalLessons = [6, 12, 19, 20, 22, 31, 55, 58, 59, 60, 114, 145, 146];
 
 function sectionTag(html, sectionId) {
   return html.match(new RegExp(`<section\\b[^>]*\\bid="${sectionId}"[^>]*>`, "i"))?.[0] ?? "";

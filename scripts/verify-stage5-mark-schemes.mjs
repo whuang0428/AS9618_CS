@@ -15,7 +15,7 @@ const vaguePattern = /\b(good answer|clear explanation|appropriate answer|reason
 const genericFtPattern = /\bFT\b.*\b(where appropriate|where possible|if clear|if consistent|award each|mark each)\b/i;
 const preciseFtPattern = /\b(FT|follow[- ]through)\b.*\b(candidate(?:'s)?|their)\b.*\b(earlier|previous|calculated|derived|intermediate|value|result|answer|output|column|row|total|bounds|condition)\b/i;
 
-if (questions.length !== 963) fail(`Expected 963 reviewed questions; found ${questions.length}`);
+if (questions.length !== 968) fail(`Expected 968 reviewed questions; found ${questions.length}`);
 if (new Set(questions.map((question) => question.id)).size !== questions.length) fail("Question review IDs must be unique");
 if (new Set(questions.map((question) => question.prompt)).size !== questions.length) fail("Question prompts must be unique across the Stage 5 corpus");
 

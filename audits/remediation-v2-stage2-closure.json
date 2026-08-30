@@ -48,7 +48,7 @@
       "stage2Disposition": "Resolved",
       "closureEvidence": [
         "S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production",
-        "L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment"
+        "L012, L145 construction practice and L146 production practice are retained only as labelled Optional enrichment"
       ],
       "nextStage": null
     },

@@ -1,112 +1,153 @@
 const chooserMap = {
-  seating: { title: "Outer loop: rows | Inner loop: seats", detail: "The algorithm chooses a row, then checks every seat in that row." },
-  marks: { title: "Outer loop: students | Inner loop: marks", detail: "For each student, input the three test marks and process that student's total." },
-  table: { title: "Outer loop: first factor | Inner loop: second factor", detail: "For each first factor, output products with every second factor." },
-  pairs: { title: "Outer loop: first team | Inner loop: second team", detail: "Each outer team is compared with each possible inner team, with conditions to avoid invalid pairs if needed." },
+  count: { title: "Count pattern", detail: "Use Count <- Count + 1 when the current character matches the target." },
+  search: { title: "Search pattern", detail: "Use a Found flag or store the position when the target character is found." },
+  validate: { title: "Validation pattern", detail: "Start with Valid <- TRUE and set it to FALSE if any character breaks the rule." },
+  build: { title: "Build pattern", detail: "Start with NewString <- \"\" and append selected characters one at a time." },
 };
 
-function nestedTrace(rows, columns) {
-  const traceRows = [];
-  let visit = 0;
-  for (let row = 1; row <= rows; row += 1) {
-    for (let column = 1; column <= columns; column += 1) {
-      visit += 1;
-      traceRows.push([String(visit), String(row), String(column), `R${row}C${column}`]);
+function charAtOneBased(text, position) {
+  return text[position - 1];
+}
+
+function isVowel(character) {
+  return ["A", "E", "I", "O", "U"].includes(character.toUpperCase());
+}
+
+function traceString(text, operation) {
+  let count = 0;
+  let found = false;
+  let foundPosition = "-";
+  let newString = "";
+  const rows = [];
+
+  for (let index = 1; index <= text.length; index += 1) {
+    const character = charAtOneBased(text, index);
+    let action = "";
+
+    if (operation === "countA") {
+      if (character.toUpperCase() === "A") {
+        count += 1;
+        action = `A found, Count becomes ${count}`;
+      } else {
+        action = "not A, Count unchanged";
+      }
     }
+
+    if (operation === "findE") {
+      if (!found && character.toUpperCase() === "E") {
+        found = true;
+        foundPosition = String(index);
+        action = `first E found at position ${index}`;
+      } else if (found) {
+        action = "already found, flag remains TRUE";
+      } else {
+        action = "not E, keep searching";
+      }
+    }
+
+    if (operation === "removeSpaces") {
+      if (character !== " ") {
+        newString += character;
+        action = `append character, NewString = "${newString}"`;
+      } else {
+        action = "space skipped";
+      }
+    }
+
+    if (operation === "countVowels") {
+      if (isVowel(character)) {
+        count += 1;
+        action = `vowel found, Count becomes ${count}`;
+      } else {
+        action = "not a vowel, Count unchanged";
+      }
+    }
+
+    rows.push([
+      String(index),
+      character === " " ? "(space)" : character,
+      operation === "countA" || operation === "countVowels" ? String(count) : "-",
+      operation === "findE" ? String(found).toUpperCase() : "-",
+      operation === "findE" ? foundPosition : "-",
+      operation === "removeSpaces" ? `"${newString}"` : "-",
+      action,
+    ]);
   }
+
+  const final =
+    operation === "countA" ? `Final count of A: ${count}.` :
+    operation === "countVowels" ? `Final vowel count: ${count}.` :
+    operation === "findE" ? `Found E: ${String(found).toUpperCase()}, position: ${foundPosition}.` :
+    `Final string without spaces: "${newString}".`;
+
   return {
-    headers: ["Visit", "Row", "Column", "Cell"],
-    rows: traceRows,
-    note: `${rows} rows x ${columns} columns = ${rows * columns} cell visits.`,
+    headers: ["Index", "Character", "Count", "Found", "Position", "NewString", "Action"],
+    rows,
+    note: final,
   };
 }
 
-function multiplicationTrace(rows, columns) {
-  const traceRows = [];
-  for (let row = 1; row <= rows; row += 1) {
-    for (let column = 1; column <= columns; column += 1) {
-      traceRows.push([String(row), String(column), String(row * column)]);
-    }
+function validateDigitsTrace(text) {
+  let valid = true;
+  const rows = [];
+  for (let index = 1; index <= text.length; index += 1) {
+    const character = charAtOneBased(text, index);
+    const isDigit = character >= "0" && character <= "9";
+    if (!isDigit) valid = false;
+    rows.push([String(index), character, isDigit ? "digit" : "not digit", String(valid).toUpperCase()]);
   }
   return {
-    headers: ["Row factor", "Column factor", "Product"],
-    rows: traceRows,
-    note: `The product statement runs ${rows * columns} times.`,
-  };
-}
-
-function rowTotalTrace(table) {
-  const traceRows = [];
-  let grandTotal = 0;
-  table.forEach((rowValues, rowIndex) => {
-    let rowTotal = 0;
-    rowValues.forEach((value, colIndex) => {
-      rowTotal += value;
-      traceRows.push([String(rowIndex + 1), String(colIndex + 1), String(value), String(rowTotal), String(grandTotal)]);
-    });
-    grandTotal += rowTotal;
-    traceRows.push([String(rowIndex + 1), "end row", "-", `output ${rowTotal}`, String(grandTotal)]);
-  });
-  return {
-    headers: ["Row", "Column", "Value", "RowTotal", "GrandTotal"],
-    rows: traceRows,
-    note: `Final GrandTotal is ${grandTotal}. RowTotal resets at the start of each row.`,
+    headers: ["Index", "Character", "Test", "Valid"],
+    rows,
+    note: valid ? "The string contains only digits." : "The string is invalid because at least one character is not a digit.",
   };
 }
 
 const examples = {
-  coordinates: {
-    title: "Example 1: Cell coordinates",
-    problem: "Trace the cells visited by nested loops with 2 rows and 3 columns.",
-    trace: nestedTrace(2, 3),
-    points: ["The inner loop runs 3 times for Row 1.", "Then the inner loop runs 3 times again for Row 2.", "Total visits are 2 x 3 = 6."],
+  "count-a": {
+    title: "Example 1: Count A in DATA",
+    problem: "Trace an algorithm that counts the letter A in DATA.",
+    trace: traceString("DATA", "countA"),
+    points: ["Initialise Count to 0.", "Inspect each character.", "Increment Count only when the character is A."],
   },
-  "row-total": {
-    title: "Example 2: Row totals",
-    problem: "A table has row values [4, 5, 6] and [2, 3, 1]. Trace RowTotal and GrandTotal.",
-    trace: rowTotalTrace([[4, 5, 6], [2, 3, 1]]),
-    points: ["RowTotal resets before each row's inner loop.", "GrandTotal is updated after each row is complete.", "Output row totals after the inner loop, not after every cell."],
+  "find-e": {
+    title: "Example 2: Find first E in COMPUTER",
+    problem: "Trace an algorithm that finds the first E in COMPUTER.",
+    trace: traceString("COMPUTER", "findE"),
+    points: ["Start with Found <- FALSE.", "Set Found to TRUE when E is found.", "Store the position if the question asks for it."],
   },
-  multiplication: {
-    title: "Example 3: Multiplication table",
-    problem: "Trace products for Row 1 to 3 and Column 1 to 3.",
-    trace: multiplicationTrace(3, 3),
-    points: ["Outer loop controls the first factor.", "Inner loop controls the second factor.", "The product is calculated inside the inner loop."],
+  "remove-spaces": {
+    title: "Example 3: Build string without spaces",
+    problem: "Trace an algorithm that removes spaces from A S LEVEL.",
+    trace: traceString("A S LEVEL", "removeSpaces"),
+    points: ["Initialise NewString to an empty string.", "Append non-space characters.", "Do not append the skipped space characters."],
   },
-  mistake: {
-    title: "Example 4: Reset placement",
-    problem: "Explain why RowTotal <- 0 belongs inside the outer loop.",
-    trace: {
-      headers: ["Placement", "Effect", "Consequence"],
-      rows: [
-        ["Before outer loop", "RowTotal never resets for each row", "row outputs carry previous rows"],
-        ["Inside outer loop before inner loop", "RowTotal resets once per row", "each row has a separate total"],
-        ["Inside inner loop", "RowTotal resets for every cell", "only the last cell may be counted"],
-      ],
-      note: "The correct position depends on how often the variable must reset.",
-    },
-    points: ["Ask what the variable represents.", "Reset it at the start of that level.", "Use indentation to show ownership."],
+  "validate-digits": {
+    title: "Example 4: Validate a digit-only string",
+    problem: "Trace validation for the string 12A4.",
+    trace: validateDigitsTrace("12A4"),
+    points: ["Start with Valid <- TRUE.", "Set Valid <- FALSE if any character is not a digit.", "One invalid character is enough to make the whole string invalid."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "In a 3-row, 4-column table, how many cells are processed?", accepted: ["12", "twelve"], answer: "12" },
-  { id: "p2", prompt: "Which loop usually controls rows: outer or inner?", accepted: ["outer", "outer loop"], answer: "Outer loop" },
-  { id: "p3", prompt: "Which loop usually controls columns: outer or inner?", accepted: ["inner", "inner loop"], answer: "Inner loop" },
-  { id: "p4", prompt: "FOR Row <- 1 TO 2 and FOR Column <- 1 TO 5. How many times does the inner statement run?", accepted: ["10", "ten"], answer: "10" },
-  { id: "p5", prompt: "For separate row totals, where should RowTotal <- 0 be placed?", accepted: ["inside outer loop", "inside the outer loop", "before inner loop", "before the inner loop", "inside outer before inner"], answer: "Inside the outer loop, before the inner loop" },
-  { id: "p6", prompt: "Should GrandTotal usually reset before all rows or inside every row?", accepted: ["before all rows", "before outer loop", "before the outer loop"], answer: "Before the outer loop / before all rows" },
-  { id: "p7", prompt: "In a 2 by 3 multiplication table, what is the product when Row=2 and Column=3?", accepted: ["6", "six"], answer: "6" },
-  { id: "p8", prompt: "If Row=1, Column=1..3, what is the next Row after Column 3 finishes?", accepted: ["2", "row 2"], answer: "Row 2" },
-  { id: "p9", prompt: "Nested loop visit counts usually add or multiply the loop counts?", accepted: ["multiply", "multiplied", "multiplication"], answer: "Multiply" },
-  { id: "p10", prompt: "Is Java brace syntax required in Cambridge pseudocode? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style FOR/NEXT and indentation." },
+  { id: "p1", prompt: "What is the first character of DATA using 1-based pseudocode positions?", accepted: ["d"], answer: "D" },
+  { id: "p2", prompt: "What is LENGTH(\"DATA\")?", accepted: ["4", "four"], answer: "4" },
+  { id: "p3", prompt: "How many A characters are in DATA?", accepted: ["2", "two"], answer: "2" },
+  { id: "p4", prompt: "In COMPUTER, what is the position of the first E using 1-based positions?", accepted: ["7"], answer: "7" },
+  { id: "p5", prompt: "What should Count be initialised to before counting matching characters?", accepted: ["0", "zero"], answer: "0" },
+  { id: "p6", prompt: "What should Found usually be initialised to before searching? TRUE or FALSE.", accepted: ["false"], answer: "FALSE" },
+  { id: "p7", prompt: "After removing spaces from A S, what string remains?", accepted: ["as", "a s without space", "a s -> as"], answer: "AS" },
+  { id: "p8", prompt: "If a validation algorithm finds one invalid character, should Valid become TRUE or FALSE?", accepted: ["false"], answer: "FALSE" },
+  { id: "p9", prompt: "Which variable is used to build a new string in this lesson?", accepted: ["newstring", "new string"], answer: "NewString" },
+  { id: "p10", prompt: "Is Java charAt(0) the same notation as Cambridge-style position 1? yes or no.", accepted: ["no"], answer: "No. Java is 0-based; the pseudocode trace here is 1-based." },
 ];
 
 const mistakes = [
-  { wrong: "I added 3 + 4 and said a 3 by 4 table has 7 visits.", fix: "Nested loop visits multiply when every column is processed for every row: 3 x 4 = 12." },
-  { wrong: "I put RowTotal <- 0 before the outer loop for separate student totals.", fix: "Place RowTotal <- 0 inside the outer loop before the inner loop so it resets for each student." },
-  { wrong: "I put OUTPUT RowTotal inside the inner loop.", fix: "That outputs a running total after each column. For one total per row, output after the inner loop finishes." },
-  { wrong: "I used the same variable name for Row and Column.", fix: "Use separate control variables so each loop has its own counter and clear role." },
+  { wrong: "I started the Cambridge-style loop at 0 and inspected DATA position 0.", fix: "For this lesson's pseudocode trace, use positions 1 to LENGTH(String). Keep Java 0-based indexing separate." },
+  { wrong: "I increased Count for every character when asked to count only A.", fix: "Use Count <- Count + 1 only inside the IF that tests Character = \"A\"." },
+  { wrong: "I reset Found to FALSE after the target had already been found.", fix: "Once Found is TRUE, leave it TRUE. Do not undo the search result on later characters." },
+  { wrong: "I wrote NewString <- Character inside the loop when removing spaces.", fix: "That overwrites earlier characters. Use NewString <- NewString & Character to append." },
 ];
 
 
@@ -118,101 +159,102 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Complete a trace table for the sequence of cells visited by nested loops: FOR Row <- 1 TO 2 and FOR Column <- 1 TO 3. Demonstrate Row and Column for each visit.",
-    answer: "Visit 1 Row 1 Column 1\nVisit 2 Row 1 Column 2\nVisit 3 Row 1 Column 3\nVisit 4 Row 2 Column 1\nVisit 5 Row 2 Column 2\nVisit 6 Row 2 Column 3",
+    marks: "6 marks",
+    prompt: "Complete a trace table for an algorithm that counts the letter A in the string DATA. Demonstrate Index, Character and Count after each character is processed.",
+    answer: "Index 1 Character D Count 0\nIndex 2 Character A Count 1\nIndex 3 Character T Count 1\nIndex 4 Character A Count 2",
     marking: [
-      { mark: "B1", text: "shows Row 1 begins with Column 1" },
-      { mark: "M1", text: "shows inner loop completes Columns 1 to 3 for Row 1" },
-      { mark: "M1", text: "shows Row changes to 2 after Column 3" },
-      { mark: "M1", text: "shows Columns 1 to 3 repeat for Row 2" },
-      { mark: "A1", text: "all six visits are in the correct order" },
+      { mark: "B1", text: "uses positions 1 to 4 / processes each character in DATA" },
+      { mark: "B1", text: "shows D with Count unchanged at 0" },
+      { mark: "M1", text: "increments Count when first A is processed" },
+      { mark: "B1", text: "shows T with Count unchanged" },
+      { mark: "M1", text: "increments Count when second A is processed" },
+      { mark: "A1", text: "final Count is 2" },
     ],
     strict: [
-      "Do not award full marks for only stating 6 visits when a trace is required.",
-      "Allow equivalent coordinate format such as (1,1), (1,2).",
-      "Do not accept changing Row before the inner loop completes.",
+      "Do not award full marks for final count only when trace is required.",
+      "Allow equivalent table layout.",
+      "Do not accept counting lowercase/uppercase differently unless question specifies case sensitivity.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input 4 marks for each of 3 students and output the total for each student.",
-    answer: "FOR Student <- 1 TO 3\n    StudentTotal <- 0\n    FOR MarkNumber <- 1 TO 4\n        INPUT Mark\n        StudentTotal <- StudentTotal + Mark\n    NEXT MarkNumber\n    OUTPUT StudentTotal\nNEXT Student",
+    prompt: "Write Cambridge-style pseudocode to input a string Word and output how many vowels A, E, I, O or U it contains. Assume uppercase input.",
+    answer: "VowelCount <- 0\nFOR Index <- 1 TO LENGTH(Word)\n    Character <- MID(Word, Index, 1)\n    IF Character = \"A\" OR Character = \"E\" OR Character = \"I\" OR Character = \"O\" OR Character = \"U\" THEN\n        VowelCount <- VowelCount + 1\n    ENDIF\nNEXT Index\nOUTPUT VowelCount",
     marking: [
-      { mark: "B1", text: "uses outer loop for 3 students" },
-      { mark: "B1", text: "initialises StudentTotal to 0 inside outer loop before inner loop" },
-      { mark: "M1", text: "uses inner loop for 4 marks" },
-      { mark: "M1", text: "inputs Mark inside inner loop" },
-      { mark: "A1", text: "updates StudentTotal with each Mark" },
-      { mark: "A1", text: "outputs StudentTotal after inner loop and before next student" },
+      { mark: "B1", text: "initialises VowelCount / Count to 0" },
+      { mark: "M1", text: "loops through every character of Word" },
+      { mark: "M1", text: "extracts or clearly refers to the current character" },
+      { mark: "M1", text: "tests current character against vowels" },
+      { mark: "A1", text: "increments count only when vowel condition is true" },
+      { mark: "B1", text: "outputs final count after the loop" },
     ],
     strict: [
-      "Do not award row-total reset mark if StudentTotal is reset before the outer loop only.",
-      "Allow WHILE loops if counters are correctly controlled.",
-      "Do not award Cambridge notation mark for Java-only braces and semicolons.",
+      "Do not accept adding the character value to the count.",
+      "Allow separate IF statements for each vowel if the count is correct.",
+      "Do not penalise for omitting lowercase handling because uppercase input is stated.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Explain why nested loops are suitable for processing a table with 5 rows and 6 columns.",
-    answer: "A table has two repeated dimensions: rows and columns. An outer loop can repeat once for each of the 5 rows. For each row, an inner loop can repeat once for each of the 6 columns. This processes every cell exactly once, giving 5 x 6 = 30 cell visits. The loop variables also identify which cell is being processed.",
+    prompt: "An algorithm should output whether a password contains the character #. Describe a suitable algorithm using a flag.",
+    answer: "Set Found <- FALSE. Loop through each character in the password. If the current character is #, set Found <- TRUE. After the loop, output Found or output a suitable message based on Found.",
     marking: [
-      { mark: "B1", text: "identifies two dimensions / rows and columns" },
-      { mark: "B1", text: "outer loop linked to rows" },
-      { mark: "B1", text: "inner loop linked to columns" },
-      { mark: "B1", text: "explains inner loop runs for each outer loop value" },
-      { mark: "B1", text: "calculates 5 x 6 = 30 visits" },
-      { mark: "B1", text: "links loop variables to processing each cell / table location" },
+      { mark: "B1", text: "initialises Found to FALSE" },
+      { mark: "B1", text: "loops through each character of the password" },
+      { mark: "B1", text: "compares current character with #" },
+      { mark: "B1", text: "sets Found to TRUE when # is found" },
+      { mark: "B1", text: "does not reset Found to FALSE after it has become TRUE" },
+      { mark: "B1", text: "outputs result after processing / based on Found" },
     ],
     strict: [
-      "Do not accept only 'it is easier' without mechanism.",
-      "Allow rows/columns reversed if the explanation is consistent.",
-      "Do not require array terminology.",
+      "Do not require early termination, but allow it if logically correct.",
+      "Allow stores position instead of Boolean flag if presence is still determined.",
+      "Do not award comparison mark for checking the whole string equals #.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A student writes RowTotal <- 0 before the outer loop, then outputs RowTotal after each row. Explain the error and correction.",
-    answer: "The error is that RowTotal is not reset for each row, so totals from previous rows carry into later row outputs. RowTotal should be set to 0 inside the outer loop before the inner loop begins. This resets the row-level accumulator once per row while still allowing the inner loop to add each column value.",
+    marks: "6 marks",
+    prompt: "Write pseudocode to create a new string from Text with all spaces removed.",
+    answer: "NewString <- \"\"\nFOR Index <- 1 TO LENGTH(Text)\n    Character <- MID(Text, Index, 1)\n    IF Character <> \" \" THEN\n        NewString <- NewString & Character\n    ENDIF\nNEXT Index\nOUTPUT NewString",
     marking: [
-      { mark: "B1", text: "identifies RowTotal is reset in the wrong place" },
-      { mark: "B1", text: "explains previous row values carry over" },
-      { mark: "B1", text: "places RowTotal <- 0 inside outer loop before inner loop" },
-      { mark: "B1", text: "explains reset should happen once per row" },
-      { mark: "B1", text: "connects correction to separate row totals" },
+      { mark: "B1", text: "initialises NewString to empty string" },
+      { mark: "M1", text: "loops through each character of Text" },
+      { mark: "M1", text: "extracts or tests the current character" },
+      { mark: "A1", text: "checks current character is not a space" },
+      { mark: "A1", text: "appends non-space character to NewString without overwriting previous characters" },
+      { mark: "B1", text: "outputs NewString after the loop" },
     ],
     strict: [
-      "Do not award full marks for only saying 'move it'.",
-      "Allow 'student total' or 'line total' for row total.",
-      "Do not place reset inside inner loop; that loses earlier cells in the row.",
+      "Do not award append mark for NewString <- Character because it overwrites previous output.",
+      "Allow other clear concatenation notation if used consistently.",
+      "Do not require handling tabs or punctuation unless stated.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Compare a single loop and a nested loop. Refer to a suitable example for each.",
-    answer: "A single loop repeats one set of steps over one sequence, such as inputting 10 marks and adding them to a total. A nested loop has one loop inside another, so it can process repeated groups such as 3 students with 4 marks each, or a table with rows and columns. In a nested loop the inner loop completes for each value of the outer loop, so the number of inner statements is often the outer count multiplied by the inner count.",
+    marks: "4 marks",
+    prompt: "Explain two common errors when translating a string algorithm from Java into Cambridge-style pseudocode.",
+    answer: "One common error is copying Java 0-based indexing directly into a pseudocode trace that uses positions 1 to LENGTH(String), causing the first or last character to be missed. Another error is copying Java syntax such as braces, semicolons, charAt or ++ instead of using clear Cambridge-style assignment, loop and IF statements. These errors can make the algorithm harder to mark even if the idea is close.",
     marking: [
-      { mark: "B1", text: "describes single loop as one repeated sequence" },
-      { mark: "B1", text: "gives suitable single-loop example" },
-      { mark: "B1", text: "describes nested loop as loop inside another loop" },
-      { mark: "B1", text: "gives suitable nested-loop/table-style example" },
-      { mark: "B1", text: "explains inner loop completes for each outer value" },
-      { mark: "B1", text: "mentions multiplication of iteration counts or equivalent consequence" },
+      { mark: "B1", text: "identifies Java 0-based indexing issue" },
+      { mark: "B1", text: "explains it can miss or shift characters in the trace" },
+      { mark: "B1", text: "identifies Java-only syntax issue" },
+      { mark: "B1", text: "explains Cambridge-style pseudocode should use clear keywords / assignment" },
     ],
     strict: [
-      "Do not accept 'nested is harder' as a comparison.",
-      "Allow row/column, student/mark or multiplication-table examples.",
-      "Do not require Big O notation.",
+      "Do not require exact phrase 'Cambridge-style' if the distinction is clear.",
+      "Allow examples such as charAt(0), braces, semicolons or ++.",
+      "Do not award both errors for two examples of the same syntax issue.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9\\[\\] <>+=.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9#@\\[\\] <>+=.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -231,10 +273,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    seven: "That adds rows and columns. Nested loop cell visits multiply.",
-    twelve: "Correct. 3 rows x 4 columns = 12 cell checks.",
-    three: "That counts rows only. Each row has 4 columns.",
-    four: "That counts columns only. There are 3 rows of those columns.",
+    d: "Correct. In this 1-based pseudocode trace, position 1 of DATA is D.",
+    a: "A appears at positions 2 and 4. The first character is D.",
+    zero: "That is Java-style thinking. This pseudocode trace starts at position 1.",
+    all: "String-processing algorithms usually inspect one character at a time when tracing.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -254,15 +296,13 @@ function setupChooser() {
   });
 }
 
-function setupSimulator() {
-  const rowsInput = document.querySelector("#rowsInput");
-  const colsInput = document.querySelector("#colsInput");
-  const result = document.querySelector("#simulateResult");
-  document.querySelector("#simulateBtn").addEventListener("click", () => {
-    const rows = Number(rowsInput.value);
-    const columns = Number(colsInput.value);
-    const trace = nestedTrace(rows, columns);
-    result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
+function setupScanner() {
+  const textInput = document.querySelector("#textInput");
+  const operationInput = document.querySelector("#operationInput");
+  const result = document.querySelector("#scanResult");
+  document.querySelector("#scanBtn").addEventListener("click", () => {
+    const trace = traceString(textInput.value, operationInput.value);
+    result.innerHTML = `<p><strong>Text:</strong> "${textInput.value}"</p>${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
   });
 }
 
@@ -285,7 +325,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("coordinates");
+  renderExample("count-a");
 }
 
 function setupPractice() {
@@ -374,7 +414,7 @@ function setupExam() {
 setupPrint();
 setupHook();
 setupChooser();
-setupSimulator();
+setupScanner();
 setupExamples();
 setupPractice();
 setupMistakes();

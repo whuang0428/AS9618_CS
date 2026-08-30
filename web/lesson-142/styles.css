@@ -122,7 +122,7 @@ pre {
   margin-bottom: 4px;
 }
 
-.lifecycle-visual {
+.review-visual {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -133,7 +133,7 @@ pre {
   background: linear-gradient(135deg, #17324d, #2563eb 48%, #047857);
   border-radius: 8px;
 }
-.lifecycle-visual > div {
+.review-visual > div {
   display: grid;
   gap: 6px;
   min-height: 150px;
@@ -145,9 +145,9 @@ pre {
   padding: 16px;
   font-weight: 850;
 }
-.lifecycle-visual strong { font-size: 1.45rem; }
-.lifecycle-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; }
-.lifecycle-visual em { color: #334155; font-style: normal; font-weight: 700; }
+.review-visual strong { font-size: 1.45rem; }
+.review-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; }
+.review-visual em { color: #334155; font-style: normal; font-weight: 700; }
 
 .guidance-grid {
   display: grid;
@@ -162,13 +162,12 @@ pre {
 .section-title { margin-bottom: 18px; }
 .section-title p:not(.eyebrow) { color: var(--muted); max-width: 78ch; }
 
-.hook-grid, .mistake-grid, .card-grid {
+.hook-grid, .mistake-grid, .checklist-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
-.card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.choice-card, .mistake-grid article, .card-grid article, .practice-card, .exam-card, .example-card {
+.choice-card, .mistake-grid article, .practice-card, .exam-card, .example-card, .check-item {
   border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 8px;
@@ -177,6 +176,8 @@ pre {
 }
 .choice-card { font-weight: 800; overflow-wrap: anywhere; }
 .choice-card.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+.check-item { display: flex; gap: 10px; align-items: flex-start; font-weight: 650; }
+.check-item input { width: auto; margin-top: 4px; }
 
 .feedback, .callout, .trace-output, .answer-panel, .ms-panel, .example-output {
   margin-top: 16px;
@@ -210,31 +211,15 @@ input, select {
   color: var(--ink);
 }
 
-.cycle-strip {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
-}
-.cycle-strip span {
-  display: grid;
-  place-items: center;
-  min-height: 90px;
-  padding: 12px;
-  border-radius: 8px;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
-  border: 1px solid var(--line);
-  font-weight: 850;
-}
-
 .data-table {
   display: grid;
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
 }
-.three-col .table-row { grid-template-columns: 1fr 1fr 1.2fr; }
-.four-col .table-row { grid-template-columns: 0.9fr 1.1fr 1fr 1.1fr; }
+.two-col .table-row { grid-template-columns: 0.4fr 1.6fr; }
+.three-col .table-row { grid-template-columns: 1fr 1.2fr 1fr; }
+.four-col .table-row { grid-template-columns: 1fr 1fr 1fr 1fr; }
 .table-row { display: grid; }
 .table-row > div {
   padding: 14px;
@@ -295,17 +280,17 @@ input, select {
     position: static;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .hero, .guidance-grid, .objective-grid, .summary-grid, .code-grid, .tool-grid, .card-grid {
+  .hero, .guidance-grid, .objective-grid, .summary-grid, .code-grid, .tool-grid {
     grid-template-columns: 1fr;
   }
-  .lifecycle-visual { min-height: auto; }
+  .review-visual { min-height: auto; }
 }
 
 @media (max-width: 680px) {
   .topbar { position: static; align-items: flex-start; flex-direction: column; }
-  .lesson-nav, .hook-grid, .mistake-grid, .lifecycle-visual, .cycle-strip { grid-template-columns: 1fr; }
+  .lesson-nav, .hook-grid, .mistake-grid, .review-visual, .checklist-grid { grid-template-columns: 1fr; }
   .practice-row { grid-template-columns: 1fr; }
-  .table-row, .three-col .table-row, .four-col .table-row {
+  .table-row, .two-col .table-row, .three-col .table-row, .four-col .table-row {
     grid-template-columns: 1fr;
   }
   .table-row > div {
@@ -324,16 +309,3 @@ input, select {
     break-inside: avoid;
   }
 }
-
-/* Stage 2 syllabus completion:start */
-.stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
-.stage2-practice-block { border-top: 2px solid var(--accent, #176b5b); }
-.stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
-.stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
-.stage2-question + .stage2-question { margin-top: 10px; }
-.stage2-completion details { margin-top: 10px; }
-.stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
-.stage2-completion .mark-scheme-table { width: 100%; border-collapse: collapse; }
-.stage2-completion .mark-scheme-table :where(th, td) { border: 1px solid var(--line, #d7ddd9); padding: 8px; text-align: left; vertical-align: top; }
-.stage2-completion .mark-scheme-table :where(th, td):last-child { width: 5rem; text-align: center; }
-/* Stage 2 syllabus completion:end */

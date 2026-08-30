@@ -5,7 +5,7 @@ function expect(condition, message) {
 }
 
 const lessons = pageDefinitions.filter(({ kind }) => kind === "lesson");
-expect(lessons.length === 150, "Expected exactly 150 lesson pages");
+expect(lessons.length === 151, "Expected exactly 151 lesson pages");
 
 const exactLink = '<a class="course-home-link" href="../">Course home</a>';
 
@@ -29,4 +29,4 @@ for (const marker of [".course-home-link", "min-height: 44px", ".topbar .action-
   expect(css.includes(marker), `Shared navigation CSS marker is missing: ${marker}`);
 }
 
-console.log("Student navigation verification passed: 150 lesson pages have one keyboard-accessible course home link.");
+console.log("Student navigation verification passed: 151 lesson pages have one keyboard-accessible course home link.");

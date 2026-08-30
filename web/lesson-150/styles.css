@@ -20,6 +20,15 @@ body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.55; }
 button, input, select { font: inherit; }
 button { cursor: pointer; }
 code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
+pre {
+  margin: 0;
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.45;
+}
 
 .topbar {
   position: sticky;
@@ -114,7 +123,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
   margin-bottom: 4px;
 }
 
-.clinic-visual {
+.timed-visual {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -125,7 +134,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
   background: linear-gradient(135deg, #12304f, #2563eb 48%, #047857);
   border-radius: 8px;
 }
-.clinic-visual > div {
+.timed-visual > div {
   display: grid;
   gap: 6px;
   min-height: 150px;
@@ -137,9 +146,9 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
   padding: 16px;
   font-weight: 850;
 }
-.clinic-visual strong { font-size: 1.35rem; }
-.clinic-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; overflow-wrap: anywhere; }
-.clinic-visual em { color: #334155; font-style: normal; font-weight: 700; }
+.timed-visual strong { font-size: 1.35rem; }
+.timed-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; overflow-wrap: anywhere; }
+.timed-visual em { color: #334155; font-style: normal; font-weight: 700; }
 
 .guidance-grid {
   display: grid;
@@ -181,12 +190,13 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 .trace-output { display: grid; gap: 10px; overflow-wrap: anywhere; }
 .trace-output p { margin: 0; }
 
-.tool-grid {
+.code-grid, .tool-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  align-items: end;
+  align-items: start;
 }
+.tool-grid { align-items: end; }
 .tool-grid label {
   display: grid;
   gap: 8px;
@@ -208,7 +218,7 @@ input, select {
   overflow: hidden;
 }
 .two-col .table-row { grid-template-columns: 0.8fr 1.5fr; }
-.four-col .table-row { grid-template-columns: 0.8fr 1.1fr 1.1fr 1.1fr; }
+.four-col .table-row { grid-template-columns: 0.8fr 1fr 1.1fr 1.1fr; }
 .table-row {
   display: grid;
   border-top: 1px solid var(--line);
@@ -271,8 +281,8 @@ input, select {
   .layout { grid-template-columns: 1fr; }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: 1fr; }
-  .guidance-grid, .card-grid, .objective-grid, .summary-grid, .audit-list, .tool-grid { grid-template-columns: 1fr; }
-  .clinic-visual { min-height: 0; }
+  .guidance-grid, .card-grid, .objective-grid, .summary-grid, .audit-list, .code-grid, .tool-grid { grid-template-columns: 1fr; }
+  .timed-visual { min-height: 0; }
   .four-col .table-row { grid-template-columns: 1fr; }
   .four-col .table-row > div { border-left: 0; border-top: 1px solid var(--line); }
   .four-col .table-row > div:first-child { border-top: 0; }
@@ -281,7 +291,7 @@ input, select {
 @media (max-width: 640px) {
   .topbar { position: static; align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
-  .hook-grid, .mistake-grid, .clinic-visual { grid-template-columns: 1fr; }
+  .hook-grid, .mistake-grid, .timed-visual { grid-template-columns: 1fr; }
   .answer-row { grid-template-columns: 1fr; }
   .two-col .table-row { grid-template-columns: 1fr; }
   .two-col .table-row > div { border-left: 0; border-top: 1px solid var(--line); }

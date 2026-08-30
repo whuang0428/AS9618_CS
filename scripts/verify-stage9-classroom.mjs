@@ -58,7 +58,7 @@ const catalogContext = {};
 vm.createContext(catalogContext);
 vm.runInContext(read("web/course-catalog.js"), catalogContext);
 const catalog = catalogContext.AS9618CourseCatalog;
-expect(Array.isArray(catalog) && catalog.length === 150, "Course catalog must contain exactly 150 lessons");
+expect(Array.isArray(catalog) && catalog.length === 151, "Course catalog must contain exactly 151 lessons");
 
 const lessons = pageDefinitions.filter(({ kind }) => kind === "lesson");
 const roles = new Set(["CORE", "OPTIONAL", "AFTER_CLASS"]);
@@ -66,7 +66,7 @@ const activities = new Set(["TEACH", "ASK", "THINK", "PAIR", "PRACTISE", "CHECK"
 const formalCoreLessons = new Set(coverageContract.requirements.flatMap(({ teachingLessons }) => teachingLessons));
 const optionalOnlyLessons = new Set([
   ...optionalEnrichment.filter(({ disposition }) => disposition === "Optional enrichment lesson").map(({ lesson }) => lesson),
-  ...Array.from({ length: 150 }, (_, index) => index + 1).filter((lesson) => !formalCoreLessons.has(lesson)),
+  ...Array.from({ length: 151 }, (_, index) => index + 1).filter((lesson) => !formalCoreLessons.has(lesson)),
 ]);
 let sectionCount = 0;
 
@@ -79,9 +79,9 @@ for (const [index, definition] of lessons.entries()) {
   expect(entry?.title === h1, `${definition.page}: catalog title does not match h1`);
   expect(["Paper 1", "Paper 2"].includes(entry?.paper), `${definition.page}: catalog paper is invalid`);
   expect(/^Section \d+(?:\.\d+)?$|^Review$/.test(entry?.section ?? ""), `${definition.page}: catalog section is invalid`);
-  expect(count(html, 'href="../lesson-toolbar.css?v=3"') === 1, `${definition.page}: lesson toolbar stylesheet must appear once`);
-  expect(count(html, 'src="../course-catalog.js?v=2"') === 1, `${definition.page}: course catalog script must appear once`);
-  expect(count(html, 'src="../lesson-toolbar.js?v=2"') === 1, `${definition.page}: lesson toolbar script must appear once`);
+  expect(count(html, 'href="../lesson-toolbar.css?v=4"') === 1, `${definition.page}: lesson toolbar stylesheet must appear once`);
+  expect(count(html, 'src="../course-catalog.js?v=3"') === 1, `${definition.page}: course catalog script must appear once`);
+  expect(count(html, 'src="../lesson-toolbar.js?v=3"') === 1, `${definition.page}: lesson toolbar script must appear once`);
   expect(count(html, 'class="lesson-nav"') === 1, `${definition.page}: lesson contents navigation must appear once`);
   expect(count(html, 'class="action-panel"') === 1, `${definition.page}: page action panel must appear once`);
   expect(!html.includes("classroom-mode.css") && !html.includes("classroom-mode.js"), `${definition.page}: obsolete Classroom Mode assets remain`);
@@ -160,4 +160,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Stage 9 teacher-tools verification passed: 150 catalogued lessons, ${sectionCount} classified sections, 51 assessments and 213 filterable exam questions.`);
+console.log(`Stage 9 teacher-tools verification passed: 151 catalogued lessons, ${sectionCount} classified sections, 51 assessments and 213 filterable exam questions.`);

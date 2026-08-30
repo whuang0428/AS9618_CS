@@ -1,121 +1,122 @@
 const scenarioMap = {
-  remoteWork: {
-    result: "Impact type: mixed environmental and social impact.",
-    benefit: "Benefit: fewer commutes can reduce travel emissions and give workers more flexibility.",
-    mitigation: "Harm and mitigation: workers may feel isolated or always available, so employers should set communication boundaries and provide support.",
+  startup: {
+    result: "Likely suitable: open-source software, if the team can manage support and licence compliance.",
+    reason: "The startup wants customisation and has skilled developers, so source access and modification rights are valuable.",
+    trap: "Do not ignore licence obligations or the cost of maintaining customised code.",
   },
-  dataCentre: {
-    result: "Impact type: environmental impact from energy and cooling.",
-    benefit: "Benefit: cloud storage can centralise resources and improve access to services.",
-    mitigation: "Harm and mitigation: data centres use electricity and cooling, so efficient hardware, renewable energy and data retention limits reduce impact.",
+  hospital: {
+    result: "Likely suitable: proprietary software with formal support, or supported open source if contracts exist.",
+    reason: "A critical system needs reliable updates, accountability and support agreements. The key issue is risk, not brand loyalty.",
+    trap: "Do not choose open source only because it may have no licence fee.",
   },
-  newDevices: {
-    result: "Impact type: e-waste and resource consumption.",
-    benefit: "Benefit: newer tablets may improve performance, security and access to learning tools.",
-    mitigation: "Harm and mitigation: frequent replacement increases manufacturing impact and e-waste, so schools should repair, reuse, donate or recycle devices responsibly.",
+  school: {
+    result: "Balanced choice: open source may reduce licence fees, but support and training must be planned.",
+    reason: "Limited budget helps open source, but limited technical staff may make official support or hosted proprietary services attractive.",
+    trap: "Do not treat download cost as total cost of ownership.",
   },
-  automation: {
-    result: "Impact type: social impact on work.",
-    benefit: "Benefit: automation can improve efficiency and remove workers from repetitive or dangerous tasks.",
-    mitigation: "Harm and mitigation: workers may lose jobs or need new skills, so retraining and redeployment should be planned.",
+  research: {
+    result: "Likely suitable: open source.",
+    reason: "Researchers benefit from inspecting, modifying and reproducing algorithms, which source access supports.",
+    trap: "Do not forget attribution or share-alike requirements when publishing modified work.",
   },
-  onlineBanking: {
-    result: "Impact type: access and digital divide.",
-    benefit: "Benefit: online banking can be convenient and available outside branch opening hours.",
-    mitigation: "Harm and mitigation: users without internet, devices or digital skills may be excluded, so alternative access and training should remain available.",
+  office: {
+    result: "Likely suitable: proprietary software if compatibility, familiar interface and training are priorities.",
+    reason: "A small business may value standard file compatibility, vendor support and staff familiarity more than source-code control.",
+    trap: "Do not assume proprietary software means no risk of lock-in or subscription cost.",
   },
 };
 
-const builderText = {
-  tech: {
-    automation: "automation",
-    remote: "remote work",
-    online: "online public services",
+const claimMap = {
+  free: {
+    result: "Improved claim: open source often has no licence fee, but may still have support, training, hosting or maintenance costs.",
+    reason: "Exam answers should separate licence cost from total cost of ownership.",
   },
-  benefit: {
-    efficiency: "improves efficiency and reduces repetitive work",
-    travel: "reduces travel and commuting",
-    access: "improves access for some users",
+  secure: {
+    result: "Improved claim: open source can be reviewed publicly, but security still depends on code quality, updates and responsible maintenance.",
+    reason: "Visible code does not automatically mean vulnerabilities are found or fixed quickly.",
   },
-  harm: {
-    jobs: "may displace workers who need retraining",
-    isolation: "may increase isolation or blur work-life boundaries",
-    divide: "may exclude users without devices, internet or skills",
+  support: {
+    result: "Improved claim: proprietary software may include official support, but support quality varies and open-source projects may also offer community or paid support.",
+    reason: "A scenario should identify what type of support the user needs.",
+  },
+  own: {
+    result: "Improved claim: buying proprietary software usually gives a licence to use it, not ownership of the source code.",
+    reason: "Ownership and permission to use are different legal ideas.",
   },
 };
 
 const examples = {
-  remote: {
-    title: "Example 1: Remote work",
-    problem: "A company moves most office work online.",
+  startup: {
+    title: "Example 1: Startup customising server software",
+    problem: "A startup has skilled developers and needs to adapt server software for a new product.",
     steps: [
-      "Benefit: fewer commutes may reduce travel emissions and save workers time.",
-      "Benefit: flexible work can help employees who live far away or have caring responsibilities.",
-      "Harm: workers may feel isolated or struggle to separate work and home life.",
-      "Mitigation: clear communication hours, office days and support for home equipment make the change more balanced.",
+      "Open source may be suitable because source code can be inspected and modified.",
+      "Lower licence cost may help the startup's budget.",
+      "However, the team must maintain custom changes and comply with licence terms.",
+      "A strong recommendation mentions support, security updates and licence obligations, not only cost.",
     ],
   },
-  ewaste: {
-    title: "Example 2: Frequent device replacement",
-    problem: "A school replaces tablets every two years.",
+  hospital: {
+    title: "Example 2: Hospital critical system",
+    problem: "A hospital needs software for a critical patient system.",
     steps: [
-      "Benefit: newer devices may be faster, more secure and compatible with current software.",
-      "Environmental harm: manufacturing uses energy and materials, and old devices create e-waste.",
-      "Social concern: discarded devices may be processed unsafely if sent to poorly managed recycling.",
-      "Mitigation: repair, extend lifespan, donate usable devices and use certified recycling.",
+      "Formal support and accountability are important because downtime may affect patient care.",
+      "Proprietary software may offer service-level agreements, tested updates and vendor responsibility.",
+      "Open source could still be used if paid support and reliable maintenance are available.",
+      "The recommendation should focus on reliability and risk, not an automatic preference.",
     ],
   },
-  automation: {
-    title: "Example 3: Factory automation",
-    problem: "A factory automates repetitive assembly tasks.",
+  school: {
+    title: "Example 3: School learning platform",
+    problem: "A school has limited budget and needs a learning platform.",
     steps: [
-      "Benefit: production may become faster and more consistent.",
-      "Benefit: dangerous tasks can be moved away from human workers.",
-      "Harm: some workers may lose jobs or need retraining.",
-      "Mitigation: offer training, redeploy workers and phase changes so people can adapt.",
+      "Open source may reduce licence fees and allow local customisation.",
+      "The school may still need hosting, training, technical support and security updates.",
+      "Proprietary software may be easier to deploy and support but can cause subscription cost and lock-in.",
+      "The best answer compares total cost and available technical expertise.",
     ],
   },
-  divide: {
-    title: "Example 4: Online-only public services",
-    problem: "A public service moves applications online only.",
+  research: {
+    title: "Example 4: Research reproducibility",
+    problem: "A research group wants to publish experiments that others can reproduce.",
     steps: [
-      "Benefit: many users can apply faster and at any time.",
-      "Harm: people without internet, devices, accessibility support or digital skills may be excluded.",
-      "Stakeholders: elderly users, low-income households and people with disabilities may be affected differently.",
-      "Mitigation: keep assisted channels, provide training and design accessible interfaces.",
+      "Open source supports inspection of algorithms and reproducibility of results.",
+      "Other researchers can modify and test the code.",
+      "The group must follow licences for any third-party libraries.",
+      "The conclusion should mention transparency and licence compliance together.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What term describes discarded electronic devices and components?", accepted: ["e-waste", "ewaste", "electronic waste"], answer: "E-waste / electronic waste" },
-  { id: "p2", prompt: "Name one environmental cost of data centres.", accepted: ["energy", "electricity", "cooling", "carbon", "emissions", "water"], answer: "Energy/electricity use, cooling, emissions or water use" },
-  { id: "p3", prompt: "Name one way to reduce e-waste.", accepted: ["recycle", "recycling", "repair", "reuse", "donate", "extend lifespan", "refurbish"], answer: "Repair / reuse / donate / recycle / extend lifespan" },
-  { id: "p4", prompt: "What term describes unequal access to devices, internet or digital skills?", accepted: ["digital divide"], answer: "Digital divide" },
-  { id: "p5", prompt: "Name one possible social benefit of remote work.", accepted: ["flexibility", "less commuting", "reduced travel", "access to jobs", "work life balance"], answer: "Flexibility / less commuting / wider access to jobs" },
-  { id: "p6", prompt: "Name one possible social harm of automation.", accepted: ["job loss", "unemployment", "retraining", "deskilling", "displacement"], answer: "Job loss / displacement / retraining need / deskilling" },
-  { id: "p7", prompt: "Name one group that may be excluded by online-only services.", accepted: ["elderly", "low income", "disabled", "rural", "people without internet", "people without devices"], answer: "Elderly users / low-income users / disabled users / users without internet or devices" },
-  { id: "p8", prompt: "Does computing have only positive environmental effects? yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "What design idea helps users with disabilities use systems?", accepted: ["accessibility", "accessible design"], answer: "Accessibility / accessible design" },
-  { id: "p10", prompt: "Name one mitigation for workers affected by automation.", accepted: ["training", "retraining", "reskilling", "redeployment", "support"], answer: "Retraining / reskilling / redeployment / support" },
+  { id: "p1", prompt: "What type of software makes source code available under a licence?", accepted: ["open source", "open-source"], answer: "Open source" },
+  { id: "p2", prompt: "What type of software usually keeps source code controlled by the owner?", accepted: ["proprietary", "proprietary software", "closed source", "closed-source"], answer: "Proprietary / closed-source software" },
+  { id: "p3", prompt: "What term describes dependence on one supplier, format or ecosystem?", accepted: ["vendor lock-in", "lock in", "lock-in", "vendor lockin"], answer: "Vendor lock-in" },
+  { id: "p4", prompt: "Name one possible benefit of open-source software.", accepted: ["modify", "modifiable", "customisation", "customization", "inspect", "source code", "low cost", "no licence fee", "community"], answer: "Source access / modification / low licence cost / community review" },
+  { id: "p5", prompt: "Name one possible benefit of proprietary software.", accepted: ["support", "vendor support", "official support", "warranty", "compatibility", "training", "service agreement"], answer: "Vendor support / compatibility / warranty / training" },
+  { id: "p6", prompt: "Does open source mean no copyright? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p7", prompt: "Does no licence fee mean no total cost? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p8", prompt: "What must users follow when modifying or redistributing open-source software?", accepted: ["licence", "license", "licence terms", "license terms"], answer: "Licence terms" },
+  { id: "p9", prompt: "Name one possible risk of proprietary software.", accepted: ["lock-in", "vendor lock-in", "cost", "subscription", "closed source", "less control", "dependency"], answer: "Vendor lock-in / cost / less control / dependency" },
+  { id: "p10", prompt: "Name one possible risk of open-source software.", accepted: ["support", "maintenance", "updates", "licence compliance", "license compliance", "compatibility", "skills"], answer: "Support/maintenance burden / update responsibility / licence compliance" },
 ];
 
 const mistakes = [
   {
-    wrong: "Online meetings are always green because nobody travels.",
-    fix: "Reduced travel can help, but devices, networks and data centres still use energy. A balanced answer considers both travel reduction and computing energy use.",
+    wrong: "Open source is always free.",
+    fix: "Open source often has no licence fee, but there can still be costs for support, hosting, training, maintenance and staff expertise.",
   },
   {
-    wrong: "Automation is bad because it removes jobs.",
-    fix: "Automation may displace some jobs, but it can also improve safety and efficiency. Strong answers mention retraining or redeployment as mitigation.",
+    wrong: "Proprietary software is always more secure because professionals made it.",
+    fix: "Security depends on design, testing, updates and response to vulnerabilities. Proprietary vendors may provide updates, but closed source also requires trust in the vendor.",
   },
   {
-    wrong: "E-waste is solved by throwing old devices into recycling.",
-    fix: "Recycling must be responsible and safe. Repair, reuse and longer lifespans may reduce waste before recycling is needed.",
+    wrong: "Open source has no owner.",
+    fix: "Open-source software is still owned and copyrighted. The licence grants permissions under conditions.",
   },
   {
-    wrong: "Online services help everyone equally.",
-    fix: "Online services can improve access for some users but exclude others without devices, internet, skills or accessible design.",
+    wrong: "The best answer is always open source because users can edit it.",
+    fix: "Editing code is useful only if the organisation has skills and time to maintain changes. Some scenarios value official support and compatibility more.",
   },
 ];
 
@@ -129,95 +130,92 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A company replaces most face-to-face meetings with online meetings. Discuss environmental and social impacts.",
-    answer: "Online meetings may reduce commuting and business travel, which can lower fuel use and emissions. They may also give workers more flexibility and allow meetings with people in different locations. However, online meetings still require devices, networks and data centres that use electricity. Socially, workers may feel isolated or have blurred boundaries between work and home. The company can reduce harm by using efficient devices, setting communication expectations and keeping some in-person contact where useful.",
+    prompt: "A school is choosing between open-source and proprietary software for a learning platform. Discuss the trade-offs.",
+    answer: "Open-source software may reduce licence costs and allow the school to customise the platform if it has staff with technical skills. However, the school may still need to pay for hosting, support, training and security updates. Proprietary software may provide official support, familiar interfaces and compatibility with existing systems, but it may involve subscription fees and vendor lock-in. The best choice depends on the school's budget, technical expertise and need for reliable support.",
     marking: [
-      { mark: "B1", text: "environmental benefit such as reduced travel/fuel/emissions" },
-      { mark: "B1", text: "benefit linked to meetings/commuting/business travel" },
-      { mark: "B1", text: "environmental cost such as device/network/data-centre energy use" },
-      { mark: "B1", text: "social benefit such as flexibility/wider participation" },
-      { mark: "B1", text: "social harm such as isolation/work-life boundary issue" },
-      { mark: "B1", text: "judges the overall impact using avoided travel, digital energy use and one workforce mitigation" },
+      { mark: "B1", text: "open-source benefit such as low/no licence fee or customisation" },
+      { mark: "B1", text: "open-source point linked to school scenario" },
+      { mark: "B1", text: "open-source risk/cost such as support/training/maintenance/security updates" },
+      { mark: "B1", text: "proprietary benefit such as official support/compatibility/familiarity" },
+      { mark: "B1", text: "proprietary drawback such as subscription cost/vendor lock-in/less control" },
+      { mark: "B1", text: "recommends open-source or proprietary software using the school's budget, technical skills and support requirements" },
     ],
     strict: [
-      "Do not accept 'online has no environmental cost'.",
-      "Do not award both social marks for two wordings of convenience only.",
-      "Allow carbon footprint wording if linked to travel or energy use.",
+      "Do not accept 'open source is free' without qualification.",
+      "Do not award the recommendation mark unless it uses at least one school constraint and one licence trade-off.",
+      "Allow hosted open-source support if the support arrangement is clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Explain why e-waste is an environmental issue and describe ways to reduce it.",
-    answer: "E-waste is discarded electronic equipment such as old computers, phones or tablets. It is an environmental issue because manufacturing replacement devices uses energy and raw materials, and discarded devices may contain toxic materials that can pollute soil or water if processed badly. It can be reduced by repairing devices, extending their lifespan, reusing or donating working devices, and recycling components through responsible schemes.",
+    marks: "4 marks",
+    prompt: "Explain why open-source software does not mean there are no ownership or licensing issues.",
+    answer: "Open-source software is still protected by copyright and has owners or rights holders. The licence gives users permission to use, modify or redistribute the software under conditions. These conditions may require attribution, keeping licence notices, sharing modified versions under the same terms, or limiting warranty. If a user ignores the licence, they may breach the licence or lose permission to use the software.",
     marking: [
-      { mark: "B1", text: "e-waste defined as discarded electronic equipment/components" },
-      { mark: "B1", text: "environmental harm from toxic materials/pollution" },
-      { mark: "B1", text: "environmental harm from manufacturing/resource/energy demand" },
-      { mark: "B1", text: "reduction method such as repair/reuse/donation/longer lifespan" },
-      { mark: "B1", text: "responsible recycling or reduction method linked to reduced harm" },
+      { mark: "B1", text: "open-source software still has copyright/ownership" },
+      { mark: "B1", text: "licence grants permission to use/modify/redistribute" },
+      { mark: "B1", text: "condition such as attribution/notices/share-alike/warranty limitation" },
+      { mark: "B1", text: "licence breach/loss of permission if conditions ignored" },
     ],
     strict: [
-      "Do not accept 'throw it away safely' without method.",
-      "Do not award both harm marks for repeated pollution wording only.",
-      "Allow refurbishment as reuse/repair.",
+      "Do not accept 'open source means no copyright'.",
+      "Do not award condition mark for only saying 'rules'.",
+      "Allow license spelling.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A factory introduces automation for repetitive tasks. Evaluate social impacts on workers.",
-    answer: "Automation may improve safety by removing workers from repetitive or dangerous tasks, and it may increase efficiency and consistency. This can benefit the company and some workers if new skilled roles are created. However, some workers may lose jobs, need retraining or become deskilled if their previous work is replaced. The impact is more acceptable if the factory provides retraining, redeployment and support rather than replacing workers without transition planning.",
+    prompt: "A hospital needs software for a critical patient system. Evaluate whether open-source or proprietary software would be more suitable.",
+    answer: "Proprietary software may be suitable because the hospital can obtain formal vendor support, tested updates and service agreements, which are important for a critical patient system. However, it may be expensive and may create dependence on one supplier. Open-source software may allow inspection and customisation of code and avoid some licence fees, but the hospital must ensure reliable maintenance, security updates and support. A supported open-source solution could be acceptable, but the key factor is dependable support and risk management.",
     marking: [
-      { mark: "B1", text: "benefit such as efficiency/consistency/safety" },
-      { mark: "B1", text: "benefit linked to workers or factory context" },
-      { mark: "B1", text: "harm such as job loss/displacement" },
-      { mark: "B1", text: "harm explained through retraining/deskilling/income impact" },
-      { mark: "B1", text: "mitigation such as retraining/redeployment/support" },
-      { mark: "B1", text: "judges whether automation is acceptable using productivity/safety benefit, worker displacement and a retraining or redeployment plan" },
+      { mark: "B1", text: "proprietary benefit such as formal support/tested updates/service agreement" },
+      { mark: "B1", text: "benefit linked to critical hospital/patient system" },
+      { mark: "B1", text: "proprietary drawback such as cost/vendor lock-in" },
+      { mark: "B1", text: "open-source benefit such as inspection/customisation/lower licence fee" },
+      { mark: "B1", text: "open-source risk such as maintenance/support/security update responsibility" },
+      { mark: "B1", text: "recommends a licence model using the hospital's reliability, security-update and accountable-support requirements" },
     ],
     strict: [
-      "Do not accept 'robots are bad' without worker impact.",
-      "Do not award the judgement mark unless it uses both a worker benefit and a worker harm or mitigation.",
-      "Allow dangerous task reduction as a worker benefit.",
+      "Do not accept 'proprietary is always safer' without support or update mechanism.",
+      "Do not reject open source solely because it is open source.",
+      "Allow supported open-source as a valid conclusion.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain how moving services online can widen the digital divide.",
-    answer: "The digital divide is unequal access to digital technology, internet connection or digital skills. If services move online only, people without suitable devices or reliable internet may be unable to use them. Users with low digital skills, some elderly users or users with disabilities may also struggle if systems are not accessible. This can reduce access to banking, healthcare, education or public services. Organisations can reduce the divide by providing assisted channels, training and accessible design.",
+    prompt: "Describe two advantages and two disadvantages of proprietary software.",
+    answer: "One advantage is official vendor support, which can help users resolve problems and receive updates. Another advantage is compatibility with widely used file formats or existing systems. One disadvantage is cost, such as licence fees or subscriptions. Another disadvantage is vendor lock-in, where users become dependent on one supplier or format and have less control over the source code.",
     marking: [
-      { mark: "B1", text: "digital divide defined as unequal access to devices/internet/skills" },
-      { mark: "B1", text: "affected group identified such as elderly/low-income/rural/disabled users" },
-      { mark: "B1", text: "exclusion from online service explained" },
-      { mark: "B1", text: "consequence such as reduced access to banking/healthcare/education/public services" },
+      { mark: "B1", text: "advantage such as vendor support/updates/warranty/training" },
+      { mark: "B1", text: "second distinct advantage such as compatibility/familiar interface/integration" },
+      { mark: "B1", text: "disadvantage such as licence/subscription cost" },
+      { mark: "B1", text: "second distinct disadvantage such as lock-in/closed source/less customisation" },
     ],
     strict: [
-      "Do not accept 'some people cannot use computers' without access or skill reason.",
-      "Do not award affected-group mark for vague 'people' only.",
-      "Allow affordability as part of access.",
+      "Do not award two marks for the same advantage repeated.",
+      "Do not accept 'better quality' without reason.",
+      "Allow security updates as support if explained.",
     ],
   },
   {
     title: "Question 5",
-    marks: "8 marks",
-    prompt: "A delivery company uses AI to predict demand and optimise delivery routes. Evaluate the social, economic and environmental impacts of this AI application.",
-    answer: "The AI system can analyse previous orders and traffic data to predict demand and select shorter routes. Socially, customers may receive more reliable deliveries and drivers may avoid some congestion, but continuous worker tracking or automated targets may reduce privacy and increase pressure. Economically, fewer empty journeys can reduce fuel and staffing costs, although the system is expensive to develop and maintain and may redesign or remove some jobs. Environmentally, shorter routes may reduce fuel use and emissions, but model training, data centres and replacement hardware consume electricity and materials. The company should minimise collected data, involve drivers in reviewing unsafe routes, monitor bias and errors, use efficient infrastructure and retrain affected staff. The application is justified only when measured route savings outweigh its computing footprint and worker harms are controlled.",
+    marks: "6 marks",
+    prompt: "A research group wants other researchers to inspect and reproduce its algorithm. Discuss why open-source software may be suitable and what responsibilities remain.",
+    answer: "Open-source software is suitable because it makes source code available, allowing other researchers to inspect the algorithm and reproduce results. It also allows modification and testing by other groups, improving transparency. However, the research group must choose and follow an appropriate licence. If it uses third-party libraries, it must keep required notices, give attribution where needed and comply with redistribution conditions. It also needs to maintain documentation and consider support or security updates if others rely on the software.",
     marking: [
-      { mark: "B1", text: "identifies the AI application or mechanism, such as demand prediction or route optimisation using data" },
-      { mark: "B1", text: "developed social benefit or harm for customers or drivers" },
-      { mark: "B1", text: "developed economic benefit such as lower fuel/delivery cost or improved productivity" },
-      { mark: "B1", text: "developed economic harm such as development cost, job redesign or displacement" },
-      { mark: "B1", text: "environmental benefit such as fewer journey miles, lower fuel use or reduced emissions" },
-      { mark: "B1", text: "environmental cost such as data-centre electricity, cooling or hardware/material demand" },
-      { mark: "B1", text: "matching mitigation such as data minimisation, human review, efficient infrastructure, monitoring or retraining" },
-      { mark: "B1", text: "judges whether measured route savings outweigh the computing footprint and named worker/customer harms" },
+      { mark: "B1", text: "source code availability supports inspection" },
+      { mark: "B1", text: "inspection linked to reproducibility/transparency of research" },
+      { mark: "B1", text: "modification/testing by others identified" },
+      { mark: "B1", text: "licence choice/compliance responsibility" },
+      { mark: "B1", text: "specific obligation such as attribution/notices/redistribution/share-alike" },
+      { mark: "B1", text: "maintenance/documentation/support/security responsibility linked to users" },
     ],
     strict: [
-      "Do not award generic AI advantages or disadvantages without linking the model's decision to this delivery scenario.",
-      "Do not count an economic saving as an environmental benefit unless reduced resource or energy use is explained.",
-      "The final evaluation must balance social, economic and environmental evidence.",
+      "Do not accept 'open source means anyone can do anything'.",
+      "Do not award obligation mark for vague 'follow rules' only.",
+      "Allow peer review as inspection/transparency if linked to source code.",
     ],
   },
 ];
@@ -233,10 +231,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    balanced: "Correct. Reduced travel is a benefit, but manufacture, energy use and disposal still matter.",
-    alwaysGood: "No. Online meetings still use devices, networks and data centres.",
-    alwaysBad: "Too absolute. Computing can reduce some impacts while creating others.",
-    onlyCost: "No. Financial cost is not the same as environmental and social impact.",
+    depends: "Correct. A good answer weighs support, skills, security updates, compatibility and licence obligations.",
+    always: "No. Open source can be excellent, but it is not automatically free of support, maintenance or security responsibilities.",
+    never: "No. Proprietary software can be suitable, but not automatically more professional for every scenario.",
+    owner: "No. Open source grants permissions under a licence; it does not mean every user owns the original code.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -247,35 +245,34 @@ function setupHook() {
   });
 }
 
-function setupAnalyser() {
+function setupAdvisor() {
   const scenario = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#analyseResult");
-  const benefit = document.querySelector("#analyseBenefit");
-  const mitigation = document.querySelector("#analyseMitigation");
-  function analyse() {
+  const result = document.querySelector("#adviseResult");
+  const reason = document.querySelector("#adviseReason");
+  const trap = document.querySelector("#adviseTrap");
+  function advise() {
     const item = scenarioMap[scenario.value];
     result.textContent = item.result;
-    benefit.innerHTML = `<strong>Benefit:</strong> ${item.benefit}`;
-    mitigation.innerHTML = `<strong>Harm and mitigation:</strong> ${item.mitigation}`;
+    reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  scenario.addEventListener("change", analyse);
-  document.querySelector("#analyseBtn").addEventListener("click", analyse);
-  analyse();
+  scenario.addEventListener("change", advise);
+  document.querySelector("#adviseBtn").addEventListener("click", advise);
+  advise();
 }
 
-function setupBuilder() {
-  const tech = document.querySelector("#techInput");
-  const benefit = document.querySelector("#benefitInput");
-  const harm = document.querySelector("#harmInput");
-  const output = document.querySelector("#buildResult");
-  function build() {
-    output.textContent = `${builderText.tech[tech.value]} ${builderText.benefit[benefit.value]}, but it ${builderText.harm[harm.value]}. A balanced answer should name the affected stakeholders and propose a realistic mitigation.`;
+function setupClaimChecker() {
+  const claim = document.querySelector("#claimInput");
+  const result = document.querySelector("#claimResult");
+  const reason = document.querySelector("#claimReason");
+  function improve() {
+    const item = claimMap[claim.value];
+    result.textContent = item.result;
+    reason.innerHTML = `<strong>Why:</strong> ${item.reason}`;
   }
-  tech.addEventListener("change", build);
-  benefit.addEventListener("change", build);
-  harm.addEventListener("change", build);
-  document.querySelector("#buildBtn").addEventListener("click", build);
-  build();
+  claim.addEventListener("change", improve);
+  document.querySelector("#claimBtn").addEventListener("click", improve);
+  improve();
 }
 
 function renderExample(key) {
@@ -296,7 +293,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("remote");
+  renderExample("startup");
 }
 
 function renderPractice() {
@@ -390,8 +387,8 @@ function renderExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupAnalyser();
-  setupBuilder();
+  setupAdvisor();
+  setupClaimChecker();
   setupExamples();
   renderPractice();
   renderMistakes();

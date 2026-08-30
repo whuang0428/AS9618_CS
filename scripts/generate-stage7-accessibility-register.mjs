@@ -7,7 +7,7 @@ const evidencePath = path.join(root, "audits", "remediation-v2-stage7-browser-ev
 if (!fs.existsSync(evidencePath)) throw new Error("Fresh Stage 7 browser evidence is required before register generation");
 const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8"));
 if (evidence.sourceApprovalImported !== false || evidence.oldApprovedRowsUsedForDecision !== false
-    || evidence.records?.length !== 306 || evidence.failedRecords !== 0 || evidence.keyboard?.status !== "PassedSystemKeyboard") {
+    || evidence.records?.length !== 308 || evidence.failedRecords !== 0 || evidence.keyboard?.status !== "PassedSystemKeyboard") {
   throw new Error("Stage 7 browser evidence is incomplete or imports a historical approval");
 }
 const byKey = new Map(evidence.records.map((row) => [`${row.page}/${row.viewport}`, row]));

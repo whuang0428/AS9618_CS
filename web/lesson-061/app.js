@@ -1,108 +1,108 @@
 const scenarioMap = {
-  memory: {
-    result: "Topic: operating system memory management.",
-    method: "The OS allocates and manages main memory for running processes.",
-    trap: "Do not call this a loader unless the clue is specifically placing an executable into memory ready to run.",
+  debug: {
+    result: "Best fit: interpreter.",
+    method: "An interpreter translates and executes statement by statement, so it can give useful feedback during development.",
+    trap: "Do not choose a compiler only because the finished program will later be distributed; the scenario is currently development.",
   },
-  restore: {
-    result: "Topic: backup utility.",
-    method: "Backup software creates previous copies so data can be restored after deletion or failure.",
-    trap: "Do not use encryption as the answer; encryption protects confidentiality, not recovery.",
+  deploy: {
+    result: "Best fit: compiler.",
+    method: "A compiler translates the whole program before execution and can produce object/executable code for distribution.",
+    trap: "Do not choose an interpreter if the key requirement is running without providing source code to users.",
   },
-  prompt: {
-    result: "Topic: command line interface.",
-    method: "A CLI lets the user type commands and parameters at a prompt.",
-    trap: "Do not say GUI just because all interfaces are used by humans.",
+  assembly: {
+    result: "Best fit: assembler.",
+    method: "An assembler translates assembly language mnemonics into machine code/object code.",
+    trap: "Do not use assembler for high-level languages or Cambridge pseudocode.",
   },
-  tokens: {
-    result: "Topic: lexical analysis.",
-    method: "Lexical analysis scans source-code characters and groups them into tokens.",
-    trap: "Do not confuse this with syntax analysis, which checks grammar using tokens.",
+  modules: {
+    result: "Best fit: linker.",
+    method: "A linker combines object modules and resolves references to library routines.",
+    trap: "Do not call this compilation if object code already exists.",
   },
-  references: {
-    result: "Topic: linker.",
-    method: "A linker resolves external references between object modules and libraries.",
-    trap: "Do not call this loading; a loader places executable code into memory.",
+  run: {
+    result: "Best fit: loader.",
+    method: "A loader places executable code and data into main memory ready for execution.",
+    trap: "Do not say a loader translates source code or resolves library references.",
   },
-  wrongresult: {
-    result: "Topic: logic error.",
-    method: "A logic error lets the program run but produces an incorrect result due to a faulty algorithm or condition.",
-    trap: "Do not call it runtime if the program completes without crashing.",
+  logic: {
+    result: "Need testing/tracing, not a different translator by itself.",
+    method: "A logic error may remain after successful compilation; known test data and tracing help find the wrong algorithm.",
+    trap: "Do not assume successful translation proves the program is correct.",
   },
 };
 
 const examples = {
-  translator: {
-    title: "Example 1: Compiler versus interpreter",
-    problem: "Compare a compiler and an interpreter for a 4-mark answer.",
+  debug: {
+    title: "Example 1: Development choice",
+    problem: "A beginner is writing a program and wants to test small parts as they go.",
     steps: [
-      "Compiler: translates the whole high-level program before execution.",
-      "Compiler output: object/executable code, useful for deployment without source code.",
-      "Interpreter: translates and executes statement by statement as the program runs.",
-      "Interpreter use: useful during development for immediate feedback near errors.",
+      "An interpreter is suitable during development.",
+      "It translates and executes statements as the program runs.",
+      "It can stop at or near a faulty statement, giving quick diagnostic feedback.",
+      "A limitation is that interpreted execution may be slower and the interpreter/source code may be needed.",
     ],
   },
-  utility: {
-    title: "Example 2: Utility choice",
-    problem: "A laptop is stolen with customer records on it. Recommend a utility and justify it.",
+  deploy: {
+    title: "Example 2: Deployment choice",
+    problem: "A company wants to distribute a finished program to customers without giving source code.",
     steps: [
-      "Encryption is suitable because it protects confidentiality.",
-      "It converts plaintext into ciphertext using a key.",
-      "If the laptop is stolen, an unauthorised user cannot read the records without the key.",
-      "Do not say backup: backup helps recovery, not confidentiality of a stolen copy.",
+      "A compiler is suitable for the final version.",
+      "It translates the whole high-level program before execution.",
+      "It can produce object or executable code that users can run without the source code.",
+      "The program may also need linking with libraries and loading into memory before it runs.",
     ],
   },
-  linkload: {
-    title: "Example 3: Linker versus loader",
-    problem: "Object modules use a graphics library before the program runs.",
+  assembly: {
+    title: "Example 3: Assembly language choice",
+    problem: "A systems programmer writes instructions such as LDA, ADD and STA.",
     steps: [
-      "The linker combines object modules and resolves references to the graphics library.",
-      "It can produce linked/executable code or report unresolved references.",
-      "The loader then places executable code and data into main memory.",
-      "The loader prepares the program for execution; it does not translate source code.",
+      "The input is assembly language, so an assembler is suitable.",
+      "Assembly mnemonics represent low-level processor instructions.",
+      "The assembler converts them into machine code/object code.",
+      "A compiler or interpreter is not the precise tool for assembly-language mnemonics.",
     ],
   },
-  errors: {
-    title: "Example 4: Error diagnosis",
-    problem: "A program compiles and runs, but calculates the wrong average.",
+  pipeline: {
+    title: "Example 4: Mixed pipeline",
+    problem: "A compiled program has object modules and uses a maths library before it is run.",
     steps: [
-      "This is most likely a logic error.",
-      "The program can run, so it is not necessarily syntax or runtime.",
-      "The algorithm or formula is wrong, such as using an incorrect divisor.",
-      "Testing with known data or tracing variable values can find the fault.",
+      "The compiler produces object code from high-level source code.",
+      "The linker combines object modules and resolves references to the maths library.",
+      "The linked executable can then be loaded into main memory by the loader.",
+      "Logic errors may still require testing even if all translation steps succeed.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which system software manages processes, memory, files and devices?", accepted: ["operating system", "os"], answer: "Operating system / OS" },
-  { id: "p2", prompt: "Which utility restores data from a previous copy?", accepted: ["backup", "backup utility", "backup software"], answer: "Backup utility" },
-  { id: "p3", prompt: "Which interface uses typed commands at a prompt?", accepted: ["cli", "command line", "command line interface"], answer: "Command line interface / CLI" },
-  { id: "p4", prompt: "Which translator converts assembly language into machine code?", accepted: ["assembler"], answer: "Assembler" },
-  { id: "p5", prompt: "Which compiler stage groups characters into tokens?", accepted: ["lexical", "lexical analysis"], answer: "Lexical analysis" },
-  { id: "p6", prompt: "Which compiler stage checks grammar?", accepted: ["syntax", "syntax analysis", "parsing"], answer: "Syntax analysis" },
-  { id: "p7", prompt: "Which tool resolves external references between object modules?", accepted: ["linker"], answer: "Linker" },
-  { id: "p8", prompt: "Which tool loads executable code into main memory?", accepted: ["loader"], answer: "Loader" },
-  { id: "p9", prompt: "Which error type runs but gives the wrong result?", accepted: ["logic", "logic error"], answer: "Logic error" },
-  { id: "p10", prompt: "Which error type occurs while the program is executing and may halt it?", accepted: ["runtime", "run time", "runtime error", "run-time"], answer: "Runtime error" },
+  { id: "p1", prompt: "Best tool for line-by-line development feedback?", accepted: ["interpreter"], answer: "Interpreter" },
+  { id: "p2", prompt: "Best tool for producing executable/object code for final deployment?", accepted: ["compiler"], answer: "Compiler" },
+  { id: "p3", prompt: "Best tool for assembly language mnemonics?", accepted: ["assembler"], answer: "Assembler" },
+  { id: "p4", prompt: "Best tool for combining object modules and resolving external references?", accepted: ["linker"], answer: "Linker" },
+  { id: "p5", prompt: "Best tool for placing executable code into main memory?", accepted: ["loader"], answer: "Loader" },
+  { id: "p6", prompt: "Does an interpreter normally produce a standalone executable for distribution? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p7", prompt: "Name one advantage of using a compiler for deployment.", accepted: ["executable", "object code", "source code not needed", "without source", "faster", "run repeatedly"], answer: "Executable/object code can run without giving users the source code" },
+  { id: "p8", prompt: "Name one advantage of an interpreter during development.", accepted: ["debug", "debugging", "line by line", "statement by statement", "immediate feedback", "errors"], answer: "Statement-by-statement execution can give quick debugging feedback" },
+  { id: "p9", prompt: "If object files refer to library routines, what tool resolves those references?", accepted: ["linker"], answer: "Linker" },
+  { id: "p10", prompt: "If a program translates successfully but calculates the wrong result, what should still be used to find the fault?", accepted: ["testing", "test data", "tracing", "trace", "dry run", "debugging"], answer: "Testing with known data, tracing or debugging" },
 ];
 
 const mistakes = [
   {
-    wrong: "A compiler and interpreter both turn code into machine code, so they are basically the same.",
-    fix: "Both are translators for high-level code, but a compiler translates the whole program before execution and can produce object/executable code, while an interpreter translates and executes statement by statement.",
+    wrong: "Use an assembler to translate Java because it sounds close to machine code.",
+    fix: "An assembler translates assembly language mnemonics. Java/high-level source code needs a compiler, interpreter or a language-specific translation process.",
   },
   {
-    wrong: "A linker puts executable code into memory.",
-    fix: "A linker combines object modules and resolves external references. A loader places executable code and data into main memory.",
+    wrong: "A compiler is always best because compiled programs are finished.",
+    fix: "A compiler may suit deployment, but an interpreter can be better during development when line-by-line feedback is useful.",
   },
   {
-    wrong: "A backup makes stolen customer data unreadable.",
-    fix: "A backup supports recovery from loss. Encryption makes data unreadable without the key and protects confidentiality.",
+    wrong: "A loader fixes unresolved library routines.",
+    fix: "A linker resolves external references to object modules or library routines. A loader places executable code into memory.",
   },
   {
-    wrong: "A syntax error is when the answer is wrong.",
-    fix: "A syntax error breaks language grammar. A wrong answer from a program that runs is usually a logic error.",
+    wrong: "If compilation succeeds, testing is no longer necessary.",
+    fix: "Successful compilation does not prove the algorithm is correct. Logic errors may only be found through testing or tracing.",
   },
 ];
 
@@ -116,98 +116,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Compare an operating system and utility software, using examples.",
-    answer: "An operating system is system software that manages computer resources and provides services, such as process management, memory management, file management and device management. Utility software is system software designed for a specific maintenance, protection or management task. For example, backup software creates copies so data can be restored, while antivirus software scans for malware. The OS manages general operation of the system, whereas a utility performs a narrower support task.",
+    prompt: "A programmer is developing a program and wants quick feedback on errors. The finished program will later be distributed to users. Explain suitable translation approaches for both stages.",
+    answer: "During development, an interpreter may be suitable because it translates and executes statements as the program runs, so the programmer can test small parts and receive feedback near the faulty statement. For the finished program, a compiler may be suitable because it translates the whole high-level program before execution and can produce object or executable code. The executable can be distributed to users without providing the source code and may run repeatedly without retranslation.",
     marking: [
-      { mark: "B1", text: "operating system identified as system software managing resources/providing services" },
-      { mark: "B1", text: "valid OS role such as process, memory, file or device management" },
-      { mark: "B1", text: "utility software identified as specific maintenance/protection/support task" },
-      { mark: "B1", text: "valid utility example and mechanism, e.g. backup restores copies / antivirus scans malware" },
-      { mark: "B1", text: "clear distinction between general OS role and narrower utility role" },
-      { mark: "B1", text: "second valid utility example with its specific purpose" },
+      { mark: "B1", text: "interpreter selected for development" },
+      { mark: "B1", text: "interpreter translates/executes statement by statement" },
+      { mark: "B1", text: "development benefit such as quick feedback/debugging/testing small parts" },
+      { mark: "B1", text: "compiler selected for finished/deployed program" },
+      { mark: "B1", text: "compiler translates whole program before execution and/or produces object/executable code" },
+      { mark: "B1", text: "deployment benefit such as source code not needed or repeated execution without retranslation" },
     ],
     strict: [
-      "Do not accept 'both are apps' as a comparison.",
-      "Do not accept a utility example without saying what it does.",
-      "Allow system software for both if roles are distinguished.",
+      "Do not accept 'compiler is better' without scenario-linked reason.",
+      "Do not award interpreter marks for producing standalone executable code.",
+      "Allow line by line for statement by statement.",
+      "Award each stage independently if one choice is wrong but the other is correct.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "A developer writes a high-level program, tests it, and then distributes it. Compare suitable translator choices for testing and distribution.",
-    answer: "During testing, an interpreter may be suitable because it translates and executes statements as the program runs, allowing quick feedback near the faulty statement. This can help development and debugging. For distribution, a compiler may be suitable because it translates the whole program before execution and can produce object or executable code. Users can run the executable without needing the source code, and the program may run repeatedly without retranslation.",
+    marks: "5 marks",
+    prompt: "Explain why an assembler, a linker and a loader are different tools.",
+    answer: "An assembler translates assembly language mnemonics into machine code or object code. A linker combines object modules and resolves external references, including references to library routines, to produce linked/executable code. A loader places executable code and data into main memory and prepares the program for execution. They act at different points in the process, so their roles should not be merged.",
     marking: [
-      { mark: "B1", text: "interpreter selected for testing/development" },
-      { mark: "B1", text: "interpreter translates/executes statement by statement" },
-      { mark: "B1", text: "development benefit such as quick feedback/debugging" },
-      { mark: "B1", text: "compiler selected for distribution" },
-      { mark: "B1", text: "compiler translates whole program before execution / produces object or executable code" },
-      { mark: "B1", text: "distribution benefit such as source code not needed or repeated execution without retranslation" },
+      { mark: "B1", text: "assembler translates assembly language/mnemonics" },
+      { mark: "B1", text: "assembler output is machine code/object code" },
+      { mark: "B1", text: "linker combines object modules and/or resolves external references" },
+      { mark: "B1", text: "loader places executable/program/data into main memory" },
+      { mark: "B1", text: "prepares for execution or clearly distinguishes the sequence/roles" },
     ],
     strict: [
-      "Do not award full marks for saying only 'compiler is faster'.",
-      "Do not accept interpreter as producing standalone executable in this context.",
-      "Allow line by line for statement by statement.",
-      "Award each stage independently if one stage choice is incorrect.",
+      "Do not accept assembler as translator of all high-level source code.",
+      "Do not accept linker as loading into memory unless resolving/combining is also clear.",
+      "Allow RAM for main memory.",
+      "Award each tool role independently.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain the difference between lexical analysis, syntax analysis and semantic analysis.",
-    answer: "Lexical analysis scans source-code characters and groups them into tokens such as identifiers, keywords, operators and literals. Syntax analysis checks whether the token sequence follows the grammar rules of the programming language, and may build a parse tree. Semantic analysis checks meaning, such as type compatibility, declarations and scope, often using a symbol table.",
+    marks: "4 marks",
+    prompt: "A program compiles successfully but produces an incorrect total. Explain why changing translator may not solve the problem.",
+    answer: "The problem is likely a logic error because the program can be translated and run but the algorithm or formula gives the wrong result. A compiler may not detect this because the code can be syntactically valid and still have the wrong calculation. Changing from a compiler to an interpreter would not automatically correct the algorithm. The programmer should test with known data, trace variable values or debug the calculation.",
     marking: [
-      { mark: "B1", text: "lexical analysis scans source characters / produces tokens" },
-      { mark: "B1", text: "valid token examples such as identifiers, keywords, operators or literals" },
-      { mark: "B1", text: "syntax analysis checks grammar/structure of token sequence" },
-      { mark: "B1", text: "semantic analysis checks meaning/context" },
-      { mark: "B1", text: "valid semantic example such as type compatibility/declaration/scope or symbol table use" },
+      { mark: "B1", text: "logic error identified or described" },
+      { mark: "B1", text: "program translates/runs but result/calculation is wrong" },
+      { mark: "B1", text: "translator may not detect intended algorithm/formula error" },
+      { mark: "B1", text: "testing/tracing/debugging with known data suggested" },
     ],
     strict: [
-      "Do not accept syntax as spelling only.",
-      "Do not confuse lexical tokenising with grammar checking.",
-      "Allow parsing for syntax analysis.",
-      "Award each stage mark independently.",
+      "Do not accept syntax error if the program compiles successfully in the scenario.",
+      "Do not accept 'use a better compiler' as a fix without testing/algorithm change.",
+      "Allow dry run as tracing.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Object modules use a library routine. Explain the roles of the linker and loader before the program runs.",
-    answer: "The linker combines object modules and resolves external references between modules and libraries, such as a reference to the library routine. It can produce linked or executable code, or report an unresolved external reference if the routine cannot be found. The loader then places the executable code and required data into main memory, may adjust addresses, and prepares the program for execution by the processor.",
+    marks: "5 marks",
+    prompt: "Explain why Java in console mode is described as partly compiled and partly interpreted. Then describe two IDE features that help a programmer present or debug code.",
+    answer: "A Java compiler first translates Java source code into bytecode. The Java Virtual Machine then interprets the bytecode, or may just-in-time compile parts of it for the host processor, so Java uses both compilation and interpretation rather than compiling directly to universal machine code. An IDE can prettyprint code to make indentation and layout consistent, and a breakpoint can pause execution at a selected statement so variable values or expressions can be inspected. Other valid pairs include expand/collapse, single stepping, dynamic syntax checks, context-sensitive prompts and a report window, provided each effect is explained.",
     marking: [
-      { mark: "B1", text: "linker combines object modules" },
-      { mark: "B1", text: "linker resolves external references/library routine references" },
-      { mark: "B1", text: "linker produces executable/linked code or can report unresolved reference" },
-      { mark: "B1", text: "loader places executable/program/data into main memory" },
-      { mark: "B1", text: "loader may relocate/adjust addresses or allocate memory" },
-      { mark: "B1", text: "program prepared for execution / processor can execute" },
+      { mark: "B1", text: "Java source code is compiled" },
+      { mark: "B1", text: "compiler output is bytecode" },
+      { mark: "B1", text: "JVM interprets the bytecode and/or JIT-compiles it for the host" },
+      { mark: "B1", text: "one valid IDE feature is named and its presentation/debugging effect is explained" },
+      { mark: "B1", text: "a second distinct IDE feature is named and its presentation/debugging effect is explained" },
     ],
     strict: [
-      "Do not award linker marks for source-code translation.",
-      "Do not award loader marks for resolving library references.",
-      "Allow RAM for main memory.",
+      "Do not accept that Java is compiled directly into universal machine code.",
+      "Do not award an IDE feature without its effect, and do not award the same feature twice.",
+      "Do not accept that syntax checks or prompts prove that the algorithm is correct.",
+      "Allow JIT compilation as part of the JVM execution stage, not as a replacement for the source-to-bytecode stage.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Identify each error and justify it: missing bracket; program calculates wrong average but completes; file not found while running.",
-    answer: "A missing bracket is a syntax error because the code does not follow the grammar rules of the language. A program that calculates the wrong average but completes has a logic error because it runs but the algorithm or formula gives the wrong result. File not found while running is a runtime error because the program fails during execution due to a resource or external condition.",
+    prompt: "For each scenario, Suggest the most suitable tool and justify it: high-level program for final distribution; assembly-language routine for a processor; beginner testing code statement by statement.",
+    answer: "For a high-level program for final distribution, a compiler is suitable because it translates the whole program before execution and can produce executable/object code that runs without source code. For an assembly-language routine, an assembler is suitable because it translates assembly mnemonics into machine code. For a beginner testing code statement by statement, an interpreter is suitable because it translates and executes statements during running and can provide immediate feedback near errors.",
     marking: [
-      { mark: "B1", text: "missing bracket classified as syntax" },
-      { mark: "B1", text: "syntax justification linked to grammar/structure" },
-      { mark: "B1", text: "wrong average classified as logic" },
-      { mark: "B1", text: "logic justification linked to runs/completes but wrong result/algorithm" },
-      { mark: "B1", text: "file not found while running classified as runtime" },
-      { mark: "B1", text: "runtime justification linked to failure during execution/external resource" },
+      { mark: "B1", text: "compiler selected for final distribution" },
+      { mark: "B1", text: "compiler justification linked to whole program/executable/object code/source code not needed" },
+      { mark: "B1", text: "assembler selected for assembly-language routine" },
+      { mark: "B1", text: "assembler justification linked to mnemonics/machine code" },
+      { mark: "B1", text: "interpreter selected for statement-by-statement beginner testing" },
+      { mark: "B1", text: "interpreter justification linked to statement-by-statement execution/immediate error feedback" },
     ],
     strict: [
-      "Do not award justification marks for repeating only the category name.",
-      "Do not classify wrong completed output as runtime.",
-      "Allow run-time as runtime.",
-      "Award each classification independently.",
+      "Do not award selection mark if the tool is matched to the wrong scenario.",
+      "Do not accept vague 'faster/easier' without technical mechanism.",
+      "Allow line-by-line for statement-by-statement.",
+      "Award each scenario independently.",
     ],
   },
 ];
@@ -223,10 +221,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    precise: "Correct. It names the tool, action, target and result.",
-    vague: "Too vague. It might be true in casual speech, but it does not show the loader's mechanism.",
-    wrong: "No. Translating source code is a compiler/interpreter role, not a loader role.",
-    mixed: "No. Resolving library references is linker work; syntax checking is translator work.",
+    interpreter: "Correct. An interpreter can support statement-by-statement testing and quick diagnostics during development.",
+    compiler: "Not best for this stage. A compiler may suit final deployment, but the scenario asks for step-by-step development feedback.",
+    assembler: "No. An assembler translates assembly language, not ordinary high-level source code.",
+    loader: "No. A loader places executable code into memory; it does not find syntax errors in source code.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -270,7 +268,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("translator");
+  renderExample("debug");
 }
 
 function renderPractice() {

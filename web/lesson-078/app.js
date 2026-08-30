@@ -1,171 +1,121 @@
-const conceptMap = {
-  rawMark: {
-    result: "Category: data.",
-    reason: "These are raw values. They have not yet been processed into a meaningful conclusion.",
+const scenarioMap = {
+  healthApp: {
+    result: "Topic: privacy, data protection and ethical evaluation.",
+    reason: "The key issue is personal/sensitive data, purpose, consent, transparency, retention and user control.",
+    trap: "Do not answer only with encryption; the question is wider than security.",
   },
-  absenceRate: {
-    result: "Category: information.",
-    reason: "The raw attendance values have been processed into a meaningful percentage for a year group or school.",
+  repoCode: {
+    result: "Topic: intellectual property, copyright and licensing.",
+    reason: "The key issue is whether public code has a licence allowing copying, modification and commercial use.",
+    trap: "Do not say public means ownerless or free to reuse.",
   },
-  libraryTables: {
-    result: "Category: database.",
-    reason: "A database is an organised collection of related data. Student, Book and Loan tables are related by the library context.",
+  schoolTablets: {
+    result: "Topic: environmental and social impacts.",
+    reason: "The key issue is balancing paper reduction and learning access against manufacturing, e-waste and digital divide concerns.",
+    trap: "Do not write only 'tablets are modern' without consequences.",
   },
-  queryProcessor: {
-    result: "Category: DBMS.",
-    reason: "The query processor is a component of the DBMS that interprets and carries out database queries.",
+  openSource: {
+    result: "Topic: open-source/proprietary software trade-offs.",
+    reason: "The key issue is source-code access, support, reliability, cost, security updates and licence obligations.",
+    trap: "Do not choose open source only because it may have no licence fee.",
   },
-  backupTool: {
-    result: "Category: DBMS.",
-    reason: "Backup and recovery are management functions provided by a DBMS to protect stored data.",
+  factoryAutomation: {
+    result: "Topic: social impact of computing and automation.",
+    reason: "The key issue is efficiency and safety balanced against job displacement, retraining and worker impact.",
+    trap: "Do not claim automation is simply good or bad without stakeholders.",
   },
 };
 
-const featureMap = {
-  unknownField: {
-    result: "Feature: data dictionary / metadata.",
-    reason: "The data dictionary stores metadata such as table names, field names, data types and constraints.",
+const builderText = {
+  benefit: {
+    safety: "improves safety or safeguarding",
+    access: "improves access or convenience",
+    cost: "reduces cost or increases efficiency",
   },
-  wrongValue: {
-    result: "Feature: data integrity rules / validation constraints.",
-    reason: "Integrity rules prevent invalid data values or inconsistent relationships from being stored.",
+  concern: {
+    privacy: "may reduce privacy or increase surveillance",
+    fairness: "may treat some groups unfairly",
+    environment: "may increase energy use or e-waste",
   },
-  privateData: {
-    result: "Feature: access rights / security.",
-    reason: "The DBMS can restrict what individual users or groups are allowed to view or update.",
-  },
-  diskFailure: {
-    result: "Feature: backup and recovery.",
-    reason: "Backup and recovery features allow data to be restored after hardware failure or corruption.",
-  },
-  findRows: {
-    result: "Feature: query processor.",
-    reason: "The query processor interprets a query and retrieves records that meet the stated conditions.",
+  safeguard: {
+    transparent: "clear information and consent are provided",
+    limits: "use is limited to a clear purpose",
+    review: "human review, appeal or support is available",
   },
 };
 
 const examples = {
-  dataInfo: {
-    title: "Example 1: Data to information",
-    problem: "A library stores LoanDate, DueDate and Returned for every loan. Explain how this can become useful information.",
+  privacy: {
+    title: "Example 1: Monitoring students",
+    problem: "Evaluate whether a school should monitor student device use.",
     steps: [
-      "Raw data: due dates and returned values are stored for individual records.",
-      "Processing: filter loans where Returned is FALSE and DueDate is earlier than today's date.",
-      "Information: the librarian gets a list of overdue books and the students who need reminders.",
-      "Exam wording: information is processed data that has meaning in a context.",
+      "Topic: privacy, surveillance and ethics.",
+      "Benefit: monitoring may help safeguard students and identify unsafe behaviour.",
+      "Concern: students may lose privacy if personal activity is recorded without clear limits.",
+      "Judgement: monitoring is more justified if transparent, proportionate, limited to school use and access to logs is restricted.",
     ],
   },
-  database: {
-    title: "Example 2: Database definition",
-    problem: "Explain why a set of Student, Book and Loan tables can be described as a database.",
+  ip: {
+    title: "Example 2: Public repository code",
+    problem: "A company uses code from a public repository in a commercial product.",
     steps: [
-      "It stores an organised collection of data, not isolated notes.",
-      "The data is related: loans connect students to books.",
-      "The structure allows records to be retrieved, updated and used to produce information.",
-      "Avoid: saying only 'it is a table' because that misses organisation and relationship.",
+      "Topic: intellectual property and licensing.",
+      "Benefit: reuse may save development time if the licence permits it.",
+      "Concern: public access does not remove copyright, and commercial use may breach licence terms.",
+      "Judgement: use is acceptable only if the company checks and follows the licence, including attribution or redistribution conditions.",
     ],
   },
-  dbms: {
-    title: "Example 3: DBMS feature",
-    problem: "A school wants only finance staff to update payment records. Which DBMS role is relevant?",
+  software: {
+    title: "Example 3: Hospital software choice",
+    problem: "A hospital chooses between open-source and proprietary software.",
     steps: [
-      "Feature: access rights / security.",
-      "The DBMS can assign permissions to users or groups.",
-      "Finance staff may be allowed to update payment records while other staff may only view limited data.",
-      "Effect: this reduces unauthorised changes and helps protect sensitive data.",
+      "Topic: open-source/proprietary trade-offs.",
+      "Benefit: open source may allow inspection and customisation; proprietary software may provide formal support.",
+      "Concern: critical systems need reliable updates, accountability and maintenance.",
+      "Judgement: the best option depends on support contracts, risk management and technical expertise, not the label alone.",
     ],
   },
-  terms: {
-    title: "Example 4: Relational terms",
-    problem: "In a Student table, identify the table, one field and one record.",
+  impact: {
+    title: "Example 4: Online public services",
+    problem: "A council moves services online only.",
     steps: [
-      "Table/entity: Student.",
-      "Field/attribute: StudentID, Name or Form.",
-      "Record/tuple: one complete row such as S0234, Amira Chen, 12A.",
-      "Common error: a field is a column; a record is a row. Do not swap them.",
+      "Topic: social impact and digital divide.",
+      "Benefit: many users can access services at any time without travelling.",
+      "Concern: elderly, low-income or disabled users may be excluded without devices, internet, skills or accessibility.",
+      "Judgement: online services are better only if assisted access, training and accessible design remain available.",
     ],
   },
 };
 
 const practice = [
-  {
-    id: "p1",
-    prompt: "What term means raw facts and values before processing?",
-    accepted: ["data"],
-    answer: "Data",
-  },
-  {
-    id: "p2",
-    prompt: "What term means processed data that has meaning?",
-    accepted: ["information"],
-    answer: "Information",
-  },
-  {
-    id: "p3",
-    prompt: "What is the software used to create, manage and control access to a database?",
-    accepted: ["dbms", "database management system"],
-    answer: "DBMS / Database Management System",
-  },
-  {
-    id: "p4",
-    prompt: "In relational terminology, is one row a field or a record?",
-    accepted: ["record", "tuple", "record tuple"],
-    answer: "Record / tuple",
-  },
-  {
-    id: "p5",
-    prompt: "In relational terminology, is one column a field or a record?",
-    accepted: ["field", "attribute", "field attribute"],
-    answer: "Field / attribute",
-  },
-  {
-    id: "p6",
-    prompt: "What DBMS feature stores metadata about tables, fields, data types and constraints?",
-    accepted: ["data dictionary", "dictionary"],
-    answer: "Data dictionary",
-  },
-  {
-    id: "p7",
-    prompt: "What DBMS feature controls which users can view or update data?",
-    accepted: ["access rights", "permissions", "user permissions", "security", "access control"],
-    answer: "Access rights / permissions / access control",
-  },
-  {
-    id: "p8",
-    prompt: "What DBMS feature helps restore data after data loss or storage failure?",
-    accepted: ["backup", "recovery", "backup and recovery", "backup recovery"],
-    answer: "Backup and recovery",
-  },
-  {
-    id: "p9",
-    prompt: "What DBMS component interprets and carries out a database query?",
-    accepted: ["query processor", "query processing"],
-    answer: "Query processor",
-  },
-  {
-    id: "p10",
-    prompt: "Complete the distinction: the database is the organised data; the DBMS is the ____ that manages it.",
-    accepted: ["software", "system", "software system"],
-    answer: "software / software system",
-  },
+  { id: "p1", prompt: "What term means a person or group affected by a computing decision?", accepted: ["stakeholder"], answer: "Stakeholder" },
+  { id: "p2", prompt: "What term means control over how personal information is collected and used?", accepted: ["privacy"], answer: "Privacy" },
+  { id: "p3", prompt: "What legal protection usually covers original software source code?", accepted: ["copyright"], answer: "Copyright" },
+  { id: "p4", prompt: "What agreement grants permission to use software under conditions?", accepted: ["licence", "license"], answer: "Licence / license" },
+  { id: "p5", prompt: "What type of software makes source code available under a licence?", accepted: ["open source", "open-source"], answer: "Open source" },
+  { id: "p6", prompt: "What term describes discarded electronic devices?", accepted: ["e-waste", "ewaste", "electronic waste"], answer: "E-waste / electronic waste" },
+  { id: "p7", prompt: "What term describes unequal access to devices, internet or digital skills?", accepted: ["digital divide"], answer: "Digital divide" },
+  { id: "p8", prompt: "What word describes a condition or measure that reduces harm?", accepted: ["safeguard", "mitigation", "control"], answer: "Safeguard / mitigation / control" },
+  { id: "p9", prompt: "What should an evaluate answer include before a judgement: one side or both sides?", accepted: ["both sides", "benefit and concern", "advantages and disadvantages", "for and against"], answer: "Both sides / benefit and concern" },
+  { id: "p10", prompt: "Is 'it is good because it is useful' enough for a Section 7 explanation? yes or no.", accepted: ["no"], answer: "No" },
 ];
 
 const mistakes = [
   {
-    wrong: "A database is the program that controls the data.",
-    fix: "A database is the organised collection of related data. The DBMS is the software that controls and manages it.",
+    wrong: "This is good because it is efficient.",
+    fix: "Efficiency is only one point. Add who benefits, what harm or risk exists, and a condition that would make the decision acceptable.",
   },
   {
-    wrong: "Information is just lots of data.",
-    fix: "Information is data that has been processed or organised so that it has meaning in a context.",
+    wrong: "It is online, so copyright does not apply.",
+    fix: "Online access does not remove copyright. Reuse depends on ownership, permission and licence terms.",
   },
   {
-    wrong: "A field is one row in a table.",
-    fix: "A field is a column/attribute. A record or tuple is one complete row.",
+    wrong: "Monitoring is safe because the data is encrypted.",
+    fix: "Encryption may protect stored data, but privacy questions also need purpose, consent, transparency, retention and who can access the data.",
   },
   {
-    wrong: "Security means the database is backed up.",
-    fix: "Security usually refers to controlling access and protecting data from unauthorised use. Backup and recovery protect against data loss.",
+    wrong: "Automation is bad because jobs are lost.",
+    fix: "Job displacement is a valid concern, but balance it with efficiency or safety benefits and discuss retraining or redeployment.",
   },
 ];
 
@@ -178,90 +128,101 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Compare data and information, using an example from a school attendance system.",
-    answer: "Data is raw facts or values, such as StudentID, date and attendance mark for each lesson. Information is processed data that has meaning, such as the percentage of students absent on Monday or a list of students with repeated absences.",
+    marks: "8 marks",
+    prompt: "Evaluate the use of monitoring software on student devices in a school.",
+    answer: "Monitoring may help the school safeguard students, detect cyberbullying, prevent access to unsafe websites and investigate misuse of school devices. However, students are stakeholders with privacy interests, and broad monitoring may record personal activity or reduce trust if students and parents are not told clearly. The school should make monitoring transparent, limit it to school accounts or school time, restrict access to logs and delete data after a defined period. The decision is justified only if the monitoring is proportionate to safeguarding and not blanket surveillance.",
     marking: [
-      { mark: "B1", text: "data described as raw facts/values" },
-      { mark: "B1", text: "information described as processed/organised/interpreted data with meaning" },
-      { mark: "B1", text: "school attendance data example, such as student ID/date/attendance mark" },
-      { mark: "B1", text: "processed information example, such as absence rate/list of repeated absences" },
+      { mark: "B1", text: "benefit such as safeguarding/preventing unsafe use/cyberbullying detection" },
+      { mark: "B1", text: "benefit linked to school/student-device context" },
+      { mark: "B1", text: "privacy/trust/consent concern" },
+      { mark: "B1", text: "concern explained with students/personal activity/unclear monitoring" },
+      { mark: "B1", text: "safeguard such as transparency/scope limit/access restriction/retention limit" },
+      { mark: "B1", text: "safeguard linked to reducing named privacy concern" },
+      { mark: "B1", text: "stakeholder named, such as students/parents/teachers/school" },
+      { mark: "B1", text: "judges whether monitoring is proportionate using safeguarding purpose, student privacy impact and limits on scope/access/retention" },
     ],
     strict: [
-      "Do not accept 'information is useful data' alone without processed/meaning idea.",
-      "Do not award both example marks if the examples are not linked to attendance.",
-      "Allow equivalent school examples such as late marks or absence totals.",
+      "Do not accept only 'it keeps students safe' without privacy balance.",
+      "Do not award safeguard mark for vague 'make it secure' without mechanism.",
+      "Allow data protection terms such as consent, retention, transparency and access control.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Define a database and explain why a library system is a suitable example of one.",
-    answer: "A database is an organised collection of related data that can be stored, retrieved and updated. A library system is suitable because it stores related data about students, books and loans, and the data can be searched or updated when books are borrowed and returned.",
+    marks: "6 marks",
+    prompt: "A company wants to use code from a public online repository. Discuss issues it should consider.",
+    answer: "The company should consider intellectual property and copyright because public code can still be owned by its creator. It should check the licence to see whether commercial use, modification or redistribution is allowed. Some licences may require attribution or sharing modifications under similar terms. If the company ignores the licence, it may infringe copyright, lose permission to use the code or face legal and reputational consequences.",
     marking: [
-      { mark: "B1", text: "organised collection of data" },
-      { mark: "B1", text: "related data" },
-      { mark: "B1", text: "library entities or data named, such as students/books/loans" },
-      { mark: "B1", text: "retrieval/update use explained in the library context" },
+      { mark: "B1", text: "copyright/IP ownership of code identified" },
+      { mark: "B1", text: "public access is not equal to permission" },
+      { mark: "B1", text: "licence should be checked" },
+      { mark: "B1", text: "licence condition such as commercial use/modification/redistribution/attribution/share-alike" },
+      { mark: "B1", text: "infringement/licence breach identified" },
+      { mark: "B1", text: "consequence such as legal action/loss of permission/reputational damage" },
     ],
     strict: [
-      "Do not accept only 'a place where data is stored'.",
-      "Do not award related-data mark for a list of unrelated examples.",
-      "Allow search/filter/query wording for retrieval.",
+      "Do not accept 'public means free to use'.",
+      "Do not award condition mark for only saying 'read the rules'.",
+      "Allow license spelling.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Explain the purposes of a data dictionary, developer interface and query processor in a DBMS.",
-    answer: "A data dictionary stores metadata defining database structures, such as field names, data types, keys and constraints. A developer interface supplies tools for defining structures or building database applications, forms and reports. A query processor interprets and checks SQL statements, plans how to carry them out and retrieves or changes the specified data.",
+    prompt: "Evaluate whether a hospital should use open-source software for a critical system.",
+    answer: "Open-source software may allow the hospital to inspect source code, customise features and avoid some licence fees. However, a critical hospital system needs reliable support, security updates and accountability because failure could affect patient care. Proprietary software may provide formal service agreements, but supported open-source software may also be acceptable if maintenance is guaranteed. The choice should depend on risk, support arrangements, technical expertise and licence compliance.",
     marking: [
-      { mark: "B1", text: "data dictionary stores metadata/definitions about database structure" },
-      { mark: "B1", text: "gives a valid metadata example such as field type, key or constraint" },
-      { mark: "B1", text: "developer interface provides tools for defining structures or building database applications/forms/reports" },
-      { mark: "B1", text: "developer-interface purpose is distinguished from executing a query" },
-      { mark: "B1", text: "query processor interprets/checks a SQL query or maintenance statement" },
-      { mark: "B1", text: "plans/carries out the statement and retrieves or changes the specified data" },
+      { mark: "B1", text: "open-source benefit such as source inspection/customisation/lower licence fee" },
+      { mark: "B1", text: "benefit linked to hospital/system context" },
+      { mark: "B1", text: "risk/concern such as support/security updates/maintenance/accountability" },
+      { mark: "B1", text: "risk linked to critical patient-care consequence" },
+      { mark: "B1", text: "comparison with proprietary or supported open-source option" },
+      { mark: "B1", text: "recommends whether the hospital should use open source using support, clinical risk, staff expertise and licence compliance" },
     ],
     strict: [
-      "Do not describe the data dictionary as the ordinary record store.",
-      "Do not merge the developer interface and query processor into one unexplained tool.",
-      "Do not accept vague 'helps developers' without a defined purpose.",
+      "Do not accept 'open source is always free' as a benefit without qualification.",
+      "Do not reject open source solely by label.",
+      "Allow formal support contract as a valid condition.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "A clinic stores patient appointment data. Explain how a DBMS can help maintain security and integrity.",
-    answer: "The DBMS can maintain security by using access rights, so only authorised staff can view or change patient details. It can maintain integrity by enforcing validation or integrity constraints, such as requiring valid appointment dates or existing patient IDs. It can also use backup and recovery so patient data can be restored if it is lost or corrupted.",
+    marks: "6 marks",
+    prompt: "Discuss environmental and social impacts of replacing printed textbooks with tablets in a school.",
+    answer: "Tablets may reduce paper use, printing and transport of textbooks, and can provide interactive resources, accessibility features and up-to-date materials. However, manufacturing tablets uses energy and raw materials, and frequent replacement can create e-waste. Socially, tablets may support learning but can disadvantage students without reliable home internet or create distraction. The school should repair and reuse devices, recycle responsibly, provide loan or offline access and train students to use devices effectively.",
     marking: [
-      { mark: "B1", text: "security/access rights/permissions identified" },
-      { mark: "B1", text: "security linked to authorised clinic staff or patient details" },
-      { mark: "B1", text: "integrity/validation/constraint identified" },
-      { mark: "B1", text: "integrity linked to valid appointment/patient data" },
+      { mark: "B1", text: "environmental benefit such as reduced paper/printing/transport" },
+      { mark: "B1", text: "environmental harm such as manufacturing energy/resources/e-waste" },
+      { mark: "B1", text: "social/learning benefit such as accessibility/interactive/up-to-date resources" },
+      { mark: "B1", text: "social harm such as digital divide/distraction/home internet issue" },
+      { mark: "B1", text: "mitigation such as repair/reuse/recycling/loan scheme/offline access/training" },
+      { mark: "B1", text: "judges when tablets are beneficial using environmental lifecycle, learning access and a named mitigation" },
     ],
     strict: [
-      "Do not award integrity mark for backup alone.",
-      "Do not accept 'secure password' unless linked to access control/authentication.",
-      "Allow examples involving patient ID, appointment date or contact details.",
+      "Do not accept 'tablets are better' without trade-off.",
+      "Do not award both environmental marks for two paper-saving points only.",
+      "Allow e-waste and resource extraction as environmental harms.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A student says, 'The database searches itself and checks who is allowed to edit it.' Explain why this statement is imprecise.",
-    answer: "The statement is imprecise because the database is the organised collection of stored related data, not the software that performs management tasks. The DBMS provides the query processor that interprets searches or queries. The DBMS also controls access rights or permissions to decide who can view or edit data. A more precise statement is that the DBMS manages access and queries for the database.",
+    marks: "8 marks",
+    prompt: "A city uses AI facial recognition cameras in public spaces. Evaluate ethical, privacy and social issues.",
+    answer: "The AI system compares captured faces with stored biometric templates. It may help identify suspects, deter crime and improve emergency response, benefiting citizens, police and local businesses. However, it processes biometric data and may track people who have done nothing wrong, reducing privacy in public spaces. False matches may lead to unfair suspicion, and some groups may be affected more than others if the model is biased. The city should be transparent, limit the purpose, restrict data access and retention, require human review before action and provide accountability. It may be justified for clear safety aims, but broad or secret surveillance is not proportionate.",
     marking: [
-      { mark: "B1", text: "database identified as organised/stored related data" },
-      { mark: "B1", text: "DBMS identified as software that manages/controls database" },
-      { mark: "B1", text: "query/search function attributed to DBMS/query processor" },
-      { mark: "B1", text: "edit permission/access function attributed to DBMS/access rights" },
-      { mark: "B1", text: "correctly attributes querying, access control and other management functions to the DBMS rather than to the stored database" },
+      { mark: "B1", text: "benefit such as public safety/crime detection/emergency response" },
+      { mark: "B1", text: "benefit linked to stakeholder such as citizens/police/businesses" },
+      { mark: "B1", text: "privacy/surveillance/biometric data concern" },
+      { mark: "B1", text: "concern explained, such as tracking innocent people or reducing privacy" },
+      { mark: "B1", text: "fairness/false match/bias concern" },
+      { mark: "B1", text: "safeguard such as transparency/purpose limit/access restriction/retention/human review" },
+      { mark: "B1", text: "safeguard linked to reducing a named concern" },
+      { mark: "B1", text: "judges whether facial recognition is proportionate using public-safety benefit, biometric privacy/false-match risk and safeguards" },
     ],
     strict: [
-      "Do not accept answers that keep saying the database performs the management tasks.",
-      "Do not award query and access marks if they are not attributed to DBMS or DBMS components.",
-      "Allow 'database management system' for DBMS.",
+      "Do not accept 'cameras are good' or 'cameras are bad' without stakeholder impact.",
+      "Do not award privacy and fairness as the same mark unless distinct points are made.",
+      "Allow surveillance wording if linked to privacy or tracking.",
     ],
   },
 ];
@@ -277,10 +238,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    raw: "Not quite. This is raw data: separate values without a processed conclusion.",
-    field: "No. This is a field name or attribute, not processed meaning.",
-    info: "Correct. The raw attendance data has been processed into a meaningful percentage.",
-    dbms: "No. That describes a DBMS component, not attendance information.",
+    privacy: "Correct. This is about privacy, surveillance, biometric data and ethical evaluation.",
+    ip: "No. There is no protected work or licence condition in the scenario.",
+    database: "No. Facial recognition might store data, but the question trigger is not relational database design.",
+    binary: "No. Nothing here asks about representation or conversion.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -291,26 +252,35 @@ function setupHook() {
   });
 }
 
-function setupConceptSorter() {
-  const input = document.querySelector("#sortInput");
-  const result = document.querySelector("#sortResult");
-  const reason = document.querySelector("#sortReason");
-  document.querySelector("#sortBtn").addEventListener("click", () => {
-    const item = conceptMap[input.value];
+function setupClassifier() {
+  const scenario = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#classifyResult");
+  const reason = document.querySelector("#classifyReason");
+  const trap = document.querySelector("#classifyTrap");
+  function classify() {
+    const item = scenarioMap[scenario.value];
     result.textContent = item.result;
-    reason.textContent = item.reason;
-  });
+    reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
+  }
+  scenario.addEventListener("change", classify);
+  document.querySelector("#classifyBtn").addEventListener("click", classify);
+  classify();
 }
 
-function setupFeatureSelector() {
-  const input = document.querySelector("#featureInput");
-  const result = document.querySelector("#featureResult");
-  const reason = document.querySelector("#featureReason");
-  document.querySelector("#featureBtn").addEventListener("click", () => {
-    const item = featureMap[input.value];
-    result.textContent = item.result;
-    reason.textContent = item.reason;
-  });
+function setupBuilder() {
+  const benefit = document.querySelector("#benefitInput");
+  const concern = document.querySelector("#concernInput");
+  const safeguard = document.querySelector("#safeguardInput");
+  const output = document.querySelector("#buildResult");
+  function build() {
+    output.textContent = `Although the system ${builderText.benefit[benefit.value]}, it ${builderText.concern[concern.value]}. Therefore, it is more acceptable if ${builderText.safeguard[safeguard.value]} and the decision is proportionate to the scenario.`;
+  }
+  benefit.addEventListener("change", build);
+  concern.addEventListener("change", build);
+  safeguard.addEventListener("change", build);
+  document.querySelector("#buildBtn").addEventListener("click", build);
+  build();
 }
 
 function renderExample(key) {
@@ -319,9 +289,7 @@ function renderExample(key) {
   box.innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <ol>
-      ${example.steps.map((step) => `<li>${step}</li>`).join("")}
-    </ol>
+    <ol>${example.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
   `;
 }
 
@@ -333,42 +301,45 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("dataInfo");
+  renderExample("privacy");
 }
 
 function renderPractice() {
   const list = document.querySelector("#practiceList");
-  list.innerHTML = practice
-    .map(
-      (item, index) => `
-        <article class="practice-item">
-          <p><strong>${index + 1}.</strong> ${item.prompt}</p>
-          <div class="practice-row">
-            <input type="text" id="${item.id}" autocomplete="off" aria-label="Answer for question ${index + 1}" />
-            <span class="mark" id="${item.id}Mark">Not checked</span>
-          </div>
-          <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
-          <div class="answer-panel" id="${item.id}Answer"><strong>Answer:</strong> ${item.answer}</div>
-        </article>
-      `
-    )
-    .join("");
+  list.innerHTML = practice.map((item) => `
+    <article class="practice-item">
+      <p><strong>${item.id.toUpperCase()}.</strong> ${item.prompt}</p>
+      <div class="practice-row">
+        <input type="text" id="${item.id}" autocomplete="off" placeholder="Type your answer" aria-label="${item.prompt}" />
+        <span class="mark" id="${item.id}-mark">Not checked</span>
+      </div>
+      <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
+      <div class="answer-panel" id="${item.id}-answer"><strong>Answer:</strong> ${item.answer}</div>
+    </article>
+  `).join("");
 
   practice.forEach((item) => {
     const input = document.querySelector(`#${item.id}`);
-    const mark = document.querySelector(`#${item.id}Mark`);
+    const mark = document.querySelector(`#${item.id}-mark`);
     input.addEventListener("input", () => {
       const value = normalise(input.value);
-      const correct = item.accepted.some((answer) => normalise(answer) === value);
-      mark.textContent = value.length === 0 ? "Not checked" : correct ? "Correct" : "Try again";
-      mark.classList.toggle("correct", correct);
-      mark.classList.toggle("incorrect", value.length > 0 && !correct);
+      const correct = item.accepted.some((answer) => value === normalise(answer) || value.includes(normalise(answer)));
+      if (!value) {
+        mark.textContent = "Not checked";
+        mark.className = "mark";
+      } else if (correct) {
+        mark.textContent = "Correct";
+        mark.className = "mark correct";
+      } else {
+        mark.textContent = "Try again";
+        mark.className = "mark incorrect";
+      }
     });
   });
 
   document.querySelectorAll("[data-answer]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.answer}Answer`);
+      const panel = document.querySelector(`#${button.dataset.answer}-answer`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer";
     });
@@ -377,52 +348,44 @@ function renderPractice() {
 
 function renderMistakes() {
   const grid = document.querySelector("#mistakeGrid");
-  grid.innerHTML = mistakes
-    .map(
-      (item, index) => `
-        <article>
-          <p class="wrong"><strong>Weak wording ${index + 1}:</strong> ${item.wrong}</p>
-          <button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button>
-          <div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div>
-        </article>
-      `
-    )
-    .join("");
+  grid.innerHTML = mistakes.map((item, index) => `
+    <article>
+      <p class="wrong"><strong>Weak answer:</strong> ${item.wrong}</p>
+      <button class="answer-toggle" type="button" data-correction="${index}">Show correction</button>
+      <div class="answer-panel" id="correction-${index}"><strong>Correction:</strong> ${item.fix}</div>
+    </article>
+  `).join("");
 
-  document.querySelectorAll("[data-fix]").forEach((button) => {
+  document.querySelectorAll("[data-correction]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.fix}`);
+      const panel = document.querySelector(`#correction-${button.dataset.correction}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
     });
   });
 }
 
-function renderExamQuestions() {
+function renderExam() {
   const list = document.querySelector("#examList");
-  list.innerHTML = examQuestions
-    .map(
-      (question, index) => `
-        <article class="exam-card">
-          <div class="exam-head">
-            <h3>${question.title}</h3>
-            <span>${question.marks}</span>
-          </div>
-          <p>${question.prompt}</p>
-          <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
-          <div class="ms-panel" id="ms${index}">
-            <p><strong>Answer:</strong> ${question.answer}</p>
-            <h4>Mark scheme</h4>
-            ${renderStudentMarkPoints(question)}
-          </div>
-        </article>
-      `
-    )
-    .join("");
+  list.innerHTML = examQuestions.map((item, index) => `
+    <article class="exam-card">
+      <div class="exam-head">
+        <h3>${item.title}</h3>
+        <span>${item.marks}</span>
+      </div>
+      <p>${item.prompt}</p>
+      <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
+      <div class="ms-panel" id="ms-${index}">
+        <h4>Mark scheme</h4>
+        <p><strong>Answer:</strong> ${item.answer}</p>
+        ${renderStudentMarkPoints(item)}
+      </div>
+    </article>
+  `).join("");
 
   document.querySelectorAll("[data-ms]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.ms}`);
+      const panel = document.querySelector(`#ms-${button.dataset.ms}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
     });
@@ -432,12 +395,12 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupConceptSorter();
-  setupFeatureSelector();
+  setupClassifier();
+  setupBuilder();
   setupExamples();
   renderPractice();
   renderMistakes();
-  renderExamQuestions();
+  renderExam();
 }
 
 init();

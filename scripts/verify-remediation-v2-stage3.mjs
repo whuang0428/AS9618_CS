@@ -25,4 +25,4 @@ if (problems.length) {
   for (const problem of problems) console.error(`- ${problem.id}: ${problem.detail}`);
   process.exit(1);
 }
-console.log(`Remediation v2 Stage 3 verification passed: 121 Complete requirements, 109 official-order edges, 150 stable lesson identities and ${questionRegister.questionCount} dependency-classified questions with zero before-CORE violations.`);
+console.log(`Remediation v2 Stage 3 verification passed: 121 Complete requirements, 109 official-order edges, 151 canonical lesson identities and ${questionRegister.questionCount} dependency-classified questions with zero before-CORE violations.`);

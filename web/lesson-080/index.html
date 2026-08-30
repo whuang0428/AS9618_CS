@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 080 | Tables, records, fields, data types and constraints</title>
+    <title>AS9618 Lesson 080 | Relational terminology, keys and relationships</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Tables, records, fields, data types and constraints</h1>
+        <h1>Relational terminology, keys and relationships</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,15 +29,14 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#terms">Tables and records</a>
-        <a href="#fields">Fields</a>
-        <a href="#types">Data types</a>
-        <a href="#constraints">Constraints</a>
-        <a href="#type-tool">Type chooser</a>
-        <a href="#constraint-tool">Constraint checker</a>
+        <a href="#flat">Flat-file</a>
+        <a href="#relational">Relational</a>
+        <a href="#compare">Comparison</a>
+        <a href="#anomalies">Anomalies</a>
+        <a href="#chooser">Structure chooser</a>
+        <a href="#checker">Anomaly checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
-        <a href="#checkpoint">Checkpoint</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
@@ -54,24 +53,40 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Relational terminology, keys, relationships and indexing</h2>
+            <h2>Relational terminology, keys and relationships</h2>
           </div>
           <div class="stage2-explanation">
             <p>An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.</p>
             <p>A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.</p>
-            <p>Record and tuple are corresponding relational terms for one row; field and attribute are corresponding terms for one column.</p>
             <p>A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.</p>
             <p>A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.</p>
+            <p>A relational database stores data in tables made of records and fields. A primary key uniquely identifies a record; a foreign key links to a primary key in another table and creates a relationship.</p>
+            <p>Indexing creates an additional lookup structure for one or more fields so matching records can be located more quickly. The index consumes storage and must be updated when indexed data change.</p>
+            <p>A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Keys for a student table / Delete a department</h3>
-            <p>In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route. If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows.</p>
+            <h3>Worked example: Keys for a student table / Delete a department / Use keys and an index</h3>
+            <p>In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route. If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows. StudentID is the primary key of Student. DepartmentID is a foreign key linking to Department. An index on Surname can speed searches by surname without changing which field is the primary key.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start referential -->
+        <section class="panel explanation-panel" id="explanation-referential" data-explains="referential" data-explanation-kind="mechanism" aria-labelledby="explanation-referential-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="referential">
+          <h2 class="explanation-sr-only" id="explanation-referential-title">Referential integrity</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-referential.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Referential integrity with a structured visual model." />
+            <figcaption class="explanation-sr-only">Referential integrity: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</li><li><strong>Lesson fact:</strong> Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.</li><li><strong>Lesson fact:</strong> Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.</li><li><strong>Lesson fact:</strong> Why It prevents orphan records, such as a loan assigned to a non-existent student.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end referential -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Relational terminology, keys, relationships and indexing: apply and assess</h2>
+            <h2>Relational terminology, keys and relationships: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
@@ -107,16 +122,24 @@
               <p><strong>8.</strong> Identify one valid delete response.</p>
               <details><summary>Show answer</summary><p>Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.</p></details>
             </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> What does a primary key do?</p>
+              <details><summary>Show answer</summary><p>Uniquely identifies each record.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>10.</strong> What does indexing improve?</p>
+              <details><summary>Show answer</summary><p>The speed of locating records by indexed field values.</p></details>
+            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>11 marks</span></div>
-            <p>For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index. Explain how a one-to-many relationship between Department and Employee is represented and protected.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>15 marks</span></div>
+            <p>For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index. Explain how a one-to-many relationship between Department and Employee is represented and protected. Explain primary key, foreign key and indexing for a Student table.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>candidate key is a minimal unique identifier, such as StudentID or unique Email</td><td>Do not describe a secondary key as an alternate candidate key or require it to be unique. Do not accept that foreign-key values must be unique in the child table.</td><td>1</td></tr>
+                  <tr><td>candidate key is a minimal unique identifier, such as StudentID or unique Email</td><td>Do not describe a secondary key as an alternate candidate key or require it to be unique. Do not accept that foreign-key values must be unique in the child table. Do not describe an index as a replacement primary key.</td><td>1</td></tr>
                   <tr><td>primary key is the candidate selected to identify each record</td><td></td><td>1</td></tr>
                   <tr><td>secondary key is an additional retrieval field such as non-unique TutorGroup</td><td></td><td>1</td></tr>
                   <tr><td>secondary key need not be unique</td><td></td><td>1</td></tr>
@@ -127,6 +150,10 @@
                   <tr><td>DepartmentID is a foreign key in Employee and may repeat</td><td></td><td>1</td></tr>
                   <tr><td>each non-null foreign-key value must match an existing Department key</td><td></td><td>1</td></tr>
                   <tr><td>referential integrity prevents orphan Employee records</td><td></td><td>1</td></tr>
+                  <tr><td>primary key</td><td></td><td>1</td></tr>
+                  <tr><td>foreign key/relationship</td><td></td><td>1</td></tr>
+                  <tr><td>indexing lookup benefit</td><td></td><td>1</td></tr>
+                  <tr><td>storage/update trade-off</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -136,296 +163,262 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 080 | 45 minutes | Paper 1 Section 8 | 5-minute quiz and monthly checkpoint</p>
-            <h2>A table is not just boxes. It is boxes with rules, otherwise the data starts doing parkour.</h2>
+            <p class="lesson-meta">Lesson 080 | 45 minutes | Paper 1 Section 8 | Database concepts</p>
+            <h2>One giant table looks simple until one phone number changes in twelve places.</h2>
             <p>
-              This lesson focuses on the inside of a database table: records, fields, data types, field sizes
-              and constraints. The aim is to design fields that store the right kind of data and reject values
-              that should not be accepted.
+              This lesson compares flat-file databases with relational databases. The key idea is not that
+              flat files are "bad"; it is that repeated related data creates maintenance problems as the
+              data grows. Relational design separates data into linked tables to reduce redundancy and
+              inconsistency.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Label</strong><span>table, record/tuple, field/attribute and value</span></div>
-              <div><strong>Select</strong><span>appropriate data types and field sizes for scenario data</span></div>
-              <div><strong>Apply</strong><span>constraints and validation rules to protect data integrity</span></div>
+              <div><strong>Define</strong><span>flat-file and relational database structures</span></div>
+              <div><strong>Compare</strong><span>redundancy, consistency, update effort and complexity</span></div>
+              <div><strong>Choose</strong><span>a suitable structure for a scenario with justified reasons</span></div>
             </div>
           </div>
-          <div class="table-visual" aria-label="Annotated table visual">
-            <div class="visual-row head"><span>StudentID</span><span>Name</span><span>DOB</span><span>FeePaid</span></div>
-            <div class="visual-row"><span>S0234</span><span>Amira Chen</span><span>2009-04-18</span><span>TRUE</span></div>
-            <div class="visual-row"><span>S0318</span><span>Leo Singh</span><span>2008-11-02</span><span>FALSE</span></div>
-            <p>Fields are columns. Records are rows. Values live at the intersections.</p>
+          <div class="split-visual" aria-label="Flat-file and relational visual">
+            <div class="flat-block">
+              <strong>Flat-file</strong>
+              <span>one table</span>
+              <span>repeated customer details</span>
+              <span>easy to start, painful to maintain</span>
+            </div>
+            <div class="rel-block">
+              <strong>Relational</strong>
+              <span>several linked tables</span>
+              <span>shared data stored once</span>
+              <span>better consistency, more design needed</span>
+            </div>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Database design marks often come from precise choices: a date field for dates, Boolean for true/false, and a constraint with a clear purpose.</p>
+            <p>Cambridge-style answers reward cause and consequence: relational design reduces redundancy because shared data is stored once.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not choose Integer for phone numbers. You do not calculate with phone numbers, and leading zeroes may matter.</p>
+            <p>Do not say relational databases are always better. For a very small single-user list, a flat file may be simpler and sufficient.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A school stores a phone number as Integer. What could go wrong?</h2>
-            <p>The phone number is not trying to join a maths competition.</p>
+            <h2>A tutor keeps one spreadsheet: every lesson row repeats student name, phone, parent email and course.</h2>
+            <p>Then a parent changes email. The spreadsheet says, "I have twelve personalities now."</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="zero">A leading zero may be removed</button>
-            <button class="choice-card" type="button" data-hook="sum">The school can add two phone numbers</button>
-            <button class="choice-card" type="button" data-hook="date">It becomes a valid date</button>
-            <button class="choice-card" type="button" data-hook="image">It stores a profile photo</button>
+            <button class="choice-card" type="button" data-hook="redundancy">Repeated same parent email in many rows</button>
+            <button class="choice-card" type="button" data-hook="password">Weak password for the spreadsheet</button>
+            <button class="choice-card" type="button" data-hook="binary">CourseID stored in binary</button>
+            <button class="choice-card" type="button" data-hook="processor">CPU cache stores recent rows</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the database design issue.
+            Choose the issue most directly caused by flat-file structure.
           </div>
         </section>
 
-        <section class="panel" id="terms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+        <section class="panel" id="flat" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Tables, records and fields</h2>
-            <p>A table stores records about one entity. A record is one complete row. A field is one column or attribute.</p>
+            <h2>Flat-file database</h2>
+            <p>A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</p>
           </div>
-          <div class="term-table" role="table" aria-label="Table record field terms">
+          <div class="flat-table" role="table" aria-label="Flat-file club records">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Term</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Example</div>
+              <div role="columnheader">MemberID</div>
+              <div role="columnheader">Name</div>
+              <div role="columnheader">ParentEmail</div>
+              <div role="columnheader">Session</div>
+              <div role="columnheader">FeePaid</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Table</div>
-              <div role="cell">A collection of records for one entity</div>
-              <div role="cell">Student table</div>
+              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Record / tuple</div>
-              <div role="cell">One complete row in a table</div>
-              <div role="cell">S0234, Amira Chen, 2009-04-18, TRUE</div>
+              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Robotics</div><div role="cell">FALSE</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Field / attribute</div>
-              <div role="cell">One column or property stored for each record</div>
-              <div role="cell">StudentID, Name, DateOfBirth, FeePaid</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Value</div>
-              <div role="cell">One item of data in a field for a record</div>
-              <div role="cell">TRUE in the FeePaid field</div>
+              <div role="cell">M211</div><div role="cell">Leo Singh</div><div role="cell">patel@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
             </div>
           </div>
+          <div class="callout">Chinese support: flat-file = 单表结构。The problem is not the word "file"; the problem is using one table for related repeated data.</div>
         </section>
 
-        <!-- stage10-explanation:start terms -->
-        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-terms-title">Tables, records and fields</h2>
+        <!-- stage10-explanation:start flat -->
+        <section class="panel explanation-panel" id="explanation-flat" data-explains="flat" data-explanation-kind="mechanism" aria-labelledby="explanation-flat-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+          <h2 class="explanation-sr-only" id="explanation-flat-title">Flat-file database</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tables, records and fields with a structured visual model." />
-            <figcaption class="explanation-sr-only">Tables, records and fields: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-flat.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file database with a structured visual model." />
+            <figcaption class="explanation-sr-only">Flat-file database: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A table stores records about one entity. A record is one complete row. A field is one column or attribute.</li><li><strong>Lesson fact:</strong> A collection of records for one entity</li><li><strong>Lesson fact:</strong> Student table</li><li><strong>Lesson fact:</strong> Record / tuple</li><li><strong>Lesson fact:</strong> One complete row in a table</li><li><strong>Lesson fact:</strong> S0234, Amira Chen, 2009-04-18, TRUE</li><li><strong>Lesson fact:</strong> Field / attribute</li><li><strong>Lesson fact:</strong> One column or property stored for each record</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, FeePaid</li><li><strong>Lesson fact:</strong> One item of data in a field for a record</li><li><strong>Lesson fact:</strong> TRUE in the FeePaid field</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</li><li><strong>Lesson fact:</strong> MemberID</li><li><strong>Lesson fact:</strong> ParentEmail</li><li><strong>Lesson fact:</strong> Amira Chen</li><li><strong>Lesson fact:</strong> lee@example.com</li><li><strong>Lesson fact:</strong> Robotics</li><li><strong>Lesson fact:</strong> Leo Singh</li><li><strong>Lesson fact:</strong> patel@example.com</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end terms -->
-        <section class="panel" id="fields" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+        <!-- stage10-explanation:end flat -->
+        <section class="panel" id="relational" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Designing fields properly</h2>
-            <p>Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</p>
+            <h2>Relational database</h2>
+            <p>A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</p>
           </div>
-          <div class="field-design-grid">
-            <article><strong>Field name</strong><span>Clear and specific: <code>DateOfBirth</code>, not <code>date</code>.</span></article>
-            <article><strong>Data type</strong><span>Controls the kind of data: text, integer, real, date/time, Boolean.</span></article>
-            <article><strong>Field size</strong><span>Maximum storage length where relevant, such as 8 characters for StudentID.</span></article>
-            <article><strong>Constraint</strong><span>A rule that a value must satisfy before it is accepted.</span></article>
-          </div>
-          <div class="callout">Chinese support: field = 字段/列；record = 记录/行；constraint = 约束/限制规则；data integrity = 数据完整性。</div>
-        </section>
-
-        <!-- stage10-explanation:start fields -->
-        <section class="panel explanation-panel" id="explanation-fields" data-explains="fields" data-explanation-kind="mechanism" aria-labelledby="explanation-fields-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-fields-title">Designing fields properly</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-fields.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Designing fields properly with a structured visual model." />
-            <figcaption class="explanation-sr-only">Designing fields properly: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</li><li><strong>Lesson fact:</strong> Field name Clear and specific: DateOfBirth , not date .</li><li><strong>Lesson fact:</strong> Data type Controls the kind of data: text, integer, real, date/time, Boolean.</li><li><strong>Lesson fact:</strong> Field size Maximum storage length where relevant, such as 8 characters for StudentID.</li><li><strong>Lesson fact:</strong> Constraint A rule that a value must satisfy before it is accepted.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end fields -->
-        <section class="panel" id="types" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Common database data types</h2>
-          </div>
-          <div class="data-type-table" role="table" aria-label="Common data types">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Data type</div>
-              <div role="columnheader">Use when</div>
-              <div role="columnheader">Example</div>
+          <div class="relational-preview">
+            <div class="mini-table">
+              <h3>Member</h3>
+              <p><strong>MemberID</strong> | Name | ParentEmail</p>
+              <p>M104 | Amira Chen | lee@example.com</p>
+              <p>M211 | Leo Singh | patel@example.com</p>
             </div>
-            <div class="table-row" role="row">
-              <div role="cell">Text / string</div>
-              <div role="cell">The value may contain letters, spaces, symbols or leading zeroes</div>
-              <div role="cell">PhoneNumber = "02071234567"</div>
+            <div class="relation-arrow">linked by MemberID</div>
+            <div class="mini-table">
+              <h3>Enrolment</h3>
+              <p><strong>EnrolID</strong> | MemberID | Session | FeePaid</p>
+              <p>E501 | M104 | Python | TRUE</p>
+              <p>E502 | M104 | Robotics | FALSE</p>
             </div>
-            <div class="table-row" role="row">
-              <div role="cell">Integer</div>
-              <div role="cell">Whole number used for counting or arithmetic</div>
-              <div role="cell">Quantity = 24</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Real / decimal</div>
-              <div role="cell">Number may include fractional part</div>
-              <div role="cell">MassKg = 62.5</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Boolean</div>
-              <div role="cell">Only two logical states are needed</div>
-              <div role="cell">FeePaid = TRUE</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Date/time</div>
-              <div role="cell">Date or time operations, ordering or validation are needed</div>
-              <div role="cell">AppointmentDate = 2026-06-15</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start types -->
-        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-types-title">Common database data types</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common database data types with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common database data types: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Data type</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Text / string</li><li><strong>Lesson fact:</strong> The value may contain letters, spaces, symbols or leading zeroes</li><li><strong>Lesson fact:</strong> PhoneNumber = &quot;02071234567&quot;</li><li><strong>Lesson fact:</strong> Whole number used for counting or arithmetic</li><li><strong>Lesson fact:</strong> Quantity = 24</li><li><strong>Lesson fact:</strong> Real / decimal</li><li><strong>Lesson fact:</strong> Number may include fractional part</li><li><strong>Lesson fact:</strong> MassKg = 62.5</li><li><strong>Lesson fact:</strong> Only two logical states are needed</li><li><strong>Lesson fact:</strong> FeePaid = TRUE</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end types -->
-        <section class="panel" id="constraints" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Constraints and validation rules</h2>
-            <p>A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</p>
-          </div>
-          <div class="constraint-grid">
-            <article><strong>Presence check</strong><span>Value must not be blank. Example: Name is required.</span></article>
-            <article><strong>Range check</strong><span>Value must be within limits. Example: Mark is 0 to 100.</span></article>
-            <article><strong>Type check</strong><span>Value must match the data type. Example: Quantity must be Integer.</span></article>
-            <article><strong>Length check</strong><span>Value must have a permitted length. Example: StudentID has 5 characters.</span></article>
-            <article><strong>Format check</strong><span>Value must match a pattern. Example: postcode or email pattern.</span></article>
-            <article><strong>Lookup check</strong><span>Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</span></article>
           </div>
           <div class="answer-frame">
             <strong>Exam sentence:</strong>
-            <span>A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</span>
+            <span>A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</span>
           </div>
         </section>
 
-        <!-- stage10-explanation:start constraints -->
-        <section class="panel explanation-panel" id="explanation-constraints" data-explains="constraints" data-explanation-kind="mechanism" aria-labelledby="explanation-constraints-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-constraints-title">Constraints and validation rules</h2>
+        <!-- stage10-explanation:start relational -->
+        <section class="panel explanation-panel" id="explanation-relational" data-explains="relational" data-explanation-kind="mechanism" aria-labelledby="explanation-relational-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+          <h2 class="explanation-sr-only" id="explanation-relational-title">Relational database</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-constraints.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constraints and validation rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Constraints and validation rules: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-relational.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relational database with a structured visual model." />
+            <figcaption class="explanation-sr-only">Relational database: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</li><li><strong>Lesson fact:</strong> Presence check Value must not be blank. Example: Name is required.</li><li><strong>Lesson fact:</strong> Range check Value must be within limits. Example: Mark is 0 to 100.</li><li><strong>Lesson fact:</strong> Type check Value must match the data type. Example: Quantity must be Integer.</li><li><strong>Lesson fact:</strong> Length check Value must have a permitted length. Example: StudentID has 5 characters.</li><li><strong>Lesson fact:</strong> Format check Value must match a pattern. Example: postcode or email pattern.</li><li><strong>Lesson fact:</strong> Lookup check Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</li><li><strong>Lesson fact:</strong> MemberID | Name | ParentEmail</li><li><strong>Lesson fact:</strong> M104 | Amira Chen | lee@example.com</li><li><strong>Lesson fact:</strong> M211 | Leo Singh | patel@example.com</li><li><strong>Lesson fact:</strong> linked by MemberID</li><li><strong>Lesson fact:</strong> Enrolment</li><li><strong>Lesson fact:</strong> EnrolID | MemberID | Session | FeePaid</li><li><strong>Lesson fact:</strong> E501 | M104 | Python | TRUE</li><li><strong>Lesson fact:</strong> E502 | M104 | Robotics | FALSE</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end constraints -->
-        <section class="panel" id="type-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+        <!-- stage10-explanation:end relational -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
-            <p class="eyebrow">Interactive data type chooser</p>
-            <h2>Choose the best data type</h2>
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Flat-file vs relational comparison</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Flat-file relational comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Flat-file</div>
+              <div role="columnheader">Relational</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Structure</div>
+              <div role="cell">Single table</div>
+              <div role="cell">Multiple linked tables</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Redundancy</div>
+              <div role="cell">More likely because related details are repeated</div>
+              <div role="cell">Reduced because shared data can be stored once</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Consistency</div>
+              <div role="cell">Harder to maintain if repeated values are updated differently</div>
+              <div role="cell">Improved because updates can be made in one relevant table</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Complexity</div>
+              <div role="cell">Simpler to create for a small, simple dataset</div>
+              <div role="cell">Needs more planning and understanding of relationships</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Best fit</div>
+              <div role="cell">Small, single-purpose, low-change data</div>
+              <div role="cell">Data with repeated entities, many users, updates and queries</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="anomalies" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Why repeated data causes anomalies</h2>
+            <p>An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</p>
+          </div>
+          <div class="anomaly-grid">
+            <article><strong>Update anomaly</strong><span>A parent email is changed in one row but not in another, so the same member has two different emails.</span></article>
+            <article><strong>Insertion anomaly</strong><span>A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</span></article>
+            <article><strong>Deletion anomaly</strong><span>Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start anomalies -->
+        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="mechanism" aria-labelledby="explanation-anomalies-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+          <h2 class="explanation-sr-only" id="explanation-anomalies-title">Why repeated data causes anomalies</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-anomalies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why repeated data causes anomalies with a structured visual model." />
+            <figcaption class="explanation-sr-only">Why repeated data causes anomalies: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</li><li><strong>Lesson fact:</strong> Update anomaly A parent email is changed in one row but not in another, so the same member has two different emails.</li><li><strong>Lesson fact:</strong> Insertion anomaly A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</li><li><strong>Lesson fact:</strong> Deletion anomaly Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end anomalies -->
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+          <div class="section-title">
+            <p class="eyebrow">Interactive structure chooser</p>
+            <h2>Choose flat-file or relational for the scenario</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Field
-              <select id="typeInput">
-                <option value="phone">PhoneNumber stores 02071234567</option>
-                <option value="paid">FeePaid stores TRUE or FALSE</option>
-                <option value="height">HeightM stores 1.72</option>
-                <option value="quantity">QuantityInStock stores 54</option>
-                <option value="appointment">AppointmentDate stores 2026-06-15</option>
+              Scenario
+              <select id="scenarioInput">
+                <option value="singleList">A teacher keeps a one-off list of students attending one trip.</option>
+                <option value="club">A club records members, sessions, fees and changing contact details.</option>
+                <option value="shop">An online shop stores customers, orders and products.</option>
+                <option value="survey">A small survey stores one answer row per anonymous respondent.</option>
+                <option value="clinic">A clinic stores patients, appointments, staff and prescriptions.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="typeBtn">Choose type</button>
+            <button class="primary-button" type="button" id="scenarioBtn">Choose structure</button>
           </div>
-          <div class="result-box" id="typeResult">Choose a field, then decide the data type.</div>
-          <div class="feedback" id="typeReason">The best answer depends on how the value is used, not how numeric it looks.</div>
+          <div class="result-box" id="scenarioResult">Choose a scenario, then justify the structure.</div>
+          <div class="feedback" id="scenarioReason">A strong answer mentions data size, repetition, updates or relationships.</div>
         </section>
 
-        <!-- stage10-explanation:start type-tool -->
-        <section class="panel explanation-panel" id="explanation-type-tool" data-explains="type-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-type-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-type-tool-title">Choose the best data type</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-type-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best data type with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the best data type: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive data type chooser</li><li><strong>Lesson fact:</strong> Choose a field, then decide the data type.</li><li><strong>Lesson fact:</strong> The best answer depends on how the value is used, not how numeric it looks.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end type-tool -->
-        <section class="panel" id="constraint-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
-            <p class="eyebrow">Interactive constraint checker</p>
-            <h2>Which rule rejects the bad value?</h2>
+            <p class="eyebrow">Interactive anomaly checker</p>
+            <h2>What can go wrong in a flat file?</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Bad value
-              <select id="constraintInput">
-                <option value="blankName">Name is blank</option>
-                <option value="badMark">ExamMark is 128</option>
-                <option value="badId">StudentID is S1234567 but should be 5 characters</option>
-                <option value="badGrade">Grade is X but allowed grades are A to E or U</option>
-                <option value="badQuantity">Quantity is "ten"</option>
+              Event
+              <select id="anomalyInput">
+                <option value="changedEmail">A parent email is edited in only one of four repeated rows.</option>
+                <option value="newMember">A new member has not chosen a session yet, so no row can be created.</option>
+                <option value="deleteLast">The only row for a cancelled session is deleted and member contact details disappear.</option>
+                <option value="smallList">A one-off trip list has no repeated contact details.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="constraintBtn">Check rule</button>
+            <button class="primary-button" type="button" id="anomalyBtn">Check anomaly</button>
           </div>
-          <div class="result-box" id="constraintResult">Choose a bad value to identify the check.</div>
-          <div class="feedback" id="constraintReason">Name the rule and explain what it prevents.</div>
+          <div class="result-box" id="anomalyResult">Choose an event to classify the problem.</div>
+          <div class="feedback" id="anomalyReason">If there is no anomaly, explain why the simple structure may be acceptable.</div>
         </section>
 
-        <!-- stage10-explanation:start constraint-tool -->
-        <section class="panel explanation-panel" id="explanation-constraint-tool" data-explains="constraint-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-constraint-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-constraint-tool-title">Which rule rejects the bad value?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-constraint-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which rule rejects the bad value? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Which rule rejects the bad value?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive constraint checker</li><li><strong>Lesson fact:</strong> Bad value</li><li><strong>Lesson fact:</strong> Choose a bad value to identify the check.</li><li><strong>Lesson fact:</strong> Name the rule and explain what it prevents.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end constraint-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Design fields that do not invite chaos</h2>
+            <h2>From scenario to justified design choice</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="student">Student table</button>
-            <button class="tab" type="button" data-example="booking">Booking table</button>
-            <button class="tab" type="button" data-example="phone">Phone-number data type error</button>
-            <button class="tab" type="button" data-example="constraint">Constraint answer</button>
+            <button class="tab active" type="button" data-example="club">Club records</button>
+            <button class="tab" type="button" data-example="shop">Online shop</button>
+            <button class="tab" type="button" data-example="survey">Small survey</button>
+            <button class="tab" type="button" data-example="mistake">Weak comparison</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -433,42 +426,16 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>5-minute quiz plus core checks</h2>
-            <p>Answer quickly, then use Show answer to mark with strict vocabulary.</p>
+            <h2>Short-answer checks</h2>
+            <p>Type concise answers. Use the answer button only after committing to an attempt.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="checkpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Monthly checkpoint</p>
-            <h2>Section 8 basics so far</h2>
-            <p>This checkpoint connects Lessons 078-080 without becoming a full exam.</p>
-          </div>
-          <div class="checkpoint-grid">
-            <article><strong>1. Define</strong><span>data, information, database, DBMS, flat-file, relational database.</span></article>
-            <article><strong>2. Compare</strong><span>one-table repeated data vs linked tables with reduced redundancy.</span></article>
-            <article><strong>3. Design</strong><span>choose data types and constraints for five fields in a small scenario.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start checkpoint -->
-        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">Section 8 basics so far</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 8 basics so far with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 8 basics so far: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> This checkpoint connects Lessons 078-080 without becoming a full exam.</li><li><strong>Lesson fact:</strong> 1. Define data, information, database, DBMS, flat-file, relational database.</li><li><strong>Lesson fact:</strong> 2. Compare one-table repeated data vs linked tables with reduced redundancy.</li><li><strong>Lesson fact:</strong> 3. Design choose data types and constraints for five fields in a small scenario.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end checkpoint -->
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common field design errors</h2>
+            <h2>Repair common wording errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -477,7 +444,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about selecting and justifying types and constraints.</p>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about cause-and-effect wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -488,9 +455,9 @@
             <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Structure</strong><span>Table = collection of records; record = row; field = column.</span></div>
-            <div><strong>Types</strong><span>Choose the type based on use: text, integer, real, Boolean or date/time.</span></div>
-            <div><strong>Constraints</strong><span>Rules reject invalid values and help maintain data integrity.</span></div>
+            <div><strong>Flat-file</strong><span>Single table; simple for small datasets but may repeat related data.</span></div>
+            <div><strong>Relational</strong><span>Multiple linked tables; reduces redundancy and supports consistent updates.</span></div>
+            <div><strong>Exam answer</strong><span>Name the structure, then explain a consequence such as reduced redundancy or increased design complexity.</span></div>
           </div>
         </section>
 
@@ -501,16 +468,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Field design table</strong>
-              <span>For fields StudentID, Name, DateOfBirth, PhoneNumber, ExamMark and FeePaid, give a suitable data type, field size if relevant, and one constraint.</span>
+              <strong>Task 1: Definitions</strong>
+              <span>Write exam-ready definitions for flat-file database, relational database, redundancy and inconsistency. Add Chinese support notes for the two hardest terms.</span>
             </article>
             <article>
-              <strong>Task 2: Explain two choices</strong>
-              <span>Write two short paragraphs explaining why PhoneNumber should usually be text and why ExamMark should have a range check.</span>
+              <strong>Task 2: Scenario design</strong>
+              <span>A music school stores students, teachers, instruments and weekly lessons. Choose flat-file or relational and give three reasons linked to the scenario.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how suitable data types and constraints can improve data integrity in a school database." Use two fields as examples.</span>
+              <span>Answer: "Explain why a relational database may be more suitable than a flat-file database for a library loan system." Include redundancy, consistency and one possible disadvantage.</span>
             </article>
           </div>
         </section>
@@ -518,8 +485,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

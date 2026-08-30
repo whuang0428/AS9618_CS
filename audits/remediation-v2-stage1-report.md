@@ -38,7 +38,7 @@
 ## Active failed samples
 
 - The current semantic gate is intentionally Blocked with 135 findings; a Ready result at this stage would be a false positive.
-- Current critical blockers detected: CRIT-L049-PERFORMANCE-FACTORS, CRIT-L107-CHAR-FUNCTION-TYPE, CRIT-L121-PROVIDED-FUNCTIONS, CRIT-L133-CHAR-FUNCTION-TYPE, CRIT-L133-PROVIDED-FUNCTION, CRIT-S1.03-ONES-COMPLEMENT.
+- Current critical blockers detected: CRIT-L050-PERFORMANCE-FACTORS, CRIT-L108-CHAR-FUNCTION-TYPE, CRIT-L122-PROVIDED-FUNCTIONS, CRIT-L134-CHAR-FUNCTION-TYPE, CRIT-L134-PROVIDED-FUNCTION, CRIT-S1.03-ONES-COMPLEMENT.
 - Current order model detects 25 first-use/prerequisite/assessment problems.
 - Passing the --approve option to the wording-register generator exits non-zero before writing.
 

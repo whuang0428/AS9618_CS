@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 133 | String handling and built-in functions</title>
+    <title>AS9618 Lesson 133 | Scope, lifetime, and local/global variables</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>String handling and built-in functions</h1>
+        <h1>Scope, lifetime, and local/global variables</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,507 +29,438 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#strings">Strings</a>
-        <a href="#length">LENGTH</a>
-        <a href="#substring">Substring</a>
-        <a href="#case">Case conversion</a>
-        <a href="#concat">Concatenation</a>
-        <a href="#position">Positions</a>
+        <a href="#scope">Scope</a>
+        <a href="#lifetime">Lifetime</a>
+        <a href="#local">Local variables</a>
+        <a href="#global">Global variables</a>
+        <a href="#shadowing">Same-name variable error</a>
+        <a href="#compare">Compare</a>
         <a href="#java">Java support</a>
-        <a href="#lab">String lab</a>
-        <a href="#chooser">Function chooser</a>
+        <a href="#simulator">Trace simulator</a>
+        <a href="#chooser">Variable chooser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Use supplied built-in and library routines</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Use built-in functions and library routines exactly as defined. The syllabus states that any function not given in the Cambridge pseudocode guide will be provided, and string manipulation functions will always be given in the question. Students are not expected to memorise one unofficial substring API.</p>
-            <p>Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.</p>
-            <p>A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Apply a supplied string routine</h3>
-            <p>A question supplies FUNCTION EXTRACT(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and states that positions start at 1. LENGTH(&quot;NETWORK&quot;) returns 7; EXTRACT(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;. Code &lt;- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start substring -->
-        <section class="panel explanation-panel" id="explanation-substring" data-explains="substring" data-explanation-kind="mechanism" aria-labelledby="explanation-substring-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="substring">
-          <h2 class="explanation-sr-only" id="explanation-substring-title">Use the string-function definition supplied in the question</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-substring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the string-function definition supplied in the question with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the string-function definition supplied in the question: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.</li><li><strong>Lesson fact:</strong> Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.</li><li><strong>Lesson fact:</strong> Do not import Java's zero-based substring convention or memorise an unstated course-specific signature.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end substring -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Use supplied built-in and library routines: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Will an unfamiliar string manipulation function be supplied?</p>
-              <details><summary>Show answer</summary><p>Yes. The syllabus says string manipulation functions will always be given.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What must be checked before tracing EXTRACT?</p>
-              <details><summary>Show answer</summary><p>Its supplied parameter order, position/index convention and return definition.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> May a returned string be assigned to a variable?</p>
-              <details><summary>Show answer</summary><p>Yes; a function return can be used wherever a compatible value is needed.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A question supplies FUNCTION TAKE(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and FUNCTION TO_UPPER(Text : STRING) RETURNS STRING, with positions starting at 1. State LENGTH(&quot;ALGORITHM&quot;), state TAKE(&quot;ALGORITHM&quot;, 3, 4), and write an assignment that converts the extracted STRING to upper case.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>LENGTH result is 9</td><td>Do not use CHAR-only UCASE on a STRING, require memorisation of an unstated substring signature or import Java's zero-based indexes.</td><td>1</td></tr>
-                  <tr><td>TAKE result is GORI</td><td></td><td>1</td></tr>
-                  <tr><td>uses the supplied Start/Count convention rather than Java indexing</td><td></td><td>1</td></tr>
-                  <tr><td>assigns TO_UPPER(TAKE(&quot;ALGORITHM&quot;, 3, 4)) or equivalent to a variable</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 133 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
-            <h2>Strings are arrays of characters wearing quotation marks.</h2>
+            <h2>Variables have borders. Some passports are very local.</h2>
             <p>
-              String handling lets an algorithm measure, extract, compare and rebuild text. Built-in functions such
-              as <code>LENGTH</code>, <code>RIGHT</code> and <code>MID</code> return values from strings. <code>UCASE</code>
-              and <code>LCASE</code> accept and return one <code>CHAR</code>. Arguments, positions and returned types
-              must be traced exactly; guide-external functions require a definition supplied by the question.
+              Scope is where an identifier can be used. Lifetime is how long its value exists while the program runs.
+              Local variables belong to a subroutine or block; global variables can be accessed more widely. The exam
+              point is not just naming them, but tracing which variable is being changed.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Use</strong><span>common Cambridge-style string functions accurately</span></div>
-              <div><strong>Trace</strong><span>returned strings from length, case and substring operations</span></div>
-              <div><strong>Separate</strong><span>pseudocode string positions from Java string indexes</span></div>
+              <div><strong>Define</strong><span>scope, lifetime, local variable and global variable</span></div>
+              <div><strong>Trace</strong><span>variable values inside and outside subroutines</span></div>
+              <div><strong>Correct</strong><span>bugs caused by inaccessible variables or accidental global changes</span></div>
             </div>
           </div>
-          <div class="string-visual" aria-label="String visual">
-            <div><strong>"COMPUTER"</strong><span>8 characters</span><em>LENGTH("COMPUTER") = 8</em></div>
-            <div><strong>MID("COMPUTER", 4, 3)</strong><span>"PUT"</span><em>start position, count</em></div>
-            <div><strong>UCASE('e')</strong><span>'E'</span><em>CHAR input and CHAR result</em></div>
-            <p>A built-in function returns a value. It does not politely explain your off-by-one error.</p>
+          <div class="scope-visual" aria-label="Scope visual">
+            <div><strong>Global</strong><span>visible widely</span><em>longer lifetime</em></div>
+            <div><strong>Local</strong><span>inside subroutine</span><em>created on call</em></div>
+            <div><strong>Trace</strong><span>which variable?</span><em>name alone is not enough</em></div>
+            <p>A variable can share a name with another variable and still be a different storage location.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 often uses strings in validation, searching, formatting and trace questions where one character changes the answer.</p>
+            <p>Paper 2 trace questions often use local and global variables to test whether candidates follow the actual data, not just the names.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Java uses zero-based indexes. Cambridge-style pseudocode examples commonly use positions starting at 1 unless a question states otherwise.</p>
+            <p>A local variable with the same name as a global variable does not automatically change the global variable.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>What does <code>MID("MONITOR", 2, 3)</code> return?</h2>
-            <p>Assume positions start at 1 and the third argument is the number of characters to return.</p>
-          </div>
-          <div class="position-strip" aria-label="MONITOR character positions">
-            <div><strong>1</strong><span>M</span></div>
-            <div><strong>2</strong><span>O</span></div>
-            <div><strong>3</strong><span>N</span></div>
-            <div><strong>4</strong><span>I</span></div>
-            <div><strong>5</strong><span>T</span></div>
-            <div><strong>6</strong><span>O</span></div>
-            <div><strong>7</strong><span>R</span></div>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="mon">"MON"</button>
-            <button class="choice-card" type="button" data-hook="oni">"ONI"</button>
-            <button class="choice-card" type="button" data-hook="oni0">"ON"</button>
-            <button class="choice-card" type="button" data-hook="nit">"NIT"</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the returned substring.</div>
-        </section>
-
-        <section class="panel" id="strings" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <div class="section-title">
-            <p class="eyebrow">Strings</p>
-            <h2>A string is a sequence of characters</h2>
-            <p>Chinese support: string 字符串, character 字符, built-in function 内置函数, return value 返回值。</p>
+            <h2>Which <code>Count</code> is being output?</h2>
+            <p>Two variables can have the same name in different scopes. This is where casual reading gets expensive.</p>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style assignment</h3>
-              <pre><code>Name &lt;- "Ada"
-Message &lt;- "Hello, " &amp; Name
-OUTPUT Message</code></pre>
+              <h3>Code fragment</h3>
+              <pre><code>Count &lt;- 10
+
+PROCEDURE ShowCount()
+    Count &lt;- 3
+    OUTPUT Count
+ENDPROCEDURE
+
+CALL ShowCount()
+OUTPUT Count</code></pre>
+            </article>
+            <article>
+              <h3>Assumption for this warm-up</h3>
+              <p>The assignment inside <code>ShowCount</code> creates or uses a local <code>Count</code> for the procedure.</p>
+              <p>Predict the two outputs before pressing a choice.</p>
+            </article>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="3-3">Outputs 3 then 3</button>
+            <button class="choice-card" type="button" data-hook="3-10">Outputs 3 then 10</button>
+            <button class="choice-card" type="button" data-hook="10-3">Outputs 10 then 3</button>
+            <button class="choice-card" type="button" data-hook="error">Always gives an error</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the output pair.</div>
+        </section>
+
+        <section class="panel" id="scope" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scope">
+          <div class="section-title">
+            <p class="eyebrow">Scope</p>
+            <h2>Scope means where a variable or identifier can be accessed</h2>
+            <p>Chinese support: scope 作用域, access 访问, identifier 标识符。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Inside scope</h3>
+              <pre><code>PROCEDURE DisplayTotal()
+    Total &lt;- 25
+    OUTPUT Total
+ENDPROCEDURE</code></pre>
+              <p><code>Total</code> is accessible inside <code>DisplayTotal</code>.</p>
+            </article>
+            <article>
+              <h3>Outside scope</h3>
+              <pre><code>CALL DisplayTotal()
+OUTPUT Total</code></pre>
+              <p>If <code>Total</code> was local to the procedure, the main algorithm cannot use it directly.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start scope -->
+        <section class="panel explanation-panel" id="explanation-scope" data-explains="scope" data-explanation-kind="mechanism" aria-labelledby="explanation-scope-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="scope">
+          <h2 class="explanation-sr-only" id="explanation-scope-title">Scope means where a variable or identifier can be accessed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-scope.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Scope means where a variable or identifier can be accessed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Scope means where a variable or identifier can be accessed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Inside scope</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayTotal()</li><li><strong>Lesson fact:</strong> Total &lt;- 25</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Total is accessible inside DisplayTotal .</li><li><strong>Lesson fact:</strong> Outside scope</li><li><strong>Lesson fact:</strong> CALL DisplayTotal()</li><li><strong>Lesson fact:</strong> If Total was local to the procedure, the main algorithm cannot use it directly.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end scope -->
+        <section class="panel" id="lifetime" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifetime">
+          <div class="section-title">
+            <p class="eyebrow">Lifetime</p>
+            <h2>Lifetime means how long a variable exists during execution</h2>
+          </div>
+          <div class="timeline">
+            <div><strong>Main program starts</strong><span>global variables may be created and keep their values</span></div>
+            <div><strong>Procedure is called</strong><span>local variables are created for that call</span></div>
+            <div><strong>Procedure ends</strong><span>local variables are destroyed or become inaccessible</span></div>
+            <div><strong>Main continues</strong><span>global variables still exist unless the program ends</span></div>
+          </div>
+          <div class="callout">A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</div>
+        </section>
+
+        <!-- stage10-explanation:start lifetime -->
+        <section class="panel explanation-panel" id="explanation-lifetime" data-explains="lifetime" data-explanation-kind="mechanism" aria-labelledby="explanation-lifetime-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="lifetime">
+          <h2 class="explanation-sr-only" id="explanation-lifetime-title">Lifetime means how long a variable exists during execution</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-lifetime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lifetime means how long a variable exists during execution with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lifetime means how long a variable exists during execution: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Lifetime</li><li><strong>Lesson fact:</strong> Main program starts global variables may be created and keep their values</li><li><strong>Lesson fact:</strong> Procedure is called local variables are created for that call</li><li><strong>Lesson fact:</strong> Procedure ends local variables are destroyed or become inaccessible</li><li><strong>Lesson fact:</strong> Main continues global variables still exist unless the program ends</li><li><strong>Lesson fact:</strong> A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lifetime -->
+        <section class="panel" id="local" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="local">
+          <div class="section-title">
+            <p class="eyebrow">Local variables</p>
+            <h2>Local variables are declared inside a subroutine or block</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE CalculateBonus(Mark : INTEGER)
+    Bonus &lt;- Mark DIV 10
+    OUTPUT Bonus
+ENDPROCEDURE</code></pre>
             </article>
             <article>
               <h3>Reasoning</h3>
-              <p><code>"Ada"</code> is a string of three characters. <code>&amp;</code> is used here for concatenation.</p>
-              <div class="callout">If a question uses a different concatenation operator, follow the question. The mark is for clear string construction.</div>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start strings -->
-        <section class="panel explanation-panel" id="explanation-strings" data-explains="strings" data-explanation-kind="mechanism" aria-labelledby="explanation-strings-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <h2 class="explanation-sr-only" id="explanation-strings-title">A string is a sequence of characters</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-strings.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A string is a sequence of characters with a structured visual model." />
-            <figcaption class="explanation-sr-only">A string is a sequence of characters: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cambridge-style assignment</li><li><strong>Lesson fact:</strong> Name &lt;- &quot;Ada&quot;</li><li><strong>Lesson fact:</strong> Message &lt;- &quot;Hello, &quot; &amp; Name</li><li><strong>Lesson fact:</strong> OUTPUT Message</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> &quot;Ada&quot; is a string of three characters. &amp; is used here for concatenation.</li><li><strong>Lesson fact:</strong> If a question uses a different concatenation operator, follow the question. The mark is for clear string construction.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end strings -->
-        <section class="panel" id="length" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <div class="section-title">
-            <p class="eyebrow">LENGTH</p>
-            <h2><code>LENGTH(String)</code> returns the number of characters</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Example</h3>
-              <pre><code>Word &lt;- "ALGORITHM"
-Size &lt;- LENGTH(Word)
-OUTPUT Size</code></pre>
-            </article>
-            <article>
-              <h3>Trace</h3>
               <div class="trace-list">
-                <div><strong><code>Word</code></strong><span>"ALGORITHM"</span></div>
-                <div><strong><code>LENGTH(Word)</code></strong><span>9</span></div>
-                <div><strong><code>Size</code></strong><span>9</span></div>
+                <div><strong><code>Mark</code></strong><span>parameter local to this procedure call</span></div>
+                <div><strong><code>Bonus</code></strong><span>local variable used only inside the procedure</span></div>
+                <div><strong>After call</strong><span><code>Bonus</code> is not directly available in the main algorithm</span></div>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start length -->
-        <section class="panel explanation-panel" id="explanation-length" data-explains="length" data-explanation-kind="mechanism" aria-labelledby="explanation-length-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <h2 class="explanation-sr-only" id="explanation-length-title">LENGTH(String) returns the number of characters</h2>
+        <!-- stage10-explanation:start local -->
+        <section class="panel explanation-panel" id="explanation-local" data-explains="local" data-explanation-kind="mechanism" aria-labelledby="explanation-local-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="local">
+          <h2 class="explanation-sr-only" id="explanation-local-title">Local variables are declared inside a subroutine or block</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-length.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining LENGTH(String) returns the number of characters with a structured visual model." />
-            <figcaption class="explanation-sr-only">LENGTH(String) returns the number of characters: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-local.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local variables are declared inside a subroutine or block with a structured visual model." />
+            <figcaption class="explanation-sr-only">Local variables are declared inside a subroutine or block: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Word &lt;- &quot;ALGORITHM&quot;</li><li><strong>Lesson fact:</strong> Size &lt;- LENGTH(Word)</li><li><strong>Lesson fact:</strong> OUTPUT Size</li><li><strong>Lesson fact:</strong> Word &quot;ALGORITHM&quot;</li><li><strong>Lesson fact:</strong> LENGTH(Word) 9</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Local variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE CalculateBonus(Mark : INTEGER)</li><li><strong>Lesson fact:</strong> Bonus &lt;- Mark DIV 10</li><li><strong>Lesson fact:</strong> OUTPUT Bonus</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Mark parameter local to this procedure call</li><li><strong>Lesson fact:</strong> Bonus local variable used only inside the procedure</li><li><strong>Lesson fact:</strong> After call Bonus is not directly available in the main algorithm</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end length -->
-        <section class="panel" id="substring" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <!-- stage10-explanation:end local -->
+        <section class="panel" id="global" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="global">
           <div class="section-title">
-            <p class="eyebrow">Substring functions</p>
-            <h2>Use substring functions to extract part of a string</h2>
-          </div>
-          <div class="data-table compare-table" role="table" aria-label="Substring functions">
-            <div class="table-row table-head"><div>Function</div><div>Meaning</div><div>Example</div></div>
-            <div class="table-row"><div><code>RIGHT(Text, n)</code></div><div>last <code>n</code> characters</div><div><code>RIGHT("NETWORK", 4)</code> returns <code>"WORK"</code></div></div>
-            <div class="table-row"><div><code>MID(Text, start, n)</code></div><div><code>n</code> characters from a start position</div><div><code>MID("NETWORK", 4, 2)</code> returns <code>"WO"</code></div></div>
-          </div>
-          <div class="callout">The Cambridge guide defines <code>MID(Text, start, count)</code> and <code>RIGHT(Text, count)</code>. <code>LEFT</code> is not in the guide; use it only if a question supplies its full signature and position convention.</div>
-        </section>
-
-        <section class="panel" id="case" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <div class="section-title">
-            <p class="eyebrow">Case conversion</p>
-            <h2><code>UCASE</code> and <code>LCASE</code> convert one <code>CHAR</code></h2>
+            <p class="eyebrow">Global variables</p>
+            <h2>Global variables are declared outside subroutines and can be accessed widely</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>DECLARE Answer : CHAR
-INPUT Answer
-Answer &lt;- UCASE(Answer)
+              <pre><code>Total &lt;- 0
 
-IF Answer = 'Y' THEN
-    OUTPUT "Continue"
-ENDIF</code></pre>
+PROCEDURE AddScore(Score : INTEGER)
+    Total &lt;- Total + Score
+ENDPROCEDURE</code></pre>
             </article>
             <article>
-              <h3>Why it helps</h3>
-              <p>If the user enters <code>"y"</code>, converting to upper case lets the algorithm compare it with <code>"Y"</code>.</p>
-              <div class="callout">Case conversion changes letter case; it does not remove spaces or fix spelling.</div>
+              <h3>Reasoning</h3>
+              <p><code>Total</code> is declared outside the procedure, so it is global in this fragment.</p>
+              <div class="callout">Global variables can make updates convenient, but they can also make tracing harder because many parts of a program may change the value.</div>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start case -->
-        <section class="panel explanation-panel" id="explanation-case" data-explains="case" data-explanation-kind="mechanism" aria-labelledby="explanation-case-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <h2 class="explanation-sr-only" id="explanation-case-title">LCASE and UCASE convert one CHAR</h2>
+        <!-- stage10-explanation:start global -->
+        <section class="panel explanation-panel" id="explanation-global" data-explains="global" data-explanation-kind="mechanism" aria-labelledby="explanation-global-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="global">
+          <h2 class="explanation-sr-only" id="explanation-global-title">Global variables are declared outside subroutines and can be accessed widely</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-case.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining LCASE and UCASE convert one CHAR with a structured visual model." />
-            <figcaption class="explanation-sr-only">LCASE and UCASE convert one CHAR: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-global.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Global variables are declared outside subroutines and can be accessed widely with a structured visual model." />
+            <figcaption class="explanation-sr-only">Global variables are declared outside subroutines and can be accessed widely: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Declare Answer as CHAR, input one character and normalise it with UCASE before comparison.</li><li><strong>Lesson fact:</strong> UCASE(Answer) returns CHAR, so compare the result with the CHAR literal 'Y'.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF.</li><li><strong>Lesson fact:</strong> LCASE and UCASE accept CHAR, not STRING; case conversion does not remove spaces or correct spelling.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Global variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> PROCEDURE AddScore(Score : INTEGER)</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Score</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Total is declared outside the procedure, so it is global in this fragment.</li><li><strong>Lesson fact:</strong> Global variables can make updates convenient, but they can also make tracing harder because many parts of a program may change the value.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end case -->
-        <section class="panel" id="concat" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <!-- stage10-explanation:end global -->
+        <section class="panel" id="shadowing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shadowing">
           <div class="section-title">
-            <p class="eyebrow">Concatenation</p>
-            <h2>Concatenation joins strings to form a new string</h2>
+            <p class="eyebrow">Same-name variable error</p>
+            <h2>A local variable can hide a global variable with the same name</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Build a username</h3>
-              <pre><code>FirstName &lt;- "Lin"
-YearText &lt;- "2029"
-Username &lt;- FirstName &amp; YearText
-OUTPUT Username</code></pre>
+              <h3>Trace this carefully</h3>
+              <pre><code>Score &lt;- 50
+
+PROCEDURE ChangeScore()
+    Score &lt;- 80
+    OUTPUT Score
+ENDPROCEDURE
+
+CALL ChangeScore()
+OUTPUT Score</code></pre>
             </article>
             <article>
-              <h3>Trace</h3>
-              <div class="trace-list">
-                <div><strong><code>FirstName &amp; YearText</code></strong><span>"Lin2029"</span></div>
-                <div><strong><code>Username</code></strong><span>"Lin2029"</span></div>
-                <div><strong>Type check</strong><span>do not pass the STRING <code>FirstName</code> to CHAR-only <code>LCASE</code></span></div>
-              </div>
+              <h3>Exam explanation</h3>
+              <p>If the procedure's <code>Score</code> is local, the procedure outputs <code>80</code>, but the main program still outputs the global <code>50</code>.</p>
+              <p>The identifier is the same, but the local and global variables occupy different storage locations.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start concat -->
-        <section class="panel explanation-panel" id="explanation-concat" data-explains="concat" data-explanation-kind="mechanism" aria-labelledby="explanation-concat-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <h2 class="explanation-sr-only" id="explanation-concat-title">Concatenation joins STRING values</h2>
+        <!-- stage10-explanation:start shadowing -->
+        <section class="panel explanation-panel" id="explanation-shadowing" data-explains="shadowing" data-explanation-kind="mechanism" aria-labelledby="explanation-shadowing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="shadowing">
+          <h2 class="explanation-sr-only" id="explanation-shadowing-title">A local variable can hide a global variable with the same name</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-concat.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Concatenation joins STRING values with a structured visual model." />
-            <figcaption class="explanation-sr-only">Concatenation joins STRING values: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-shadowing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A local variable can hide a global variable with the same name with a structured visual model." />
+            <figcaption class="explanation-sr-only">A local variable can hide a global variable with the same name: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Concatenation joins STRING values with the &amp; operator.</li><li><strong>Lesson fact:</strong> FirstName is &quot;Lin&quot; and YearText is &quot;2029&quot;; Username &lt;- FirstName &amp; YearText returns &quot;Lin2029&quot;.</li><li><strong>Lesson fact:</strong> Do not pass the STRING FirstName to LCASE; that function accepts CHAR.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Declare a global Score and set it to 50.</li><li><strong>Lesson fact:</strong> Inside ChangeScore, explicitly declare a separate local Score and set it to 80.</li><li><strong>Lesson fact:</strong> The local Score hides the global Score only inside the procedure.</li><li><strong>Lesson fact:</strong> The procedure outputs 80, while the main program later outputs the unchanged global 50.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end concat -->
-        <section class="panel" id="position" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <!-- stage10-explanation:end shadowing -->
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
-            <p class="eyebrow">Positions and indexing</p>
-            <h2>Exam traces must follow the position convention stated or implied</h2>
+            <p class="eyebrow">Compare</p>
+            <h2>Local and global variables differ by accessibility and lifetime</h2>
           </div>
-          <div class="position-strip" aria-label="DATA character positions">
-            <div><strong>1</strong><span>D</span></div>
-            <div><strong>2</strong><span>A</span></div>
-            <div><strong>3</strong><span>T</span></div>
-            <div><strong>4</strong><span>A</span></div>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style trace</h3>
-              <pre><code>Word &lt;- "DATA"
-Part &lt;- MID(Word, 2, 2)
-OUTPUT Part</code></pre>
-              <p>Using 1-based positions, the output is <code>"AT"</code>.</p>
-            </article>
-            <article>
-              <h3>Common error</h3>
-              <p>Do not import Java's zero-based indexing into a pseudocode trace unless the question explicitly tells you to.</p>
-            </article>
+          <div class="data-table compare-table" role="table" aria-label="Local and global comparison">
+            <div class="table-row table-head"><div>Feature</div><div>Local variable</div><div>Global variable</div></div>
+            <div class="table-row"><div>Declared</div><div>inside a subroutine or block</div><div>outside subroutines</div></div>
+            <div class="table-row"><div>Scope</div><div>limited to that subroutine or block</div><div>available more widely in the program</div></div>
+            <div class="table-row"><div>Lifetime</div><div>usually while the subroutine call is active</div><div>usually while the program is running</div></div>
+            <div class="table-row"><div>Main risk</div><div>using it outside scope</div><div>unexpected changes from different program parts</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start position -->
-        <section class="panel explanation-panel" id="explanation-position" data-explains="position" data-explanation-kind="mechanism" aria-labelledby="explanation-position-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <h2 class="explanation-sr-only" id="explanation-position-title">Exam traces must follow the position convention stated or implied</h2>
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Local and global variables differ by accessibility and lifetime</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-position.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Exam traces must follow the position convention stated or implied with a structured visual model." />
-            <figcaption class="explanation-sr-only">Exam traces must follow the position convention stated or implied: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local and global variables differ by accessibility and lifetime with a structured visual model." />
+            <figcaption class="explanation-sr-only">Local and global variables differ by accessibility and lifetime: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Positions and indexing</li><li><strong>Lesson fact:</strong> Cambridge-style trace</li><li><strong>Lesson fact:</strong> Word &lt;- &quot;DATA&quot;</li><li><strong>Lesson fact:</strong> Part &lt;- MID(Word, 2, 2)</li><li><strong>Lesson fact:</strong> OUTPUT Part</li><li><strong>Lesson fact:</strong> Using 1-based positions, the output is &quot;AT&quot; .</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Do not import Java's zero-based indexing into a pseudocode trace unless the question explicitly tells you to.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Local variable</li><li><strong>Lesson fact:</strong> Global variable</li><li><strong>Lesson fact:</strong> Declared</li><li><strong>Lesson fact:</strong> inside a subroutine or block</li><li><strong>Lesson fact:</strong> outside subroutines</li><li><strong>Lesson fact:</strong> limited to that subroutine or block</li><li><strong>Lesson fact:</strong> available more widely in the program</li><li><strong>Lesson fact:</strong> Lifetime</li><li><strong>Lesson fact:</strong> usually while the subroutine call is active</li><li><strong>Lesson fact:</strong> usually while the program is running</li><li><strong>Lesson fact:</strong> Main risk</li><li><strong>Lesson fact:</strong> using it outside scope</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end position -->
-        <section class="panel" id="java" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <!-- stage10-explanation:end compare -->
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
-            <h2>Java method syntax is not Cambridge pseudocode</h2>
+            <h2>Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>Code &lt;- MID(Name, 1, 3)</code></pre>
+              <pre><code>PROCEDURE PrintLocal()
+    Value &lt;- 7
+    OUTPUT Value
+ENDPROCEDURE</code></pre>
             </article>
             <article>
               <h3>Java support example only</h3>
-              <pre><code>String code = name.substring(0, 3);</code></pre>
-              <p>Java's <code>substring(0, 3)</code> uses indexes 0 to 2. Cambridge <code>MID(Name, 1, 3)</code> uses a 1-based start position and a character count.</p>
+              <pre><code>static void printLocal() {
+    int value = 7;
+    System.out.println(value);
+}</code></pre>
+              <p>Do not answer Paper 2 with Java braces, semicolons or access modifiers unless the question specifically asks for Java.</p>
             </article>
           </div>
         </section>
 
         <!-- stage10-explanation:start java -->
-        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <h2 class="explanation-sr-only" id="explanation-java-title">MID and Java substring use different positions</h2>
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining MID and Java substring use different positions with a structured visual model." />
-            <figcaption class="explanation-sr-only">MID and Java substring use different positions: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java helps illustrate scope, but Cambridge pseudocode remains the answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java helps illustrate scope, but Cambridge pseudocode remains the answer format: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.</li><li><strong>Lesson fact:</strong> Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.</li><li><strong>Lesson fact:</strong> LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.</li><li><strong>Lesson fact:</strong> Do not add UCASE around a STRING expression because UCASE accepts CHAR.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE PrintLocal()</li><li><strong>Lesson fact:</strong> Value &lt;- 7</li><li><strong>Lesson fact:</strong> OUTPUT Value</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static void printLocal() {</li><li><strong>Lesson fact:</strong> int value = 7;</li><li><strong>Lesson fact:</strong> System.out.println(value);</li><li><strong>Lesson fact:</strong> Do not answer Paper 2 with Java braces, semicolons or access modifiers unless the question specifically asks for Java.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-        <section class="panel" id="lab" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
-            <p class="eyebrow">Interactive string lab</p>
-            <h2>Test a built-in function</h2>
-            <p>Use a short string and compare the returned value. For <code>MID</code>, positions start at 1.</p>
+            <p class="eyebrow">Interactive trace simulator</p>
+            <h2>Trace local versus global updates</h2>
+            <p>Start with a global <code>Count</code>. The procedure sets <code>Count &lt;- NewValue</code>. Choose whether that procedure variable is local or global.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Text
-              <input id="textInput" type="text" value="COMPUTER" maxlength="24" />
+              Global Count before call
+              <input id="globalInput" type="number" step="1" value="10" />
             </label>
             <label>
-              Function
-              <select id="functionInput">
-                <option value="length">LENGTH(Text)</option>
-                <option value="right">RIGHT(Text, n)</option>
-                <option value="mid">MID(Text, start, n)</option>
-                <option value="ucase">UCASE(Character)</option>
-                <option value="lcase">LCASE(Character)</option>
+              Procedure assignment value
+              <input id="localInput" type="number" step="1" value="3" />
+            </label>
+            <label>
+              Procedure variable scope
+              <select id="scopeMode">
+                <option value="local">local Count</option>
+                <option value="global">global Count</option>
               </select>
             </label>
-            <label>
-              start
-              <input id="startInput" type="number" min="1" step="1" value="4" />
-            </label>
-            <label>
-              n
-              <input id="countInput" type="number" min="1" step="1" value="3" />
-            </label>
-            <button class="primary-button" type="button" id="runBtn">Run</button>
+            <button class="primary-button" type="button" id="traceBtn">Trace</button>
           </div>
-          <div class="trace-output" id="labResult" aria-live="polite">Choose a function and run it.</div>
+          <div class="trace-output" id="traceResult" aria-live="polite">Choose values and trace the final global Count.</div>
         </section>
 
-        <!-- stage10-explanation:start lab -->
-        <section class="panel explanation-panel" id="explanation-lab" data-explains="lab" data-explanation-kind="mechanism" aria-labelledby="explanation-lab-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
-          <h2 class="explanation-sr-only" id="explanation-lab-title">Test a built-in function</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-lab.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Test a built-in function with a structured visual model." />
-            <figcaption class="explanation-sr-only">Test a built-in function: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive string lab</li><li><strong>Lesson fact:</strong> Use a short string and compare the returned value. For MID , positions start at 1.</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> Choose a function and run it.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lab -->
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
-            <p class="eyebrow">Function chooser</p>
-            <h2>Which built-in function fits the job?</h2>
-            <p>Select a scenario to see the function and exam reasoning.</p>
+            <p class="eyebrow">Variable chooser</p>
+            <h2>Should this be local or global?</h2>
+            <p>Select a scenario to see the recommended scope and exam reasoning.</p>
           </div>
           <div class="scenario-grid" id="scenarioGrid"></div>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trace the returned value</h2>
+            <h2>Trace the variable, not just the name</h2>
           </div>
           <div class="tabs" id="exampleTabs" role="tablist"></div>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers, exact returns</h2>
-            <p>Type the returned value without extra quotation marks unless the question asks for them.</p>
+            <h2>Definitions and trace values</h2>
+            <p>Use exact vocabulary for definitions. For trace questions, type the final value or key term.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the exact string error</h2>
+            <h2>Find the scope error</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
-            <p>Questions are original Cambridge-style practice. MS notes are strict about returned values and position conventions.</p>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about scope, lifetime and final values.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-133">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Three useful rules</h2>
+            <h2>Three statements to keep</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Function call</strong><span>A built-in function takes arguments and returns a value.</span></div>
-            <div><strong>String trace</strong><span>Write positions above characters before extracting substrings.</span></div>
-            <div><strong>Java boundary</strong><span>Do not use Java indexes or methods as pseudocode unless requested.</span></div>
+            <div><strong>Scope</strong><span>where an identifier can be accessed in the program.</span></div>
+            <div><strong>Lifetime</strong><span>how long a variable exists while the program executes.</span></div>
+            <div><strong>Trace rule</strong><span>same name does not always mean same variable.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Trace, build, explain</h2>
+            <h2>Define, trace, correct</h2>
           </div>
           <ol class="homework-list">
-            <li>Make a table for <code>"PROGRAM"</code> showing positions 1 to 7, then evaluate <code>RIGHT</code> and <code>MID</code> examples of your own.</li>
-            <li>Write pseudocode that inputs one <code>CHAR</code>, converts it to upper case, and compares the returned <code>CHAR</code>.</li>
-            <li>Trace this expression: <code>MID("NETWORK", 1, 3) &amp; RIGHT("2029", 2)</code>.</li>
-            <li>Answer a 4-mark question explaining why Java <code>substring</code> syntax should not be copied into Cambridge pseudocode.</li>
+            <li>Write definitions for scope, lifetime, local variable and global variable. Add one Chinese support note for the hardest term.</li>
+            <li>Trace the same-name <code>Score</code> example twice: once where the procedure variable is local, once where it updates the global variable.</li>
+            <li>Write one Cambridge-style procedure that uses a local variable correctly and explain why the variable should not be global.</li>
+            <li>Answer a 4-mark question: explain two problems caused by unnecessary global variables, using a trace or debugging example.</li>
           </ol>
-          <div class="callout">Marking focus: show the function arguments, the returned value, and the final assignment or output.</div>
+          <div class="callout">Marking focus: definitions need mechanism, not slogans. "Global is everywhere" is too vague unless access and lifetime are explained.</div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -1,142 +1,129 @@
-const typeMap = {
-  score: {
-    type: "INTEGER",
-    reason: "A score out of 75 is a whole number and arithmetic such as total or comparison may be performed.",
-    declaration: "DECLARE Score : INTEGER",
+const classifierMap = {
+  fixedLoop: {
+    title: "Count-controlled loop",
+    detail: "The word exactly tells you the number of repetitions is known before the loop starts.",
+    pattern: "FOR Index <- 1 TO 12",
   },
-  average: {
-    type: "REAL",
-    reason: "18.7 contains a fractional part, so an integer would lose precision.",
-    declaration: "DECLARE AverageTemperature : REAL",
+  sentinel: {
+    title: "Condition-controlled loop with sentinel",
+    detail: "-1 is a stopping value. It controls the loop and should not be processed as normal data.",
+    pattern: "INPUT Value\nWHILE Value <> -1\n    // process Value\n    INPUT Value\nENDWHILE",
   },
-  paid: {
-    type: "BOOLEAN",
-    reason: "The value has two states: paid or not paid.",
-    declaration: "DECLARE HasPaid : BOOLEAN",
+  binarySearch: {
+    title: "Binary search",
+    detail: "Sorted data plus few comparisons signals binary search because half the remaining search area can be discarded.",
+    pattern: "Compare target with middle item, then search only the relevant half.",
   },
-  grade: {
-    type: "CHAR",
-    reason: "A single grade such as A is one character.",
-    declaration: "DECLARE Grade : CHAR",
+  bubble: {
+    title: "Bubble sort",
+    detail: "Adjacent comparison and swapping is the signature wording for bubble sort.",
+    pattern: "Compare neighbouring items and swap when they are in the wrong order.",
   },
-  phone: {
-    type: "STRING",
-    reason: "A phone number may contain leading zeroes and spacing, and arithmetic is not performed on it.",
-    declaration: "DECLARE PhoneNumber : STRING",
-  },
-  booking: {
-    type: "DATE",
-    reason: "A booking date should be stored as a calendar date so date comparison and validation are meaningful.",
-    declaration: "DECLARE BookingDate : DATE",
+  trace: {
+    title: "Trace table",
+    detail: "The task is asking for execution values, so update variables in the exact order that pseudocode runs.",
+    pattern: "Create a row for each iteration and record variable changes.",
   },
 };
 
-const builderMap = {
-  count: {
-    declaration: "DECLARE ValidCount : INTEGER",
-    reason: "A count is a whole number and is normally incremented.",
+const fixerMap = {
+  binary: {
+    weak: "Binary search is faster.",
+    strong: "Binary search uses fewer comparisons because the list is sorted, so each comparison can discard half of the remaining search area.",
   },
-  mass: {
-    declaration: "DECLARE MassKg : REAL",
-    reason: "Measured mass may contain decimals.",
+  loop: {
+    weak: "Use a loop.",
+    strong: "Use a FOR loop when the number of repetitions is known; use a WHILE loop when the repetition depends on a condition or sentinel value.",
   },
-  valid: {
-    declaration: "DECLARE PasswordIsValid : BOOLEAN",
-    reason: "The value is either TRUE or FALSE.",
+  max: {
+    weak: "Set Maximum to 0.",
+    strong: "Initialise Maximum from the first input unless the question states all values are non-negative; otherwise negative data could incorrectly output 0.",
   },
-  initial: {
-    declaration: "DECLARE Initial : CHAR",
-    reason: "Only one character is stored.",
-  },
-  postcode: {
-    declaration: "DECLARE Postcode : STRING",
-    reason: "A postcode is text and may contain letters, spaces and digits.",
-  },
-  birth: {
-    declaration: "DECLARE DateOfBirth : DATE",
-    reason: "The value is a calendar date.",
+  output: {
+    weak: "Output the average inside the loop.",
+    strong: "Output the final average after the loop because all valid values must be included before Total / Count is calculated.",
   },
 };
 
 const examples = {
-  school: {
-    title: "Example 1: School data fields",
-    problem: "Choose data types for a school registration form.",
-    rows: [
-      ["StudentName", "STRING", "stores a sequence of characters"],
-      ["DateOfBirth", "DATE", "stores a calendar date"],
-      ["AttendanceCount", "INTEGER", "whole-number count"],
-      ["AverageMark", "REAL", "may include decimal places"],
-      ["IsEnrolled", "BOOLEAN", "true/false state"],
+  rainfall: {
+    title: "Example 1: Rainfall IPOC to pseudocode",
+    problem: "Input rainfall for 7 days. Output total rainfall and average rainfall.",
+    table: [
+      ["Input", "7 rainfall readings"],
+      ["Process", "add each reading to Total; divide Total by 7"],
+      ["Output", "Total and Average"],
+      ["Constraint", "exactly 7 days, so use a FOR loop"],
     ],
-    code: "DECLARE StudentName : STRING\nDECLARE DateOfBirth : DATE\nDECLARE AttendanceCount : INTEGER\nDECLARE AverageMark : REAL\nDECLARE IsEnrolled : BOOLEAN",
-    points: ["The type matches how each value is used.", "A reason is linked to the field, not copied from a generic definition.", "Date is not treated as ordinary text."],
+    code: "Total <- 0\nFOR Day <- 1 TO 7\n    INPUT Rainfall\n    Total <- Total + Rainfall\nNEXT Day\nAverage <- Total / 7\nOUTPUT Total\nOUTPUT Average",
+    points: ["Output requirements create Total and Average.", "The fixed count creates a FOR loop.", "Average is calculated after all readings are processed."],
   },
-  id: {
-    title: "Example 2: ID and phone fields",
-    problem: "A student ID is 003572 and a phone number starts with 07.",
-    rows: [
-      ["StudentID", "STRING", "leading zeroes must be preserved"],
-      ["PhoneNumber", "STRING", "not used in arithmetic"],
-      ["Wrong answer", "INTEGER", "would remove leading zeroes or imply arithmetic"],
+  sentinelTrace: {
+    title: "Example 2: Sentinel trace",
+    problem: "Inputs are 4, 6, 0. The sentinel 0 stops input. Output Total and Count.",
+    table: [
+      ["Start", "Total = 0, Count = 0"],
+      ["Input 4", "Total = 4, Count = 1"],
+      ["Input 6", "Total = 10, Count = 2"],
+      ["Input 0", "stop; Total and Count do not change"],
     ],
-    code: "DECLARE StudentID : STRING\nDECLARE PhoneNumber : STRING",
-    points: ["Digits do not automatically mean INTEGER.", "Ask whether arithmetic is needed.", "Preserving the exact characters matters."],
+    code: "Total <- 0\nCount <- 0\nINPUT Value\nWHILE Value <> 0\n    Total <- Total + Value\n    Count <- Count + 1\n    INPUT Value\nENDWHILE\nOUTPUT Total\nOUTPUT Count",
+    points: ["The first input happens before the WHILE test.", "0 is checked before processing.", "Final output is after the loop."],
   },
-  enum: {
-    title: "Example 3: User-defined membership type",
-    problem: "A membership level must be Basic, Standard or Premium.",
-    rows: [
-      ["Built-in option", "STRING", "possible but allows invalid text such as 'Goldish'"],
-      ["User-defined option", "TMembership", "restricts values to named allowed levels"],
-      ["Reason", "clarity", "the named type documents the permitted states"],
+  searchSort: {
+    title: "Example 3: Search or sort?",
+    problem: "A target must be found in a sorted list. Another task must arrange unsorted scores into ascending order.",
+    table: [
+      ["Find in sorted data", "binary search"],
+      ["Find in unsorted data", "linear search"],
+      ["Adjacent compare and swap", "bubble sort"],
+      ["Insert each item into sorted section", "insertion sort"],
     ],
-    code: "TYPE TMembership = (Basic, Standard, Premium)\n\nDECLARE Level : TMembership",
-    points: ["An enumerated type gives a named set of allowed values.", "The variable declaration uses the new type name.", "Do not confuse this with an array."],
+    code: "IF List is sorted THEN\n    use binary search for target\nELSE\n    use linear search for target\nENDIF\n\nIF task asks to arrange values THEN\n    choose a sorting algorithm\nENDIF",
+    points: ["Search finds a value; sort changes order.", "Binary search requires sorted data.", "Bubble sort wording often mentions adjacent swaps."],
   },
-  declaration: {
-    title: "Example 4: Declaration syntax",
-    problem: "Write Cambridge-style declarations for common variables.",
-    rows: [
-      ["Count", "INTEGER", "DECLARE Count : INTEGER"],
-      ["Temperature", "REAL", "DECLARE Temperature : REAL"],
-      ["Found", "BOOLEAN", "DECLARE Found : BOOLEAN"],
-      ["Initial", "CHAR", "DECLARE Initial : CHAR"],
+  msUpgrade: {
+    title: "Example 4: Upgrade answer to MS language",
+    problem: "Weak answer: 'Use binary search because it is faster.'",
+    table: [
+      ["Missing", "why sorted data matters"],
+      ["Missing", "what binary search does"],
+      ["Mark-worthy version", "Binary search can be used because the list is sorted; each comparison with the middle value halves the remaining search range, so fewer comparisons are needed than a linear search."],
     ],
-    code: "DECLARE Count : INTEGER\nDECLARE Temperature : REAL\nDECLARE Found : BOOLEAN\nDECLARE Initial : CHAR",
-    points: ["Use DECLARE, identifier, colon, type.", "Type names should be clear and consistent.", "Java declarations are not the Paper 2 format."],
+    code: "// Explanation structure\nName algorithm\nState required condition\nDescribe mechanism\nState consequence",
+    points: ["A vague comparative word is not enough.", "Mechanism earns marks.", "Cause and consequence should both be present."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Best type for a whole-number count?", accepted: ["integer", "int"], answer: "INTEGER" },
-  { id: "p2", prompt: "Best type for an average that may be 72.5?", accepted: ["real", "float", "double"], answer: "REAL" },
-  { id: "p3", prompt: "Best type for Found when it is TRUE or FALSE?", accepted: ["boolean", "bool"], answer: "BOOLEAN" },
-  { id: "p4", prompt: "Best type for a single menu choice such as Y?", accepted: ["char", "character"], answer: "CHAR" },
-  { id: "p5", prompt: "Best type for a surname?", accepted: ["string"], answer: "STRING" },
-  { id: "p6", prompt: "Best type for a date of birth?", accepted: ["date"], answer: "DATE" },
-  { id: "p7", prompt: "Should phone number 07123456789 usually be INTEGER or STRING?", accepted: ["string"], answer: "STRING, because the leading zero must be preserved and arithmetic is not needed." },
-  { id: "p8", prompt: "Write the Cambridge keyword used to declare a variable.", accepted: ["declare"], answer: "DECLARE" },
-  { id: "p9", prompt: "A type with named values such as Red, Amber, Green is called user-defined or built-in?", accepted: ["user-defined", "user defined", "userdefined"], answer: "User-defined, often as an enumerated type." },
-  { id: "p10", prompt: "Is Java syntax the expected Paper 2 declaration format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode declarations." },
+  { id: "p1", prompt: "The phrase 'exactly 8 values' suggests which loop type?", accepted: ["for", "for loop", "count controlled", "count-controlled", "count controlled loop"], answer: "FOR / count-controlled loop, because the number of repetitions is known." },
+  { id: "p2", prompt: "The phrase 'until 0 is entered' suggests which loop type?", accepted: ["while", "while loop", "condition controlled", "condition-controlled", "condition controlled loop"], answer: "WHILE / condition-controlled loop, because repetition depends on a condition." },
+  { id: "p3", prompt: "What condition must normally be true before binary search can be used?", accepted: ["sorted", "data sorted", "list sorted", "sorted data", "sorted list"], answer: "The data/list must be sorted." },
+  { id: "p4", prompt: "For a final total, should OUTPUT usually be inside or after the loop?", accepted: ["after", "after loop", "after the loop"], answer: "After the loop, once all updates have happened." },
+  { id: "p5", prompt: "For maximum values that may be negative, initialise Maximum to 0 or first input?", accepted: ["first input", "first value", "first data value", "input"], answer: "First input / first data value." },
+  { id: "p6", prompt: "Which sort compares adjacent items and swaps them if they are in the wrong order?", accepted: ["bubble", "bubble sort"], answer: "Bubble sort." },
+  { id: "p7", prompt: "Which sort inserts each new item into the correct place in a sorted section?", accepted: ["insertion", "insertion sort"], answer: "Insertion sort." },
+  { id: "p8", prompt: "A nested loop has 3 outer iterations and 4 inner iterations. How many inner actions run?", accepted: ["12"], answer: "12 inner actions." },
+  { id: "p9", prompt: "In IPOC, what does O stand for?", accepted: ["output"], answer: "Output." },
+  { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Java is support only; use Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
   {
-    wrong: "I chose INTEGER for every field that contains digits.",
-    fix: "Check whether arithmetic is needed. IDs, phone numbers and postcodes are usually STRING because exact characters and leading zeroes matter.",
+    wrong: "I revised Section 9 by rereading notes only.",
+    fix: "Use retrieval and timed practice. Section 9 is skill-heavy: classify the scenario, write pseudocode, trace it, then correct against marking points.",
   },
   {
-    wrong: "I used REAL for a counter because it is a number.",
-    fix: "Use INTEGER for counts and indexes because they are whole numbers. REAL is for values that may contain fractional parts.",
+    wrong: "I wrote 'binary search is better' and stopped.",
+    fix: "Add mechanism: binary search works on sorted data and halves the remaining search range each comparison, so fewer comparisons are needed.",
   },
   {
-    wrong: "I used STRING for a true/false field.",
-    fix: "Use BOOLEAN when there are exactly two logical states such as TRUE/FALSE, valid/invalid or found/not found.",
+    wrong: "I used the same loop for every scenario.",
+    fix: "Match the loop to the wording. Use FOR for a known count and WHILE for a condition or sentinel.",
   },
   {
-    wrong: "I wrote Java declarations in a Cambridge pseudocode answer.",
-    fix: "Use Cambridge-style declarations such as DECLARE Count : INTEGER. Java can support testing but is not the exam pseudocode format.",
+    wrong: "I wrote Java syntax in my Cambridge pseudocode answer.",
+    fix: "Keep Paper 2 pseudocode readable: use <- for assignment, IF/ENDIF, FOR/NEXT and WHILE/ENDWHILE style blocks.",
   },
 ];
 
@@ -150,92 +137,99 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Suggest suitable data types for Score, AverageScore and Passed. Give a reason for each choice.",
-    answer: "Score: INTEGER because it is a whole-number mark. AverageScore: REAL because an average may contain a decimal part. Passed: BOOLEAN because it has two states, TRUE or FALSE.",
+    prompt: "A program inputs six sensor readings and outputs the total and average reading. Identify the input, process, output and suitable loop type. Explain the loop choice.",
+    answer: "Input: six sensor readings. Process: add each reading to Total, then calculate Average as Total / 6. Output: Total and Average. Loop: count-controlled / FOR loop because exactly six readings are processed.",
     marking: [
-      { mark: "B1", text: "chooses INTEGER for Score" },
-      { mark: "B1", text: "reason states Score is whole number / used as whole-number mark" },
-      { mark: "B1", text: "chooses REAL for AverageScore" },
-      { mark: "B1", text: "reason states average may include decimal/fractional part" },
-      { mark: "B1", text: "chooses BOOLEAN for Passed" },
-      { mark: "B1", text: "reason states only two states such as TRUE/FALSE or pass/fail" },
+      { mark: "B1", text: "identifies input as six sensor readings" },
+      { mark: "B1", text: "process includes adding readings to a running total" },
+      { mark: "B1", text: "process includes calculating average from total divided by 6" },
+      { mark: "B1", text: "identifies output as total and average" },
+      { mark: "B1", text: "chooses count-controlled / FOR loop" },
+      { mark: "B1", text: "justifies loop choice using exactly six readings" },
     ],
     strict: [
-      "Award reason marks only when linked to the named field.",
-      "Allow integer if a specific exam system states marks are whole numbers.",
-      "Do not accept 'number' as a reason for REAL without decimal/fractional idea.",
+      "Award process marks only where the calculation is clear.",
+      "Allow 'sum' for Total and 'mean' for Average.",
+      "Do not accept 'process the readings' without calculation detail.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "A product code is 0045A. Explain why STRING is more suitable than INTEGER.",
-    answer: "STRING is more suitable because the product code contains a letter and leading zeroes. It is an identifier rather than a value used for arithmetic, so storing it as INTEGER would lose the leading zeroes and could not store A.",
+    marks: "8 marks",
+    prompt: "Write Cambridge-style pseudocode to input numbers until -1 is entered. The -1 must not be counted. Output how many positive numbers were entered.",
+    answer: "PositiveCount <- 0\nINPUT Number\nWHILE Number <> -1\n    IF Number > 0 THEN\n        PositiveCount <- PositiveCount + 1\n    ENDIF\n    INPUT Number\nENDWHILE\nOUTPUT PositiveCount",
     marking: [
-      { mark: "B1", text: "states STRING is suitable" },
-      { mark: "B1", text: "identifies product code contains a letter" },
-      { mark: "B1", text: "identifies leading zeroes must be preserved" },
-      { mark: "B1", text: "states arithmetic is not required / it is an identifier" },
-      { mark: "B1", text: "explains INTEGER would be unsuitable due to losing zeroes or not storing A" },
+      { mark: "B1", text: "initialises PositiveCount to 0" },
+      { mark: "M1", text: "inputs first Number before testing loop condition or otherwise tests before processing" },
+      { mark: "M1", text: "uses condition-controlled loop with Number <> -1" },
+      { mark: "A1", text: "does not process/count the -1 sentinel" },
+      { mark: "M1", text: "uses selection to test Number > 0" },
+      { mark: "A1", text: "increments PositiveCount only for positive values" },
+      { mark: "M1", text: "inputs next Number inside loop" },
+      { mark: "B1", text: "outputs PositiveCount after the loop" },
     ],
     strict: [
-      "Do not award full credit for only saying 'it has digits and letters'.",
-      "Allow 'alphanumeric' for contains letters and digits.",
-      "Do not accept INTEGER for this field.",
+      "The sentinel must not be counted as positive or valid data.",
+      "Allow REPEAT UNTIL if the logic still excludes -1 from processing.",
+      "Do not award output mark if the only output is inside the loop.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Write Cambridge-style declarations for variables storing a customer name, balance, active account flag and date joined.",
-    answer: "DECLARE CustomerName : STRING\nDECLARE Balance : REAL\nDECLARE IsActive : BOOLEAN\nDECLARE DateJoined : DATE",
+    marks: "6 marks",
+    prompt: "A student writes Maximum <- 0 before inputting five temperature readings. The readings may be negative. Explain the error and give a correction.",
+    answer: "Initialising Maximum to 0 is wrong because all input temperatures might be negative, so the algorithm could output 0 even though 0 was never entered. A correction is to input the first temperature, assign Maximum <- Temperature, then compare the remaining four readings with Maximum.",
     marking: [
-      { mark: "B1", text: "declares CustomerName as STRING" },
-      { mark: "B1", text: "declares Balance as REAL" },
-      { mark: "B1", text: "declares active account flag as BOOLEAN" },
-      { mark: "B1", text: "declares DateJoined as DATE" },
-      { mark: "M1", text: "uses clear Cambridge-style DECLARE syntax with colon/type" },
+      { mark: "B1", text: "identifies that readings may be negative" },
+      { mark: "B1", text: "explains Maximum <- 0 can produce an output not present in the data" },
+      { mark: "B1", text: "states that 0 could incorrectly remain the maximum" },
+      { mark: "B1", text: "corrects by inputting first reading before loop/comparison" },
+      { mark: "B1", text: "assigns Maximum from first input" },
+      { mark: "B1", text: "compares remaining readings and updates Maximum only when a higher value is found" },
     ],
     strict: [
-      "Do not award the Cambridge-style syntax mark for Java syntax alone.",
-      "Allow Currency/REAL for Balance if syllabus context accepts numeric balance.",
-      "Do not require exact identifier names if purpose is clear.",
+      "Do not award correction for only saying 'use a smaller number'.",
+      "Allow Minimum/Maximum naming variations if role is clear.",
+      "Do not require full pseudocode for full credit if explanation is precise.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A traffic light state can only be Red, Amber or Green. Define a suitable user-defined type and declare a variable that uses it.",
-    answer: "TYPE TLightState = (Red, Amber, Green)\n\nDECLARE CurrentLight : TLightState",
+    marks: "6 marks",
+    prompt: "A sorted list of 1000 customer IDs must be searched for one ID. Compare linear search and binary search for this scenario.",
+    answer: "Linear search can check each item in order and may need up to 1000 comparisons if the ID is near the end or absent. Binary search is suitable because the list is sorted; it compares with the middle item and repeatedly halves the remaining search area. Therefore binary search usually uses fewer comparisons for this scenario.",
     marking: [
-      { mark: "B1", text: "creates a user-defined / enumerated type" },
-      { mark: "B1", text: "includes Red as an allowed value" },
-      { mark: "B1", text: "includes Amber as an allowed value" },
-      { mark: "B1", text: "includes Green as an allowed value" },
-      { mark: "B1", text: "declares a variable using the new type" },
+      { mark: "B1", text: "states linear search checks items sequentially" },
+      { mark: "B1", text: "states linear search may require many/up to all comparisons" },
+      { mark: "B1", text: "states binary search requires sorted data / sorted list is given" },
+      { mark: "B1", text: "describes comparison with middle item or halving search area" },
+      { mark: "B1", text: "links halving to fewer comparisons" },
+      { mark: "B1", text: "conclusion is applied to 1000 sorted customer IDs" },
     ],
     strict: [
-      "Do not award the declaration mark if the variable is declared as STRING only.",
-      "Allow equivalent enumerated type notation if clear.",
-      "Do not require the exact name TLightState.",
+      "'faster' alone is not enough for a comparison mark.",
+      "Allow 'discard half' or equivalent for halving mechanism.",
+      "Do not accept binary search for unsorted data unless sorting is first stated.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A student says: 'DATE should be stored as STRING because dates contain digits and slashes.' Evaluate this statement.",
-    answer: "The statement is weak. A STRING may store the characters of a date, but it does not by itself give date meaning. DATE is more suitable when the value is used as a calendar date because comparisons and validation such as checking whether one date is before another are clearer and less error-prone.",
+    marks: "7 marks",
+    prompt: "A weak answer to a scenario says: 'Use a loop and output the answer.' Write this into a precise algorithm-design response for a task that inputs marks until -1 and outputs the average of valid marks.",
+    answer: "Use a condition-controlled WHILE loop because the number of marks is unknown and input stops when -1 is entered. Initialise Total and Count to 0. Input a mark before the loop test. While Mark <> -1, add Mark to Total, increment Count, then input the next Mark. After the loop, if Count > 0, calculate Average <- Total / Count and output Average; otherwise output a suitable message such as 'No valid marks'.",
     marking: [
-      { mark: "B1", text: "recognises STRING can store date characters but is not ideal for date meaning" },
-      { mark: "B1", text: "states DATE is more suitable for calendar dates" },
-      { mark: "B1", text: "links DATE to comparison of dates" },
-      { mark: "B1", text: "links DATE to validation or range checking" },
-      { mark: "B1", text: "explains reduced ambiguity/error compared with free text" },
+      { mark: "B1", text: "chooses condition-controlled / WHILE loop" },
+      { mark: "B1", text: "justifies loop choice using unknown count or sentinel -1" },
+      { mark: "B1", text: "initialises Total and Count" },
+      { mark: "B1", text: "uses input before loop test and/or prevents -1 being processed" },
+      { mark: "B1", text: "updates Total and Count for valid marks only" },
+      { mark: "B1", text: "checks Count > 0 to avoid division by zero when -1 is the first input" },
+      { mark: "B1", text: "calculates and outputs Average after the loop, or handles no valid marks" },
     ],
     strict: [
-      "Do not award evaluation marks for only saying 'DATE is better'.",
-      "Allow examples such as checking age, expiry or booking order.",
-      "Do not accept STRING as equally suitable where date operations are required.",
+      "Do not award full credit for generic 'use a loop' wording.",
+      "Allow REPEAT UNTIL if sentinel is not included in total/count.",
+      "Do not award average mark if Count is missing or sentinel is included.",
     ],
   },
 ];
@@ -250,7 +244,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9 -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9@ <>+=.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -269,10 +263,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    integer: "INTEGER would treat 007 as a number and usually lose the leading zero.",
-    real: "REAL is for decimal values. A spy ID does not need fractional arithmetic, because no fractional arithmetic is required.",
-    string: "Correct. STRING preserves the exact characters, including leading zeroes.",
-    boolean: "BOOLEAN can only store TRUE/FALSE, so it cannot store 007.",
+    linear: "Linear search works, but the clue 'sorted' plus 'few comparisons' points to a stronger answer.",
+    binary: "Correct. Binary search uses sorted order to halve the search area.",
+    bubble: "Bubble sort arranges data into order; this question asks to find one target.",
+    average: "Running average is for total/count problems, not searching a sorted list.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -283,27 +277,27 @@ function setupHook() {
   });
 }
 
-function setupTypeClassifier() {
-  const input = document.querySelector("#typeInput");
-  const result = document.querySelector("#typeResult");
-  document.querySelector("#typeBtn").addEventListener("click", () => {
-    const item = typeMap[input.value];
+function setupClassifier() {
+  const input = document.querySelector("#classifierInput");
+  const result = document.querySelector("#classifierResult");
+  document.querySelector("#classifierBtn").addEventListener("click", () => {
+    const item = classifierMap[input.value];
     result.innerHTML = `
-      <h3>${escapeHtml(item.type)}</h3>
-      <p>${escapeHtml(item.reason)}</p>
-      <pre><code>${escapeHtml(item.declaration)}</code></pre>
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${escapeHtml(item.detail)}</p>
+      <pre><code>${escapeHtml(item.pattern)}</code></pre>
     `;
   });
 }
 
-function setupBuilder() {
-  const input = document.querySelector("#builderInput");
-  const result = document.querySelector("#builderResult");
-  document.querySelector("#builderBtn").addEventListener("click", () => {
-    const item = builderMap[input.value];
+function setupFixer() {
+  const input = document.querySelector("#fixerInput");
+  const result = document.querySelector("#fixerResult");
+  document.querySelector("#fixerBtn").addEventListener("click", () => {
+    const item = fixerMap[input.value];
     result.innerHTML = `
-      <pre><code>${escapeHtml(item.declaration)}</code></pre>
-      <p>${escapeHtml(item.reason)}</p>
+      <p><strong>Weak:</strong> ${escapeHtml(item.weak)}</p>
+      <p><strong>Stronger:</strong> ${escapeHtml(item.strong)}</p>
     `;
   });
 }
@@ -313,15 +307,15 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${escapeHtml(example.title)}</h3>
     <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-    ${tableMarkup(["Field / focus", "Type", "Reason"], example.rows)}
-    <p><strong>Cambridge-style pseudocode:</strong></p>
+    ${tableMarkup(["Focus", "Design decision"], example.table)}
+    <p><strong>Cambridge-style pseudocode / answer structure:</strong></p>
     <pre><code>${escapeHtml(example.code)}</code></pre>
     <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
   `;
 }
 
 function setupExamples() {
-  renderExample("school");
+  renderExample("rainfall");
   document.querySelectorAll("[data-example]").forEach((tab) => {
     tab.addEventListener("click", () => {
       document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
@@ -352,7 +346,7 @@ function renderPractice() {
       const value = normalise(document.querySelector(`#${item.id}`).value);
       const mark = document.querySelector(`#${item.id}Mark`);
       const correct = item.accepted.some((answer) => value === normalise(answer));
-      mark.textContent = correct ? "Correct. Type choice is appropriate." : "Not quite. Check the field purpose and compare with the answer.";
+      mark.textContent = correct ? "Correct. The wording is mark-worthy." : "Not quite. Compare with the answer, then improve the wording.";
       mark.className = correct ? "mark correct" : "mark incorrect";
     });
   });
@@ -415,8 +409,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupTypeClassifier();
-setupBuilder();
+setupClassifier();
+setupFixer();
 setupExamples();
 renderPractice();
 renderMistakes();

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 002 | Binary place value and denary conversion</title>
+    <title>AS9618 Lesson 002 | Integer conversion between binary and denary</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Binary place value and denary conversion</h1>
+        <h1>Integer conversion between binary and denary</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -61,6 +61,20 @@
             <p>10110110 binary = 128 + 32 + 16 + 4 + 2 = 182 denary. Reversing the process, 182 = 128 + 32 + 16 + 4 + 2, so the 8-bit binary representation is 10110110.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start systems -->
+        <section class="panel explanation-panel" id="explanation-systems" data-explains="systems" data-explanation-kind="mechanism" aria-labelledby="explanation-systems-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
+          <h2 class="explanation-sr-only" id="explanation-systems-title">Three ways to represent negative binary values</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three ways to represent negative binary values with a structured visual model." />
+            <figcaption class="explanation-sr-only">Three ways to represent negative binary values: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Positive 23 in 8 bits is 00010111.</li><li><strong>Lesson fact:</strong> The 8-bit sign-and-magnitude representation of -23 is 10010111.</li><li><strong>Lesson fact:</strong> The 8-bit one's-complement representation of -23 is 11101000.</li><li><strong>Lesson fact:</strong> The 8-bit two's-complement representation of -23 is 11101001.</li><li><strong>Lesson fact:</strong> Every input, intermediate state and result must contain exactly 8 bits.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end systems -->
 
         <!-- stage10-explanation:start methods -->
         <section class="panel explanation-panel" id="explanation-methods" data-explains="methods" data-explanation-kind="mechanism" aria-labelledby="explanation-methods-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="methods">
@@ -417,8 +431,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -1,141 +1,112 @@
 const chooserMap = {
-  sortedSearch: {
-    title: "Binary search can be suitable",
-    detail: "Because the list is sorted, binary search can discard about half the remaining values after each comparison.",
-  },
-  unsortedSearch: {
-    title: "Linear search is safer unless sorted first",
-    detail: "Binary search is not valid on unsorted data. Linear search can check each item without a sorted precondition.",
-  },
-  table: {
-    title: "Nested-loop work",
-    detail: "Every row-column combination is processed, so 20 x 20 = 400 cell visits.",
-  },
-  copy: {
-    title: "Space cost",
-    detail: "Copying the list uses extra memory proportional to the number of items, even if the later processing is simple.",
-  },
+  seating: { title: "Outer loop: rows | Inner loop: seats", detail: "The algorithm chooses a row, then checks every seat in that row." },
+  marks: { title: "Outer loop: students | Inner loop: marks", detail: "For each student, input the three test marks and process that student's total." },
+  table: { title: "Outer loop: first factor | Inner loop: second factor", detail: "For each first factor, output products with every second factor." },
+  pairs: { title: "Outer loop: first team | Inner loop: second team", detail: "Each outer team is compared with each possible inner team, with conditions to avoid invalid pairs if needed." },
 };
 
-function binaryWorstChecks(size) {
-  return Math.ceil(Math.log2(size)) + 1;
-}
-
-function estimateWork(size, pattern) {
-  if (pattern === "linear") {
-    return {
-      title: "Linear search worst case",
-      rows: [["Input size", String(size)], ["Maximum comparisons", String(size)], ["Reason", "may check every item if target is last or absent"]],
-    };
-  }
-  if (pattern === "binary") {
-    return {
-      title: "Binary search worst case",
-      rows: [["Input size", String(size)], ["Approx. comparisons", String(binaryWorstChecks(size))], ["Reason", "remaining search area is repeatedly halved"]],
-    };
-  }
-  if (pattern === "nested") {
-    return {
-      title: "n by n nested loop",
-      rows: [["Rows", String(size)], ["Columns", String(size)], ["Cell visits", String(size * size)]],
-    };
+function nestedTrace(rows, columns) {
+  const traceRows = [];
+  let visit = 0;
+  for (let row = 1; row <= rows; row += 1) {
+    for (let column = 1; column <= columns; column += 1) {
+      visit += 1;
+      traceRows.push([String(visit), String(row), String(column), `R${row}C${column}`]);
+    }
   }
   return {
-    title: "Bubble sort rough comparison count",
-    rows: [["Input size", String(size)], ["Rough comparisons", String((size * (size - 1)) / 2)], ["Reason", "several passes compare adjacent items"]],
+    headers: ["Visit", "Row", "Column", "Cell"],
+    rows: traceRows,
+    note: `${rows} rows x ${columns} columns = ${rows * columns} cell visits.`,
   };
 }
 
-function binaryTrace(values, target) {
-  let low = 0;
-  let high = values.length - 1;
-  const rows = [];
-  let step = 0;
-  while (low <= high) {
-    step += 1;
-    const mid = Math.floor((low + high) / 2);
-    const value = values[mid];
-    let action = "found";
-    if (value < target) {
-      action = "search right half";
-      low = mid + 1;
-    } else if (value > target) {
-      action = "search left half";
-      high = mid - 1;
+function multiplicationTrace(rows, columns) {
+  const traceRows = [];
+  for (let row = 1; row <= rows; row += 1) {
+    for (let column = 1; column <= columns; column += 1) {
+      traceRows.push([String(row), String(column), String(row * column)]);
     }
-    rows.push([String(step), String(low + 1), String(high + 1), String(mid + 1), String(value), action]);
-    if (value === target) break;
   }
   return {
-    headers: ["Step", "Low", "High", "Mid position", "Compared value", "Action"],
-    rows,
-    note: `Target ${target} found in ${rows.length} comparison(s) if present in this trace.`,
+    headers: ["Row factor", "Column factor", "Product"],
+    rows: traceRows,
+    note: `The product statement runs ${rows * columns} times.`,
+  };
+}
+
+function rowTotalTrace(table) {
+  const traceRows = [];
+  let grandTotal = 0;
+  table.forEach((rowValues, rowIndex) => {
+    let rowTotal = 0;
+    rowValues.forEach((value, colIndex) => {
+      rowTotal += value;
+      traceRows.push([String(rowIndex + 1), String(colIndex + 1), String(value), String(rowTotal), String(grandTotal)]);
+    });
+    grandTotal += rowTotal;
+    traceRows.push([String(rowIndex + 1), "end row", "-", `output ${rowTotal}`, String(grandTotal)]);
+  });
+  return {
+    headers: ["Row", "Column", "Value", "RowTotal", "GrandTotal"],
+    rows: traceRows,
+    note: `Final GrandTotal is ${grandTotal}. RowTotal resets at the start of each row.`,
   };
 }
 
 const examples = {
-  linear: {
-    title: "Example 1: Linear search cases",
-    problem: "A list has 8 items. Compare best and worst case for linear search.",
+  coordinates: {
+    title: "Example 1: Cell coordinates",
+    problem: "Trace the cells visited by nested loops with 2 rows and 3 columns.",
+    trace: nestedTrace(2, 3),
+    points: ["The inner loop runs 3 times for Row 1.", "Then the inner loop runs 3 times again for Row 2.", "Total visits are 2 x 3 = 6."],
+  },
+  "row-total": {
+    title: "Example 2: Row totals",
+    problem: "A table has row values [4, 5, 6] and [2, 3, 1]. Trace RowTotal and GrandTotal.",
+    trace: rowTotalTrace([[4, 5, 6], [2, 3, 1]]),
+    points: ["RowTotal resets before each row's inner loop.", "GrandTotal is updated after each row is complete.", "Output row totals after the inner loop, not after every cell."],
+  },
+  multiplication: {
+    title: "Example 3: Multiplication table",
+    problem: "Trace products for Row 1 to 3 and Column 1 to 3.",
+    trace: multiplicationTrace(3, 3),
+    points: ["Outer loop controls the first factor.", "Inner loop controls the second factor.", "The product is calculated inside the inner loop."],
+  },
+  mistake: {
+    title: "Example 4: Reset placement",
+    problem: "Explain why RowTotal <- 0 belongs inside the outer loop.",
     trace: {
-      headers: ["Case", "Target position", "Comparisons", "Explanation"],
+      headers: ["Placement", "Effect", "Consequence"],
       rows: [
-        ["Best", "first item", "1", "target is found immediately"],
-        ["Worst", "last item or absent", "8", "each item may be checked"],
+        ["Before outer loop", "RowTotal never resets for each row", "row outputs carry previous rows"],
+        ["Inside outer loop before inner loop", "RowTotal resets once per row", "each row has a separate total"],
+        ["Inside inner loop", "RowTotal resets for every cell", "only the last cell may be counted"],
       ],
-      note: "Linear search does not need sorted data, but the worst case grows with the number of items.",
+      note: "The correct position depends on how often the variable must reset.",
     },
-    points: ["Use best/worst case language.", "Count comparisons.", "Avoid saying 'always slow'."],
-  },
-  binary: {
-    title: "Example 2: Binary search trace",
-    problem: "Trace binary search for 52 in [3, 8, 11, 18, 25, 31, 40, 52].",
-    trace: binaryTrace([3, 8, 11, 18, 25, 31, 40, 52], 52),
-    points: ["Data must be sorted.", "Each comparison discards part of the list.", "Efficiency comes from halving the search area."],
-  },
-  nested: {
-    title: "Example 3: Nested loop count",
-    problem: "A 10 by 10 grid is processed cell by cell. Estimate the number of visits.",
-    trace: {
-      headers: ["Rows", "Columns", "Visits", "Reason"],
-      rows: [["10", "10", "100", "inner column loop runs for every row"]],
-      note: "Nested-loop work multiplies when every inner repetition occurs for every outer repetition.",
-    },
-    points: ["Count structure, not lines of code only.", "Rows x columns gives cell visits.", "This is more work than a single loop over 10 values."],
-  },
-  space: {
-    title: "Example 4: Space trade-off",
-    problem: "An algorithm copies a 500-item list before processing it.",
-    trace: {
-      headers: ["Resource", "Effect", "Explanation"],
-      rows: [
-        ["Time", "extra copying step", "each item must be copied before processing"],
-        ["Space", "extra list stored", "memory is needed for another 500 items"],
-      ],
-      note: "Efficiency can refer to memory as well as time.",
-    },
-    points: ["Mention extra storage.", "Mention extra processing if copied item by item.", "Do not discuss only speed when memory is relevant."],
+    points: ["Ask what the variable represents.", "Reset it at the start of that level.", "Use indentation to show ownership."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "In worst-case linear search of 10 items, how many comparisons may be needed?", accepted: ["10", "ten"], answer: "10" },
-  { id: "p2", prompt: "What condition must be true before binary search can be used?", accepted: ["sorted", "sorted data", "list sorted", "the list is sorted", "data sorted"], answer: "The data/list must be sorted." },
-  { id: "p3", prompt: "A 5 by 6 nested loop processes every cell. How many cell visits?", accepted: ["30", "thirty"], answer: "30" },
-  { id: "p4", prompt: "For linear search, target at first item is best case or worst case?", accepted: ["best", "best case"], answer: "Best case" },
-  { id: "p5", prompt: "For linear search, target absent is usually best case or worst case?", accepted: ["worst", "worst case"], answer: "Worst case" },
-  { id: "p6", prompt: "Does copying a list use extra memory? yes or no.", accepted: ["yes"], answer: "Yes" },
-  { id: "p7", prompt: "Which search repeatedly halves the search area?", accepted: ["binary", "binary search"], answer: "Binary search" },
-  { id: "p8", prompt: "One loop over n items does about n or n x n visits?", accepted: ["n"], answer: "n" },
-  { id: "p9", prompt: "Two nested loops each running n times do about n or n x n visits?", accepted: ["n x n", "n*n", "n squared", "n^2", "nxn"], answer: "n x n" },
-  { id: "p10", prompt: "Is 'it is faster' enough for a full efficiency explanation? yes or no.", accepted: ["no"], answer: "No. Give a measurable reason such as fewer comparisons." },
+  { id: "p1", prompt: "In a 3-row, 4-column table, how many cells are processed?", accepted: ["12", "twelve"], answer: "12" },
+  { id: "p2", prompt: "Which loop usually controls rows: outer or inner?", accepted: ["outer", "outer loop"], answer: "Outer loop" },
+  { id: "p3", prompt: "Which loop usually controls columns: outer or inner?", accepted: ["inner", "inner loop"], answer: "Inner loop" },
+  { id: "p4", prompt: "FOR Row <- 1 TO 2 and FOR Column <- 1 TO 5. How many times does the inner statement run?", accepted: ["10", "ten"], answer: "10" },
+  { id: "p5", prompt: "For separate row totals, where should RowTotal <- 0 be placed?", accepted: ["inside outer loop", "inside the outer loop", "before inner loop", "before the inner loop", "inside outer before inner"], answer: "Inside the outer loop, before the inner loop" },
+  { id: "p6", prompt: "Should GrandTotal usually reset before all rows or inside every row?", accepted: ["before all rows", "before outer loop", "before the outer loop"], answer: "Before the outer loop / before all rows" },
+  { id: "p7", prompt: "In a 2 by 3 multiplication table, what is the product when Row=2 and Column=3?", accepted: ["6", "six"], answer: "6" },
+  { id: "p8", prompt: "If Row=1, Column=1..3, what is the next Row after Column 3 finishes?", accepted: ["2", "row 2"], answer: "Row 2" },
+  { id: "p9", prompt: "Nested loop visit counts usually add or multiply the loop counts?", accepted: ["multiply", "multiplied", "multiplication"], answer: "Multiply" },
+  { id: "p10", prompt: "Is Java brace syntax required in Cambridge pseudocode? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style FOR/NEXT and indentation." },
 ];
 
 const mistakes = [
-  { wrong: "Binary search is always better.", fix: "Binary search is only suitable when the data is sorted. Linear search may be needed for unsorted data." },
-  { wrong: "This algorithm is efficient because it is faster.", fix: "State what is reduced: comparisons, loop iterations, passes or memory use." },
-  { wrong: "A nested loop with 5 rows and 5 columns runs 10 times.", fix: "If every column is processed for every row, it runs 5 x 5 = 25 times." },
-  { wrong: "Only time matters when comparing algorithms.", fix: "Space can also matter, especially when an algorithm copies lists or stores extra structures." },
+  { wrong: "I added 3 + 4 and said a 3 by 4 table has 7 visits.", fix: "Nested loop visits multiply when every column is processed for every row: 3 x 4 = 12." },
+  { wrong: "I put RowTotal <- 0 before the outer loop for separate student totals.", fix: "Place RowTotal <- 0 inside the outer loop before the inner loop so it resets for each student." },
+  { wrong: "I put OUTPUT RowTotal inside the inner loop.", fix: "That outputs a running total after each column. For one total per row, output after the inner loop finishes." },
+  { wrong: "I used the same variable name for Row and Column.", fix: "Use separate control variables so each loop has its own counter and clear role." },
 ];
 
 
@@ -148,97 +119,100 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Compare linear search and binary search for finding a value in a sorted list of 100 items.",
-    answer: "Linear search may compare the target with each item one by one, so in the worst case it may require up to 100 comparisons. Binary search can be used because the list is sorted; it compares with a middle value and discards about half of the remaining values each time. Therefore binary search usually requires fewer comparisons for a large sorted list.",
+    prompt: "Complete a trace table for the sequence of cells visited by nested loops: FOR Row <- 1 TO 2 and FOR Column <- 1 TO 3. Demonstrate Row and Column for each visit.",
+    answer: "Visit 1 Row 1 Column 1\nVisit 2 Row 1 Column 2\nVisit 3 Row 1 Column 3\nVisit 4 Row 2 Column 1\nVisit 5 Row 2 Column 2\nVisit 6 Row 2 Column 3",
     marking: [
-      { mark: "B1", text: "linear search checks items one by one" },
-      { mark: "B1", text: "linear worst case may check all 100 items" },
-      { mark: "B1", text: "binary search requires sorted data / sorted list condition recognised" },
-      { mark: "B1", text: "binary search compares with middle value / halves search area" },
-      { mark: "B1", text: "explains binary search usually uses fewer comparisons for this sorted large list" },
+      { mark: "B1", text: "shows Row 1 begins with Column 1" },
+      { mark: "M1", text: "shows inner loop completes Columns 1 to 3 for Row 1" },
+      { mark: "M1", text: "shows Row changes to 2 after Column 3" },
+      { mark: "M1", text: "shows Columns 1 to 3 repeat for Row 2" },
+      { mark: "A1", text: "all six visits are in the correct order" },
     ],
     strict: [
-      "Do not accept 'binary search is faster' without reason.",
-      "Allow approximate comparison counts for binary search if halving is explained.",
-      "Do not award binary suitability mark if sorted precondition is ignored.",
+      "Do not award full marks for only stating 6 visits when a trace is required.",
+      "Allow equivalent coordinate format such as (1,1), (1,2).",
+      "Do not accept changing Row before the inner loop completes.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "A nested loop processes every cell in a table with 12 rows and 5 columns. Explain how many times the inner statement executes.",
-    answer: "The inner statement executes once for each column in each row. There are 5 column executions for each of the 12 rows, so the total number of executions is 12 x 5 = 60.",
+    marks: "6 marks",
+    prompt: "Write Cambridge-style pseudocode to input 4 marks for each of 3 students and output the total for each student.",
+    answer: "FOR Student <- 1 TO 3\n    StudentTotal <- 0\n    FOR MarkNumber <- 1 TO 4\n        INPUT Mark\n        StudentTotal <- StudentTotal + Mark\n    NEXT MarkNumber\n    OUTPUT StudentTotal\nNEXT Student",
     marking: [
-      { mark: "B1", text: "identifies rows and columns as two loop dimensions" },
-      { mark: "B1", text: "explains inner loop runs for each row" },
-      { mark: "B1", text: "uses multiplication rather than addition" },
-      { mark: "B1", text: "calculates 12 x 5" },
-      { mark: "B1", text: "final answer 60 executions" },
+      { mark: "B1", text: "uses outer loop for 3 students" },
+      { mark: "B1", text: "initialises StudentTotal to 0 inside outer loop before inner loop" },
+      { mark: "M1", text: "uses inner loop for 4 marks" },
+      { mark: "M1", text: "inputs Mark inside inner loop" },
+      { mark: "A1", text: "updates StudentTotal with each Mark" },
+      { mark: "A1", text: "outputs StudentTotal after inner loop and before next student" },
     ],
     strict: [
-      "Do not accept 17 from adding rows and columns.",
-      "Allow columns and rows reversed if calculation is consistent.",
-      "Do not require Big O notation.",
+      "Do not award row-total reset mark if StudentTotal is reset before the outer loop only.",
+      "Allow WHILE loops if counters are correctly controlled.",
+      "Do not award Cambridge notation mark for Java-only braces and semicolons.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain best case and worst case for linear search.",
-    answer: "In the best case, the target value is the first item checked, so only one comparison is needed. In the worst case, the target is the last item or is not in the list, so every item may need to be checked. This means the amount of work in the worst case grows with the number of items in the list.",
+    marks: "6 marks",
+    prompt: "Explain why nested loops are suitable for processing a table with 5 rows and 6 columns.",
+    answer: "A table has two repeated dimensions: rows and columns. An outer loop can repeat once for each of the 5 rows. For each row, an inner loop can repeat once for each of the 6 columns. This processes every cell exactly once, giving 5 x 6 = 30 cell visits. The loop variables also identify which cell is being processed.",
     marking: [
-      { mark: "B1", text: "best case identified as target first / found immediately" },
-      { mark: "B1", text: "best case uses one comparison" },
-      { mark: "B1", text: "worst case identified as target last or absent" },
-      { mark: "B1", text: "worst case may check every item" },
-      { mark: "B1", text: "links work to number of items / input size" },
+      { mark: "B1", text: "identifies two dimensions / rows and columns" },
+      { mark: "B1", text: "outer loop linked to rows" },
+      { mark: "B1", text: "inner loop linked to columns" },
+      { mark: "B1", text: "explains inner loop runs for each outer loop value" },
+      { mark: "B1", text: "calculates 5 x 6 = 30 visits" },
+      { mark: "B1", text: "links loop variables to processing each cell / table location" },
     ],
     strict: [
-      "Do not accept best/worst labels without a search scenario.",
-      "Allow 'not found' for absent target.",
-      "Do not require average case.",
+      "Do not accept only 'it is easier' without mechanism.",
+      "Allow rows/columns reversed if the explanation is consistent.",
+      "Do not require array terminology.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "An algorithm copies a list into a new list before searching it. Discuss one time efficiency issue and one space efficiency issue.",
-    answer: "Copying the list takes extra time because each item has to be copied before the search begins. It also uses extra memory because a second list must be stored. If the copied list has the same number of items as the original, the additional memory needed grows as the list size grows. This may be unnecessary if the original list could be searched directly.",
+    marks: "5 marks",
+    prompt: "A student writes RowTotal <- 0 before the outer loop, then outputs RowTotal after each row. Explain the error and correction.",
+    answer: "The error is that RowTotal is not reset for each row, so totals from previous rows carry into later row outputs. RowTotal should be set to 0 inside the outer loop before the inner loop begins. This resets the row-level accumulator once per row while still allowing the inner loop to add each column value.",
     marking: [
-      { mark: "B1", text: "identifies copying adds extra processing/time" },
-      { mark: "B1", text: "explains items must be copied before or in addition to searching" },
-      { mark: "B1", text: "identifies extra memory/space use" },
-      { mark: "B1", text: "explains second list / copied data must be stored" },
+      { mark: "B1", text: "identifies RowTotal is reset in the wrong place" },
+      { mark: "B1", text: "explains previous row values carry over" },
+      { mark: "B1", text: "places RowTotal <- 0 inside outer loop before inner loop" },
+      { mark: "B1", text: "explains reset should happen once per row" },
+      { mark: "B1", text: "connects correction to separate row totals" },
     ],
     strict: [
-      "Do not award both time and space marks for only saying 'inefficient'.",
-      "Allow 'storage' for memory.",
-      "Do not require exact memory units.",
+      "Do not award full marks for only saying 'move it'.",
+      "Allow 'student total' or 'line total' for row total.",
+      "Do not place reset inside inner loop; that loses earlier cells in the row.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A student says: 'Bubble sort and linear search are equally efficient because both use loops.' Evaluate this statement.",
-    answer: "The statement is not valid. Both algorithms use loops, but the amount of work is different. Linear search checks items until the target is found or the list ends, so in the worst case it may check each item once. Bubble sort uses repeated passes and compares adjacent items many times to sort the whole list. Therefore the number of comparisons and the purpose of the algorithms are different.",
+    prompt: "Compare a single loop and a nested loop. Refer to a suitable example for each.",
+    answer: "A single loop repeats one set of steps over one sequence, such as inputting 10 marks and adding them to a total. A nested loop has one loop inside another, so it can process repeated groups such as 3 students with 4 marks each, or a table with rows and columns. In a nested loop the inner loop completes for each value of the outer loop, so the number of inner statements is often the outer count multiplied by the inner count.",
     marking: [
-      { mark: "B1", text: "recognises both use loops but that is not enough to judge efficiency" },
-      { mark: "B1", text: "linear search checks items for a target" },
-      { mark: "B1", text: "linear search worst case may check each item once" },
-      { mark: "B1", text: "bubble sort uses repeated passes / adjacent comparisons" },
-      { mark: "B1", text: "explains bubble sort performs many comparisons to sort the whole list" },
-      { mark: "B1", text: "clear evaluative conclusion that they are not equally efficient for that reason" },
+      { mark: "B1", text: "describes single loop as one repeated sequence" },
+      { mark: "B1", text: "gives suitable single-loop example" },
+      { mark: "B1", text: "describes nested loop as loop inside another loop" },
+      { mark: "B1", text: "gives suitable nested-loop/table-style example" },
+      { mark: "B1", text: "explains inner loop completes for each outer value" },
+      { mark: "B1", text: "mentions multiplication of iteration counts or equivalent consequence" },
     ],
     strict: [
-      "Do not accept 'bubble sort is slower' without mechanism.",
-      "Allow insertion sort comparison only if bubble sort is still addressed.",
-      "Do not require formal Big O notation.",
+      "Do not accept 'nested is harder' as a comparison.",
+      "Allow row/column, student/mark or multiplication-table examples.",
+      "Do not require Big O notation.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9\\[\\] <>+=.*^-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9\\[\\] <>+=.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -257,10 +231,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    linear: "That works, but it may take hundreds of checks if you start at page 1.",
-    binary: "Correct. Halving the search area is the useful efficiency idea.",
-    random: "Random pages may work by luck, but the worst case is not controlled.",
-    sort: "The pages are already ordered by number; sorting is unnecessary extra work.",
+    seven: "That adds rows and columns. Nested loop cell visits multiply.",
+    twelve: "Correct. 3 rows x 4 columns = 12 cell checks.",
+    three: "That counts rows only. Each row has 4 columns.",
+    four: "That counts columns only. There are 3 rows of those columns.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -280,13 +254,15 @@ function setupChooser() {
   });
 }
 
-function setupEstimator() {
-  const sizeInput = document.querySelector("#sizeInput");
-  const patternInput = document.querySelector("#patternInput");
-  const result = document.querySelector("#estimateResult");
-  document.querySelector("#estimateBtn").addEventListener("click", () => {
-    const estimate = estimateWork(Number(sizeInput.value), patternInput.value);
-    result.innerHTML = `<h3>${estimate.title}</h3>${tableMarkup(["Measure", "Value"], estimate.rows)}`;
+function setupSimulator() {
+  const rowsInput = document.querySelector("#rowsInput");
+  const colsInput = document.querySelector("#colsInput");
+  const result = document.querySelector("#simulateResult");
+  document.querySelector("#simulateBtn").addEventListener("click", () => {
+    const rows = Number(rowsInput.value);
+    const columns = Number(colsInput.value);
+    const trace = nestedTrace(rows, columns);
+    result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
   });
 }
 
@@ -309,7 +285,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("linear");
+  renderExample("coordinates");
 }
 
 function setupPractice() {
@@ -398,7 +374,7 @@ function setupExam() {
 setupPrint();
 setupHook();
 setupChooser();
-setupEstimator();
+setupSimulator();
 setupExamples();
 setupPractice();
 setupMistakes();

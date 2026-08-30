@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 103 | Validation algorithms and defensive input handling</title>
+    <title>AS9618 Lesson 103 | Stepwise refinement from IPO design to modules</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Validation algorithms and defensive input handling</h1>
+        <h1>Stepwise refinement from IPO design to modules</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,325 +29,400 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#validation">Validation</a>
-        <a href="#checks">Check types</a>
-        <a href="#defensive">Defensive loops</a>
+        <a href="#trace-table">Trace table</a>
+        <a href="#dry-run">Dry run method</a>
+        <a href="#loops">Loop tracing</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#classifier">Check classifier</a>
-        <a href="#tester">Input tester</a>
-        <a href="#builder">Validation builder</a>
+        <a href="#predictor">Output predictor</a>
+        <a href="#builder">Trace builder</a>
+        <a href="#checker">Dry-run checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Stepwise refinement from IPO design to modules</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.</p>
+            <p>At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</p>
+            <p>Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Refine an order-processing algorithm</h3>
+            <p>Level 1: InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price * Quantity; apply Discount; return Total. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start analyser -->
+        <section class="panel explanation-panel" id="explanation-analyser" data-explains="analyser" data-explanation-kind="mechanism" aria-labelledby="explanation-analyser-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="analyser">
+          <h2 class="explanation-sr-only" id="explanation-analyser-title">Stepwise refinement turns a high-level algorithm into implementable modules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-analyser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Stepwise refinement turns a high-level algorithm into implementable modules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Stepwise refinement turns a high-level algorithm into implementable modules: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.</li><li><strong>Lesson fact:</strong> Refinement stops when every step is precise enough to implement and its input and output are clear.</li><li><strong>Lesson fact:</strong> At each level, preserve the parent step's purpose and input-process-output relationship.</li><li><strong>Lesson fact:</strong> Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</li><li><strong>Lesson fact:</strong> Every level must reduce ambiguity and collectively remain a complete solution.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end analyser -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Stepwise refinement from IPO design to modules: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the starting point of stepwise refinement?</p>
+              <details><summary>Show answer</summary><p>A high-level algorithm or task.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> When should refinement stop?</p>
+              <details><summary>Show answer</summary><p>When each step is a defined, implementable action with clear inputs and outputs.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does IPO help one refinement level?</p>
+              <details><summary>Show answer</summary><p>It checks that each module receives the data it needs, performs defined processing and supplies the required output.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Apply two levels of stepwise refinement to 'register a new library member', showing module inputs/outputs and identifying one procedure or function.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>Level 1 separates capture, validation, storage and confirmation responsibilities</td><td>Do not award unrelated features, repeated high-level labels or a level that does not reduce ambiguity.</td><td>1</td></tr>
+                  <tr><td>Level 2 replaces at least one complex step with smaller ordered substeps</td><td></td><td>1</td></tr>
+                  <tr><td>module inputs and outputs are clear</td><td></td><td>1</td></tr>
+                  <tr><td>procedure or function choice matches action versus returned value</td><td></td><td>1</td></tr>
+                  <tr><td>refined steps collectively implement the original task</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 103 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
-            <h2>Validation is the polite bouncer at the algorithm door.</h2>
+            <h2>A trace table is the algorithm's receipt: every variable change must pay rent.</h2>
             <p>
-              Validation checks whether input is acceptable before it is processed. Defensive input handling repeats
-              input until valid data is supplied, so later calculations do not have to wrestle with nonsense. The aim is
-              not to prove the data is true; it is to check it follows the rules.
+              A dry run means executing pseudocode manually using test data. A trace table records variable values and
+              outputs after each relevant step. This is how you prove what an algorithm does, find logic errors and avoid
+              guessing during Paper 2.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>range, presence, length, type/format and check digit validation</span></div>
-              <div><strong>Write</strong><span>Cambridge-style validation loops using WHILE or REPEAT...UNTIL</span></div>
-              <div><strong>Explain</strong><span>why validation reduces errors but does not guarantee data is correct</span></div>
+              <div><strong>Trace</strong><span>record changing variables and outputs in a clear table</span></div>
+              <div><strong>Predict</strong><span>work out final output from Cambridge-style pseudocode and test data</span></div>
+              <div><strong>Debug</strong><span>locate mistakes such as wrong initialisation, missing updates and off-by-one loops</span></div>
             </div>
           </div>
-          <div class="validation-visual" aria-label="Validation pipeline visual">
-            <div>INPUT Age</div>
-            <span>check rule</span>
-            <div>Age &gt;= 11 AND Age &lt;= 18?</div>
-            <span>if invalid</span>
-            <div>Ask again</div>
-            <span>if valid</span>
-            <div>Process Age</div>
-            <p>Invalid input should be rejected before it sneaks into the calculation wearing a fake moustache.</p>
+          <div class="trace-visual" aria-label="Trace table visual">
+            <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 3
+    INPUT Mark
+    Total &lt;- Total + Mark
+NEXT Count
+OUTPUT Total</code></pre>
+            <div class="mini-table">
+              <span>Count</span><span>Mark</span><span>Total</span><span>Output</span>
+              <span>1</span><span>4</span><span>4</span><span>-</span>
+              <span>2</span><span>7</span><span>11</span><span>-</span>
+              <span>3</span><span>9</span><span>20</span><span>20</span>
+            </div>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 often gives a rule such as 0-100 or 8 characters. The marks come from applying the rule precisely.</p>
+            <p>Paper 2 trace questions reward accuracy, not confidence. The table is the working; the output is only the final receipt.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Validation checks acceptability, not truth. A valid age of 15 might still be typed by someone who is actually 16.</p>
+            <p>Do not update a variable in your head and forget to write it. Invisible arithmetic earns invisible marks.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>The school form that accepts age 900</h2>
-            <p>Which validation rule would stop a student entering 900 as their age?</p>
+            <h2>The coffee shop total that keeps changing</h2>
+            <p>A cashier adds 3, then 5, then 2. Which row shows the correct running total? The till is not psychic; it needs a trace.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="presence">Presence check</button>
-            <button class="choice-card" type="button" data-hook="range">Range check</button>
-            <button class="choice-card" type="button" data-hook="length">Length check</button>
-            <button class="choice-card" type="button" data-hook="format">Format check</button>
+            <button class="choice-card" type="button" data-hook="a">3, 5, 2</button>
+            <button class="choice-card" type="button" data-hook="b">3, 8, 10</button>
+            <button class="choice-card" type="button" data-hook="c">0, 3, 8</button>
+            <button class="choice-card" type="button" data-hook="d">10, 8, 3</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the best validation rule.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the row that records Total after each item is added.</div>
         </section>
 
-        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+        <section class="panel" id="trace-table" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Validation checks whether input follows a rule</h2>
+            <h2>A trace table records variables after each change</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>What validation does</h3>
-              <p>Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.</p>
-              <div class="callout">Chinese support: validation = 有效性检查；defensive input = 防御式输入。</div>
-            </article>
-            <article>
-              <h3>What validation does not do</h3>
-              <p>Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.</p>
-              <div class="callout">Example: age 15 passes a school-age range check, but it might still be a lie.</div>
-            </article>
+          <div class="data-table concept-table" role="table" aria-label="Trace table parts">
+            <div class="table-row table-head" role="row"><div>Column</div><div>What it records</div><div>Exam note</div></div>
+            <div class="table-row" role="row"><div>Line / step</div><div>which statement is being executed</div><div>optional, but useful for debugging</div></div>
+            <div class="table-row" role="row"><div>Input value</div><div>the test data read by INPUT</div><div>do not invent values not given by the question</div></div>
+            <div class="table-row" role="row"><div>Variable columns</div><div>current values of Count, Total, Mark, Found, etc.</div><div>write changed values clearly</div></div>
+            <div class="table-row" role="row"><div>Output column</div><div>anything displayed by OUTPUT</div><div>leave blank or dash until output happens</div></div>
           </div>
+          <div class="callout">Chinese support: trace table = 跟踪表；dry run = 手动执行；variable = 变量；output column = 输出列。</div>
         </section>
 
-        <!-- stage10-explanation:start validation -->
-        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="validation">
-          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether input follows a rule</h2>
+        <!-- stage10-explanation:start trace-table -->
+        <section class="panel explanation-panel" id="explanation-trace-table" data-explains="trace-table" data-explanation-kind="mechanism" aria-labelledby="explanation-trace-table-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
+          <h2 class="explanation-sr-only" id="explanation-trace-table-title">A trace table records variables after each change</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether input follows a rule with a structured visual model." />
-            <figcaption class="explanation-sr-only">Validation checks whether input follows a rule: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-trace-table.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A trace table records variables after each change with a structured visual model." />
+            <figcaption class="explanation-sr-only">A trace table records variables after each change: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What validation does</li><li><strong>Lesson fact:</strong> Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.</li><li><strong>Lesson fact:</strong> What validation does not do</li><li><strong>Lesson fact:</strong> Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.</li><li><strong>Lesson fact:</strong> Example: age 15 passes a school-age range check, but it might still be a lie.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What it records</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> Line / step</li><li><strong>Lesson fact:</strong> which statement is being executed</li><li><strong>Lesson fact:</strong> optional, but useful for debugging</li><li><strong>Lesson fact:</strong> Input value</li><li><strong>Lesson fact:</strong> the test data read by INPUT</li><li><strong>Lesson fact:</strong> do not invent values not given by the question</li><li><strong>Lesson fact:</strong> Variable columns</li><li><strong>Lesson fact:</strong> current values of Count, Total, Mark, Found, etc.</li><li><strong>Lesson fact:</strong> write changed values clearly</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end validation -->
-        <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
+        <!-- stage10-explanation:end trace-table -->
+        <section class="panel" id="dry-run" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
-            <p class="eyebrow">Validation check types</p>
-            <h2>Match the rule to the risk</h2>
-          </div>
-          <div class="data-table concept-table" role="table" aria-label="Validation check types">
-            <div class="table-row table-head" role="row"><div>Check</div><div>Purpose</div><div>Example</div></div>
-            <div class="table-row" role="row"><div>Range check</div><div>value is within allowed limits</div><div>Mark &gt;= 0 AND Mark &lt;= 100</div></div>
-            <div class="table-row" role="row"><div>Presence check</div><div>field is not blank</div><div>Name &lt;&gt; ""</div></div>
-            <div class="table-row" role="row"><div>Length check</div><div>input has required number of characters</div><div>LENGTH(Postcode) &lt;= 8</div></div>
-            <div class="table-row" role="row"><div>Type / format check</div><div>input matches expected type or pattern</div><div>Date has form DD/MM/YYYY</div></div>
-            <div class="table-row" role="row"><div>Check digit</div><div>detects many typing errors in a code</div><div>barcode or ISBN-style code</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start checks -->
-        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="checks">
-          <h2 class="explanation-sr-only" id="explanation-checks-title">Match the rule to the risk</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the rule to the risk with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match the rule to the risk: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> LENGTH(Postcode) &lt;= 8 is a maximum-length check.</li><li><strong>Lesson fact:</strong> The rule accepts no more than eight characters and prevents input that is too long.</li><li><strong>Lesson fact:</strong> It does not require exactly eight characters.</li><li><strong>Lesson fact:</strong> Use equality or bounded limits only when an exact or minimum-and-maximum length is intended.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end checks -->
-        <section class="panel" id="defensive" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="defensive">
-          <div class="section-title">
-            <p class="eyebrow">Defensive input handling</p>
-            <h2>Reject bad input, then ask again</h2>
+            <p class="eyebrow">Method</p>
+            <h2>Dry run: execute the algorithm by hand</h2>
           </div>
           <div class="step-strip">
-            <div><strong>1</strong><span>Input the value.</span></div>
-            <div><strong>2</strong><span>Test the validation condition.</span></div>
-            <div><strong>3</strong><span>If invalid, output a helpful message.</span></div>
-            <div><strong>4</strong><span>Repeat input until valid.</span></div>
-            <div><strong>5</strong><span>Process only the accepted value.</span></div>
+            <div><strong>1</strong><span>Copy the variable names into table columns.</span></div>
+            <div><strong>2</strong><span>Write initial values before the loop starts.</span></div>
+            <div><strong>3</strong><span>Use each input value in order.</span></div>
+            <div><strong>4</strong><span>Update variables exactly when pseudocode updates them.</span></div>
+            <div><strong>5</strong><span>Record output only when an OUTPUT statement is executed.</span></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start defensive -->
-        <section class="panel explanation-panel" id="explanation-defensive" data-explains="defensive" data-explanation-kind="mechanism" aria-labelledby="explanation-defensive-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="defensive">
-          <h2 class="explanation-sr-only" id="explanation-defensive-title">Reject bad input, then ask again</h2>
+        <!-- stage10-explanation:start dry-run -->
+        <section class="panel explanation-panel" id="explanation-dry-run" data-explains="dry-run" data-explanation-kind="process" aria-labelledby="explanation-dry-run-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
+          <h2 class="explanation-sr-only" id="explanation-dry-run-title">Dry run: execute the algorithm by hand</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-defensive.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Reject bad input, then ask again with a structured visual model." />
-            <figcaption class="explanation-sr-only">Reject bad input, then ask again: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-dry-run.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Dry run: execute the algorithm by hand with a structured visual model." />
+            <figcaption class="explanation-sr-only">Dry run: execute the algorithm by hand: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Defensive input handling</li><li><strong>Lesson fact:</strong> 1 Input the value.</li><li><strong>Lesson fact:</strong> 2 Test the validation condition.</li><li><strong>Lesson fact:</strong> 3 If invalid, output a helpful message.</li><li><strong>Lesson fact:</strong> 4 Repeat input until valid.</li><li><strong>Lesson fact:</strong> 5 Process only the accepted value.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> 1 Copy the variable names into table columns.</li><li><strong>Lesson fact:</strong> 2 Write initial values before the loop starts.</li><li><strong>Lesson fact:</strong> 3 Use each input value in order.</li><li><strong>Lesson fact:</strong> 4 Update variables exactly when pseudocode updates them.</li><li><strong>Lesson fact:</strong> 5 Record output only when an OUTPUT statement is executed.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end defensive -->
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <!-- stage10-explanation:end dry-run -->
+        <section class="panel" id="loops" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
+          <div class="section-title">
+            <p class="eyebrow">Loop tracing</p>
+            <h2>Loops make trace tables useful and slightly unforgiving</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Initialisation</strong><span>Variables such as Total and Count usually need a starting value before the loop.</span></article>
+            <article><strong>Update</strong><span>Record new values after assignment, not before.</span></article>
+            <article><strong>Condition</strong><span>For WHILE loops, check the condition before each iteration.</span></article>
+            <article><strong>Sentinel</strong><span>A sentinel value stops input and should usually not be processed as data.</span></article>
+            <article><strong>Output timing</strong><span>If OUTPUT is after the loop, output appears once at the end.</span></article>
+            <article><strong>Boundary</strong><span>Check whether loops run 5 times, 6 times, or one time too many.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start loops -->
+        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
+          <h2 class="explanation-sr-only" id="explanation-loops-title">Loops make trace tables useful and slightly unforgiving</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loops make trace tables useful and slightly unforgiving with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loops make trace tables useful and slightly unforgiving: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Loop tracing</li><li><strong>Lesson fact:</strong> Initialisation Variables such as Total and Count usually need a starting value before the loop.</li><li><strong>Lesson fact:</strong> Update Record new values after assignment, not before.</li><li><strong>Lesson fact:</strong> Condition For WHILE loops, check the condition before each iteration.</li><li><strong>Lesson fact:</strong> Sentinel A sentinel value stops input and should usually not be processed as data.</li><li><strong>Lesson fact:</strong> Output timing If OUTPUT is after the loop, output appears once at the end.</li><li><strong>Lesson fact:</strong> Boundary Check whether loops run 5 times, 6 times, or one time too many.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loops -->
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Use Cambridge-style validation loops in the exam</h2>
+            <h2>Trace Cambridge pseudocode in the exam; Java is only a support view</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>REPEAT
-    INPUT Mark
-    IF Mark &lt; 0 OR Mark &gt; 100 THEN
-        OUTPUT "Invalid mark"
-    ENDIF
-UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
+              <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 3
+    INPUT Number
+    Total &lt;- Total + Number
+NEXT Count
+OUTPUT Total</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>do {
-    mark = input.nextInt();
-    if (mark &lt; 0 || mark &gt; 100) {
-        System.out.println("Invalid mark");
-    }
-} while (mark &lt; 0 || mark &gt; 100);</code></pre>
+              <pre><code>int total = 0;
+for (int count = 1; count &lt;= 3; count++) {
+    int number = input.nextInt();
+    total = total + number;
+}
+System.out.println(total);</code></pre>
             </article>
           </div>
-          <div class="callout">Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.</div>
+          <div class="callout">Trace the Cambridge-style statements. Java syntax such as braces and `++` may help implementation practice, but it is not the required Paper 2 pseudocode notation.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Use Cambridge-style validation loops in the exam</h2>
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Trace Cambridge pseudocode in the exam; Java is only a support view</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge-style validation loops in the exam with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use Cambridge-style validation loops in the exam: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace Cambridge pseudocode in the exam; Java is only a support view with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace Cambridge pseudocode in the exam; Java is only a support view: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A post-condition validation loop starts with REPEAT and ends with UNTIL.</li><li><strong>Lesson fact:</strong> Input Mark inside the loop so every retry obtains a replacement value.</li><li><strong>Lesson fact:</strong> Close the invalid-mark selection with ENDIF before UNTIL.</li><li><strong>Lesson fact:</strong> A Java do-while support version must begin with do and close its blocks correctly.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Total to zero before a three-iteration loop.</li><li><strong>Lesson fact:</strong> Input one Number and add it to Total during each iteration.</li><li><strong>Lesson fact:</strong> Output Total once after the loop has processed all three numbers.</li><li><strong>Lesson fact:</strong> A Java support version must preserve the same input, accumulation and final output.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
+        <section class="panel" id="predictor" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
-            <p class="eyebrow">Interactive check classifier</p>
-            <h2>Choose the validation type</h2>
+            <p class="eyebrow">Interactive output predictor</p>
+            <h2>Predict the final output</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Rule
-              <select id="classifierInput">
-                <option value="range">Mark must be 0 to 100 inclusive.</option>
-                <option value="presence">Surname must not be blank.</option>
-                <option value="length">Password must be at least 8 characters.</option>
-                <option value="format">Date must be entered as DD/MM/YYYY.</option>
-                <option value="digit">Barcode uses final digit to detect typing errors.</option>
+              Input set
+              <select id="predictInput">
+                <option value="a">4, 7, 9</option>
+                <option value="b">10, 0, 5</option>
+                <option value="c">-2, 8, 6</option>
+                <option value="d">3, 3, 3</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+            <button class="primary-button" type="button" id="predictBtn">Predict output</button>
           </div>
-          <div class="feedback" id="classifyResult">Choose a rule to classify it.</div>
+          <div class="feedback" id="predictResult">The pseudocode totals three input numbers and outputs Total.</div>
         </section>
 
-        <section class="panel" id="tester" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tester">
-          <div class="section-title">
-            <p class="eyebrow">Interactive input tester</p>
-            <h2>Test a mark against 0-100</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Mark
-              <input id="markInput" type="number" value="50" />
-            </label>
-            <button class="primary-button" type="button" id="testBtn">Test mark</button>
-          </div>
-          <div class="feedback" id="testResult">Enter a mark and test whether it is valid.</div>
-        </section>
-
-        <!-- stage10-explanation:start tester -->
-        <section class="panel explanation-panel" id="explanation-tester" data-explains="tester" data-explanation-kind="mechanism" aria-labelledby="explanation-tester-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tester">
-          <h2 class="explanation-sr-only" id="explanation-tester-title">Test a mark against 0-100</h2>
+        <!-- stage10-explanation:start predictor -->
+        <section class="panel explanation-panel" id="explanation-predictor" data-explains="predictor" data-explanation-kind="mechanism" aria-labelledby="explanation-predictor-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
+          <h2 class="explanation-sr-only" id="explanation-predictor-title">Predict the final output</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-tester.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Test a mark against 0-100 with a structured visual model." />
-            <figcaption class="explanation-sr-only">Test a mark against 0-100: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-predictor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Predict the final output with a structured visual model." />
+            <figcaption class="explanation-sr-only">Predict the final output: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive input tester</li><li><strong>Lesson fact:</strong> Enter a mark and test whether it is valid.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive output predictor</li><li><strong>Lesson fact:</strong> Input set</li><li><strong>Lesson fact:</strong> The pseudocode totals three input numbers and outputs Total.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end tester -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <!-- stage10-explanation:end predictor -->
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
-            <p class="eyebrow">Interactive validation builder</p>
-            <h2>Generate a Cambridge-style validation loop</h2>
+            <p class="eyebrow">Interactive trace builder</p>
+            <h2>Build the trace table rows</h2>
           </div>
           <div class="builder-grid">
             <label>
-              Scenario
-              <select id="builderInput">
-                <option value="mark">Mark 0-100</option>
-                <option value="age">Age 11-18</option>
-                <option value="name">Name not blank</option>
-                <option value="password">Password length at least 8</option>
+              Trace scenario
+              <select id="traceInput">
+                <option value="total">Total 4, 7, 9</option>
+                <option value="max">Find maximum of 6, 11, 8</option>
+                <option value="sentinel">Total until -1: 5, 2, -1</option>
+                <option value="valid">Validate age 10, then 15</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="buildBtn">Build loop</button>
+            <button class="primary-button" type="button" id="traceBtn">Build trace</button>
           </div>
-          <div class="answer-frame" id="builderResult">Choose a scenario to generate pseudocode.</div>
+          <div class="trace-output" id="traceResult">Choose a scenario to generate a trace table.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
+          <div class="section-title">
+            <p class="eyebrow">Interactive dry-run checker</p>
+            <h2>Find the first wrong row</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Proposed trace
+              <select id="checkerInput">
+                <option value="wrong-total">Total after 4, 7, 9 is shown as 4, 7, 9</option>
+                <option value="wrong-sentinel">Sentinel -1 is added to Total</option>
+                <option value="wrong-output">Output is written before OUTPUT statement</option>
+                <option value="correct">Total after 4, 7, 9 is shown as 4, 11, 20</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="checkerBtn">Check trace</button>
+          </div>
+          <div class="feedback" id="checkerResult">Choose a proposed trace to check it.</div>
+        </section>
+
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Validation patterns</h2>
+            <h2>Trace common Paper 2 patterns</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="range">Range</button>
-            <button class="tab" type="button" data-example="presence">Presence</button>
-            <button class="tab" type="button" data-example="length">Length</button>
-            <button class="tab" type="button" data-example="format">Format</button>
+            <button class="tab active" type="button" data-example="total">Running total</button>
+            <button class="tab" type="button" data-example="max">Maximum</button>
+            <button class="tab" type="button" data-example="sentinel">Sentinel</button>
+            <button class="tab" type="button" data-example="selection">Selection</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Validation precision</h2>
+            <h2>Trace table and dry-run accuracy</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix validation mistakes</h2>
+            <h2>Fix trace-table mistakes</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style validation questions with expandable MS</h2>
-            <p>These questions target validation rules, defensive loops and precise Boolean conditions. MS uses strict Cambridge-style expectations.</p>
+            <h2>Original Cambridge-style trace questions with expandable MS</h2>
+            <p>These questions target dry runs, trace tables, loop tracing and output prediction. MS uses strict Cambridge-style expectations.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-103">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Validation checklist</h2>
+            <h2>Trace-table checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Rule</strong><span>State the exact acceptable condition.</span></div>
-            <div><strong>Loop</strong><span>Repeat input while invalid or until valid.</span></div>
-            <div><strong>Limit</strong><span>Validation checks acceptability, not real-world truth.</span></div>
+            <div><strong>Columns</strong><span>Include every variable that changes and an output column when output may occur.</span></div>
+            <div><strong>Order</strong><span>Use input values in order and update variables exactly when the pseudocode updates them.</span></div>
+            <div><strong>Timing</strong><span>Write output only when OUTPUT executes; check loop conditions before repeating.</span></div>
           </div>
         </section>
 
@@ -358,16 +433,16 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Validation table</strong>
-              <span>For mark, date, password and surname, name the best validation check and write the valid condition.</span>
+              <strong>Task 1: Trace a running total</strong>
+              <span>Trace a loop that inputs 5, 8, 1 and outputs the total. Include columns Count, Number, Total and Output.</span>
             </article>
             <article>
-              <strong>Task 2: Pseudocode loop</strong>
-              <span>Write Cambridge-style pseudocode that repeatedly inputs an age until it is from 11 to 18 inclusive.</span>
+              <strong>Task 2: Trace a maximum algorithm</strong>
+              <span>Trace values 12, 7, 15, 10. Show how Highest changes and state the final output.</span>
             </article>
             <article>
-              <strong>Task 3: Explanation</strong>
-              <span>Explain why validation can reject impossible data but cannot prove that a user told the truth.</span>
+              <strong>Task 3: Debug paragraph</strong>
+              <span>Explain why adding a sentinel value to Total is a logic error. Use the words sentinel, condition and output.</span>
             </article>
           </div>
         </section>
@@ -375,8 +450,8 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

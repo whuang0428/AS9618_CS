@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 063 | Malware types and social engineering</title>
+    <title>AS9618 Lesson 063 | Security, privacy and data integrity</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Malware types and social engineering</h1>
+        <h1>Security, privacy and data integrity</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,14 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#virus">Virus/worm</a>
-        <a href="#trojan">Trojan</a>
-        <a href="#spyware">Spyware</a>
-        <a href="#ransomware">Ransomware</a>
-        <a href="#social">Social engineering</a>
+        <a href="#risk-chain">Risk chain</a>
+        <a href="#confidentiality">Confidentiality</a>
+        <a href="#integrity">Integrity</a>
+        <a href="#availability">Availability</a>
+        <a href="#authenticity">Authenticity</a>
         <a href="#controls">Controls</a>
-        <a href="#tool">Threat tool</a>
+        <a href="#tool">Goal tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -55,61 +54,55 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Virus, spyware, anti-virus and anti-spyware</h2>
+            <h2>Security, privacy and data integrity</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A virus is malware that attaches to a host file or program and spreads when the infected host is run or shared. Spyware secretly monitors activity or collects data, such as keystrokes, credentials or browsing behaviour. These threats can damage the security of both data and the computer system.</p>
-            <p>Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes detected malicious code. Anti-spyware performs corresponding detection and removal for spyware; the categories may be combined in one security product, but their syllabus roles must still be stated accurately.</p>
-            <p>Anti-virus and anti-spyware definitions and detection rules must be updated because new threats appear. Both measures reduce risk but cannot guarantee detection of every new, modified or concealed threat.</p>
-            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
+            <p>Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.</p>
+            <p>The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.</p>
+            <p>Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Infected attachment and keylogger</h3>
-            <p>Anti-virus scans an attachment, matches a virus signature and quarantines the infected host file before it runs. Anti-spyware detects a keylogger process, blocks it and quarantines its file so it cannot continue recording credentials. Each control is matched to the threat mechanism rather than described as a universal guarantee.</p>
+            <h3>Worked example: Medical records on a compromised computer system</h3>
+            <p>Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Virus, spyware, anti-virus and anti-spyware: apply and assess</h2>
+            <h2>Security, privacy and data integrity: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> How does a virus differ from spyware?</p>
-              <details><summary>Show answer</summary><p>A virus attaches to a host and spreads when that host runs or is shared; spyware secretly monitors activity or collects data.</p></details>
+              <p><strong>1.</strong> Which concept is damaged when data is altered incorrectly?</p>
+              <details><summary>Show answer</summary><p>Integrity.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What is the role of anti-virus software?</p>
-              <details><summary>Show answer</summary><p>It scans for virus signatures or suspicious behaviour and can block, quarantine or remove detected malicious code.</p></details>
+              <p><strong>2.</strong> Which concept concerns how personal data is collected and disclosed?</p>
+              <details><summary>Show answer</summary><p>Privacy.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What is spyware designed to do?</p>
-              <details><summary>Show answer</summary><p>Secretly monitor activity or collect user/system data.</p></details>
+              <p><strong>3.</strong> Can data be secure but inaccurate?</p>
+              <details><summary>Show answer</summary><p>Yes; access protection does not guarantee correctness.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> What does quarantine do?</p>
-              <details><summary>Show answer</summary><p>Isolates suspicious code so it cannot execute normally.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why update anti-spyware definitions?</p>
-              <details><summary>Show answer</summary><p>To recognise newly identified spyware.</p></details>
+              <p><strong>4.</strong> Why must the computer system also be protected?</p>
+              <details><summary>Show answer</summary><p>A compromised or unavailable system can expose, alter, delete or prevent access to the data it processes, even when a stored file has a separate protection such as encryption.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how anti-virus and anti-spyware software reduce different malware risks.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Compare data security, privacy and integrity, then explain why both data and its computer system require security.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>anti-virus scans for virus signatures/suspicious behaviour</td><td>Do not accept that virus and spyware are synonyms, or that either security measure prevents every form of malware.</td><td>1</td></tr>
-                  <tr><td>blocks/quarantines/removes detected infected code</td><td></td><td>1</td></tr>
-                  <tr><td>anti-spyware scans for secret monitoring/data collection</td><td></td><td>1</td></tr>
-                  <tr><td>blocks/quarantines/removes detected spyware</td><td></td><td>1</td></tr>
-                  <tr><td>updates improve recognition of newly identified threats</td><td></td><td>1</td></tr>
-                  <tr><td>neither measure guarantees detection of every threat</td><td></td><td>1</td></tr>
+                  <tr><td>security protects against unauthorised access/loss/damage</td><td>Do not accept repeated versions of 'keeping data safe' or the claim that file encryption alone secures the computer system.</td><td>1</td></tr>
+                  <tr><td>privacy controls appropriate personal-data use/disclosure</td><td></td><td>1</td></tr>
+                  <tr><td>integrity concerns accuracy/completeness/authorised change</td><td></td><td>1</td></tr>
+                  <tr><td>computer-system compromise can expose/alter/destroy data or prevent authorised access</td><td></td><td>1</td></tr>
+                  <tr><td>data-specific and system controls are both required / one does not replace the other</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -120,283 +113,242 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 063 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Some attacks target software. Some target the person holding the keyboard.</h2>
+            <h2>Security is not one word. It is a set of goals that protect different things.</h2>
             <p>
-              Malware is malicious software designed to damage, disrupt, steal or gain unauthorised access.
-              Social engineering manipulates people into giving access, information or permission.
-              Exam answers need the mechanism, not just a scary label.
+              A control is only a good answer if it protects the right security goal in the scenario.
+              This lesson separates confidentiality, integrity, availability and authenticity, then maps each goal to suitable controls.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>common malware types by mechanism and impact</span></div>
-              <div><strong>Explain</strong><span>how social engineering exploits human trust or pressure</span></div>
-              <div><strong>Recommend</strong><span>controls that match the threat and protected security goal</span></div>
+              <div><strong>Define</strong><span>confidentiality, integrity, availability and authenticity</span></div>
+              <div><strong>Classify</strong><span>risks and controls using the correct security goal</span></div>
+              <div><strong>Justify</strong><span>why a safeguard fits the asset, threat and impact</span></div>
             </div>
           </div>
-          <div class="threat-card" aria-label="Threat map">
-            <div class="threat-stack">
-              <span>Virus: attaches, needs host/action</span>
-              <span>Worm: self-replicates across networks</span>
-              <span>Trojan: disguised as legitimate</span>
-              <span>Spyware: secretly monitors/steals</span>
-              <span>Social engineering: manipulates people</span>
+          <div class="security-card" aria-label="Security goal map">
+            <div class="security-stack">
+              <span>Confidentiality: only authorised viewing</span>
+              <span>Integrity: accurate and unchanged data</span>
+              <span>Availability: accessible when needed</span>
+              <span>Authenticity: identity or origin is genuine</span>
             </div>
-            <p>If the attack starts with "just click this", check both the device and the decision.</p>
+            <p>Encryption is useful. It is not a universal spell for every problem.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Many candidates list names of malware but do not describe what each one does. Names alone are low-yield.</p>
+            <p>Many answers lose marks because the control is real but protects the wrong goal for the scenario.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not use encryption as a cure for every threat. It may protect confidentiality but does not remove malware or train users.</p>
+            <p>Do not answer "encryption" automatically. It protects confidentiality, but not availability or poor user behaviour by itself.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A user installs a "free game update" that secretly records keystrokes. What is the best diagnosis?</h2>
-            <p>Click the best answer. The update was free in the same way a trapdoor is open-plan architecture.</p>
+            <h2>If the school password is <code>Password123</code>, is the problem the hacker or our optimism?</h2>
+            <p>Click the best diagnosis. The password is not weak; it is practically waving a small flag.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="trojan-spyware">Trojan delivery with spyware/keylogging behaviour</button>
-            <button class="choice-card" type="button" data-hook="worm">Worm only, because all malware spreads by itself</button>
-            <button class="choice-card" type="button" data-hook="availability">Availability control, because it is always about uptime</button>
-            <button class="choice-card" type="button" data-hook="backup">Backup, because every security question wants backup</button>
+            <button class="choice-card" type="button" data-hook="vulnerability">It is a vulnerability that increases risk to confidentiality and authenticity.</button>
+            <button class="choice-card" type="button" data-hook="threat">The password itself is the attacker.</button>
+            <button class="choice-card" type="button" data-hook="availability">It only affects availability.</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption alone fixes all password problems.</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for disguise, behaviour and data impact.
+            Choose one. A good security answer separates threat, vulnerability and control.
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+        <section class="panel" id="risk-chain" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Malware is malicious software; social engineering manipulates people</h2>
+            <h2>Use the risk chain before naming a control</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Malware</strong><span>Software created to disrupt, damage, steal data or gain unauthorised access.</span></article>
-            <article><strong>Payload</strong><span>The harmful action, such as deleting files, encrypting data or stealing credentials.</span></article>
-            <article><strong>Propagation</strong><span>How it spreads, such as infected files, networks, removable media or deceptive downloads.</span></article>
-            <article><strong>Social engineering</strong><span>Manipulating a person into revealing information or performing an unsafe action.</span></article>
+            <article><strong>Asset</strong><span>Something valuable that needs protection, such as exam marks, passwords or customer records.</span></article>
+            <article><strong>Threat</strong><span>A possible cause of harm, such as unauthorised access, data corruption or service failure.</span></article>
+            <article><strong>Vulnerability</strong><span>A weakness that a threat could exploit, such as weak passwords or poor permissions.</span></article>
+            <article><strong>Control</strong><span>A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</span></article>
           </div>
-          <div class="callout">Chinese support: malware = 恶意软件；payload = 有害载荷/破坏行为；propagation = 传播方式；social engineering = 社会工程学攻击。</div>
+          <div class="callout">Chinese support: asset = 资产；threat = 威胁；vulnerability = 漏洞/弱点；control = 控制措施；risk = 风险。</div>
         </section>
 
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Malware is malicious software; social engineering manipulates people</h2>
+        <!-- stage10-explanation:start risk-chain -->
+        <section class="panel explanation-panel" id="explanation-risk-chain" data-explains="risk-chain" data-explanation-kind="mechanism" aria-labelledby="explanation-risk-chain-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+          <h2 class="explanation-sr-only" id="explanation-risk-chain-title">Use the risk chain before naming a control</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Malware is malicious software; social engineering manipulates people with a structured visual model." />
-            <figcaption class="explanation-sr-only">Malware is malicious software; social engineering manipulates people: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-risk-chain.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the risk chain before naming a control with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the risk chain before naming a control: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Malware Software created to disrupt, damage, steal data or gain unauthorised access.</li><li><strong>Lesson fact:</strong> Payload The harmful action, such as deleting files, encrypting data or stealing credentials.</li><li><strong>Lesson fact:</strong> Propagation How it spreads, such as infected files, networks, removable media or deceptive downloads.</li><li><strong>Lesson fact:</strong> Social engineering Manipulating a person into revealing information or performing an unsafe action.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Asset Something valuable that needs protection, such as exam marks, passwords or customer records.</li><li><strong>Lesson fact:</strong> Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.</li><li><strong>Lesson fact:</strong> Vulnerability A weakness that a threat could exploit, such as weak passwords or poor permissions.</li><li><strong>Lesson fact:</strong> Control A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="virus" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+        <!-- stage10-explanation:end risk-chain -->
+        <section class="panel" id="confidentiality" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Virus and worm: both can spread, but not in the same way</h2>
+            <h2>Confidentiality protects data from unauthorised access</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Virus</strong><span>Attaches to a host file/program and often needs the host to be run or shared.</span></article>
-            <article><strong>Worm</strong><span>Self-replicates, often across networks, without needing to attach to a host file.</span></article>
-            <article><strong>Impact</strong><span>Can corrupt data, slow systems, consume bandwidth or install further malware.</span></article>
-            <article><strong>Common error</strong><span>Do not say every self-spreading threat is a virus.</span></article>
+            <article><strong>Goal</strong><span>Only authorised users should be able to view or access the data.</span></article>
+            <article><strong>Risk</strong><span>Personal details, passwords or exam marks are viewed by unauthorised people.</span></article>
+            <article><strong>Controls</strong><span>Access rights, authentication, encryption and least privilege can support confidentiality.</span></article>
+            <article><strong>Exam wording</strong><span>Say who is prevented from reading what, and why they are unauthorised.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start virus -->
-        <section class="panel explanation-panel" id="explanation-virus" data-explains="virus" data-explanation-kind="mechanism" aria-labelledby="explanation-virus-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <h2 class="explanation-sr-only" id="explanation-virus-title">Virus and worm: both can spread, but not in the same way</h2>
+        <!-- stage10-explanation:start confidentiality -->
+        <section class="panel explanation-panel" id="explanation-confidentiality" data-explains="confidentiality" data-explanation-kind="mechanism" aria-labelledby="explanation-confidentiality-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+          <h2 class="explanation-sr-only" id="explanation-confidentiality-title">Confidentiality protects data from unauthorised access</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-virus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Virus and worm: both can spread, but not in the same way with a structured visual model." />
-            <figcaption class="explanation-sr-only">Virus and worm: both can spread, but not in the same way: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-confidentiality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Confidentiality protects data from unauthorised access with a structured visual model." />
+            <figcaption class="explanation-sr-only">Confidentiality protects data from unauthorised access: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Virus Attaches to a host file/program and often needs the host to be run or shared.</li><li><strong>Lesson fact:</strong> Worm Self-replicates, often across networks, without needing to attach to a host file.</li><li><strong>Lesson fact:</strong> Impact Can corrupt data, slow systems, consume bandwidth or install further malware.</li><li><strong>Lesson fact:</strong> Common error Do not say every self-spreading threat is a virus.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Goal Only authorised users should be able to view or access the data.</li><li><strong>Lesson fact:</strong> Risk Personal details, passwords or exam marks are viewed by unauthorised people.</li><li><strong>Lesson fact:</strong> Controls Access rights, authentication, encryption and least privilege can support confidentiality.</li><li><strong>Lesson fact:</strong> Exam wording Say who is prevented from reading what, and why they are unauthorised.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end virus -->
-        <section class="panel" id="trojan" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+        <!-- stage10-explanation:end confidentiality -->
+        <section class="panel" id="integrity" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Trojan: malicious code disguised as legitimate software</h2>
+            <h2>Integrity protects data from unauthorised or accidental alteration</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Appears useful or harmless so a user installs or runs it.</span></article>
-            <article><strong>Impact</strong><span>May create a backdoor, steal data, install other malware or change settings.</span></article>
-            <article><strong>Control</strong><span>Download from trusted sources, check permissions, use anti-malware and user education.</span></article>
-            <article><strong>Common error</strong><span>A Trojan does not need to self-replicate to be harmful.</span></article>
+            <article><strong>Goal</strong><span>Data should remain accurate, complete and unaltered unless changed by an authorised process.</span></article>
+            <article><strong>Risk</strong><span>Exam marks, bank balances or stock levels are changed incorrectly.</span></article>
+            <article><strong>Validation and verification</strong><span>Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.</span></article>
+            <article><strong>Other controls</strong><span>Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.</span></article>
+            <article><strong>Exam wording</strong><span>Explain exactly how the named control prevents, detects or records an incorrect change.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start trojan -->
-        <section class="panel explanation-panel" id="explanation-trojan" data-explains="trojan" data-explanation-kind="mechanism" aria-labelledby="explanation-trojan-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <h2 class="explanation-sr-only" id="explanation-trojan-title">Trojan: malicious code disguised as legitimate software</h2>
+        <!-- stage10-explanation:start integrity -->
+        <section class="panel explanation-panel" id="explanation-integrity" data-explains="integrity" data-explanation-kind="mechanism" aria-labelledby="explanation-integrity-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+          <h2 class="explanation-sr-only" id="explanation-integrity-title">Integrity protects data from unauthorised or accidental alteration</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-trojan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trojan: malicious code disguised as legitimate software with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trojan: malicious code disguised as legitimate software: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-integrity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Integrity protects data from unauthorised or accidental alteration with a structured visual model." />
+            <figcaption class="explanation-sr-only">Integrity protects data from unauthorised or accidental alteration: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Appears useful or harmless so a user installs or runs it.</li><li><strong>Lesson fact:</strong> Impact May create a backdoor, steal data, install other malware or change settings.</li><li><strong>Lesson fact:</strong> Control Download from trusted sources, check permissions, use anti-malware and user education.</li><li><strong>Lesson fact:</strong> Common error A Trojan does not need to self-replicate to be harmful.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.</li><li><strong>Lesson fact:</strong> Risk Exam marks, bank balances or stock levels are changed incorrectly.</li><li><strong>Lesson fact:</strong> Validation and verification Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.</li><li><strong>Lesson fact:</strong> Other controls Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.</li><li><strong>Lesson fact:</strong> Exam wording Explain exactly how the named control prevents, detects or records an incorrect change.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end trojan -->
-        <section class="panel" id="spyware" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+        <!-- stage10-explanation:end integrity -->
+        <section class="panel" id="availability" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Spyware secretly monitors activity or collects data</h2>
+            <h2>Availability keeps systems and data accessible when needed</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Runs without clear user awareness and gathers information.</span></article>
-            <article><strong>Examples</strong><span>Keylogger, screen monitoring or browser tracking used to capture credentials.</span></article>
-            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity if credentials are stolen.</span></article>
-            <article><strong>Control</strong><span>Anti-malware, least privilege, patching, browser controls and caution with downloads.</span></article>
+            <article><strong>Goal</strong><span>Authorised users should be able to access data and services when required.</span></article>
+            <article><strong>Risk</strong><span>Hardware failure, network failure or overload prevents legitimate use.</span></article>
+            <article><strong>Controls</strong><span>Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</span></article>
+            <article><strong>Exam wording</strong><span>State what remains accessible or recoverable, and for whom.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start spyware -->
-        <section class="panel explanation-panel" id="explanation-spyware" data-explains="spyware" data-explanation-kind="mechanism" aria-labelledby="explanation-spyware-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <h2 class="explanation-sr-only" id="explanation-spyware-title">Spyware secretly monitors activity or collects data</h2>
+        <!-- stage10-explanation:start availability -->
+        <section class="panel explanation-panel" id="explanation-availability" data-explains="availability" data-explanation-kind="mechanism" aria-labelledby="explanation-availability-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+          <h2 class="explanation-sr-only" id="explanation-availability-title">Availability keeps systems and data accessible when needed</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-spyware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spyware secretly monitors activity or collects data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Spyware secretly monitors activity or collects data: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-availability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Availability keeps systems and data accessible when needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Availability keeps systems and data accessible when needed: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Runs without clear user awareness and gathers information.</li><li><strong>Lesson fact:</strong> Examples Keylogger, screen monitoring or browser tracking used to capture credentials.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity if credentials are stolen.</li><li><strong>Lesson fact:</strong> Control Anti-malware, least privilege, patching, browser controls and caution with downloads.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Goal Authorised users should be able to access data and services when required.</li><li><strong>Lesson fact:</strong> Risk Hardware failure, network failure or overload prevents legitimate use.</li><li><strong>Lesson fact:</strong> Controls Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</li><li><strong>Lesson fact:</strong> Exam wording State what remains accessible or recoverable, and for whom.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end spyware -->
-        <section class="panel" id="ransomware" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+        <!-- stage10-explanation:end availability -->
+        <section class="panel" id="authenticity" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Ransomware denies access by encrypting or locking data</h2>
+            <h2>Authenticity checks that identity or data origin is genuine</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Encrypts files or locks systems, then demands payment for restoration.</span></article>
-            <article><strong>Goal affected</strong><span>Mainly threatens availability; may also threaten confidentiality if data is stolen.</span></article>
-            <article><strong>Control</strong><span>Offline backups, patching, anti-malware, restricted permissions and user training.</span></article>
-            <article><strong>Common error</strong><span>Paying is not a reliable recovery strategy in an exam answer.</span></article>
+            <article><strong>Goal</strong><span>Users, devices, messages or files should be verified as genuine.</span></article>
+            <article><strong>Risk</strong><span>An attacker pretends to be a valid user, sender or website.</span></article>
+            <article><strong>Controls</strong><span>Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</span></article>
+            <article><strong>Exam wording</strong><span>Say what identity or source is being verified, not just "make it secure".</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start ransomware -->
-        <section class="panel explanation-panel" id="explanation-ransomware" data-explains="ransomware" data-explanation-kind="mechanism" aria-labelledby="explanation-ransomware-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <h2 class="explanation-sr-only" id="explanation-ransomware-title">Ransomware denies access by encrypting or locking data</h2>
+        <!-- stage10-explanation:start authenticity -->
+        <section class="panel explanation-panel" id="explanation-authenticity" data-explains="authenticity" data-explanation-kind="mechanism" aria-labelledby="explanation-authenticity-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
+          <h2 class="explanation-sr-only" id="explanation-authenticity-title">Authenticity checks that identity or data origin is genuine</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-ransomware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ransomware denies access by encrypting or locking data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Ransomware denies access by encrypting or locking data: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-authenticity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authenticity checks that identity or data origin is genuine with a structured visual model." />
+            <figcaption class="explanation-sr-only">Authenticity checks that identity or data origin is genuine: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Encrypts files or locks systems, then demands payment for restoration.</li><li><strong>Lesson fact:</strong> Goal affected Mainly threatens availability; may also threaten confidentiality if data is stolen.</li><li><strong>Lesson fact:</strong> Control Offline backups, patching, anti-malware, restricted permissions and user training.</li><li><strong>Lesson fact:</strong> Common error Paying is not a reliable recovery strategy in an exam answer.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Goal Users, devices, messages or files should be verified as genuine.</li><li><strong>Lesson fact:</strong> Risk An attacker pretends to be a valid user, sender or website.</li><li><strong>Lesson fact:</strong> Controls Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</li><li><strong>Lesson fact:</strong> Exam wording Say what identity or source is being verified, not just &quot;make it secure&quot;.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end ransomware -->
-        <section class="panel" id="social" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Social engineering exploits people rather than code</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Uses trust, urgency, authority, curiosity or fear to influence a user.</span></article>
-            <article><strong>Action</strong><span>User may reveal passwords, approve access, install software or transfer data.</span></article>
-            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity through impersonation or credential theft.</span></article>
-            <article><strong>Control</strong><span>User training, verification procedures, MFA, reporting routes and least privilege.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start social -->
-        <section class="panel explanation-panel" id="explanation-social" data-explains="social" data-explanation-kind="mechanism" aria-labelledby="explanation-social-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <h2 class="explanation-sr-only" id="explanation-social-title">Social engineering exploits people rather than code</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-social.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Social engineering exploits people rather than code with a structured visual model." />
-            <figcaption class="explanation-sr-only">Social engineering exploits people rather than code: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Uses trust, urgency, authority, curiosity or fear to influence a user.</li><li><strong>Lesson fact:</strong> Action User may reveal passwords, approve access, install software or transfer data.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity through impersonation or credential theft.</li><li><strong>Lesson fact:</strong> Control User training, verification procedures, MFA, reporting routes and least privilege.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end social -->
+        <!-- stage10-explanation:end authenticity -->
         <section class="panel" id="controls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Match controls to mechanism, not just the word "malware"</h2>
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>One control can support more than one goal, but not every goal</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Threat control comparison">
+          <div class="comparison-table" role="table" aria-label="Security goal comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Threat</div>
-              <div role="columnheader">Likely impact</div>
-              <div role="columnheader">Suitable controls</div>
+              <div role="columnheader">Control</div>
+              <div role="columnheader">Often supports</div>
+              <div role="columnheader">Why</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Virus/worm</div>
-              <div role="cell">Corrupts data, spreads, slows systems, uses resources.</div>
-              <div role="cell">Anti-malware, patching, scanning removable media, network monitoring.</div>
+              <div role="cell">Encryption</div>
+              <div role="cell">Confidentiality</div>
+              <div role="cell">Makes data unreadable without the correct key.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Trojan</div>
-              <div role="cell">Disguised malicious installation or backdoor.</div>
-              <div role="cell">Trusted sources, permissions review, user education, anti-malware.</div>
+              <div role="cell">Access rights</div>
+              <div role="cell">Confidentiality and integrity</div>
+              <div role="cell">Limits who can view or alter data.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Spyware</div>
-              <div role="cell">Secret monitoring, credential/data theft.</div>
-              <div role="cell">Anti-spyware, least privilege, MFA, patching, download caution.</div>
+              <div role="cell">Backup</div>
+              <div role="cell">Availability</div>
+              <div role="cell">Allows recovery if data is lost or corrupted.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Ransomware</div>
-              <div role="cell">Loss of access to files/services.</div>
-              <div role="cell">Offline backups, patching, anti-malware, restricted write access.</div>
+              <div role="cell">Hash/checksum</div>
+              <div role="cell">Integrity</div>
+              <div role="cell">Can detect whether data has changed.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Social engineering</div>
-              <div role="cell">User reveals credentials or performs unsafe action.</div>
-              <div role="cell">Training, verification, MFA, clear reporting procedure.</div>
+              <div role="cell">Digital certificate</div>
+              <div role="cell">Authenticity</div>
+              <div role="cell">Helps verify identity or origin of a website/entity.</div>
             </div>
           </div>
         </section>
-
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">Match controls to mechanism, not just the word &quot;malware&quot;</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match controls to mechanism, not just the word &quot;malware&quot; with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match controls to mechanism, not just the word &quot;malware&quot;: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Likely impact</li><li><strong>Lesson fact:</strong> Suitable controls</li><li><strong>Lesson fact:</strong> Virus/worm</li><li><strong>Lesson fact:</strong> Corrupts data, spreads, slows systems, uses resources.</li><li><strong>Lesson fact:</strong> Anti-malware, patching, scanning removable media, network monitoring.</li><li><strong>Lesson fact:</strong> Disguised malicious installation or backdoor.</li><li><strong>Lesson fact:</strong> Trusted sources, permissions review, user education, anti-malware.</li><li><strong>Lesson fact:</strong> Secret monitoring, credential/data theft.</li><li><strong>Lesson fact:</strong> Anti-spyware, least privilege, MFA, patching, download caution.</li><li><strong>Lesson fact:</strong> Ransomware</li><li><strong>Lesson fact:</strong> Loss of access to files/services.</li><li><strong>Lesson fact:</strong> Offline backups, patching, anti-malware, restricted write access.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end controls -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Threat classifier</h2>
-            <p>Select a clue and identify the most likely malware/social engineering category.</p>
+            <h2>Security goal classifier</h2>
+            <p>Select a risk or control and identify the main security goal.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario clue
+              Scenario
               <select id="scenarioInput">
-                <option value="host">Malicious code attaches to a document and runs when opened</option>
-                <option value="network">Malicious code self-replicates across a network</option>
-                <option value="disguise">A useful-looking installer secretly opens a backdoor</option>
-                <option value="keys">Software secretly records keystrokes</option>
-                <option value="locked">Files are encrypted and payment is demanded</option>
-                <option value="urgent">A caller pressures staff to reveal a password urgently</option>
+                <option value="readmarks">Unauthorised student views exam marks</option>
+                <option value="editmarks">Exam marks are changed without permission</option>
+                <option value="serverdown">Students cannot access the learning platform during class</option>
+                <option value="fakebank">User must verify that a banking website is genuine</option>
+                <option value="backup">Nightly backups allow recovery after disk failure</option>
+                <option value="weakpass">Weak password allows someone to log in as another user</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="simulateBtn">Classify</button>
@@ -409,13 +361,13 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Threat, impact, control</h2>
+            <h2>Risk, goal, control, consequence</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="worm">Worm</button>
-            <button class="tab" type="button" data-example="trojan">Trojan</button>
-            <button class="tab" type="button" data-example="ransomware">Ransomware</button>
-            <button class="tab" type="button" data-example="social">Social engineering</button>
+            <button class="tab active" type="button" data-example="confidentiality">Confidentiality</button>
+            <button class="tab" type="button" data-example="integrity">Integrity</button>
+            <button class="tab" type="button" data-example="availability">Availability</button>
+            <button class="tab" type="button" data-example="authenticity">Authenticity</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
@@ -441,7 +393,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes reward mechanism, impact and control linkage.</p>
+            <p>These are original Cambridge-style questions. The mark schemes reward strict goal-control linkage.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -449,15 +401,15 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-063">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Threat memory map</h2>
+            <h2>Security goal memory map</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Virus</strong><span>Attaches to host file/program and spreads when run/shared.</span></div>
-            <div><strong>Worm</strong><span>Self-replicates, often across networks.</span></div>
-            <div><strong>Trojan</strong><span>Disguised as legitimate software.</span></div>
-            <div><strong>Spyware</strong><span>Secretly monitors or steals information.</span></div>
-            <div><strong>Ransomware</strong><span>Locks/encrypts data and demands payment.</span></div>
-            <div><strong>Social engineering</strong><span>Manipulates people into unsafe actions.</span></div>
+            <div><strong>Confidentiality</strong><span>Prevent unauthorised viewing/access.</span></div>
+            <div><strong>Integrity</strong><span>Prevent or detect unauthorised/incorrect change.</span></div>
+            <div><strong>Availability</strong><span>Keep data/services accessible to authorised users.</span></div>
+            <div><strong>Authenticity</strong><span>Verify identity or origin is genuine.</span></div>
+            <div><strong>Risk chain</strong><span>Asset, threat, vulnerability, impact, control.</span></div>
+            <div><strong>Exam rule</strong><span>Control + mechanism + protected goal + scenario consequence.</span></div>
           </div>
         </section>
 
@@ -468,24 +420,24 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Threat comparison cards</strong>
-              <span>Create six cards: virus, worm, Trojan, spyware, ransomware and social engineering. Include mechanism, impact and control.</span>
+              <strong>Task 1: CIAA flashcards</strong>
+              <span>Create four flashcards: one for each security goal, with definition, risk example and suitable control.</span>
             </article>
             <article>
-              <strong>Task 2: Risk-control table</strong>
-              <span>For a school network, list three malware/social engineering risks and one suitable control for each.</span>
+              <strong>Task 2: School database risk table</strong>
+              <span>For exam marks, student addresses and login accounts, identify asset, threat, vulnerability, impact and control.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Compare ransomware and spyware, then recommend two controls that reduce risk from both technical and human weaknesses.</span>
+              <span>Explain two different risks to an online school system and recommend one control for each, linking each control to a security goal.</span>
             </article>
           </div>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

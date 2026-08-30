@@ -1,126 +1,152 @@
-const hookResponses = {
-  one: "Expected depth: one precise sentence. Example: A primary key uniquely identifies each record in a table.",
-  two: "Expected depth: two linked points. Example: Cache stores frequently used data close to the CPU, so repeated access is faster than using RAM.",
-  four: "Expected depth: paired contrasts. Give at least two clear differences, not two separate mini-essays.",
-  six: "Expected depth: short plan, then benefit, concern, safeguard and judgement with context.",
-};
-
-const planMap = {
-  1: {
-    time: "30-45 seconds",
-    behaviour: "Write one direct term, value or definition. Stop once the mark is earned.",
+const classifierMap = {
+  bitmap: {
+    topic: "Section 1: image file size",
+    method: "Use width x height x colour depth, then convert bits to bytes and suitable units.",
   },
-  2: {
-    time: "1-2 minutes",
-    behaviour: "Write two distinct points, or one point with mechanism and consequence.",
+  packet: {
+    topic: "Section 2: packet switching / communication",
+    method: "Describe packets, addresses, routing, reassembly and possible different routes.",
   },
-  3: {
-    time: "2-4 minutes",
-    behaviour: "Use three brief bullets. Avoid repeating the same point in different words.",
+  fde: {
+    topic: "Section 4: fetch-decode-execute cycle",
+    method: "Name registers and describe transfers in sequence: PC, MAR, memory, MDR, CIR.",
   },
-  4: {
-    time: "3-5 minutes",
-    behaviour: "Plan the points, then write concise linked explanations or paired comparisons.",
+  translator: {
+    topic: "Section 5: interpreter",
+    method: "State that code is translated and executed one statement at a time.",
   },
-  6: {
-    time: "6-8 minutes",
-    behaviour: "Spend 20 seconds planning, then write distinct points with scenario links.",
-  },
-};
-
-const triageMap = {
-  known: {
-    action: "Answer now",
-    reason: "Take the mark quickly. Do not expand a 1-mark definition into a paragraph.",
-  },
-  calc: {
-    action: "Answer now with working",
-    reason: "A familiar calculation can earn method marks even if the final value goes wrong.",
-  },
-  blank: {
-    action: "Flag and return",
-    reason: "After 20 seconds with no topic, protect the rest of the paper and come back later.",
-  },
-  long: {
-    action: "Plan before writing",
-    reason: "A 6-mark answer needs distinct points, not a growing paragraph that repeats itself.",
+  licence: {
+    topic: "Section 7: ownership and licensing",
+    method: "Explain permissions and conditions set by the licence; copyright still applies.",
   },
   sql: {
-    action: "Write clause skeleton first",
-    reason: "SELECT ... FROM ... GROUP BY ... prevents losing the structure while thinking about fields.",
+    topic: "Section 8: SQL aggregate with GROUP BY",
+    method: "Use SELECT group field and aggregate, FROM table, GROUP BY group field.",
+  },
+};
+
+const commandMap = {
+  state: {
+    shape: "Give one precise point. Do not bury the answer.",
+    frame: "Lossless compression allows the original file to be restored exactly.",
+  },
+  describe: {
+    shape: "Say what happens or what it is, usually in sequence.",
+    frame: "The address in the PC is copied to the MAR; the instruction is fetched into the MDR; the instruction is copied to the CIR.",
+  },
+  explain: {
+    shape: "Give cause plus consequence. Use because/so that.",
+    frame: "MFA requires more than one authentication factor, so a stolen password alone is less likely to allow access.",
+  },
+  compare: {
+    shape: "Pair the differences directly. Mention both items in each point.",
+    frame: "A compiler translates the whole program before execution, whereas an interpreter translates and executes one statement at a time.",
+  },
+  justify: {
+    shape: "Choose and defend with scenario-specific reasons.",
+    frame: "An SSD is suitable for a tablet because it has no moving parts, making it more resistant to knocks while being carried.",
+  },
+  evaluate: {
+    shape: "Give benefit, concern, safeguard and supported judgement.",
+    frame: "Surveillance may improve safety, but it reduces privacy; it is justified only if monitoring is limited, transparent and proportionate.",
+  },
+};
+
+const topicFacts = {
+  encryption: {
+    mechanism: "encodes data so it is unreadable without the correct key",
+    consequence: "protecting confidentiality if data is intercepted or stolen",
+  },
+  cache: {
+    mechanism: "stores frequently used data and instructions close to the CPU",
+    consequence: "reducing slower RAM accesses and improving performance for repeated operations",
+  },
+  normalisation: {
+    mechanism: "separates repeated data into related tables",
+    consequence: "reducing duplication and update inconsistencies",
+  },
+  firewall: {
+    mechanism: "filters network traffic using rules such as IP address, port or protocol",
+    consequence: "blocking unauthorised or suspicious traffic from reaching the network",
   },
 };
 
 const examples = {
-  one: {
-    title: "Example 1: 1-mark answer",
-    problem: "State the purpose of a primary key. [1]",
-    steps: [
-      "Full-credit answer: A primary key uniquely identifies each record in a table.",
-      "Why it works: it uses the key phrase 'uniquely identifies'.",
-      "Too much: explaining foreign keys, indexes and validation wastes time.",
-    ],
-  },
-  two: {
-    title: "Example 2: 2-mark explanation",
-    problem: "Explain why MFA improves account security. [2]",
-    steps: [
-      "Point 1: MFA requires more than one authentication factor.",
-      "Point 2: a stolen password alone is less likely to allow access.",
-      "Why it works: mechanism plus consequence in two compact sentences.",
-    ],
-  },
   calc: {
-    title: "Example 3: Calculation answer",
-    problem: "Calculate the storage for 10 seconds of mono sound sampled at 8000 Hz with 8-bit resolution. [4]",
+    title: "Example 1: Calculation strategy",
+    problem: "Calculate the size in bytes of a 640 x 480 bitmap image with 8-bit colour depth.",
     steps: [
-      "Formula: sample rate x duration x resolution x channels.",
-      "Substitution: 8000 x 10 x 8 x 1 = 640 000 bits.",
-      "Conversion: 640 000 / 8 = 80 000 bytes.",
-      "Exam habit: include unit and method so FT marks are possible.",
+      "Topic clue: bitmap file size, Section 1.",
+      "Formula: width x height x colour depth.",
+      "Substitute: 640 x 480 x 8 = 2 457 600 bits.",
+      "Convert: 2 457 600 / 8 = 307 200 bytes.",
+      "Exam habit: show the bit-to-byte conversion; do not jump straight to a unit.",
     ],
   },
-  six: {
-    title: "Example 4: 6-mark answer skeleton",
-    problem: "Evaluate using facial recognition for school attendance. [6]",
+  processor: {
+    title: "Example 2: Processor trace strategy",
+    problem: "Describe how the next instruction is fetched.",
     steps: [
-      "Benefit: faster attendance and possible safeguarding benefit.",
-      "Concern: biometric personal data may reduce privacy or be misused.",
-      "Safeguard: consent, limited retention, access control and alternative method.",
-      "Judgement: justified only if benefits are proportionate and safeguards are enforced.",
+      "Topic clue: instruction fetch, Section 4.",
+      "Register sequence: PC stores address of next instruction.",
+      "Address is copied to MAR; memory returns instruction into MDR.",
+      "Instruction is copied to CIR; PC is incremented.",
+      "Exam habit: use exact register names, not 'the CPU gets it'.",
+    ],
+  },
+  security: {
+    title: "Example 3: Security explanation strategy",
+    problem: "Explain how encryption protects data sent over a public network.",
+    steps: [
+      "Topic clue: encryption, Section 6.",
+      "Mechanism: data is encoded using an algorithm/key.",
+      "Consequence: intercepted data is unreadable without the key.",
+      "Limit: encryption does not by itself prove the sender's identity.",
+      "Exam habit: avoid vague 'makes data secure'.",
+    ],
+  },
+  ethics: {
+    title: "Example 4: Evaluation strategy",
+    problem: "Evaluate using cameras with facial recognition in a town centre.",
+    steps: [
+      "Topic clue: ethics/privacy/surveillance, Section 7.",
+      "Benefit: may help identify missing people or suspects quickly.",
+      "Concern: may track innocent people and reduce privacy.",
+      "Safeguard: limit purpose, retention and access; be transparent.",
+      "Judgement: acceptable only if proportional and carefully controlled.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the 8-bit unsigned binary range?", accepted: ["0-255", "0 to 255", "0 - 255"], answer: "0-255" },
-  { id: "p2", prompt: "Which protocol transfers web pages securely?", accepted: ["https"], answer: "HTTPS" },
-  { id: "p3", prompt: "Which register stores the address of the next instruction?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
-  { id: "p4", prompt: "Which translator executes code one statement at a time?", accepted: ["interpreter"], answer: "Interpreter" },
-  { id: "p5", prompt: "Which SQL clause filters records?", accepted: ["where"], answer: "WHERE" },
-  { id: "p6", prompt: "Which malware encrypts files and demands payment?", accepted: ["ransomware"], answer: "Ransomware" },
-  { id: "p7", prompt: "Which key links to a primary key in another table?", accepted: ["foreign key", "foreign"], answer: "Foreign key" },
-  { id: "p8", prompt: "Which term means checking entered data against a source document?", accepted: ["verification"], answer: "Verification" },
-  { id: "p9", prompt: "Which logic gate outputs 1 when inputs are different?", accepted: ["xor", "exclusive or", "exclusive-or"], answer: "XOR" },
-  { id: "p10", prompt: "Which command word usually needs a supported judgement?", accepted: ["evaluate", "justify"], answer: "Evaluate / justify" },
+  { id: "p1", prompt: "Which command word usually needs a cause and consequence?", accepted: ["explain"], answer: "Explain" },
+  { id: "p2", prompt: "Which command word usually needs paired differences between two items?", accepted: ["compare"], answer: "Compare" },
+  { id: "p3", prompt: "Which command word usually needs a supported judgement?", accepted: ["evaluate", "justify"], answer: "Evaluate / justify" },
+  { id: "p4", prompt: "Which Paper 1 section contains image, sound and compression?", accepted: ["section 1", "1"], answer: "Section 1" },
+  { id: "p5", prompt: "Which Paper 1 section contains packets, protocols and network hardware?", accepted: ["section 2", "2"], answer: "Section 2" },
+  { id: "p6", prompt: "Which Paper 1 section contains CPU registers and the FDE cycle?", accepted: ["section 4", "4"], answer: "Section 4" },
+  { id: "p7", prompt: "Which Paper 1 section contains OS roles and translators?", accepted: ["section 5", "5"], answer: "Section 5" },
+  { id: "p8", prompt: "Which Paper 1 section contains authentication, malware and encryption?", accepted: ["section 6", "6"], answer: "Section 6" },
+  { id: "p9", prompt: "Which SQL clause is likely if the question says 'for each category'?", accepted: ["group by"], answer: "GROUP BY" },
+  { id: "p10", prompt: "In a calculation answer, what should you include before the final value?", accepted: ["working", "method", "formula", "substitution"], answer: "Working / method / formula" },
 ];
 
 const mistakes = [
   {
-    wrong: "For a 1-mark definition, I wrote everything I knew about the topic.",
-    fix: "Write the essential property only. A primary key uniquely identifies a record; then move on.",
+    wrong: "The question says explain, so I wrote the keyword and moved on.",
+    fix: "Explain needs mechanism and consequence. Add because/so that and link to the scenario.",
   },
   {
-    wrong: "My calculation answer had the final number but no unit or working.",
-    fix: "Show formula, substitution, conversion and unit. This protects method and FT marks.",
+    wrong: "For compare questions, I wrote one paragraph about a compiler and then one about an interpreter.",
+    fix: "Pair the differences directly: compiler does X whereas interpreter does Y.",
   },
   {
-    wrong: "I spent six minutes on a 2-mark question because I wanted it to be perfect.",
-    fix: "Use the mark value as a ceiling. Two marks need two credit-worthy points, then move on.",
+    wrong: "I saw 'data' and answered with databases, but the question was about data protection ethics.",
+    fix: "Use topic clues and command words together. Personal data, consent and monitoring usually point to Section 7 ethics/privacy.",
   },
   {
-    wrong: "My short explanation said 'it is secure' but did not say how.",
-    fix: "Add mechanism. For example, encryption encodes data so intercepted data is unreadable without the key.",
+    wrong: "I skipped units in a file-size calculation because the number was correct.",
+    fix: "Cambridge-style marking often rewards method and units. Show formula, conversion and final unit.",
   },
 ];
 
@@ -133,109 +159,99 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "A sound file is recorded for 20 seconds at 16 000 samples per second using 8-bit sampling resolution and one channel. Calculate the file size in bytes.",
-    answer: "16 000 x 20 x 8 x 1 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
+    marks: "5 marks",
+    prompt: "A bitmap image is 800 pixels wide and 600 pixels high. It uses 16-bit colour depth. Calculate the file size in bytes, ignoring metadata.",
+    answer: "800 x 600 x 16 = 7 680 000 bits. 7 680 000 / 8 = 960 000 bytes.",
     marking: [
-      { mark: "M1", text: "uses sample rate x duration x sampling resolution x channels" },
-      { mark: "M1", text: "substitutes 16 000 x 20 x 8 x 1" },
-      { mark: "A1", text: "obtains 2 560 000 bits" },
-      { mark: "A1", text: "converts to 320 000 bytes with suitable unit" },
+      { mark: "M1", text: "uses width x height x colour depth" },
+      { mark: "M1", text: "substitutes 800 x 600 x 16" },
+      { mark: "A1", text: "obtains 7 680 000 bits" },
+      { mark: "M1", text: "divides by 8 to convert bits to bytes" },
+      { mark: "A1", text: "960 000 bytes with suitable unit" },
     ],
     strict: [
-      "Do not award final A1 without byte/bytes unit unless clearly implied by working.",
-      "Do not multiply by 2 channels because the question says one channel.",
-      "Allow 320 KB only if decimal KB conversion is clearly stated; bytes answer is expected.",
+      "Do not award final A1 without a byte/bytes unit unless clearly implied by working.",
+      "Do not include metadata because the question says to ignore it.",
+      "Allow 960 KB only if decimal KB conversion is clearly stated; bytes answer is expected.",
       "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
     title: "Question 2",
-    marks: "3 marks",
-    prompt: "Describe three pieces of information that may be included in a packet header.",
-    answer: "A packet header may contain the source address, destination address and a sequence number so packets can be routed and reassembled in the correct order.",
+    marks: "4 marks",
+    prompt: "Compare how a compiler and an interpreter translate and execute a high-level language program.",
+    answer: "A compiler translates the whole source program into object code before execution, whereas an interpreter translates and executes one statement at a time. A compiled program can be run without retranslation, whereas interpreted code needs the interpreter at run time. An interpreter is useful for debugging because errors are found as statements execute.",
     marking: [
-      { mark: "B1", text: "source address" },
-      { mark: "B1", text: "destination address" },
-      { mark: "B1", text: "sequence number / packet number / order information" },
+      { mark: "B1", text: "compiler translates whole program/source before execution" },
+      { mark: "B1", text: "interpreter translates/executes statement by statement" },
+      { mark: "B1", text: "compiled program/object code can run without retranslation" },
+      { mark: "B1", text: "interpreter useful for debugging or needs interpreter at run time" },
     ],
     strict: [
-      "Do not award more than one mark for vague 'address' unless source/destination is distinguished.",
-      "Allow checksum/control information as an alternative valid header item.",
-      "Do not accept payload data as header information.",
+      "Do not accept assembler as either compiler or interpreter.",
+      "Allow line by line for statement by statement.",
+      "Do not award comparison mark for two unconnected descriptions.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "A processor repeatedly executes the same instructions in a loop. Explain how cache memory can improve performance in this situation.",
-    answer: "Cache stores frequently used data and instructions close to or inside the CPU. Cache is faster to access than RAM, so repeated data/instructions can be fetched more quickly. This reduces slower main memory accesses and can improve performance when the program reuses data or instructions.",
+    marks: "6 marks",
+    prompt: "A company sends confidential customer data over a public network. Explain two controls that could reduce risk.",
+    answer: "Encryption can encode the data so that intercepted data is unreadable without the correct key, protecting confidentiality. Authentication such as MFA can check the user's identity before access, reducing the chance that a stolen password alone allows unauthorised access. Access rights can also limit data to staff who need it for their role.",
     marking: [
-      { mark: "B1", text: "cache stores frequently used data/instructions" },
-      { mark: "B1", text: "cache is faster/closer to CPU than RAM" },
-      { mark: "B1", text: "reduces need to access slower main memory" },
-      { mark: "B1", text: "links to improved performance for repeated/reused data or instructions" },
+      { mark: "B1", text: "names encryption" },
+      { mark: "B1", text: "explains encoded/unreadable without key" },
+      { mark: "B1", text: "links encryption to confidentiality during transmission" },
+      { mark: "B1", text: "names authentication/MFA or access rights" },
+      { mark: "B1", text: "explains mechanism of second control" },
+      { mark: "B1", text: "applies second control to reducing unauthorised access/risk" },
     ],
     strict: [
-      "Do not accept cache as the same as RAM.",
-      "Allow 'between CPU and RAM' if faster access role is clear.",
-      "Do not award full credit for generic 'makes it faster' without mechanism.",
+      "Do not award full credit for generic 'use security'.",
+      "Allow VPN/HTTPS if encryption mechanism is clear.",
+      "Do not treat backup as a confidentiality control unless availability is separately discussed.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Compare validation and verification when entering data into a database.",
-    answer: "Validation checks that entered data follows rules such as type, range or format, whereas verification checks that entered data matches the original source. Validation may reject an invalid date format, whereas verification may involve proofreading or double entry against a paper form.",
+    prompt: "The Book table has fields BookID, Title, Category and Copies. Write an SQL query to output each Category and the number of books in that Category.",
+    answer: "SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
     marking: [
-      { mark: "B1", text: "validation checks data against rules" },
-      { mark: "B1", text: "verification checks against original/source data" },
-      { mark: "B1", text: "valid validation example such as type/range/format/presence" },
-      { mark: "B1", text: "valid verification example such as proofreading/double entry and comparative wording" },
+      { mark: "B1", text: "SELECT Category" },
+      { mark: "B1", text: "uses COUNT(*) or valid count of records" },
+      { mark: "B1", text: "FROM Book" },
+      { mark: "M1", text: "GROUP BY Category" },
     ],
     strict: [
-      "Do not accept 'validation proves data is correct'.",
-      "Allow spell check only if clearly used as a format/presence rule, not proof of truth.",
-      "Do not accept authentication as verification in this data-entry context.",
+      "Do not award GROUP BY mark for ORDER BY Category.",
+      "Do not accept SUM(Copies) because the question asks for number of books, not total copies.",
+      "Allow COUNT(BookID).",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A school is moving student records to a shared server. Explain three different measures that can protect the records.",
-    answer: "Authentication such as MFA can check user identity before access, reducing unauthorised logins. Access rights can restrict student records to staff who need them, limiting unauthorised viewing or editing. Encryption can encode stored or transmitted records so they are unreadable without the correct key if intercepted or stolen. Backups can also allow records to be restored after loss or corruption.",
+    prompt: "A town uses surveillance cameras with facial recognition in public spaces. Evaluate this decision.",
+    answer: "The system may improve public safety by helping identify suspects or missing people quickly. However, it may reduce privacy because people are monitored in public and biometric data may be stored or misused. It may also be unfair if recognition accuracy differs between groups. The decision is justified only if use is transparent, data is retained for a limited time, access is restricted and the benefit is proportionate to the privacy impact.",
     marking: [
-      { mark: "B1", text: "names valid measure such as authentication/MFA/access rights/encryption/backup" },
-      { mark: "B1", text: "explains mechanism of first measure in context" },
-      { mark: "B1", text: "names second valid measure" },
-      { mark: "B1", text: "explains mechanism of second measure in context" },
-      { mark: "B1", text: "names third valid measure" },
-      { mark: "B1", text: "explains mechanism of third measure in context" },
+      { mark: "B1", text: "valid benefit such as safety/crime prevention/finding missing people" },
+      { mark: "B1", text: "applies benefit to town/public spaces" },
+      { mark: "B1", text: "valid concern such as privacy, surveillance or biometric data misuse" },
+      { mark: "B1", text: "explains consequence of concern" },
+      { mark: "B1", text: "gives suitable safeguard/condition such as retention limit, transparency or access control" },
+      { mark: "B1", text: "judges whether public facial recognition is proportionate using safety benefit, surveillance/false-match harm and operational safeguards" },
     ],
     strict: [
-      "Do not award explanation marks for generic 'keeps it safe'.",
-      "Allow firewall/anti-malware/audit trails if mechanism is correct and relevant.",
-      "Do not count the same measure twice under different wording.",
+      "Do not award full credit for one-sided safety-only answers.",
+      "Allow data protection wording if privacy concern is clear.",
+      "Do not require a named law.",
     ],
   },
 ];
 
-let timerSeconds = 300;
-let timerInitial = 300;
-let timerId = null;
-
 function normalise(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";");
-}
-
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60).toString().padStart(2, "0");
-  const secs = (seconds % 60).toString().padStart(2, "0");
-  return `${mins}:${secs}`;
-}
-
-function updateTimerDisplay() {
-  document.querySelector("#timerDisplay").textContent = formatTime(timerSeconds);
 }
 
 function setupPrint() {
@@ -244,68 +260,46 @@ function setupPrint() {
 
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
+  const responses = {
+    calc: "Response shape: calculation. Write formula, substitute values, convert units and state final unit.",
+    compare: "Response shape: comparison. Pair each difference directly: compiler does X whereas interpreter does Y.",
+    sql: "Response shape: SQL. Identify fields, table, filter/group/sort clauses.",
+    evaluate: "Response shape: evaluation. Give benefit, concern, safeguard and judgement.",
+  };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = hookResponses[button.dataset.hook];
+      feedback.textContent = responses[button.dataset.hook];
     });
   });
 }
 
-function setupTimer() {
-  document.querySelectorAll("[data-time]").forEach((button) => {
-    button.addEventListener("click", () => {
-      timerInitial = Number(button.dataset.time);
-      timerSeconds = timerInitial;
-      updateTimerDisplay();
-    });
-  });
-
-  document.querySelector("#startTimer").addEventListener("click", () => {
-    if (timerId !== null) return;
-    timerId = window.setInterval(() => {
-      timerSeconds = Math.max(0, timerSeconds - 1);
-      updateTimerDisplay();
-      if (timerSeconds === 0) {
-        window.clearInterval(timerId);
-        timerId = null;
-      }
-    }, 1000);
-  });
-
-  document.querySelector("#pauseTimer").addEventListener("click", () => {
-    if (timerId !== null) {
-      window.clearInterval(timerId);
-      timerId = null;
-    }
-  });
-
-  document.querySelector("#resetTimer").addEventListener("click", () => {
-    if (timerId !== null) {
-      window.clearInterval(timerId);
-      timerId = null;
-    }
-    timerSeconds = timerInitial;
-    updateTimerDisplay();
+function setupClassifier() {
+  const input = document.querySelector("#classifierInput");
+  const result = document.querySelector("#classifyResult");
+  document.querySelector("#classifyBtn").addEventListener("click", () => {
+    const item = classifierMap[input.value];
+    result.innerHTML = `<strong>${item.topic}</strong><br />${item.method}`;
   });
 }
 
-function setupPlanner() {
-  const input = document.querySelector("#markInput");
-  const result = document.querySelector("#planResult");
-  document.querySelector("#planBtn").addEventListener("click", () => {
-    const item = planMap[input.value];
-    result.innerHTML = `<strong>Target time:</strong> ${item.time}<br /><strong>Behaviour:</strong> ${item.behaviour}`;
+function setupDecoder() {
+  const input = document.querySelector("#commandInput");
+  const result = document.querySelector("#decodeResult");
+  document.querySelector("#decodeBtn").addEventListener("click", () => {
+    const item = commandMap[input.value];
+    result.innerHTML = `<strong>Expected shape:</strong> ${item.shape}<br /><strong>Frame:</strong> ${item.frame}`;
   });
 }
 
-function setupTriage() {
-  const input = document.querySelector("#triageInput");
-  const result = document.querySelector("#triageResult");
-  document.querySelector("#triageBtn").addEventListener("click", () => {
-    const item = triageMap[input.value];
-    result.innerHTML = `<strong>${item.action}</strong><br />${item.reason}`;
+function setupBuilder() {
+  const topic = document.querySelector("#topicInput");
+  const context = document.querySelector("#contextInput");
+  const result = document.querySelector("#builderResult");
+  document.querySelector("#buildBtn").addEventListener("click", () => {
+    const fact = topicFacts[topic.value];
+    result.innerHTML = `<strong>Built answer:</strong> In the ${context.value}, ${topic.value} ${fact.mechanism}, ${fact.consequence}.`;
   });
 }
 
@@ -329,7 +323,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("one");
+  renderExample("calc");
 }
 
 function renderPractice() {
@@ -377,7 +371,7 @@ function renderMistakes() {
     .map(
       (item, index) => `
         <article>
-          <p class="wrong"><strong>Weak answer ${index + 1}:</strong> ${item.wrong}</p>
+          <p class="wrong"><strong>Weak approach ${index + 1}:</strong> ${item.wrong}</p>
           <button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button>
           <div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div>
         </article>
@@ -428,9 +422,9 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupTimer();
-  setupPlanner();
-  setupTriage();
+  setupClassifier();
+  setupDecoder();
+  setupBuilder();
   setupExamples();
   renderPractice();
   renderMistakes();

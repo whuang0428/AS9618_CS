@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 113 | Data types: integer, real, Boolean, char, string, date and user-defined types</title>
+    <title>AS9618 Lesson 113 | Section 9 required-content checkpoint</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Data types: integer, real, Boolean, char, string, date and user-defined types</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Section 9 required-content checkpoint</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#why-types">Why types</a>
-        <a href="#built-in">Built-in types</a>
-        <a href="#choose">Choosing types</a>
-        <a href="#user-defined">User-defined</a>
+        <a href="#retrieval">Retrieval map</a>
+        <a href="#triage">Scenario triage</a>
+        <a href="#patterns">Pattern choice</a>
+        <a href="#trace">Trace clinic</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#classifier">Type classifier</a>
-        <a href="#builder">Declaration builder</a>
+        <a href="#classifier">Topic classifier</a>
+        <a href="#fixer">Answer fixer</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -50,83 +50,66 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-        <!-- remediation-v2-optional:start -->
+<!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
           <p>user-defined record types before the formal records requirement. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
           <p><strong>Formal AS prerequisite:</strong> S10.01 official data types; S10.02 records must precede this extension.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
+
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Select and use the official Cambridge data types</h2>
+            <h2>Section 9 required-content checkpoint</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.</p>
-            <p>Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.</p>
-            <p>An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.</p>
+            <p>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</p>
+            <p>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</p>
+            <p>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose types for a booking</h3>
-            <p>Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.</p>
+            <h3>Worked example: Design a result-processing solution</h3>
+            <p>Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The eight Cambridge pseudocode type names</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The eight Cambridge pseudocode type names with a structured visual model." />
-            <figcaption class="explanation-sr-only">The eight Cambridge pseudocode type names: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.</li><li><strong>Lesson fact:</strong> The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.</li><li><strong>Lesson fact:</strong> Select a type from the value's meaning and required operations; numeric-looking identifiers may still require STRING.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Select and use the official Cambridge data types: apply and assess</h2>
+            <h2>Section 9 required-content checkpoint: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Suggest a type for the initial M.</p>
-              <details><summary>Show answer</summary><p>CHAR, because exactly one character is stored.</p></details>
+              <p><strong>1.</strong> State the official-style definition of an algorithm.</p>
+              <details><summary>Show answer</summary><p>A solution to a problem expressed as a sequence of defined steps.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Suggest a type for 18.75 used in arithmetic.</p>
-              <details><summary>Show answer</summary><p>REAL, because the value has a fractional part.</p></details>
+              <p><strong>2.</strong> What is the difference between abstraction and decomposition?</p>
+              <details><summary>Show answer</summary><p>Abstraction selects essential details for the model; decomposition splits the retained problem into sub-problems/modules.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is 0045A a STRING?</p>
-              <details><summary>Show answer</summary><p>It is an identifier containing a letter and significant leading zeroes, and arithmetic is not required.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Identify the eight type names listed in the syllabus Notes.</p>
-              <details><summary>Show answer</summary><p>INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</p></details>
+              <p><strong>3.</strong> What must remain unchanged when converting representations?</p>
+              <details><summary>Show answer</summary><p>The algorithm's inputs, outputs, conditions, order, branches and loop behaviour.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Select and justify suitable Cambridge types for CustomerName, MiddleInitial, DateJoined, ItemCount, MeanScore, IsActive, twenty marks and data that must remain after the program ends.</p>
+            <p>Develop an abstract, modular algorithm for processing ten valid marks, then show one refinement level and the central validation logic statement.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>STRING for CustomerName</td><td>Do not select a numeric type merely because an identifier contains digits, and do not use STRING as a generic replacement for DATE, CHAR or numeric values that require their defined operations.</td><td>1</td></tr>
-                  <tr><td>CHAR for MiddleInitial</td><td></td><td>1</td></tr>
-                  <tr><td>DATE for DateJoined</td><td></td><td>1</td></tr>
-                  <tr><td>INTEGER for ItemCount</td><td></td><td>1</td></tr>
-                  <tr><td>REAL for MeanScore</td><td></td><td>1</td></tr>
-                  <tr><td>BOOLEAN for IsActive</td><td></td><td>1</td></tr>
-                  <tr><td>ARRAY with a numeric element type for twenty indexed marks</td><td></td><td>1</td></tr>
-                  <tr><td>FILE for persistent data, with justifications linked to meaning or use</td><td></td><td>1</td></tr>
+                  <tr><td>abstract model keeps only essential data, rules and output</td><td>Do not award isolated terminology when the design omits the required model, modules, refinement or logic.</td><td>1</td></tr>
+                  <tr><td>decomposition expresses connected program modules</td><td></td><td>1</td></tr>
+                  <tr><td>identifier table uses meaningful names, types and purposes</td><td></td><td>1</td></tr>
+                  <tr><td>IPO design forms a complete solution</td><td></td><td>1</td></tr>
+                  <tr><td>sequence, selection and iteration are used appropriately</td><td></td><td>1</td></tr>
+                  <tr><td>one representation is accurate and convertible without changing meaning</td><td></td><td>1</td></tr>
+                  <tr><td>stepwise refinement replaces a complex step with implementable substeps</td><td></td><td>1</td></tr>
+                  <tr><td>logic statement correctly enforces the required mark range</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -136,282 +119,310 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 113 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
-            <h2>A value without a type is a suitcase without a label.</h2>
+            <p class="lesson-meta">Lesson 113 | 45 minutes | Paper 2 Section 9 | stage review</p>
+            <h2>Read the scenario. Find the pattern. Write the marks.</h2>
             <p>
-              Data types tell a program what kind of value is stored, what operations are valid and how the value
-              should be interpreted. In Cambridge pseudocode, choosing the correct type is part of designing a clear
-              and reliable solution, not decoration for the variable name.
+              Section 9 questions rarely say, "Please use a sentinel-controlled loop with a running total." They
+              describe a situation and expect you to recognise the algorithm hiding inside it. This review lesson
+              connects decomposition, IPOC, trace tables, searches, sorts, loops and Cambridge pseudocode conventions.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>INTEGER, REAL, BOOLEAN, CHAR, STRING, DATE and user-defined types</span></div>
-              <div><strong>Choose</strong><span>suitable types for values and scenarios with clear reasons</span></div>
-              <div><strong>Declare</strong><span>variables and simple user-defined types in Cambridge-style pseudocode</span></div>
+              <div><strong>Diagnose</strong><span>identify the likely Section 9 topic from command words and scenario clues</span></div>
+              <div><strong>Design</strong><span>convert requirements into IPOC, variables, control structures and pseudocode</span></div>
+              <div><strong>Upgrade</strong><span>rewrite vague answers into mark-worthy answers with strict Cambridge wording</span></div>
             </div>
           </div>
-          <div class="type-visual" aria-label="Data type visual">
-            <div class="value-card"><strong>42</strong><span>INTEGER</span></div>
-            <div class="value-card"><strong>42.5</strong><span>REAL</span></div>
-            <div class="value-card"><strong>TRUE</strong><span>BOOLEAN</span></div>
-            <div class="value-card"><strong>"Ali"</strong><span>STRING</span></div>
-            <p>Same storage idea, different rules. The type decides what the value means.</p>
+          <div class="scenario-visual" aria-label="Review visual">
+            <div class="review-card">
+              <strong>Scenario</strong>
+              <span>Input values until -1. Ignore the sentinel. Output count, total and average.</span>
+            </div>
+            <div class="flow-strip">
+              <span>IPOC</span><span>Pattern</span><span>Pseudocode</span><span>Trace</span><span>MS</span>
+            </div>
+            <div class="review-card">
+              <strong>Answer shape</strong>
+              <span>Initialise -> input before test -> WHILE valid -> update -> input next -> output after loop</span>
+            </div>
+            <p>If the paragraph feels long, it is probably trying to hide a short algorithm.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 can ask for declarations, suitable data types, and reasons why a type is appropriate for a field.</p>
+            <p>Section 9 rewards mechanism. A correct label may start an answer, but marks usually come from how the algorithm works.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not store phone numbers or IDs as INTEGER just because they contain digits. If arithmetic is not needed, STRING is often safer.</p>
+            <p>"Use a loop" is not enough. Name the loop type and connect it to wording such as exactly, until, while or for each.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Is "007" a number or a code?</h2>
-            <p>A spy ID is stored as 007. Which type preserves the leading zero and avoids accidental arithmetic?</p>
+            <h2>Which toolbox should you open?</h2>
+            <p>A question says: "The list is already sorted. Find whether a target value is present using as few comparisons as possible."</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="integer">INTEGER</button>
-            <button class="choice-card" type="button" data-hook="real">REAL</button>
-            <button class="choice-card" type="button" data-hook="string">STRING</button>
-            <button class="choice-card" type="button" data-hook="boolean">BOOLEAN</button>
+            <button class="choice-card" type="button" data-hook="linear">Linear search</button>
+            <button class="choice-card" type="button" data-hook="binary">Binary search</button>
+            <button class="choice-card" type="button" data-hook="bubble">Bubble sort</button>
+            <button class="choice-card" type="button" data-hook="average">Running average</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the type that stores the characters exactly as entered.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the algorithm pattern signalled by "sorted" and "few comparisons".</div>
         </section>
 
-        <section class="panel" id="why-types" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+        <section class="panel" id="retrieval" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
-            <p class="eyebrow">Why data types exist</p>
-            <h2>A type controls meaning and valid operations</h2>
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Section 9 in one page</h2>
+            <p>Chinese support: 复习不是重新抄笔记，而是快速识别题目在考哪一种算法思维。</p>
+          </div>
+          <div class="data-table retrieval-table" role="table" aria-label="Section 9 review map">
+            <div class="table-row table-head" role="row"><div>Topic</div><div>Signal words</div><div>Expected mechanism</div><div>Typical marking error</div></div>
+            <div class="table-row" role="row"><div>IPOC / decomposition</div><div>scenario, requirements, constraints</div><div>break problem into inputs, processing, outputs and rules</div><div>copying the story without design decisions</div></div>
+            <div class="table-row" role="row"><div>Trace tables</div><div>dry run, trace, values after each loop</div><div>update variables row by row in execution order</div><div>jumping to final answer and missing intermediate states</div></div>
+            <div class="table-row" role="row"><div>Selection and iteration</div><div>if, otherwise, exactly, until, while</div><div>choose IF, FOR or WHILE from the wording</div><div>using a fixed loop when count is unknown</div></div>
+            <div class="table-row" role="row"><div>Search and sort</div><div>find, sorted, order, compare adjacent</div><div>linear/binary search, bubble/insertion sort</div><div>forgetting binary search needs sorted data</div></div>
+            <div class="table-row" role="row"><div>Running variables</div><div>total, count, maximum, minimum, average</div><div>initialise, update inside loop, output after loop</div><div>initialising maximum to 0 without a stated non-negative range</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start retrieval -->
+        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Section 9 in one page</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 9 in one page with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 9 in one page: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Signal words</li><li><strong>Lesson fact:</strong> Expected mechanism</li><li><strong>Lesson fact:</strong> Typical marking error</li><li><strong>Lesson fact:</strong> IPOC / decomposition</li><li><strong>Lesson fact:</strong> scenario, requirements, constraints</li><li><strong>Lesson fact:</strong> break problem into inputs, processing, outputs and rules</li><li><strong>Lesson fact:</strong> copying the story without design decisions</li><li><strong>Lesson fact:</strong> Trace tables</li><li><strong>Lesson fact:</strong> dry run, trace, values after each loop</li><li><strong>Lesson fact:</strong> update variables row by row in execution order</li><li><strong>Lesson fact:</strong> jumping to final answer and missing intermediate states</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end retrieval -->
+        <section class="panel" id="triage" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+          <div class="section-title">
+            <p class="eyebrow">Scenario triage</p>
+            <h2>Turn question wording into an algorithm plan</h2>
           </div>
           <div class="triage-grid">
             <article>
-              <h3>Meaning</h3>
-              <p><code>23</code> could be an age, a day of month, a count or part of an ID. The variable name and type make the intention explicit.</p>
-              <pre><code>DECLARE Age : INTEGER
-DECLARE StudentID : STRING</code></pre>
+              <h3>Step 1: Output first</h3>
+              <p>Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</p>
+              <pre><code>Output needed: average rainfall
+
+Therefore:
+Total is needed
+Count is needed
+Average &lt;- Total / Count</code></pre>
             </article>
             <article>
-              <h3>Operations</h3>
-              <p>You can add two INTEGER values, compare DATE values, test a BOOLEAN, and join STRING values. The type narrows what is sensible.</p>
-              <pre><code>IF IsValid = TRUE THEN
-    OUTPUT "Accepted"
-ENDIF</code></pre>
+              <h3>Step 2: Stop condition</h3>
+              <p>Ask: does the question state a fixed number of values, or does input continue until a condition is met?</p>
+              <pre><code>Exactly 7 days      -> FOR Day &lt;- 1 TO 7
+Until -1 entered   -> WHILE Value &lt;&gt; -1</code></pre>
             </article>
             <article>
-              <h3>Validation</h3>
-              <p>Choosing a type does not replace validation. A DATE type stores a date; validation still checks whether a date is in an allowed range.</p>
-              <pre><code>IF BirthDate &gt; Today THEN
-    OUTPUT "Invalid"
-ENDIF</code></pre>
+              <h3>Step 3: Update placement</h3>
+              <p>Updates go inside the loop; final outputs normally go after the loop. The exam enjoys catching students who swap those two.</p>
+              <pre><code>Total &lt;- Total + Reading
+Count &lt;- Count + 1
+
+// after the loop
+Average &lt;- Total / Count
+OUTPUT Average</code></pre>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start why-types -->
-        <section class="panel explanation-panel" id="explanation-why-types" data-explains="why-types" data-explanation-kind="process" aria-labelledby="explanation-why-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
-          <h2 class="explanation-sr-only" id="explanation-why-types-title">A type controls meaning and valid operations</h2>
+        <!-- stage10-explanation:start triage -->
+        <section class="panel explanation-panel" id="explanation-triage" data-explains="triage" data-explanation-kind="synthesis" aria-labelledby="explanation-triage-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+          <h2 class="explanation-sr-only" id="explanation-triage-title">Turn question wording into an algorithm plan</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-why-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A type controls meaning and valid operations with a structured visual model." />
-            <figcaption class="explanation-sr-only">A type controls meaning and valid operations: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-triage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn question wording into an algorithm plan with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn question wording into an algorithm plan: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A data type determines which operations are meaningful for a stored value.</li><li><strong>Lesson fact:</strong> A BOOLEAN can control a decision and a DATE can be compared with another date.</li><li><strong>Lesson fact:</strong> Close every structured IF example with ENDIF.</li><li><strong>Lesson fact:</strong> Choosing the correct type does not replace validation against the problem's allowed range.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Scenario triage</li><li><strong>Lesson fact:</strong> Step 1: Output first</li><li><strong>Lesson fact:</strong> Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</li><li><strong>Lesson fact:</strong> Output needed: average rainfall</li><li><strong>Lesson fact:</strong> Therefore:</li><li><strong>Lesson fact:</strong> Total is needed</li><li><strong>Lesson fact:</strong> Count is needed</li><li><strong>Lesson fact:</strong> Average &lt;- Total / Count</li><li><strong>Lesson fact:</strong> Step 2: Stop condition</li><li><strong>Lesson fact:</strong> Ask: does the question state a fixed number of values, or does input continue until a condition is met?</li><li><strong>Lesson fact:</strong> Exactly 7 days -&gt; FOR Day &lt;- 1 TO 7</li><li><strong>Lesson fact:</strong> Until -1 entered -&gt; WHILE Value &lt;&gt; -1</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end why-types -->
-        <section class="panel" id="built-in" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+        <!-- stage10-explanation:end triage -->
+        <section class="panel" id="patterns" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
-            <p class="eyebrow">Built-in types</p>
-            <h2>Core AS-level data types</h2>
-            <p>Chinese support: 类型不是“长得像什么”，而是“需要怎样使用”。</p>
+            <p class="eyebrow">Pattern choice</p>
+            <h2>Match the scenario to the correct algorithm pattern</h2>
           </div>
-          <div class="data-table type-table" role="table" aria-label="Built-in data types">
-            <div class="table-row table-head" role="row"><div>Type</div><div>Stores</div><div>Good example</div><div>Do not use for</div></div>
-            <div class="table-row" role="row"><div>INTEGER</div><div>whole numbers</div><div>Score, Count, Quantity</div><div>values needing decimals</div></div>
-            <div class="table-row" role="row"><div>REAL</div><div>numbers with fractional parts</div><div>Temperature, Mass, Average</div><div>exact counters or indexes</div></div>
-            <div class="table-row" role="row"><div>BOOLEAN</div><div>TRUE or FALSE</div><div>Found, IsValid, HasPaid</div><div>more than two possible states</div></div>
-            <div class="table-row" role="row"><div>CHAR</div><div>one character</div><div>Grade, Initial, MenuChoice</div><div>names or full words</div></div>
-            <div class="table-row" role="row"><div>STRING</div><div>sequence of characters</div><div>Name, Postcode, PhoneNumber</div><div>values used for arithmetic</div></div>
-            <div class="table-row" role="row"><div>DATE</div><div>calendar date</div><div>BirthDate, BookingDate</div><div>date written as unvalidated free text</div></div>
+          <div class="data-table pattern-table" role="table" aria-label="Algorithm pattern choices">
+            <div class="table-row table-head" role="row"><div>Scenario clue</div><div>Pattern</div><div>Core pseudocode feature</div><div>One precise explanation</div></div>
+            <div class="table-row" role="row"><div>exactly 10 readings</div><div>Count-controlled loop</div><div><code>FOR Index &lt;- 1 TO 10</code></div><div>The number of repetitions is known before the loop starts.</div></div>
+            <div class="table-row" role="row"><div>until 0 is entered</div><div>Condition-controlled loop</div><div><code>WHILE Value &lt;&gt; 0</code></div><div>The number of repetitions depends on input values.</div></div>
+            <div class="table-row" role="row"><div>find whether target is in unsorted data</div><div>Linear search</div><div>compare each item with target</div><div>There is no ordering that allows values to be skipped safely.</div></div>
+            <div class="table-row" role="row"><div>find target in sorted data efficiently</div><div>Binary search</div><div>halve the search range</div><div>The sorted order makes it possible to discard half the remaining data.</div></div>
+            <div class="table-row" role="row"><div>put items into order by adjacent swaps</div><div>Bubble sort</div><div>compare and swap neighbours</div><div>Large items move towards the end after repeated passes.</div></div>
+            <div class="table-row" role="row"><div>build a sorted left section</div><div>Insertion sort</div><div>insert next item into its correct position</div><div>Each pass keeps the processed section sorted.</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start built-in -->
-        <section class="panel explanation-panel" id="explanation-built-in" data-explains="built-in" data-explanation-kind="mechanism" aria-labelledby="explanation-built-in-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
-          <h2 class="explanation-sr-only" id="explanation-built-in-title">Core AS-level data types</h2>
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="synthesis" aria-labelledby="explanation-patterns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">Match the scenario to the correct algorithm pattern</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-built-in.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core AS-level data types with a structured visual model." />
-            <figcaption class="explanation-sr-only">Core AS-level data types: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the scenario to the correct algorithm pattern with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match the scenario to the correct algorithm pattern: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Built-in types</li><li><strong>Lesson fact:</strong> Good example</li><li><strong>Lesson fact:</strong> Do not use for</li><li><strong>Lesson fact:</strong> whole numbers</li><li><strong>Lesson fact:</strong> Score, Count, Quantity</li><li><strong>Lesson fact:</strong> values needing decimals</li><li><strong>Lesson fact:</strong> numbers with fractional parts</li><li><strong>Lesson fact:</strong> Temperature, Mass, Average</li><li><strong>Lesson fact:</strong> exact counters or indexes</li><li><strong>Lesson fact:</strong> TRUE or FALSE</li><li><strong>Lesson fact:</strong> Found, IsValid, HasPaid</li><li><strong>Lesson fact:</strong> more than two possible states</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Pattern choice</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> Core pseudocode feature</li><li><strong>Lesson fact:</strong> One precise explanation</li><li><strong>Lesson fact:</strong> exactly 10 readings</li><li><strong>Lesson fact:</strong> Count-controlled loop</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> The number of repetitions is known before the loop starts.</li><li><strong>Lesson fact:</strong> until 0 is entered</li><li><strong>Lesson fact:</strong> Condition-controlled loop</li><li><strong>Lesson fact:</strong> WHILE Value &lt;&gt; 0</li><li><strong>Lesson fact:</strong> The number of repetitions depends on input values.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end built-in -->
-        <section class="panel" id="choose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+        <!-- stage10-explanation:end patterns -->
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
-            <p class="eyebrow">Choosing types</p>
-            <h2>Use the scenario, not the surface appearance</h2>
-          </div>
-          <div class="data-table decision-table" role="table" aria-label="Type decision table">
-            <div class="table-row table-head" role="row"><div>Question</div><div>If yes</div><div>Type direction</div></div>
-            <div class="table-row" role="row"><div>Will arithmetic be performed?</div><div>yes</div><div>INTEGER or REAL</div></div>
-            <div class="table-row" role="row"><div>Can the value contain decimals?</div><div>yes</div><div>REAL</div></div>
-            <div class="table-row" role="row"><div>Is the answer only true/false?</div><div>yes</div><div>BOOLEAN</div></div>
-            <div class="table-row" role="row"><div>Is exactly one character stored?</div><div>yes</div><div>CHAR</div></div>
-            <div class="table-row" role="row"><div>Must leading zeros or letters be preserved?</div><div>yes</div><div>STRING</div></div>
-            <div class="table-row" role="row"><div>Is the value a calendar date?</div><div>yes</div><div>DATE</div></div>
-          </div>
-          <div class="callout">Exam wording tip: "suitable type" answers usually need both the type and a reason linked to the data.</div>
-        </section>
-
-        <!-- stage10-explanation:start choose -->
-        <section class="panel explanation-panel" id="explanation-choose" data-explains="choose" data-explanation-kind="mechanism" aria-labelledby="explanation-choose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
-          <h2 class="explanation-sr-only" id="explanation-choose-title">Use the scenario, not the surface appearance</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-choose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the scenario, not the surface appearance with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the scenario, not the surface appearance: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> INTEGER stores whole numbers and REAL stores values that may have a fractional part.</li><li><strong>Lesson fact:</strong> Both INTEGER and REAL values can be used in arithmetic.</li><li><strong>Lesson fact:</strong> First decide whether a value is numeric, then choose INTEGER for whole-only values or REAL when fractions are possible.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end choose -->
-        <section class="panel" id="user-defined" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
-          <div class="section-title">
-            <p class="eyebrow">User-defined types</p>
-            <h2>When built-in types are not descriptive enough</h2>
+            <p class="eyebrow">Trace clinic</p>
+            <h2>Marks are often lost between two lines of pseudocode</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Enumerated type</h3>
-              <p>Use an enumerated type when a value must be one of a named set of options.</p>
-              <pre><code>TYPE TDay = (Monday, Tuesday, Wednesday, Thursday, Friday)
-
-DECLARE Day : TDay</code></pre>
+              <h3>Sentinel trace</h3>
+              <p>Input values are 4, 6, 0. The sentinel 0 stops the loop and must not be counted.</p>
+              <div class="data-table mini-table" role="table" aria-label="Sentinel trace">
+                <div class="table-row table-head" role="row"><div>Input</div><div>Total</div><div>Count</div><div>Reason</div></div>
+                <div class="table-row" role="row"><div>start</div><div>0</div><div>0</div><div>initialise</div></div>
+                <div class="table-row" role="row"><div>4</div><div>4</div><div>1</div><div>valid data</div></div>
+                <div class="table-row" role="row"><div>6</div><div>10</div><div>2</div><div>valid data</div></div>
+                <div class="table-row" role="row"><div>0</div><div>10</div><div>2</div><div>stop, do not process</div></div>
+              </div>
             </article>
             <article>
-              <h3>Composite type preview</h3>
-              <p>A record groups fields of different types. Records are developed later, but the idea starts with type choice.</p>
-              <pre><code>TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE DateOfBirth : DATE
-    DECLARE Enrolled : BOOLEAN
-ENDTYPE</code></pre>
+              <h3>Maximum trace warning</h3>
+              <p>If readings may be negative, <code>Maximum &lt;- 0</code> can produce an impossible answer.</p>
+              <pre><code>Inputs: -8, -3, -5
+Wrong initial Maximum &lt;- 0
+Output: 0   // not in the input data
+
+Better:
+INPUT Reading
+Maximum &lt;- Reading</code></pre>
             </article>
           </div>
-          <div class="callout">Boundary: this lesson introduces user-defined type choice. Arrays and records get their own full lessons later.</div>
         </section>
 
-        <!-- stage10-explanation:start user-defined -->
-        <section class="panel explanation-panel" id="explanation-user-defined" data-explains="user-defined" data-explanation-kind="mechanism" aria-labelledby="explanation-user-defined-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
-          <h2 class="explanation-sr-only" id="explanation-user-defined-title">When built-in types are not descriptive enough</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-user-defined.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When built-in types are not descriptive enough with a structured visual model." />
-            <figcaption class="explanation-sr-only">When built-in types are not descriptive enough: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-ENDTYPE</li><li><strong>Lesson fact:</strong> Fields of different data types are declared between TYPE and ENDTYPE.</li><li><strong>Lesson fact:</strong> DECLARE Student1 : TStudent
-Declare variables of the record type only after ENDTYPE.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end user-defined -->
         <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Same idea, different syntax</h2>
+            <h2>Paper 2 wants readable Cambridge-style pseudocode</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style declarations</h3>
-              <pre><code>DECLARE Count : INTEGER
-DECLARE Average : REAL
-DECLARE Found : BOOLEAN
-DECLARE Initial : CHAR
-DECLARE Name : STRING
-DECLARE BirthDate : DATE</code></pre>
+              <h3>Cambridge-style answer</h3>
+              <pre><code>Total &lt;- 0
+Count &lt;- 0
+INPUT Value
+WHILE Value &lt;&gt; -1
+    Total &lt;- Total + Value
+    Count &lt;- Count + 1
+    INPUT Value
+ENDWHILE
+Average &lt;- Total / Count
+OUTPUT Average</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>int count;
-double average;
-boolean found;
-char initial;
-String name;
-LocalDate birthDate;</code></pre>
+              <pre><code>int total = 0;
+int count = 0;
+int value = input.nextInt();
+while (value != -1) {
+    total += value;
+    count++;
+    value = input.nextInt();
+}
+double average = (double) total / count;</code></pre>
             </article>
           </div>
-          <div class="callout">Paper 2 reminder: Java syntax supports understanding, but Cambridge-style pseudocode is the expected exam answer format.</div>
+          <div class="callout">Chinese support: Java 可以帮助你测试思路，但 Cambridge pseudocode 才是 Paper 2 的作答格式。</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="synthesis" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Paper 2 wants readable Cambridge-style pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Paper 2 wants readable Cambridge-style pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Paper 2 wants readable Cambridge-style pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Initialise Total and Count, then input the first Value.</li><li><strong>Lesson fact:</strong> While Value is not -1, add it to Total and increment Count.</li><li><strong>Lesson fact:</strong> Input the next Value inside the WHILE body before ENDWHILE.</li><li><strong>Lesson fact:</strong> If Count is greater than zero, calculate Average using real division and output it.</li><li><strong>Lesson fact:</strong> Java may support understanding but is not the Cambridge pseudocode answer format.</li></ol>
 
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
-            <p class="eyebrow">Interactive type classifier</p>
-            <h2>Choose a suitable data type</h2>
+            <p class="eyebrow">Interactive topic classifier</p>
+            <h2>Practise choosing the correct Section 9 tool</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Value or field
-              <select id="typeInput">
-                <option value="score">Exam score out of 75</option>
-                <option value="average">Average temperature 18.7</option>
-                <option value="paid">Has the customer paid?</option>
-                <option value="grade">Single grade character A</option>
-                <option value="phone">Phone number 07123 456789</option>
-                <option value="booking">Booking date</option>
+              Scenario clue
+              <select id="classifierInput">
+                <option value="fixedLoop">Input exactly 12 scores and calculate the total.</option>
+                <option value="sentinel">Input values until -1 is entered.</option>
+                <option value="binarySearch">A sorted list must be searched using few comparisons.</option>
+                <option value="bubble">The algorithm compares adjacent items and swaps if they are in the wrong order.</option>
+                <option value="trace">Complete a table showing variable values after each loop iteration.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="typeBtn">Classify</button>
+            <button class="primary-button" type="button" id="classifierBtn">Classify</button>
           </div>
-          <div class="trace-output" id="typeResult">Choose a field to see the type and reason.</div>
+          <div class="trace-output" id="classifierResult">Choose a clue, then classify the topic and reasoning.</div>
         </section>
 
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+        <section class="panel" id="fixer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
-            <p class="eyebrow">Interactive declaration builder</p>
-            <h2>Build a Cambridge-style declaration</h2>
+            <p class="eyebrow">Interactive answer fixer</p>
+            <h2>Turn vague answers into mark-worthy answers</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Variable purpose
-              <select id="builderInput">
-                <option value="count">number of valid entries</option>
-                <option value="mass">mass measured in kilograms</option>
-                <option value="valid">whether password is valid</option>
-                <option value="initial">student initial</option>
-                <option value="postcode">postcode</option>
-                <option value="birth">date of birth</option>
+              Weak answer
+              <select id="fixerInput">
+                <option value="binary">Binary search is faster.</option>
+                <option value="loop">Use a loop.</option>
+                <option value="max">Set Maximum to 0.</option>
+                <option value="output">Output the average inside the loop.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="builderBtn">Build</button>
+            <button class="primary-button" type="button" id="fixerBtn">Improve</button>
           </div>
-          <div class="trace-output" id="builderResult">Choose a purpose to generate a declaration.</div>
+          <div class="trace-output" id="fixerResult">Choose a weak answer to see a stricter version.</div>
         </section>
 
+        <!-- stage10-explanation:start fixer -->
+        <section class="panel explanation-panel" id="explanation-fixer" data-explains="fixer" data-explanation-kind="synthesis" aria-labelledby="explanation-fixer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
+          <h2 class="explanation-sr-only" id="explanation-fixer-title">Turn vague answers into mark-worthy answers</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-fixer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague answers into mark-worthy answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn vague answers into mark-worthy answers: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive answer fixer</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Choose a weak answer to see a stricter version.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fixer -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Type choices with exam-style reasoning</h2>
+            <h2>Review examples across Section 9</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="school">School data</button>
-            <button class="tab" type="button" data-example="id">ID and phone</button>
-            <button class="tab" type="button" data-example="enum">User-defined</button>
-            <button class="tab" type="button" data-example="declaration">Declarations</button>
+            <button class="tab active" type="button" data-example="rainfall">Rainfall IPOC</button>
+            <button class="tab" type="button" data-example="sentinelTrace">Sentinel trace</button>
+            <button class="tab" type="button" data-example="searchSort">Search or sort</button>
+            <button class="tab" type="button" data-example="msUpgrade">MS upgrade</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -419,8 +430,8 @@ LocalDate birthDate;</code></pre>
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Ten type decisions</h2>
-            <p>Type the best data type or short answer. Use Show answer after trying.</p>
+            <h2>Ten quick Section 9 decisions</h2>
+            <p>Answer briefly. Then use Show answer to compare your wording with a stricter version.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -428,7 +439,7 @@ LocalDate birthDate;</code></pre>
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix common type-selection errors</h2>
+            <h2>Correct the habits that lose marks</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -436,8 +447,8 @@ LocalDate birthDate;</code></pre>
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style data type questions with expandable MS</h2>
-            <p>Mark schemes reward a suitable type plus a reason linked to the exact field.</p>
+            <h2>Original Cambridge-style Section 9 review questions with expandable MS</h2>
+            <p>MS guidance uses Cambridge-style strictness: award mechanism, reject vague claims, and apply FT only when the candidate's earlier method is logically consistent.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -445,12 +456,12 @@ LocalDate birthDate;</code></pre>
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Data type checklist</h2>
+            <h2>Section 9 review checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Use</strong><span>INTEGER for whole-number arithmetic and REAL for decimal values.</span></div>
-            <div><strong>Preserve</strong><span>IDs, postcodes and phone numbers as STRING when arithmetic is not needed.</span></div>
-            <div><strong>Model</strong><span>BOOLEAN for two-state facts, CHAR for one character, DATE for calendar dates and user-defined types for named allowed values.</span></div>
+            <div><strong>Read</strong><span>extract input, processing, output and constraints before writing pseudocode.</span></div>
+            <div><strong>Choose</strong><span>match scenario wording to FOR, WHILE, IF, search, sort or running-variable pattern.</span></div>
+            <div><strong>Prove</strong><span>trace the algorithm, test boundary cases and write explanations with a cause and consequence.</span></div>
           </div>
         </section>
 
@@ -461,16 +472,16 @@ LocalDate birthDate;</code></pre>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Type table</strong>
-              <span>For a library member system, choose types for MemberID, Name, DateJoined, HasOverdueBook, FineAmount and MembershipLevel. Give one reason for each.</span>
+              <strong>Task 1: Mixed-topic sorter</strong>
+              <span>Create a two-column table with eight original scenario clues. For each, name the Section 9 topic and one reason for your choice.</span>
             </article>
             <article>
-              <strong>Task 2: Declarations</strong>
-              <span>Write Cambridge-style DECLARE statements for the six fields in Task 1.</span>
+              <strong>Task 2: Full pseudocode response</strong>
+              <span>Write Cambridge-style pseudocode for: input scores until -1 is entered, ignore -1, output the count of scores at least 50 and the total number of valid scores.</span>
             </article>
             <article>
-              <strong>Task 3: User-defined type</strong>
-              <span>Create one enumerated type for MembershipLevel with at least three named values, then declare a variable that uses it.</span>
+              <strong>Task 3: Mark-scheme self-check</strong>
+              <span>Annotate your pseudocode with at least six mark points: initialisation, first input, loop condition, sentinel handling, update, next input and final output.</span>
             </article>
           </div>
         </section>
@@ -478,8 +489,8 @@ LocalDate birthDate;</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

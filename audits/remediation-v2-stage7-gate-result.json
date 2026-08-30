@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "remediation": "v2",
   "stage": 7,
-  "generatedDate": "2026-08-28",
+  "generatedDate": "2026-08-29",
   "status": "Ready",
   "implementationStatus": "Complete",
   "currentReleaseDecision": "RELEASE_CANDIDATE",
@@ -14,15 +14,15 @@
     "oldApprovedUsed": false
   },
   "browser": {
-    "pages": 153,
-    "viewportRecords": 306,
+    "pages": 154,
+    "viewportRecords": 308,
     "failedRecords": 0,
     "systemKeyboardFlows": 8,
     "contrastFailures": 0
   },
   "reproducibility": {
     "passes": 2,
-    "generatorsPerPass": 21,
+    "generatorsPerPass": 25,
     "secondRunChangedFiles": 0,
     "gitDiffNoIndexExitCode": 0
   },
@@ -30,7 +30,7 @@
     "status": "PassedCurrentSource",
     "command": "node scripts/verify-stage8-release.mjs",
     "commandExitCode": 0,
-    "inventoryRows": 1674,
+    "inventoryRows": 1696,
     "packageSourceParity": "Passed"
   },
   "defectCounts": {

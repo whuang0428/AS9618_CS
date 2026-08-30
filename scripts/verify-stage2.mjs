@@ -8,11 +8,15 @@ const expect = (condition, message) => { if (!condition) failures.push(message);
 const occurrence = (text, needle) => text.split(needle).length - 1;
 
 const repairLessons = new Set(repairs.map((item) => item.lesson));
+// L051 is a separately maintained reinforcement lesson whose Markdown carries
+// an explicit CORE block, but it is not one of the generated Stage 2 repair
+// modules and does not establish first use (S4.15 is owned by L050).
+const maintainedCoreMarkdownLessons = new Set([51]);
 const repairedRows = new Set(repairs.flatMap((item) => item.rows));
 expect(repairs.length === repairLessons.size, "repair lesson numbers must be unique");
 expect(repairedRows.size > 0, "repair data must map to at least one coverage contract row");
 
-for (let lesson = 1; lesson <= 150; lesson += 1) {
+for (let lesson = 1; lesson <= 151; lesson += 1) {
   const number = String(lesson).padStart(3, "0");
   const webDir = path.join(root, "web", `lesson-${number}`);
   const html = fs.readFileSync(path.join(webDir, "index.html"), "utf8");
@@ -25,7 +29,8 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
   expect(occurrence(html, 'id="stage2-completion"') === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} HTML completion module`);
   expect(occurrence(html, 'href="#stage2-completion"') === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} completion navigation link`);
   expect(occurrence(css, "/* Stage 2 syllabus completion:start */") === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} completion CSS block`);
-  expect(occurrence(markdown, "## Core syllabus content") === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} Markdown CORE module`);
+  const expectedMarkdownCore = expected || maintainedCoreMarkdownLessons.has(lesson);
+  expect(occurrence(markdown, "## Core syllabus content") === (expectedMarkdownCore ? 1 : 0), `L${number}: ${expectedMarkdownCore ? "missing or duplicate" : "orphan"} Markdown CORE module`);
 }
 
 for (const repair of repairs) {

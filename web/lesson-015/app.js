@@ -1,70 +1,66 @@
-const triageData = {
-  mib: {
-    result: "Use binary prefix conversion.",
-    method: "KiB and MiB use powers of 1024. Show each step and write the final unit.",
+const recommendations = {
+  chat: {
+    result: "Use Unicode for text representation.",
+    method: "The system must support many languages and symbols. Unicode has a wider character range than ASCII, so messages are less likely to lose meaning.",
   },
-  image: {
-    result: "Use bitmap file-size calculation.",
-    method: "File size in bits = width x height x colour depth. Convert to bytes only if asked.",
+  sensor: {
+    result: "Use a signed numeric representation with enough range.",
+    method: "The temperature range includes negative values, so unsigned-only storage is unsuitable. Choose enough bits to cover -40 to +60 and any required precision.",
   },
-  sound: {
-    result: "Use sound file-size calculation.",
-    method: "File size in bits = sampling rate x sampling resolution x duration x channels.",
+  thumbnail: {
+    result: "Use reduced resolution and possibly lossy compression.",
+    method: "A thumbnail is displayed small, so very high resolution may waste storage and bandwidth. Lossy compression may be acceptable if visible quality remains suitable.",
   },
-  negative: {
-    result: "Use signed representation reasoning.",
-    method: "Check whether sign and magnitude or two's complement is being used before converting.",
-  },
-  exact: {
-    result: "Use lossless compression reasoning.",
-    method: "Exact reconstruction means the decompressed file must be identical to the original.",
+  archive: {
+    result: "Use lossless compression and exact text representation.",
+    method: "Legal or official records must be reconstructed exactly. Lossy compression is unsuitable because it permanently removes data.",
   },
 };
 
 const examples = {
-  units: {
-    title: "Example 1: binary prefix calculation",
-    problem: "Convert 3 MiB into bytes.",
+  sensor: {
+    title: "Example 1: temperature sensor logger",
+    problem: "A system stores temperatures from -40°C to +60°C. Choose a suitable numeric representation.",
     steps: [
-      "MiB is a binary prefix, so use 1024.",
-      "3 MiB = 3 x 1024 KiB.",
-      "3 x 1024 x 1024 bytes = 3 145 728 bytes.",
-      "Final answer must include bytes.",
+      "The data can be negative, so unsigned representation alone is not suitable.",
+      "The representation must cover at least -40 to +60.",
+      "If only whole numbers are needed, an integer representation is acceptable.",
+      "The justification must mention range and negative values.",
     ],
   },
-  image: {
-    title: "Example 2: bitmap file size",
-    problem: "A 640 x 480 image uses 16-bit colour depth. Calculate the file size in bytes.",
+  chat: {
+    title: "Example 2: multilingual chat app",
+    problem: "A chat app must support English, Chinese and Arabic text.",
     steps: [
-      "Pixels = 640 x 480 = 307 200.",
-      "Bits = 307 200 x 16 = 4 915 200 bits.",
-      "Bytes = 4 915 200 / 8 = 614 400 bytes.",
-      "Metadata is ignored unless the question includes it.",
+      "ASCII is limited and mainly supports basic English characters.",
+      "Unicode supports a much wider range of characters and languages.",
+      "Choose Unicode for message text.",
+      "The consequence is better compatibility for multilingual communication.",
     ],
   },
-  explain: {
-    title: "Example 3: scenario explanation",
-    problem: "A museum archive stores original scanned documents. Explain why lossless compression is suitable.",
+  archive: {
+    title: "Example 3: legal archive",
+    problem: "A legal archive stores scanned documents and text records.",
     steps: [
-      "Name the mechanism: lossless compression.",
-      "Explain it: the original file can be reconstructed exactly after decompression.",
-      "Link to context: archive documents must preserve the original content.",
-      "Consequence: no data is permanently removed, so meaning/evidence is not changed.",
+      "Exact reconstruction is required because the records have legal meaning.",
+      "Use lossless compression for documents that must not lose information.",
+      "Use suitable character encoding such as Unicode if multilingual text appears.",
+      "Avoid lossy compression where it could alter evidence or meaning.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "1 KiB = how many bytes?", accepted: ["1024", "1024 bytes"], answer: "1024 bytes" },
-  { id: "p2", prompt: "6 MiB = how many bytes?", accepted: ["6291456", "6291456 bytes", "6,291,456", "6,291,456 bytes"], answer: "6 x 1024 x 1024 = 6 291 456 bytes" },
-  { id: "p3", prompt: "Convert unsigned binary 11010110 to denary.", accepted: ["214"], answer: "214" },
-  { id: "p4", prompt: "How many values can 8 bits represent?", accepted: ["256"], answer: "256 values" },
-  { id: "p5", prompt: "A 200 x 150 bitmap uses 8-bit colour depth. File size in bits?", accepted: ["240000", "240000 bits", "240,000", "240,000 bits"], answer: "200 x 150 x 8 = 240 000 bits" },
-  { id: "p6", prompt: "A mono sound file uses 8000 Hz, 8-bit samples, 10 seconds. Size in bits?", accepted: ["640000", "640000 bits", "640,000", "640,000 bits"], answer: "8000 x 8 x 10 x 1 = 640 000 bits" },
-  { id: "p7", prompt: "Which compression type allows exact reconstruction?", accepted: ["lossless"], answer: "Lossless compression" },
-  { id: "p8", prompt: "Which character set is normally more suitable for multilingual text: ASCII or Unicode?", accepted: ["unicode"], answer: "Unicode" },
-  { id: "p9", prompt: "In a file-size answer, what should be written after the number?", accepted: ["unit", "units"], answer: "A unit, such as bits or bytes" },
-  { id: "p10", prompt: "For an exam explanation, what should follow a correct keyword?", accepted: ["explanation", "reason", "consequence", "reason and consequence"], answer: "A reason/explanation and a consequence linked to the scenario" },
+  { id: "p1", prompt: "A text system must support many languages. Choose ASCII or Unicode.", accepted: ["unicode"], answer: "Unicode" },
+  { id: "p2", prompt: "A value may be negative. Choose signed or unsigned representation.", accepted: ["signed"], answer: "Signed" },
+  { id: "p3", prompt: "A file must be reconstructed exactly. Choose lossless or lossy compression.", accepted: ["lossless"], answer: "Lossless" },
+  { id: "p4", prompt: "A website thumbnail must download quickly. Name one parameter that may be reduced.", accepted: ["resolution", "colour depth", "color depth", "image resolution"], answer: "Resolution or colour depth" },
+  { id: "p5", prompt: "Which representation can store exactly 0-255 using 8 bits?", accepted: ["unsigned", "8-bit unsigned", "unsigned integer"], answer: "8-bit unsigned integer" },
+  { id: "p6", prompt: "For sound, which parameter controls samples per second?", accepted: ["sampling rate", "sample rate"], answer: "Sampling rate" },
+  { id: "p7", prompt: "For bitmap images, what does colour depth control?", accepted: ["bits per pixel", "number of colours", "possible colours"], answer: "Bits per pixel / number of possible colours" },
+  { id: "p8", prompt: "What should every scenario justification include after a recommendation?", accepted: ["reason", "consequence", "reason and consequence"], answer: "A reason and a consequence" },
+  { id: "p9", prompt: "State one precise exam keyword connected to Choosing data representation for a real system.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
+  { id: "p10", prompt: "What should an exam answer about Choosing data representation for a real system include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
 
@@ -77,97 +73,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A bitmap image is 300 pixels wide and 200 pixels high. It uses 16-bit colour depth. Calculate the file size in bytes. Demonstrate your working.",
-    answer: "300 x 200 x 16 = 960 000 bits. 960 000 / 8 = 120 000 bytes.",
+    prompt: "A messaging app must store English, Chinese and Arabic messages. Explain why Unicode is more suitable than ASCII.",
+    answer: "Unicode supports a much wider range of characters from many languages. ASCII is limited mainly to basic English characters, so it may not represent Chinese or Arabic text correctly.",
     marking: [
-      { mark: "M1", text: "uses width x height x colour depth" },
-      { mark: "A1", text: "300 x 200 x 16 = 960 000 bits" },
-      { mark: "M1", text: "divides by 8 to convert bits to bytes" },
-      { mark: "A1", text: "120 000 bytes" },
+      { mark: "B1", text: "Unicode supports a wider range of characters" },
+      { mark: "B1", text: "Unicode supports many languages / multilingual text" },
+      { mark: "B1", text: "ASCII is limited / mainly basic English characters" },
+      { mark: "B1", text: "links the choice to the messaging app requirement" },
     ],
     strict: [
-      "Do not award final A1 if the unit is missing or incorrect.",
-      "Do not include metadata unless stated in the question.",
-      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
+      "Do not accept only 'Unicode is better'.",
+      "Do not require specific character codes.",
+      "Answer must be scenario-linked.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "A mono sound file is sampled at 44 100 Hz using 16-bit sampling resolution for 10 seconds. Calculate the file size in bits.",
-    answer: "44 100 x 16 x 10 x 1 = 7 056 000 bits.",
+    prompt: "A temperature sensor stores values from -40°C to +60°C. Explain why unsigned 8-bit representation may be unsuitable.",
+    answer: "Unsigned 8-bit representation stores values from 0 to 255 only. The sensor may need to store negative values such as -40, so a signed representation or another method that supports negatives is needed.",
     marking: [
-      { mark: "M1", text: "uses sampling rate x sampling resolution x duration" },
-      { mark: "B1", text: "recognises mono means one channel" },
-      { mark: "A1", text: "44 100 x 16 x 10" },
-      { mark: "A1", text: "7 056 000 bits" },
+      { mark: "B1", text: "unsigned 8-bit range is 0 to 255" },
+      { mark: "B1", text: "sensor range includes negative values" },
+      { mark: "B1", text: "unsigned cannot represent negative values" },
+      { mark: "B1", text: "suggests signed representation / representation with suitable range" },
     ],
     strict: [
-      "Do not divide by 8 because the question asks for bits.",
-      "Do not confuse sampling resolution with sampling rate.",
+      "Do not accept only 'not enough bits' unless range is explained.",
+      "Do not require a particular signed format.",
+      "Allow equivalent offset representation if clearly explained.",
     ],
   },
   {
     title: "Question 3",
-    marks: "3 marks",
-    prompt: "Convert the unsigned binary number 10110101 to denary. Demonstrate your working.",
-    answer: "128 + 32 + 16 + 4 + 1 = 181.",
+    marks: "4 marks",
+    prompt: "A website uses thumbnail images. Explain two ways file size could be reduced and one consequence of each.",
+    answer: "Reducing resolution stores fewer pixels, reducing file size but may reduce detail. Reducing colour depth uses fewer bits per pixel, reducing file size but may reduce the range of colours. Lossy compression may also reduce size with some quality loss.",
     marking: [
-      { mark: "M1", text: "uses 8-bit place values correctly" },
-      { mark: "M1", text: "selects active place values 128, 32, 16, 4 and 1" },
-      { mark: "A1", text: "181" },
+      { mark: "B1", text: "valid reduction method such as lower resolution / lower colour depth / lossy compression" },
+      { mark: "B1", text: "valid consequence linked to that method" },
+      { mark: "B1", text: "second valid reduction method" },
+      { mark: "B1", text: "valid consequence linked to second method" },
     ],
     strict: [
-      "Do not accept 10110101 as denary.",
-      "No sign bit is involved because the question says unsigned.",
+      "Do not accept vague 'make quality worse' without naming a parameter.",
+      "Do not require all three methods.",
+      "Consequence can be quality, detail, colour range or transfer time.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A school website stores pages in English, Chinese and Arabic. Explain why Unicode is more suitable than ASCII.",
-    answer: "Unicode supports a much wider range of characters and can represent characters from many languages. ASCII is limited mainly to basic English characters, so it may not represent Chinese or Arabic text correctly. This makes Unicode more suitable for a multilingual website.",
+    prompt: "A hospital archive stores patient documents and scanned images. Discuss suitable compression choices.",
+    answer: "Lossless compression is suitable where exact reconstruction is required, such as patient documents and records. Lossy compression may remove data and could alter meaning or evidence, so it is risky for official records. If images are only previews, lossy may be acceptable, but original records should be preserved losslessly.",
     marking: [
-      { mark: "B1", text: "Unicode supports a wider range of characters" },
-      { mark: "B1", text: "Unicode supports many languages / multilingual text" },
-      { mark: "B1", text: "ASCII is limited / mainly basic English characters" },
-      { mark: "B1", text: "links to Chinese and Arabic characters" },
-      { mark: "B1", text: "links choice to the website requirement" },
+      { mark: "B1", text: "identifies exact reconstruction requirement" },
+      { mark: "B1", text: "recommends lossless compression for records/documents" },
+      { mark: "B1", text: "explains lossy permanently removes data / may alter meaning" },
+      { mark: "B1", text: "links choice to hospital/patient archive context" },
+      { mark: "B1", text: "balanced point such as lossy acceptable only for previews or non-critical copies" },
     ],
     strict: [
-      "Do not accept only 'Unicode has more bits'.",
-      "Do not accept only 'Unicode is better'.",
-      "Answer must be linked to multilingual content.",
+      "Do not accept only 'lossless is better'.",
+      "Do not recommend lossy for original legal/medical records without qualification.",
+      "Award scenario-linked consequences, not generic definitions alone.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A legal archive stores scanned contracts. Discuss whether lossless or lossy compression is more suitable.",
-    answer: "Lossless compression is more suitable for original contracts because the file can be reconstructed exactly after decompression. This matters because legal documents must not have content altered or removed. Lossy compression permanently removes data and could change detail or meaning, although it may reduce file size more. Lossy compression may be suitable only for non-critical preview copies, not the original archive.",
+    marks: "3 marks",
+    prompt: "Explain why using the highest possible sample rate for every audio recording may be unsuitable.",
+    answer: "A higher sampling rate stores more samples per second and can increase quality, but it also increases file size. If the system does not need that quality, it wastes storage and bandwidth.",
     marking: [
-      { mark: "B1", text: "identifies lossless as suitable for originals" },
-      { mark: "B1", text: "explains exact reconstruction" },
-      { mark: "B1", text: "links exact reconstruction to legal documents/contracts" },
-      { mark: "B1", text: "explains lossy permanently removes data" },
-      { mark: "B1", text: "gives a consequence such as changed detail/meaning/evidence" },
-      { mark: "B1", text: "balanced point, e.g. lossy may be used only for preview/non-critical copies" },
+      { mark: "B1", text: "higher sampling rate stores more samples per second" },
+      { mark: "B1", text: "file size / storage / bandwidth increases" },
+      { mark: "B1", text: "may be unnecessary for the purpose / wasteful if quality is not needed" },
     ],
     strict: [
-      "Do not award for 'lossless is higher quality' without exact reconstruction.",
-      "Do not recommend lossy for originals unless risk is clearly discussed.",
-      "Award scenario-linked reasoning over generic definitions.",
+      "Do not accept only 'it costs more'.",
+      "Do not confuse with sampling resolution.",
+      "Answer must mention purpose or requirement.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
 ];
 
-let remainingSeconds = 360;
-let timerId = null;
-
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/,/g, "").replace(/\s+/g, " ");
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
 function setupPrint() {
@@ -180,63 +175,25 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "units"
-        ? "Correct. A missing unit can block a final accuracy mark even when the arithmetic is fine."
-        : "This answer may be good, but it is not the most dangerous one here because it already includes a clear method or scenario link.";
+      feedback.textContent = button.dataset.hook === "signed"
+        ? "Correct. The range includes negative values, so the representation must handle signed values or another negative-value method."
+        : "Not the first issue. The negative range is the major clue.";
     });
   });
 }
 
-function formatTime(seconds) {
-  const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
-  const secs = String(seconds % 60).padStart(2, "0");
-  return `${minutes}:${secs}`;
-}
-
-function renderTimer() {
-  document.querySelector("#timerDisplay").textContent = formatTime(remainingSeconds);
-}
-
-function setupTimer() {
-  document.querySelector("#startTimer").addEventListener("click", () => {
-    if (timerId) return;
-    timerId = window.setInterval(() => {
-      remainingSeconds = Math.max(0, remainingSeconds - 1);
-      renderTimer();
-      if (remainingSeconds === 0) {
-        window.clearInterval(timerId);
-        timerId = null;
-      }
-    }, 1000);
-  });
-
-  document.querySelector("#pauseTimer").addEventListener("click", () => {
-    window.clearInterval(timerId);
-    timerId = null;
-  });
-
-  document.querySelector("#resetTimer").addEventListener("click", () => {
-    window.clearInterval(timerId);
-    timerId = null;
-    remainingSeconds = 360;
-    renderTimer();
-  });
-
-  renderTimer();
-}
-
-function setupTriageTool() {
-  const select = document.querySelector("#clueInput");
-  const result = document.querySelector("#triageResult");
-  const method = document.querySelector("#triageMethod");
-  function update() {
-    const item = triageData[select.value];
+function setupDecisionTool() {
+  const select = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#recommendResult");
+  const method = document.querySelector("#recommendMethod");
+  function recommend() {
+    const item = recommendations[select.value];
     result.textContent = item.result;
     method.textContent = item.method;
   }
-  select.addEventListener("change", update);
-  document.querySelector("#triageBtn").addEventListener("click", update);
-  update();
+  select.addEventListener("change", recommend);
+  document.querySelector("#recommendBtn").addEventListener("click", recommend);
+  recommend();
 }
 
 function renderExample(key) {
@@ -256,19 +213,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("units");
-}
-
-function setupAnswerToggles(scope = document) {
-  scope.querySelectorAll(".answer-toggle").forEach((button) => {
-    button.addEventListener("click", () => {
-      const target = document.querySelector(`#${button.dataset.answer}`);
-      target.classList.toggle("visible");
-      button.textContent = target.classList.contains("visible")
-        ? button.textContent.replace("Show", "Hide")
-        : button.textContent.replace("Hide", "Show");
-    });
-  });
+  renderExample("sensor");
 }
 
 function renderPractice() {
@@ -285,7 +230,15 @@ function renderPractice() {
     </div>
   `).join("");
 
-  setupAnswerToggles(list);
+  document.querySelectorAll(".answer-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = document.querySelector(`#${button.dataset.answer}`);
+      target.classList.toggle("visible");
+      button.textContent = target.classList.contains("visible")
+        ? button.textContent.replace("Show", "Hide")
+        : button.textContent.replace("Hide", "Show");
+    });
+  });
 }
 
 function setupPractice() {
@@ -304,7 +257,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Review any missing method, unit or scenario link.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Scenario answers need a recommendation, a reason and a consequence.`;
   });
 }
 
@@ -341,10 +294,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupTimer();
-  setupTriageTool();
+  setupDecisionTool();
   setupExamples();
-  setupAnswerToggles();
   renderPractice();
   setupPractice();
   renderExamQuestions();

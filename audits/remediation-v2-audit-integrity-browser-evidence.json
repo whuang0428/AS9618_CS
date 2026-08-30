@@ -4,7 +4,7 @@
   "browser": "Codex in-app browser",
   "route": "http://127.0.0.1:8765/web/lesson-009/",
   "source": "web/lesson-009/index.html",
-  "sourceSha256": "196949058dfcb89c1233698908d908fbb4507e92b613cac7292705cdba5c1c70",
+  "sourceSha256": "4e40ebe5e105a689055c8f25c6bb5d84b698e7452d7122dd607ed0ae150de2c6",
   "pageIdentity": {
     "title": "AS9618 Lesson 009 | Vector graphics and drawing lists",
     "h1": "Vector graphics and drawing lists",
@@ -58,12 +58,12 @@
   "currentViewportRecords": [
     {
       "viewport": "1440x900",
-      "sourceHash": "fd955b9b49164ceb6a45f32c8e6297ba7104656e067d934331bf7d1f707a2ea6",
+      "sourceHash": "13dbe44ee15569d6e92bfaf13bfb275fa2f6fbce6a16831a815c5a93913a53d2",
       "status": "Pass"
     },
     {
       "viewport": "390x844",
-      "sourceHash": "fd955b9b49164ceb6a45f32c8e6297ba7104656e067d934331bf7d1f707a2ea6",
+      "sourceHash": "13dbe44ee15569d6e92bfaf13bfb275fa2f6fbce6a16831a815c5a93913a53d2",
       "status": "Pass"
     }
   ]

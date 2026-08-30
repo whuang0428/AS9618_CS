@@ -1,74 +1,74 @@
 const scenarios = {
-  lan: {
-    result: "Switch",
-    method: "A switch connects devices inside a LAN and forwards frames to the correct port using MAC address information.",
+  server: {
+    result: "Fibre-optic cable",
+    method: "A fixed server-room link usually needs high bandwidth, stable performance and low electromagnetic interference. Fibre carries data as light pulses and is suitable for high-capacity links.",
   },
-  internet: {
-    result: "Router",
-    method: "A router connects different networks, such as a school LAN and the internet, and forwards packets using IP addresses/routing information.",
+  classroom: {
+    result: "Radio waves / WiFi",
+    method: "Tablets move around the room, so mobility matters. Radio waves allow wireless access, but performance may be affected by walls, distance, interference and shared bandwidth.",
   },
-  wifi: {
-    result: "Wireless access point",
-    method: "A wireless access point allows wireless devices to connect to the network using radio waves. It is not the same job as routing between networks.",
+  remote: {
+    result: "Satellite",
+    method: "A remote island may not have cable infrastructure. Satellite communication can cover large geographical areas, but latency and cost may be higher.",
   },
-  different: {
-    result: "Gateway",
-    method: "A gateway connects networks that use different protocols, data formats or standards and may translate between them.",
+  desktop: {
+    result: "Copper cable",
+    method: "A fixed desktop PC can use a wired copper connection that is relatively cheap and easy to install for a local network. It may be less suitable over very long distances or near strong electromagnetic interference.",
   },
-  mac: {
-    result: "Switch",
-    method: "MAC address tables are associated with switches forwarding traffic within a LAN.",
+  buildings: {
+    result: "Microwave link",
+    method: "Two buildings with clear line of sight can use a directional microwave link. Alignment, obstacles and weather must be considered.",
   },
-  default: {
-    result: "Default gateway / router",
-    method: "Traffic leaving the local subnet is sent to the default gateway, often a router, so it can be forwarded to another network.",
+  factory: {
+    result: "Fibre-optic cable",
+    method: "Fibre is less affected by electromagnetic interference than copper, so it can be suitable in an electrically noisy environment.",
   },
 };
 
 const examples = {
-  school: {
-    title: "Example 1: school internet path",
-    problem: "A desktop PC opens a website outside the school network.",
+  fibre: {
+    title: "Example 1: fibre link between buildings",
+    problem: "A school connects two server rooms in separate buildings and wants high bandwidth.",
     steps: [
-      "Inside the LAN, a switch can forward frames between local devices using MAC addresses.",
-      "To reach a different network, traffic is sent to a router/default gateway.",
-      "The router forwards packets using IP addresses and routing information.",
-      "A complete answer separates local switching from routing between networks.",
+      "The devices are fixed, so mobility is not the main requirement.",
+      "The link needs high bandwidth and stable performance.",
+      "Fibre-optic cable is suitable because it transmits data as light pulses and can support high data rates.",
+      "A strong answer may also mention long distance or reduced electromagnetic interference.",
     ],
   },
   wifi: {
-    title: "Example 2: adding tablets to a classroom",
-    problem: "A classroom already has a wired LAN, but students need tablet access.",
+    title: "Example 2: wireless classroom",
+    problem: "Students use tablets while moving around a classroom.",
     steps: [
-      "The tablets need wireless access rather than a cable connection.",
-      "A wireless access point allows wireless devices to connect to the network using radio waves.",
-      "The LAN may still use switches for wired devices.",
-      "Internet access may still require a router; the access point does not automatically perform every network role.",
+      "A physical cable would reduce mobility and create a practical problem.",
+      "Radio waves used by WiFi allow devices to connect wirelessly.",
+      "The answer should include one limitation, such as interference, walls, shared bandwidth or security configuration.",
+      "Do not say WiFi is always faster; the scenario is about mobility.",
     ],
   },
-  gateway: {
-    title: "Example 3: two systems with different rules",
-    problem: "A company system needs to exchange data with another network that uses a different protocol.",
+  satellite: {
+    title: "Example 3: remote research station",
+    problem: "A research station needs internet access in a remote area with no cable infrastructure.",
     steps: [
-      "The issue is not simply distance or wireless access.",
-      "The two networks use different communication rules or formats.",
-      "A gateway may be needed to connect the networks and translate between protocols/formats.",
-      "Do not use gateway as a generic replacement for switch or router.",
+      "The location is remote, so laying cable may be impractical or too expensive.",
+      "Satellite communication can cover large geographical areas.",
+      "A limitation is higher latency because signals travel a long distance.",
+      "A complete answer balances suitability with a drawback.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which device forwards frames inside a LAN using MAC addresses?", accepted: ["switch"], answer: "Switch" },
-  { id: "p2", prompt: "Which device connects different networks and forwards packets using IP addresses?", accepted: ["router"], answer: "Router" },
-  { id: "p3", prompt: "Which device allows wireless devices to connect to a network?", accepted: ["wireless access point", "access point", "wap", "ap"], answer: "Wireless access point" },
-  { id: "p4", prompt: "Which device may translate between different network protocols or formats?", accepted: ["gateway"], answer: "Gateway" },
-  { id: "p5", prompt: "Switches mainly use MAC addresses or IP addresses?", accepted: ["mac", "mac addresses", "mac address"], answer: "MAC addresses" },
-  { id: "p6", prompt: "Routers mainly use MAC addresses or IP addresses for routing between networks?", accepted: ["ip", "ip addresses", "ip address"], answer: "IP addresses" },
-  { id: "p7", prompt: "A tablet joins a school network using WiFi. Which hardware gives wireless access?", accepted: ["wireless access point", "access point", "wap", "ap"], answer: "Wireless access point" },
-  { id: "p8", prompt: "A LAN sends traffic outside its local subnet to a default ____.", accepted: ["gateway", "default gateway"], answer: "Default gateway" },
-  { id: "p9", prompt: "Does a switch normally perform protocol translation between different networks? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Name one boundary handled by a router.", accepted: ["between networks", "different networks", "lan to internet", "lan and internet", "network to network", "wan"], answer: "Between networks / LAN to internet" },
+  { id: "p1", prompt: "Which wired medium transmits data as electrical signals?", accepted: ["copper", "copper cable"], answer: "Copper cable" },
+  { id: "p2", prompt: "Which wired medium transmits data as pulses of light?", accepted: ["fibre", "fiber", "fibre optic", "fiber optic", "fibre-optic cable", "fiber-optic cable"], answer: "Fibre-optic cable" },
+  { id: "p3", prompt: "Which wireless medium is used by WiFi?", accepted: ["radio", "radio waves", "radiowaves"], answer: "Radio waves" },
+  { id: "p4", prompt: "Which wireless medium is useful for large geographical coverage in remote areas?", accepted: ["satellite", "satellites"], answer: "Satellite" },
+  { id: "p5", prompt: "Name one factor that may reduce wireless performance.", accepted: ["interference", "walls", "obstacles", "distance", "weather", "congestion", "shared bandwidth"], answer: "Interference / obstacles / distance / weather / congestion" },
+  { id: "p6", prompt: "Name one advantage of fibre optic over copper.", accepted: ["bandwidth", "high bandwidth", "less interference", "low interference", "long distance", "faster", "higher data rate"], answer: "High bandwidth / less electromagnetic interference / longer distance" },
+  { id: "p7", prompt: "What does line of sight mean for a microwave link?", accepted: ["clear path", "unobstructed path", "no obstacle", "no obstacles", "direct path", "visible"], answer: "A clear unobstructed path between transmitter and receiver" },
+  { id: "p8", prompt: "For tablets moving around a classroom, wired or wireless?", accepted: ["wireless", "radio waves", "wifi", "wi-fi"], answer: "Wireless / radio waves / WiFi" },
+  { id: "p9", prompt: "Does fibre optic use electrical signals? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one disadvantage of satellite communication.", accepted: ["latency", "delay", "high latency", "cost", "expensive", "weather", "limited bandwidth"], answer: "High latency / cost / weather effects / limited capacity" },
 ];
 
 
@@ -81,88 +81,88 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Explain the role of a switch in a local area network.",
-    answer: "A switch connects devices in a LAN and forwards frames only to the appropriate port/device. It uses MAC address information to decide where to send the frame, reducing unnecessary traffic compared with sending the frame to every device.",
+    prompt: "A school connects two server rooms that require a high-bandwidth fixed link. Explain why fibre-optic cable may be suitable.",
+    answer: "Fibre-optic cable is suitable because it can provide high bandwidth for a fixed link between server rooms. It transmits data as pulses of light and is less affected by electromagnetic interference than copper cable. It can also be suitable over longer distances between buildings.",
     marking: [
-      { mark: "B1", text: "connects devices within a LAN" },
-      { mark: "B1", text: "forwards frames/data to correct device/port" },
-      { mark: "B1", text: "uses MAC addresses / MAC address table" },
-      { mark: "B1", text: "reduces unnecessary traffic / avoids sending to all devices where possible" },
+      { mark: "B1", text: "states high bandwidth / high data rate" },
+      { mark: "B1", text: "states data is transmitted using light pulses" },
+      { mark: "B1", text: "not affected by electromagnetic interference" },
+      { mark: "B1", text: "low attenuation / suitable over the fixed distance between server rooms or buildings" },
     ],
     strict: [
-      "Do not award for saying a switch routes packets across the internet.",
-      "Do not require detailed frame format.",
-      "Allow 'data packets' only if the LAN/MAC forwarding idea is clear.",
+      "Do not accept only 'fibre is faster' without a feature or scenario link.",
+      "Do not accept fibre uses electrical signals.",
+      "Allow 'fiber' spelling.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "A school LAN needs to connect to the internet. Explain why a router is required.",
-    answer: "A router is used to connect different networks, such as the school LAN and the internet. It forwards packets towards their destination using IP addresses and routing information. Traffic leaving the local network may be sent to the router/default gateway.",
+    marks: "5 marks",
+    prompt: "Compare wired and wireless networks for a classroom that uses desktop PCs and tablets.",
+    answer: "Wired connections such as copper cable are suitable for desktop PCs because the devices are fixed and can have a stable connection. Wireless connections using radio waves are suitable for tablets because the tablets can move around without cables. Wireless may be affected by interference, walls or shared bandwidth, while wired connections may be less convenient for mobile devices.",
     marking: [
-      { mark: "B1", text: "router connects different networks / LAN to internet" },
-      { mark: "B1", text: "forwards/routes packets" },
-      { mark: "B1", text: "uses IP addresses/routing table/routing information" },
-      { mark: "B1", text: "links to traffic leaving local network/default gateway scenario" },
+      { mark: "B1", text: "wired connection suitable for fixed desktop PCs" },
+      { mark: "B1", text: "wireless/radio waves suitable for mobile tablets" },
+      { mark: "B1", text: "wired can provide stable/reliable connection" },
+      { mark: "B1", text: "wireless can be affected by interference/obstacles/shared bandwidth" },
+      { mark: "B1", text: "recommends wired links for fixed desktops and wireless links for tablets, linked to stability and mobility" },
     ],
     strict: [
-      "Do not accept only 'router gives WiFi'.",
-      "Do not award switch as the main device for connecting to the internet.",
-      "Allow default gateway reference if it is linked to forwarding outside the local network.",
+      "Do not award marks for vague 'wired is better' or 'wireless is modern'.",
+      "Do not confuse WiFi/radio waves with email or web protocols.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "A classroom has tablets, desktop PCs and a shared file server. Describe the roles of a NIC, WNIC, wireless access point, switch and server.",
-    answer: "A NIC provides each desktop with a wired network interface, while a WNIC provides each tablet with a wireless network interface. The wireless access point connects the wireless tablets to the LAN. The switch connects LAN devices and forwards local frames to the appropriate port. The server provides a shared service such as file storage or authentication.",
+    marks: "4 marks",
+    prompt: "A remote weather station needs a network connection but has no cable infrastructure nearby. Explain why satellite communication may be used and give one drawback.",
+    answer: "Satellite communication may be used because it can cover large geographical areas and can connect remote locations where cable infrastructure is not available. A drawback is that it may have higher latency because signals travel a long distance to and from the satellite. It may also be expensive or affected by weather.",
     marking: [
-      { mark: "B1", text: "NIC provides the desktop's wired network interface" },
-      { mark: "B1", text: "WNIC provides the tablet's wireless network interface" },
-      { mark: "B1", text: "wireless access point connects wireless devices to the LAN" },
-      { mark: "B1", text: "switch connects LAN devices / forwards local frames to the appropriate port" },
-      { mark: "B1", text: "server provides shared files, authentication or another valid shared service" },
+      { mark: "B1", text: "satellite suitable for remote location / large coverage" },
+      { mark: "B1", text: "does not require nearby cable infrastructure" },
+      { mark: "B1", text: "identifies a valid drawback such as high latency/cost/weather" },
+      { mark: "B1", text: "explains latency as delay due to long signal distance or links drawback to scenario" },
     ],
     strict: [
-      "Do not merge NIC/WNIC, access point, switch and server into 'they connect to the internet'.",
-      "Do not award router functions because a router is not one of the five requested LAN hardware roles.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not accept only 'satellite is wireless' without coverage/remote context.",
+      "Do not require technical orbital details.",
+      "Allow cost or weather as drawback if explained.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "A business is choosing between the PSTN, a dedicated line and a cell phone network for internet access. State the role of a modem and compare two of these connection methods.",
-    answer: "A modem converts between the data representation used by the computer or network and the signalling required by the access link. The PSTN uses the public telephone network and may provide a temporary or lower-capacity access link. A dedicated line supplies a permanent connection with more predictable availability or capacity but normally costs more. A cell phone network supplies wireless access through cellular infrastructure and supports mobility or places without a fixed line, but signal strength and shared coverage can vary.",
+    prompt: "Describe two differences between copper cable and fibre-optic cable as transmission media.",
+    answer: "Copper cable transmits data using electrical signals, whereas fibre-optic cable transmits data using pulses of light. Fibre-optic cable can support higher bandwidth and is less affected by electromagnetic interference, while copper cable is often cheaper and easier to install for short local links.",
     marking: [
-      { mark: "B1", text: "modem converts data/signals for the access link" },
-      { mark: "B1", text: "identifies a valid characteristic of PSTN, dedicated line or cell phone/cellular network" },
-      { mark: "B1", text: "identifies a valid contrasting characteristic of a second named method" },
-      { mark: "B1", text: "develops the comparison using permanence, mobility, capacity, availability, signal or cost" },
+      { mark: "B1", text: "copper uses electrical signals" },
+      { mark: "B1", text: "fibre optic uses light pulses" },
+      { mark: "B1", text: "fibre has higher bandwidth/longer distance/less electromagnetic interference" },
+      { mark: "B1", text: "copper may be cheaper/easier for short local links" },
     ],
     strict: [
-      "Do not accept that a modem is simply a wireless access point or router.",
-      "Do not award two unconnected method names without a comparison.",
-      "Allow cellular network as equivalent to cell phone network.",
+      "Do not award a mark for saying both use electricity.",
+      "Do not award only for naming the two media.",
+      "Allow a valid paired comparison even if wording differs.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "Compare a switch and a router.",
-    answer: "A switch is mainly used within a LAN to connect local devices and forward frames to the correct port using MAC addresses. A router connects different networks and forwards packets using IP addresses and routing information. For example, a switch may connect computers in a classroom, while a router connects that LAN to the internet.",
+    prompt: "A company considers a microwave link between two buildings. Describe conditions that make this suitable and issues that may affect it.",
+    answer: "A microwave link may be suitable for a point-to-point connection between two buildings when there is a clear line of sight between directional antennas. It avoids laying a physical cable between the buildings. The link can be affected by obstacles, poor alignment or weather, and may have variable performance compared with a wired link.",
     marking: [
-      { mark: "B1", text: "switch works within a LAN/local network" },
-      { mark: "B1", text: "switch uses MAC addresses/ports to forward frames" },
-      { mark: "B1", text: "router connects different networks" },
-      { mark: "B1", text: "router uses IP addresses/routing information" },
-      { mark: "B1", text: "valid scenario comparison such as classroom LAN vs internet connection" },
+      { mark: "B1", text: "microwave link suitable for point-to-point communication" },
+      { mark: "B1", text: "requires/benefits from clear line of sight" },
+      { mark: "B1", text: "avoids laying cable or is useful between buildings" },
+      { mark: "B1", text: "identifies issue such as obstacles/alignment/weather" },
+      { mark: "B1", text: "links issue to reduced signal quality/performance/reliability" },
     ],
     strict: [
-      "Do not award marks for only saying one is wired and one is wireless.",
-      "Do not accept 'router is faster' as a comparison.",
-      "Allow packet/frame wording variation if device boundary and address type are correct.",
+      "Do not accept satellite unless the answer is specifically about a satellite link.",
+      "Do not accept only 'microwaves are fast'.",
+      "Allow 'unobstructed path' for line of sight.",
     ],
   },
 ];
@@ -181,17 +181,17 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "aprouter"
-        ? "Correct. The access point handles wireless access; the router handles traffic to another network."
-        : "Not quite. Separate local/wireless access from routing to an outside network.";
+      feedback.textContent = button.dataset.hook === "fibre"
+        ? "Correct. Fibre is a transmission medium and the justification names high bandwidth and low interference."
+        : "Not quite. Check whether the answer names a transmission medium and matches the fixed high-bandwidth scenario.";
     });
   });
 }
 
 function setupChoiceTool() {
   const select = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#hardwareResult");
-  const method = document.querySelector("#hardwareMethod");
+  const result = document.querySelector("#mediumResult");
+  const method = document.querySelector("#mediumMethod");
   function choose() {
     const item = scenarios[select.value];
     result.textContent = item.result;
@@ -219,7 +219,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("school");
+  renderExample("fibre");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -267,7 +267,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Add the device role and the network boundary to earn explanation marks.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Strong answers connect the medium to a real factor such as bandwidth, range, latency or interference.`;
   });
 }
 

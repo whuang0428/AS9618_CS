@@ -1,122 +1,122 @@
 const scenarioMap = {
-  publicRepo: {
-    result: "Issue: public access is not the same as permission.",
-    reason: "If no licence is visible, users should not assume they may copy, modify or redistribute the code. The owner may still hold copyright.",
-    trap: "Do not say 'public repository means public domain' unless the work is explicitly released that way.",
+  fitness: {
+    result: "Main issue: over-collection of personal data.",
+    risk: "The app's fitness purpose may justify step count or heart-rate data, but microphone and contacts are not clearly necessary. Extra data increases privacy risk if misused, shared or breached.",
+    safeguard: "Safeguard: use data minimisation and permission choices. Explain each permission and allow the app to work without unnecessary access.",
   },
-  stockPhoto: {
-    result: "Issue: licence condition limits use.",
-    reason: "Personal use only means commercial use is not permitted unless a different licence or permission is obtained.",
-    trap: "Attribution alone does not override a non-commercial restriction.",
+  school: {
+    result: "Main issue: surveillance scope and transparency.",
+    risk: "Monitoring can support safeguarding, but recording all browsing may include personal activity and reduce trust if students are not told what is recorded.",
+    safeguard: "Safeguard: make monitoring transparent, limit it to school devices/accounts, restrict access to safeguarding staff and set retention limits.",
   },
-  companyApp: {
-    result: "Issue: ownership may belong to the employer.",
-    reason: "Code written as part of paid employment may be owned by the company, depending on contract and law.",
-    trap: "Do not assume the programmer personally owns all code they write at work.",
+  cctv: {
+    result: "Main issue: public surveillance and identification.",
+    risk: "CCTV analytics may improve safety, but can track people who have done nothing wrong and may cause unfair suspicion if identification is inaccurate.",
+    safeguard: "Safeguard: use clear notices, limited retention, access logs, human review and strict purpose limitation.",
   },
-  patentMethod: {
-    result: "Issue: possible patent protection for an invention.",
-    reason: "A new technical method may be patentable if it meets requirements such as novelty and inventive step.",
-    trap: "Do not say every algorithm or software idea automatically receives a patent.",
+  workplace: {
+    result: "Main issue: intrusive workplace monitoring.",
+    risk: "Keystroke and screenshot tracking may collect sensitive personal information and create pressure, even when workers are doing legitimate tasks.",
+    safeguard: "Safeguard: monitor only necessary work metrics, explain the purpose, avoid private content and provide clear review/appeal routes.",
   },
-  library: {
-    result: "Issue: licence compliance and attribution.",
-    reason: "Open-source libraries can usually be used under conditions. If attribution is required, the developer must include it.",
-    trap: "Open source does not mean no rules.",
+  shop: {
+    result: "Main issue: biometric data and possible misidentification.",
+    risk: "Facial recognition processes biometric data. False matches may unfairly identify a customer as suspicious.",
+    safeguard: "Safeguard: keep watchlists limited, use human confirmation, display clear notices and delete data when no longer needed.",
   },
 };
 
-const useMap = {
-  copyVariables: {
-    result: "Not sound: likely infringement or plagiarism.",
-    reason: "Changing variable names does not necessarily create original work. The copied structure, logic or expression may still be protected.",
+const policyMap = {
+  forever: {
+    result: "Missing principle: retention limit.",
+    reason: "Keeping logs forever increases risk if data is breached or misused. A defined retention period should match the purpose of collection.",
   },
-  readLicence: {
-    result: "Sound if the licence conditions are actually followed.",
-    reason: "A licence grants permission under stated conditions, such as attribution, source disclosure or limits on redistribution.",
+  everyone: {
+    result: "Missing principle: access control / least privilege.",
+    reason: "Not all staff need full records. Access should be restricted to authorised roles, and downloads should be logged or limited.",
   },
-  buyOwnership: {
-    result: "Not sound: a licence to use is not usually ownership of source code.",
-    reason: "Buying software commonly grants permission to use it under terms; the copyright owner normally keeps ownership of the code.",
+  hidden: {
+    result: "Missing principle: transparency and informed consent.",
+    reason: "Users should be told that location data is collected, why it is needed and how it will be used or shared.",
   },
-  creditOnly: {
-    result: "Not sound: attribution does not remove a non-commercial restriction.",
-    reason: "If the licence blocks commercial use, giving credit is not enough unless separate permission is obtained.",
+  extra: {
+    result: "Missing principle: data minimisation.",
+    reason: "A single-player fitness challenge does not normally need contacts. Collecting unnecessary data creates avoidable privacy risk.",
   },
 };
 
 const examples = {
-  repo: {
-    title: "Example 1: Public repository with no licence",
-    problem: "A developer copies code from a public repository into a commercial product.",
+  fitness: {
+    title: "Example 1: Fitness app permissions",
+    problem: "A fitness app asks for location, contacts and microphone access.",
     steps: [
-      "The code being public does not automatically grant permission to reuse it.",
-      "Copyright may still belong to the creator or organisation.",
-      "The developer should check for a licence and follow its conditions.",
-      "If no permission exists, using it may infringe copyright or create legal risk for the product.",
+      "Data: location may help route tracking, but contacts and microphone may be unnecessary for basic fitness tracking.",
+      "Risk: unnecessary permissions increase the amount of personal data exposed if the app is misused or breached.",
+      "Stakeholder impact: users may lose privacy or be tracked in ways they did not expect.",
+      "Safeguard: explain each permission, collect only necessary data and allow users to opt out of optional features.",
     ],
   },
-  employee: {
-    title: "Example 2: Employee code",
-    problem: "A programmer writes code for an employer during paid work and later wants to sell the same code.",
+  school: {
+    title: "Example 2: School monitoring",
+    problem: "A school records website visits on student devices.",
     steps: [
-      "Ownership may belong to the employer if the code was produced as part of the job.",
-      "The employment contract may define who owns the intellectual property.",
-      "Selling the same code elsewhere could breach contract or copyright.",
-      "A good answer mentions ownership, permission and possible consequences.",
+      "Purpose: monitoring may help safeguarding and prevent misuse of school systems.",
+      "Risk: broad monitoring can record personal activity and reduce student trust.",
+      "Stakeholder impact: students, parents and school staff need clear rules about what is collected.",
+      "Safeguard: publish the policy, limit monitoring to school accounts, restrict log access and delete logs after a defined period.",
     ],
   },
-  patent: {
-    title: "Example 3: Patent protection",
-    problem: "A startup develops a new technical process for compressing sensor data.",
+  city: {
+    title: "Example 3: Public CCTV analytics",
+    problem: "A city uses computer systems to analyse CCTV footage.",
     steps: [
-      "If the method is new and inventive, the company may seek patent protection.",
-      "A patent can prevent others from using the invention without permission for a limited time.",
-      "The invention must normally be disclosed in the patent application.",
-      "Not every software feature or ordinary idea is automatically patentable.",
+      "Purpose: analytics may support public safety and faster incident response.",
+      "Risk: people may be tracked in public without meaningful choice, including people not suspected of wrongdoing.",
+      "Stakeholder impact: citizens benefit from safety but may object to continuous surveillance.",
+      "Safeguard: use clear notices, limited retention, audit trails and human review before action is taken.",
     ],
   },
-  licence: {
-    title: "Example 4: Licence breach",
-    problem: "A team uses a library that requires attribution, but removes all licence notices.",
+  workplace: {
+    title: "Example 4: Workplace tracking",
+    problem: "An employer records screenshots and keystrokes throughout the day.",
     steps: [
-      "The library may be open source, but licence conditions still apply.",
-      "If attribution is required, removing notices breaches the licence.",
-      "Consequences may include loss of permission to use the library or legal/reputational risk.",
-      "The fix is to follow licence terms, include notices and document third-party components.",
+      "Purpose: the employer may want to manage productivity or investigate misuse of systems.",
+      "Risk: constant tracking may capture personal messages or create unreasonable pressure.",
+      "Stakeholder impact: employees may lose trust and feel watched even during legitimate work.",
+      "Safeguard: use proportionate monitoring, explain the policy, avoid private content and allow workers to challenge errors.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What term means creations of the mind that may be legally protected?", accepted: ["intellectual property", "ip"], answer: "Intellectual property / IP" },
-  { id: "p2", prompt: "Which protection usually covers original source code expression?", accepted: ["copyright"], answer: "Copyright" },
-  { id: "p3", prompt: "Which protection can cover a new technical invention for a limited time?", accepted: ["patent", "patents"], answer: "Patent" },
-  { id: "p4", prompt: "What document or agreement grants permission to use software under conditions?", accepted: ["licence", "license"], answer: "Licence / license" },
-  { id: "p5", prompt: "What term means using protected work without permission or outside conditions?", accepted: ["infringement", "copyright infringement", "licence breach", "license breach"], answer: "Infringement / licence breach" },
-  { id: "p6", prompt: "What word means giving credit to the creator or source?", accepted: ["attribution", "credit", "citation"], answer: "Attribution / credit" },
-  { id: "p7", prompt: "Does buying a software licence normally mean owning its source code? yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p8", prompt: "Does public access automatically mean public domain? yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "Name one restricted act under copyright.", accepted: ["copying", "distributing", "distribution", "adapting", "modifying", "redistributing", "selling"], answer: "Copying / distributing / adapting / modifying" },
-  { id: "p10", prompt: "Name one possible consequence of licence breach.", accepted: ["legal action", "lawsuit", "damages", "loss of permission", "reputation", "reputational damage", "remove product"], answer: "Legal action / damages / loss of permission / reputational damage" },
+  { id: "p1", prompt: "What term means control over how personal information is collected, used and shared?", accepted: ["privacy"], answer: "Privacy" },
+  { id: "p2", prompt: "What type of data can identify a person directly or indirectly?", accepted: ["personal data"], answer: "Personal data" },
+  { id: "p3", prompt: "What term describes collecting only the data needed for a stated purpose?", accepted: ["data minimisation", "data minimization", "minimisation", "minimization"], answer: "Data minimisation" },
+  { id: "p4", prompt: "What term describes telling users what data is collected and why?", accepted: ["transparency", "transparent"], answer: "Transparency" },
+  { id: "p5", prompt: "What term describes using data only for the reason stated?", accepted: ["purpose limitation", "limited purpose"], answer: "Purpose limitation" },
+  { id: "p6", prompt: "What should happen when personal data is no longer needed?", accepted: ["delete", "deleted", "deletion", "erase", "erased", "remove", "removed"], answer: "It should be deleted/erased/removed" },
+  { id: "p7", prompt: "Name one example of sensitive data.", accepted: ["health", "medical", "biometric", "location", "financial", "religion", "ethnicity"], answer: "Health / biometric / location / financial data" },
+  { id: "p8", prompt: "Which safeguard limits who can view personal data?", accepted: ["access control", "access rights", "permissions"], answer: "Access control / access rights" },
+  { id: "p9", prompt: "Is secret monitoring usually easy to justify ethically? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one possible harm from surveillance.", accepted: ["privacy", "loss of privacy", "pressure", "stress", "misidentification", "discrimination", "reduced trust", "tracking"], answer: "Loss of privacy / pressure / misidentification / reduced trust" },
 ];
 
 const mistakes = [
   {
-    wrong: "The code is public, so it has no owner.",
-    fix: "Public access does not remove ownership. Copyright may still belong to the creator, and reuse depends on the licence or permission.",
+    wrong: "The app can collect the data because the user clicked agree.",
+    fix: "Consent should be informed and specific. If the user was not told clearly what is collected and why, the agreement is ethically weak.",
   },
   {
-    wrong: "Changing variable names makes copied code legal.",
-    fix: "Changing names may not change the protected expression or structure enough. It can still infringe copyright or count as plagiarism.",
+    wrong: "Surveillance is always wrong because privacy is important.",
+    fix: "Privacy is important, but surveillance may be justified for safety if it is proportionate, transparent, limited and accountable.",
   },
   {
-    wrong: "Open source means no copyright.",
-    fix: "Open-source software is still copyrighted. The licence grants permissions under conditions such as attribution or sharing modifications.",
+    wrong: "Data protection means encrypting the database.",
+    fix: "Encryption helps security, but data protection also includes minimisation, purpose limitation, access control, retention limits, accuracy and transparency.",
   },
   {
-    wrong: "A patent protects any idea someone has.",
-    fix: "A patent protects an invention that meets legal requirements, often including novelty and inventive step. Ordinary ideas are not automatically patented.",
+    wrong: "Keeping data forever is useful because it might help later.",
+    fix: "Indefinite retention increases risk. Data should be kept only as long as needed for the stated purpose, unless there is a clear justified reason.",
   },
 ];
 
@@ -130,93 +130,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A company copies code from a public online repository into a commercial product. Discuss intellectual property issues that may arise.",
-    answer: "The code may be protected by copyright even though it is publicly visible. The company should check whether the owner has provided a licence and whether commercial use, modification or redistribution is allowed. If no permission exists or licence terms are breached, the company may infringe copyright. This could lead to legal action, loss of permission to use the code, removal of the product or reputational damage. If the licence requires attribution, notices should be included.",
+    prompt: "A mobile fitness app collects step count, location and contacts. Discuss privacy issues raised by this data collection.",
+    answer: "Step count and location may help the app provide fitness tracking or route analysis, so some collection can benefit users. However, contacts may not be necessary for the main purpose and may expose information about people who have not used the app. Location data is sensitive because it can reveal routines and places visited. The app should explain what data is collected and why, collect only necessary data, make optional features separate, and allow users to control or delete data.",
     marking: [
-      { mark: "B1", text: "copyright/intellectual property protection of code identified" },
-      { mark: "B1", text: "public access is not the same as permission" },
-      { mark: "B1", text: "licence/permission should be checked" },
-      { mark: "B1", text: "licence condition such as commercial use/modification/redistribution/attribution explained" },
-      { mark: "B1", text: "infringement/licence breach identified" },
-      { mark: "B1", text: "consequence such as legal action/damages/removal/reputation linked to scenario" },
+      { mark: "B1", text: "valid data item identified, such as step count/location/contacts" },
+      { mark: "B1", text: "purpose or benefit linked to fitness tracking/personalised service" },
+      { mark: "B1", text: "privacy concern such as unnecessary contacts/location sensitivity" },
+      { mark: "B1", text: "concern explained, such as routines revealed or third-party data exposed" },
+      { mark: "B1", text: "safeguard such as transparency/consent/minimisation/user control/deletion" },
+      { mark: "B1", text: "safeguard linked to reducing named privacy risk" },
     ],
     strict: [
-      "Do not accept 'online means free to use'.",
-      "Do not award licence-condition mark for only saying 'read the rules' without a condition.",
-      "Allow license spelling.",
+      "Do not accept 'it is private' without explaining what data or harm.",
+      "Do not award minimisation for collecting all requested data without justification.",
+      "Allow opt-in/opt-out controls if linked to optional features.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Explain the difference between copyright and a patent in the context of Computer Science.",
-    answer: "Copyright protects original expression, such as source code, documentation or graphics. It restricts acts such as copying, distributing or adapting the work without permission. A patent protects an invention or technical process for a limited time if requirements such as novelty are met. In Computer Science, a patent might relate to a new technical method, but not every algorithm or piece of code is automatically patentable.",
+    prompt: "Explain why data minimisation is important when designing a computer system.",
+    answer: "Data minimisation means collecting only data that is necessary for the stated purpose. It reduces privacy risk because less personal data is exposed if there is a breach or misuse. It also makes it easier to justify collection to users because unnecessary information is not requested. For example, a step counter should not require microphone access unless there is a clear feature that needs it.",
     marking: [
-      { mark: "B1", text: "copyright protects original expression/source code/media" },
-      { mark: "B1", text: "copyright restricts copying/distribution/adaptation without permission" },
-      { mark: "B1", text: "patent protects invention/technical process" },
-      { mark: "B1", text: "patent is limited time and/or requires novelty/inventive step" },
-      { mark: "B1", text: "Computer Science context or limitation, such as not every code idea is patentable" },
+      { mark: "B1", text: "data minimisation defined as collecting only necessary data" },
+      { mark: "B1", text: "linked to stated purpose" },
+      { mark: "B1", text: "reduced risk if data is breached/misused/shared" },
+      { mark: "B1", text: "valid example of unnecessary data avoided" },
+      { mark: "B1", text: "consequence linked to privacy/trust/ethical justification" },
     ],
     strict: [
-      "Do not accept copyright as protecting an invention.",
-      "Do not accept patent as automatic for any code.",
-      "Allow examples of software-related inventions if the technical invention idea is clear.",
+      "Do not accept 'collect less data' alone without necessity or purpose.",
+      "Do not award example mark for vague 'personal data' without a context.",
+      "Allow data minimization spelling.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "A student downloads a paid application. Explain why this does not usually mean the student owns the software's intellectual property.",
-    answer: "Downloading or paying for an application usually gives the student a licence to use the software under terms. The copyright owner or software company normally keeps ownership of the source code and other intellectual property. The licence may restrict copying, modifying, reverse engineering or redistributing the application. If the student shares copies or claims the code as their own, this may breach the licence or infringe copyright.",
+    marks: "6 marks",
+    prompt: "A school monitors students' use of school devices. Evaluate this decision from a privacy and data protection perspective.",
+    answer: "Monitoring may be justified because it can help the school detect cyberbullying, unsafe websites or misuse of school devices. However, students are stakeholders with privacy interests, and broad monitoring may record personal activity or reduce trust if it is secret or continues outside school use. The school should be transparent about what is recorded, limit monitoring to school devices or accounts, restrict log access to authorised safeguarding staff and delete logs after a defined period. The decision is more defensible if monitoring is proportionate to safeguarding rather than blanket surveillance.",
     marking: [
-      { mark: "B1", text: "licence to use software identified" },
-      { mark: "B1", text: "licence does not normally transfer ownership/source code rights" },
-      { mark: "B1", text: "copyright/IP owner retains rights" },
-      { mark: "B1", text: "restriction such as copying/modifying/redistributing/reverse engineering" },
-      { mark: "B1", text: "consequence such as breach/infringement if restrictions are ignored" },
+      { mark: "B1", text: "benefit such as safeguarding/preventing misuse/unsafe website detection" },
+      { mark: "B1", text: "benefit linked to school device context" },
+      { mark: "B1", text: "privacy/trust/over-monitoring concern" },
+      { mark: "B1", text: "concern explained using students/personal activity/secret monitoring" },
+      { mark: "B1", text: "data protection safeguard such as transparency/access restriction/retention limit/scope limit" },
+      { mark: "B1", text: "judges whether school monitoring is proportionate using its stated purpose, student privacy impact and limits on collection/access/retention" },
     ],
     strict: [
-      "Do not accept 'paid means owned' as correct.",
-      "Do not award restriction mark for vague 'cannot do bad things'.",
-      "Allow EULA/terms as licence.",
+      "Do not award evaluation mark for only saying monitoring is good or bad.",
+      "Do not accept 'ask permission' without explaining what users are told or agreeing to.",
+      "Allow school safety or safeguarding as a benefit if scenario linked.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Describe ethical and legal reasons for respecting software licences.",
-    answer: "Software licences state what users are allowed to do with the software, such as use, copy, modify or distribute it. Respecting licences recognises the rights of creators and organisations that invested time and money in development. It can protect revenue and encourage further innovation. Legally, breaching a licence may lead to loss of permission, legal action or damages. Ethically, following terms and giving attribution when required is fair to creators and users.",
+    prompt: "Describe safeguards that could protect personal data stored by an organisation.",
+    answer: "Access control can restrict personal data to staff who need it for their role. Encryption can protect stored or transmitted data by making it unreadable without the key. Retention limits reduce risk by deleting data when it is no longer needed. Audit trails can record who accessed or changed data, supporting investigation and accountability. The organisation should also tell users what data is collected and why.",
     marking: [
-      { mark: "B1", text: "licence defines permitted use/copying/modification/distribution" },
-      { mark: "B1", text: "creator/owner rights recognised" },
-      { mark: "B1", text: "investment/revenue/innovation consequence explained" },
-      { mark: "B1", text: "legal consequence such as action/damages/loss of permission" },
-      { mark: "B1", text: "ethical point such as fairness/attribution/respect for work" },
+      { mark: "B1", text: "access control/permissions described" },
+      { mark: "B1", text: "encryption described" },
+      { mark: "B1", text: "retention/deletion limit described" },
+      { mark: "B1", text: "audit trail/accountability or transparency explained" },
+      { mark: "B1", text: "at least one safeguard linked to reducing misuse/unauthorised access/privacy risk" },
     ],
     strict: [
-      "Do not award separate marks for repeating 'it is illegal' only.",
-      "Do not accept vague 'respect' without linking to creators or conditions.",
-      "Allow attribution as an ethical or licence compliance point.",
+      "Do not award multiple marks for repeated wording of 'keep it secure'.",
+      "Do not accept encryption as the only data protection principle if question asks safeguards plural.",
+      "Allow authentication if linked to controlling access.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A developer uses a third-party library that requires attribution. The final product removes all licence notices. Explain the issue and possible consequences.",
-    answer: "The library may be used only under the conditions of its licence. If attribution or licence notices are required, removing them breaches the licence. The original library remains intellectual property owned by its creators or rights holders. The developer or company may lose permission to use the library, need to add notices or replace the library, and may face legal or reputational consequences. The correct action is to follow the licence terms and document third-party components.",
+    marks: "8 marks",
+    prompt: "A city plans to use computer systems to analyse CCTV footage in public spaces. Evaluate privacy and surveillance issues.",
+    answer: "The system may help detect crime, manage emergencies and improve public safety, benefiting citizens, police and local businesses. However, it may also track people who have done nothing wrong, creating a feeling of constant surveillance and reducing privacy in public life. If facial recognition or automated identification is used, false matches could lead to unfair suspicion. The city should be transparent about the purpose, use clear notices, restrict access, keep footage for a defined period, audit use and require human review before action. The system may be justified for specific safety aims, but broad indefinite monitoring without safeguards would not be proportionate.",
     marking: [
-      { mark: "B1", text: "third-party library/licence condition identified" },
-      { mark: "B1", text: "attribution/licence notice requirement explained" },
-      { mark: "B1", text: "breach of licence or infringement identified" },
-      { mark: "B1", text: "ownership/IP of original creators recognised" },
-      { mark: "B1", text: "consequence such as loss of permission/legal action/replacement/reputational damage" },
-      { mark: "B1", text: "remedy such as include attribution/notices or document components" },
+      { mark: "B1", text: "benefit such as crime detection/emergency response/public safety" },
+      { mark: "B1", text: "benefit linked to stakeholder such as citizens/police/businesses" },
+      { mark: "B1", text: "privacy/surveillance concern" },
+      { mark: "B1", text: "concern explained, such as tracking innocent people/constant monitoring" },
+      { mark: "B1", text: "fairness/false match/misidentification concern if analytics used" },
+      { mark: "B1", text: "safeguard such as notices/transparency/access restriction/retention/audit/human review" },
+      { mark: "B1", text: "safeguard linked to reducing a named risk" },
+      { mark: "B1", text: "judges whether CCTV analysis is proportionate using public-safety purpose, surveillance/fairness risk and operational limits" },
     ],
     strict: [
-      "Do not accept 'open source means no attribution needed'.",
-      "Do not award breach mark if answer only says 'it is rude'.",
-      "Allow copyright infringement if linked to licence breach.",
+      "Do not accept 'CCTV is legal' as sufficient ethical evaluation.",
+      "Do not award both concern marks for repeated privacy wording only.",
+      "Allow answers without facial recognition if they explain CCTV analytics privacy risks.",
     ],
   },
 ];
@@ -232,10 +235,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    licence: "Correct. Public visibility does not decide permission; the licence and assessment rules matter.",
-    public: "No. Public repositories can still have owners and copyright protection.",
-    rename: "No. Changing variable names does not automatically create original work.",
-    private: "No. Public and private repositories can both have licences or copyright restrictions.",
+    microphone: "Correct. Microphone access is not clearly necessary for ordinary fitness tracking, so it raises data minimisation concerns.",
+    steps: "No. Step count is directly relevant to fitness tracking; the issue is not all data, but unnecessary data.",
+    heart: "No. Heart rate can be sensitive, but it may be relevant to fitness or health features.",
+    contacts: "Contacts are suspicious too, but the explanation given is weak. Social convenience does not automatically justify collecting other people's data.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -246,34 +249,34 @@ function setupHook() {
   });
 }
 
-function setupMatcher() {
+function setupScanner() {
   const scenario = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#matchResult");
-  const reason = document.querySelector("#matchReason");
-  const trap = document.querySelector("#matchTrap");
-  function match() {
+  const result = document.querySelector("#scanResult");
+  const risk = document.querySelector("#scanRisk");
+  const safeguard = document.querySelector("#scanSafeguard");
+  function scan() {
     const item = scenarioMap[scenario.value];
     result.textContent = item.result;
-    reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
-    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
+    risk.innerHTML = `<strong>Risk:</strong> ${item.risk}`;
+    safeguard.innerHTML = `<strong>Safeguard:</strong> ${item.safeguard}`;
   }
-  scenario.addEventListener("change", match);
-  document.querySelector("#matchBtn").addEventListener("click", match);
-  match();
+  scenario.addEventListener("change", scan);
+  document.querySelector("#scanBtn").addEventListener("click", scan);
+  scan();
 }
 
-function setupUseChecker() {
-  const select = document.querySelector("#useInput");
-  const result = document.querySelector("#useResult");
-  const reason = document.querySelector("#useReason");
-  function judge() {
-    const item = useMap[select.value];
+function setupPolicyChecker() {
+  const policy = document.querySelector("#policyInput");
+  const result = document.querySelector("#policyResult");
+  const reason = document.querySelector("#policyReason");
+  function check() {
+    const item = policyMap[policy.value];
     result.textContent = item.result;
     reason.innerHTML = `<strong>Why:</strong> ${item.reason}`;
   }
-  select.addEventListener("change", judge);
-  document.querySelector("#useBtn").addEventListener("click", judge);
-  judge();
+  policy.addEventListener("change", check);
+  document.querySelector("#policyBtn").addEventListener("click", check);
+  check();
 }
 
 function renderExample(key) {
@@ -294,7 +297,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("repo");
+  renderExample("fitness");
 }
 
 function renderPractice() {
@@ -388,8 +391,8 @@ function renderExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupMatcher();
-  setupUseChecker();
+  setupScanner();
+  setupPolicyChecker();
   setupExamples();
   renderPractice();
   renderMistakes();

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 048 | Interrupts and interrupt service routines</title>
+    <title>AS9618 Lesson 048 | Addressing modes and address-sensitive instructions</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Interrupts and interrupt service routines</h1>
+        <h1>Addressing modes and address-sensitive instructions</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,11 +30,10 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#concept">Core idea</a>
-        <a href="#sources">Sources</a>
-        <a href="#cycle">Interrupt cycle</a>
-        <a href="#priority">Priority</a>
-        <a href="#polling">Polling</a>
-        <a href="#tool">ISR simulator</a>
+        <a href="#modes">Addressing modes</a>
+        <a href="#effective">Effective address</a>
+        <a href="#arrays">Indexing</a>
+        <a href="#tool">Mode simulator</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -53,61 +52,75 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Interrupt causes, detection and handling</h2>
+            <h2>Addressing modes and address-sensitive instructions</h2>
           </div>
           <div class="stage2-explanation">
-            <p>An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.</p>
-            <p>For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.</p>
-            <p>If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.</p>
+            <p>Immediate addressing uses the operand as the value itself. Direct addressing uses the operand as the address of the value. Indirect addressing treats the operand as the address of a location that holds the effective address. Indexed addressing forms an effective address by adding IX to the address operand. Relative addressing forms a target/effective address by adding an offset to the current or next instruction address held in PC.</p>
+            <p>LDI follows the address stored at the operand location; LDX adds IX to the address operand; LDR #n loads the immediate value n into IX. CMI &lt;address&gt; uses indirect addressing: the contents of &lt;address&gt; give the address of the value compared with ACC.</p>
+            <p>After CMP or CMI, JPE &lt;address&gt; jumps when the comparison result is True and JPN &lt;address&gt; jumps when it is False. Relative addressing is a required addressing-mode concept, but LDR is not a relative-load instruction in the Version 2 instruction set.</p>
             <p>Interrupts are detected at the specified point in the fetch-execute cycle before the processor saves state and enters the ISR.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Handle a keyboard interrupt</h3>
-            <p>A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.</p>
+            <h3>Worked example: Compare five operand interpretations</h3>
+            <p>With operand 20, immediate uses value 20; direct uses Memory[20]; indirect follows Memory[20] as another address; indexed uses address 20 + IX; relative uses PC plus a signed or stated offset. Separately, if CMI POINTER produces True, JPE MATCH branches to MATCH; a False comparison allows JPN DIFFERENT to branch.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start arrays -->
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">Indexed addressing and arrays</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Indexed addressing and arrays with a structured visual model." />
+            <figcaption class="explanation-sr-only">Indexed addressing and arrays: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Base address</li><li><strong>Lesson fact:</strong> The start address of a block of related values, such as an array.</li><li><strong>Lesson fact:</strong> Index register</li><li><strong>Lesson fact:</strong> A register holding an offset from the base address.</li><li><strong>Lesson fact:</strong> Effective address</li><li><strong>Lesson fact:</strong> Calculated as base address + index/offset.</li><li><strong>Lesson fact:</strong> Why useful</li><li><strong>Lesson fact:</strong> Changing the index can access different array elements without changing the instruction's base address.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Indexed addressing does not mean &quot;convert the operand into an index number&quot;. It calculates an effective address using a base and an offset.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end arrays -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Interrupt causes, detection and handling: apply and assess</h2>
+            <h2>Addressing modes and address-sensitive instructions: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Give two possible causes or applications of interrupts.</p>
-              <details><summary>Show answer</summary><p>For example an I/O device request, timer/scheduler event, hardware fault or software exception.</p></details>
+              <p><strong>1.</strong> Which load follows a pointer in memory?</p>
+              <details><summary>Show answer</summary><p>LDI.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> When is a normal maskable interrupt detected and accepted?</p>
-              <details><summary>Show answer</summary><p>After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.</p></details>
+              <p><strong>2.</strong> Which load combines its operand with IX?</p>
+              <details><summary>Show answer</summary><p>LDX.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What is an ISR?</p>
-              <details><summary>Show answer</summary><p>An interrupt service routine: program code that handles a particular interrupt.</p></details>
+              <p><strong>3.</strong> What does LDR #4 do?</p>
+              <details><summary>Show answer</summary><p>It loads 4 into IX; it does not use relative addressing.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why must processor state be saved and restored?</p>
-              <details><summary>Show answer</summary><p>So the interrupted program can resume at the correct instruction with its earlier register and status values.</p></details>
+              <p><strong>4.</strong> When does JPE branch?</p>
+              <details><summary>Show answer</summary><p>When the preceding comparison result is True.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>5.</strong> List the handling sequence after detection.</p>
-              <details><summary>Show answer</summary><p>Check/accept, save state, locate and execute ISR, restore state, resume program.</p></details>
+              <p><strong>5.</strong> How is a relative address formed?</p>
+              <details><summary>Show answer</summary><p>By adding an offset to the current or next instruction address represented by PC, according to the stated model.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.</p>
+            <p>Compare immediate, direct, indirect, indexed and relative addressing, then state the effects of LDR #n, CMI &lt;address&gt;, JPE &lt;address&gt; and JPN &lt;address&gt;.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>valid cause/application such as I/O, timer, fault or exception</td><td>Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts.</td><td>1</td></tr>
-                  <tr><td>current instruction completes and interrupt is detected/checked at the cycle boundary</td><td></td><td>1</td></tr>
-                  <tr><td>priority/enabled status is checked</td><td></td><td>1</td></tr>
-                  <tr><td>PC/register/status state is saved</td><td></td><td>1</td></tr>
-                  <tr><td>correct ISR is located and executed</td><td></td><td>1</td></tr>
-                  <tr><td>state is restored and the interrupted program resumes</td><td></td><td>1</td></tr>
+                  <tr><td>immediate uses operand as value; direct uses operand as address</td><td>Do not award relative LDR, immediate CMI, equal/zero JPE or negative-status JPN.</td><td>1</td></tr>
+                  <tr><td>indirect follows an address stored at the operand address</td><td></td><td>1</td></tr>
+                  <tr><td>indexed adds IX to the address operand</td><td></td><td>1</td></tr>
+                  <tr><td>relative adds an offset to the PC/current or next instruction address</td><td></td><td>1</td></tr>
+                  <tr><td>LDR loads immediate n to IX and CMI compares through indirect addressing</td><td></td><td>1</td></tr>
+                  <tr><td>JPE follows True and JPN follows False</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -118,276 +131,217 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 048 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>An interrupt is the CPU's polite emergency bell.</h2>
+            <h2>The operand is not always the thing you want. Sometimes it is a treasure map.</h2>
             <p>
-              A processor normally follows the fetch-decode-execute cycle. An interrupt
-              signal asks it to pause that flow, save its current state, run an
-              interrupt service routine, and then return to the interrupted program.
+              Addressing modes tell the CPU how to interpret an operand. The same
+              number can be used as the actual value, as a memory address, as a
+              pointer to another address, or as part of an indexed address calculation.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>interrupt, ISR, interrupt flag and processor state</span></div>
-              <div><strong>Trace</strong><span>the steps taken when an interrupt is accepted</span></div>
-              <div><strong>Compare</strong><span>interrupt-driven input with polling</span></div>
+              <div><strong>Identify</strong><span>immediate, direct, indirect and indexed addressing</span></div>
+              <div><strong>Calculate</strong><span>effective addresses and fetched values in simple examples</span></div>
+              <div><strong>Correct</strong><span>operand interpretation errors in exam-style wording</span></div>
             </div>
           </div>
-          <div class="interrupt-card" aria-label="Interrupt handling sketch">
-            <div class="isr-stack">
-              <span>Current program</span>
-              <span>Interrupt signal</span>
-              <span>Save state</span>
-              <span>Run ISR</span>
-              <span>Restore state</span>
+          <div class="mode-card" aria-label="Addressing mode sketch">
+            <div class="mode-stack">
+              <span>#20 -> value 20</span>
+              <span>20 -> memory[20]</span>
+              <span>(20) -> memory[memory[20]]</span>
+              <span>BASE + IX -> array element</span>
             </div>
-            <p>The CPU is interrupted. The plan is not destroyed; it is bookmarked.</p>
+            <p>Same number, different meaning. That is the lesson.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Section 4 questions often ask for a sequence. Marks are lost when answers say only "the CPU stops and deals with it".</p>
+            <p>Many marks come from explaining whether the operand is a value, an address or a pointer.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>An interrupt is not an error by definition. It is a signal that can come from hardware, software, a timer or an exception.</p>
+            <p>Students treat every operand as data. Direct and indirect addressing often use the operand as an address.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>The keyboard needs attention while a program is running. What should the CPU do?</h2>
-            <p>Click the best answer. The wrong choices are what computers would do if they had no manners.</p>
+            <h2>`LOAD #20` and `LOAD 20` look similar. Do they mean the same thing?</h2>
+            <p>Click the best answer. The hash is tiny, but it can save a whole mark.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="save">Pause, save state, run ISR, then resume</button>
-            <button class="choice-card" type="button" data-hook="delete">Delete the current program and start again</button>
-            <button class="choice-card" type="button" data-hook="ignore">Ignore every device until the program finishes</button>
-            <button class="choice-card" type="button" data-hook="random">Jump to a random memory address</button>
+            <button class="choice-card" type="button" data-hook="no">No: #20 is a value, 20 is an address</button>
+            <button class="choice-card" type="button" data-hook="yes">Yes: both load the number 20</button>
+            <button class="choice-card" type="button" data-hook="binary">Only if 20 is written in binary</button>
+            <button class="choice-card" type="button" data-hook="register">Only if ACC is empty</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. A good interrupt explanation keeps the interrupted program recoverable.
+            Click one. The addressing mode tells the CPU how to interpret the operand.
           </div>
         </section>
 
         <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>What an interrupt is</h2>
+            <h2>Addressing mode means operand interpretation</h2>
           </div>
           <div class="concept-grid">
             <article>
-              <strong>Interrupt</strong>
-              <span>A signal that causes the processor to pause normal execution and deal with an event.</span>
+              <strong>Operand</strong>
+              <span>The part of an instruction that supplies data, an address, a register or another reference.</span>
             </article>
             <article>
-              <strong>Interrupt service routine</strong>
-              <span>A program routine that handles a specific interrupt.</span>
+              <strong>Addressing mode</strong>
+              <span>The rule used to interpret the operand and locate the data needed by the instruction.</span>
             </article>
             <article>
-              <strong>Processor state</strong>
-              <span>The information needed to continue later, such as PC, registers and status flags.</span>
+              <strong>Effective address</strong>
+              <span>The actual memory address used after applying the addressing mode.</span>
             </article>
             <article>
-              <strong>Interrupt flag</strong>
-              <span>A stored indication that an interrupt has occurred or is waiting to be handled.</span>
+              <strong>Fetched value</strong>
+              <span>The final data value obtained or used by the instruction after interpretation.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: interrupt = 中断信号；ISR = 中断服务程序；processor state = 处理器当前状态；resume = 恢复继续执行。</div>
+          <div class="callout">Chinese support: addressing mode = 寻址方式；operand = 操作数；effective address = 有效地址；pointer = 指针/指向地址的值。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
         <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">What an interrupt is</h2>
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Addressing mode means operand interpretation</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What an interrupt is with a structured visual model." />
-            <figcaption class="explanation-sr-only">What an interrupt is: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Addressing mode means operand interpretation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Addressing mode means operand interpretation: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interrupt</li><li><strong>Lesson fact:</strong> A signal that causes the processor to pause normal execution and deal with an event.</li><li><strong>Lesson fact:</strong> Interrupt service routine</li><li><strong>Lesson fact:</strong> A program routine that handles a specific interrupt.</li><li><strong>Lesson fact:</strong> Processor state</li><li><strong>Lesson fact:</strong> The information needed to continue later, such as PC, registers and status flags.</li><li><strong>Lesson fact:</strong> Interrupt flag</li><li><strong>Lesson fact:</strong> A stored indication that an interrupt has occurred or is waiting to be handled.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> The part of an instruction that supplies data, an address, a register or another reference.</li><li><strong>Lesson fact:</strong> Addressing mode</li><li><strong>Lesson fact:</strong> The rule used to interpret the operand and locate the data needed by the instruction.</li><li><strong>Lesson fact:</strong> Effective address</li><li><strong>Lesson fact:</strong> The actual memory address used after applying the addressing mode.</li><li><strong>Lesson fact:</strong> Fetched value</li><li><strong>Lesson fact:</strong> The final data value obtained or used by the instruction after interpretation.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="sources" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
+        <section class="panel" id="modes" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Where interrupts come from</h2>
+            <h2>Four common addressing modes</h2>
           </div>
-          <div class="source-grid">
+          <div class="mode-table" role="table" aria-label="Addressing modes">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Mode</div>
+              <div role="columnheader">Operand means</div>
+              <div role="columnheader">Example</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Immediate</div>
+              <div role="cell">The actual value to use.</div>
+              <div role="cell">LOAD #20</div>
+              <div role="cell">The operand is the value 20 itself.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Direct</div>
+              <div role="cell">The memory address of the value.</div>
+              <div role="cell">LOAD 20</div>
+              <div role="cell">The CPU loads the value stored at memory address 20.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Indirect</div>
+              <div role="cell">The address of a memory location that stores another address.</div>
+              <div role="cell">LOAD (20)</div>
+              <div role="cell">The CPU looks at address 20 to find the address of the actual value.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Indexed</div>
+              <div role="cell">Base address plus an index register or offset.</div>
+              <div role="cell">LOAD 100, IX</div>
+              <div role="cell">The effective address is base address 100 plus the index value.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start modes -->
+        <section class="panel explanation-panel" id="explanation-modes" data-explains="modes" data-explanation-kind="mechanism" aria-labelledby="explanation-modes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
+          <h2 class="explanation-sr-only" id="explanation-modes-title">Five addressing modes</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Five addressing modes with a structured visual model." />
+            <figcaption class="explanation-sr-only">Five addressing modes: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Immediate addressing uses the operand field as the value itself.</li><li><strong>Lesson fact:</strong> Direct addressing uses the operand field as the address of the value.</li><li><strong>Lesson fact:</strong> Indirect addressing follows an address stored at the operand address to reach the value.</li><li><strong>Lesson fact:</strong> Indexed addressing adds an index value to a base address to form the effective address.</li><li><strong>Lesson fact:</strong> Relative addressing adds an offset to a PC-based instruction address to form the target or effective address.</li><li><strong>Lesson fact:</strong> LDR #n loads the immediate value n into IX; it is not relative addressing.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end modes -->
+        <section class="panel" id="effective" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Effective address: where the CPU actually reads</h2>
+          </div>
+          <div class="memory-table" role="table" aria-label="Example memory table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Address</div>
+              <div role="columnheader">Stored value</div>
+              <div role="columnheader">Note</div>
+            </div>
+            <div class="table-row" role="row"><div role="cell">20</div><div role="cell">70</div><div role="cell">Can be a data value or pointer, depending on mode.</div></div>
+            <div class="table-row" role="row"><div role="cell">70</div><div role="cell">999</div><div role="cell">Used by indirect example.</div></div>
+            <div class="table-row" role="row"><div role="cell">100</div><div role="cell">11</div><div role="cell">Start of an array-like block.</div></div>
+            <div class="table-row" role="row"><div role="cell">103</div><div role="cell">44</div><div role="cell">Used when base 100 and IX = 3.</div></div>
+          </div>
+          <div class="trace-grid">
+            <article><strong>LOAD #20</strong><span>Use value 20 directly. No memory lookup for the operand value.</span></article>
+            <article><strong>LOAD 20</strong><span>Read memory[20], so the value loaded is 70.</span></article>
+            <article><strong>LOAD (20)</strong><span>Read memory[20] to get address 70, then read memory[70] to get 999.</span></article>
+            <article><strong>LOAD 100, IX=3</strong><span>Effective address = 100 + 3 = 103, so value loaded is memory[103] = 44.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="arrays" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Indexed addressing and arrays</h2>
+          </div>
+          <div class="array-grid">
             <article>
-              <strong>Input/output device</strong>
-              <span>A keyboard, printer or network interface signals that it needs CPU attention.</span>
-              <em>Example: key pressed; printer buffer ready.</em>
+              <strong>Base address</strong>
+              <span>The start address of a block of related values, such as an array.</span>
             </article>
             <article>
-              <strong>Timer</strong>
-              <span>A timer interrupt lets an operating system share CPU time between tasks.</span>
-              <em>Example: scheduler checks whether another process should run.</em>
+              <strong>Index register</strong>
+              <span>A register holding an offset from the base address.</span>
             </article>
             <article>
-              <strong>Hardware fault</strong>
-              <span>A device or hardware condition signals a problem that must be handled.</span>
-              <em>Example: power warning or device failure signal.</em>
+              <strong>Effective address</strong>
+              <span>Calculated as base address + index/offset.</span>
             </article>
             <article>
-              <strong>Software / exception</strong>
-              <span>A program event requires special handling.</span>
-              <em>Example: division by zero or system call, depending on architecture.</em>
+              <strong>Why useful</strong>
+              <span>Changing the index can access different array elements without changing the instruction's base address.</span>
             </article>
           </div>
           <div class="trap-card inline-card">
             <h3>Common error</h3>
-            <p>Do not write that all interrupts are "high priority errors". Some are routine, such as timer and I/O interrupts.</p>
+            <p>Indexed addressing does not mean "convert the operand into an index number". It calculates an effective address using a base and an offset.</p>
           </div>
         </section>
 
-        <!-- stage10-explanation:start sources -->
-        <section class="panel explanation-panel" id="explanation-sources" data-explains="sources" data-explanation-kind="mechanism" aria-labelledby="explanation-sources-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <h2 class="explanation-sr-only" id="explanation-sources-title">Where interrupts come from</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-sources.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Where interrupts come from with a structured visual model." />
-            <figcaption class="explanation-sr-only">Where interrupts come from: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input/output device</li><li><strong>Lesson fact:</strong> A keyboard, printer or network interface signals that it needs CPU attention.</li><li><strong>Lesson fact:</strong> Example: key pressed; printer buffer ready.</li><li><strong>Lesson fact:</strong> A timer interrupt lets an operating system share CPU time between tasks.</li><li><strong>Lesson fact:</strong> Example: scheduler checks whether another process should run.</li><li><strong>Lesson fact:</strong> Hardware fault</li><li><strong>Lesson fact:</strong> A device or hardware condition signals a problem that must be handled.</li><li><strong>Lesson fact:</strong> Example: power warning or device failure signal.</li><li><strong>Lesson fact:</strong> Software / exception</li><li><strong>Lesson fact:</strong> A program event requires special handling.</li><li><strong>Lesson fact:</strong> Example: division by zero or system call, depending on architecture.</li><li><strong>Lesson fact:</strong> Common error</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end sources -->
-        <section class="panel" id="cycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>The interrupt handling cycle</h2>
-          </div>
-          <div class="timeline" aria-label="Interrupt handling sequence">
-            <div><strong>1. Execute instruction</strong><span>The CPU finishes the current instruction before accepting most maskable interrupts.</span></div>
-            <div><strong>2. Check interrupt</strong><span>The control unit checks whether an interrupt is pending and enabled.</span></div>
-            <div><strong>3. Save state</strong><span>Important registers, PC and status information are stored, often on a stack.</span></div>
-            <div><strong>4. Find ISR</strong><span>The interrupt type is used to locate the correct interrupt service routine.</span></div>
-            <div><strong>5. Run ISR</strong><span>The routine handles the event, such as reading a key or acknowledging a device.</span></div>
-            <div><strong>6. Restore and return</strong><span>The saved state is restored and the interrupted program continues.</span></div>
-          </div>
-          <div class="why-card inline-card">
-            <h3>Why this matters</h3>
-            <p>Saving state is the "bookmark". Without it, the CPU may not know where or how to resume the interrupted program.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start cycle -->
-        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <h2 class="explanation-sr-only" id="explanation-cycle-title">The interrupt handling cycle</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The interrupt handling cycle with a structured visual model." />
-            <figcaption class="explanation-sr-only">The interrupt handling cycle: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.</li><li><strong>Lesson fact:</strong> 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.</li><li><strong>Lesson fact:</strong> 3. Save state Important registers, PC and status information are stored, often on a stack.</li><li><strong>Lesson fact:</strong> 4. Find ISR The interrupt type is used to locate the correct interrupt service routine.</li><li><strong>Lesson fact:</strong> 5. Run ISR The routine handles the event, such as reading a key or acknowledging a device.</li><li><strong>Lesson fact:</strong> 6. Restore and return The saved state is restored and the interrupted program continues.</li><li><strong>Lesson fact:</strong> Why this matters</li><li><strong>Lesson fact:</strong> Saving state is the &quot;bookmark&quot;. Without it, the CPU may not know where or how to resume the interrupted program.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cycle -->
-        <section class="panel" id="priority" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Priority and masking</h2>
-          </div>
-          <div class="priority-table" role="table" aria-label="Interrupt priority">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Idea</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Exam-safe wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Priority</div>
-              <div role="cell">Some interrupts are more urgent than others.</div>
-              <div role="cell">A higher-priority interrupt may be handled before a lower-priority one.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Maskable interrupt</div>
-              <div role="cell">Can be disabled or delayed by the processor.</div>
-              <div role="cell">Used when a less urgent event can wait.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Non-maskable interrupt</div>
-              <div role="cell">Cannot normally be ignored.</div>
-              <div role="cell">Used for critical events such as serious hardware faults.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Nested interrupt</div>
-              <div role="cell">An interrupt occurs while another ISR is running.</div>
-              <div role="cell">Only handled immediately if the system allows it and priority rules permit it.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start priority -->
-        <section class="panel explanation-panel" id="explanation-priority" data-explains="priority" data-explanation-kind="mechanism" aria-labelledby="explanation-priority-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <h2 class="explanation-sr-only" id="explanation-priority-title">Priority and masking</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-priority.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Priority and masking with a structured visual model." />
-            <figcaption class="explanation-sr-only">Priority and masking: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Priority</li><li><strong>Lesson fact:</strong> Some interrupts are more urgent than others.</li><li><strong>Lesson fact:</strong> A higher-priority interrupt may be handled before a lower-priority one.</li><li><strong>Lesson fact:</strong> Maskable interrupt</li><li><strong>Lesson fact:</strong> Can be disabled or delayed by the processor.</li><li><strong>Lesson fact:</strong> Used when a less urgent event can wait.</li><li><strong>Lesson fact:</strong> Non-maskable interrupt</li><li><strong>Lesson fact:</strong> Cannot normally be ignored.</li><li><strong>Lesson fact:</strong> Used for critical events such as serious hardware faults.</li><li><strong>Lesson fact:</strong> Nested interrupt</li><li><strong>Lesson fact:</strong> An interrupt occurs while another ISR is running.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end priority -->
-        <section class="panel" id="polling" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Interrupts versus polling</h2>
-          </div>
-          <div class="compare-grid">
-            <article>
-              <h3>Interrupt-driven input</h3>
-              <p>The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</p>
-              <ul>
-                <li>Efficient when events are unpredictable.</li>
-                <li>Requires interrupt handling and state saving.</li>
-                <li>Good exam phrase: "CPU does not continually check the device."</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Polling</h3>
-              <p>The CPU repeatedly checks a device or flag to see whether attention is needed.</p>
-              <ul>
-                <li>Simple to understand and implement.</li>
-                <li>Can waste processor time if checks are frequent and no event has occurred.</li>
-                <li>Good exam phrase: "regularly checks the status of the device."</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start polling -->
-        <section class="panel explanation-panel" id="explanation-polling" data-explains="polling" data-explanation-kind="mechanism" aria-labelledby="explanation-polling-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
-          <h2 class="explanation-sr-only" id="explanation-polling-title">Interrupts versus polling</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-polling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interrupts versus polling with a structured visual model." />
-            <figcaption class="explanation-sr-only">Interrupts versus polling: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interrupt-driven input</li><li><strong>Lesson fact:</strong> The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</li><li><strong>Lesson fact:</strong> Efficient when events are unpredictable.</li><li><strong>Lesson fact:</strong> Requires interrupt handling and state saving.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;CPU does not continually check the device.&quot;</li><li><strong>Lesson fact:</strong> The CPU repeatedly checks a device or flag to see whether attention is needed.</li><li><strong>Lesson fact:</strong> Simple to understand and implement.</li><li><strong>Lesson fact:</strong> Can waste processor time if checks are frequent and no event has occurred.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;regularly checks the status of the device.&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end polling -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Interrupt handling simulator</h2>
-            <p>Select an event. Follow what is saved, which ISR runs and what happens after the service routine finishes.</p>
+            <h2>Addressing mode simulator</h2>
+            <p>Use the memory table above: memory[20] = 70, memory[70] = 999, memory[103] = 44, and IX = 3.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Interrupt scenario
-              <select id="interruptInput">
-                <option value="keyboard">Keyboard key pressed</option>
-                <option value="timer">Timer tick for multitasking</option>
-                <option value="printer">Printer ready signal</option>
-                <option value="fault">Critical hardware fault</option>
+              Instruction
+              <select id="modeInput">
+                <option value="immediate">LOAD #20</option>
+                <option value="direct">LOAD 20</option>
+                <option value="indirect">LOAD (20)</option>
+                <option value="indexed">LOAD 100, IX</option>
+                <option value="direct103">LOAD 103</option>
               </select>
             </label>
             <button type="button" id="simulateBtn">Simulate</button>
@@ -400,12 +354,12 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trace the interrupt, not just the device</h2>
+            <h2>Trace the operand interpretation</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="keyboard">Keyboard input</button>
-            <button class="tab" type="button" data-example="timer">Timer interrupt</button>
-            <button class="tab" type="button" data-example="polling">Polling comparison</button>
+            <button class="tab active" type="button" data-example="compare">Compare modes</button>
+            <button class="tab" type="button" data-example="indirect">Indirect trace</button>
+            <button class="tab" type="button" data-example="indexed">Indexed array</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -414,7 +368,7 @@
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
-            <p>Short answers are fine, but they must name the mechanism. "It sorts itself out" is still not a processor feature.</p>
+            <p>Be precise. "The CPU just kind of goes there" is not a valid addressing mode.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -422,7 +376,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair the interrupt explanation</h2>
+            <h2>Fix the operand interpretation</h2>
           </div>
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
@@ -431,7 +385,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about pause, save state, ISR, restore and resume.</p>
+            <p>These are original Cambridge-style questions. MS wording distinguishes address, value, pointer and effective address.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -439,36 +393,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Interrupts are controlled pauses</h2>
+            <h2>Operand meaning depends on mode</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Interrupt</strong><span>A signal requesting processor attention.</span></div>
-            <div><strong>ISR</strong><span>The routine that handles a specific interrupt.</span></div>
-            <div><strong>State saving</strong><span>Stores PC, registers and flags so execution can resume.</span></div>
-            <div><strong>Priority</strong><span>More urgent interrupts may be serviced first.</span></div>
-            <div><strong>Polling</strong><span>CPU repeatedly checks device status instead of waiting for a signal.</span></div>
-            <div><strong>Exam habit</strong><span>Write the sequence: finish instruction, check, save, service, restore, resume.</span></div>
+            <div><strong>Immediate</strong><span>Operand is the value itself.</span></div>
+            <div><strong>Direct</strong><span>Operand is the address of the value.</span></div>
+            <div><strong>Indirect</strong><span>Operand points to an address that stores the actual address.</span></div>
+            <div><strong>Indexed</strong><span>Effective address = base + index/offset.</span></div>
+            <div><strong>Effective address</strong><span>The actual address used after interpretation.</span></div>
+            <div><strong>Exam habit</strong><span>State what the operand represents before calculating.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Make the interrupt sequence exam-ready</h2>
+            <h2>Make addressing mode traces exact</h2>
           </div>
           <ol class="homework-list">
-            <li>Define interrupt and interrupt service routine in one sentence each.</li>
-            <li>Write the six-step sequence used when a keyboard interrupt is accepted.</li>
-            <li>Explain why saving the program counter and registers is necessary before running an ISR.</li>
-            <li>Compare interrupt-driven input with polling in a 4-mark answer.</li>
-            <li>Correct this sentence: "An interrupt always means the current program has crashed."</li>
+            <li>Define immediate, direct, indirect and indexed addressing in one sentence each.</li>
+            <li>Using memory[40] = 88 and memory[88] = 123, explain the difference between `LOAD #40`, `LOAD 40` and `LOAD (40)`.</li>
+            <li>For base address 200 and index register 6, calculate the effective address and explain why indexed addressing is useful for arrays.</li>
+            <li>Write a 5-mark answer: "Explain the difference between direct and indirect addressing."</li>
+            <li>Correct this sentence: "In immediate addressing, the operand is always a memory address."</li>
           </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

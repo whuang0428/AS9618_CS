@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 026 | Section 2 review: explaining communication with precision</title>
+    <title>AS9618 Lesson 026 | Network performance, latency, bandwidth and congestion</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Section 2 review: explaining communication with precision</h1>
+        <h1>Network performance, latency, bandwidth and congestion</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,180 +29,240 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#map">Section map</a>
-        <a href="#precision">Precision rules</a>
-        <a href="#tool">Topic identifier</a>
+        <a href="#concepts">Core terms</a>
+        <a href="#factors">Performance factors</a>
+        <a href="#calculation">Calculation</a>
+        <a href="#tool">Estimator</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 026 | 45 minutes | Section 2 stage review</p>
-            <h2>A complete answer states the relevant mechanism precisely.</h2>
+            <p class="lesson-meta">Lesson 026 | 45 minutes | 5-minute quiz</p>
+            <h2>"Fast internet" is not one thing. It is several bottlenecks wearing one coat.</h2>
             <p>
-              This review connects the Section 2 communication topics: network types,
-              models, packets, protocols, addressing, application protocols, transmission
-              media, hardware, network services and performance. The goal is not rereading;
-              the goal is retrieval, diagnosis, correction and mark-worthy phrasing.
+              This lesson explains how bandwidth, latency and congestion affect network
+              performance. Students learn to diagnose a scenario, perform simple transfer
+              time calculations, and write precise Cambridge-style explanations.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>which Section 2 topic a mixed question is testing</span></div>
-              <div><strong>Explain</strong><span>with precise mechanism + scenario consequence</span></div>
-              <div><strong>Correct</strong><span>vague answers into Cambridge-style mark-worthy responses</span></div>
+              <div><strong>Define</strong><span>bandwidth, latency, congestion, throughput and packet loss in context</span></div>
+              <div><strong>Calculate</strong><span>simple transfer time using file size and bandwidth</span></div>
+              <div><strong>Explain</strong><span>why a network feels slow using cause, symptom and consequence</span></div>
             </div>
           </div>
-          <div class="review-card" aria-label="Section 2 review concept">
-            <span>keyword -> mechanism -> context -> consequence</span>
-            <p>The keyword opens the door. The explanation walks through it.</p>
+          <div class="performance-card" aria-label="Network performance concept">
+            <span>capacity + delay + traffic = user experience</span>
+            <p>Bandwidth is the pipe size. Latency is the wait. Congestion is the queue.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Many Section 2 mistakes are not knowledge gaps. They are wrong-toolbox mistakes: using DNS language for routing, or bandwidth language for latency.</p>
+            <p>Exam questions reward exact causes. "The network is slow" is a complaint, not an explanation.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not write "it is faster/easier/secure" and leave. Name what changes and why the user or network benefits.</p>
+            <p>High bandwidth does not remove latency. A huge road still has travel time, and sometimes everyone decided to drive at once.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Three short clues. Which topic is each one testing?</h2>
+            <h2>A video call looks sharp but everyone replies two seconds late. Which factor is most suspicious?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="latency">"The video is clear but replies arrive late."</button>
-            <button class="choice-card" type="button" data-hook="switch">"Frames are sent to the correct device inside a LAN."</button>
-            <button class="choice-card" type="button" data-hook="extranet">"A supplier can access selected private stock data."</button>
-            <button class="choice-card" type="button" data-hook="http">"A browser requests a web page from a server."</button>
+            <button class="choice-card" type="button" data-hook="latency">Latency, because delay matters even if the picture quality is good</button>
+            <button class="choice-card" type="button" data-hook="bandwidth">Bandwidth, because all problems are bandwidth if we say it confidently</button>
+            <button class="choice-card" type="button" data-hook="storage">Cloud storage, because video files are large</button>
+            <button class="choice-card" type="button" data-hook="hex">Hexadecimal, because two seconds is basically 10₂ seconds</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click a clue to see the topic and the phrase that earns marks.
+            Pick the factor that explains delay rather than image quality.
           </div>
         </section>
 
-        <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
+        <section class="panel" id="concepts" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
-            <p class="eyebrow">Retrieval map</p>
-            <h2>Section 2 in one page</h2>
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Core performance terms</h2>
           </div>
-          <div class="map-grid">
-            <article><strong>Networks and topologies</strong><span>LAN/WAN, star, bus, mesh, client-server, peer-to-peer.</span></article>
-            <article><strong>Packets and routing</strong><span>Packet switching, packet contents, routing decisions, reassembly.</span></article>
-            <article><strong>Protocols and layers</strong><span>Rules for communication, layered model, encapsulation.</span></article>
-            <article><strong>Addressing and naming</strong><span>IP address, MAC address, DNS, URL parts.</span></article>
-            <article><strong>Application protocols</strong><span>HTTP, HTTPS, FTP, SMTP, POP3, IMAP.</span></article>
-            <article><strong>Media and hardware</strong><span>Copper, fibre, radio, microwave, satellite; switch, router, access point, gateway.</span></article>
-            <article><strong>Network services</strong><span>Internet, intranet, extranet, cloud services.</span></article>
-            <article><strong>Performance</strong><span>Bandwidth, latency, congestion, throughput, packet loss.</span></article>
+          <div class="concept-grid">
+            <article class="concept-card">
+              <h3>Bandwidth</h3>
+              <p>The maximum amount of data that can be transmitted over a connection per second.</p>
+              <p><strong>Typical units:</strong> bits per second, Mbps, Gbps.</p>
+            </article>
+            <article class="concept-card">
+              <h3>Latency</h3>
+              <p>The delay before data starts to arrive or before a response is received.</p>
+              <p><strong>Typical units:</strong> milliseconds (ms).</p>
+            </article>
+            <article class="concept-card">
+              <h3>Congestion</h3>
+              <p>Occurs when too much data is trying to use part of a network, causing queues, delay or packet loss.</p>
+              <p><strong>Symptom:</strong> performance worsens when many users/devices compete.</p>
+            </article>
+            <article class="concept-card">
+              <h3>Throughput</h3>
+              <p>The actual amount of data successfully transferred per second, often lower than theoretical bandwidth.</p>
+            </article>
           </div>
-          <div class="callout">Chinese support: retrieval = 主动回忆；mechanism = 机制；consequence = 后果/影响；scenario = 情境。</div>
+          <div class="callout">Chinese support: bandwidth = 带宽；latency = 延迟；congestion = 拥塞；throughput = 实际吞吐量；packet loss = 丢包。</div>
         </section>
 
-        <!-- stage10-explanation:start map -->
-        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Section 2 in one page</h2>
+        <!-- stage10-explanation:start concepts -->
+        <section class="panel explanation-panel" id="explanation-concepts" data-explains="concepts" data-explanation-kind="tradeoff" aria-labelledby="explanation-concepts-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
+          <h2 class="explanation-sr-only" id="explanation-concepts-title">Core performance terms</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-026-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 2 in one page with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 2 in one page: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-026-concepts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core performance terms with a structured visual model." />
+            <figcaption class="explanation-sr-only">Core performance terms: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Packets in a packet-switched network are routed independently.</li><li><strong>Lesson fact:</strong> A response is sent back to the source but may take the same or a different route.</li><li><strong>Lesson fact:</strong> Routing decisions depend on the available network paths at each stage.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Bandwidth is the maximum data-transfer capacity per second.</li><li><strong>Lesson fact:</strong> Latency is delay before data starts to arrive or a response is received.</li><li><strong>Lesson fact:</strong> Congestion creates queues, delay or packet loss and can reduce throughput.</li><li><strong>Lesson fact:</strong> Throughput is the actual successful transfer rate and may be below bandwidth.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end map -->
-        <section class="panel" id="precision" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precision">
+        <!-- stage10-explanation:end concepts -->
+        <section class="panel" id="factors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
-            <p class="eyebrow">Answer craft</p>
-            <h2>Precision rules for Section 2 answers</h2>
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Factors that affect performance</h2>
+            <p>Good answers name a factor and explain its effect. "It becomes slower" needs a cause.</p>
           </div>
-          <div class="precision-grid">
+          <div class="factor-grid">
             <article>
-              <h3>1. Define with a boundary</h3>
-              <p>Switch: inside a LAN. Router: between networks. Extranet: selected external users. These boundary phrases often carry marks.</p>
+              <h3>Transmission medium</h3>
+              <p>Fibre may provide high bandwidth and low interference; wireless may vary with distance, obstacles and interference.</p>
             </article>
             <article>
-              <h3>2. Name the mechanism</h3>
-              <p>DNS resolves names to IP addresses. Fibre uses light pulses. HTTPS encrypts communication. Congestion causes queues.</p>
+              <h3>Number of users</h3>
+              <p>More users can share the same capacity, increasing congestion and reducing throughput per user.</p>
             </article>
             <article>
-              <h3>3. Link to the scenario</h3>
-              <p>If the question says online banking, mention sensitive data in transit. If it says tablets, mention mobility and wireless access.</p>
+              <h3>Distance and route</h3>
+              <p>Longer physical distance and more hops can increase latency.</p>
             </article>
             <article>
-              <h3>4. Avoid empty adjectives</h3>
-              <p>"Better", "faster", "secure" and "efficient" need a cause and consequence. The adjective is not the mark.</p>
+              <h3>Hardware and server load</h3>
+              <p>Slow routers, overloaded servers or weak wireless access points can become bottlenecks.</p>
+            </article>
+            <article>
+              <h3>Packet loss and retransmission</h3>
+              <p>If packets are lost, data may need to be resent, increasing delay and reducing effective throughput.</p>
+            </article>
+            <article>
+              <h3>Protocol overhead</h3>
+              <p>Error checking, encryption and headers are useful, but they add extra data or processing.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start precision -->
-        <section class="panel explanation-panel" id="explanation-precision" data-explains="precision" data-explanation-kind="synthesis" aria-labelledby="explanation-precision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="precision">
-          <h2 class="explanation-sr-only" id="explanation-precision-title">Precision rules for Section 2 answers</h2>
+        <!-- stage10-explanation:start factors -->
+        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="tradeoff" aria-labelledby="explanation-factors-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
+          <h2 class="explanation-sr-only" id="explanation-factors-title">Factors that affect performance</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-026-precision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Precision rules for Section 2 answers with a structured visual model." />
-            <figcaption class="explanation-sr-only">Precision rules for Section 2 answers: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-026-factors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Factors that affect performance with a structured visual model." />
+            <figcaption class="explanation-sr-only">Factors that affect performance: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Answer craft</li><li><strong>Lesson fact:</strong> 1. Define with a boundary</li><li><strong>Lesson fact:</strong> Switch: inside a LAN. Router: between networks. Extranet: selected external users. These boundary phrases often carry marks.</li><li><strong>Lesson fact:</strong> 2. Name the mechanism</li><li><strong>Lesson fact:</strong> DNS resolves names to IP addresses. Fibre uses light pulses. HTTPS encrypts communication. Congestion causes queues.</li><li><strong>Lesson fact:</strong> 3. Link to the scenario</li><li><strong>Lesson fact:</strong> If the question says online banking, mention sensitive data in transit. If it says tablets, mention mobility and wireless access.</li><li><strong>Lesson fact:</strong> 4. Avoid empty adjectives</li><li><strong>Lesson fact:</strong> &quot;Better&quot;, &quot;faster&quot;, &quot;secure&quot; and &quot;efficient&quot; need a cause and consequence. The adjective is not the mark.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Good answers name a factor and explain its effect. &quot;It becomes slower&quot; needs a cause.</li><li><strong>Lesson fact:</strong> Transmission medium</li><li><strong>Lesson fact:</strong> Fibre may provide high bandwidth and low interference; wireless may vary with distance, obstacles and interference.</li><li><strong>Lesson fact:</strong> Number of users</li><li><strong>Lesson fact:</strong> More users can share the same capacity, increasing congestion and reducing throughput per user.</li><li><strong>Lesson fact:</strong> Distance and route</li><li><strong>Lesson fact:</strong> Longer physical distance and more hops can increase latency.</li><li><strong>Lesson fact:</strong> Hardware and server load</li><li><strong>Lesson fact:</strong> Slow routers, overloaded servers or weak wireless access points can become bottlenecks.</li><li><strong>Lesson fact:</strong> Packet loss and retransmission</li><li><strong>Lesson fact:</strong> If packets are lost, data may need to be resent, increasing delay and reducing effective throughput.</li><li><strong>Lesson fact:</strong> Protocol overhead</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end precision -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <!-- stage10-explanation:end factors -->
+        <section class="panel" id="calculation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Simple transfer time calculation</h2>
+          </div>
+          <div class="formula-box">
+            <p><strong>Transfer time = file size in bits / bandwidth in bits per second</strong></p>
+            <p>Remember: <code>1 byte = 8 bits</code>. A 50 MB file is not 50 Mb. That capital B is doing real work.</p>
+          </div>
+          <div class="worked-mini">
+            <h3>Mini example</h3>
+            <p>A 25 MB file is downloaded over a 10 Mbps link.</p>
+            <ol>
+              <li>Convert file size: <code>25 MB x 8 = 200 Mb</code>.</li>
+              <li>Divide by bandwidth: <code>200 Mb / 10 Mbps = 20 seconds</code>.</li>
+              <li>This is an ideal estimate; real throughput may be lower due to congestion and overhead.</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start calculation -->
+        <section class="panel explanation-panel" id="explanation-calculation" data-explains="calculation" data-explanation-kind="mechanism" aria-labelledby="explanation-calculation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
+          <h2 class="explanation-sr-only" id="explanation-calculation-title">Simple transfer time calculation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-026-calculation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Simple transfer time calculation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Simple transfer time calculation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Transfer time = file size in bits / bandwidth in bits per second</li><li><strong>Lesson fact:</strong> Remember: 1 byte = 8 bits . A 50 MB file is not 50 Mb. That capital B is doing real work.</li><li><strong>Lesson fact:</strong> Mini example</li><li><strong>Lesson fact:</strong> A 25 MB file is downloaded over a 10 Mbps link.</li><li><strong>Lesson fact:</strong> Convert file size: 25 MB x 8 = 200 Mb .</li><li><strong>Lesson fact:</strong> Divide by bandwidth: 200 Mb / 10 Mbps = 20 seconds .</li><li><strong>Lesson fact:</strong> This is an ideal estimate; real throughput may be lower due to congestion and overhead.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end calculation -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Topic identifier</h2>
+            <h2>Transfer time estimator</h2>
           </div>
-          <div class="converter-grid">
+          <div class="calculator-grid">
             <label>
-              Scenario clue
-              <select id="scenarioInput">
-                <option value="dns">A user types cambridgeinternational.org but the browser needs an IP address</option>
-                <option value="imap">A phone and laptop show the same email folders and read/unread state</option>
-                <option value="fibre">A school needs a high-bandwidth fixed link between buildings</option>
-                <option value="router">A LAN sends packets to a different network</option>
-                <option value="latency">A game uses little data but actions respond late</option>
-                <option value="mesh">A hospital needs alternative paths if one link fails</option>
-                <option value="cloud">Students open the same files at home and school from remote servers</option>
+              File size
+              <input type="number" min="0" step="0.1" id="fileSizeInput" value="25" />
+            </label>
+            <label>
+              Unit
+              <select id="fileUnitInput">
+                <option value="MB">MB</option>
+                <option value="MiB">MiB</option>
+                <option value="Mb">Mb</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Identify topic</button>
+            <label>
+              Bandwidth (Mbps)
+              <input type="number" min="0" step="0.1" id="bandwidthInput" value="10" />
+            </label>
+            <label>
+              Latency estimate (ms)
+              <input type="number" min="0" step="1" id="latencyInput" value="40" />
+            </label>
+            <button type="button" id="calculateBtn">Estimate</button>
           </div>
-          <div class="result-box" id="topicResult" aria-live="polite"></div>
-          <div class="method-box" id="topicMethod"></div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Annotate what earns marks</h2>
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="protocol">Protocol answer</button>
-            <button class="tab" type="button" data-example="hardware">Hardware answer</button>
-            <button class="tab" type="button" data-example="performance">Performance answer</button>
+            <button class="tab active" type="button" data-example="download">Download time</button>
+            <button class="tab" type="button" data-example="gaming">Gaming delay</button>
+            <button class="tab" type="button" data-example="congestion">Shared network</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
-            <p class="eyebrow">Retrieval quiz</p>
+            <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -210,79 +270,74 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Rewrite vague answers into mark-worthy answers</h2>
+            <h2>Fix the weak performance answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"A router is better because it sends data faster."</p>
+              <p class="wrong">"Bandwidth is how quickly the first bit arrives."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">A router connects different networks and forwards packets using IP addresses/routing information, for example from a LAN to the internet.</p>
+              <p class="answer" id="mistake1">That describes latency. Bandwidth is the maximum amount of data that can be transmitted per second.</p>
             </article>
             <article>
-              <p class="wrong">"HTTPS is used because it is secure."</p>
+              <p class="wrong">"A 40 MB file over 20 Mbps takes 2 seconds."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">HTTPS encrypts communication between browser and web server, helping protect sensitive data such as login or payment details in transit.</p>
-            </article>
-            <article>
-              <p class="wrong">"Cloud is good because it is online."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake3">Show correction</button>
-              <p class="answer" id="mistake3">Cloud services use remote servers accessed over a network; benefits may include remote access, collaboration or scalability, but risks include provider dependence and privacy/security concerns.</p>
+              <p class="answer" id="mistake2">40 MB = 320 Mb. 320 Mb / 20 Mbps = 16 seconds, before real-world overheads.</p>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Mixed Section 2 questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. These are mixed-topic review questions: identify the topic before answering.</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Marks come from precise terms, correct units and cause-to-effect explanation.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-026">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>The Section 2 answer pattern</h2>
+            <h2>Diagnose the bottleneck</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Identify</strong><span>Spot the topic before writing: device, protocol, address, medium, service or performance.</span></div>
-            <div><strong>Mechanism</strong><span>Name what actually happens: resolve, route, forward, encrypt, translate, queue.</span></div>
-            <div><strong>Boundary</strong><span>State where it applies: within LAN, between networks, public, internal, selected external users.</span></div>
-            <div><strong>Scenario</strong><span>Use the nouns from the question: bank login, tablets, supplier, school network, remote file.</span></div>
-            <div><strong>Consequence</strong><span>Explain the result: lower delay, protected data, fewer collisions, reduced throughput, remote access.</span></div>
-            <div><strong>Correction</strong><span>Rewrite vague adjectives into cause-and-effect statements.</span></div>
+            <div><strong>Bandwidth</strong><span>Capacity/data rate, usually measured in bits per second.</span></div>
+            <div><strong>Latency</strong><span>Delay before response/data arrival, usually measured in milliseconds.</span></div>
+            <div><strong>Congestion</strong><span>Too much traffic for network capacity, causing queues, loss and delay.</span></div>
+            <div><strong>Throughput</strong><span>Actual successful transfer rate, often below theoretical bandwidth.</span></div>
+            <div><strong>Calculation</strong><span>Transfer time = file size in bits / bandwidth in bits per second.</span></div>
+            <div><strong>Exam answer</strong><span>State cause -> explain symptom -> link to scenario consequence.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Section 2 correction pack</h2>
+            <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a one-page Section 2 map with eight boxes matching the retrieval map above.</li>
-            <li>Write five "not enough for full marks" phrases and improve each one into a precise sentence.</li>
-            <li>Answer one 6-mark mixed question from this page without looking at the MS, then self-mark in a different colour.</li>
-            <li>Complete a 10-minute retrieval sprint: list 20 Section 2 terms and write one scenario for each.</li>
+            <li>Create flashcards for bandwidth, latency, congestion, throughput and packet loss. Include units where useful.</li>
+            <li>Calculate the ideal transfer time for a 120 MB file over a 24 Mbps connection. Show byte-to-bit conversion.</li>
+            <li>Write a 4-mark answer explaining why a video call can lag even when the connection has high bandwidth.</li>
+            <li>Write a 5-mark answer explaining how congestion affects a school network at lunchtime.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Good map:</strong> includes definitions plus one common common error per box.</p>
-            <p><strong>Improvement pattern:</strong> vague phrase -> precise mechanism -> scenario consequence.</p>
-            <p><strong>Self-marking:</strong> underline words that match B1/M1/A1 points; rewrite missing points.</p>
-            <p><strong>Retrieval sprint:</strong> no notes for the first attempt; notes only for correction.</p>
+            <p><strong>Calculation:</strong> 120 MB x 8 = 960 Mb; 960 Mb / 24 Mbps = 40 seconds.</p>
+            <p><strong>Video call:</strong> mention latency/jitter, not just bandwidth.</p>
+            <p><strong>Congestion:</strong> many users share capacity, queues form, throughput drops, packets may be delayed or lost.</p>
+            <p><strong>Self-check:</strong> units matter. MB and Mb are different.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

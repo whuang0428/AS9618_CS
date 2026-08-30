@@ -48,7 +48,9 @@ function parseCsv(text) {
 }
 
 function jpegDimensions(relativePath) {
-  const buffer = fs.readFileSync(path.join(root, relativePath));
+  const filePath = path.join(root, relativePath);
+  if (!fs.existsSync(filePath)) return null;
+  const buffer = fs.readFileSync(filePath);
   let offset = 2;
   while (offset + 9 < buffer.length) {
     if (buffer[offset] !== 0xff) { offset += 1; continue; }
@@ -74,12 +76,13 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["098", ["solution to a problem expressed as a sequence of defined steps", "input-process-output", "meaningful identifier", "identifier table", "pseudocode solution"]],
+  ["100", ["solution to a problem expressed as a sequence of defined steps", "input-process-output", "meaningful identifier", "identifier table", "pseudocode solution"]],
   ["099", ["abstraction", "abstract model", "decomposition", "program modules", "procedure", "function"]],
-  ["100", ["sequence", "selection", "iteration", "count-controlled", "condition-controlled", "A logic statement defines", "AND", "OR", "NOT", "inclusive"]],
-  ["101", ["structured English", "flowchart", "pseudocode", "convert"]],
-  ["111", ["Stepwise refinement", "high-level algorithm", "input-process-output", "program modules", "implement"]],
-  ["112", ["Section 9 required-content checkpoint", "sequence of defined steps", "abstract model", "structured English", "logic statements"]],
+  ["101", ["sequence", "selection", "iteration", "count-controlled", "condition-controlled"]],
+  ["104", ["A logic statement defines", "AND", "OR", "NOT", "inclusive"]],
+  ["102", ["structured English", "flowchart", "pseudocode", "convert"]],
+  ["103", ["Stepwise refinement", "high-level algorithm", "input-process-output", "program modules", "implement"]],
+  ["113", ["Section 9 required-content checkpoint", "sequence of defined steps", "abstract model", "structured English", "logic statements"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -88,35 +91,36 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["L098-Q5", ["solution to a problem", "sequence of defined steps", "unambiguous"]],
-  ["AQ100-Q3", ["solution to a problem", "sequence of defined steps", "meaningful identifier"]],
-  ["AQ100-Q4", ["essential detail", "omit", "abstract model"]],
-  ["L099-Q3", ["decomposition", "modules", "sub-problems"]],
-  ["AR112-Q2", ["Develop", "modular algorithm", "substeps"]],
-  ["L100-Q1", ["sequence", "selection", "iteration"]],
-  ["AQ105-Q1", ["flowchart", "pseudocode", "IF"]],
-  ["L101-Q2", ["AND", "IF", "Age >= 11", "Age <= 18"]],
-  ["AQ105-Q3", ["condition", "AND", "0", "100"]],
-  ["AM100-Q3", ["stepwise refinement", "modules/input-process-output", "algorithm"]],
-  ["AQ150-Q1", ["stepwise refinement", "high-level task", "subproblems"]],
+  ["L099-Q5", ["solution to a problem", "sequence of defined steps", "unambiguous"]],
+  ["AQ101-Q3", ["solution to a problem", "sequence of defined steps", "meaningful identifier"]],
+  ["AQ101-Q4", ["essential detail", "omit", "abstract model"]],
+  ["L100-Q3", ["decomposition", "modules", "sub-problems"]],
+  ["AR113-Q2", ["Develop", "modular algorithm", "substeps"]],
+  ["L101-Q1", ["sequence", "selection", "iteration"]],
+  ["AQ106-Q1", ["flowchart", "pseudocode", "IF"]],
+  ["L102-Q2", ["AND", "IF", "Age >= 11", "Age <= 18"]],
+  ["AQ106-Q3", ["condition", "AND", "0", "100"]],
+  ["AM101-Q3", ["stepwise refinement", "modules/input-process-output", "algorithm"]],
+  ["AQ151-Q1", ["stepwise refinement", "high-level task", "subproblems"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 9 assessment`);
 
-const acceptedSection9 = [...questions.values()].filter(({ id }) => /^(?:L(?:098|099|100|101|102|111|112)-Q|AQ(?:100|105|150)-Q|AM100-Q|AR112-Q)/.test(id))
+const acceptedSection9 = [...questions.values()].filter(({ id }) => /^(?:L(?:099|100|101|102|103|112|113)-Q|AQ(?:100|105|150)-Q|AM101-Q|AR113-Q)/.test(id))
   .map((question) => [question.prompt, question.answer, ...question.points.flat()].join(" ")).join("\n");
 expect(!/algorithm\s+(?:is|means)\s+(?:only\s+)?(?:code|a program)/i.test(acceptedSection9), "accepted assessment semantics define an algorithm as code/program only");
 expect(!/range[^\n]{0,120}\bOR\b[^\n]{0,120}(?:valid|accept)/i.test(acceptedSection9), "accepted assessment semantics use OR to accept a two-bound range");
 
-const visualPath = "web/assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg";
+const visualPath = "web/assets/diagrams/stage10-infographics/stage10-lesson-112-analyser.jpg";
 const dimensions = jpegDimensions(visualPath);
 expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${visualPath}: expected 1536x1024 JPEG`);
-const visualHash = sha256(fs.readFileSync(path.join(root, visualPath)));
-const semanticRow = parseCsv(read("audits/stage10-semantic-review-register.csv")).find((row) => row.lesson === "111" && row.target_id === "analyser");
-expect(semanticRow?.sha256 === visualHash, "L111 semantic review register hash does not match the current image");
-expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", "L111 visual lacks two approved semantic review passes");
-const targetRow = parseCsv(read("audits/stage10-explanation-target-register.csv")).find((row) => row.lesson === "111" && row.target_id === "analyser");
-expect(targetRow?.delivery_role === "CORE" && targetRow?.classroom_activity === "TEACH", "L111 refinement visual is not CORE/TEACH");
-includesAll(`${targetRow?.title ?? ""} ${read("scripts/stage10-visual-repair-facts.json")}`, ["stepwise refinement", "high-level algorithm", "program modules", "procedures", "functions"], "L111 delivery and source visual facts");
+const visualFile = path.join(root, visualPath);
+const visualHash = fs.existsSync(visualFile) ? sha256(fs.readFileSync(visualFile)) : "";
+const semanticRow = parseCsv(read("audits/stage10-semantic-review-register.csv")).find((row) => row.asset === "stage10-lesson-112-analyser.jpg" && row.target_id === "analyser");
+expect(semanticRow?.sha256 === visualHash, "L112 semantic review register hash does not match the current image");
+expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", "L112 visual lacks two approved semantic review passes");
+const targetRow = parseCsv(read("audits/stage10-explanation-target-register.csv")).find((row) => row.lesson === "103" && row.target_id === "analyser");
+expect(targetRow?.delivery_role === "CORE" && targetRow?.classroom_activity === "TEACH", "L112 refinement visual is not CORE/TEACH");
+includesAll(`${targetRow?.title ?? ""} ${read("scripts/stage10-visual-repair-facts.json")}`, ["stepwise refinement", "high-level algorithm", "program modules", "procedures", "functions"], "L112 delivery and source visual facts");
 
 for (const [id, pattern] of [
   ["S9.01", /abstract model/gi], ["S9.02", /modules/gi], ["S9.03", /defined steps/gi],
@@ -130,8 +134,8 @@ for (const [id, pattern] of [
 }
 
 for (const [requirementId, questionIds, pattern] of [
-  ["S9.03", ["L098-Q5", "AQ100-Q3"], /algorithm|solution|sequence|defined|unambiguous/gi],
-  ["S9.09", ["L101-Q2", "AQ105-Q3"], /condition|AND|IF|Age|Mark|0|100/gi],
+  ["S9.03", ["L099-Q5", "AQ101-Q3"], /algorithm|solution|sequence|defined|unambiguous/gi],
+  ["S9.09", ["L102-Q2", "AQ106-Q3"], /condition|AND|IF|Age|Mark|0|100/gi],
 ]) {
   const mutation = evaluateRequirement(requirements.get(requirementId), {
     questionTransform: (question) => questionIds.includes(question.id) ? {
@@ -145,9 +149,9 @@ for (const [requirementId, questionIds, pattern] of [
   expect(mutation.status === "Partial", `mutation escaped: removing both direct assessment forms must fail ${requirementId}`);
 }
 
-const rendered = execFileSync("python3", [path.join(root, "scripts", "render-stage10-critical-repairs.py"), "--keys", "111/analyser", "--output-dir", "/tmp/as9618-batch14-render"], { cwd: root });
-expect(rendered.toString().includes("Rendered 1"), "L111 deterministic visual renderer did not run");
-expect(sha256(fs.readFileSync("/tmp/as9618-batch14-render/stage10-lesson-111-analyser.jpg")) === visualHash, "L111 deterministic renderer output differs from the applied asset");
+const rendered = execFileSync("python3", [path.join(root, "scripts", "render-stage10-critical-repairs.py"), "--keys", "112/analyser", "--output-dir", "/tmp/as9618-batch14-render"], { cwd: root });
+expect(rendered.toString().includes("Rendered 1"), "L112 deterministic visual renderer did not run");
+expect(sha256(fs.readFileSync("/tmp/as9618-batch14-render/stage10-lesson-112-analyser.jpg")) === visualHash, "L112 deterministic renderer output differs from the applied asset");
 
 const ledger = JSON.parse(read("audits/repair-batch-14-section9-algorithm-design.json"));
 expect(ledger.status === "Resolved" && ledger.records.length === 13, "Batch 14 ledger must resolve nine requirements and four cross-cutting defects");

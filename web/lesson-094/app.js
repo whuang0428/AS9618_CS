@@ -1,152 +1,133 @@
 const classifierMap = {
-  bitmap: {
-    topic: "Section 1: image file size",
-    method: "Use width x height x colour depth, then convert bits to bytes and suitable units.",
+  face: {
+    topic: "Ethics / privacy / surveillance",
+    reason: "Discuss stakeholders, consent, privacy loss, safety benefit, safeguards and a justified judgement.",
   },
-  packet: {
-    topic: "Section 2: packet switching / communication",
-    method: "Describe packets, addresses, routing, reassembly and possible different routes.",
+  copy: {
+    topic: "Copyright and licensing",
+    reason: "A licence sets permitted use. Installing beyond the licence terms may infringe copyright.",
   },
-  fde: {
-    topic: "Section 4: fetch-decode-execute cycle",
-    method: "Name registers and describe transfers in sequence: PC, MAR, memory, MDR, CIR.",
+  repeat: {
+    topic: "Relational design / normalisation",
+    reason: "Repeated customer details suggest duplication. Separate customer and purchase data into related tables.",
   },
-  translator: {
-    topic: "Section 5: interpreter",
-    method: "State that code is translated and executed one statement at a time.",
+  group: {
+    topic: "SQL aggregate with GROUP BY",
+    reason: "The phrase 'in each product category' asks for a grouped summary, such as SUM or COUNT with GROUP BY.",
   },
-  licence: {
-    topic: "Section 7: ownership and licensing",
-    method: "Explain permissions and conditions set by the licence; copyright still applies.",
-  },
-  sql: {
-    topic: "Section 8: SQL aggregate with GROUP BY",
-    method: "Use SELECT group field and aggregate, FROM table, GROUP BY group field.",
+  verify: {
+    topic: "Verification",
+    reason: "Checking typed data against a source document is verification, not validation.",
   },
 };
 
-const commandMap = {
-  state: {
-    shape: "Give one precise point. Do not bury the answer.",
-    frame: "Lossless compression allows the original file to be restored exactly.",
-  },
-  describe: {
-    shape: "Say what happens or what it is, usually in sequence.",
-    frame: "The address in the PC is copied to the MAR; the instruction is fetched into the MDR; the instruction is copied to the CIR.",
-  },
-  explain: {
-    shape: "Give cause plus consequence. Use because/so that.",
-    frame: "MFA requires more than one authentication factor, so a stolen password alone is less likely to allow access.",
-  },
-  compare: {
-    shape: "Pair the differences directly. Mention both items in each point.",
-    frame: "A compiler translates the whole program before execution, whereas an interpreter translates and executes one statement at a time.",
-  },
-  justify: {
-    shape: "Choose and defend with scenario-specific reasons.",
-    frame: "An SSD is suitable for a tablet because it has no moving parts, making it more resistant to knocks while being carried.",
-  },
-  evaluate: {
-    shape: "Give benefit, concern, safeguard and supported judgement.",
-    frame: "Surveillance may improve safety, but it reduces privacy; it is justified only if monitoring is limited, transparent and proportionate.",
-  },
-};
+const customers = [
+  { CustomerID: "C01", Name: "Ada", Region: "North", Points: 1280 },
+  { CustomerID: "C02", Name: "Bo", Region: "South", Points: 760 },
+  { CustomerID: "C03", Name: "Chen", Region: "North", Points: 1540 },
+  { CustomerID: "C04", Name: "Dia", Region: "South", Points: 1110 },
+];
 
-const topicFacts = {
-  encryption: {
-    mechanism: "encodes data so it is unreadable without the correct key",
-    consequence: "protecting confidentiality if data is intercepted or stolen",
+function groupByRegion(aggregate, label) {
+  const groups = customers.reduce((acc, row) => {
+    acc[row.Region] = acc[row.Region] || [];
+    acc[row.Region].push(row);
+    return acc;
+  }, {});
+  return Object.entries(groups).map(([Region, rows]) => ({ Region, [label]: aggregate(rows) }));
+}
+
+const queryMap = {
+  q1: {
+    fields: ["Name"],
+    rows: customers.filter((row) => row.Points > 1000).map((row) => ({ Name: row.Name })),
   },
-  cache: {
-    mechanism: "stores frequently used data and instructions close to the CPU",
-    consequence: "reducing slower RAM accesses and improving performance for repeated operations",
+  q2: {
+    fields: ["Name", "Points"],
+    rows: [...customers].sort((a, b) => b.Points - a.Points).map((row) => ({ Name: row.Name, Points: row.Points })),
   },
-  normalisation: {
-    mechanism: "separates repeated data into related tables",
-    consequence: "reducing duplication and update inconsistencies",
+  q3: {
+    fields: ["Region", "COUNT(*)"],
+    rows: groupByRegion((rows) => rows.length, "COUNT(*)"),
   },
-  firewall: {
-    mechanism: "filters network traffic using rules such as IP address, port or protocol",
-    consequence: "blocking unauthorised or suspicious traffic from reaching the network",
+  q4: {
+    fields: ["Region", "SUM(Points)"],
+    rows: groupByRegion((rows) => rows.reduce((total, row) => total + row.Points, 0), "SUM(Points)"),
   },
 };
 
 const examples = {
-  calc: {
-    title: "Example 1: Calculation strategy",
-    problem: "Calculate the size in bytes of a 640 x 480 bitmap image with 8-bit colour depth.",
-    steps: [
-      "Topic clue: bitmap file size, Section 1.",
-      "Formula: width x height x colour depth.",
-      "Substitute: 640 x 480 x 8 = 2 457 600 bits.",
-      "Convert: 2 457 600 / 8 = 307 200 bytes.",
-      "Exam habit: show the bit-to-byte conversion; do not jump straight to a unit.",
-    ],
-  },
-  processor: {
-    title: "Example 2: Processor trace strategy",
-    problem: "Describe how the next instruction is fetched.",
-    steps: [
-      "Topic clue: instruction fetch, Section 4.",
-      "Register sequence: PC stores address of next instruction.",
-      "Address is copied to MAR; memory returns instruction into MDR.",
-      "Instruction is copied to CIR; PC is incremented.",
-      "Exam habit: use exact register names, not 'the CPU gets it'.",
-    ],
-  },
-  security: {
-    title: "Example 3: Security explanation strategy",
-    problem: "Explain how encryption protects data sent over a public network.",
-    steps: [
-      "Topic clue: encryption, Section 6.",
-      "Mechanism: data is encoded using an algorithm/key.",
-      "Consequence: intercepted data is unreadable without the key.",
-      "Limit: encryption does not by itself prove the sender's identity.",
-      "Exam habit: avoid vague 'makes data secure'.",
-    ],
-  },
   ethics: {
-    title: "Example 4: Evaluation strategy",
-    problem: "Evaluate using cameras with facial recognition in a town centre.",
+    title: "Example 1: Balanced ethics answer",
+    problem: "A school wants to use facial recognition to record attendance. Discuss this decision.",
     steps: [
-      "Topic clue: ethics/privacy/surveillance, Section 7.",
-      "Benefit: may help identify missing people or suspects quickly.",
-      "Concern: may track innocent people and reduce privacy.",
-      "Safeguard: limit purpose, retention and access; be transparent.",
-      "Judgement: acceptable only if proportional and carefully controlled.",
+      "Benefit mark: attendance can be recorded quickly and may improve safeguarding.",
+      "Concern mark: biometric data is personal data and misuse could reduce student privacy.",
+      "Safeguard mark: use clear consent, limited retention, secure storage and restricted access.",
+      "Judgement mark: the system is justified only if the safety benefit is proportionate and safeguards are enforced.",
+    ],
+  },
+  licence: {
+    title: "Example 2: Licensing answer",
+    problem: "A company copies proprietary software to extra computers without permission.",
+    steps: [
+      "Copyright protects the software owner's work.",
+      "A licence grants permission under stated conditions, such as number of installations.",
+      "Installing beyond those terms may breach the licence and infringe copyright.",
+      "Open-source software may allow copying, but only under its own licence terms.",
+    ],
+  },
+  design: {
+    title: "Example 3: Relational design answer",
+    problem: "A flat file repeats customer names and addresses for every purchase.",
+    steps: [
+      "Problem: repeated customer details cause duplication.",
+      "Consequence: if an address changes, copies may become inconsistent.",
+      "Improvement: store customer details once in Customer with CustomerID as primary key.",
+      "Relationship: store CustomerID as a foreign key in Purchase.",
+    ],
+  },
+  sql: {
+    title: "Example 4: SQL answer",
+    problem: "Output the total points for each region.",
+    steps: [
+      "Output the group label: SELECT Region.",
+      "Use an aggregate: SUM(Points).",
+      "Choose the table: FROM Customer.",
+      "Group rows by region: GROUP BY Region.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which command word usually needs a cause and consequence?", accepted: ["explain"], answer: "Explain" },
-  { id: "p2", prompt: "Which command word usually needs paired differences between two items?", accepted: ["compare"], answer: "Compare" },
-  { id: "p3", prompt: "Which command word usually needs a supported judgement?", accepted: ["evaluate", "justify"], answer: "Evaluate / justify" },
-  { id: "p4", prompt: "Which Paper 1 section contains image, sound and compression?", accepted: ["section 1", "1"], answer: "Section 1" },
-  { id: "p5", prompt: "Which Paper 1 section contains packets, protocols and network hardware?", accepted: ["section 2", "2"], answer: "Section 2" },
-  { id: "p6", prompt: "Which Paper 1 section contains CPU registers and the FDE cycle?", accepted: ["section 4", "4"], answer: "Section 4" },
-  { id: "p7", prompt: "Which Paper 1 section contains OS roles and translators?", accepted: ["section 5", "5"], answer: "Section 5" },
-  { id: "p8", prompt: "Which Paper 1 section contains authentication, malware and encryption?", accepted: ["section 6", "6"], answer: "Section 6" },
-  { id: "p9", prompt: "Which SQL clause is likely if the question says 'for each category'?", accepted: ["group by"], answer: "GROUP BY" },
-  { id: "p10", prompt: "In a calculation answer, what should you include before the final value?", accepted: ["working", "method", "formula", "substitution"], answer: "Working / method / formula" },
+  { id: "p1", prompt: "Which term means a person or group affected by a computing decision?", accepted: ["stakeholder"], answer: "Stakeholder" },
+  { id: "p2", prompt: "Which term means permission under conditions to use software?", accepted: ["licence", "license"], answer: "Licence / license" },
+  { id: "p3", prompt: "Which right protects original software or creative work from unauthorised copying?", accepted: ["copyright"], answer: "Copyright" },
+  { id: "p4", prompt: "Which term describes discarded electronic devices?", accepted: ["e-waste", "ewaste", "electronic waste"], answer: "E-waste / electronic waste" },
+  { id: "p5", prompt: "Which key uniquely identifies each record in a table?", accepted: ["primary key", "primary"], answer: "Primary key" },
+  { id: "p6", prompt: "Which key creates a relationship by matching a primary key in another table?", accepted: ["foreign key", "foreign"], answer: "Foreign key" },
+  { id: "p7", prompt: "Which database design process reduces duplication by separating repeated data?", accepted: ["normalisation", "normalization"], answer: "Normalisation" },
+  { id: "p8", prompt: "Which SQL clause filters records?", accepted: ["where"], answer: "WHERE" },
+  { id: "p9", prompt: "Which SQL clause forms groups for aggregate summaries?", accepted: ["group by"], answer: "GROUP BY" },
+  { id: "p10", prompt: "Which term checks entered data against an original source?", accepted: ["verification"], answer: "Verification" },
 ];
 
 const mistakes = [
   {
-    wrong: "The question says explain, so I wrote the keyword and moved on.",
-    fix: "Explain needs mechanism and consequence. Add because/so that and link to the scenario.",
+    wrong: "Facial recognition is ethical because it is efficient.",
+    fix: "Efficiency is only one benefit. A balanced answer must discuss stakeholders, privacy risk, consent, safeguards and whether the benefit is proportionate.",
   },
   {
-    wrong: "For compare questions, I wrote one paragraph about a compiler and then one about an interpreter.",
-    fix: "Pair the differences directly: compiler does X whereas interpreter does Y.",
+    wrong: "Open-source software has no copyright, so anyone can do anything with it.",
+    fix: "Open-source software still has copyright. The licence grants permissions and may impose conditions such as attribution or sharing modifications.",
   },
   {
-    wrong: "I saw 'data' and answered with databases, but the question was about data protection ethics.",
-    fix: "Use topic clues and command words together. Personal data, consent and monitoring usually point to Section 7 ethics/privacy.",
+    wrong: "A customer name is a good primary key because every customer has a name.",
+    fix: "Names may be duplicated or changed. A primary key must be unique and reliable, so CustomerID is better.",
   },
   {
-    wrong: "I skipped units in a file-size calculation because the number was correct.",
-    fix: "Cambridge-style marking often rewards method and units. Show formula, conversion and final unit.",
+    wrong: "GROUP BY sorts the output alphabetically.",
+    fix: "GROUP BY creates groups for aggregate calculations. ORDER BY sorts the result rows.",
   },
 ];
 
@@ -159,93 +140,93 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "A bitmap image is 800 pixels wide and 600 pixels high. It uses 16-bit colour depth. Calculate the file size in bytes, ignoring metadata.",
-    answer: "800 x 600 x 16 = 7 680 000 bits. 7 680 000 / 8 = 960 000 bytes.",
+    marks: "6 marks",
+    prompt: "A school plans to use facial recognition to record attendance. Discuss ethical issues involved.",
+    answer: "Facial recognition may improve safety and reduce time spent taking attendance, which benefits staff and students. However, facial images are personal/biometric data, so students may lose privacy if data is collected without informed consent or retained for too long. The system may also be unfair if recognition is less accurate for some groups. It is only justified if the school has a clear purpose, gains consent where appropriate, restricts access, stores the data securely, sets a retention limit and offers an alternative method.",
     marking: [
-      { mark: "M1", text: "uses width x height x colour depth" },
-      { mark: "M1", text: "substitutes 800 x 600 x 16" },
-      { mark: "A1", text: "obtains 7 680 000 bits" },
-      { mark: "M1", text: "divides by 8 to convert bits to bytes" },
-      { mark: "A1", text: "960 000 bytes with suitable unit" },
+      { mark: "B1", text: "identifies a relevant benefit such as safety/efficiency/attendance accuracy" },
+      { mark: "B1", text: "applies benefit to school/staff/students" },
+      { mark: "B1", text: "identifies privacy/biometric data/consent concern" },
+      { mark: "B1", text: "explains consequence such as misuse, monitoring or unfair treatment" },
+      { mark: "B1", text: "gives suitable safeguard such as consent, access control, retention limit or alternative method" },
+      { mark: "B1", text: "judges whether facial-recognition attendance is proportionate using attendance benefit, biometric privacy/fairness risk and safeguards" },
     ],
     strict: [
-      "Do not award final A1 without a byte/bytes unit unless clearly implied by working.",
-      "Do not include metadata because the question says to ignore it.",
-      "Allow 960 KB only if decimal KB conversion is clearly stated; bytes answer is expected.",
-      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
+      "Do not award full credit for one-sided 'good because safe' answers.",
+      "Allow surveillance or data protection wording if personal data issue is clear.",
+      "Do not require reference to a specific law.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Compare how a compiler and an interpreter translate and execute a high-level language program.",
-    answer: "A compiler translates the whole source program into object code before execution, whereas an interpreter translates and executes one statement at a time. A compiled program can be run without retranslation, whereas interpreted code needs the interpreter at run time. An interpreter is useful for debugging because errors are found as statements execute.",
+    marks: "5 marks",
+    prompt: "Explain why copying proprietary software to more computers than allowed by its licence may be a problem.",
+    answer: "Copyright protects the software owner's work from unauthorised copying. A proprietary licence gives permission to use the software only under stated conditions, such as a limited number of installations. Copying it to extra computers may breach the licence and infringe copyright, which can lead to legal or financial consequences for the organisation.",
     marking: [
-      { mark: "B1", text: "compiler translates whole program/source before execution" },
-      { mark: "B1", text: "interpreter translates/executes statement by statement" },
-      { mark: "B1", text: "compiled program/object code can run without retranslation" },
-      { mark: "B1", text: "interpreter useful for debugging or needs interpreter at run time" },
+      { mark: "B1", text: "copyright protects software/owner's work from unauthorised copying" },
+      { mark: "B1", text: "licence grants permission under conditions" },
+      { mark: "B1", text: "condition applied to number of installations/users/computers" },
+      { mark: "B1", text: "explains breach/infringement when copied beyond permission" },
+      { mark: "B1", text: "valid consequence such as legal action, fines or reputational damage" },
     ],
     strict: [
-      "Do not accept assembler as either compiler or interpreter.",
-      "Allow line by line for statement by statement.",
-      "Do not award comparison mark for two unconnected descriptions.",
+      "Do not accept 'it is illegal' alone without licence/copyright mechanism.",
+      "Allow license spelling.",
+      "Do not say open source means no restrictions.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A company sends confidential customer data over a public network. Explain two controls that could reduce risk.",
-    answer: "Encryption can encode the data so that intercepted data is unreadable without the correct key, protecting confidentiality. Authentication such as MFA can check the user's identity before access, reducing the chance that a stolen password alone allows unauthorised access. Access rights can also limit data to staff who need it for their role.",
+    prompt: "A loyalty system stores CustomerName, Address, ProductName and Price in one purchase table, repeated for every purchase. Explain how a relational design could improve this.",
+    answer: "Customer details can be stored once in a Customer table with CustomerID as the primary key. Purchase records can store CustomerID as a foreign key, linking each purchase to the correct customer. Product details can be stored once in a Product table with ProductID as the primary key, and Purchase can store ProductID as a foreign key. This reduces duplicated customer/product data and reduces update inconsistencies if an address or price changes.",
     marking: [
-      { mark: "B1", text: "names encryption" },
-      { mark: "B1", text: "explains encoded/unreadable without key" },
-      { mark: "B1", text: "links encryption to confidentiality during transmission" },
-      { mark: "B1", text: "names authentication/MFA or access rights" },
-      { mark: "B1", text: "explains mechanism of second control" },
-      { mark: "B1", text: "applies second control to reducing unauthorised access/risk" },
+      { mark: "B1", text: "identifies Customer table / stores customer details once" },
+      { mark: "B1", text: "identifies Product table / stores product details once" },
+      { mark: "B1", text: "uses suitable primary key such as CustomerID/ProductID" },
+      { mark: "B1", text: "uses foreign keys in Purchase to link related tables" },
+      { mark: "B1", text: "explains reduced duplication" },
+      { mark: "B1", text: "explains reduced inconsistency/update errors" },
     ],
     strict: [
-      "Do not award full credit for generic 'use security'.",
-      "Allow VPN/HTTPS if encryption mechanism is clear.",
-      "Do not treat backup as a confidentiality control unless availability is separately discussed.",
+      "Do not award relationship marks for merely saying 'make more tables' without keys.",
+      "Allow Order/Sale table instead of Purchase if relationships are clear.",
+      "Do not require a full ER diagram.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "The Book table has fields BookID, Title, Category and Copies. Write an SQL query to output each Category and the number of books in that Category.",
-    answer: "SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+    prompt: "The Customer table has fields CustomerID, Name, Region and Points. Write an SQL query to output Region and total Points for each Region.",
+    answer: "SELECT Region, SUM(Points) FROM Customer GROUP BY Region;",
     marking: [
-      { mark: "B1", text: "SELECT Category" },
-      { mark: "B1", text: "uses COUNT(*) or valid count of records" },
-      { mark: "B1", text: "FROM Book" },
-      { mark: "M1", text: "GROUP BY Category" },
+      { mark: "B1", text: "SELECT Region" },
+      { mark: "B1", text: "uses SUM(Points)" },
+      { mark: "B1", text: "FROM Customer" },
+      { mark: "M1", text: "GROUP BY Region" },
     ],
     strict: [
-      "Do not award GROUP BY mark for ORDER BY Category.",
-      "Do not accept SUM(Copies) because the question asks for number of books, not total copies.",
-      "Allow COUNT(BookID).",
+      "Do not accept COUNT(Points) for total points.",
+      "Do not award GROUP BY mark for ORDER BY Region.",
+      "Allow field order SUM(Points), Region unless output order is specified.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A town uses surveillance cameras with facial recognition in public spaces. Evaluate this decision.",
-    answer: "The system may improve public safety by helping identify suspects or missing people quickly. However, it may reduce privacy because people are monitored in public and biometric data may be stored or misused. It may also be unfair if recognition accuracy differs between groups. The decision is justified only if use is transparent, data is retained for a limited time, access is restricted and the benefit is proportionate to the privacy impact.",
+    marks: "5 marks",
+    prompt: "A clerk enters customer details from paper forms into a database. Explain validation and verification, using this scenario.",
+    answer: "Validation checks that entered data follows rules before it is accepted, for example checking that CustomerID is present or that Points is numeric and within a valid range. Verification checks that entered data matches the original source, for example proofreading the typed address against the paper form or using double entry. Validation can reject impossible formats, but it cannot prove a plausible address is true; verification helps detect copying errors from the source document.",
     marking: [
-      { mark: "B1", text: "valid benefit such as safety/crime prevention/finding missing people" },
-      { mark: "B1", text: "applies benefit to town/public spaces" },
-      { mark: "B1", text: "valid concern such as privacy, surveillance or biometric data misuse" },
-      { mark: "B1", text: "explains consequence of concern" },
-      { mark: "B1", text: "gives suitable safeguard/condition such as retention limit, transparency or access control" },
-      { mark: "B1", text: "judges whether public facial recognition is proportionate using safety benefit, surveillance/false-match harm and operational safeguards" },
+      { mark: "B1", text: "defines validation as checking data against rules" },
+      { mark: "B1", text: "valid scenario example such as presence/type/range check" },
+      { mark: "B1", text: "defines verification as checking against source/original data" },
+      { mark: "B1", text: "valid scenario example such as proofreading/double entry against form" },
+      { mark: "B1", text: "contrasts validation cannot prove truth with verification checking copying accuracy" },
     ],
     strict: [
-      "Do not award full credit for one-sided safety-only answers.",
-      "Allow data protection wording if privacy concern is clear.",
-      "Do not require a named law.",
+      "Do not accept 'validation makes data correct'.",
+      "Allow format check for email/postcode if linked to rules.",
+      "Do not accept verification as checking password identity in this database-entry context.",
     ],
   },
 ];
@@ -261,10 +242,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    calc: "Response shape: calculation. Write formula, substitute values, convert units and state final unit.",
-    compare: "Response shape: comparison. Pair each difference directly: compiler does X whereas interpreter does Y.",
-    sql: "Response shape: SQL. Identify fields, table, filter/group/sort clauses.",
-    evaluate: "Response shape: evaluation. Give benefit, concern, safeguard and judgement.",
+    privacy: "Topic: ethics/privacy. First move: identify stakeholders, benefit, concern, safeguard and judgement.",
+    key: "Topic: database design. First move: choose a unique and reliable primary key such as CustomerID.",
+    sql: "Topic: SQL retrieval. First move: SELECT required fields, FROM table, WHERE Points > 1000.",
+    licence: "Topic: copyright/licensing. First move: explain permission under licence conditions.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -280,26 +261,37 @@ function setupClassifier() {
   const result = document.querySelector("#classifyResult");
   document.querySelector("#classifyBtn").addEventListener("click", () => {
     const item = classifierMap[input.value];
-    result.innerHTML = `<strong>${item.topic}</strong><br />${item.method}`;
-  });
-}
-
-function setupDecoder() {
-  const input = document.querySelector("#commandInput");
-  const result = document.querySelector("#decodeResult");
-  document.querySelector("#decodeBtn").addEventListener("click", () => {
-    const item = commandMap[input.value];
-    result.innerHTML = `<strong>Expected shape:</strong> ${item.shape}<br /><strong>Frame:</strong> ${item.frame}`;
+    result.innerHTML = `<strong>${item.topic}</strong><br />${item.reason}`;
   });
 }
 
 function setupBuilder() {
-  const topic = document.querySelector("#topicInput");
-  const context = document.querySelector("#contextInput");
+  const benefit = document.querySelector("#benefitInput");
+  const concern = document.querySelector("#concernInput");
+  const safeguard = document.querySelector("#safeguardInput");
   const result = document.querySelector("#builderResult");
   document.querySelector("#buildBtn").addEventListener("click", () => {
-    const fact = topicFacts[topic.value];
-    result.innerHTML = `<strong>Built answer:</strong> In the ${context.value}, ${topic.value} ${fact.mechanism}, ${fact.consequence}.`;
+    result.innerHTML = `<strong>Built paragraph:</strong> Although the system ${benefit.value}, it ${concern.value}. Therefore, it is justified only if ${safeguard.value}.`;
+  });
+}
+
+function renderQueryTable(query) {
+  const table = queryMap[query];
+  const columns = table.fields;
+  const rows = table.rows;
+  return `
+    <div class="mini-result" style="--cols: ${columns.length}">
+      <div class="table-row table-head">${columns.map((field) => `<div>${field}</div>`).join("")}</div>
+      ${rows.map((row) => `<div class="table-row">${columns.map((field) => `<div>${row[field]}</div>`).join("")}</div>`).join("")}
+    </div>
+  `;
+}
+
+function setupQueryTracer() {
+  const input = document.querySelector("#queryInput");
+  const result = document.querySelector("#queryResult");
+  document.querySelector("#queryBtn").addEventListener("click", () => {
+    result.innerHTML = renderQueryTable(input.value);
   });
 }
 
@@ -323,7 +315,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("calc");
+  renderExample("ethics");
 }
 
 function renderPractice() {
@@ -371,7 +363,7 @@ function renderMistakes() {
     .map(
       (item, index) => `
         <article>
-          <p class="wrong"><strong>Weak approach ${index + 1}:</strong> ${item.wrong}</p>
+          <p class="wrong"><strong>Weak answer ${index + 1}:</strong> ${item.wrong}</p>
           <button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button>
           <div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div>
         </article>
@@ -423,8 +415,8 @@ function init() {
   setupPrint();
   setupHook();
   setupClassifier();
-  setupDecoder();
   setupBuilder();
+  setupQueryTracer();
   setupExamples();
   renderPractice();
   renderMistakes();

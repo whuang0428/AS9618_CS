@@ -1,34 +1,34 @@
 {
   "schemaVersion": 1,
   "stage": 5,
-  "scope": "Eight critical Stage 5 images only; not the Stage 6 783-image census.",
+  "scope": "Eight critical Stage 5 images only; not the Stage 6 784-image census.",
   "reviewMethod": "Original/high-resolution visual inspection against maintained transcript, official technical boundary and deterministic renderer source.",
   "firstPassOrder": [
-    "049/concept",
-    "107/pseudocode",
-    "121/parse",
-    "121/pseudocode",
-    "121/types",
-    "133/case",
-    "133/concat",
-    "133/java"
+    "050/concept",
+    "108/pseudocode",
+    "122/parse",
+    "122/pseudocode",
+    "122/types",
+    "134/case",
+    "134/concat",
+    "134/java"
   ],
   "secondPassOrder": [
-    "133/java",
-    "133/concat",
-    "133/case",
-    "121/types",
-    "121/pseudocode",
-    "121/parse",
-    "107/pseudocode",
-    "049/concept"
+    "134/java",
+    "134/concat",
+    "134/case",
+    "122/types",
+    "122/pseudocode",
+    "122/parse",
+    "108/pseudocode",
+    "050/concept"
   ],
   "disagreements": 0,
   "pending": 0,
   "entries": [
     {
-      "key": "049/concept",
-      "asset": "stage10-lesson-049-concept.jpg",
+      "key": "050/concept",
+      "asset": "stage10-lesson-050-concept.jpg",
       "sha256": "19f0aaf66497dd2d69f05adc392356aa98e57da34c72bfcf5cb328433fa55ef4",
       "dimensions": {
         "width": 1536,
@@ -47,8 +47,8 @@
       ]
     },
     {
-      "key": "107/pseudocode",
-      "asset": "stage10-lesson-107-pseudocode.jpg",
+      "key": "108/pseudocode",
+      "asset": "stage10-lesson-108-pseudocode.jpg",
       "sha256": "25e108a60e7e527292c35e31d86110700e80da2182b62ac193060248d73eb289",
       "dimensions": {
         "width": 1536,
@@ -67,8 +67,8 @@
       ]
     },
     {
-      "key": "121/parse",
-      "asset": "stage10-lesson-121-parse.jpg",
+      "key": "122/parse",
+      "asset": "stage10-lesson-122-parse.jpg",
       "sha256": "9354fa6a65d6d89a3740f952bc0e500a8a5063de2011a7cdae01c6f4061cdd96",
       "dimensions": {
         "width": 1536,
@@ -87,8 +87,8 @@
       ]
     },
     {
-      "key": "121/pseudocode",
-      "asset": "stage10-lesson-121-pseudocode.jpg",
+      "key": "122/pseudocode",
+      "asset": "stage10-lesson-122-pseudocode.jpg",
       "sha256": "5537513203cbe74ab5630baabfe56c9432126196a22dddce1ac206cdbc7735cd",
       "dimensions": {
         "width": 1536,
@@ -107,8 +107,8 @@
       ]
     },
     {
-      "key": "121/types",
-      "asset": "stage10-lesson-121-types.jpg",
+      "key": "122/types",
+      "asset": "stage10-lesson-122-types.jpg",
       "sha256": "90122b57bdcd543a8dbf2317bab0d4d98414f797e63ec4680aff6b2995d0b1ae",
       "dimensions": {
         "width": 1536,
@@ -127,8 +127,8 @@
       ]
     },
     {
-      "key": "133/case",
-      "asset": "stage10-lesson-133-case.jpg",
+      "key": "134/case",
+      "asset": "stage10-lesson-134-case.jpg",
       "sha256": "3c0c2567a137f9cc578afc2e5f56891bcbd5a9c4f28e8b2713344d26e4ab4ce6",
       "dimensions": {
         "width": 1536,
@@ -147,8 +147,8 @@
       ]
     },
     {
-      "key": "133/concat",
-      "asset": "stage10-lesson-133-concat.jpg",
+      "key": "134/concat",
+      "asset": "stage10-lesson-134-concat.jpg",
       "sha256": "664236145ee017a8401cd0565dfb98442b2688d051e1bdfb4aee555ea2596eff",
       "dimensions": {
         "width": 1536,
@@ -167,8 +167,8 @@
       ]
     },
     {
-      "key": "133/java",
-      "asset": "stage10-lesson-133-java.jpg",
+      "key": "134/java",
+      "asset": "stage10-lesson-134-java.jpg",
       "sha256": "237daf31e2a28b46459a76e83e0c3aa2be22088c567e986fd5b3f0fa3671ae56",
       "dimensions": {
         "width": 1536,

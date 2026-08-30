@@ -8,7 +8,7 @@ const auditDirectory = path.join(root, "audits");
 const deterministicCorrections = new Map([
   ["004/overflow", "Corrected and fact-checked after semantic review"],
 ]);
-const reviewLessons = new Set(["015", "026", "040", "051", "061", "071", "077", "089", "090", "091", "092", "093", "094", "095", "096", "097", "112", "125", "141", "146", "147", "148", "149", "150"]);
+const reviewLessons = new Set(["016", "027", "041", "052", "062", "072", "078", "090", "091", "092", "093", "094", "095", "096", "097", "098", "113", "126", "142", "147", "148", "149", "150", "151"]);
 const excludedIds = /^(?:overview|examples|core-practice|stage2-completion|tool|builder|simulator|converter|checker|classifier|chooser|runner|detector|hash-demo|model-tool|order-tool|error-tool|rewrite-tool|bubble-tool|insert-tool|trace|fde|delivery-\d+)$/;
 const excludedTitles = /^(?:why this matters|common trap|worked examples?|annotate |identify the topic|interactive |choose a project situation|spot the stage)/i;
 const visualHint = /(?:diagram|visual|topology|flowchart|architecture|cycle|journey|gate|pipeline|entity|relationship|network-map|storage-media|peer-visual|concept-svg)/i;
@@ -137,7 +137,7 @@ const deliveryHeader = deliveryRows.shift();
 const deliveryIndex = Object.fromEntries(deliveryHeader.map((value, index) => [value, index]));
 const targets = [];
 
-for (let number = 1; number <= 150; number += 1) {
+for (let number = 1; number <= 151; number += 1) {
   const lesson = String(number).padStart(3, "0");
   const rows = deliveryRows.filter((row) => row[deliveryIndex.lesson] === lesson);
   let candidates = rows.filter((row) => {
@@ -209,7 +209,7 @@ const legacyByLesson = new Map(legacyRows.map((row) => [row[legacyIndex.lesson],
 const visuals = [];
 const seenVisualKeys = new Set();
 
-for (let number = 1; number <= 150; number += 1) {
+for (let number = 1; number <= 151; number += 1) {
   const lesson = String(number).padStart(3, "0");
   const html = read(`web/lesson-${lesson}/index.html`);
   const css = read(`web/lesson-${lesson}/styles.css`);
@@ -292,7 +292,7 @@ const semanticByKey = semanticReviewIndex();
 const semanticReviewed = [...semanticByKey.values()].filter((item) => item.status !== "Pending").length;
 const semanticBlockers = [...semanticByKey.values()].filter((item) => ["DefectCritical", "DefectMajor"].includes(item.status)).length;
 const imagegenCount = explanations.filter((item) => item.visual && !deterministicCorrections.has(`${item.lesson}/${item.targetId}`)).length;
-const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 150 lessons.\n- Implemented visual explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Academic infographic assets: ${explanations.filter((item) => item.visual).length} (${imagegenCount} ImageGen, ${deterministicCorrections.size} deterministic correction).\n- Semantic reviews complete: ${semanticReviewed}/${explanations.length}; unresolved blocking assets: ${semanticBlockers}.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: complete across all 150 lessons after approval of the ten-lesson visual-style pilot.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each infographic must visualise the maintained lesson facts as a structured mechanism, comparison, process, trade-off or synthesis.\n- Review lessons use causal synthesis rather than one infographic per retrieval prompt.\n- Every infographic has an adjacent screen-reader transcript generated from the maintained factual source.\n- Image and interactive visuals require factual review. Automated checks verify target coverage, structure, file state and accessibility, not conceptual truth.\n- Human semantic review status comes from \`audits/stage10-semantic-review-register.csv\`; Critical and Major defects block release.\n`;
+const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 151 lessons.\n- Implemented visual explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Academic infographic assets: ${explanations.filter((item) => item.visual).length} (${imagegenCount} ImageGen, ${deterministicCorrections.size} deterministic correction).\n- Semantic reviews complete: ${semanticReviewed}/${explanations.length}; unresolved blocking assets: ${semanticBlockers}.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: complete across all 151 lessons after approval of the ten-lesson visual-style pilot.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each infographic must visualise the maintained lesson facts as a structured mechanism, comparison, process, trade-off or synthesis.\n- Review lessons use causal synthesis rather than one infographic per retrieval prompt.\n- Every infographic has an adjacent screen-reader transcript generated from the maintained factual source.\n- Image and interactive visuals require factual review. Automated checks verify target coverage, structure, file state and accessibility, not conceptual truth.\n- Human semantic review status comes from \`audits/stage10-semantic-review-register.csv\`; Critical and Major defects block release.\n`;
 fs.writeFileSync(path.join(auditDirectory, "stage10-concept-explanation-report.md"), report);
 
 const imagegenRows = explanations.map((item) => {

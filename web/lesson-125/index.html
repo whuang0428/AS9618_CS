@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 125 | Section 10 review: data modelling in algorithms</title>
+    <title>AS9618 Lesson 125 | Pseudocode data declarations vs Java declarations</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Section 10 review: data modelling in algorithms</h1>
+        <h1>Pseudocode data declarations vs Java declarations</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,14 +29,15 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#map">Topic map</a>
-        <a href="#decision">Data choice</a>
-        <a href="#files">Files</a>
-        <a href="#adts">Stack/queue</a>
-        <a href="#declare">Declarations</a>
-        <a href="#marks">Mark language</a>
-        <a href="#classifier">Classifier</a>
-        <a href="#improver">Mark improver</a>
+        <a href="#principle">Principle</a>
+        <a href="#types">Types</a>
+        <a href="#variables">Variables</a>
+        <a href="#constants">Constants</a>
+        <a href="#arrays">Arrays</a>
+        <a href="#records">Records</a>
+        <a href="#assignment">Assignment</a>
+        <a href="#converter">Converter</a>
+        <a href="#sorter">Syntax sorter</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -48,329 +49,351 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 125 | 45 minutes | Paper 2 Section 10 | 5-minute quiz + stage review</p>
-            <h2>Before answering, choose the right data model.</h2>
+            <p class="lesson-meta">Lesson 125 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>Java helps you understand programming, but Cambridge pseudocode is the exam language.</h2>
             <p>
-              Section 10 is not a pile of separate vocabulary cards. It is the skill of choosing, declaring and using
-              data structures so an algorithm can store the right values in the right shape. This review links arrays,
-              records, files, CSV data, stacks, queues and declarations into one exam-ready decision process.
+              This lesson separates declaration styles so students do not donate marks to punctuation. Cambridge
+              pseudocode usually declares using <code>DECLARE Identifier : Type</code>, while Java usually places the
+              type before the identifier and uses semicolons. The idea can match; the syntax does not.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Recognise</strong><span>which Section 10 topic a mixed question is testing</span></div>
-              <div><strong>Select</strong><span>a suitable data model for a scenario and justify it precisely</span></div>
-              <div><strong>Improve</strong><span>weak answers using mark-worthy Cambridge-style language</span></div>
+              <div><strong>Identify</strong><span>Cambridge pseudocode declarations for variables, arrays and records</span></div>
+              <div><strong>Compare</strong><span>equivalent Java declarations without mixing syntax</span></div>
+              <div><strong>Correct</strong><span>common exam mistakes in declarations and assignment</span></div>
             </div>
           </div>
-          <div class="review-visual" aria-label="Section 10 review visual">
-            <div class="stack-card">Stack<br /><span>LIFO</span></div>
-            <div class="queue-card">Queue<br /><span>FIFO</span></div>
-            <div class="record-card">
-              <span>TYPE TStudent</span>
-              <span>Name : STRING</span>
-              <span>Mark : INTEGER</span>
-              <span>ENDTYPE</span>
+          <div class="syntax-visual" aria-label="Pseudocode versus Java visual">
+            <div class="syntax-card">
+              <strong>Pseudocode</strong>
+              <span>DECLARE Count : INTEGER</span>
+              <span>Count &lt;- 0</span>
+              <span>DECLARE Scores : ARRAY[1:30] OF INTEGER</span>
             </div>
-            <p>Same exam section. Different toolbox. Choose before you write.</p>
+            <div class="syntax-card">
+              <strong>Java support only</strong>
+              <span>int count = 0;</span>
+              <span>int[] scores = new int[30];</span>
+            </div>
+            <p>Same intention. Different exam surface.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge marks often reward scenario-fit: why this structure works here, not just what the structure is.</p>
+            <p>Paper 2 marks often depend on clear declarations, suitable data types and correct pseudocode assignment.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>"It is efficient" is usually too vague. State what is easier, faster or safer because of the data model.</p>
+            <p><code>int count;</code> is Java-style. In Cambridge pseudocode, write <code>DECLARE Count : INTEGER</code>.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Topic first, answer second</h2>
-            <p>Three questions walk into an exam. Only one tells you its topic politely. Click the best label.</p>
+            <h2>Which answer belongs in a Paper 2 pseudocode answer?</h2>
+            <p>The task says: declare an integer variable called Count. Choose the Cambridge-style answer.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="array">"Store 30 marks and output the highest."</button>
-            <button class="choice-card" type="button" data-hook="record">"Store each student's name, ID and mark together."</button>
-            <button class="choice-card" type="button" data-hook="queue">"Serve print jobs in arrival order."</button>
-            <button class="choice-card" type="button" data-hook="file">"Read each line from Scores.csv."</button>
+            <button class="choice-card" type="button" data-hook="java">int count;</button>
+            <button class="choice-card" type="button" data-hook="pseudo">DECLARE Count : INTEGER</button>
+            <button class="choice-card" type="button" data-hook="mixed">INTEGER Count;</button>
+            <button class="choice-card" type="button" data-hook="assign">Count &lt;- INTEGER</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose a card to reveal the most likely Section 10 topic.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the declaration style expected in Cambridge pseudocode.</div>
         </section>
 
-        <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
+        <section class="panel" id="principle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="principle">
           <div class="section-title">
-            <p class="eyebrow">Retrieval map</p>
-            <h2>Section 10 in one review grid</h2>
-            <p>Chinese support: model 是“数据建模方式”；justify 是“说明为什么适合这个场景”。</p>
+            <p class="eyebrow">Core principle</p>
+            <h2>Do not mix the two languages inside one answer</h2>
+            <p>Chinese support: declaration 是“声明”；assignment 是“赋值”；syntax 是“语法形式”。</p>
           </div>
-          <div class="data-table map-table" role="table" aria-label="Section 10 topic map">
-            <div class="table-row table-head" role="row"><div>Topic</div><div>Best clue</div><div>Exam action</div><div>Common weak answer</div></div>
-            <div class="table-row" role="row"><div>Array</div><div>many values of the same type</div><div>declare bounds, loop over indexes</div><div>"list of data"</div></div>
-            <div class="table-row" role="row"><div>Record</div><div>one item has several fields</div><div>declare TYPE, fields and variables</div><div>"array with different things"</div></div>
-            <div class="table-row" role="row"><div>Array of records</div><div>many items, each with fields</div><div>combine array and record</div><div>"2D array for everything"</div></div>
-            <div class="table-row" role="row"><div>Text file / CSV</div><div>persistent line-based data</div><div>open, read/write, split fields, close</div><div>"save it somewhere"</div></div>
-            <div class="table-row" role="row"><div>Stack</div><div>most recent item first</div><div>push/pop, LIFO</div><div>"queue because it stores data"</div></div>
-            <div class="table-row" role="row"><div>Queue</div><div>arrival order matters</div><div>enqueue/dequeue, FIFO</div><div>"stack because it is ordered"</div></div>
-            <div class="table-row" role="row"><div>Declaration</div><div>question asks to define storage</div><div>use Cambridge pseudocode syntax</div><div>Java syntax in Paper 2</div></div>
+          <div class="data-table principle-table" role="table" aria-label="Pseudocode and Java principle">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Cambridge-style pseudocode</div><div>Java support only</div></div>
+            <div class="table-row" role="row"><div>Variable declaration</div><div><code>DECLARE Count : INTEGER</code></div><div><code>int count;</code></div></div>
+            <div class="table-row" role="row"><div>Assignment</div><div><code>Count &lt;- 0</code></div><div><code>count = 0;</code></div></div>
+            <div class="table-row" role="row"><div>Array declaration</div><div><code>DECLARE Scores : ARRAY[1:30] OF INTEGER</code></div><div><code>int[] scores = new int[30];</code></div></div>
+            <div class="table-row" role="row"><div>Record/class idea</div><div><code>TYPE ... ENDTYPE</code></div><div><code>class ... { }</code></div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start map -->
-        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Section 10 in one review grid</h2>
+        <!-- stage10-explanation:start principle -->
+        <section class="panel explanation-panel" id="explanation-principle" data-explains="principle" data-explanation-kind="mechanism" aria-labelledby="explanation-principle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="principle">
+          <h2 class="explanation-sr-only" id="explanation-principle-title">Do not mix the two languages inside one answer</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 10 in one review grid with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 10 in one review grid: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-principle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not mix the two languages inside one answer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not mix the two languages inside one answer: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Best clue</li><li><strong>Lesson fact:</strong> Exam action</li><li><strong>Lesson fact:</strong> Common weak answer</li><li><strong>Lesson fact:</strong> many values of the same type</li><li><strong>Lesson fact:</strong> declare bounds, loop over indexes</li><li><strong>Lesson fact:</strong> &quot;list of data&quot;</li><li><strong>Lesson fact:</strong> one item has several fields</li><li><strong>Lesson fact:</strong> declare TYPE, fields and variables</li><li><strong>Lesson fact:</strong> &quot;array with different things&quot;</li><li><strong>Lesson fact:</strong> Array of records</li><li><strong>Lesson fact:</strong> many items, each with fields</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Core principle</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Variable declaration</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> int count;</li><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> count = 0;</li><li><strong>Lesson fact:</strong> Array declaration</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:30] OF INTEGER</li><li><strong>Lesson fact:</strong> int[] scores = new int[30];</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end map -->
-        <section class="panel" id="decision" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decision">
+        <!-- stage10-explanation:end principle -->
+        <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
-            <p class="eyebrow">Data model decision</p>
-            <h2>A good answer names the structure and the reason</h2>
+            <p class="eyebrow">Data type mapping</p>
+            <h2>Map concepts, not spelling</h2>
           </div>
-          <div class="decision-grid">
-            <article>
-              <h3>Scenario</h3>
-              <p>A school stores 120 students. Each student has an ID, name, class group and average mark.</p>
-            </article>
-            <article>
-              <h3>Strong choice</h3>
-              <p>Use an array of records: the array stores many students; each record keeps fields for one student together.</p>
-            </article>
-            <article>
-              <h3>Why not just an array?</h3>
-              <p>A single array normally stores one type of value. A record is better when one logical item has different fields.</p>
-            </article>
+          <div class="data-table type-table" role="table" aria-label="Data type mapping">
+            <div class="table-row table-head" role="row"><div>Meaning</div><div>Pseudocode type</div><div>Java support example</div></div>
+            <div class="table-row" role="row"><div>whole number</div><div><code>INTEGER</code></div><div><code>int</code></div></div>
+            <div class="table-row" role="row"><div>decimal number</div><div><code>REAL</code></div><div><code>double</code></div></div>
+            <div class="table-row" role="row"><div>single character</div><div><code>CHAR</code></div><div><code>char</code></div></div>
+            <div class="table-row" role="row"><div>text</div><div><code>STRING</code></div><div><code>String</code></div></div>
+            <div class="table-row" role="row"><div>true/false</div><div><code>BOOLEAN</code></div><div><code>boolean</code></div></div>
           </div>
-          <div class="callout">Mark-worthy pattern: <strong>structure + scenario clue + consequence</strong>.</div>
         </section>
 
-        <!-- stage10-explanation:start decision -->
-        <section class="panel explanation-panel" id="explanation-decision" data-explains="decision" data-explanation-kind="synthesis" aria-labelledby="explanation-decision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="decision">
-          <h2 class="explanation-sr-only" id="explanation-decision-title">A good answer names the structure and the reason</h2>
+        <!-- stage10-explanation:start types -->
+        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="types">
+          <h2 class="explanation-sr-only" id="explanation-types-title">Map concepts, not spelling</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-decision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A good answer names the structure and the reason with a structured visual model." />
-            <figcaption class="explanation-sr-only">A good answer names the structure and the reason: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Map concepts, not spelling with a structured visual model." />
+            <figcaption class="explanation-sr-only">Map concepts, not spelling: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Data model decision</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> A school stores 120 students. Each student has an ID, name, class group and average mark.</li><li><strong>Lesson fact:</strong> Strong choice</li><li><strong>Lesson fact:</strong> Use an array of records: the array stores many students; each record keeps fields for one student together.</li><li><strong>Lesson fact:</strong> Why not just an array?</li><li><strong>Lesson fact:</strong> A single array normally stores one type of value. A record is better when one logical item has different fields.</li><li><strong>Lesson fact:</strong> Mark-worthy pattern: structure + scenario clue + consequence .</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Data type mapping</li><li><strong>Lesson fact:</strong> Pseudocode type</li><li><strong>Lesson fact:</strong> Java support example</li><li><strong>Lesson fact:</strong> whole number</li><li><strong>Lesson fact:</strong> decimal number</li><li><strong>Lesson fact:</strong> single character</li><li><strong>Lesson fact:</strong> true/false</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end decision -->
-        <section class="panel" id="files" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
+        <!-- stage10-explanation:end types -->
+        <section class="panel" id="variables" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="variables">
           <div class="section-title">
-            <p class="eyebrow">File handling review</p>
-            <h2>Files preserve data beyond the running program</h2>
+            <p class="eyebrow">Variables</p>
+            <h2>Declare first; initialise separately when needed</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Line-based read pattern</h3>
-              <pre><code>OPENFILE "Scores.csv" FOR READ
-WHILE NOT EOF("Scores.csv")
-    READFILE "Scores.csv", Line
-    // process Line
-ENDWHILE
-CLOSEFILE "Scores.csv"</code></pre>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>DECLARE Count : INTEGER
+Count &lt;- 0
+
+DECLARE Name : STRING
+Name &lt;- "Ali"</code></pre>
             </article>
             <article>
-              <h3>CSV processing idea</h3>
-              <pre><code>Line &lt;- "S017,Ava,82"
-Fields &lt;- SPLIT(Line, ",")
-StudentID &lt;- Fields[1]
-Name &lt;- Fields[2]
-Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
+              <h3>Java support only</h3>
+              <pre><code>int count = 0;
+String name = "Ali";</code></pre>
             </article>
           </div>
-          <div class="callout">CSV fields arrive as text. Convert numeric fields before arithmetic.</div>
         </section>
 
-        <!-- stage10-explanation:start files -->
-        <section class="panel explanation-panel" id="explanation-files" data-explains="files" data-explanation-kind="synthesis" aria-labelledby="explanation-files-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="files">
-          <h2 class="explanation-sr-only" id="explanation-files-title">Files preserve data beyond the running program</h2>
+        <!-- stage10-explanation:start variables -->
+        <section class="panel explanation-panel" id="explanation-variables" data-explains="variables" data-explanation-kind="mechanism" aria-labelledby="explanation-variables-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="variables">
+          <h2 class="explanation-sr-only" id="explanation-variables-title">Declare first; initialise separately when needed</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-files.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Files preserve data beyond the running program with a structured visual model." />
-            <figcaption class="explanation-sr-only">Files preserve data beyond the running program: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-variables.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Declare first; initialise separately when needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Declare first; initialise separately when needed: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:120] OF TStudent
-The array follows the completed record type.</li><li><strong>Lesson fact:</strong> File storage preserves data between program runs and is separate from record-type syntax.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> Name &lt;- &quot;Ali&quot;</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int count = 0;</li><li><strong>Lesson fact:</strong> String name = &quot;Ali&quot;;</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end files -->
-        <section class="panel" id="adts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="adts">
+        <!-- stage10-explanation:end variables -->
+        <section class="panel" id="constants" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
           <div class="section-title">
-            <p class="eyebrow">Stack and queue review</p>
-            <h2>Order of removal is the key clue</h2>
+            <p class="eyebrow">Constants</p>
+            <h2>Constants are named values that should not change</h2>
           </div>
-          <div class="data-table adt-table" role="table" aria-label="Stack and queue comparison">
-            <div class="table-row table-head" role="row"><div>ADT</div><div>Rule</div><div>Typical operations</div><div>Scenario clue</div></div>
-            <div class="table-row" role="row"><div>Stack</div><div>LIFO: Last In, First Out</div><div>PUSH, POP, PEEK</div><div>undo, backtracking, nested calls</div></div>
-            <div class="table-row" role="row"><div>Queue</div><div>FIFO: First In, First Out</div><div>ENQUEUE, DEQUEUE</div><div>print jobs, calls, waiting line</div></div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>CONSTANT MaxSize = 100
+CONSTANT PassMark = 40</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>final int MAX_SIZE = 100;
+final int PASS_MARK = 40;</code></pre>
+            </article>
           </div>
+          <div class="callout">Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.</div>
         </section>
 
-        <!-- stage10-explanation:start adts -->
-        <section class="panel explanation-panel" id="explanation-adts" data-explains="adts" data-explanation-kind="synthesis" aria-labelledby="explanation-adts-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="adts">
-          <h2 class="explanation-sr-only" id="explanation-adts-title">Order of removal is the key clue</h2>
+        <!-- stage10-explanation:start constants -->
+        <section class="panel explanation-panel" id="explanation-constants" data-explains="constants" data-explanation-kind="mechanism" aria-labelledby="explanation-constants-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="constants">
+          <h2 class="explanation-sr-only" id="explanation-constants-title">Constants are named values that should not change</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-adts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Order of removal is the key clue with a structured visual model." />
-            <figcaption class="explanation-sr-only">Order of removal is the key clue: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-constants.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constants are named values that should not change with a structured visual model." />
+            <figcaption class="explanation-sr-only">Constants are named values that should not change: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Stack and queue review</li><li><strong>Lesson fact:</strong> Typical operations</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> LIFO: Last In, First Out</li><li><strong>Lesson fact:</strong> PUSH, POP, PEEK</li><li><strong>Lesson fact:</strong> undo, backtracking, nested calls</li><li><strong>Lesson fact:</strong> FIFO: First In, First Out</li><li><strong>Lesson fact:</strong> ENQUEUE, DEQUEUE</li><li><strong>Lesson fact:</strong> print jobs, calls, waiting line</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Constants</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> CONSTANT MaxSize = 100</li><li><strong>Lesson fact:</strong> CONSTANT PassMark = 40</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> final int MAX_SIZE = 100;</li><li><strong>Lesson fact:</strong> final int PASS_MARK = 40;</li><li><strong>Lesson fact:</strong> Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end adts -->
-        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <!-- stage10-explanation:end constants -->
+        <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
-            <p class="eyebrow">Declaration review</p>
-            <h2>Cambridge pseudocode remains the exam standard</h2>
+            <p class="eyebrow">Arrays</p>
+            <h2>Cambridge array bounds are stated explicitly</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>DECLARE Scores : ARRAY[1:30] OF INTEGER
+Scores[1] &lt;- 72</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int[] scores = new int[30];
+scores[0] = 72;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Index warning: if pseudocode declares <code>ARRAY[1:30]</code>, do not automatically use Java's index 0 in the exam answer.</div>
+        </section>
+
+        <!-- stage10-explanation:start arrays -->
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="arrays">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">Cambridge array bounds are stated explicitly</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge array bounds are stated explicitly with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge array bounds are stated explicitly: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:30] OF INTEGER</li><li><strong>Lesson fact:</strong> Scores[1] &lt;- 72</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int[] scores = new int[30];</li><li><strong>Lesson fact:</strong> scores[0] = 72;</li><li><strong>Lesson fact:</strong> Index warning: if pseudocode declares ARRAY[1:30] , do not automatically use Java's index 0 in the exam answer.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end arrays -->
+        <section class="panel" id="records" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="records">
+          <div class="section-title">
+            <p class="eyebrow">Records</p>
+            <h2>Record declarations use TYPE and ENDTYPE</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
               <pre><code>TYPE TStudent
-    DECLARE ID : STRING
     DECLARE Name : STRING
     DECLARE Mark : INTEGER
 ENDTYPE
 
-DECLARE Students : ARRAY[1:120] OF TStudent</code></pre>
+DECLARE Student1 : TStudent</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
               <pre><code>class Student {
-    String id;
     String name;
     int mark;
 }
 
-Student[] students = new Student[120];</code></pre>
+Student student1 = new Student();</code></pre>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="synthesis" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="declare">
-          <h2 class="explanation-sr-only" id="explanation-declare-title">Cambridge pseudocode remains the exam standard</h2>
+        <!-- stage10-explanation:start records -->
+        <section class="panel explanation-panel" id="explanation-records" data-explains="records" data-explanation-kind="mechanism" aria-labelledby="explanation-records-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="records">
+          <h2 class="explanation-sr-only" id="explanation-records-title">Record declarations use TYPE and ENDTYPE</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode remains the exam standard with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge pseudocode remains the exam standard: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-records.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Record declarations use TYPE and ENDTYPE with a structured visual model." />
+            <figcaption class="explanation-sr-only">Record declarations use TYPE and ENDTYPE: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
-    DECLARE ID : STRING
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-ENDTYPE</li><li><strong>Lesson fact:</strong> Close TStudent after the Mark field.</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:120] OF TStudent
-This declaration follows ENDTYPE.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Student1 : TStudent</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> class Student {</li><li><strong>Lesson fact:</strong> String name;</li><li><strong>Lesson fact:</strong> int mark;</li><li><strong>Lesson fact:</strong> Student student1 = new Student();</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end declare -->
-        <section class="panel" id="marks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="marks">
+        <!-- stage10-explanation:end records -->
+        <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
           <div class="section-title">
-            <p class="eyebrow">Mark-scheme language</p>
-            <h2>Upgrade vague words into credit-bearing words</h2>
+            <p class="eyebrow">Assignment versus comparison</p>
+            <h2><code>&lt;-</code> changes a value; <code>=</code> usually tests equality in conditions</h2>
           </div>
-          <div class="data-table mark-table" role="table" aria-label="Weak and stronger wording">
-            <div class="table-row table-head" role="row"><div>Weak wording</div><div>Stronger wording</div><div>Why it earns more</div></div>
-            <div class="table-row" role="row"><div>It is better.</div><div>It keeps all fields for one student together.</div><div>names the consequence</div></div>
-            <div class="table-row" role="row"><div>It is ordered.</div><div>A queue removes items in the same order they arrived.</div><div>states FIFO clearly</div></div>
-            <div class="table-row" role="row"><div>Use a file.</div><div>Use a text file so data remains after the program closes.</div><div>links storage to persistence</div></div>
-            <div class="table-row" role="row"><div>Use Java array.</div><div>DECLARE Scores : ARRAY[1:30] OF INTEGER.</div><div>answers in Cambridge pseudocode</div></div>
+          <div class="data-table assign-table" role="table" aria-label="Assignment and comparison">
+            <div class="table-row table-head" role="row"><div>Purpose</div><div>Pseudocode</div><div>Meaning</div></div>
+            <div class="table-row" role="row"><div>Assign</div><div><code>Count &lt;- Count + 1</code></div><div>store a new value in Count</div></div>
+            <div class="table-row" role="row"><div>Compare</div><div><code>IF Count = 10 THEN</code></div><div>test whether Count equals 10</div></div>
+            <div class="table-row" role="row"><div>Java warning</div><div><code>count == 10</code></div><div>Java equality syntax is not the expected pseudocode style</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start marks -->
-        <section class="panel explanation-panel" id="explanation-marks" data-explains="marks" data-explanation-kind="synthesis" aria-labelledby="explanation-marks-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="marks">
-          <h2 class="explanation-sr-only" id="explanation-marks-title">Upgrade vague words into credit-bearing words</h2>
+        <!-- stage10-explanation:start assignment -->
+        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="assignment">
+          <h2 class="explanation-sr-only" id="explanation-assignment-title">&lt;- changes a value; = usually tests equality in conditions</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-marks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Upgrade vague words into credit-bearing words with a structured visual model." />
-            <figcaption class="explanation-sr-only">Upgrade vague words into credit-bearing words: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-assignment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining &lt;- changes a value; = usually tests equality in conditions with a structured visual model." />
+            <figcaption class="explanation-sr-only">&lt;- changes a value; = usually tests equality in conditions: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mark-scheme language</li><li><strong>Lesson fact:</strong> Weak wording</li><li><strong>Lesson fact:</strong> Stronger wording</li><li><strong>Lesson fact:</strong> Why it earns more</li><li><strong>Lesson fact:</strong> It is better.</li><li><strong>Lesson fact:</strong> It keeps all fields for one student together.</li><li><strong>Lesson fact:</strong> names the consequence</li><li><strong>Lesson fact:</strong> It is ordered.</li><li><strong>Lesson fact:</strong> A queue removes items in the same order they arrived.</li><li><strong>Lesson fact:</strong> states FIFO clearly</li><li><strong>Lesson fact:</strong> Use a file.</li><li><strong>Lesson fact:</strong> Use a text file so data remains after the program closes.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Assignment versus comparison</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> store a new value in Count</li><li><strong>Lesson fact:</strong> IF Count = 10 THEN</li><li><strong>Lesson fact:</strong> test whether Count equals 10</li><li><strong>Lesson fact:</strong> Java warning</li><li><strong>Lesson fact:</strong> count == 10</li><li><strong>Lesson fact:</strong> Java equality syntax is not the expected pseudocode style</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end marks -->
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
+        <!-- stage10-explanation:end assignment -->
+        <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="converter">
           <div class="section-title">
-            <p class="eyebrow">Interactive classifier</p>
-            <h2>Classify the scenario before solving it</h2>
+            <p class="eyebrow">Interactive declaration converter</p>
+            <h2>Convert Java-style meaning into pseudocode</h2>
           </div>
           <div class="converter-grid">
-            <label for="scenarioSelect">
-              Scenario
-              <select id="scenarioSelect"></select>
+            <label>
+              Java-style declaration
+              <select id="declarationSelect">
+                <option value="int count;">int count;</option>
+                <option value="double price;">double price;</option>
+                <option value="String name;">String name;</option>
+                <option value="boolean enrolled;">boolean enrolled;</option>
+                <option value="int[] scores = new int[30];">int[] scores = new int[30];</option>
+              </select>
             </label>
-            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+            <button class="primary-button" type="button" id="convertBtn">Convert</button>
           </div>
-          <div class="trace-output" id="classifyResult">Choose a scenario and classify the likely Section 10 topic.</div>
+          <div class="trace-output" id="convertResult">Choose a declaration to convert.</div>
         </section>
 
-        <section class="panel" id="improver" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="improver">
+        <section class="panel" id="sorter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sorter">
           <div class="section-title">
-            <p class="eyebrow">Mark improver</p>
-            <h2>Turn a weak answer into a useful answer</h2>
+            <p class="eyebrow">Syntax sorter</p>
+            <h2>Which syntax belongs to which answer style?</h2>
           </div>
-          <div class="converter-grid">
-            <label for="weakSelect">
-              Weak answer
-              <select id="weakSelect"></select>
-            </label>
-            <button class="primary-button" type="button" id="improveBtn">Improve</button>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-sort="pseudo">DECLARE Total : REAL</button>
+            <button class="choice-card" type="button" data-sort="java">double total;</button>
+            <button class="choice-card" type="button" data-sort="pseudo">Scores[Index] &lt;- 50</button>
+            <button class="choice-card" type="button" data-sort="java">scores[index] = 50;</button>
           </div>
-          <div class="trace-output" id="improveResult">Pick a weak answer to see a mark-worthy rewrite.</div>
+          <div class="feedback" id="sortFeedback" aria-live="polite">Click a statement to identify whether it is pseudocode or Java-style.</div>
         </section>
 
-        <!-- stage10-explanation:start improver -->
-        <section class="panel explanation-panel" id="explanation-improver" data-explains="improver" data-explanation-kind="synthesis" aria-labelledby="explanation-improver-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="improver">
-          <h2 class="explanation-sr-only" id="explanation-improver-title">Turn a weak answer into a useful answer</h2>
+        <!-- stage10-explanation:start sorter -->
+        <section class="panel explanation-panel" id="explanation-sorter" data-explains="sorter" data-explanation-kind="process" aria-labelledby="explanation-sorter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="sorter">
+          <h2 class="explanation-sr-only" id="explanation-sorter-title">Which syntax belongs to which answer style?</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-improver.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn a weak answer into a useful answer with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn a weak answer into a useful answer: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-sorter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which syntax belongs to which answer style? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Which syntax belongs to which answer style?: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mark improver</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Pick a weak answer to see a mark-worthy rewrite.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Syntax sorter</li><li><strong>Lesson fact:</strong> Click a statement to identify whether it is pseudocode or Java-style.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end improver -->
+        <!-- stage10-explanation:end sorter -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four mixed questions, one decision habit</h2>
+            <h2>Declaration conversions</h2>
           </div>
-          <div class="tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="records">Array of records</button>
-            <button class="tab" type="button" data-example="csv">CSV file</button>
-            <button class="tab" type="button" data-example="stack">Stack</button>
-            <button class="tab" type="button" data-example="queue">Queue</button>
+          <div class="tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="variable">Variable</button>
+            <button class="tab" type="button" data-example="constant">Constant</button>
+            <button class="tab" type="button" data-example="array">Array</button>
+            <button class="tab" type="button" data-example="record">Record</button>
           </div>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>10 quick checks</h2>
-            <p>Short answers are accepted when they use the key concept accurately. Use the answer button for fuller wording.</p>
+            <p class="eyebrow">Practice</p>
+            <h2>Ten quick declaration checks</h2>
+            <p>Type a concise answer, then check. Each question also has its own answer button.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -378,7 +401,7 @@ This declaration follows ENDTYPE.</li></ol>
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the lost mark before it escapes</h2>
+            <h2>Fix mixed-syntax answers</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -386,8 +409,8 @@ This declaration follows ENDTYPE.</li></ol>
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Mixed Section 10 stage review</h2>
-            <p>Original Cambridge-style questions. Expand MS only after attempting the answer.</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>These questions focus on declarations, type choices, array bounds, records, constants and strict pseudocode style.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -395,33 +418,41 @@ This declaration follows ENDTYPE.</li></ol>
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>One review habit to keep</h2>
+            <h2>Declaration checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Identify</strong><span>What Section 10 idea is being tested?</span></div>
-            <div><strong>Use</strong><span>Which declaration, operation or processing pattern fits?</span></div>
-            <div><strong>Justify</strong><span>What scenario consequence earns the mark?</span></div>
+            <div><strong>Declare</strong><span><code>DECLARE Name : TYPE</code> for variables.</span></div>
+            <div><strong>Assign</strong><span>use <code>&lt;-</code> to store a value.</span></div>
+            <div><strong>Separate</strong><span>Java syntax supports learning; pseudocode earns Paper 2 marks.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Stage review pack</h2>
+            <h2>Translate without mixing syntax</h2>
           </div>
           <ol class="homework-list">
-            <li><strong>Retrieval grid</strong><span>Make a one-page table for array, record, file, stack and queue: clue, operations, one example and one common error.</span></li>
-            <li><strong>Timed answer</strong><span>Answer one 6-mark Section 10 scenario question in 8 minutes. Underline the words that should earn marks.</span></li>
-            <li><strong>Correction task</strong><span>Rewrite two weak answers using the pattern: structure + scenario clue + consequence.</span></li>
-            <li><strong>Pseudocode check</strong><span>Write declarations for an array of 50 product records with ProductID, Name, Price and InStock fields.</span></li>
+            <li>
+              <strong>Task 1: Convert declarations</strong>
+              <span>Convert these Java-style declarations to Cambridge-style pseudocode: <code>int total;</code>, <code>String name;</code>, <code>boolean found;</code>.</span>
+            </li>
+            <li>
+              <strong>Task 2: Array declaration</strong>
+              <span>Write pseudocode to declare 50 REAL readings and assign 12.5 to the first element.</span>
+            </li>
+            <li>
+              <strong>Task 3: Record declaration</strong>
+              <span>Define <code>TBook</code> with Title, ISBN and Pages fields, then declare <code>Book1</code> as <code>TBook</code>.</span>
+            </li>
           </ol>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

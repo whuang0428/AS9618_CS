@@ -1,108 +1,108 @@
 const scenarioMap = {
-  math: {
-    result: "Item: library routine.",
-    method: "A library contains reusable routines such as mathematical functions that programs can call.",
-    trap: "Do not describe a library as object code produced by the compiler; it is pre-written reusable code.",
+  tokenise: {
+    result: "Stage: lexical analysis.",
+    method: "Lexical analysis scans source-code characters and groups them into tokens such as identifiers, keywords, operators and literals.",
+    trap: "Do not call this syntax analysis; syntax uses the tokens to check grammar.",
   },
-  combine: {
-    result: "Tool: linker.",
-    method: "A linker combines object modules and needed library routines or references into executable/linked code.",
-    trap: "Do not call this loading. Loading happens when the executable is placed into memory.",
+  grammar: {
+    result: "Stage: syntax analysis.",
+    method: "Syntax analysis checks whether the sequence of tokens follows the grammar rules of the programming language.",
+    trap: "Do not call every compiler error a syntax error; type and scope errors are semantic.",
   },
-  missing: {
-    result: "Likely issue: linker error / unresolved external reference.",
-    method: "The linker cannot resolve a reference to a routine or module that is required by the object code.",
-    trap: "Do not call every build failure a syntax error; this happens after compilation has produced object code.",
+  type: {
+    result: "Stage: semantic analysis.",
+    method: "Semantic analysis checks meaning, including type compatibility, declarations and valid operations.",
+    trap: "Do not call this lexical analysis; the tokens may be valid even when the meaning is invalid.",
   },
-  memory: {
-    result: "Tool: loader.",
-    method: "A loader places the executable program and its data into main memory and prepares it to run.",
-    trap: "Do not say the loader translates source code; translators already handled that earlier.",
+  symbol: {
+    result: "Compiler structure: symbol table, used during semantic analysis.",
+    method: "A symbol table records identifiers and information such as type, scope and memory location.",
+    trap: "Do not describe the symbol table as the final object code.",
   },
-  static: {
-    result: "Method: static linking.",
-    method: "Library code is copied into the executable at link time, making the executable more self-contained but often larger.",
-    trap: "Do not say static linking always produces the smallest file.",
+  target: {
+    result: "Stage: code generation.",
+    method: "Code generation converts the checked intermediate representation into target low-level/object code.",
+    trap: "Do not mix this with linking or loading; those are separate steps after compilation.",
   },
-  dynamic: {
-    result: "Method: dynamic linking.",
-    method: "The program uses a shared library at load time or run time, reducing duplication but requiring the library to be available and compatible.",
-    trap: "Do not say dynamic linking means the library is never needed.",
+  remove: {
+    result: "Stage: optimisation.",
+    method: "Optimisation improves efficiency, for example by removing unreachable code, while preserving program behaviour.",
+    trap: "Do not say optimisation fixes the programmer's logic errors.",
   },
 };
 
 const examples = {
-  library: {
-    title: "Example 1: Library routine",
-    problem: "A program needs a square root function and a file input routine.",
+  lexical: {
+    title: "Example 1: Lexical analysis",
+    problem: "Source line: total = price + tax",
     steps: [
-      "A library can provide pre-written routines such as SQRT or file input/output functions.",
-      "The programmer can call these routines instead of writing them from scratch.",
-      "This can save development time and use tested code.",
-      "The routine still needs to be linked or available at run time for the program to work.",
+      "The source line is read as a stream of characters.",
+      "The scanner groups characters into tokens such as identifier total, assignment operator, identifier price, plus operator and identifier tax.",
+      "Comments and unnecessary whitespace may be removed.",
+      "An invalid character at this stage could be reported as a lexical error.",
     ],
   },
-  linker: {
-    title: "Example 2: Linker combines modules",
-    problem: "main.o calls functions stored in maths.o and a graphics library.",
+  syntax: {
+    title: "Example 2: Syntax analysis",
+    problem: "Source line: IF total > 100 THEN discount = 10",
     steps: [
-      "The compiler has already produced object modules.",
-      "The linker combines object modules and required library routines or references.",
-      "It resolves external references, such as a call in main.o to a function in maths.o.",
-      "If a referenced routine cannot be found, the linker can report an unresolved external reference.",
+      "The parser receives tokens from lexical analysis.",
+      "It checks the token sequence against grammar rules for an IF statement.",
+      "It may build a parse tree or syntax tree representing the statement structure.",
+      "A missing THEN, bracket or operator would be a syntax error because the grammar is invalid.",
     ],
   },
-  loader: {
-    title: "Example 3: Loader prepares execution",
-    problem: "The user opens an executable program.",
+  semantic: {
+    title: "Example 3: Semantic analysis",
+    problem: "Source line: age = name + 1, where age is INTEGER and name is STRING.",
     steps: [
-      "The loader loads the executable code and required data into main memory.",
-      "It may allocate memory and adjust addresses depending on where the program is placed.",
-      "The program is then ready for the processor to execute.",
-      "The loader does not combine object modules or translate source code.",
+      "The statement may be grammatically valid because assignment and addition are in a legal structure.",
+      "Semantic analysis checks meaning using information such as variable types.",
+      "Adding a string to an integer in this context is invalid.",
+      "The compiler can report a semantic/type error even though the syntax shape is correct.",
     ],
   },
-  dynamic: {
-    title: "Example 4: Dynamic linking",
-    problem: "Several programs use the same shared graphics library.",
+  codegen: {
+    title: "Example 4: Code generation and optimisation",
+    problem: "A checked expression is ready to be converted into low-level instructions.",
     steps: [
-      "Dynamic linking allows a program to use a shared library at load time or run time.",
-      "Several programs can share the same library code instead of each storing its own copy.",
-      "This can reduce duplicated storage and allow library updates to be shared.",
-      "A limitation is that the required shared library must be present and compatible.",
+      "After earlier checks, the compiler can generate target low-level instructions.",
+      "The output is object code or an intermediate/target code form depending on the system.",
+      "Optimisation may remove unreachable code or avoid repeated calculations.",
+      "The next lesson handles linkers and loaders, so do not award those marks here unless asked.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which tool combines object modules into executable/linked code?", accepted: ["linker"], answer: "Linker" },
-  { id: "p2", prompt: "Which tool loads executable code into main memory?", accepted: ["loader"], answer: "Loader" },
-  { id: "p3", prompt: "What is a library routine?", accepted: ["pre written", "pre-written", "reusable", "routine", "module", "function"], answer: "A pre-written reusable routine/module/function that a program can use" },
-  { id: "p4", prompt: "What does a linker resolve between object modules and libraries?", accepted: ["external references", "references", "addresses", "symbols", "unresolved"], answer: "External references / symbols" },
-  { id: "p5", prompt: "What is the usual input to a linker?", accepted: ["object code", "object modules", "object files", "library"], answer: "Object files/modules and library references or routines" },
-  { id: "p6", prompt: "What is the usual result of loading?", accepted: ["memory", "ram", "main memory", "ready to run", "execute"], answer: "The executable is placed in main memory ready to run" },
-  { id: "p7", prompt: "In static linking, is library code copied into the executable? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
-  { id: "p8", prompt: "Name one limitation of dynamic linking.", accepted: ["library missing", "must be available", "compatibility", "version", "shared library"], answer: "The shared library must be available and compatible" },
-  { id: "p9", prompt: "Is a linker the same as a compiler? Answer yes or no.", accepted: ["no"], answer: "No. A compiler translates source code; a linker combines object modules and resolves references" },
-  { id: "p10", prompt: "Give one benefit of using libraries.", accepted: ["saves time", "tested", "reuse", "reusable", "less duplication", "reliability"], answer: "Reusable tested routines can save development time and reduce duplication" },
+  { id: "p1", prompt: "Which compilation stage groups characters into tokens?", accepted: ["lexical", "lexical analysis"], answer: "Lexical analysis" },
+  { id: "p2", prompt: "What is a token?", accepted: ["identifier", "keyword", "operator", "literal", "meaningful", "lexical unit"], answer: "A meaningful lexical unit such as an identifier, keyword, operator or literal" },
+  { id: "p3", prompt: "Which stage checks grammar rules?", accepted: ["syntax", "syntax analysis", "parsing", "parser"], answer: "Syntax analysis / parsing" },
+  { id: "p4", prompt: "Which stage checks type compatibility and declarations?", accepted: ["semantic", "semantic analysis"], answer: "Semantic analysis" },
+  { id: "p5", prompt: "What compiler structure stores identifier names, types and scope?", accepted: ["symbol table"], answer: "Symbol table" },
+  { id: "p6", prompt: "Which stage produces object code or target code?", accepted: ["code generation", "code generator", "generation"], answer: "Code generation" },
+  { id: "p7", prompt: "What is the purpose of optimisation?", accepted: ["improve efficiency", "faster", "less memory", "reduce memory", "without changing behaviour", "without changing output"], answer: "To improve efficiency without changing intended program behaviour" },
+  { id: "p8", prompt: "Is a missing bracket usually lexical, syntax or semantic?", accepted: ["syntax", "syntax error"], answer: "Syntax error" },
+  { id: "p9", prompt: "Is using an undeclared variable usually lexical, syntax or semantic?", accepted: ["semantic", "semantic error"], answer: "Semantic error" },
+  { id: "p10", prompt: "Do linkers and loaders belong to this lesson's main compilation stages? Answer yes or no.", accepted: ["no"], answer: "No. They are related later stages covered separately" },
 ];
 
 const mistakes = [
   {
-    wrong: "A linker loads the program into memory.",
-    fix: "A linker combines object modules and resolves external references. A loader places the executable program into main memory.",
+    wrong: "Lexical analysis checks whether the whole program follows grammar rules.",
+    fix: "Lexical analysis turns character streams into tokens. Syntax analysis checks whether token sequences follow grammar rules.",
   },
   {
-    wrong: "A loader translates source code into object code.",
-    fix: "A compiler translates source code into object code. A loader loads executable code into memory and prepares it for execution.",
+    wrong: "A semantic error means the code has a missing bracket.",
+    fix: "A missing bracket is usually a syntax error. A semantic error involves invalid meaning, such as incompatible types or undeclared variables.",
   },
   {
-    wrong: "A library is the final executable file.",
-    fix: "A library is a collection of reusable routines or modules. A linker may include or reference library routines when creating executable code.",
+    wrong: "The symbol table is the same as object code.",
+    fix: "A symbol table stores information about identifiers for compiler checks. Object code is translated low-level output.",
   },
   {
-    wrong: "Dynamic linking means the program does not need the library.",
-    fix: "Dynamic linking means the program uses a shared library at load time or run time, so the correct compatible library must be available.",
+    wrong: "Optimisation changes the algorithm so the answer becomes correct.",
+    fix: "Optimisation aims to improve efficiency while preserving program behaviour. It does not automatically fix the programmer's logic.",
   },
 ];
 
@@ -116,90 +116,91 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Describe the role of a linker.",
-    answer: "A linker combines object modules produced by compilation or assembly with other object modules and required library routines or references. It resolves external references or symbols, for example a call from one module to a routine in another module. The linker can produce executable code or a linked object file. If a required routine cannot be found, a linker error such as an unresolved external reference may be reported.",
+    prompt: "Describe the purpose of lexical analysis during compilation.",
+    answer: "Lexical analysis reads the source code as a stream of characters and groups characters into tokens. Tokens may include identifiers, keywords, operators and constants/literals. The stage may remove unnecessary whitespace and comments. It can detect invalid characters or symbols before later compiler stages use the token stream.",
     marking: [
-      { mark: "B1", text: "combines object modules/object code" },
-      { mark: "B1", text: "includes or connects required library routines/modules" },
-      { mark: "B1", text: "resolves external references/symbols between modules" },
-      { mark: "B1", text: "produces executable/linked object code" },
-      { mark: "B1", text: "unresolved external/reference linker error described" },
+      { mark: "B1", text: "source code/characters are scanned or read" },
+      { mark: "B1", text: "characters are grouped into tokens" },
+      { mark: "B1", text: "valid token examples such as identifiers, keywords, operators or literals" },
+      { mark: "B1", text: "comments/extra whitespace may be removed" },
+      { mark: "B1", text: "valid lexical error or token stream output described" },
     ],
     strict: [
-      "Do not accept 'translates source code' as a linker role.",
-      "Do not award loader marks for saying only 'puts program in memory'.",
-      "Allow references to addresses/symbols if linked to modules or libraries.",
+      "Do not accept grammar checking as lexical analysis.",
+      "Do not award token mark for saying only 'splits code up' without meaningful units.",
+      "Allow constants for literals.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Describe the role of a loader when a program is run.",
-    answer: "A loader places the executable program code and required data into main memory. It may allocate memory and adjust addresses depending on where the program is loaded. It prepares the program for execution by the processor. It does not translate source code or combine object modules; those are compiler/linker roles.",
+    prompt: "Explain the difference between syntax analysis and semantic analysis.",
+    answer: "Syntax analysis checks whether the sequence of tokens follows the grammar rules of the programming language, for example whether brackets or statement structure are valid. Semantic analysis checks the meaning of the program, such as whether variables have been declared, whether scope is valid and whether data types are compatible. A program can be syntactically correct but semantically invalid.",
     marking: [
-      { mark: "B1", text: "loads/places executable program code into main memory/RAM" },
-      { mark: "B1", text: "loads required data or program image, or allocates memory" },
-      { mark: "B1", text: "may relocate/adjust addresses" },
-      { mark: "B1", text: "prepares program for execution or distinguishes from compiler/linker role" },
+      { mark: "B1", text: "syntax analysis checks grammar/structure of token sequence" },
+      { mark: "B1", text: "valid syntax example such as brackets, expression form or statement structure" },
+      { mark: "B1", text: "semantic analysis checks meaning/context" },
+      { mark: "B1", text: "valid semantic example such as type compatibility, declarations or scope" },
     ],
     strict: [
-      "Do not accept 'loads the website/app' without memory/execution idea.",
-      "Do not accept source-code translation as loader role.",
-      "Allow RAM for main memory.",
+      "Do not accept 'syntax is spelling and semantic is grammar' as a correct distinction.",
+      "Do not require exact phrase token sequence if grammar checking is clear.",
+      "Allow parse tree reference for syntax analysis.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain why programmers use libraries.",
-    answer: "A library contains pre-written reusable routines or modules, such as mathematical, input/output or graphics routines. Programmers use libraries so they do not need to write common routines from scratch. This can save development time and reduce duplication. Library routines may also be tested and reliable, but they must be linked or available when the program runs.",
+    marks: "5 marks",
+    prompt: "Describe the role of a symbol table in compilation.",
+    answer: "A symbol table stores information about identifiers used in a program. This may include variable or procedure names, data types, scope and memory location/address information. The compiler can use the symbol table during semantic analysis to check whether identifiers have been declared and whether operations use compatible types. It is not the same as the object code output.",
     marking: [
-      { mark: "B1", text: "library contains pre-written/reusable routines/modules" },
-      { mark: "B1", text: "valid example such as maths, I/O, graphics or string routines" },
-      { mark: "B1", text: "saves development time / avoids rewriting common code / reduces duplication" },
-      { mark: "B1", text: "tested/reliable code or need to link/make available at run time" },
+      { mark: "B1", text: "stores information about identifiers/names" },
+      { mark: "B1", text: "valid stored item such as type, scope, address/location or kind of identifier" },
+      { mark: "B1", text: "used by compiler during checking/semantic analysis" },
+      { mark: "B1", text: "checks declarations or undeclared identifiers" },
+      { mark: "B1", text: "checks type compatibility and/or identifier scope" },
     ],
     strict: [
-      "Do not accept 'stores data files' as the main purpose of a program library.",
-      "Do not require a specific named routine if the example type is clear.",
-      "Allow API references only if reusable code/routines are described.",
+      "Do not accept 'stores all the program code' as symbol table role.",
+      "Do not award address/location mark unless linked to identifier information.",
+      "Allow variable table if identifier information is clearly described.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Compare static linking and dynamic linking.",
-    answer: "In static linking, required library code is copied into the executable at link time. This can make the executable more self-contained, but the file may be larger and duplicate library code across programs. In dynamic linking, the program uses a shared library at load time or run time. This can reduce duplication and allow programs to share library code, but the correct compatible library must be available.",
+    prompt: "Explain how a compiler can produce object code after checking source code.",
+    answer: "The compiler first performs lexical analysis to convert source-code characters into tokens. Syntax analysis then checks whether the token sequence follows the grammar rules. Semantic analysis checks meaning, such as declarations and type compatibility, often using a symbol table. If the checks allow compilation to continue, code generation produces object or target code. Optimisation may improve efficiency without changing the program's behaviour.",
     marking: [
-      { mark: "B1", text: "static linking copies/includes library code into executable at link time" },
-      { mark: "B1", text: "static advantage or limitation such as self-contained or larger executable" },
-      { mark: "B1", text: "dynamic linking uses shared library at load/run time" },
-      { mark: "B1", text: "dynamic advantage such as reduced duplication/shared updates/smaller executable" },
-      { mark: "B1", text: "dynamic limitation such as missing/incompatible library prevents correct running" },
+      { mark: "B1", text: "lexical analysis produces tokens from source code" },
+      { mark: "B1", text: "syntax analysis checks grammar/structure" },
+      { mark: "B1", text: "semantic analysis checks meaning/types/declarations/scope" },
+      { mark: "B1", text: "code generation produces object/target code" },
+      { mark: "B1", text: "optimisation may improve efficiency without changing program behaviour" },
     ],
     strict: [
-      "Do not accept 'static means not moving' or 'dynamic means faster' without linking context.",
-      "Do not require both load time and run time; either is acceptable for dynamic linking.",
-      "Allow shared object/DLL style examples if explained.",
+      "Do not award code generation mark for linker/loader descriptions.",
+      "Do not require every compiler implementation to use identical internal stages.",
+      "Allow parse tree/intermediate representation as part of the explanation.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A program has been compiled into several object files and uses a graphics library. Explain the steps needed before it can run.",
-    answer: "The object files need to be linked. The linker combines the object modules and resolves references between them, including references to graphics library routines. It produces executable or linked code, or reports an unresolved external reference if a required routine cannot be found. The loader then places the executable code and required data into main memory, may adjust addresses, and prepares the program for execution by the processor.",
+    prompt: "Identify each compiler issue as lexical, syntax or semantic and justify: an invalid character @ in an identifier; a missing ENDIF; adding a STRING value to an INTEGER variable.",
+    answer: "An invalid character @ in an identifier is a lexical issue because lexical analysis recognises valid tokens and characters. A missing ENDIF is a syntax issue because the token sequence does not match the grammar of the control structure. Adding a STRING value to an INTEGER variable is a semantic issue because the statement may have a valid grammatical form but the meaning/type compatibility is invalid.",
     marking: [
-      { mark: "B1", text: "object files/modules must be linked" },
-      { mark: "B1", text: "linker combines object modules" },
-      { mark: "B1", text: "linker resolves references to graphics library routines/external references" },
-      { mark: "B1", text: "linker produces executable/linked code or reports unresolved reference" },
-      { mark: "B1", text: "loader places executable/program/data into main memory" },
-      { mark: "B1", text: "loader prepares execution / adjusts addresses / CPU can execute" },
+      { mark: "B1", text: "invalid @ classified as lexical" },
+      { mark: "B1", text: "lexical justification linked to invalid character/token recognition" },
+      { mark: "B1", text: "missing ENDIF classified as syntax" },
+      { mark: "B1", text: "syntax justification linked to grammar/statement structure" },
+      { mark: "B1", text: "STRING to INTEGER classified as semantic" },
+      { mark: "B1", text: "semantic justification linked to type compatibility/meaning" },
     ],
     strict: [
-      "Do not award compiler-stage marks unless linked to existing object files in the scenario.",
-      "Do not merge linker and loader into one vague 'runs it' statement for full marks.",
-      "Allow RAM for main memory.",
+      "Do not award justification mark for repeating the stage name only.",
+      "Do not accept semantic for missing ENDIF unless a clear language-specific context justifies it.",
+      "Allow 'parsing error' for syntax issue.",
     ],
   },
 ];
@@ -215,10 +216,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    linker: "Correct. The linker resolves the reference to the library routine and connects the required code.",
-    loader: "No. The loader places executable code into memory; it does not write or locate missing routines by itself.",
-    syntax: "No. Syntax analysis checks grammar earlier during compilation.",
-    antivirus: "No. Antivirus may scan files, but it does not link external references.",
+    tokens: "Correct. Lexical analysis groups source-code characters into tokens before grammar checking.",
+    run: "No. A compiler checks and translates before the program can be executed as machine-level code.",
+    link: "No. Linking happens after object code exists and is not the first compilation stage here.",
+    load: "No. Loading is about placing executable code into memory, after compilation/linking.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -262,7 +263,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("library");
+  renderExample("lexical");
 }
 
 function renderPractice() {

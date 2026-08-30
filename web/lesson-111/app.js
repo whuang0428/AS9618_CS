@@ -1,95 +1,82 @@
-const scenarioMap = {
-  passes: {
-    title: "Count passes from five marks",
-    ipoc: [
-      ["Input", "Five marks"],
-      ["Process", "Check each mark against 50 and increment PassCount when true"],
-      ["Output", "PassCount"],
-      ["Constraints", "Exactly five marks, so use a count-controlled loop"],
-    ],
-    pseudocode: "PassCount <- 0\nFOR Index <- 1 TO 5\n    INPUT Mark\n    IF Mark >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+const checkerMap = {
+  assignment: { title: "Cambridge-style assignment", detail: "The arrow <- clearly stores the new value in Total." },
+  output: { title: "Cambridge-style output", detail: "OUTPUT names what is displayed without Java method syntax." },
+  selection: { title: "Cambridge-style selection", detail: "IF, THEN and ENDIF make the block boundary visible." },
+  java: { title: "Java support syntax", detail: "This is useful when running Java, but Paper 2 pseudocode should use OUTPUT Total." },
+};
+
+const cleanerMap = {
+  assign: {
+    before: "total = total + mark;",
+    after: "Total <- Total + Mark",
+    note: "Replace Java assignment and semicolon with Cambridge-style assignment arrow.",
   },
-  sentinel: {
-    title: "Total prices until 0",
-    ipoc: [
-      ["Input", "Prices entered one at a time"],
-      ["Process", "Add each non-zero price to Total"],
-      ["Output", "Total"],
-      ["Constraints", "0 is a sentinel and must not be added"],
-    ],
-    pseudocode: "Total <- 0\nINPUT Price\nWHILE Price <> 0\n    Total <- Total + Price\n    INPUT Price\nENDWHILE\nOUTPUT Total",
+  print: {
+    before: "System.out.println(total);",
+    after: "OUTPUT Total",
+    note: "State the output directly.",
   },
-  highest: {
-    title: "Highest of eight temperatures",
-    ipoc: [
-      ["Input", "Eight temperatures"],
-      ["Process", "Keep the highest temperature seen so far"],
-      ["Output", "Highest"],
-      ["Constraints", "Known count; initialise Highest from first temperature"],
-    ],
-    pseudocode: "INPUT Temperature\nHighest <- Temperature\nFOR Index <- 2 TO 8\n    INPUT Temperature\n    IF Temperature > Highest THEN\n        Highest <- Temperature\n    ENDIF\nNEXT Index\nOUTPUT Highest",
+  if: {
+    before: "if (mark >= 50) { passCount++; }",
+    after: "IF Mark >= 50 THEN\n    PassCount <- PassCount + 1\nENDIF",
+    note: "Use IF/THEN/ENDIF and expand ++ into a clear assignment.",
   },
-  password: {
-    title: "Search for @ in password",
-    ipoc: [
-      ["Input", "Password string"],
-      ["Process", "Inspect each character and set Found when @ appears"],
-      ["Output", "Found / Not found message"],
-      ["Constraints", "Search all characters unless already found"],
-    ],
-    pseudocode: "Found <- FALSE\nFOR Index <- 1 TO LENGTH(Password)\n    Character <- character at position Index\n    IF Character = \"@\" THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nIF Found = TRUE THEN\n    OUTPUT \"Found\"\nELSE\n    OUTPUT \"Not found\"\nENDIF",
+  for: {
+    before: "for (int i = 1; i <= 5; i++) { input mark; }",
+    after: "FOR Index <- 1 TO 5\n    INPUT Mark\nNEXT Index",
+    note: "Use a readable loop variable and show the loop ending.",
   },
 };
 
 const examples = {
-  passes: {
-    title: "Example 1: Count passes",
-    problem: "Input five marks and output how many are at least 50.",
-    ipoc: scenarioMap.passes.ipoc,
-    code: scenarioMap.passes.pseudocode,
-    points: ["Known count means FOR loop.", "PassCount starts at 0.", "Increment only when Mark >= 50."],
+  assignment: {
+    title: "Example 1: Assignment and output",
+    problem: "Clean up Java-like assignment and output.",
+    before: "total = total + mark;\nSystem.out.println(total);",
+    after: "Total <- Total + Mark\nOUTPUT Total",
+    points: ["Use <- for assignment.", "Remove semicolons.", "Use OUTPUT instead of System.out.println."],
   },
-  sentinel: {
-    title: "Example 2: Sentinel total",
-    problem: "Input prices until 0 is entered and output the total.",
-    ipoc: scenarioMap.sentinel.ipoc,
-    code: scenarioMap.sentinel.pseudocode,
-    points: ["0 is not data.", "Input before the WHILE test.", "Read the next price inside the loop."],
+  selection: {
+    title: "Example 2: Selection block",
+    problem: "Rewrite a Java-style pass test as Cambridge pseudocode.",
+    before: "if (mark >= 50) {\n    output pass;\n} else {\n    output resit;\n}",
+    after: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
+    points: ["Use IF ... THEN.", "Indent both branches.", "Close the selection with ENDIF."],
   },
-  highest: {
-    title: "Example 3: Find highest",
-    problem: "Input eight temperatures and output the highest.",
-    ipoc: scenarioMap.highest.ipoc,
-    code: scenarioMap.highest.pseudocode,
-    points: ["Initialise from the first real input.", "Compare each later value.", "Update only when a higher value appears."],
+  loop: {
+    title: "Example 3: Count-controlled loop",
+    problem: "Write a readable loop to input five marks.",
+    before: "for (int i = 0; i < 5; i++) {\n    mark = input.nextInt();\n}",
+    after: "FOR Index <- 1 TO 5\n    INPUT Mark\nNEXT Index",
+    points: ["Use FOR/NEXT.", "Use a meaningful loop variable.", "Avoid Java's 0-based loop habit unless specified."],
   },
-  password: {
-    title: "Example 4: Character search",
-    problem: "Input a password and output whether it contains @.",
-    ipoc: scenarioMap.password.ipoc,
-    code: scenarioMap.password.pseudocode,
-    points: ["Use a Found flag.", "Inspect each character.", "Output after the search."],
+  full: {
+    title: "Example 4: Full clean-up",
+    problem: "Convert a Java-like fragment that counts passing marks.",
+    before: "int passCount = 0;\nfor (int i = 0; i < 5; i++) {\n    if (marks[i] >= 50) { passCount++; }\n}",
+    after: "PassCount <- 0\nFOR Index <- 1 TO 5\n    IF Mark[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index",
+    points: ["Initialise before the loop.", "Keep IF inside the loop.", "Use visible ENDIF and NEXT Index."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "In IPOC, what does I stand for?", accepted: ["input"], answer: "Input" },
-  { id: "p2", prompt: "In IPOC, what does O stand for?", accepted: ["output"], answer: "Output" },
-  { id: "p3", prompt: "The phrase 'exactly 10 values' suggests which loop type?", accepted: ["for", "for loop", "count controlled", "count-controlled", "count controlled loop"], answer: "A FOR / count-controlled loop" },
-  { id: "p4", prompt: "The phrase 'until -1 is entered' suggests which loop type?", accepted: ["while", "while loop", "condition controlled", "condition-controlled", "condition controlled loop"], answer: "A WHILE / condition-controlled loop" },
-  { id: "p5", prompt: "If -1 is a sentinel, should it be added to the total? yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p6", prompt: "For finding a maximum when values may be negative, initialise Maximum to 0 or first input?", accepted: ["first input", "first value", "first data value"], answer: "First input / first data value" },
-  { id: "p7", prompt: "Which control structure handles 'if mark is at least 50'?", accepted: ["selection", "if", "if statement"], answer: "Selection / IF" },
-  { id: "p8", prompt: "Should OUTPUT final average usually be inside or after the loop?", accepted: ["after", "after loop", "after the loop"], answer: "After the loop" },
-  { id: "p9", prompt: "Which test type checks a limit such as mark 0 or 100?", accepted: ["boundary", "boundary test", "boundary data"], answer: "Boundary test data" },
-  { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
+  { id: "p1", prompt: "Which symbol is used for Cambridge-style assignment in this course?", accepted: ["<-", "arrow", "left arrow"], answer: "<-" },
+  { id: "p2", prompt: "What keyword is used to display a value in Cambridge-style pseudocode?", accepted: ["output"], answer: "OUTPUT" },
+  { id: "p3", prompt: "What keyword closes an IF block?", accepted: ["endif", "end if"], answer: "ENDIF" },
+  { id: "p4", prompt: "What keyword closes a FOR loop?", accepted: ["next", "next index", "next loop"], answer: "NEXT" },
+  { id: "p5", prompt: "Convert `total = total + mark;` into Cambridge-style assignment.", accepted: ["total <- total + mark"], answer: "Total <- Total + Mark" },
+  { id: "p6", prompt: "Convert `System.out.println(total);` into Cambridge-style output.", accepted: ["output total"], answer: "OUTPUT Total" },
+  { id: "p7", prompt: "Is `passCount++` clear Cambridge-style pseudocode? yes or no.", accepted: ["no"], answer: "No. Write PassCount <- PassCount + 1." },
+  { id: "p8", prompt: "Should nested statements usually be indented? yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p9", prompt: "Which is clearer in an exam answer: `x` or `PassCount`?", accepted: ["passcount", "pass count"], answer: "PassCount" },
+  { id: "p10", prompt: "Is Java the expected Paper 2 answer format unless explicitly requested? yes or no.", accepted: ["no"], answer: "No. Cambridge pseudocode is the exam answer format." },
 ];
 
 const mistakes = [
-  { wrong: "I started writing pseudocode without identifying the required output.", fix: "Start with the output, then decide what inputs and processing are needed to produce it." },
-  { wrong: "I used a FOR loop for input until -1 is entered.", fix: "Use a condition-controlled loop because the number of inputs is not known in advance." },
-  { wrong: "I added the sentinel value to Total before stopping.", fix: "Test the sentinel before processing it. The sentinel controls the loop and is not data." },
-  { wrong: "I output the final average inside the loop.", fix: "Output the final average after all values have been processed unless a running average is requested." },
+  { wrong: "I used `total = total + mark;` throughout my Paper 2 answer.", fix: "Use `Total <- Total + Mark` so assignment is clear in Cambridge-style pseudocode." },
+  { wrong: "I opened an IF but did not write ENDIF.", fix: "Close each selection block with ENDIF so the marker can see the block boundary." },
+  { wrong: "I wrote all lines against the left margin.", fix: "Indent statements inside IF, FOR and WHILE blocks to show control structure." },
+  { wrong: "I used `i`, `j`, `x`, `y` everywhere in a word problem.", fix: "Use meaningful identifiers such as Student, Mark, Total or PassCount unless short counters are clearly defined." },
 ];
 
 
@@ -101,106 +88,98 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A program must input five marks and output how many marks are at least 50. Identify the input, process, output and suitable loop type.",
-    answer: "Input: five marks. Process: compare each mark with 50 and increment a pass count when Mark >= 50. Output: the pass count. Loop type: count-controlled / FOR loop because exactly five marks are input.",
+    marks: "3 marks",
+    prompt: "Write this Java-like fragment in Cambridge-style pseudocode: `total = total + mark; System.out.println(total);`",
+    answer: "Total <- Total + Mark\nOUTPUT Total",
     marking: [
-      { mark: "B1", text: "identifies input as five marks" },
-      { mark: "B1", text: "identifies output as count of marks at least 50" },
-      { mark: "B1", text: "process compares each mark with 50" },
-      { mark: "B1", text: "process increments count when condition is true" },
-      { mark: "B1", text: "chooses count-controlled / FOR loop" },
-      { mark: "B1", text: "justifies loop choice using exactly five marks" },
+      { mark: "M1", text: "uses correct Cambridge-style update Total <- Total + Mark" },
+      { mark: "B1", text: "uses OUTPUT Total" },
+      { mark: "A1", text: "places OUTPUT after the update" },
     ],
     strict: [
-      "Do not accept 'calculate marks' as a process without comparison or count.",
-      "Allow PassCount or Count as variable wording.",
-      "Do not award loop justification mark for only naming FOR.",
+      "Do not award assignment notation mark for Java-only equals and semicolon.",
+      "Allow lower-case variable names if consistent.",
+      "Do not require a surrounding loop.",
     ],
   },
   {
     title: "Question 2",
-    marks: "8 marks",
-    prompt: "Write Cambridge-style pseudocode to input prices until 0 is entered, then output the total price. The 0 must not be included.",
-    answer: "Total <- 0\nINPUT Price\nWHILE Price <> 0\n    Total <- Total + Price\n    INPUT Price\nENDWHILE\nOUTPUT Total",
+    marks: "6 marks",
+    prompt: "Write this logic as readable Cambridge-style pseudocode: if mark is at least 50 output Pass, otherwise output Resit.",
+    answer: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
     marking: [
-      { mark: "B1", text: "initialises Total to 0" },
-      { mark: "M1", text: "inputs first Price before loop test or otherwise tests before processing" },
-      { mark: "M1", text: "uses condition-controlled loop with Price <> 0" },
-      { mark: "A1", text: "adds Price to Total only inside valid-input loop" },
-      { mark: "M1", text: "inputs next Price inside loop" },
-      { mark: "B1", text: "does not add sentinel 0 to Total" },
-      { mark: "A1", text: "outputs Total after loop" },
-      { mark: "B1", text: "uses clear Cambridge-style pseudocode structure" },
+      { mark: "M1", text: "uses IF with condition Mark >= 50 or equivalent" },
+      { mark: "B1", text: "uses THEN / clear true branch" },
+      { mark: "A1", text: "outputs Pass for true condition" },
+      { mark: "B1", text: "uses ELSE / clear false branch" },
+      { mark: "A1", text: "outputs Resit for false condition" },
+      { mark: "B1", text: "closes selection with ENDIF / clear block boundary" },
     ],
     strict: [
-      "Do not award sentinel mark if 0 is added before stopping.",
-      "Allow REPEAT UNTIL if the 0 is not processed.",
-      "Do not award final-output mark if output is only inside the loop.",
+      "Do not require quotation marks around Pass/Resit if output values are clear.",
+      "Allow > 49 for integer marks.",
+      "Do not award block-boundary mark for unmatched braces only.",
     ],
   },
   {
     title: "Question 3",
-    marks: "7 marks",
-    prompt: "A program must input eight temperatures and output the highest. Explain the design before writing pseudocode.",
-    answer: "The input is eight temperature values and the output is the highest temperature. A count-controlled loop is suitable because there are exactly eight values. Highest should be initialised from the first input, not 0, because temperatures may be negative. Each later temperature is compared with Highest and replaces it only if it is larger.",
+    marks: "6 marks",
+    prompt: "Write Cambridge-style pseudocode to input five marks and output their total.",
+    answer: "Total <- 0\nFOR Index <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Index\nOUTPUT Total",
     marking: [
-      { mark: "B1", text: "identifies input as eight temperatures" },
-      { mark: "B1", text: "identifies output as highest temperature" },
-      { mark: "B1", text: "chooses count-controlled loop due to exactly eight values" },
-      { mark: "M1", text: "initialises Highest from first input" },
-      { mark: "M1", text: "explains why 0 may be unsuitable / negative temperatures possible" },
-      { mark: "A1", text: "compares each later temperature with Highest" },
-      { mark: "A1", text: "updates Highest only when a larger value is found" },
+      { mark: "B1", text: "initialises Total to 0" },
+      { mark: "M1", text: "uses count-controlled loop for five marks" },
+      { mark: "M1", text: "inputs Mark inside loop" },
+      { mark: "A1", text: "updates Total with Total <- Total + Mark" },
+      { mark: "B1", text: "uses NEXT / clear loop ending" },
+      { mark: "A1", text: "outputs final Total after the loop" },
     ],
     strict: [
-      "Do not accept initialising Highest to 0 if no non-negative range is stated.",
-      "Allow Maximum for Highest.",
-      "Do not require full pseudocode if question asks for design explanation.",
+      "Do not award final-output mark if OUTPUT Total is inside the loop and only final total is requested.",
+      "Allow WHILE with correctly controlled counter.",
+      "Do not award notation mark for Java-only for-loop syntax.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "Write pseudocode to input a password and output whether it contains the character @.",
-    answer: "Found <- FALSE\nFOR Index <- 1 TO LENGTH(Password)\n    Character <- character at position Index\n    IF Character = \"@\" THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nIF Found = TRUE THEN\n    OUTPUT \"Found\"\nELSE\n    OUTPUT \"Not found\"\nENDIF",
+    marks: "4 marks",
+    prompt: "Explain why indentation and meaningful identifiers improve pseudocode readability in an exam answer.",
+    answer: "Indentation shows which statements belong inside a selection or loop, so the marker can see the control structure. Meaningful identifiers such as Total, Mark and PassCount show the purpose of each variable. This reduces ambiguity and makes it easier to award marks for initialisation, updates and outputs.",
     marking: [
-      { mark: "B1", text: "initialises Found to FALSE" },
-      { mark: "M1", text: "loops through each character of Password" },
-      { mark: "M1", text: "extracts or refers clearly to current character" },
-      { mark: "A1", text: "compares current character with @" },
-      { mark: "A1", text: "sets Found to TRUE when @ is found" },
-      { mark: "B1", text: "outputs result after search based on Found" },
-      { mark: "B1", text: "uses clear Cambridge-style block structure" },
+      { mark: "B1", text: "states indentation shows block/control-structure ownership" },
+      { mark: "B1", text: "explains this helps distinguish inside vs outside loop/IF" },
+      { mark: "B1", text: "states meaningful identifiers show variable purpose" },
+      { mark: "B1", text: "explains this reduces ambiguity / helps trace logic" },
     ],
     strict: [
-      "Do not award comparison mark for checking whether the whole password equals @.",
-      "Allow early exit if logically correct.",
-      "Do not require exact phrase 'character at position' if current character is clear.",
+      "Do not accept only 'it looks nicer'.",
+      "Allow 'layout' for indentation if meaning is clear.",
+      "Do not require specific variable names.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A student says: 'I can solve any word problem by writing code immediately.' Evaluate this approach.",
-    answer: "This is a weak approach because the student may miss the required output, constraints or stopping condition. A better approach is to identify inputs, processing, outputs and constraints first, then choose sequence, selection and iteration. The algorithm should be traced with suitable test data to check that variables update correctly and that outputs are in the correct position.",
+    marks: "6 marks",
+    prompt: "Identify and correct three Java features that should not appear in a Cambridge pseudocode answer unless Java is requested.",
+    answer: "Examples include semicolons, braces, Java method calls such as System.out.println, ++ shorthand, Java for-loop headers and 0-based array habits. Corrections include using OUTPUT, IF/ENDIF, FOR/NEXT, explicit assignment such as Count <- Count + 1, and clearly defined pseudocode indexing.",
     marking: [
-      { mark: "B1", text: "recognises immediate coding can miss requirements" },
-      { mark: "B1", text: "mentions required output or constraints/stopping condition" },
-      { mark: "B1", text: "recommends IPOC / identifying inputs, processing, outputs and constraints" },
-      { mark: "B1", text: "recommends choosing control structures before coding" },
-      { mark: "B1", text: "mentions trace or test data to verify design" },
+      { mark: "M1", text: "identifies one Java-only feature such as semicolon/braces/System.out.println/++" },
+      { mark: "A1", text: "gives a suitable Cambridge-style correction for first feature" },
+      { mark: "M1", text: "identifies second distinct Java-only feature" },
+      { mark: "A1", text: "gives suitable correction for second feature" },
+      { mark: "M1", text: "identifies third distinct Java-only feature" },
+      { mark: "A1", text: "gives suitable correction for third feature" },
     ],
     strict: [
-      "Do not accept only 'planning is better' without mechanism.",
-      "Allow decomposition language instead of IPOC.",
-      "Do not require Java discussion.",
+      "Do not award separate identification marks for repeated examples of the same feature.",
+      "Allow charAt, scanner input or array index examples if corrected clearly.",
+      "Do not say Java is never useful; it is support, not the default exam format.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9@\\[\\] <>+=.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9\\[\\] <>+=.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -219,10 +198,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    five: "Five is the number of inputs, not the required output.",
-    all: "The question asks for one value, not every score.",
-    highest: "Correct. The output is the highest score.",
-    average: "Average is a common output, but it is not requested here.",
+    arrow: "Correct. The assignment arrow is the clearest Cambridge-style notation here.",
+    equals: "That is Java-style assignment with a semicolon. The logic is familiar, but the exam style should use <-.",
+    plus: "That is not a clear assignment. Write the full update.",
+    print: "That is output syntax, not assignment.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -233,21 +212,27 @@ function setupHook() {
   });
 }
 
-function setupScenario() {
-  const input = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#scenarioResult");
-  document.querySelector("#scenarioBtn").addEventListener("click", () => {
-    const item = scenarioMap[input.value];
-    result.innerHTML = `<h3>${item.title}</h3>${tableMarkup(["IPOC", "Design decision"], item.ipoc)}`;
+function setupChecker() {
+  const input = document.querySelector("#checkerInput");
+  const result = document.querySelector("#checkerResult");
+  document.querySelector("#checkerBtn").addEventListener("click", () => {
+    const item = checkerMap[input.value];
+    result.innerHTML = `<strong>${item.title}</strong><span>${item.detail}</span>`;
   });
 }
 
-function setupBuilder() {
-  const input = document.querySelector("#builderInput");
-  const result = document.querySelector("#builderResult");
-  document.querySelector("#builderBtn").addEventListener("click", () => {
-    const item = scenarioMap[input.value];
-    result.innerHTML = `<h3>${item.title}</h3><pre><code>${item.pseudocode}</code></pre>`;
+function setupCleaner() {
+  const input = document.querySelector("#cleanerInput");
+  const result = document.querySelector("#cleanerResult");
+  document.querySelector("#cleanerBtn").addEventListener("click", () => {
+    const item = cleanerMap[input.value];
+    result.innerHTML = `
+      <p><strong>Before:</strong></p>
+      <pre><code>${item.before}</code></pre>
+      <p><strong>Cambridge-style:</strong></p>
+      <pre><code>${item.after}</code></pre>
+      <p>${item.note}</p>
+    `;
   });
 }
 
@@ -256,9 +241,10 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    ${tableMarkup(["IPOC", "Design decision"], example.ipoc)}
-    <p><strong>Cambridge-style pseudocode:</strong></p>
-    <pre><code>${example.code}</code></pre>
+    <div class="code-grid">
+      <article><h3>Before</h3><pre><code>${example.before}</code></pre></article>
+      <article><h3>After</h3><pre><code>${example.after}</code></pre></article>
+    </div>
     <ul>${example.points.map((point) => `<li>${point}</li>`).join("")}</ul>
   `;
 }
@@ -271,7 +257,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("passes");
+  renderExample("assignment");
 }
 
 function setupPractice() {
@@ -359,8 +345,8 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupScenario();
-setupBuilder();
+setupChecker();
+setupCleaner();
 setupExamples();
 setupPractice();
 setupMistakes();

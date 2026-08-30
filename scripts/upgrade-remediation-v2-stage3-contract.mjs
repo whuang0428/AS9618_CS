@@ -8,7 +8,7 @@ import { stage3AssessmentEvidence } from "./remediation-v2-stage3-question-repai
 const root = path.resolve(import.meta.dirname, "..");
 const contractPath = path.join(root, "scripts", "syllabus-coverage-contract.json");
 const contract = JSON.parse(fs.readFileSync(contractPath, "utf8"));
-const visualIdentityRepairs = new Map(Object.entries({
+const legacyVisualIdentityRepairs = new Map(Object.entries({
   "044/explanation-width": [49, "explanation-width"],
   "031/explanation-sensors": [34, "explanation-sensors"],
   "032/explanation-gate-visual": [35, "explanation-gate-visual"],
@@ -46,13 +46,22 @@ const visualIdentityRepairs = new Map(Object.entries({
   "145/explanation-boundary": [137, "explanation-boundary"],
   "145/explanation-bug": [138, "explanation-bug"],
 }));
+const shiftLesson = (lesson) => lesson >= 10 ? lesson + 1 : lesson;
+const identityMigrationApplied = contract.sequenceReview?.identityMigration === "syllabus-order-151-r1";
+const visualEvidenceMigrationApplied = contract.sequenceReview?.visualEvidenceMigration === "syllabus-order-151-r1";
+const visualIdentityRepairs = new Map([...legacyVisualIdentityRepairs].map(([key, [lesson, sectionId]]) => {
+  const [sourceLesson, sourceSection] = key.split("/");
+  return [`${String(shiftLesson(Number(sourceLesson))).padStart(3, "0")}/${sourceSection}`, [shiftLesson(lesson), sectionId]];
+}));
 for (const requirement of contract.requirements) {
   const lesson = stage3RequirementFirstUse[requirement.id];
   if (!lesson) throw new Error(`${requirement.id}: missing Stage 3 first-use lesson`);
   requirement.teachingLessons = stage3RequirementLessons[requirement.id];
   requirement.visualEvidence = (requirement.visualEvidence ?? []).map((visual) => {
-    const repaired = visualIdentityRepairs.get(`${String(visual.lesson).padStart(3, "0")}/${visual.sectionId}`);
-    return repaired ? { ...visual, lesson: repaired[0], sectionId: repaired[1], visualId: `${repaired[1]}-img-1` } : visual;
+    if (visualEvidenceMigrationApplied) return visual;
+    const migrated = identityMigrationApplied ? visual : { ...visual, lesson: shiftLesson(visual.lesson) };
+    const repaired = visualIdentityRepairs.get(`${String(migrated.lesson).padStart(3, "0")}/${migrated.sectionId}`);
+    return repaired ? { ...migrated, lesson: repaired[0], sectionId: repaired[1], visualId: `${repaired[1]}-img-1` } : migrated;
   });
   requirement.coreSections = ["stage2-completion"];
   requirement.workedExampleEvidence = [{
@@ -76,9 +85,16 @@ for (const requirement of contract.requirements) {
     conceptGroups: requirement.requiredGroups,
   };
   requirement.minimumAssessmentForms = 1;
+  if (!identityMigrationApplied) requirement.assessmentEvidence = (requirement.assessmentEvidence ?? []).map((evidence) => ({
+    ...evidence,
+    questionId: evidence.questionId.replace(/^AR(\d{3})-/, (match, lessonId) => `AR${String(shiftLesson(Number(lessonId))).padStart(3, "0")}-`),
+  }));
   if (stage3AssessmentEvidence[requirement.id]) requirement.assessmentEvidence = stage3AssessmentEvidence[requirement.id];
-  if (requirement.id === "S1.09") requirement.assessmentEvidence = requirement.assessmentEvidence.filter(({ questionId }) => questionId !== "AQ010-Q4");
-  if (requirement.id === "S4.05") requirement.assessmentEvidence = requirement.assessmentEvidence.filter(({ questionId }) => questionId !== "AQ045-Q5");
+  if (requirement.id === "S1.09") requirement.assessmentEvidence = [
+    { questionId: "L010-Q1", conceptGroups: [["drawing list"], ["drawing objects"], ["properties"]] },
+    { questionId: "L010-Q5", conceptGroups: [["drawing list"], ["properties"], ["resizes without pixelation"]] },
+  ];
+  if (requirement.id === "S4.05") requirement.assessmentEvidence = requirement.assessmentEvidence.filter(({ questionId }) => questionId !== "AQ046-Q5");
   if (requirement.id === "S5.03") requirement.prerequisites = requirement.prerequisites.filter((id) => id !== "S5.04");
   requirement.evidenceReviewStatus = "Reviewed";
   requirement.evidenceReviewRound = "remediation-v2-stage3";
@@ -97,11 +113,14 @@ for (const requirement of contract.requirements) {
 }
 
 contract.sequenceReview = {
-  round: "remediation-v2-stage3",
-  policy: "One unique CORE first-use lesson per official requirement; Optional enrichment does not establish first use.",
-  officialOrder: false,
-  officialRowNumbersAreTaxonomyNotPrerequisites: true,
-  stableLessonIds: true,
+  round: "syllabus-order-151-r1",
+  policy: "First formal CORE teaching is monotonic in official syllabus row order within every section; Optional and later review do not establish first use.",
+  officialOrder: true,
+  officialRowOrderIsBlocking: true,
+  canonicalLessonCount: 151,
+  identityMigration: "syllabus-order-151-r1",
+  visualEvidenceMigration: contract.sequenceReview?.visualEvidenceMigration,
+  requiredVisualDeliveryPolicy: contract.sequenceReview?.requiredVisualDeliveryPolicy,
 };
 
 fs.writeFileSync(contractPath, `${JSON.stringify(contract, null, 2)}\n`);

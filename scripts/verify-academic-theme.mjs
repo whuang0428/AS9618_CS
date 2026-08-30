@@ -14,7 +14,7 @@ function occurrences(source, token) {
   return source.split(token).length - 1;
 }
 
-expect(pageDefinitions.length === 153, "Academic theme must cover 150 lessons and three hub pages");
+expect(pageDefinitions.length === 154, "Academic theme must cover 151 lessons and three hub pages");
 
 const themePath = path.join(root, "web", "academic-theme.css");
 expect(fs.existsSync(themePath), "Academic theme stylesheet is missing");
@@ -71,7 +71,7 @@ for (const definition of pageDefinitions) {
     `${definition.page}: academic theme must follow the accessibility stylesheet`);
 
   if (definition.kind === "lesson") {
-    expect(html.indexOf("../lesson-toolbar.css?v=3") < html.indexOf(themeHref),
+    expect(html.indexOf("../lesson-toolbar.css?v=4") < html.indexOf(themeHref),
       `${definition.page}: academic theme must follow the lesson toolbar stylesheet`);
   }
 }
@@ -79,7 +79,7 @@ for (const definition of pageDefinitions) {
 const home = read("web/index.html");
 expect(occurrences(home, '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">') === 4,
   "Course home must contain four decorative academic course-fact icons");
-for (const text of ["150", "lesson pages", "12", "syllabus sections", "2", "AS papers", "45", "minutes per lesson"]) {
+for (const text of ["151", "lesson pages", "12", "syllabus sections", "2", "AS papers", "45", "minutes per lesson"]) {
   expect(home.includes(text), `Course home fact text is missing: ${text}`);
 }
 
@@ -91,4 +91,4 @@ for (const generator of ["scripts/generate-assessments.mjs", "scripts/generate-r
     `${generator}: generated hub output does not preserve the academic theme`);
 }
 
-console.log("Academic theme verification passed: 153 pages, offline design tokens, generator persistence and mobile header safeguards.");
+console.log("Academic theme verification passed: 154 pages, offline design tokens, generator persistence and mobile header safeguards.");

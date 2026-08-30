@@ -65,11 +65,11 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["052", ["operating system", "memory management", "file management", "security management", "hardware management", "process management"]],
-  ["055", ["disk formatter", "virus checker", "defragmenter", "disk contents analysis", "repair", "compression", "backup"]],
-  ["058", ["software under development", "existing code", "program libraries", "developer", "dynamically linked library", "DLL"]],
+  ["053", ["operating system", "memory management", "file management", "security management", "hardware management", "process management"]],
+  ["054", ["disk formatter", "virus checker", "defragmenter", "disk contents analysis", "repair", "compression", "backup"]],
+  ["055", ["software under development", "existing code", "program libraries", "developer", "dynamically linked library", "DLL"]],
   ["056", ["assembler", "assembly-language", "compiler", "interpreter", "advantages", "disadvantages"]],
-  ["060", ["Java in console mode", "partly compiled", "partly interpreted", "bytecode", "JVM", "context-sensitive prompts", "dynamic syntax", "prettyprint", "expand or collapse", "single stepping", "breakpoints", "variable", "expressions", "report window"]],
+  ["057", ["Java in console mode", "partly compiled", "partly interpreted", "bytecode", "JVM", "context-sensitive prompts", "dynamic syntax", "prettyprint", "expand or collapse", "single stepping", "breakpoints", "variable", "expressions", "report window"]],
 ];
 
 for (const [lesson, terms] of lessonChecks) {
@@ -84,17 +84,17 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["L053-Q5", ["operating system", "process management", "memory management", "file management", "security management", "hardware management"]],
-  ["AQ055-Q5", ["disk formatter", "analysis/repair", "repairs recoverable faults"]],
-  ["L056-Q4", ["compiler", "interpreter", "whole program", "statement by statement", "development", "deployment"]],
-  ["L056-Q5", ["compiler", "interpreter", "assembler", "assembly language", "machine code"]],
-  ["L058-Q3", ["libraries", "reusable", "development time", "linked"]],
-  ["AQ060-Q3", ["dynamically linked library", "missing/incompatible library"]],
-  ["L060-Q4", ["Java", "bytecode", "JVM", "partly compiled", "partly interpreted", "IDE", "prettyprint", "breakpoint"]],
-  ["AQ060-Q2", ["IDE", "prettyprint", "expand/collapse", "breakpoint", "single-step", "variable/expression/report"]],
-  ["AQ060-Q5", ["Java", "compiler", "bytecode", "JVM", "interprets"]],
-  ["AM060-Q4", ["Java", "IDE", "DLL", "breakpoint", "single-step", "variable inspection"]],
-  ["AR061-Q1", ["advantages", "disadvantages", "interpreter", "feedback", "slower"]],
+  ["L054-Q5", ["operating system", "process management", "memory management", "file management", "security management", "hardware management"]],
+  ["AQ056-Q5", ["disk formatter", "analysis/repair", "repairs recoverable faults"]],
+  ["L057-Q4", ["compiler", "interpreter", "whole program", "statement by statement", "development", "deployment"]],
+  ["L057-Q5", ["compiler", "interpreter", "assembler", "assembly language", "machine code"]],
+  ["L059-Q3", ["libraries", "reusable", "development time", "linked"]],
+  ["AQ061-Q3", ["dynamically linked library", "missing/incompatible library"]],
+  ["L061-Q4", ["Java", "bytecode", "JVM", "partly compiled", "partly interpreted", "IDE", "prettyprint", "breakpoint"]],
+  ["AQ061-Q2", ["IDE", "prettyprint", "expand/collapse", "breakpoint", "single-step", "variable/expression/report"]],
+  ["AQ061-Q5", ["Java", "compiler", "bytecode", "JVM", "interprets"]],
+  ["AM061-Q4", ["Java", "IDE", "DLL", "breakpoint", "single-step", "variable inspection"]],
+  ["AR062-Q1", ["advantages", "disadvantages", "interpreter", "feedback", "slower"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 5 assessment`);
 
@@ -105,15 +105,15 @@ for (const [label, pattern] of [
   ["assembler always executable", /assembler.{0,100}(?:always|immediately).{0,30}executable/is],
 ]) expect(!pattern.test(acceptedAssessment), `accepted assessment semantics still contain ${label}`);
 
-const assemblerVisualFacts = sourceFactOverrides["056/assembler"].join(" ");
-includesAll(assemblerVisualFacts, ["assembly-language", "machine code", "object-code module", "linker", "before an executable", "does not translate high-level"], "L056 assembler maintained visual facts");
-const comparisonVisualFacts = sourceFactOverrides["056/compare"].join(" ");
-includesAll(comparisonVisualFacts, ["compiler", "interpreter", "assembler", "object modules", "linker", "no separate permanent object-code", "not claim that every assembler output is immediately executable"], "L056 comparison maintained visual facts");
+const assemblerVisualFacts = sourceFactOverrides["057/assembler"].join(" ");
+includesAll(assemblerVisualFacts, ["assembly-language", "machine code", "object-code module", "linker", "before an executable", "does not translate high-level"], "L057 assembler maintained visual facts");
+const comparisonVisualFacts = sourceFactOverrides["057/compare"].join(" ");
+includesAll(comparisonVisualFacts, ["compiler", "interpreter", "assembler", "object modules", "linker", "no separate permanent object-code", "not claim that every assembler output is immediately executable"], "L057 comparison maintained visual facts");
 for (const [file, label] of [
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-056-assembler.jpg", "L056 assembler visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg", "L056 translator comparison visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg", "L058 libraries visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-058-static-dynamic.jpg", "L058 static/dynamic visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-057-assembler.jpg", "L057 assembler visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-057-compare.jpg", "L057 translator comparison visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-059-libraries.jpg", "L059 libraries visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-059-static-dynamic.jpg", "L059 static/dynamic visual"],
 ]) {
   const dimensions = jpegDimensions(file);
   expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${label}: expected 1536x1024 JPEG`);
@@ -139,7 +139,7 @@ for (const [id, pattern] of mutations) {
 }
 
 const assessmentMutation = evaluateRequirement(requirements.get("S5.06"), {
-  questionTransform: (question) => ["L060-Q4", "AQ060-Q5"].includes(question.id)
+  questionTransform: (question) => ["L061-Q4", "AQ061-Q5"].includes(question.id)
     ? {
         ...question,
         prompt: question.prompt.replace(/Java|compiled|interpreted|bytecode|JVM/gi, "removed concept"),

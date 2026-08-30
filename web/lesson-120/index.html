@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 120 | Text files: reading, writing and appending</title>
+    <title>AS9618 Lesson 120 | Why files are needed and how text-file pseudocode works</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Text files: reading, writing and appending</h1>
+        <h1>Why files are needed and how text-file pseudocode works</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,14 +30,13 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#concept">Concept</a>
-        <a href="#lifecycle">File lifecycle</a>
-        <a href="#modes">Modes</a>
-        <a href="#read">Read loop</a>
-        <a href="#write">Write/append</a>
-        <a href="#records">Text records</a>
+        <a href="#declare">Declare</a>
+        <a href="#access">Access pattern</a>
+        <a href="#traversal">Traversal</a>
+        <a href="#operations">Operations</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#mode-lab">Mode lab</a>
-        <a href="#reader">Read trace</a>
+        <a href="#explorer">Record explorer</a>
+        <a href="#trace">Loop trace</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -69,11 +68,11 @@
           </article>
         </section>
 
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam answer format</h2>
+        <!-- stage10-explanation:start pseudocode-121 -->
+        <section class="panel explanation-panel" id="explanation-pseudocode-121" data-explains="pseudocode-121" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-121-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode-121">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-121-title">Cambridge pseudocode is the exam answer format</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam answer format with a structured visual model." />
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam answer format with a structured visual model." />
             <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam answer format: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
@@ -81,7 +80,7 @@
 
           </div>
         </section>
-        <!-- stage10-explanation:end pseudocode -->
+        <!-- stage10-explanation:end pseudocode-121 -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
@@ -125,328 +124,305 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 120 | 45 minutes | Paper 2 Section 10 | 5-minute quiz and monthly checkpoint</p>
-            <h2>Text files let data survive after the program ends.</h2>
+            <p class="lesson-meta">Lesson 120 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>An array of records stores many entities that share the same record structure.</h2>
             <p>
-              Variables disappear when a program stops. A text file stores characters on secondary storage, so a program
-              can read existing lines, write a new file, or append extra lines. The exam focus is not drama; it is the
-              exact file mode, loop condition and close-file step.
+              A single record stores one student's fields. An array of records stores many students, where each array
+              element is a complete record. The access pattern combines both ideas: index first, then field name.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Read</strong><span>use OPENFILE, EOF, READFILE and CLOSEFILE</span></div>
-              <div><strong>Write</strong><span>create or replace file contents carefully</span></div>
-              <div><strong>Append</strong><span>add new lines without removing existing lines</span></div>
+              <div><strong>Declare</strong><span>an array whose elements are records</span></div>
+              <div><strong>Access</strong><span>one field using index plus dot notation</span></div>
+              <div><strong>Process</strong><span>traverse, search, count and update record fields</span></div>
             </div>
           </div>
-          <div class="file-visual" aria-label="Text file visual">
-            <div class="file-card">
-              <strong>Scores.txt</strong>
-              <span>Ali,72</span>
-              <span>Bea,64</span>
-              <span>Chen,85</span>
+          <div class="record-visual" aria-label="Array of records visual">
+            <div class="array-card">
+              <strong>Students[1:3]</strong>
+              <span>[1] Name, Mark, Enrolled</span>
+              <span>[2] Name, Mark, Enrolled</span>
+              <span>[3] Name, Mark, Enrolled</span>
             </div>
-            <div class="file-caption">OPENFILE "Scores.txt" FOR READ</div>
-            <p>Open. Process line by line. Close. The file does not enjoy being left open.</p>
+            <div class="record-caption">Students[2].Mark &lt;- 84</div>
+            <p>Index chooses the record. Field name chooses the value inside it.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 often asks for a file algorithm: open with the correct mode, loop until EOF, process each line and close.</p>
+            <p>Paper 2 algorithms often store many related items, then loop through them to find, count or update fields.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p><code>WRITE</code> can replace file contents. Use <code>APPEND</code> when existing lines must remain.</p>
+            <p><code>Students.Mark[2]</code> is the wrong order for this lesson. Use <code>Students[2].Mark</code>.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Why did the program forget the scores?</h2>
-            <p>A program stores scores in variables, then closes. The next time it runs, the scores are gone. What should it use?</p>
+            <h2>How should we store a class register?</h2>
+            <p>A class has 30 students. Each student has a name, mark and enrolment status. Which structure fits best?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="variable">More variables</button>
-            <button class="choice-card" type="button" data-hook="array">A larger array only</button>
-            <button class="choice-card" type="button" data-hook="file">A text file</button>
-            <button class="choice-card" type="button" data-hook="print">Print the screen</button>
+            <button class="choice-card" type="button" data-hook="separate">30 separate variables</button>
+            <button class="choice-card" type="button" data-hook="arrayOfString">ARRAY[1:90] OF STRING</button>
+            <button class="choice-card" type="button" data-hook="arrayRecords">ARRAY[1:30] OF TStudent</button>
+            <button class="choice-card" type="button" data-hook="single">One TStudent record only</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the option that keeps data after the program has stopped.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that stores many students while keeping named fields for each one.</div>
         </section>
 
         <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
-            <h2>A text file stores characters, usually processed one line at a time</h2>
-            <p>Chinese support: text file 是“文本文件”；persistent storage 是“持久化存储”；append 是“追加”。</p>
+            <h2>One array, many records, same record shape</h2>
+            <p>Chinese support: array of records 是“记录数组”；每个 array element 本身是一条 record。</p>
           </div>
-          <div class="data-table concept-table" role="table" aria-label="Text file concepts">
-            <div class="table-row table-head" role="row"><div>Term</div><div>Meaning</div><div>Exam clue</div></div>
-            <div class="table-row" role="row"><div>Text file</div><div>file containing character data</div><div><code>"Scores.txt"</code></div></div>
-            <div class="table-row" role="row"><div>Read</div><div>get data from an existing file</div><div><code>FOR READ</code></div></div>
-            <div class="table-row" role="row"><div>Write</div><div>store data to a file, often replacing previous contents</div><div><code>FOR WRITE</code></div></div>
-            <div class="table-row" role="row"><div>Append</div><div>add data to the end of an existing file</div><div><code>FOR APPEND</code></div></div>
+          <div class="data-table concept-table" role="table" aria-label="Array of records concepts">
+            <div class="table-row table-head" role="row"><div>Term</div><div>Meaning</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>Array of records</div><div>array where each element is a record</div><div><code>Students[1:30]</code></div></div>
+            <div class="table-row" role="row"><div>Index</div><div>selects one record from the array</div><div><code>Students[5]</code></div></div>
+            <div class="table-row" role="row"><div>Field</div><div>selects one named value inside that record</div><div><code>.Mark</code></div></div>
+            <div class="table-row" role="row"><div>Combined access</div><div>index first, field second</div><div><code>Students[5].Mark</code></div></div>
           </div>
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">A text file stores characters, usually processed one line at a time</h2>
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">One array, many records, same record shape</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A text file stores characters, usually processed one line at a time with a structured visual model." />
-            <figcaption class="explanation-sr-only">A text file stores characters, usually processed one line at a time: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One array, many records, same record shape with a structured visual model." />
+            <figcaption class="explanation-sr-only">One array, many records, same record shape: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Exam clue</li><li><strong>Lesson fact:</strong> Text file</li><li><strong>Lesson fact:</strong> file containing character data</li><li><strong>Lesson fact:</strong> &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> get data from an existing file</li><li><strong>Lesson fact:</strong> FOR READ</li><li><strong>Lesson fact:</strong> store data to a file, often replacing previous contents</li><li><strong>Lesson fact:</strong> FOR WRITE</li><li><strong>Lesson fact:</strong> add data to the end of an existing file</li><li><strong>Lesson fact:</strong> FOR APPEND</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Students[5] selects the complete record at array position 5.</li><li><strong>Lesson fact:</strong> Students[5].Mark selects the Mark field in that record.</li><li><strong>Lesson fact:</strong> Array indexing and record field selection are separate operations.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="lifecycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
-            <p class="eyebrow">File lifecycle</p>
-            <h2>Open, process, close</h2>
-          </div>
-          <div class="flow-grid">
-            <div><strong>1. Open</strong><span>choose READ, WRITE or APPEND</span></div>
-            <div><strong>2. Process</strong><span>READFILE or WRITEFILE using variables</span></div>
-            <div><strong>3. Close</strong><span>release the file and finalise changes</span></div>
-          </div>
-          <div class="callout">A file algorithm without <code>CLOSEFILE</code> is like leaving the exam hall without submitting the answer booklet.</div>
-        </section>
-
-        <!-- stage10-explanation:start lifecycle -->
-        <section class="panel explanation-panel" id="explanation-lifecycle" data-explains="lifecycle" data-explanation-kind="process" aria-labelledby="explanation-lifecycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-lifecycle-title">Open, process, close</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-lifecycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Open, process, close with a structured visual model." />
-            <figcaption class="explanation-sr-only">Open, process, close: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> File lifecycle</li><li><strong>Lesson fact:</strong> 1. Open choose READ, WRITE or APPEND</li><li><strong>Lesson fact:</strong> 2. Process READFILE or WRITEFILE using variables</li><li><strong>Lesson fact:</strong> 3. Close release the file and finalise changes</li><li><strong>Lesson fact:</strong> A file algorithm without CLOSEFILE is like leaving the exam hall without submitting the answer booklet.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lifecycle -->
-        <section class="panel" id="modes" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <div class="section-title">
-            <p class="eyebrow">File modes</p>
-            <h2>Choose the mode before touching the file</h2>
-          </div>
-          <div class="data-table modes-table" role="table" aria-label="File modes">
-            <div class="table-row table-head" role="row"><div>Mode</div><div>Use when</div><div>Risk if wrong</div></div>
-            <div class="table-row" role="row"><div><code>READ</code></div><div>existing file contents are needed</div><div>cannot write new lines</div></div>
-            <div class="table-row" role="row"><div><code>WRITE</code></div><div>creating/replacing output contents</div><div>old contents may be overwritten</div></div>
-            <div class="table-row" role="row"><div><code>APPEND</code></div><div>adding new data to the end</div><div>old lines remain, so duplicates are possible</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start modes -->
-        <section class="panel explanation-panel" id="explanation-modes" data-explains="modes" data-explanation-kind="mechanism" aria-labelledby="explanation-modes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-modes-title">Choose the mode before touching the file</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the mode before touching the file with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the mode before touching the file: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> File modes</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Risk if wrong</li><li><strong>Lesson fact:</strong> existing file contents are needed</li><li><strong>Lesson fact:</strong> cannot write new lines</li><li><strong>Lesson fact:</strong> creating/replacing output contents</li><li><strong>Lesson fact:</strong> old contents may be overwritten</li><li><strong>Lesson fact:</strong> adding new data to the end</li><li><strong>Lesson fact:</strong> old lines remain, so duplicates are possible</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end modes -->
-        <section class="panel" id="read" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <div class="section-title">
-            <p class="eyebrow">Read loop</p>
-            <h2>Use EOF so the loop stops at the end of the file</h2>
-          </div>
-          <pre><code>OPENFILE "Scores.txt" FOR READ
-WHILE NOT EOF("Scores.txt")
-    READFILE "Scores.txt", Line
-    OUTPUT Line
-ENDWHILE
-CLOSEFILE "Scores.txt"</code></pre>
-          <div class="callout">The file line is read into <code>Line</code>. Only after that can the program output, split or validate it.</div>
-        </section>
-
-        <!-- stage10-explanation:start read -->
-        <section class="panel explanation-panel" id="explanation-read" data-explains="read" data-explanation-kind="mechanism" aria-labelledby="explanation-read-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-read-title">Use EOF so the loop stops at the end of the file</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-read.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use EOF so the loop stops at the end of the file with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use EOF so the loop stops at the end of the file: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Read loop</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> The file line is read into Line . Only after that can the program output, split or validate it.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end read -->
-        <section class="panel" id="write" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <div class="section-title">
-            <p class="eyebrow">Write and append</p>
-            <h2>Write creates a new result; append adds to the existing story</h2>
+            <p class="eyebrow">Declare</p>
+            <h2>Define the record type, then declare the array</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Write a new report</h3>
-              <pre><code>OPENFILE "Report.txt" FOR WRITE
-WRITEFILE "Report.txt", "Pass count: " &amp; Count
-CLOSEFILE "Report.txt"</code></pre>
+              <h3>Record type</h3>
+              <pre><code>TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+    DECLARE Enrolled : BOOLEAN
+ENDTYPE</code></pre>
             </article>
             <article>
-              <h3>Append a new score</h3>
-              <pre><code>OPENFILE "Scores.txt" FOR APPEND
-WRITEFILE "Scores.txt", "Dina,91"
-CLOSEFILE "Scores.txt"</code></pre>
+              <h3>Array of records</h3>
+              <pre><code>DECLARE Students : ARRAY[1:30] OF TStudent
+
+Students[1].Name &lt;- "Ali"
+Students[1].Mark &lt;- 72</code></pre>
             </article>
           </div>
+          <div class="callout">The record type describes one element. The array declaration creates many elements of that type.</div>
         </section>
 
-        <!-- stage10-explanation:start write -->
-        <section class="panel explanation-panel" id="explanation-write" data-explains="write" data-explanation-kind="mechanism" aria-labelledby="explanation-write-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-write-title">Write creates a new result; append adds to the existing story</h2>
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Define the record type, then declare the array</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-write.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Write creates a new result; append adds to the existing story with a structured visual model." />
-            <figcaption class="explanation-sr-only">Write creates a new result; append adds to the existing story: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define the record type, then declare the array with a structured visual model." />
+            <figcaption class="explanation-sr-only">Define the record type, then declare the array: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Write and append</li><li><strong>Lesson fact:</strong> Write a new report</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Report.txt&quot; FOR WRITE</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Report.txt&quot;, &quot;Pass count: &quot; &amp; Count</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Report.txt&quot;</li><li><strong>Lesson fact:</strong> Append a new score</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR APPEND</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Scores.txt&quot;, &quot;Dina,91&quot;</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent
+This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> The record type and the array declaration are separate declarations.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end write -->
-        <section class="panel" id="records" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+        <!-- stage10-explanation:end declare -->
+        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
-            <p class="eyebrow">Text records</p>
-            <h2>A text line often represents one record</h2>
-            <p>In simple exam-style examples, one line may contain fields separated by a comma. The delimiter must be consistent.</p>
+            <p class="eyebrow">Access pattern</p>
+            <h2>Index first, then field name</h2>
           </div>
-          <div class="data-table records-table" role="table" aria-label="Text record example">
-            <div class="table-row table-head" role="row"><div>Line</div><div>Field 1</div><div>Field 2</div></div>
-            <div class="table-row" role="row"><div><code>Ali,72</code></div><div>Name = Ali</div><div>Mark = 72</div></div>
-            <div class="table-row" role="row"><div><code>Bea,64</code></div><div>Name = Bea</div><div>Mark = 64</div></div>
+          <div class="data-table access-table" role="table" aria-label="Array of records access">
+            <div class="table-row table-head" role="row"><div>Task</div><div>Pseudocode</div><div>Meaning</div></div>
+            <div class="table-row" role="row"><div>Read one field</div><div><code>OUTPUT Students[3].Name</code></div><div>name field of record 3</div></div>
+            <div class="table-row" role="row"><div>Update one field</div><div><code>Students[3].Mark &lt;- 80</code></div><div>mark field of record 3</div></div>
+            <div class="table-row" role="row"><div>Test one field</div><div><code>IF Students[Index].Enrolled = TRUE THEN</code></div><div>Boolean field in current record</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start records -->
-        <section class="panel explanation-panel" id="explanation-records" data-explains="records" data-explanation-kind="mechanism" aria-labelledby="explanation-records-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-records-title">A text line often represents one record</h2>
+        <!-- stage10-explanation:start access -->
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <h2 class="explanation-sr-only" id="explanation-access-title">Index first, then field name</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-records.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A text line often represents one record with a structured visual model." />
-            <figcaption class="explanation-sr-only">A text line often represents one record: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Index first, then field name with a structured visual model." />
+            <figcaption class="explanation-sr-only">Index first, then field name: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Text records</li><li><strong>Lesson fact:</strong> In simple exam-style examples, one line may contain fields separated by a comma. The delimiter must be consistent.</li><li><strong>Lesson fact:</strong> Name = Ali</li><li><strong>Lesson fact:</strong> Mark = 72</li><li><strong>Lesson fact:</strong> Name = Bea</li><li><strong>Lesson fact:</strong> Mark = 64</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Access pattern</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Read one field</li><li><strong>Lesson fact:</strong> OUTPUT Students[3].Name</li><li><strong>Lesson fact:</strong> name field of record 3</li><li><strong>Lesson fact:</strong> Update one field</li><li><strong>Lesson fact:</strong> Students[3].Mark &lt;- 80</li><li><strong>Lesson fact:</strong> mark field of record 3</li><li><strong>Lesson fact:</strong> Test one field</li><li><strong>Lesson fact:</strong> IF Students[Index].Enrolled = TRUE THEN</li><li><strong>Lesson fact:</strong> Boolean field in current record</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end records -->
+        <!-- stage10-explanation:end access -->
+        <section class="panel" id="traversal" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <div class="section-title">
+            <p class="eyebrow">Traversal</p>
+            <h2>A loop visits each record; field access uses the loop index</h2>
+          </div>
+          <pre><code>FOR Index &lt;- 1 TO 30
+    IF Students[Index].Mark &gt;= 70 THEN
+        OUTPUT Students[Index].Name
+    ENDIF
+NEXT Index</code></pre>
+          <div class="callout">The loop variable chooses the current record. The field name chooses which value to inspect.</div>
+        </section>
+
+        <!-- stage10-explanation:start traversal -->
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <h2 class="explanation-sr-only" id="explanation-traversal-title">A loop visits each record; field access uses the loop index</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A loop visits each record; field access uses the loop index with a structured visual model." />
+            <figcaption class="explanation-sr-only">A loop visits each record; field access uses the loop index: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Use Index to select each Students record in turn.</li><li><strong>Lesson fact:</strong> Test the Mark field of the current record.</li><li><strong>Lesson fact:</strong> Output the Name field only when Mark is at least 70.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF before NEXT Index.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end traversal -->
+        <section class="panel" id="operations" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <div class="section-title">
+            <p class="eyebrow">Common operations</p>
+            <h2>Search, count and update fields</h2>
+          </div>
+          <div class="data-table operations-table" role="table" aria-label="Array of records operations">
+            <div class="table-row table-head" role="row"><div>Operation</div><div>Typical condition</div><div>Typical action</div></div>
+            <div class="table-row" role="row"><div>Search</div><div><code>Students[Index].Name = TargetName</code></div><div>output index or record details</div></div>
+            <div class="table-row" role="row"><div>Count</div><div><code>Students[Index].Enrolled = TRUE</code></div><div><code>Count &lt;- Count + 1</code></div></div>
+            <div class="table-row" role="row"><div>Update</div><div><code>Students[Index].Mark &lt; 40</code></div><div>change a status or mark field</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start operations -->
+        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="process" aria-labelledby="explanation-operations-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <h2 class="explanation-sr-only" id="explanation-operations-title">Search, count and update fields</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-operations.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Search, count and update fields with a structured visual model." />
+            <figcaption class="explanation-sr-only">Search, count and update fields: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Search, count and update are alternative record operations, not mandatory consecutive stages.</li><li><strong>Lesson fact:</strong> A search condition locates a matching record and outputs its position or details.</li><li><strong>Lesson fact:</strong> A count condition increments a counter for qualifying records.</li><li><strong>Lesson fact:</strong> An update condition changes the required field of qualifying records.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end operations -->
         <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Cambridge pseudocode is the exam answer format</h2>
+            <h2>Same structure, different syntax</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>OPENFILE "Scores.txt" FOR READ
-WHILE NOT EOF("Scores.txt")
-    READFILE "Scores.txt", Line
-    OUTPUT Line
-ENDWHILE
-CLOSEFILE "Scores.txt"</code></pre>
+              <pre><code>DECLARE Students : ARRAY[1:30] OF TStudent
+
+FOR Index &lt;- 1 TO 30
+    OUTPUT Students[Index].Name
+NEXT Index</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>try (Scanner file = new Scanner(new File("Scores.txt"))) {
-    while (file.hasNextLine()) {
-        String line = file.nextLine();
-        System.out.println(line);
-    }
+              <pre><code>Student[] students = new Student[30];
+
+for (int index = 0; index &lt; 30; index++) {
+    System.out.println(students[index].name);
 }</code></pre>
             </article>
           </div>
-          <div class="callout">Use Java to understand implementation ideas, not to replace Cambridge pseudocode keywords in Paper 2.</div>
+          <div class="callout">Paper 2 reminder: Java arrays are often zero-based. Cambridge pseudocode ranges follow the declaration shown in the question.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same structure, different syntax</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same structure, different syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same structure, different syntax: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 30</li><li><strong>Lesson fact:</strong> OUTPUT Students[Index].Name</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Student[] students = new Student[30];</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 30; index++) {</li><li><strong>Lesson fact:</strong> System.out.println(students[index].name);</li><li><strong>Lesson fact:</strong> Paper 2 reminder: Java arrays are often zero-based. Cambridge pseudocode ranges follow the declaration shown in the question.</li></ol>
 
-        <section class="panel" id="mode-lab" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+        <section class="panel" id="explorer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
-            <p class="eyebrow">Interactive mode lab</p>
-            <h2>Choose the correct file mode</h2>
+            <p class="eyebrow">Interactive record explorer</p>
+            <h2>Read a field from a selected record</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
-              <select id="modeScenario">
-                <option value="read">Display all existing scores</option>
-                <option value="write">Create a fresh summary report</option>
-                <option value="append">Add one new score to the existing file</option>
+              Record index
+              <select id="recordIndex">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </select>
             </label>
             <label>
-              Mode
-              <select id="modeChoice">
-                <option value="READ">READ</option>
-                <option value="WRITE">WRITE</option>
-                <option value="APPEND">APPEND</option>
+              Field
+              <select id="recordField">
+                <option value="Name">Name</option>
+                <option value="Mark">Mark</option>
+                <option value="Enrolled">Enrolled</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="modeBtn">Check mode</button>
+            <button class="primary-button" type="button" id="readFieldBtn">Read Students[Index].Field</button>
           </div>
-          <div class="trace-output" id="modeResult">Choose a scenario and a mode.</div>
+          <div class="trace-output" id="fieldResult">Choose an index and a field to read from the array of records.</div>
         </section>
 
-        <!-- stage10-explanation:start mode-lab -->
-        <section class="panel explanation-panel" id="explanation-mode-lab" data-explains="mode-lab" data-explanation-kind="mechanism" aria-labelledby="explanation-mode-lab-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-mode-lab-title">Choose the correct file mode</h2>
+        <!-- stage10-explanation:start explorer -->
+        <section class="panel explanation-panel" id="explanation-explorer" data-explains="explorer" data-explanation-kind="mechanism" aria-labelledby="explanation-explorer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+          <h2 class="explanation-sr-only" id="explanation-explorer-title">Read a field from a selected record</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-mode-lab.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the correct file mode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the correct file mode: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-explorer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read a field from a selected record with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read a field from a selected record: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive mode lab</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario and a mode.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive record explorer</li><li><strong>Lesson fact:</strong> Record index</li><li><strong>Lesson fact:</strong> Choose an index and a field to read from the array of records.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end mode-lab -->
-        <section class="panel" id="reader" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
+        <!-- stage10-explanation:end explorer -->
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
-            <p class="eyebrow">Interactive read trace</p>
-            <h2>Step through a WHILE NOT EOF loop</h2>
+            <p class="eyebrow">Interactive loop trace</p>
+            <h2>Count students with marks of 70 or above</h2>
           </div>
           <div class="trace-actions">
-            <button class="primary-button" type="button" id="readStepBtn">Read next line</button>
-            <button class="answer-toggle" type="button" id="resetReadBtn">Reset</button>
+            <button class="primary-button" type="button" id="stepBtn">Step loop</button>
+            <button class="answer-toggle" type="button" id="resetTraceBtn">Reset</button>
           </div>
-          <div class="trace-output" id="readTrace">File is open. No line has been read yet.</div>
+          <div class="trace-output" id="loopTrace">Ready: Count = 0, Index has not started.</div>
         </section>
 
-        <!-- stage10-explanation:start reader -->
-        <section class="panel explanation-panel" id="explanation-reader" data-explains="reader" data-explanation-kind="mechanism" aria-labelledby="explanation-reader-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
-          <h2 class="explanation-sr-only" id="explanation-reader-title">Step through a WHILE NOT EOF loop</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-reader.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Step through a WHILE NOT EOF loop with a structured visual model." />
-            <figcaption class="explanation-sr-only">Step through a WHILE NOT EOF loop: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Open the file for reading before entering the loop.</li><li><strong>Lesson fact:</strong> Check NOT EOF before attempting READFILE.</li><li><strong>Lesson fact:</strong> When more data exists, read and process the next line.</li><li><strong>Lesson fact:</strong> When EOF is true, skip READFILE, leave the loop and close the file.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end reader -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>File algorithms that earn marks</h2>
+            <h2>Array-of-record algorithms</h2>
           </div>
           <div class="tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="read">Read</button>
-            <button class="tab" type="button" data-example="write">Write</button>
-            <button class="tab" type="button" data-example="append">Append</button>
-            <button class="tab" type="button" data-example="count">Count from file</button>
+            <button class="tab active" type="button" data-example="declare">Declare</button>
+            <button class="tab" type="button" data-example="search">Search</button>
+            <button class="tab" type="button" data-example="count">Count</button>
+            <button class="tab" type="button" data-example="update">Update</button>
           </div>
           <div class="example-output" id="exampleOutput"></div>
         </section>
@@ -454,7 +430,7 @@ CLOSEFILE "Scores.txt"</code></pre>
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
-            <h2>Ten quick file-handling checks</h2>
+            <h2>Ten quick arrays-of-records checks</h2>
             <p>Type a concise answer, then check. Each question also has its own answer button.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -463,7 +439,7 @@ CLOSEFILE "Scores.txt"</code></pre>
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix common text-file errors</h2>
+            <h2>Fix common array-of-record errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -472,7 +448,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>These questions focus on file modes, EOF loops, line variables, output files and strict file-operation wording.</p>
+            <p>These questions focus on declaration, indexed field access, traversal and clear marking-language answers.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -480,32 +456,32 @@ CLOSEFILE "Scores.txt"</code></pre>
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-120">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Text file checklist</h2>
+            <h2>Array of records checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Mode</strong><span>READ, WRITE or APPEND must match the task.</span></div>
-            <div><strong>Loop</strong><span>use EOF when reading unknown numbers of lines.</span></div>
-            <div><strong>Close</strong><span>close every file after processing.</span></div>
+            <div><strong>Shape</strong><span>one record type describes each element.</span></div>
+            <div><strong>Access</strong><span>use array index, then field name.</span></div>
+            <div><strong>Loop</strong><span>traverse each record with the correct bounds.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Write complete file pseudocode</h2>
+            <h2>Produce precise pseudocode, not just a description</h2>
           </div>
           <ol class="homework-list">
             <li>
-              <strong>Task 1: Read and output</strong>
-              <span>Write pseudocode to open <code>"Names.txt"</code>, read each line until EOF, output each line, and close the file.</span>
+              <strong>Task 1: Model a club list</strong>
+              <span>Define <code>TMember</code> with <code>Name</code>, <code>Age</code> and <code>Paid</code>. Declare <code>Members</code> as an array of 50 records.</span>
             </li>
             <li>
-              <strong>Task 2: Append safely</strong>
-              <span>Write pseudocode to append <code>"Mina,78"</code> to <code>"Scores.txt"</code> without deleting existing scores.</span>
+              <strong>Task 2: Count</strong>
+              <span>Write pseudocode to count how many members have <code>Paid = TRUE</code>.</span>
             </li>
             <li>
-              <strong>Task 3: Explain the common error</strong>
-              <span>Write a 5-mark explanation of why <code>FOR WRITE</code> is not suitable when the old contents must remain.</span>
+              <strong>Task 3: Search and explain</strong>
+              <span>Write a 5-mark answer explaining why <code>Members[Index].Name</code> is correct and <code>Members.Name[Index]</code> is not.</span>
             </li>
           </ol>
         </section>
@@ -513,8 +489,8 @@ CLOSEFILE "Scores.txt"</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

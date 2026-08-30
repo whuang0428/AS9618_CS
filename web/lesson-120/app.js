@@ -1,83 +1,85 @@
-const fileLines = ["Ali,72", "Bea,64", "Chen,85"];
+const students = [
+  { Name: "Ali", Mark: 72, Enrolled: "TRUE" },
+  { Name: "Bea", Mark: 64, Enrolled: "TRUE" },
+  { Name: "Chen", Mark: 85, Enrolled: "FALSE" },
+];
 
 const examples = {
-  read: {
-    title: "Example 1: Read every line",
-    problem: "Output every line stored in Scores.txt.",
+  declare: {
+    title: "Example 1: Declare an array of records",
+    problem: "Store 30 students, each with Name, Mark and Enrolled fields.",
     rows: [
-      ["Open", "OPENFILE \"Scores.txt\" FOR READ", "existing contents are needed"],
-      ["Loop", "WHILE NOT EOF(\"Scores.txt\")", "unknown number of lines"],
-      ["Read", "READFILE \"Scores.txt\", Line", "file data moves into a variable"],
-      ["Close", "CLOSEFILE \"Scores.txt\"", "file is released"],
+      ["Record type", "TStudent", "shape of one student record"],
+      ["Array", "Students[1:30]", "30 student records"],
+      ["Access", "Students[1].Name", "field inside one indexed record"],
     ],
-    code: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
-    points: ["Use READ for existing data.", "EOF stops the loop after the final line.", "Read into a variable before processing."],
+    code: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE\n\nDECLARE Students : ARRAY[1:30] OF TStudent",
+    points: ["Define the record type before declaring the array.", "The array element type is TStudent.", "Each element has the same fields."],
   },
-  write: {
-    title: "Example 2: Write a new report",
-    problem: "Create a fresh report containing a pass count.",
+  search: {
+    title: "Example 2: Search by name",
+    problem: "Find and output the mark for a student whose name matches TargetName.",
     rows: [
-      ["Open", "FOR WRITE", "new output file or replacement contents"],
-      ["Write", "WRITEFILE", "stores one output line"],
-      ["Close", "CLOSEFILE", "finalises the file"],
+      ["Initialise", "Found <- FALSE", "tracks search success"],
+      ["Compare field", "Students[Index].Name = TargetName", "checks current record"],
+      ["Output field", "Students[Index].Mark", "uses the matching record"],
     ],
-    code: "OPENFILE \"Report.txt\" FOR WRITE\nWRITEFILE \"Report.txt\", \"Pass count: \" & Count\nCLOSEFILE \"Report.txt\"",
-    points: ["WRITE is appropriate for a fresh result file.", "Mention the value being written.", "Do not use READ when the algorithm writes output."],
-  },
-  append: {
-    title: "Example 3: Append a new line",
-    problem: "Add a new score to the end of Scores.txt without deleting old scores.",
-    rows: [
-      ["Open", "FOR APPEND", "keeps existing lines"],
-      ["Write", "WRITEFILE", "adds the new line"],
-      ["Close", "CLOSEFILE", "saves and releases the file"],
-    ],
-    code: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Dina,91\"\nCLOSEFILE \"Scores.txt\"",
-    points: ["APPEND is the key mark when old contents must remain.", "The new data is written after existing lines.", "Using WRITE here risks overwriting."],
+    code: "Found <- FALSE\nFOR Index <- 1 TO 30\n    IF Students[Index].Name = TargetName THEN\n        OUTPUT Students[Index].Mark\n        Found <- TRUE\n    ENDIF\nNEXT Index",
+    points: ["The loop visits records, not separate arrays.", "The condition tests a field.", "The output can use another field from the same record."],
   },
   count: {
-    title: "Example 4: Count records in a file",
-    problem: "Count how many lines are in Scores.txt.",
+    title: "Example 3: Count enrolled students",
+    problem: "Count how many students are currently enrolled.",
     rows: [
-      ["Initialise", "Count <- 0", "before reading starts"],
-      ["Read each line", "READFILE ... Line", "one line per loop"],
-      ["Increment", "Count <- Count + 1", "after a successful read"],
-      ["Output", "OUTPUT Count", "after the loop"],
+      ["Counter", "Count <- 0", "must start before the loop"],
+      ["Condition", "Students[Index].Enrolled = TRUE", "Boolean field test"],
+      ["Update", "Count <- Count + 1", "only inside the IF"],
     ],
-    code: "Count <- 0\nOPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    Count <- Count + 1\nENDWHILE\nCLOSEFILE \"Scores.txt\"\nOUTPUT Count",
-    points: ["Initialise Count before the loop.", "Increment once per line read.", "Output after the file is closed or after the loop."],
+    code: "Count <- 0\nFOR Index <- 1 TO 30\n    IF Students[Index].Enrolled = TRUE THEN\n        Count <- Count + 1\n    ENDIF\nNEXT Index\nOUTPUT Count",
+    points: ["Initialise the counter once.", "Increment only when the current record meets the condition.", "Output after the loop."],
+  },
+  update: {
+    title: "Example 4: Update a field",
+    problem: "Add 5 bonus marks to every enrolled student.",
+    rows: [
+      ["Traverse", "FOR Index <- 1 TO 30", "visits each record"],
+      ["Test", "Students[Index].Enrolled = TRUE", "checks current record"],
+      ["Update", "Students[Index].Mark <- Students[Index].Mark + 5", "changes one field"],
+    ],
+    code: "FOR Index <- 1 TO 30\n    IF Students[Index].Enrolled = TRUE THEN\n        Students[Index].Mark <- Students[Index].Mark + 5\n    ENDIF\nNEXT Index",
+    points: ["The assignment reads and writes the same field.", "Only enrolled students are changed.", "Do not update the whole record when only one field changes."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which mode opens an existing text file so its contents can be read?", accepted: ["read", "for read"], answer: "FOR READ." },
-  { id: "p2", prompt: "Which mode adds new data to the end without removing existing lines?", accepted: ["append", "for append"], answer: "FOR APPEND." },
-  { id: "p3", prompt: "Which command reads a line from a file into a variable in Cambridge-style pseudocode?", accepted: ["readfile"], answer: "READFILE." },
-  { id: "p4", prompt: "Which condition is commonly used to keep reading until the end of a file?", accepted: ["not eof", "while not eof", "eof"], answer: "WHILE NOT EOF(filename)." },
-  { id: "p5", prompt: "Which command should be used after file processing is complete?", accepted: ["closefile"], answer: "CLOSEFILE." },
-  { id: "p6", prompt: "If old contents must remain, should the file be opened FOR WRITE or FOR APPEND?", accepted: ["for append", "append"], answer: "FOR APPEND." },
-  { id: "p7", prompt: "In READFILE \"Scores.txt\", Line, what is Line?", accepted: ["variable", "a variable"], answer: "Line is a variable that receives data read from the file." },
-  { id: "p8", prompt: "What can happen if FOR WRITE is used on an existing file?", accepted: ["overwrite", "overwritten", "replace", "replaced"], answer: "Existing contents may be overwritten/replaced." },
-  { id: "p9", prompt: "Is Java try-with-resources the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style OPENFILE, READFILE, WRITEFILE and CLOSEFILE." },
-  { id: "p10", prompt: "Give the three-step file lifecycle in words.", accepted: ["open process close", "open read close", "open write close"], answer: "Open, process, close." },
+  { id: "p1", prompt: "What structure stores many records of the same record type?", accepted: ["array of records", "arrays of records"], answer: "Array of records." },
+  { id: "p2", prompt: "Which expression accesses the Mark field of the second student: Students[2].Mark or Students.Mark[2]?", accepted: ["students2.mark", "students[2].mark", "index then field"], answer: "Students[2].Mark." },
+  { id: "p3", prompt: "What does the index select in Students[Index].Name?", accepted: ["record", "one record", "student record", "array element"], answer: "The index selects one record / array element." },
+  { id: "p4", prompt: "What does .Name select in Students[Index].Name?", accepted: ["field", "name field"], answer: "The Name field inside the selected record." },
+  { id: "p5", prompt: "Which declaration creates 30 student records: ARRAY[1:30] OF TStudent or TStudent[Name:Mark]?", accepted: ["array[1:30] of tstudent", "declare students array[1:30] of tstudent"], answer: "DECLARE Students : ARRAY[1:30] OF TStudent." },
+  { id: "p6", prompt: "In a loop FOR Index <- 1 TO 30, should Students[30] be processed? yes or no.", accepted: ["yes"], answer: "Yes. The upper bound 30 is included." },
+  { id: "p7", prompt: "What should be initialised before counting enrolled students?", accepted: ["count", "counter"], answer: "The counter, for example Count <- 0." },
+  { id: "p8", prompt: "For searching by name, which field is normally compared with TargetName?", accepted: ["name", "students[index].name"], answer: "Students[Index].Name." },
+  { id: "p9", prompt: "Is Java's zero-based index rule automatically used in Cambridge pseudocode? yes or no.", accepted: ["no"], answer: "No. Follow the pseudocode array bounds in the question." },
+  { id: "p10", prompt: "Write the general access pattern in words.", accepted: ["array name index dot field", "array index dot field", "index then field"], answer: "Array name, index, dot, field." },
 ];
 
 const mistakes = [
   {
-    wrong: "I used OPENFILE \"Scores.txt\" FOR WRITE to add one new score while keeping old scores.",
-    fix: "Use FOR APPEND. WRITE is for creating or replacing contents; APPEND adds to the end.",
+    wrong: "I wrote Students.Mark[2] to get the second student's mark.",
+    fix: "Use Students[2].Mark. The index selects a record first; the field name selects the value inside that record.",
   },
   {
-    wrong: "I processed Line before using READFILE.",
-    fix: "Read first: READFILE \"Scores.txt\", Line. The variable only has the next file line after reading.",
+    wrong: "I declared DECLARE Students : ARRAY[1:30] OF STRING because names are strings.",
+    fix: "Use ARRAY[1:30] OF TStudent when each element must hold multiple fields such as Name, Mark and Enrolled.",
   },
   {
-    wrong: "I wrote a fixed FOR loop for a file with an unknown number of lines.",
-    fix: "Use WHILE NOT EOF(\"Scores.txt\") when the number of lines is not known.",
+    wrong: "I put Count <- 0 inside the FOR loop.",
+    fix: "Initialise Count before the loop. If it is inside the loop, the count resets every iteration.",
   },
   {
-    wrong: "I opened a file and never closed it.",
-    fix: "Add CLOSEFILE after reading or writing. Mark schemes commonly reward closing the file.",
+    wrong: "I used Java index 0 in pseudocode after declaring ARRAY[1:30].",
+    fix: "Use the declared Cambridge pseudocode bounds. If the array is declared 1:30, loop from 1 to 30.",
   },
 ];
 
@@ -90,93 +92,95 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Write pseudocode to open Scores.txt for reading, output every line in the file, and close the file.",
-    answer: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
+    marks: "6 marks",
+    prompt: "A school stores 30 students. Each student has Name, Mark and Enrolled fields. Define a suitable record type and declare an array to store all 30 students.",
+    answer: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE\n\nDECLARE Students : ARRAY[1:30] OF TStudent",
     marking: [
-      { mark: "B1", text: "opens Scores.txt using FOR READ" },
-      { mark: "M1", text: "uses a loop controlled by NOT EOF" },
-      { mark: "M1", text: "reads a line using READFILE into a variable" },
-      { mark: "A1", text: "outputs the variable read from the file" },
-      { mark: "B1", text: "closes the file using CLOSEFILE" },
+      { mark: "B1", text: "defines a record/type for one student" },
+      { mark: "B1", text: "declares Name as STRING" },
+      { mark: "B1", text: "declares Mark as INTEGER or suitable numeric type" },
+      { mark: "B1", text: "declares Enrolled as BOOLEAN" },
+      { mark: "B1", text: "declares an array with suitable bounds for 30 students" },
+      { mark: "B1", text: "uses the record type as the array element type" },
     ],
     strict: [
-      "Do not award READFILE mark if no receiving variable is shown.",
-      "Allow equivalent variable names such as ThisLine.",
-      "Do not accept FOR WRITE for a read-only task.",
+      "Do not award the array-of-records mark for three separate arrays only.",
+      "Allow equivalent field names if meaning is clear.",
+      "Do not accept ARRAY[1:30] OF STRING as it cannot store all fields with suitable types.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "A new score line \"Dina,91\" must be added to Scores.txt without removing existing data. Write suitable pseudocode.",
-    answer: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Dina,91\"\nCLOSEFILE \"Scores.txt\"",
+    marks: "5 marks",
+    prompt: "Write pseudocode to output the names of all students whose Mark is 70 or more.",
+    answer: "FOR Index <- 1 TO 30\n    IF Students[Index].Mark >= 70 THEN\n        OUTPUT Students[Index].Name\n    ENDIF\nNEXT Index",
     marking: [
-      { mark: "B1", text: "opens Scores.txt using FOR APPEND" },
-      { mark: "M1", text: "uses WRITEFILE to write the new line" },
-      { mark: "A1", text: "writes the correct line Dina,91 or equivalent new score data" },
-      { mark: "B1", text: "closes the file" },
+      { mark: "M1", text: "uses a loop with suitable bounds for all 30 records" },
+      { mark: "M1", text: "accesses the Mark field using index then dot notation" },
+      { mark: "A1", text: "uses correct comparison with 70 or more" },
+      { mark: "M1", text: "outputs the Name field from the same indexed record" },
+      { mark: "A1", text: "places output inside the IF condition" },
     ],
     strict: [
-      "Do not award mode mark for FOR WRITE.",
-      "Allow NewLine variable if it is clearly assigned the new score before writing.",
-      "Do not accept READFILE for adding the new line.",
+      "Do not award field-access marks for Students.Mark[Index].",
+      "Allow > 69 as equivalent to >= 70 for integer marks.",
+      "Do not award full marks if the code outputs every name regardless of mark.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Write pseudocode to count how many lines are stored in Scores.txt and output the count.",
-    answer: "Count <- 0\nOPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    Count <- Count + 1\nENDWHILE\nCLOSEFILE \"Scores.txt\"\nOUTPUT Count",
+    marks: "5 marks",
+    prompt: "Write pseudocode to count the number of students where Enrolled is TRUE, then output the count.",
+    answer: "Count <- 0\nFOR Index <- 1 TO 30\n    IF Students[Index].Enrolled = TRUE THEN\n        Count <- Count + 1\n    ENDIF\nNEXT Index\nOUTPUT Count",
     marking: [
-      { mark: "B1", text: "initialises Count to 0 before the loop" },
-      { mark: "B1", text: "opens the file for READ" },
-      { mark: "M1", text: "uses NOT EOF loop to process all lines" },
-      { mark: "M1", text: "reads each line inside the loop" },
-      { mark: "A1", text: "increments Count once for each line read" },
-      { mark: "B1", text: "outputs Count after processing" },
+      { mark: "B1", text: "initialises Count before the loop" },
+      { mark: "M1", text: "uses a loop over the array of records" },
+      { mark: "M1", text: "tests the Enrolled field of the current indexed record" },
+      { mark: "A1", text: "increments Count only when the condition is met" },
+      { mark: "B1", text: "outputs Count after the loop" },
     ],
     strict: [
       "Do not award initialisation mark if Count is reset inside the loop.",
-      "Allow output before CLOSEFILE if file processing is otherwise complete.",
-      "Do not accept counting characters unless the question is reinterpreted explicitly and correctly.",
+      "Allow IF Students[Index].Enrolled THEN if Boolean syntax is otherwise clear.",
+      "Do not accept counting Name or Mark field instead of Enrolled.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "A student writes OUTPUT Line before READFILE has been used in the loop. Explain the error and correct the order of statements.",
-    answer: "The error is that Line does not yet contain the next file line. The program must read from the file into Line before Line is processed. Correct order inside the loop:\nREADFILE \"Scores.txt\", Line\nOUTPUT Line",
+    marks: "5 marks",
+    prompt: "A student writes Students.Name[Index] <- \"Ali\". Explain the error and give the corrected assignment for record 5.",
+    answer: "The error is that the array index must select one record before a field is accessed. Students.Name[Index] treats Name like an array field. The corrected assignment is Students[5].Name <- \"Ali\".",
     marking: [
-      { mark: "B1", text: "states Line is a variable used to hold file data" },
-      { mark: "B1", text: "explains Line must be assigned by READFILE before processing" },
-      { mark: "B1", text: "gives READFILE before OUTPUT" },
-      { mark: "B1", text: "keeps the correction inside the file-reading loop or clearly implies it" },
+      { mark: "B1", text: "identifies Students is an array of records" },
+      { mark: "B1", text: "explains the index must select an array element / record first" },
+      { mark: "B1", text: "explains the field is accessed after the indexed record" },
+      { mark: "B1", text: "gives corrected Students[5].Name access" },
+      { mark: "B1", text: "assigns Ali to the Name field" },
     ],
     strict: [
-      "Do not award explanation marks for only saying 'syntax error'.",
-      "Allow display/print instead of output if pseudocode meaning is clear.",
-      "Do not accept reading after output as a correction.",
+      "Do not award correction mark for Students[Name].5 or Students.Name[5].",
+      "Allow another valid record index only if the answer also explicitly addresses record 5.",
+      "Do not accept only 'syntax is wrong' without explaining order of access.",
     ],
   },
   {
     title: "Question 5",
     marks: "7 marks",
-    prompt: "A program must read every line from Scores.txt and write only lines containing PASS to PassList.txt. Write suitable pseudocode.",
-    answer: "OPENFILE \"Scores.txt\" FOR READ\nOPENFILE \"PassList.txt\" FOR WRITE\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    IF Line CONTAINS \"PASS\" THEN\n        WRITEFILE \"PassList.txt\", Line\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.txt\"\nCLOSEFILE \"PassList.txt\"",
+    prompt: "Write pseudocode to search for TargetName in Students. If found, increase that student's Mark by 5 and output Updated. If no matching student is found, output Not found.",
+    answer: "Found <- FALSE\nFOR Index <- 1 TO 30\n    IF Students[Index].Name = TargetName THEN\n        Students[Index].Mark <- Students[Index].Mark + 5\n        Found <- TRUE\n        OUTPUT \"Updated\"\n    ENDIF\nNEXT Index\nIF Found = FALSE THEN\n    OUTPUT \"Not found\"\nENDIF",
     marking: [
-      { mark: "B1", text: "opens input file Scores.txt for READ" },
-      { mark: "B1", text: "opens output file PassList.txt for WRITE" },
-      { mark: "M1", text: "uses NOT EOF loop on the input file" },
-      { mark: "M1", text: "reads each input line into a variable" },
-      { mark: "A1", text: "tests whether the line contains PASS or equivalent pass condition" },
-      { mark: "A1", text: "writes only matching lines to the output file" },
-      { mark: "B1", text: "closes both files" },
+      { mark: "B1", text: "initialises Found to FALSE before the loop" },
+      { mark: "M1", text: "loops through the array of records using suitable bounds" },
+      { mark: "M1", text: "compares Students[Index].Name with TargetName" },
+      { mark: "A1", text: "updates Students[Index].Mark for the matching record" },
+      { mark: "B1", text: "sets Found to TRUE when a match is found" },
+      { mark: "B1", text: "outputs Updated for a match" },
+      { mark: "A1", text: "outputs Not found only if no match was found" },
     ],
     strict: [
-      "Do not award output-file mark if WRITEFILE writes back to the input file only.",
-      "Allow a parsed field comparison if PASS is stored as a status field.",
-      "Do not accept opening PassList.txt for READ when writing output.",
+      "Do not award update mark for changing every student's mark.",
+      "Allow early loop exit if logically correct and clearly shown.",
+      "Do not accept searching Students[Index] without naming the Name field.",
     ],
   },
 ];
@@ -191,7 +195,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9_ -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9.[\\]: -]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -210,10 +214,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    variable: "More variables forget things at shutdown just as confidently as the old variables.",
-    array: "An array is useful while the program runs, but it is still in memory unless saved.",
-    file: "Correct. A text file stores data persistently so the next run can read it.",
-    print: "Screenshots are not a data storage strategy that Paper 2 wants to see.",
+    separate: "Possible in the same way carrying 30 cups of tea by hand is possible: technically yes, structurally terrible.",
+    arrayOfString: "This stores many strings, but loses clear types for Mark and Enrolled.",
+    arrayRecords: "Correct. Each element is a TStudent record, so the class register stays structured.",
+    single: "One record is enough for one student, not for the whole class.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -224,38 +228,46 @@ function setupHook() {
   });
 }
 
-function setupModeLab() {
-  const scenario = document.querySelector("#modeScenario");
-  const choice = document.querySelector("#modeChoice");
-  const result = document.querySelector("#modeResult");
-  const correctModes = { read: "READ", write: "WRITE", append: "APPEND" };
-  const explanations = {
-    read: "READ is needed because the program uses existing file contents.",
-    write: "WRITE is suitable because a fresh summary report is being created.",
-    append: "APPEND is needed because old scores must remain and the new score goes at the end.",
-  };
-  document.querySelector("#modeBtn").addEventListener("click", () => {
-    const expected = correctModes[scenario.value];
-    const correct = choice.value === expected;
-    result.innerHTML = `<p><strong>${correct ? "Correct" : "Not quite"}.</strong> ${escapeHtml(explanations[scenario.value])}</p>`;
+function setupExplorer() {
+  const indexSelect = document.querySelector("#recordIndex");
+  const fieldSelect = document.querySelector("#recordField");
+  const result = document.querySelector("#fieldResult");
+  document.querySelector("#readFieldBtn").addEventListener("click", () => {
+    const index = Number(indexSelect.value);
+    const field = fieldSelect.value;
+    const record = students[index - 1];
+    result.innerHTML = `<p><code>Students[${index}].${escapeHtml(field)}</code> = <strong>${escapeHtml(record[field])}</strong></p>`;
   });
 }
 
-function setupReadTrace() {
-  let index = 0;
-  const output = document.querySelector("#readTrace");
-  document.querySelector("#readStepBtn").addEventListener("click", () => {
-    if (index >= fileLines.length) {
-      output.innerHTML = `<p><strong>EOF reached.</strong> The next step is CLOSEFILE "Scores.txt".</p>`;
+function setupLoopTrace() {
+  let position = 0;
+  let count = 0;
+  const output = document.querySelector("#loopTrace");
+  const render = (message) => {
+    const rows = students
+      .map((student, index) => `${index + 1}. ${student.Name}: Mark ${student.Mark}${student.Mark >= 70 ? " -> count" : ""}`)
+      .join("<br>");
+    output.innerHTML = `<p>${message}</p><p>${rows}</p><p><strong>Current Count = ${count}</strong></p>`;
+  };
+  document.querySelector("#stepBtn").addEventListener("click", () => {
+    if (position >= students.length) {
+      render("Loop complete. All records have been processed.");
       return;
     }
-    const line = fileLines[index];
-    output.innerHTML = `<p>READFILE "Scores.txt", Line</p><p>Line now contains <strong>${escapeHtml(line)}</strong>.</p><p>Line ${index + 1} of ${fileLines.length} has been processed.</p>`;
-    index += 1;
+    const student = students[position];
+    if (student.Mark >= 70) {
+      count += 1;
+      render(`Index = ${position + 1}. ${student.Name}'s mark is ${student.Mark}, so Count increases.`);
+    } else {
+      render(`Index = ${position + 1}. ${student.Name}'s mark is ${student.Mark}, so Count does not change.`);
+    }
+    position += 1;
   });
-  document.querySelector("#resetReadBtn").addEventListener("click", () => {
-    index = 0;
-    output.textContent = "File is open. No line has been read yet.";
+  document.querySelector("#resetTraceBtn").addEventListener("click", () => {
+    position = 0;
+    count = 0;
+    output.textContent = "Ready: Count = 0, Index has not started.";
   });
 }
 
@@ -274,7 +286,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("read");
+  renderExample("declare");
   document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -308,7 +320,7 @@ function renderPractice() {
       const mark = document.querySelector(`#${item.id}-mark`);
       const response = normalise(input.value);
       const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. The file-operation wording is precise." : "Not quite. Check the mode, command name, or file lifecycle step.";
+      mark.textContent = correct ? "Correct. The access pattern is clear." : "Not quite. Check whether the answer needs the array index, field name, or loop bound.";
       mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -374,8 +386,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupModeLab();
-setupReadTrace();
+setupExplorer();
+setupLoopTrace();
 setupExamples();
 renderPractice();
 renderMistakes();

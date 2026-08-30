@@ -1,130 +1,95 @@
-const classifierMap = {
-  fixedLoop: {
-    title: "Count-controlled loop",
-    detail: "The word exactly tells you the number of repetitions is known before the loop starts.",
-    pattern: "FOR Index <- 1 TO 12",
+const scenarioMap = {
+  passes: {
+    title: "Count passes from five marks",
+    ipoc: [
+      ["Input", "Five marks"],
+      ["Process", "Check each mark against 50 and increment PassCount when true"],
+      ["Output", "PassCount"],
+      ["Constraints", "Exactly five marks, so use a count-controlled loop"],
+    ],
+    pseudocode: "PassCount <- 0\nFOR Index <- 1 TO 5\n    INPUT Mark\n    IF Mark >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
   },
   sentinel: {
-    title: "Condition-controlled loop with sentinel",
-    detail: "-1 is a stopping value. It controls the loop and should not be processed as normal data.",
-    pattern: "INPUT Value\nWHILE Value <> -1\n    // process Value\n    INPUT Value\nENDWHILE",
+    title: "Total prices until 0",
+    ipoc: [
+      ["Input", "Prices entered one at a time"],
+      ["Process", "Add each non-zero price to Total"],
+      ["Output", "Total"],
+      ["Constraints", "0 is a sentinel and must not be added"],
+    ],
+    pseudocode: "Total <- 0\nINPUT Price\nWHILE Price <> 0\n    Total <- Total + Price\n    INPUT Price\nENDWHILE\nOUTPUT Total",
   },
-  binarySearch: {
-    title: "Binary search",
-    detail: "Sorted data plus few comparisons signals binary search because half the remaining search area can be discarded.",
-    pattern: "Compare target with middle item, then search only the relevant half.",
+  highest: {
+    title: "Highest of eight temperatures",
+    ipoc: [
+      ["Input", "Eight temperatures"],
+      ["Process", "Keep the highest temperature seen so far"],
+      ["Output", "Highest"],
+      ["Constraints", "Known count; initialise Highest from first temperature"],
+    ],
+    pseudocode: "INPUT Temperature\nHighest <- Temperature\nFOR Index <- 2 TO 8\n    INPUT Temperature\n    IF Temperature > Highest THEN\n        Highest <- Temperature\n    ENDIF\nNEXT Index\nOUTPUT Highest",
   },
-  bubble: {
-    title: "Bubble sort",
-    detail: "Adjacent comparison and swapping is the signature wording for bubble sort.",
-    pattern: "Compare neighbouring items and swap when they are in the wrong order.",
-  },
-  trace: {
-    title: "Trace table",
-    detail: "The task is asking for execution values, so update variables in the exact order that pseudocode runs.",
-    pattern: "Create a row for each iteration and record variable changes.",
-  },
-};
-
-const fixerMap = {
-  binary: {
-    weak: "Binary search is faster.",
-    strong: "Binary search uses fewer comparisons because the list is sorted, so each comparison can discard half of the remaining search area.",
-  },
-  loop: {
-    weak: "Use a loop.",
-    strong: "Use a FOR loop when the number of repetitions is known; use a WHILE loop when the repetition depends on a condition or sentinel value.",
-  },
-  max: {
-    weak: "Set Maximum to 0.",
-    strong: "Initialise Maximum from the first input unless the question states all values are non-negative; otherwise negative data could incorrectly output 0.",
-  },
-  output: {
-    weak: "Output the average inside the loop.",
-    strong: "Output the final average after the loop because all valid values must be included before Total / Count is calculated.",
+  password: {
+    title: "Search for @ in password",
+    ipoc: [
+      ["Input", "Password string"],
+      ["Process", "Inspect each character and set Found when @ appears"],
+      ["Output", "Found / Not found message"],
+      ["Constraints", "Search all characters unless already found"],
+    ],
+    pseudocode: "Found <- FALSE\nFOR Index <- 1 TO LENGTH(Password)\n    Character <- character at position Index\n    IF Character = \"@\" THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nIF Found = TRUE THEN\n    OUTPUT \"Found\"\nELSE\n    OUTPUT \"Not found\"\nENDIF",
   },
 };
 
 const examples = {
-  rainfall: {
-    title: "Example 1: Rainfall IPOC to pseudocode",
-    problem: "Input rainfall for 7 days. Output total rainfall and average rainfall.",
-    table: [
-      ["Input", "7 rainfall readings"],
-      ["Process", "add each reading to Total; divide Total by 7"],
-      ["Output", "Total and Average"],
-      ["Constraint", "exactly 7 days, so use a FOR loop"],
-    ],
-    code: "Total <- 0\nFOR Day <- 1 TO 7\n    INPUT Rainfall\n    Total <- Total + Rainfall\nNEXT Day\nAverage <- Total / 7\nOUTPUT Total\nOUTPUT Average",
-    points: ["Output requirements create Total and Average.", "The fixed count creates a FOR loop.", "Average is calculated after all readings are processed."],
+  passes: {
+    title: "Example 1: Count passes",
+    problem: "Input five marks and output how many are at least 50.",
+    ipoc: scenarioMap.passes.ipoc,
+    code: scenarioMap.passes.pseudocode,
+    points: ["Known count means FOR loop.", "PassCount starts at 0.", "Increment only when Mark >= 50."],
   },
-  sentinelTrace: {
-    title: "Example 2: Sentinel trace",
-    problem: "Inputs are 4, 6, 0. The sentinel 0 stops input. Output Total and Count.",
-    table: [
-      ["Start", "Total = 0, Count = 0"],
-      ["Input 4", "Total = 4, Count = 1"],
-      ["Input 6", "Total = 10, Count = 2"],
-      ["Input 0", "stop; Total and Count do not change"],
-    ],
-    code: "Total <- 0\nCount <- 0\nINPUT Value\nWHILE Value <> 0\n    Total <- Total + Value\n    Count <- Count + 1\n    INPUT Value\nENDWHILE\nOUTPUT Total\nOUTPUT Count",
-    points: ["The first input happens before the WHILE test.", "0 is checked before processing.", "Final output is after the loop."],
+  sentinel: {
+    title: "Example 2: Sentinel total",
+    problem: "Input prices until 0 is entered and output the total.",
+    ipoc: scenarioMap.sentinel.ipoc,
+    code: scenarioMap.sentinel.pseudocode,
+    points: ["0 is not data.", "Input before the WHILE test.", "Read the next price inside the loop."],
   },
-  searchSort: {
-    title: "Example 3: Search or sort?",
-    problem: "A target must be found in a sorted list. Another task must arrange unsorted scores into ascending order.",
-    table: [
-      ["Find in sorted data", "binary search"],
-      ["Find in unsorted data", "linear search"],
-      ["Adjacent compare and swap", "bubble sort"],
-      ["Insert each item into sorted section", "insertion sort"],
-    ],
-    code: "IF List is sorted THEN\n    use binary search for target\nELSE\n    use linear search for target\nENDIF\n\nIF task asks to arrange values THEN\n    choose a sorting algorithm\nENDIF",
-    points: ["Search finds a value; sort changes order.", "Binary search requires sorted data.", "Bubble sort wording often mentions adjacent swaps."],
+  highest: {
+    title: "Example 3: Find highest",
+    problem: "Input eight temperatures and output the highest.",
+    ipoc: scenarioMap.highest.ipoc,
+    code: scenarioMap.highest.pseudocode,
+    points: ["Initialise from the first real input.", "Compare each later value.", "Update only when a higher value appears."],
   },
-  msUpgrade: {
-    title: "Example 4: Upgrade answer to MS language",
-    problem: "Weak answer: 'Use binary search because it is faster.'",
-    table: [
-      ["Missing", "why sorted data matters"],
-      ["Missing", "what binary search does"],
-      ["Mark-worthy version", "Binary search can be used because the list is sorted; each comparison with the middle value halves the remaining search range, so fewer comparisons are needed than a linear search."],
-    ],
-    code: "// Explanation structure\nName algorithm\nState required condition\nDescribe mechanism\nState consequence",
-    points: ["A vague comparative word is not enough.", "Mechanism earns marks.", "Cause and consequence should both be present."],
+  password: {
+    title: "Example 4: Character search",
+    problem: "Input a password and output whether it contains @.",
+    ipoc: scenarioMap.password.ipoc,
+    code: scenarioMap.password.pseudocode,
+    points: ["Use a Found flag.", "Inspect each character.", "Output after the search."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "The phrase 'exactly 8 values' suggests which loop type?", accepted: ["for", "for loop", "count controlled", "count-controlled", "count controlled loop"], answer: "FOR / count-controlled loop, because the number of repetitions is known." },
-  { id: "p2", prompt: "The phrase 'until 0 is entered' suggests which loop type?", accepted: ["while", "while loop", "condition controlled", "condition-controlled", "condition controlled loop"], answer: "WHILE / condition-controlled loop, because repetition depends on a condition." },
-  { id: "p3", prompt: "What condition must normally be true before binary search can be used?", accepted: ["sorted", "data sorted", "list sorted", "sorted data", "sorted list"], answer: "The data/list must be sorted." },
-  { id: "p4", prompt: "For a final total, should OUTPUT usually be inside or after the loop?", accepted: ["after", "after loop", "after the loop"], answer: "After the loop, once all updates have happened." },
-  { id: "p5", prompt: "For maximum values that may be negative, initialise Maximum to 0 or first input?", accepted: ["first input", "first value", "first data value", "input"], answer: "First input / first data value." },
-  { id: "p6", prompt: "Which sort compares adjacent items and swaps them if they are in the wrong order?", accepted: ["bubble", "bubble sort"], answer: "Bubble sort." },
-  { id: "p7", prompt: "Which sort inserts each new item into the correct place in a sorted section?", accepted: ["insertion", "insertion sort"], answer: "Insertion sort." },
-  { id: "p8", prompt: "A nested loop has 3 outer iterations and 4 inner iterations. How many inner actions run?", accepted: ["12"], answer: "12 inner actions." },
-  { id: "p9", prompt: "In IPOC, what does O stand for?", accepted: ["output"], answer: "Output." },
-  { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Java is support only; use Cambridge-style pseudocode." },
+  { id: "p1", prompt: "In IPOC, what does I stand for?", accepted: ["input"], answer: "Input" },
+  { id: "p2", prompt: "In IPOC, what does O stand for?", accepted: ["output"], answer: "Output" },
+  { id: "p3", prompt: "The phrase 'exactly 10 values' suggests which loop type?", accepted: ["for", "for loop", "count controlled", "count-controlled", "count controlled loop"], answer: "A FOR / count-controlled loop" },
+  { id: "p4", prompt: "The phrase 'until -1 is entered' suggests which loop type?", accepted: ["while", "while loop", "condition controlled", "condition-controlled", "condition controlled loop"], answer: "A WHILE / condition-controlled loop" },
+  { id: "p5", prompt: "If -1 is a sentinel, should it be added to the total? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p6", prompt: "For finding a maximum when values may be negative, initialise Maximum to 0 or first input?", accepted: ["first input", "first value", "first data value"], answer: "First input / first data value" },
+  { id: "p7", prompt: "Which control structure handles 'if mark is at least 50'?", accepted: ["selection", "if", "if statement"], answer: "Selection / IF" },
+  { id: "p8", prompt: "Should OUTPUT final average usually be inside or after the loop?", accepted: ["after", "after loop", "after the loop"], answer: "After the loop" },
+  { id: "p9", prompt: "Which test type checks a limit such as mark 0 or 100?", accepted: ["boundary", "boundary test", "boundary data"], answer: "Boundary test data" },
+  { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
-  {
-    wrong: "I revised Section 9 by rereading notes only.",
-    fix: "Use retrieval and timed practice. Section 9 is skill-heavy: classify the scenario, write pseudocode, trace it, then correct against marking points.",
-  },
-  {
-    wrong: "I wrote 'binary search is better' and stopped.",
-    fix: "Add mechanism: binary search works on sorted data and halves the remaining search range each comparison, so fewer comparisons are needed.",
-  },
-  {
-    wrong: "I used the same loop for every scenario.",
-    fix: "Match the loop to the wording. Use FOR for a known count and WHILE for a condition or sentinel.",
-  },
-  {
-    wrong: "I wrote Java syntax in my Cambridge pseudocode answer.",
-    fix: "Keep Paper 2 pseudocode readable: use <- for assignment, IF/ENDIF, FOR/NEXT and WHILE/ENDWHILE style blocks.",
-  },
+  { wrong: "I started writing pseudocode without identifying the required output.", fix: "Start with the output, then decide what inputs and processing are needed to produce it." },
+  { wrong: "I used a FOR loop for input until -1 is entered.", fix: "Use a condition-controlled loop because the number of inputs is not known in advance." },
+  { wrong: "I added the sentinel value to Total before stopping.", fix: "Test the sentinel before processing it. The sentinel controls the loop and is not data." },
+  { wrong: "I output the final average inside the loop.", fix: "Output the final average after all values have been processed unless a running average is requested." },
 ];
 
 
@@ -137,121 +102,112 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A program inputs six sensor readings and outputs the total and average reading. Identify the input, process, output and suitable loop type. Explain the loop choice.",
-    answer: "Input: six sensor readings. Process: add each reading to Total, then calculate Average as Total / 6. Output: Total and Average. Loop: count-controlled / FOR loop because exactly six readings are processed.",
+    prompt: "A program must input five marks and output how many marks are at least 50. Identify the input, process, output and suitable loop type.",
+    answer: "Input: five marks. Process: compare each mark with 50 and increment a pass count when Mark >= 50. Output: the pass count. Loop type: count-controlled / FOR loop because exactly five marks are input.",
     marking: [
-      { mark: "B1", text: "identifies input as six sensor readings" },
-      { mark: "B1", text: "process includes adding readings to a running total" },
-      { mark: "B1", text: "process includes calculating average from total divided by 6" },
-      { mark: "B1", text: "identifies output as total and average" },
+      { mark: "B1", text: "identifies input as five marks" },
+      { mark: "B1", text: "identifies output as count of marks at least 50" },
+      { mark: "B1", text: "process compares each mark with 50" },
+      { mark: "B1", text: "process increments count when condition is true" },
       { mark: "B1", text: "chooses count-controlled / FOR loop" },
-      { mark: "B1", text: "justifies loop choice using exactly six readings" },
+      { mark: "B1", text: "justifies loop choice using exactly five marks" },
     ],
     strict: [
-      "Award process marks only where the calculation is clear.",
-      "Allow 'sum' for Total and 'mean' for Average.",
-      "Do not accept 'process the readings' without calculation detail.",
+      "Do not accept 'calculate marks' as a process without comparison or count.",
+      "Allow PassCount or Count as variable wording.",
+      "Do not award loop justification mark for only naming FOR.",
     ],
   },
   {
     title: "Question 2",
     marks: "8 marks",
-    prompt: "Write Cambridge-style pseudocode to input numbers until -1 is entered. The -1 must not be counted. Output how many positive numbers were entered.",
-    answer: "PositiveCount <- 0\nINPUT Number\nWHILE Number <> -1\n    IF Number > 0 THEN\n        PositiveCount <- PositiveCount + 1\n    ENDIF\n    INPUT Number\nENDWHILE\nOUTPUT PositiveCount",
+    prompt: "Write Cambridge-style pseudocode to input prices until 0 is entered, then output the total price. The 0 must not be included.",
+    answer: "Total <- 0\nINPUT Price\nWHILE Price <> 0\n    Total <- Total + Price\n    INPUT Price\nENDWHILE\nOUTPUT Total",
     marking: [
-      { mark: "B1", text: "initialises PositiveCount to 0" },
-      { mark: "M1", text: "inputs first Number before testing loop condition or otherwise tests before processing" },
-      { mark: "M1", text: "uses condition-controlled loop with Number <> -1" },
-      { mark: "A1", text: "does not process/count the -1 sentinel" },
-      { mark: "M1", text: "uses selection to test Number > 0" },
-      { mark: "A1", text: "increments PositiveCount only for positive values" },
-      { mark: "M1", text: "inputs next Number inside loop" },
-      { mark: "B1", text: "outputs PositiveCount after the loop" },
+      { mark: "B1", text: "initialises Total to 0" },
+      { mark: "M1", text: "inputs first Price before loop test or otherwise tests before processing" },
+      { mark: "M1", text: "uses condition-controlled loop with Price <> 0" },
+      { mark: "A1", text: "adds Price to Total only inside valid-input loop" },
+      { mark: "M1", text: "inputs next Price inside loop" },
+      { mark: "B1", text: "does not add sentinel 0 to Total" },
+      { mark: "A1", text: "outputs Total after loop" },
+      { mark: "B1", text: "uses clear Cambridge-style pseudocode structure" },
     ],
     strict: [
-      "The sentinel must not be counted as positive or valid data.",
-      "Allow REPEAT UNTIL if the logic still excludes -1 from processing.",
-      "Do not award output mark if the only output is inside the loop.",
+      "Do not award sentinel mark if 0 is added before stopping.",
+      "Allow REPEAT UNTIL if the 0 is not processed.",
+      "Do not award final-output mark if output is only inside the loop.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "A student writes Maximum <- 0 before inputting five temperature readings. The readings may be negative. Explain the error and give a correction.",
-    answer: "Initialising Maximum to 0 is wrong because all input temperatures might be negative, so the algorithm could output 0 even though 0 was never entered. A correction is to input the first temperature, assign Maximum <- Temperature, then compare the remaining four readings with Maximum.",
+    marks: "7 marks",
+    prompt: "A program must input eight temperatures and output the highest. Explain the design before writing pseudocode.",
+    answer: "The input is eight temperature values and the output is the highest temperature. A count-controlled loop is suitable because there are exactly eight values. Highest should be initialised from the first input, not 0, because temperatures may be negative. Each later temperature is compared with Highest and replaces it only if it is larger.",
     marking: [
-      { mark: "B1", text: "identifies that readings may be negative" },
-      { mark: "B1", text: "explains Maximum <- 0 can produce an output not present in the data" },
-      { mark: "B1", text: "states that 0 could incorrectly remain the maximum" },
-      { mark: "B1", text: "corrects by inputting first reading before loop/comparison" },
-      { mark: "B1", text: "assigns Maximum from first input" },
-      { mark: "B1", text: "compares remaining readings and updates Maximum only when a higher value is found" },
+      { mark: "B1", text: "identifies input as eight temperatures" },
+      { mark: "B1", text: "identifies output as highest temperature" },
+      { mark: "B1", text: "chooses count-controlled loop due to exactly eight values" },
+      { mark: "M1", text: "initialises Highest from first input" },
+      { mark: "M1", text: "explains why 0 may be unsuitable / negative temperatures possible" },
+      { mark: "A1", text: "compares each later temperature with Highest" },
+      { mark: "A1", text: "updates Highest only when a larger value is found" },
     ],
     strict: [
-      "Do not award correction for only saying 'use a smaller number'.",
-      "Allow Minimum/Maximum naming variations if role is clear.",
-      "Do not require full pseudocode for full credit if explanation is precise.",
+      "Do not accept initialising Highest to 0 if no non-negative range is stated.",
+      "Allow Maximum for Highest.",
+      "Do not require full pseudocode if question asks for design explanation.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "A sorted list of 1000 customer IDs must be searched for one ID. Compare linear search and binary search for this scenario.",
-    answer: "Linear search can check each item in order and may need up to 1000 comparisons if the ID is near the end or absent. Binary search is suitable because the list is sorted; it compares with the middle item and repeatedly halves the remaining search area. Therefore binary search usually uses fewer comparisons for this scenario.",
+    marks: "7 marks",
+    prompt: "Write pseudocode to input a password and output whether it contains the character @.",
+    answer: "Found <- FALSE\nFOR Index <- 1 TO LENGTH(Password)\n    Character <- character at position Index\n    IF Character = \"@\" THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nIF Found = TRUE THEN\n    OUTPUT \"Found\"\nELSE\n    OUTPUT \"Not found\"\nENDIF",
     marking: [
-      { mark: "B1", text: "states linear search checks items sequentially" },
-      { mark: "B1", text: "states linear search may require many/up to all comparisons" },
-      { mark: "B1", text: "states binary search requires sorted data / sorted list is given" },
-      { mark: "B1", text: "describes comparison with middle item or halving search area" },
-      { mark: "B1", text: "links halving to fewer comparisons" },
-      { mark: "B1", text: "conclusion is applied to 1000 sorted customer IDs" },
+      { mark: "B1", text: "initialises Found to FALSE" },
+      { mark: "M1", text: "loops through each character of Password" },
+      { mark: "M1", text: "extracts or refers clearly to current character" },
+      { mark: "A1", text: "compares current character with @" },
+      { mark: "A1", text: "sets Found to TRUE when @ is found" },
+      { mark: "B1", text: "outputs result after search based on Found" },
+      { mark: "B1", text: "uses clear Cambridge-style block structure" },
     ],
     strict: [
-      "'faster' alone is not enough for a comparison mark.",
-      "Allow 'discard half' or equivalent for halving mechanism.",
-      "Do not accept binary search for unsorted data unless sorting is first stated.",
+      "Do not award comparison mark for checking whether the whole password equals @.",
+      "Allow early exit if logically correct.",
+      "Do not require exact phrase 'character at position' if current character is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "7 marks",
-    prompt: "A weak answer to a scenario says: 'Use a loop and output the answer.' Write this into a precise algorithm-design response for a task that inputs marks until -1 and outputs the average of valid marks.",
-    answer: "Use a condition-controlled WHILE loop because the number of marks is unknown and input stops when -1 is entered. Initialise Total and Count to 0. Input a mark before the loop test. While Mark <> -1, add Mark to Total, increment Count, then input the next Mark. After the loop, if Count > 0, calculate Average <- Total / Count and output Average; otherwise output a suitable message such as 'No valid marks'.",
+    marks: "5 marks",
+    prompt: "A student says: 'I can solve any word problem by writing code immediately.' Evaluate this approach.",
+    answer: "This is a weak approach because the student may miss the required output, constraints or stopping condition. A better approach is to identify inputs, processing, outputs and constraints first, then choose sequence, selection and iteration. The algorithm should be traced with suitable test data to check that variables update correctly and that outputs are in the correct position.",
     marking: [
-      { mark: "B1", text: "chooses condition-controlled / WHILE loop" },
-      { mark: "B1", text: "justifies loop choice using unknown count or sentinel -1" },
-      { mark: "B1", text: "initialises Total and Count" },
-      { mark: "B1", text: "uses input before loop test and/or prevents -1 being processed" },
-      { mark: "B1", text: "updates Total and Count for valid marks only" },
-      { mark: "B1", text: "checks Count > 0 to avoid division by zero when -1 is the first input" },
-      { mark: "B1", text: "calculates and outputs Average after the loop, or handles no valid marks" },
+      { mark: "B1", text: "recognises immediate coding can miss requirements" },
+      { mark: "B1", text: "mentions required output or constraints/stopping condition" },
+      { mark: "B1", text: "recommends IPOC / identifying inputs, processing, outputs and constraints" },
+      { mark: "B1", text: "recommends choosing control structures before coding" },
+      { mark: "B1", text: "mentions trace or test data to verify design" },
     ],
     strict: [
-      "Do not award full credit for generic 'use a loop' wording.",
-      "Allow REPEAT UNTIL if sentinel is not included in total/count.",
-      "Do not award average mark if Count is missing or sentinel is included.",
+      "Do not accept only 'planning is better' without mechanism.",
+      "Allow decomposition language instead of IPOC.",
+      "Do not require Java discussion.",
     ],
   },
 ];
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9@ <>+=.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9@\\[\\] <>+=.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
   return `
     <div class="result-table" style="--cols: ${headers.length}">
-      <div class="table-row table-head">${headers.map((head) => `<div>${escapeHtml(head)}</div>`).join("")}</div>
-      ${rows.map((row) => `<div class="table-row">${row.map((cell) => `<div>${escapeHtml(cell)}</div>`).join("")}</div>`).join("")}
+      <div class="table-row table-head">${headers.map((head) => `<div>${head}</div>`).join("")}</div>
+      ${rows.map((row) => `<div class="table-row">${row.map((cell) => `<div>${cell}</div>`).join("")}</div>`).join("")}
     </div>
   `;
 }
@@ -263,10 +219,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    linear: "Linear search works, but the clue 'sorted' plus 'few comparisons' points to a stronger answer.",
-    binary: "Correct. Binary search uses sorted order to halve the search area.",
-    bubble: "Bubble sort arranges data into order; this question asks to find one target.",
-    average: "Running average is for total/count problems, not searching a sorted list.",
+    five: "Five is the number of inputs, not the required output.",
+    all: "The question asks for one value, not every score.",
+    highest: "Correct. The output is the highest score.",
+    average: "Average is a common output, but it is not requested here.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -277,45 +233,37 @@ function setupHook() {
   });
 }
 
-function setupClassifier() {
-  const input = document.querySelector("#classifierInput");
-  const result = document.querySelector("#classifierResult");
-  document.querySelector("#classifierBtn").addEventListener("click", () => {
-    const item = classifierMap[input.value];
-    result.innerHTML = `
-      <h3>${escapeHtml(item.title)}</h3>
-      <p>${escapeHtml(item.detail)}</p>
-      <pre><code>${escapeHtml(item.pattern)}</code></pre>
-    `;
+function setupScenario() {
+  const input = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#scenarioResult");
+  document.querySelector("#scenarioBtn").addEventListener("click", () => {
+    const item = scenarioMap[input.value];
+    result.innerHTML = `<h3>${item.title}</h3>${tableMarkup(["IPOC", "Design decision"], item.ipoc)}`;
   });
 }
 
-function setupFixer() {
-  const input = document.querySelector("#fixerInput");
-  const result = document.querySelector("#fixerResult");
-  document.querySelector("#fixerBtn").addEventListener("click", () => {
-    const item = fixerMap[input.value];
-    result.innerHTML = `
-      <p><strong>Weak:</strong> ${escapeHtml(item.weak)}</p>
-      <p><strong>Stronger:</strong> ${escapeHtml(item.strong)}</p>
-    `;
+function setupBuilder() {
+  const input = document.querySelector("#builderInput");
+  const result = document.querySelector("#builderResult");
+  document.querySelector("#builderBtn").addEventListener("click", () => {
+    const item = scenarioMap[input.value];
+    result.innerHTML = `<h3>${item.title}</h3><pre><code>${item.pseudocode}</code></pre>`;
   });
 }
 
 function renderExample(key) {
   const example = examples[key];
   document.querySelector("#exampleBox").innerHTML = `
-    <h3>${escapeHtml(example.title)}</h3>
-    <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-    ${tableMarkup(["Focus", "Design decision"], example.table)}
-    <p><strong>Cambridge-style pseudocode / answer structure:</strong></p>
-    <pre><code>${escapeHtml(example.code)}</code></pre>
-    <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
+    <h3>${example.title}</h3>
+    <p><strong>Problem:</strong> ${example.problem}</p>
+    ${tableMarkup(["IPOC", "Design decision"], example.ipoc)}
+    <p><strong>Cambridge-style pseudocode:</strong></p>
+    <pre><code>${example.code}</code></pre>
+    <ul>${example.points.map((point) => `<li>${point}</li>`).join("")}</ul>
   `;
 }
 
 function setupExamples() {
-  renderExample("rainfall");
   document.querySelectorAll("[data-example]").forEach((tab) => {
     tab.addEventListener("click", () => {
       document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
@@ -323,84 +271,86 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
+  renderExample("passes");
 }
 
-function renderPractice() {
-  const container = document.querySelector("#practiceList");
-  container.innerHTML = practice.map((item, index) => `
+function setupPractice() {
+  const list = document.querySelector("#practiceList");
+  list.innerHTML = practice.map((item) => `
     <article class="practice-item">
-      <h3>${index + 1}. ${escapeHtml(item.prompt)}</h3>
+      <p><strong>${item.id.toUpperCase()}.</strong> ${item.prompt}</p>
       <div class="practice-row">
-        <input type="text" id="${item.id}" aria-label="Answer for practice question ${index + 1}" />
+        <input id="${item.id}" type="text" autocomplete="off" />
         <button class="primary-button" type="button" data-check="${item.id}">Check</button>
       </div>
-      <div class="mark" id="${item.id}Mark" aria-live="polite"></div>
+      <div class="mark" id="${item.id}-mark" aria-live="polite"></div>
       <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
-      <div class="answer-panel" id="${item.id}Answer">${escapeHtml(item.answer)}</div>
+      <div class="answer-panel" id="${item.id}-answer">${item.answer}</div>
     </article>
   `).join("");
 
-  document.querySelectorAll("[data-check]").forEach((button) => {
+  list.querySelectorAll("[data-check]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = practice.find((entry) => entry.id === button.dataset.check);
       const value = normalise(document.querySelector(`#${item.id}`).value);
-      const mark = document.querySelector(`#${item.id}Mark`);
-      const correct = item.accepted.some((answer) => value === normalise(answer));
-      mark.textContent = correct ? "Correct. The wording is mark-worthy." : "Not quite. Compare with the answer, then improve the wording.";
-      mark.className = correct ? "mark correct" : "mark incorrect";
+      const accepted = item.accepted.map(normalise);
+      const isCorrect = accepted.includes(value);
+      const mark = document.querySelector(`#${item.id}-mark`);
+      mark.textContent = isCorrect ? "Correct" : "Try again, then use Show answer.";
+      mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
     });
   });
 
-  document.querySelectorAll("[data-answer]").forEach((button) => {
+  list.querySelectorAll("[data-answer]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.answer}Answer`);
+      const panel = document.querySelector(`#${button.dataset.answer}-answer`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer";
     });
   });
 }
 
-function renderMistakes() {
-  document.querySelector("#mistakeGrid").innerHTML = mistakes.map((item, index) => `
+function setupMistakes() {
+  const grid = document.querySelector("#mistakeGrid");
+  grid.innerHTML = mistakes.map((item, index) => `
     <article>
-      <h3>Mistake ${index + 1}</h3>
-      <p class="wrong">${escapeHtml(item.wrong)}</p>
+      <p class="wrong"><strong>Mistake ${index + 1}:</strong> ${item.wrong}</p>
       <button class="answer-toggle" type="button" data-fix="${index}">Show correction</button>
-      <div class="answer-panel" id="fix${index}">${escapeHtml(item.fix)}</div>
+      <div class="answer-panel" id="fix-${index}">${item.fix}</div>
     </article>
   `).join("");
 
-  document.querySelectorAll("[data-fix]").forEach((button) => {
+  grid.querySelectorAll("[data-fix]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#fix${button.dataset.fix}`);
+      const panel = document.querySelector(`#fix-${button.dataset.fix}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
     });
   });
 }
 
-function renderExam() {
-  const container = document.querySelector("#examList");
-  container.innerHTML = examQuestions.map((question, index) => `
+function setupExam() {
+  const list = document.querySelector("#examList");
+  list.innerHTML = examQuestions.map((question, index) => `
     <article class="exam-card">
       <div class="exam-head">
-        <h3>${escapeHtml(question.title)}</h3>
-        <span>${escapeHtml(question.marks)}</span>
+        <h3>${question.title}</h3>
+        <span>${question.marks}</span>
       </div>
-      <p>${escapeHtml(question.prompt)}</p>
+      <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
-      <div class="ms-panel" id="ms${index}">
+      <div class="ms-panel" id="ms-${index}">
         <p><strong>Answer:</strong></p>
-        <pre><code>${escapeHtml(question.answer)}</code></pre>
+        <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
         ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");
 
-  document.querySelectorAll("[data-ms]").forEach((button) => {
+  list.querySelectorAll("[data-ms]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#ms${button.dataset.ms}`);
+      const panel = document.querySelector(`#ms-${button.dataset.ms}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
     });
@@ -409,9 +359,9 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupClassifier();
-setupFixer();
+setupScenario();
+setupBuilder();
 setupExamples();
-renderPractice();
-renderMistakes();
-renderExam();
+setupPractice();
+setupMistakes();
+setupExam();

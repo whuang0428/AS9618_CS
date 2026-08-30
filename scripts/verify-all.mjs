@@ -9,6 +9,7 @@ const currentDecision = JSON.parse(fs.readFileSync(path.join(root, "audits", "re
 const currentStage = currentDecision.currentStage?.number ?? 0;
 const nodeChecks = [
   "verify-remediation-v2-current-decision.mjs",
+  "verify-current-source-references.mjs",
   "verify-remediation-v2-audit-integrity.mjs",
   "test-remediation-v2-stage1-mutations.mjs",
   "verify-remediation-v2-stage2.mjs",
@@ -27,6 +28,7 @@ const nodeChecks = [
   "verify-academic-theme.mjs",
   "verify-student-navigation.mjs",
   "verify-educational-visuals.mjs",
+  "verify-local-image-references.mjs",
   "verify-visual-semantic-remediation.mjs",
   "verify-stage2.mjs",
   "verify-batch1-core-content.mjs",

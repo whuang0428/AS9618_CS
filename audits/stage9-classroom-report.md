@@ -19,12 +19,12 @@ Stage 9 makes the shared website teacher-led without removing the complete stude
 ## Browser Acceptance
 
 - Homepage, Lesson 001 and the Assessment Bank passed at 1440×810; Lessons 035, 041, 052, 098 and 150 passed at 1366×768.
-- Lesson 017 retains its previously approved 390×844 baseline. The new directory toggle passed desktop browser interaction and automated mobile-breakpoint checks; an exact 390×844 rendered recheck remains pending because the available browser session has a fixed viewport.
+- Lesson 018 retains its previously approved 390×844 baseline. The new directory toggle passed desktop browser interaction and automated mobile-breakpoint checks; an exact 390×844 rendered recheck remains pending because the available browser session has a fixed viewport.
 - The browser request log for the homepage contained the static catalogue and shared assets, with no `lesson-XXX` requests.
-- Searching for `peer-to-peer` returned the real Lesson 017 title. Course Map opened only on request.
+- Searching for `peer-to-peer` returned the real Lesson 018 title. Course Map opened only on request.
 - Lesson 007 rendered all content without Classroom Mode controls or delivery labels; lesson contents defaulted to hidden, expanded on request and collapsed after an ASCII section jump.
 - Combined quiz/Paper/AO/command/mark filters returned 10 assessments and 19 questions; the empty state and reset flow also passed.
-- The automated browser walkthrough from Course home through search to Lesson 017 completed in 0.138 seconds, below the 10-second acceptance threshold.
+- The automated browser walkthrough from Course home through search to Lesson 018 completed in 0.138 seconds, below the 10-second acceptance threshold.
 
 ## Delivery Notes
 

@@ -38,10 +38,10 @@ function parseCsv(name) {
 }
 const expected = new Map([
   ["scientific-syllabus-matrix.csv", 121],
-  ["scientific-lesson-review.csv", 150],
-  ["scientific-assessment-matrix.csv", 963],
-  ["scientific-visual-review.csv", 969],
-  ["scientific-browser-qa.csv", 306],
+  ["scientific-lesson-review.csv", 151],
+  ["scientific-assessment-matrix.csv", 968],
+  ["scientific-visual-review.csv", 971],
+  ["scientific-browser-qa.csv", 308],
 ]);
 
 for (const [file, count] of expected) {
@@ -70,13 +70,13 @@ for (const entry of defects.defects) {
 }
 
 const baseline = JSON.parse(read("scientific-audit-baseline.json"));
-for (const [key, value] of Object.entries({ lessons: 150, pages: 153, pageViews: 306, questions: 963, assessmentSets: 51, stage10Images: 783, visualObjects: 969, syllabusRequirements: 121 })) {
+for (const [key, value] of Object.entries({ lessons: 151, pages: 154, pageViews: 308, questions: 968, assessmentSets: 51, stage10Images: 784, visualObjects: 971, syllabusRequirements: 121 })) {
   if (baseline.scope[key] !== value) throw new Error(`Baseline ${key}: expected ${value}, found ${baseline.scope[key]}`);
 }
 const ocr = JSON.parse(read("scientific-stage10-ocr-summary.json"));
-if (ocr.images !== 783 || ocr.nonEmptyTranscripts !== 783 || ocr.semanticApproval !== false) throw new Error("Pixel OCR summary is inconsistent");
-if (ocr.targetedEvidence.l050ShiftBinaryTokenLengths.some((length) => length !== 8)) throw new Error("L050 OCR contains a non-eight-bit fixed-width token");
-if (!ocr.targetedEvidence.l137ImageTokens.includes("ELSE") || !ocr.targetedEvidence.l137ImageTokens.includes("ENDIF")) throw new Error("L137 OCR evidence is incomplete");
+if (ocr.images !== 784 || ocr.nonEmptyTranscripts !== 784 || ocr.semanticApproval !== false) throw new Error("Pixel OCR summary is inconsistent");
+if (ocr.targetedEvidence.l050ShiftBinaryTokenLengths.some((length) => length !== 8)) throw new Error("L051 OCR contains a non-eight-bit fixed-width token");
+if (!ocr.targetedEvidence.l137ImageTokens.includes("ELSE") || !ocr.targetedEvidence.l137ImageTokens.includes("ENDIF")) throw new Error("L138 OCR evidence is incomplete");
 
 const report = read("scientific-audit-report.md");
 for (const phrase of ["**Decision:** BLOCKED", "## What passed", "## Confirmed failures", "## Not yet verified", "## Repair order"]) {
@@ -90,10 +90,10 @@ console.log(`Scientific audit verified: ${expected.size} matrices, ${defects.def
 
 const finalExpected = new Map([
   ["scientific-final-syllabus-matrix.csv", 121],
-  ["scientific-final-lesson-review.csv", 150],
-  ["scientific-final-assessment-matrix.csv", 963],
-  ["scientific-final-visual-review.csv", 969],
-  ["scientific-final-browser-qa.csv", 306],
+  ["scientific-final-lesson-review.csv", 151],
+  ["scientific-final-assessment-matrix.csv", 968],
+  ["scientific-final-visual-review.csv", 971],
+  ["scientific-final-browser-qa.csv", 308],
 ]);
 for (const [file, count] of finalExpected) {
   if (!fs.existsSync(path.join(audits, file))) throw new Error(`Missing ${file}`);

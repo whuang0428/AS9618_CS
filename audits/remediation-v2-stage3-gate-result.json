@@ -39,11 +39,11 @@
     "problemCount": 24,
     "sequenceProblemCount": 0,
     "criticalIds": [
-      "CRIT-L049-PERFORMANCE-FACTORS",
-      "CRIT-L107-CHAR-FUNCTION-TYPE",
-      "CRIT-L121-PROVIDED-FUNCTIONS",
-      "CRIT-L133-CHAR-FUNCTION-TYPE",
-      "CRIT-L133-PROVIDED-FUNCTION"
+      "CRIT-L050-PERFORMANCE-FACTORS",
+      "CRIT-L108-CHAR-FUNCTION-TYPE",
+      "CRIT-L122-PROVIDED-FUNCTIONS",
+      "CRIT-L134-CHAR-FUNCTION-TYPE",
+      "CRIT-L134-PROVIDED-FUNCTION"
     ]
   },
   "resolvedStage3Issues": [

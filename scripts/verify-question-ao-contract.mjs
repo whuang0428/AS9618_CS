@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { loadAllQuestions } from "./ms-review-utils.mjs";
+import { unitForLesson } from "./course-structure.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const contractPath = path.join(root, "scripts", "question-ao-contract.json");
@@ -14,7 +15,7 @@ function validate(candidate) {
   const problems = [];
   const rows = candidate.questions ?? [];
   const byId = new Map(rows.map((row) => [row.questionId, row]));
-  if (rows.length !== 963) problems.push(`expected 963 rows, found ${rows.length}`);
+  if (rows.length !== 968) problems.push(`expected 968 rows, found ${rows.length}`);
   if (byId.size !== rows.length) problems.push("question IDs are not unique");
   for (const question of current) {
     const row = byId.get(question.id);
@@ -23,9 +24,10 @@ function validate(candidate) {
     if (row.reviewStatus !== "Reviewed") problems.push(`${question.id}: mapping is not Reviewed`);
     if (!Array.isArray(row.assessmentObjectives) || row.assessmentObjectives.length === 0) problems.push(`${question.id}: AO is empty`);
     if (row.assessmentObjectives?.some((ao) => !["AO1", "AO2", "AO3"].includes(ao))) problems.push(`${question.id}: invalid AO`);
-    if (question.lesson <= 97 && row.assessmentObjectives?.some((ao) => ao === "AO3")) problems.push(`${question.id}: Paper 1 cannot carry AO3`);
-    if (question.lesson >= 98 && row.assessmentObjectives?.some((ao) => ao === "AO1")) problems.push(`${question.id}: Paper 2 cannot carry AO1`);
-    if (row.paper !== (question.lesson <= 97 ? "Paper 1" : "Paper 2")) problems.push(`${question.id}: paper identity is wrong`);
+    const expectedPaper = unitForLesson(question.lesson)?.paper;
+    if (expectedPaper === "Paper 1" && row.assessmentObjectives?.some((ao) => ao === "AO3")) problems.push(`${question.id}: Paper 1 cannot carry AO3`);
+    if (expectedPaper === "Paper 2" && row.assessmentObjectives?.some((ao) => ao === "AO1")) problems.push(`${question.id}: Paper 2 cannot carry AO1`);
+    if (row.paper !== expectedPaper) problems.push(`${question.id}: paper identity is wrong`);
     if (!row.rationale || !row.classificationMethod) problems.push(`${question.id}: classification evidence is incomplete`);
     if (!/^S(?:[1-9]|1[0-2])\.\d{2}$/.test(row.primaryRequirement ?? "")) problems.push(`${question.id}: primary syllabus requirement is missing`);
     if (row.marks !== question.marks) problems.push(`${question.id}: contract marks are stale`);
@@ -51,7 +53,7 @@ expect(validate(stale).some((message) => message.includes("content hash is stale
 
 const lessonCount = contract.questions.filter(({ source }) => source === "lesson").length;
 const bankCount = contract.questions.filter(({ source }) => source === "assessment").length;
-expect(lessonCount === 750, `expected 750 lesson questions, found ${lessonCount}`);
+expect(lessonCount === 755, `expected 755 lesson questions, found ${lessonCount}`);
 expect(bankCount === 213, `expected 213 assessment-bank questions, found ${bankCount}`);
 
 if (failures.length) {
@@ -61,4 +63,4 @@ if (failures.length) {
 }
 
 const counts = Object.fromEntries(["AO1", "AO2", "AO3"].map((ao) => [ao, contract.questions.filter((row) => row.assessmentObjectives.includes(ao)).length]));
-console.log(`Question AO contract verified: 963 unique current hashes; lesson 750, bank 213; AO1 ${counts.AO1}, AO2 ${counts.AO2}, AO3 ${counts.AO3}; two mutations rejected.`);
+console.log(`Question AO contract verified: 968 unique current hashes; lesson 755, bank 213; AO1 ${counts.AO1}, AO2 ${counts.AO2}, AO3 ${counts.AO3}; two mutations rejected.`);

@@ -1,101 +1,95 @@
-const rewrites = {
-  easy: {
-    vague: "Make it easy to use",
-    requirement: "Teachers should be able to create a room booking by selecting date, period and room from labelled controls.",
-    criterion: "At least 8 out of 10 teachers can create a booking without help in under 2 minutes after one demonstration.",
-    test: "Ask 10 teachers to create a sample booking and record completion time and help needed.",
+const modelAdvice = {
+  stable: {
+    model: "Waterfall / structured lifecycle",
+    reason: "Requirements are stable, so a planned sequence with documentation and sign-off is suitable.",
+    warning: "If requirements change late, earlier stages may need expensive rework.",
   },
-  fast: {
-    vague: "Make it fast",
-    requirement: "The system should search room availability for a selected day and period.",
-    criterion: "Search results should be displayed within 2 seconds for at least 95 out of 100 searches.",
-    test: "Run 100 searches using representative data and record response times.",
+  uncertain: {
+    model: "Rapid application development (RAD)",
+    reason: "Rapid prototypes, fixed time boxes and frequent user feedback help refine unclear requirements before too much is built.",
+    warning: "RAD still needs control, testing and available informed users.",
   },
-  safe: {
-    vague: "Make it secure",
-    requirement: "Only authenticated staff should be able to create or cancel bookings.",
-    criterion: "Unauthenticated users and student accounts cannot create, edit or cancel bookings.",
-    test: "Attempt booking actions using guest, student and staff accounts and record access results.",
+  critical: {
+    model: "Planned lifecycle with strong testing and review",
+    reason: "High-risk systems need evidence, traceability and careful testing before release.",
+    warning: "Rapid change without control can increase risk.",
   },
 };
 
-const criteriaChecks = {
-  vague: {
-    verdict: "Weak",
-    reason: "Reliable is important, but this sentence does not say what reliability means or how it will be measured.",
-    improve: "Example: the system is available for 99% of school hours during a one-month trial.",
+const orderAdvice = {
+  "analysis-design": {
+    first: "Analysis usually comes before design.",
+    reason: "Design should be based on identified requirements, users and constraints.",
   },
-  measurable: {
-    verdict: "Strong",
-    reason: "It gives a measurable target: booking request processed in under 3 seconds.",
-    improve: "Add test conditions, such as typical school-day load, for an even stronger criterion.",
+  "design-code": {
+    first: "Design usually comes before coding.",
+    reason: "Coding (implementation) should follow a planned interface, data and algorithm design.",
   },
-  opinion: {
-    verdict: "Weak",
-    reason: "Beautiful is subjective, so different users may judge it differently.",
-    improve: "Example: 8 out of 10 trial users rate the interface at least 4 out of 5 for clarity.",
+  "test-maintain": {
+    first: "Testing usually comes before release and maintenance.",
+    reason: "Maintenance happens after use or release, while testing checks the system before or during release.",
   },
 };
 
 const examples = {
   booking: {
-    title: "Example 1: Room booking system",
-    rows: [
-      ["Vague request", "Teachers should book rooms easily."],
-      ["Functional requirement", "Teachers can create, edit and cancel room bookings."],
-      ["Success criterion", "A teacher can create a booking in under 2 minutes without help."],
-      ["Acceptance test", "Give teachers a sample booking task and record time and help needed."],
+    title: "Example 1: School booking system",
+    answer: "Analysis should identify who books rooms, what data is stored, booking rules, conflicts and reports. Design then plans screens, validation, data structures and algorithms. Coding implements the design. Testing checks requirements such as rejecting double bookings. Review of the evidence can judge whether user needs are met, and maintenance fixes faults or adapts to new school rules.",
+    points: [
+      "Analysis before design prevents guessing requirements.",
+      "Testing is linked to a measurable requirement.",
+      "Maintenance is not failure; it is controlled change after release.",
     ],
   },
-  library: {
-    title: "Example 2: Library search system",
-    rows: [
-      ["Vague request", "Search should be good."],
-      ["Functional requirement", "Users can search books by title, author or ISBN."],
-      ["Success criterion", "At least 95% of searches return matching results within 2 seconds."],
-      ["Acceptance test", "Run a set of known title, author and ISBN searches and record result accuracy and time."],
+  change: {
+    title: "Example 2: Changing requirements",
+    answer: "If users discover during testing that they need recurring bookings, the project may return to analysis to refine the requirement and then design to change the data model. This shows the lifecycle can be iterative rather than a fixed one-way checklist.",
+    points: [
+      "Feedback can move the project back to earlier stages.",
+      "A clear requirement change affects design and coding (implementation).",
+      "The answer names the trigger: user feedback during testing.",
     ],
   },
-  security: {
-    title: "Example 3: Staff access control",
-    rows: [
-      ["Vague request", "The system should be secure."],
-      ["Functional requirement", "Only staff accounts can create or cancel bookings."],
-      ["Success criterion", "Guest and student accounts are denied booking actions in all test cases."],
-      ["Acceptance test", "Attempt create and cancel actions using guest, student and staff accounts."],
+  maintenance: {
+    title: "Example 3: Maintenance after release",
+    answer: "Maintenance may correct faults, adapt the system to new requirements, or improve performance/usability. For example, a booking system may need an update when the school adds weekend bookings. The maintenance log records what changed and why.",
+    points: [
+      "Corrective maintenance fixes faults.",
+      "Adaptive maintenance handles changed requirements or environment.",
+      "Perfective maintenance improves usability or performance.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which lifecycle stage produces the requirements specification?", accepted: ["analysis"], answer: "Analysis." },
-  { id: "p2", prompt: "What type of requirement describes what the system must do?", accepted: ["functional"], answer: "Functional requirement." },
-  { id: "p3", prompt: "What type of requirement describes qualities such as performance or usability?", accepted: ["non-functional", "non functional"], answer: "Non-functional requirement." },
-  { id: "p4", prompt: "What term describes a measurable target used to judge whether the system is successful?", accepted: ["success criterion", "success criteria"], answer: "Success criterion / success criteria." },
-  { id: "p5", prompt: "What test checks whether a requirement has been met before acceptance?", accepted: ["acceptance"], answer: "Acceptance test." },
-  { id: "p6", prompt: "Is 'easy to use' measurable enough by itself? yes or no", accepted: ["no"], answer: "No. It needs a measurable criterion." },
-  { id: "p7", prompt: "Name one method for gathering requirements.", accepted: ["interview", "questionnaire", "observation", "document"], answer: "Interview, questionnaire, observation, or document analysis." },
-  { id: "p8", prompt: "Who provides user needs and constraints during analysis?", accepted: ["stakeholder", "user", "client"], answer: "Stakeholders / users / client." },
-  { id: "p9", prompt: "Give one measurable word or phrase often useful in success criteria.", accepted: ["seconds", "minutes", "percent", "%", "at least", "within", "under"], answer: "Examples: within 2 seconds, under 2 minutes, at least 95%." },
-  { id: "p10", prompt: "Why do success criteria help evaluation?", accepted: ["measure", "compare", "evidence", "judge"], answer: "They provide measurable evidence to compare against objectives." },
+  { id: "p1", prompt: "Which lifecycle stage identifies requirements?", accepted: ["analysis"], answer: "Analysis." },
+  { id: "p2", prompt: "Which stage plans interfaces, data and algorithms?", accepted: ["design"], answer: "Design." },
+  { id: "p3", prompt: "Which named syllabus stage turns the design into code/modules?", accepted: ["coding", "implementation"], answer: "Coding (also described as implementation)." },
+  { id: "p4", prompt: "Which stage checks the system against expected results?", accepted: ["testing"], answer: "Testing." },
+  { id: "p5", prompt: "Which review activity judges whether the completed system meets objectives?", accepted: ["evaluation", "review"], answer: "Evaluation or post-implementation review; this is an activity, not one of the five named syllabus stages." },
+  { id: "p6", prompt: "Which stage fixes, adapts or improves the system after release?", accepted: ["maintenance"], answer: "Maintenance." },
+  { id: "p7", prompt: "Which model is most one-way and sequential: waterfall or iterative?", accepted: ["waterfall"], answer: "Waterfall." },
+  { id: "p8", prompt: "Which named model uses rapid prototypes, time boxes and frequent user involvement?", accepted: ["rad", "rapid application development"], answer: "Rapid application development (RAD)." },
+  { id: "p9", prompt: "Name one artefact produced during analysis.", accepted: ["requirements", "specification"], answer: "Requirements specification." },
+  { id: "p10", prompt: "True or false: testing can reveal the need to revisit design.", accepted: ["true"], answer: "True." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes: 'The system should be good and modern.'",
-    fix: "Replace opinion words with measurable criteria, such as task completion time, error rate, uptime or user rating with a threshold.",
+    wrong: "A student writes: 'The lifecycle is analysis, design, code, test, done.'",
+    fix: "Use the five named stages: analysis, design, coding, testing and maintenance; then explain valid feedback loops.",
   },
   {
-    wrong: "A student lists a design feature before saying what users need.",
-    fix: "Start with analysis: identify stakeholders, tasks, data and constraints before design choices.",
+    wrong: "A student says design should happen before requirements are known.",
+    fix: "Analysis should identify requirements first; design is based on those requirements.",
   },
   {
-    wrong: "A student says a success criterion is the same as a functional requirement.",
-    fix: "A functional requirement states what the system must do; a success criterion states how success will be judged.",
+    wrong: "A student claims RAD is simply another name for Agile.",
+    fix: "RAD is the named syllabus model built around rapid prototyping, time-boxing and frequent user involvement; Agile is related extension context, not a replacement.",
   },
   {
-    wrong: "A student gives an acceptance test but no expected result.",
-    fix: "Add expected result, such as access denied, booking created, or results displayed within 2 seconds.",
+    wrong: "A student says maintenance only means fixing broken code.",
+    fix: "Maintenance can be corrective, adaptive or perfective: fix faults, adapt to change, or improve the system.",
   },
 ];
 
@@ -109,95 +103,95 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A school wants a room booking system. Give two functional requirements and one non-functional requirement.",
-    answer: "Functional requirements: teachers can create, edit and cancel room bookings; the system rejects a booking if the room is already booked at that time. Non-functional requirement: search results for room availability should display within 2 seconds.",
+    prompt: "A school wants a new room booking system. Describe the purpose of the analysis, Develop and testing stages.",
+    answer: "Analysis identifies users, requirements and constraints, such as who can book rooms and how double bookings are prevented. Design plans the solution, including interfaces, data storage, validation and algorithms. Testing checks the implemented system against expected results and requirements, such as rejecting a booking conflict.",
     marking: [
-      { mark: "B1", text: "gives a valid functional requirement linked to booking actions" },
-      { mark: "B1", text: "functional requirement is specific to the school booking context" },
-      { mark: "B1", text: "gives a second distinct functional requirement" },
-      { mark: "B1", text: "second requirement includes a clear rule/action/output" },
-      { mark: "B1", text: "gives a valid non-functional requirement such as performance/usability/security" },
-      { mark: "B1", text: "non-functional requirement is measurable or scenario-specific" },
+      { mark: "B1", text: "states analysis identifies user needs/requirements/constraints" },
+      { mark: "B1", text: "gives booking-system analysis example" },
+      { mark: "B1", text: "states design plans the solution/interface/data/algorithms" },
+      { mark: "B1", text: "gives booking-system design example" },
+      { mark: "B1", text: "states testing checks the system against expected results/requirements" },
+      { mark: "B1", text: "gives booking-system testing example" },
     ],
     strict: [
-      "Do not award full marks for vague statements such as 'easy' or 'fast' without detail.",
-      "Allow equivalent booking-system requirements.",
-      "Do not accept implementation details alone as requirements.",
+      "Do not award example marks for generic examples not linked to the booking system.",
+      "Allow 'requirements specification' for analysis artefact.",
+      "Do not accept 'testing finds if it is good' without expected results or requirements.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write a measurable success criterion and an acceptance test for the vague requirement 'the system should be easy to use'.",
-    answer: "Success criterion: at least 8 out of 10 teachers can create a room booking without help in under 2 minutes after one demonstration. Acceptance test: ask 10 teachers to create a sample booking and record whether they complete it, how long it takes and whether help is needed.",
+    prompt: "Compare waterfall, iterative and RAD for a project where requirements are likely to change and users can review frequent prototypes.",
+    answer: "Waterfall follows planned stages in sequence, so late requirement changes can cause costly rework. Iterative development uses repeated cycles and feedback to refine requirements. RAD uses rapid prototypes, short time boxes and frequent user involvement. RAD may suit this project when users are available for frequent reviews, while iterative development is suitable when repeated refinement is needed without the same rapid-prototyping emphasis.",
     marking: [
-      { mark: "B1", text: "recognises the original requirement is vague" },
-      { mark: "M1", text: "success criterion includes a measurable threshold" },
-      { mark: "A1", text: "criterion is linked to usability in the booking context" },
-      { mark: "B1", text: "acceptance test states a user task" },
-      { mark: "M1", text: "acceptance test records evidence such as time/help/completion" },
-      { mark: "A1", text: "test evidence matches the success criterion" },
+      { mark: "B1", text: "states waterfall follows a planned/sequential set of stages" },
+      { mark: "B1", text: "explains late changes can cause costly rework in waterfall" },
+      { mark: "B1", text: "states iterative development uses repeated cycles" },
+      { mark: "B1", text: "explains feedback can refine requirements" },
+      { mark: "B1", text: "states RAD uses rapid prototyping/time-boxing with frequent user involvement" },
+      { mark: "B1", text: "selects RAD or iterative with a reason linked to user availability, prototyping or changing requirements" },
     ],
     strict: [
-      "Do not award measurable threshold mark for 'users like it' alone.",
-      "Allow different valid thresholds if measurable.",
-      "Do not require exactly 10 teachers if sample size and evidence are clear.",
+      "Do not award full marks for saying only that repeated development is better.",
+      "Do not accept Agile as a substitute for the named RAD model.",
+      "Do not accept waterfall as the best choice for changing requirements without strong justification.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "Explain why requirements analysis is important before design and implementation.",
-    answer: "Requirements analysis identifies users, tasks, data and constraints. Design should be based on these requirements, otherwise the system may be designed for the wrong problem. Implementation may then build features users do not need, causing rework, extra cost or a system that fails evaluation.",
+    prompt: "Explain why weak analysis can cause problems later in the software development lifecycle.",
+    answer: "Weak analysis can miss user requirements or constraints. The design may then be based on wrong assumptions, so coding implements the wrong features. Testing or stakeholder review may reveal that the system does not meet user needs, causing rework and extra cost.",
     marking: [
-      { mark: "B1", text: "states analysis identifies requirements/user needs/tasks/constraints" },
-      { mark: "B1", text: "explains design should be based on requirements" },
-      { mark: "B1", text: "links weak/missing analysis to wrong implementation/features" },
-      { mark: "B1", text: "explains consequence such as rework, cost, delay or unsuitable system" },
-      { mark: "B1", text: "links to later testing/evaluation or acceptance" },
+      { mark: "B1", text: "states analysis identifies requirements/user needs/constraints" },
+      { mark: "B1", text: "states weak analysis may miss or misunderstand requirements" },
+      { mark: "B1", text: "links weak analysis to poor design or wrong coding/implementation" },
+      { mark: "B1", text: "links later testing or stakeholder review to discovering the problem" },
+      { mark: "B1", text: "explains consequence such as rework, delay, cost or unsuitable system" },
     ],
     strict: [
-      "Do not award consequence mark for vague 'it will be bad'.",
-      "Allow stakeholders/users/client as source of requirements.",
-      "Do not accept coding first as good practice without justification.",
+      "Do not award consequence mark for vague 'bad system' alone.",
+      "Allow client/user needs as equivalent to requirements.",
+      "Do not require a named lifecycle model.",
     ],
   },
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "State three methods of gathering requirements and give one advantage of each.",
-    answer: "Interviews allow detailed questions and follow-up. Questionnaires can collect answers from many users quickly. Observation shows how users actually carry out current tasks. Document analysis can reveal existing forms, reports and data rules.",
+    prompt: "State three lifecycle artefacts and explain how each is used.",
+    answer: "A requirements specification is produced during analysis and states what the system must do. A design specification is produced during design and guides implementation. A test plan/results document is used during testing to compare actual results with expected results and record faults.",
     marking: [
-      { mark: "B1", text: "names interview as a method" },
-      { mark: "B1", text: "gives valid interview advantage" },
-      { mark: "B1", text: "names questionnaire/survey as a method" },
-      { mark: "B1", text: "gives valid questionnaire advantage" },
-      { mark: "B1", text: "names observation or document analysis as a method" },
-      { mark: "B1", text: "gives valid advantage for third method" },
+      { mark: "B1", text: "names requirements specification or equivalent" },
+      { mark: "B1", text: "explains it states what the system must do" },
+      { mark: "B1", text: "names design specification or equivalent" },
+      { mark: "B1", text: "explains it guides implementation/design decisions" },
+      { mark: "B1", text: "names test plan/results or equivalent" },
+      { mark: "B1", text: "explains it records tests/results or compares actual with expected" },
     ],
     strict: [
-      "Method and advantage must match.",
-      "Allow workshop, prototype feedback or examining current system if explained.",
-      "Do not award advantage marks for 'it is better' without reason.",
+      "Artefact marks require named documents/outputs, not just stage names.",
+      "Allow user documentation or maintenance log with correct use.",
+      "Do not award use mark if it repeats the artefact name only.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A requirement says 'the system should be secure'. Explain why this is weak and improve it with two measurable criteria.",
-    answer: "The requirement is weak because secure is vague and does not say what access or protection is needed. Improved criteria: only authenticated staff can create or cancel bookings; after five failed login attempts the account is locked for 10 minutes; all booking changes are recorded with username and timestamp.",
+    prompt: "A student says the lifecycle always finishes after testing. Explain why this is incorrect.",
+    answer: "After testing, its evidence can be reviewed against objectives and user requirements. The system may then be released and maintained. Maintenance can fix faults, adapt the system to new requirements or improve usability/performance. Testing or review can also reveal issues that require returning to design or coding.",
     marking: [
-      { mark: "B1", text: "identifies 'secure' as vague/not measurable" },
-      { mark: "B1", text: "explains it does not specify access/protection rule" },
-      { mark: "B1", text: "first improved criterion is measurable/testable" },
-      { mark: "B1", text: "first criterion is security-related" },
-      { mark: "B1", text: "second improved criterion is measurable/testable" },
-      { mark: "B1", text: "second criterion is distinct and security-related" },
+      { mark: "B1", text: "states test evidence is reviewed after or alongside testing" },
+      { mark: "B1", text: "explains the review checks objectives/user requirements" },
+      { mark: "B1", text: "states maintenance can happen after release/use" },
+      { mark: "B1", text: "gives valid maintenance type/example such as corrective/adaptive/perfective" },
+      { mark: "B1", text: "explains feedback may send project back to earlier stages" },
+      { mark: "B1", text: "links feedback to design/coding/requirements rework" },
     ],
     strict: [
-      "Do not award both improved criteria marks for two versions of the same vague wording.",
-      "Allow authentication, authorisation, audit log, backup or lockout criteria if measurable.",
-      "Do not require the exact examples in the answer.",
+      "Do not award full marks for listing stages without explaining why testing is not the end.",
+      "Allow evaluation or post-implementation review if it is described as an activity, not an extra named syllabus stage.",
+      "Do not accept maintenance as only 'using the system'.",
     ],
   },
 ];
@@ -215,15 +209,6 @@ function normalise(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
-function tableMarkup(rows) {
-  return `
-    <div class="data-table two-col">
-      <div class="table-row table-head"><div>Step</div><div>Answer</div></div>
-      ${rows.map((row) => `<div class="table-row"><div>${escapeHtml(row[0])}</div><div>${escapeHtml(row[1])}</div></div>`).join("")}
-    </div>
-  `;
-}
-
 function setupPrint() {
   document.querySelector("#printBtn").addEventListener("click", () => window.print());
 }
@@ -231,10 +216,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    nice: { text: "Nice is an opinion. The examiner cannot time or measure it.", correct: false },
-    fast: { text: "Correct. It states a user, task and measurable time threshold.", correct: true },
-    modern: { text: "Modern is subjective unless you define measurable evidence.", correct: false },
-    good: { text: "Good is too vague. Good at what, and how will we prove it?", correct: false },
+    code: { text: "Too early. Coding vague wishes usually creates confident wrongness.", correct: false },
+    ask: { text: "Correct. Analysis turns vague requests into measurable requirements.", correct: true },
+    test: { text: "Testing needs something built and expected results to compare against.", correct: false },
+    maintain: { text: "Maintenance happens after release/use, not before requirements are known.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -247,35 +232,33 @@ function setupHook() {
   });
 }
 
-function setupRewriter() {
-  const select = document.querySelector("#rewriteSelect");
-  const output = document.querySelector("#rewriteOutput");
+function setupModelTool() {
+  const select = document.querySelector("#modelSelect");
+  const output = document.querySelector("#modelOutput");
   const render = () => {
-    const item = rewrites[select.value];
+    const item = modelAdvice[select.value];
     output.innerHTML = `
-      <p><strong>Vague request:</strong> ${escapeHtml(item.vague)}</p>
-      <p><strong>Requirement:</strong> ${escapeHtml(item.requirement)}</p>
-      <p><strong>Success criterion:</strong> ${escapeHtml(item.criterion)}</p>
-      <p><strong>Acceptance test:</strong> ${escapeHtml(item.test)}</p>
+      <p><strong>Suggested model:</strong> ${escapeHtml(item.model)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+      <p><strong>Watch out:</strong> ${escapeHtml(item.warning)}</p>
     `;
   };
-  document.querySelector("#rewriteBtn").addEventListener("click", render);
+  document.querySelector("#modelBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupCriteriaTool() {
-  const select = document.querySelector("#criteriaSelect");
-  const output = document.querySelector("#criteriaOutput");
+function setupOrderTool() {
+  const select = document.querySelector("#orderSelect");
+  const output = document.querySelector("#orderOutput");
   const render = () => {
-    const item = criteriaChecks[select.value];
+    const item = orderAdvice[select.value];
     output.innerHTML = `
-      <p><strong>Verdict:</strong> ${escapeHtml(item.verdict)}</p>
+      <p><strong>Usually first:</strong> ${escapeHtml(item.first)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Improvement:</strong> ${escapeHtml(item.improve)}</p>
     `;
   };
-  document.querySelector("#criteriaBtn").addEventListener("click", render);
+  document.querySelector("#orderBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -285,7 +268,8 @@ function renderExample(key) {
   document.querySelector("#exampleOutput").innerHTML = `
     <article class="example-card">
       <h3>${escapeHtml(example.title)}</h3>
-      ${tableMarkup(example.rows)}
+      <p>${escapeHtml(example.answer)}</p>
+      <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
     </article>
   `;
 }
@@ -319,10 +303,11 @@ function setupPractice() {
   document.querySelectorAll("[data-check]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = practice.find((entry) => entry.id === button.dataset.check);
-      const value = normalise(document.querySelector(`#${item.id}`).value);
+      const input = document.querySelector(`#${item.id}`);
       const feedback = document.querySelector(`#${item.id}-feedback`);
+      const value = normalise(input.value);
       const correct = item.accepted.some((answer) => value.includes(answer));
-      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and tighten the requirement term.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and tighten the lifecycle term.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -387,8 +372,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupRewriter();
-  setupCriteriaTool();
+  setupModelTool();
+  setupOrderTool();
   setupExamples();
   setupPractice();
   setupMistakes();

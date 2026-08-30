@@ -3,10 +3,10 @@
   "remediation": "v2",
   "sourceBaseline": "audits/remediation-v2-stage0-baseline.json",
   "decisionContribution": "BLOCKED",
-  "blockingSummary": "All registered P0/P1 defects are resolved through Stage 6. Release remains BLOCKED because Stage 7 independent final/reproducibility review is unverified.",
+  "blockingSummary": "Stage 7 final gate is Ready. Current conclusion is RELEASE_CANDIDATE; commit, push and publication remain separately unauthorised.",
   "stageStatus": {
-    "stage": 6,
-    "status": "AwaitingUserApproval"
+    "stage": 7,
+    "status": "Complete"
   },
   "stageApprovals": [
     {
@@ -120,7 +120,7 @@
       "severity": "P1",
       "locations": [
         "scripts/syllabus-coverage-contract.json:345",
-        "lessons/005-signed-binary-sign-and-magnitude-and-twos-complement.md:75"
+        "lessons/005-signed-representations-and-binary-subtraction.md:75"
       ],
       "problem": "S1.03 can pass without direct one's-complement conversion practice or assessment evidence.",
       "acceptanceTarget": "Stage 2 must require CORE teaching, worked conversion, practice and one directly mapped question for one's complement.",
@@ -146,7 +146,7 @@
       "status": "Resolved",
       "closureEvidence": [
         "S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production",
-        "L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment"
+        "L012, L145 construction practice and L146 production practice are retained only as labelled Optional enrichment"
       ]
     },
     {
@@ -154,9 +154,9 @@
       "category": "Enrichment classification",
       "severity": "P1",
       "locations": [
-        "lessons/006-binary-fractions-and-precision-limits.md:1",
-        "lessons/011-sound-file-size-calculations.md:1",
-        "lessons/113-data-types-integer-real-boolean-char-string-date-and-user-defined-types.md:1"
+        "lessons/006-bcd-and-hexadecimal-in-practical-systems.md:1",
+        "lessons/012-sound-file-size-calculations.md:1",
+        "lessons/114-select-and-use-the-official-cambridge-data-types.md:1"
       ],
       "problem": "Out-of-scope or wrong-section material is presented as AS CORE and contributes to formal section pacing.",
       "acceptanceTarget": "Stage 2 must retain it only as labelled Optional enrichment and exclude it from coverage, first-use and compulsory assessment evidence.",
@@ -190,18 +190,18 @@
       "category": "Lesson identity",
       "severity": "P1",
       "locations": [
-        "lessons/104-linear-search-and-binary-search.md:5",
-        "lessons/114-constants-variables-and-assignment.md:5",
-        "lessons/137-testing-with-normal-boundary-and-erroneous-data.md:5",
-        "lessons/138-debugging-using-traces-and-breakpoints.md:5"
+        "lessons/105-linear-search-and-binary-search.md:5",
+        "lessons/115-define-read-and-save-record-data.md:5",
+        "lessons/138-testing-with-normal-abnormal-and-extreme-boundary-data.md:5",
+        "lessons/139-debugging-using-traces-and-breakpoints.md:5"
       ],
       "problem": "Lesson headers, course-map ranges and requirement mappings disagree about the owning syllabus section.",
-      "acceptanceTarget": "Stage 3 must make all 150 lesson identities agree across Markdown, HTML, catalogue, course map, contract and assessment mapping.",
+      "acceptanceTarget": "Stage 3 must make all 151 lesson identities agree across Markdown, HTML, catalogue, course map, contract and assessment mapping.",
       "confidence": "High",
       "status": "Resolved",
       "closureEvidence": [
         "All 150 stable lesson IDs and URLs are preserved; Markdown titles, HTML h1, course catalogue, paper and section ranges reconcile",
-        "L137 no longer claims Section 12 ownership inside the Section 11 lesson range; L137/L138 legacy bodies are Optional enrichment"
+        "L138 no longer claims Section 12 ownership inside the Section 11 lesson range; L138/L139 legacy bodies are Optional enrichment"
       ]
     },
     {
@@ -218,7 +218,7 @@
       "status": "Resolved",
       "closureEvidence": [
         "scripts/cie-command-words.mjs fixes the main table to the 27 entries on syllabus pages 41-42 and fail-closes subject-operation exceptions by requirement ID",
-        "963/963 current-hash question records include primary requirement, AO, marks, answer boundary and four passed trial cases"
+        "968/968 current-hash question records include primary requirement, AO, marks, answer boundary and four passed trial cases"
       ]
     },
     {
@@ -243,15 +243,15 @@
       "category": "Processor content and visual",
       "severity": "P0",
       "locations": [
-        "lessons/049-performance-factors-cores-cache-clock-speed-and-word-length.md:145",
-        "web/assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg"
+        "lessons/050-bit-manipulation-with-masks-and-shifts.md:145",
+        "web/assets/diagrams/stage10-infographics/stage10-lesson-050-concept.jpg"
       ],
       "problem": "The core visual omits processor type and bus width and substitutes word length for the official performance-factor list.",
       "acceptanceTarget": "Stage 5 must align title, hero, teaching, assessment, transcript and pixels with the official five-factor list.",
       "confidence": "High",
       "status": "Resolved",
       "closureEvidence": [
-        "L049 topic heading, teaching, assessment, maintained transcript and deterministic concept image use processor type and number of cores, bus width, clock speed and cache memory",
+        "L050 topic heading, teaching, assessment, maintained transcript and deterministic concept image use processor type and number of cores, bus width, clock speed and cache memory",
         "The word-length discussion remains visibly labelled Optional enrichment and is excluded from the official performance-factor list"
       ]
     },
@@ -260,16 +260,16 @@
       "category": "Pseudocode typing",
       "severity": "P0",
       "locations": [
-        "lessons/107-string-processing-algorithms.md:155",
-        "lessons/133-string-handling-and-built-in-functions.md:49",
-        "web/assets/diagrams/stage10-infographics/stage10-lesson-133-java.jpg"
+        "lessons/108-string-processing-algorithms.md:155",
+        "lessons/134-clear-and-efficient-cambridge-pseudocode.md:49",
+        "web/assets/diagrams/stage10-infographics/stage10-lesson-134-java.jpg"
       ],
       "problem": "LCASE/UCASE are used with STRING expressions, guide-external indexing is presented as Cambridge pseudocode, and LEFT is used without a supplied signature.",
       "acceptanceTarget": "Stage 5 must enforce guide-compatible CHAR/STRING types or declare every question-provided function with a complete signature and convention.",
       "confidence": "High",
       "status": "Resolved",
       "closureEvidence": [
-        "L107/L133 keep MID results as STRING and reserve LCASE/UCASE for declared CHAR values with single-quoted literals",
+        "L108/L134 keep MID results as STRING and reserve LCASE/UCASE for declared CHAR values with single-quoted literals",
         "LEFT is identified as guide-external and is not called without a complete question-supplied signature"
       ]
     },
@@ -278,15 +278,15 @@
       "category": "Provided functions",
       "severity": "P0",
       "locations": [
-        "lessons/121-csv-style-structured-text-files.md:128",
-        "web/assets/diagrams/stage10-infographics/stage10-lesson-121-parse.jpg"
+        "lessons/122-choosing-stack-queue-or-linked-list.md:128",
+        "web/assets/diagrams/stage10-infographics/stage10-lesson-122-parse.jpg"
       ],
       "problem": "SPLIT and STRING_TO_INTEGER are labelled Cambridge-style pseudocode without being defined as question-provided routines.",
       "acceptanceTarget": "Stage 5 must supply typed signatures and indexing rules before use or replace the examples with guide-supported expressions.",
       "confidence": "High",
       "status": "Resolved",
       "closureEvidence": [
-        "L121 defines SPLIT, STRING_TO_INTEGER, IS_NUMERIC and FIELD_COUNT with complete typed signatures before use",
+        "L122 defines SPLIT, STRING_TO_INTEGER, IS_NUMERIC and FIELD_COUNT with complete typed signatures before use",
         "The supplied SPLIT array starts at index 1; parameter order and return types are explicit in teaching, questions, transcript and pixels"
       ]
     },
@@ -299,7 +299,7 @@
         "scripts/remediation-v2-audit-integrity-gate.mjs",
         "scripts/syllabus-coverage-contract.json"
       ],
-      "problem": "The former 121-row mapping and contract could omit the same official statement and still prove each other consistent. The independent PDF extraction now exposes unmapped official units and incorrect page locators.",
+      "problem": "The former 122-row mapping and contract could omit the same official statement and still prove each other consistent. The independent PDF extraction now exposes unmapped official units and incorrect page locators.",
       "acceptanceTarget": "Every claim-bearing source unit from the locked PDF must have an explicit contract owner, every contract claim must be fully present in its bound source units, page locators must be exact, and all 121 mappings must receive a new independent review status.",
       "confidence": "High",
       "status": "Resolved",
@@ -323,7 +323,7 @@
       "confidence": "High",
       "status": "Resolved",
       "closureEvidence": [
-        "95/95 CORE teaching pages place substantive CORE before Optional content; all 72 unique first-use pages are owned by declared requirements",
+        "84/84 CORE teaching pages place substantive CORE before Optional content; all 70 unique first-use pages are owned by declared requirements",
         "All declared first-teaching concept groups pass, including vector, representations, devices, security, licensing, algorithms and ADT scope"
       ]
     },
@@ -342,7 +342,7 @@
       "status": "Resolved",
       "closureEvidence": [
         "Required visual evidence now checks the contract mapping, target register and actual DOM section role/activity together; Optional evidence cannot satisfy CORE coverage",
-        "74 unique required visual panels are anchored after reviewed CORE teaching, with 28 source panels relocated so none precedes first use or depends on an Optional-only page"
+        "75 unique required visual panels are anchored after reviewed CORE teaching, with 42 source panels relocated so none precedes first use or depends on an Optional-only page"
       ]
     }
   ]

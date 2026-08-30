@@ -24,7 +24,7 @@ for (const row of imageReview.records) {
 }
 
 const currentVisuals = scanVisualSemanticHashes((relative) => read(relative), (relative) => fs.readFileSync(path.join(root, relative)));
-expect(currentVisuals.length === 969, `current visual census changed to ${currentVisuals.length}`);
+expect(currentVisuals.length === 971, `current visual census changed to ${currentVisuals.length}`);
 const currentByKey = new Map(currentVisuals.map((row) => [row.key, row]));
 for (const reviewed of visualReview.records) {
   const current = currentByKey.get(reviewed.key);
@@ -51,10 +51,10 @@ if (decision.currentStage?.number > 6) {
 expect(decision.historicalDecisions.some(({ stage, progressionApproval, current }) => stage === 5 && progressionApproval === "ApprovedForProgression" && current === false), "Stage 5 progression approval is not historical");
 
 const gateResult = json("audits/remediation-v2-stage6-gate-result.json");
-expect(gateResult.images?.reviewed === 783 && gateResult.visualObjects?.reviewed === 969 && gateResult.browser?.viewportRecords === 306, "Stage 6 gate-result counts are invalid");
+expect(gateResult.images?.reviewed === 784 && gateResult.visualObjects?.reviewed === 971 && gateResult.browser?.viewportRecords === 308, "Stage 6 gate-result counts are invalid");
 expect(gateResult.openP0P1?.length === 0, "Stage 6 gate result still has open P0/P1 defects");
 expect(fs.existsSync(path.join(root, "audits", "remediation-v2-stage6-closure.json")), "Stage 6 closure is missing");
 const report = read("audits/remediation-v2-stage6-report.md");
-expect(report.includes("783/783") && report.includes("969/969") && report.includes("306/306") && report.includes("Do not start Stage 7"), "Stage 6 report is incomplete");
+expect(report.includes("784/784") && report.includes("971/971") && report.includes("308/308") && report.includes("Do not start Stage 7"), "Stage 6 report is incomplete");
 
 console.log("Remediation v2 Stage 6 verification passed: current pixels, current visual semantics, current page hashes and BLOCKED decision all reconcile.");

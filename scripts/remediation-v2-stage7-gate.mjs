@@ -6,8 +6,8 @@ export function evaluateStage7Artifacts({ browserEvidence, independentReview, re
 
   require(browserEvidence?.sourceApprovalImported === false, "browser evidence must reject inherited approvals");
   require(browserEvidence?.oldApprovedRowsUsedForDecision === false, "old Approved rows must not contribute to Stage 7");
-  require(browserEvidence?.pageCount === 153, "browser evidence must cover 153 pages");
-  require(browserEvidence?.viewportRecordCount === 306 && browserEvidence?.records?.length === 306, "browser evidence must contain 306 records");
+  require(browserEvidence?.pageCount === 154, "browser evidence must cover 154 pages");
+  require(browserEvidence?.viewportRecordCount === 308 && browserEvidence?.records?.length === 308, "browser evidence must contain 308 records");
   require(browserEvidence?.failedRecords === 0, "browser evidence contains failed records");
   const keys = new Set();
   for (const row of browserEvidence?.records ?? []) {
@@ -27,7 +27,7 @@ export function evaluateStage7Artifacts({ browserEvidence, independentReview, re
       `${row.page}/${row.viewport}: console or framework failure found`);
     require(row.contrast?.failures === 0, `${row.page}/${row.viewport}: contrast failure found`);
   }
-  require(keys.size === 306, "browser evidence has duplicate or missing page/viewport keys");
+  require(keys.size === 308, "browser evidence has duplicate or missing page/viewport keys");
   require(browserEvidence?.keyboard?.status === "PassedSystemKeyboard", "real system keyboard review did not pass");
   require(browserEvidence?.keyboard?.browser === "Google Chrome" && browserEvidence?.keyboard?.driver === "macOS Computer Use",
     "system keyboard provenance is incomplete");

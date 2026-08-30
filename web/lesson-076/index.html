@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 076 | Environmental and social impacts of computing</title>
+    <title>AS9618 Lesson 076 | Shareware and commercial licences</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
-        <h1>Environmental and social impacts of computing</h1>
+        <h1>Shareware and commercial licences</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#environment">Environment</a>
-        <a href="#ewaste">E-waste</a>
-        <a href="#social">Social impacts</a>
-        <a href="#digital-divide">Digital divide</a>
+        <a href="#open-source">Open source</a>
+        <a href="#proprietary">Proprietary</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#ownership">Ownership</a>
         <a href="#method">Answer method</a>
-        <a href="#analyser">Impact analyser</a>
-        <a href="#builder">Response builder</a>
+        <a href="#advisor">Choice advisor</a>
+        <a href="#checker">Trade-off checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -54,64 +54,51 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>AI applications and impact chains</h2>
+            <h2>Shareware and commercial licences</h2>
           </div>
           <div class="stage2-explanation">
-            <p>AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.</p>
-            <p>Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.</p>
+            <p>Shareware is distributed for trial or limited use, with payment commonly required for continued, full or unrestricted use. A commercial/proprietary licence grants defined use while normally restricting copying, modification and redistribution.</p>
+            <p>Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.</p>
             <p>Evaluate AI by connecting an application to its social, economic and environmental impacts, then reaching a contextual judgement.</p>
+            <p>The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Medical triage model</h3>
-            <p>The model prioritises scans, reducing waiting time, but biased training data may miss a patient group. Human review, representative validation data and monitoring can reduce rather than eliminate the risk.</p>
+            <h3>Worked example: Trial accounting package</h3>
+            <p>A company tests a limited shareware edition for 30 days, then buys commercial licences for continued use, vendor support and full reporting features.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start environment -->
-        <section class="panel explanation-panel" id="explanation-environment" data-explains="environment" data-explanation-kind="mechanism" aria-labelledby="explanation-environment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="environment">
-          <h2 class="explanation-sr-only" id="explanation-environment-title">Environmental impacts include energy use and resource consumption</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-environment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Environmental impacts include energy use and resource consumption with a structured visual model." />
-            <figcaption class="explanation-sr-only">Environmental impacts include energy use and resource consumption: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Energy use Devices, networks and data centres consume electricity during operation.</li><li><strong>Lesson fact:</strong> Carbon emissions Emissions depend on electricity source, device manufacture and transport.</li><li><strong>Lesson fact:</strong> Resource extraction Manufacturing hardware requires metals, rare materials, water and energy.</li><li><strong>Lesson fact:</strong> Lifespan Short upgrade cycles increase manufacturing and disposal impact.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end environment -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>AI applications and impact chains: apply and assess</h2>
+            <h2>Shareware and commercial licences: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Give one economic benefit of predictive maintenance.</p>
-              <details><summary>Show answer</summary><p>Reduced downtime or repair cost by predicting failure.</p></details>
+              <p><strong>1.</strong> What commonly changes after a shareware trial?</p>
+              <details><summary>Show answer</summary><p>Payment is required or features/time become restricted.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Give one environmental cost of training a large model.</p>
-              <details><summary>Show answer</summary><p>Electricity use and associated emissions/resource demand.</p></details>
+              <p><strong>2.</strong> Can a buyer normally redistribute unlimited copies of commercial software?</p>
+              <details><summary>Show answer</summary><p>No, unless the licence explicitly permits it.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why can biased training data create social harm?</p>
-              <details><summary>Show answer</summary><p>The model may produce systematically poorer decisions for under-represented groups.</p></details>
+              <p><strong>3.</strong> Give one reason to choose a commercial licence.</p>
+              <details><summary>Show answer</summary><p>Vendor support, warranty, specialist features or compatibility, developed for the scenario.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Evaluate the use of AI to select applicants for jobs.</p>
+            <p>A school needs supported examination software but cannot modify or redistribute it. Justify a commercial licence and state one restriction.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>valid benefit such as speed/consistent initial processing</td><td>Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences.</td><td>1</td></tr>
-                  <tr><td>valid risk such as bias, opacity, privacy or exclusion</td><td></td><td>1</td></tr>
-                  <tr><td>explains a stakeholder consequence</td><td></td><td>1</td></tr>
-                  <tr><td>balanced judgement or mitigation linked to the context</td><td></td><td>1</td></tr>
+                  <tr><td>vendor support/updates appropriate to examination use</td><td>Do not award 'commercial is better' without a scenario-linked reason.</td><td>1</td></tr>
+                  <tr><td>reliability/compatibility/accountability developed</td><td></td><td>1</td></tr>
+                  <tr><td>use limited to licensed users/devices</td><td></td><td>1</td></tr>
+                  <tr><td>copying/modification/redistribution restricted</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -121,280 +108,284 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 076 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
-            <h2>Computing changes the world. Sometimes the electricity bill is only the first clue.</h2>
+            <p class="lesson-meta">Lesson 076 | 45 minutes | Paper 1 Section 7 | 5-minute quiz</p>
+            <h2>Free software is not always free of responsibility.</h2>
             <p>
-              Computing affects energy use, e-waste, work, access to services, communication, inclusion and
-              inequality. Good exam answers balance benefits with harms and connect each point to a specific
-              stakeholder or consequence.
+              This lesson compares open-source and proprietary software. The exam skill is not to declare
+              one side "better"; it is to explain the trade-off for a given user, organisation or project:
+              cost, control, support, security, customisation, compatibility and licensing.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>environmental impacts such as energy use, emissions and e-waste</span></div>
-              <div><strong>Analyse</strong><span>social impacts including work, access, inclusion and inequality</span></div>
-              <div><strong>Evaluate</strong><span>write balanced answers with realistic mitigations</span></div>
+              <div><strong>Define</strong><span>open source, proprietary software and ownership restrictions</span></div>
+              <div><strong>Compare</strong><span>cost, support, customisation, security and lock-in trade-offs</span></div>
+              <div><strong>Recommend</strong><span>a suitable choice using scenario-specific evidence</span></div>
             </div>
           </div>
-          <div class="impact-card" aria-label="Impact analysis chain">
-            <div class="impact-stack">
-              <span>Technology</span>
-              <span>Stakeholders</span>
-              <span>Benefit</span>
-              <span>Harm</span>
-              <span>Mitigation</span>
-              <span>Judgement</span>
+          <div class="software-card" aria-label="Software choice chain">
+            <div class="software-stack">
+              <span>Source visible?</span>
+              <span>Can modify?</span>
+              <span>Who supports it?</span>
+              <span>What licence terms?</span>
+              <span>What costs?</span>
+              <span>What risk?</span>
             </div>
-            <p>"Technology improves life" is not an answer. It is a poster waiting for evidence.</p>
+            <p>Choosing software by slogan is like choosing a database by logo colour. Entertaining, not evidence.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Environmental and social impact questions reward balanced evaluation, not a list of unsupported opinions.</p>
+            <p>Marks come from trade-offs: low cost may mean less formal support; vendor support may mean less control.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not claim computing is simply good or bad for the environment. The impact depends on use, energy source, lifespan and disposal.</p>
+            <p>Open source does not mean no copyright, no licence, no security risk or no maintenance cost.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A company moves meetings online and buys new laptops for every worker. Is this environmentally positive?</h2>
-            <p>The answer has more branches than a badly planned flowchart.</p>
+            <h2>A school wants free software for its network servers. Should it automatically choose open source?</h2>
+            <p>"Free download" is a starting price, not the total cost of ownership wearing a tiny hat.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="balanced">It may reduce travel, but device manufacture, energy use and e-waste also matter</button>
-            <button class="choice-card" type="button" data-hook="alwaysGood">Yes, because online meetings have no environmental cost</button>
-            <button class="choice-card" type="button" data-hook="alwaysBad">No, because all computers are bad for the environment</button>
-            <button class="choice-card" type="button" data-hook="onlyCost">Only the price of laptops matters</button>
+            <button class="choice-card" type="button" data-hook="depends">It depends on support, skills, security updates, compatibility and licence terms</button>
+            <button class="choice-card" type="button" data-hook="always">Yes. Open source is always free and always safer</button>
+            <button class="choice-card" type="button" data-hook="never">No. Proprietary software is always more professional</button>
+            <button class="choice-card" type="button" data-hook="owner">Yes. Open source means the school owns the code</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for more than one impact.
+            Choose one. The exam likes trade-offs more than fan clubs.
           </div>
         </section>
 
-        <section class="panel" id="environment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+        <section class="panel" id="open-source" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Environmental impacts include energy use and resource consumption</h2>
+            <h2>Open-source software makes source code available under a licence</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Energy use</strong><span>Devices, networks and data centres consume electricity during operation.</span></article>
-            <article><strong>Carbon emissions</strong><span>Emissions depend on electricity source, device manufacture and transport.</span></article>
-            <article><strong>Resource extraction</strong><span>Manufacturing hardware requires metals, rare materials, water and energy.</span></article>
-            <article><strong>Lifespan</strong><span>Short upgrade cycles increase manufacturing and disposal impact.</span></article>
+            <article><strong>Source code available</strong><span>Users can inspect the program code rather than only using compiled software.</span></article>
+            <article><strong>Modify</strong><span>Licence may allow users to adapt the code for their own needs.</span></article>
+            <article><strong>Redistribute</strong><span>Licence may allow sharing original or modified versions under conditions.</span></article>
+            <article><strong>Community</strong><span>Development and support may come from volunteers, companies or mixed communities.</span></article>
           </div>
-          <div class="callout">Chinese support: environmental impact = 环境影响；energy use = 能源使用；carbon emissions = 碳排放；resource extraction = 资源开采。</div>
+          <div class="callout">Chinese support: open source = 开源；source code = 源代码；modify = 修改；redistribute = 再分发。</div>
         </section>
 
-        <section class="panel" id="ewaste" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+        <!-- stage10-explanation:start open-source -->
+        <section class="panel explanation-panel" id="explanation-open-source" data-explains="open-source" data-explanation-kind="mechanism" aria-labelledby="explanation-open-source-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+          <h2 class="explanation-sr-only" id="explanation-open-source-title">Open-source software makes source code available under a licence</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-open-source.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Open-source software makes source code available under a licence with a structured visual model." />
+            <figcaption class="explanation-sr-only">Open-source software makes source code available under a licence: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Source code available Users can inspect the program code rather than only using compiled software.</li><li><strong>Lesson fact:</strong> Modify Licence may allow users to adapt the code for their own needs.</li><li><strong>Lesson fact:</strong> Redistribute Licence may allow sharing original or modified versions under conditions.</li><li><strong>Lesson fact:</strong> Community Development and support may come from volunteers, companies or mixed communities.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end open-source -->
+        <section class="panel" id="proprietary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>E-waste is an ethical issue, not just a rubbish-bin issue</h2>
+            <h2>Proprietary software keeps control with the owner</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>E-waste</strong><span>Discarded electronic devices and components.</span></article>
-            <article><strong>Toxic materials</strong><span>Some components contain harmful substances that can pollute soil or water if mishandled.</span></article>
-            <article><strong>Recycling</strong><span>Responsible recycling can recover materials and reduce landfill, but must be managed safely.</span></article>
-            <article><strong>Reuse and repair</strong><span>Extending device life reduces demand for new manufacturing.</span></article>
+            <article><strong>Closed source</strong><span>Source code is usually not available to users.</span></article>
+            <article><strong>Restricted rights</strong><span>Licences often restrict copying, modification and redistribution.</span></article>
+            <article><strong>Vendor support</strong><span>Users may receive official updates, warranties, help desk or service agreements.</span></article>
+            <article><strong>Vendor lock-in</strong><span>Users may depend on one supplier, format, subscription or ecosystem.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start ewaste -->
-        <section class="panel explanation-panel" id="explanation-ewaste" data-explains="ewaste" data-explanation-kind="mechanism" aria-labelledby="explanation-ewaste-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
-          <h2 class="explanation-sr-only" id="explanation-ewaste-title">E-waste is an ethical issue, not just a rubbish-bin issue</h2>
+        <!-- stage10-explanation:start proprietary -->
+        <section class="panel explanation-panel" id="explanation-proprietary" data-explains="proprietary" data-explanation-kind="mechanism" aria-labelledby="explanation-proprietary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+          <h2 class="explanation-sr-only" id="explanation-proprietary-title">Proprietary software keeps control with the owner</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-ewaste.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining E-waste is an ethical issue, not just a rubbish-bin issue with a structured visual model." />
-            <figcaption class="explanation-sr-only">E-waste is an ethical issue, not just a rubbish-bin issue: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-proprietary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Proprietary software keeps control with the owner with a structured visual model." />
+            <figcaption class="explanation-sr-only">Proprietary software keeps control with the owner: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> E-waste Discarded electronic devices and components.</li><li><strong>Lesson fact:</strong> Toxic materials Some components contain harmful substances that can pollute soil or water if mishandled.</li><li><strong>Lesson fact:</strong> Recycling Responsible recycling can recover materials and reduce landfill, but must be managed safely.</li><li><strong>Lesson fact:</strong> Reuse and repair Extending device life reduces demand for new manufacturing.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Closed source Source code is usually not available to users.</li><li><strong>Lesson fact:</strong> Restricted rights Licences often restrict copying, modification and redistribution.</li><li><strong>Lesson fact:</strong> Vendor support Users may receive official updates, warranties, help desk or service agreements.</li><li><strong>Lesson fact:</strong> Vendor lock-in Users may depend on one supplier, format, subscription or ecosystem.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end ewaste -->
-        <section class="panel" id="social" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+        <!-- stage10-explanation:end proprietary -->
+        <section class="panel" id="tradeoffs" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Social impacts affect work, communication and daily life</h2>
+            <h2>Compare by factor, not by favourite label</h2>
           </div>
-          <div class="risk-table" role="table" aria-label="Social impact table">
+          <div class="risk-table" role="table" aria-label="Open source proprietary trade-offs">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Computing change</div>
-              <div role="columnheader">Possible benefit</div>
-              <div role="columnheader">Possible harm</div>
+              <div role="columnheader">Factor</div>
+              <div role="columnheader">Open source may offer</div>
+              <div role="columnheader">Proprietary may offer</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Remote work</div>
-              <div role="cell">Less commuting, flexible work, access to wider jobs.</div>
-              <div role="cell">Isolation, blurred work-life boundaries, unequal home access.</div>
+              <div role="cell">Cost</div>
+              <div role="cell">Low or no licence fee, but support and training can still cost money.</div>
+              <div role="cell">Licence/subscription cost, but bundled support may reduce operational risk.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Automation</div>
-              <div role="cell">Efficiency, safer handling of dangerous or repetitive tasks.</div>
-              <div role="cell">Job displacement, need for retraining, deskilling.</div>
+              <div role="cell">Control</div>
+              <div role="cell">More ability to inspect, modify and adapt code.</div>
+              <div role="cell">Less control over internals; vendor controls source and roadmap.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Online services</div>
-              <div role="cell">Access to education, banking, healthcare and communication.</div>
-              <div role="cell">Excludes users without devices, internet, skills or accessible design.</div>
+              <div role="cell">Security</div>
+              <div role="cell">Code can be reviewed publicly, but someone must apply updates and assess trust.</div>
+              <div role="cell">Vendor may provide tested updates, but users must trust closed code and vendor response.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Support</div>
+              <div role="cell">Community help or paid third-party support may vary.</div>
+              <div role="cell">Official support agreements may be clearer for organisations.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start social -->
-        <section class="panel explanation-panel" id="explanation-social" data-explains="social" data-explanation-kind="mechanism" aria-labelledby="explanation-social-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
-          <h2 class="explanation-sr-only" id="explanation-social-title">Social impacts affect work, communication and daily life</h2>
+        <!-- stage10-explanation:start tradeoffs -->
+        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="comparison" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Compare by factor, not by favourite label</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-social.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Social impacts affect work, communication and daily life with a structured visual model." />
-            <figcaption class="explanation-sr-only">Social impacts affect work, communication and daily life: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by factor, not by favourite label with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare by factor, not by favourite label: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Computing change</li><li><strong>Lesson fact:</strong> Possible benefit</li><li><strong>Lesson fact:</strong> Possible harm</li><li><strong>Lesson fact:</strong> Remote work</li><li><strong>Lesson fact:</strong> Less commuting, flexible work, access to wider jobs.</li><li><strong>Lesson fact:</strong> Isolation, blurred work-life boundaries, unequal home access.</li><li><strong>Lesson fact:</strong> Automation</li><li><strong>Lesson fact:</strong> Efficiency, safer handling of dangerous or repetitive tasks.</li><li><strong>Lesson fact:</strong> Job displacement, need for retraining, deskilling.</li><li><strong>Lesson fact:</strong> Online services</li><li><strong>Lesson fact:</strong> Access to education, banking, healthcare and communication.</li><li><strong>Lesson fact:</strong> Excludes users without devices, internet, skills or accessible design.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Open source may offer</li><li><strong>Lesson fact:</strong> Proprietary may offer</li><li><strong>Lesson fact:</strong> Low or no licence fee, but support and training can still cost money.</li><li><strong>Lesson fact:</strong> Licence/subscription cost, but bundled support may reduce operational risk.</li><li><strong>Lesson fact:</strong> More ability to inspect, modify and adapt code.</li><li><strong>Lesson fact:</strong> Less control over internals; vendor controls source and roadmap.</li><li><strong>Lesson fact:</strong> Security</li><li><strong>Lesson fact:</strong> Code can be reviewed publicly, but someone must apply updates and assess trust.</li><li><strong>Lesson fact:</strong> Vendor may provide tested updates, but users must trust closed code and vendor response.</li><li><strong>Lesson fact:</strong> Community help or paid third-party support may vary.</li><li><strong>Lesson fact:</strong> Official support agreements may be clearer for organisations.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end social -->
-        <section class="panel" id="digital-divide" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+        <!-- stage10-explanation:end tradeoffs -->
+        <section class="panel" id="ownership" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>The digital divide is about access, skills and inclusion</h2>
+            <h2>Ownership and licence obligations still matter</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Device access</strong><span>Some users cannot afford suitable hardware.</span></article>
-            <article><strong>Connectivity</strong><span>Reliable high-speed internet is not equally available.</span></article>
-            <article><strong>Digital skills</strong><span>Users may lack confidence or training to use online systems.</span></article>
-            <article><strong>Accessibility</strong><span>Systems should support users with disabilities or different needs.</span></article>
+            <article><strong>Copyright remains</strong><span>Open-source software is still protected; the licence grants permissions.</span></article>
+            <article><strong>Attribution</strong><span>Some licences require credit or notices to be kept.</span></article>
+            <article><strong>Share-alike</strong><span>Some licences require modified versions to be shared under similar terms.</span></article>
+            <article><strong>Compliance</strong><span>Organisations must track third-party components and meet licence conditions.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start digital-divide -->
-        <section class="panel explanation-panel" id="explanation-digital-divide" data-explains="digital-divide" data-explanation-kind="mechanism" aria-labelledby="explanation-digital-divide-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
-          <h2 class="explanation-sr-only" id="explanation-digital-divide-title">The digital divide is about access, skills and inclusion</h2>
+        <!-- stage10-explanation:start ownership -->
+        <section class="panel explanation-panel" id="explanation-ownership" data-explains="ownership" data-explanation-kind="mechanism" aria-labelledby="explanation-ownership-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+          <h2 class="explanation-sr-only" id="explanation-ownership-title">Ownership and licence obligations still matter</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-digital-divide.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The digital divide is about access, skills and inclusion with a structured visual model." />
-            <figcaption class="explanation-sr-only">The digital divide is about access, skills and inclusion: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-ownership.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ownership and licence obligations still matter with a structured visual model." />
+            <figcaption class="explanation-sr-only">Ownership and licence obligations still matter: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Device access Some users cannot afford suitable hardware.</li><li><strong>Lesson fact:</strong> Connectivity Reliable high-speed internet is not equally available.</li><li><strong>Lesson fact:</strong> Digital skills Users may lack confidence or training to use online systems.</li><li><strong>Lesson fact:</strong> Accessibility Systems should support users with disabilities or different needs.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Copyright remains Open-source software is still protected; the licence grants permissions.</li><li><strong>Lesson fact:</strong> Attribution Some licences require credit or notices to be kept.</li><li><strong>Lesson fact:</strong> Share-alike Some licences require modified versions to be shared under similar terms.</li><li><strong>Lesson fact:</strong> Compliance Organisations must track third-party components and meet licence conditions.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end digital-divide -->
+        <!-- stage10-explanation:end ownership -->
         <section class="panel" id="method" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Use a balanced impact structure</h2>
+            <h2>Use a scenario-based comparison structure</h2>
           </div>
           <div class="flow-grid">
-            <article><strong>1. Change</strong><span>Name the computing change, such as automation or online services.</span></article>
-            <article><strong>2. Benefit</strong><span>Explain a positive impact for a named stakeholder.</span></article>
-            <article><strong>3. Harm</strong><span>Explain a negative impact with a realistic consequence.</span></article>
-            <article><strong>4. Mitigation</strong><span>Suggest a practical way to reduce harm.</span></article>
+            <article><strong>1. Need</strong><span>Identify the user's priority: cost, support, control, reliability, security or compatibility.</span></article>
+            <article><strong>2. Open source point</strong><span>Explain one benefit or risk linked to that priority.</span></article>
+            <article><strong>3. Proprietary point</strong><span>Explain a contrasting benefit or risk.</span></article>
+            <article><strong>4. Judgement</strong><span>Recommend one option with conditions and trade-offs.</span></article>
           </div>
           <div class="answer-frame">
             <strong>Answer frame:</strong>
-            <span>[Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].</span>
+            <span>For [scenario], [option] may be suitable because [factor]. However, [trade-off]. Therefore, the best choice depends on [condition/evidence].</span>
           </div>
         </section>
 
         <!-- stage10-explanation:start method -->
         <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
-          <h2 class="explanation-sr-only" id="explanation-method-title">Use a balanced impact structure</h2>
+          <h2 class="explanation-sr-only" id="explanation-method-title">Use a scenario-based comparison structure</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a balanced impact structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use a balanced impact structure: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a scenario-based comparison structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use a scenario-based comparison structure: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Change Name the computing change, such as automation or online services.</li><li><strong>Lesson fact:</strong> 2. Benefit Explain a positive impact for a named stakeholder.</li><li><strong>Lesson fact:</strong> 3. Harm Explain a negative impact with a realistic consequence.</li><li><strong>Lesson fact:</strong> 4. Mitigation Suggest a practical way to reduce harm.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> [Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].</li></ol>
+            <ol><li><strong>Lesson fact:</strong> 1. Need Identify the user's priority: cost, support, control, reliability, security or compatibility.</li><li><strong>Lesson fact:</strong> 2. Open source point Explain one benefit or risk linked to that priority.</li><li><strong>Lesson fact:</strong> 3. Proprietary point Explain a contrasting benefit or risk.</li><li><strong>Lesson fact:</strong> 4. Judgement Recommend one option with conditions and trade-offs.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> For [scenario], [option] may be suitable because [factor]. However, [trade-off]. Therefore, the best choice depends on [condition/evidence].</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end method -->
-        <section class="panel" id="analyser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+        <section class="panel" id="advisor" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
-            <p class="eyebrow">Interactive impact analyser</p>
-            <h2>Classify the impact and choose a mitigation</h2>
-            <p>Select a scenario and compare the positive impact, negative impact and mitigation.</p>
+            <p class="eyebrow">Interactive software choice advisor</p>
+            <h2>Match the software type to the scenario</h2>
+            <p>Select a scenario and compare the recommendation with its trade-off.</p>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="remoteWork">Company moves most meetings online.</option>
-                <option value="dataCentre">Business expands cloud data storage.</option>
-                <option value="newDevices">School replaces tablets every two years.</option>
-                <option value="automation">Factory automates repetitive assembly tasks.</option>
-                <option value="onlineBanking">Bank closes branches and moves services online.</option>
+                <option value="startup">Startup needs to customise server software with a skilled developer team.</option>
+                <option value="hospital">Hospital needs guaranteed vendor support for a critical system.</option>
+                <option value="school">School has limited budget but limited technical support staff.</option>
+                <option value="research">Research group wants to inspect and modify algorithms.</option>
+                <option value="office">Small business wants familiar office software and training materials.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="analyseBtn">Analyse</button>
+            <button class="primary-button" type="button" id="adviseBtn">Advise</button>
           </div>
-          <div class="result-box" id="analyseResult" aria-live="polite"></div>
-          <div class="method-box" id="analyseBenefit"></div>
-          <div class="reject-box" id="analyseMitigation"></div>
+          <div class="result-box" id="adviseResult" aria-live="polite"></div>
+          <div class="method-box" id="adviseReason"></div>
+          <div class="reject-box" id="adviseTrap"></div>
         </section>
 
-        <!-- stage10-explanation:start analyser -->
-        <section class="panel explanation-panel" id="explanation-analyser" data-explains="analyser" data-explanation-kind="mechanism" aria-labelledby="explanation-analyser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
-          <h2 class="explanation-sr-only" id="explanation-analyser-title">Classify the impact and choose a mitigation</h2>
+        <!-- stage10-explanation:start advisor -->
+        <section class="panel explanation-panel" id="explanation-advisor" data-explains="advisor" data-explanation-kind="mechanism" aria-labelledby="explanation-advisor-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+          <h2 class="explanation-sr-only" id="explanation-advisor-title">Match the software type to the scenario</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-analyser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify the impact and choose a mitigation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Classify the impact and choose a mitigation: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-076-advisor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the software type to the scenario with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match the software type to the scenario: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive impact analyser</li><li><strong>Lesson fact:</strong> Select a scenario and compare the positive impact, negative impact and mitigation.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive software choice advisor</li><li><strong>Lesson fact:</strong> Select a scenario and compare the recommendation with its trade-off.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end analyser -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
+        <!-- stage10-explanation:end advisor -->
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
-            <p class="eyebrow">Interactive balanced response builder</p>
-            <h2>Build a mark-worthy evaluation sentence</h2>
+            <p class="eyebrow">Interactive trade-off checker</p>
+            <h2>Spot the missing qualification</h2>
           </div>
-          <div class="builder-grid">
+          <div class="converter-grid">
             <label>
-              Technology
-              <select id="techInput">
-                <option value="automation">automation</option>
-                <option value="remote">remote work</option>
-                <option value="online">online public services</option>
+              Claim
+              <select id="claimInput">
+                <option value="free">Open source is always free.</option>
+                <option value="secure">Open source is always more secure.</option>
+                <option value="support">Proprietary software always has better support.</option>
+                <option value="own">Buying proprietary software means owning the source code.</option>
               </select>
             </label>
-            <label>
-              Benefit
-              <select id="benefitInput">
-                <option value="efficiency">improves efficiency and reduces repetitive work</option>
-                <option value="travel">reduces travel and commuting</option>
-                <option value="access">improves access for some users</option>
-              </select>
-            </label>
-            <label>
-              Harm
-              <select id="harmInput">
-                <option value="jobs">may displace workers who need retraining</option>
-                <option value="isolation">may increase isolation or blur work-life boundaries</option>
-                <option value="divide">may exclude users without devices, internet or skills</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="buildBtn">Build</button>
+            <button class="primary-button" type="button" id="claimBtn">Improve claim</button>
           </div>
-          <div class="result-box" id="buildResult" aria-live="polite"></div>
+          <div class="result-box" id="claimResult" aria-live="polite"></div>
+          <div class="method-box" id="claimReason"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with balanced impacts</h2>
+            <h2>Four model answers with trade-off reasoning</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="remote">Remote work</button>
-            <button class="tab" type="button" data-example="ewaste">E-waste</button>
-            <button class="tab" type="button" data-example="automation">Automation</button>
-            <button class="tab" type="button" data-example="divide">Digital divide</button>
+            <button class="tab active" type="button" data-example="startup">Startup</button>
+            <button class="tab" type="button" data-example="hospital">Hospital</button>
+            <button class="tab" type="button" data-example="school">School</button>
+            <button class="tab" type="button" data-example="research">Research</button>
           </div>
           <div class="example-box" id="exampleBox" aria-live="polite"></div>
         </section>
@@ -402,7 +393,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Check vocabulary before writing full evaluations</h2>
+            <h2>Check vocabulary before writing comparisons</h2>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -410,7 +401,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix answers that make one-sided claims</h2>
+            <h2>Fix answers that sound certain but are not scenario-based</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -418,8 +409,8 @@
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style environmental and social impact questions with expandable MS</h2>
-            <p>Attempt first. Then check whether each point includes a stakeholder, consequence and realistic mitigation where appropriate.</p>
+            <h2>Cambridge-style software ownership questions with expandable MS</h2>
+            <p>Attempt first. Then check whether your answer balances factors and links them to the user or organisation.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -427,35 +418,35 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-076">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Environmental and social impacts in six exam-ready ideas</h2>
+            <h2>Open source vs proprietary in six exam-ready ideas</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Energy</strong><span>Devices, networks and data centres use electricity.</span></div>
-            <div><strong>E-waste</strong><span>Short device lifespans create disposal and toxic-material risks.</span></div>
-            <div><strong>Work</strong><span>Automation and remote work can help some workers and harm others.</span></div>
-            <div><strong>Access</strong><span>Online services can improve access but widen the digital divide.</span></div>
-            <div><strong>Mitigation</strong><span>Use recycling, repair, efficient design, training and inclusive access.</span></div>
-            <div><strong>Balance</strong><span>Give both benefit and harm before reaching a judgement.</span></div>
+            <div><strong>Open source</strong><span>Source code is available and can often be modified under licence.</span></div>
+            <div><strong>Proprietary</strong><span>Owner controls source code and licence restrictions.</span></div>
+            <div><strong>Cost</strong><span>Licence price is not the same as total cost.</span></div>
+            <div><strong>Support</strong><span>Community support and vendor support suit different risks.</span></div>
+            <div><strong>Security</strong><span>Reviewability and responsibility for updates both matter.</span></div>
+            <div><strong>Judgement</strong><span>Recommend by scenario, not by slogan.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Practise balanced impact evaluation</h2>
+            <h2>Practise balanced comparison</h2>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Impact table</strong>
-              <span>Choose one technology: online learning, automation, cloud storage or remote work. Make a table with environmental benefit, environmental harm, social benefit, social harm and mitigation.</span>
+              <strong>Task 1: Comparison table</strong>
+              <span>Compare one open-source and one proprietary tool for the same task. Use columns: cost, support, customisation, security updates, compatibility, licence obligations.</span>
             </article>
             <article>
               <strong>Task 2: Rewrite weak claims</strong>
-              <span>Rewrite: "Online services are better because they are convenient." Add stakeholder, exclusion risk, environmental consideration and one mitigation.</span>
+              <span>Rewrite these with qualifications: "Open source is free", "Proprietary is safer", "Open source has no owner", "Paid software gives ownership".</span>
             </article>
             <article>
               <strong>Task 3: Timed response</strong>
-              <span>Answer in 8 minutes: "Evaluate the environmental and social impacts of replacing face-to-face services with online services." Include a balanced conclusion.</span>
+              <span>Answer in 8 minutes: "A school is choosing between open-source and proprietary software for a learning platform. Discuss the trade-offs." Include a final recommendation.</span>
             </article>
           </div>
         </section>
@@ -463,8 +454,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -1,108 +1,142 @@
+const typeMap = {
+  score: {
+    type: "INTEGER",
+    reason: "A score out of 75 is a whole number and arithmetic such as total or comparison may be performed.",
+    declaration: "DECLARE Score : INTEGER",
+  },
+  average: {
+    type: "REAL",
+    reason: "18.7 contains a fractional part, so an integer would lose precision.",
+    declaration: "DECLARE AverageTemperature : REAL",
+  },
+  paid: {
+    type: "BOOLEAN",
+    reason: "The value has two states: paid or not paid.",
+    declaration: "DECLARE HasPaid : BOOLEAN",
+  },
+  grade: {
+    type: "CHAR",
+    reason: "A single grade such as A is one character.",
+    declaration: "DECLARE Grade : CHAR",
+  },
+  phone: {
+    type: "STRING",
+    reason: "A phone number may contain leading zeroes and spacing, and arithmetic is not performed on it.",
+    declaration: "DECLARE PhoneNumber : STRING",
+  },
+  booking: {
+    type: "DATE",
+    reason: "A booking date should be stored as a calendar date so date comparison and validation are meaningful.",
+    declaration: "DECLARE BookingDate : DATE",
+  },
+};
+
 const builderMap = {
-  declareCounter: {
-    statement: "DECLARE Count : INTEGER",
-    reason: "A counter is a whole-number variable.",
+  count: {
+    declaration: "DECLARE ValidCount : INTEGER",
+    reason: "A count is a whole number and is normally incremented.",
   },
-  constantPass: {
-    statement: "CONSTANT PassMark = 50",
-    reason: "The pass mark is a fixed named value.",
+  mass: {
+    declaration: "DECLARE MassKg : REAL",
+    reason: "Measured mass may contain decimals.",
   },
-  initialiseTotal: {
-    statement: "Total <- 0",
-    reason: "Initialisation gives Total a known starting value before accumulation.",
+  valid: {
+    declaration: "DECLARE PasswordIsValid : BOOLEAN",
+    reason: "The value is either TRUE or FALSE.",
   },
-  incrementCount: {
-    statement: "Count <- Count + 1",
-    reason: "The right side uses the old Count, then stores the increased value.",
+  initial: {
+    declaration: "DECLARE Initial : CHAR",
+    reason: "Only one character is stored.",
   },
-  setFlag: {
-    statement: "Found <- TRUE",
-    reason: "A Boolean flag can be set when the required condition is found.",
+  postcode: {
+    declaration: "DECLARE Postcode : STRING",
+    reason: "A postcode is text and may contain letters, spaces and digits.",
   },
-  calculateAverage: {
-    statement: "Average <- Total / Count",
-    reason: "The expression is evaluated first, then stored in Average.",
+  birth: {
+    declaration: "DECLARE DateOfBirth : DATE",
+    reason: "The value is a calendar date.",
   },
 };
 
 const examples = {
-  score: {
-    title: "Example 1: Running total and count",
-    problem: "Trace Total and Count for marks 20, 35 and 45.",
+  school: {
+    title: "Example 1: School data fields",
+    problem: "Choose data types for a school registration form.",
     rows: [
-      ["Start", "-", "0", "0"],
-      ["After 20", "20", "20", "1"],
-      ["After 35", "35", "55", "2"],
-      ["After 45", "45", "100", "3"],
+      ["StudentName", "STRING", "stores a sequence of characters"],
+      ["DateOfBirth", "DATE", "stores a calendar date"],
+      ["AttendanceCount", "INTEGER", "whole-number count"],
+      ["AverageMark", "REAL", "may include decimal places"],
+      ["IsEnrolled", "BOOLEAN", "true/false state"],
     ],
-    code: "Total <- 0\nCount <- 0\nINPUT Mark\nTotal <- Total + Mark\nCount <- Count + 1",
-    points: ["Initialise before updating.", "The old Total is used on the right side.", "Count increases by exactly 1 per valid input."],
+    code: "DECLARE StudentName : STRING\nDECLARE DateOfBirth : DATE\nDECLARE AttendanceCount : INTEGER\nDECLARE AverageMark : REAL\nDECLARE IsEnrolled : BOOLEAN",
+    points: ["The type matches how each value is used.", "A reason is linked to the field, not copied from a generic definition.", "Date is not treated as ordinary text."],
   },
-  passmark: {
-    title: "Example 2: Constant for a pass mark",
-    problem: "Use a named constant instead of repeating the literal value 50.",
+  id: {
+    title: "Example 2: ID and phone fields",
+    problem: "A student ID is 003572 and a phone number starts with 07.",
     rows: [
-      ["Fixed value", "PassMark", "50", "constant"],
-      ["Input value", "Mark", "student mark", "variable"],
-      ["Decision", "Mark >= PassMark", "pass test", "comparison"],
+      ["StudentID", "STRING", "leading zeroes must be preserved"],
+      ["PhoneNumber", "STRING", "not used in arithmetic"],
+      ["Wrong answer", "INTEGER", "would remove leading zeroes or imply arithmetic"],
     ],
-    code: "CONSTANT PassMark = 50\nDECLARE Mark : INTEGER\n\nINPUT Mark\nIF Mark >= PassMark THEN\n    OUTPUT \"Pass\"\nENDIF",
-    points: ["PassMark explains what 50 means.", "The constant is not reassigned.", "Comparison uses = or >=; assignment uses <-."],
+    code: "DECLARE StudentID : STRING\nDECLARE PhoneNumber : STRING",
+    points: ["Digits do not automatically mean INTEGER.", "Ask whether arithmetic is needed.", "Preserving the exact characters matters."],
   },
-  swap: {
-    title: "Example 3: Swapping two values needs a temporary variable",
-    problem: "Swap A and B when A = 4 and B = 9.",
+  enum: {
+    title: "Example 3: User-defined membership type",
+    problem: "A membership level must be Basic, Standard or Premium.",
     rows: [
-      ["Start", "A = 4", "B = 9", "Temp empty"],
-      ["Temp <- A", "A = 4", "B = 9", "Temp = 4"],
-      ["A <- B", "A = 9", "B = 9", "Temp = 4"],
-      ["B <- Temp", "A = 9", "B = 4", "Temp = 4"],
+      ["Built-in option", "STRING", "possible but allows invalid text such as 'Goldish'"],
+      ["User-defined option", "TMembership", "restricts values to named allowed levels"],
+      ["Reason", "clarity", "the named type documents the permitted states"],
     ],
-    code: "Temp <- A\nA <- B\nB <- Temp",
-    points: ["Assignment overwrites the left-hand variable.", "A temporary variable preserves the old value.", "Order matters."],
+    code: "TYPE TMembership = (Basic, Standard, Premium)\n\nDECLARE Level : TMembership",
+    points: ["An enumerated type gives a named set of allowed values.", "The variable declaration uses the new type name.", "Do not confuse this with an array."],
   },
-  flag: {
-    title: "Example 4: Boolean flag assignment",
-    problem: "Use Found to record whether the target has appeared.",
+  declaration: {
+    title: "Example 4: Declaration syntax",
+    problem: "Write Cambridge-style declarations for common variables.",
     rows: [
-      ["Initial state", "Found", "FALSE", "target not seen yet"],
-      ["Target found", "Found", "TRUE", "state is updated"],
-      ["After search", "Found", "TRUE/FALSE", "output depends on flag"],
+      ["Count", "INTEGER", "DECLARE Count : INTEGER"],
+      ["Temperature", "REAL", "DECLARE Temperature : REAL"],
+      ["Found", "BOOLEAN", "DECLARE Found : BOOLEAN"],
+      ["Initial", "CHAR", "DECLARE Initial : CHAR"],
     ],
-    code: "Found <- FALSE\nIF Item = Target THEN\n    Found <- TRUE\nENDIF",
-    points: ["A flag is normally initialised before search.", "Set it when the condition becomes true.", "Do not use STRING values such as \"yes\" when BOOLEAN is suitable."],
+    code: "DECLARE Count : INTEGER\nDECLARE Temperature : REAL\nDECLARE Found : BOOLEAN\nDECLARE Initial : CHAR",
+    points: ["Use DECLARE, identifier, colon, type.", "Type names should be clear and consistent.", "Java declarations are not the Paper 2 format."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which Cambridge symbol is used for assignment?", accepted: ["<-", "←"], answer: "<-" },
-  { id: "p2", prompt: "Read Count <- Count + 1 as Count is set to what?", accepted: ["count plus 1", "old count plus 1", "count + 1", "one more than count"], answer: "The old Count plus 1." },
-  { id: "p3", prompt: "Should a constant be changed later in the algorithm? yes or no.", accepted: ["no"], answer: "No. If it changes, it should be a variable." },
-  { id: "p4", prompt: "What keyword declares a variable in Cambridge-style pseudocode?", accepted: ["declare"], answer: "DECLARE" },
-  { id: "p5", prompt: "Write the keyword for a fixed named value.", accepted: ["constant"], answer: "CONSTANT" },
-  { id: "p6", prompt: "If Total starts at 10 and Mark is 5, what is Total after Total <- Total + Mark?", accepted: ["15"], answer: "15" },
-  { id: "p7", prompt: "If Count starts at 3, what is Count after Count <- Count + 1?", accepted: ["4"], answer: "4" },
-  { id: "p8", prompt: "In A <- B, which variable changes: A or B?", accepted: ["a"], answer: "A changes. B is read from." },
-  { id: "p9", prompt: "In IF Mark = PassMark THEN, is = assignment or comparison?", accepted: ["comparison", "compare"], answer: "Comparison." },
-  { id: "p10", prompt: "Is Java '=' the preferred Paper 2 pseudocode assignment symbol? yes or no.", accepted: ["no"], answer: "No. Use <- in Cambridge-style pseudocode." },
+  { id: "p1", prompt: "Best type for a whole-number count?", accepted: ["integer", "int"], answer: "INTEGER" },
+  { id: "p2", prompt: "Best type for an average that may be 72.5?", accepted: ["real", "float", "double"], answer: "REAL" },
+  { id: "p3", prompt: "Best type for Found when it is TRUE or FALSE?", accepted: ["boolean", "bool"], answer: "BOOLEAN" },
+  { id: "p4", prompt: "Best type for a single menu choice such as Y?", accepted: ["char", "character"], answer: "CHAR" },
+  { id: "p5", prompt: "Best type for a surname?", accepted: ["string"], answer: "STRING" },
+  { id: "p6", prompt: "Best type for a date of birth?", accepted: ["date"], answer: "DATE" },
+  { id: "p7", prompt: "Should phone number 07123456789 usually be INTEGER or STRING?", accepted: ["string"], answer: "STRING, because the leading zero must be preserved and arithmetic is not needed." },
+  { id: "p8", prompt: "Write the Cambridge keyword used to declare a variable.", accepted: ["declare"], answer: "DECLARE" },
+  { id: "p9", prompt: "A type with named values such as Red, Amber, Green is called user-defined or built-in?", accepted: ["user-defined", "user defined", "userdefined"], answer: "User-defined, often as an enumerated type." },
+  { id: "p10", prompt: "Is Java syntax the expected Paper 2 declaration format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode declarations." },
 ];
 
 const mistakes = [
   {
-    wrong: "I read Count <- Count + 1 as a mathematical equation.",
-    fix: "Read it as assignment: calculate the old Count + 1, then store that value back into Count.",
+    wrong: "I chose INTEGER for every field that contains digits.",
+    fix: "Check whether arithmetic is needed. IDs, phone numbers and postcodes are usually STRING because exact characters and leading zeroes matter.",
   },
   {
-    wrong: "I changed PassMark after declaring it as a constant.",
-    fix: "A constant should not be reassigned. Use a variable if the value must change during execution.",
+    wrong: "I used REAL for a counter because it is a number.",
+    fix: "Use INTEGER for counts and indexes because they are whole numbers. REAL is for values that may contain fractional parts.",
   },
   {
-    wrong: "I wrote Total + Mark <- Total.",
-    fix: "The variable being updated goes on the left. The expression being calculated goes on the right: Total <- Total + Mark.",
+    wrong: "I used STRING for a true/false field.",
+    fix: "Use BOOLEAN when there are exactly two logical states such as TRUE/FALSE, valid/invalid or found/not found.",
   },
   {
-    wrong: "I used Java syntax in a Cambridge pseudocode trace question.",
-    fix: "Use Cambridge-style symbols and keywords: DECLARE, CONSTANT, <-, IF/ENDIF. Java is only supporting syntax.",
+    wrong: "I wrote Java declarations in a Cambridge pseudocode answer.",
+    fix: "Use Cambridge-style declarations such as DECLARE Count : INTEGER. Java can support testing but is not the exam pseudocode format.",
   },
 ];
 
@@ -116,97 +150,92 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Write declarations for variables for Total, Count and Average. Then initialise Total and Count to zero using Cambridge-style pseudocode.",
-    answer: "DECLARE Total : INTEGER\nDECLARE Count : INTEGER\nDECLARE Average : REAL\n\nTotal <- 0\nCount <- 0",
+    prompt: "Suggest suitable data types for Score, AverageScore and Passed. Give a reason for each choice.",
+    answer: "Score: INTEGER because it is a whole-number mark. AverageScore: REAL because an average may contain a decimal part. Passed: BOOLEAN because it has two states, TRUE or FALSE.",
     marking: [
-      { mark: "B1", text: "declares Total with a suitable numeric type" },
-      { mark: "B1", text: "declares Count as INTEGER" },
-      { mark: "B1", text: "declares Average as REAL or suitable numeric type allowing decimals" },
-      { mark: "M1", text: "uses clear Cambridge-style DECLARE syntax" },
-      { mark: "A1", text: "initialises Total to 0 using assignment" },
-      { mark: "A1", text: "initialises Count to 0 using assignment" },
+      { mark: "B1", text: "chooses INTEGER for Score" },
+      { mark: "B1", text: "reason states Score is whole number / used as whole-number mark" },
+      { mark: "B1", text: "chooses REAL for AverageScore" },
+      { mark: "B1", text: "reason states average may include decimal/fractional part" },
+      { mark: "B1", text: "chooses BOOLEAN for Passed" },
+      { mark: "B1", text: "reason states only two states such as TRUE/FALSE or pass/fail" },
     ],
     strict: [
-      "Java declarations alone should not receive the Cambridge syntax mark.",
-      "Allow Total as REAL if later values may be decimal.",
-      "Do not award initialisation marks for only declaring the variables.",
-      "Allow an equivalent variable if it is used consistently.",
+      "Award reason marks only when linked to the named field.",
+      "Allow integer if a specific exam system states marks are whole numbers.",
+      "Do not accept 'number' as a reason for REAL without decimal/fractional idea.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Explain the difference between a variable and a constant, using PassMark as an example.",
-    answer: "A variable is a named storage location whose value can change while the program runs. A constant is a named value that should not change after it is defined. PassMark is suitable as a constant if the pass mark is fixed, for example CONSTANT PassMark = 50, because the same value can be used clearly without repeating 50.",
+    prompt: "A product code is 0045A. Explain why STRING is more suitable than INTEGER.",
+    answer: "STRING is more suitable because the product code contains a letter and leading zeroes. It is an identifier rather than a value used for arithmetic, so storing it as INTEGER would lose the leading zeroes and could not store A.",
     marking: [
-      { mark: "B1", text: "defines variable as named storage / value can change" },
-      { mark: "B1", text: "defines constant as named value / value should not change" },
-      { mark: "B1", text: "applies constant idea to fixed PassMark" },
-      { mark: "B1", text: "gives suitable constant example or declaration" },
-      { mark: "B1", text: "explains benefit such as readability, maintainability or avoiding repeated literals" },
+      { mark: "B1", text: "states STRING is suitable" },
+      { mark: "B1", text: "identifies product code contains a letter" },
+      { mark: "B1", text: "identifies leading zeroes must be preserved" },
+      { mark: "B1", text: "states arithmetic is not required / it is an identifier" },
+      { mark: "B1", text: "explains INTEGER would be unsuitable due to losing zeroes or not storing A" },
     ],
     strict: [
-      "Do not accept 'constant is a variable' without stating it should not change.",
-      "Allow PassMark <- 50 only if the answer clearly treats it as a fixed named value, but prefer CONSTANT syntax.",
-      "Do not award benefit mark for vague 'better' without cause.",
+      "Do not award full credit for only saying 'it has digits and letters'.",
+      "Allow 'alphanumeric' for contains letters and digits.",
+      "Do not accept INTEGER for this field.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Complete a trace table for the following pseudocode: X <- 4, Y <- 9, X <- X + Y, Y <- X - Y. State final X and Y.",
-    answer: "After X <- 4, X = 4. After Y <- 9, Y = 9. After X <- X + Y, X = 13 and Y = 9. After Y <- X - Y, Y = 4. Final X = 13 and Y = 4.",
+    marks: "5 marks",
+    prompt: "Write Cambridge-style declarations for variables storing a customer name, balance, active account flag and date joined.",
+    answer: "DECLARE CustomerName : STRING\nDECLARE Balance : REAL\nDECLARE IsActive : BOOLEAN\nDECLARE DateJoined : DATE",
     marking: [
-      { mark: "B1", text: "sets X to 4" },
-      { mark: "B1", text: "sets Y to 9" },
-      { mark: "M1", text: "correctly evaluates X <- X + Y using old X and Y" },
-      { mark: "A1", text: "gets X = 13 after third assignment" },
-      { mark: "M1", text: "correctly evaluates Y <- X - Y using current X" },
-      { mark: "A1", text: "final Y = 4 with final X = 13" },
+      { mark: "B1", text: "declares CustomerName as STRING" },
+      { mark: "B1", text: "declares Balance as REAL" },
+      { mark: "B1", text: "declares active account flag as BOOLEAN" },
+      { mark: "B1", text: "declares DateJoined as DATE" },
+      { mark: "M1", text: "uses clear Cambridge-style DECLARE syntax with colon/type" },
     ],
     strict: [
-      "Assignment statements must be traced in order.",
-      "Allow a trace table instead of prose.",
-      "Do not use original X = 4 when evaluating the final statement if X has already changed.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award the Cambridge-style syntax mark for Java syntax alone.",
+      "Allow Currency/REAL for Balance if syllabus context accepts numeric balance.",
+      "Do not require exact identifier names if purpose is clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "A student writes Total + Mark <- Total. Explain the error and correct it.",
-    answer: "The error is that the left-hand side of assignment must be a variable that can store a value. Total + Mark is an expression, not a storage location. The corrected statement is Total <- Total + Mark, which evaluates old Total plus Mark and stores the result in Total.",
+    marks: "5 marks",
+    prompt: "A traffic light state can only be Red, Amber or Green. Define a suitable user-defined type and declare a variable that uses it.",
+    answer: "TYPE TLightState = (Red, Amber, Green)\n\nDECLARE CurrentLight : TLightState",
     marking: [
-      { mark: "B1", text: "identifies left side must be a variable/storage location" },
-      { mark: "B1", text: "identifies Total + Mark is an expression" },
-      { mark: "B1", text: "states expression cannot receive/store the assignment result" },
-      { mark: "B1", text: "gives corrected statement Total <- Total + Mark" },
-      { mark: "B1", text: "explains right-hand side is evaluated first" },
-      { mark: "B1", text: "explains result is stored in Total" },
+      { mark: "B1", text: "creates a user-defined / enumerated type" },
+      { mark: "B1", text: "includes Red as an allowed value" },
+      { mark: "B1", text: "includes Amber as an allowed value" },
+      { mark: "B1", text: "includes Green as an allowed value" },
+      { mark: "B1", text: "declares a variable using the new type" },
     ],
     strict: [
-      "Do not award correction mark for reversing to Mark <- Total + Mark.",
-      "Allow 'identifier' for variable/storage location.",
-      "Do not accept 'syntax is wrong' without explaining direction or expression.",
+      "Do not award the declaration mark if the variable is declared as STRING only.",
+      "Allow equivalent enumerated type notation if clear.",
+      "Do not require the exact name TLightState.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Write pseudocode that defines a constant MaxStudents as 30, declares StudentCount as an INTEGER, inputs StudentCount, and outputs 'Full' if StudentCount equals MaxStudents.",
-    answer: "CONSTANT MaxStudents = 30\nDECLARE StudentCount : INTEGER\n\nINPUT StudentCount\nIF StudentCount = MaxStudents THEN\n    OUTPUT \"Full\"\nENDIF",
+    marks: "5 marks",
+    prompt: "A student says: 'DATE should be stored as STRING because dates contain digits and slashes.' Evaluate this statement.",
+    answer: "The statement is weak. A STRING may store the characters of a date, but it does not by itself give date meaning. DATE is more suitable when the value is used as a calendar date because comparisons and validation such as checking whether one date is before another are clearer and less error-prone.",
     marking: [
-      { mark: "B1", text: "defines constant MaxStudents with value 30" },
-      { mark: "B1", text: "declares StudentCount as INTEGER" },
-      { mark: "M1", text: "inputs StudentCount" },
-      { mark: "M1", text: "uses comparison StudentCount = MaxStudents" },
-      { mark: "A1", text: "outputs Full when comparison is true" },
-      { mark: "B1", text: "uses clear Cambridge-style block structure" },
+      { mark: "B1", text: "recognises STRING can store date characters but is not ideal for date meaning" },
+      { mark: "B1", text: "states DATE is more suitable for calendar dates" },
+      { mark: "B1", text: "links DATE to comparison of dates" },
+      { mark: "B1", text: "links DATE to validation or range checking" },
+      { mark: "B1", text: "explains reduced ambiguity/error compared with free text" },
     ],
     strict: [
-      "comparison in IF may use =; assignment should use <-.",
-      "Allow equivalent identifier case.",
-      "Do not award comparison mark if MaxStudents is assigned a new value inside the IF.",
+      "Do not award evaluation marks for only saying 'DATE is better'.",
+      "Allow examples such as checking age, expiry or booking order.",
+      "Do not accept STRING as equally suitable where date operations are required.",
     ],
   },
 ];
@@ -221,7 +250,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9<+\- =←]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9 -]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -240,10 +269,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    impossible: "In mathematics it looks impossible; in pseudocode it is assignment, so it updates the stored value.",
-    update: "Correct. The old Score is read, 10 is added, and the result is stored back in Score.",
-    compare: "Comparison normally appears inside a condition such as IF Score = 10 THEN.",
-    constant: "A constant is declared with CONSTANT and should not be updated.",
+    integer: "INTEGER would treat 007 as a number and usually lose the leading zero.",
+    real: "REAL is for decimal values. A spy ID does not need fractional arithmetic, because no fractional arithmetic is required.",
+    string: "Correct. STRING preserves the exact characters, including leading zeroes.",
+    boolean: "BOOLEAN can only store TRUE/FALSE, so it cannot store 007.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -254,19 +283,15 @@ function setupHook() {
   });
 }
 
-function setupSimulator() {
-  const result = document.querySelector("#simulateResult");
-  document.querySelector("#simulateBtn").addEventListener("click", () => {
-    const oldTotal = Number(document.querySelector("#oldTotal").value);
-    const mark = Number(document.querySelector("#markValue").value);
-    if (!Number.isFinite(oldTotal) || !Number.isFinite(mark)) {
-      result.textContent = "Enter numeric values before running the assignment.";
-      return;
-    }
-    const updated = oldTotal + mark;
+function setupTypeClassifier() {
+  const input = document.querySelector("#typeInput");
+  const result = document.querySelector("#typeResult");
+  document.querySelector("#typeBtn").addEventListener("click", () => {
+    const item = typeMap[input.value];
     result.innerHTML = `
-      <p>Right side first: old Total + Mark = ${oldTotal} + ${mark} = ${updated}</p>
-      <p>Then store the result: <strong>Total is now ${updated}</strong>.</p>
+      <h3>${escapeHtml(item.type)}</h3>
+      <p>${escapeHtml(item.reason)}</p>
+      <pre><code>${escapeHtml(item.declaration)}</code></pre>
     `;
   });
 }
@@ -277,7 +302,7 @@ function setupBuilder() {
   document.querySelector("#builderBtn").addEventListener("click", () => {
     const item = builderMap[input.value];
     result.innerHTML = `
-      <pre><code>${escapeHtml(item.statement)}</code></pre>
+      <pre><code>${escapeHtml(item.declaration)}</code></pre>
       <p>${escapeHtml(item.reason)}</p>
     `;
   });
@@ -288,7 +313,7 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${escapeHtml(example.title)}</h3>
     <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-    ${tableMarkup(["Step", "Value 1", "Value 2", "Note"], example.rows)}
+    ${tableMarkup(["Field / focus", "Type", "Reason"], example.rows)}
     <p><strong>Cambridge-style pseudocode:</strong></p>
     <pre><code>${escapeHtml(example.code)}</code></pre>
     <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
@@ -296,7 +321,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("score");
+  renderExample("school");
   document.querySelectorAll("[data-example]").forEach((tab) => {
     tab.addEventListener("click", () => {
       document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
@@ -325,9 +350,9 @@ function renderPractice() {
     button.addEventListener("click", () => {
       const item = practice.find((entry) => entry.id === button.dataset.check);
       const value = normalise(document.querySelector(`#${item.id}`).value);
-      const correct = item.accepted.some((answer) => value === normalise(answer));
       const mark = document.querySelector(`#${item.id}Mark`);
-      mark.textContent = correct ? "Correct. The statement meaning is clear." : "Not quite. Check direction, keyword or current value.";
+      const correct = item.accepted.some((answer) => value === normalise(answer));
+      mark.textContent = correct ? "Correct. Type choice is appropriate." : "Not quite. Check the field purpose and compare with the answer.";
       mark.className = correct ? "mark correct" : "mark incorrect";
     });
   });
@@ -390,7 +415,7 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupSimulator();
+setupTypeClassifier();
 setupBuilder();
 setupExamples();
 renderPractice();

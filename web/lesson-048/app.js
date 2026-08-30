@@ -1,92 +1,101 @@
-const interruptMap = {
-  keyboard: {
-    result: "Keyboard interrupt: a key press is waiting to be handled.",
-    method: "The CPU completes the current instruction, detects the keyboard interrupt, saves PC/register/status information, runs the keyboard ISR to read the key code, restores the saved state and resumes the interrupted program.",
-    trap: "Do not say the CPU must constantly ask the keyboard whether a key has been pressed. That describes polling, not interrupt-driven input.",
+const memory = {
+  20: 70,
+  70: 999,
+  100: 11,
+  103: 44,
+};
+
+const modeMap = {
+  immediate: {
+    result: "Immediate addressing: value loaded = 20",
+    method: "The operand #20 is the actual value. The CPU does not use 20 as a memory address to find the operand value.",
+    trap: "Do not look up memory[20] for immediate addressing.",
   },
-  timer: {
-    result: "Timer interrupt: the operating system can regain control.",
-    method: "A timer signal interrupts the running process. The CPU state is saved, the timer ISR runs, and the operating system can update timing information or decide whether another process should run.",
-    trap: "Do not turn this into a full scheduling-algorithm answer. At AS Section 4 depth, focus on the interrupt sequence and the purpose of the timer signal.",
+  direct: {
+    result: "Direct addressing: effective address = 20, value loaded = 70",
+    method: "The operand 20 is a memory address. The CPU reads memory[20], which is 70.",
+    trap: "Do not load the number 20 itself unless the mode is immediate.",
   },
-  printer: {
-    result: "Printer interrupt: the printer reports that it is ready for more data.",
-    method: "The CPU saves the current state, runs the printer ISR, sends or prepares the next data item, acknowledges the device and then returns to the interrupted program.",
-    trap: "Do not write that a printer interrupt means the printer has failed. Ready and completed events can also generate interrupts.",
+  indirect: {
+    result: "Indirect addressing: pointer address = 20, effective address = 70, value loaded = 999",
+    method: "The CPU reads memory[20] to get 70. It then uses 70 as the effective address and reads memory[70], which is 999.",
+    trap: "Indirect addressing requires two memory references in this simplified example.",
   },
-  fault: {
-    result: "Critical hardware fault: a high-priority interrupt needs urgent handling.",
-    method: "A serious fault may use a non-maskable or high-priority interrupt. The CPU saves what it can, runs the appropriate handler, and may shut down, log the event or take protective action.",
-    trap: "Do not claim every interrupt is non-maskable. Many routine I/O interrupts can be masked or delayed.",
+  indexed: {
+    result: "Indexed addressing: effective address = 100 + IX(3) = 103, value loaded = 44",
+    method: "The base operand is 100 and the index register contains 3. The effective address is 103, so the CPU reads memory[103].",
+    trap: "Do not read memory[100] directly when an index register is part of the addressing mode.",
+  },
+  direct103: {
+    result: "Direct addressing: effective address = 103, value loaded = 44",
+    method: "The operand 103 is the memory address. The CPU reads memory[103], which is 44.",
+    trap: "This reaches the same value as the indexed example, but by a different addressing mode.",
   },
 };
 
 const examples = {
-  keyboard: {
-    title: "Example 1: keyboard interrupt",
-    problem: "A program is calculating while the user presses a key. Trace how the CPU handles the input.",
+  compare: {
+    title: "Example 1: compare immediate and direct",
+    problem: "Given memory[20] = 70, compare LOAD #20 and LOAD 20.",
     steps: [
-      "The keyboard controller sends an interrupt signal.",
-      "The CPU finishes the current instruction before accepting the interrupt.",
-      "The processor state is saved, including the program counter and relevant registers.",
-      "The keyboard ISR runs and reads the key code from the device/buffer.",
-      "The interrupt is acknowledged or cleared.",
-      "The saved state is restored and the original program resumes.",
+      "LOAD #20 uses immediate addressing, so the operand is the value 20.",
+      "LOAD 20 uses direct addressing, so the operand is the address 20.",
+      "The CPU reads memory[20] and gets 70 for direct addressing.",
+      "Same number in the instruction; different interpretation.",
     ],
   },
-  timer: {
-    title: "Example 2: timer interrupt",
-    problem: "A timer interrupt occurs while a process is running. Explain why this is useful.",
+  indirect: {
+    title: "Example 2: indirect addressing trace",
+    problem: "Given memory[20] = 70 and memory[70] = 999, trace LOAD (20).",
     steps: [
-      "A timer produces an interrupt at a regular interval.",
-      "The CPU saves the current process state.",
-      "The timer ISR runs and updates operating system timing information.",
-      "The operating system can decide whether the current process continues or another process should be given CPU time.",
-      "The key exam point is that the CPU does not need the running process to voluntarily stop.",
+      "The operand 20 is a pointer location.",
+      "Read memory[20] to find the effective address: 70.",
+      "Read memory[70] to find the actual value: 999.",
+      "The value loaded is 999.",
     ],
   },
-  polling: {
-    title: "Example 3: interrupt versus polling",
-    problem: "Compare checking a keyboard every millisecond with using a keyboard interrupt.",
+  indexed: {
+    title: "Example 3: indexed array access",
+    problem: "Base address is 100, IX = 3 and memory[103] = 44. Trace LOAD 100, IX.",
     steps: [
-      "Polling means the CPU repeatedly checks keyboard status, even when no key has been pressed.",
-      "An interrupt lets the keyboard signal only when an event needs attention.",
-      "Interrupts can reduce wasted CPU time for unpredictable input.",
-      "Polling may be simpler, but frequent checks can be inefficient.",
-      "A strong answer states the device action, the CPU behaviour and the consequence.",
+      "The base address is 100.",
+      "The index register contains offset 3.",
+      "Effective address = 100 + 3 = 103.",
+      "The CPU reads memory[103], so the value loaded is 44.",
+      "Changing IX can access another element without changing the instruction's base address.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the name for a signal that causes the processor to pause normal execution?", accepted: ["interrupt", "an interrupt"], answer: "Interrupt" },
-  { id: "p2", prompt: "What does ISR stand for?", accepted: ["interrupt service routine", "an interrupt service routine"], answer: "Interrupt service routine" },
-  { id: "p3", prompt: "Before running an ISR, what must the CPU save so it can resume later?", accepted: ["state", "processor state", "cpu state", "program state", "context", "pc registers and flags", "program counter registers and status flags"], answer: "The processor state, such as PC, registers and status flags" },
-  { id: "p4", prompt: "Which register must be saved because it holds the address of the next instruction?", accepted: ["pc", "program counter", "the program counter"], answer: "Program counter / PC" },
-  { id: "p5", prompt: "What routine handles a specific interrupt?", accepted: ["isr", "interrupt service routine"], answer: "ISR / interrupt service routine" },
-  { id: "p6", prompt: "What is the term for repeatedly checking a device status instead of waiting for a signal?", accepted: ["polling"], answer: "Polling" },
-  { id: "p7", prompt: "After the ISR finishes, what happens to the saved state?", accepted: ["restored", "it is restored", "state is restored", "processor state is restored", "cpu state is restored"], answer: "It is restored" },
-  { id: "p8", prompt: "A timer interrupt can help an OS share CPU time between what?", accepted: ["processes", "tasks", "programs", "processes or tasks", "tasks or processes"], answer: "Processes / tasks" },
-  { id: "p9", prompt: "Can all interrupts be ignored or disabled? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "What type of interrupt cannot normally be ignored: maskable or non-maskable?", accepted: ["non maskable", "non-maskable", "nonmaskable", "non maskable interrupt", "non-maskable interrupt"], answer: "Non-maskable interrupt" },
+  { id: "p1", prompt: "Which addressing mode uses the operand as the actual value?", accepted: ["immediate", "immediate addressing"], answer: "Immediate addressing" },
+  { id: "p2", prompt: "Which addressing mode uses the operand as the memory address of the value?", accepted: ["direct", "direct addressing"], answer: "Direct addressing" },
+  { id: "p3", prompt: "Which addressing mode uses the operand as a pointer to another address?", accepted: ["indirect", "indirect addressing"], answer: "Indirect addressing" },
+  { id: "p4", prompt: "Which addressing mode calculates base address plus index?", accepted: ["indexed", "indexed addressing", "index addressing"], answer: "Indexed addressing" },
+  { id: "p5", prompt: "Given memory[20] = 70, what value does LOAD 20 load using direct addressing?", accepted: ["70"], answer: "70" },
+  { id: "p6", prompt: "Given memory[20] = 70, what value does LOAD #20 load?", accepted: ["20"], answer: "20" },
+  { id: "p7", prompt: "Given memory[20] = 70 and memory[70] = 999, what value does LOAD (20) load?", accepted: ["999"], answer: "999" },
+  { id: "p8", prompt: "Base 100 and IX 3 gives what effective address?", accepted: ["103"], answer: "103" },
+  { id: "p9", prompt: "What is the name for the actual address used after applying the addressing mode?", accepted: ["effective address"], answer: "Effective address" },
+  { id: "p10", prompt: "In immediate addressing, does the CPU look up the operand as a memory address? Answer yes or no.", accepted: ["no"], answer: "No" },
 ];
 
 const mistakes = [
   {
-    wrong: "An interrupt means the processor has crashed.",
-    fix: "An interrupt is a signal requesting attention. It may be caused by normal I/O, a timer, software or a fault; it does not automatically mean a crash.",
+    wrong: "Immediate addressing means the operand is a memory address used immediately.",
+    fix: "Immediate addressing means the operand is the actual value to use, not a memory address.",
   },
   {
-    wrong: "The CPU starts the ISR immediately in the middle of the current instruction.",
-    fix: "For most maskable interrupts, the CPU finishes the current instruction, then checks and accepts the interrupt.",
+    wrong: "Direct and indirect addressing both read the value from the operand address once.",
+    fix: "Direct addressing reads the value at the operand address. Indirect addressing first reads a pointer at the operand address, then reads the value at that effective address.",
   },
   {
-    wrong: "The ISR replaces the interrupted program.",
-    fix: "The ISR temporarily handles the event. The saved state is restored so the interrupted program can continue, unless the handler decides otherwise.",
+    wrong: "Indexed addressing stores an array inside the index register.",
+    fix: "The index register stores an offset. The effective address is calculated from base address plus index.",
   },
   {
-    wrong: "Polling and interrupts are the same because both involve devices.",
-    fix: "Polling means the CPU repeatedly checks the device. Interrupts let the device signal the CPU when attention is needed.",
+    wrong: "The operand always has the same meaning, regardless of the addressing mode.",
+    fix: "The addressing mode tells the CPU how to interpret the operand, so the same operand can mean different things.",
   },
 ];
 
@@ -99,97 +108,100 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Describe the sequence of events when a processor accepts an interrupt.",
-    answer: "The processor completes the current instruction, checks or recognises that an interrupt is pending, saves the current processor state such as the program counter, registers and status flags, locates and runs the appropriate interrupt service routine, then restores the saved state and returns to the interrupted program.",
+    marks: "4 marks",
+    prompt: "Explain the difference between immediate addressing and direct addressing.",
+    answer: "In immediate addressing, the operand is the actual value to be used by the instruction. In direct addressing, the operand is the memory address where the value is stored. For example, LOAD #20 loads the value 20, while LOAD 20 loads the value stored at memory address 20.",
     marking: [
-      { mark: "B1", text: "current instruction is completed before the interrupt is serviced" },
-      { mark: "B1", text: "interrupt is checked/recognised/accepted by the processor" },
-      { mark: "B1", text: "processor state is saved, including valid examples such as PC/registers/status flags" },
-      { mark: "B1", text: "appropriate ISR/interrupt handler is located and executed" },
-      { mark: "B1", text: "saved state is restored and the original program resumes/returns" },
+      { mark: "B1", text: "immediate addressing uses operand as actual value" },
+      { mark: "B1", text: "direct addressing uses operand as memory address" },
+      { mark: "B1", text: "direct addressing fetches value stored at that address" },
+      { mark: "B1", text: "valid contrasting example such as #20 vs 20" },
     ],
     strict: [
-      "Do not award full sequence credit if state saving is omitted.",
-      "Do not accept 'the CPU stops forever' as resume/return.",
-      "Allow context save/context restore as equivalent to processor state saving/restoring.",
+      "Do not accept immediate as simply 'faster' without operand meaning.",
+      "Do not accept direct addressing as using operand as the actual data value.",
+      "Allow equivalent notation for immediate addressing if clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Explain why a processor must save its state before running an interrupt service routine.",
-    answer: "The processor state contains the information needed to continue the interrupted program, such as the program counter, registers and status flags. Saving this state before running the ISR prevents the ISR from overwriting important values. After the ISR finishes, the saved state can be restored so the original program can continue from the correct point with the correct data.",
+    marks: "5 marks",
+    prompt: "Given memory[20] = 70 and memory[70] = 999, Complete a trace table for the instruction LOAD (20) using indirect addressing.",
+    answer: "In indirect addressing, the operand 20 is used as the address of a memory location that contains another address. The CPU reads memory[20] and obtains 70. This 70 is the effective address. The CPU then reads memory[70] and obtains 999, so 999 is the value loaded.",
     marking: [
-      { mark: "B1", text: "state contains information needed to continue the interrupted program" },
-      { mark: "B1", text: "valid examples of state such as PC, registers or status flags" },
-      { mark: "B1", text: "prevents loss/overwriting of current program information" },
-      { mark: "B1", text: "allows execution to resume from the correct point after the ISR" },
+      { mark: "B1", text: "recognises indirect addressing uses operand as pointer address" },
+      { mark: "M1", text: "reads memory[20]" },
+      { mark: "A1", text: "gets 70 as effective address" },
+      { mark: "M1", text: "reads memory[70]" },
+      { mark: "A1", text: "gets/loads value 999" },
     ],
     strict: [
-      "Do not accept vague 'so it remembers things' without linking to continuation/resume.",
-      "Do not require stack terminology, but allow stack as where state may be saved.",
-      "Allow 'context' for state if clearly processor/program context.",
+      "Do not award full marks if answer stops at 70 as the loaded value.",
+      "Do not require the term pointer if the two-stage lookup is clear.",
+      "Allow bracket notation or words describing indirect addressing.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "Compare interrupt-driven input with polling for handling keyboard input.",
-    answer: "With interrupt-driven input, the keyboard sends an interrupt when a key is pressed, so the CPU can continue other work until attention is required. The CPU then saves state, runs the keyboard ISR and resumes. With polling, the CPU repeatedly checks the keyboard status to see whether a key has been pressed. Polling can waste processor time if no input is available, while interrupts are usually more efficient for unpredictable input.",
+    prompt: "Explain indexed addressing and why it is useful for arrays.",
+    answer: "Indexed addressing calculates the effective address by adding a base address to an index register or offset. The base address can point to the start of an array. Changing the index value allows the CPU to access different array elements without changing the instruction itself. For example, base 100 and index 3 gives effective address 103.",
     marking: [
-      { mark: "B1", text: "interrupt-driven input lets the device signal the CPU when an event occurs" },
-      { mark: "B1", text: "CPU can do other work until the interrupt occurs" },
-      { mark: "B1", text: "interrupt handling involves ISR/state save/resume or equivalent" },
-      { mark: "B1", text: "polling means CPU repeatedly checks device/status flag" },
-      { mark: "B1", text: "polling may waste CPU time or interrupts can be more efficient for unpredictable events" },
+      { mark: "B1", text: "effective address calculated using base address plus index/offset" },
+      { mark: "B1", text: "index value may be stored in index register" },
+      { mark: "B1", text: "base can represent start of array/block" },
+      { mark: "B1", text: "changing index accesses different elements" },
+      { mark: "B1", text: "valid example calculation such as 100 + 3 = 103" },
     ],
     strict: [
-      "Do not accept 'polling is asking people questions' without device/status context.",
-      "Do not award efficiency mark unless CPU time/work is referenced.",
-      "Allow a balanced answer that notes polling is simpler for some systems.",
+      "Do not accept indexed addressing as simply sorting data into an index.",
+      "Do not require arrays if another repeated data structure example is valid.",
+      "Allow offset instead of index register if calculation is clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "A printer sends an interrupt to a processor. Explain the role of the interrupt service routine.",
-    answer: "The printer interrupt service routine is the handler that deals with the printer event. It may check the printer status, send or prepare the next data item, acknowledge or clear the interrupt and return control to the interrupted program after the processor state is restored.",
+    marks: "6 marks",
+    prompt: "A CPU has memory[40] = 88 and memory[88] = 123. Explain the values loaded by LOAD #40, LOAD 40 and LOAD (40).",
+    answer: "LOAD #40 uses immediate addressing, so the value loaded is 40. LOAD 40 uses direct addressing, so the CPU reads memory address 40 and loads 88. LOAD (40) uses indirect addressing, so the CPU reads memory[40] to get effective address 88, then reads memory[88] and loads 123.",
     marking: [
-      { mark: "B1", text: "ISR is a routine/program/handler for a specific interrupt" },
-      { mark: "B1", text: "checks/responds to printer status or printer event" },
-      { mark: "B1", text: "performs an appropriate action such as sending/preparing data or clearing/acknowledging interrupt" },
-      { mark: "B1", text: "returns control/allows return to interrupted program after handling" },
+      { mark: "B1", text: "LOAD #40 identified as immediate" },
+      { mark: "B1", text: "immediate value loaded is 40" },
+      { mark: "B1", text: "LOAD 40 identified/described as direct" },
+      { mark: "B1", text: "direct value loaded is memory[40] = 88" },
+      { mark: "B1", text: "LOAD (40) identified/described as indirect with effective address 88" },
+      { mark: "B1", text: "indirect value loaded is memory[88] = 123" },
     ],
     strict: [
-      "Do not accept 'the ISR is the interrupt signal' because ISR is a routine, not the signal.",
-      "Do not require exact printer-buffer terminology.",
-      "Allow 'driver routine' only if the interrupt-handling role is clear.",
+      "Do not award immediate value mark if candidate looks up memory[40].",
+      "Do not award indirect final value mark if candidate stops at 88.",
+      "Allow equivalent notation for brackets/indirection.",
+      "Award each instruction independently.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Explain interrupt priority and Compare maskable and non-maskable interrupts.",
-    answer: "Interrupt priority is used when more than one interrupt needs attention, so the processor can handle the most urgent one first. A lower-priority interrupt may wait until a higher-priority interrupt has been serviced. A maskable interrupt can be disabled or delayed by the processor, often because it is less urgent. A non-maskable interrupt cannot normally be ignored and is used for critical events such as serious hardware faults.",
+    marks: "5 marks",
+    prompt: "Compare immediate, direct, indirect, indexed and relative addressing.",
+    answer: "Immediate addressing uses the operand as the value. Direct addressing uses it as the address of the value. Indirect addressing follows an address stored at the operand address. Indexed addressing adds IX to a base/address operand. Relative addressing adds an offset to the current or next instruction address held in PC.",
     marking: [
-      { mark: "B1", text: "priority ranks interrupts by urgency/importance" },
-      { mark: "B1", text: "higher-priority interrupt may be serviced before lower-priority interrupt" },
-      { mark: "B1", text: "lower-priority interrupt may wait/be delayed" },
-      { mark: "B1", text: "maskable interrupt can be disabled/ignored/delayed" },
-      { mark: "B1", text: "non-maskable interrupt cannot normally be ignored/disabled" },
-      { mark: "B1", text: "valid critical event example for non-maskable interrupt" },
+      { mark: "B1", text: "immediate addressing treats operand as the value" },
+      { mark: "B1", text: "direct addressing treats operand as the address of the value" },
+      { mark: "B1", text: "indirect addressing follows an address stored at the operand address" },
+      { mark: "B1", text: "indexed addressing adds IX/index to a base or address operand" },
+      { mark: "B1", text: "relative addressing adds an offset to the PC/current or next instruction address" },
     ],
     strict: [
-      "Do not accept 'priority means faster CPU clock speed'.",
-      "Do not accept 'maskable means hidden from the user' unless disabling/delaying is also stated.",
-      "Allow NMI abbreviation if expanded or clearly explained.",
+      "Do not accept that LDR #n is relative addressing; in the specified instruction set it loads immediate n into IX.",
+      "Do not merge indirect and indexed addressing.",
+      "Allow current-instruction or next-instruction PC convention when the relative base is stated coherently.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/[-_\s/]+/g, " ");
+  return value.trim().toLowerCase().replace(/[-_\s]+/g, " ");
 }
 
 function setupPrint() {
@@ -199,10 +211,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    save: "Correct. The processor handles the event without losing the current program's place.",
-    delete: "No. Interrupts should not destroy the current program. State saving exists for a reason.",
-    ignore: "No. Interrupts are used because devices may need attention before the current program naturally finishes.",
-    random: "No. The ISR address is found in a controlled way, not by a lucky dip through memory.",
+    no: "Correct. #20 is immediate data; 20 without # is treated as an address in this simplified notation.",
+    yes: "Not quite. LOAD 20 uses 20 as an address in direct addressing.",
+    binary: "No. Binary notation does not decide the addressing mode by itself.",
+    register: "No. ACC contents do not decide whether #20 is immediate or direct.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -214,12 +226,12 @@ function setupHook() {
 }
 
 function setupSimulator() {
-  const select = document.querySelector("#interruptInput");
+  const select = document.querySelector("#modeInput");
   const result = document.querySelector("#simulateResult");
   const method = document.querySelector("#simulateMethod");
   const trap = document.querySelector("#simulateTrap");
   function simulate() {
-    const item = interruptMap[select.value];
+    const item = modeMap[select.value];
     result.textContent = item.result;
     method.innerHTML = `<strong>Trace:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
@@ -246,11 +258,11 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("keyboard");
+  renderExample("compare");
 }
 
 function setupAnswerToggles(scope = document) {
-  scope.querySelectorAll(".answer-toggle, .ms-toggle").forEach((button) => {
+  scope.querySelectorAll(".answer-toggle").forEach((button) => {
     button.addEventListener("click", () => {
       const target = document.querySelector(`#${button.dataset.answer}`);
       target.classList.toggle("visible");

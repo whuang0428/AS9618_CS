@@ -126,7 +126,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 .data-table, .mini-result {
   display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
 }
-.hardware-table .table-row, .logic-table .table-row { grid-template-columns: 0.9fr 1.1fr 1.4fr; }
+.formula-table .table-row { grid-template-columns: 0.9fr 1.3fr 1.4fr; }
 .mini-result .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
 .table-row { display: grid; }
 .table-row > div { padding: 14px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); overflow-wrap: anywhere; }
@@ -134,12 +134,13 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 .table-row:last-child > div { border-bottom: 0; }
 .table-head { background: var(--accent-soft); color: var(--accent-dark); font-weight: 850; }
 
-.converter-grid {
+.converter-grid, .input-grid {
   display: grid; grid-template-columns: minmax(220px, 1fr) auto;
   gap: 12px; align-items: end; margin-top: 14px;
 }
-.converter-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 750; }
-.converter-grid select, .practice-row input {
+.input-grid { grid-template-columns: minmax(120px, 0.8fr) repeat(3, minmax(120px, 1fr)) auto; }
+.converter-grid label, .input-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 750; }
+.converter-grid select, .input-grid select, .input-grid input, .practice-row input {
   width: 100%; border: 1px solid var(--line); border-radius: 8px;
   padding: 11px 12px; background: #ffffff; color: var(--ink);
 }
@@ -178,17 +179,18 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 
 @media (max-width: 1120px) {
   .summary-grid, .clause-grid, .retrieval-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hardware-table .table-row, .logic-table .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .formula-table .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .input-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .table-row > div:nth-child(2n) { border-right: 0; }
 }
 @media (max-width: 980px) {
   .layout, .hero, .guidance-grid, .objective-grid, .hook-grid,
-  .clause-grid, .converter-grid, .summary-grid, .retrieval-grid {
+  .clause-grid, .converter-grid, .input-grid, .summary-grid, .retrieval-grid {
     grid-template-columns: 1fr;
   }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .topbar { position: static; }
-  .hardware-table .table-row, .logic-table .table-row, .mini-result .table-row { grid-template-columns: 1fr; }
+  .formula-table .table-row, .mini-result .table-row { grid-template-columns: 1fr; }
   .table-row > div { border-right: 0; }
 }
 @media (max-width: 560px) {

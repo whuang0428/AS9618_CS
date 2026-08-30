@@ -16,8 +16,8 @@ expectRejected("sound file-size overclaim", (contract) => { contract.requirement
 expectRejected("state-transition construction overclaim", (contract) => { contract.requirements.find((item) => item.id === "S12.03").requirement += " Construct the diagram."; });
 expectRejected("test-plan production overclaim", (contract) => { contract.requirements.find((item) => item.id === "S12.06").requirement += " Produce the plan."; });
 expectRejected("one's-complement direct assessment removal", (contract) => { const row = contract.requirements.find((item) => item.id === "S1.03"); row.assessmentEvidence = row.assessmentEvidence.filter((item) => item.questionId !== "L005-Q1"); });
-expectRejected("Optional exclusion removal", () => {}, (entries) => entries.map((item) => item.lesson === 11 ? { ...item, excludedFromCoverage: false } : item));
-expectRejected("Optional-only lesson leak", (contract) => { contract.requirements.find((item) => item.id === "S1.10").teachingLessons.push(11); });
+expectRejected("Optional exclusion removal", () => {}, (entries) => entries.map((item) => item.lesson === 12 ? { ...item, excludedFromCoverage: false } : item));
+expectRejected("Optional-only lesson leak", (contract) => { contract.requirements.find((item) => item.id === "S1.10").teachingLessons.push(12); });
 
 if (failures.length) {
   console.error(`Remediation v2 Stage 2 mutation tests failed (${failures.length}):`);

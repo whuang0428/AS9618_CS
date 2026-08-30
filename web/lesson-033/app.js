@@ -1,56 +1,74 @@
 const scenarios = {
-  greenhouse: { result: "Microwave oven: dedicated appliance computer", method: "Its embedded system performs cooking, timing and interface tasks for one appliance. A small set of controls and predictable repeated operation are more important than running unrelated applications." },
-  door: { result: "Network printer: dedicated document-output system", method: "The processor, memory and interfaces are selected to receive, queue and print documents. The device does not need the flexibility or rich interface of a general-purpose computer." },
-  traffic: { result: "Home router: dedicated network device", method: "Its embedded software and hardware are designed for network communication tasks. Low power, continuous operation and reliability matter more than supporting arbitrary desktop software." },
-  washer: { result: "Washing machine: computer built into a larger device", method: "The embedded system is part of the appliance, has a dedicated set of wash-cycle tasks and uses only the controls and display required by those tasks." },
-  car: { result: "Smartwatch: compact low-power embedded device", method: "A microcontroller or integrated processor supports a defined set of wearable functions within tight power, size and interface constraints." },
-  heater: { result: "Laptop: general-purpose computer", method: "A laptop is designed to run many different user-selected applications and provide a rich interface. It is the comparison case, not the embedded-system example." },
+  budget: {
+    result: "High-capacity HDD",
+    method: "An HDD is suitable because it offers high capacity at a low cost per GB, which matters more than maximum access speed for a large video library.",
+  },
+  mobile: {
+    result: "SSD",
+    method: "An SSD is suitable because it has fast access and no moving parts, so programs load quickly and the laptop is more resistant to knocks.",
+  },
+  archive: {
+    result: "Magnetic tape",
+    method: "Tape is suitable for huge long-term backups because it has high capacity and low cost, while slow sequential access is acceptable if data is rarely accessed.",
+  },
+  transfer: {
+    result: "USB flash drive",
+    method: "A USB flash drive is portable and removable, making it suitable for moving smaller files between computers.",
+  },
+  distribution: {
+    result: "Optical disc",
+    method: "Optical discs can be cheap to duplicate for fixed read-only content, although they are slower and lower capacity than many modern alternatives.",
+  },
+  camera: {
+    result: "Memory card",
+    method: "A memory card is small, removable and solid-state, so it suits portable cameras and can be swapped between devices.",
+  },
 };
 
 const examples = {
-  greenhouse: {
-    title: "Example 1: microwave oven",
-    problem: "Explain why a microwave oven contains an embedded system.",
+  laptop: {
+    title: "Example 1: student laptop",
+    problem: "Recommend storage for a laptop carried to school every day.",
     steps: [
-      "The computer is built into the appliance.",
-      "It performs a dedicated set of cooking, timing and display tasks.",
-      "It needs only a limited interface for those tasks.",
-      "Its hardware can be selected for low cost and predictable repeated operation.",
+      "Choice: SSD.",
+      "Characteristics: fast read/write access and no moving parts.",
+      "Context: the laptop is carried daily and used to open applications quickly.",
+      "Consequence: startup and loading are faster, and the storage is less likely to be damaged by knocks than an HDD.",
     ],
   },
-  door: {
-    title: "Example 2: home router",
-    problem: "Explain two design priorities for a router's embedded system.",
+  backup: {
+    title: "Example 2: long-term organisation backup",
+    problem: "Recommend storage for very large backups that are rarely restored.",
     steps: [
-      "The router performs dedicated network communication tasks.",
-      "It is expected to operate continuously and reliably.",
-      "Low power use reduces heat and running cost.",
-      "Its processor, memory and interfaces are chosen for those tasks rather than general desktop software.",
+      "Choice: magnetic tape.",
+      "Characteristics: very high capacity and low cost per unit of storage.",
+      "Context: backups are huge and not accessed frequently.",
+      "Consequence: slow sequential access is acceptable because restore speed is less important than capacity and cost.",
     ],
   },
-  washing: {
-    title: "Example 3: washing machine",
-    problem: "Compare the washing machine computer with a laptop.",
+  video: {
+    title: "Example 3: video editor with two storage needs",
+    problem: "Choose storage for archive footage and current editing projects.",
     steps: [
-      "The washing machine computer is built into a larger device.",
-      "It performs a dedicated set of appliance tasks.",
-      "It has a limited interface and task-specific resources.",
-      "The laptop is general purpose and runs many different applications.",
+      "Archive: HDD can be suitable because it provides high capacity at lower cost per GB.",
+      "Active editing: SSD can be suitable because faster read/write access helps load and save large video files.",
+      "Trade-off: the same device is not automatically best for both jobs.",
+      "Exam habit: separate the two roles before comparing characteristics.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Is an embedded system designed for a general or dedicated purpose?", accepted: ["dedicated", "specific", "dedicated purpose", "specific purpose"], answer: "A dedicated or specific purpose." },
-  { id: "p2", prompt: "Is an embedded system normally part of a larger device? yes or no.", accepted: ["yes"], answer: "Yes." },
-  { id: "p3", prompt: "Name the chip that can integrate CPU, memory and input/output interfaces.", accepted: ["microcontroller"], answer: "Microcontroller." },
-  { id: "p4", prompt: "Which usually has the richer user interface: an embedded system or a general-purpose computer?", accepted: ["general purpose computer", "general-purpose computer"], answer: "General-purpose computer." },
-  { id: "p5", prompt: "Name one valid embedded-system example.", accepted: ["washing machine", "microwave", "microwave oven", "router", "printer", "smartwatch"], answer: "For example: washing machine, microwave oven, router, printer or smartwatch." },
-  { id: "p6", prompt: "Give one common embedded-system design priority.", accepted: ["low cost", "low power", "reliability", "reliable", "small size", "predictable", "real time", "real-time"], answer: "Low cost, low power, reliability, compact size or predictable response." },
-  { id: "p7", prompt: "Does physical size alone define an embedded system? yes or no.", accepted: ["no"], answer: "No. Its dedicated role inside a larger device is the key distinction." },
-  { id: "p8", prompt: "Which runs many unrelated applications: embedded or general-purpose computer?", accepted: ["general purpose", "general-purpose", "general purpose computer", "general-purpose computer"], answer: "General-purpose computer." },
-  { id: "p9", prompt: "Name one component commonly integrated into a microcontroller besides the CPU.", accepted: ["memory", "input output", "input/output", "i/o", "io", "interface", "interfaces"], answer: "Memory or input/output interfaces." },
-  { id: "p10", prompt: "Why can a limited interface suit an embedded system?", accepted: ["specific task", "dedicated task", "only required controls", "fewer controls", "limited task"], answer: "It needs only the controls and displays required for its dedicated task." },
+  { id: "p1", prompt: "Which characteristic means how much data can be stored?", accepted: ["capacity"], answer: "Capacity" },
+  { id: "p2", prompt: "Which characteristic affects how quickly files are read or written?", accepted: ["speed", "access speed", "read write speed", "read/write speed"], answer: "Speed / read-write speed" },
+  { id: "p3", prompt: "Which characteristic means resistance to damage or wear?", accepted: ["durability", "reliability"], answer: "Durability" },
+  { id: "p4", prompt: "Which characteristic means ease of carrying or moving between devices?", accepted: ["portability"], answer: "Portability" },
+  { id: "p5", prompt: "Which storage is often low cost per GB for large video libraries?", accepted: ["hdd", "hard disk", "hard disk drive"], answer: "HDD" },
+  { id: "p6", prompt: "Which storage is usually chosen for fast laptop startup?", accepted: ["ssd", "solid state drive", "solid-state drive"], answer: "SSD" },
+  { id: "p7", prompt: "Which storage is suitable for huge rarely accessed backups?", accepted: ["magnetic tape", "tape"], answer: "Magnetic tape" },
+  { id: "p8", prompt: "Name one risk or limitation of a USB flash drive.", accepted: ["lost", "easy to lose", "small", "limited capacity", "variable speed", "damage"], answer: "Easy to lose / variable speed / limited capacity" },
+  { id: "p9", prompt: "In exam answers, is 'better' enough without a reason? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "What phrase means price for each unit of storage?", accepted: ["cost per gb", "cost per gigabyte", "cost per unit", "cost per unit of storage"], answer: "Cost per GB / cost per unit of storage" },
 ];
 
 
@@ -62,89 +80,91 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "3 marks",
-    prompt: "Define an embedded system and give one example.",
-    answer: "An embedded system is a computer system built into a larger device and designed to perform a specific task or set of tasks. A washing machine or microwave oven is a valid example.",
+    marks: "5 marks",
+    prompt: "A laptop is carried between home and school every day. Suggest a suitable storage device and justify your answer using storage characteristics.",
+    answer: "An SSD is suitable because it has fast read/write access, so the laptop can start and load applications quickly. It has no moving parts, so it is more durable than an HDD when the laptop is carried and may be knocked. It is also compact and uses relatively low power, which suits a portable device.",
     marking: [
-      { mark: "B1", text: "computer system built into a larger device" },
-      { mark: "B1", text: "designed for a specific/dedicated task" },
-      { mark: "B1", text: "valid embedded-system example" },
+      { mark: "B1", text: "suitable device named, e.g. SSD" },
+      { mark: "B1", text: "speed/read-write/startup advantage" },
+      { mark: "B1", text: "durability/no moving parts/shock resistance advantage" },
+      { mark: "B1", text: "portability/power/compactness linked to laptop use" },
+      { mark: "B1", text: "clear link to daily carrying/school scenario" },
     ],
     strict: [
-      "Do not accept only 'a small computer' for full definition credit.",
-      "Do not accept a laptop or desktop as the embedded example.",
-      "Allow any clearly justified embedded device.",
+      "Do not award full credit for only saying 'SSD is better'.",
+      "Do not require every possible characteristic; credit valid scenario-linked characteristics.",
+      "Allow HDD only if justified for capacity/cost and the portability weakness is acknowledged.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Describe four characteristics of an embedded system.",
-    answer: "It is built into a larger device, performs a dedicated task, often has a limited interface and is designed around priorities such as low cost, low power and reliable repeated operation.",
+    prompt: "Explain why cost per GB is important when choosing storage for a large video archive.",
+    answer: "A video archive may contain many large files, so high capacity is required. Cost per GB is important because a small difference in storage cost becomes significant when many terabytes are needed. A high-capacity HDD or tape may be more suitable than SSD if speed is less important than storing large amounts cheaply.",
     marking: [
-      { mark: "B1", text: "built into a larger device" },
-      { mark: "B1", text: "specific/dedicated purpose" },
-      { mark: "B1", text: "limited interface or task-specific resources" },
-      { mark: "B1", text: "valid priority such as low cost, low power or reliability" },
+      { mark: "B1", text: "video archive requires high capacity / many large files" },
+      { mark: "B1", text: "cost per GB affects total cost for large amounts of storage" },
+      { mark: "B1", text: "HDD/tape or similar lower cost high-capacity option identified" },
+      { mark: "B1", text: "trade-off against speed/SSD cost explained" },
     ],
     strict: [
-      "Do not award four repetitions of 'small'.",
-      "Allow another valid characteristic linked to embedded use.",
-      "Do not require a named device.",
+      "Do not accept 'cheap is good' without linking to large capacity.",
+      "Do not award storage type mark for RAM/cache.",
+      "Allow cost per TB wording as equivalent.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain what a microcontroller is and why it suits many embedded systems.",
-    answer: "A microcontroller can integrate a CPU, memory and input/output interfaces on one chip. This can reduce size, cost and power use while providing the processing and connections needed for a dedicated task.",
+    marks: "5 marks",
+    prompt: "Compare HDD and SSD using speed, durability and cost.",
+    answer: "An SSD usually has faster read/write access than an HDD, so it can load programs and files more quickly. An SSD has no moving parts, so it is more durable and resistant to shock. An HDD usually has a lower cost per GB and can provide high capacity more cheaply. Therefore SSD may suit portable or performance-focused devices, while HDD may suit large low-cost storage.",
     marking: [
-      { mark: "B1", text: "identifies CPU/processor integration" },
-      { mark: "B1", text: "identifies memory integration" },
-      { mark: "B1", text: "identifies input/output interfaces" },
-      { mark: "B1", text: "links integration to size, cost, power or dedicated use" },
+      { mark: "B1", text: "SSD faster read/write/access than HDD" },
+      { mark: "B1", text: "speed linked to loading/startup/file access consequence" },
+      { mark: "B1", text: "SSD durability/no moving parts/shock resistance" },
+      { mark: "B1", text: "HDD lower cost per GB/high capacity for cost" },
+      { mark: "B1", text: "scenario-based conclusion or trade-off" },
     ],
     strict: [
-      "Do not accept only 'a tiny CPU'.",
-      "Award equivalent descriptions of integrated components.",
-      "Do not require a particular manufacturer or architecture.",
+      "Do not accept 'SSD is more reliable' unless durability cause is stated.",
+      "Do not accept 'HDD is cheaper' without linking to capacity or cost per GB for full cost credit.",
+      "Allow modern SSD/HDD qualifications if the general trade-off is clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Compare an embedded system with a general-purpose computer, including one benefit and one drawback of embedded design.",
-    answer: "An embedded system is built into a larger device for a specific task, often with a limited interface and task-specific resources. This can reduce cost, size and power use and provide predictable automatic operation. However, limited processing, storage or interfaces can make new functions difficult to add, and failure of the controller may stop the larger device. A general-purpose computer runs many different programs and provides greater flexibility and a richer interface.",
+    marks: "4 marks",
+    prompt: "A school wants to transfer small files between computers. Explain why a USB flash drive may be suitable and give one limitation.",
+    answer: "A USB flash drive is suitable because it is portable, small and removable, so it can be carried between computers. It is solid-state, so it has no moving parts and can be reasonably durable for normal use. A limitation is that it can be lost easily because it is small, or it may have limited capacity or variable speed compared with other storage.",
     marking: [
-      { mark: "B1", text: "embedded system built into larger device" },
-      { mark: "B1", text: "embedded system has specific purpose" },
-      { mark: "B1", text: "benefit such as lower cost/power/size or predictable automatic operation" },
-      { mark: "B1", text: "drawback such as limited resources/upgrading/interface or controller failure consequence" },
-      { mark: "B1", text: "general-purpose computer runs many programs" },
-      { mark: "B1", text: "general-purpose computer offers flexibility/richer interface" },
+      { mark: "B1", text: "USB flash drive identified as suitable removable storage" },
+      { mark: "B1", text: "portability linked to transferring files between computers" },
+      { mark: "B1", text: "valid durability/no moving parts or convenience point" },
+      { mark: "B1", text: "valid limitation such as easy to lose, limited capacity, variable speed or security risk" },
     ],
     strict: [
-      "Do not accept only 'embedded is small'.",
-      "The benefit and drawback must state a consequence rather than a bare adjective.",
-      "Comparisons should use matched dimensions such as purpose, interface or flexibility.",
+      "Do not award limitation mark for an advantage repeated negatively without explanation.",
+      "Do not accept that USB flash is volatile.",
+      "Allow memory card if scenario is adapted with a reader and portability is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A company is designing a battery-powered smartwatch. Justify three embedded-system design priorities.",
-    answer: "Low power use extends battery life; compact integrated hardware fits the wearable device; reliable predictable operation supports continuous everyday use. Cost and a simple task-focused interface are also relevant.",
+    marks: "6 marks",
+    prompt: "A media department needs one storage solution for active video editing and another for long-term archive. Suggest both and justify the trade-off.",
+    answer: "For active editing, an SSD is suitable because fast read/write access helps load, preview and save large video files quickly. It is also durable because it has no moving parts. For long-term archive, a high-capacity HDD or magnetic tape may be suitable because it offers more capacity at lower cost per GB. The trade-off is that active work needs speed, while archive storage prioritises capacity and cost because it is accessed less often.",
     marking: [
-      { mark: "B1", text: "identifies low power" },
-      { mark: "B1", text: "links low power to battery life" },
-      { mark: "B1", text: "identifies compact/integrated hardware and links it to wearable size" },
-      { mark: "B1", text: "identifies reliability or predictable operation" },
-      { mark: "B1", text: "links the priority to continuous smartwatch use" },
+      { mark: "B1", text: "suitable active editing storage, e.g. SSD" },
+      { mark: "B1", text: "active editing justification linked to fast read/write/access" },
+      { mark: "B1", text: "additional active-work characteristic such as durability/no moving parts" },
+      { mark: "B1", text: "suitable archive storage, e.g. HDD/tape" },
+      { mark: "B1", text: "archive justification linked to high capacity/low cost per GB" },
+      { mark: "B1", text: "explicit trade-off between speed for active work and capacity/cost for archive" },
     ],
     strict: [
-      "Do not award a priority without a smartwatch consequence where a link is required.",
-      "Allow cost or limited interface as an alternative developed priority.",
-      "Do not require control-system component descriptions.",
+      "Do not award full marks for one storage device with one generic reason for both roles.",
+      "Do not accept optical disc for active editing unless a special case is strongly justified.",
+      "Allow external SSD/HDD if role and characteristics are clear.",
     ],
   },
 ];
@@ -160,10 +180,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    purpose: "Dedicated purpose: the appliance computer performs a defined set of washing tasks rather than arbitrary user programs.",
-    integrated: "Integration: a microcontroller can combine CPU, memory and input/output interfaces on one chip.",
-    interface: "Limited interface: the appliance needs only the buttons and display required for its dedicated task.",
-    reliability: "Reliability: the embedded system is expected to repeat its task predictably over many cycles.",
+    capacity: "Capacity matters because photos and videos can require many GB or TB, especially if RAW files are kept.",
+    durability: "Durability matters because portable storage may be knocked, dropped or used in poor conditions.",
+    speed: "Speed matters during active editing because large files must be loaded, saved and transferred quickly.",
+    cost: "Cost matters because high capacity gets expensive quickly; cost per GB is often the real comparison.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -205,7 +225,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("greenhouse");
+  renderExample("laptop");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -233,6 +253,7 @@ function renderPractice() {
       <div class="answer-panel" id="answer-${item.id}">${item.answer}</div>
     </div>
   `).join("");
+
   setupAnswerToggles(list);
 }
 
@@ -252,7 +273,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check purpose, integration, interface and design priorities.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, name the exact characteristic and link it to the scenario.`;
   });
 }
 
@@ -262,7 +283,10 @@ function renderExamQuestions() {
     const msId = `ms-${index}`;
     return `
       <article class="exam-card">
-        <div class="exam-head"><h3>${question.title}</h3><span>${question.marks}</span></div>
+        <div class="exam-head">
+          <h3>${question.title}</h3>
+          <span>${question.marks}</span>
+        </div>
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
@@ -273,6 +297,7 @@ function renderExamQuestions() {
       </article>
     `;
   }).join("");
+
   document.querySelectorAll(".ms-toggle").forEach((button) => {
     button.addEventListener("click", () => {
       const target = document.querySelector(`#${button.dataset.ms}`);

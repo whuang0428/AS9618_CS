@@ -1,103 +1,126 @@
-const errorTypes = {
-  file: {
-    type: "Knowledge and method error",
-    diagnosis: "WRITE may replace existing contents. Adding a new record should use APPEND.",
-    correction: 'Rule: use OPENFILE "FileName" FOR APPEND when preserving existing records and adding to the end.',
+const timingPlans = {
+  4: {
+    plan: "30 sec read, 3 min write, 30 sec check.",
+    advice: "Aim for one clear loop or one clear decision. Do not over-engineer.",
   },
-  trace: {
-    type: "Method evidence error",
-    diagnosis: "The final output may be correct, but a trace question often awards marks for intermediate values.",
-    correction: "Rule: show a trace table with variable values after each relevant step or loop iteration.",
+  6: {
+    plan: "60 sec read, 5 min write, 60 sec check.",
+    advice: "List variables first, then write initialisation, loop, condition and output.",
   },
-  stack: {
-    type: "Precision error",
-    diagnosis: "The answer names a structure but gives a generic reason. It must justify stack using LIFO.",
-    correction: "Rule: justify data structures using access pattern, such as LIFO for stack or FIFO for queue.",
+  8: {
+    plan: "90 sec read, 7 min write, 90 sec check.",
+    advice: "Expect two linked skills, such as file reading plus selection, or array processing plus validation.",
   },
-  eval: {
-    type: "Evaluation evidence error",
-    diagnosis: "User opinion alone is weak unless linked to measurable criteria or evidence.",
-    correction: "Rule: evaluation compares evidence with requirements or success criteria and makes a judgement.",
+  10: {
+    plan: "2 min read, 9 min write, 2 min check.",
+    advice: "Build a full skeleton first. Leave no file unclosed and no counter uninitialised.",
   },
 };
 
-const rewrites = {
-  stack: {
-    weak: "Use a stack because it stores data.",
-    improved: "Use a stack because the most recent item must be removed first, so the access pattern is last-in, first-out.",
-    mark: "Adds the missing LIFO justification.",
+const skeletons = {
+  count: {
+    title: "Count passing marks in an array",
+    code: `PassCount ← 0
+FOR Index ← 1 TO NumberOfMarks
+    IF Marks[Index] >= 50 THEN
+        PassCount ← PassCount + 1
+    ENDIF
+NEXT Index
+OUTPUT PassCount`,
+    check: "Boundary check: a mark of 50 should be counted if the condition is greater than or equal to 50.",
   },
-  test: {
-    weak: "Use boundary data because it is better.",
-    improved: "Use boundary data because it tests values at or just outside the limit, which can reveal off-by-one errors in validation logic.",
-    mark: "Explains why boundary data is useful.",
+  file: {
+    title: "Read all records from a file",
+    code: `OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", ScoreRecord
+    OUTPUT ScoreRecord
+ENDWHILE
+CLOSEFILE "Scores.txt"`,
+    check: "File check: read inside the loop and close the file after the loop.",
   },
-  eval: {
-    weak: "The system is good because users like it.",
-    improved: "The system meets the usability criterion if user trial evidence shows at least 90% of users completed the task in under 2 minutes.",
-    mark: "Links judgement to measurable evidence and success criteria.",
+  validate: {
+    title: "Validate mark input",
+    code: `REPEAT
+    INPUT Mark
+    IF Mark < 0 OR Mark > 100 THEN
+        OUTPUT "Invalid mark"
+    ENDIF
+UNTIL Mark >= 0 AND Mark <= 100`,
+    check: "Boundary check: 0 and 100 are valid because the range is inclusive.",
+  },
+  largest: {
+    title: "Find largest value in an array",
+    code: `Largest ← Values[1]
+FOR Index ← 2 TO NumberOfValues
+    IF Values[Index] > Largest THEN
+        Largest ← Values[Index]
+    ENDIF
+NEXT Index
+OUTPUT Largest`,
+    check: "Initialisation check: use the first value, not 0, unless the values are known non-negative.",
   },
 };
 
 const examples = {
-  pseudocode: {
-    title: "Example 1: Pseudocode correction",
+  count: {
+    title: "Example 1: Count with boundary condition",
     rows: [
-      ["Original", "Loop through marks and count passes."],
-      ["Lost mark", "No initialisation and no precise condition."],
-      ["Correction rule", "Initialise counters before the loop and state the pass condition exactly."],
-      ["Rewrite", "PassCount ← 0; IF Mark >= 50 THEN PassCount ← PassCount + 1; ENDIF"],
+      ["Task", "Count marks greater than or equal to 50."],
+      ["Skeleton", "Initialise count, loop through marks, use IF, increment count, output after loop."],
+      ["Fast check", "Marks 49, 50, 72 should give count 2."],
+      ["Exam point", "The output belongs after the loop, not inside it, unless every step must be displayed."],
     ],
   },
-  structure: {
-    title: "Example 2: Data structure correction",
+  file: {
+    title: "Example 2: File read answer",
     rows: [
-      ["Original", "Use a queue because it stores jobs."],
-      ["Lost mark", "No FIFO justification."],
-      ["Correction rule", "Justify structures by operation pattern."],
-      ["Rewrite", "Use a queue because the first print job submitted should be processed first, so FIFO matches the scenario."],
+      ["Task", "Read all records from Scores.txt."],
+      ["Skeleton", "OPENFILE for READ, WHILE NOT EOF, READFILE, process record, CLOSEFILE."],
+      ["Fast check", "The loop should stop at end of file and should not try to read after closing."],
+      ["Exam point", "EOF logic and CLOSEFILE often earn separate marks."],
     ],
   },
-  evaluation: {
-    title: "Example 3: Evaluation correction",
+  validate: {
+    title: "Example 3: Validation answer",
     rows: [
-      ["Original", "The system is successful because it works."],
-      ["Lost mark", "No evidence or success criterion."],
-      ["Correction rule", "Compare measured evidence with the criterion and make a judgement."],
-      ["Rewrite", "The criterion is met because 94% of users completed sign-up within 2 minutes, exceeding the 90% target."],
+      ["Task", "Input mark from 0 to 100 inclusive."],
+      ["Skeleton", "REPEAT input and error message UNTIL mark is in range."],
+      ["Fast check", "0 and 100 accepted; minus 1 and 101 rejected."],
+      ["Exam point", "Inclusive boundaries must be handled exactly."],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What file mode adds a record without deleting old records?", accepted: ["append"], answer: "APPEND." },
-  { id: "p2", prompt: "What access pattern justifies a stack?", accepted: ["lifo", "last in", "last-in"], answer: "LIFO / last-in, first-out." },
-  { id: "p3", prompt: "What access pattern justifies a queue?", accepted: ["fifo", "first in", "first-in"], answer: "FIFO / first-in, first-out." },
-  { id: "p4", prompt: "What should be shown in a trace table?", accepted: ["variable", "values", "iteration"], answer: "Variable values after relevant steps or iterations." },
-  { id: "p5", prompt: "What must test data include besides input data?", accepted: ["expected", "result", "output"], answer: "Expected result / expected output." },
-  { id: "p6", prompt: "What should evaluation compare evidence against?", accepted: ["success criteria", "criteria", "requirements"], answer: "Requirements or success criteria." },
-  { id: "p7", prompt: "What should a counter be given before it is used?", accepted: ["initial", "initialised", "initialized", "0"], answer: "An initial value, often 0." },
-  { id: "p8", prompt: "Which Paper 2 section focuses on data structures?", accepted: ["10", "section 10"], answer: "Section 10." },
-  { id: "p9", prompt: "Which Paper 2 section focuses on software development?", accepted: ["12", "section 12"], answer: "Section 12." },
-  { id: "p10", prompt: "What language style should final algorithm answers use in Cambridge Paper 2?", accepted: ["pseudocode", "cambridge"], answer: "Cambridge-style pseudocode." },
+  { id: "p1", prompt: "In a timed pseudocode question, what should you identify before writing: inputs, outputs, variables or jokes?", accepted: ["inputs", "outputs", "variables"], answer: "Inputs, outputs and variables." },
+  { id: "p2", prompt: "Which loop is usually best for processing exactly 20 items?", accepted: ["for"], answer: "FOR loop." },
+  { id: "p3", prompt: "Which file condition is commonly used to read until the file ends?", accepted: ["eof", "end of file"], answer: "EOF / end of file condition." },
+  { id: "p4", prompt: "Where should a final total usually be output: inside or after the loop?", accepted: ["after"], answer: "After the loop, unless the question asks for every intermediate value." },
+  { id: "p5", prompt: "What should counters be given before use?", accepted: ["initial", "initialised", "initialized", "0"], answer: "They should be initialised, often to 0." },
+  { id: "p6", prompt: "For range 0 to 100 inclusive, is 100 valid? yes or no", accepted: ["yes"], answer: "Yes. Inclusive means the endpoints are valid." },
+  { id: "p7", prompt: "Which file statement should appear after processing is complete?", accepted: ["closefile", "close"], answer: "CLOSEFILE." },
+  { id: "p8", prompt: "Should final Paper 2 algorithm answers normally use Java syntax? yes or no", accepted: ["no"], answer: "No. Cambridge-style pseudocode is the exam standard." },
+  { id: "p9", prompt: "What quick method checks a pseudocode answer with sample data?", accepted: ["trace", "dry run"], answer: "Trace / dry run." },
+  { id: "p10", prompt: "What kind of case catches many condition mistakes: normal or boundary?", accepted: ["boundary"], answer: "Boundary case." },
 ];
 
 const mistakes = [
   {
-    wrong: "A correction says: 'I need to revise stacks.'",
-    fix: "Correction: make it precise: 'A stack is LIFO, so it is suitable when the most recent item is removed first, such as undo.'",
+    wrong: "A student starts writing pseudocode immediately and discovers halfway through that the input comes from a file.",
+    fix: "Correction: spend the first minute identifying inputs, outputs, variables and file mode. This prevents a costly rewrite.",
   },
   {
-    wrong: "A correction copies the model answer but does not say why the original lost marks.",
-    fix: "Correction: identify the missing mark first, such as no expected result, no initialisation, or no scenario-specific consequence.",
+    wrong: "A student outputs PassCount inside the loop when the question asks for the final number of passes.",
+    fix: "Correction: update PassCount inside the loop, then output it after all items have been processed.",
   },
   {
-    wrong: "A student marks every error as 'careless'.",
-    fix: "Correction: classify errors into knowledge, method, precision or exam technique. 'Careless' is too vague to train.",
+    wrong: "A student validates 0 to 100 but rejects 0 and 100.",
+    fix: "Correction: if the question says inclusive, both endpoints are valid. Use conditions such as Mark >= 0 AND Mark <= 100.",
   },
   {
-    wrong: "A student fixes one question but never tries a similar question.",
-    fix: "Correction: add a retest. The correction is only reliable if it transfers to a new but similar prompt.",
+    wrong: "A student writes Java braces and semicolons in the final answer.",
+    fix: "Correction: write Cambridge-style pseudocode with IF/ENDIF, FOR/NEXT, OPENFILE/READFILE/WRITEFILE/CLOSEFILE. Java is support only.",
   },
 ];
 
@@ -110,94 +133,100 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "A student answered: 'Use a stack because it stores data.' Explain why this answer loses marks and Write it for a scenario where recent edits must be undone first.",
-    answer: "The answer loses marks because 'stores data' is a generic reason and does not explain why a stack is suitable. A stronger answer is: use a stack because the most recent edit must be undone first, so the access pattern is last-in, first-out.",
+    marks: "6 marks",
+    prompt: "Write pseudocode to count how many marks in an array Marks[1:30] are greater than or equal to 50.",
+    answer: "Set PassCount to 0. Loop Index from 1 to 30. If Marks[Index] is greater than or equal to 50, add 1 to PassCount. After the loop, output PassCount.",
     marking: [
-      { mark: "B1", text: "identifies the original answer is too vague/generic" },
-      { mark: "B1", text: "states that the justification must link to the scenario" },
-      { mark: "B1", text: "names stack as suitable for undo/recent edits" },
-      { mark: "B1", text: "uses LIFO or last-in, first-out correctly" },
-      { mark: "B1", text: "links most recent edit to first item removed" },
+      { mark: "M1", text: "initialises PassCount or equivalent counter to 0" },
+      { mark: "M1", text: "uses a loop that processes 30 array elements" },
+      { mark: "M1", text: "accesses each mark using the loop index or equivalent" },
+      { mark: "M1", text: "tests mark greater than or equal to 50" },
+      { mark: "A1", text: "increments counter only for passing marks" },
+      { mark: "A1", text: "outputs final count after loop" },
     ],
     strict: [
-      "Do not award full marks for 'stack is better' without LIFO or recent-first reasoning.",
-      "Allow equivalent undo/history examples.",
-      "Do not accept FIFO as stack justification.",
+      "Do not award condition mark for greater than 50 only; 50 must be included.",
+      "Allow clear Cambridge-style pseudocode or structured English.",
+      "Do not require exact variable names.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "A mock answer opens Scores.txt for WRITE to add one new score at the end. Explain the error and give corrected file-handling steps.",
-    answer: "The error is using WRITE when the existing scores need to be preserved. The file should be opened for APPEND. Correct steps: OPENFILE Scores.txt FOR APPEND, WRITEFILE the new score, then CLOSEFILE Scores.txt. APPEND adds the record to the end without deleting existing records.",
+    marks: "7 marks",
+    prompt: "Write pseudocode to read all records from Scores.txt and output only scores greater than 80.",
+    answer: "Open Scores.txt for READ. While not end of file, read a score record. If the score is greater than 80, output the score or record. End the IF and loop, then close the file.",
     marking: [
-      { mark: "B1", text: "identifies WRITE as the error or unsuitable mode" },
-      { mark: "M1", text: "explains existing records need to be preserved" },
-      { mark: "M1", text: "opens file for APPEND" },
-      { mark: "M1", text: "writes the new score/record" },
-      { mark: "A1", text: "closes the file after writing" },
-      { mark: "A1", text: "explains APPEND adds to the end" },
+      { mark: "M1", text: "opens Scores.txt for READ" },
+      { mark: "M1", text: "uses loop controlled by EOF or equivalent" },
+      { mark: "M1", text: "reads each record inside the loop" },
+      { mark: "M1", text: "uses selection to test score greater than 80" },
+      { mark: "A1", text: "outputs only records/scores meeting the condition" },
+      { mark: "M1", text: "continues until all records are processed" },
+      { mark: "A1", text: "closes the file after processing" },
     ],
     strict: [
-      "Do not accept READ as a corrected mode for adding a new record.",
-      "Allow clear structured English or Cambridge-style pseudocode.",
-      "Do not require exact filename quote marks.",
+      "Do not award open-file mark if file is opened for WRITE or APPEND.",
+      "Allow record field notation such as ScoreRecord.Score if consistent.",
+      "Do not accept outputting every record without condition for the selection mark.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "A student gives test data for a mark validation question but no expected results. Explain why this loses marks and improve the answer for range 0 to 100 inclusive.",
-    answer: "Test data without expected results does not show what the program should do. Improved answer: normal data 75 should be accepted; boundary data 0 and 100 should be accepted; invalid boundary data minus 1 and 101 should be rejected; abnormal data such as text should be rejected with an error message.",
+    marks: "7 marks",
+    prompt: "Write pseudocode to input a mark from 0 to 100 inclusive. The program should keep asking until a valid mark is entered.",
+    answer: "Use a REPEAT loop. Input Mark. If Mark is less than 0 or greater than 100, output an invalid message. Repeat until Mark is greater than or equal to 0 and less than or equal to 100. Then process or output the valid Mark.",
     marking: [
-      { mark: "B1", text: "explains expected results are needed" },
-      { mark: "B1", text: "normal valid data with expected accepted result" },
-      { mark: "B1", text: "valid boundary data 0 or 100 with expected accepted result" },
-      { mark: "B1", text: "shows inclusive endpoints are accepted" },
-      { mark: "B1", text: "invalid boundary or abnormal data with expected rejected result" },
+      { mark: "M1", text: "uses a loop that repeats until valid input is entered" },
+      { mark: "M1", text: "inputs Mark inside the loop" },
+      { mark: "B1", text: "checks lower limit 0 correctly" },
+      { mark: "B1", text: "checks upper limit 100 correctly" },
+      { mark: "A1", text: "allows 0 and 100 as valid values" },
+      { mark: "A1", text: "outputs error or rejects invalid values" },
+      { mark: "A1", text: "loop stops only when Mark is valid" },
     ],
     strict: [
-      "Do not accept 50 as boundary data.",
-      "Allow equivalent normal and abnormal values.",
-      "Do not award expected-result marks where only data values are listed.",
+      "inclusive means both 0 and 100 are accepted.",
+      "Allow WHILE loop if repeated input and stopping condition are correct.",
+      "Do not award both boundary marks for vague 'check range' without limits.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "A student wrote: 'The system is successful because users like it.' Write this as an evaluation answer using success criteria and evidence.",
-    answer: "The system meets the usability success criterion if trial evidence shows at least 90% of users completed the task in under 2 minutes. If the evidence is 94%, the criterion is met because 94% is above the 90% target. A limitation is that feedback from the remaining users could still be used for perfective maintenance.",
+    marks: "7 marks",
+    prompt: "Write pseudocode to find the largest value in an array Values[1:20].",
+    answer: "Set Largest to Values[1]. Loop Index from 2 to 20. If Values[Index] is greater than Largest, set Largest to Values[Index]. After all values have been checked, output Largest.",
     marking: [
-      { mark: "B1", text: "identifies or uses a measurable success criterion" },
-      { mark: "B1", text: "uses evidence from trial/user data" },
-      { mark: "B1", text: "compares evidence with the criterion" },
-      { mark: "B1", text: "makes a judgement about whether criterion is met" },
-      { mark: "B1", text: "recognises limitation or remaining users" },
-      { mark: "B1", text: "links follow-up to improvement/maintenance" },
+      { mark: "M1", text: "initialises Largest to Values[1] or another valid array element" },
+      { mark: "M1", text: "uses loop to process remaining array elements" },
+      { mark: "M1", text: "uses correct range or avoids reprocessing problem safely" },
+      { mark: "M1", text: "compares current value with Largest" },
+      { mark: "A1", text: "updates Largest when current value is greater" },
+      { mark: "M1", text: "continues until all 20 values have been considered" },
+      { mark: "A1", text: "outputs Largest after loop" },
     ],
     strict: [
-      "Do not award full marks for user opinion alone.",
-      "Allow different measurable thresholds if clearly compared with evidence.",
-      "Do not require the exact 90% and 94% values unless chosen by candidate.",
+      "Do not award final robustness mark if Largest is initialised to 0 without evidence values are non-negative.",
+      "Allow loop from 1 to 20 if initialisation and comparison still produce correct result.",
+      "Do not require exact array notation if indexing is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "Describe a useful correction plan after a Paper 2 mock paper.",
-    answer: "First classify each lost mark as knowledge, method, precision or exam technique. Then write the missing mark or rule, such as 'counter must be initialised before the loop'. Rewrite the answer using accurate Cambridge-style pseudocode or precise explanation. Finally, answer a similar retest question to check that the correction transfers.",
+    marks: "6 marks",
+    prompt: "Explain how to check a timed pseudocode answer before moving to the next question.",
+    answer: "Check that inputs, variables and outputs have been included. Trace a small normal case to see whether the loop and assignments work. Trace a boundary case to check conditions such as greater than or equal to. Check that final output occurs after processing and that any opened file is closed.",
     marking: [
-      { mark: "B1", text: "classifies or groups errors by type" },
-      { mark: "B1", text: "identifies missing mark/rule or reason for lost mark" },
-      { mark: "B1", text: "rewrites answer accurately" },
-      { mark: "B1", text: "uses a similar retest question/practice task" },
-      { mark: "B1", text: "explains retest checks transfer or prevents repeated error" },
+      { mark: "B1", text: "checks inputs/variables/outputs or equivalent structure" },
+      { mark: "M1", text: "uses a trace or dry run with sample data" },
+      { mark: "A1", text: "uses normal case to check basic logic" },
+      { mark: "A1", text: "uses boundary case to check conditions" },
+      { mark: "M1", text: "checks output placement or final result" },
+      { mark: "A1", text: "checks file handling such as close file where relevant" },
     ],
     strict: [
-      "Do not award full marks for 'revise more' without a concrete correction process.",
-      "Allow different error categories if they are useful and specific.",
-      "Do not require all four named categories if classification is clear.",
+      "Do not award full marks for 'read it again' without a specific checking method.",
+      "Allow checking loop bounds, initialisation or counters as equivalent structural checks.",
+      "Do not require file handling point if question clearly has no file, but credit when included as a general timed checklist.",
     ],
   },
 ];
@@ -231,10 +260,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    arithmetic: { text: "No calculation is involved. This diagnosis would not help the student fix the answer.", correct: false },
-    justification: { text: "Correct. The answer names the structure but does not justify it with LIFO or scenario logic.", correct: true },
-    syntax: { text: "There is no file statement here. The problem is explanation precision.", correct: false },
-    timing: { text: "Timing may matter, but the visible error is missing justification.", correct: false },
+    code: { text: "Starting immediately feels fast, but it often creates a rewrite. Plan the file mode first.", correct: false },
+    plan: { text: "Correct. Inputs, outputs, variables and file mode define the skeleton.", correct: true },
+    java: { text: "Java is support only. The timed answer should be Cambridge-style pseudocode.", correct: false },
+    essay: { text: "That answers a theory question, not a write-algorithm command.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -247,34 +276,33 @@ function setupHook() {
   });
 }
 
-function setupErrorTool() {
-  const select = document.querySelector("#errorSelect");
-  const output = document.querySelector("#errorOutput");
+function setupTimerTool() {
+  const select = document.querySelector("#timerSelect");
+  const output = document.querySelector("#timerOutput");
   const render = () => {
-    const item = errorTypes[select.value];
+    const item = timingPlans[select.value];
     output.innerHTML = `
-      <p><strong>Error type:</strong> ${escapeHtml(item.type)}</p>
-      <p><strong>Diagnosis:</strong> ${escapeHtml(item.diagnosis)}</p>
-      <p><strong>Correction:</strong> ${escapeHtml(item.correction)}</p>
+      <p><strong>Timing:</strong> ${escapeHtml(item.plan)}</p>
+      <p><strong>Advice:</strong> ${escapeHtml(item.advice)}</p>
     `;
   };
-  document.querySelector("#errorBtn").addEventListener("click", render);
+  document.querySelector("#timerBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupRewriteTool() {
-  const select = document.querySelector("#rewriteSelect");
-  const output = document.querySelector("#rewriteOutput");
+function setupSkeletonTool() {
+  const select = document.querySelector("#skeletonSelect");
+  const output = document.querySelector("#skeletonOutput");
   const render = () => {
-    const item = rewrites[select.value];
+    const item = skeletons[select.value];
     output.innerHTML = `
-      <p><strong>Weak:</strong> ${escapeHtml(item.weak)}</p>
-      <p><strong>Improved:</strong> ${escapeHtml(item.improved)}</p>
-      <p><strong>Recovered mark:</strong> ${escapeHtml(item.mark)}</p>
+      <h3>${escapeHtml(item.title)}</h3>
+      <pre><code>${escapeHtml(item.code)}</code></pre>
+      <p><strong>Check:</strong> ${escapeHtml(item.check)}</p>
     `;
   };
-  document.querySelector("#rewriteBtn").addEventListener("click", render);
+  document.querySelector("#skeletonBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -291,7 +319,7 @@ function setupExamples() {
   document.querySelectorAll("[data-example]").forEach((button) => {
     button.addEventListener("click", () => render(button.dataset.example));
   });
-  render("pseudocode");
+  render("count");
 }
 
 function setupPractice() {
@@ -317,7 +345,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const response = normalise(input.value);
       const correct = item.accepted.some((accepted) => response.includes(accepted));
-      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the precise correction-clinic keyword.";
+      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the timed pseudocode checklist keyword.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -382,8 +410,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupErrorTool();
-  setupRewriteTool();
+  setupTimerTool();
+  setupSkeletonTool();
   setupExamples();
   setupPractice();
   setupMistakes();

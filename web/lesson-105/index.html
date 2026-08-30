@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 105 | Bubble sort and insertion sort</title>
+    <title>AS9618 Lesson 105 | Linear search and binary search</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Bubble sort and insertion sort</h1>
+        <h1>Linear search and binary search</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,363 +29,298 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#bubble">Bubble sort</a>
-        <a href="#insertion">Insertion sort</a>
+        <a href="#linear">Linear search</a>
+        <a href="#binary">Binary search</a>
         <a href="#compare">Comparison</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#chooser">Sort chooser</a>
-        <a href="#bubble-tool">Bubble pass</a>
-        <a href="#insert-tool">Insertion step</a>
+        <a href="#classifier">Search chooser</a>
+        <a href="#linear-tool">Linear trace</a>
+        <a href="#binary-tool">Binary trace</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Write linear-search and bubble-sort algorithms</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</p>
-            <p>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</p>
-            <p>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</p>
-            <p>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Two complete array algorithms</h3>
-            <p>A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start bubble -->
-        <section class="panel explanation-panel" id="explanation-bubble" data-explains="bubble" data-explanation-kind="process" aria-labelledby="explanation-bubble-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
-          <h2 class="explanation-sr-only" id="explanation-bubble-title">Why bubble sort repeats adjacent comparisons</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why bubble sort repeats adjacent comparisons through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why bubble sort repeats adjacent comparisons: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Bubble sort compares adjacent items and swaps an inverted pair.</li><li><strong>Reason:</strong> For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.</li><li><strong>Result:</strong> The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.</li></ol>
-
-            <p><strong>Analogy:</strong> Repeatedly exchange adjacent books until the largest reaches the shelf end.</p>
-            <p><strong>Boundary:</strong> One pass does not generally sort the entire list.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end bubble -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Write linear-search and bubble-sort algorithms: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> When must a linear search stop?</p>
-              <details><summary>Show answer</summary><p>When the target has been found or every populated element within the declared bounds has been checked.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What comparison is made by an ascending bubble sort?</p>
-              <details><summary>Show answer</summary><p>Compare adjacent elements and swap when the left element is greater than the right element.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What does a no-swap pass prove?</p>
-              <details><summary>Show answer</summary><p>No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>linear search initialises Found and Index</td><td>Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound.</td><td>1</td></tr>
-                  <tr><td>linear search loops within indexes 1 to 20 until found or exhausted</td><td></td><td>1</td></tr>
-                  <tr><td>linear search compares Name[Index] with the target and records a match</td><td></td><td>1</td></tr>
-                  <tr><td>bubble sort uses repeated passes</td><td></td><td>1</td></tr>
-                  <tr><td>compares adjacent Score[Index] and Score[Index + 1] within valid bounds</td><td></td><td>1</td></tr>
-                  <tr><td>uses Temp or an equivalent safe three-step swap</td><td></td><td>1</td></tr>
-                  <tr><td>reduces the unsorted range or uses a valid no-swap stopping condition</td><td></td><td>1</td></tr>
-                  <tr><td>all constructs close coherently in Cambridge pseudocode</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 105 | 45 minutes | Paper 2 Section 9 | 5-minute quiz</p>
-            <h2>Sorting algorithms apply a defined sequence of comparisons and movements.</h2>
+            <p class="lesson-meta">Lesson 105 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Linear search checks politely from the front. Binary search cuts the queue in half.</h2>
             <p>
-              Bubble sort repeatedly compares adjacent items and swaps them if they are in the wrong order. Insertion
-              sort takes the next item and inserts it into the correct place in the already sorted left section. You will
-              trace both methods step by step using Cambridge-style algorithm reasoning.
+              Searching means finding whether a target value is present and often where it is found. Linear search checks
+              items one by one and works on unsorted data. Binary search repeatedly checks the middle item, but only works
+              correctly when the data is sorted.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Trace</strong><span>bubble sort passes and insertion sort movements accurately</span></div>
-              <div><strong>Compare</strong><span>how adjacent swaps differ from inserting into a sorted section</span></div>
-              <div><strong>Explain</strong><span>common trace errors, stopping points and algorithm behaviour</span></div>
+              <div><strong>Trace</strong><span>linear search and binary search using test data</span></div>
+              <div><strong>Choose</strong><span>the suitable search method from data size and sorted/unsorted status</span></div>
+              <div><strong>Explain</strong><span>why binary search is faster but requires sorted data</span></div>
             </div>
           </div>
-          <div class="sort-visual" aria-label="Sorting visual">
+          <div class="search-visual" aria-label="Search visual">
             <div class="array-line">
-              <span>5</span><span>1</span><span>4</span><span>2</span>
+              <span>13</span><span>21</span><span>42</span><span>56</span><span>70</span><span>88</span><span>91</span>
             </div>
-            <div class="sort-card">
-              <strong>Bubble sort first pass</strong>
-              <span>[1, 4, 2, 5]</span>
+            <div class="search-card">
+              <strong>Linear</strong>
+              <span>13 → 21 → 42 found</span>
             </div>
-            <div class="sort-card">
-              <strong>Insertion sort first movement</strong>
-              <span>take 1, insert before 5 → [1, 5, 4, 2]</span>
+            <div class="search-card">
+              <strong>Binary</strong>
+              <span>middle 56 too high → left half → 21 too low → 42 found</span>
             </div>
-            <p>Bubble sort pushes large values right. Insertion sort builds a sorted left-hand section.</p>
+            <p>Binary search is clever only because the list is sorted. Without order, "discard half" becomes "discard marks".</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 sorting questions usually mark the intermediate states. The final sorted list alone is not enough.</p>
+            <p>Paper 2 may ask students to trace, compare or justify a search method. "Faster" alone is not enough for the mark.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not sort by intuition. Use the named algorithm's exact movement rule, or the trace stops matching the method.</p>
+            <p>Binary search does not mean "start somewhere random". It means compare the middle, then discard the impossible half.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Four cards, two legal ways to tidy them</h2>
-            <p>Starting from [5, 1, 4, 2], which statement describes bubble sort's first comparison?</p>
+            <h2>Find the exam paper in a pile</h2>
+            <p>If the papers are unsorted, what is the safest search method?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="swap">Compare 5 and 1, then swap them.</button>
-            <button class="choice-card" type="button" data-hook="insert">Take 1 and insert it into the left section.</button>
-            <button class="choice-card" type="button" data-hook="middle">Start from the middle value.</button>
-            <button class="choice-card" type="button" data-hook="search">Find the target value first.</button>
+            <button class="choice-card" type="button" data-hook="linear">Check papers one by one.</button>
+            <button class="choice-card" type="button" data-hook="binary">Open the middle and throw away half.</button>
+            <button class="choice-card" type="button" data-hook="sort">Sort the whole pile first, then search.</button>
+            <button class="choice-card" type="button" data-hook="guess">Guess confidently.</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the bubble sort first action.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose a strategy for unsorted data.</div>
         </section>
 
-        <section class="panel" id="bubble" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+        <section class="panel" id="linear" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Bubble sort: compare adjacent items and swap if needed</h2>
+            <h2>Linear search checks each item in order</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Core rule</h3>
-              <p>Compare neighbouring items from left to right. If the left item is larger than the right item, swap them. After one full pass, the largest item has moved to the end.</p>
-              <div class="callout">Chinese support: bubble sort = 冒泡排序；adjacent = 相邻的；swap = 交换。</div>
+              <h3>How it works</h3>
+              <p>Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</p>
+              <div class="callout">Chinese support: linear search = 线性搜索 / 顺序搜索。</div>
             </article>
             <article>
-              <h3>First pass on [5, 1, 4, 2]</h3>
-              <pre><code>[5, 1, 4, 2]
-compare 5 and 1 -> swap: [1, 5, 4, 2]
-compare 5 and 4 -> swap: [1, 4, 5, 2]
-compare 5 and 2 -> swap: [1, 4, 2, 5]</code></pre>
+              <h3>When it is suitable</h3>
+              <p>Use it when data is unsorted, the list is small, or simplicity matters more than speed.</p>
+              <div class="callout">Worst case: the target is last or absent, so every item may be checked.</div>
             </article>
           </div>
         </section>
-
-        <section class="panel" id="insertion" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+        <section class="panel" id="binary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Insertion sort: insert the next item into the sorted left section</h2>
+            <h2>Binary search repeatedly halves a sorted list</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Core rule</h3>
-              <p>Treat the first item as sorted. Take the next item, move larger items in the sorted section right, then insert the item into its correct position.</p>
-              <div class="callout">Chinese support: insertion sort = 插入排序；sorted section = 已排序部分。</div>
-            </article>
-            <article>
-              <h3>First movements on [5, 1, 4, 2]</h3>
-              <pre><code>sorted left: [5]
-take 1 -> insert before 5: [1, 5, 4, 2]
-take 4 -> insert between 1 and 5: [1, 4, 5, 2]
-take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
-            </article>
+          <div class="step-strip">
+            <div><strong>1</strong><span>Set Low to first index and High to last index.</span></div>
+            <div><strong>2</strong><span>Find Mid, the middle index.</span></div>
+            <div><strong>3</strong><span>Compare List[Mid] with Target.</span></div>
+            <div><strong>4</strong><span>If target is smaller, move High left; if larger, move Low right.</span></div>
+            <div><strong>5</strong><span>Stop when found or Low is greater than High.</span></div>
           </div>
+          <div class="callout">Binary search requires sorted data. 二分搜索必须基于有序数据，否则无法安全排除一半数据。</div>
         </section>
 
-        <!-- stage10-explanation:start insertion -->
-        <section class="panel explanation-panel" id="explanation-insertion" data-explains="insertion" data-explanation-kind="process" aria-labelledby="explanation-insertion-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
-          <h2 class="explanation-sr-only" id="explanation-insertion-title">How insertion sort grows a sorted region</h2>
+        <!-- stage10-explanation:start binary -->
+        <section class="panel explanation-panel" id="explanation-binary" data-explains="binary" data-explanation-kind="process" aria-labelledby="explanation-binary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+          <h2 class="explanation-sr-only" id="explanation-binary-title">Binary search repeatedly halves a sorted list</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-insertion.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How insertion sort grows a sorted region through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How insertion sort grows a sorted region: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-binary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary search repeatedly halves a sorted list with a structured visual model." />
+            <figcaption class="explanation-sr-only">Binary search repeatedly halves a sorted list: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Treat the first item as an already sorted region.</li><li><strong>Reason:</strong> Remove the next key and shift larger sorted items right.</li><li><strong>Result:</strong> Insert the key into the gap, expanding the sorted region.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Binary search requires sorted data and repeatedly narrows the search interval.</li><li><strong>Lesson fact:</strong> In Cambridge pseudocode, / performs real division and DIV performs integer division.</li><li><strong>Lesson fact:</strong> Mid &lt;- (Low + High) DIV 2
+This produces an integer array index.</li></ol>
 
-            <p><strong>Analogy:</strong> Insert each new card into the correct place in an ordered hand.</p>
-            <p><strong>Boundary:</strong> The left region is sorted, but the unprocessed right region is not.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end insertion -->
+        <!-- stage10-explanation:end binary -->
         <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Comparison</p>
-            <h2>Same final list, different route</h2>
+            <h2>Choosing the right search</h2>
           </div>
-          <div class="data-table concept-table" role="table" aria-label="Bubble and insertion comparison">
-            <div class="table-row table-head" role="row"><div>Feature</div><div>Bubble sort</div><div>Insertion sort</div></div>
-            <div class="table-row" role="row"><div>Main action</div><div>compare adjacent items and swap</div><div>take next item and insert into sorted left section</div></div>
-            <div class="table-row" role="row"><div>After early work</div><div>large items move towards the right end</div><div>left side becomes sorted</div></div>
-            <div class="table-row" role="row"><div>Trace evidence</div><div>show comparisons and swaps in a pass</div><div>show key item movements and insertion point</div></div>
-            <div class="table-row" role="row"><div>Common error</div><div>jumping straight to sorted list</div><div>moving the wrong direction through sorted section</div></div>
+          <div class="data-table concept-table" role="table" aria-label="Linear and binary search comparison">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Linear search</div><div>Binary search</div></div>
+            <div class="table-row" role="row"><div>Data order</div><div>works on unsorted or sorted data</div><div>requires sorted data</div></div>
+            <div class="table-row" role="row"><div>Method</div><div>checks each item one by one</div><div>checks middle and discards half</div></div>
+            <div class="table-row" role="row"><div>Worst case</div><div>may check every item</div><div>checks far fewer items for large sorted lists</div></div>
+            <div class="table-row" role="row"><div>Exam phrase</div><div>"sequentially compare each item with target"</div><div>"compare middle item and adjust low/high bounds"</div></div>
           </div>
         </section>
 
         <!-- stage10-explanation:start compare -->
         <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Why the sorts move data differently</h2>
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Choosing the right search</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why the sorts move data differently through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why the sorts move data differently: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choosing the right search with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choosing the right search: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Bubble sort repairs local inversions through repeated neighbouring swaps.</li><li><strong>Reason:</strong> Insertion sort moves one key through an existing sorted region.</li><li><strong>Result:</strong> Their movement patterns produce different trace states and operation counts.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Comparison</li><li><strong>Lesson fact:</strong> Linear search</li><li><strong>Lesson fact:</strong> Binary search</li><li><strong>Lesson fact:</strong> Data order</li><li><strong>Lesson fact:</strong> works on unsorted or sorted data</li><li><strong>Lesson fact:</strong> requires sorted data</li><li><strong>Lesson fact:</strong> checks each item one by one</li><li><strong>Lesson fact:</strong> checks middle and discards half</li><li><strong>Lesson fact:</strong> Worst case</li><li><strong>Lesson fact:</strong> may check every item</li><li><strong>Lesson fact:</strong> checks far fewer items for large sorted lists</li><li><strong>Lesson fact:</strong> Exam phrase</li></ol>
 
-            <p><strong>Analogy:</strong> One method swaps neighbours; the other opens a gap for one selected card.</p>
-            <p><strong>Boundary:</strong> Both remain quadratic in the typical worst-case school-level analysis.</p>
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
         <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Trace Cambridge-style algorithms, not Java syntax habits</h2>
+            <h2>Cambridge pseudocode is the exam format</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Bubble sort outline</h3>
-              <pre><code>FOR Pass &lt;- 1 TO Length - 1
-    FOR Index &lt;- 1 TO Length - Pass
-        IF List[Index] &gt; List[Index + 1] THEN
-            Temp &lt;- List[Index]
-            List[Index] &lt;- List[Index + 1]
-            List[Index + 1] &lt;- Temp
-        ENDIF
-    NEXT Index
-NEXT Pass</code></pre>
+              <h3>Linear search pseudocode</h3>
+              <pre><code>Found &lt;- FALSE
+Index &lt;- 1
+WHILE Found = FALSE AND Index &lt;= Length
+    IF List[Index] = Target THEN
+        Found &lt;- TRUE
+    ELSE
+        Index &lt;- Index + 1
+    ENDIF
+ENDWHILE</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>for (int pass = 0; pass &lt; list.length - 1; pass++) {
-    for (int index = 0; index &lt; list.length - pass - 1; index++) {
-        if (list[index] &gt; list[index + 1]) {
-            int temp = list[index];
-            list[index] = list[index + 1];
-            list[index + 1] = temp;
-        }
+              <pre><code>boolean found = false;
+int index = 0;
+while (!found &amp;&amp; index &lt; list.length) {
+    if (list[index] == target) {
+        found = true;
+    } else {
+        index++;
     }
 }</code></pre>
             </article>
           </div>
-          <div class="callout">Exam reminder: Java uses 0-based array indexes and braces; Cambridge pseudocode examples often use 1-based indexing and keywords such as FOR, IF, ENDIF and NEXT.</div>
+          <div class="callout">Exam reminder: Java array indexing starts at 0; Cambridge pseudocode examples often use index 1. Keep the notation you are using consistent.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Why a trace follows state</h2>
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam format</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a trace follows state through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why a trace follows state: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam format: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Record the variables and list at the agreed trace point.</li><li><strong>Reason:</strong> Apply exactly one comparison, swap, shift or insertion step.</li><li><strong>Result:</strong> Write the new state before advancing the loop.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Found to FALSE and Index to the first valid position.</li><li><strong>Lesson fact:</strong> While the target is not found and Index remains valid, compare the current item.</li><li><strong>Lesson fact:</strong> Close the match selection with ENDIF, then increment Index.</li><li><strong>Lesson fact:</strong> ENDWHILE closes the surrounding search loop.</li></ol>
 
-            <p><strong>Analogy:</strong> A laboratory log records each changed state, not the punctuation of instructions.</p>
-            <p><strong>Boundary:</strong> A trace must use the algorithm's actual update order.</p>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
-            <p class="eyebrow">Interactive sort chooser</p>
-            <h2>Identify the method from the movement</h2>
+            <p class="eyebrow">Interactive search chooser</p>
+            <h2>Pick a suitable search method</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Movement clue
-              <select id="chooserInput">
-                <option value="bubble">Compare 5 and 1, then swap adjacent items.</option>
-                <option value="insert">Take 4 and insert it between 1 and 5.</option>
-                <option value="bubble-end">After a pass, the largest item is at the right end.</option>
-                <option value="insert-left">The left-hand section is kept sorted.</option>
+              Scenario
+              <select id="classifierInput">
+                <option value="unsorted">Unsorted list of 12 names</option>
+                <option value="sorted-large">Sorted list of 1000 candidate numbers</option>
+                <option value="small">Small list of 4 scores</option>
+                <option value="unknown">List order is not stated</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="chooserBtn">Identify</button>
+            <button class="primary-button" type="button" id="classifyBtn">Choose method</button>
           </div>
-          <div class="feedback" id="chooserResult">Choose a clue to classify it.</div>
+          <div class="feedback" id="classifyResult">Choose a scenario to see a justified method.</div>
         </section>
 
-        <section class="panel" id="bubble-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+        <section class="panel" id="linear-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
-            <p class="eyebrow">Interactive bubble pass</p>
-            <h2>Trace one full bubble pass</h2>
+            <p class="eyebrow">Interactive linear trace</p>
+            <h2>Trace linear search</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Starting list
-              <select id="bubbleInput">
-                <option value="5142">[5, 1, 4, 2]</option>
-                <option value="3124">[3, 1, 2, 4]</option>
-                <option value="4312">[4, 3, 1, 2]</option>
+              Target in [13, 42, 56, 70]
+              <select id="linearInput">
+                <option value="42">42</option>
+                <option value="70">70</option>
+                <option value="99">99</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="bubbleBtn">Show pass</button>
+            <button class="primary-button" type="button" id="linearBtn">Trace</button>
           </div>
-          <div class="trace-output" id="bubbleResult">Choose a list to trace a pass.</div>
+          <div class="trace-output" id="linearResult">Choose a target to trace comparisons.</div>
         </section>
 
-        <section class="panel" id="insert-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+        <!-- stage10-explanation:start linear-tool -->
+        <section class="panel explanation-panel" id="explanation-linear-tool" data-explains="linear-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+          <h2 class="explanation-sr-only" id="explanation-linear-tool-title">Trace linear search</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-linear-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace linear search with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace linear search: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive linear trace</li><li><strong>Lesson fact:</strong> Target in [13, 42, 56, 70]</li><li><strong>Lesson fact:</strong> Choose a target to trace comparisons.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end linear-tool -->
+        <section class="panel" id="binary-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
-            <p class="eyebrow">Interactive insertion step</p>
-            <h2>Trace insertion sort movements</h2>
+            <p class="eyebrow">Interactive binary trace</p>
+            <h2>Trace binary search on sorted data</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Starting list
-              <select id="insertInput">
-                <option value="5142">[5, 1, 4, 2]</option>
-                <option value="3124">[3, 1, 2, 4]</option>
-                <option value="4312">[4, 3, 1, 2]</option>
+              Target in [13, 21, 42, 56, 70, 88, 91]
+              <select id="binaryInput">
+                <option value="42">42</option>
+                <option value="88">88</option>
+                <option value="15">15</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="insertBtn">Show movements</button>
+            <button class="primary-button" type="button" id="binaryBtn">Trace</button>
           </div>
-          <div class="trace-output" id="insertResult">Choose a list to trace insertion movements.</div>
+          <div class="trace-output" id="binaryResult">Choose a target to trace low, mid and high.</div>
         </section>
 
+        <!-- stage10-explanation:start binary-tool -->
+        <section class="panel explanation-panel" id="explanation-binary-tool" data-explains="binary-tool" data-explanation-kind="process" aria-labelledby="explanation-binary-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
+          <h2 class="explanation-sr-only" id="explanation-binary-tool-title">Trace binary search on sorted data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-binary-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace binary search on sorted data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace binary search on sorted data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive binary trace</li><li><strong>Lesson fact:</strong> Target in [13, 21, 42, 56, 70, 88, 91]</li><li><strong>Lesson fact:</strong> Choose a target to trace low, mid and high.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end binary-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Sorting traces</h2>
+            <h2>Search traces</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="bubble-pass">Bubble first pass</button>
-            <button class="tab" type="button" data-example="bubble-full">Bubble full trace</button>
-            <button class="tab" type="button" data-example="insert-first">Insertion first movement</button>
-            <button class="tab" type="button" data-example="insert-full">Insertion full trace</button>
+            <button class="tab active" type="button" data-example="linear-found">Linear found</button>
+            <button class="tab" type="button" data-example="linear-absent">Linear absent</button>
+            <button class="tab" type="button" data-example="binary-found">Binary found</button>
+            <button class="tab" type="button" data-example="binary-absent">Binary absent</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -393,7 +328,7 @@ NEXT Pass</code></pre>
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Sorting trace accuracy</h2>
+            <h2>Searching accuracy</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -402,7 +337,7 @@ NEXT Pass</code></pre>
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix sorting mistakes</h2>
+            <h2>Fix search mistakes</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -410,8 +345,8 @@ NEXT Pass</code></pre>
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style sorting questions with expandable MS</h2>
-            <p>These questions target sorting traces, comparison of methods and strict algorithm wording.</p>
+            <h2>Original Cambridge-style search questions with expandable MS</h2>
+            <p>These questions target tracing, method choice, sorted-data requirements and strict pseudocode reasoning.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -419,12 +354,12 @@ NEXT Pass</code></pre>
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Sorting checklist</h2>
+            <h2>Search checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Bubble</strong><span>Compare adjacent items; swap if left is greater; largest item moves right each pass.</span></div>
-            <div><strong>Insertion</strong><span>Take next item; insert it into the correct position in the sorted left section.</span></div>
-            <div><strong>Trace</strong><span>Show intermediate states. The final sorted list alone is not enough.</span></div>
+            <div><strong>Linear</strong><span>Compare each item with the target until found or list ends.</span></div>
+            <div><strong>Binary</strong><span>Use only sorted data; compare middle item and adjust low/high.</span></div>
+            <div><strong>Trace</strong><span>Record comparisons, index changes and found/not found outcome clearly.</span></div>
           </div>
         </section>
 
@@ -435,16 +370,16 @@ NEXT Pass</code></pre>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Bubble trace</strong>
-              <span>Show two passes of bubble sort on [6, 2, 5, 1]. Record every comparison and swap.</span>
+              <strong>Task 1: Linear trace</strong>
+              <span>Trace linear search for 56 and 99 in [13, 42, 56, 70]. State comparisons and final found/not found result.</span>
             </article>
             <article>
-              <strong>Task 2: Insertion trace</strong>
-              <span>Trace insertion sort on [6, 2, 5, 1]. Show the sorted left section after each insertion.</span>
+              <strong>Task 2: Binary trace</strong>
+              <span>Trace binary search for 88 in [13, 21, 42, 56, 70, 88, 91]. Show Low, Mid, High for each comparison.</span>
             </article>
             <article>
-              <strong>Task 3: Comparison paragraph</strong>
-              <span>Explain the difference between bubble sort and insertion sort using the words adjacent, swap, insert and sorted section.</span>
+              <strong>Task 3: Explanation</strong>
+              <span>Explain why binary search cannot be safely used on unsorted data unless the data is sorted first.</span>
             </article>
           </div>
         </section>
@@ -452,8 +387,8 @@ NEXT Pass</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

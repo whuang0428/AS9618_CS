@@ -8,11 +8,12 @@ import { stage3OptionalBaseLessons } from "./remediation-v2-stage3-sequence-plan
 import { coreVisualSectionKeys } from "./remediation-v2-core-visuals.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const toolbarStylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />';
+const stage6Stylesheet = '    <link rel="stylesheet" href="../stage6-qa.css?v=10" />';
+const toolbarStylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />';
 const academicThemeStylesheet = '    <link rel="stylesheet" href="../academic-theme.css?v=7" />';
 const scripts = [
-  '    <script src="../course-catalog.js?v=2"></script>',
-  '    <script src="../lesson-toolbar.js?v=2"></script>',
+  '    <script src="../course-catalog.js?v=3"></script>',
+  '    <script src="../lesson-toolbar.js?v=3"></script>',
 ];
 const optionalIds = new Set([
   "tool", "builder", "simulator", "converter", "checker", "classifier", "chooser", "runner",
@@ -128,6 +129,7 @@ function updateStartTag(tag, metadata) {
 
 function injectAssets(source) {
   let updated = source
+    .replace(/    <link rel="stylesheet" href="\.\.\/stage6-qa\.css\?v=\d+" \/>/, stage6Stylesheet)
     .replace(/^\s*<link rel="stylesheet" href="\.\.\/classroom-mode\.css\?v=\d+" \/>\n?/m, "")
     .replace(/^\s*<link rel="stylesheet" href="\.\.\/lesson-toolbar\.css\?v=\d+" \/>\n?/m, "")
     .replace(/^\s*<link rel="stylesheet" href="\.\.\/academic-theme\.css\?v=\d+" \/>\n?/m, "")
@@ -150,7 +152,7 @@ function injectAssets(source) {
 const register = [];
 let changed = 0;
 
-for (let number = 1; number <= 150; number += 1) {
+for (let number = 1; number <= 151; number += 1) {
   const lessonId = String(number).padStart(3, "0");
   const file = path.join(root, "web", `lesson-${lessonId}`, "index.html");
   const original = fs.readFileSync(file, "utf8");

@@ -1,126 +1,108 @@
-const timingPlans = {
-  4: {
-    plan: "30 sec read, 3 min write, 30 sec check.",
-    advice: "Aim for one clear loop or one clear decision. Do not over-engineer.",
+const constructScenarios = {
+  pass: {
+    construct: "Selection using IF",
+    reason: "The program chooses between two paths depending on a condition such as Mark greater than or equal to 50.",
+    examTip: "Include ELSE and ENDIF so the branch is complete.",
   },
-  6: {
-    plan: "60 sec read, 5 min write, 60 sec check.",
-    advice: "List variables first, then write initialisation, loop, condition and output.",
+  scores: {
+    construct: "Iteration using FOR",
+    reason: "The number of repetitions is known before the loop starts: exactly 30 scores.",
+    examTip: "Check loop bounds carefully; 1 to 30 gives 30 iterations.",
   },
-  8: {
-    plan: "90 sec read, 7 min write, 90 sec check.",
-    advice: "Expect two linked skills, such as file reading plus selection, or array processing plus validation.",
+  menu: {
+    construct: "Selection using CASE",
+    reason: "A menu has several discrete choices, so CASE is clearer than many separate IF statements.",
+    examTip: "Include OTHERWISE for invalid choices.",
   },
-  10: {
-    plan: "2 min read, 9 min write, 2 min check.",
-    advice: "Build a full skeleton first. Leave no file unclosed and no counter uninitialised.",
+  valid: {
+    construct: "Iteration using REPEAT UNTIL",
+    reason: "The prompt should appear at least once, then repeat until the input is valid.",
+    examTip: "Make sure the condition eventually becomes true, or the loop may never stop.",
   },
 };
 
-const skeletons = {
-  count: {
-    title: "Count passing marks in an array",
-    code: `PassCount ← 0
-FOR Index ← 1 TO NumberOfMarks
-    IF Marks[Index] >= 50 THEN
-        PassCount ← PassCount + 1
-    ENDIF
-NEXT Index
-OUTPUT PassCount`,
-    check: "Boundary check: a mark of 50 should be counted if the condition is greater than or equal to 50.",
+const fileModes = {
+  read: {
+    mode: "READ",
+    reason: "Use READ when existing records need to be read without changing the file.",
+    pattern: 'OPENFILE "Scores.txt" FOR READ',
   },
-  file: {
-    title: "Read all records from a file",
-    code: `OPENFILE "Scores.txt" FOR READ
-WHILE NOT EOF("Scores.txt")
-    READFILE "Scores.txt", ScoreRecord
-    OUTPUT ScoreRecord
-ENDWHILE
-CLOSEFILE "Scores.txt"`,
-    check: "File check: read inside the loop and close the file after the loop.",
+  append: {
+    mode: "APPEND",
+    reason: "Use APPEND to add records to the end while preserving existing contents.",
+    pattern: 'OPENFILE "Scores.txt" FOR APPEND',
   },
-  validate: {
-    title: "Validate mark input",
-    code: `REPEAT
-    INPUT Mark
-    IF Mark < 0 OR Mark > 100 THEN
-        OUTPUT "Invalid mark"
-    ENDIF
-UNTIL Mark >= 0 AND Mark <= 100`,
-    check: "Boundary check: 0 and 100 are valid because the range is inclusive.",
+  write: {
+    mode: "WRITE",
+    reason: "Use WRITE when creating a new file or replacing file contents.",
+    pattern: 'OPENFILE "Report.txt" FOR WRITE',
   },
-  largest: {
-    title: "Find largest value in an array",
-    code: `Largest ← Values[1]
-FOR Index ← 2 TO NumberOfValues
-    IF Values[Index] > Largest THEN
-        Largest ← Values[Index]
-    ENDIF
-NEXT Index
-OUTPUT Largest`,
-    check: "Initialisation check: use the first value, not 0, unless the values are known non-negative.",
+  close: {
+    mode: "CLOSEFILE",
+    reason: "CLOSEFILE finishes file processing and ensures buffered changes are saved correctly.",
+    pattern: 'CLOSEFILE "Scores.txt"',
   },
 };
 
 const examples = {
-  count: {
-    title: "Example 1: Count with boundary condition",
+  loop: {
+    title: "Example 1: Choosing a loop",
     rows: [
-      ["Task", "Count marks greater than or equal to 50."],
-      ["Skeleton", "Initialise count, loop through marks, use IF, increment count, output after loop."],
-      ["Fast check", "Marks 49, 50, 72 should give count 2."],
-      ["Exam point", "The output belongs after the loop, not inside it, unless every step must be displayed."],
+      ["Scenario", "Process exactly 30 scores."],
+      ["Best construct", "FOR loop."],
+      ["Reason", "The number of repetitions is known before the loop begins."],
+      ["Exam point", "Use WHILE or REPEAT when the stopping condition depends on data or validation."],
+    ],
+  },
+  function: {
+    title: "Example 2: Function versus procedure",
+    rows: [
+      ["Task", "Check whether Mark is in the range 0 to 100."],
+      ["Best subprogram", "FUNCTION IsValidMark(Mark) RETURNS BOOLEAN."],
+      ["Reason", "The result TRUE or FALSE is returned and used by another part of the algorithm."],
+      ["Exam point", "A function returns a value; OUTPUT only displays a value."],
     ],
   },
   file: {
-    title: "Example 2: File read answer",
+    title: "Example 3: Appending to a file",
     rows: [
-      ["Task", "Read all records from Scores.txt."],
-      ["Skeleton", "OPENFILE for READ, WHILE NOT EOF, READFILE, process record, CLOSEFILE."],
-      ["Fast check", "The loop should stop at end of file and should not try to read after closing."],
-      ["Exam point", "EOF logic and CLOSEFILE often earn separate marks."],
-    ],
-  },
-  validate: {
-    title: "Example 3: Validation answer",
-    rows: [
-      ["Task", "Input mark from 0 to 100 inclusive."],
-      ["Skeleton", "REPEAT input and error message UNTIL mark is in range."],
-      ["Fast check", "0 and 100 accepted; minus 1 and 101 rejected."],
-      ["Exam point", "Inclusive boundaries must be handled exactly."],
+      ["Task", "Add a new quiz score without deleting old scores."],
+      ["File mode", "APPEND."],
+      ["Core steps", "OPENFILE for APPEND, WRITEFILE new score, CLOSEFILE."],
+      ["Exam point", "WRITE may replace file contents, so it is not suitable for preserving old records."],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "In a timed pseudocode question, what should you identify before writing: inputs, outputs, variables or jokes?", accepted: ["inputs", "outputs", "variables"], answer: "Inputs, outputs and variables." },
-  { id: "p2", prompt: "Which loop is usually best for processing exactly 20 items?", accepted: ["for"], answer: "FOR loop." },
-  { id: "p3", prompt: "Which file condition is commonly used to read until the file ends?", accepted: ["eof", "end of file"], answer: "EOF / end of file condition." },
-  { id: "p4", prompt: "Where should a final total usually be output: inside or after the loop?", accepted: ["after"], answer: "After the loop, unless the question asks for every intermediate value." },
-  { id: "p5", prompt: "What should counters be given before use?", accepted: ["initial", "initialised", "initialized", "0"], answer: "They should be initialised, often to 0." },
-  { id: "p6", prompt: "For range 0 to 100 inclusive, is 100 valid? yes or no", accepted: ["yes"], answer: "Yes. Inclusive means the endpoints are valid." },
-  { id: "p7", prompt: "Which file statement should appear after processing is complete?", accepted: ["closefile", "close"], answer: "CLOSEFILE." },
-  { id: "p8", prompt: "Should final Paper 2 algorithm answers normally use Java syntax? yes or no", accepted: ["no"], answer: "No. Cambridge-style pseudocode is the exam standard." },
-  { id: "p9", prompt: "What quick method checks a pseudocode answer with sample data?", accepted: ["trace", "dry run"], answer: "Trace / dry run." },
-  { id: "p10", prompt: "What kind of case catches many condition mistakes: normal or boundary?", accepted: ["boundary"], answer: "Boundary case." },
+  { id: "p1", prompt: "Which construct chooses between paths based on a condition?", accepted: ["selection", "if", "case"], answer: "Selection, such as IF or CASE." },
+  { id: "p2", prompt: "Which construct repeats statements?", accepted: ["iteration", "loop", "for", "while", "repeat"], answer: "Iteration / loop." },
+  { id: "p3", prompt: "Which loop is best when the number of repetitions is known?", accepted: ["for"], answer: "FOR loop." },
+  { id: "p4", prompt: "Which loop is useful when input must be requested at least once?", accepted: ["repeat", "repeat until"], answer: "REPEAT UNTIL." },
+  { id: "p5", prompt: "Which subprogram type returns a value?", accepted: ["function"], answer: "Function." },
+  { id: "p6", prompt: "Which subprogram type performs an action and may not return a value?", accepted: ["procedure"], answer: "Procedure." },
+  { id: "p7", prompt: "Which file mode reads existing records without changing them?", accepted: ["read"], answer: "READ." },
+  { id: "p8", prompt: "Which file mode adds records without deleting existing records?", accepted: ["append"], answer: "APPEND." },
+  { id: "p9", prompt: "Which file mode may create or replace file contents?", accepted: ["write"], answer: "WRITE." },
+  { id: "p10", prompt: "What statement should be used after file processing is finished?", accepted: ["closefile", "close"], answer: "CLOSEFILE." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student starts writing pseudocode immediately and discovers halfway through that the input comes from a file.",
-    fix: "Correction: spend the first minute identifying inputs, outputs, variables and file mode. This prevents a costly rewrite.",
+    wrong: "A student uses WRITE when they need to add one score to the end of an existing file.",
+    fix: "Correction: use APPEND. WRITE may create or replace file contents, while APPEND preserves existing records and adds new data at the end.",
   },
   {
-    wrong: "A student outputs PassCount inside the loop when the question asks for the final number of passes.",
-    fix: "Correction: update PassCount inside the loop, then output it after all items have been processed.",
+    wrong: "A student writes a function that only OUTPUTs TRUE or FALSE.",
+    fix: "Correction: a function should RETURN a value so it can be used by another expression or condition. OUTPUT only displays text.",
   },
   {
-    wrong: "A student validates 0 to 100 but rejects 0 and 100.",
-    fix: "Correction: if the question says inclusive, both endpoints are valid. Use conditions such as Mark >= 0 AND Mark <= 100.",
+    wrong: "A student uses a WHILE loop for a fixed 1 to 30 count but forgets to update the counter.",
+    fix: "Correction: use a FOR loop when the number of repetitions is known, or explicitly update the counter in a WHILE loop.",
   },
   {
-    wrong: "A student writes Java braces and semicolons in the final answer.",
-    fix: "Correction: write Cambridge-style pseudocode with IF/ENDIF, FOR/NEXT, OPENFILE/READFILE/WRITEFILE/CLOSEFILE. Java is support only.",
+    wrong: "A student opens a file but never closes it.",
+    fix: "Correction: use CLOSEFILE after processing. This completes file handling and helps ensure changes are written safely.",
   },
 ];
 
@@ -134,99 +116,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Write pseudocode to count how many marks in an array Marks[1:30] are greater than or equal to 50.",
-    answer: "Set PassCount to 0. Loop Index from 1 to 30. If Marks[Index] is greater than or equal to 50, add 1 to PassCount. After the loop, output PassCount.",
+    prompt: "A program must process exactly 50 marks and count how many are passes. Describe a suitable algorithm using Cambridge-style constructs.",
+    answer: "Set PassCount to 0. Use a FOR loop from 1 to 50. Input or read each Mark. If Mark is greater than or equal to 50, add 1 to PassCount. After the loop, output PassCount.",
     marking: [
-      { mark: "M1", text: "initialises PassCount or equivalent counter to 0" },
-      { mark: "M1", text: "uses a loop that processes 30 array elements" },
-      { mark: "M1", text: "accesses each mark using the loop index or equivalent" },
-      { mark: "M1", text: "tests mark greater than or equal to 50" },
-      { mark: "A1", text: "increments counter only for passing marks" },
-      { mark: "A1", text: "outputs final count after loop" },
+      { mark: "B1", text: "initialises PassCount to 0" },
+      { mark: "B1", text: "uses a suitable counted loop for 50 marks" },
+      { mark: "B1", text: "inputs or reads each mark inside the loop" },
+      { mark: "B1", text: "uses selection to test pass condition" },
+      { mark: "B1", text: "increments PassCount only when condition is met" },
+      { mark: "B1", text: "outputs PassCount after processing all marks" },
     ],
     strict: [
-      "Do not award condition mark for greater than 50 only; 50 must be included.",
-      "Allow clear Cambridge-style pseudocode or structured English.",
+      "Do not award full marks for vague 'check all marks' without loop logic.",
+      "Allow greater than or equal to 50 as pass condition unless a different threshold is stated.",
       "Do not require exact variable names.",
     ],
   },
   {
     title: "Question 2",
-    marks: "7 marks",
-    prompt: "Write pseudocode to read all records from Scores.txt and output only scores greater than 80.",
-    answer: "Open Scores.txt for READ. While not end of file, read a score record. If the score is greater than 80, output the score or record. End the IF and loop, then close the file.",
+    marks: "5 marks",
+    prompt: "Explain the difference between a procedure and a function, using a validation example.",
+    answer: "A procedure is a named block of code that performs an action and does not have to return a value, for example displaying an error message. A function returns a value to the calling code, for example IsValidMark(Mark) returning TRUE if the mark is between 0 and 100 and FALSE otherwise. The returned Boolean can then be used in an IF statement.",
     marking: [
-      { mark: "M1", text: "opens Scores.txt for READ" },
-      { mark: "M1", text: "uses loop controlled by EOF or equivalent" },
-      { mark: "M1", text: "reads each record inside the loop" },
-      { mark: "M1", text: "uses selection to test score greater than 80" },
-      { mark: "A1", text: "outputs only records/scores meeting the condition" },
-      { mark: "M1", text: "continues until all records are processed" },
-      { mark: "A1", text: "closes the file after processing" },
+      { mark: "B1", text: "states a procedure performs an action or does not need to return a value" },
+      { mark: "B1", text: "gives valid procedure example" },
+      { mark: "B1", text: "states a function returns a value" },
+      { mark: "B1", text: "gives valid function validation example" },
+      { mark: "B1", text: "explains returned value can be used by calling code" },
     ],
     strict: [
-      "Do not award open-file mark if file is opened for WRITE or APPEND.",
-      "Allow record field notation such as ScoreRecord.Score if consistent.",
-      "Do not accept outputting every record without condition for the selection mark.",
+      "Do not accept OUTPUT as equivalent to RETURN for a function.",
+      "Allow Boolean, integer or string function examples if return value is clear.",
+      "Do not require parameter syntax if concept is accurately explained.",
     ],
   },
   {
     title: "Question 3",
-    marks: "7 marks",
-    prompt: "Write pseudocode to input a mark from 0 to 100 inclusive. The program should keep asking until a valid mark is entered.",
-    answer: "Use a REPEAT loop. Input Mark. If Mark is less than 0 or greater than 100, output an invalid message. Repeat until Mark is greater than or equal to 0 and less than or equal to 100. Then process or output the valid Mark.",
+    marks: "6 marks",
+    prompt: "Write the main file handling steps needed to display every line in Scores.txt.",
+    answer: "Open Scores.txt for READ. Use a loop that continues while not at end of file. Read a line or record from the file. Output the line or record. After the loop, close the file.",
     marking: [
-      { mark: "M1", text: "uses a loop that repeats until valid input is entered" },
-      { mark: "M1", text: "inputs Mark inside the loop" },
-      { mark: "B1", text: "checks lower limit 0 correctly" },
-      { mark: "B1", text: "checks upper limit 100 correctly" },
-      { mark: "A1", text: "allows 0 and 100 as valid values" },
-      { mark: "A1", text: "outputs error or rejects invalid values" },
-      { mark: "A1", text: "loop stops only when Mark is valid" },
+      { mark: "M1", text: "opens Scores.txt for READ" },
+      { mark: "M1", text: "uses loop controlled by EOF or equivalent end-of-file condition" },
+      { mark: "M1", text: "reads each line or record from the file" },
+      { mark: "A1", text: "outputs each line or record read" },
+      { mark: "M1", text: "continues until all records are processed" },
+      { mark: "A1", text: "closes the file after processing" },
     ],
     strict: [
-      "inclusive means both 0 and 100 are accepted.",
-      "Allow WHILE loop if repeated input and stopping condition are correct.",
-      "Do not award both boundary marks for vague 'check range' without limits.",
+      "Do not award read mark if candidate writes to the file instead.",
+      "Allow clear pseudocode using OPENFILE, READFILE, EOF and CLOSEFILE.",
+      "Do not require exact filename quotes if filename is recognisable.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "Write pseudocode to find the largest value in an array Values[1:20].",
-    answer: "Set Largest to Values[1]. Loop Index from 2 to 20. If Values[Index] is greater than Largest, set Largest to Values[Index]. After all values have been checked, output Largest.",
+    marks: "6 marks",
+    prompt: "A new score must be added to the end of Scores.txt without deleting existing scores. Describe the file handling steps and justify the file mode.",
+    answer: "Open Scores.txt for APPEND. Write the new score to the file using WRITEFILE. Close the file after writing. APPEND is used because it adds the new record to the end while preserving existing scores. WRITE would not be suitable if it replaces the current file contents.",
     marking: [
-      { mark: "M1", text: "initialises Largest to Values[1] or another valid array element" },
-      { mark: "M1", text: "uses loop to process remaining array elements" },
-      { mark: "M1", text: "uses correct range or avoids reprocessing problem safely" },
-      { mark: "M1", text: "compares current value with Largest" },
-      { mark: "A1", text: "updates Largest when current value is greater" },
-      { mark: "M1", text: "continues until all 20 values have been considered" },
-      { mark: "A1", text: "outputs Largest after loop" },
+      { mark: "B1", text: "opens Scores.txt for APPEND" },
+      { mark: "B1", text: "writes the new score to the file" },
+      { mark: "B1", text: "closes the file after writing" },
+      { mark: "B1", text: "justifies APPEND as adding to the end" },
+      { mark: "B1", text: "states existing records are preserved" },
+      { mark: "B1", text: "explains WRITE may create/replace contents or is unsuitable for this task" },
     ],
     strict: [
-      "Do not award final robustness mark if Largest is initialised to 0 without evidence values are non-negative.",
-      "Allow loop from 1 to 20 if initialisation and comparison still produce correct result.",
-      "Do not require exact array notation if indexing is clear.",
+      "Do not accept READ as a valid mode for adding a new record.",
+      "Allow wording 'add to end of file' for append justification.",
+      "Do not require the exact word 'preserve' if meaning is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Explain how to check a timed pseudocode answer before moving to the next question.",
-    answer: "Check that inputs, variables and outputs have been included. Trace a small normal case to see whether the loop and assignments work. Trace a boundary case to check conditions such as greater than or equal to. Check that final output occurs after processing and that any opened file is closed.",
+    marks: "7 marks",
+    prompt: "A mark must be an integer from 0 to 100 inclusive. Describe a validation algorithm that repeatedly asks for input until the mark is valid.",
+    answer: "Use a REPEAT UNTIL loop. Input Mark. If Mark is not an integer, or Mark is less than 0, or Mark is greater than 100, output an error message. Repeat until Mark is an integer and Mark is between 0 and 100 inclusive. The valid Mark can then be processed.",
     marking: [
-      { mark: "B1", text: "checks inputs/variables/outputs or equivalent structure" },
-      { mark: "M1", text: "uses a trace or dry run with sample data" },
-      { mark: "A1", text: "uses normal case to check basic logic" },
-      { mark: "A1", text: "uses boundary case to check conditions" },
-      { mark: "M1", text: "checks output placement or final result" },
-      { mark: "A1", text: "checks file handling such as close file where relevant" },
+      { mark: "B1", text: "uses a loop that can repeat until valid input is entered" },
+      { mark: "B1", text: "inputs Mark inside the loop" },
+      { mark: "B1", text: "checks type/integer validity or equivalent" },
+      { mark: "B1", text: "checks lower boundary 0" },
+      { mark: "B1", text: "checks upper boundary 100" },
+      { mark: "B1", text: "outputs error or rejects invalid input" },
+      { mark: "B1", text: "stops only when mark is valid and can then process the mark" },
     ],
     strict: [
-      "Do not award full marks for 'read it again' without a specific checking method.",
-      "Allow checking loop bounds, initialisation or counters as equivalent structural checks.",
-      "Do not require file handling point if question clearly has no file, but credit when included as a general timed checklist.",
+      "Inclusive means 0 and 100 are valid.",
+      "Allow WHILE loop if logic ensures repeated input until valid.",
+      "Do not award both boundary marks for vague 'check range' unless limits are stated.",
     ],
   },
 ];
@@ -260,10 +239,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    code: { text: "Starting immediately feels fast, but it often creates a rewrite. Plan the file mode first.", correct: false },
-    plan: { text: "Correct. Inputs, outputs, variables and file mode define the skeleton.", correct: true },
-    java: { text: "Java is support only. The timed answer should be Cambridge-style pseudocode.", correct: false },
-    essay: { text: "That answers a theory question, not a write-algorithm command.", correct: false },
+    read: { text: "READ displays existing records but does not add the new score.", correct: false },
+    write: { text: "WRITE may replace the file contents. Risky choice for preserving old scores.", correct: false },
+    append: { text: "Correct. APPEND adds the new score to the end and preserves existing scores.", correct: true },
+    close: { text: "CLOSEFILE is needed after processing, but it is not an opening mode for adding records.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -276,33 +255,34 @@ function setupHook() {
   });
 }
 
-function setupTimerTool() {
-  const select = document.querySelector("#timerSelect");
-  const output = document.querySelector("#timerOutput");
+function setupConstructTool() {
+  const select = document.querySelector("#constructSelect");
+  const output = document.querySelector("#constructOutput");
   const render = () => {
-    const item = timingPlans[select.value];
+    const item = constructScenarios[select.value];
     output.innerHTML = `
-      <p><strong>Timing:</strong> ${escapeHtml(item.plan)}</p>
-      <p><strong>Advice:</strong> ${escapeHtml(item.advice)}</p>
+      <p><strong>Construct:</strong> ${escapeHtml(item.construct)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+      <p><strong>Exam tip:</strong> ${escapeHtml(item.examTip)}</p>
     `;
   };
-  document.querySelector("#timerBtn").addEventListener("click", render);
+  document.querySelector("#constructBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupSkeletonTool() {
-  const select = document.querySelector("#skeletonSelect");
-  const output = document.querySelector("#skeletonOutput");
+function setupFileTool() {
+  const select = document.querySelector("#fileSelect");
+  const output = document.querySelector("#fileOutput");
   const render = () => {
-    const item = skeletons[select.value];
+    const item = fileModes[select.value];
     output.innerHTML = `
-      <h3>${escapeHtml(item.title)}</h3>
-      <pre><code>${escapeHtml(item.code)}</code></pre>
-      <p><strong>Check:</strong> ${escapeHtml(item.check)}</p>
+      <p><strong>Choice:</strong> ${escapeHtml(item.mode)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+      <p><strong>Pattern:</strong> <code>${escapeHtml(item.pattern)}</code></p>
     `;
   };
-  document.querySelector("#skeletonBtn").addEventListener("click", render);
+  document.querySelector("#fileBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -319,7 +299,7 @@ function setupExamples() {
   document.querySelectorAll("[data-example]").forEach((button) => {
     button.addEventListener("click", () => render(button.dataset.example));
   });
-  render("count");
+  render("loop");
 }
 
 function setupPractice() {
@@ -345,7 +325,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const response = normalise(input.value);
       const correct = item.accepted.some((accepted) => response.includes(accepted));
-      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the timed pseudocode checklist keyword.";
+      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the precise construct or file-handling keyword.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -410,8 +390,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupTimerTool();
-  setupSkeletonTool();
+  setupConstructTool();
+  setupFileTool();
   setupExamples();
   setupPractice();
   setupMistakes();

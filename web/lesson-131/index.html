@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 131 | Parameters: by value and by reference</title>
+    <title>AS9618 Lesson 131 | Procedures, functions and their interfaces</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Parameters: by value and by reference</h1>
+        <h1>Procedures, functions and their interfaces</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,415 +29,476 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#terms">Terms</a>
-        <a href="#value">By value</a>
-        <a href="#reference">BYREF</a>
+        <a href="#procedure">Procedure</a>
+        <a href="#function">Function</a>
         <a href="#compare">Compare</a>
-        <a href="#trace">Trace table</a>
-        <a href="#use">When to use</a>
+        <a href="#parameters">Parameters</a>
+        <a href="#calls">Calls</a>
         <a href="#java">Java support</a>
-        <a href="#simulator">Trace simulator</a>
-        <a href="#chooser">Mode chooser</a>
+        <a href="#returner">Return simulator</a>
+        <a href="#chooser">Chooser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Procedures, functions and their interfaces</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.</p>
+            <p>Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total &lt;- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.</p>
+            <p>A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.</p>
+            <p>A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Use a procedure and a function</h3>
+            <p>PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price * 0.20, so Total &lt;- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start parameters -->
+        <section class="panel explanation-panel" id="explanation-parameters" data-explains="parameters" data-explanation-kind="mechanism" aria-labelledby="explanation-parameters-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
+          <h2 class="explanation-sr-only" id="explanation-parameters-title">A subprogram interface connects caller and header</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-parameters.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A subprogram interface connects caller and header with a structured visual model." />
+            <figcaption class="explanation-sr-only">A subprogram interface connects caller and header: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A subprogram interface gives the caller the name, parameter list and types, and any return value/type.</li><li><strong>Lesson fact:</strong> A procedure header or function header declares that interface; a function header also declares its return type.</li><li><strong>Lesson fact:</strong> A parameter is named in the header; an argument is the actual value or variable supplied at a call.</li><li><strong>Lesson fact:</strong> RETURN sends a function value to the caller; displayed output is an effect, not a return value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parameters -->
+
+        <!-- stage10-explanation:start calls -->
+        <section class="panel explanation-panel" id="explanation-calls" data-explains="calls" data-explanation-kind="mechanism" aria-labelledby="explanation-calls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calls">
+          <h2 class="explanation-sr-only" id="explanation-calls-title">Function calls can appear where a value is needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-calls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Function calls can appear where a value is needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Function calls can appear where a value is needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Calls and returned values</li><li><strong>Lesson fact:</strong> CALL DisplayMenu()</li><li><strong>Lesson fact:</strong> procedure call performs an action</li><li><strong>Lesson fact:</strong> VAT &lt;- CalculateVAT(Price)</li><li><strong>Lesson fact:</strong> function return value is stored</li><li><strong>Lesson fact:</strong> Total &lt;- DisplayMenu()</li><li><strong>Lesson fact:</strong> procedure does not return a value</li><li><strong>Lesson fact:</strong> OUTPUT CalculateVAT(Price)</li><li><strong>Lesson fact:</strong> function return value can be output</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end calls -->
+
+        <!-- stage10-explanation:start byref-compare -->
+        <section class="panel explanation-panel" id="explanation-byref-compare" data-explains="byref-compare" data-explanation-kind="comparison" aria-labelledby="explanation-byref-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="byref-compare">
+          <h2 class="explanation-sr-only" id="explanation-byref-compare-title">Same procedure body, different final result</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same procedure body, different final result with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same procedure body, different final result: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Side-by-side comparison</li><li><strong>Lesson fact:</strong> By value</li><li><strong>Lesson fact:</strong> By reference</li><li><strong>Lesson fact:</strong> Header clue</li><li><strong>Lesson fact:</strong> Number : INTEGER</li><li><strong>Lesson fact:</strong> BYREF Number : INTEGER</li><li><strong>Lesson fact:</strong> What is passed</li><li><strong>Lesson fact:</strong> a copy of the value</li><li><strong>Lesson fact:</strong> a reference to the caller's variable</li><li><strong>Lesson fact:</strong> Change inside subroutine</li><li><strong>Lesson fact:</strong> affects local parameter only</li><li><strong>Lesson fact:</strong> can affect original variable</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end byref-compare -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Procedures, functions and their interfaces: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> When is a procedure appropriate?</p>
+              <details><summary>Show answer</summary><p>When the algorithm needs a named action rather than a returned value used in an expression.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is the difference between BYVAL and BYREF?</p>
+              <details><summary>Show answer</summary><p>BYVAL supplies a value/copy; BYREF aliases the caller variable so changes can persist.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Where can a function call be used?</p>
+              <details><summary>Show answer</summary><p>Anywhere its returned value of the declared type is valid, including an expression.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> What is included in a subprogram interface?</p>
+              <details><summary>Show answer</summary><p>Its name, parameters/types and any return value/type needed by a caller.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> In IsPass(Score), which name is the argument?</p>
+              <details><summary>Show answer</summary><p>Score.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> How does a function return differ from procedure output?</p>
+              <details><summary>Show answer</summary><p>RETURN supplies a value to the caller; OUTPUT displays data as an action.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Define a procedure AddBonus(BYREF Mark : INTEGER, BYVAL Bonus : INTEGER), define a function IsPass(Mark : INTEGER) returning BOOLEAN, and use both from a caller with IsPass(Score) inside an IF expression. Identify headers, parameters, arguments and return value.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>procedure header and coherent BYREF/BYVAL parameters</td><td>Do not use parameter and argument as synonyms, describe procedure output as a function return, or claim BYVAL changes the caller variable.</td><td>1</td></tr>
+                  <tr><td>procedure changes Mark using Bonus and closes correctly</td><td></td><td>1</td></tr>
+                  <tr><td>function header declares BOOLEAN return type</td><td></td><td>1</td></tr>
+                  <tr><td>function returns the result of the pass comparison</td><td></td><td>1</td></tr>
+                  <tr><td>caller supplies arguments and uses IsPass(Score) in an expression/condition</td><td></td><td>1</td></tr>
+                  <tr><td>correctly identifies parameter, argument and returned value terminology</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 131 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
-            <h2>Does the subroutine get a copy, or the original?</h2>
+            <p class="lesson-meta">Lesson 131 | 45 minutes | Paper 2 Section 11 | 5-minute quiz</p>
+            <h2>Procedures do a job. Functions do a job and bring back a value.</h2>
             <p>
-              A parameter can receive a copied value, or it can be linked to the caller's variable using
-              <code>BYREF</code>. That one word decides whether a change inside the procedure survives after the
-              call. In other words, this is the lesson where a variable can leave the room and come back wearing
-              a new value.
+              Subroutines make algorithms reusable and easier to test. A procedure may display a menu or update data.
+              A function must return a value that can be stored, output or used in an expression. If a function forgets
+              to return, it is less "mysterious abstraction" and more "empty shopping bag".
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>parameter, argument, by value and by reference</span></div>
-              <div><strong>Trace</strong><span>caller variables before, during and after a subroutine call</span></div>
-              <div><strong>Write</strong><span>Cambridge-style headers using typed parameters and <code>BYREF</code></span></div>
+              <div><strong>Define</strong><span>procedure, function, parameter, call and return value</span></div>
+              <div><strong>Write</strong><span>Cambridge-style PROCEDURE and FUNCTION declarations</span></div>
+              <div><strong>Choose</strong><span>procedure or function based on whether a value must be returned</span></div>
             </div>
           </div>
-          <div class="pass-visual" aria-label="By value and BYREF visual">
-            <div><strong>By value</strong><span>copy only</span><em>original unchanged</em></div>
-            <div><strong>BYREF</strong><span>linked variable</span><em>original may change</em></div>
-            <div><strong>Exam trace</strong><span>before → call → after</span><em>show final caller values</em></div>
-            <p>Cambridge pseudocode uses <code>BYREF</code>; Java syntax is support only.</p>
+          <div class="routine-visual" aria-label="Procedure and function visual">
+            <div><strong>PROCEDURE</strong><span>performs actions</span></div>
+            <div><strong>FUNCTION</strong><span>RETURNS a value</span></div>
+            <div><strong>Parameter</strong><span>input value passed in</span></div>
+            <p>Good subroutines reduce repeated code without hiding the algorithm's logic.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 questions often test whether a procedure updates data outside itself, especially in trace and debug tasks.</p>
+            <p>Paper 2 questions often ask students to complete headers, calls, parameters and return statements precisely.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Changing a parameter inside a procedure does not automatically change the argument. It only does that with <code>BYREF</code>.</p>
+            <p>A procedure can output something, but outputting is not the same as returning a value to the caller.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Will <code>Score</code> change?</h2>
-            <p>Start with <code>Score = 9</code>. After this call, what is the caller's <code>Score</code>?</p>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Version A</h3>
-              <pre><code>PROCEDURE Increase(Score : INTEGER)
-    Score &lt;- Score + 1
-ENDPROCEDURE
-
-CALL Increase(Score)</code></pre>
-            </article>
-            <article>
-              <h3>Version B</h3>
-              <pre><code>PROCEDURE Increase(BYREF Score : INTEGER)
-    Score &lt;- Score + 1
-ENDPROCEDURE
-
-CALL Increase(Score)</code></pre>
-            </article>
+            <h2>Procedure or function?</h2>
+            <p>The subroutine must calculate VAT and allow the main program to store the result. Choose the better option.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="a9">Version A leaves caller Score as 9</button>
-            <button class="choice-card" type="button" data-hook="a10">Version A changes caller Score to 10</button>
-            <button class="choice-card" type="button" data-hook="b9">Version B leaves caller Score as 9</button>
-            <button class="choice-card" type="button" data-hook="b10">Version B changes caller Score to 10</button>
+            <button class="choice-card" type="button" data-hook="procedure">PROCEDURE CalculateVAT(Price)</button>
+            <button class="choice-card" type="button" data-hook="function">FUNCTION CalculateVAT(Price : REAL) RETURNS REAL</button>
+            <button class="choice-card" type="button" data-hook="output">PROCEDURE DisplayVAT(Price)</button>
+            <button class="choice-card" type="button" data-hook="java">static void calculateVAT(double price)</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose one claim and check the passing mode.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the subroutine that returns a value.</div>
         </section>
 
-        <section class="panel" id="terms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="terms">
+        <section class="panel" id="procedure" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
-            <p class="eyebrow">Parameter and argument</p>
-            <h2>The header names the parameter. The call supplies the argument.</h2>
-            <p>Chinese support: parameter 参数, argument 实参, procedure 过程, caller 调用者。</p>
+            <p class="eyebrow">Procedure</p>
+            <h2>A procedure performs actions and does not have to return a value</h2>
+            <p>Chinese support: procedure 过程, call 调用, parameter 参数, return 返回。</p>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Parameter in the procedure header</h3>
-              <pre><code>PROCEDURE DisplayMessage(Message : STRING)
-    OUTPUT Message
-ENDPROCEDURE</code></pre>
-              <p><code>Message</code> is the parameter. It is a named input expected by the procedure.</p>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE DisplayMenu()
+    OUTPUT "1. Add score"
+    OUTPUT "2. Quit"
+ENDPROCEDURE
+
+CALL DisplayMenu()</code></pre>
+            </article>
+            <article>
+              <h3>When it fits</h3>
+              <p>Use a procedure when the algorithm needs an action such as output, input, updating a structure or repeated commands.</p>
+              <div class="callout">A procedure may change data, but it is not used as an expression like <code>Total &lt;- DisplayMenu()</code>.</div>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start procedure -->
+        <section class="panel explanation-panel" id="explanation-procedure" data-explains="procedure" data-explanation-kind="mechanism" aria-labelledby="explanation-procedure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <h2 class="explanation-sr-only" id="explanation-procedure-title">A procedure performs actions and returns no value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-procedure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A procedure performs actions and returns no value with a structured visual model." />
+            <figcaption class="explanation-sr-only">A procedure performs actions and returns no value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A procedure performs an action and does not return a value.</li><li><strong>Lesson fact:</strong> A function returns a value and can be used in an expression.</li><li><strong>Lesson fact:</strong> Do not describe returning a value as optional for a Cambridge procedure.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end procedure -->
+        <section class="panel" id="function" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <div class="section-title">
+            <p class="eyebrow">Function</p>
+            <h2>A function returns a value to the caller</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FUNCTION CalculateVAT(Price : REAL) RETURNS REAL
+    RETURN Price * 0.20
+ENDFUNCTION
+
+VAT &lt;- CalculateVAT(120.00)</code></pre>
+            </article>
+            <article>
+              <h3>When it fits</h3>
+              <p>Use a function when a calculated, searched or checked result must be used later in the algorithm.</p>
+              <div class="callout">A function should have a return type and a RETURN statement that matches that type.</div>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start function -->
+        <section class="panel explanation-panel" id="explanation-function" data-explains="function" data-explanation-kind="mechanism" aria-labelledby="explanation-function-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <h2 class="explanation-sr-only" id="explanation-function-title">A function returns a value to the caller</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-function.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A function returns a value to the caller with a structured visual model." />
+            <figcaption class="explanation-sr-only">A function returns a value to the caller: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION CalculateVAT(Price : REAL) RETURNS REAL</li><li><strong>Lesson fact:</strong> RETURN Price * 0.20</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> VAT &lt;- CalculateVAT(120.00)</li><li><strong>Lesson fact:</strong> When it fits</li><li><strong>Lesson fact:</strong> Use a function when a calculated, searched or checked result must be used later in the algorithm.</li><li><strong>Lesson fact:</strong> A function should have a return type and a RETURN statement that matches that type.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end function -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <div class="section-title">
+            <p class="eyebrow">Procedure vs function</p>
+            <h2>The mark-winning difference is the returned value</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Procedure and function comparison">
+            <div class="table-row table-head"><div>Feature</div><div>Procedure</div><div>Function</div></div>
+            <div class="table-row"><div>Main purpose</div><div>perform an action</div><div>return a value</div></div>
+            <div class="table-row"><div>Header</div><div><code>PROCEDURE Name(...)</code></div><div><code>FUNCTION Name(...) RETURNS Type</code></div></div>
+            <div class="table-row"><div>End keyword</div><div><code>ENDPROCEDURE</code></div><div><code>ENDFUNCTION</code></div></div>
+            <div class="table-row"><div>Typical call</div><div><code>CALL DisplayMenu()</code></div><div><code>VAT &lt;- CalculateVAT(Price)</code></div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">The mark-winning difference is the returned value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The mark-winning difference is the returned value with a structured visual model." />
+            <figcaption class="explanation-sr-only">The mark-winning difference is the returned value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Procedure vs function</li><li><strong>Lesson fact:</strong> Procedure</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> Main purpose</li><li><strong>Lesson fact:</strong> perform an action</li><li><strong>Lesson fact:</strong> return a value</li><li><strong>Lesson fact:</strong> PROCEDURE Name(...)</li><li><strong>Lesson fact:</strong> FUNCTION Name(...) RETURNS Type</li><li><strong>Lesson fact:</strong> End keyword</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Typical call</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
+        <section class="panel" id="parameters" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <div class="section-title">
+            <p class="eyebrow">Parameters and arguments</p>
+            <h2>Parameters receive values passed into a subroutine</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Parameter in the header</h3>
+              <pre><code>FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
+    IF Mark &gt;= 50 THEN
+        RETURN TRUE
+    ELSE
+        RETURN FALSE
+    ENDIF
+ENDFUNCTION</code></pre>
             </article>
             <article>
               <h3>Argument in the call</h3>
-              <pre><code>CALL DisplayMessage("Ready")
+              <pre><code>Result &lt;- IsPass(67)
 
-Text &lt;- "Saved"
-CALL DisplayMessage(Text)</code></pre>
-              <p><code>"Ready"</code> and <code>Text</code> are arguments. They are the actual values supplied.</p>
+IF IsPass(StudentMark) THEN
+    OUTPUT "Pass"
+ENDIF</code></pre>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start terms -->
-        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="terms">
-          <h2 class="explanation-sr-only" id="explanation-terms-title">The header names the parameter. The call supplies the argument.</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The header names the parameter. The call supplies the argument. with a structured visual model." />
-            <figcaption class="explanation-sr-only">The header names the parameter. The call supplies the argument.: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Parameter and argument</li><li><strong>Lesson fact:</strong> Parameter in the procedure header</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayMessage(Message : STRING)</li><li><strong>Lesson fact:</strong> OUTPUT Message</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Message is the parameter. It is a named input expected by the procedure.</li><li><strong>Lesson fact:</strong> Argument in the call</li><li><strong>Lesson fact:</strong> CALL DisplayMessage(&quot;Ready&quot;)</li><li><strong>Lesson fact:</strong> Text &lt;- &quot;Saved&quot;</li><li><strong>Lesson fact:</strong> CALL DisplayMessage(Text)</li><li><strong>Lesson fact:</strong> &quot;Ready&quot; and Text are arguments. They are the actual values supplied.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end terms -->
-        <section class="panel" id="value" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="value">
+        <section class="panel" id="calls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
-            <p class="eyebrow">Passing by value</p>
-            <h2>By value means the subroutine works with a copy</h2>
+            <p class="eyebrow">Calls and returned values</p>
+            <h2>Function calls can appear where a value is needed</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PROCEDURE AddOne(Number : INTEGER)
-    Number &lt;- Number + 1
-ENDPROCEDURE
-
-X &lt;- 5
-CALL AddOne(X)
-OUTPUT X</code></pre>
-            </article>
-            <article>
-              <h3>Trace reasoning</h3>
-              <div class="trace-list">
-                <div><strong>Before call</strong><span><code>X = 5</code></span></div>
-                <div><strong>Inside procedure</strong><span>local <code>Number</code> becomes <code>6</code></span></div>
-                <div><strong>After call</strong><span>caller's <code>X</code> is still <code>5</code></span></div>
-              </div>
-              <div class="callout">No <code>BYREF</code> means do not update the original caller variable.</div>
-            </article>
+          <div class="data-table call-table" role="table" aria-label="Subroutine calls">
+            <div class="table-row table-head"><div>Call</div><div>Valid?</div><div>Reason</div></div>
+            <div class="table-row"><div><code>CALL DisplayMenu()</code></div><div>yes</div><div>procedure call performs an action</div></div>
+            <div class="table-row"><div><code>VAT &lt;- CalculateVAT(Price)</code></div><div>yes</div><div>function return value is stored</div></div>
+            <div class="table-row"><div><code>Total &lt;- DisplayMenu()</code></div><div>no</div><div>procedure does not return a value</div></div>
+            <div class="table-row"><div><code>OUTPUT CalculateVAT(Price)</code></div><div>yes</div><div>function return value can be output</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start value -->
-        <section class="panel explanation-panel" id="explanation-value" data-explains="value" data-explanation-kind="mechanism" aria-labelledby="explanation-value-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="value">
-          <h2 class="explanation-sr-only" id="explanation-value-title">By value means the subroutine works with a copy</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-value.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining By value means the subroutine works with a copy with a structured visual model." />
-            <figcaption class="explanation-sr-only">By value means the subroutine works with a copy: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Passing by value</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE AddOne(Number : INTEGER)</li><li><strong>Lesson fact:</strong> Number &lt;- Number + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL AddOne(X)</li><li><strong>Lesson fact:</strong> OUTPUT X</li><li><strong>Lesson fact:</strong> Trace reasoning</li><li><strong>Lesson fact:</strong> Before call X = 5</li><li><strong>Lesson fact:</strong> Inside procedure local Number becomes 6</li><li><strong>Lesson fact:</strong> After call caller's X is still 5</li><li><strong>Lesson fact:</strong> No BYREF means do not update the original caller variable.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end value -->
-        <section class="panel" id="reference" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reference">
-          <div class="section-title">
-            <p class="eyebrow">Passing by reference</p>
-            <h2><code>BYREF</code> links the parameter back to the caller's variable</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PROCEDURE AddOne(BYREF Number : INTEGER)
-    Number &lt;- Number + 1
-ENDPROCEDURE
-
-X &lt;- 5
-CALL AddOne(X)
-OUTPUT X</code></pre>
-            </article>
-            <article>
-              <h3>Trace reasoning</h3>
-              <div class="trace-list">
-                <div><strong>Before call</strong><span><code>X = 5</code></span></div>
-                <div><strong>Inside procedure</strong><span><code>Number</code> is linked to <code>X</code></span></div>
-                <div><strong>After call</strong><span>caller's <code>X</code> becomes <code>6</code></span></div>
-              </div>
-              <div class="callout"><code>BYREF</code> is useful when a procedure must update the caller's variable directly.</div>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start reference -->
-        <section class="panel explanation-panel" id="explanation-reference" data-explains="reference" data-explanation-kind="mechanism" aria-labelledby="explanation-reference-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="reference">
-          <h2 class="explanation-sr-only" id="explanation-reference-title">BYREF links the parameter back to the caller's variable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-reference.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining BYREF links the parameter back to the caller's variable with a structured visual model." />
-            <figcaption class="explanation-sr-only">BYREF links the parameter back to the caller's variable: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Passing by reference</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE AddOne(BYREF Number : INTEGER)</li><li><strong>Lesson fact:</strong> Number &lt;- Number + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL AddOne(X)</li><li><strong>Lesson fact:</strong> OUTPUT X</li><li><strong>Lesson fact:</strong> Trace reasoning</li><li><strong>Lesson fact:</strong> Before call X = 5</li><li><strong>Lesson fact:</strong> Inside procedure Number is linked to X</li><li><strong>Lesson fact:</strong> After call caller's X becomes 6</li><li><strong>Lesson fact:</strong> BYREF is useful when a procedure must update the caller's variable directly.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end reference -->
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <div class="section-title">
-            <p class="eyebrow">Side-by-side comparison</p>
-            <h2>Same procedure body, different final result</h2>
-          </div>
-          <div class="data-table compare-table" role="table" aria-label="By value and BYREF comparison">
-            <div class="table-row table-head"><div>Feature</div><div>By value</div><div>By reference</div></div>
-            <div class="table-row"><div>Header clue</div><div><code>Number : INTEGER</code></div><div><code>BYREF Number : INTEGER</code></div></div>
-            <div class="table-row"><div>What is passed</div><div>a copy of the value</div><div>a reference to the caller's variable</div></div>
-            <div class="table-row"><div>Change inside subroutine</div><div>affects local parameter only</div><div>can affect original variable</div></div>
-            <div class="table-row"><div>Typical exam wording</div><div>value is passed to a parameter</div><div>procedure updates the value of the argument</div></div>
-          </div>
-        </section>
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
-          <div class="section-title">
-            <p class="eyebrow">Trace table</p>
-            <h2>Follow caller value, parameter value and passing mode</h2>
-          </div>
-          <div class="data-table trace-table" role="table" aria-label="Trace table">
-            <div class="table-row table-head"><div>Step</div><div>Caller variable</div><div>Parameter</div><div>Reason</div></div>
-            <div class="table-row"><div>Before call</div><div><code>X = 5</code></div><div>not created yet</div><div>main algorithm owns <code>X</code></div></div>
-            <div class="table-row"><div>By value call</div><div><code>X = 5</code></div><div><code>Number = 5</code></div><div>parameter receives a copy</div></div>
-            <div class="table-row"><div>By value after increment</div><div><code>X = 5</code></div><div><code>Number = 6</code></div><div>only copy changes</div></div>
-            <div class="table-row"><div>BYREF after increment</div><div><code>X = 6</code></div><div><code>Number</code> linked to <code>X</code></div><div>change is applied to original variable</div></div>
-          </div>
-        </section>
-
-        <section class="panel" id="use" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="use">
-          <div class="section-title">
-            <p class="eyebrow">When to use BYREF</p>
-            <h2>Use it when the procedure must deliberately update caller data</h2>
-          </div>
-          <div class="use-grid">
-            <article>
-              <h3>Good use</h3>
-              <p><code>IncrementScore(BYREF Score : INTEGER)</code> updates a stored score in the main algorithm.</p>
-            </article>
-            <article>
-              <h3>Good use</h3>
-              <p><code>Swap(BYREF A : INTEGER, BYREF B : INTEGER)</code> must change both original variables.</p>
-            </article>
-            <article>
-              <h3>Avoid if unnecessary</h3>
-              <p>If the subroutine only needs to read a value, by value is clearer and reduces accidental changes.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start use -->
-        <section class="panel explanation-panel" id="explanation-use" data-explains="use" data-explanation-kind="mechanism" aria-labelledby="explanation-use-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="use">
-          <h2 class="explanation-sr-only" id="explanation-use-title">Use it when the procedure must deliberately update caller data</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-use.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use it when the procedure must deliberately update caller data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use it when the procedure must deliberately update caller data: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> When to use BYREF</li><li><strong>Lesson fact:</strong> Good use</li><li><strong>Lesson fact:</strong> IncrementScore(BYREF Score : INTEGER) updates a stored score in the main algorithm.</li><li><strong>Lesson fact:</strong> Swap(BYREF A : INTEGER, BYREF B : INTEGER) must change both original variables.</li><li><strong>Lesson fact:</strong> Avoid if unnecessary</li><li><strong>Lesson fact:</strong> If the subroutine only needs to read a value, by value is clearer and reduces accidental changes.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end use -->
-        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+        <section class="panel" id="java" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
-            <h2>Do not replace Cambridge <code>BYREF</code> with Java syntax</h2>
+            <h2>Java method syntax is not Cambridge pseudocode</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge exam answer format</h3>
-              <pre><code>PROCEDURE Increase(BYREF Score : INTEGER)
-    Score &lt;- Score + 1
-ENDPROCEDURE</code></pre>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FUNCTION CalculateVAT(Price : REAL) RETURNS REAL
+    RETURN Price * 0.20
+ENDFUNCTION</code></pre>
             </article>
             <article>
-              <h3>Java support note</h3>
-              <pre><code>// Java support example only, not exam pseudocode
-static void increase(int score) {
-    score = score + 1;
+              <h3>Java support example only</h3>
+              <pre><code>static double calculateVAT(double price) {
+    return price * 0.20;
 }</code></pre>
-              <p>Java primitive parameters are passed by value. Do not use this as evidence that Cambridge <code>BYREF</code> is absent.</p>
             </article>
           </div>
         </section>
 
         <!-- stage10-explanation:start java -->
-        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="java">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Do not replace Cambridge BYREF with Java syntax</h2>
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java method syntax is not Cambridge pseudocode</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not replace Cambridge BYREF with Java syntax with a structured visual model." />
-            <figcaption class="explanation-sr-only">Do not replace Cambridge BYREF with Java syntax: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java method syntax is not Cambridge pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java method syntax is not Cambridge pseudocode: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge exam answer format</li><li><strong>Lesson fact:</strong> PROCEDURE Increase(BYREF Score : INTEGER)</li><li><strong>Lesson fact:</strong> Score &lt;- Score + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Java support note</li><li><strong>Lesson fact:</strong> // Java support example only, not exam pseudocode</li><li><strong>Lesson fact:</strong> static void increase(int score) {</li><li><strong>Lesson fact:</strong> score = score + 1;</li><li><strong>Lesson fact:</strong> Java primitive parameters are passed by value. Do not use this as evidence that Cambridge BYREF is absent.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION CalculateVAT(Price : REAL) RETURNS REAL</li><li><strong>Lesson fact:</strong> RETURN Price * 0.20</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static double calculateVAT(double price) {</li><li><strong>Lesson fact:</strong> return price * 0.20;</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
+        <section class="panel" id="returner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
-            <p class="eyebrow">Interactive trace simulator</p>
-            <h2>Predict the final caller value</h2>
-            <p>Enter a starting value and choose the passing mode. The procedure runs <code>Number &lt;- Number + 1</code>.</p>
+            <p class="eyebrow">Interactive return simulator</p>
+            <h2>Calculate a function return value</h2>
           </div>
-          <div class="converter-grid">
-            <label>
-              Starting value of caller variable X
-              <input id="startValue" type="number" min="-999" max="999" step="1" value="5" />
+          <div class="converter-grid two-control">
+            <label for="priceInput">
+              Price
+              <input id="priceInput" type="number" value="120" step="0.01" />
             </label>
-            <label>
-              Passing mode
-              <select id="passMode">
-                <option value="value">by value</option>
-                <option value="ref">BYREF</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="traceBtn">Trace call</button>
+            <button class="primary-button" type="button" id="returnBtn">Return VAT</button>
           </div>
-          <div class="trace-output" id="traceResult" aria-live="polite">Choose a mode and trace the call.</div>
+          <div class="trace-output" id="returnResult">Use <code>CalculateVAT(Price)</code> to return <code>Price * 0.20</code>.</div>
         </section>
 
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
-          <div class="section-title">
-            <p class="eyebrow">Mode chooser</p>
-            <h2>Which passing mode should the procedure use?</h2>
-            <p>Select a scenario to see the exam reasoning.</p>
+        <!-- stage10-explanation:start returner -->
+        <section class="panel explanation-panel" id="explanation-returner" data-explains="returner" data-explanation-kind="mechanism" aria-labelledby="explanation-returner-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <h2 class="explanation-sr-only" id="explanation-returner-title">Calculate a function return value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-returner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Calculate a function return value with a structured visual model." />
+            <figcaption class="explanation-sr-only">Calculate a function return value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive return simulator</li><li><strong>Lesson fact:</strong> Use CalculateVAT(Price) to return Price * 0.20 .</li></ol>
+
           </div>
-          <div class="scenario-grid" id="scenarioGrid"></div>
-          <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
+        </section>
+        <!-- stage10-explanation:end returner -->
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
+          <div class="section-title">
+            <p class="eyebrow">Subroutine chooser</p>
+            <h2>Procedure or function?</h2>
+          </div>
+          <div class="converter-grid two-control">
+            <label for="scenarioSelect">
+              Scenario
+              <select id="scenarioSelect"></select>
+            </label>
+            <button class="primary-button" type="button" id="chooseBtn">Choose</button>
+          </div>
+          <div class="trace-output" id="chooseResult">Choose a scenario to see the better subroutine type.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trace before you explain</h2>
+            <h2>Subroutine examples with exam wording</h2>
           </div>
-          <div class="tabs" id="exampleTabs" role="tablist"></div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="menu">Display menu</button>
+            <button class="tab" type="button" data-example="vat">Calculate VAT</button>
+            <button class="tab" type="button" data-example="pass">Boolean function</button>
+            <button class="tab" type="button" data-example="refactor">Remove repetition</button>
+          </div>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers, strict terms</h2>
-            <p>Type the final value or keyword. Use <code>BYREF</code> where the question asks for Cambridge syntax.</p>
+            <h2>10 quick checks</h2>
+            <p>Use short answers for checking. Expand the answer for fuller marking wording.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the exact misconception</h2>
+            <h2>Subroutine mistakes that cost marks</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer, then expand the MS</h2>
-            <p>Questions are original Cambridge-style practice. Marking notes are deliberately strict about wording and final values.</p>
+            <h2>Procedures, functions, calls and return values</h2>
+            <p>Original Cambridge-style questions. Try first, then expand the MS.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-131">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Three sentences to leave with</h2>
+            <h2>Subroutine checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>By value</strong><span>The parameter receives a copy; local changes do not alter the caller variable.</span></div>
-            <div><strong>BYREF</strong><span>The parameter is linked to the caller variable; changes can be visible after the call.</span></div>
-            <div><strong>Exam answer</strong><span>State the mechanism, trace the final values, and use Cambridge pseudocode keywords.</span></div>
+            <div><strong>Procedure</strong><span>Does a job; call it for its actions.</span></div>
+            <div><strong>Function</strong><span>Returns a value; use that value in the caller.</span></div>
+            <div><strong>Parameters</strong><span>Pass values in and match the expected data types.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Trace, write, explain</h2>
+            <h2>Subroutine practice</h2>
           </div>
           <ol class="homework-list">
-            <li>Trace the by-value and <code>BYREF</code> versions of <code>AddOne</code> for starting values <code>0</code>, <code>12</code> and <code>-3</code>. Show before, inside and after-call values.</li>
-            <li>Write Cambridge-style pseudocode for <code>PROCEDURE Reset(BYREF Count : INTEGER)</code> that sets <code>Count</code> to <code>0</code>, then show one valid call.</li>
-            <li>Write a 4-mark explanation: compare passing by value and passing by reference, including one example where <code>BYREF</code> is necessary.</li>
-            <li>Correct this bug in two sentences: a swap procedure uses <code>PROCEDURE Swap(A : INTEGER, B : INTEGER)</code> and the caller values do not change.</li>
+            <li><strong>Procedure task</strong><span>Write <code>PROCEDURE DisplayHeader()</code> that outputs a title and two menu lines.</span></li>
+            <li><strong>Function task</strong><span>Write <code>FUNCTION CalculateAverage(Total : REAL, Count : INTEGER) RETURNS REAL</code>.</span></li>
+            <li><strong>Call task</strong><span>Show how the main program stores the returned average and outputs it.</span></li>
+            <li><strong>Debug task</strong><span>Correct a function that has a return type but no RETURN statement.</span></li>
           </ol>
-          <div class="callout">
-            Marking focus: use the terms parameter, argument, caller variable, by value, by reference and <code>BYREF</code> accurately.
-          </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

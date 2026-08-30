@@ -1,66 +1,66 @@
 const recommendations = {
   school: {
-    result: "Choose client-server.",
-    method: "The school needs central management of users, permissions, data and backups. Clients request services from managed servers.",
+    result: "Likely choice: star topology on a LAN.",
+    method: "A school computer room is a local area. A star topology lets each device connect to a central switch, so individual cable/device faults are easier to isolate.",
   },
-  home: {
-    result: "Peer-to-peer may be suitable.",
-    method: "A few trusted devices can share files directly without buying or maintaining a dedicated server.",
+  temporary: {
+    result: "Possible choice: bus topology, with clear limitations.",
+    method: "A bus can be cheap and simple for a very small temporary network, but the shared backbone can become a bottleneck and a single point of failure.",
   },
-  web: {
-    result: "Choose client-server.",
-    method: "Many clients request web pages or data from one or more managed servers. Centralised hosting supports control, security and maintenance.",
+  critical: {
+    result: "Likely choice: mesh or redundant star design.",
+    method: "Critical systems benefit from multiple paths or redundant central devices. The reason is fault tolerance, not because mesh sounds impressive.",
   },
-  distributed: {
-    result: "Peer-to-peer may be suitable.",
-    method: "Peers can both request and provide file parts, so sharing is distributed instead of relying on one central source.",
+  branches: {
+    result: "Network type: WAN.",
+    method: "Branches in different countries require communication over a large geographical area and may use telecommunications provider infrastructure.",
   },
 };
 
 const examples = {
-  school: {
-    title: "Example 1: school network",
-    problem: "A school wants controlled logins, shared storage and regular backups.",
+  lan: {
+    title: "Example 1: deciding LAN or WAN",
+    problem: "A school connects computers in two classrooms and a local server.",
     steps: [
-      "Students' computers act as clients because they request services.",
-      "The file/authentication server provides storage, login and permission services.",
-      "Client-server is suitable because management is centralised.",
-      "The trade-off is dependence on server availability unless redundancy is used.",
+      "The devices are in a limited geographical area.",
+      "The school can own and manage the network equipment.",
+      "This is a LAN, not a WAN.",
+      "Do not say LAN only because it is wireless or fast; use area and ownership.",
     ],
   },
-  home: {
-    title: "Example 2: home file sharing",
-    problem: "Three home computers share photos directly with each other.",
+  star: {
+    title: "Example 2: choosing star topology",
+    problem: "A computer room needs 30 PCs connected to a switch.",
     steps: [
-      "Each computer may request files from another computer.",
-      "Each computer may also provide files to others.",
-      "This is peer-to-peer because devices can act as both client and server.",
-      "It is simple and low cost, but permissions/backups may be inconsistent.",
+      "Each PC has its own connection to the central switch.",
+      "If one cable fails, usually only that device is affected.",
+      "Adding or removing a device is straightforward.",
+      "The central switch is a possible single point of failure.",
     ],
   },
-  failure: {
-    title: "Example 3: failure analysis",
-    problem: "A client-server file server fails during the school day.",
+  mesh: {
+    title: "Example 3: choosing mesh topology",
+    problem: "A hospital monitoring network needs high availability.",
     steps: [
-      "Clients may still run local software, but cannot access the server service.",
-      "Shared files, logins or printing may fail if those services depend on the server.",
-      "The issue is service availability, not the definition of LAN or WAN.",
-      "A strong answer links the failure to the affected service.",
+      "A mesh network can provide multiple paths between devices.",
+      "If one link fails, data may still travel by another path.",
+      "This improves fault tolerance.",
+      "The trade-off is higher cost and complexity.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "A device that requests a service is called a...", accepted: ["client"], answer: "Client" },
-  { id: "p2", prompt: "A device or software that provides a service is called a...", accepted: ["server"], answer: "Server" },
-  { id: "p3", prompt: "In which model can devices act as both client and server?", accepted: ["peer-to-peer", "p2p", "peer to peer"], answer: "Peer-to-peer" },
-  { id: "p4", prompt: "Which model is usually better for central user account management?", accepted: ["client-server", "client server"], answer: "Client-server" },
-  { id: "p5", prompt: "Which model may avoid buying a dedicated server for a small trusted network?", accepted: ["peer-to-peer", "p2p", "peer to peer"], answer: "Peer-to-peer" },
-  { id: "p6", prompt: "Name one advantage of client-server.", accepted: ["central management", "centralised management", "centralized management", "security", "backup", "backups", "permissions"], answer: "Central management / security / backups / permissions" },
-  { id: "p7", prompt: "Name one disadvantage of client-server.", accepted: ["server failure", "single point of failure", "expensive", "cost", "maintenance", "administrator"], answer: "Server failure can affect many clients / higher cost / maintenance" },
-  { id: "p8", prompt: "Name one disadvantage of peer-to-peer.", accepted: ["harder to manage", "security", "backup", "backups", "inconsistent", "availability", "peers offline"], answer: "Harder management/security/backups; resources depend on peers being online" },
-  { id: "p9", prompt: "Client-server and peer-to-peer are network models or topologies?", accepted: ["models", "network models"], answer: "Network models" },
-  { id: "p10", prompt: "A public website serving many users is usually which model?", accepted: ["client-server", "client server"], answer: "Client-server" },
+  { id: "p1", prompt: "What does LAN stand for?", accepted: ["local area network"], answer: "Local Area Network" },
+  { id: "p2", prompt: "What does WAN stand for?", accepted: ["wide area network"], answer: "Wide Area Network" },
+  { id: "p3", prompt: "Name one purpose of a network.", accepted: ["communication", "resource sharing", "sharing resources", "collaboration", "central management", "file sharing"], answer: "Communication / resource sharing / collaboration / central management" },
+  { id: "p4", prompt: "A school network in one building is usually a LAN or WAN?", accepted: ["lan", "local area network"], answer: "LAN" },
+  { id: "p5", prompt: "A bank connects branches in several countries. LAN or WAN?", accepted: ["wan", "wide area network"], answer: "WAN" },
+  { id: "p6", prompt: "Which topology connects devices to a central switch or hub?", accepted: ["star", "star topology"], answer: "Star topology" },
+  { id: "p7", prompt: "Which topology has many possible paths between nodes?", accepted: ["mesh", "mesh topology"], answer: "Mesh topology" },
+  { id: "p8", prompt: "In a bus topology, what shared component can become a single point of failure?", accepted: ["backbone", "backbone cable", "bus", "main cable"], answer: "The backbone/main cable" },
+  { id: "p9", prompt: "Name one disadvantage of mesh topology.", accepted: ["cost", "expensive", "complex", "complexity", "difficult to install", "lots of cabling"], answer: "High cost / complexity / more cabling" },
+  { id: "p10", prompt: "Bandwidth means capacity or delay?", accepted: ["capacity"], answer: "Capacity" },
 ];
 
 
@@ -73,90 +73,89 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Describe the roles of a client and a server in a network.",
-    answer: "A client requests a service or resource, such as a web page or file. A server provides a service or resource to clients, such as file storage, authentication or web hosting.",
+    prompt: "A school connects computers, printers and a file server within one site. Explain two purposes of using a network in this situation.",
+    answer: "The network allows resource sharing, such as several computers using the same printer or file server. It also supports communication/collaboration because users can exchange files or access shared services through the network.",
     marking: [
-      { mark: "B1", text: "client requests a service/resource" },
-      { mark: "B1", text: "valid example of a client request" },
-      { mark: "B1", text: "server provides a service/resource" },
-      { mark: "B1", text: "valid example of a server service" },
+      { mark: "B1", text: "identifies resource sharing" },
+      { mark: "B1", text: "links resource sharing to printer/server/files in the school" },
+      { mark: "B1", text: "identifies communication/collaboration/central management" },
+      { mark: "B1", text: "links second purpose to the school scenario" },
     ],
     strict: [
-      "Do not accept only 'client is a computer' or 'server is a big computer'.",
-      "Do not require server to be a separate physical machine.",
-      "Award software role descriptions where clearly correct.",
+      "Do not accept only 'it is easier' without saying what is easier and why.",
+      "Do not require internet access as a purpose.",
+      "Award different purposes only; repeated resource-sharing examples cannot earn both purpose marks.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "A school network has 600 users, shared storage and managed user accounts. Explain why a client-server model is suitable.",
-    answer: "A client-server model is suitable because the school can centrally manage accounts, permissions and shared files on servers. Backups and updates can also be controlled centrally. This helps maintain security and consistency for many users, although the school must manage server cost and availability.",
+    marks: "4 marks",
+    prompt: "Compare a LAN and a WAN.",
+    answer: "A LAN covers a limited area such as a building or school site and is usually owned or managed by one organisation. A WAN covers a large geographical area and often uses telecommunications provider infrastructure to connect separate sites.",
     marking: [
-      { mark: "B1", text: "central management of accounts/permissions" },
-      { mark: "B1", text: "central shared storage/backups/updates" },
-      { mark: "B1", text: "consistent access-control or security policies can be applied centrally" },
-      { mark: "B1", text: "links to many users / school scenario" },
-      { mark: "B1", text: "balanced point such as server cost or server availability" },
+      { mark: "B1", text: "LAN covers a limited/local geographical area" },
+      { mark: "B1", text: "LAN is usually privately owned/managed by one organisation" },
+      { mark: "B1", text: "WAN covers a large geographical area" },
+      { mark: "B1", text: "WAN may use telecommunications provider/public infrastructure" },
     ],
     strict: [
-      "Do not accept only 'it is faster'.",
-      "Do not award generic security claims unless linked to central control/permissions.",
-      "Allow equivalent wording for centralised/centralized management.",
+      "Do not accept only 'LAN is small, WAN is big' for full credit.",
+      "Do not say LAN is always wired or WAN is always wireless.",
+      "Examples may support but not replace a clear comparison.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "Compare peer-to-peer networking with client-server networking.",
-    answer: "In peer-to-peer networking, devices can act as both clients and servers and share resources directly. This may reduce cost because no dedicated server is needed, but it can be harder to manage security, backups and availability. In client-server networking, clients request services from servers, giving central management but requiring server hardware/maintenance and making server failure significant.",
+    prompt: "A computer room uses a star topology. Explain two advantages and one disadvantage of this topology.",
+    answer: "In a star topology, each computer is connected to a central switch or hub. One advantage is that a cable fault usually affects only one device. Another advantage is that devices can be added or removed more easily. A disadvantage is that if the central switch fails, communication through the network may fail.",
     marking: [
-      { mark: "B1", text: "peer devices can act as both client and server / share directly" },
-      { mark: "B1", text: "peer-to-peer may reduce cost / no dedicated server needed" },
-      { mark: "B1", text: "peer-to-peer harder to manage security/backups/availability" },
-      { mark: "B1", text: "client-server uses clients requesting services from servers / central management" },
-      { mark: "B1", text: "client-server has cost/maintenance/server failure issue" },
+      { mark: "B1", text: "recognises devices connect to a central switch/hub" },
+      { mark: "B1", text: "individual cable/device failure affects only that device" },
+      { mark: "B1", text: "easy to add/remove devices or isolate faults" },
+      { mark: "B1", text: "central switch/hub is a single point of failure" },
+      { mark: "B1", text: "links disadvantage to loss of communication/network failure" },
     ],
     strict: [
-      "Do not compare by topology shape.",
-      "Do not say peer-to-peer is always insecure.",
-      "Award points only where linked to the correct model.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not accept 'faster' without explaining why or compared with what.",
+      "Do not award two marks for the same advantage repeated in different words.",
+      "Allow 'hub' where older terminology is used, but switch is preferred.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "A small office of four trusted users shares files directly between laptops. Explain one advantage and one disadvantage of a peer-to-peer model for this office.",
-    answer: "An advantage is that it can be low cost and simple because the office does not need a dedicated server. A disadvantage is that file availability, backups and access control may be inconsistent because each laptop manages its own shared resources and may be offline.",
+    prompt: "Explain why a mesh topology may be suitable for a critical hospital monitoring network.",
+    answer: "A mesh topology can provide multiple paths between devices. If one link fails, data may still be sent by another route. This improves fault tolerance and availability, which is important because hospital monitoring data may be time-critical.",
     marking: [
-      { mark: "B1", text: "advantage: no dedicated server / lower cost / simpler setup" },
-      { mark: "B1", text: "links advantage to small office/trusted users" },
-      { mark: "B1", text: "disadvantage: harder backup/security/access control or peer availability" },
-      { mark: "B1", text: "links disadvantage to peers managing resources or being offline" },
+      { mark: "B1", text: "mesh provides multiple paths/connections" },
+      { mark: "B1", text: "communication can continue if one link/path fails" },
+      { mark: "B1", text: "improves fault tolerance/reliability/availability" },
+      { mark: "B1", text: "links reliability to critical hospital monitoring context" },
     ],
     strict: [
-      "Do not accept only 'cheap' without reason.",
-      "Do not award client-server advantages as peer-to-peer advantages.",
-      "Allow 'files unavailable if host laptop is off' as availability explanation.",
+      "Do not accept only 'mesh is more secure'.",
+      "Do not require a fully connected mesh unless the answer specifies it.",
+      "Award scenario-linked consequence, not a generic definition alone.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 5",
     marks: "3 marks",
-    prompt: "A student says peer-to-peer is the same as mesh topology. Explain why this is incorrect.",
-    answer: "Peer-to-peer is a network model describing device roles: peers can request and provide resources. Mesh is a topology describing how devices or nodes are connected with multiple paths. A peer-to-peer network does not have to be physically arranged as a mesh.",
+    prompt: "A student says bandwidth and latency both mean the speed of a network. Explain why this is inaccurate.",
+    answer: "Bandwidth is the capacity of a connection, often the amount of data that can be transferred per second. Latency is the delay before or during transfer. A network may have high bandwidth but still feel slow if latency is high.",
     marking: [
-      { mark: "B1", text: "peer-to-peer describes roles/resource sharing" },
-      { mark: "B1", text: "mesh describes connections/topology/multiple paths" },
-      { mark: "B1", text: "states that model and topology are different concepts" },
+      { mark: "B1", text: "bandwidth is capacity / amount of data transferred per second" },
+      { mark: "B1", text: "latency is delay" },
+      { mark: "B1", text: "explains they affect performance differently" },
     ],
     strict: [
-      "Do not accept only 'they are different'.",
-      "Do not require a diagram.",
-      "Award equivalent explanation using logical/physical organisation if clear.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not accept only 'bandwidth is speed'.",
+      "Do not require numerical units.",
+      "Allow examples such as video call delay if clearly linked to latency.",
     ],
   },
 ];
@@ -175,9 +174,9 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "client"
-        ? "Correct. The student computer is requesting a file service, so it is acting as a client."
-        : "Not this time. Focus on the role in this transaction: the computer is asking for a service.";
+      feedback.textContent = button.dataset.hook === "resource"
+        ? "Correct. Several computers using one printer is resource sharing."
+        : "Not the main purpose here. The clue is that many computers use the same printer.";
     });
   });
 }
@@ -213,7 +212,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("school");
+  renderExample("lan");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -261,7 +260,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Strong model answers name roles, management and consequences.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For explanation questions, add a comparison basis and a consequence.`;
   });
 }
 

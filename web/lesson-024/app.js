@@ -1,74 +1,74 @@
 const scenarios = {
-  public: {
-    result: "Internet",
-    method: "The product pages are intended for public access on the global network. Individual services may require login, but the public-facing network context is the internet.",
+  lan: {
+    result: "Switch",
+    method: "A switch connects devices inside a LAN and forwards frames to the correct port using MAC address information.",
   },
-  staff: {
-    result: "Intranet",
-    method: "The resources are private to the organisation and restricted to authorised internal users such as staff.",
+  internet: {
+    result: "Router",
+    method: "A router connects different networks, such as a school LAN and the internet, and forwards packets using IP addresses/routing information.",
   },
-  supplier: {
-    result: "Extranet",
-    method: "A selected external organisation is given controlled access to private data, so this is an extranet scenario rather than fully public access.",
+  wifi: {
+    result: "Wireless access point",
+    method: "A wireless access point allows wireless devices to connect to the network using radio waves. It is not the same job as routing between networks.",
   },
-  files: {
-    result: "Cloud storage",
-    method: "Files are stored on remote servers and accessed over a network from different locations/devices.",
+  different: {
+    result: "Gateway",
+    method: "A gateway connects networks that use different protocols, data formats or standards and may translate between them.",
   },
-  scale: {
-    result: "Cloud infrastructure",
-    method: "The startup rents remote computing resources and can scale capacity without buying and maintaining all hardware locally.",
+  mac: {
+    result: "Switch",
+    method: "MAC address tables are associated with switches forwarding traffic within a LAN.",
   },
-  risk: {
-    result: "Cloud service risk evaluation",
-    method: "Remote provider storage may help access and backup, but patient records require careful security, privacy, compliance and provider-dependence analysis.",
+  default: {
+    result: "Default gateway / router",
+    method: "Traffic leaving the local subnet is sent to the default gateway, often a router, so it can be forwarded to another network.",
   },
 };
 
 const examples = {
   school: {
-    title: "Example 1: school staff portal",
-    problem: "A school wants staff to access internal policies, forms and notices.",
+    title: "Example 1: school internet path",
+    problem: "A desktop PC opens a website outside the school network.",
     steps: [
-      "The information is for internal users, not the public.",
-      "The organisation controls access to the resources.",
-      "An intranet is suitable because it is a private network for authorised users inside the organisation.",
-      "A strong answer mentions restricted access, not just 'it is online'.",
+      "Inside the LAN, a switch can forward frames between local devices using MAC addresses.",
+      "To reach a different network, traffic is sent to a router/default gateway.",
+      "The router forwards packets using IP addresses and routing information.",
+      "A complete answer separates local switching from routing between networks.",
     ],
   },
-  supplier: {
-    title: "Example 2: supplier stock portal",
-    problem: "A shop lets selected suppliers log in to view stock levels and delivery schedules.",
+  wifi: {
+    title: "Example 2: adding tablets to a classroom",
+    problem: "A classroom already has a wired LAN, but students need tablet access.",
     steps: [
-      "The supplier is external to the organisation.",
-      "The access is controlled and limited to selected information.",
-      "This is an extranet because authorised external users are given access to private resources.",
-      "It is not the public internet because not everyone can access the data.",
+      "The tablets need wireless access rather than a cable connection.",
+      "A wireless access point allows wireless devices to connect to the network using radio waves.",
+      "The LAN may still use switches for wired devices.",
+      "Internet access may still require a router; the access point does not automatically perform every network role.",
     ],
   },
-  cloud: {
-    title: "Example 3: moving files to cloud storage",
-    problem: "A school considers storing student work on a cloud service.",
+  gateway: {
+    title: "Example 3: two systems with different rules",
+    problem: "A company system needs to exchange data with another network that uses a different protocol.",
     steps: [
-      "Cloud storage uses remote servers accessed over a network.",
-      "Benefits may include remote access, collaboration, backups and less local storage management.",
-      "Risks may include dependence on internet connection, provider availability, privacy and security.",
-      "A balanced answer gives both benefits and drawbacks linked to the school scenario.",
+      "The issue is not simply distance or wireless access.",
+      "The two networks use different communication rules or formats.",
+      "A gateway may be needed to connect the networks and translate between protocols/formats.",
+      "Do not use gateway as a generic replacement for switch or router.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which term means a global public network of interconnected networks?", accepted: ["internet"], answer: "Internet" },
-  { id: "p2", prompt: "Which term means a private internal network for an organisation?", accepted: ["intranet"], answer: "Intranet" },
-  { id: "p3", prompt: "Which term means a private network with controlled access for selected external users?", accepted: ["extranet"], answer: "Extranet" },
-  { id: "p4", prompt: "Cloud storage keeps files on local-only drives or remote servers?", accepted: ["remote servers", "remote", "servers"], answer: "Remote servers" },
-  { id: "p5", prompt: "A supplier logs in to see selected stock data. Internet, intranet or extranet?", accepted: ["extranet"], answer: "Extranet" },
-  { id: "p6", prompt: "Staff-only HR policies are likely on an internet, intranet or extranet?", accepted: ["intranet"], answer: "Intranet" },
-  { id: "p7", prompt: "Name one benefit of cloud services.", accepted: ["remote access", "collaboration", "backup", "backups", "scalability", "scale", "less maintenance", "lower local maintenance", "cost"], answer: "Remote access / collaboration / backup / scalability / less local maintenance" },
-  { id: "p8", prompt: "Name one risk or drawback of cloud services.", accepted: ["security", "privacy", "internet connection", "connection", "provider", "downtime", "latency", "cost", "compliance"], answer: "Security / privacy / dependence on connection or provider / downtime / cost" },
-  { id: "p9", prompt: "Does an extranet allow everyone on the public internet to access all data? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "A startup rents remote servers instead of buying local hardware. Which service idea is this?", accepted: ["cloud", "cloud infrastructure", "iaas", "infrastructure as a service"], answer: "Cloud infrastructure" },
+  { id: "p1", prompt: "Which device forwards frames inside a LAN using MAC addresses?", accepted: ["switch"], answer: "Switch" },
+  { id: "p2", prompt: "Which device connects different networks and forwards packets using IP addresses?", accepted: ["router"], answer: "Router" },
+  { id: "p3", prompt: "Which device allows wireless devices to connect to a network?", accepted: ["wireless access point", "access point", "wap", "ap"], answer: "Wireless access point" },
+  { id: "p4", prompt: "Which device may translate between different network protocols or formats?", accepted: ["gateway"], answer: "Gateway" },
+  { id: "p5", prompt: "Switches mainly use MAC addresses or IP addresses?", accepted: ["mac", "mac addresses", "mac address"], answer: "MAC addresses" },
+  { id: "p6", prompt: "Routers mainly use MAC addresses or IP addresses for routing between networks?", accepted: ["ip", "ip addresses", "ip address"], answer: "IP addresses" },
+  { id: "p7", prompt: "A tablet joins a school network using WiFi. Which hardware gives wireless access?", accepted: ["wireless access point", "access point", "wap", "ap"], answer: "Wireless access point" },
+  { id: "p8", prompt: "A LAN sends traffic outside its local subnet to a default ____.", accepted: ["gateway", "default gateway"], answer: "Default gateway" },
+  { id: "p9", prompt: "Does a switch normally perform protocol translation between different networks? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one boundary handled by a router.", accepted: ["between networks", "different networks", "lan to internet", "lan and internet", "network to network", "wan"], answer: "Between networks / LAN to internet" },
 ];
 
 
@@ -81,89 +81,88 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Compare the internet and an intranet.",
-    answer: "The internet is a global public network of interconnected networks. An intranet is a private network used within an organisation and restricted to authorised internal users. Both may use web technologies, but the access scope and control are different.",
+    prompt: "Explain the role of a switch in a local area network.",
+    answer: "A switch connects devices in a LAN and forwards frames only to the appropriate port/device. It uses MAC address information to decide where to send the frame, reducing unnecessary traffic compared with sending the frame to every device.",
     marking: [
-      { mark: "B1", text: "internet is global/public/interconnected networks" },
-      { mark: "B1", text: "intranet is private/internal to an organisation" },
-      { mark: "B1", text: "intranet access restricted to authorised users/staff" },
-      { mark: "B1", text: "contrasts internet access across public interconnected networks with organisation-controlled intranet access" },
+      { mark: "B1", text: "connects devices within a LAN" },
+      { mark: "B1", text: "forwards frames/data to correct device/port" },
+      { mark: "B1", text: "uses MAC addresses / MAC address table" },
+      { mark: "B1", text: "reduces unnecessary traffic / avoids sending to all devices where possible" },
     ],
     strict: [
-      "Do not accept 'intranet is a small internet' for full credit.",
-      "Do not require discussion of physical hardware.",
-      "Allow reference to web technologies if access distinction is clear.",
+      "Do not award for saying a switch routes packets across the internet.",
+      "Do not require detailed frame format.",
+      "Allow 'data packets' only if the LAN/MAC forwarding idea is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "A company gives selected suppliers access to stock levels and delivery information. Explain why this is an extranet.",
-    answer: "This is an extranet because it gives selected external users, the suppliers, controlled access to private company information. The data is not available to the general public, and the company can restrict what each supplier can access.",
+    prompt: "A school LAN needs to connect to the internet. Explain why a router is required.",
+    answer: "A router is used to connect different networks, such as the school LAN and the internet. It forwards packets towards their destination using IP addresses and routing information. Traffic leaving the local network may be sent to the router/default gateway.",
     marking: [
-      { mark: "B1", text: "identifies selected suppliers as external users/organisations" },
-      { mark: "B1", text: "controlled/restricted access" },
-      { mark: "B1", text: "access to private/internal company information" },
-      { mark: "B1", text: "not available to the general public / differs from public internet" },
+      { mark: "B1", text: "router connects different networks / LAN to internet" },
+      { mark: "B1", text: "forwards/routes packets" },
+      { mark: "B1", text: "uses IP addresses/routing table/routing information" },
+      { mark: "B1", text: "links to traffic leaving local network/default gateway scenario" },
     ],
     strict: [
-      "Do not accept only 'it is online'.",
-      "Do not call it an intranet unless external controlled access is still explained; no identification mark for wrong term.",
-      "Allow partner/customer portal examples if access is controlled.",
+      "Do not accept only 'router gives WiFi'.",
+      "Do not award switch as the main device for connecting to the internet.",
+      "Allow default gateway reference if it is linked to forwarding outside the local network.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A school is considering cloud storage for student work. Discuss two benefits and one drawback.",
-    answer: "Cloud storage can allow students and staff to access files from different locations and devices. It can also support collaboration and backup because files are stored on remote servers managed by a provider. A drawback is dependence on internet connection/provider availability, or concerns about security and privacy of student data.",
+    prompt: "A classroom has tablets, desktop PCs and a shared file server. Describe the roles of a NIC, WNIC, wireless access point, switch and server.",
+    answer: "A NIC provides each desktop with a wired network interface, while a WNIC provides each tablet with a wireless network interface. The wireless access point connects the wireless tablets to the LAN. The switch connects LAN devices and forwards local frames to the appropriate port. The server provides a shared service such as file storage or authentication.",
     marking: [
-      { mark: "B1", text: "files stored/accessed on remote servers over a network" },
-      { mark: "B1", text: "benefit: access from different locations/devices" },
-      { mark: "B1", text: "benefit: collaboration/backup/reduced local maintenance" },
-      { mark: "B1", text: "drawback: dependence on internet/provider/downtime" },
-      { mark: "B1", text: "drawback or benefit linked to school/student data context such as security/privacy" },
+      { mark: "B1", text: "NIC provides the desktop's wired network interface" },
+      { mark: "B1", text: "WNIC provides the tablet's wireless network interface" },
+      { mark: "B1", text: "wireless access point connects wireless devices to the LAN" },
+      { mark: "B1", text: "switch connects LAN devices / forwards local frames to the appropriate port" },
+      { mark: "B1", text: "server provides shared files, authentication or another valid shared service" },
     ],
     strict: [
-      "Do not accept only 'it is cheaper' without a reason or context.",
-      "Do not say data is stored 'in the air'.",
-      "Award a maximum of 3 marks if no cloud-service mechanism is described.",
+      "Do not merge NIC/WNIC, access point, switch and server into 'they connect to the internet'.",
+      "Do not award router functions because a router is not one of the five requested LAN hardware roles.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain why an organisation may use an intranet instead of publishing documents on the internet.",
-    answer: "An intranet restricts access to authorised internal users, so confidential or staff-only documents are not publicly available. The organisation can control the content and access permissions. This is suitable for internal policies, forms and notices that should not be exposed on the public internet.",
+    prompt: "A business is choosing between the PSTN, a dedicated line and a cell phone network for internet access. State the role of a modem and compare two of these connection methods.",
+    answer: "A modem converts between the data representation used by the computer or network and the signalling required by the access link. The PSTN uses the public telephone network and may provide a temporary or lower-capacity access link. A dedicated line supplies a permanent connection with more predictable availability or capacity but normally costs more. A cell phone network supplies wireless access through cellular infrastructure and supports mobility or places without a fixed line, but signal strength and shared coverage can vary.",
     marking: [
-      { mark: "B1", text: "restricted to authorised/internal users" },
-      { mark: "B1", text: "protects confidential/staff-only information from public access" },
-      { mark: "B1", text: "organisation controls content/permissions" },
-      { mark: "B1", text: "valid internal document example or scenario link" },
+      { mark: "B1", text: "modem converts data/signals for the access link" },
+      { mark: "B1", text: "identifies a valid characteristic of PSTN, dedicated line or cell phone/cellular network" },
+      { mark: "B1", text: "identifies a valid contrasting characteristic of a second named method" },
+      { mark: "B1", text: "develops the comparison using permanence, mobility, capacity, availability, signal or cost" },
     ],
     strict: [
-      "Do not accept vague 'more secure' unless access restriction/control is explained.",
-      "Do not require encryption details.",
-      "Allow 'private network' if internal organisation use is clear.",
+      "Do not accept that a modem is simply a wireless access point or router.",
+      "Do not award two unconnected method names without a comparison.",
+      "Allow cellular network as equivalent to cell phone network.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A regulated organisation is choosing between a public cloud and a private cloud for confidential documents. Compare the two and Suggest one.",
-    answer: "A public cloud uses provider infrastructure shared between customers. It can scale quickly and reduce the organisation's need to buy and maintain hardware, but gives less direct control and creates provider, privacy and data-location concerns. A private cloud is dedicated to one organisation and can give greater control over configuration, access and data location, but costs more to operate and requires more administration. A private cloud may therefore suit the confidential regulated documents when control requirements outweigh cost, although either choice still needs access controls and backup.",
+    prompt: "Compare a switch and a router.",
+    answer: "A switch is mainly used within a LAN to connect local devices and forward frames to the correct port using MAC addresses. A router connects different networks and forwards packets using IP addresses and routing information. For example, a switch may connect computers in a classroom, while a router connects that LAN to the internet.",
     marking: [
-      { mark: "B1", text: "public cloud uses shared provider infrastructure" },
-      { mark: "B1", text: "public-cloud benefit such as scalability/lower capital or maintenance requirement" },
-      { mark: "B1", text: "private cloud is dedicated to one organisation / gives greater control" },
-      { mark: "B1", text: "private-cloud drawback such as higher cost or administration" },
-      { mark: "B1", text: "supported recommendation linked to confidential regulated documents" },
+      { mark: "B1", text: "switch works within a LAN/local network" },
+      { mark: "B1", text: "switch uses MAC addresses/ports to forward frames" },
+      { mark: "B1", text: "router connects different networks" },
+      { mark: "B1", text: "router uses IP addresses/routing information" },
+      { mark: "B1", text: "valid scenario comparison such as classroom LAN vs internet connection" },
     ],
     strict: [
-      "Do not accept that public means anyone can read the customer's files.",
-      "Do not accept that private cloud automatically guarantees security.",
-      "No recommendation mark without a scenario-linked reason.",
+      "Do not award marks for only saying one is wired and one is wireless.",
+      "Do not accept 'router is faster' as a comparison.",
+      "Allow packet/frame wording variation if device boundary and address type are correct.",
     ],
   },
 ];
@@ -182,17 +181,17 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "extranet"
-        ? "Correct. Internal-only access is intranet; controlled access for an external partner is extranet."
-        : "Not quite. Focus on who is authorised to access the private information.";
+      feedback.textContent = button.dataset.hook === "aprouter"
+        ? "Correct. The access point handles wireless access; the router handles traffic to another network."
+        : "Not quite. Separate local/wireless access from routing to an outside network.";
     });
   });
 }
 
 function setupChoiceTool() {
   const select = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#choiceResult");
-  const method = document.querySelector("#choiceMethod");
+  const result = document.querySelector("#hardwareResult");
+  const method = document.querySelector("#hardwareMethod");
   function choose() {
     const item = scenarios[select.value];
     result.textContent = item.result;
@@ -268,7 +267,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Use access scope and scenario consequences, not vague online/offline labels.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Add the device role and the network boundary to earn explanation marks.`;
   });
 }
 

@@ -1,108 +1,91 @@
-const constructScenarios = {
-  pass: {
-    construct: "Selection using IF",
-    reason: "The program chooses between two paths depending on a condition such as Mark greater than or equal to 50.",
-    examTip: "Include ELSE and ENDIF so the branch is complete.",
-  },
-  scores: {
-    construct: "Iteration using FOR",
-    reason: "The number of repetitions is known before the loop starts: exactly 30 scores.",
-    examTip: "Check loop bounds carefully; 1 to 30 gives 30 iterations.",
-  },
-  menu: {
-    construct: "Selection using CASE",
-    reason: "A menu has several discrete choices, so CASE is clearer than many separate IF statements.",
-    examTip: "Include OTHERWISE for invalid choices.",
-  },
-  valid: {
-    construct: "Iteration using REPEAT UNTIL",
-    reason: "The prompt should appear at least once, then repeat until the input is valid.",
-    examTip: "Make sure the condition eventually becomes true, or the loop may never stop.",
-  },
+const traces = {
+  a: [40, 65, 50, 80],
+  b: [55, 51, 49, 70],
+  c: [50, 50, 50, 51],
 };
 
-const fileModes = {
-  read: {
-    mode: "READ",
-    reason: "Use READ when existing records need to be read without changing the file.",
-    pattern: 'OPENFILE "Scores.txt" FOR READ',
+const structures = {
+  temps: {
+    structure: "1D array",
+    reason: "The values are the same type and can be accessed by position, such as day number.",
+    trap: "Do not use a record unless each item needs different named fields.",
   },
-  append: {
-    mode: "APPEND",
-    reason: "Use APPEND to add records to the end while preserving existing contents.",
-    pattern: 'OPENFILE "Scores.txt" FOR APPEND',
+  student: {
+    structure: "Record",
+    reason: "One student has related fields of different types, such as STRING name, STRING ID and INTEGER mark.",
+    trap: "Do not split related fields into separate arrays unless the question requires it.",
   },
-  write: {
-    mode: "WRITE",
-    reason: "Use WRITE when creating a new file or replacing file contents.",
-    pattern: 'OPENFILE "Report.txt" FOR WRITE',
+  undo: {
+    structure: "Stack",
+    reason: "The most recent action should be removed first, so it is last-in, first-out.",
+    trap: "Do not use a queue for undo; a queue removes the oldest item first.",
   },
-  close: {
-    mode: "CLOSEFILE",
-    reason: "CLOSEFILE finishes file processing and ensures buffered changes are saved correctly.",
-    pattern: 'CLOSEFILE "Scores.txt"',
+  printer: {
+    structure: "Queue",
+    reason: "The first print job added should be processed first, so it is first-in, first-out.",
+    trap: "Do not pop the newest job first unless the scenario says priority or undo.",
   },
 };
 
 const examples = {
-  loop: {
-    title: "Example 1: Choosing a loop",
+  trace: {
+    title: "Example 1: Trace table reasoning",
     rows: [
-      ["Scenario", "Process exactly 30 scores."],
-      ["Best construct", "FOR loop."],
-      ["Reason", "The number of repetitions is known before the loop begins."],
-      ["Exam point", "Use WHILE or REPEAT when the stopping condition depends on data or validation."],
+      ["Algorithm rule", "Add Scores[Index] to Total only when score is greater than 50."],
+      ["Scores", "40, 65, 50, 80"],
+      ["Final Total", "145, because 65 and 80 are included; 50 is not greater than 50."],
+      ["Exam point", "A trace table shows method and prevents off-by-one mistakes."],
     ],
   },
-  function: {
-    title: "Example 2: Function versus procedure",
+  structure: {
+    title: "Example 2: Data structure justification",
     rows: [
-      ["Task", "Check whether Mark is in the range 0 to 100."],
-      ["Best subprogram", "FUNCTION IsValidMark(Mark) RETURNS BOOLEAN."],
-      ["Reason", "The result TRUE or FALSE is returned and used by another part of the algorithm."],
-      ["Exam point", "A function returns a value; OUTPUT only displays a value."],
+      ["Scenario", "Store undo history for a text editor."],
+      ["Choice", "Stack."],
+      ["Reason", "The last action performed is the first action to be undone."],
+      ["Exam point", "Name plus reason earns more than name alone."],
     ],
   },
-  file: {
-    title: "Example 3: Appending to a file",
+  test: {
+    title: "Example 3: Test data explanation",
     rows: [
-      ["Task", "Add a new quiz score without deleting old scores."],
-      ["File mode", "APPEND."],
-      ["Core steps", "OPENFILE for APPEND, WRITEFILE new score, CLOSEFILE."],
-      ["Exam point", "WRITE may replace file contents, so it is not suitable for preserving old records."],
+      ["Rule", "Valid mark range is 0 to 100."],
+      ["Normal", "75, expected accepted."],
+      ["Boundary", "0 and 100 accepted; minus 1 and 101 rejected."],
+      ["Abnormal", "text such as 'high', expected rejected with an error message."],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which construct chooses between paths based on a condition?", accepted: ["selection", "if", "case"], answer: "Selection, such as IF or CASE." },
-  { id: "p2", prompt: "Which construct repeats statements?", accepted: ["iteration", "loop", "for", "while", "repeat"], answer: "Iteration / loop." },
-  { id: "p3", prompt: "Which loop is best when the number of repetitions is known?", accepted: ["for"], answer: "FOR loop." },
-  { id: "p4", prompt: "Which loop is useful when input must be requested at least once?", accepted: ["repeat", "repeat until"], answer: "REPEAT UNTIL." },
-  { id: "p5", prompt: "Which subprogram type returns a value?", accepted: ["function"], answer: "Function." },
-  { id: "p6", prompt: "Which subprogram type performs an action and may not return a value?", accepted: ["procedure"], answer: "Procedure." },
-  { id: "p7", prompt: "Which file mode reads existing records without changing them?", accepted: ["read"], answer: "READ." },
-  { id: "p8", prompt: "Which file mode adds records without deleting existing records?", accepted: ["append"], answer: "APPEND." },
-  { id: "p9", prompt: "Which file mode may create or replace file contents?", accepted: ["write"], answer: "WRITE." },
-  { id: "p10", prompt: "What statement should be used after file processing is finished?", accepted: ["closefile", "close"], answer: "CLOSEFILE." },
+  { id: "p1", prompt: "What table is used to dry run an algorithm?", accepted: ["trace"], answer: "Trace table." },
+  { id: "p2", prompt: "Which pseudocode construct repeats statements?", accepted: ["iteration", "loop"], answer: "Iteration / loop." },
+  { id: "p3", prompt: "Which data structure is last-in, first-out?", accepted: ["stack"], answer: "Stack." },
+  { id: "p4", prompt: "Which data structure is first-in, first-out?", accepted: ["queue"], answer: "Queue." },
+  { id: "p5", prompt: "Which structure is suitable for same-type values accessed by index?", accepted: ["array", "1d array"], answer: "Array / 1D array." },
+  { id: "p6", prompt: "Which structure groups fields of different types for one item?", accepted: ["record"], answer: "Record." },
+  { id: "p7", prompt: "What test data category checks the edge of a valid range?", accepted: ["boundary"], answer: "Boundary data." },
+  { id: "p8", prompt: "What test data category is typical valid data?", accepted: ["normal"], answer: "Normal data." },
+  { id: "p9", prompt: "What test data category uses invalid type or invalid value?", accepted: ["abnormal", "erroneous", "invalid"], answer: "Abnormal / erroneous data." },
+  { id: "p10", prompt: "In Cambridge exams, should final algorithm answers normally use Java syntax? yes or no", accepted: ["no"], answer: "No. Cambridge pseudocode is the exam standard; Java is only support." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student uses WRITE when they need to add one score to the end of an existing file.",
-    fix: "Correction: use APPEND. WRITE may create or replace file contents, while APPEND preserves existing records and adds new data at the end.",
+    wrong: "A student traces only the final output and skips intermediate variable values.",
+    fix: "Correction: use a trace table with one row per relevant step or loop iteration. Intermediate values can earn method marks.",
   },
   {
-    wrong: "A student writes a function that only OUTPUTs TRUE or FALSE.",
-    fix: "Correction: a function should RETURN a value so it can be used by another expression or condition. OUTPUT only displays text.",
+    wrong: "A student says 'use a stack because it stores data'.",
+    fix: "Correction: explain LIFO. For example, a stack suits undo because the most recent action is removed first.",
   },
   {
-    wrong: "A student uses a WHILE loop for a fixed 1 to 30 count but forgets to update the counter.",
-    fix: "Correction: use a FOR loop when the number of repetitions is known, or explicitly update the counter in a WHILE loop.",
+    wrong: "A student treats a score of 50 as greater than 50.",
+    fix: "Correction: greater than 50 excludes 50. Greater than or equal to 50 would include it.",
   },
   {
-    wrong: "A student opens a file but never closes it.",
-    fix: "Correction: use CLOSEFILE after processing. This completes file handling and helps ensure changes are written safely.",
+    wrong: "A student gives test data but no expected result.",
+    fix: "Correction: each test case needs expected output or expected behaviour, such as accepted, rejected or error message displayed.",
   },
 ];
 
@@ -116,96 +99,97 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A program must process exactly 50 marks and count how many are passes. Describe a suitable algorithm using Cambridge-style constructs.",
-    answer: "Set PassCount to 0. Use a FOR loop from 1 to 50. Input or read each Mark. If Mark is greater than or equal to 50, add 1 to PassCount. After the loop, output PassCount.",
+    prompt: "Complete a trace table for an algorithm that adds scores greater than 50 from the list 40, 65, 50, 80. State the final value of Total and explain which scores were included.",
+    answer: "Total starts at 0. Score 40 is not greater than 50, so Total remains 0. Score 65 is included, so Total becomes 65. Score 50 is not greater than 50, so Total remains 65. Score 80 is included, so Total becomes 145. Final Total is 145.",
     marking: [
-      { mark: "B1", text: "initialises PassCount to 0" },
-      { mark: "B1", text: "uses a suitable counted loop for 50 marks" },
-      { mark: "B1", text: "inputs or reads each mark inside the loop" },
-      { mark: "B1", text: "uses selection to test pass condition" },
-      { mark: "B1", text: "increments PassCount only when condition is met" },
-      { mark: "B1", text: "outputs PassCount after processing all marks" },
+      { mark: "M1", text: "initialises or recognises Total starts at 0" },
+      { mark: "M1", text: "correctly excludes 40" },
+      { mark: "M1", text: "correctly includes 65 and updates Total" },
+      { mark: "M1", text: "correctly excludes 50 because condition is greater than 50" },
+      { mark: "M1", text: "correctly includes 80" },
+      { mark: "A1", text: "states final Total as 145" },
     ],
     strict: [
-      "Do not award full marks for vague 'check all marks' without loop logic.",
-      "Allow greater than or equal to 50 as pass condition unless a different threshold is stated.",
-      "Do not require exact variable names.",
+      "Do not award the 50 exclusion mark if candidate treats greater than as greater than or equal to.",
+      "Allow a clear trace table instead of prose.",
+      "Do not require array indexes if score order and updates are clear.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Explain the difference between a procedure and a function, using a validation example.",
-    answer: "A procedure is a named block of code that performs an action and does not have to return a value, for example displaying an error message. A function returns a value to the calling code, for example IsValidMark(Mark) returning TRUE if the mark is between 0 and 100 and FALSE otherwise. The returned Boolean can then be used in an IF statement.",
+    marks: "6 marks",
+    prompt: "Suggest suitable data structures for undo history, printer jobs and student records. Justify each choice.",
+    answer: "Undo history should use a stack because the most recent action is undone first. Printer jobs should use a queue because the first job submitted should be printed first. Student records should use records because each student has related fields of different data types, such as name, ID and mark.",
     marking: [
-      { mark: "B1", text: "states a procedure performs an action or does not need to return a value" },
-      { mark: "B1", text: "gives valid procedure example" },
-      { mark: "B1", text: "states a function returns a value" },
-      { mark: "B1", text: "gives valid function validation example" },
-      { mark: "B1", text: "explains returned value can be used by calling code" },
+      { mark: "B1", text: "chooses stack for undo history" },
+      { mark: "B1", text: "justifies stack using last-in, first-out or most recent first" },
+      { mark: "B1", text: "chooses queue for printer jobs" },
+      { mark: "B1", text: "justifies queue using first-in, first-out" },
+      { mark: "B1", text: "chooses record for student data" },
+      { mark: "B1", text: "justifies record using related fields of different types" },
     ],
     strict: [
-      "Do not accept OUTPUT as equivalent to RETURN for a function.",
-      "Allow Boolean, integer or string function examples if return value is clear.",
-      "Do not require parameter syntax if concept is accurately explained.",
+      "Do not award justification marks for 'it stores data' alone.",
+      "Allow LIFO for stack and FIFO for queue.",
+      "Do not accept array for student records unless candidate describes an array of records clearly.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Write the main file handling steps needed to display every line in Scores.txt.",
-    answer: "Open Scores.txt for READ. Use a loop that continues while not at end of file. Read a line or record from the file. Output the line or record. After the loop, close the file.",
+    prompt: "A mark must be between 0 and 100 inclusive. Give normal, boundary and abnormal test data with expected results.",
+    answer: "Normal data: 75, expected accepted. Boundary data: 0 and 100, expected accepted; minus 1 and 101, expected rejected. Abnormal data: a text value such as 'high', expected rejected with an error message.",
     marking: [
-      { mark: "M1", text: "opens Scores.txt for READ" },
-      { mark: "M1", text: "uses loop controlled by EOF or equivalent end-of-file condition" },
-      { mark: "M1", text: "reads each line or record from the file" },
-      { mark: "A1", text: "outputs each line or record read" },
-      { mark: "M1", text: "continues until all records are processed" },
-      { mark: "A1", text: "closes the file after processing" },
+      { mark: "B1", text: "gives valid normal data" },
+      { mark: "B1", text: "normal data has correct expected result" },
+      { mark: "B1", text: "gives valid boundary value such as 0 or 100" },
+      { mark: "B1", text: "boundary valid value has correct expected result" },
+      { mark: "B1", text: "gives invalid boundary or abnormal value such as -1, 101 or text" },
+      { mark: "B1", text: "invalid or abnormal data has correct expected rejection/error result" },
     ],
     strict: [
-      "Do not award read mark if candidate writes to the file instead.",
-      "Allow clear pseudocode using OPENFILE, READFILE, EOF and CLOSEFILE.",
-      "Do not require exact filename quotes if filename is recognisable.",
+      "Do not accept 50 as boundary data.",
+      "Allow equivalent normal values within range.",
+      "Do not award full marks for data values without expected results.",
     ],
   },
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "A new score must be added to the end of Scores.txt without deleting existing scores. Describe the file handling steps and justify the file mode.",
-    answer: "Open Scores.txt for APPEND. Write the new score to the file using WRITEFILE. Close the file after writing. APPEND is used because it adds the new record to the end while preserving existing scores. WRITE would not be suitable if it replaces the current file contents.",
+    prompt: "Describe an algorithm to find the largest value in a 1D array of ten integers.",
+    answer: "Set Largest to the first array element. Loop through the remaining elements. For each element, compare it with Largest. If the element is greater than Largest, set Largest to that element. After all elements have been checked, output Largest.",
     marking: [
-      { mark: "B1", text: "opens Scores.txt for APPEND" },
-      { mark: "B1", text: "writes the new score to the file" },
-      { mark: "B1", text: "closes the file after writing" },
-      { mark: "B1", text: "justifies APPEND as adding to the end" },
-      { mark: "B1", text: "states existing records are preserved" },
-      { mark: "B1", text: "explains WRITE may create/replace contents or is unsuitable for this task" },
+      { mark: "B1", text: "initialises Largest to a valid array element" },
+      { mark: "B1", text: "loops through array elements" },
+      { mark: "B1", text: "compares current element with Largest" },
+      { mark: "B1", text: "updates Largest when current element is greater" },
+      { mark: "B1", text: "continues until all relevant elements checked" },
+      { mark: "B1", text: "outputs or returns Largest" },
     ],
     strict: [
-      "Do not accept READ as a valid mode for adding a new record.",
-      "Allow wording 'add to end of file' for append justification.",
-      "Do not require the exact word 'preserve' if meaning is clear.",
+      "Do not award initialisation mark for setting Largest to 0 unless values are known non-negative.",
+      "Allow Cambridge-style pseudocode or clear structured English.",
+      "Do not require exact variable names.",
     ],
   },
   {
     title: "Question 5",
-    marks: "7 marks",
-    prompt: "A mark must be an integer from 0 to 100 inclusive. Describe a validation algorithm that repeatedly asks for input until the mark is valid.",
-    answer: "Use a REPEAT UNTIL loop. Input Mark. If Mark is not an integer, or Mark is less than 0, or Mark is greater than 100, output an error message. Repeat until Mark is an integer and Mark is between 0 and 100 inclusive. The valid Mark can then be processed.",
+    marks: "6 marks",
+    prompt: "Explain why a complete trace table is useful when checking an algorithm.",
+    answer: "A trace table records how variable values change after each relevant step or loop iteration. It helps find logic errors such as incorrect conditions, wrong loop bounds or variables not being updated. It also provides evidence for the final output, so the programmer or examiner can see how the result was obtained.",
     marking: [
-      { mark: "B1", text: "uses a loop that can repeat until valid input is entered" },
-      { mark: "B1", text: "inputs Mark inside the loop" },
-      { mark: "B1", text: "checks type/integer validity or equivalent" },
-      { mark: "B1", text: "checks lower boundary 0" },
-      { mark: "B1", text: "checks upper boundary 100" },
-      { mark: "B1", text: "outputs error or rejects invalid input" },
-      { mark: "B1", text: "stops only when mark is valid and can then process the mark" },
+      { mark: "B1", text: "states trace table records variable values" },
+      { mark: "B1", text: "states values are recorded step by step or per iteration" },
+      { mark: "B1", text: "links trace to finding logic errors" },
+      { mark: "B1", text: "gives valid example such as wrong condition, loop bound or update" },
+      { mark: "B1", text: "links trace table to checking final output" },
+      { mark: "B1", text: "explains evidence/method can be reviewed by programmer or examiner" },
     ],
     strict: [
-      "Inclusive means 0 and 100 are valid.",
-      "Allow WHILE loop if logic ensures repeated input until valid.",
-      "Do not award both boundary marks for vague 'check range' unless limits are stated.",
+      "Do not award full marks for saying only 'it checks the program'.",
+      "Allow dry run table as equivalent wording.",
+      "Do not accept syntax error checking as the main purpose unless linked to a dry run limitation.",
     ],
   },
 ];
@@ -239,10 +223,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    read: { text: "READ displays existing records but does not add the new score.", correct: false },
-    write: { text: "WRITE may replace the file contents. Risky choice for preserving old scores.", correct: false },
-    append: { text: "Correct. APPEND adds the new score to the end and preserves existing scores.", correct: true },
-    close: { text: "CLOSEFILE is needed after processing, but it is not an opening mode for adding records.", correct: false },
+    guess: { text: "A guess may be lucky, but it does not show method. Trace questions want evidence.", correct: false },
+    trace: { text: "Correct. A trace table matches the command and protects method marks.", correct: true },
+    java: { text: "Java is support only. Do not translate before doing the Cambridge pseudocode task.", correct: false },
+    essay: { text: "That answers a different command word. This stem asks for a trace.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -255,34 +239,42 @@ function setupHook() {
   });
 }
 
-function setupConstructTool() {
-  const select = document.querySelector("#constructSelect");
-  const output = document.querySelector("#constructOutput");
+function setupTraceTool() {
+  const select = document.querySelector("#traceSelect");
+  const output = document.querySelector("#traceOutput");
   const render = () => {
-    const item = constructScenarios[select.value];
+    const scores = traces[select.value];
+    let total = 0;
+    const rows = scores.map((score, index) => {
+      const include = score > 50;
+      if (include) total += score;
+      return [String(index + 1), String(score), include ? "TRUE" : "FALSE", String(total)];
+    });
     output.innerHTML = `
-      <p><strong>Construct:</strong> ${escapeHtml(item.construct)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Exam tip:</strong> ${escapeHtml(item.examTip)}</p>
+      <div class="data-table four-col">
+        <div class="table-row table-head"><div>Index</div><div>Score</div><div>Score &gt; 50?</div><div>Total after step</div></div>
+        ${rows.map((row) => `<div class="table-row"><div>${row[0]}</div><div>${row[1]}</div><div>${row[2]}</div><div>${row[3]}</div></div>`).join("")}
+      </div>
+      <p><strong>Final Total:</strong> ${total}</p>
     `;
   };
-  document.querySelector("#constructBtn").addEventListener("click", render);
+  document.querySelector("#traceBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupFileTool() {
-  const select = document.querySelector("#fileSelect");
-  const output = document.querySelector("#fileOutput");
+function setupStructureTool() {
+  const select = document.querySelector("#structureSelect");
+  const output = document.querySelector("#structureOutput");
   const render = () => {
-    const item = fileModes[select.value];
+    const item = structures[select.value];
     output.innerHTML = `
-      <p><strong>Choice:</strong> ${escapeHtml(item.mode)}</p>
+      <p><strong>Structure:</strong> ${escapeHtml(item.structure)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Pattern:</strong> <code>${escapeHtml(item.pattern)}</code></p>
+      <p><strong>Common error:</strong> ${escapeHtml(item.trap)}</p>
     `;
   };
-  document.querySelector("#fileBtn").addEventListener("click", render);
+  document.querySelector("#structureBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -299,7 +291,7 @@ function setupExamples() {
   document.querySelectorAll("[data-example]").forEach((button) => {
     button.addEventListener("click", () => render(button.dataset.example));
   });
-  render("loop");
+  render("trace");
 }
 
 function setupPractice() {
@@ -325,7 +317,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const response = normalise(input.value);
       const correct = item.accepted.some((accepted) => response.includes(accepted));
-      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the precise construct or file-handling keyword.";
+      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the precise algorithm or data structure keyword.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -390,8 +382,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupConstructTool();
-  setupFileTool();
+  setupTraceTool();
+  setupStructureTool();
   setupExamples();
   setupPractice();
   setupMistakes();

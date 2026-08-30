@@ -1,88 +1,88 @@
-const keyMap = {
-  student: {
-    result: "Best primary key: StudentID.",
-    reason: "StudentID is designed to be unique, not null and stable. Name is not safe because two students can share a name.",
+const typeMap = {
+  phone: {
+    result: "Best data type: text/string.",
+    reason: "A phone number is an identifier/contact value, not a value for arithmetic. Leading zeroes and symbols may matter.",
   },
-  book: {
-    result: "Best primary key: ISBN.",
-    reason: "ISBN uniquely identifies a book edition. Title and author are not necessarily unique.",
+  paid: {
+    result: "Best data type: Boolean.",
+    reason: "The field has only two logical states: TRUE or FALSE.",
+  },
+  height: {
+    result: "Best data type: real/decimal.",
+    reason: "The value may contain a fractional part, so Integer would be too restrictive.",
+  },
+  quantity: {
+    result: "Best data type: Integer.",
+    reason: "Stock quantity is a whole number that may be used in calculations.",
   },
   appointment: {
-    result: "Best primary key: AppointmentID.",
-    reason: "AppointmentID uniquely identifies each appointment. PatientID may appear many times for repeat appointments.",
-  },
-  memberWeak: {
-    result: "No strong primary key is shown.",
-    reason: "Name may not be unique, phone/email can change, and values may be missing. A MemberID should be added.",
-  },
-  product: {
-    result: "Best primary key: ProductCode.",
-    reason: "ProductCode is an identifier for each product. Description and price are not unique or stable enough.",
+    result: "Best data type: date/time.",
+    reason: "The value should support date ordering, comparison and validation.",
   },
 };
 
-const relationshipMap = {
-  studentLoans: {
-    result: "Relationship: one-to-many.",
-    reason: "One student can have many loan records, but each loan record belongs to one student.",
+const constraintMap = {
+  blankName: {
+    result: "Check: presence check.",
+    reason: "The rule rejects a blank value where the field must be completed.",
   },
-  personPassport: {
-    result: "Relationship: one-to-one.",
-    reason: "In this simplified scenario, one person is linked to one passport record.",
+  badMark: {
+    result: "Check: range check.",
+    reason: "Exam marks should fall within a permitted range such as 0 to 100.",
   },
-  studentsClubs: {
-    result: "Relationship: many-to-many.",
-    reason: "Many students can join many clubs. This is commonly resolved using a linking table such as Membership.",
+  badId: {
+    result: "Check: length check.",
+    reason: "The rule rejects values that are too long or too short for the required field size.",
   },
-  customerOrders: {
-    result: "Relationship: one-to-many.",
-    reason: "One customer can place many orders, but each order is placed by one customer.",
+  badGrade: {
+    result: "Check: lookup check.",
+    reason: "The value must be one of the allowed values in a defined list.",
   },
-  doctorAppointments: {
-    result: "Relationship: one-to-many.",
-    reason: "One doctor can have many appointments, but each appointment is assigned to one doctor in this scenario.",
+  badQuantity: {
+    result: "Check: type check.",
+    reason: "The field should accept an integer, not text such as 'ten'.",
   },
 };
 
 const examples = {
-  library: {
-    title: "Example 1: Library loans",
-    problem: "For Student(StudentID, Name) and Loan(LoanID, StudentID, BookID), identify the keys.",
+  student: {
+    title: "Example 1: Student table design",
+    problem: "Choose suitable field details for a Student table.",
     steps: [
-      "StudentID is the primary key in Student because it uniquely identifies each student.",
-      "LoanID is the primary key in Loan because it uniquely identifies each loan record.",
-      "StudentID in Loan is a foreign key because it references StudentID in Student.",
-      "The relationship is one-to-many: one student can have many loan records.",
+      "StudentID: Text, length 5 or fixed school format. It may include a letter and is not used for arithmetic.",
+      "Name: Text, suitable field size such as 40 characters, presence check so it cannot be blank.",
+      "DateOfBirth: Date/time, with a reasonableness or range check if needed.",
+      "FeePaid: Boolean because the value is TRUE or FALSE.",
     ],
   },
-  orders: {
-    title: "Example 2: Customer orders",
-    problem: "For Customer(CustomerID, Name) and Order(OrderID, CustomerID, Date), explain the link.",
+  booking: {
+    title: "Example 2: Booking table design",
+    problem: "A sports centre stores court bookings.",
     steps: [
-      "CustomerID is the primary key in Customer.",
-      "OrderID is the primary key in Order.",
-      "CustomerID in Order is a foreign key that references Customer.CustomerID.",
-      "This avoids repeating the customer's name and address in every order record.",
+      "BookingDate should use date/time so bookings can be sorted and compared by date.",
+      "NumberOfPlayers should use Integer because it counts whole people.",
+      "CourtNumber may use Integer if only numeric courts exist, with a range check such as 1 to 8.",
+      "BookingEmail should use Text with a format check if the system checks an email pattern.",
     ],
   },
-  clubs: {
-    title: "Example 3: Many-to-many with a linking table",
-    problem: "Students can join many clubs and each club has many students.",
+  phone: {
+    title: "Example 3: Phone-number data type error",
+    problem: "A designer chooses Integer for PhoneNumber.",
     steps: [
-      "This is a many-to-many relationship.",
-      "A linking table such as Membership can store StudentID and ClubID.",
-      "StudentID in Membership is a foreign key referencing Student.",
-      "ClubID in Membership is a foreign key referencing Club.",
+      "This is weak because phone numbers are not normally used for arithmetic.",
+      "Leading zeroes may be removed if stored as a number.",
+      "Phone values may include spaces, +, brackets or extension symbols.",
+      "Use Text/string, with a length or format check if the required pattern is known.",
     ],
   },
-  integrity: {
-    title: "Example 4: Referential integrity error",
-    problem: "A Loan record stores StudentID S9999, but there is no S9999 in Student.",
+  constraint: {
+    title: "Example 4: Constraint answer",
+    problem: "Explain why ExamMark should have a range check.",
     steps: [
-      "The foreign key value in Loan does not match an existing primary key in Student.",
-      "This breaks referential integrity.",
-      "The DBMS should reject the Loan record or require the Student record to exist first.",
-      "The purpose is to prevent orphan records.",
+      "ExamMark should be an Integer or Real depending on whether fractional marks are allowed.",
+      "A range check such as 0 to 100 rejects marks outside the permitted range.",
+      "This improves data integrity because impossible marks such as 128 cannot be stored.",
+      "Do not claim validation proves the mark is correct; 78 could still be mistyped as 87.",
     ],
   },
 };
@@ -90,82 +90,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "What key uniquely identifies each record in its own table?",
-    accepted: ["primary key", "pk"],
-    answer: "Primary key",
+    prompt: "What term means one complete row in a database table?",
+    accepted: ["record", "tuple", "record tuple"],
+    answer: "Record / tuple",
   },
   {
     id: "p2",
-    prompt: "What key references a primary key in another table?",
-    accepted: ["foreign key", "fk"],
-    answer: "Foreign key",
+    prompt: "What term means one column or attribute in a database table?",
+    accepted: ["field", "attribute", "field attribute"],
+    answer: "Field / attribute",
   },
   {
     id: "p3",
-    prompt: "For Student(StudentID, Name), which field is the likely primary key?",
-    accepted: ["studentid", "student id"],
-    answer: "StudentID",
+    prompt: "What data type is best for TRUE/FALSE values?",
+    accepted: ["boolean", "bool"],
+    answer: "Boolean",
   },
   {
     id: "p4",
-    prompt: "For Loan(LoanID, StudentID, BookID), which field is the likely primary key?",
-    accepted: ["loanid", "loan id"],
-    answer: "LoanID",
+    prompt: "What data type is best for a whole-number count such as QuantityInStock?",
+    accepted: ["integer", "int"],
+    answer: "Integer",
   },
   {
     id: "p5",
-    prompt: "In Loan(LoanID, StudentID, BookID), which field links to Student?",
-    accepted: ["studentid", "student id"],
-    answer: "StudentID",
+    prompt: "What data type is best for a value such as 12.75?",
+    accepted: ["real", "decimal", "float", "floating point"],
+    answer: "Real / decimal",
   },
   {
     id: "p6",
-    prompt: "What relationship exists if one customer can place many orders?",
-    accepted: ["one to many", "one-to-many", "1 to many", "1:m", "one many"],
-    answer: "One-to-many",
+    prompt: "What data type is usually best for a phone number?",
+    accepted: ["text", "string", "alphanumeric"],
+    answer: "Text / string",
   },
   {
     id: "p7",
-    prompt: "What relationship exists if many students can join many clubs?",
-    accepted: ["many to many", "many-to-many", "m:n", "m to n"],
-    answer: "Many-to-many",
+    prompt: "What check rejects a blank required field?",
+    accepted: ["presence check", "required", "required check"],
+    answer: "Presence check",
   },
   {
     id: "p8",
-    prompt: "What integrity rule requires a foreign key value to match an existing primary key?",
-    accepted: ["referential integrity", "reference integrity"],
-    answer: "Referential integrity",
+    prompt: "What check rejects an ExamMark of 128 when marks must be 0 to 100?",
+    accepted: ["range check", "range"],
+    answer: "Range check",
   },
   {
     id: "p9",
-    prompt: "Can Name usually be trusted as a primary key for students? yes or no.",
-    accepted: ["no"],
-    answer: "No",
+    prompt: "What check rejects StudentID S1234567 when exactly 5 characters are required?",
+    accepted: ["length check", "length"],
+    answer: "Length check",
   },
   {
     id: "p10",
-    prompt: "A foreign key usually appears in the table on the 'many' side of a one-to-many relationship. yes or no.",
-    accepted: ["yes"],
-    answer: "Yes",
+    prompt: "Do validation constraints prove that accepted data is definitely correct? yes or no.",
+    accepted: ["no"],
+    answer: "No",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "Name is a good primary key because every student has a name.",
-    fix: "A primary key must uniquely identify each record. Names can be duplicated or changed, so an allocated StudentID is safer.",
+    wrong: "A field is one row in a table.",
+    fix: "A field is a column or attribute. A record/tuple is one complete row.",
   },
   {
-    wrong: "A foreign key must be unique in its own table.",
-    fix: "A foreign key does not usually have to be unique. In a Loan table, many loan records may contain the same StudentID.",
+    wrong: "PhoneNumber should be Integer because it contains digits.",
+    fix: "PhoneNumber should usually be Text/string because it is not used for arithmetic and may need leading zeroes or symbols.",
   },
   {
-    wrong: "StudentID cannot be both a primary key and a foreign key.",
-    fix: "The same field name can have different roles in different tables: primary key in Student, foreign key in Loan.",
+    wrong: "A range check makes the exam mark correct.",
+    fix: "A range check rejects values outside the permitted range. It does not prove that an accepted value was typed correctly.",
   },
   {
-    wrong: "Referential integrity means all data is accurate.",
-    fix: "Referential integrity only checks that foreign key values reference existing primary key values. It does not prove all data is true.",
+    wrong: "Boolean is for any field with two words, such as first name and last name.",
+    fix: "Boolean is for two logical states such as TRUE/FALSE, Yes/No or Paid/Not paid.",
   },
 ];
 
@@ -179,93 +179,92 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Define primary key and foreign key.",
-    answer: "A primary key is a field, or combination of fields, that uniquely identifies each record in a table and should not be null. A foreign key is a field in one table that references the primary key in another table, creating a link between the tables.",
+    prompt: "Compare a field and a record in a database table. Use an example.",
+    answer: "A field is a column or attribute that stores one type of data for each record, such as DateOfBirth. A record is one complete row in a table, such as all the stored details for one student.",
     marking: [
-      { mark: "B1", text: "primary key is a field/fields in a table" },
-      { mark: "B1", text: "primary key uniquely identifies each record / is unique and not null" },
-      { mark: "B1", text: "foreign key is a field in another/related table" },
-      { mark: "B1", text: "foreign key references a primary key / links tables" },
+      { mark: "B1", text: "field described as column/attribute" },
+      { mark: "B1", text: "field example such as DateOfBirth/Name/FeePaid" },
+      { mark: "B1", text: "record described as row/tuple/complete set of details for one entity" },
+      { mark: "B1", text: "record example linked to one student/member/item" },
     ],
     strict: [
-      "Do not accept only 'a key field' without unique identification for primary key.",
-      "Do not accept foreign key as 'a second primary key' without reference idea.",
-      "Allow 'attribute' for field.",
+      "Do not accept answers that swap field and record.",
+      "Do not award example marks for examples that are not database table values.",
+      "Allow tuple for record and attribute for field.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "For Student(StudentID, Name, TutorGroup) and Loan(LoanID, StudentID, BookID, DateBorrowed), identify the primary and foreign keys and explain the relationship.",
-    answer: "StudentID is the primary key in Student because it uniquely identifies each student. LoanID is the primary key in Loan because it uniquely identifies each loan record. StudentID in Loan is a foreign key because it references StudentID in Student. The relationship is one-to-many because one student can have many loan records, but each loan record is linked to one student.",
+    prompt: "A school database stores StudentID, Name, PhoneNumber, DateOfBirth and FeePaid. Suggest suitable data types for three of these fields and justify each choice.",
+    answer: "StudentID should be Text because it may contain letters and is an identifier rather than a value for arithmetic. PhoneNumber should be Text because leading zeroes and symbols may need to be preserved. DateOfBirth should be Date/time because dates need to be validated, sorted or compared. FeePaid should be Boolean because it has two states, TRUE or FALSE.",
     marking: [
-      { mark: "B1", text: "StudentID identified as primary key in Student" },
-      { mark: "B1", text: "LoanID identified as primary key in Loan" },
-      { mark: "B1", text: "StudentID in Loan identified as foreign key" },
-      { mark: "B1", text: "foreign key references StudentID in Student / links Loan to Student" },
-      { mark: "B1", text: "one-to-many relationship identified" },
-      { mark: "B1", text: "relationship explained: one student can have many loans; each loan belongs to one student" },
+      { mark: "B1", text: "suitable data type for first field" },
+      { mark: "B1", text: "justification for first data type linked to field use" },
+      { mark: "B1", text: "suitable data type for second field" },
+      { mark: "B1", text: "justification for second data type linked to field use" },
+      { mark: "B1", text: "suitable data type for third field" },
+      { mark: "B1", text: "justification for third data type linked to field use" },
     ],
     strict: [
-      "Do not award StudentID as primary key in Loan unless candidate also explains composite/alternate design; not intended here.",
-      "Do not award foreign key mark if table location is not clear.",
-      "Allow 1:M for one-to-many.",
+      "Do not accept Integer for PhoneNumber unless a clear preservation issue is ignored by the mark scheme.",
+      "Do not award justification for only repeating the data type name.",
+      "Allow string for text and Boolean for FeePaid.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain why Name is usually not suitable as a primary key in a Student table.",
-    answer: "Name is not suitable because it may not be unique; two students may have the same name. A name may also change or be entered in different formats. A primary key should uniquely identify each record and should be stable and not null. A StudentID is more suitable because it is allocated to identify one student record.",
+    marks: "6 marks",
+    prompt: "Explain three validation checks or constraints that could be used in a database table.",
+    answer: "A presence check can ensure that a required field such as Name is not left blank. A range check can ensure that a value such as ExamMark is between 0 and 100. A length check can ensure that a StudentID contains the required number of characters. These checks improve data integrity by rejecting invalid entries.",
     marking: [
-      { mark: "B1", text: "names may not be unique / duplicate names possible" },
-      { mark: "B1", text: "names may change or be entered inconsistently" },
-      { mark: "B1", text: "primary key must uniquely identify records" },
-      { mark: "B1", text: "primary key should be stable/not null" },
-      { mark: "B1", text: "StudentID or allocated ID suggested as better key with reason" },
+      { mark: "B1", text: "valid check named, such as presence/range/length/type/format/lookup" },
+      { mark: "B1", text: "explanation or example of first check" },
+      { mark: "B1", text: "second distinct valid check named" },
+      { mark: "B1", text: "explanation or example of second check" },
+      { mark: "B1", text: "third distinct valid check named" },
+      { mark: "B1", text: "explanation or example of third check" },
     ],
     strict: [
-      "Do not accept 'Name is text' as a reason by itself.",
-      "Do not require both change and formatting for the second B mark; either is enough.",
-      "Allow candidate number or student number as equivalent allocated ID.",
+      "Do not award separate B marks for repeated versions of the same check.",
+      "Do not accept vague 'checks it is correct' without a rule or example.",
+      "Allow constraint wording instead of validation check.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "A Club table stores ClubID and ClubName. A Membership table stores MembershipID, StudentID and ClubID. Explain the purpose of ClubID in each table.",
-    answer: "ClubID is the primary key in Club because it uniquely identifies each club record. ClubID in Membership is a foreign key because it references ClubID in Club. It links each membership record to the club the student joined. ClubID may appear many times in Membership because many students can join the same club.",
+    marks: "4 marks",
+    prompt: "A database designer adds a range check of 0 to 100 to an ExamMark field. Explain what this check does and one limitation.",
+    answer: "The range check rejects values less than 0 or greater than 100, so impossible marks such as 128 cannot be stored. This helps maintain data integrity because invalid values are prevented. A limitation is that the check does not prove the value is the correct mark; a valid value such as 78 could still be entered when the real mark was 87.",
     marking: [
-      { mark: "B1", text: "ClubID identified as primary key in Club" },
-      { mark: "B1", text: "primary key uniqueness for club records explained" },
-      { mark: "B1", text: "ClubID identified as foreign key in Membership" },
-      { mark: "B1", text: "foreign key references Club.ClubID / links membership to club" },
-      { mark: "B1", text: "ClubID may repeat in Membership" },
-      { mark: "B1", text: "repeat explained by many students/memberships for one club" },
+      { mark: "B1", text: "range check described as value within lower and upper limits" },
+      { mark: "B1", text: "rejects/prevents invalid out-of-range data" },
+      { mark: "B1", text: "data integrity consequence" },
+      { mark: "B1", text: "limitation that accepted data may still be inaccurate/mistyped" },
     ],
     strict: [
-      "Do not accept that ClubID must be unique in Membership.",
-      "Do not award foreign key reference mark if only 'it is used to find club' is given without table link.",
-      "Allow 'same ClubID occurs in several membership rows' for repeat mark.",
+      "Do not accept 'it makes the mark correct' as a limitation-free explanation.",
+      "Do not award range marks if no upper/lower limit idea is given.",
+      "Allow alternative valid impossible mark examples outside 0 to 100.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Explain referential integrity using a library database with Student and Loan tables.",
-    answer: "Referential integrity means that a foreign key value must match an existing primary key value in the referenced table. In a library database, StudentID in Loan should match an existing StudentID in Student. This prevents a loan being stored for a student who does not exist. If a Loan record contains StudentID S9999 but there is no S9999 in Student, the DBMS should reject the record or require the student record first.",
+    prompt: "For a sports booking table, suggest suitable field design choices for BookingDate, CourtNumber and MemberEmail.",
+    answer: "BookingDate should use a Date/time data type so bookings can be sorted, compared and checked against valid dates. CourtNumber should use Integer if courts are numbered, with a range check such as 1 to 8 to reject non-existent courts. MemberEmail should use Text/string because it contains letters and symbols, with a format check to reject values that do not match an email pattern.",
     marking: [
-      { mark: "B1", text: "foreign key value must match/reference existing primary key value" },
-      { mark: "B1", text: "referenced table idea included" },
-      { mark: "B1", text: "StudentID in Loan as foreign key example" },
-      { mark: "B1", text: "StudentID in Student as primary key example" },
-      { mark: "B1", text: "prevents orphan/non-existent student loan record" },
-      { mark: "B1", text: "invalid value example or DBMS rejection action" },
+      { mark: "B1", text: "BookingDate data type date/time" },
+      { mark: "B1", text: "date/time justification such as sort/compare/validate dates" },
+      { mark: "B1", text: "CourtNumber integer or suitable numeric type" },
+      { mark: "B1", text: "range check or numbered-court justification" },
+      { mark: "B1", text: "MemberEmail text/string" },
+      { mark: "B1", text: "format check or symbols/letters justification for email" },
     ],
     strict: [
-      "Do not accept 'keeps data correct' without reference matching idea.",
-      "Do not require the term orphan record, but accept it if used correctly.",
-      "Allow Book/Loan example if primary and foreign key roles are clear.",
+      "Do not accept Real for CourtNumber unless fractional court numbers are justified by the scenario.",
+      "Do not require exact range 1 to 8; allow any scenario-consistent court range.",
+      "Allow character/string/text for MemberEmail.",
     ],
   },
 ];
@@ -281,10 +280,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    name: "No. Names can be duplicated or changed.",
-    tutor: "No. Many students share a tutor group.",
-    studentid: "Correct. StudentID is designed to identify one student record uniquely.",
-    phone: "No. Phone numbers can change and may not be available for every student.",
+    zero: "Correct. Phone numbers are usually stored as text so leading zeroes and symbols are preserved.",
+    sum: "No. Adding two phone numbers is how databases ask for a career change.",
+    date: "No. A phone number is not a date/time value.",
+    image: "No. That would need a different storage approach; it is not the issue here.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -295,23 +294,23 @@ function setupHook() {
   });
 }
 
-function setupKeyPicker() {
-  const input = document.querySelector("#keyInput");
-  const result = document.querySelector("#keyResult");
-  const reason = document.querySelector("#keyReason");
-  document.querySelector("#keyBtn").addEventListener("click", () => {
-    const item = keyMap[input.value];
+function setupTypeChooser() {
+  const input = document.querySelector("#typeInput");
+  const result = document.querySelector("#typeResult");
+  const reason = document.querySelector("#typeReason");
+  document.querySelector("#typeBtn").addEventListener("click", () => {
+    const item = typeMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
 }
 
-function setupRelationshipTool() {
-  const input = document.querySelector("#relationshipInput");
-  const result = document.querySelector("#relationshipResult");
-  const reason = document.querySelector("#relationshipReason");
-  document.querySelector("#relationshipBtn").addEventListener("click", () => {
-    const item = relationshipMap[input.value];
+function setupConstraintChecker() {
+  const input = document.querySelector("#constraintInput");
+  const result = document.querySelector("#constraintResult");
+  const reason = document.querySelector("#constraintReason");
+  document.querySelector("#constraintBtn").addEventListener("click", () => {
+    const item = constraintMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
@@ -337,7 +336,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("library");
+  renderExample("student");
 }
 
 function renderPractice() {
@@ -436,8 +435,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupKeyPicker();
-  setupRelationshipTool();
+  setupTypeChooser();
+  setupConstraintChecker();
   setupExamples();
   renderPractice();
   renderMistakes();

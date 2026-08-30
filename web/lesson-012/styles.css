@@ -1,12 +1,12 @@
 :root {
-  --bg: #f8f7fb;
+  --bg: #f7f7fb;
   --panel: #ffffff;
   --ink: #172033;
   --muted: #667085;
   --line: #d9e0ea;
-  --accent: #8b5cf6;
-  --accent-dark: #6d28d9;
-  --accent-soft: #ede9fe;
+  --accent: #0f766e;
+  --accent-dark: #115e59;
+  --accent-soft: #d9f4ef;
   --green: #047857;
   --warning: #a15c00;
   --warning-soft: #fff4d6;
@@ -189,7 +189,7 @@ button {
   margin-bottom: 4px;
 }
 
-.compress-card {
+.formula-card {
   display: grid;
   place-items: center;
   align-content: center;
@@ -197,21 +197,20 @@ button {
   min-height: 260px;
   padding: 24px;
   color: #ffffff;
-  background: linear-gradient(135deg, #3b0764, #8b5cf6 55%, #0f766e);
+  background: linear-gradient(135deg, #064e3b, #0f766e 55%, #7c3aed);
   border-radius: 8px;
 }
 
-.compress-card span {
+.formula-card span {
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: clamp(1.35rem, 3vw, 2.25rem);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 900;
   text-align: center;
-  word-break: break-word;
 }
 
-.compress-card p {
+.formula-card p {
   margin: 0;
-  color: #f4f0ff;
+  color: #ecfdf5;
   text-align: center;
 }
 
@@ -251,21 +250,27 @@ button {
 }
 
 .hook-grid,
-.purpose-grid,
-.method-grid,
+.chain-grid,
+.channel-grid,
+.unit-grid,
+.tradeoff-grid,
 .mistake-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.purpose-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.chain-grid,
+.unit-grid,
+.tradeoff-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .choice-card,
-.purpose-grid article,
-.method-grid article,
+.chain-grid article,
+.channel-grid article,
+.unit-grid article,
+.tradeoff-grid article,
 .mistake-grid article {
   border: 1px solid var(--line);
   background: #ffffff;
@@ -288,8 +293,8 @@ button {
 .result-box,
 .method-box,
 .callout,
-.worked-line,
-.formula-box {
+.formula-box,
+.mini-formula {
   margin-top: 16px;
   padding: 14px 16px;
   background: #f8fafc;
@@ -303,9 +308,9 @@ button {
   color: #5f3700;
 }
 
-.worked-line,
 .result-box,
-.formula-box {
+.formula-box,
+.mini-formula {
   font-family: "SFMono-Regular", Consolas, monospace;
   font-weight: 800;
 }
@@ -317,7 +322,7 @@ button {
 
 .converter-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(150px, 1fr)) auto;
+  grid-template-columns: repeat(4, minmax(140px, 1fr)) auto;
   gap: 12px;
   align-items: end;
 }
@@ -405,7 +410,7 @@ button {
   margin-top: 12px;
   padding: 14px;
   background: var(--accent-soft);
-  border: 1px solid #ddd6fe;
+  border: 1px solid #b6e5dc;
   border-radius: 8px;
 }
 
@@ -436,14 +441,28 @@ button {
   gap: 10px;
 }
 
+@media (max-width: 1120px) {
+  .chain-grid,
+  .unit-grid,
+  .tradeoff-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .converter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 980px) {
   .layout,
   .hero,
   .guidance-grid,
   .objective-grid,
   .hook-grid,
-  .purpose-grid,
-  .method-grid,
+  .chain-grid,
+  .channel-grid,
+  .unit-grid,
+  .tradeoff-grid,
   .mistake-grid,
   .converter-grid {
     grid-template-columns: 1fr;
@@ -473,7 +492,7 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .compress-card {
+  .formula-card {
     min-height: 190px;
   }
 
@@ -508,16 +527,3 @@ button {
     break-inside: avoid;
   }
 }
-
-/* Stage 2 syllabus completion:start */
-.stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
-.stage2-practice-block { border-top: 2px solid var(--accent, #176b5b); }
-.stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
-.stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
-.stage2-question + .stage2-question { margin-top: 10px; }
-.stage2-completion details { margin-top: 10px; }
-.stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
-.stage2-completion .mark-scheme-table { width: 100%; border-collapse: collapse; }
-.stage2-completion .mark-scheme-table :where(th, td) { border: 1px solid var(--line, #d7ddd9); padding: 8px; text-align: left; vertical-align: top; }
-.stage2-completion .mark-scheme-table :where(th, td):last-child { width: 5rem; text-align: center; }
-/* Stage 2 syllabus completion:end */

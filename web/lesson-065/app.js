@@ -1,103 +1,103 @@
 const scenarioMap = {
-  student: {
-    result: "Suitable: username and password, with recovery controls.",
-    method: "For low to medium risk school portal access, passwords are familiar and cheap to manage. A sensible policy and reset process matter.",
-    trap: "Do not demand biometrics for every low-risk system; proportionality is part of good security.",
+  access: {
+    result: "Most likely: hacking.",
+    method: "The attacker has gained unauthorised access to an account or system and can alter records.",
+    trap: "Do not call every unauthorised login phishing. Phishing may be how credentials were obtained, but the access itself is hacking.",
   },
-  bank: {
-    result: "Suitable: MFA, such as password plus app/token code.",
-    method: "Banking is high risk. A password proves something the user knows, while a token/app code proves something the user has.",
-    trap: "Do not call two passwords MFA. MFA needs different factor categories.",
+  email: {
+    result: "Most likely: phishing.",
+    method: "A deceptive message appears trustworthy and persuades the user to enter account details.",
+    trap: "Do not define phishing as only 'a virus'. The key point is tricking the user into revealing information or using a fake link/page.",
   },
-  lab: {
-    result: "Suitable: biometric plus card/token, depending on policy.",
-    method: "A secure door can use a biometric to verify the person and a token/card to prove possession of an issued credential.",
-    trap: "Do not ignore false reject and backup access procedures; authorised staff still need a way in when sensors fail.",
+  redirect: {
+    result: "Most likely: pharming.",
+    method: "The user is redirected to a fraudulent website even though the intended URL may be correct.",
+    trap: "Do not describe this as only phishing unless the clue is a deceptive message or link.",
   },
-  shared: {
-    result: "Suitable: individual login, not a shared password.",
-    method: "Each user should authenticate separately so activity can be linked to an account and passwords are not shared.",
-    trap: "Detailed permissions are Lesson 066 territory; here the key point is identifying the user before access.",
+  flood: {
+    result: "Most likely: denial-of-service attack.",
+    method: "The service is overwhelmed by requests/traffic so legitimate users cannot access it.",
+    trap: "Do not focus on stolen data unless the scenario says data was accessed. The main security goal is availability.",
   },
-  remote: {
-    result: "Suitable: MFA for remote access.",
-    method: "Remote access has higher exposure, so a stolen password alone should not be enough to log in.",
-    trap: "Do not say MFA prevents all attacks; it reduces account takeover risk and still needs user education and recovery planning.",
+  botnet: {
+    result: "Most likely: distributed denial-of-service attack.",
+    method: "Many devices or sources generate traffic against one target, making the service unavailable.",
+    trap: "Do not require the attacker to log into the target system for DDoS; overwhelming traffic is enough.",
   },
 };
 
 const examples = {
-  password: {
-    title: "Example 1: Password login for a school account",
-    problem: "A student logs into a homework portal using a username and password.",
+  hacking: {
+    title: "Example 1: Hacking a student records system",
+    problem: "A former employee uses an old account to access and change student records.",
     steps: [
-      "The username identifies the claimed account.",
-      "The password is a credential: something the user knows.",
-      "The system compares the entered password with stored verification data, often a hash rather than plaintext.",
-      "Weaknesses include guessing, reuse, sharing, phishing and forgotten passwords.",
+      "This is hacking because the account is used for unauthorised access.",
+      "The impact includes loss of integrity because records are changed without permission.",
+      "Confidentiality may also be affected if records are viewed or copied.",
+      "Suitable controls include disabling old accounts, access rights, audit logs and strong authentication.",
     ],
   },
-  biometric: {
-    title: "Example 2: Fingerprint access to a secure room",
-    problem: "Staff place a finger on a scanner before entering a restricted room.",
+  phishing: {
+    title: "Example 2: Phishing message from 'IT support'",
+    problem: "A message asks staff to click a link and confirm their password before the end of the day.",
     steps: [
-      "The fingerprint is a biometric: something the user is.",
-      "It is quick and cannot be forgotten like a password.",
-      "It needs hardware sensors and stored biometric templates.",
-      "False reject may block a valid user; false accept may allow an unauthorised user.",
+      "This is phishing because a deceptive message tries to obtain confidential information.",
+      "Urgency is used to pressure the user into entering credentials.",
+      "If credentials are stolen, the attacker may later gain unauthorised access.",
+      "Controls include user training, checking sender/URL, reporting suspicious messages, email filtering and MFA.",
     ],
   },
-  token: {
-    title: "Example 3: One-time code from an authenticator app",
-    problem: "A user enters a changing six-digit code during login.",
+  pharming: {
+    title: "Example 3: Pharming through fake redirection",
+    problem: "A user types the correct shop address but is taken to a fake login page.",
     steps: [
-      "The code is evidence that the user has the token/app device.",
-      "A one-time or time-limited code is harder to reuse later.",
-      "It can reduce risk if a password has been stolen.",
-      "Limitations include lost devices, dead batteries, clock issues and recovery support.",
+      "This is pharming because traffic is redirected to a fraudulent website.",
+      "The user may trust the page because the typed address was correct.",
+      "The impact can be stolen usernames, passwords or payment details.",
+      "Controls include secure DNS, certificate/HTTPS checks, browser updates and anti-malware.",
     ],
   },
-  mfa: {
-    title: "Example 4: Password plus phone approval for remote access",
-    problem: "A remote worker enters a password and approves a login request on a registered phone.",
+  dos: {
+    title: "Example 4: Denial-of-service against an online booking system",
+    problem: "A ticket website receives many automated requests and real customers cannot load the page.",
     steps: [
-      "This is MFA because it combines something known with something possessed.",
-      "A stolen password alone is not enough for access.",
-      "It reduces the risk of unauthorised access from phishing or password reuse.",
-      "It can increase friction and needs fallback procedures if the phone is lost.",
+      "This is a denial-of-service attack because the service is overwhelmed.",
+      "The main security goal affected is availability.",
+      "A distributed attack uses many devices or sources, making blocking harder.",
+      "Controls include rate limiting, traffic filtering, firewalls, load balancing and DDoS mitigation.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the term for verifying that a user is who they claim to be?", accepted: ["authentication"], answer: "Authentication" },
-  { id: "p2", prompt: "What is the term for deciding what an authenticated user is allowed to access?", accepted: ["authorisation", "authorization"], answer: "Authorisation / authorization" },
-  { id: "p3", prompt: "A password is which factor type: know, have or are?", accepted: ["know", "something you know"], answer: "Something you know" },
-  { id: "p4", prompt: "A security token is which factor type: know, have or are?", accepted: ["have", "something you have"], answer: "Something you have" },
-  { id: "p5", prompt: "A fingerprint is which factor type: know, have or are?", accepted: ["are", "something you are"], answer: "Something you are" },
-  { id: "p6", prompt: "What does MFA stand for?", accepted: ["multi factor authentication", "multi-factor authentication", "multifactor authentication"], answer: "Multi-factor authentication" },
-  { id: "p7", prompt: "Does password plus PIN necessarily count as MFA? Answer yes or no.", accepted: ["no"], answer: "No. Both are usually something you know." },
-  { id: "p8", prompt: "Name one biometric example.", accepted: ["fingerprint", "face", "facial recognition", "iris", "retina", "voice", "typing pattern"], answer: "Fingerprint, face, iris, retina, voice or typing pattern" },
-  { id: "p9", prompt: "Name one limitation of biometrics.", accepted: ["false accept", "false reject", "privacy", "sensor", "cost", "cannot be changed", "template"], answer: "False accept/reject, privacy concerns, sensor cost/failure, stored template risk or cannot easily be changed" },
-  { id: "p10", prompt: "Name one limitation of tokens.", accepted: ["lost", "stolen", "damaged", "battery", "unavailable", "forgotten", "network"], answer: "Lost, stolen, damaged, unavailable, dead battery, forgotten device or network/app issue" },
+  { id: "p1", prompt: "Which attack means gaining unauthorised access to a computer system or data?", accepted: ["hacking", "hack"], answer: "Hacking" },
+  { id: "p2", prompt: "Which attack uses deceptive messages or fake pages to trick a user into revealing information?", accepted: ["phishing"], answer: "Phishing" },
+  { id: "p3", prompt: "Which attack redirects a user to a fake website, even if the intended address seems correct?", accepted: ["pharming"], answer: "Pharming" },
+  { id: "p4", prompt: "Which attack overwhelms a service so legitimate users cannot access it?", accepted: ["dos", "denial of service", "denial-of-service", "denial of service attack", "denial of service attacks"], answer: "Denial-of-service / DoS" },
+  { id: "p5", prompt: "What does the first D in DDoS stand for?", accepted: ["distributed"], answer: "Distributed" },
+  { id: "p6", prompt: "Which security goal is mainly affected by a DoS attack?", accepted: ["availability"], answer: "Availability" },
+  { id: "p7", prompt: "A fake bank email asks for a password. Is this phishing or pharming?", accepted: ["phishing"], answer: "Phishing" },
+  { id: "p8", prompt: "A user types the correct URL but reaches a fake site. Is this phishing or pharming?", accepted: ["pharming"], answer: "Pharming" },
+  { id: "p9", prompt: "Name one control that helps reduce phishing risk.", accepted: ["training", "user training", "checking url", "check url", "checking sender", "email filtering", "mfa", "multi factor", "reporting"], answer: "User training, checking sender/URL, email filtering, reporting procedures or MFA" },
+  { id: "p10", prompt: "Name one control that helps reduce DoS impact.", accepted: ["rate limiting", "traffic filtering", "firewall", "firewalls", "load balancing", "ddos mitigation", "monitoring"], answer: "Rate limiting, traffic filtering, firewalls, load balancing, monitoring or DDoS mitigation" },
 ];
 
 const mistakes = [
   {
-    wrong: "Authentication and authorisation mean the same thing.",
-    fix: "Authentication verifies identity. Authorisation decides what an authenticated identity is allowed to access or do.",
+    wrong: "Pharming is when a fake email asks a user to click a link.",
+    fix: "That is phishing. Pharming redirects users to a fake website, possibly even when they type the correct URL.",
   },
   {
-    wrong: "A password plus a PIN is always multi-factor authentication.",
-    fix: "Usually both are something the user knows. MFA requires different factor categories, such as password plus token.",
+    wrong: "A DoS attack steals usernames and passwords.",
+    fix: "A DoS attack mainly affects availability by overwhelming a service so legitimate users cannot access it. Stolen credentials are not the defining feature.",
   },
   {
-    wrong: "Biometrics are always more secure because they cannot be forgotten.",
-    fix: "Biometrics are convenient, but they need sensors, can have false accepts/rejects and cannot be changed easily if compromised.",
+    wrong: "Hacking means any attack on a computer.",
+    fix: "Hacking means unauthorised access to a system, account or data. Other attacks have different mechanisms.",
   },
   {
-    wrong: "MFA makes unauthorised access impossible.",
-    fix: "MFA reduces risk because one stolen credential is not enough, but recovery weaknesses, phishing and lost tokens can still cause problems.",
+    wrong: "MFA completely prevents phishing.",
+    fix: "MFA reduces the damage from stolen passwords and makes account takeover harder, but user training and verification are still needed.",
   },
 ];
 
@@ -111,93 +111,91 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Explain the role of a user account, then Compare authentication from authorisation.",
-    answer: "A user account provides a distinct system identity and supports accountability for access and actions. Authentication verifies the account user's identity claim, for example by checking a password, biometric or token. Authorisation happens after identity is established and determines what the authenticated account is allowed to access or do. A student account may authenticate successfully but still lack permission to edit examination results.",
+    prompt: "Describe phishing and explain how it can lead to unauthorised access.",
+    answer: "Phishing uses deceptive emails, messages or websites that appear to be from a trusted source. The attacker tricks the user into entering confidential information such as a password or payment details. If the password is stolen, the attacker can use it to log in as the user. This leads to unauthorised access and may allow data to be viewed, changed or copied.",
     marking: [
-      { mark: "B1", text: "user account provides a distinct system identity and/or accountability" },
-      { mark: "B1", text: "authentication verifies the identity claim of the account/user" },
-      { mark: "B1", text: "valid authentication credential example, e.g. password/biometric/token" },
-      { mark: "B1", text: "authorisation controls permitted access/actions/resources" },
-      { mark: "B1", text: "authorisation follows authentication / successful login does not grant every permission" },
+      { mark: "B1", text: "phishing described as deceptive message/email/site appearing trustworthy" },
+      { mark: "B1", text: "user tricked into revealing confidential information/credentials" },
+      { mark: "B1", text: "stolen credentials/password used by attacker" },
+      { mark: "B1", text: "attacker gains unauthorised access or impersonates user" },
+      { mark: "B1", text: "valid consequence such as data viewed/changed/copied or financial loss" },
     ],
     strict: [
-      "Do not accept definitions that make both terms identical.",
-      "Do not award authorisation mark for only 'logging in'.",
-      "Allow authorization spelling.",
+      "Do not accept 'a virus' as a definition of phishing.",
+      "Do not award both mechanism marks for only saying 'fake website' unless deception and user information are clear.",
+      "Allow fake text message or fake login page.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Compare passwords and biometrics as authentication methods.",
-    answer: "A password is something a user knows, while a biometric is something a user is, such as a fingerprint or iris pattern. Passwords are cheap and familiar but can be guessed, reused, shared, phished or forgotten. Biometrics are convenient and cannot be forgotten in the same way, but require sensors and stored templates. Biometrics may also falsely reject valid users or falsely accept unauthorised users, and cannot easily be changed if compromised.",
+    marks: "4 marks",
+    prompt: "Explain the difference between phishing and pharming.",
+    answer: "Phishing tricks a user using a deceptive message, link or website so the user reveals confidential information. Pharming redirects a user to a fake website, possibly after the user enters the correct URL. Both may result in credentials being entered into a fraudulent site, but phishing relies on persuading the user while pharming relies on redirection.",
     marking: [
-      { mark: "B1", text: "password classified as something user knows" },
-      { mark: "B1", text: "biometric classified as something user is with valid example" },
-      { mark: "B1", text: "password advantage such as cheap/familiar/easy to implement/change" },
-      { mark: "B1", text: "password limitation such as guessed/reused/shared/phished/forgotten" },
-      { mark: "B1", text: "biometric advantage such as convenient/not forgotten/hard to share casually" },
-      { mark: "B1", text: "biometric limitation such as sensor/templates/privacy/false accept/false reject/cannot change" },
+      { mark: "B1", text: "phishing involves deceptive message/link/site or trusted-looking communication" },
+      { mark: "B1", text: "phishing user reveals confidential information/credentials" },
+      { mark: "B1", text: "pharming redirects user/traffic to a fake website" },
+      { mark: "B1", text: "clear contrast: persuasion by message vs redirection, or correct URL clue" },
     ],
     strict: [
-      "Do not accept 'biometrics are perfect' as an advantage.",
-      "Do not award password limitation for vague 'not safe' without mechanism.",
-      "Allow face/fingerprint/iris/voice as biometric examples.",
+      "Do not accept definitions that make phishing and pharming identical.",
+      "Do not award pharming mark for only 'fake email'.",
+      "Allow DNS/name-resolution redirection as pharming mechanism.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain why multi-factor authentication can reduce the risk of unauthorised access.",
-    answer: "Multi-factor authentication requires evidence from two or more different factor categories, such as a password and a token code. If an attacker steals or guesses the password, they still need the second factor. This reduces the risk of account takeover from password reuse or phishing. However, it does not remove all risk because tokens can be lost, stolen or users may still be tricked.",
+    marks: "5 marks",
+    prompt: "A school website becomes unavailable after receiving a very large number of automated requests. Identify the attack and explain two controls.",
+    answer: "The attack is a denial-of-service attack because the website is flooded with requests and legitimate users cannot access it. The main security goal affected is availability. Rate limiting or traffic filtering can block or slow excessive requests. Load balancing or DDoS mitigation can distribute/filter traffic so the website remains available to legitimate users.",
     marking: [
-      { mark: "B1", text: "MFA uses two or more different factor categories" },
-      { mark: "B1", text: "valid example with different categories, e.g. password plus token/biometric" },
-      { mark: "B1", text: "stolen/guessed password alone is insufficient" },
-      { mark: "B1", text: "risk of unauthorised access/account takeover is reduced" },
+      { mark: "B1", text: "attack identified as DoS/denial-of-service" },
+      { mark: "B1", text: "flooding/large number of requests overwhelms service" },
+      { mark: "B1", text: "availability impact explained" },
+      { mark: "B1", text: "first valid control with mechanism, e.g. rate limiting/traffic filtering/firewall" },
+      { mark: "B1", text: "second distinct valid control with mechanism, e.g. load balancing/DDoS mitigation/monitoring" },
     ],
     strict: [
-      "Do not accept two passwords as MFA unless a different factor is also present.",
-      "Do not accept 'makes it impossible to hack' as the risk explanation.",
-      "Allow 2FA as a form of MFA when two different factor categories are used.",
+      "Do not accept hacking as the attack unless unauthorised access is described.",
+      "Do not accept backup as a main DoS prevention control without service-availability explanation.",
+      "Allow DDoS if many sources/devices are implied.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A company issues hardware tokens for remote login. Describe how tokens support authentication and give two limitations.",
-    answer: "A hardware token supports authentication by proving the user has a specific issued device or object. It may generate a one-time code or be inserted/tapped during login. This can be combined with a password as a second factor. Limitations include tokens being lost, stolen, damaged, out of battery or unavailable, and the company needing support procedures for replacement and recovery.",
+    marks: "4 marks",
+    prompt: "Define hacking and describe two possible impacts on a company's data.",
+    answer: "Hacking is gaining unauthorised access to a computer system, account, network or data. One impact is loss of confidentiality because sensitive data may be viewed or copied. Another impact is loss of integrity because data may be changed or deleted without permission. It may also lead to further unauthorised actions if accounts or permissions are misused.",
     marking: [
-      { mark: "B1", text: "token classified as something user has/possession factor" },
-      { mark: "B1", text: "token use described, e.g. one-time code/insert/tap/registered device" },
-      { mark: "B1", text: "can be combined with password as second factor/MFA" },
-      { mark: "B1", text: "first valid limitation such as lost/stolen/damaged/battery/unavailable" },
-      { mark: "B1", text: "second distinct limitation or support/recovery issue" },
+      { mark: "B1", text: "hacking defined as unauthorised access" },
+      { mark: "B1", text: "target is system/account/network/data" },
+      { mark: "B1", text: "confidentiality impact: data viewed/copied/disclosed" },
+      { mark: "B1", text: "integrity impact: data changed/deleted/corrupted" },
     ],
     strict: [
-      "Do not accept token as 'something you know'.",
-      "Do not award both limitation marks for repeating 'lost' twice.",
-      "Allow software token/app if scenario wording is adapted, but hardware token must remain possession-based.",
+      "Do not accept only 'breaking a computer' without unauthorised access.",
+      "Do not award both impact marks for two vague phrases such as 'bad security' and 'data problem'.",
+      "Allow availability impact if system is disrupted, but data impact must be explicit for full credit.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each login method, state the authentication factor and one risk: password; fingerprint scan; app-generated one-time code.",
-    answer: "A password is something the user knows; a risk is that it may be guessed, reused, shared, phished or forgotten. A fingerprint scan is something the user is; a risk is false rejection, false acceptance, sensor failure, privacy concern or difficulty changing the biometric if compromised. An app-generated one-time code is something the user has because it is produced by a registered device or app; a risk is that the device may be lost, stolen, unavailable or out of battery.",
+    prompt: "For each scenario, identify the attack and justify it: a fake invoice email asks for login details; a correct URL opens a fake page; many devices flood a server.",
+    answer: "The fake invoice email is phishing because it uses a deceptive message to persuade the user to reveal login details. The correct URL opening a fake page is pharming because the user is redirected to a fraudulent site. Many devices flooding a server is a distributed denial-of-service attack because traffic from multiple sources overwhelms the server and prevents legitimate access.",
     marking: [
-      { mark: "B1", text: "password factor identified as something known" },
-      { mark: "B1", text: "valid password risk" },
-      { mark: "B1", text: "fingerprint factor identified as something user is/biometric" },
-      { mark: "B1", text: "valid biometric risk" },
-      { mark: "B1", text: "one-time app code factor identified as something user has/possession" },
-      { mark: "B1", text: "valid token/app code risk" },
+      { mark: "B1", text: "fake invoice email classified as phishing" },
+      { mark: "B1", text: "justification linked to deceptive message and revealing login details" },
+      { mark: "B1", text: "correct URL/fake page classified as pharming" },
+      { mark: "B1", text: "justification linked to redirection to fraudulent site" },
+      { mark: "B1", text: "many devices flooding server classified as DDoS/DoS" },
+      { mark: "B1", text: "justification linked to multiple sources overwhelming service/preventing legitimate access" },
     ],
     strict: [
-      "Do not award risk marks for repeating only 'not secure'.",
-      "Do not classify app code as something known just because the digits are typed; the code is evidence of possession.",
-      "Allow 'fingerprint is biometric' for something user is.",
-      "Award each method independently.",
+      "Do not award justification marks for repeating only the attack name.",
+      "Do not classify correct URL redirection as phishing unless deceptive message evidence is added.",
+      "Allow DoS for final scenario; award DDoS if distributed/many devices is stated.",
+      "Award each classification independently.",
     ],
   },
 ];
@@ -213,10 +211,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    mfa: "Correct. Password is something known; phone code is evidence of something possessed.",
-    "two-passwords": "No. Two checks are not automatically two factors. Two passwords are usually the same factor category.",
-    authorisation: "No. Authorisation controls permissions after identity is established.",
-    encryption: "No. Encryption protects data by encoding it; this scenario verifies identity.",
+    pharming: "Correct. Pharming redirects the user to a fake website; the correct URL clue is important.",
+    phishing: "Not quite. A fake site can be used in phishing, but this clue says the correct URL was redirected.",
+    dos: "No. DoS makes a service unavailable; here the service loads, but it is fraudulent.",
+    hacking: "No. Hacking is unauthorised access. The given clue is redirection to a fake website.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -243,58 +241,6 @@ function setupSimulator() {
   simulate();
 }
 
-function passwordScore(value) {
-  let score = 0;
-  const notes = [];
-  if (value.length >= 12) {
-    score += 2;
-    notes.push("Good length.");
-  } else if (value.length >= 8) {
-    score += 1;
-    notes.push("Acceptable length, but longer is better.");
-  } else {
-    notes.push("Too short for a strong password.");
-  }
-  if (/[A-Z]/.test(value) && /[a-z]/.test(value)) {
-    score += 1;
-    notes.push("Uses upper and lower case.");
-  }
-  if (/\d/.test(value)) {
-    score += 1;
-    notes.push("Includes a digit.");
-  }
-  if (/[^A-Za-z0-9]/.test(value)) {
-    score += 1;
-    notes.push("Includes a symbol.");
-  }
-  if (/password|qwerty|1234|admin|letmein/i.test(value)) {
-    score -= 2;
-    notes.push("Contains a predictable pattern.");
-  }
-  return { score: Math.max(0, score), notes };
-}
-
-function setupPasswordTool() {
-  const input = document.querySelector("#passwordInput");
-  const result = document.querySelector("#passwordResult");
-  const advice = document.querySelector("#passwordAdvice");
-  function check() {
-    const value = input.value;
-    if (!value) {
-      result.textContent = "Enter a practice password.";
-      advice.textContent = "Use a fake example only; never type a real password here.";
-      return;
-    }
-    const { score, notes } = passwordScore(value);
-    const label = score >= 5 ? "Stronger" : score >= 3 ? "Moderate" : "Weak";
-    result.textContent = `${label} practice password`;
-    advice.innerHTML = `<strong>Evidence:</strong> ${notes.join(" ") || "No strong features detected."}`;
-  }
-  input.addEventListener("input", check);
-  document.querySelector("#passwordBtn").addEventListener("click", check);
-  check();
-}
-
 function renderExample(key) {
   const example = examples[key];
   document.querySelector("#exampleBox").innerHTML = `
@@ -312,7 +258,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("password");
+  renderExample("hacking");
 }
 
 function renderPractice() {
@@ -399,7 +345,6 @@ function renderExam() {
 setupPrint();
 setupHook();
 setupSimulator();
-setupPasswordTool();
 setupExamples();
 renderPractice();
 renderMistakes();

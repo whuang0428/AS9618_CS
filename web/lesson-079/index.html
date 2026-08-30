@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 079 | Flat-file databases vs relational databases</title>
+    <title>AS9618 Lesson 079 | File-based limitations and relational solutions</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Flat-file databases vs relational databases</h1>
+        <h1>File-based limitations and relational solutions</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,12 +29,12 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#flat">Flat-file</a>
-        <a href="#relational">Relational</a>
-        <a href="#compare">Comparison</a>
-        <a href="#anomalies">Anomalies</a>
-        <a href="#chooser">Structure chooser</a>
-        <a href="#checker">Anomaly checker</a>
+        <a href="#data-info">Data vs information</a>
+        <a href="#database">Database</a>
+        <a href="#dbms">DBMS roles</a>
+        <a href="#terms">Core terms</a>
+        <a href="#sorter">Concept sorter</a>
+        <a href="#scenario">DBMS selector</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -58,7 +58,8 @@
           <div class="stage2-explanation">
             <p>A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage.</p>
             <p>A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.</p>
-            <p>Relational databases address file-based duplication, inconsistency, isolation and access problems through related tables, keys, constraints and managed queries.</p>
+            <p>Record and tuple are corresponding relational terms for one row; field and attribute are corresponding terms for one column.</p>
+            <p>Relational databases reduce selected file-based limitations by storing shared facts once in linked tables with centrally enforced rules.</p>
           </div>
           <article class="stage2-example">
             <h3>Worked example: Replace a repeated order file</h3>
@@ -70,7 +71,7 @@
         <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Flat-file vs relational comparison</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file vs relational comparison with a structured visual model." />
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file vs relational comparison with a structured visual model." />
             <figcaption class="explanation-sr-only">Flat-file vs relational comparison: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
@@ -127,261 +128,307 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 079 | 45 minutes | Paper 1 Section 8 | Database concepts</p>
-            <h2>One giant table looks simple until one phone number changes in twelve places.</h2>
+            <h2>A database is an organised collection of related data managed through defined structures and controls.</h2>
             <p>
-              This lesson compares flat-file databases with relational databases. The key idea is not that
-              flat files are "bad"; it is that repeated related data creates maintenance problems as the
-              data grows. Relational design separates data into linked tables to reduce redundancy and
-              inconsistency.
+              This lesson starts Section 8 by separating raw data from useful information, defining a database,
+              and explaining what a Database Management System (DBMS) provides. The focus is exam wording:
+              what the system stores, what the DBMS controls, and why this improves reliability.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>flat-file and relational database structures</span></div>
-              <div><strong>Compare</strong><span>redundancy, consistency, update effort and complexity</span></div>
-              <div><strong>Choose</strong><span>a suitable structure for a scenario with justified reasons</span></div>
+              <div><strong>Distinguish</strong><span>data, information, database and DBMS</span></div>
+              <div><strong>Describe</strong><span>records, fields, tables/entities at an introductory level</span></div>
+              <div><strong>Explain</strong><span>DBMS roles such as dictionary, security, integrity and query processing</span></div>
             </div>
           </div>
-          <div class="split-visual" aria-label="Flat-file and relational visual">
-            <div class="flat-block">
-              <strong>Flat-file</strong>
-              <span>one table</span>
-              <span>repeated customer details</span>
-              <span>easy to start, painful to maintain</span>
+          <div class="db-stack" aria-label="Database stack">
+            <div class="stack-layer">Users and applications</div>
+            <div class="stack-layer accent">DBMS</div>
+            <div class="stack-grid">
+              <span>data dictionary</span>
+              <span>query processor</span>
+              <span>access rights</span>
+              <span>backup</span>
             </div>
-            <div class="rel-block">
-              <strong>Relational</strong>
-              <span>several linked tables</span>
-              <span>shared data stored once</span>
-              <span>better consistency, more design needed</span>
-            </div>
+            <div class="stack-layer">Database</div>
+            <p>Chinese support: DBMS = 数据库管理系统，不是数据库本身。</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style answers reward cause and consequence: relational design reduces redundancy because shared data is stored once.</p>
+            <p>Section 8 answers need exact vocabulary. "It stores data" is often too thin; the exam asks what structure or DBMS feature solves the problem.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not say relational databases are always better. For a very small single-user list, a flat file may be simpler and sufficient.</p>
+            <p>A spreadsheet file can store data, but calling every table a database does not explain management, integrity, security or querying.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A tutor keeps one spreadsheet: every lesson row repeats student name, phone, parent email and course.</h2>
-            <p>Then a parent changes email. The spreadsheet says, "I have twelve personalities now."</p>
+            <h2>A school has 700 rows of attendance marks. Which item is information?</h2>
+            <p>Raw marks are ingredients. Information is the meal. Please do not serve uncooked commas.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="redundancy">Repeated same parent email in many rows</button>
-            <button class="choice-card" type="button" data-hook="password">Weak password for the spreadsheet</button>
-            <button class="choice-card" type="button" data-hook="binary">CourseID stored in binary</button>
-            <button class="choice-card" type="button" data-hook="processor">CPU cache stores recent rows</button>
+            <button class="choice-card" type="button" data-hook="raw">09:00, A, S0234, Mon</button>
+            <button class="choice-card" type="button" data-hook="field">AttendanceStatus</button>
+            <button class="choice-card" type="button" data-hook="info">12% of Year 12 students were absent on Monday</button>
+            <button class="choice-card" type="button" data-hook="dbms">The query processor checks a SELECT statement</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the issue most directly caused by flat-file structure.
+            Choose one. Ask: has the raw data been processed into meaning?
           </div>
         </section>
 
-        <section class="panel" id="flat" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+        <section class="panel" id="data-info" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Flat-file database</h2>
-            <p>A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</p>
+            <h2>Data vs information</h2>
+            <p>Data is raw facts and values. Information is data that has been processed, organised or interpreted so it has meaning.</p>
           </div>
-          <div class="flat-table" role="table" aria-label="Flat-file club records">
+          <div class="data-flow">
+            <article>
+              <strong>Raw data</strong>
+              <span><code>BookID=B144</code>, <code>DueDate=2026-06-20</code>, <code>Returned=FALSE</code></span>
+            </article>
+            <article>
+              <strong>Processing</strong>
+              <span>compare due date, filter not returned, group by student</span>
+            </article>
+            <article>
+              <strong>Information</strong>
+              <span>"Amira has two overdue books and needs a reminder."</span>
+            </article>
+          </div>
+          <div class="info-table" role="table" aria-label="Data and information examples">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">MemberID</div>
-              <div role="columnheader">Name</div>
-              <div role="columnheader">ParentEmail</div>
-              <div role="columnheader">Session</div>
-              <div role="columnheader">FeePaid</div>
+              <div role="columnheader">Context</div>
+              <div role="columnheader">Data</div>
+              <div role="columnheader">Information</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
+              <div role="cell">Library</div>
+              <div role="cell">Loan dates, student IDs, book IDs</div>
+              <div role="cell">Which students have overdue loans</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Robotics</div><div role="cell">FALSE</div>
+              <div role="cell">Clinic</div>
+              <div role="cell">Temperatures, appointment times, patient IDs</div>
+              <div role="cell">Patients needing urgent triage</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">M211</div><div role="cell">Leo Singh</div><div role="cell">patel@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
+              <div role="cell">Online shop</div>
+              <div role="cell">Product IDs, basket items, prices, timestamps</div>
+              <div role="cell">Best-selling product this week</div>
             </div>
           </div>
-          <div class="callout">Chinese support: flat-file = 单表结构。The problem is not the word "file"; the problem is using one table for related repeated data.</div>
+          <div class="callout">Chinese support: data = 原始事实；information = 被处理后有意义的信息。Exam answers should state the processing or meaning.</div>
         </section>
 
-        <!-- stage10-explanation:start flat -->
-        <section class="panel explanation-panel" id="explanation-flat" data-explains="flat" data-explanation-kind="mechanism" aria-labelledby="explanation-flat-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-flat-title">Flat-file database</h2>
+        <!-- stage10-explanation:start data-info -->
+        <section class="panel explanation-panel" id="explanation-data-info" data-explains="data-info" data-explanation-kind="comparison" aria-labelledby="explanation-data-info-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+          <h2 class="explanation-sr-only" id="explanation-data-info-title">Data vs information</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-flat.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file database with a structured visual model." />
-            <figcaption class="explanation-sr-only">Flat-file database: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-data-info.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Data vs information with a structured visual model." />
+            <figcaption class="explanation-sr-only">Data vs information: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</li><li><strong>Lesson fact:</strong> MemberID</li><li><strong>Lesson fact:</strong> ParentEmail</li><li><strong>Lesson fact:</strong> Amira Chen</li><li><strong>Lesson fact:</strong> lee@example.com</li><li><strong>Lesson fact:</strong> Robotics</li><li><strong>Lesson fact:</strong> Leo Singh</li><li><strong>Lesson fact:</strong> patel@example.com</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Data is raw facts and values. Information is data that has been processed, organised or interpreted so it has meaning.</li><li><strong>Lesson fact:</strong> Raw data</li><li><strong>Lesson fact:</strong> BookID=B144 , DueDate=2026-06-20 , Returned=FALSE</li><li><strong>Lesson fact:</strong> Processing</li><li><strong>Lesson fact:</strong> compare due date, filter not returned, group by student</li><li><strong>Lesson fact:</strong> Information</li><li><strong>Lesson fact:</strong> &quot;Amira has two overdue books and needs a reminder.&quot;</li><li><strong>Lesson fact:</strong> Loan dates, student IDs, book IDs</li><li><strong>Lesson fact:</strong> Which students have overdue loans</li><li><strong>Lesson fact:</strong> Temperatures, appointment times, patient IDs</li><li><strong>Lesson fact:</strong> Patients needing urgent triage</li><li><strong>Lesson fact:</strong> Online shop</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end flat -->
-        <section class="panel" id="relational" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+        <!-- stage10-explanation:end data-info -->
+        <section class="panel" id="database" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Relational database</h2>
-            <p>A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</p>
+            <h2>What is a database?</h2>
+            <p>A database is an organised collection of related data that can be stored, retrieved and updated.</p>
           </div>
-          <div class="relational-preview">
+          <div class="concept-grid">
+            <article><strong>Organised</strong><span>Data is arranged using defined structures, not random notes in one giant document.</span></article>
+            <article><strong>Related</strong><span>Records are connected by a shared context, such as students, books and loans.</span></article>
+            <article><strong>Retrievable</strong><span>Users can search, filter and query the data to produce information.</span></article>
+            <article><strong>Maintainable</strong><span>Data can be updated while rules help reduce invalid or inconsistent values.</span></article>
+          </div>
+          <div class="schema-preview">
             <div class="mini-table">
-              <h3>Member</h3>
-              <p><strong>MemberID</strong> | Name | ParentEmail</p>
-              <p>M104 | Amira Chen | lee@example.com</p>
-              <p>M211 | Leo Singh | patel@example.com</p>
+              <h3>Student</h3>
+              <p><strong>StudentID</strong> | Name | Form</p>
+              <p>S0234 | Amira Chen | 12A</p>
+              <p>S0318 | Leo Singh | 12B</p>
             </div>
-            <div class="relation-arrow">linked by MemberID</div>
+            <div class="relation-arrow">linked by ID</div>
             <div class="mini-table">
-              <h3>Enrolment</h3>
-              <p><strong>EnrolID</strong> | MemberID | Session | FeePaid</p>
-              <p>E501 | M104 | Python | TRUE</p>
-              <p>E502 | M104 | Robotics | FALSE</p>
+              <h3>Loan</h3>
+              <p><strong>LoanID</strong> | StudentID | BookID | Returned</p>
+              <p>L9001 | S0234 | B144 | FALSE</p>
+              <p>L9002 | S0318 | B102 | TRUE</p>
             </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start database -->
+        <section class="panel explanation-panel" id="explanation-database" data-explains="database" data-explanation-kind="mechanism" aria-labelledby="explanation-database-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+          <h2 class="explanation-sr-only" id="explanation-database-title">What is a database?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-database.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is a database? with a structured visual model." />
+            <figcaption class="explanation-sr-only">What is a database?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A database is an organised collection of related data that can be stored, retrieved and updated.</li><li><strong>Lesson fact:</strong> Organised Data is arranged using defined structures, not random notes in one giant document.</li><li><strong>Lesson fact:</strong> Related Records are connected by a shared context, such as students, books and loans.</li><li><strong>Lesson fact:</strong> Retrievable Users can search, filter and query the data to produce information.</li><li><strong>Lesson fact:</strong> Maintainable Data can be updated while rules help reduce invalid or inconsistent values.</li><li><strong>Lesson fact:</strong> StudentID | Name | Form</li><li><strong>Lesson fact:</strong> S0234 | Amira Chen | 12A</li><li><strong>Lesson fact:</strong> S0318 | Leo Singh | 12B</li><li><strong>Lesson fact:</strong> linked by ID</li><li><strong>Lesson fact:</strong> LoanID | StudentID | BookID | Returned</li><li><strong>Lesson fact:</strong> L9001 | S0234 | B144 | FALSE</li><li><strong>Lesson fact:</strong> L9002 | S0318 | B102 | TRUE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end database -->
+        <section class="panel" id="dbms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>What does a DBMS provide?</h2>
+            <p>A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.</p>
+          </div>
+          <div class="role-grid">
+            <article><strong>Data management</strong><span>stores, organises, retrieves and updates data; maintains metadata in a data dictionary.</span></article>
+            <article><strong>Data modelling</strong><span>helps define entities, tables, fields and the logical schema of the database.</span></article>
+            <article><strong>Data integrity</strong><span>enforces rules so values are valid and relationships remain consistent.</span></article>
+            <article><strong>Data security</strong><span>uses access rights for individuals or groups; supports backup and recovery procedures.</span></article>
+            <article><strong>Developer interface</strong><span>provides tools for creating structures, forms, reports or database applications.</span></article>
+            <article><strong>Query processor</strong><span>interprets and carries out queries so users can retrieve or change data.</span></article>
           </div>
           <div class="answer-frame">
             <strong>Exam sentence:</strong>
-            <span>A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</span>
+            <span>The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.</span>
           </div>
         </section>
-
-        <!-- stage10-explanation:start relational -->
-        <section class="panel explanation-panel" id="explanation-relational" data-explains="relational" data-explanation-kind="mechanism" aria-labelledby="explanation-relational-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-relational-title">Relational database</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-relational.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relational database with a structured visual model." />
-            <figcaption class="explanation-sr-only">Relational database: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</li><li><strong>Lesson fact:</strong> MemberID | Name | ParentEmail</li><li><strong>Lesson fact:</strong> M104 | Amira Chen | lee@example.com</li><li><strong>Lesson fact:</strong> M211 | Leo Singh | patel@example.com</li><li><strong>Lesson fact:</strong> linked by MemberID</li><li><strong>Lesson fact:</strong> Enrolment</li><li><strong>Lesson fact:</strong> EnrolID | MemberID | Session | FeePaid</li><li><strong>Lesson fact:</strong> E501 | M104 | Python | TRUE</li><li><strong>Lesson fact:</strong> E502 | M104 | Robotics | FALSE</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end relational -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Flat-file vs relational comparison</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Flat-file relational comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Flat-file</div>
-              <div role="columnheader">Relational</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Structure</div>
-              <div role="cell">Single table</div>
-              <div role="cell">Multiple linked tables</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Redundancy</div>
-              <div role="cell">More likely because related details are repeated</div>
-              <div role="cell">Reduced because shared data can be stored once</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Consistency</div>
-              <div role="cell">Harder to maintain if repeated values are updated differently</div>
-              <div role="cell">Improved because updates can be made in one relevant table</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Complexity</div>
-              <div role="cell">Simpler to create for a small, simple dataset</div>
-              <div role="cell">Needs more planning and understanding of relationships</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Best fit</div>
-              <div role="cell">Small, single-purpose, low-change data</div>
-              <div role="cell">Data with repeated entities, many users, updates and queries</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel" id="anomalies" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+        <section class="panel" id="terms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Why repeated data causes anomalies</h2>
-            <p>An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</p>
+            <h2>Core relational words for this lesson</h2>
+            <p>This is the vocabulary doorway. Later lessons will go deeper into keys, relationships, E-R diagrams, normalisation and SQL.</p>
           </div>
-          <div class="anomaly-grid">
-            <article><strong>Update anomaly</strong><span>A parent email is changed in one row but not in another, so the same member has two different emails.</span></article>
-            <article><strong>Insertion anomaly</strong><span>A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</span></article>
-            <article><strong>Deletion anomaly</strong><span>Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</span></article>
+          <div class="term-table" role="table" aria-label="Core relational terms">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Term</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Entity</div>
+              <div role="cell">A thing about which data is stored</div>
+              <div role="cell">Student, Book, Loan</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Table</div>
+              <div role="cell">A set of records about one entity</div>
+              <div role="cell">Student table</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Record / tuple</div>
+              <div role="cell">One row in a table</div>
+              <div role="cell">S0234, Amira Chen, 12A</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Field / attribute</div>
+              <div role="cell">One column or property</div>
+              <div role="cell">StudentID, Name, Form</div>
+            </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start anomalies -->
-        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="mechanism" aria-labelledby="explanation-anomalies-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-anomalies-title">Why repeated data causes anomalies</h2>
+        <!-- stage10-explanation:start terms -->
+        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+          <h2 class="explanation-sr-only" id="explanation-terms-title">Core relational words for this lesson</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-anomalies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why repeated data causes anomalies with a structured visual model." />
-            <figcaption class="explanation-sr-only">Why repeated data causes anomalies: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core relational words for this lesson with a structured visual model." />
+            <figcaption class="explanation-sr-only">Core relational words for this lesson: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</li><li><strong>Lesson fact:</strong> Update anomaly A parent email is changed in one row but not in another, so the same member has two different emails.</li><li><strong>Lesson fact:</strong> Insertion anomaly A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</li><li><strong>Lesson fact:</strong> Deletion anomaly Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> This is the vocabulary doorway. Later lessons will go deeper into keys, relationships, E-R diagrams, normalisation and SQL.</li><li><strong>Lesson fact:</strong> A thing about which data is stored</li><li><strong>Lesson fact:</strong> Student, Book, Loan</li><li><strong>Lesson fact:</strong> A set of records about one entity</li><li><strong>Lesson fact:</strong> Student table</li><li><strong>Lesson fact:</strong> Record / tuple</li><li><strong>Lesson fact:</strong> One row in a table</li><li><strong>Lesson fact:</strong> S0234, Amira Chen, 12A</li><li><strong>Lesson fact:</strong> Field / attribute</li><li><strong>Lesson fact:</strong> One column or property</li><li><strong>Lesson fact:</strong> StudentID, Name, Form</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end anomalies -->
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+        <!-- stage10-explanation:end terms -->
+        <section class="panel" id="sorter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
-            <p class="eyebrow">Interactive structure chooser</p>
-            <h2>Choose flat-file or relational for the scenario</h2>
+            <p class="eyebrow">Interactive concept sorter</p>
+            <h2>Is it data, information, database, or DBMS?</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="singleList">A teacher keeps a one-off list of students attending one trip.</option>
-                <option value="club">A club records members, sessions, fees and changing contact details.</option>
-                <option value="shop">An online shop stores customers, orders and products.</option>
-                <option value="survey">A small survey stores one answer row per anonymous respondent.</option>
-                <option value="clinic">A clinic stores patients, appointments, staff and prescriptions.</option>
+              Scenario item
+              <select id="sortInput">
+                <option value="rawMark">S0234, 2026-06-15, absent</option>
+                <option value="absenceRate">8% of students are absent today</option>
+                <option value="libraryTables">A set of related Student, Book and Loan tables</option>
+                <option value="queryProcessor">Software component that interprets a SELECT query</option>
+                <option value="backupTool">Software tool that restores data after failure</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="scenarioBtn">Choose structure</button>
+            <button class="primary-button" type="button" id="sortBtn">Classify</button>
           </div>
-          <div class="result-box" id="scenarioResult">Choose a scenario, then justify the structure.</div>
-          <div class="feedback" id="scenarioReason">A strong answer mentions data size, repetition, updates or relationships.</div>
+          <div class="result-box" id="sortResult">Choose an item, then classify it.</div>
+          <div class="feedback" id="sortReason">Reasoning will appear here.</div>
         </section>
 
-        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+        <!-- stage10-explanation:start sorter -->
+        <section class="panel explanation-panel" id="explanation-sorter" data-explains="sorter" data-explanation-kind="process" aria-labelledby="explanation-sorter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+          <h2 class="explanation-sr-only" id="explanation-sorter-title">Is it data, information, database, or DBMS?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-sorter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Is it data, information, database, or DBMS? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Is it data, information, database, or DBMS?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive concept sorter</li><li><strong>Lesson fact:</strong> Scenario item</li><li><strong>Lesson fact:</strong> Choose an item, then classify it.</li><li><strong>Lesson fact:</strong> Reasoning will appear here.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sorter -->
+        <section class="panel" id="scenario" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
-            <p class="eyebrow">Interactive anomaly checker</p>
-            <h2>What can go wrong in a flat file?</h2>
+            <p class="eyebrow">Interactive DBMS selector</p>
+            <h2>Which DBMS feature solves the problem?</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Event
-              <select id="anomalyInput">
-                <option value="changedEmail">A parent email is edited in only one of four repeated rows.</option>
-                <option value="newMember">A new member has not chosen a session yet, so no row can be created.</option>
-                <option value="deleteLast">The only row for a cancelled session is deleted and member contact details disappear.</option>
-                <option value="smallList">A one-off trip list has no repeated contact details.</option>
+              Problem
+              <select id="featureInput">
+                <option value="unknownField">A developer needs to know every table field and its data type.</option>
+                <option value="wrongValue">A loan record is saved with a return date before the loan date.</option>
+                <option value="privateData">Only nurses should see patient contact details.</option>
+                <option value="diskFailure">The storage device fails during the night.</option>
+                <option value="findRows">A user searches for all unpaid orders over $100.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="anomalyBtn">Check anomaly</button>
+            <button class="primary-button" type="button" id="featureBtn">Select feature</button>
           </div>
-          <div class="result-box" id="anomalyResult">Choose an event to classify the problem.</div>
-          <div class="feedback" id="anomalyReason">If there is no anomaly, explain why the simple structure may be acceptable.</div>
+          <div class="result-box" id="featureResult">Choose a problem, then select the DBMS feature.</div>
+          <div class="feedback" id="featureReason">The answer should name a feature and explain its purpose.</div>
         </section>
 
+        <!-- stage10-explanation:start scenario -->
+        <section class="panel explanation-panel" id="explanation-scenario" data-explains="scenario" data-explanation-kind="mechanism" aria-labelledby="explanation-scenario-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
+          <h2 class="explanation-sr-only" id="explanation-scenario-title">Which DBMS feature solves the problem?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-scenario.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which DBMS feature solves the problem? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Which DBMS feature solves the problem?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive DBMS selector</li><li><strong>Lesson fact:</strong> Choose a problem, then select the DBMS feature.</li><li><strong>Lesson fact:</strong> The answer should name a feature and explain its purpose.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end scenario -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>From scenario to justified design choice</h2>
+            <h2>Move from messy values to exam-ready wording</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="club">Club records</button>
-            <button class="tab" type="button" data-example="shop">Online shop</button>
-            <button class="tab" type="button" data-example="survey">Small survey</button>
-            <button class="tab" type="button" data-example="mistake">Weak comparison</button>
+            <button class="tab active" type="button" data-example="dataInfo">Data to information</button>
+            <button class="tab" type="button" data-example="database">Database definition</button>
+            <button class="tab" type="button" data-example="dbms">DBMS feature</button>
+            <button class="tab" type="button" data-example="terms">Relational terms</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -398,7 +445,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common wording errors</h2>
+            <h2>Repair common database wording errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -407,7 +454,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about cause-and-effect wording.</p>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about terminology.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -415,12 +462,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>What to remember</h2>
+            <h2>Three distinctions to keep clean</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Flat-file</strong><span>Single table; simple for small datasets but may repeat related data.</span></div>
-            <div><strong>Relational</strong><span>Multiple linked tables; reduces redundancy and supports consistent updates.</span></div>
-            <div><strong>Exam answer</strong><span>Name the structure, then explain a consequence such as reduced redundancy or increased design complexity.</span></div>
+            <div><strong>Data vs information</strong><span>Data is raw values; information is processed data with meaning.</span></div>
+            <div><strong>Database vs DBMS</strong><span>The database is organised related data; the DBMS is the software that manages it.</span></div>
+            <div><strong>Table words</strong><span>Entity/table, record/tuple and field/attribute describe relational database structure.</span></div>
           </div>
         </section>
 
@@ -431,16 +478,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Definitions</strong>
-              <span>Write exam-ready definitions for flat-file database, relational database, redundancy and inconsistency. Add Chinese support notes for the two hardest terms.</span>
+              <strong>Task 1: Vocabulary precision</strong>
+              <span>Write one exam-ready definition each for data, information, database and DBMS. Add one Chinese support note beside each.</span>
             </article>
             <article>
-              <strong>Task 2: Scenario design</strong>
-              <span>A music school stores students, teachers, instruments and weekly lessons. Choose flat-file or relational and give three reasons linked to the scenario.</span>
+              <strong>Task 2: Scenario application</strong>
+              <span>A sports club stores member, payment and training attendance data. Write four bullet points explaining how a DBMS could help, naming a different feature each time.</span>
             </article>
             <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain why a relational database may be more suitable than a flat-file database for a library loan system." Include redundancy, consistency and one possible disadvantage.</span>
+              <strong>Task 3: 4-mark answer</strong>
+              <span>Answer: "Explain two features provided by a DBMS that help manage a school database." Use two distinct features and explain the effect of each.</span>
             </article>
           </div>
         </section>
@@ -448,8 +495,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

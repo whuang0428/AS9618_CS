@@ -1,47 +1,47 @@
 const examples = {
-  encode: {
-    title: "Example 1: RLE encode",
-    problem: "Encode AAAAAABBBBCCCCCCCC using run-length encoding.",
+  lossless: {
+    title: "Example 1: choosing lossless compression",
+    problem: "A database backup must be compressed before storage. Choose a compression type.",
     steps: [
-      "Count the first run: AAAAAA is 6A.",
-      "Count the next run: BBBB is 4B.",
-      "Count the final run: CCCCCCCC is 8C.",
-      "Compressed form: 6A4B8C.",
+      "A backup must be restored exactly.",
+      "Lossy compression permanently removes data.",
+      "Therefore lossy compression is unsuitable.",
+      "Choose lossless compression because it allows exact reconstruction.",
     ],
   },
-  decode: {
-    title: "Example 2: RLE decode",
-    problem: "Decode 3A2B1C.",
+  lossy: {
+    title: "Example 2: choosing lossy compression",
+    problem: "A photo is being prepared for a web page where a small quality loss is acceptable.",
     steps: [
-      "3A means AAA.",
-      "2B means BB.",
-      "1C means C.",
-      "Original data: AAABBC.",
+      "The exact original pixel data is not essential for this use.",
+      "A smaller file will reduce download time and bandwidth use.",
+      "Lossy compression can remove less noticeable detail.",
+      "Choose lossy compression if the quality remains acceptable.",
     ],
   },
-  dictionary: {
-    title: "Example 3: dictionary-style compression",
-    problem: "Explain how COMPUTER COMPUTER COMPUTER could be compressed.",
+  ratio: {
+    title: "Example 3: compression ratio",
+    problem: "A file is compressed from 1000 KB to 250 KB. Calculate the ratio and percentage saved.",
     steps: [
-      "The repeated pattern is COMPUTER.",
-      "Store COMPUTER once in a dictionary, for example #1 = COMPUTER.",
-      "Replace repeated occurrences with #1.",
-      "The original can be reconstructed by replacing #1 with COMPUTER.",
+      "Compression ratio is original size : compressed size.",
+      "1000:250 simplifies to 4:1.",
+      "Saved size is 1000 - 250 = 750 KB.",
+      "Percentage saved is 750 ÷ 1000 × 100 = 75%.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "RLE encode AAAAAABBBBCCCCCCCC.", accepted: ["6A4B8C", "6a4b8c"], answer: "6A4B8C" },
-  { id: "p2", prompt: "RLE encode AAABBCCCC.", accepted: ["3A2B4C", "3a2b4c"], answer: "3A2B4C" },
-  { id: "p3", prompt: "Decode 3A2B1C.", accepted: ["AAABBC", "aaabbc"], answer: "AAABBC" },
-  { id: "p4", prompt: "Decode 2A3B4C1D.", accepted: ["AABBBCCCCD", "aabbbccccd"], answer: "AABBBCCCCD" },
-  { id: "p5", prompt: "Which method stores repeated patterns once and uses references?", accepted: ["dictionary", "dictionary-style compression", "dictionary compression"], answer: "Dictionary-style compression" },
-  { id: "p6", prompt: "Is RLE lossless if it can reconstruct the exact original?", accepted: ["yes"], answer: "Yes" },
-  { id: "p7", prompt: "Is ABABABAB usually good for simple RLE?", accepted: ["no"], answer: "No" },
-  { id: "p8", prompt: "What does the number mean in 6A?", accepted: ["count", "run length", "number of repeats", "six a characters"], answer: "The run length / count." },
-  { id: "p9", prompt: "State one precise exam keyword connected to Run-length encoding and dictionary-style compression.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
-  { id: "p10", prompt: "What should an exam answer about Run-length encoding and dictionary-style compression include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
+  { id: "p1", prompt: "Which compression type allows exact reconstruction?", accepted: ["lossless"], answer: "Lossless" },
+  { id: "p2", prompt: "Which compression type permanently removes some data?", accepted: ["lossy"], answer: "Lossy" },
+  { id: "p3", prompt: "Choose compression for a database backup: lossless or lossy?", accepted: ["lossless"], answer: "Lossless" },
+  { id: "p4", prompt: "Choose compression for a website photo where small quality loss is acceptable.", accepted: ["lossy"], answer: "Lossy" },
+  { id: "p5", prompt: "A file reduces from 1000 KB to 250 KB. What is the compression ratio?", accepted: ["4:1", "4 to 1"], answer: "4:1" },
+  { id: "p6", prompt: "A file reduces from 1000 KB to 250 KB. What percentage is saved?", accepted: ["75", "75%", "75 percent"], answer: "75%" },
+  { id: "p7", prompt: "Give one reason to compress a file.", accepted: ["less storage", "save storage", "faster transfer", "less bandwidth", "faster download"], answer: "Less storage or faster transfer." },
+  { id: "p8", prompt: "Is compression guaranteed to reduce every file size?", accepted: ["no"], answer: "No" },
+  { id: "p9", prompt: "State one precise exam keyword connected to Compression: lossless vs lossy.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
+  { id: "p10", prompt: "What should an exam answer about Compression: lossless vs lossy include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
 
@@ -53,126 +53,119 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "3 marks",
-    prompt: "Use run-length encoding to encode AAAAAABBBBCCCCCCCC.",
-    answer: "The data contains runs of six A characters, four B characters and eight C characters. Using count-symbol pairs gives 6A4B8C.",
+    marks: "4 marks",
+    prompt: "Compare lossless and lossy compression.",
+    answer: "Lossless compression reduces file size while allowing the original data to be reconstructed exactly. Lossy compression reduces file size by permanently removing some data, so the original cannot be reconstructed exactly.",
     marking: [
-      { mark: "B1", text: "correctly encodes six A characters as 6A" },
-      { mark: "B1", text: "correctly encodes four B characters as 4B" },
-      { mark: "B1", text: "correctly encodes eight C characters as 8C" },
+      { mark: "B1", text: "lossless reduces file size" },
+      { mark: "B1", text: "lossless allows exact reconstruction / no data is lost" },
+      { mark: "B1", text: "lossy reduces file size by removing data" },
+      { mark: "B1", text: "lossy does not allow exact reconstruction / some quality or data is lost" },
     ],
     strict: [
-      "Do not accept 5A4B8C.",
-      "Allow equivalent notation such as (6,A)(4,B)(8,C) if unambiguous.",
-      "The order of runs must be preserved.",
+      "Do not accept only 'lossless is better'.",
+      "Do not accept 'lossy loses the whole file'.",
+      "Exact reconstruction wording is required for full credit.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "3 marks",
-    prompt: "Give the decoded form of the run-length encoded data 3A2B1C.",
-    answer: "Expand each count-symbol pair: 3A -> AAA, 2B -> BB and 1C -> C. The decoded data is AAABBC.",
+    prompt: "A source code file must be compressed before being sent to another developer. Explain why lossless compression should be used.",
+    answer: "The source code must be recovered exactly. Lossless compression allows exact reconstruction, while lossy compression could remove or alter characters and break the program.",
     marking: [
-      { mark: "B1", text: "expands 3A to AAA" },
-      { mark: "B1", text: "expands 2B to BB" },
-      { mark: "B1", text: "expands 1C to C / final answer AAABBC" },
+      { mark: "B1", text: "source code must be restored exactly / cannot tolerate changes" },
+      { mark: "B1", text: "lossless allows exact reconstruction" },
+      { mark: "B1", text: "lossy could remove or alter data / make the program incorrect" },
     ],
     strict: [
-      "Do not accept A3B2C1 unless the question asks for encoded form.",
-      "Order must be preserved.",
-      "Allow lowercase only if the original data is not case-sensitive in the stated context.",
+      "Do not accept only 'lossless is higher quality'.",
+      "Allow equivalent examples such as syntax errors caused by changed characters.",
+      "The answer must link the choice to source code requirements.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "Explain why run-length encoding is effective for AAAAAABBBBCCCCCCCC but may be ineffective for ABABABAB.",
-    answer: "RLE replaces long repeated runs with count and value, so long runs such as AAAAAA can be shortened to 6A. ABABABAB has very short runs, so each character may need a count and value, which can make the encoded data no smaller or larger.",
+    prompt: "A file is compressed from 2400 KB to 600 KB. Calculate the compression ratio and the percentage saved.",
+    answer: "The compression ratio is 2400:600 = 4:1. The amount saved is 2400 - 600 = 1800 KB, so the percentage saved is 1800 / 2400 x 100 = 75%.",
     marking: [
-      { mark: "B1", text: "RLE represents repeated runs using count and value" },
-      { mark: "B1", text: "long runs in AAAAAABBBBCCCCCCCC can be shortened" },
-      { mark: "B1", text: "ABABABAB has short / alternating runs" },
-      { mark: "B1", text: "encoded form may not be smaller / may be larger due to overhead" },
+      { mark: "M1", text: "uses original:compressed as 2400:600" },
+      { mark: "A1", text: "simplifies ratio to 4:1" },
+      { mark: "M1", text: "calculates saved amount as 1800 KB or uses (2400 - 600) / 2400 × 100" },
+      { mark: "A1", text: "75%" },
     ],
     strict: [
-      "Do not accept only 'because it repeats'. ABABABAB also repeats, but not as consecutive runs.",
-      "The explanation must refer to consecutive runs.",
-      "Accept examples such as 1A1B1A1B to show overhead.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not accept 1:4 for compression ratio in this wording.",
+      "Unit KB is not needed in the ratio.",
+      "Allow FT for the percentage saved from the candidate's earlier compressed-size value only when the percentage method is otherwise correct.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Describe dictionary-style compression.",
-    answer: "Dictionary-style compression finds repeated patterns, stores each repeated pattern once in a dictionary, and replaces later occurrences with shorter references. The original data can be reconstructed using the dictionary and references.",
+    marks: "3 marks",
+    prompt: "Explain why lossy compression may be suitable for streaming music.",
+    answer: "Streaming benefits from smaller files because less bandwidth is required. Lossy compression can remove less noticeable sound data, reducing file size, while the quality may still be acceptable for listeners.",
     marking: [
-      { mark: "B1", text: "identifies repeated patterns / sequences" },
-      { mark: "B1", text: "stores pattern once in a dictionary / table" },
-      { mark: "B1", text: "replaces occurrences with a shorter reference / code / pointer" },
-      { mark: "B1", text: "original can be reconstructed using dictionary and references" },
+      { mark: "B1", text: "smaller files require less bandwidth / transfer faster" },
+      { mark: "B1", text: "lossy removes some data / less noticeable sound data" },
+      { mark: "B1", text: "quality loss may be acceptable for the context" },
     ],
     strict: [
-      "Do not require a named algorithm such as LZW.",
-      "Do not accept only 'uses a dictionary' without explaining references.",
-      "Accept word, phrase or byte-pattern examples.",
+      "Do not accept only 'lossy is smaller'.",
+      "Do not claim the original can be exactly restored.",
+      "Answer must be linked to streaming or transfer context.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "3 marks",
-    prompt: "A candidate says RLE is lossy because it changes the data. Explain why this is incorrect.",
-    answer: "RLE changes the representation of the data, not the recovered original data. If decoded correctly, the exact original data can be reconstructed, so RLE is lossless.",
+    marks: "8 marks",
+    prompt: "For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.",
+    answer: "Text can use lossless RLE or dictionary references. A bitmap with repeated adjacent pixels can use lossless RLE; a lossy image method may discard fine detail or colour precision. A vector can store repeated objects/properties once and use references, losslessly. Sound can use lossless pattern coding for exact samples or lossy perceptual coding that removes less-audible information. Lossless reconstructs exactly; lossy does not.",
     marking: [
-      { mark: "B1", text: "RLE changes representation / encoding" },
-      { mark: "B1", text: "decoded data can match the original exactly" },
-      { mark: "B1", text: "therefore RLE is lossless" },
+      { mark: "B1", text: "text method: RLE repeated characters or dictionary/token references" },
+      { mark: "B1", text: "text method identified as lossless/exact" },
+      { mark: "B1", text: "bitmap method: RLE repeated adjacent pixels or valid lossy detail reduction" },
+      { mark: "B1", text: "bitmap exact/non-exact status matches the stated method" },
+      { mark: "B1", text: "vector method: repeated objects/properties stored once and referenced / redundancy removed" },
+      { mark: "B1", text: "vector method identified as lossless/exact" },
+      { mark: "B1", text: "sound method: lossless pattern coding or perceptual removal of less-audible information" },
+      { mark: "B1", text: "sound exact/non-exact status matches the stated method" },
     ],
     strict: [
-      "Do not accept only 'RLE is lossless' without explanation.",
-      "Do not award full marks if exact reconstruction is not mentioned.",
-      "Accept 'no data is lost' as equivalent to exact reconstruction.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not award a method copied unchanged to every media type without explaining how it applies.",
+      "Do not call a lossy method exactly reversible.",
+      "RLE earns credit only when repeated symbols or pixel values are identified.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().replace(/\s+/g, "").toUpperCase();
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
-function rleEncode(input) {
-  if (!input) return { output: "", steps: [] };
-  const chars = Array.from(input);
-  const runs = [];
-  let current = chars[0];
-  let count = 1;
-  for (let i = 1; i < chars.length; i += 1) {
-    if (chars[i] === current) {
-      count += 1;
-    } else {
-      runs.push({ count, value: current });
-      current = chars[i];
-      count = 1;
-    }
+function gcd(a, b) {
+  let x = Math.abs(a);
+  let y = Math.abs(b);
+  while (y) {
+    [x, y] = [y, x % y];
   }
-  runs.push({ count, value: current });
-  return {
-    output: runs.map((run) => `${run.count}${run.value}`).join(""),
-    steps: runs.map((run) => `${run.value.repeat(run.count)} → ${run.count}${run.value}`),
-  };
+  return x || 1;
 }
 
-function rleDecode(input) {
-  const matches = [...input.matchAll(/(\d+)([^\d])/g)];
-  if (!matches.length || matches.map((match) => match[0]).join("") !== input) {
-    return { output: "", steps: ["Use a format such as 3A2B1C."] };
-  }
-  return {
-    output: matches.map((match) => match[2].repeat(Number(match[1]))).join(""),
-    steps: matches.map((match) => `${match[1]}${match[2]} → ${match[2].repeat(Number(match[1]))}`),
-  };
+function calculateCompression(original, compressed) {
+  const divisor = gcd(original, compressed);
+  const ratioLeft = original / divisor;
+  const ratioRight = compressed / divisor;
+  const saved = original - compressed;
+  const savedPercent = (saved / original) * 100;
+  return { ratioLeft, ratioRight, saved, savedPercent };
+}
+
+function formatNumber(value) {
+  return new Intl.NumberFormat("en-GB", { maximumFractionDigits: 2 }).format(value);
 }
 
 function setupPrint() {
@@ -185,37 +178,40 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      if (button.dataset.hook === "runs") {
-        feedback.textContent = "Correct. Consecutive repeated runs are exactly what simple RLE wants.";
-      } else if (button.dataset.hook === "alternating") {
-        feedback.textContent = "It repeats, but not in consecutive runs. Simple RLE would struggle here.";
+      if (button.dataset.hook === "backup") {
+        feedback.textContent = "Correct. A backup must be restored exactly, so lossless compression is required.";
       } else {
-        feedback.textContent = "Not ideal. RLE needs long consecutive runs to shine.";
+        feedback.textContent = "This may use lossy in some contexts, but the file that must be exact is the database backup.";
       }
     });
   });
 }
 
-function setupConverter() {
-  const mode = document.querySelector("#modeInput");
-  const data = document.querySelector("#dataInput");
-  const result = document.querySelector("#convertResult");
-  const method = document.querySelector("#convertMethod");
+function setupCalculator() {
+  const original = document.querySelector("#originalInput");
+  const compressed = document.querySelector("#compressedInput");
+  const unit = document.querySelector("#unitInput");
+  const result = document.querySelector("#calcResult");
+  const method = document.querySelector("#calcMethod");
 
-  function convert() {
-    const value = data.value.trim();
-    const converted = mode.value === "encode" ? rleEncode(value) : rleDecode(value);
-    result.textContent = converted.output ? converted.output : "No valid output.";
-    method.textContent = converted.steps.join("; ");
+  function calculate() {
+    const o = Number(original.value);
+    const c = Number(compressed.value);
+    if (!Number.isFinite(o) || !Number.isFinite(c) || o <= 0 || c <= 0) {
+      result.textContent = "Enter positive sizes.";
+      method.textContent = "Original and compressed sizes must be greater than 0.";
+      return;
+    }
+    const data = calculateCompression(o, c);
+    const warning = c >= o ? " This is not smaller than the original." : "";
+    result.textContent = `Ratio ${formatNumber(data.ratioLeft)}:${formatNumber(data.ratioRight)}; saved ${formatNumber(data.saved)} ${unit.value}; ${formatNumber(data.savedPercent)}% saved.${warning}`;
+    method.textContent = `Ratio uses ${o}:${c}. Saved size = ${o} - ${c} = ${formatNumber(data.saved)} ${unit.value}. Percentage saved = ${formatNumber(data.saved)} ÷ ${o} × 100 = ${formatNumber(data.savedPercent)}%.`;
   }
 
-  mode.addEventListener("change", () => {
-    data.value = mode.value === "encode" ? "AAAAAABBBBCCCCCCCC" : "3A2B1C";
-    convert();
-  });
-  data.addEventListener("input", convert);
-  document.querySelector("#convertBtn").addEventListener("click", convert);
-  convert();
+  [original, compressed].forEach((control) => control.addEventListener("input", calculate));
+  unit.addEventListener("change", calculate);
+  document.querySelector("#calculateBtn").addEventListener("click", calculate);
+  calculate();
 }
 
 function renderExample(key) {
@@ -235,7 +231,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("encode");
+  renderExample("lossless");
 }
 
 function renderPractice() {
@@ -270,20 +266,16 @@ function setupPractice() {
       const container = document.querySelector(`#${item.id}`);
       const input = container.querySelector("input");
       const mark = container.querySelector(".mark");
-      const response = item.id.startsWith("p5") || item.id.startsWith("p6") || item.id.startsWith("p7") || item.id.startsWith("p8")
-        ? input.value.trim().toLowerCase()
-        : normalise(input.value);
+      const response = normalise(input.value);
       const isCorrect = item.accepted.some((answer) => {
-        const expected = item.id.startsWith("p5") || item.id.startsWith("p6") || item.id.startsWith("p7") || item.id.startsWith("p8")
-          ? answer.toLowerCase()
-          : normalise(answer);
+        const expected = normalise(answer);
         return response === expected || response.includes(expected);
       });
       mark.textContent = isCorrect ? "Correct" : "Try again";
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check run counts and whether the pattern is consecutive.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check exact reconstruction and whether the scenario can accept data loss.`;
   });
 }
 
@@ -320,7 +312,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupConverter();
+  setupCalculator();
   setupExamples();
   renderPractice();
   setupPractice();

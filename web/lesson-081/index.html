@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 081 | Primary keys, foreign keys and relationships</title>
+    <title>AS9618 Lesson 081 | E-R design, normalisation and DBMS features</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Primary keys, foreign keys and relationships</h1>
+        <h1>E-R design, normalisation and DBMS features</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,14 +29,15 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#primary">Primary keys</a>
-        <a href="#foreign">Foreign keys</a>
-        <a href="#relationships">Relationships</a>
-        <a href="#referential">Referential integrity</a>
-        <a href="#key-picker">Key picker</a>
-        <a href="#relationship-tool">Relationship tool</a>
+        <a href="#terms">Tables and records</a>
+        <a href="#fields">Fields</a>
+        <a href="#types">Data types</a>
+        <a href="#constraints">Constraints</a>
+        <a href="#type-tool">Type chooser</a>
+        <a href="#constraint-tool">Constraint checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
+        <a href="#checkpoint">Checkpoint</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
@@ -53,68 +54,132 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Relationships, foreign keys and referential integrity</h2>
+            <h2>E-R design, normalisation and DBMS features</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.</p>
-            <p>A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.</p>
+            <p>An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.</p>
+            <p>To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.</p>
+            <p>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</p>
+            <p>Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</p>
+            <p>A file-based approach can repeat facts in separate files, create inconsistent copies and isolate related data. A Database Management System (DBMS) addresses these file-based limitations by providing data management, including a data dictionary of metadata; data modelling; a logical schema; data integrity; and data security. Security includes backup procedures and access rights assigned to individual users or groups.</p>
+            <p>A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.</p>
+            <p>Relational databases address file-based duplication, inconsistency, isolation and access problems through related tables, keys, constraints and managed queries.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Delete a department</h3>
-            <p>If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows.</p>
+            <h3>Worked example: Model students joining clubs / Order line data / Run a restricted query</h3>
+            <p>Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership. ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency. A developer enters a SELECT statement through the developer interface. The query processor checks the statement and the user's access rights, works out an execution plan, retrieves the permitted rows and returns the result. The data dictionary supplies definitions such as field types, keys and constraints; it does not hold the ordinary user records.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start referential -->
-        <section class="panel explanation-panel" id="explanation-referential" data-explains="referential" data-explanation-kind="mechanism" aria-labelledby="explanation-referential-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="referential">
-          <h2 class="explanation-sr-only" id="explanation-referential-title">Referential integrity</h2>
+        <!-- stage10-explanation:start normal-forms -->
+        <section class="panel explanation-panel" id="explanation-normal-forms" data-explains="normal-forms" data-explanation-kind="process" aria-labelledby="explanation-normal-forms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
+          <h2 class="explanation-sr-only" id="explanation-normal-forms-title">How normal forms remove dependency problems</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Referential integrity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Referential integrity: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-normal-forms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How normal forms remove dependency problems through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How normal forms remove dependency problems: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</li><li><strong>Lesson fact:</strong> Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.</li><li><strong>Lesson fact:</strong> Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.</li><li><strong>Lesson fact:</strong> Why It prevents orphan records, such as a loan assigned to a non-existent student.</li></ol>
+            <ol><li><strong>Mechanism:</strong> First Normal Form (1NF) requires atomic values and no repeating groups.</li><li><strong>Reason:</strong> Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.</li><li><strong>Result:</strong> Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.</li><li><strong>Additional fact:</strong> A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies.</li></ol>
+
+            <p><strong>Analogy:</strong> Each dependency belongs in the relation whose key determines it.</p>
+            <p><strong>Boundary:</strong> Check the forms in order; satisfying a later normal form assumes the earlier requirements are already met.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end normal-forms -->
+
+        <!-- stage10-explanation:start dbms -->
+        <section class="panel explanation-panel" id="explanation-dbms" data-explains="dbms" data-explanation-kind="mechanism" aria-labelledby="explanation-dbms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dbms">
+          <h2 class="explanation-sr-only" id="explanation-dbms-title">What does a DBMS provide?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-dbms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What does a DBMS provide? with a structured visual model." />
+            <figcaption class="explanation-sr-only">What does a DBMS provide?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.</li><li><strong>Lesson fact:</strong> Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.</li><li><strong>Lesson fact:</strong> Data modelling helps define entities, tables, fields and the logical schema of the database.</li><li><strong>Lesson fact:</strong> Data integrity enforces rules so values are valid and relationships remain consistent.</li><li><strong>Lesson fact:</strong> Data security uses access rights for individuals or groups; supports backup and recovery procedures.</li><li><strong>Lesson fact:</strong> Developer interface provides tools for creating structures, forms, reports or database applications.</li><li><strong>Lesson fact:</strong> Query processor interprets and carries out queries so users can retrieve or change data.</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end referential -->
+        <!-- stage10-explanation:end dbms -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Relationships, foreign keys and referential integrity: apply and assess</h2>
+            <h2>E-R design, normalisation and DBMS features: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Where is the referenced key stored?</p>
-              <details><summary>Show answer</summary><p>In the parent/referenced table.</p></details>
+              <p><strong>1.</strong> What four kinds of information should an E-R diagram communicate here?</p>
+              <details><summary>Show answer</summary><p>Entities, relevant attributes/keys, relationships and cardinality.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What is an orphan record?</p>
-              <details><summary>Show answer</summary><p>A child record whose foreign key has no matching parent key.</p></details>
+              <p><strong>2.</strong> What relationship exists between one Customer and many Orders?</p>
+              <details><summary>Show answer</summary><p>One-to-many from Customer to Order.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> How is a many-to-many relationship represented relationally?</p>
-              <details><summary>Show answer</summary><p>Use a linking table/entity containing foreign keys to both original entities.</p></details>
+              <p><strong>3.</strong> Why add Membership between Student and Club?</p>
+              <details><summary>Show answer</summary><p>It resolves the many-to-many relationship into two one-to-many relationships.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Identify one valid delete response.</p>
-              <details><summary>Show answer</summary><p>Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.</p></details>
+              <p><strong>4.</strong> Why is matching field spelling not enough to draw a relationship?</p>
+              <details><summary>Show answer</summary><p>The scenario/business rule must state or imply that the records are associated.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> What does 1NF remove?</p>
+              <details><summary>Show answer</summary><p>Repeating groups and non-atomic/multiple values in one field.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> What dependency violates 2NF?</p>
+              <details><summary>Show answer</summary><p>A non-key attribute depending on only part of a composite key.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> What dependency violates 3NF?</p>
+              <details><summary>Show answer</summary><p>A non-key attribute depending on another non-key attribute.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> What five broad DBMS feature areas are required?</p>
+              <details><summary>Show answer</summary><p>Data management including a data dictionary, data modelling, logical schema, data integrity, and data security including backup and access rights.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> What does a data dictionary store?</p>
+              <details><summary>Show answer</summary><p>Metadata such as table, field, type, key and constraint definitions.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>10.</strong> What is the purpose of a developer interface?</p>
+              <details><summary>Show answer</summary><p>To provide tools for defining structures or building database applications, forms and reports.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>11.</strong> What is the role of the query processor?</p>
+              <details><summary>Show answer</summary><p>To interpret/check, plan and carry out database queries or data-maintenance statements.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>12.</strong> Which DBMS feature limits users or groups to permitted operations?</p>
+              <details><summary>Show answer</summary><p>Access rights within data security.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Explain how a one-to-many relationship between Department and Employee is represented and protected.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>16 marks</span></div>
+            <p>A clinic stores Patients, Doctors and Appointments. Write an E-R design in words or a labelled diagram and state the two relationship cardinalities. Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design. A school is introducing a relational DBMS. Explain four DBMS features and the distinct purposes of the developer interface and query processor.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>one Department record may relate to many Employee records</td><td>Do not accept that foreign-key values must be unique in the child table.</td><td>1</td></tr>
-                  <tr><td>DepartmentID is the primary/candidate key in Department</td><td></td><td>1</td></tr>
-                  <tr><td>DepartmentID is a foreign key in Employee and may repeat</td><td></td><td>1</td></tr>
-                  <tr><td>each non-null foreign-key value must match an existing Department key</td><td></td><td>1</td></tr>
-                  <tr><td>referential integrity prevents orphan Employee records</td><td></td><td>1</td></tr>
+                  <tr><td>identifies Patient, Doctor and Appointment as entities</td><td>Do not award a collection of unconnected entity boxes as a complete E-R design. Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship. Do not treat the database, data dictionary, developer interface and query processor as interchangeable names.</td><td>1</td></tr>
+                  <tr><td>gives a suitable identifier/key for each entity</td><td></td><td>1</td></tr>
+                  <tr><td>Patient has a one-to-many relationship with Appointment</td><td></td><td>1</td></tr>
+                  <tr><td>Doctor has a one-to-many relationship with Appointment</td><td></td><td>1</td></tr>
+                  <tr><td>Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history</td><td></td><td>1</td></tr>
+                  <tr><td>attributes and relationship directions are consistent with the scenario</td><td></td><td>1</td></tr>
+                  <tr><td>CustomerID determines Postcode and Postcode determines Town</td><td></td><td>1</td></tr>
+                  <tr><td>Town is transitively dependent on CustomerID / depends on non-key Postcode</td><td></td><td>1</td></tr>
+                  <tr><td>CUSTOMER(CustomerID, Postcode)</td><td></td><td>1</td></tr>
+                  <tr><td>POSTCODE(Postcode, Town), with Postcode linked as foreign key</td><td></td><td>1</td></tr>
+                  <tr><td>data management/data dictionary stores metadata about structure</td><td></td><td>1</td></tr>
+                  <tr><td>data modelling or logical schema represents the database design</td><td></td><td>1</td></tr>
+                  <tr><td>integrity rules maintain valid and consistent data</td><td></td><td>1</td></tr>
+                  <tr><td>security uses access rights and backup procedures</td><td></td><td>1</td></tr>
+                  <tr><td>developer interface supports defining structures or building database applications/forms/reports</td><td></td><td>1</td></tr>
+                  <tr><td>query processor interprets/checks and carries out queries or maintenance statements</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -124,266 +189,296 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 081 | 45 minutes | Paper 1 Section 8 | Database relationships</p>
-            <h2>A key is not decoration. It is how a database points at the right row without squinting.</h2>
+            <p class="lesson-meta">Lesson 081 | 45 minutes | Paper 1 Section 8 | 5-minute quiz and monthly checkpoint</p>
+            <h2>A table is not just boxes. It is boxes with rules, otherwise the data starts doing parkour.</h2>
             <p>
-              This lesson explains how primary keys uniquely identify records, how foreign keys link tables,
-              and how relationships connect data without repeating everything. The focus is precise Cambridge
-              vocabulary: unique, non-null, reference, related table and integrity.
+              This lesson focuses on the inside of a database table: records, fields, data types, field sizes
+              and constraints. The aim is to design fields that store the right kind of data and reject values
+              that should not be accepted.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>suitable primary keys for records in a table</span></div>
-              <div><strong>Link</strong><span>foreign keys to matching primary keys in another table</span></div>
-              <div><strong>Explain</strong><span>one-to-many relationships and referential integrity</span></div>
+              <div><strong>Label</strong><span>table, record/tuple, field/attribute and value</span></div>
+              <div><strong>Select</strong><span>appropriate data types and field sizes for scenario data</span></div>
+              <div><strong>Apply</strong><span>constraints and validation rules to protect data integrity</span></div>
             </div>
           </div>
-          <div class="key-visual" aria-label="Key relationship visual">
-            <div class="key-table">
-              <strong>Student</strong>
-              <span class="pk">PK StudentID</span>
-              <span>Name</span>
-            </div>
-            <div class="link-line">1 -> many</div>
-            <div class="key-table">
-              <strong>Loan</strong>
-              <span class="pk">PK LoanID</span>
-              <span class="fk">FK StudentID</span>
-              <span>BookID</span>
-            </div>
-            <p>Foreign key values must match existing primary key values.</p>
+          <div class="table-visual" aria-label="Annotated table visual">
+            <div class="visual-row head"><span>StudentID</span><span>Name</span><span>DOB</span><span>FeePaid</span></div>
+            <div class="visual-row"><span>S0234</span><span>Amira Chen</span><span>2009-04-18</span><span>TRUE</span></div>
+            <div class="visual-row"><span>S0318</span><span>Leo Singh</span><span>2008-11-02</span><span>FALSE</span></div>
+            <p>Fields are columns. Records are rows. Values live at the intersections.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Key questions are often mark-scheme strict: name the field, say which table it belongs to, and explain the link.</p>
+            <p>Database design marks often come from precise choices: a date field for dates, Boolean for true/false, and a constraint with a clear purpose.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not choose a name as a primary key. Two students can share a name, and names can change. Databases dislike identity drama.</p>
+            <p>Do not choose Integer for phone numbers. You do not calculate with phone numbers, and leading zeroes may matter.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Two students are called Alex Chen. Which field should identify each student?</h2>
-            <p>Identifiers must be based on suitable keys rather than informal characteristics.</p>
+            <h2>A school stores a phone number as Integer. What could go wrong?</h2>
+            <p>The phone number is not trying to join a maths competition.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="name">Name</button>
-            <button class="choice-card" type="button" data-hook="tutor">TutorGroup</button>
-            <button class="choice-card" type="button" data-hook="studentid">StudentID</button>
-            <button class="choice-card" type="button" data-hook="phone">PhoneNumber</button>
+            <button class="choice-card" type="button" data-hook="zero">A leading zero may be removed</button>
+            <button class="choice-card" type="button" data-hook="sum">The school can add two phone numbers</button>
+            <button class="choice-card" type="button" data-hook="date">It becomes a valid date</button>
+            <button class="choice-card" type="button" data-hook="image">It stores a profile photo</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the field most suitable as a primary key.
+            Choose the database design issue.
           </div>
         </section>
 
-        <section class="panel" id="primary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+        <section class="panel" id="terms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Primary keys uniquely identify records</h2>
-            <p>A primary key is a field, or combination of fields, that uniquely identifies each record in a table. It should be unique and not null.</p>
+            <h2>Tables, records and fields</h2>
+            <p>A table stores records about one entity. A record is one complete row. A field is one column or attribute.</p>
           </div>
-          <div class="criteria-grid">
-            <article><strong>Unique</strong><span>No two records in the table have the same key value.</span></article>
-            <article><strong>Not null</strong><span>Every record must have a key value; blank identity is not identity.</span></article>
-            <article><strong>Stable</strong><span>A good key is unlikely to change, such as an allocated ID.</span></article>
-            <article><strong>Minimal</strong><span>Do not use extra fields when one suitable field is enough.</span></article>
-          </div>
-          <div class="student-table" role="table" aria-label="Student table">
+          <div class="term-table" role="table" aria-label="Table record field terms">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">StudentID</div>
-              <div role="columnheader">Name</div>
-              <div role="columnheader">TutorGroup</div>
-              <div role="columnheader">PhoneNumber</div>
+              <div role="columnheader">Term</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Example</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell" class="key-cell">S0234</div><div role="cell">Alex Chen</div><div role="cell">12A</div><div role="cell">02071234567</div>
+              <div role="cell">Table</div>
+              <div role="cell">A collection of records for one entity</div>
+              <div role="cell">Student table</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell" class="key-cell">S0318</div><div role="cell">Alex Chen</div><div role="cell">12B</div><div role="cell">02079876543</div>
+              <div role="cell">Record / tuple</div>
+              <div role="cell">One complete row in a table</div>
+              <div role="cell">S0234, Amira Chen, 2009-04-18, TRUE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Field / attribute</div>
+              <div role="cell">One column or property stored for each record</div>
+              <div role="cell">StudentID, Name, DateOfBirth, FeePaid</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Value</div>
+              <div role="cell">One item of data in a field for a record</div>
+              <div role="cell">TRUE in the FeePaid field</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start primary -->
-        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" aria-labelledby="explanation-primary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-primary-title">Primary keys uniquely identify records</h2>
+        <!-- stage10-explanation:start terms -->
+        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <h2 class="explanation-sr-only" id="explanation-terms-title">Tables, records and fields</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-primary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Primary keys uniquely identify records with a structured visual model." />
-            <figcaption class="explanation-sr-only">Primary keys uniquely identify records: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tables, records and fields with a structured visual model." />
+            <figcaption class="explanation-sr-only">Tables, records and fields: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A primary key uniquely identifies each row and cannot be null.</li><li><strong>Lesson fact:</strong> Candidate keys are minimal sets of attributes that can uniquely identify a row.</li><li><strong>Lesson fact:</strong> Stability is a desirable design property when choosing a primary key, not a formal defining constraint of every primary key.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A table stores records about one entity. A record is one complete row. A field is one column or attribute.</li><li><strong>Lesson fact:</strong> A collection of records for one entity</li><li><strong>Lesson fact:</strong> Student table</li><li><strong>Lesson fact:</strong> Record / tuple</li><li><strong>Lesson fact:</strong> One complete row in a table</li><li><strong>Lesson fact:</strong> S0234, Amira Chen, 2009-04-18, TRUE</li><li><strong>Lesson fact:</strong> Field / attribute</li><li><strong>Lesson fact:</strong> One column or property stored for each record</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, FeePaid</li><li><strong>Lesson fact:</strong> One item of data in a field for a record</li><li><strong>Lesson fact:</strong> TRUE in the FeePaid field</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end primary -->
-        <section class="panel" id="foreign" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+        <!-- stage10-explanation:end terms -->
+        <section class="panel" id="fields" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Foreign keys link tables</h2>
-            <p>A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.</p>
+            <h2>Designing fields properly</h2>
+            <p>Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</p>
           </div>
-          <div class="relational-preview">
-            <div class="mini-table">
-              <h3>Student</h3>
-              <p><strong>StudentID</strong> | Name</p>
-              <p>S0234 | Alex Chen</p>
-              <p>S0318 | Maya Patel</p>
+          <div class="field-design-grid">
+            <article><strong>Field name</strong><span>Clear and specific: <code>DateOfBirth</code>, not <code>date</code>.</span></article>
+            <article><strong>Data type</strong><span>Controls the kind of data: text, integer, real, date/time, Boolean.</span></article>
+            <article><strong>Field size</strong><span>Maximum storage length where relevant, such as 8 characters for StudentID.</span></article>
+            <article><strong>Constraint</strong><span>A rule that a value must satisfy before it is accepted.</span></article>
+          </div>
+          <div class="callout">Chinese support: field = 字段/列；record = 记录/行；constraint = 约束/限制规则；data integrity = 数据完整性。</div>
+        </section>
+
+        <!-- stage10-explanation:start fields -->
+        <section class="panel explanation-panel" id="explanation-fields" data-explains="fields" data-explanation-kind="mechanism" aria-labelledby="explanation-fields-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <h2 class="explanation-sr-only" id="explanation-fields-title">Designing fields properly</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-fields.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Designing fields properly with a structured visual model." />
+            <figcaption class="explanation-sr-only">Designing fields properly: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</li><li><strong>Lesson fact:</strong> Field name Clear and specific: DateOfBirth , not date .</li><li><strong>Lesson fact:</strong> Data type Controls the kind of data: text, integer, real, date/time, Boolean.</li><li><strong>Lesson fact:</strong> Field size Maximum storage length where relevant, such as 8 characters for StudentID.</li><li><strong>Lesson fact:</strong> Constraint A rule that a value must satisfy before it is accepted.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fields -->
+        <section class="panel" id="types" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Common database data types</h2>
+          </div>
+          <div class="data-type-table" role="table" aria-label="Common data types">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Data type</div>
+              <div role="columnheader">Use when</div>
+              <div role="columnheader">Example</div>
             </div>
-            <div class="relation-arrow">StudentID links tables</div>
-            <div class="mini-table">
-              <h3>Loan</h3>
-              <p><strong>LoanID</strong> | StudentID | BookID</p>
-              <p>L9001 | S0234 | B144</p>
-              <p>L9002 | S0234 | B102</p>
+            <div class="table-row" role="row">
+              <div role="cell">Text / string</div>
+              <div role="cell">The value may contain letters, spaces, symbols or leading zeroes</div>
+              <div role="cell">PhoneNumber = "02071234567"</div>
             </div>
+            <div class="table-row" role="row">
+              <div role="cell">Integer</div>
+              <div role="cell">Whole number used for counting or arithmetic</div>
+              <div role="cell">Quantity = 24</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Real / decimal</div>
+              <div role="cell">Number may include fractional part</div>
+              <div role="cell">MassKg = 62.5</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Boolean</div>
+              <div role="cell">Only two logical states are needed</div>
+              <div role="cell">FeePaid = TRUE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Date/time</div>
+              <div role="cell">Date or time operations, ordering or validation are needed</div>
+              <div role="cell">AppointmentDate = 2026-06-15</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start types -->
+        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <h2 class="explanation-sr-only" id="explanation-types-title">Common database data types</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common database data types with a structured visual model." />
+            <figcaption class="explanation-sr-only">Common database data types: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Data type</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Text / string</li><li><strong>Lesson fact:</strong> The value may contain letters, spaces, symbols or leading zeroes</li><li><strong>Lesson fact:</strong> PhoneNumber = &quot;02071234567&quot;</li><li><strong>Lesson fact:</strong> Whole number used for counting or arithmetic</li><li><strong>Lesson fact:</strong> Quantity = 24</li><li><strong>Lesson fact:</strong> Real / decimal</li><li><strong>Lesson fact:</strong> Number may include fractional part</li><li><strong>Lesson fact:</strong> MassKg = 62.5</li><li><strong>Lesson fact:</strong> Only two logical states are needed</li><li><strong>Lesson fact:</strong> FeePaid = TRUE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end types -->
+        <section class="panel" id="constraints" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Constraints and validation rules</h2>
+            <p>A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</p>
+          </div>
+          <div class="constraint-grid">
+            <article><strong>Presence check</strong><span>Value must not be blank. Example: Name is required.</span></article>
+            <article><strong>Range check</strong><span>Value must be within limits. Example: Mark is 0 to 100.</span></article>
+            <article><strong>Type check</strong><span>Value must match the data type. Example: Quantity must be Integer.</span></article>
+            <article><strong>Length check</strong><span>Value must have a permitted length. Example: StudentID has 5 characters.</span></article>
+            <article><strong>Format check</strong><span>Value must match a pattern. Example: postcode or email pattern.</span></article>
+            <article><strong>Lookup check</strong><span>Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</span></article>
           </div>
           <div class="answer-frame">
             <strong>Exam sentence:</strong>
-            <span><code>StudentID</code> is a primary key in <code>Student</code> and a foreign key in <code>Loan</code>, linking each loan to the student who borrowed the book.</span>
+            <span>A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</span>
           </div>
         </section>
 
-        <!-- stage10-explanation:start foreign -->
-        <section class="panel explanation-panel" id="explanation-foreign" data-explains="foreign" data-explanation-kind="mechanism" aria-labelledby="explanation-foreign-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-foreign-title">Foreign keys link tables</h2>
+        <!-- stage10-explanation:start constraints -->
+        <section class="panel explanation-panel" id="explanation-constraints" data-explains="constraints" data-explanation-kind="mechanism" aria-labelledby="explanation-constraints-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <h2 class="explanation-sr-only" id="explanation-constraints-title">Constraints and validation rules</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-foreign.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Foreign keys link tables with a structured visual model." />
-            <figcaption class="explanation-sr-only">Foreign keys link tables: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-constraints.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constraints and validation rules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Constraints and validation rules: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.</li><li><strong>Lesson fact:</strong> StudentID | Name</li><li><strong>Lesson fact:</strong> S0234 | Alex Chen</li><li><strong>Lesson fact:</strong> S0318 | Maya Patel</li><li><strong>Lesson fact:</strong> StudentID links tables</li><li><strong>Lesson fact:</strong> LoanID | StudentID | BookID</li><li><strong>Lesson fact:</strong> L9001 | S0234 | B144</li><li><strong>Lesson fact:</strong> L9002 | S0234 | B102</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> StudentID is a primary key in Student and a foreign key in Loan , linking each loan to the student who borrowed the book.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</li><li><strong>Lesson fact:</strong> Presence check Value must not be blank. Example: Name is required.</li><li><strong>Lesson fact:</strong> Range check Value must be within limits. Example: Mark is 0 to 100.</li><li><strong>Lesson fact:</strong> Type check Value must match the data type. Example: Quantity must be Integer.</li><li><strong>Lesson fact:</strong> Length check Value must have a permitted length. Example: StudentID has 5 characters.</li><li><strong>Lesson fact:</strong> Format check Value must match a pattern. Example: postcode or email pattern.</li><li><strong>Lesson fact:</strong> Lookup check Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end foreign -->
-        <section class="panel" id="relationships" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+        <!-- stage10-explanation:end constraints -->
+        <section class="panel" id="type-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Relationships describe how records connect</h2>
-            <p>A relationship describes how records in one table are associated with records in another table.</p>
-          </div>
-          <div class="relationship-grid">
-            <article><strong>One-to-one</strong><span>One record in A relates to one record in B. Example: person and passport in a simplified system.</span></article>
-            <article><strong>One-to-many</strong><span>One record in A relates to many records in B. Example: one student can have many loans.</span></article>
-            <article><strong>Many-to-many</strong><span>Many records in A relate to many in B. Often resolved using a linking table. Example: students and clubs.</span></article>
-          </div>
-          <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；relationship = 关系；one-to-many = 一对多。</div>
-        </section>
-
-        <!-- stage10-explanation:start relationships -->
-        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-relationships-title">Relationships describe how records connect</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-relationships.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relationships describe how records connect with a structured visual model." />
-            <figcaption class="explanation-sr-only">Relationships describe how records connect: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A relationship describes how records in one table are associated with records in another table.</li><li><strong>Lesson fact:</strong> One-to-one One record in A relates to one record in B. Example: person and passport in a simplified system.</li><li><strong>Lesson fact:</strong> One-to-many One record in A relates to many records in B. Example: one student can have many loans.</li><li><strong>Lesson fact:</strong> Many-to-many Many records in A relate to many in B. Often resolved using a linking table. Example: students and clubs.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end relationships -->
-        <section class="panel" id="referential" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Referential integrity</h2>
-            <p>Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</p>
-          </div>
-          <div class="integrity-grid">
-            <article><strong>Valid</strong><span><code>Loan.StudentID = S0234</code> is valid if <code>Student.StudentID = S0234</code> exists.</span></article>
-            <article><strong>Invalid</strong><span><code>Loan.StudentID = S9999</code> is invalid if no student with that ID exists.</span></article>
-            <article><strong>Why</strong><span>It prevents orphan records, such as a loan assigned to a non-existent student.</span></article>
-          </div>
-        </section>
-
-
-        <section class="panel" id="key-picker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Interactive key picker</p>
-            <h2>Choose the best primary key</h2>
+            <p class="eyebrow">Interactive data type chooser</p>
+            <h2>Choose the best data type</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Table
-              <select id="keyInput">
-                <option value="student">Student(StudentID, Name, DateOfBirth, TutorGroup)</option>
-                <option value="book">Book(ISBN, Title, Author, Price)</option>
-                <option value="appointment">Appointment(AppointmentID, PatientID, Date, Time)</option>
-                <option value="memberWeak">Member(Name, PhoneNumber, Email)</option>
-                <option value="product">Product(ProductCode, Description, UnitPrice)</option>
+              Field
+              <select id="typeInput">
+                <option value="phone">PhoneNumber stores 02071234567</option>
+                <option value="paid">FeePaid stores TRUE or FALSE</option>
+                <option value="height">HeightM stores 1.72</option>
+                <option value="quantity">QuantityInStock stores 54</option>
+                <option value="appointment">AppointmentDate stores 2026-06-15</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="keyBtn">Pick key</button>
+            <button class="primary-button" type="button" id="typeBtn">Choose type</button>
           </div>
-          <div class="result-box" id="keyResult">Choose a table to identify the strongest primary key.</div>
-          <div class="feedback" id="keyReason">A good primary key is unique, not null and stable.</div>
+          <div class="result-box" id="typeResult">Choose a field, then decide the data type.</div>
+          <div class="feedback" id="typeReason">The best answer depends on how the value is used, not how numeric it looks.</div>
         </section>
 
-        <!-- stage10-explanation:start key-picker -->
-        <section class="panel explanation-panel" id="explanation-key-picker" data-explains="key-picker" data-explanation-kind="mechanism" aria-labelledby="explanation-key-picker-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-key-picker-title">Choose the best primary key</h2>
+        <!-- stage10-explanation:start type-tool -->
+        <section class="panel explanation-panel" id="explanation-type-tool" data-explains="type-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-type-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <h2 class="explanation-sr-only" id="explanation-type-tool-title">Choose the best data type</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-key-picker.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best primary key with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the best primary key: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-type-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best data type with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the best data type: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive key picker</li><li><strong>Lesson fact:</strong> Choose a table to identify the strongest primary key.</li><li><strong>Lesson fact:</strong> A good primary key is unique, not null and stable.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive data type chooser</li><li><strong>Lesson fact:</strong> Choose a field, then decide the data type.</li><li><strong>Lesson fact:</strong> The best answer depends on how the value is used, not how numeric it looks.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end key-picker -->
-        <section class="panel" id="relationship-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+        <!-- stage10-explanation:end type-tool -->
+        <section class="panel" id="constraint-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
-            <p class="eyebrow">Interactive relationship classifier</p>
-            <h2>Classify the relationship</h2>
+            <p class="eyebrow">Interactive constraint checker</p>
+            <h2>Which rule rejects the bad value?</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
-              <select id="relationshipInput">
-                <option value="studentLoans">One student can borrow many books through many loan records.</option>
-                <option value="personPassport">One person has one passport in a simplified passport database.</option>
-                <option value="studentsClubs">A student can join many clubs; a club has many students.</option>
-                <option value="customerOrders">One customer can place many orders.</option>
-                <option value="doctorAppointments">One doctor can have many appointments.</option>
+              Bad value
+              <select id="constraintInput">
+                <option value="blankName">Name is blank</option>
+                <option value="badMark">ExamMark is 128</option>
+                <option value="badId">StudentID is S1234567 but should be 5 characters</option>
+                <option value="badGrade">Grade is X but allowed grades are A to E or U</option>
+                <option value="badQuantity">Quantity is "ten"</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="relationshipBtn">Classify</button>
+            <button class="primary-button" type="button" id="constraintBtn">Check rule</button>
           </div>
-          <div class="result-box" id="relationshipResult">Choose a scenario to classify the relationship.</div>
-          <div class="feedback" id="relationshipReason">Use one-to-one, one-to-many or many-to-many with a scenario reason.</div>
+          <div class="result-box" id="constraintResult">Choose a bad value to identify the check.</div>
+          <div class="feedback" id="constraintReason">Name the rule and explain what it prevents.</div>
         </section>
 
-        <!-- stage10-explanation:start relationship-tool -->
-        <section class="panel explanation-panel" id="explanation-relationship-tool" data-explains="relationship-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-relationship-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-relationship-tool-title">Classify the relationship</h2>
+        <!-- stage10-explanation:start constraint-tool -->
+        <section class="panel explanation-panel" id="explanation-constraint-tool" data-explains="constraint-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-constraint-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <h2 class="explanation-sr-only" id="explanation-constraint-tool-title">Which rule rejects the bad value?</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-relationship-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify the relationship with a structured visual model." />
-            <figcaption class="explanation-sr-only">Classify the relationship: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-constraint-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which rule rejects the bad value? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Which rule rejects the bad value?: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive relationship classifier</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to classify the relationship.</li><li><strong>Lesson fact:</strong> Use one-to-one, one-to-many or many-to-many with a scenario reason.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive constraint checker</li><li><strong>Lesson fact:</strong> Bad value</li><li><strong>Lesson fact:</strong> Choose a bad value to identify the check.</li><li><strong>Lesson fact:</strong> Name the rule and explain what it prevents.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end relationship-tool -->
+        <!-- stage10-explanation:end constraint-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Identify keys and explain links</h2>
+            <h2>Design fields that do not invite chaos</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="library">Library loans</button>
-            <button class="tab" type="button" data-example="orders">Orders</button>
-            <button class="tab" type="button" data-example="clubs">Linking table</button>
-            <button class="tab" type="button" data-example="integrity">Integrity error</button>
+            <button class="tab active" type="button" data-example="student">Student table</button>
+            <button class="tab" type="button" data-example="booking">Booking table</button>
+            <button class="tab" type="button" data-example="phone">Phone-number data type error</button>
+            <button class="tab" type="button" data-example="constraint">Constraint answer</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -391,16 +486,42 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short-answer checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
+            <h2>5-minute quiz plus core checks</h2>
+            <p>Answer quickly, then use Show answer to mark with strict vocabulary.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
+        <section class="panel" id="checkpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <div class="section-title">
+            <p class="eyebrow">Monthly checkpoint</p>
+            <h2>Section 8 basics so far</h2>
+            <p>This checkpoint connects Lessons 079-080 without becoming a full exam.</p>
+          </div>
+          <div class="checkpoint-grid">
+            <article><strong>1. Define</strong><span>data, information, database, DBMS, flat-file, relational database.</span></article>
+            <article><strong>2. Compare</strong><span>one-table repeated data vs linked tables with reduced redundancy.</span></article>
+            <article><strong>3. Design</strong><span>choose data types and constraints for five fields in a small scenario.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start checkpoint -->
+        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
+          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">Section 8 basics so far</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 8 basics so far with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 8 basics so far: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> This checkpoint connects Lessons 079-080 without becoming a full exam.</li><li><strong>Lesson fact:</strong> 1. Define data, information, database, DBMS, flat-file, relational database.</li><li><strong>Lesson fact:</strong> 2. Compare one-table repeated data vs linked tables with reduced redundancy.</li><li><strong>Lesson fact:</strong> 3. Design choose data types and constraints for five fields in a small scenario.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checkpoint -->
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common key and relationship errors</h2>
+            <h2>Repair common field design errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -409,7 +530,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about table names and key roles.</p>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about selecting and justifying types and constraints.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -417,12 +538,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Keep the roles separate</h2>
+            <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Primary key</strong><span>Uniquely identifies each record in its own table.</span></div>
-            <div><strong>Foreign key</strong><span>References a primary key in another table to create a link.</span></div>
-            <div><strong>Relationship</strong><span>Describes how records in two tables are associated.</span></div>
+            <div><strong>Structure</strong><span>Table = collection of records; record = row; field = column.</span></div>
+            <div><strong>Types</strong><span>Choose the type based on use: text, integer, real, Boolean or date/time.</span></div>
+            <div><strong>Constraints</strong><span>Rules reject invalid values and help maintain data integrity.</span></div>
           </div>
         </section>
 
@@ -433,16 +554,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Label keys</strong>
-              <span>For Student(StudentID, Name), Book(BookID, Title) and Loan(LoanID, StudentID, BookID, DateBorrowed), label all primary keys and foreign keys.</span>
+              <strong>Task 1: Field design table</strong>
+              <span>For fields StudentID, Name, DateOfBirth, PhoneNumber, ExamMark and FeePaid, give a suitable data type, field size if relevant, and one constraint.</span>
             </article>
             <article>
-              <strong>Task 2: Explain one relationship</strong>
-              <span>Write a paragraph explaining the relationship between Student and Loan, including one-to-many and the foreign key field.</span>
+              <strong>Task 2: Explain two choices</strong>
+              <span>Write two short paragraphs explaining why PhoneNumber should usually be text and why ExamMark should have a range check.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how primary keys and foreign keys help maintain links between tables in a relational database." Use a library loan example.</span>
+              <span>Answer: "Explain how suitable data types and constraints can improve data integrity in a school database." Use two fields as examples.</span>
             </article>
           </div>
         </section>
@@ -450,8 +571,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

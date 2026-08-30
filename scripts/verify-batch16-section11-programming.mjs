@@ -49,7 +49,9 @@ function parseCsv(text) {
 }
 
 function jpegDimensions(relativePath) {
-  const buffer = fs.readFileSync(path.join(root, relativePath));
+  const filePath = path.join(root, relativePath);
+  if (!fs.existsSync(filePath)) return null;
+  const buffer = fs.readFileSync(filePath);
   let offset = 2;
   while (offset + 9 < buffer.length) {
     if (buffer[offset] !== 0xff) { offset += 1; continue; }
@@ -79,14 +81,15 @@ expect(containsGroup("Total <- 0. A procedure header declares an interface and e
 expect(containsGroup("Total <- 0. A procedure header declares an interface and each call supplies an argument.", ["argument"]), "coverage normalisation lost argument text after a Markdown assignment arrow");
 
 const lessonChecks = [
-  ["126", ["CONSTANT", "DECLARE", "assignment", "arithmetic", "logical", "INPUT", "OUTPUT", "IF", "CASE", "FOR", "WHILE", "REPEAT"]],
-  ["127", ["IF", "ELSE", "nested", "CASE", "OTHERWISE", "ENDCASE"]],
-  ["128", ["count-controlled", "FOR", "TO", "NEXT", "justify"]],
-  ["129", ["pre-condition", "post-condition", "WHILE", "REPEAT", "UNTIL", "justify"]],
-  ["130", ["procedure", "function", "BYREF", "BYVAL", "expression", "procedure header", "function header", "interface", "parameter", "argument", "return value"]],
-  ["133", ["built-in", "library routines", "provided", "string manipulation functions", "supplied", "position convention"]],
-  ["139", ["clear", "efficient", "Cambridge", "pseudocode"]],
-  ["140", ["flowchart", "structured English", "pseudocode", "every branch", "Trace"]],
+  ["128", ["CONSTANT", "DECLARE", "assignment", "arithmetic", "logical", "INPUT", "OUTPUT"]],
+  ["130", ["IF", "CASE", "FOR", "WHILE", "REPEAT"]],
+  ["130", ["IF", "ELSE", "nested", "CASE", "OTHERWISE", "ENDCASE"]],
+  ["130", ["count-controlled", "FOR", "TO", "NEXT", "justify"]],
+  ["130", ["pre-condition", "post-condition", "WHILE", "REPEAT", "UNTIL", "justify"]],
+  ["131", ["procedure", "function", "BYREF", "BYVAL", "expression", "procedure header", "function header", "interface", "parameter", "argument", "return value"]],
+  ["129", ["built-in", "library routines", "provided", "string manipulation functions", "supplied", "position convention"]],
+  ["134", ["clear", "efficient", "Cambridge", "pseudocode"]],
+  ["127", ["flowchart", "structured English", "pseudocode", "every branch", "Trace"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -97,23 +100,23 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["L114-Q5", ["constant", "declares", "inputs", "outputs"]],
-  ["L127-Q1", ["IF", "ELSE", "ENDIF"]],
-  ["L127-Q2", ["CASE", "OTHERWISE", "ENDCASE"]],
-  ["L128-Q4", ["FOR loop", "known", "not known"]],
-  ["AQ130-Q4", ["REPEAT...UNTIL", "post-condition", "at least once"]],
-  ["L131-Q2", ["BYREF", "reference", "caller"]],
-  ["AM140-Q2", ["procedure", "BYREF", "caller"]],
-  ["L130-Q3", ["procedure", "function", "returns a value"]],
-  ["AQ130-Q5", ["function header/interface", "parameters", "arguments", "return"]],
-  ["L133-Q2", ["question states", "LENGTH", "characters"]],
-  ["AQ135-Q3", ["defines FIRST", "supplied library-routine definition"]],
-  ["L140-Q1", ["flowchart", "INPUT Mark", "both flowchart branches"]],
-  ["AQ140-Q5", ["Structured English", "Cambridge pseudocode"]],
+  ["L115-Q5", ["constant", "declares", "inputs", "outputs"]],
+  ["L128-Q1", ["IF", "ELSE", "ENDIF"]],
+  ["L128-Q2", ["CASE", "OTHERWISE", "ENDCASE"]],
+  ["L129-Q4", ["FOR loop", "known", "not known"]],
+  ["AQ131-Q4", ["REPEAT...UNTIL", "post-condition", "at least once"]],
+  ["L132-Q2", ["BYREF", "reference", "caller"]],
+  ["AM141-Q2", ["procedure", "BYREF", "caller"]],
+  ["L131-Q3", ["procedure", "function", "returns a value"]],
+  ["AQ131-Q5", ["function header/interface", "parameters", "arguments", "return"]],
+  ["L134-Q2", ["question states", "LENGTH", "characters"]],
+  ["AQ136-Q3", ["defines FIRST", "supplied library-routine definition"]],
+  ["L141-Q1", ["flowchart", "INPUT Mark", "both flowchart branches"]],
+  ["AQ141-Q5", ["Structured English", "Cambridge pseudocode"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 11 assessment`);
 
-const acceptedSection11 = [...questions.values()].filter(({ id }) => /^(?:L1(?:1[4-9]|2[6-9]|3[0-9]|40|41)-Q|AQ1(?:30|35|40)-Q|AM140-Q|AR141-Q)/.test(id))
+const acceptedSection11 = [...questions.values()].filter(({ id }) => /^(?:L1(?:1[4-9]|2[7-9]|3[0-9]|40|41|42)-Q|AQ1(?:30|35|40)-Q|AM141-Q|AR142-Q)/.test(id))
   .map((question) => [question.prompt, question.answer, ...(question.points ?? []).flat(), ...(question.guidance ?? [])].join(" ")).join("\n");
 for (const [pattern, label] of [
   [/string functions? must be memorised/i, "string routines are falsely required from memory"],
@@ -124,7 +127,7 @@ for (const [pattern, label] of [
   [/CASE is (?:used|required) for every range/i, "CASE is falsely required for every range"],
 ]) expect(!pattern.test(acceptedSection11), `forbidden Section 11 assessment semantics: ${label}`);
 
-const visualKeys = ["133/substring", "140/standard"];
+const visualKeys = ["134/substring", "141/standard"];
 const semanticRows = parseCsv(read("audits/stage10-semantic-review-register.csv"));
 const targetRows = parseCsv(read("audits/stage10-explanation-target-register.csv"));
 const visualFacts = read("scripts/stage10-visual-repair-facts.json");
@@ -133,8 +136,9 @@ for (const key of visualKeys) {
   const visualPath = `web/assets/diagrams/stage10-infographics/stage10-lesson-${lesson}-${targetId}.jpg`;
   const dimensions = jpegDimensions(visualPath);
   expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${visualPath}: expected 1536x1024 JPEG`);
-  const visualHash = sha256(fs.readFileSync(path.join(root, visualPath)));
-  const semanticRow = semanticRows.find((row) => row.lesson === lesson && row.target_id === targetId);
+  const visualFile = path.join(root, visualPath);
+  const visualHash = fs.existsSync(visualFile) ? sha256(fs.readFileSync(visualFile)) : "";
+  const semanticRow = semanticRows.find((row) => row.asset === path.basename(visualPath));
   expect(semanticRow?.sha256 === visualHash, `${key}: semantic review hash does not match the current image`);
   expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", `${key}: visual lacks two approved semantic review passes`);
   const deliveryLesson = visualDeliveryLesson(lesson, targetId);
@@ -163,9 +167,9 @@ for (const [id, pattern] of mutationPatterns) {
 }
 
 for (const [requirementId, questionIds, pattern] of [
-  ["S11.01", ["L140-Q1", "AQ140-Q5"], /flowchart|structured English|pseudocode/gi],
-  ["S11.03", ["L133-Q2", "AQ135-Q3"], /string|LENGTH|FIRST|supplied|function/gi],
-  ["S11.08", ["AQ130-Q5", "AR141-Q2"], /header|interface|parameter|argument|return value|BYREF|BYVAL/gi],
+  ["S11.01", ["L141-Q1", "AQ141-Q5"], /flowchart|structured English|pseudocode/gi],
+  ["S11.03", ["L134-Q2", "AQ136-Q3"], /string|LENGTH|FIRST|supplied|function/gi],
+  ["S11.08", ["AQ131-Q5", "AR142-Q2"], /header|interface|parameter|argument|return value|BYREF|BYVAL/gi],
 ]) {
   const mutation = evaluateRequirement(requirements.get(requirementId), {
     questionTransform: (question) => questionIds.includes(question.id) ? {

@@ -1,101 +1,187 @@
-const memory = {
-  20: 70,
-  70: 999,
-  100: 11,
-  103: 44,
-};
-
-const modeMap = {
-  immediate: {
-    result: "Immediate addressing: value loaded = 20",
-    method: "The operand #20 is the actual value. The CPU does not use 20 as a memory address to find the operand value.",
-    trap: "Do not look up memory[20] for immediate addressing.",
+const lineMap = {
+  load: {
+    result: "Mnemonic: LOAD | Operand: count",
+    method: "LOAD is the operation mnemonic. count is a symbolic operand that the assembler resolves to an address or value depending on the instruction set.",
+    trap: "The word LOAD is not machine code; it must be assembled into a binary opcode.",
   },
-  direct: {
-    result: "Direct addressing: effective address = 20, value loaded = 70",
-    method: "The operand 20 is a memory address. The CPU reads memory[20], which is 70.",
-    trap: "Do not load the number 20 itself unless the mode is immediate.",
+  add: {
+    result: "Mnemonic: ADD | Operand: value",
+    method: "ADD represents the addition operation. value tells the instruction what data/address/register to use.",
+    trap: "Do not call value the opcode. ADD is the readable operation mnemonic.",
   },
-  indirect: {
-    result: "Indirect addressing: pointer address = 20, effective address = 70, value loaded = 999",
-    method: "The CPU reads memory[20] to get 70. It then uses 70 as the effective address and reads memory[70], which is 999.",
-    trap: "Indirect addressing requires two memory references in this simplified example.",
+  jump: {
+    result: "Label: LOOP | Mnemonic: JMP | Operand: START",
+    method: "LOOP names this line. JMP is the jump mnemonic. START is a label used as the jump target.",
+    trap: "A label is not executed as an instruction; it is resolved to an address by the assembler.",
   },
-  indexed: {
-    result: "Indexed addressing: effective address = 100 + IX(3) = 103, value loaded = 44",
-    method: "The base operand is 100 and the index register contains 3. The effective address is 103, so the CPU reads memory[103].",
-    trap: "Do not read memory[100] directly when an index register is part of the addressing mode.",
+  comment: {
+    result: "Mnemonic: STORE | Operand: total | Comment: save result",
+    method: "STORE represents the operation. total identifies where the value is stored. Text after the semicolon is for humans.",
+    trap: "Comments are ignored by the assembler and do not become machine code.",
   },
-  direct103: {
-    result: "Direct addressing: effective address = 103, value loaded = 44",
-    method: "The operand 103 is the memory address. The CPU reads memory[103], which is 44.",
-    trap: "This reaches the same value as the indexed example, but by a different addressing mode.",
+  directive: {
+    result: "Label: COUNT | Directive: DAT | Value: 5",
+    method: "DAT is treated here as an assembler directive to reserve or define data, not as a CPU operation.",
+    trap: "Directives guide the assembler; they are not the same as executable mnemonics.",
   },
 };
 
 const examples = {
+  parse: {
+    title: "Example 1: parse an assembly line",
+    problem: "Parse `LOOP: ADD value ; add next item`.",
+    steps: [
+      "LOOP is a label that names the line or address.",
+      "ADD is the mnemonic representing an addition operation.",
+      "value is the operand used by the instruction.",
+      "The text after the semicolon is a comment and is ignored during assembly.",
+    ],
+  },
+  translate: {
+    title: "Example 2: assembler translation",
+    problem: "Explain how `ADD value` becomes executable.",
+    steps: [
+      "The assembler looks up the mnemonic ADD in the instruction set.",
+      "It translates ADD into the corresponding binary opcode.",
+      "It resolves the operand value to an address, register code or immediate value depending on the instruction format.",
+      "The output is machine code that the CPU can fetch, decode and execute.",
+    ],
+  },
   compare: {
-    title: "Example 1: compare immediate and direct",
-    problem: "Given memory[20] = 70, compare LOAD #20 and LOAD 20.",
+    title: "Example 3: compare language levels",
+    problem: "Compare assembly language with machine code and high-level language.",
     steps: [
-      "LOAD #20 uses immediate addressing, so the operand is the value 20.",
-      "LOAD 20 uses direct addressing, so the operand is the address 20.",
-      "The CPU reads memory[20] and gets 70 for direct addressing.",
-      "Same number in the instruction; different interpretation.",
-    ],
-  },
-  indirect: {
-    title: "Example 2: indirect addressing trace",
-    problem: "Given memory[20] = 70 and memory[70] = 999, trace LOAD (20).",
-    steps: [
-      "The operand 20 is a pointer location.",
-      "Read memory[20] to find the effective address: 70.",
-      "Read memory[70] to find the actual value: 999.",
-      "The value loaded is 999.",
-    ],
-  },
-  indexed: {
-    title: "Example 3: indexed array access",
-    problem: "Base address is 100, IX = 3 and memory[103] = 44. Trace LOAD 100, IX.",
-    steps: [
-      "The base address is 100.",
-      "The index register contains offset 3.",
-      "Effective address = 100 + 3 = 103.",
-      "The CPU reads memory[103], so the value loaded is 44.",
-      "Changing IX can access another element without changing the instruction's base address.",
+      "Machine code is binary and can be executed directly by the CPU.",
+      "Assembly language uses mnemonics and maps closely to machine code, but needs an assembler.",
+      "High-level language is more problem-oriented and usually needs a compiler or interpreter.",
+      "Assembly is low-level and processor-specific, not portable like many high-level languages.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which addressing mode uses the operand as the actual value?", accepted: ["immediate", "immediate addressing"], answer: "Immediate addressing" },
-  { id: "p2", prompt: "Which addressing mode uses the operand as the memory address of the value?", accepted: ["direct", "direct addressing"], answer: "Direct addressing" },
-  { id: "p3", prompt: "Which addressing mode uses the operand as a pointer to another address?", accepted: ["indirect", "indirect addressing"], answer: "Indirect addressing" },
-  { id: "p4", prompt: "Which addressing mode calculates base address plus index?", accepted: ["indexed", "indexed addressing", "index addressing"], answer: "Indexed addressing" },
-  { id: "p5", prompt: "Given memory[20] = 70, what value does LOAD 20 load using direct addressing?", accepted: ["70"], answer: "70" },
-  { id: "p6", prompt: "Given memory[20] = 70, what value does LOAD #20 load?", accepted: ["20"], answer: "20" },
-  { id: "p7", prompt: "Given memory[20] = 70 and memory[70] = 999, what value does LOAD (20) load?", accepted: ["999"], answer: "999" },
-  { id: "p8", prompt: "Base 100 and IX 3 gives what effective address?", accepted: ["103"], answer: "103" },
-  { id: "p9", prompt: "What is the name for the actual address used after applying the addressing mode?", accepted: ["effective address"], answer: "Effective address" },
-  { id: "p10", prompt: "In immediate addressing, does the CPU look up the operand as a memory address? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p1", prompt: "What low-level language uses mnemonics?", accepted: ["assembly language", "assembly"], answer: "Assembly language" },
+  { id: "p2", prompt: "What is a readable abbreviation such as ADD called?", accepted: ["mnemonic", "mnemonics"], answer: "Mnemonic" },
+  { id: "p3", prompt: "What translates assembly language into machine code?", accepted: ["assembler", "an assembler"], answer: "Assembler" },
+  { id: "p4", prompt: "What type of code does the assembler output?", accepted: ["machine code", "object code"], answer: "Machine code / object code" },
+  { id: "p5", prompt: "In `ADD value`, what is the mnemonic?", accepted: ["add"], answer: "ADD" },
+  { id: "p6", prompt: "In `ADD value`, what is the operand?", accepted: ["value"], answer: "value" },
+  { id: "p7", prompt: "In `LOOP: JMP START`, what is LOOP?", accepted: ["label", "a label"], answer: "Label" },
+  { id: "p8", prompt: "What character often begins a comment in the examples on this page?", accepted: [";", "semicolon"], answer: "Semicolon / ;" },
+  { id: "p9", prompt: "Is assembly language directly executed as text by the CPU? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Is assembly language generally processor-specific? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
 ];
 
 const mistakes = [
   {
-    wrong: "Immediate addressing means the operand is a memory address used immediately.",
-    fix: "Immediate addressing means the operand is the actual value to use, not a memory address.",
+    wrong: "Assembly language is binary machine code.",
+    fix: "Assembly language uses mnemonics and symbolic names. Machine code is binary. An assembler translates assembly into machine code.",
   },
   {
-    wrong: "Direct and indirect addressing both read the value from the operand address once.",
-    fix: "Direct addressing reads the value at the operand address. Indirect addressing first reads a pointer at the operand address, then reads the value at that effective address.",
+    wrong: "A compiler translates assembly language into machine code.",
+    fix: "An assembler translates assembly language into machine code. A compiler usually translates high-level language.",
   },
   {
-    wrong: "Indexed addressing stores an array inside the index register.",
-    fix: "The index register stores an offset. The effective address is calculated from base address plus index.",
+    wrong: "Comments in assembly become instructions for the CPU.",
+    fix: "Comments are for human readers and are ignored by the assembler.",
   },
   {
-    wrong: "The operand always has the same meaning, regardless of the addressing mode.",
-    fix: "The addressing mode tells the CPU how to interpret the operand, so the same operand can mean different things.",
+    wrong: "A label is the same as a mnemonic.",
+    fix: "A label names an address or line. A mnemonic represents an operation such as ADD or JMP.",
+  },
+];
+
+const assemblyFoundationQuestions = [
+  {
+    title: "Question 1",
+    marks: "4 marks",
+    prompt: "Define assembly language and mnemonic.",
+    answer: "Assembly language is a low-level programming language that uses symbolic instructions related closely to machine-code instructions. A mnemonic is a short human-readable abbreviation, such as ADD or LOAD, used to represent an operation in assembly language.",
+    marking: [
+      { mark: "B1", text: "assembly language is low-level" },
+      { mark: "B1", text: "assembly uses symbolic instructions/mnemonics" },
+      { mark: "B1", text: "mnemonic is a short human-readable abbreviation" },
+      { mark: "B1", text: "mnemonic represents an operation/instruction, e.g. ADD/LOAD" },
+    ],
+    strict: [
+      "Do not accept assembly as a high-level language.",
+      "Do not accept mnemonic as the operand/data value.",
+      "Allow valid mnemonic examples such as JMP, STORE, SUB.",
+    ],
+  },
+  {
+    title: "Question 2",
+    marks: "5 marks",
+    prompt: "Explain the purpose of an assembler.",
+    answer: "An assembler translates assembly language source code into machine code. It converts mnemonics into binary opcodes, encodes operands, and resolves labels into addresses. The translated code can then be linked or loaded as required before the processor executes the resulting machine code.",
+    marking: [
+      { mark: "B1", text: "assembler translates assembly language" },
+      { mark: "B1", text: "output is machine code or an object-code module" },
+      { mark: "B1", text: "mnemonics converted into opcodes/binary instructions" },
+      { mark: "B1", text: "labels/symbolic addresses resolved or operands encoded" },
+      { mark: "B1", text: "translated code can be linked/loaded as required for processor execution" },
+    ],
+    strict: [
+      "Do not accept compiler unless clearly described as assembler-like for assembly language.",
+      "Do not accept assembler as the CPU component that executes instructions.",
+      "Allow two-pass assembler explanation if accurate.",
+    ],
+  },
+  {
+    title: "Question 3",
+    marks: "4 marks",
+    prompt: "For the line `LOOP: ADD value ; add next item`, identify the label, mnemonic, operand and comment.",
+    answer: "LOOP is the label. ADD is the mnemonic. value is the operand. The comment is 'add next item', which is for the programmer and is ignored by the assembler.",
+    marking: [
+      { mark: "B1", text: "LOOP identified as label" },
+      { mark: "B1", text: "ADD identified as mnemonic" },
+      { mark: "B1", text: "value identified as operand" },
+      { mark: "B1", text: "add next item identified as comment" },
+    ],
+    strict: [
+      "Do not require the colon as part of the label name.",
+      "Do not award mnemonic mark if candidate says value is the operation.",
+      "Allow comment including the semicolon.",
+      "Mark each line part independently.",
+    ],
+  },
+  {
+    title: "Question 4",
+    marks: "6 marks",
+    prompt: "Compare assembly language with machine code.",
+    answer: "Machine code is binary instructions that the CPU can execute directly. Assembly language uses mnemonics such as ADD or LOAD, labels and symbolic operands, making it easier for humans to read than raw binary. Assembly language is still low-level and processor-specific. It must be translated by an assembler into machine code before direct execution.",
+    marking: [
+      { mark: "B1", text: "machine code is binary instructions" },
+      { mark: "B1", text: "machine code executed directly by CPU" },
+      { mark: "B1", text: "assembly uses mnemonics/symbolic instructions" },
+      { mark: "B1", text: "assembly is more human-readable than machine code" },
+      { mark: "B1", text: "assembly is low-level/processor-specific or close to machine code" },
+      { mark: "B1", text: "assembly must be translated by assembler" },
+    ],
+    strict: [
+      "Do not accept assembly as directly executed by CPU as text.",
+      "Do not accept machine code as mnemonics.",
+      "Allow labels/operands as symbolic features of assembly.",
+    ],
+  },
+  {
+    title: "Question 5",
+    marks: "6 marks",
+    prompt: "A student writes: 'Assembly language is portable high-level code that is interpreted by the CPU.' Explain why this is incorrect.",
+    answer: "Assembly language is low-level, not high-level. It is usually processor-specific because its mnemonics map closely to a processor's instruction set. The CPU does not interpret assembly source text directly. Assembly language must be translated by an assembler into machine code. Machine code is the binary form that the CPU executes.",
+    marking: [
+      { mark: "B1", text: "assembly is low-level, not high-level" },
+      { mark: "B1", text: "assembly is processor-specific/not generally portable" },
+      { mark: "B1", text: "mnemonics map to instruction set/machine instructions" },
+      { mark: "B1", text: "CPU does not execute assembly text directly" },
+      { mark: "B1", text: "assembler translates assembly into machine code" },
+      { mark: "B1", text: "machine code/binary is executed by CPU" },
+    ],
+    strict: [
+      "Do not require discussion of every architecture.",
+      "Do not accept interpreted by CPU as correct wording.",
+      "Allow 'not portable' if linked to instruction set/processor.",
+    ],
   },
 ];
 
@@ -108,94 +194,94 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Explain the difference between immediate addressing and direct addressing.",
-    answer: "In immediate addressing, the operand is the actual value to be used by the instruction. In direct addressing, the operand is the memory address where the value is stored. For example, LOAD #20 loads the value 20, while LOAD 20 loads the value stored at memory address 20.",
+    marks: "5 marks",
+    prompt: "Identify the following instruction purposes: data movement, input/output, arithmetic, unconditional branch and conditional branch/compare. Give one valid mnemonic for each group.",
+    answer: "Data movement includes LDM/LDD/LDI/LDX/LDR/MOV/STO; input/output includes IN/OUT; arithmetic includes ADD/SUB/INC/DEC; JMP is an unconditional branch; CMP/CMI/JPE/JPN form the conditional branch/compare group.",
     marking: [
-      { mark: "B1", text: "immediate addressing uses operand as actual value" },
-      { mark: "B1", text: "direct addressing uses operand as memory address" },
-      { mark: "B1", text: "direct addressing fetches value stored at that address" },
-      { mark: "B1", text: "valid contrasting example such as #20 vs 20" },
+      { mark: "B1", text: "data movement with a valid example" },
+      { mark: "B1", text: "input/output with IN or OUT" },
+      { mark: "B1", text: "arithmetic with ADD, SUB, INC or DEC" },
+      { mark: "B1", text: "unconditional branch with JMP" },
+      { mark: "B1", text: "conditional branch/compare with CMP, CMI, JPE or JPN" },
     ],
     strict: [
-      "Do not accept immediate as simply 'faster' without operand meaning.",
-      "Do not accept direct addressing as using operand as the actual data value.",
-      "Allow equivalent notation for immediate addressing if clear.",
+      "Do not classify JPE by guessing that it means equality.",
+      "One accurate mnemonic is required for each group.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Given memory[20] = 70 and memory[70] = 999, Complete a trace table for the instruction LOAD (20) using indirect addressing.",
-    answer: "In indirect addressing, the operand 20 is used as the address of a memory location that contains another address. The CPU reads memory[20] and obtains 70. This 70 is the effective address. The CPU then reads memory[70] and obtains 999, so 999 is the value loaded.",
+    marks: "7 marks",
+    prompt: "State the effects of LDM #n, LDD <address>, LDI <address>, LDX <address>, LDR #n, MOV <register> and STO <address>.",
+    answer: "LDM loads immediate n to ACC; LDD loads the directly addressed value to ACC; LDI loads ACC through an indirect address; LDX loads ACC from address plus IX; LDR loads immediate n to IX; MOV transfers ACC to IX; STO stores ACC at the address.",
     marking: [
-      { mark: "B1", text: "recognises indirect addressing uses operand as pointer address" },
-      { mark: "M1", text: "reads memory[20]" },
-      { mark: "A1", text: "gets 70 as effective address" },
-      { mark: "M1", text: "reads memory[70]" },
-      { mark: "A1", text: "gets/loads value 999" },
+      { mark: "B1", text: "LDM: immediate n to ACC" },
+      { mark: "B1", text: "LDD: directly addressed value to ACC" },
+      { mark: "B1", text: "LDI: indirectly addressed value to ACC" },
+      { mark: "B1", text: "LDX: value at address plus IX to ACC" },
+      { mark: "B1", text: "LDR: immediate n to IX" },
+      { mark: "B1", text: "MOV: ACC to IX" },
+      { mark: "B1", text: "STO: ACC to addressed memory location" },
     ],
     strict: [
-      "Do not award full marks if answer stops at 70 as the loaded value.",
-      "Do not require the term pointer if the two-stage lookup is clear.",
-      "Allow bracket notation or words describing indirect addressing.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not accept LDR as relative addressing.",
+      "Do not reverse MOV or STO data direction.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain indexed addressing and why it is useful for arrays.",
-    answer: "Indexed addressing calculates the effective address by adding a base address to an index register or offset. The base address can point to the start of an array. Changing the index value allows the CPU to access different array elements without changing the instruction itself. For example, base 100 and index 3 gives effective address 103.",
+    marks: "6 marks",
+    prompt: "State the permitted operand forms and effects of ADD, SUB, INC and DEC.",
+    answer: "ADD and SUB use a memory address or an immediate denary (#n), binary (Bn) or hexadecimal (&n) value and update ACC. INC <register> and DEC <register> add or subtract one from ACC or IX.",
     marking: [
-      { mark: "B1", text: "effective address calculated using base address plus index/offset" },
-      { mark: "B1", text: "index value may be stored in index register" },
-      { mark: "B1", text: "base can represent start of array/block" },
-      { mark: "B1", text: "changing index accesses different elements" },
-      { mark: "B1", text: "valid example calculation such as 100 + 3 = 103" },
+      { mark: "B1", text: "ADD updates ACC using addressed or immediate data" },
+      { mark: "B1", text: "SUB updates ACC using addressed or immediate data" },
+      { mark: "B1", text: "#n denotes immediate denary" },
+      { mark: "B1", text: "Bn denotes immediate binary and &n immediate hexadecimal" },
+      { mark: "B1", text: "INC adds one to ACC or IX" },
+      { mark: "B1", text: "DEC subtracts one from ACC or IX" },
     ],
     strict: [
-      "Do not accept indexed addressing as simply sorting data into an index.",
-      "Do not require arrays if another repeated data structure example is valid.",
-      "Allow offset instead of index register if calculation is clear.",
+      "Do not treat #, B and & as part of an address.",
+      "The changed register must be ACC or IX.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "A CPU has memory[40] = 88 and memory[88] = 123. Explain the values loaded by LOAD #40, LOAD 40 and LOAD (40).",
-    answer: "LOAD #40 uses immediate addressing, so the value loaded is 40. LOAD 40 uses direct addressing, so the CPU reads memory address 40 and loads 88. LOAD (40) uses indirect addressing, so the CPU reads memory[40] to get effective address 88, then reads memory[88] and loads 123.",
+    marks: "8 marks",
+    prompt: "State the exact effects of CMP <address>, CMP #n, CMI <address>, JPE <address>, JPN <address>, IN, OUT and END.",
+    answer: "CMP compares ACC with a directly addressed or immediate value. CMI compares ACC with an indirectly addressed value. JPE branches after a True comparison and JPN after a False comparison. IN inputs an ASCII code to ACC; OUT outputs the character represented by the ASCII code in ACC; END returns control to the operating system.",
     marking: [
-      { mark: "B1", text: "LOAD #40 identified as immediate" },
-      { mark: "B1", text: "immediate value loaded is 40" },
-      { mark: "B1", text: "LOAD 40 identified/described as direct" },
-      { mark: "B1", text: "direct value loaded is memory[40] = 88" },
-      { mark: "B1", text: "LOAD (40) identified/described as indirect with effective address 88" },
-      { mark: "B1", text: "indirect value loaded is memory[88] = 123" },
+      { mark: "B1", text: "CMP <address>: compare ACC with directly addressed value" },
+      { mark: "B1", text: "CMP #n: compare ACC with immediate n" },
+      { mark: "B1", text: "CMI: indirect comparison with ACC" },
+      { mark: "B1", text: "JPE: jump after True comparison" },
+      { mark: "B1", text: "JPN: jump after False comparison" },
+      { mark: "B1", text: "IN: ASCII input code to ACC" },
+      { mark: "B1", text: "OUT: character whose ASCII code is in ACC" },
+      { mark: "B1", text: "END: return control to operating system" },
     ],
     strict: [
-      "Do not award immediate value mark if candidate looks up memory[40].",
-      "Do not award indirect final value mark if candidate stops at 88.",
-      "Allow equivalent notation for brackets/indirection.",
-      "Award each instruction independently.",
+      "Do not accept immediate CMI, equal/zero JPE or negative JPN.",
+      "ASCII data direction must be correct for IN and OUT.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "Compare immediate, direct, indirect, indexed and relative addressing.",
-    answer: "Immediate addressing uses the operand as the value. Direct addressing uses it as the address of the value. Indirect addressing follows an address stored at the operand address. Indexed addressing adds IX to a base/address operand. Relative addressing adds an offset to the current or next instruction address held in PC.",
+    marks: "6 marks",
+    prompt: "Explain a two-pass assembler and Compare LOOP: ADD ONE from ONE: 1.",
+    answer: "Pass 1 assigns addresses and builds the symbol table, so forward references can be recorded before their values are known. Pass 2 translates instructions and substitutes resolved addresses. LOOP labels an instruction containing opcode ADD and operand ONE; ONE is a symbolic data address for the memory location containing 1.",
     marking: [
-      { mark: "B1", text: "immediate addressing treats operand as the value" },
-      { mark: "B1", text: "direct addressing treats operand as the address of the value" },
-      { mark: "B1", text: "indirect addressing follows an address stored at the operand address" },
-      { mark: "B1", text: "indexed addressing adds IX/index to a base or address operand" },
-      { mark: "B1", text: "relative addressing adds an offset to the PC/current or next instruction address" },
+      { mark: "B1", text: "pass 1 assigns addresses/builds symbol table" },
+      { mark: "B1", text: "forward references can be recorded" },
+      { mark: "B1", text: "pass 2 translates using resolved symbols" },
+      { mark: "B1", text: "LOOP is an instruction label" },
+      { mark: "B1", text: "ADD is opcode/mnemonic and ONE is operand" },
+      { mark: "B1", text: "ONE labels the data location containing 1" },
     ],
     strict: [
-      "Do not accept that LDR #n is relative addressing; in the specified instruction set it loads immediate n into IX.",
-      "Do not merge indirect and indexed addressing.",
-      "Allow current-instruction or next-instruction PC convention when the relative base is stated coherently.",
+      "Do not state that either pass executes the program.",
+      "Do not call a data label an opcode.",
     ],
   },
 ];
@@ -211,10 +297,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    no: "Correct. #20 is immediate data; 20 without # is treated as an address in this simplified notation.",
-    yes: "Not quite. LOAD 20 uses 20 as an address in direct addressing.",
-    binary: "No. Binary notation does not decide the addressing mode by itself.",
-    register: "No. ACC contents do not decide whether #20 is immediate or direct.",
+    add: "Correct. ADD is the mnemonic because it represents the operation.",
+    ninety: "90 is the operand in this example, not the mnemonic.",
+    both: "The whole line is an assembly instruction, but only ADD is the mnemonic.",
+    cpu: "The CPU executes machine code. CPU is not a part of the assembly line.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -225,20 +311,20 @@ function setupHook() {
   });
 }
 
-function setupSimulator() {
-  const select = document.querySelector("#modeInput");
-  const result = document.querySelector("#simulateResult");
-  const method = document.querySelector("#simulateMethod");
-  const trap = document.querySelector("#simulateTrap");
-  function simulate() {
-    const item = modeMap[select.value];
+function setupParser() {
+  const select = document.querySelector("#lineInput");
+  const result = document.querySelector("#parseResult");
+  const method = document.querySelector("#parseMethod");
+  const trap = document.querySelector("#parseTrap");
+  function parseLine() {
+    const item = lineMap[select.value];
     result.textContent = item.result;
-    method.innerHTML = `<strong>Trace:</strong> ${item.method}`;
+    method.innerHTML = `<strong>Explanation:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  select.addEventListener("change", simulate);
-  document.querySelector("#simulateBtn").addEventListener("click", simulate);
-  simulate();
+  select.addEventListener("change", parseLine);
+  document.querySelector("#parseBtn").addEventListener("click", parseLine);
+  parseLine();
 }
 
 function renderExample(key) {
@@ -258,7 +344,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("compare");
+  renderExample("parse");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -340,7 +426,7 @@ function renderExamQuestions() {
 
 setupPrint();
 setupHook();
-setupSimulator();
+setupParser();
 setupExamples();
 renderPractice();
 renderMistakes();

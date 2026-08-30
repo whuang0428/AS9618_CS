@@ -1,74 +1,74 @@
-const scenarios = {
-  server: {
-    result: "Fibre-optic cable",
-    method: "A fixed server-room link usually needs high bandwidth, stable performance and low electromagnetic interference. Fibre carries data as light pulses and is suitable for high-capacity links.",
+const tasks = {
+  web: {
+    result: "HTTP",
+    method: "HTTP is used for transferring ordinary web pages and web resources between browser and web server.",
   },
-  classroom: {
-    result: "Radio waves / WiFi",
-    method: "Tablets move around the room, so mobility matters. Radio waves allow wireless access, but performance may be affected by walls, distance, interference and shared bandwidth.",
+  secure: {
+    result: "HTTPS",
+    method: "HTTPS is the secure version of HTTP and encrypts web communication, useful for login details, payments and forms.",
   },
-  remote: {
-    result: "Satellite",
-    method: "A remote island may not have cable infrastructure. Satellite communication can cover large geographical areas, but latency and cost may be higher.",
+  file: {
+    result: "FTP",
+    method: "FTP is used to transfer files between a client and a server, such as uploads or downloads from a file server.",
   },
-  desktop: {
-    result: "Copper cable",
-    method: "A fixed desktop PC can use a wired copper connection that is relatively cheap and easy to install for a local network. It may be less suitable over very long distances or near strong electromagnetic interference.",
+  sendmail: {
+    result: "SMTP",
+    method: "SMTP is used to send email from a client to a mail server and between mail servers.",
   },
-  buildings: {
-    result: "Microwave link",
-    method: "Two buildings with clear line of sight can use a directional microwave link. Alignment, obstacles and weather must be considered.",
+  downloadmail: {
+    result: "POP3",
+    method: "POP3 is used to download email from a mail server to a client, often for local storage on one device.",
   },
-  factory: {
-    result: "Fibre-optic cable",
-    method: "Fibre is less affected by electromagnetic interference than copper, so it can be suitable in an electrically noisy environment.",
+  syncmail: {
+    result: "IMAP",
+    method: "IMAP is used to access and synchronise mailbox contents stored on a mail server across multiple devices.",
   },
 };
 
 const examples = {
-  fibre: {
-    title: "Example 1: fibre link between buildings",
-    problem: "A school connects two server rooms in separate buildings and wants high bandwidth.",
+  web: {
+    title: "Example 1: secure web form",
+    problem: "A user enters payment details on a shopping website.",
     steps: [
-      "The devices are fixed, so mobility is not the main requirement.",
-      "The link needs high bandwidth and stable performance.",
-      "Fibre-optic cable is suitable because it transmits data as light pulses and can support high data rates.",
-      "A strong answer may also mention long distance or reduced electromagnetic interference.",
+      "The task involves web communication between browser and server.",
+      "The data is sensitive, so encryption is needed.",
+      "HTTPS is suitable because it provides secure encrypted web communication.",
+      "Do not say HTTPS is chosen because it is simply 'faster'.",
     ],
   },
-  wifi: {
-    title: "Example 2: wireless classroom",
-    problem: "Students use tablets while moving around a classroom.",
+  email: {
+    title: "Example 2: email journey",
+    problem: "A user sends an email, then reads it on a laptop and phone.",
     steps: [
-      "A physical cable would reduce mobility and create a practical problem.",
-      "Radio waves used by WiFi allow devices to connect wirelessly.",
-      "The answer should include one limitation, such as interference, walls, shared bandwidth or security configuration.",
-      "Do not say WiFi is always faster; the scenario is about mobility.",
+      "SMTP is used to send the email to a mail server.",
+      "SMTP may also be used between mail servers.",
+      "IMAP is suitable for reading the mailbox on multiple devices.",
+      "IMAP keeps messages and folders on the server so devices can stay synchronised.",
     ],
   },
-  satellite: {
-    title: "Example 3: remote research station",
-    problem: "A research station needs internet access in a remote area with no cable infrastructure.",
+  files: {
+    title: "Example 3: file transfer",
+    problem: "A student uploads a website project to a school file server.",
     steps: [
-      "The location is remote, so laying cable may be impractical or too expensive.",
-      "Satellite communication can cover large geographical areas.",
-      "A limitation is higher latency because signals travel a long distance.",
-      "A complete answer balances suitability with a drawback.",
+      "The task is transferring files between client and server.",
+      "FTP is the relevant file transfer protocol.",
+      "HTTP/HTTPS are for web page/resource transfer, not the best generic answer for this scenario.",
+      "A strong answer states both the protocol and the context.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which wired medium transmits data as electrical signals?", accepted: ["copper", "copper cable"], answer: "Copper cable" },
-  { id: "p2", prompt: "Which wired medium transmits data as pulses of light?", accepted: ["fibre", "fiber", "fibre optic", "fiber optic", "fibre-optic cable", "fiber-optic cable"], answer: "Fibre-optic cable" },
-  { id: "p3", prompt: "Which wireless medium is used by WiFi?", accepted: ["radio", "radio waves", "radiowaves"], answer: "Radio waves" },
-  { id: "p4", prompt: "Which wireless medium is useful for large geographical coverage in remote areas?", accepted: ["satellite", "satellites"], answer: "Satellite" },
-  { id: "p5", prompt: "Name one factor that may reduce wireless performance.", accepted: ["interference", "walls", "obstacles", "distance", "weather", "congestion", "shared bandwidth"], answer: "Interference / obstacles / distance / weather / congestion" },
-  { id: "p6", prompt: "Name one advantage of fibre optic over copper.", accepted: ["bandwidth", "high bandwidth", "less interference", "low interference", "long distance", "faster", "higher data rate"], answer: "High bandwidth / less electromagnetic interference / longer distance" },
-  { id: "p7", prompt: "What does line of sight mean for a microwave link?", accepted: ["clear path", "unobstructed path", "no obstacle", "no obstacles", "direct path", "visible"], answer: "A clear unobstructed path between transmitter and receiver" },
-  { id: "p8", prompt: "For tablets moving around a classroom, wired or wireless?", accepted: ["wireless", "radio waves", "wifi", "wi-fi"], answer: "Wireless / radio waves / WiFi" },
-  { id: "p9", prompt: "Does fibre optic use electrical signals? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Name one disadvantage of satellite communication.", accepted: ["latency", "delay", "high latency", "cost", "expensive", "weather", "limited bandwidth"], answer: "High latency / cost / weather effects / limited capacity" },
+  { id: "p1", prompt: "Which protocol is used to transfer ordinary web pages?", accepted: ["http"], answer: "HTTP" },
+  { id: "p2", prompt: "Which protocol is used for secure encrypted web communication?", accepted: ["https"], answer: "HTTPS" },
+  { id: "p3", prompt: "Which protocol is used to transfer files between client and server?", accepted: ["ftp"], answer: "FTP" },
+  { id: "p4", prompt: "Which protocol is used to send email?", accepted: ["smtp"], answer: "SMTP" },
+  { id: "p5", prompt: "Which protocol downloads email from a mail server to a client?", accepted: ["pop3", "pop"], answer: "POP3" },
+  { id: "p6", prompt: "Which protocol keeps email synchronised across multiple devices?", accepted: ["imap"], answer: "IMAP" },
+  { id: "p7", prompt: "For online banking login, HTTP or HTTPS?", accepted: ["https"], answer: "HTTPS" },
+  { id: "p8", prompt: "For uploading website files to a server, which protocol is most relevant here?", accepted: ["ftp"], answer: "FTP" },
+  { id: "p9", prompt: "Does SMTP retrieve email from the server? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "What does the S in HTTPS indicate in exam context?", accepted: ["secure", "security"], answer: "Secure" },
 ];
 
 
@@ -81,94 +81,97 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A school connects two server rooms that require a high-bandwidth fixed link. Explain why fibre-optic cable may be suitable.",
-    answer: "Fibre-optic cable is suitable because it can provide high bandwidth for a fixed link between server rooms. It transmits data as pulses of light and is less affected by electromagnetic interference than copper cable. It can also be suitable over longer distances between buildings.",
+    prompt: "A user logs in to an online banking website. Explain why HTTPS is more suitable than HTTP.",
+    answer: "Both HTTP and HTTPS can be used for web communication, but HTTPS provides a secure encrypted connection. This helps protect sensitive data such as usernames, passwords and banking details while it is transmitted between the browser and web server.",
     marking: [
-      { mark: "B1", text: "states high bandwidth / high data rate" },
-      { mark: "B1", text: "states data is transmitted using light pulses" },
-      { mark: "B1", text: "not affected by electromagnetic interference" },
-      { mark: "B1", text: "low attenuation / suitable over the fixed distance between server rooms or buildings" },
+      { mark: "B1", text: "HTTP/HTTPS are used for web communication / web pages" },
+      { mark: "B1", text: "HTTPS is secure / encrypted compared with HTTP" },
+      { mark: "B1", text: "protects sensitive data in transit" },
+      { mark: "B1", text: "links to banking/login details scenario" },
     ],
     strict: [
-      "Do not accept only 'fibre is faster' without a feature or scenario link.",
-      "Do not accept fibre uses electrical signals.",
-      "Allow 'fiber' spelling.",
+      "Do not accept only 'HTTPS is safer' without encryption/security detail.",
+      "Do not accept 'HTTPS is faster'.",
+      "Do not require detailed TLS/SSL explanation at this level.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Compare wired and wireless networks for a classroom that uses desktop PCs and tablets.",
-    answer: "Wired connections such as copper cable are suitable for desktop PCs because the devices are fixed and can have a stable connection. Wireless connections using radio waves are suitable for tablets because the tablets can move around without cables. Wireless may be affected by interference, walls or shared bandwidth, while wired connections may be less convenient for mobile devices.",
+    prompt: "Draw lines to match FTP, SMTP, POP3 and IMAP to their email/file-transfer contexts, then Compare sending email from receiving or accessing email.",
+    answer: "FTP is used for file transfer between a client and server. SMTP is used to send email. POP3 is used to download email from a mail server to a client. IMAP is used to access and synchronise email stored on a mail server across multiple devices.",
     marking: [
-      { mark: "B1", text: "wired connection suitable for fixed desktop PCs" },
-      { mark: "B1", text: "wireless/radio waves suitable for mobile tablets" },
-      { mark: "B1", text: "wired can provide stable/reliable connection" },
-      { mark: "B1", text: "wireless can be affected by interference/obstacles/shared bandwidth" },
-      { mark: "B1", text: "recommends wired links for fixed desktops and wireless links for tablets, linked to stability and mobility" },
+      { mark: "B1", text: "FTP matched to file transfer" },
+      { mark: "B1", text: "SMTP matched to sending email" },
+      { mark: "B1", text: "POP3 matched to downloading/retrieving email to client" },
+      { mark: "B1", text: "IMAP matched to accessing/synchronising server mailbox" },
+      { mark: "B1", text: "clear distinction between sending email and receiving/accessing email" },
     ],
     strict: [
-      "Do not award marks for vague 'wired is better' or 'wireless is modern'.",
-      "Do not confuse WiFi/radio waves with email or web protocols.",
+      "Do not award SMTP for receiving email.",
+      "Do not award FTP for general web browsing.",
+      "Expansion of acronyms alone is insufficient without use/context.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "A remote weather station needs a network connection but has no cable infrastructure nearby. Explain why satellite communication may be used and give one drawback.",
-    answer: "Satellite communication may be used because it can cover large geographical areas and can connect remote locations where cable infrastructure is not available. A drawback is that it may have higher latency because signals travel a long distance to and from the satellite. It may also be expensive or affected by weather.",
+    prompt: "Explain why IMAP may be preferred to POP3 for a user who reads email on a phone, tablet and laptop.",
+    answer: "IMAP stores and manages the mailbox on the mail server, so messages and folders can be synchronised across devices. If the user reads, deletes or moves a message on one device, the change can be reflected on the others. POP3 typically downloads messages to a client and is less suitable for keeping multiple devices synchronised.",
     marking: [
-      { mark: "B1", text: "satellite suitable for remote location / large coverage" },
-      { mark: "B1", text: "does not require nearby cable infrastructure" },
-      { mark: "B1", text: "identifies a valid drawback such as high latency/cost/weather" },
-      { mark: "B1", text: "explains latency as delay due to long signal distance or links drawback to scenario" },
+      { mark: "B1", text: "IMAP keeps/accesses mail on the server" },
+      { mark: "B1", text: "messages/folders can be synchronised across devices" },
+      { mark: "B1", text: "changes on one device can appear on other devices" },
+      { mark: "B1", text: "POP3 downloads messages to client / less suitable for synchronisation" },
     ],
     strict: [
-      "Do not accept only 'satellite is wireless' without coverage/remote context.",
-      "Do not require technical orbital details.",
-      "Allow cost or weather as drawback if explained.",
+      "Do not accept only 'IMAP is newer/better'.",
+      "Do not say POP3 sends email.",
+      "Allow POP3 server-retention settings only if the synchronisation limitation is still explained.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Describe two differences between copper cable and fibre-optic cable as transmission media.",
-    answer: "Copper cable transmits data using electrical signals, whereas fibre-optic cable transmits data using pulses of light. Fibre-optic cable can support higher bandwidth and is less affected by electromagnetic interference, while copper cable is often cheaper and easier to install for short local links.",
+    prompt: "A student uploads a folder of website files to a school server. Identify a suitable protocol and justify the choice.",
+    answer: "FTP is suitable because it is used to transfer files between a client and a server. The student's computer acts as the client and uploads website files to the school server.",
     marking: [
-      { mark: "B1", text: "copper uses electrical signals" },
-      { mark: "B1", text: "fibre optic uses light pulses" },
-      { mark: "B1", text: "fibre has higher bandwidth/longer distance/less electromagnetic interference" },
-      { mark: "B1", text: "copper may be cheaper/easier for short local links" },
+      { mark: "B1", text: "identifies FTP" },
+      { mark: "B1", text: "FTP used for file transfer" },
+      { mark: "B1", text: "mentions client-server transfer/upload" },
+      { mark: "B1", text: "links to website files/school server scenario" },
     ],
     strict: [
-      "Do not award a mark for saying both use electricity.",
-      "Do not award only for naming the two media.",
-      "Allow a valid paired comparison even if wording differs.",
+      "Do not accept HTTP/HTTPS unless framed as web resource request rather than file upload.",
+      "Do not award only for expanding FTP.",
+      "Allow secure variants only if FTP/file transfer role is clear.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A company considers a microwave link between two buildings. Describe conditions that make this suitable and issues that may affect it.",
-    answer: "A microwave link may be suitable for a point-to-point connection between two buildings when there is a clear line of sight between directional antennas. It avoids laying a physical cable between the buildings. The link can be affected by obstacles, poor alignment or weather, and may have variable performance compared with a wired link.",
+    prompt: "Describe the roles of SMTP, POP3 and IMAP when a user sends email and accesses email from a mail server.",
+    answer: "SMTP is used to send the email from the user's email client to a mail server and may be used between mail servers. To retrieve/access email, the client may use POP3 to download messages to the device or IMAP to access and synchronise messages stored on the server.",
     marking: [
-      { mark: "B1", text: "microwave link suitable for point-to-point communication" },
-      { mark: "B1", text: "requires/benefits from clear line of sight" },
-      { mark: "B1", text: "avoids laying cable or is useful between buildings" },
-      { mark: "B1", text: "identifies issue such as obstacles/alignment/weather" },
-      { mark: "B1", text: "links issue to reduced signal quality/performance/reliability" },
+      { mark: "B1", text: "SMTP used to send email from client to mail server" },
+      { mark: "B1", text: "SMTP may be used between mail servers" },
+      { mark: "B1", text: "POP3 used to download/retrieve email to client" },
+      { mark: "B1", text: "IMAP used to access/synchronise email on server" },
+      { mark: "B1", text: "clear separation between sending and retrieving/accessing mail" },
     ],
     strict: [
-      "Do not accept satellite unless the answer is specifically about a satellite link.",
-      "Do not accept only 'microwaves are fast'.",
-      "Allow 'unobstructed path' for line of sight.",
+      "Do not award POP3/IMAP for sending email.",
+      "Do not award SMTP for reading/downloading email.",
+      "Do not require both POP3 and IMAP in a real system, but both must be described if asked.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/[-\s]+/g, " ");
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
 function setupPrint() {
@@ -181,19 +184,19 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "fibre"
-        ? "Correct. Fibre is a transmission medium and the justification names high bandwidth and low interference."
-        : "Not quite. Check whether the answer names a transmission medium and matches the fixed high-bandwidth scenario.";
+      feedback.textContent = button.dataset.hook === "smtpimap"
+        ? "Correct. SMTP sends email; IMAP is suitable for synchronised mailbox access across devices."
+        : "Not quite. Separate the email sending protocol from the mailbox access protocol.";
     });
   });
 }
 
-function setupChoiceTool() {
-  const select = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#mediumResult");
-  const method = document.querySelector("#mediumMethod");
+function setupProtocolTool() {
+  const select = document.querySelector("#taskInput");
+  const result = document.querySelector("#protocolResult");
+  const method = document.querySelector("#protocolMethod");
   function choose() {
-    const item = scenarios[select.value];
+    const item = tasks[select.value];
     result.textContent = item.result;
     method.textContent = item.method;
   }
@@ -219,7 +222,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("fibre");
+  renderExample("web");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -267,7 +270,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Strong answers connect the medium to a real factor such as bandwidth, range, latency or interference.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Match protocol names to jobs, not just acronyms.`;
   });
 }
 
@@ -304,7 +307,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupChoiceTool();
+  setupProtocolTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

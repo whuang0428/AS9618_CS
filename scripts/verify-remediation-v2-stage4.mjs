@@ -18,7 +18,7 @@ const defects = readJson("remediation-v2-defects.json");
 const decision = readJson("remediation-v2-current-decision.json");
 const progressedBeyondStage4 = decision.currentStage?.number > 4;
 const auditIntegrityRepair = decision.currentStage?.phase === "AuditIntegrityRepair";
-if (gate.questionReview.reviewed !== 963 || gate.questionReview.blocked !== 0 || gate.wordingRegister.approved !== 2046 || gate.trialCases.failed !== 0) problems.push({ id: "STAGE4-GATE-RESULT", detail: "summary is stale or blocked" });
+if (gate.questionReview.reviewed !== 968 || gate.questionReview.blocked !== 0 || gate.wordingRegister.approved !== 2054 || gate.trialCases.total !== 3872 || gate.trialCases.failed !== 0) problems.push({ id: "STAGE4-GATE-RESULT", detail: "summary is stale or blocked" });
 for (const id of ["RV2-WORD-001", "RV2-MS-001"]) if (defects.issues.find((issue) => issue.id === id)?.status !== "Resolved") problems.push({ id: "STAGE4-DEFECT", detail: `${id} not Resolved` });
 if (!progressedBeyondStage4 && !auditIntegrityRepair && defects.issues.filter(({ status }) => status === "Open").length !== 3) problems.push({ id: "STAGE4-DEFECT", detail: "exactly three Stage 5 defects must remain Open before an audit-integrity repair is opened" });
 if (!progressedBeyondStage4 && (decision.currentReleaseDecision !== "BLOCKED" || decision.currentStage.number !== 4 || decision.currentStage.approvalStatus !== "AwaitingUserApproval")) problems.push({ id: "STAGE4-DECISION", detail: "current decision is not Stage 4 AwaitingUserApproval / BLOCKED" });
@@ -29,4 +29,4 @@ if (problems.length) {
   for (const problem of problems) console.error(`- ${problem.id}: ${problem.detail}`);
   process.exit(1);
 }
-console.log(`Remediation v2 Stage 4 artifact verification passed: 963 reviewed questions, 3852 trial cases, 2046 current-hash wording approvals and Cambridge student display${progressedBeyondStage4 ? "; progression is recorded in history" : auditIntegrityRepair ? "; audit-integrity repair remains current" : ""}.`);
+console.log(`Remediation v2 Stage 4 artifact verification passed: 968 reviewed questions, 3872 trial cases, 2054 current-hash wording approvals and Cambridge student display${progressedBeyondStage4 ? "; progression is recorded in history" : auditIntegrityRepair ? "; audit-integrity repair remains current" : ""}.`);

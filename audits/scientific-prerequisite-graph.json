@@ -3,603 +3,607 @@
   "nodes": [
     {
       "id": "L001",
-      "title": "Lesson 001: Bits, bytes, nibbles and storage units"
+      "title": "Lesson 001: Binary and decimal magnitude prefixes"
     },
     {
       "id": "L002",
-      "title": "Lesson 002: Binary place value and denary conversion"
+      "title": "Lesson 002: Integer conversion between binary and denary"
     },
     {
       "id": "L003",
-      "title": "Lesson 003: Hexadecimal notation and binary grouping"
+      "title": "Lesson 003: Hexadecimal as a base-16 representation"
     },
     {
       "id": "L004",
-      "title": "Lesson 004: Binary addition, carries, and overflow"
+      "title": "Lesson 004: Binary addition and fixed-width overflow"
     },
     {
       "id": "L005",
-      "title": "Lesson 005: Signed binary: sign-and-magnitude and two's complement"
+      "title": "Lesson 005: Signed representations and binary subtraction"
     },
     {
       "id": "L006",
-      "title": "Lesson 006: Binary fractions and precision limits"
+      "title": "Lesson 006: BCD and hexadecimal in practical systems"
     },
     {
       "id": "L007",
-      "title": "Lesson 007: Character sets: ASCII, Unicode and emoji representation"
+      "title": "Lesson 007: Character sets and internal binary character data"
     },
     {
       "id": "L008",
-      "title": "Lesson 008: Bitmap images: pixels, resolution, and colour depth"
+      "title": "Lesson 008: Bitmap file headers, image resolution and screen resolution"
     },
     {
       "id": "L009",
-      "title": "Lesson 009: Image file size calculations and metadata"
+      "title": "Lesson 009: Bitmap file-size calculations and metadata"
     },
     {
       "id": "L010",
-      "title": "Lesson 010: Digital sound: sampling rate, sampling resolution, and duration"
+      "title": "Lesson 010: Vector graphics and drawing lists"
     },
     {
       "id": "L011",
-      "title": "Lesson 011: Sound file size calculations"
+      "title": "Lesson 011: Sound sampling, sampling resolution, accuracy and storage"
     },
     {
       "id": "L012",
-      "title": "Lesson 012: Compression: lossless vs lossy"
+      "title": "Lesson 012: Sound file size calculations"
     },
     {
       "id": "L013",
-      "title": "Lesson 013: Run-length encoding and dictionary-style compression"
+      "title": "Lesson 013: Compression methods for text, bitmap, vector and sound files"
     },
     {
       "id": "L014",
-      "title": "Lesson 014: Choosing data representation for a real system"
+      "title": "Lesson 014: Run-length encoding and dictionary-style compression"
     },
     {
       "id": "L015",
-      "title": "Lesson 015: Section 1 review: representation calculations under exam timing"
+      "title": "Lesson 015: Choosing data representation for a real system"
     },
     {
       "id": "L016",
-      "title": "Lesson 016: Network purposes, LAN, WAN, and network topologies"
+      "title": "Lesson 016: Section 1 review under exam timing"
     },
     {
       "id": "L017",
-      "title": "Lesson 017: Client-server and peer-to-peer models"
+      "title": "Lesson 017: Network purpose and client/server models"
     },
     {
       "id": "L018",
-      "title": "Lesson 018: Packet switching, routing, and packet structure"
+      "title": "Lesson 018: Bus, star, mesh and hybrid topologies"
     },
     {
       "id": "L019",
-      "title": "Lesson 019: Protocols and layered communication"
+      "title": "Lesson 019: Packet transmission between two hosts in each required topology"
     },
     {
       "id": "L020",
-      "title": "Lesson 020: IP addresses, MAC addresses, DNS, and URLs"
+      "title": "Lesson 020: Cloud, wired and wireless networking"
     },
     {
       "id": "L021",
-      "title": "Lesson 021: HTTP, HTTPS, FTP, SMTP, POP3, and IMAP in context"
+      "title": "Lesson 021: LAN hardware, Ethernet, streaming, the internet, IP and URL"
     },
     {
       "id": "L022",
-      "title": "Lesson 022: Wired and wireless transmission media"
+      "title": "Lesson 022: HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context"
     },
     {
       "id": "L023",
-      "title": "Lesson 023: Network hardware: switches, routers, access points, and gateways"
+      "title": "Lesson 023: Wired and wireless transmission media"
     },
     {
       "id": "L024",
-      "title": "Lesson 024: Internet, intranet, extranet, and cloud services"
+      "title": "Lesson 024: Network hardware: switches, routers, access points and gateways"
     },
     {
       "id": "L025",
-      "title": "Lesson 025: Network performance, latency, bandwidth, and congestion"
+      "title": "Lesson 025: Internet, intranet, extranet and cloud services"
     },
     {
       "id": "L026",
-      "title": "Lesson 026: Section 2 review: explaining communication with precision"
+      "title": "Lesson 026: Network performance, latency, bandwidth and congestion"
     },
     {
       "id": "L027",
-      "title": "Lesson 027: Computer system overview: input, output, storage, processor, and memory"
+      "title": "Lesson 027: Section 2 review: explaining communication with precision"
     },
     {
       "id": "L028",
-      "title": "Lesson 028: Input devices and data capture"
+      "title": "Lesson 028: Why computer systems need input, output and storage"
     },
     {
       "id": "L029",
-      "title": "Lesson 029: Output devices and user feedback"
+      "title": "Lesson 029: Embedded systems: purpose, benefits and drawbacks"
     },
     {
       "id": "L030",
-      "title": "Lesson 030: Primary storage: RAM, ROM, cache, and virtual memory"
+      "title": "Lesson 030: Microphone, touchscreen and VR headset operation"
     },
     {
       "id": "L031",
-      "title": "Lesson 031: Secondary storage: magnetic, optical, and solid-state media"
+      "title": "Lesson 031: Output, storage devices and primary memory"
     },
     {
       "id": "L032",
-      "title": "Lesson 032: Storage characteristics: capacity, speed, durability, portability, and cost"
+      "title": "Lesson 032: Monitoring, control, feedback and required sensors"
     },
     {
       "id": "L033",
-      "title": "Lesson 033: Embedded systems and microcontrollers"
+      "title": "Lesson 033: Logic-gate symbols, functions and representation conversions"
     },
     {
       "id": "L034",
-      "title": "Lesson 034: Sensors, actuators, and control systems"
+      "title": "Lesson 034: Embedded systems and microcontrollers"
     },
     {
       "id": "L035",
-      "title": "Lesson 035: Logic gates: NOT, AND, OR, NAND, NOR, XOR"
+      "title": "Lesson 035: Sensors, actuators and control systems"
     },
     {
       "id": "L036",
-      "title": "Lesson 036: Truth tables and Boolean expressions"
+      "title": "Lesson 036: Logic gates: NOT, AND, OR, NAND, NOR, XOR"
     },
     {
       "id": "L037",
-      "title": "Lesson 037: Building logic circuits from requirements"
+      "title": "Lesson 037: Truth tables and Boolean expressions"
     },
     {
       "id": "L038",
-      "title": "Lesson 038: Hardware selection for different users"
+      "title": "Lesson 038: Building logic circuits from requirements"
     },
     {
       "id": "L039",
-      "title": "Lesson 039: Environmental and reliability considerations in hardware"
+      "title": "Lesson 039: Hardware selection for different users"
     },
     {
       "id": "L040",
-      "title": "Lesson 040: Section 3 review: compare, justify, calculate"
+      "title": "Lesson 040: Environmental and reliability considerations in hardware"
     },
     {
       "id": "L041",
-      "title": "Lesson 041: CPU architecture: ALU, CU, registers, buses, and clock"
+      "title": "Lesson 041: Section 3 review: compare, justify, calculate"
     },
     {
       "id": "L042",
-      "title": "Lesson 042: The fetch-decode-execute cycle"
+      "title": "Lesson 042: Von Neumann architecture, CPU components and registers"
     },
     {
       "id": "L043",
-      "title": "Lesson 043: Registers: PC, CIR, MAR, MDR, ACC, IX, and status register"
+      "title": "Lesson 043: System buses, ports and processor performance"
     },
     {
       "id": "L044",
-      "title": "Lesson 044: System buses: address, data, and control"
+      "title": "Lesson 044: Register-transfer notation for the fetch-decode-execute cycle"
     },
     {
       "id": "L045",
-      "title": "Lesson 045: Instruction sets and machine code"
+      "title": "Lesson 045: Interrupt causes, detection and handling"
     },
     {
       "id": "L046",
-      "title": "Lesson 046: Assembly language basics and mnemonics"
+      "title": "Lesson 046: Assembly language and machine code"
     },
     {
       "id": "L047",
-      "title": "Lesson 047: Addressing modes and operand interpretation"
+      "title": "Lesson 047: Two-pass assembly, program tracing and the instruction set"
     },
     {
       "id": "L048",
-      "title": "Lesson 048: Interrupts and interrupt service routines"
+      "title": "Lesson 048: Addressing modes and address-sensitive instructions"
     },
     {
       "id": "L049",
-      "title": "Lesson 049: Performance factors: cores, cache, clock speed, and word length"
+      "title": "Lesson 049: Section 4 semantic checkpoint"
     },
     {
       "id": "L050",
-      "title": "Lesson 050: Bit manipulation: masks and binary shifts"
+      "title": "Lesson 050: Bit manipulation with masks and shifts"
     },
     {
       "id": "L051",
-      "title": "Lesson 051: Section 4 review: tracing processor behaviour"
+      "title": "Lesson 051: Bit manipulation: masks and binary shifts"
     },
     {
       "id": "L052",
-      "title": "Lesson 052: System software overview: operating systems, utility software, and translators"
+      "title": "Lesson 052: Section 4 review: tracing processor behaviour"
     },
     {
       "id": "L053",
-      "title": "Lesson 053: Operating system roles: process, memory, file, and device management"
+      "title": "Lesson 053: Why an operating system is required and what it manages"
     },
     {
       "id": "L054",
-      "title": "Lesson 054: User interfaces: command line, graphical, menu-driven, and natural language"
+      "title": "Lesson 054: Required utility software"
     },
     {
       "id": "L055",
-      "title": "Lesson 055: Utility software: backup, compression, encryption, defragmentation, and antivirus"
+      "title": "Lesson 055: Libraries and dynamically linked library files"
     },
     {
       "id": "L056",
-      "title": "Lesson 056: Compilers, interpreters, and assemblers"
+      "title": "Lesson 056: Assembler, compiler and interpreter choices"
     },
     {
       "id": "L057",
-      "title": "Lesson 057: Compilation stages: lexical analysis to object code"
+      "title": "Lesson 057: Java translation and required IDE features"
     },
     {
       "id": "L058",
-      "title": "Lesson 058: Linkers, loaders, and libraries"
+      "title": "Lesson 058: Compilation stages: lexical analysis to object code"
     },
     {
       "id": "L059",
-      "title": "Lesson 059: Error types: syntax, logic, runtime, and translation diagnostics"
+      "title": "Lesson 059: Linkers, loaders and libraries"
     },
     {
       "id": "L060",
-      "title": "Lesson 060: Choosing translation approaches for development and deployment"
+      "title": "Lesson 060: Error types: syntax, logic, runtime and translation diagnostics"
     },
     {
       "id": "L061",
-      "title": "Lesson 061: Section 5 review: precise software comparisons"
+      "title": "Lesson 061: Choosing translation approaches for development and deployment"
     },
     {
       "id": "L062",
-      "title": "Lesson 062: Security goals: confidentiality, integrity, availability, and authenticity"
+      "title": "Lesson 062: Section 5 review: precise software comparisons"
     },
     {
       "id": "L063",
-      "title": "Lesson 063: Malware types and social engineering"
+      "title": "Lesson 063: Security, privacy and data integrity"
     },
     {
       "id": "L064",
-      "title": "Lesson 064: Hacking, phishing, pharming, and denial-of-service attacks"
+      "title": "Lesson 064: Virus, spyware, anti-virus and anti-spyware"
     },
     {
       "id": "L065",
-      "title": "Lesson 065: Authentication: passwords, biometrics, tokens, and multi-factor authentication"
+      "title": "Lesson 065: Required internet threats and matching risk-reduction methods"
     },
     {
       "id": "L066",
-      "title": "Lesson 066: Access rights, permissions, and least privilege"
+      "title": "Lesson 066: User accounts, passwords and biometric authentication"
     },
     {
       "id": "L067",
-      "title": "Lesson 067: Encryption, hashing, and digital certificates"
+      "title": "Lesson 067: Access rights and encryption as data-security methods"
     },
     {
       "id": "L068",
-      "title": "Lesson 068: Firewalls, proxies, and network monitoring"
+      "title": "Lesson 068: Digital signatures and encryption"
     },
     {
       "id": "L069",
-      "title": "Lesson 069: Data validation and verification"
+      "title": "Lesson 069: Firewall protection from a stand-alone PC to a network"
     },
     {
       "id": "L070",
-      "title": "Lesson 070: Backup strategies, disaster recovery, and audit trails"
+      "title": "Lesson 070: Complete validation and verification methods"
     },
     {
       "id": "L071",
-      "title": "Lesson 071: Section 6 review: matching risks to controls"
+      "title": "Lesson 071: Backup strategies, disaster recovery, and audit trails"
     },
     {
       "id": "L072",
-      "title": "Lesson 072: Ethical issues in Computer Science decisions"
+      "title": "Lesson 072: Section 6 review: matching risks to controls"
     },
     {
       "id": "L073",
-      "title": "Lesson 073: Privacy, surveillance, and data protection"
+      "title": "Lesson 073: Professional ethics, professional bodies and ethical decisions"
     },
     {
       "id": "L074",
-      "title": "Lesson 074: Intellectual property, copyright, patents, and licensing"
+      "title": "Lesson 074: Privacy, surveillance, and data protection"
     },
     {
       "id": "L075",
-      "title": "Lesson 075: Open source, proprietary software, and ownership trade-offs"
+      "title": "Lesson 075: Copyright legislation, FSF, OSI and licence permissions"
     },
     {
       "id": "L076",
-      "title": "Lesson 076: Environmental and social impacts of computing"
+      "title": "Lesson 076: Shareware and commercial licences"
     },
     {
       "id": "L077",
-      "title": "Lesson 077: Section 7 review: balanced evaluation answers"
+      "title": "Lesson 077: AI applications and impact chains"
     },
     {
       "id": "L078",
-      "title": "Lesson 078: Data, information, databases, and DBMS roles"
+      "title": "Lesson 078: Section 7 required-content checkpoint"
     },
     {
       "id": "L079",
-      "title": "Lesson 079: Flat-file databases vs relational databases"
+      "title": "Lesson 079: File-based limitations and relational solutions"
     },
     {
       "id": "L080",
-      "title": "Lesson 080: Tables, records, fields, data types, and constraints"
+      "title": "Lesson 080: Relational terminology, keys and relationships"
     },
     {
       "id": "L081",
-      "title": "Lesson 081: Primary keys, foreign keys, and relationships"
+      "title": "Lesson 081: E-R design, normalisation and DBMS features"
     },
     {
       "id": "L082",
-      "title": "Lesson 082: Entity-relationship modelling"
+      "title": "Lesson 082: Primary keys, foreign keys and relationships"
     },
     {
       "id": "L083",
-      "title": "Lesson 083: Normalisation: avoiding duplication and update problems"
+      "title": "Lesson 083: Entity-relationship modelling"
     },
     {
       "id": "L084",
-      "title": "Lesson 084: SQL SELECT, FROM, WHERE"
+      "title": "Lesson 084: DDL, DML and SQL roles"
     },
     {
       "id": "L085",
-      "title": "Lesson 085: SQL ORDER BY, aggregate functions, and GROUP BY"
+      "title": "Lesson 085: Read and write SQL statements by their semantics"
     },
     {
       "id": "L086",
-      "title": "Lesson 086: SQL joins using related tables"
+      "title": "Lesson 086: DDL and two-table data queries"
     },
     {
       "id": "L087",
-      "title": "Lesson 087: SQL INSERT, UPDATE, and DELETE"
+      "title": "Lesson 087: SQL joins using related tables"
     },
     {
       "id": "L088",
-      "title": "Lesson 088: Validation, verification, security, and backup in databases"
+      "title": "Lesson 088: INSERT, DELETE and UPDATE"
     },
     {
       "id": "L089",
-      "title": "Lesson 089: Section 8 review: designing and querying relational data"
+      "title": "Lesson 089: Validation, verification, security and backup in databases"
     },
     {
       "id": "L090",
-      "title": "Lesson 090: Paper 1 review: representation and communication"
+      "title": "Lesson 090: Section 8 required-content checkpoint"
     },
     {
       "id": "L091",
-      "title": "Lesson 091: Paper 1 review: hardware and processor fundamentals"
+      "title": "Lesson 091: Paper 1 review: representation and communication"
     },
     {
       "id": "L092",
-      "title": "Lesson 092: Paper 1 review: system software and security"
+      "title": "Lesson 092: Paper 1 review: hardware and processor fundamentals"
     },
     {
       "id": "L093",
-      "title": "Lesson 093: Paper 1 review: ethics and databases"
+      "title": "Lesson 093: Paper 1 review: system software and security"
     },
     {
       "id": "L094",
-      "title": "Lesson 094: Paper 1 mixed question strategy"
+      "title": "Lesson 094: Paper 1 review: ethics and databases"
     },
     {
       "id": "L095",
-      "title": "Lesson 095: Paper 1 timed short-answer practice"
+      "title": "Lesson 095: Paper 1 mixed question strategy"
     },
     {
       "id": "L096",
-      "title": "Lesson 096: Paper 1 extended-response practice"
+      "title": "Lesson 096: Paper 1 timed short-answer practice"
     },
     {
       "id": "L097",
-      "title": "Lesson 097: Paper 1 mock review and correction clinic"
+      "title": "Lesson 097: Paper 1 extended-response practice"
     },
     {
       "id": "L098",
-      "title": "Lesson 098: Algorithmic thinking: inputs, outputs, and constraints"
+      "title": "Lesson 098: Paper 1 mock review and correction clinic"
     },
     {
       "id": "L099",
-      "title": "Lesson 099: Decomposition and abstraction"
+      "title": "Lesson 099: Abstraction and decomposition into program modules"
     },
     {
       "id": "L100",
-      "title": "Lesson 100: Sequence, selection, and iteration"
+      "title": "Lesson 100: Algorithms, IPO solutions and identifier tables"
     },
     {
       "id": "L101",
-      "title": "Lesson 101: Flowcharts and pseudocode notation"
+      "title": "Lesson 101: Sequence, selection and iteration"
     },
     {
       "id": "L102",
-      "title": "Lesson 102: Trace tables and dry runs"
+      "title": "Lesson 102: Structured English, flowcharts and pseudocode conversion"
     },
     {
       "id": "L103",
-      "title": "Lesson 103: Validation algorithms and defensive input handling"
+      "title": "Lesson 103: Stepwise refinement from IPO design to modules"
     },
     {
       "id": "L104",
-      "title": "Lesson 104: Linear search and binary search"
+      "title": "Lesson 104: Logic statements define parts of an algorithm"
     },
     {
       "id": "L105",
-      "title": "Lesson 105: Bubble sort and insertion sort"
+      "title": "Lesson 105: Linear search and binary search"
     },
     {
       "id": "L106",
-      "title": "Lesson 106: Finding maximum, minimum, count, and total"
+      "title": "Lesson 106: Bubble sort and insertion sort"
     },
     {
       "id": "L107",
-      "title": "Lesson 107: String-processing algorithms"
+      "title": "Lesson 107: Maximum, minimum, count and total"
     },
     {
       "id": "L108",
-      "title": "Lesson 108: Nested loops and table-style problems"
+      "title": "Lesson 108: String-processing algorithms"
     },
     {
       "id": "L109",
-      "title": "Lesson 109: Algorithm efficiency at AS level"
+      "title": "Lesson 109: Nested loops and table-style problems"
     },
     {
       "id": "L110",
-      "title": "Lesson 110: Cambridge pseudocode conventions and exam readability"
+      "title": "Lesson 110: Algorithm efficiency at AS level"
     },
     {
       "id": "L111",
-      "title": "Lesson 111: Designing algorithms from word problems"
+      "title": "Lesson 111: Cambridge pseudocode conventions and exam readability"
     },
     {
       "id": "L112",
-      "title": "Lesson 112: Section 9 review: from scenario to pseudocode"
+      "title": "Lesson 112: Designing algorithms from word problems"
     },
     {
       "id": "L113",
-      "title": "Lesson 113: Data types: integer, real, Boolean, char, string, date, and user-defined types"
+      "title": "Lesson 113: Section 9 required-content checkpoint"
     },
     {
       "id": "L114",
-      "title": "Lesson 114: Constants, variables, and assignment"
+      "title": "Lesson 114: Select and use the official Cambridge data types"
     },
     {
       "id": "L115",
-      "title": "Lesson 115: One-dimensional arrays"
+      "title": "Lesson 115: Define, read and save record data"
     },
     {
       "id": "L116",
-      "title": "Lesson 116: Two-dimensional arrays"
+      "title": "Lesson 116: Array terminology, selection and one-dimensional pseudocode"
     },
     {
       "id": "L117",
-      "title": "Lesson 117: Array algorithms: traversal, update, search, and count"
+      "title": "Lesson 117: Select and write two-dimensional arrays"
     },
     {
       "id": "L118",
-      "title": "Lesson 118: Records and composite data"
+      "title": "Lesson 118: Array model required by search algorithms"
     },
     {
       "id": "L119",
-      "title": "Lesson 119: Arrays of records"
+      "title": "Lesson 119: Write linear-search and bubble-sort algorithms"
     },
     {
       "id": "L120",
-      "title": "Lesson 120: Text files: reading, writing, and appending"
+      "title": "Lesson 120: Why files are needed and how text-file pseudocode works"
     },
     {
       "id": "L121",
-      "title": "Lesson 121: CSV-style structured text files"
+      "title": "Lesson 121: Abstract data types and array-based operations"
     },
     {
       "id": "L122",
-      "title": "Lesson 122: Stacks and queues as abstract data types"
+      "title": "Lesson 122: Choosing stack, queue or linked list"
     },
     {
       "id": "L123",
-      "title": "Lesson 123: Choosing appropriate data structures"
+      "title": "Lesson 123: Stacks and queues as abstract data types"
     },
     {
       "id": "L124",
-      "title": "Lesson 124: Pseudocode data declarations vs Java declarations"
+      "title": "Lesson 124: Choosing appropriate data structures"
     },
     {
       "id": "L125",
-      "title": "Lesson 125: Section 10 review: data modelling in algorithms"
+      "title": "Lesson 125: Pseudocode data declarations vs Java declarations"
     },
     {
       "id": "L126",
-      "title": "Lesson 126: Programming constructs: sequence, selection, and iteration"
+      "title": "Lesson 126: Section 10 review: data modelling in algorithms"
     },
     {
       "id": "L127",
-      "title": "Lesson 127: IF, CASE, and nested selection"
+      "title": "Lesson 127: Translate descriptions into Cambridge pseudocode"
     },
     {
       "id": "L128",
-      "title": "Lesson 128: Count-controlled loops"
+      "title": "Lesson 128: Complete Cambridge pseudocode statements"
     },
     {
       "id": "L129",
-      "title": "Lesson 129: Condition-controlled loops"
+      "title": "Lesson 129: Use supplied built-in and library routines"
     },
     {
       "id": "L130",
-      "title": "Lesson 130: Procedures and functions"
+      "title": "Lesson 130: Selection and loop structures"
     },
     {
       "id": "L131",
-      "title": "Lesson 131: Parameters: by value and by reference in pseudocode"
+      "title": "Lesson 131: Procedures, functions and their interfaces"
     },
     {
       "id": "L132",
-      "title": "Lesson 132: Scope, lifetime, and local/global variables"
+      "title": "Lesson 132: Parameters: by value and by reference"
     },
     {
       "id": "L133",
-      "title": "Lesson 133: String handling and built-in functions"
+      "title": "Lesson 133: Scope, lifetime, and local/global variables"
     },
     {
       "id": "L134",
-      "title": "Lesson 134: Arithmetic operators, integer division, and MOD"
+      "title": "Lesson 134: Clear and efficient Cambridge pseudocode"
     },
     {
       "id": "L135",
-      "title": "Lesson 135: Input and output formatting"
+      "title": "Lesson 135: Arithmetic operators, integer division, and MOD"
     },
     {
       "id": "L136",
-      "title": "Lesson 136: File handling patterns in pseudocode and Java"
+      "title": "Lesson 136: Input and output formatting"
     },
     {
       "id": "L137",
-      "title": "Lesson 137: Testing with normal, abnormal, and extreme/boundary data"
+      "title": "Lesson 137: File handling patterns in pseudocode and Java"
     },
     {
       "id": "L138",
-      "title": "Lesson 138: Debugging using traces and breakpoints"
+      "title": "Lesson 138: Testing with normal, abnormal, and extreme/boundary data"
     },
     {
       "id": "L139",
-      "title": "Lesson 139: Robust program design: validation and modularity"
+      "title": "Lesson 139: Debugging using traces and breakpoints"
     },
     {
       "id": "L140",
-      "title": "Lesson 140: Converting Java habits into Cambridge pseudocode"
+      "title": "Lesson 140: Robust program design: validation and modularity"
     },
     {
       "id": "L141",
-      "title": "Lesson 141: Section 11 review: writing complete program fragments"
+      "title": "Lesson 141: Converting Java habits into Cambridge pseudocode"
     },
     {
       "id": "L142",
-      "title": "Lesson 142: Software development lifecycle models"
+      "title": "Lesson 142: Section 11 review: writing complete program fragments"
     },
     {
       "id": "L143",
-      "title": "Lesson 143: Requirements analysis and success criteria"
+      "title": "Lesson 143: Lifecycle models, purpose and limitations"
     },
     {
       "id": "L144",
-      "title": "Lesson 144: Design documentation: algorithms, data dictionaries, and interfaces"
+      "title": "Lesson 144: Structure charts and the purpose of state-transition diagrams"
     },
     {
       "id": "L145",
-      "title": "Lesson 145: Testing, implementation, maintenance, and evaluation"
+      "title": "Lesson 145: Expose, locate and correct program errors"
     },
     {
       "id": "L146",
-      "title": "Lesson 146: Section 12 review: software development case study"
+      "title": "Lesson 146: Testing, maintenance and enhancement"
     },
     {
       "id": "L147",
-      "title": "Lesson 147: Paper 2 review: algorithm design and data structures"
+      "title": "Lesson 147: Section 12 review: software development case study"
     },
     {
       "id": "L148",
-      "title": "Lesson 148: Paper 2 review: programming constructs and file handling"
+      "title": "Lesson 148: Paper 2 review: algorithm design and data structures"
     },
     {
       "id": "L149",
-      "title": "Lesson 149: Paper 2 timed pseudocode practice"
+      "title": "Lesson 149: Paper 2 review: programming constructs and file handling"
     },
     {
       "id": "L150",
-      "title": "Lesson 150: Paper 2 mock review and correction clinic"
+      "title": "Lesson 150: Paper 2 timed pseudocode practice"
+    },
+    {
+      "id": "L151",
+      "title": "Lesson 151: Paper 2 mock review and correction clinic"
     }
   ],
   "edges": [
@@ -622,188 +626,188 @@
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L012",
-      "to": "L013",
+      "from": "L013",
+      "to": "L014",
       "rationale": "compression categories before algorithms",
-      "scheduleStatus": "Forward"
-    },
-    {
-      "from": "L041",
-      "to": "L042",
-      "rationale": "CPU components before fetch-execute",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L042",
       "to": "L043",
-      "rationale": "cycle before register detail",
+      "rationale": "CPU components before fetch-execute",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L043",
-      "to": "L045",
-      "rationale": "registers before instruction format",
+      "to": "L044",
+      "rationale": "cycle before register detail",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L045",
+      "from": "L044",
       "to": "L046",
-      "rationale": "instruction format before assembly",
+      "rationale": "registers before instruction format",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L046",
       "to": "L047",
-      "rationale": "syntax before addressing trace",
+      "rationale": "instruction format before assembly",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L078",
-      "to": "L079",
-      "rationale": "database concepts before relational comparison",
+      "from": "L047",
+      "to": "L048",
+      "rationale": "syntax before addressing trace",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L079",
       "to": "L080",
-      "rationale": "relational model before tables and keys",
+      "rationale": "database concepts before relational comparison",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L080",
       "to": "L081",
-      "rationale": "fields and keys before key design",
+      "rationale": "relational model before tables and keys",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L081",
       "to": "L082",
-      "rationale": "keys before ER modelling",
+      "rationale": "fields and keys before key design",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L082",
       "to": "L083",
-      "rationale": "relationships before normalisation",
+      "rationale": "keys before ER modelling",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L083",
       "to": "L084",
-      "rationale": "schema before SQL",
+      "rationale": "relationships before normalisation",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L084",
       "to": "L085",
-      "rationale": "single-table SELECT before aggregate SQL",
+      "rationale": "schema before SQL",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L085",
       "to": "L086",
-      "rationale": "single-table queries before joins",
+      "rationale": "single-table SELECT before aggregate SQL",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L098",
-      "to": "L099",
-      "rationale": "problem solving before abstraction",
+      "from": "L086",
+      "to": "L087",
+      "rationale": "single-table queries before joins",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L099",
       "to": "L100",
-      "rationale": "abstract model before constructs",
+      "rationale": "problem solving before abstraction",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L100",
       "to": "L101",
-      "rationale": "constructs before notation",
+      "rationale": "abstract model before constructs",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L101",
       "to": "L102",
-      "rationale": "notation before tracing",
+      "rationale": "constructs before notation",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L102",
       "to": "L103",
+      "rationale": "notation before tracing",
+      "scheduleStatus": "Forward"
+    },
+    {
+      "from": "L103",
+      "to": "L104",
       "rationale": "trace before defensive validation",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L115",
-      "to": "L104",
+      "from": "L116",
+      "to": "L105",
       "rationale": "array representation before search",
       "scheduleStatus": "BackwardTeaching"
     },
     {
-      "from": "L115",
-      "to": "L105",
+      "from": "L116",
+      "to": "L106",
       "rationale": "array representation before sort",
       "scheduleStatus": "BackwardTeaching"
     },
     {
-      "from": "L113",
-      "to": "L115",
+      "from": "L114",
+      "to": "L116",
       "rationale": "data types before arrays",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L115",
-      "to": "L116",
+      "from": "L116",
+      "to": "L117",
       "rationale": "one-dimensional before two-dimensional arrays",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L115",
-      "to": "L117",
+      "from": "L116",
+      "to": "L118",
       "rationale": "array bounds before counting",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L113",
-      "to": "L118",
+      "from": "L114",
+      "to": "L119",
       "rationale": "types before records",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L118",
-      "to": "L119",
+      "from": "L119",
+      "to": "L120",
       "rationale": "records before arrays of records",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L115",
-      "to": "L122",
+      "from": "L116",
+      "to": "L123",
       "rationale": "array storage before array-based ADTs",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L122",
-      "to": "L123",
+      "from": "L123",
+      "to": "L124",
       "rationale": "ADT definitions before selection",
-      "scheduleStatus": "Forward"
-    },
-    {
-      "from": "L130",
-      "to": "L131",
-      "rationale": "subprogram interface before parameter passing",
       "scheduleStatus": "Forward"
     },
     {
       "from": "L131",
       "to": "L132",
+      "rationale": "subprogram interface before parameter passing",
+      "scheduleStatus": "Forward"
+    },
+    {
+      "from": "L132",
+      "to": "L133",
       "rationale": "parameters before scope",
       "scheduleStatus": "Forward"
     },
     {
-      "from": "L142",
-      "to": "AM140",
+      "from": "L143",
+      "to": "AM141",
       "rationale": "development models before monthly assessment",
       "scheduleStatus": "BackwardAssessment"
     }

@@ -65,7 +65,7 @@ ledger.counts = { total: 965, stage10Jpg: 779, htmlCss: 170, inlineSvg: 13, othe
 ledger.curriculumSequenceMigration = {
   retired: [...removedKeys],
   moved: Object.fromEntries(moves),
-  review: "Original-resolution assets and their new lesson contexts reviewed after the Lesson 100-102 reorder.",
+  review: "Original-resolution assets and their new lesson contexts reviewed after the Lesson 101-102 reorder.",
 };
 
 if (ledger.records.length !== 965 || new Set(ledger.records.map((record) => record.key)).size !== 965) {

@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 052 | System software overview: operating systems, utility software and translators</title>
+    <title>AS9618 Lesson 052 | Section 4 review: tracing processor behaviour</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>System software overview: operating systems, utility software and translators</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Section 4 review: tracing processor behaviour</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,399 +29,288 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#categories">Categories</a>
-        <a href="#os">Operating system</a>
-        <a href="#utility">Utility software</a>
-        <a href="#translators">Translators</a>
-        <a href="#pathway">Translation pathway</a>
-        <a href="#tool">Classifier</a>
+        <a href="#map">Section map</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#retrieval">Retrieval</a>
+        <a href="#compare">Compare traps</a>
+        <a href="#timed">Timed task</a>
+        <a href="#clinic">Answer clinic</a>
+        <a href="#tool">Review tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>System software: operating-system and utility roles</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.</p>
-            <p>Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.</p>
-            <p>Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.</p>
-            <p>A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.</p>
-            <p>A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.</p>
-            <p>Required utilities include defragmentation software and disk contents analysis/disk repair software; defragmentation rearranges file blocks, while analysis/repair checks and attempts to repair file-system faults.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Open a protected file and print it / Choose the utility from the fault</h3>
-            <p>The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer. Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start os -->
-        <section class="panel explanation-panel" id="explanation-os" data-explains="os" data-explanation-kind="mechanism" aria-labelledby="explanation-os-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="os">
-          <h2 class="explanation-sr-only" id="explanation-os-title">Operating system: the main coordinator</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-os.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Operating system: the main coordinator with a structured visual model." />
-            <figcaption class="explanation-sr-only">Operating system: the main coordinator: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> User interface Provides a way for users to interact with the computer, such as GUI or command line.</li><li><strong>Lesson fact:</strong> Resource management Allocates and controls hardware resources such as processor time, memory and devices.</li><li><strong>Lesson fact:</strong> File services Provides file organisation, storage access and permission support.</li><li><strong>Lesson fact:</strong> Application services Provides services and APIs that application software can use.</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> Detailed process, memory, file and device management are developed in Lesson 053. Here the OS is introduced as the main system coordinator.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end os -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>System software: operating-system and utility roles: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which OS role authenticates a user and enforces access rights?</p>
-              <details><summary>Show answer</summary><p>Security management.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which role allocates RAM to a running process?</p>
-              <details><summary>Show answer</summary><p>Memory management.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which role uses drivers, buffers and queues?</p>
-              <details><summary>Show answer</summary><p>Hardware management/device management.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is an operating system required?</p>
-              <details><summary>Show answer</summary><p>It provides a controlled interface and coordinates shared hardware and software resources for applications and users.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Which utility prepares file-system structures on a storage medium?</p>
-              <details><summary>Show answer</summary><p>A disk formatter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Which utility checks file-system structures and attempts repairs?</p>
-              <details><summary>Show answer</summary><p>A disk contents analysis/repair utility.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> Why is compression not a backup?</p>
-              <details><summary>Show answer</summary><p>Compression reduces size; a backup creates a separate copy that can be restored.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>10 marks</span></div>
-            <p>Explain why an operating system is required and describe its process, memory, file, security and hardware management roles. A computer has a new storage medium and another disk reports file-system errors. Identify the utility for each task and explain its purpose.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>required interface/control layer between applications, users and hardware</td><td>Do not substitute antivirus utility software for OS security management, and do not treat stored files as RAM. Do not accept defragmentation as formatting or as a general file-system repair operation.</td><td>1</td></tr>
-                  <tr><td>process management schedules CPU time or tracks processes</td><td></td><td>1</td></tr>
-                  <tr><td>memory management allocates/protects RAM</td><td></td><td>1</td></tr>
-                  <tr><td>file management organises stored files and operations</td><td></td><td>1</td></tr>
-                  <tr><td>security management authenticates users or enforces permissions/access rights</td><td></td><td>1</td></tr>
-                  <tr><td>hardware management uses drivers/interrupts/buffers/queues to coordinate devices</td><td></td><td>1</td></tr>
-                  <tr><td>disk formatter for the new medium</td><td></td><td>1</td></tr>
-                  <tr><td>formatter creates/prepares file-system structures</td><td></td><td>1</td></tr>
-                  <tr><td>disk contents analysis/repair utility for the faulty disk</td><td></td><td>1</td></tr>
-                  <tr><td>it examines structures and reports/attempts repair of faults</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 052 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>System software keeps the computer useful before the apps arrive.</h2>
+            <p class="lesson-meta">Lesson 052 | 45 minutes | Paper 1 Section 4 | Stage review</p>
+            <h2>Identify the relevant processor concept before answering.</h2>
             <p>
-              System software manages the computer, supports application software
-              and helps programs run. This lesson separates operating systems,
-              utility software and language translators so students do not put
-              every program into the same digital drawer.
+              Section 4 questions often look similar: registers, buses, instructions,
+              interrupts and performance all involve the CPU. This review trains topic
+              recognition, trace accuracy and Cambridge-style correction.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>operating systems, utility software and language translators</span></div>
-              <div><strong>Explain</strong><span>how system software supports hardware, applications and users</span></div>
-              <div><strong>Compare</strong><span>compiler, interpreter and assembler at overview level</span></div>
+              <div><strong>Recognise</strong><span>which Section 4 concept a mixed question is testing</span></div>
+              <div><strong>Trace</strong><span>processor behaviour using precise registers, buses and instruction stages</span></div>
+              <div><strong>Improve</strong><span>weak answers using mark-scheme language and correction prompts</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="System software sketch">
-            <div class="system-stack">
-              <span>Hardware</span>
-              <span>System software</span>
-              <span>Application software</span>
-              <span>User tasks</span>
+          <div class="review-card" aria-label="Section 4 review sketch">
+            <div class="review-stack">
+              <span>Identify topic</span>
+              <span>State mechanism</span>
+              <span>Trace or compare</span>
+              <span>Add consequence</span>
+              <span>Check MS wording</span>
             </div>
-            <p>Distinguish the operating system, application software, translators and utility software by function.</p>
+            <p>The first mark is often knowing what the question is really asking.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Section 5 answers often fail because students name software but do not state the service it provides.</p>
+            <p>Students often know the content but answer the neighbouring topic. Review lessons fix recognition and precision.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not call a word processor an operating system. Application software performs user tasks; system software supports the system.</p>
+            <p>Do not write a memorised paragraph about the CPU if the question asks specifically about MAR, indirect addressing or cache.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A user writes `PRINT("Hello")`. The CPU wants machine code. Who translates?</h2>
-            <p>Click the best answer. The processor is powerful, but it is not fluent in every high-level language.</p>
+            <h2>Which topic is being tested?</h2>
+            <p>Click the best label for this mini-question: "Explain why `LOAD #5` and `LOAD 5` may load different values."</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="translator">A language translator such as a compiler or interpreter</button>
-            <button class="choice-card" type="button" data-hook="word">A word processor</button>
-            <button class="choice-card" type="button" data-hook="antivirus">Antivirus software</button>
-            <button class="choice-card" type="button" data-hook="monitor">The monitor</button>
+            <button class="choice-card" type="button" data-hook="addressing">Addressing modes</button>
+            <button class="choice-card" type="button" data-hook="interrupts">Interrupt handling</button>
+            <button class="choice-card" type="button" data-hook="pipelining">Pipelining</button>
+            <button class="choice-card" type="button" data-hook="cache">Cache memory</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Source code must be translated into code the processor can execute.
+            Choose one. A review lesson begins by naming the correct topic before writing the answer.
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+        <section class="panel" id="map" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>System software supports the running and maintenance of the computer</h2>
+            <p class="eyebrow">Section map</p>
+            <h2>Section 4 concept map</h2>
           </div>
-          <div class="concept-grid">
-            <article>
-              <strong>System software</strong>
-              <span>Software that manages hardware, supports applications and helps maintain the computer system.</span>
-            </article>
-            <article>
-              <strong>Operating system</strong>
-              <span>System software that manages resources and provides an interface and services for users and applications.</span>
-            </article>
-            <article>
-              <strong>Utility software</strong>
-              <span>System software that performs maintenance, protection or optimisation tasks.</span>
-            </article>
-            <article>
-              <strong>Translator</strong>
-              <span>System software that converts source code into code that can be executed or further processed.</span>
-            </article>
+          <div class="map-grid">
+            <article><strong>CPU components</strong><span>ALU, CU, registers, buses and clock coordinate instruction processing.</span></article>
+            <article><strong>FDE cycle</strong><span>PC, MAR, MDR and CIR move address, instruction and data through fetch-decode-execute.</span></article>
+            <article><strong>Instruction set</strong><span>Machine code depends on a processor's instruction set; assembly uses mnemonics and labels.</span></article>
+            <article><strong>Addressing modes</strong><span>Immediate, direct, indirect and indexed modes change operand interpretation.</span></article>
+            <article><strong>Interrupts</strong><span>The CPU saves state, runs an ISR, then restores state and resumes.</span></article>
+            <article><strong>Performance</strong><span>Clock speed, cores, cache, word length and pipelining affect performance with limits.</span></article>
           </div>
-          <div class="callout">Chinese support: system software = 系统软件；operating system = 操作系统；utility software = 实用程序；translator = 语言翻译程序。</div>
         </section>
 
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">System software supports the running and maintenance of the computer</h2>
+        <!-- stage10-explanation:start map -->
+        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <h2 class="explanation-sr-only" id="explanation-map-title">Section 4 concept map</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software supports the running and maintenance of the computer with a structured visual model." />
-            <figcaption class="explanation-sr-only">System software supports the running and maintenance of the computer: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 4 concept map with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 4 concept map: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> System software</li><li><strong>Lesson fact:</strong> Software that manages hardware, supports applications and helps maintain the computer system.</li><li><strong>Lesson fact:</strong> Operating system</li><li><strong>Lesson fact:</strong> System software that manages resources and provides an interface and services for users and applications.</li><li><strong>Lesson fact:</strong> Utility software</li><li><strong>Lesson fact:</strong> System software that performs maintenance, protection or optimisation tasks.</li><li><strong>Lesson fact:</strong> Translator</li><li><strong>Lesson fact:</strong> System software that converts source code into code that can be executed or further processed.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Fetch copies PC to MAR, reads memory into MDR, copies MDR to CIR and increments PC.</li><li><strong>Lesson fact:</strong> Decode begins after CIR holds the current instruction; the control unit interprets its opcode and operands.</li><li><strong>Lesson fact:</strong> The address in MAR does not flow into MDR; memory returns the addressed instruction or data into MDR.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="categories" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+        <!-- stage10-explanation:end map -->
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Classify the question before answering</h2>
+          </div>
+          <div class="classifier-table" role="table" aria-label="Question classifier">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Question clue</div>
+              <div role="columnheader">Likely topic</div>
+              <div role="columnheader">What to include</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">PC, MAR, MDR, CIR, ACC, status flags</div>
+              <div role="cell">Registers / FDE cycle</div>
+              <div role="cell">Temporary storage role and sequence.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Address bus, data bus, control bus</div>
+              <div role="cell">System buses</div>
+              <div role="cell">Direction, content carried and purpose.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Mnemonic, opcode, operand, label</div>
+              <div role="cell">Instruction sets / assembly</div>
+              <div role="cell">Human-readable representation and processor-specific machine code.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">`#`, address, pointer, base + index</div>
+              <div role="cell">Addressing modes</div>
+              <div role="cell">How the operand is interpreted and effective address.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">ISR, save state, device signal</div>
+              <div role="cell">Interrupts</div>
+              <div role="cell">Pause, save state, run ISR, restore, resume.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Throughput, stall, branch, cache, cores</div>
+              <div role="cell">Performance / pipelining</div>
+              <div role="cell">Mechanism, condition and limitation.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="retrieval" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>System software versus application software</h2>
+            <h2>Retrieval grid: say the role, not just the name</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>PC</strong><span>Holds address of the next instruction to fetch.</span></article>
+            <article><strong>MAR</strong><span>Holds the memory address being accessed.</span></article>
+            <article><strong>MDR</strong><span>Holds data/instruction transferred to or from memory.</span></article>
+            <article><strong>CIR</strong><span>Holds the current instruction while it is decoded/executed.</span></article>
+            <article><strong>Control bus</strong><span>Carries control/timing signals such as read, write and interrupt.</span></article>
+            <article><strong>Cache</strong><span>Small fast memory storing frequently/recently used items.</span></article>
+            <article><strong>ISR</strong><span>Routine that handles a specific interrupt.</span></article>
+            <article><strong>Pipeline stall</strong><span>Pause because an instruction cannot safely continue.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start retrieval -->
+        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Retrieval grid: say the role, not just the name</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Retrieval grid: say the role, not just the name with a structured visual model." />
+            <figcaption class="explanation-sr-only">Retrieval grid: say the role, not just the name: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> PC holds the address of the next instruction; MAR holds the memory address being accessed.</li><li><strong>Lesson fact:</strong> The address bus carries addresses between the processor and memory.</li><li><strong>Lesson fact:</strong> MDR holds data or instructions transferred through the data bus.</li><li><strong>Lesson fact:</strong> CIR holds the current instruction while it is decoded and executed.</li><li><strong>Lesson fact:</strong> The control bus carries control and timing signals such as read, write and interrupt.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end retrieval -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Common compare traps</h2>
           </div>
           <div class="compare-grid">
             <article>
-              <h3>System software</h3>
-              <p>Runs, manages or maintains the computer system. It provides services that applications depend on.</p>
-              <ul>
-                <li>Operating system</li>
-                <li>Utility software</li>
-                <li>Language translators</li>
-              </ul>
+              <h3>MAR vs MDR</h3>
+              <p>MAR holds an address. MDR holds the data or instruction being transferred. One points where; the other carries what.</p>
             </article>
             <article>
-              <h3>Application software</h3>
-              <p>Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</p>
-              <ul>
-                <li>Word processor</li>
-                <li>Spreadsheet</li>
-                <li>Web browser</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start categories -->
-        <section class="panel explanation-panel" id="explanation-categories" data-explains="categories" data-explanation-kind="mechanism" aria-labelledby="explanation-categories-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-categories-title">System software versus application software</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-categories.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software versus application software with a structured visual model." />
-            <figcaption class="explanation-sr-only">System software versus application software: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> System software</li><li><strong>Lesson fact:</strong> Runs, manages or maintains the computer system. It provides services that applications depend on.</li><li><strong>Lesson fact:</strong> Operating system</li><li><strong>Lesson fact:</strong> Utility software</li><li><strong>Lesson fact:</strong> Language translators</li><li><strong>Lesson fact:</strong> Application software</li><li><strong>Lesson fact:</strong> Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</li><li><strong>Lesson fact:</strong> Word processor</li><li><strong>Lesson fact:</strong> Spreadsheet</li><li><strong>Lesson fact:</strong> Web browser</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end categories -->
-        <section class="panel" id="os" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Operating system: the main coordinator</h2>
-          </div>
-          <div class="role-grid">
-            <article><strong>User interface</strong><span>Provides a way for users to interact with the computer, such as GUI or command line.</span></article>
-            <article><strong>Resource management</strong><span>Allocates and controls hardware resources such as processor time, memory and devices.</span></article>
-            <article><strong>File services</strong><span>Provides file organisation, storage access and permission support.</span></article>
-            <article><strong>Application services</strong><span>Provides services and APIs that application software can use.</span></article>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Boundary</h3>
-            <p>Detailed process, memory, file and device management are developed in Lesson 053. Here the OS is introduced as the main system coordinator.</p>
-          </div>
-        </section>
-
-        <section class="panel" id="utility" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Utility software: maintenance and protection tools</h2>
-          </div>
-          <div class="utility-table" role="table" aria-label="Utility software examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Utility</div>
-              <div role="columnheader">Purpose</div>
-              <div role="columnheader">Exam-safe wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Antivirus</div>
-              <div role="cell">Detects, quarantines or removes malware.</div>
-              <div role="cell">Protects the system from malicious software.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Backup</div>
-              <div role="cell">Creates copies of files/data.</div>
-              <div role="cell">Allows recovery after data loss, corruption or hardware failure.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Compression</div>
-              <div role="cell">Reduces file size.</div>
-              <div role="cell">Saves storage space or reduces transmission time.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Disk/file tools</div>
-              <div role="cell">Manage storage, clean temporary files or check disks.</div>
-              <div role="cell">Maintains storage organisation and may improve usability.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start utility -->
-        <section class="panel explanation-panel" id="explanation-utility" data-explains="utility" data-explanation-kind="mechanism" aria-labelledby="explanation-utility-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-utility-title">Utility software: maintenance and protection tools</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-utility.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software: maintenance and protection tools with a structured visual model." />
-            <figcaption class="explanation-sr-only">Utility software: maintenance and protection tools: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Antivirus</li><li><strong>Lesson fact:</strong> Detects, quarantines or removes malware.</li><li><strong>Lesson fact:</strong> Protects the system from malicious software.</li><li><strong>Lesson fact:</strong> Creates copies of files/data.</li><li><strong>Lesson fact:</strong> Allows recovery after data loss, corruption or hardware failure.</li><li><strong>Lesson fact:</strong> Compression</li><li><strong>Lesson fact:</strong> Reduces file size.</li><li><strong>Lesson fact:</strong> Saves storage space or reduces transmission time.</li><li><strong>Lesson fact:</strong> Disk/file tools</li><li><strong>Lesson fact:</strong> Manage storage, clean temporary files or check disks.</li><li><strong>Lesson fact:</strong> Maintains storage organisation and may improve usability.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end utility -->
-        <section class="panel" id="translators" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Language translators: source code to executable behaviour</h2>
-          </div>
-          <div class="translator-grid">
-            <article>
-              <strong>Compiler</strong>
-              <span>Translates the whole source program before execution, often producing object or executable code.</span>
+              <h3>Direct vs indirect</h3>
+              <p>Direct uses the operand as the address of the value. Indirect uses the operand as the address of a pointer to the value.</p>
             </article>
             <article>
-              <strong>Interpreter</strong>
-              <span>Translates and executes source code statement by statement, often useful during development and debugging.</span>
+              <h3>Clock speed vs throughput</h3>
+              <p>Clock speed is cycles per second. Throughput is completed work per unit time. They are related, not identical.</p>
             </article>
             <article>
-              <strong>Assembler</strong>
-              <span>Translates assembly language mnemonics into machine code for a specific processor.</span>
+              <h3>Interrupt vs polling</h3>
+              <p>An interrupt lets a device signal the CPU. Polling means the CPU repeatedly checks the device/status flag.</p>
             </article>
           </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>An interpreter is not a "bad compiler". It is a different translation approach with different trade-offs.</p>
-          </div>
         </section>
 
-        <!-- stage10-explanation:start translators -->
-        <section class="panel explanation-panel" id="explanation-translators" data-explains="translators" data-explanation-kind="mechanism" aria-labelledby="explanation-translators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-translators-title">Language translators: source code to executable behaviour</h2>
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="synthesis" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Common compare traps</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-translators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Language translators: source code to executable behaviour with a structured visual model." />
-            <figcaption class="explanation-sr-only">Language translators: source code to executable behaviour: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common compare traps with a structured visual model." />
+            <figcaption class="explanation-sr-only">Common compare traps: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Compiler</li><li><strong>Lesson fact:</strong> Translates the whole source program before execution, often producing object or executable code.</li><li><strong>Lesson fact:</strong> Interpreter</li><li><strong>Lesson fact:</strong> Translates and executes source code statement by statement, often useful during development and debugging.</li><li><strong>Lesson fact:</strong> Assembler</li><li><strong>Lesson fact:</strong> Translates assembly language mnemonics into machine code for a specific processor.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> An interpreter is not a &quot;bad compiler&quot;. It is a different translation approach with different trade-offs.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> MAR vs MDR</li><li><strong>Lesson fact:</strong> MAR holds an address. MDR holds the data or instruction being transferred. One points where; the other carries what.</li><li><strong>Lesson fact:</strong> Direct vs indirect</li><li><strong>Lesson fact:</strong> Direct uses the operand as the address of the value. Indirect uses the operand as the address of a pointer to the value.</li><li><strong>Lesson fact:</strong> Clock speed vs throughput</li><li><strong>Lesson fact:</strong> Clock speed is cycles per second. Throughput is completed work per unit time. They are related, not identical.</li><li><strong>Lesson fact:</strong> Interrupt vs polling</li><li><strong>Lesson fact:</strong> An interrupt lets a device signal the CPU. Polling means the CPU repeatedly checks the device/status flag.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end translators -->
-        <section class="panel" id="pathway" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+        <!-- stage10-explanation:end compare -->
+        <section class="panel" id="timed" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Translation pathway</h2>
+            <p class="eyebrow">Timed task</p>
+            <h2>8-minute mixed Section 4 response</h2>
+            <p>Choose one question, write the answer, then compare with the expandable MS in the exam section.</p>
           </div>
-          <div class="pathway-grid">
-            <div><strong>High-level source code</strong><span>Human-readable instructions such as Python, Java or pseudocode-like code.</span></div>
-            <div><strong>Translator</strong><span>Compiler/interpreter converts or executes the source language.</span></div>
-            <div><strong>Object / executable / machine code</strong><span>Low-level code that the processor can execute directly or as part of a build process.</span></div>
-            <div><strong>Error feedback</strong><span>Syntax and translation errors must be reported so the programmer can correct them.</span></div>
+          <div class="timed-grid">
+            <article><strong>Question A</strong><span>Trace the fetch stage and name the role of PC, MAR and MDR.</span></article>
+            <article><strong>Question B</strong><span>Explain why an interrupt service routine must save and restore processor state.</span></article>
+            <article><strong>Question C</strong><span>Discuss why pipelining may improve CPU performance but not always reach ideal speed-up.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start pathway -->
-        <section class="panel explanation-panel" id="explanation-pathway" data-explains="pathway" data-explanation-kind="mechanism" aria-labelledby="explanation-pathway-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-pathway-title">Translation pathway</h2>
+        <!-- stage10-explanation:start timed -->
+        <section class="panel explanation-panel" id="explanation-timed" data-explains="timed" data-explanation-kind="synthesis" aria-labelledby="explanation-timed-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <h2 class="explanation-sr-only" id="explanation-timed-title">8-minute mixed Section 4 response</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-pathway.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation pathway with a structured visual model." />
-            <figcaption class="explanation-sr-only">Translation pathway: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-timed.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-minute mixed Section 4 response with a structured visual model." />
+            <figcaption class="explanation-sr-only">8-minute mixed Section 4 response: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> High-level source code Human-readable instructions such as Python, Java or pseudocode-like code.</li><li><strong>Lesson fact:</strong> Translator Compiler/interpreter converts or executes the source language.</li><li><strong>Lesson fact:</strong> Object / executable / machine code Low-level code that the processor can execute directly or as part of a build process.</li><li><strong>Lesson fact:</strong> Error feedback Syntax and translation errors must be reported so the programmer can correct them.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Timed task</li><li><strong>Lesson fact:</strong> Choose one question, write the answer, then compare with the expandable MS in the exam section.</li><li><strong>Lesson fact:</strong> Question A Trace the fetch stage and name the role of PC, MAR and MDR.</li><li><strong>Lesson fact:</strong> Question B Explain why an interrupt service routine must save and restore processor state.</li><li><strong>Lesson fact:</strong> Question C Discuss why pipelining may improve CPU performance but not always reach ideal speed-up.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end pathway -->
+        <!-- stage10-explanation:end timed -->
+        <section class="panel" id="clinic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <div class="section-title">
+            <p class="eyebrow">Answer clinic</p>
+            <h2>Turn vague into mark-worthy</h2>
+          </div>
+          <div class="clinic-card">
+            <p><strong>Weak answer:</strong> "The CPU uses registers and buses to get instructions. It is faster because of cache and pipelining."</p>
+            <p><strong>Diagnosis:</strong> This names several topics but does not answer any one of them precisely.</p>
+            <p><strong>Fix pattern:</strong> Topic → mechanism → exact role/sequence → consequence.</p>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start clinic -->
+        <section class="panel explanation-panel" id="explanation-clinic" data-explains="clinic" data-explanation-kind="synthesis" aria-labelledby="explanation-clinic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
+          <h2 class="explanation-sr-only" id="explanation-clinic-title">Turn vague into mark-worthy</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-clinic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague into mark-worthy with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn vague into mark-worthy: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Answer clinic</li><li><strong>Lesson fact:</strong> Weak answer: &quot;The CPU uses registers and buses to get instructions. It is faster because of cache and pipelining.&quot;</li><li><strong>Lesson fact:</strong> Diagnosis: This names several topics but does not answer any one of them precisely.</li><li><strong>Lesson fact:</strong> Fix pattern: Topic → mechanism → exact role/sequence → consequence.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end clinic -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>System software classifier</h2>
-            <p>Select a scenario and classify the software type before reading the explanation.</p>
+            <h2>Question topic classifier</h2>
+            <p>Select a clue and practise choosing the correct Section 4 response pattern.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
+              Question clue
               <select id="scenarioInput">
-                <option value="os">The software allocates memory and processor time to programs</option>
-                <option value="backup">The software creates copies of user files for recovery</option>
-                <option value="compiler">The software translates a complete high-level program before it runs</option>
-                <option value="interpreter">The software runs source code line by line during testing</option>
-                <option value="assembler">The software converts assembly mnemonics into machine code</option>
-                <option value="app">The software helps a user write an essay</option>
+                <option value="fde">"Describe what happens during the fetch stage."</option>
+                <option value="bus">"Explain the role of the control bus."</option>
+                <option value="mode">"Compare LOAD #20 and LOAD 20."</option>
+                <option value="interrupt">"A device sends an interrupt signal."</option>
+                <option value="pipeline">"A branch instruction is in a pipeline."</option>
+                <option value="performance">"A processor has more cores and larger cache."</option>
               </select>
             </label>
             <button type="button" id="simulateBtn">Classify</button>
@@ -434,13 +323,13 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Choose the category, then justify it</h2>
+            <h2>Annotate where marks come from</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="classify">Classify software</button>
-            <button class="tab" type="button" data-example="compiler">Choose compiler</button>
-            <button class="tab" type="button" data-example="interpreter">Choose interpreter</button>
-            <button class="tab" type="button" data-example="utility">Choose utility</button>
+            <button class="tab active" type="button" data-example="fde">FDE trace</button>
+            <button class="tab" type="button" data-example="addressing">Addressing</button>
+            <button class="tab" type="button" data-example="interrupt">Interrupt</button>
+            <button class="tab" type="button" data-example="pipeline">Pipelining</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -449,7 +338,7 @@
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
-            <p>Type short answers. Classification questions reward exact category names.</p>
+            <p>These are deliberately mixed. Identify the topic before typing the answer.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -457,16 +346,16 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the system software confusion</h2>
+            <h2>Repair common Section 4 errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about category, purpose and consequence.</p>
+            <p class="eyebrow">Stage review exam-style questions</p>
+            <h2>Mixed Section 4 questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about topic recognition and precise processor vocabulary.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -474,36 +363,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>System software supports the system</h2>
+            <h2>Review method: classify, trace, correct</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>OS</strong><span>Manages resources and provides services/interface.</span></div>
-            <div><strong>Utility</strong><span>Maintains, protects or optimises the system.</span></div>
-            <div><strong>Translator</strong><span>Converts source code into executable or lower-level code.</span></div>
-            <div><strong>Compiler</strong><span>Translates the whole program before execution.</span></div>
-            <div><strong>Interpreter</strong><span>Translates and executes statement by statement.</span></div>
-            <div><strong>Exam habit</strong><span>Name the category, then state its purpose and consequence.</span></div>
+            <div><strong>Classify</strong><span>Identify the topic from clue words before answering.</span></div>
+            <div><strong>Trace</strong><span>Use correct sequence for FDE, interrupts, addressing or pipelines.</span></div>
+            <div><strong>Compare</strong><span>State the exact difference between similar terms.</span></div>
+            <div><strong>Consequence</strong><span>Explain why the mechanism matters in the scenario.</span></div>
+            <div><strong>Correct</strong><span>Rewrite vague answers using MS wording.</span></div>
+            <div><strong>Exam habit</strong><span>One precise mechanism beats three vague keywords.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Build a clean Section 5 vocabulary base</h2>
+            <h2>Finish the Section 4 correction cycle</h2>
           </div>
           <ol class="homework-list">
-            <li>Define system software, operating system, utility software and language translator.</li>
-            <li>Create a table with six examples: two OS roles, two utilities and two translators.</li>
-            <li>Write a 4-mark answer explaining why a compiler may be suitable for distributing a finished program.</li>
-            <li>Correct this sentence: "A spreadsheet is system software because it runs on the computer."</li>
-            <li>Prepare three questions you expect in Lesson 053 about operating system roles.</li>
+            <li>Create a one-page Section 4 retrieval sheet with six boxes: registers, buses, FDE, assembly/addressing, interrupts, performance/pipelining.</li>
+            <li>Answer Question A, B and C from the timed task in full sentences.</li>
+            <li>Mark each answer using the expandable MS style: underline each mark-worthy phrase.</li>
+            <li>Rewrite the weakest answer in a second colour, adding missing mechanism and consequence.</li>
+            <li>Write three "do not confuse" pairs, such as MAR/MDR or direct/indirect addressing.</li>
           </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

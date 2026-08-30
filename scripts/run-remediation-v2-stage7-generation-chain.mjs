@@ -13,6 +13,7 @@ const commands = [
   "generate-assessments.mjs",
   "normalise-stage5-lesson-ms.mjs",
   "apply-cie-wording.mjs",
+  "generate-remediation-v2-stage3-question-sequence.mjs",
   "generate-cie-wording-register.mjs",
   "apply-student-navigation.mjs",
   "apply-stage10-explanations.mjs",
@@ -23,6 +24,9 @@ const commands = [
   "generate-syllabus-audit.mjs",
   "generate-curriculum-sequence-audit.mjs",
   "generate-question-ao-contract.mjs",
+  "repair-remediation-v2-audit-integrity.mjs",
+  "finalise-remediation-v2-audit-integrity-review.mjs",
+  "generate-remediation-v2-audit-integrity.mjs",
   "refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
   "generate-remediation-v2-stage4.mjs",
   "generate-stage6-page-review-register.mjs",
@@ -78,7 +82,7 @@ const first = new Map(pass1.trim().split("\n").map((line) => [line.slice(66), li
 const second = new Map(pass2.trim().split("\n").map((line) => [line.slice(66), line.slice(0, 64)]));
 const changed = [...new Set([...first.keys(), ...second.keys()])].filter((name) => first.get(name) !== second.get(name)).sort();
 const result = {
-  schemaVersion: 1, remediation: "v2", stage: 7, generatedDate: "2026-08-28",
+  schemaVersion: 1, remediation: "v2", stage: 7, generatedDate: "2026-08-29",
   scope: "Two consecutive runs of the complete safe mature-repository generation chain; all repository files except .git, dist, __pycache__ and this self-referential result are hashed.",
   destructiveBootstrapGeneratorExcluded: true,
   excludedGenerator: "python3 tools/generate_course.py",

@@ -47,11 +47,11 @@
     "problemCount": 0,
     "officialSourceProblemCount": 0,
     "pedagogicalProblemCount": 0,
-    "coreTeachingPagesChecked": 95,
-    "uniqueFirstUsePagesChecked": 72
+    "coreTeachingPagesChecked": 84,
+    "uniqueFirstUsePagesChecked": 70
   },
   "renderedL009Evidence": {
-    "sourceSha256": "196949058dfcb89c1233698908d908fbb4507e92b613cac7292705cdba5c1c70",
+    "sourceSha256": "4e40ebe5e105a689055c8f25c6bb5d84b698e7452d7122dd607ed0ae150de2c6",
     "desktopCoreDocumentRatio": 0.02357878672262495,
     "mobileCoreDocumentRatio": 0.03253820560536852,
     "desktopFirstRole": "CORE",

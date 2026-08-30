@@ -1,108 +1,111 @@
 const scenarioMap = {
-  admin: {
-    result: "Best fit: command line interface.",
-    method: "An expert user can type a precise command or script to repeat the operation quickly and consistently.",
-    trap: "Do not choose GUI only because it looks friendly; repeated expert tasks may be faster with commands.",
+  process: {
+    result: "Role: process management.",
+    method: "The OS scheduler allocates processor time and tracks which processes are ready, running or waiting.",
+    trap: "Do not say each application simply controls the CPU directly.",
   },
-  photo: {
-    result: "Best fit: graphical user interface.",
-    method: "Photo editing benefits from visual feedback, icons, pointer/touch actions and direct manipulation of images.",
-    trap: "Do not recommend CLI for a novice visual editing task without a strong reason.",
+  memory: {
+    result: "Role: memory management.",
+    method: "The OS allocates RAM to the program, tracks used/free memory and helps protect memory belonging to other processes.",
+    trap: "Do not confuse RAM allocation with saving a file to secondary storage.",
   },
-  atm: {
-    result: "Best fit: menu-driven interface.",
-    method: "An ATM offers a limited set of safe options such as withdraw, balance and deposit, reducing invalid input.",
-    trap: "Do not say menu-driven means the user can type any command.",
+  file: {
+    result: "Role: file management.",
+    method: "The OS provides file operations and maintains directories, metadata and permissions so the document can be stored and found.",
+    trap: "Do not say file management is only backup; backup is usually a utility task.",
   },
-  voice: {
-    result: "Best fit: natural language interface.",
-    method: "The user can speak ordinary language commands, which is useful for hands-free or accessibility-focused interaction.",
-    trap: "Do not ignore misinterpretation, noise and ambiguity as limitations.",
+  device: {
+    result: "Role: device management.",
+    method: "The OS uses a driver, buffer and queue to manage the printer and order jobs waiting for the device.",
+    trap: "Do not say the word processor talks to the printer hardware directly without OS/device support.",
   },
-  server: {
-    result: "Best fit: command line interface.",
-    method: "CLI can work well over remote connections, uses little bandwidth and supports precise administrative commands.",
-    trap: "Do not require a full graphical desktop for every server task.",
+  security: {
+    result: "Role: security and access control, linked to file management.",
+    method: "The OS checks permissions for the user account and denies access if the user lacks the required rights.",
+    trap: "Do not assume a file is accessible just because it exists.",
   },
-  kiosk: {
-    result: "Best fit: menu-driven interface.",
-    method: "A kiosk can guide visitors through fixed choices without requiring command knowledge.",
-    trap: "Do not assume natural language is best if the set of choices is small and predictable.",
+  error: {
+    result: "Role: error handling and application support.",
+    method: "The OS can detect/report an error condition, isolate a crashed process where possible and return control to the user.",
+    trap: "Do not say the OS always fixes the bug; it may only report or manage the failure.",
   },
 };
 
 const examples = {
-  cli: {
-    title: "Example 1: CLI for expert administration",
-    problem: "A technician needs to rename many files using a repeated pattern.",
+  slow: {
+    title: "Example 1: slow laptop with many apps open",
+    problem: "A browser, music player and video editor are open. Explain which OS roles are involved.",
     steps: [
-      "A command line interface is suitable because commands can include parameters and wildcards.",
-      "The task can be automated or repeated with a script.",
-      "This is efficient for an expert who knows the command syntax.",
-      "A limitation is that commands must be remembered and typing mistakes can cause errors.",
+      "Process management schedules CPU time between running processes.",
+      "Memory management allocates RAM to each process and tracks which memory is in use.",
+      "If memory is limited, the OS may need to manage memory carefully or use virtual memory in some systems.",
+      "The answer should link the role to the service: sharing CPU time and allocating memory.",
     ],
   },
-  gui: {
-    title: "Example 2: GUI for a novice editing photos",
-    problem: "A novice user needs to crop, rotate and arrange photos.",
+  print: {
+    title: "Example 2: print job",
+    problem: "A user prints a document while another document is already printing.",
     steps: [
-      "A GUI is suitable because it uses visual objects such as windows, icons and buttons.",
-      "The user can see the photo and manipulate it directly with a mouse or touch.",
-      "It is usually easier to learn for common visual tasks.",
-      "A limitation is that repetitive batch operations may be slower than using commands.",
+      "Device management is the main role.",
+      "A printer driver lets the OS communicate with the specific printer.",
+      "A print queue orders jobs waiting for the printer.",
+      "A buffer can temporarily store data while the printer works at a different speed.",
+      "The user can continue working while the OS manages the device request.",
     ],
   },
-  menu: {
-    title: "Example 3: menu-driven ticket machine",
-    problem: "A public ticket machine must guide users through buying a train ticket.",
+  save: {
+    title: "Example 3: saving a file",
+    problem: "A user saves a project as final_project.docx in a folder.",
     steps: [
-      "A menu-driven interface is suitable because users select from fixed options.",
-      "It reduces the need to remember commands.",
-      "It can prevent invalid choices by only showing permitted options.",
-      "A limitation is that nested menus may be slow if many steps are required.",
+      "File management provides the save operation.",
+      "The OS records metadata such as name, type, location, size and timestamps.",
+      "The directory structure allows the file to be located later.",
+      "Permissions can control who may read or modify the file.",
+      "This is not the same as memory management, because the saved file is stored persistently.",
     ],
   },
-  natural: {
-    title: "Example 4: natural language for hands-free control",
-    problem: "A driver wants to ask for directions without touching a screen.",
+  memory: {
+    title: "Example 4: memory conflict prevention",
+    problem: "One program tries to access memory used by another program.",
     steps: [
-      "A natural language interface is suitable because the user can speak ordinary language.",
-      "It supports hands-free interaction and may improve accessibility.",
-      "It can be intuitive for simple requests.",
-      "A limitation is that noise, accent or ambiguous wording may cause misinterpretation.",
+      "Memory management tracks which memory belongs to each process.",
+      "The OS helps prevent one process from incorrectly accessing or overwriting another process's memory.",
+      "This improves stability and security.",
+      "If an illegal access occurs, the OS may stop the process or report an error.",
+      "A strong answer states allocate, protect and release.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which interface uses typed commands at a prompt?", accepted: ["cli", "command line", "command line interface"], answer: "CLI / command line interface" },
-  { id: "p2", prompt: "Which interface uses windows, icons, menus and a pointer?", accepted: ["gui", "graphical user interface", "graphical interface"], answer: "GUI / graphical user interface" },
-  { id: "p3", prompt: "Which interface lets users choose from fixed options?", accepted: ["menu driven", "menu-driven", "menu driven interface", "menu-driven interface"], answer: "Menu-driven interface" },
-  { id: "p4", prompt: "Which interface uses ordinary spoken or written language?", accepted: ["natural language", "natural language interface", "nli"], answer: "Natural language interface" },
-  { id: "p5", prompt: "Which interface is often efficient for expert users and scripts?", accepted: ["cli", "command line", "command line interface"], answer: "CLI" },
-  { id: "p6", prompt: "Which interface is common for ATMs and ticket machines?", accepted: ["menu driven", "menu-driven", "menu driven interface", "menu-driven interface"], answer: "Menu-driven interface" },
-  { id: "p7", prompt: "Which interface may use more memory and processing power because of visual elements?", accepted: ["gui", "graphical user interface"], answer: "GUI" },
-  { id: "p8", prompt: "Name one limitation of natural language interfaces.", accepted: ["misinterpretation", "ambiguous", "ambiguity", "noise", "accent", "may misunderstand", "misunderstand"], answer: "May misinterpret ambiguous language, accents or background noise" },
-  { id: "p9", prompt: "Name one advantage of menu-driven interfaces.", accepted: ["reduces errors", "fixed options", "no commands", "guides users", "reduces memorisation", "reduces memorization"], answer: "Guides users with fixed options and reduces memorisation" },
-  { id: "p10", prompt: "Does the best interface always depend on the user, task and context? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p1", prompt: "Which OS role allocates CPU time to running programs?", accepted: ["process management", "scheduling", "scheduler"], answer: "Process management / scheduling" },
+  { id: "p2", prompt: "What is a program in execution called?", accepted: ["process", "a process"], answer: "Process" },
+  { id: "p3", prompt: "Which OS role allocates RAM to programs?", accepted: ["memory management"], answer: "Memory management" },
+  { id: "p4", prompt: "Which OS role organises folders, metadata and permissions?", accepted: ["file management"], answer: "File management" },
+  { id: "p5", prompt: "Which OS role uses drivers to communicate with peripherals?", accepted: ["device management"], answer: "Device management" },
+  { id: "p6", prompt: "What software lets the OS communicate with a specific device?", accepted: ["driver", "device driver"], answer: "Device driver" },
+  { id: "p7", prompt: "What temporary storage helps when a device and CPU work at different speeds?", accepted: ["buffer", "a buffer"], answer: "Buffer" },
+  { id: "p8", prompt: "What orders print jobs waiting for a printer?", accepted: ["print queue", "queue", "printer queue"], answer: "Print queue" },
+  { id: "p9", prompt: "What OS feature controls who can read or write a file?", accepted: ["permissions", "access control", "file permissions"], answer: "Permissions / access control" },
+  { id: "p10", prompt: "Which Lesson 055 topic is only touched lightly here: CLI, GUI, menu-driven and natural language?", accepted: ["user interfaces", "interfaces", "user interface"], answer: "User interfaces" },
 ];
 
 const mistakes = [
   {
-    wrong: "GUI is always best because it has pictures.",
-    fix: "GUI is useful for many visual and novice tasks, but CLI may be better for expert users, automation or low-resource remote administration.",
+    wrong: "The application decides which other apps get CPU time.",
+    fix: "The operating system performs process management and scheduling to allocate CPU time between processes.",
   },
   {
-    wrong: "CLI is impossible for users because it has no mouse.",
-    fix: "CLI can be efficient for users who know the commands, especially for precise, repeated or automated tasks.",
+    wrong: "Memory management means choosing a folder name for a saved file.",
+    fix: "Memory management allocates and protects RAM for running programs. File management handles folders, names and storage of files.",
   },
   {
-    wrong: "Menu-driven interfaces let users enter any command they want.",
-    fix: "Menu-driven interfaces restrict users to displayed options, which can guide users and reduce invalid input.",
+    wrong: "A printer driver is the printer hardware.",
+    fix: "A device driver is software that allows the OS to communicate with a specific hardware device.",
   },
   {
-    wrong: "Natural language interfaces always understand exactly what the user means.",
-    fix: "Natural language interfaces can misinterpret ambiguous wording, accents, background noise or missing context.",
+    wrong: "A backup utility and file management are exactly the same OS role.",
+    fix: "File management is an OS role for organising and accessing files. Backup is utility software that copies data for recovery.",
   },
 ];
 
@@ -116,90 +119,93 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Compare a command line interface and a graphical user interface.",
-    answer: "A command line interface allows the user to type text commands at a prompt. It can be fast for expert users and supports scripts or repeated tasks, but users must remember exact commands and syntax errors can occur. A graphical user interface uses visual objects such as windows, icons, menus and a pointer. It is often easier for novice users and visual tasks, but may use more system resources and can be slower for repetitive expert tasks.",
+    prompt: "Describe how an operating system manages processes when several applications are open.",
+    answer: "The operating system treats running programs as processes. It uses process management and scheduling to decide which process receives processor time. It tracks process states such as running, ready or waiting. It can switch between processes so several applications appear to run at the same time. This allows multitasking and prevents one application from permanently taking control of the CPU.",
     marking: [
-      { mark: "B1", text: "CLI described as typed/text commands at a prompt" },
-      { mark: "B1", text: "valid CLI advantage such as efficiency for experts, scripts or automation" },
-      { mark: "B1", text: "valid CLI limitation such as command knowledge/syntax errors" },
-      { mark: "B1", text: "GUI described using visual objects such as windows/icons/menus/pointer" },
-      { mark: "B1", text: "valid GUI advantage or limitation linked to user/task" },
+      { mark: "B1", text: "running programs are treated as processes" },
+      { mark: "B1", text: "scheduler/process management allocates CPU/processor time" },
+      { mark: "B1", text: "tracks process states such as running/ready/waiting" },
+      { mark: "B1", text: "switches between processes / supports multitasking" },
+      { mark: "B1", text: "prevents one process monopolising CPU or improves responsiveness" },
     ],
     strict: [
-      "Do not accept 'CLI is old and GUI is modern' as a technical comparison.",
-      "Do not award GUI mark for only saying 'has pictures' without interaction idea.",
-      "Allow WIMP terminology for GUI.",
+      "Do not accept 'the apps choose themselves' for scheduling.",
+      "Do not require named scheduling algorithms.",
+      "Allow task for process if the running-program idea is clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Explain why a menu-driven interface is suitable for a cash machine.",
-    answer: "A menu-driven interface presents a fixed set of options such as withdraw cash, check balance or deposit. Users do not need to remember commands. Invalid choices can be reduced because only available options are shown. The interface can guide many different users through a simple sequence of steps, although it may be slow if many menus are required.",
+    marks: "5 marks",
+    prompt: "Explain the role of memory management in an operating system.",
+    answer: "Memory management allocates memory to programs when they run. The OS keeps track of which memory areas are free and which are in use. It helps protect memory so that one process does not incorrectly access or overwrite another process's data. When a program ends, the OS can release its memory for reuse. This helps programs run reliably and makes efficient use of RAM.",
     marking: [
-      { mark: "B1", text: "menu-driven interface presents fixed/displayed options" },
-      { mark: "B1", text: "users do not need to remember commands / easier for public users" },
-      { mark: "B1", text: "reduces invalid choices/input errors" },
-      { mark: "B1", text: "guides users through a simple sequence suitable for a public cash machine" },
+      { mark: "B1", text: "allocates memory/RAM to programs or processes" },
+      { mark: "B1", text: "tracks free and used memory areas" },
+      { mark: "B1", text: "protects processes from accessing/overwriting each other's memory" },
+      { mark: "B1", text: "releases/deallocates memory when no longer needed" },
+      { mark: "B1", text: "benefit such as reliability, stability or efficient RAM use" },
     ],
     strict: [
-      "Do not accept CLI advantages for this public-user scenario unless justified.",
-      "Do not require the exact words cash machine if ATM context is clear.",
-      "Allow step-by-step guidance as a valid reason.",
+      "Do not accept file storage management as memory management unless RAM is referenced.",
+      "Do not require virtual memory for full credit.",
+      "Allow main memory for RAM.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A company is choosing an interface for technicians managing remote servers. Justify a suitable interface.",
-    answer: "A command line interface is suitable because technicians are likely to be expert users who know the commands. CLI can use fewer system resources and less bandwidth than a full graphical desktop, which is useful for remote server access. Commands can be precise and repeated or scripted for administration tasks. A limitation is that commands and syntax must be known, and typing mistakes may cause errors.",
+    prompt: "A user saves a file and later opens it again. Explain how the operating system supports this.",
+    answer: "The operating system provides file management services. It stores the file in a directory/folder structure and records metadata such as file name, type, size, location and timestamps. It provides operations such as create, save, open, move and delete. It can check permissions to decide whether the user may access or modify the file. This allows files to be organised, found and protected.",
     marking: [
-      { mark: "B1", text: "CLI selected as suitable interface" },
-      { mark: "B1", text: "technicians/expert users can use known commands" },
-      { mark: "B1", text: "uses fewer resources or less bandwidth than GUI" },
-      { mark: "B1", text: "supports precise/repeated/scripted administration tasks" },
-      { mark: "B1", text: "valid limitation such as command memorisation or syntax errors" },
+      { mark: "B1", text: "identifies file management as the OS role" },
+      { mark: "B1", text: "uses directory/folder structure or file path to organise files" },
+      { mark: "B1", text: "records valid metadata such as name/type/size/location/date" },
+      { mark: "B1", text: "provides file operations such as save/open/delete/move" },
+      { mark: "B1", text: "checks permissions/access rights or protects files" },
     ],
     strict: [
-      "Do not award full marks for choosing GUI unless scenario-linked reasons are strong.",
-      "Do not accept 'CLI is more professional' without mechanism.",
-      "Allow remote administration as scenario link.",
+      "Do not accept memory management alone for saved files.",
+      "Do not require all metadata examples; one valid example is enough for B1.",
+      "Allow access control for permissions.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Describe one advantage and one limitation of a natural language interface.",
-    answer: "A natural language interface allows users to speak or type instructions using ordinary language. One advantage is that it can be intuitive or hands-free, which can help accessibility or use while driving. One limitation is that it may misinterpret ambiguous wording, accents, background noise or missing context, so the wrong action may be taken.",
+    marks: "6 marks",
+    prompt: "Explain how an operating system manages a printer when several documents are sent to print.",
+    answer: "The operating system performs device management. A printer driver allows the OS to communicate with the specific printer. The OS can place print jobs in a print queue so they are printed in order. A buffer may temporarily store print data because the printer and CPU work at different speeds. The printer may use interrupts or status signals to indicate when it is ready. This allows applications to continue while the OS manages access to the shared printer.",
     marking: [
-      { mark: "B1", text: "natural language interface uses ordinary spoken/written language" },
-      { mark: "B1", text: "valid advantage such as intuitive, hands-free or accessible" },
-      { mark: "B1", text: "valid limitation such as ambiguity, accent, noise or context" },
-      { mark: "B1", text: "limitation consequence explained, such as misunderstanding/wrong action" },
+      { mark: "B1", text: "identifies device management" },
+      { mark: "B1", text: "device/printer driver enables communication with specific printer" },
+      { mark: "B1", text: "print queue orders jobs waiting for printer" },
+      { mark: "B1", text: "buffer temporarily stores data due to speed difference" },
+      { mark: "B1", text: "interrupt/status signal used when printer needs attention/is ready" },
+      { mark: "B1", text: "benefit such as applications continue or shared device access is controlled" },
     ],
     strict: [
-      "Do not accept 'it talks' without user-language interaction.",
-      "Do not accept 'always understands people' as an advantage.",
-      "Allow voice interface examples if natural language is clear.",
+      "Do not accept that the application sends raw commands directly to printer hardware without OS/device support.",
+      "Do not require both buffer and queue for all device examples, but this printer scenario supports both.",
+      "Allow spooler if clearly described as queuing/managing print jobs.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, Suggest a suitable interface and justify it: expert batch file task; public museum kiosk; novice arranging photos.",
-    answer: "For an expert batch file task, a CLI is suitable because typed commands or scripts can carry out repeated operations efficiently. For a public museum kiosk, a menu-driven interface is suitable because visitors can choose from fixed options without learning commands. For a novice arranging photos, a GUI is suitable because visual objects and pointer/touch actions allow direct manipulation of images. In each case the suitability depends on the user's skill and the task.",
+    prompt: "Explain why an operating system is required, then describe its process, memory, file, security and hardware management roles.",
+    answer: "An operating system is required to provide a controlled interface between applications, users and hardware and to coordinate shared resources. Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights. Hardware management coordinates devices using drivers, interrupts, buffers and queues.",
     marking: [
-      { mark: "B1", text: "CLI selected for expert batch file task" },
-      { mark: "B1", text: "CLI justification linked to commands/scripts/repeated operations" },
-      { mark: "B1", text: "menu-driven interface selected for public kiosk" },
-      { mark: "B1", text: "menu justification linked to fixed options/guided public use" },
-      { mark: "B1", text: "GUI selected for novice photo task" },
-      { mark: "B1", text: "GUI justification linked to visual/direct manipulation or overall suitability conclusion" },
+      { mark: "B1", text: "OS required as controlled interface/coordinator between applications, users and hardware" },
+      { mark: "B1", text: "process management schedules CPU time or tracks processes" },
+      { mark: "B1", text: "memory management allocates/protects RAM" },
+      { mark: "B1", text: "file management organises files/directories/metadata or file operations" },
+      { mark: "B1", text: "security management authenticates users or enforces permissions/access rights" },
+      { mark: "B1", text: "hardware management coordinates devices through drivers/interrupts/buffers/queues" },
     ],
     strict: [
-      "Do not award selection mark without matching the scenario.",
-      "Do not accept a single interface for all scenarios unless each is justified separately.",
-      "Allow natural language for kiosk only if a strong accessibility scenario is given.",
+      "Do not substitute antivirus utility software for OS security management.",
+      "Do not confuse stored files with RAM or hardware management with owning the physical device.",
+      "Allow device management as equivalent to hardware management when its mechanism is accurate.",
     ],
   },
 ];
@@ -215,10 +221,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    cli: "Correct. CLI supports precise repeated commands and scripting for expert users.",
-    gui: "Not best here. A GUI may be easy for one file, but batch renaming is often faster with commands.",
-    menu: "No. A fixed menu with no batch option would slow the task down.",
-    natural: "No. Natural language may be convenient, but vague wording is risky for precise batch operations.",
+    os: "Correct. Process management and scheduling allocate CPU time between processes.",
+    printer: "No. A printer driver helps with a device; it does not schedule all CPU time.",
+    spreadsheet: "No. Spreadsheet software is an application, not the system scheduler.",
+    random: "No. Computers are already chaotic enough without apps shouting for the CPU.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -262,7 +268,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("cli");
+  renderExample("slow");
 }
 
 function setupAnswerToggles(scope = document) {

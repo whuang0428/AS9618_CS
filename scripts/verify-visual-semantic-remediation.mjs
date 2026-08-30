@@ -13,8 +13,10 @@ const ledger = JSON.parse(fs.readFileSync(path.join(root, "audits", "visual-sema
 const remediation = JSON.parse(fs.readFileSync(path.join(root, "audits", "visual-semantic-remediation-register.json"), "utf8"));
 const stage5VisualReview = JSON.parse(fs.readFileSync(path.join(root, "audits", "remediation-v2-stage5-visual-review.json"), "utf8"));
 const stage6ImageReview = JSON.parse(fs.readFileSync(path.join(root, "audits", "remediation-v2-stage6-image-review.json"), "utf8"));
+const stage6VisualReview = JSON.parse(fs.readFileSync(path.join(root, "audits", "remediation-v2-stage6-visual-object-review.json"), "utf8"));
 const repairFacts = JSON.parse(fs.readFileSync(path.join(root, "scripts", "stage10-visual-repair-facts.json"), "utf8"));
 const visualDeliveryMap = JSON.parse(fs.readFileSync(path.join(root, "scripts", "remediation-v2-visual-delivery-map.json"), "utf8"));
+const lessonNumberMigration = JSON.parse(fs.readFileSync(path.join(root, "scripts", "lesson-number-migration.json"), "utf8"));
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
 const removedKeys = new Set(["033/explanation-loop-img-1", "098/explanation-pseudocode-img-1", "099/explanation-pseudocode-img-1"]);
@@ -83,10 +85,22 @@ const deliveryKeyToSourceKey = new Map(Object.entries(visualDeliveryMap).map(([s
   const [sourceLesson, sourceTarget] = sourceKey.split("/");
   return [stage10VisualKey(delivery.lesson, delivery.targetId), stage10VisualKey(sourceLesson, sourceTarget)];
 }));
+const currentLessonToLegacy = new Map(lessonNumberMigration.movedLessons.map(({ oldId, newId }) => [newId, oldId]));
+const legacyLessonToCurrent = new Map(lessonNumberMigration.movedLessons.map(({ oldId, newId }) => [oldId, newId]));
+function remapLessonKey(key, lessonMap) {
+  const [lesson, ...parts] = key.split("/");
+  const mapped = lessonMap.get(lesson);
+  return mapped ? `${mapped}/${parts.join("/")}` : key;
+}
 
 function canonicalCurrentRow(record) {
   const deliveryKey = record.key;
-  return { ...record, deliveryKey, key: deliveryKeyToSourceKey.get(deliveryKey) ?? deliveryKey };
+  const currentSourceKey = deliveryKeyToSourceKey.get(deliveryKey) ?? deliveryKey;
+  const [currentSourceLesson, ...parts] = currentSourceKey.split("/");
+  const key = currentSourceLesson === String(lessonNumberMigration.insertedLesson.newLesson).padStart(3, "0")
+    ? `inserted-${currentSourceLesson}/${parts.join("/")}`
+    : remapLessonKey(currentSourceKey, currentLessonToLegacy);
+  return { ...record, deliveryKey, key };
 }
 
 function parseCsv(text) {
@@ -139,6 +153,7 @@ const canonicalKeys = new Set(ledger.records.map((record) => record.key));
 const rawBaselineRows = scanVisualSemanticHashes(
   (relativePath) => gitBlob(relativePath).toString("utf8"),
   (relativePath) => gitBlob(relativePath),
+  { lessonCount: 150 },
 );
 const baselineRows = rawBaselineRows
   .filter((record) => !removedKeys.has(record.key))
@@ -153,11 +168,12 @@ const currentByKey = new Map(currentRows.map((row) => [row.key, row]));
 const remediationKeys = new Set(remediation.records.map((record) => record.key));
 const stage5VisualKeys = new Set(stage5VisualReview.entries.map(({ key }) => {
   const [lesson, target] = key.split("/");
-  return stage10VisualKey(lesson, target);
+  return remapLessonKey(stage10VisualKey(lesson, target), currentLessonToLegacy);
 }));
 const htmlRemediationKeys = new Set(remediation.records.filter((record) => record.visualType === "HTML/CSS").map((record) => record.key));
 const effectiveHash = (record) => htmlRemediationKeys.has(record.key) ? record.sectionHash : record.semanticHash;
 const stage6ImageByAsset = new Map(stage6ImageReview.records.map((record) => [record.relativeAsset, record]));
+const stage6VisualByKey = new Map(stage6VisualReview.records.map((record) => [record.key, record]));
 const hasFreshStage6PixelApproval = (record) => {
   const review = stage6ImageByAsset.get(record.asset);
   return review?.status === "ApprovedCurrentPixels"
@@ -167,6 +183,12 @@ const hasFreshStage6PixelApproval = (record) => {
     && review?.pass2?.assetSha256 === record.assetSha256
     && review?.assetSha256 === record.assetSha256;
 };
+const hasFreshStage6VisualApproval = (record) => {
+  const review = stage6VisualByKey.get(record.deliveryKey);
+  return review?.status === "PassedCurrentSource"
+    && review?.semanticHash === record.semanticHash
+    && review?.sectionHash === record.sectionHash;
+};
 
 assert(new Set(ledger.records.map((record) => record.key)).size === ledger.records.length, "Review ledger keys must be unique.");
 assert(baselineRows.length === ledger.records.length, `Migrated baseline scan count is ${baselineRows.length}, expected ${ledger.records.length}.`);
@@ -174,13 +196,15 @@ assert(currentRows.length === ledger.records.length, `Current legacy-ledger scan
 assert(new Set(remediation.records.map((record) => record.key)).size === remediation.records.length, "Remediation keys must be unique.");
 assert(stage5VisualReview.entries.length === 8 && stage5VisualReview.pending === 0 && stage5VisualReview.disagreements === 0, "Stage 5 critical visual review is incomplete.");
 for (const review of stage5VisualReview.entries) {
-  const current = currentByKey.get(stage10VisualKey(...review.key.split("/")));
+  const current = currentByKey.get(remapLessonKey(stage10VisualKey(...review.key.split("/")), currentLessonToLegacy));
   assert(review.firstPass === "Reviewed" && review.secondPass === "Reviewed" && review.semanticStatus === "Approved", `Stage 5 visual review is incomplete: ${review.key}.`);
   assert(current?.assetSha256 === review.sha256, `Stage 5 visual review hash is stale: ${review.key}.`);
 }
 assert(stage6ImageReview.sourceApprovalImported === false && stage6ImageReview.oldApprovedRowsUsedForDecision === false, "Stage 6 image evidence improperly imports an old approval.");
-assert(stage6ImageReview.records.length === 783 && stage6ImageReview.pending === 0 && stage6ImageReview.disagreements === 0, "Stage 6 current-pixel review is incomplete.");
-assert(stage6ImageByAsset.size === 783, "Stage 6 current-pixel review has duplicate or missing assets.");
+assert(stage6ImageReview.records.length === 784 && stage6ImageReview.pending === 0 && stage6ImageReview.disagreements === 0, "Stage 6 current-pixel review is incomplete.");
+assert(stage6ImageByAsset.size === 784, "Stage 6 current-pixel review has duplicate or missing assets.");
+assert(stage6VisualReview.records.length === 971 && stage6VisualReview.pending === 0 && stage6VisualReview.sourceApprovalImported === false, "Stage 6 current visual-object review is incomplete or inherited.");
+assert(stage6VisualByKey.size === 971, "Stage 6 current visual-object review has duplicate or missing keys.");
 const pixelRepairRecords = remediation.records.filter((record) => record.visualType === "Stage 10 JPG" && record.generationMethod !== "Source transcript and metadata");
 assert(Object.keys(repairFacts).length === pixelRepairRecords.length, "Stage 10 repair facts and pixel-changing JPG remediations differ in count.");
 
@@ -215,9 +239,9 @@ for (const baseline of baselineRows) {
     changed += didChange ? 1 : 0;
     assert(didChange, `Approved visual correction did not change: ${baseline.key}.`);
   } else {
-    if (didChange && hasFreshStage6PixelApproval(current)) stage6ReviewedChanges += 1;
+    if (didChange && hasFreshStage6VisualApproval(current)) stage6ReviewedChanges += 1;
     else unchanged += didChange ? 0 : 1;
-    assert(!didChange || hasFreshStage6PixelApproval(current), `Unapproved visual drift without fresh Stage 6 evidence: ${baseline.key}.`);
+    assert(!didChange || hasFreshStage6VisualApproval(current), `Unapproved visual drift without fresh Stage 6 evidence: ${baseline.key}.`);
   }
 }
 assert(changed > 0, "No approved visual changes were detected.");
@@ -232,10 +256,10 @@ for (const record of remediation.records) {
   assert(record.pass2?.status === "passed" && record.pass2.evidence, `Missing pass 2 evidence: ${record.key}.`);
   assert(record.reconciliation === "agreed", `Unreconciled remediation: ${record.key}.`);
   assert(record.beforeSemanticHash === (before ? effectiveHash(before) : ""), `Before semantic hash mismatch: ${record.key}.`);
-  assert(record.afterSemanticHash === (after ? effectiveHash(after) : ""), `After semantic hash mismatch: ${record.key}.`);
+  assert(record.afterSemanticHash === (after ? effectiveHash(after) : "") || (after && hasFreshStage6VisualApproval(after)), `After semantic hash mismatch without current Stage 6 review: ${record.key}.`);
   if (record.visualType === "Stage 10 JPG") {
     assert(record.beforeAssetSha256 === before?.assetSha256, `Before asset hash mismatch: ${record.key}.`);
-    assert(record.afterAssetSha256 === after?.assetSha256, `After asset hash mismatch: ${record.key}.`);
+    assert(record.afterAssetSha256 === after?.assetSha256 || (after && hasFreshStage6PixelApproval(after)), `After asset hash mismatch without current Stage 6 pixel review: ${record.key}.`);
   }
 }
 
@@ -288,22 +312,22 @@ for (let index = 0; index < bubbleInput.length - 1; index += 1) {
   }
 }
 assert(bubbleSwaps === 1 && bubbleInput.join(",") === "1,2,4,5,8", "Bubble-sort pass recomputation failed.");
-assert(repairFacts["104/binary"].join("\n").includes("DIV 2"), "Binary-search midpoint does not use DIV.");
+assert(repairFacts["105/binary"].join("\n").includes("DIV 2"), "Binary-search midpoint does not use DIV.");
 
-for (const key of ["113/user-defined", "118/declare", "118/pseudocode", "119/declare", "123/pseudocode", "123/record", "125/declare", "125/files"]) {
+for (const key of ["114/user-defined", "119/declare", "119/pseudocode", "120/declare", "124/pseudocode", "124/record", "126/declare", "126/files"]) {
   const facts = repairFacts[key].join("\n");
   assert(facts.includes("TYPE ") && facts.includes("ENDTYPE"), `Record declaration is not closed in ${key}.`);
 }
-for (const key of ["117/update", "137/purpose", "138/purpose"]) {
+for (const key of ["118/update", "138/purpose", "139/purpose"]) {
   assert(repairFacts[key].join("\n").includes("ENDIF"), `Selection is not closed in ${key}.`);
 }
-assert(repairFacts["123/array"].join("\n").includes("Total <- 0") && repairFacts["123/array"].join("\n").includes("NEXT Index"), "Accumulator initialisation or loop termination is missing.");
-assert(repairFacts["085/aggregates"].join("\n").includes("COUNT(*) counts all rows") && repairFacts["085/aggregates"].join("\n").includes("COUNT(column) counts only non-null"), "SQL COUNT semantics are incomplete.");
+assert(repairFacts["124/array"].join("\n").includes("Total <- 0") && repairFacts["124/array"].join("\n").includes("NEXT Index"), "Accumulator initialisation or loop termination is missing.");
+assert(repairFacts["086/aggregates"].join("\n").includes("COUNT(*) counts all rows") && repairFacts["086/aggregates"].join("\n").includes("COUNT(column) counts only non-null"), "SQL COUNT semantics are incomplete.");
 
 const oldStringChecks = [
-  ["web/lesson-060/index.html", "High-level source to object/executable code"],
-  ["web/lesson-107/index.html", "A string is a queue of characters"],
-  ["web/lesson-142/index.html", "analysis, design, implementation, testing, evaluation and maintenance"],
+  ["web/lesson-062/index.html", "High-level source to object/executable code"],
+  ["web/lesson-108/index.html", "A string is a queue of characters"],
+  ["web/lesson-143/index.html", "analysis, design, implementation, testing, evaluation and maintenance"],
 ];
 for (const [relativePath, oldString] of oldStringChecks) {
   assert(!fs.readFileSync(path.join(root, relativePath), "utf8").includes(oldString), `Old error string remains in ${relativePath}: ${oldString}`);
@@ -311,7 +335,7 @@ for (const [relativePath, oldString] of oldStringChecks) {
 
 const imageGenRepairKeys = new Set(remediation.records
   .filter((record) => record.generationMethod === "ImageGen")
-  .map((record) => `${record.lesson}/${record.sectionId.replace(/^explanation-/, "")}`));
+  .map((record) => remapLessonKey(`${record.lesson}/${record.sectionId.replace(/^explanation-/, "")}`, legacyLessonToCurrent)));
 const deterministicRepairKeys = Object.keys(repairFacts).filter((key) => !imageGenRepairKeys.has(key));
 assert([...imageGenRepairKeys].every((key) => Object.hasOwn(repairFacts, key)), "An ImageGen repair is missing maintained source facts.");
 const renderDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "as9618-semantic-render-"));

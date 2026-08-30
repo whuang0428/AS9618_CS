@@ -7,30 +7,30 @@
   "approvalStatus": "AwaitingUserApproval",
   "currentReleaseDecision": "BLOCKED",
   "images": {
-    "expected": 783,
-    "reviewed": 783,
-    "forward": 783,
-    "reverse": 783,
+    "expected": 784,
+    "reviewed": 784,
+    "forward": 784,
+    "reverse": 784,
     "pending": 0,
     "disagreements": 0,
     "highRisk": 488,
     "freshOcr": {
       "engine": "Apple Vision via scripts/audit-stage10-wording.m",
-      "currentRunImages": 783,
-      "clear": 783
+      "currentRunImages": 784,
+      "clear": 784
     }
   },
   "visualObjects": {
-    "expected": 969,
-    "reviewed": 969,
-    "raster": 786,
-    "stage10Raster": 783,
-    "highRisk": 918,
+    "expected": 971,
+    "reviewed": 971,
+    "raster": 787,
+    "stage10Raster": 784,
+    "highRisk": 921,
     "pending": 0
   },
   "browser": {
-    "pages": 153,
-    "viewportRecords": 306,
+    "pages": 154,
+    "viewportRecords": 308,
     "failed": 0,
     "interactions": "Passed except the in-app Browser key-dispatch API did not toggle native controls; native semantic elements and focus return were verified."
   },

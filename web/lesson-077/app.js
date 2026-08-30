@@ -1,121 +1,121 @@
 const scenarioMap = {
-  healthApp: {
-    result: "Topic: privacy, data protection and ethical evaluation.",
-    reason: "The key issue is personal/sensitive data, purpose, consent, transparency, retention and user control.",
-    trap: "Do not answer only with encryption; the question is wider than security.",
+  remoteWork: {
+    result: "Impact type: mixed environmental and social impact.",
+    benefit: "Benefit: fewer commutes can reduce travel emissions and give workers more flexibility.",
+    mitigation: "Harm and mitigation: workers may feel isolated or always available, so employers should set communication boundaries and provide support.",
   },
-  repoCode: {
-    result: "Topic: intellectual property, copyright and licensing.",
-    reason: "The key issue is whether public code has a licence allowing copying, modification and commercial use.",
-    trap: "Do not say public means ownerless or free to reuse.",
+  dataCentre: {
+    result: "Impact type: environmental impact from energy and cooling.",
+    benefit: "Benefit: cloud storage can centralise resources and improve access to services.",
+    mitigation: "Harm and mitigation: data centres use electricity and cooling, so efficient hardware, renewable energy and data retention limits reduce impact.",
   },
-  schoolTablets: {
-    result: "Topic: environmental and social impacts.",
-    reason: "The key issue is balancing paper reduction and learning access against manufacturing, e-waste and digital divide concerns.",
-    trap: "Do not write only 'tablets are modern' without consequences.",
+  newDevices: {
+    result: "Impact type: e-waste and resource consumption.",
+    benefit: "Benefit: newer tablets may improve performance, security and access to learning tools.",
+    mitigation: "Harm and mitigation: frequent replacement increases manufacturing impact and e-waste, so schools should repair, reuse, donate or recycle devices responsibly.",
   },
-  openSource: {
-    result: "Topic: open-source/proprietary software trade-offs.",
-    reason: "The key issue is source-code access, support, reliability, cost, security updates and licence obligations.",
-    trap: "Do not choose open source only because it may have no licence fee.",
+  automation: {
+    result: "Impact type: social impact on work.",
+    benefit: "Benefit: automation can improve efficiency and remove workers from repetitive or dangerous tasks.",
+    mitigation: "Harm and mitigation: workers may lose jobs or need new skills, so retraining and redeployment should be planned.",
   },
-  factoryAutomation: {
-    result: "Topic: social impact of computing and automation.",
-    reason: "The key issue is efficiency and safety balanced against job displacement, retraining and worker impact.",
-    trap: "Do not claim automation is simply good or bad without stakeholders.",
+  onlineBanking: {
+    result: "Impact type: access and digital divide.",
+    benefit: "Benefit: online banking can be convenient and available outside branch opening hours.",
+    mitigation: "Harm and mitigation: users without internet, devices or digital skills may be excluded, so alternative access and training should remain available.",
   },
 };
 
 const builderText = {
+  tech: {
+    automation: "automation",
+    remote: "remote work",
+    online: "online public services",
+  },
   benefit: {
-    safety: "improves safety or safeguarding",
-    access: "improves access or convenience",
-    cost: "reduces cost or increases efficiency",
+    efficiency: "improves efficiency and reduces repetitive work",
+    travel: "reduces travel and commuting",
+    access: "improves access for some users",
   },
-  concern: {
-    privacy: "may reduce privacy or increase surveillance",
-    fairness: "may treat some groups unfairly",
-    environment: "may increase energy use or e-waste",
-  },
-  safeguard: {
-    transparent: "clear information and consent are provided",
-    limits: "use is limited to a clear purpose",
-    review: "human review, appeal or support is available",
+  harm: {
+    jobs: "may displace workers who need retraining",
+    isolation: "may increase isolation or blur work-life boundaries",
+    divide: "may exclude users without devices, internet or skills",
   },
 };
 
 const examples = {
-  privacy: {
-    title: "Example 1: Monitoring students",
-    problem: "Evaluate whether a school should monitor student device use.",
+  remote: {
+    title: "Example 1: Remote work",
+    problem: "A company moves most office work online.",
     steps: [
-      "Topic: privacy, surveillance and ethics.",
-      "Benefit: monitoring may help safeguard students and identify unsafe behaviour.",
-      "Concern: students may lose privacy if personal activity is recorded without clear limits.",
-      "Judgement: monitoring is more justified if transparent, proportionate, limited to school use and access to logs is restricted.",
+      "Benefit: fewer commutes may reduce travel emissions and save workers time.",
+      "Benefit: flexible work can help employees who live far away or have caring responsibilities.",
+      "Harm: workers may feel isolated or struggle to separate work and home life.",
+      "Mitigation: clear communication hours, office days and support for home equipment make the change more balanced.",
     ],
   },
-  ip: {
-    title: "Example 2: Public repository code",
-    problem: "A company uses code from a public repository in a commercial product.",
+  ewaste: {
+    title: "Example 2: Frequent device replacement",
+    problem: "A school replaces tablets every two years.",
     steps: [
-      "Topic: intellectual property and licensing.",
-      "Benefit: reuse may save development time if the licence permits it.",
-      "Concern: public access does not remove copyright, and commercial use may breach licence terms.",
-      "Judgement: use is acceptable only if the company checks and follows the licence, including attribution or redistribution conditions.",
+      "Benefit: newer devices may be faster, more secure and compatible with current software.",
+      "Environmental harm: manufacturing uses energy and materials, and old devices create e-waste.",
+      "Social concern: discarded devices may be processed unsafely if sent to poorly managed recycling.",
+      "Mitigation: repair, extend lifespan, donate usable devices and use certified recycling.",
     ],
   },
-  software: {
-    title: "Example 3: Hospital software choice",
-    problem: "A hospital chooses between open-source and proprietary software.",
+  automation: {
+    title: "Example 3: Factory automation",
+    problem: "A factory automates repetitive assembly tasks.",
     steps: [
-      "Topic: open-source/proprietary trade-offs.",
-      "Benefit: open source may allow inspection and customisation; proprietary software may provide formal support.",
-      "Concern: critical systems need reliable updates, accountability and maintenance.",
-      "Judgement: the best option depends on support contracts, risk management and technical expertise, not the label alone.",
+      "Benefit: production may become faster and more consistent.",
+      "Benefit: dangerous tasks can be moved away from human workers.",
+      "Harm: some workers may lose jobs or need retraining.",
+      "Mitigation: offer training, redeploy workers and phase changes so people can adapt.",
     ],
   },
-  impact: {
-    title: "Example 4: Online public services",
-    problem: "A council moves services online only.",
+  divide: {
+    title: "Example 4: Online-only public services",
+    problem: "A public service moves applications online only.",
     steps: [
-      "Topic: social impact and digital divide.",
-      "Benefit: many users can access services at any time without travelling.",
-      "Concern: elderly, low-income or disabled users may be excluded without devices, internet, skills or accessibility.",
-      "Judgement: online services are better only if assisted access, training and accessible design remain available.",
+      "Benefit: many users can apply faster and at any time.",
+      "Harm: people without internet, devices, accessibility support or digital skills may be excluded.",
+      "Stakeholders: elderly users, low-income households and people with disabilities may be affected differently.",
+      "Mitigation: keep assisted channels, provide training and design accessible interfaces.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What term means a person or group affected by a computing decision?", accepted: ["stakeholder"], answer: "Stakeholder" },
-  { id: "p2", prompt: "What term means control over how personal information is collected and used?", accepted: ["privacy"], answer: "Privacy" },
-  { id: "p3", prompt: "What legal protection usually covers original software source code?", accepted: ["copyright"], answer: "Copyright" },
-  { id: "p4", prompt: "What agreement grants permission to use software under conditions?", accepted: ["licence", "license"], answer: "Licence / license" },
-  { id: "p5", prompt: "What type of software makes source code available under a licence?", accepted: ["open source", "open-source"], answer: "Open source" },
-  { id: "p6", prompt: "What term describes discarded electronic devices?", accepted: ["e-waste", "ewaste", "electronic waste"], answer: "E-waste / electronic waste" },
-  { id: "p7", prompt: "What term describes unequal access to devices, internet or digital skills?", accepted: ["digital divide"], answer: "Digital divide" },
-  { id: "p8", prompt: "What word describes a condition or measure that reduces harm?", accepted: ["safeguard", "mitigation", "control"], answer: "Safeguard / mitigation / control" },
-  { id: "p9", prompt: "What should an evaluate answer include before a judgement: one side or both sides?", accepted: ["both sides", "benefit and concern", "advantages and disadvantages", "for and against"], answer: "Both sides / benefit and concern" },
-  { id: "p10", prompt: "Is 'it is good because it is useful' enough for a Section 7 explanation? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p1", prompt: "What term describes discarded electronic devices and components?", accepted: ["e-waste", "ewaste", "electronic waste"], answer: "E-waste / electronic waste" },
+  { id: "p2", prompt: "Name one environmental cost of data centres.", accepted: ["energy", "electricity", "cooling", "carbon", "emissions", "water"], answer: "Energy/electricity use, cooling, emissions or water use" },
+  { id: "p3", prompt: "Name one way to reduce e-waste.", accepted: ["recycle", "recycling", "repair", "reuse", "donate", "extend lifespan", "refurbish"], answer: "Repair / reuse / donate / recycle / extend lifespan" },
+  { id: "p4", prompt: "What term describes unequal access to devices, internet or digital skills?", accepted: ["digital divide"], answer: "Digital divide" },
+  { id: "p5", prompt: "Name one possible social benefit of remote work.", accepted: ["flexibility", "less commuting", "reduced travel", "access to jobs", "work life balance"], answer: "Flexibility / less commuting / wider access to jobs" },
+  { id: "p6", prompt: "Name one possible social harm of automation.", accepted: ["job loss", "unemployment", "retraining", "deskilling", "displacement"], answer: "Job loss / displacement / retraining need / deskilling" },
+  { id: "p7", prompt: "Name one group that may be excluded by online-only services.", accepted: ["elderly", "low income", "disabled", "rural", "people without internet", "people without devices"], answer: "Elderly users / low-income users / disabled users / users without internet or devices" },
+  { id: "p8", prompt: "Does computing have only positive environmental effects? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p9", prompt: "What design idea helps users with disabilities use systems?", accepted: ["accessibility", "accessible design"], answer: "Accessibility / accessible design" },
+  { id: "p10", prompt: "Name one mitigation for workers affected by automation.", accepted: ["training", "retraining", "reskilling", "redeployment", "support"], answer: "Retraining / reskilling / redeployment / support" },
 ];
 
 const mistakes = [
   {
-    wrong: "This is good because it is efficient.",
-    fix: "Efficiency is only one point. Add who benefits, what harm or risk exists, and a condition that would make the decision acceptable.",
+    wrong: "Online meetings are always green because nobody travels.",
+    fix: "Reduced travel can help, but devices, networks and data centres still use energy. A balanced answer considers both travel reduction and computing energy use.",
   },
   {
-    wrong: "It is online, so copyright does not apply.",
-    fix: "Online access does not remove copyright. Reuse depends on ownership, permission and licence terms.",
+    wrong: "Automation is bad because it removes jobs.",
+    fix: "Automation may displace some jobs, but it can also improve safety and efficiency. Strong answers mention retraining or redeployment as mitigation.",
   },
   {
-    wrong: "Monitoring is safe because the data is encrypted.",
-    fix: "Encryption may protect stored data, but privacy questions also need purpose, consent, transparency, retention and who can access the data.",
+    wrong: "E-waste is solved by throwing old devices into recycling.",
+    fix: "Recycling must be responsible and safe. Repair, reuse and longer lifespans may reduce waste before recycling is needed.",
   },
   {
-    wrong: "Automation is bad because jobs are lost.",
-    fix: "Job displacement is a valid concern, but balance it with efficiency or safety benefits and discuss retraining or redeployment.",
+    wrong: "Online services help everyone equally.",
+    fix: "Online services can improve access for some users but exclude others without devices, internet, skills or accessible design.",
   },
 ];
 
@@ -128,101 +128,96 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "8 marks",
-    prompt: "Evaluate the use of monitoring software on student devices in a school.",
-    answer: "Monitoring may help the school safeguard students, detect cyberbullying, prevent access to unsafe websites and investigate misuse of school devices. However, students are stakeholders with privacy interests, and broad monitoring may record personal activity or reduce trust if students and parents are not told clearly. The school should make monitoring transparent, limit it to school accounts or school time, restrict access to logs and delete data after a defined period. The decision is justified only if the monitoring is proportionate to safeguarding and not blanket surveillance.",
+    marks: "6 marks",
+    prompt: "A company replaces most face-to-face meetings with online meetings. Discuss environmental and social impacts.",
+    answer: "Online meetings may reduce commuting and business travel, which can lower fuel use and emissions. They may also give workers more flexibility and allow meetings with people in different locations. However, online meetings still require devices, networks and data centres that use electricity. Socially, workers may feel isolated or have blurred boundaries between work and home. The company can reduce harm by using efficient devices, setting communication expectations and keeping some in-person contact where useful.",
     marking: [
-      { mark: "B1", text: "benefit such as safeguarding/preventing unsafe use/cyberbullying detection" },
-      { mark: "B1", text: "benefit linked to school/student-device context" },
-      { mark: "B1", text: "privacy/trust/consent concern" },
-      { mark: "B1", text: "concern explained with students/personal activity/unclear monitoring" },
-      { mark: "B1", text: "safeguard such as transparency/scope limit/access restriction/retention limit" },
-      { mark: "B1", text: "safeguard linked to reducing named privacy concern" },
-      { mark: "B1", text: "stakeholder named, such as students/parents/teachers/school" },
-      { mark: "B1", text: "judges whether monitoring is proportionate using safeguarding purpose, student privacy impact and limits on scope/access/retention" },
+      { mark: "B1", text: "environmental benefit such as reduced travel/fuel/emissions" },
+      { mark: "B1", text: "benefit linked to meetings/commuting/business travel" },
+      { mark: "B1", text: "environmental cost such as device/network/data-centre energy use" },
+      { mark: "B1", text: "social benefit such as flexibility/wider participation" },
+      { mark: "B1", text: "social harm such as isolation/work-life boundary issue" },
+      { mark: "B1", text: "judges the overall impact using avoided travel, digital energy use and one workforce mitigation" },
     ],
     strict: [
-      "Do not accept only 'it keeps students safe' without privacy balance.",
-      "Do not award safeguard mark for vague 'make it secure' without mechanism.",
-      "Allow data protection terms such as consent, retention, transparency and access control.",
+      "Do not accept 'online has no environmental cost'.",
+      "Do not award both social marks for two wordings of convenience only.",
+      "Allow carbon footprint wording if linked to travel or energy use.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "A company wants to use code from a public online repository. Discuss issues it should consider.",
-    answer: "The company should consider intellectual property and copyright because public code can still be owned by its creator. It should check the licence to see whether commercial use, modification or redistribution is allowed. Some licences may require attribution or sharing modifications under similar terms. If the company ignores the licence, it may infringe copyright, lose permission to use the code or face legal and reputational consequences.",
+    marks: "5 marks",
+    prompt: "Explain why e-waste is an environmental issue and describe ways to reduce it.",
+    answer: "E-waste is discarded electronic equipment such as old computers, phones or tablets. It is an environmental issue because manufacturing replacement devices uses energy and raw materials, and discarded devices may contain toxic materials that can pollute soil or water if processed badly. It can be reduced by repairing devices, extending their lifespan, reusing or donating working devices, and recycling components through responsible schemes.",
     marking: [
-      { mark: "B1", text: "copyright/IP ownership of code identified" },
-      { mark: "B1", text: "public access is not equal to permission" },
-      { mark: "B1", text: "licence should be checked" },
-      { mark: "B1", text: "licence condition such as commercial use/modification/redistribution/attribution/share-alike" },
-      { mark: "B1", text: "infringement/licence breach identified" },
-      { mark: "B1", text: "consequence such as legal action/loss of permission/reputational damage" },
+      { mark: "B1", text: "e-waste defined as discarded electronic equipment/components" },
+      { mark: "B1", text: "environmental harm from toxic materials/pollution" },
+      { mark: "B1", text: "environmental harm from manufacturing/resource/energy demand" },
+      { mark: "B1", text: "reduction method such as repair/reuse/donation/longer lifespan" },
+      { mark: "B1", text: "responsible recycling or reduction method linked to reduced harm" },
     ],
     strict: [
-      "Do not accept 'public means free to use'.",
-      "Do not award condition mark for only saying 'read the rules'.",
-      "Allow license spelling.",
+      "Do not accept 'throw it away safely' without method.",
+      "Do not award both harm marks for repeated pollution wording only.",
+      "Allow refurbishment as reuse/repair.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Evaluate whether a hospital should use open-source software for a critical system.",
-    answer: "Open-source software may allow the hospital to inspect source code, customise features and avoid some licence fees. However, a critical hospital system needs reliable support, security updates and accountability because failure could affect patient care. Proprietary software may provide formal service agreements, but supported open-source software may also be acceptable if maintenance is guaranteed. The choice should depend on risk, support arrangements, technical expertise and licence compliance.",
+    prompt: "A factory introduces automation for repetitive tasks. Evaluate social impacts on workers.",
+    answer: "Automation may improve safety by removing workers from repetitive or dangerous tasks, and it may increase efficiency and consistency. This can benefit the company and some workers if new skilled roles are created. However, some workers may lose jobs, need retraining or become deskilled if their previous work is replaced. The impact is more acceptable if the factory provides retraining, redeployment and support rather than replacing workers without transition planning.",
     marking: [
-      { mark: "B1", text: "open-source benefit such as source inspection/customisation/lower licence fee" },
-      { mark: "B1", text: "benefit linked to hospital/system context" },
-      { mark: "B1", text: "risk/concern such as support/security updates/maintenance/accountability" },
-      { mark: "B1", text: "risk linked to critical patient-care consequence" },
-      { mark: "B1", text: "comparison with proprietary or supported open-source option" },
-      { mark: "B1", text: "recommends whether the hospital should use open source using support, clinical risk, staff expertise and licence compliance" },
+      { mark: "B1", text: "benefit such as efficiency/consistency/safety" },
+      { mark: "B1", text: "benefit linked to workers or factory context" },
+      { mark: "B1", text: "harm such as job loss/displacement" },
+      { mark: "B1", text: "harm explained through retraining/deskilling/income impact" },
+      { mark: "B1", text: "mitigation such as retraining/redeployment/support" },
+      { mark: "B1", text: "judges whether automation is acceptable using productivity/safety benefit, worker displacement and a retraining or redeployment plan" },
     ],
     strict: [
-      "Do not accept 'open source is always free' as a benefit without qualification.",
-      "Do not reject open source solely by label.",
-      "Allow formal support contract as a valid condition.",
+      "Do not accept 'robots are bad' without worker impact.",
+      "Do not award the judgement mark unless it uses both a worker benefit and a worker harm or mitigation.",
+      "Allow dangerous task reduction as a worker benefit.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Discuss environmental and social impacts of replacing printed textbooks with tablets in a school.",
-    answer: "Tablets may reduce paper use, printing and transport of textbooks, and can provide interactive resources, accessibility features and up-to-date materials. However, manufacturing tablets uses energy and raw materials, and frequent replacement can create e-waste. Socially, tablets may support learning but can disadvantage students without reliable home internet or create distraction. The school should repair and reuse devices, recycle responsibly, provide loan or offline access and train students to use devices effectively.",
+    marks: "4 marks",
+    prompt: "Explain how moving services online can widen the digital divide.",
+    answer: "The digital divide is unequal access to digital technology, internet connection or digital skills. If services move online only, people without suitable devices or reliable internet may be unable to use them. Users with low digital skills, some elderly users or users with disabilities may also struggle if systems are not accessible. This can reduce access to banking, healthcare, education or public services. Organisations can reduce the divide by providing assisted channels, training and accessible design.",
     marking: [
-      { mark: "B1", text: "environmental benefit such as reduced paper/printing/transport" },
-      { mark: "B1", text: "environmental harm such as manufacturing energy/resources/e-waste" },
-      { mark: "B1", text: "social/learning benefit such as accessibility/interactive/up-to-date resources" },
-      { mark: "B1", text: "social harm such as digital divide/distraction/home internet issue" },
-      { mark: "B1", text: "mitigation such as repair/reuse/recycling/loan scheme/offline access/training" },
-      { mark: "B1", text: "judges when tablets are beneficial using environmental lifecycle, learning access and a named mitigation" },
+      { mark: "B1", text: "digital divide defined as unequal access to devices/internet/skills" },
+      { mark: "B1", text: "affected group identified such as elderly/low-income/rural/disabled users" },
+      { mark: "B1", text: "exclusion from online service explained" },
+      { mark: "B1", text: "consequence such as reduced access to banking/healthcare/education/public services" },
     ],
     strict: [
-      "Do not accept 'tablets are better' without trade-off.",
-      "Do not award both environmental marks for two paper-saving points only.",
-      "Allow e-waste and resource extraction as environmental harms.",
+      "Do not accept 'some people cannot use computers' without access or skill reason.",
+      "Do not award affected-group mark for vague 'people' only.",
+      "Allow affordability as part of access.",
     ],
   },
   {
     title: "Question 5",
     marks: "8 marks",
-    prompt: "A city uses AI facial recognition cameras in public spaces. Evaluate ethical, privacy and social issues.",
-    answer: "The AI system compares captured faces with stored biometric templates. It may help identify suspects, deter crime and improve emergency response, benefiting citizens, police and local businesses. However, it processes biometric data and may track people who have done nothing wrong, reducing privacy in public spaces. False matches may lead to unfair suspicion, and some groups may be affected more than others if the model is biased. The city should be transparent, limit the purpose, restrict data access and retention, require human review before action and provide accountability. It may be justified for clear safety aims, but broad or secret surveillance is not proportionate.",
+    prompt: "A delivery company uses AI to predict demand and optimise delivery routes. Evaluate the social, economic and environmental impacts of this AI application.",
+    answer: "The AI system can analyse previous orders and traffic data to predict demand and select shorter routes. Socially, customers may receive more reliable deliveries and drivers may avoid some congestion, but continuous worker tracking or automated targets may reduce privacy and increase pressure. Economically, fewer empty journeys can reduce fuel and staffing costs, although the system is expensive to develop and maintain and may redesign or remove some jobs. Environmentally, shorter routes may reduce fuel use and emissions, but model training, data centres and replacement hardware consume electricity and materials. The company should minimise collected data, involve drivers in reviewing unsafe routes, monitor bias and errors, use efficient infrastructure and retrain affected staff. The application is justified only when measured route savings outweigh its computing footprint and worker harms are controlled.",
     marking: [
-      { mark: "B1", text: "benefit such as public safety/crime detection/emergency response" },
-      { mark: "B1", text: "benefit linked to stakeholder such as citizens/police/businesses" },
-      { mark: "B1", text: "privacy/surveillance/biometric data concern" },
-      { mark: "B1", text: "concern explained, such as tracking innocent people or reducing privacy" },
-      { mark: "B1", text: "fairness/false match/bias concern" },
-      { mark: "B1", text: "safeguard such as transparency/purpose limit/access restriction/retention/human review" },
-      { mark: "B1", text: "safeguard linked to reducing a named concern" },
-      { mark: "B1", text: "judges whether facial recognition is proportionate using public-safety benefit, biometric privacy/false-match risk and safeguards" },
+      { mark: "B1", text: "identifies the AI application or mechanism, such as demand prediction or route optimisation using data" },
+      { mark: "B1", text: "developed social benefit or harm for customers or drivers" },
+      { mark: "B1", text: "developed economic benefit such as lower fuel/delivery cost or improved productivity" },
+      { mark: "B1", text: "developed economic harm such as development cost, job redesign or displacement" },
+      { mark: "B1", text: "environmental benefit such as fewer journey miles, lower fuel use or reduced emissions" },
+      { mark: "B1", text: "environmental cost such as data-centre electricity, cooling or hardware/material demand" },
+      { mark: "B1", text: "matching mitigation such as data minimisation, human review, efficient infrastructure, monitoring or retraining" },
+      { mark: "B1", text: "judges whether measured route savings outweigh the computing footprint and named worker/customer harms" },
     ],
     strict: [
-      "Do not accept 'cameras are good' or 'cameras are bad' without stakeholder impact.",
-      "Do not award privacy and fairness as the same mark unless distinct points are made.",
-      "Allow surveillance wording if linked to privacy or tracking.",
+      "Do not award generic AI advantages or disadvantages without linking the model's decision to this delivery scenario.",
+      "Do not count an economic saving as an environmental benefit unless reduced resource or energy use is explained.",
+      "The final evaluation must balance social, economic and environmental evidence.",
     ],
   },
 ];
@@ -238,10 +233,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    privacy: "Correct. This is about privacy, surveillance, biometric data and ethical evaluation.",
-    ip: "No. There is no protected work or licence condition in the scenario.",
-    database: "No. Facial recognition might store data, but the question trigger is not relational database design.",
-    binary: "No. Nothing here asks about representation or conversion.",
+    balanced: "Correct. Reduced travel is a benefit, but manufacture, energy use and disposal still matter.",
+    alwaysGood: "No. Online meetings still use devices, networks and data centres.",
+    alwaysBad: "Too absolute. Computing can reduce some impacts while creating others.",
+    onlyCost: "No. Financial cost is not the same as environmental and social impact.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -252,33 +247,33 @@ function setupHook() {
   });
 }
 
-function setupClassifier() {
+function setupAnalyser() {
   const scenario = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#classifyResult");
-  const reason = document.querySelector("#classifyReason");
-  const trap = document.querySelector("#classifyTrap");
-  function classify() {
+  const result = document.querySelector("#analyseResult");
+  const benefit = document.querySelector("#analyseBenefit");
+  const mitigation = document.querySelector("#analyseMitigation");
+  function analyse() {
     const item = scenarioMap[scenario.value];
     result.textContent = item.result;
-    reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
-    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
+    benefit.innerHTML = `<strong>Benefit:</strong> ${item.benefit}`;
+    mitigation.innerHTML = `<strong>Harm and mitigation:</strong> ${item.mitigation}`;
   }
-  scenario.addEventListener("change", classify);
-  document.querySelector("#classifyBtn").addEventListener("click", classify);
-  classify();
+  scenario.addEventListener("change", analyse);
+  document.querySelector("#analyseBtn").addEventListener("click", analyse);
+  analyse();
 }
 
 function setupBuilder() {
+  const tech = document.querySelector("#techInput");
   const benefit = document.querySelector("#benefitInput");
-  const concern = document.querySelector("#concernInput");
-  const safeguard = document.querySelector("#safeguardInput");
+  const harm = document.querySelector("#harmInput");
   const output = document.querySelector("#buildResult");
   function build() {
-    output.textContent = `Although the system ${builderText.benefit[benefit.value]}, it ${builderText.concern[concern.value]}. Therefore, it is more acceptable if ${builderText.safeguard[safeguard.value]} and the decision is proportionate to the scenario.`;
+    output.textContent = `${builderText.tech[tech.value]} ${builderText.benefit[benefit.value]}, but it ${builderText.harm[harm.value]}. A balanced answer should name the affected stakeholders and propose a realistic mitigation.`;
   }
+  tech.addEventListener("change", build);
   benefit.addEventListener("change", build);
-  concern.addEventListener("change", build);
-  safeguard.addEventListener("change", build);
+  harm.addEventListener("change", build);
   document.querySelector("#buildBtn").addEventListener("click", build);
   build();
 }
@@ -301,7 +296,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("privacy");
+  renderExample("remote");
 }
 
 function renderPractice() {
@@ -395,7 +390,7 @@ function renderExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupClassifier();
+  setupAnalyser();
   setupBuilder();
   setupExamples();
   renderPractice();

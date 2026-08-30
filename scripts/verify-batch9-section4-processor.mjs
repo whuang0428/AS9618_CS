@@ -66,17 +66,16 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["041", [
+  ["042", [
     "Von Neumann architecture", "stored-program concept", "Immediate Access Store", "IAS", "ALU", "CU", "system clock",
+    "general-purpose", "special-purpose", "PC", "MDR", "MAR", "ACC", "IX", "CIR", "status register",
   ]],
-  ["042", ["fetch-decode-execute cycle", "register-transfer notation", "MAR <- PC", "MDR <- Memory[MAR]", "CIR <- MDR"]],
-  ["043", ["general-purpose", "special-purpose", "PC", "MDR", "MAR", "ACC", "IX", "CIR", "status register"]],
-  ["044", ["address bus", "data bus", "control bus", "USB", "HDMI", "VGA"]],
-  ["045", ["assembly language", "machine code", "assembler", "instruction set"]],
-  ["046", ["Pass 1", "Pass 2", "symbol table", "Trace", "data movement", "input/output", "arithmetic", "conditional branch", "unconditional branch", "compare"]],
-  ["047", ["immediate", "direct", "indirect", "indexed", "relative addressing", "LDR #n", "CMI <address>", "JPE <address>", "JPN <address>"]],
-  ["048", ["causes", "applications", "detects", "interrupt service routine", "saved state", "restores"]],
-  ["049", ["processor type", "number of cores", "bus width", "clock speed", "cache memory"]],
+  ["043", ["address bus", "data bus", "control bus", "USB", "HDMI", "VGA", "processor type", "number of cores", "bus width", "clock speed", "cache memory"]],
+  ["044", ["fetch-decode-execute cycle", "register-transfer notation", "MAR <- PC", "MDR <- Memory[MAR]", "CIR <- MDR"]],
+  ["045", ["causes", "applications", "detects", "interrupt service routine", "saved state", "restores"]],
+  ["046", ["assembly language", "machine code", "assembler", "instruction set"]],
+  ["047", ["Pass 1", "Pass 2", "symbol table", "Trace", "data movement", "input/output", "arithmetic", "conditional branch", "unconditional branch", "compare"]],
+  ["048", ["immediate", "direct", "indirect", "indexed", "relative addressing", "LDR #n", "CMI <address>", "JPE <address>", "JPN <address>"]],
   ["050", ["AND mask", "OR mask", "XOR mask", "logical left shift", "logical right shift", "test", "set", "clear", "toggle", "monitor", "control"]],
 ];
 
@@ -94,25 +93,29 @@ for (const [lesson, terms] of lessonChecks) {
 const l050 = read("web/lesson-050/index.html");
 expect(/data-delivery-role="CORE"/i.test(sectionHtml(l050, "stage2-completion")), "L050#stage2-completion: required bit manipulation is not CORE");
 expect(/data-delivery-role="CORE"/i.test(sectionHtml(l050, "explanation-shifts")), "L050#explanation-shifts: first-use bit-manipulation visual is not CORE");
-for (const id of ["masks", "shifts", "device-bits", "core-practice", "tool", "examples", "practice", "exam", "pipeline-extension", "concept", "explanation-concept", "compare", "explanation-compare", "timing", "explanation-timing", "hazards", "explanation-hazards", "stalls", "explanation-stalls"]) {
-  const section = sectionHtml(l050, id);
-  expect(/data-delivery-role="OPTIONAL"/i.test(section) && /data-classroom-activity="EXTEND"/i.test(section), `L050#${id}: pipelining is not OPTIONAL/EXTEND`);
+const l051 = read("web/lesson-051/index.html");
+for (const id of ["masks", "shifts", "device-bits", "core-practice", "tool", "examples", "practice", "exam"]) {
+  expect(/data-delivery-role="CORE"/i.test(sectionHtml(l051, id)), `L051#${id}: required bit-manipulation teaching is not CORE`);
+}
+for (const id of ["pipeline-extension", "concept", "explanation-concept", "compare", "explanation-compare", "timing", "explanation-timing", "hazards", "explanation-hazards", "stalls", "explanation-stalls"]) {
+  const section = sectionHtml(l051, id);
+  expect(/data-delivery-role="OPTIONAL"/i.test(section) && /data-classroom-activity="EXTEND"/i.test(section), `L051#${id}: pipelining is not OPTIONAL/EXTEND`);
 }
 includesAll(l050, ["AND mask", "OR mask", "XOR mask", "logical left", "logical right", "arithmetic left", "arithmetic right", "cyclic left", "cyclic right", "test", "set", "clear", "toggle", "monitor", "control"], "L050 visible bit-manipulation teaching");
 
 const assessmentChecks = [
-  ["L041-Q4", ["stored-program", "Von Neumann", "binary", "MDR", "CIR"]],
-  ["L043-Q5", ["general-purpose", "special-purpose", "ACC", "PC", "MAR", "MDR", "IX"]],
-  ["L047-Q5", ["immediate", "direct", "indirect", "indexed", "relative"]],
-  ["AQ045-Q3", ["stored-program", "Von Neumann", "alongside data"]],
-  ["AQ045-Q4", ["USB", "HDMI", "VGA"]],
-  ["AQ050-Q1", ["pass 1", "symbol table", "pass 2", "resolved labels"]],
-  ["AQ050-Q2", ["LDX", "500", "IX", "507", "ACC", "42"]],
-  ["AQ050-Q3", ["input/output", "arithmetic", "unconditional", "conditional"]],
-  ["AQ050-Q4", ["8-bit", "arithmetic right shift", "cyclic right shift"]],
-  ["AQ050-Q5", ["OR", "00000100", "set"]],
-  ["AR051-Q1", ["LDR", "IX", "CMI", "indirect", "JPE", "True", "JPN", "False"]],
-  ["AR051-Q2", ["current instruction completes", "state", "ISR", "restored", "resumes"]],
+  ["L042-Q4", ["stored-program", "Von Neumann", "binary", "MDR", "CIR"]],
+  ["L044-Q5", ["general-purpose", "special-purpose", "ACC", "PC", "MAR", "MDR", "IX"]],
+  ["L048-Q5", ["immediate", "direct", "indirect", "indexed", "relative"]],
+  ["AQ046-Q3", ["stored-program", "Von Neumann", "alongside data"]],
+  ["AQ046-Q4", ["USB", "HDMI", "VGA"]],
+  ["AQ051-Q1", ["pass 1", "symbol table", "pass 2", "resolved labels"]],
+  ["AQ051-Q2", ["LDX", "500", "IX", "507", "ACC", "42"]],
+  ["AQ051-Q3", ["input/output", "arithmetic", "unconditional", "conditional"]],
+  ["AQ051-Q4", ["8-bit", "arithmetic right shift", "cyclic right shift"]],
+  ["AQ051-Q5", ["OR", "00000100", "set"]],
+  ["AR052-Q1", ["LDR", "IX", "CMI", "indirect", "JPE", "True", "JPN", "False"]],
+  ["AR052-Q2", ["current instruction completes", "state", "ISR", "restored", "resumes"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 4 assessment`);
 
@@ -124,21 +127,21 @@ for (const [label, pattern] of [
   ["negative JPN", /JPN(?:\s+<address>)?\s+(?:means|is|jumps?)\s+(?:if|when|on)?\s*(?:negative|minus)/i],
 ]) expect(!pattern.test(acceptedAssessment), `accepted assessment semantics still contain ${label}`);
 
-const registerVisual = sourceFactOverrides["043/main-registers"].join(" ");
-includesAll(registerVisual, ["PC", "CIR", "MAR", "MDR", "ACC", "IX", "status register", "general-purpose", "special-purpose"], "L043 maintained visual facts");
-const modesVisual = sourceFactOverrides["047/modes"].join(" ");
-includesAll(modesVisual, ["Immediate", "Direct", "Indirect", "Indexed", "Relative", "PC-based", "LDR #n", "IX", "not relative"], "L047 maintained visual facts");
+const registerVisual = sourceFactOverrides["044/main-registers"].join(" ");
+includesAll(registerVisual, ["PC", "CIR", "MAR", "MDR", "ACC", "IX", "status register", "general-purpose", "special-purpose"], "L044 maintained visual facts");
+const modesVisual = sourceFactOverrides["048/modes"].join(" ");
+includesAll(modesVisual, ["Immediate", "Direct", "Indirect", "Indexed", "Relative", "PC-based", "LDR #n", "IX", "not relative"], "L048 maintained visual facts");
 for (const [file, label] of [
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg", "L043 register visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg", "L047 modes visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg", "L050 shifts visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-044-main-registers.jpg", "L044 register visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-048-modes.jpg", "L048 modes visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-051-shifts.jpg", "L051 shifts visual"],
 ]) {
   const dimensions = jpegDimensions(file);
   expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${label}: expected 1536x1024 JPEG`);
 }
-const shiftCalculation = semanticCalculations.find(({ id }) => id === "CALC-074-BINARY-SHIFTS");
-expect(Boolean(shiftCalculation) && evaluateSemanticCalculation(shiftCalculation), "L050 fixed-width shift calculation failed");
-expect(shiftCalculation?.width === 8 && shiftCalculation?.examples.every(({ result }) => /^[01]{8}$/.test(result)), "L050 shift results are not all exactly eight bits");
+const shiftCalculation = semanticCalculations.find(({ id }) => id === "CALC-075-BINARY-SHIFTS");
+expect(Boolean(shiftCalculation) && evaluateSemanticCalculation(shiftCalculation), "L051 fixed-width shift calculation failed");
+expect(shiftCalculation?.width === 8 && shiftCalculation?.examples.every(({ result }) => /^[01]{8}$/.test(result)), "L051 shift results are not all exactly eight bits");
 
 const mutations = [
   ["S4.01", /stored-program/gi],
@@ -168,7 +171,7 @@ for (const [id, pattern] of mutations) {
 }
 
 const assessmentMutation = evaluateRequirement(requirements.get("S4.13"), {
-  questionTransform: (question) => ["L046-Q2", "L046-Q4", "AR051-Q1"].includes(question.id)
+  questionTransform: (question) => ["L047-Q2", "L047-Q4", "AR051-Q1"].includes(question.id)
     ? {
         ...question,
         prompt: question.prompt.replace(/LDR|CMI|JPE|JPN/gi, "instruction"),

@@ -24,7 +24,7 @@ const closures = Object.freeze({
   ],
   "RV2-SCOPE-001": [
     "S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production",
-    "L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment",
+    "L012, L145 construction practice and L146 production practice are retained only as labelled Optional enrichment",
   ],
   "RV2-SCOPE-002": [
     "scripts/remediation-v2-optional-enrichment.mjs records 13 lesson dispositions with formal AS prerequisites and exclusion policy",
@@ -155,7 +155,7 @@ ${closure.records.map((record) => `| ${record.id} | ${record.stage2Disposition} 
 ## Remaining risks
 
 - The exact-source mapping and Complete coverage rows do not prove official teaching order or the Stage 5 high-risk technical/image controls; those gates remain independently BLOCKED.
-- L059 official error content is still too early; only its non-contract base sections are Optional in Stage 2. Stage 3 must restore the official CORE first-use order.
+- L060 official error content is still too early; only its non-contract base sections are Optional in Stage 2. Stage 3 must restore the official CORE first-use order.
 - Commit, push and publication remain unauthorised.
 
 ## Stop condition

@@ -1,108 +1,118 @@
 const scenarioMap = {
-  deploy: {
-    result: "Best fit: compiler.",
-    method: "A compiler translates the whole high-level program before execution and can produce object or executable code for distribution.",
-    trap: "Do not choose interpreter if the key requirement is distributing a finished program without the source code.",
+  deleted: {
+    result: "Best fit: backup utility.",
+    method: "A backup utility can restore a previous copy of files if the backup was made before the deletion.",
+    trap: "Do not say antivirus can recover deleted work. Antivirus targets malware, not ordinary file loss.",
   },
-  debug: {
-    result: "Best fit: interpreter.",
-    method: "An interpreter translates and executes code statement by statement, which can help identify errors during development.",
-    trap: "Do not say interpreters produce a separate executable in the same way as compilers.",
+  email: {
+    result: "Best fit: compression utility.",
+    method: "Compression reduces file size, which can reduce upload time and help the file meet an attachment limit.",
+    trap: "Do not claim compression always improves quality. Lossy compression may reduce quality.",
   },
-  assembly: {
-    result: "Best fit: assembler.",
-    method: "An assembler translates assembly language mnemonics into machine code for a specific processor.",
-    trap: "Do not use assembler for high-level language source code.",
+  stolen: {
+    result: "Best fit: encryption utility.",
+    method: "Encryption changes readable plaintext into ciphertext, so stolen data cannot be read without the key.",
+    trap: "Do not say encryption prevents theft or deletion. It protects confidentiality if data is accessed.",
   },
-  repeat: {
-    result: "Best fit: compiler.",
-    method: "After compilation, the executable can be run repeatedly without translating the whole source code each time.",
-    trap: "Do not claim compiled code never needs testing; compilation and correctness are different issues.",
+  slowhdd: {
+    result: "Best fit: defragmentation utility.",
+    method: "On a magnetic hard disk, defragmentation rearranges scattered file blocks to reduce disk head movement.",
+    trap: "Do not apply this explanation to SSD storage; SSDs do not use a moving disk head.",
   },
-  student: {
-    result: "Best fit: interpreter.",
-    method: "Interactive execution can help a beginner test small parts of a program and see errors near the relevant statement.",
-    trap: "Do not say an interpreter is always faster because it feels immediate.",
+  malware: {
+    result: "Best fit: antivirus utility.",
+    method: "Antivirus software can scan the attachment, detect known or suspicious malware, then quarantine or remove it.",
+    trap: "Do not say antivirus guarantees complete protection against all new threats.",
   },
-  wrongasm: {
-    result: "Not suitable: assembler.",
-    method: "An assembler translates assembly language, not Java or other high-level source code. A compiler or interpreter would be relevant depending on the language and use case.",
-    trap: "Do not confuse assembly language with any program code that looks technical.",
+  ssd: {
+    result: "Best fit: not defragmentation as the main answer.",
+    method: "An SSD has no mechanical disk head, so classic defragmentation does not give the same access-time benefit.",
+    trap: "Do not recommend defragmentation just because the word sounds like 'make storage tidy'.",
   },
 };
 
 const examples = {
-  compiler: {
-    title: "Example 1: Compiler for distribution",
-    problem: "A developer wants to distribute a finished desktop application without giving users the source code.",
+  backup: {
+    title: "Example 1: Backup after accidental deletion",
+    problem: "A student deletes a project folder and needs to restore yesterday's version.",
     steps: [
-      "A compiler is suitable because it translates the whole high-level program before it is run.",
-      "It can produce object or executable code.",
-      "Users can run the executable without needing the original source code.",
-      "A limitation is that errors may be reported after compilation, so debugging may require working through a list of messages.",
+      "The correct utility is a backup utility.",
+      "It creates copies of data on another drive, server or cloud service.",
+      "The deleted folder can be restored from a backup made before the deletion.",
+      "A limitation is that work created after the most recent backup may still be lost.",
     ],
   },
-  interpreter: {
-    title: "Example 2: Interpreter during development",
-    problem: "A student is writing a program and wants immediate feedback on errors.",
+  compression: {
+    title: "Example 2: Compression for file transfer",
+    problem: "A video file is too large to upload to a learning platform.",
     steps: [
-      "An interpreter is suitable because it translates and executes code statement by statement.",
-      "It can stop at or near the statement where an error occurs.",
-      "This can make testing and debugging easier during development.",
-      "A limitation is that the program may run more slowly because translation happens while it runs.",
+      "The correct utility is a compression utility.",
+      "It reduces the number of bits needed to store or transmit the file.",
+      "This can reduce upload time and help fit within a size limit.",
+      "A limitation is that lossy compression may reduce image or sound quality.",
     ],
   },
-  assembler: {
-    title: "Example 3: Assembler for low-level code",
-    problem: "A programmer writes assembly language instructions for a specific processor.",
+  encryption: {
+    title: "Example 3: Encryption for confidential data",
+    problem: "A company stores customer records on laptops used outside the office.",
     steps: [
-      "An assembler is suitable because the input is assembly language.",
-      "Assembly uses mnemonics such as LDA or ADD rather than raw binary.",
-      "The assembler converts these mnemonics into machine code/object code.",
-      "It is not the correct translator for high-level source code such as Java or Python.",
+      "The correct utility is encryption software.",
+      "It converts plaintext records into ciphertext using an algorithm and key.",
+      "If the laptop is stolen, an unauthorised person cannot read the records without the key.",
+      "A limitation is that losing the key can prevent authorised recovery too.",
     ],
   },
-  compare: {
-    title: "Example 4: Development versus deployment",
-    problem: "Choose one translator for testing and another for distributing the final program.",
+  defrag: {
+    title: "Example 4: Defragmentation for a magnetic hard disk",
+    problem: "An older desktop with an HDD opens large files slowly after years of file changes.",
     steps: [
-      "For testing, an interpreter may be useful because errors can be found as statements are translated and executed.",
-      "For distribution, a compiler may be useful because it can produce executable code.",
-      "The compiled program can run without giving users the source code.",
-      "The choice depends on the stage of development and the need for speed, debugging or source-code protection.",
+      "The relevant utility is defragmentation.",
+      "Files may be split into fragments stored in different physical locations on the disk.",
+      "Defragmentation rearranges blocks so file parts are stored closer together.",
+      "This can reduce disk head movement, but the same reasoning is not valid for SSDs.",
+    ],
+  },
+  antivirus: {
+    title: "Example 5: Antivirus for suspicious downloads",
+    problem: "A user downloads an attachment from an unknown sender.",
+    steps: [
+      "The correct utility is antivirus software.",
+      "It scans the file for malware signatures or suspicious behaviour.",
+      "It may warn the user, quarantine the file, delete malware or block the action.",
+      "A limitation is that new malware may not be detected immediately, so updates matter.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which translator converts a whole high-level program before execution?", accepted: ["compiler"], answer: "Compiler" },
-  { id: "p2", prompt: "Which translator executes high-level code statement by statement?", accepted: ["interpreter"], answer: "Interpreter" },
-  { id: "p3", prompt: "Which translator converts assembly language into machine code?", accepted: ["assembler"], answer: "Assembler" },
-  { id: "p4", prompt: "What is the usual input to an assembler?", accepted: ["assembly", "assembly language", "mnemonics"], answer: "Assembly language / mnemonics" },
-  { id: "p5", prompt: "What code can be executed directly by a processor?", accepted: ["machine code", "machine language", "binary instructions"], answer: "Machine code" },
-  { id: "p6", prompt: "Name one reason a compiler is useful for distributing software.", accepted: ["executable", "object code", "no source", "without source", "faster", "run repeatedly"], answer: "It can produce executable/object code that runs without the source code" },
-  { id: "p7", prompt: "Name one reason an interpreter is useful during development.", accepted: ["debug", "debugging", "statement by statement", "line by line", "immediate", "errors"], answer: "It can help find errors statement by statement during development" },
-  { id: "p8", prompt: "Does an interpreter normally produce a separate permanent object code file? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "Does an assembler translate Python source code? Answer yes or no.", accepted: ["no"], answer: "No. It translates assembly language" },
-  { id: "p10", prompt: "Give one limitation of interpreted programs.", accepted: ["slower", "source code needed", "translated during execution", "needs interpreter"], answer: "They may run more slowly and often need the interpreter/source code available" },
+  { id: "p1", prompt: "Which utility creates copies of data so files can be restored later?", accepted: ["backup", "backup utility", "backup software"], answer: "Backup utility" },
+  { id: "p2", prompt: "Which utility reduces the size of files?", accepted: ["compression", "compression utility", "file compression"], answer: "Compression utility" },
+  { id: "p3", prompt: "Which utility converts plaintext into ciphertext using a key?", accepted: ["encryption", "encryption utility", "encrypt"], answer: "Encryption utility" },
+  { id: "p4", prompt: "Which utility rearranges fragmented files on a magnetic hard disk?", accepted: ["defragmentation", "defrag", "disk defragmentation", "defragmentation utility"], answer: "Defragmentation utility" },
+  { id: "p5", prompt: "Which utility scans for, quarantines or removes malware?", accepted: ["antivirus", "anti virus", "antivirus software", "anti-virus"], answer: "Antivirus software" },
+  { id: "p6", prompt: "State one reason backups should be made regularly.", accepted: ["recent", "restore recent", "reduce data loss", "less data lost", "up to date", "current"], answer: "So a recent copy can be restored and less new data is lost" },
+  { id: "p7", prompt: "State one benefit of compression when sending a file over a network.", accepted: ["less bandwidth", "faster", "less time", "reduced upload", "reduced download", "smaller file"], answer: "Smaller files may take less time/bandwidth to transmit" },
+  { id: "p8", prompt: "Does encryption stop a file from being deleted? Answer yes or no.", accepted: ["no"], answer: "No. Encryption protects confidentiality, not availability" },
+  { id: "p9", prompt: "Why is classic defragmentation mainly linked to magnetic hard disks rather than SSDs?", accepted: ["moving head", "disk head", "mechanical", "no moving parts", "ssd no moving"], answer: "HDDs have moving disk heads; SSDs do not" },
+  { id: "p10", prompt: "Why should antivirus software be updated?", accepted: ["new malware", "new threats", "definitions", "signatures", "detection rules"], answer: "To recognise newer malware signatures or detection patterns" },
 ];
 
 const mistakes = [
   {
-    wrong: "An interpreter is just a compiler that is worse.",
-    fix: "An interpreter translates and executes statements as the program runs. A compiler translates the whole program before execution and can produce object or executable code.",
+    wrong: "Backup software protects data by stopping hackers from reading it.",
+    fix: "Backup software helps restore data after loss or damage. Encryption is the utility that protects confidentiality by making data unreadable without a key.",
   },
   {
-    wrong: "An assembler translates any programming language into machine code.",
-    fix: "An assembler translates assembly language mnemonics into machine code. High-level languages use compilers or interpreters.",
+    wrong: "Compression always keeps every bit of the original data.",
+    fix: "Lossless compression reconstructs the original exactly. Lossy compression discards some detail to reduce file size further.",
   },
   {
-    wrong: "Compiled programs never have errors because the compiler checked them.",
-    fix: "A compiler can detect some syntax or translation errors, but logic errors may remain. Successful compilation does not prove the program is correct.",
+    wrong: "Encryption prevents malware infection.",
+    fix: "Encryption protects data from being read by unauthorised users. Antivirus software scans for and deals with malware.",
   },
   {
-    wrong: "Machine code is easier for humans because it is what the CPU understands.",
-    fix: "Machine code is directly executable by the CPU, but it is difficult for humans to read. High-level languages and assembly mnemonics are more human-readable.",
+    wrong: "Defragmentation is equally useful for SSDs because it tidies the drive.",
+    fix: "Classic defragmentation is linked to magnetic disks because it reduces disk head movement. SSDs have no moving head, so this benefit does not apply in the same way.",
   },
 ];
 
@@ -115,92 +125,89 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Describe the role of a compiler and give one advantage and one disadvantage of using one.",
-    answer: "A compiler translates the whole high-level source program into object code or executable machine code before the program is run. An advantage is that the compiled program can be run repeatedly without translating the source code each time, and the source code does not need to be supplied to the user. A disadvantage is that errors may be reported after compilation, so the programmer may need to work through a list of error messages before the program can run.",
+    marks: "4 marks",
+    prompt: "Describe the purpose of backup software and explain two reasons why a school should use it.",
+    answer: "Backup software creates copies of files or systems, usually on another storage device, server or cloud location. A school should use it so deleted or corrupted coursework can be restored from a previous copy. It also helps recover data after hardware failure or malware damage. Backups should be regular and tested so the restored version is recent and usable.",
     marking: [
-      { mark: "B1", text: "translates high-level source code" },
-      { mark: "B1", text: "whole program translated before execution" },
-      { mark: "B1", text: "produces object/executable/machine code" },
-      { mark: "B1", text: "valid advantage such as repeated execution without retranslation/source code not needed" },
-      { mark: "B1", text: "valid disadvantage such as compilation required before running or error list after compilation" },
+      { mark: "B1", text: "backup software creates/copies data or system files" },
+      { mark: "B1", text: "copy is stored separately / on another medium / cloud / off-site" },
+      { mark: "B1", text: "allows restoration after accidental deletion or corruption" },
+      { mark: "B1", text: "allows recovery after hardware failure, malware or similar data loss event" },
     ],
     strict: [
-      "Do not accept 'turns code into code' without source/object or machine code distinction.",
-      "Do not award output mark for saying only 'it runs the program'.",
-      "Allow executable code for object code if context is clear.",
+      "Do not accept 'backup makes data secure' without restore/recovery idea.",
+      "Do not award separate marks for repeated examples of the same loss event.",
+      "Allow cloud backup if restoration is clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Explain why an interpreter may be useful while developing a program.",
-    answer: "An interpreter translates and executes high-level source code statement by statement as the program runs. During development this can help the programmer test small parts of the program and locate errors near the statement being executed. It may give quicker feedback for debugging. A limitation is that the program may run more slowly than compiled code because translation occurs during execution.",
+    marks: "3 marks",
+    prompt: "Explain why compression software may be used before sending files over a network.",
+    answer: "Compression software reduces the file size by encoding the data using fewer bits. A smaller file may need less bandwidth and take less time to upload or download. It may also help the file fit within an attachment or storage limit. If lossy compression is used, some quality or detail may be lost, while lossless compression allows exact reconstruction.",
     marking: [
-      { mark: "B1", text: "interpreter translates/executes high-level source code" },
-      { mark: "B1", text: "statement by statement / line by line during execution" },
-      { mark: "B1", text: "helps locate or diagnose errors during development" },
-      { mark: "B1", text: "valid limitation or consequence such as slower execution/source code needed" },
+      { mark: "B1", text: "compression reduces file size / number of bits" },
+      { mark: "B1", text: "less data to transmit so upload/download time or bandwidth use is reduced" },
+      { mark: "B1", text: "reduced transmission time and/or reduced bandwidth requirement explained" },
     ],
     strict: [
-      "Do not accept 'finds all errors' because logic errors may remain.",
-      "Do not accept compiler-only features such as producing a standalone executable.",
-      "Allow line by line as equivalent to statement by statement.",
+      "Do not accept 'makes the file faster' unless transmission or processing context is clear.",
+      "Do not accept 'zips it' alone without reduced size idea.",
+      "Allow 'smaller file' for B1.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Describe the purpose of an assembler.",
-    answer: "An assembler translates assembly language into machine code or object code. Assembly language uses mnemonic instructions and labels that are easier for programmers to write than raw binary machine code. The resulting machine code can be executed by the processor. An assembler is not used to translate high-level languages such as Java or Python.",
+    marks: "5 marks",
+    prompt: "A company stores customer data on laptops used by employees. Explain how encryption software can help and give one limitation.",
+    answer: "Encryption software converts plaintext customer data into ciphertext using an encryption algorithm and a key. If a laptop is stolen, the data cannot be read by an unauthorised person without the correct key, so confidentiality is protected. A limitation is that encryption does not prevent the laptop being stolen or the file being deleted. If the key is lost, authorised users may also be unable to decrypt the data.",
     marking: [
-      { mark: "B1", text: "translates assembly language" },
-      { mark: "B1", text: "into machine code/object code" },
-      { mark: "B1", text: "assembly language contains mnemonics/low-level instructions" },
-      { mark: "B1", text: "machine code can be executed by processor or high-level-language boundary stated" },
+      { mark: "B1", text: "plaintext/readable data is converted into ciphertext/unreadable form" },
+      { mark: "B1", text: "uses an algorithm and/or key" },
+      { mark: "B1", text: "unauthorised user cannot read data without correct key" },
+      { mark: "B1", text: "benefit linked to laptop/customer data scenario or confidentiality" },
+      { mark: "B1", text: "valid limitation such as no prevention of theft/deletion/malware or key loss" },
     ],
     strict: [
-      "Do not accept high-level source code as assembler input.",
-      "Do not accept 'assembler is assembly language' as a role.",
-      "Allow examples of mnemonics such as LDA/ADD if linked to assembly.",
+      "Do not accept 'data is hidden' without unreadable/ciphertext idea.",
+      "Do not accept encryption as backup or antivirus.",
+      "Allow symmetric/asymmetric references if technically correct.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Compare a compiler and an interpreter.",
-    answer: "Both are translator programs for high-level language source code. A compiler translates the whole program before execution and usually produces object or executable code. An interpreter translates and executes the program statement by statement as it runs and normally does not produce a separate permanent object code file. Compiled programs may run faster after translation and can be distributed without source code. Interpreters can be useful for development because errors may be identified as the relevant statement is executed.",
+    marks: "4 marks",
+    prompt: "Describe defragmentation and explain why it may improve performance on a magnetic hard disk.",
+    answer: "Defragmentation rearranges file fragments or blocks so parts of a file are stored closer together or contiguously on a magnetic hard disk. This can reduce the amount of movement required by the disk read/write head. As a result, file access can be faster. This explanation is linked to HDDs and should not be stated as the same benefit for SSDs, which have no moving disk head.",
     marking: [
-      { mark: "B1", text: "both translate high-level/source code" },
-      { mark: "B1", text: "compiler translates whole program before execution" },
-      { mark: "B1", text: "compiler produces object/executable code" },
-      { mark: "B1", text: "interpreter translates/executes statement by statement during execution" },
-      { mark: "B1", text: "interpreter normally does not produce separate permanent object code" },
-      { mark: "B1", text: "valid comparative advantage/use case linked to development or deployment" },
+      { mark: "B1", text: "file fragments/blocks are rearranged" },
+      { mark: "B1", text: "parts of a file are made contiguous/closer together" },
+      { mark: "B1", text: "reduces movement of magnetic disk read/write head" },
+      { mark: "B1", text: "access time/performance improvement linked to HDD, or SSD boundary correctly stated" },
     ],
     strict: [
-      "Do not award comparison marks for vague faster/easier without mechanism.",
-      "Do not require the exact phrase 'permanent object code' if the idea is clear.",
-      "Allow line by line for statement by statement.",
+      "Do not accept 'deletes unnecessary files' as defragmentation.",
+      "Do not accept performance mark without mechanism on HDD.",
+      "Allow 'hard disk' for magnetic disk if context implies HDD.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, Identify the most suitable translator and justify it: distributing a finished game; testing a beginner's program interactively; translating assembly language.",
-    answer: "For distributing a finished game, a compiler is suitable because it can produce executable/object code and users do not need the source code. For testing a beginner's program interactively, an interpreter is suitable because it translates and executes statements one at a time, helping locate errors during development. For translating assembly language, an assembler is suitable because it converts assembly mnemonics into machine code for the processor.",
+    prompt: "For each scenario, Identify a suitable utility and justify it: recovering deleted documents; protecting files if a laptop is stolen; checking a suspicious download.",
+    answer: "For recovering deleted documents, a backup utility is suitable because it can restore a previous copy made before the deletion. For protecting files if a laptop is stolen, encryption is suitable because it converts readable data into ciphertext that cannot be read without the key. For checking a suspicious download, antivirus software is suitable because it scans for malware and can quarantine or remove infected files.",
     marking: [
-      { mark: "B1", text: "compiler selected for distributing finished game" },
-      { mark: "B1", text: "compiler justification linked to executable/object code or source code not needed" },
-      { mark: "B1", text: "interpreter selected for interactive testing" },
-      { mark: "B1", text: "interpreter justification linked to statement-by-statement execution or debugging" },
-      { mark: "B1", text: "assembler selected for assembly language" },
-      { mark: "B1", text: "assembler justification linked to mnemonics or machine code output" },
+      { mark: "B1", text: "backup selected for recovering deleted documents" },
+      { mark: "B1", text: "backup justification linked to restoring a previous copy" },
+      { mark: "B1", text: "encryption selected for stolen laptop/files" },
+      { mark: "B1", text: "encryption justification linked to ciphertext/key/unauthorised reading" },
+      { mark: "B1", text: "antivirus selected for suspicious download" },
+      { mark: "B1", text: "antivirus justification linked to scanning, quarantine or removal of malware" },
     ],
     strict: [
-      "Do not award selection mark if the translator is matched to the wrong scenario.",
-      "Do not accept 'compiler is faster' alone without deployment or translation context.",
-      "Allow low-level assembly code as assembly language.",
+      "Do not award selection mark if the utility is matched to the wrong scenario.",
+      "Do not accept 'secure' as justification unless the mechanism is clear.",
+      "Allow anti-malware as antivirus equivalent.",
     ],
   },
 ];
@@ -216,10 +223,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    machine: "Correct. High-level source code must be translated into machine code before the processor can execute it.",
-    english: "No. PRINT is readable to humans, but the processor executes machine code instructions.",
-    assembler: "No. An assembler translates assembly language, not high-level source code such as PRINT statements.",
-    os: "No. The operating system provides services, but translator software converts program code.",
+    backup: "Correct. A backup made before deletion can be used to restore the coursework folder.",
+    compression: "No. Compression may make files smaller, but it does not restore deleted data.",
+    encryption: "No. Encryption protects confidentiality, but it does not bring deleted files back.",
+    defrag: "No. Defragmentation rearranges blocks on a magnetic disk; it is not a time machine.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -263,7 +270,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("compiler");
+  renderExample("backup");
 }
 
 function renderPractice() {

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 065 | Authentication: passwords, biometrics, tokens, and MFA</title>
+    <title>AS9618 Lesson 065 | Required internet threats and matching risk-reduction methods</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Authentication: passwords, biometrics, tokens, and MFA</h1>
+        <h1>Required internet threats and matching risk-reduction methods</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,15 +29,14 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#core">Authentication</a>
-        <a href="#factors">Factors</a>
-        <a href="#passwords">Passwords</a>
-        <a href="#biometrics">Biometrics</a>
-        <a href="#tokens">Tokens</a>
-        <a href="#mfa">MFA</a>
+        <a href="#core">Core idea</a>
+        <a href="#hacking">Hacking</a>
+        <a href="#phishing">Phishing</a>
+        <a href="#pharming">Pharming</a>
+        <a href="#dos">DoS</a>
         <a href="#compare">Compare</a>
-        <a href="#tool">Auth tool</a>
-        <a href="#password-tool">Password tool</a>
+        <a href="#controls">Controls</a>
+        <a href="#tool">Attack tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -56,57 +55,56 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>User accounts, passwords and biometric authentication</h2>
+            <h2>Required internet threats and matching risk-reduction methods</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.</p>
-            <p>Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.</p>
-            <p>False rejection denies a valid enrolled user by mistake; false acceptance authenticates an impostor by mistake. Biometrics can be convenient and cannot be casually shared like a password, but require sensors/templates, may raise privacy concerns and cannot normally be replaced as easily as a compromised password.</p>
-            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
+            <p>The required threats are malware (virus and spyware), hackers, phishing and pharming. A hacker gains unauthorised access to a computer system or data. Phishing uses a deceptive message, link or site to persuade a user to disclose information. Pharming redirects traffic to a fake website, possibly even after the user enters the correct address.</p>
+            <p>Methods restrict risk only when their mechanism matches the threat: updated anti-virus and anti-spyware can detect known malware; user training and independent contact checks reduce phishing; secure DNS, certificate/HTTPS checks and patched software reduce pharming risk; strong authentication, access rights, patching, firewalls and monitoring reduce unauthorised access by hackers.</p>
+            <p>A control reduces likelihood or impact; it rarely makes an attack impossible. Layered controls are needed because people, software, credentials and network traffic provide different attack routes.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Account login with fingerprint</h3>
-            <p>A named staff account first supplies a password, then a fingerprint sensor captures a feature and compares its template with the enrolled template. A match authenticates the claimed identity. The access-rights system then separately decides whether that account may read payroll data; the biometric match itself does not grant every permission.</p>
+            <h3>Worked example: Protect an online payroll service</h3>
+            <p>Staff receive a phishing email while a hacker probes the server and pharming redirects one user towards a fake site. Training and an independent sender check reduce phishing risk; multi-factor authentication reduces the value of a stolen password; a firewall filters unwanted traffic; access rights limit what an authenticated account may change; updated anti-virus and anti-spyware detect known virus or spyware signatures; secure DNS and certificate warnings reduce pharming risk.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>User accounts, passwords and biometric authentication: apply and assess</h2>
+            <h2>Required internet threats and matching risk-reduction methods: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What is the purpose of a user account?</p>
-              <details><summary>Show answer</summary><p>It provides a distinct identity for authentication, access control and accountability.</p></details>
+              <p><strong>1.</strong> Compare phishing from pharming.</p>
+              <details><summary>Show answer</summary><p>Phishing persuades through a deceptive message/link/site; pharming redirects traffic to a fake site, potentially after the correct address is entered.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What does a biometric match establish?</p>
-              <details><summary>Show answer</summary><p>It provides evidence that the presented feature matches the enrolled identity template; it authenticates the identity claim.</p></details>
+              <p><strong>2.</strong> What is the syllabus meaning of a hacker threat?</p>
+              <details><summary>Show answer</summary><p>A person gaining or attempting unauthorised access to a computer system or data.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Does successful authentication decide every permitted action?</p>
-              <details><summary>Show answer</summary><p>No. Authorisation/access rights separately decide what the authenticated user may access or do.</p></details>
+              <p><strong>3.</strong> Draw lines to match virus, spyware, phishing and pharming to one suitable risk-reduction method each.</p>
+              <details><summary>Show answer</summary><p>Updated anti-virus; updated anti-spyware; training/independent verification; secure DNS plus certificate/HTTPS checks, respectively.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Compare false accept from false reject.</p>
-              <details><summary>Show answer</summary><p>False accept authenticates an impostor; false reject denies a valid enrolled user.</p></details>
+              <p><strong>4.</strong> Why are layered controls required?</p>
+              <details><summary>Show answer</summary><p>Different controls address different attack routes, so failure or bypass of one control need not expose the whole system.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe how user accounts, passwords and biometrics can protect a computer system, including one limitation of each authentication method.</p>
+            <p>For each of virus, spyware, hacking, phishing and pharming, describe the threat route and one matching method that restricts its risk.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>account supplies a distinct identity/accountability record</td><td>Do not describe a biometric match as permission to access every resource or claim that biometrics cannot produce errors.</td><td>1</td></tr>
-                  <tr><td>password is secret knowledge checked during authentication</td><td></td><td>1</td></tr>
-                  <tr><td>password limitation such as guessing/phishing/reuse/sharing</td><td></td><td>1</td></tr>
-                  <tr><td>biometric feature is captured and compared with an enrolled template</td><td></td><td>1</td></tr>
-                  <tr><td>biometric limitation such as false accept/reject, sensor/template or privacy risk</td><td></td><td>1</td></tr>
-                  <tr><td>authentication is distinguished from later authorisation/access rights</td><td></td><td>1</td></tr>
+                  <tr><td>virus route plus anti-virus mechanism</td><td>Do not define phishing and pharming identically or award a control that is unrelated to the stated attack route.</td><td>1</td></tr>
+                  <tr><td>spyware route plus anti-spyware mechanism</td><td></td><td>1</td></tr>
+                  <tr><td>hacker/unauthorised-access route plus a matching access/network control</td><td></td><td>1</td></tr>
+                  <tr><td>phishing/deception route plus training or independent verification</td><td></td><td>1</td></tr>
+                  <tr><td>pharming/redirection route plus secure DNS/certificate/HTTPS or patched-software control</td><td></td><td>1</td></tr>
+                  <tr><td>states that controls reduce rather than eliminate risk</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -117,325 +115,296 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 065 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Authentication asks: are you really who you claim to be?</h2>
+            <h2>Same target, different route: access, trick, redirect, overload.</h2>
             <p>
-              Authentication verifies identity before access is granted. Passwords, biometrics and tokens
-              each prove identity in a different way. Multi-factor authentication combines different factor
-              types so one stolen secret is not enough.
+              This lesson separates four common attack types. Hacking focuses on unauthorised access.
+              Phishing tricks users into giving information. Pharming redirects users to a fake site.
+              Denial-of-service attacks make a service unavailable.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Distinguish</strong><span>authentication from authorisation and access rights</span></div>
-              <div><strong>Compare</strong><span>passwords, biometrics, tokens and MFA using precise advantages and risks</span></div>
-              <div><strong>Recommend</strong><span>authentication choices for realistic security scenarios</span></div>
+              <div><strong>Define</strong><span>hacking, phishing, pharming and DoS with precise wording</span></div>
+              <div><strong>Classify</strong><span>attack scenarios by mechanism, not by panic level</span></div>
+              <div><strong>Explain</strong><span>impact and suitable controls using CIA and authenticity language</span></div>
             </div>
           </div>
-          <div class="auth-card" aria-label="Authentication factors">
-            <div class="factor-stack">
-              <span>Know: password / PIN</span>
-              <span>Have: token / card / phone</span>
-              <span>Are: fingerprint / face / iris</span>
-              <span>MFA: combine different factor types</span>
+          <div class="attack-card" aria-label="Attack routes">
+            <div class="route-stack">
+              <span>Hacking -> unauthorised access</span>
+              <span>Phishing -> fake request / fake page</span>
+              <span>Pharming -> redirected to fake site</span>
+              <span>DoS -> service overwhelmed</span>
             </div>
-            <p>Two passwords are two secrets, not two factors. The exam will notice.</p>
+            <p>Exam shortcut: name the route, then explain the damage.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Many answers list "passwords are secure" without saying why, how they fail, or why MFA changes the risk.</p>
+            <p>Cambridge-style answers reward the mechanism. "It is dangerous" is true, but it is not a full mark machine.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A biometric characteristic cannot be changed as easily as a password if its stored representation is compromised.</p>
+            <p>Phishing and pharming both involve fake destinations, but phishing tricks the user; pharming redirects the traffic.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A website asks for a password and then a code from your phone. What is the security idea?</h2>
-            <p>The site is not being needy; it is checking two different kinds of evidence.</p>
+            <h2>A user types the correct bank URL but lands on a convincing fake banking page. What is the best diagnosis?</h2>
+            <p>The user did not mistype. The browser is basically saying, "I followed the map; the map lied."</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="mfa">MFA, because it combines something you know and something you have</button>
-            <button class="choice-card" type="button" data-hook="two-passwords">Two passwords, because any two checks are two factors</button>
-            <button class="choice-card" type="button" data-hook="authorisation">Authorisation, because it decides file permissions</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption, because a phone code hides data</button>
+            <button class="choice-card" type="button" data-hook="pharming">Pharming, because redirection sends the user to a fake site</button>
+            <button class="choice-card" type="button" data-hook="phishing">Phishing only, because every fake site is phishing</button>
+            <button class="choice-card" type="button" data-hook="dos">DoS, because the bank service is unavailable</button>
+            <button class="choice-card" type="button" data-hook="hacking">Hacking only, because someone must have guessed a password</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for different factor types.
+            Choose one. The clue is correct URL plus redirection.
           </div>
         </section>
 
         <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Authentication is identity checking</h2>
+            <h2>Start from mechanism, then discuss impact</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Authentication</strong><span>Verifies that a user, device or process is who it claims to be.</span></article>
-            <article><strong>Claim</strong><span>The identity presented, such as a username, account or device ID.</span></article>
-            <article><strong>Credential</strong><span>Evidence used to prove the claim, such as a password, biometric or token.</span></article>
-            <article><strong>Authorisation</strong><span>Decides what an authenticated user is allowed to access or change.</span></article>
+            <article><strong>Asset</strong><span>Data, account, system or service being protected.</span></article>
+            <article><strong>Attack vector</strong><span>The route used by the attacker: access, deception, redirection or flooding.</span></article>
+            <article><strong>Impact</strong><span>Loss of confidentiality, integrity, availability or authenticity.</span></article>
+            <article><strong>Control</strong><span>A safeguard that reduces risk, detects attack or supports recovery.</span></article>
           </div>
-          <div class="callout">Chinese support: authentication = 认证身份；authorisation = 授权权限；credential = 凭据/身份证明。</div>
+          <div class="callout">Chinese support: attack vector = 攻击途径；unauthorised access = 未授权访问；availability = 可用性；authenticity = 真实性/身份可信。</div>
         </section>
 
         <!-- stage10-explanation:start core -->
         <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Authentication is identity checking</h2>
+          <h2 class="explanation-sr-only" id="explanation-core-title">Start from mechanism, then discuss impact</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication is identity checking with a structured visual model." />
-            <figcaption class="explanation-sr-only">Authentication is identity checking: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Start from mechanism, then discuss impact with a structured visual model." />
+            <figcaption class="explanation-sr-only">Start from mechanism, then discuss impact: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Authentication Verifies that a user, device or process is who it claims to be.</li><li><strong>Lesson fact:</strong> Claim The identity presented, such as a username, account or device ID.</li><li><strong>Lesson fact:</strong> Credential Evidence used to prove the claim, such as a password, biometric or token.</li><li><strong>Lesson fact:</strong> Authorisation Decides what an authenticated user is allowed to access or change.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Asset Data, account, system or service being protected.</li><li><strong>Lesson fact:</strong> Attack vector The route used by the attacker: access, deception, redirection or flooding.</li><li><strong>Lesson fact:</strong> Impact Loss of confidentiality, integrity, availability or authenticity.</li><li><strong>Lesson fact:</strong> Control A safeguard that reduces risk, detects attack or supports recovery.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-        <section class="panel" id="factors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+        <section class="panel" id="hacking" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Authentication factors: know, have, are</h2>
+            <h2>Hacking: gaining unauthorised access to a system or data</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Something you know</strong><span>Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</span></article>
-            <article><strong>Something you have</strong><span>Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</span></article>
-            <article><strong>Something you are</strong><span>Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</span></article>
-            <article><strong>Factor type</strong><span>Two checks only become MFA when they come from different factor categories.</span></article>
+            <article><strong>Mechanism</strong><span>Bypasses or abuses access controls to enter an account, device or system.</span></article>
+            <article><strong>Examples</strong><span>Using stolen credentials, exploiting a vulnerability or accessing an account without permission.</span></article>
+            <article><strong>Impact</strong><span>Data may be viewed, copied, changed or deleted; system settings may be altered.</span></article>
+            <article><strong>Common error</strong><span>Do not use "hacking" as a label for every cyber attack. It specifically involves unauthorised access.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start factors -->
-        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="mechanism" aria-labelledby="explanation-factors-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-factors-title">Authentication factors: know, have, are</h2>
+        <!-- stage10-explanation:start hacking -->
+        <section class="panel explanation-panel" id="explanation-hacking" data-explains="hacking" data-explanation-kind="mechanism" aria-labelledby="explanation-hacking-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+          <h2 class="explanation-sr-only" id="explanation-hacking-title">Hacking: gaining unauthorised access to a system or data</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-factors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication factors: know, have, are with a structured visual model." />
-            <figcaption class="explanation-sr-only">Authentication factors: know, have, are: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-hacking.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Hacking: gaining unauthorised access to a system or data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Hacking: gaining unauthorised access to a system or data: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Something you know Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</li><li><strong>Lesson fact:</strong> Something you have Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</li><li><strong>Lesson fact:</strong> Something you are Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</li><li><strong>Lesson fact:</strong> Factor type Two checks only become MFA when they come from different factor categories.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Bypasses or abuses access controls to enter an account, device or system.</li><li><strong>Lesson fact:</strong> Examples Using stolen credentials, exploiting a vulnerability or accessing an account without permission.</li><li><strong>Lesson fact:</strong> Impact Data may be viewed, copied, changed or deleted; system settings may be altered.</li><li><strong>Lesson fact:</strong> Common error Do not use &quot;hacking&quot; as a label for every cyber attack. It specifically involves unauthorised access.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end factors -->
-        <section class="panel" id="passwords" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+        <!-- stage10-explanation:end hacking -->
+        <section class="panel" id="phishing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Passwords: cheap, familiar and often ruined by humans</h2>
+            <h2>Phishing: tricking users into revealing information or visiting a fake page</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Strength</strong><span>Longer passwords or passphrases with less predictable structure are harder to guess.</span></article>
-            <article><strong>Weakness</strong><span>Users may reuse, share, write down or choose predictable passwords.</span></article>
-            <article><strong>Storage</strong><span>Systems should not store plaintext passwords; hashes are commonly used for verification.</span></article>
-            <article><strong>Control</strong><span>Password policy, lockout/rate limiting, user education and MFA reduce risk.</span></article>
+            <article><strong>Mechanism</strong><span>Uses deceptive emails, messages or websites that appear to come from a trusted source.</span></article>
+            <article><strong>User action</strong><span>The user may enter credentials, personal data or payment details.</span></article>
+            <article><strong>Clues</strong><span>Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.</span></article>
+            <article><strong>Impact</strong><span>Credential theft can lead to unauthorised access and impersonation.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start passwords -->
-        <section class="panel explanation-panel" id="explanation-passwords" data-explains="passwords" data-explanation-kind="mechanism" aria-labelledby="explanation-passwords-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-passwords-title">Passwords: cheap, familiar and often ruined by humans</h2>
+        <!-- stage10-explanation:start phishing -->
+        <section class="panel explanation-panel" id="explanation-phishing" data-explains="phishing" data-explanation-kind="mechanism" aria-labelledby="explanation-phishing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+          <h2 class="explanation-sr-only" id="explanation-phishing-title">Phishing: tricking users into revealing information or visiting a fake page</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-passwords.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Passwords: cheap, familiar and often ruined by humans with a structured visual model." />
-            <figcaption class="explanation-sr-only">Passwords: cheap, familiar and often ruined by humans: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-phishing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Phishing: tricking users into revealing information or visiting a fake page with a structured visual model." />
+            <figcaption class="explanation-sr-only">Phishing: tricking users into revealing information or visiting a fake page: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Strength Longer passwords or passphrases with less predictable structure are harder to guess.</li><li><strong>Lesson fact:</strong> Weakness Users may reuse, share, write down or choose predictable passwords.</li><li><strong>Lesson fact:</strong> Storage Systems should not store plaintext passwords; hashes are commonly used for verification.</li><li><strong>Lesson fact:</strong> Control Password policy, lockout/rate limiting, user education and MFA reduce risk.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Uses deceptive emails, messages or websites that appear to come from a trusted source.</li><li><strong>Lesson fact:</strong> User action The user may enter credentials, personal data or payment details.</li><li><strong>Lesson fact:</strong> Clues Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.</li><li><strong>Lesson fact:</strong> Impact Credential theft can lead to unauthorised access and impersonation.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end passwords -->
-        <section class="panel" id="biometrics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+        <!-- stage10-explanation:end phishing -->
+        <section class="panel" id="pharming" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Biometrics: convenient identity evidence from physical or behavioural features</h2>
+            <h2>Pharming: redirecting users to a fake website</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Examples</strong><span>Fingerprint, face, iris, retina, voice or typing pattern.</span></article>
-            <article><strong>Advantage</strong><span>Difficult to forget, lose or share casually; quick for users.</span></article>
-            <article><strong>Limitation</strong><span>Requires sensors and stored biometric templates; may raise privacy concerns.</span></article>
-            <article><strong>Error types</strong><span>False reject blocks a valid user; false accept allows an unauthorised user.</span></article>
+            <article><strong>Mechanism</strong><span>Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.</span></article>
+            <article><strong>User clue</strong><span>The user may type the correct URL but still arrive at a fraudulent page.</span></article>
+            <article><strong>Impact</strong><span>Users may submit credentials or payment details to the attacker.</span></article>
+            <article><strong>Common error</strong><span>Do not define pharming as just "sending a fake email"; that is phishing.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start biometrics -->
-        <section class="panel explanation-panel" id="explanation-biometrics" data-explains="biometrics" data-explanation-kind="mechanism" aria-labelledby="explanation-biometrics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-biometrics-title">Biometrics: convenient identity evidence from physical or behavioural features</h2>
+        <!-- stage10-explanation:start pharming -->
+        <section class="panel explanation-panel" id="explanation-pharming" data-explains="pharming" data-explanation-kind="mechanism" aria-labelledby="explanation-pharming-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+          <h2 class="explanation-sr-only" id="explanation-pharming-title">Pharming: redirecting users to a fake website</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-biometrics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Biometrics: convenient identity evidence from physical or behavioural features with a structured visual model." />
-            <figcaption class="explanation-sr-only">Biometrics: convenient identity evidence from physical or behavioural features: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-pharming.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pharming: redirecting users to a fake website with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pharming: redirecting users to a fake website: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A biometric sensor captures a physical or behavioural feature and the system compares its template with a stored enrolled template.</li><li><strong>Lesson fact:</strong> A match authenticates the identity claim; authorisation is a separate process that decides what an authenticated user may access or do.</li><li><strong>Lesson fact:</strong> A false reject denies a valid enrolled user by mistake; a false accept authenticates an impostor by mistake.</li><li><strong>Lesson fact:</strong> Biometrics require sensors and stored templates and may create privacy, false-accept and false-reject risks.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.</li><li><strong>Lesson fact:</strong> User clue The user may type the correct URL but still arrive at a fraudulent page.</li><li><strong>Lesson fact:</strong> Impact Users may submit credentials or payment details to the attacker.</li><li><strong>Lesson fact:</strong> Common error Do not define pharming as just &quot;sending a fake email&quot;; that is phishing.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end biometrics -->
-        <section class="panel" id="tokens" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+        <!-- stage10-explanation:end pharming -->
+        <section class="panel" id="dos" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Tokens: proof that the user has a specific device or object</h2>
+            <h2>Denial-of-service: making a service unavailable</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Hardware token</strong><span>A physical device, card or key used during login.</span></article>
-            <article><strong>Software token</strong><span>An app or service that generates a one-time code.</span></article>
-            <article><strong>One-time code</strong><span>A code valid for a short time or single login attempt.</span></article>
-            <article><strong>Limitation</strong><span>Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</span></article>
+            <article><strong>Mechanism</strong><span>Floods a server, network or service with traffic or requests so legitimate users cannot access it.</span></article>
+            <article><strong>DDoS</strong><span>Distributed DoS uses many devices/sources, making filtering harder.</span></article>
+            <article><strong>Impact</strong><span>Loss of availability, lost sales, disrupted lessons or inability to access online services.</span></article>
+            <article><strong>Common error</strong><span>DoS does not primarily mean data is stolen; the main issue is service availability.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start tokens -->
-        <section class="panel explanation-panel" id="explanation-tokens" data-explains="tokens" data-explanation-kind="mechanism" aria-labelledby="explanation-tokens-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-tokens-title">Tokens: proof that the user has a specific device or object</h2>
+        <!-- stage10-explanation:start dos -->
+        <section class="panel explanation-panel" id="explanation-dos" data-explains="dos" data-explanation-kind="mechanism" aria-labelledby="explanation-dos-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+          <h2 class="explanation-sr-only" id="explanation-dos-title">Denial-of-service: making a service unavailable</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-tokens.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tokens: proof that the user has a specific device or object with a structured visual model." />
-            <figcaption class="explanation-sr-only">Tokens: proof that the user has a specific device or object: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-dos.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Denial-of-service: making a service unavailable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Denial-of-service: making a service unavailable: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Hardware token A physical device, card or key used during login.</li><li><strong>Lesson fact:</strong> Software token An app or service that generates a one-time code.</li><li><strong>Lesson fact:</strong> One-time code A code valid for a short time or single login attempt.</li><li><strong>Lesson fact:</strong> Limitation Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Floods a server, network or service with traffic or requests so legitimate users cannot access it.</li><li><strong>Lesson fact:</strong> DDoS Distributed DoS uses many devices/sources, making filtering harder.</li><li><strong>Lesson fact:</strong> Impact Loss of availability, lost sales, disrupted lessons or inability to access online services.</li><li><strong>Lesson fact:</strong> Common error DoS does not primarily mean data is stolen; the main issue is service availability.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end tokens -->
-        <section class="panel" id="mfa" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>MFA combines different factor types</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Definition</strong><span>Multi-factor authentication requires evidence from two or more different factor categories.</span></article>
-            <article><strong>Example</strong><span>Password plus phone app code: something you know plus something you have.</span></article>
-            <article><strong>Benefit</strong><span>If a password is stolen, the attacker still needs the second factor.</span></article>
-            <article><strong>Cost</strong><span>More setup, recovery problems and user friction if a device is unavailable.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start mfa -->
-        <section class="panel explanation-panel" id="explanation-mfa" data-explains="mfa" data-explanation-kind="mechanism" aria-labelledby="explanation-mfa-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-mfa-title">MFA combines different factor types</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-mfa.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining MFA combines different factor types with a structured visual model." />
-            <figcaption class="explanation-sr-only">MFA combines different factor types: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition Multi-factor authentication requires evidence from two or more different factor categories.</li><li><strong>Lesson fact:</strong> Example Password plus phone app code: something you know plus something you have.</li><li><strong>Lesson fact:</strong> Benefit If a password is stolen, the attacker still needs the second factor.</li><li><strong>Lesson fact:</strong> Cost More setup, recovery problems and user friction if a device is unavailable.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end mfa -->
+        <!-- stage10-explanation:end dos -->
         <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Compare methods by evidence, risk and context</h2>
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare by route and result</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Authentication comparison">
+          <div class="comparison-table" role="table" aria-label="Attack comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Method</div>
-              <div role="columnheader">Evidence</div>
-              <div role="columnheader">Strengths and limitations</div>
+              <div role="columnheader">Attack</div>
+              <div role="columnheader">Route or mechanism</div>
+              <div role="columnheader">Direct result</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Password/PIN</div>
-              <div role="cell">Something the user knows.</div>
-              <div role="cell">Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</div>
+              <div role="cell">Hacking</div>
+              <div role="cell">Access controls are bypassed or abused.</div>
+              <div role="cell">Unauthorised access; data may then be viewed, copied, changed or deleted.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Biometric</div>
-              <div role="cell">Something the user is.</div>
-              <div role="cell">Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</div>
+              <div role="cell">Phishing</div>
+              <div role="cell">A deceptive message, link or site persuades the user to reveal information.</div>
+              <div role="cell">Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Token</div>
-              <div role="cell">Something the user has.</div>
-              <div role="cell">Useful second factor; can be lost, stolen, damaged or unavailable.</div>
+              <div role="cell">Pharming</div>
+              <div role="cell">Traffic is redirected to a fake site, possibly after the correct URL is entered.</div>
+              <div role="cell">The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">MFA</div>
-              <div role="cell">Two or more different factor categories.</div>
-              <div role="cell">Reduces account takeover risk; increases setup, support and recovery complexity.</div>
+              <div role="cell">DoS/DDoS</div>
+              <div role="cell">A server or network is overwhelmed by requests or traffic.</div>
+              <div role="cell">Legitimate users cannot access the service.</div>
             </div>
           </div>
         </section>
 
         <!-- stage10-explanation:start compare -->
         <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare methods by evidence, risk and context</h2>
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by route and result</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare methods by evidence, risk and context with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare methods by evidence, risk and context: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by route and result with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare by route and result: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Strengths and limitations</li><li><strong>Lesson fact:</strong> Password/PIN</li><li><strong>Lesson fact:</strong> Something the user knows.</li><li><strong>Lesson fact:</strong> Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</li><li><strong>Lesson fact:</strong> Biometric</li><li><strong>Lesson fact:</strong> Something the user is.</li><li><strong>Lesson fact:</strong> Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</li><li><strong>Lesson fact:</strong> Something the user has.</li><li><strong>Lesson fact:</strong> Useful second factor; can be lost, stolen, damaged or unavailable.</li><li><strong>Lesson fact:</strong> Two or more different factor categories.</li><li><strong>Lesson fact:</strong> Reduces account takeover risk; increases setup, support and recovery complexity.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Route or mechanism</li><li><strong>Lesson fact:</strong> Direct result</li><li><strong>Lesson fact:</strong> Access controls are bypassed or abused.</li><li><strong>Lesson fact:</strong> Unauthorised access; data may then be viewed, copied, changed or deleted.</li><li><strong>Lesson fact:</strong> Phishing</li><li><strong>Lesson fact:</strong> A deceptive message, link or site persuades the user to reveal information.</li><li><strong>Lesson fact:</strong> Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.</li><li><strong>Lesson fact:</strong> Pharming</li><li><strong>Lesson fact:</strong> Traffic is redirected to a fake site, possibly after the correct URL is entered.</li><li><strong>Lesson fact:</strong> The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.</li><li><strong>Lesson fact:</strong> DoS/DDoS</li><li><strong>Lesson fact:</strong> A server or network is overwhelmed by requests or traffic.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
+        <section class="panel" id="controls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Controls must fit the attack route</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Against hacking</strong><span>Strong authentication, access rights, patching, audit logs and monitoring.</span></article>
+            <article><strong>Against phishing</strong><span>User training, checking URLs/senders, email filtering, reporting routes and MFA.</span></article>
+            <article><strong>Against pharming</strong><span>Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.</span></article>
+            <article><strong>Against DoS</strong><span>Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.</span></article>
+          </div>
+          <div class="callout">Do not overclaim. A control reduces risk; it rarely makes the attack impossible.</div>
+        </section>
+
+        <!-- stage10-explanation:start controls -->
+        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
+          <h2 class="explanation-sr-only" id="explanation-controls-title">Controls must fit the attack route</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls must fit the attack route with a structured visual model." />
+            <figcaption class="explanation-sr-only">Controls must fit the attack route: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Against hacking Strong authentication, access rights, patching, audit logs and monitoring.</li><li><strong>Lesson fact:</strong> Against phishing User training, checking URLs/senders, email filtering, reporting routes and MFA.</li><li><strong>Lesson fact:</strong> Against pharming Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.</li><li><strong>Lesson fact:</strong> Against DoS Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.</li><li><strong>Lesson fact:</strong> Do not overclaim. A control reduces risk; it rarely makes the attack impossible.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end controls -->
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
-            <p class="eyebrow">Interactive selector</p>
-            <h2>Choose the authentication approach for the scenario</h2>
-            <p>Select a scenario and compare suitable evidence, benefit and limitation.</p>
+            <p class="eyebrow">Interactive classifier</p>
+            <h2>Classify the attack by the clue</h2>
+            <p>Select a scenario and compare the route, impact and common wrong answer.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
+              Scenario clue
               <select id="scenarioInput">
-                <option value="student">School portal for normal homework access.</option>
-                <option value="bank">Online banking login from a new device.</option>
-                <option value="lab">Secure laboratory door used by authorised staff.</option>
-                <option value="shared">Shared classroom computer used by many students.</option>
-                <option value="remote">Remote staff accessing company systems from home.</option>
+                <option value="access">An attacker logs in using stolen credentials and changes records.</option>
+                <option value="email">A fake delivery email asks the user to enter account details.</option>
+                <option value="redirect">The correct URL leads to a fake banking website.</option>
+                <option value="flood">Thousands of requests stop users accessing a ticket website.</option>
+                <option value="botnet">Many infected devices flood one server at the same time.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Recommend</button>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="password-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Interactive password check</p>
-            <h2>Estimate password quality without collecting real passwords</h2>
-            <p>Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Practice password
-              <input type="text" id="passwordInput" placeholder="Try: CorrectHorseBatteryStaple27" autocomplete="off" />
-            </label>
-            <button class="primary-button" type="button" id="passwordBtn">Check</button>
-          </div>
-          <div class="result-box" id="passwordResult" aria-live="polite"></div>
-          <div class="method-box" id="passwordAdvice"></div>
-        </section>
-
-        <!-- stage10-explanation:start password-tool -->
-        <section class="panel explanation-panel" id="explanation-password-tool" data-explains="password-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-password-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-password-tool-title">Estimate password quality without collecting real passwords</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-password-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Estimate password quality without collecting real passwords with a structured visual model." />
-            <figcaption class="explanation-sr-only">Estimate password quality without collecting real passwords: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive password check</li><li><strong>Lesson fact:</strong> Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</li><li><strong>Lesson fact:</strong> Practice password</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end password-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with method and trade-off</h2>
+            <h2>Four model answers with the mark-winning mechanism visible</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="password">Password</button>
-            <button class="tab" type="button" data-example="biometric">Biometric</button>
-            <button class="tab" type="button" data-example="token">Token</button>
-            <button class="tab" type="button" data-example="mfa">MFA</button>
+            <button class="tab active" type="button" data-example="hacking">Hacking</button>
+            <button class="tab" type="button" data-example="phishing">Phishing</button>
+            <button class="tab" type="button" data-example="pharming">Pharming</button>
+            <button class="tab" type="button" data-example="dos">DoS</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
@@ -443,7 +412,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: classify the method and factor</h2>
+            <h2>Short answers: be precise, then check</h2>
             <p>Type a concise answer. Use the local answer button if you need a model response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -469,12 +438,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Authentication is about identity evidence</h2>
+            <h2>The four labels are not interchangeable</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Authentication</strong><span>Verifies identity; authorisation controls allowed actions.</span></div>
-            <div><strong>Factors</strong><span>Know, have and are are different categories of evidence.</span></div>
-            <div><strong>MFA</strong><span>Combines different factor types to reduce single-credential failure.</span></div>
+            <div><strong>Hacking</strong><span>Unauthorised access is the core idea.</span></div>
+            <div><strong>Phishing/pharming</strong><span>Phishing persuades; pharming redirects.</span></div>
+            <div><strong>DoS</strong><span>The main impact is unavailable service, not necessarily stolen data.</span></div>
           </div>
         </section>
 
@@ -485,16 +454,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Factor table</strong>
-              <span>Create a table for password, fingerprint, phone code and security token. For each, state the factor category, one advantage and one limitation.</span>
+              <strong>Task 1: Four definitions</strong>
+              <span>Write one precise definition each for hacking, phishing, pharming and DoS. Each must include the attack route.</span>
             </article>
             <article>
-              <strong>Task 2: Scenario recommendation</strong>
-              <span>Recommend an authentication method for online banking, a school library account and a secure lab door. Give one reason and one trade-off for each.</span>
+              <strong>Task 2: Scenario table</strong>
+              <span>Create a table with five new scenarios. For each, classify the attack, state the impact and recommend one control.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain why MFA can reduce the risk of unauthorised access, and describe two possible limitations." Use precise factor vocabulary.</span>
+              <span>Answer: "Compare phishing and pharming, and explain how each can lead to unauthorised access." Use two paragraphs and Cambridge-style keywords.</span>
             </article>
           </div>
         </section>
@@ -502,8 +471,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

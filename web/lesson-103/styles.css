@@ -82,17 +82,20 @@ pre {
   display: block; color: var(--accent-dark); margin-bottom: 4px;
 }
 
-.validation-visual {
-  display: grid; gap: 10px; align-content: center; min-height: 430px; padding: 24px; color: #ffffff;
+.trace-visual {
+  display: grid; gap: 14px; align-content: center; min-height: 430px; padding: 24px; color: #ffffff;
   background: linear-gradient(135deg, #12304f, #2563eb 52%, #047857);
   border-radius: 8px;
 }
-.validation-visual div {
-  padding: 13px; border-radius: 8px; background: rgba(255, 255, 255, 0.94);
-  color: #12304f; font-family: "SFMono-Regular", Consolas, monospace; font-weight: 850; text-align: center;
+.trace-visual pre { box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22); }
+.mini-table {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid rgba(255, 255, 255, 0.45); border-radius: 8px; overflow: hidden;
+  background: rgba(255, 255, 255, 0.94); color: #12304f; font-weight: 800;
 }
-.validation-visual span { text-transform: uppercase; letter-spacing: 0.08em; text-align: center; font-weight: 850; color: #e0f2fe; }
-.validation-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.mini-table span { padding: 9px; border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; text-align: center; }
+.mini-table span:nth-child(4n) { border-right: 0; }
+.mini-table span:nth-last-child(-n + 4) { border-bottom: 0; }
 
 .guidance-grid {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
@@ -108,11 +111,13 @@ pre {
 .hook-grid, .clause-grid, .mistake-grid {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
 }
+.clause-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .choice-card, .clause-grid article, .mistake-grid article {
   border: 1px solid var(--line); background: #ffffff; border-radius: 8px; padding: 16px; text-align: left;
 }
 .choice-card { font-weight: 800; overflow-wrap: anywhere; }
 .choice-card.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+.clause-grid strong { display: block; margin: 0 0 6px; color: var(--accent-dark); }
 
 .step-strip {
   display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;
@@ -126,16 +131,17 @@ pre {
   background: var(--accent); color: #ffffff;
 }
 
-.feedback, .callout, .answer-frame {
+.feedback, .callout, .answer-frame, .trace-output {
   margin-top: 16px; padding: 14px 16px; background: #f8fafc;
   border: 1px solid var(--line); border-radius: 8px;
 }
-.answer-frame { display: grid; gap: 8px; overflow-wrap: anywhere; }
+.answer-frame, .trace-output { display: grid; gap: 8px; overflow-wrap: anywhere; }
 
-.data-table {
+.data-table, .result-table {
   display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
 }
 .concept-table .table-row { grid-template-columns: 0.8fr 1.25fr 1.45fr; }
+.result-table .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
 .table-row { display: grid; }
 .table-row > div { padding: 14px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); overflow-wrap: anywhere; }
 .table-row > div:last-child { border-right: 0; }
@@ -155,7 +161,7 @@ pre {
   gap: 12px; align-items: end; margin-top: 14px;
 }
 .converter-grid label, .builder-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 750; }
-.converter-grid select, .builder-grid select, .converter-grid input, .practice-row input {
+.converter-grid select, .builder-grid select, .practice-row input {
   width: 100%; border: 1px solid var(--line); border-radius: 8px;
   padding: 11px 12px; background: #ffffff; color: var(--ink);
 }
@@ -192,24 +198,27 @@ pre {
 .homework-list strong { display: block; color: var(--accent-dark); margin-bottom: 4px; }
 
 @media (max-width: 1120px) {
-  .summary-grid, .code-grid, .step-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summary-grid, .clause-grid, .code-grid, .step-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .concept-table .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .table-row > div:nth-child(2n) { border-right: 0; }
 }
 @media (max-width: 980px) {
   .layout, .hero, .guidance-grid, .objective-grid, .hook-grid,
-  .converter-grid, .builder-grid, .summary-grid, .code-grid, .step-strip {
+  .clause-grid, .converter-grid, .builder-grid, .summary-grid, .code-grid,
+  .step-strip {
     grid-template-columns: 1fr;
   }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .topbar { position: static; }
-  .concept-table .table-row { grid-template-columns: 1fr; }
+  .concept-table .table-row, .result-table .table-row { grid-template-columns: 1fr; }
   .table-row > div { border-right: 0; }
 }
 @media (max-width: 560px) {
   .layout { padding-inline: 10px; }
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
+  .mini-table { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mini-table span { border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; }
   .practice-row, .exam-head { grid-template-columns: 1fr; display: grid; }
 }
 @media print {
@@ -218,3 +227,16 @@ pre {
   .layout { display: block; padding: 0; }
   .hero, .panel, .guidance-grid > article { box-shadow: none; break-inside: avoid; }
 }
+
+/* Stage 2 syllabus completion:start */
+.stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
+.stage2-practice-block { border-top: 2px solid var(--accent, #176b5b); }
+.stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
+.stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
+.stage2-question + .stage2-question { margin-top: 10px; }
+.stage2-completion details { margin-top: 10px; }
+.stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
+.stage2-completion .mark-scheme-table { width: 100%; border-collapse: collapse; }
+.stage2-completion .mark-scheme-table :where(th, td) { border: 1px solid var(--line, #d7ddd9); padding: 8px; text-align: left; vertical-align: top; }
+.stage2-completion .mark-scheme-table :where(th, td):last-child { width: 5rem; text-align: center; }
+/* Stage 2 syllabus completion:end */

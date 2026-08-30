@@ -15,7 +15,7 @@ const rejected = (label, mutateReview = () => {}, mutateQuestions = () => {}) =>
   if (!evaluateStage4QuestionPolicy(candidateReview, candidateQuestions).length) failures.push(`${label} mutation escaped`);
 };
 rejected("unsupported Distinguish", () => {}, (candidate) => { candidate[0].prompt = "Distinguish a bit from a byte."; candidate[0].hash = "mutated"; });
-rejected("unsupported Trace requirement", (candidate) => { const row = candidate.entries.find(({ questionId }) => questionId === "AQ050-Q2"); row.primaryRequirement = "S4.01"; });
+rejected("unsupported Trace requirement", (candidate) => { const row = candidate.entries.find(({ questionId }) => questionId === "AQ051-Q2"); row.primaryRequirement = "S4.01"; });
 rejected("missing boundary trial", (candidate) => { delete candidate.entries[0].trialCases.boundaryAnswer; });
 if (!evaluateStudentMarkSchemeSurface("Answer Guidance Marks **B1** exposed").length) failures.push("student-visible B1 mutation escaped");
 if (failures.length) {

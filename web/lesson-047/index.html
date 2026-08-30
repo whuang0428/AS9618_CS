@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 047 | Addressing modes and operand interpretation</title>
+    <title>AS9618 Lesson 047 | Two-pass assembly, program tracing and the instruction set</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Addressing modes and operand interpretation</h1>
+        <h1>Two-pass assembly, program tracing and the instruction set</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,11 +29,11 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#modes">Addressing modes</a>
-        <a href="#effective">Effective address</a>
-        <a href="#arrays">Indexing</a>
-        <a href="#tool">Mode simulator</a>
+        <a href="#assembly">Assembly language</a>
+        <a href="#mnemonics">Mnemonics</a>
+        <a href="#structure">Line structure</a>
+        <a href="#assembler">Assembler</a>
+        <a href="#tool">Instruction parser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -52,16 +52,21 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Addressing modes and address-sensitive instructions</h2>
+            <h2>Two-pass assembly, program tracing and the instruction set</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Immediate addressing uses the operand as the value itself. Direct addressing uses the operand as the address of the value. Indirect addressing treats the operand as the address of a location that holds the effective address. Indexed addressing forms an effective address by adding IX to the address operand. Relative addressing forms a target/effective address by adding an offset to the current or next instruction address held in PC.</p>
-            <p>LDI follows the address stored at the operand location; LDX adds IX to the address operand; LDR #n loads the immediate value n into IX. CMI &lt;address&gt; uses indirect addressing: the contents of &lt;address&gt; give the address of the value compared with ACC.</p>
-            <p>After CMP or CMI, JPE &lt;address&gt; jumps when the comparison result is True and JPN &lt;address&gt; jumps when it is False. Relative addressing is a required addressing-mode concept, but LDR is not a relative-load instruction in the Version 2 instruction set.</p>
+            <p>The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.</p>
+            <p>The source form &lt;label&gt;: &lt;opcode&gt; &lt;operand&gt; labels an instruction, while &lt;label&gt;: &lt;data&gt; assigns a symbolic address to a memory location containing data. Pass 1 records both kinds of label in the symbol table.</p>
+            <p>The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.</p>
+            <p>Data movement: LDM #n loads immediate n into ACC; LDD &lt;address&gt; loads the directly addressed contents into ACC; LDI &lt;address&gt; follows the address stored at &lt;address&gt;; LDX &lt;address&gt; loads from &lt;address&gt; + IX; LDR #n loads n into IX; MOV &lt;register&gt; moves ACC to IX; STO &lt;address&gt; stores ACC at the address.</p>
+            <p>Arithmetic: ADD &lt;address&gt; or ADD #n/Bn/&amp;n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC &lt;register&gt; and DEC &lt;register&gt; change ACC or IX by one.</p>
+            <p>Control, comparison and I/O: JMP &lt;address&gt; is unconditional. CMP &lt;address&gt; or CMP #n compares ACC directly or with an immediate value. CMI &lt;address&gt; compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.</p>
+            <p>ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix # gives immediate denary, B immediate binary and &amp; immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.</p>
+            <p>To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Compare five operand interpretations</h3>
-            <p>With operand 20, immediate uses value 20; direct uses Memory[20]; indirect follows Memory[20] as another address; indexed uses address 20 + IX; relative uses PC plus a signed or stated offset. Separately, if CMI POINTER produces True, JPE MATCH branches to MATCH; a False comparison allows JPN DIFFERENT to branch.</p>
+            <h3>Worked example: Assemble, classify and trace a short program</h3>
+            <p>For LDM #5; ADD #3; CMP #8; JPE MATCH; LDM #0; MATCH: OUT; END, the trace gives ACC 5, then 8, then a True comparison. JPE transfers control to MATCH, so LDM #0 is skipped; OUT outputs the character whose ASCII code is 8, and END returns control to the operating system. In LOOP: ADD ONE, LOOP labels an instruction; ONE: 1 labels the data location containing 1.</p>
           </article>
         </section>
 
@@ -69,7 +74,7 @@
         <section class="panel explanation-panel" id="explanation-effective" data-explains="effective" data-explanation-kind="mechanism" aria-labelledby="explanation-effective-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effective">
           <h2 class="explanation-sr-only" id="explanation-effective-title">Official LDR, CMI, JPE and JPN semantics</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-effective.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Official LDR, CMI, JPE and JPN semantics with a structured visual model." />
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-effective.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Official LDR, CMI, JPE and JPN semantics with a structured visual model." />
             <figcaption class="explanation-sr-only">Official LDR, CMI, JPE and JPN semantics: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
@@ -79,61 +84,73 @@
         </section>
         <!-- stage10-explanation:end effective -->
 
-        <!-- stage10-explanation:start arrays -->
-        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
-          <h2 class="explanation-sr-only" id="explanation-arrays-title">Indexed addressing and arrays</h2>
+        <!-- stage10-explanation:start assembler -->
+        <section class="panel explanation-panel" id="explanation-assembler" data-explains="assembler" data-explanation-kind="mechanism" aria-labelledby="explanation-assembler-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
+          <h2 class="explanation-sr-only" id="explanation-assembler-title">Instruction groups: data movement, I/O, arithmetic, control and compare</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Indexed addressing and arrays with a structured visual model." />
-            <figcaption class="explanation-sr-only">Indexed addressing and arrays: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-assembler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction groups: data movement, I/O, arithmetic, control and compare with a structured visual model." />
+            <figcaption class="explanation-sr-only">Instruction groups: data movement, I/O, arithmetic, control and compare: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Base address</li><li><strong>Lesson fact:</strong> The start address of a block of related values, such as an array.</li><li><strong>Lesson fact:</strong> Index register</li><li><strong>Lesson fact:</strong> A register holding an offset from the base address.</li><li><strong>Lesson fact:</strong> Effective address</li><li><strong>Lesson fact:</strong> Calculated as base address + index/offset.</li><li><strong>Lesson fact:</strong> Why useful</li><li><strong>Lesson fact:</strong> Changing the index can access different array elements without changing the instruction's base address.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Indexed addressing does not mean &quot;convert the operand into an index number&quot;. It calculates an effective address using a base and an offset.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare.</li><li><strong>Lesson fact:</strong> Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR #n loads the immediate value n into IX.</li><li><strong>Lesson fact:</strong> Input/output uses IN and OUT; arithmetic uses ADD, SUB, INC and DEC.</li><li><strong>Lesson fact:</strong> JMP is unconditional; CMP and CMI compare; JPE jumps after True and JPN jumps after False.</li><li><strong>Lesson fact:</strong> END returns control to the operating system.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end arrays -->
+        <!-- stage10-explanation:end assembler -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Addressing modes and address-sensitive instructions: apply and assess</h2>
+            <h2>Two-pass assembly, program tracing and the instruction set: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which load follows a pointer in memory?</p>
-              <details><summary>Show answer</summary><p>LDI.</p></details>
+              <p><strong>1.</strong> Which pass builds the symbol table?</p>
+              <details><summary>Show answer</summary><p>Pass 1.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which load combines its operand with IX?</p>
-              <details><summary>Show answer</summary><p>LDX.</p></details>
+              <p><strong>2.</strong> What does Pass 2 do?</p>
+              <details><summary>Show answer</summary><p>Pass 2 translates mnemonics and operands into machine code using the completed symbol table.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What does LDR #4 do?</p>
-              <details><summary>Show answer</summary><p>It loads 4 into IX; it does not use relative addressing.</p></details>
+              <p><strong>3.</strong> What is the difference between LDM #5 and LDD 5?</p>
+              <details><summary>Show answer</summary><p>LDM loads literal 5; LDD loads the contents of memory address 5.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> When does JPE branch?</p>
-              <details><summary>Show answer</summary><p>When the preceding comparison result is True.</p></details>
+              <p><strong>4.</strong> What does LDR #7 do?</p>
+              <details><summary>Show answer</summary><p>It loads the immediate value 7 into the index register IX.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>5.</strong> How is a relative address formed?</p>
-              <details><summary>Show answer</summary><p>By adding an offset to the current or next instruction address represented by PC, according to the stated model.</p></details>
+              <p><strong>5.</strong> Identify IN, SUB, JMP and JPN.</p>
+              <details><summary>Show answer</summary><p>IN is input/output; SUB is arithmetic; JMP is unconditional; JPN is conditional/compare.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> Compare CMP #4 from CMI 40.</p>
+              <details><summary>Show answer</summary><p>CMP #4 compares ACC with immediate value 4; CMI 40 follows the address stored at memory location 40 and compares ACC with the indirectly addressed value.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> What do MOV IX, STO TOTAL, OUT and END do?</p>
+              <details><summary>Show answer</summary><p>MOV IX copies ACC to IX; STO TOTAL stores ACC at the symbolic address TOTAL; OUT outputs the ASCII character whose code is in ACC; END returns control to the operating system.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> Trace LDM #2; ADD #3; STO TOTAL. What changes?</p>
+              <details><summary>Show answer</summary><p>ACC becomes 2, then 5; memory at symbolic address TOTAL becomes 5.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Compare immediate, direct, indirect, indexed and relative addressing, then state the effects of LDR #n, CMI &lt;address&gt;, JPE &lt;address&gt; and JPN &lt;address&gt;.</p>
+            <p>Trace the supplied program and classify the instructions, showing each change to ACC, IX, memory, output and control flow.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>immediate uses operand as value; direct uses operand as address</td><td>Do not award relative LDR, immediate CMI, equal/zero JPE or negative-status JPN.</td><td>1</td></tr>
-                  <tr><td>indirect follows an address stored at the operand address</td><td></td><td>1</td></tr>
-                  <tr><td>indexed adds IX to the address operand</td><td></td><td>1</td></tr>
-                  <tr><td>relative adds an offset to the PC/current or next instruction address</td><td></td><td>1</td></tr>
-                  <tr><td>LDR loads immediate n to IX and CMI compares through indirect addressing</td><td></td><td>1</td></tr>
-                  <tr><td>JPE follows True and JPN follows False</td><td></td><td>1</td></tr>
+                  <tr><td>uses one row per executed instruction in the correct control-flow order</td><td>Do not accept relative LDR, immediate CMI, equality/zero JPE, negative JPN, or a trace that executes a line skipped by a taken branch.</td><td>1</td></tr>
+                  <tr><td>updates ACC and IX correctly for data movement/arithmetic</td><td></td><td>1</td></tr>
+                  <tr><td>updates memory or output correctly for STO/OUT</td><td></td><td>1</td></tr>
+                  <tr><td>records compare result before evaluating JPE or JPN</td><td></td><td>1</td></tr>
+                  <tr><td>follows the correct taken/not-taken branch and skips non-executed lines</td><td></td><td>1</td></tr>
+                  <tr><td>classifies used instructions in the official data movement, input/output, arithmetic, unconditional/conditional and compare groups</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -144,198 +161,208 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 047 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>The operand is not always the thing you want. Sometimes it is a treasure map.</h2>
+            <h2>Assembly is readable machine thinking, not friendly small talk.</h2>
             <p>
-              Addressing modes tell the CPU how to interpret an operand. The same
-              number can be used as the actual value, as a memory address, as a
-              pointer to another address, or as part of an indexed address calculation.
+              Assembly language is a low-level language that uses mnemonics such as
+              LOAD, ADD and JMP to represent machine-code instructions. It is closer
+              to the processor than high-level language, but it still needs an
+              assembler before the CPU can execute it.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>immediate, direct, indirect and indexed addressing</span></div>
-              <div><strong>Calculate</strong><span>effective addresses and fetched values in simple examples</span></div>
-              <div><strong>Correct</strong><span>operand interpretation errors in exam-style wording</span></div>
+              <div><strong>Define</strong><span>assembly language, mnemonic and assembler</span></div>
+              <div><strong>Identify</strong><span>mnemonics, operands, labels and comments in simple lines</span></div>
+              <div><strong>Explain</strong><span>how assembly maps to machine code and why it is processor-specific</span></div>
             </div>
           </div>
-          <div class="mode-card" aria-label="Addressing mode sketch">
-            <div class="mode-stack">
-              <span>#20 -> value 20</span>
-              <span>20 -> memory[20]</span>
-              <span>(20) -> memory[memory[20]]</span>
-              <span>BASE + IX -> array element</span>
-            </div>
-            <p>Same number, different meaning. That is the lesson.</p>
+          <div class="assembly-card" aria-label="Assembly language sketch">
+            <pre><code>LOOP: LOAD  total
+      ADD   value
+      STORE total
+      JMP   LOOP</code></pre>
+            <p>Mnemonics make the operation readable; the assembler makes it executable.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Many marks come from explaining whether the operand is a value, an address or a pointer.</p>
+            <p>Exam answers often lose marks by calling assembly "machine code" or calling an assembler a compiler.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Students treat every operand as data. Direct and indirect addressing often use the operand as an address.</p>
+            <p>Assembly is low-level and uses mnemonics, but it is not directly executed as text by the CPU.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>`LOAD #20` and `LOAD 20` look similar. Do they mean the same thing?</h2>
-            <p>Click the best answer. The hash is tiny, but it can save a whole mark.</p>
+            <h2>Which part of `ADD 90` is the mnemonic?</h2>
+            <p>Click the best answer. The mnemonic is the readable operation, not the number doing the heavy lifting.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="no">No: #20 is a value, 20 is an address</button>
-            <button class="choice-card" type="button" data-hook="yes">Yes: both load the number 20</button>
-            <button class="choice-card" type="button" data-hook="binary">Only if 20 is written in binary</button>
-            <button class="choice-card" type="button" data-hook="register">Only if ACC is empty</button>
+            <button class="choice-card" type="button" data-hook="add">ADD</button>
+            <button class="choice-card" type="button" data-hook="ninety">90</button>
+            <button class="choice-card" type="button" data-hook="both">ADD 90</button>
+            <button class="choice-card" type="button" data-hook="cpu">CPU</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. The addressing mode tells the CPU how to interpret the operand.
+            Click one. Ask: which part represents the operation?
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
+        <section class="panel" id="assembly" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Addressing mode means operand interpretation</h2>
+            <h2>What assembly language is</h2>
           </div>
           <div class="concept-grid">
             <article>
-              <strong>Operand</strong>
-              <span>The part of an instruction that supplies data, an address, a register or another reference.</span>
+              <strong>Low-level language</strong>
+              <span>Assembly language is close to machine code and closely linked to a processor's instruction set.</span>
             </article>
             <article>
-              <strong>Addressing mode</strong>
-              <span>The rule used to interpret the operand and locate the data needed by the instruction.</span>
+              <strong>Uses mnemonics</strong>
+              <span>Human-readable abbreviations represent machine-code operations.</span>
             </article>
             <article>
-              <strong>Effective address</strong>
-              <span>The actual memory address used after applying the addressing mode.</span>
+              <strong>Processor-specific</strong>
+              <span>Assembly syntax and available instructions depend on the target architecture.</span>
             </article>
             <article>
-              <strong>Fetched value</strong>
-              <span>The final data value obtained or used by the instruction after interpretation.</span>
+              <strong>Needs translation</strong>
+              <span>An assembler converts assembly language into machine code.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: addressing mode = 寻址方式；operand = 操作数；effective address = 有效地址；pointer = 指针/指向地址的值。</div>
+          <div class="callout">Chinese support: assembly language = 汇编语言；mnemonic = 助记符；assembler = 汇编器；label = 标签；directive = 伪指令/指示语句。</div>
         </section>
 
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Addressing mode means operand interpretation</h2>
+        <!-- stage10-explanation:start assembly -->
+        <section class="panel explanation-panel" id="explanation-assembly" data-explains="assembly" data-explanation-kind="mechanism" aria-labelledby="explanation-assembly-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
+          <h2 class="explanation-sr-only" id="explanation-assembly-title">What assembly language is</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Addressing mode means operand interpretation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Addressing mode means operand interpretation: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-assembly.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What assembly language is with a structured visual model." />
+            <figcaption class="explanation-sr-only">What assembly language is: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The part of an instruction that supplies data, an address, a register or another reference.</li><li><strong>Lesson fact:</strong> Addressing mode</li><li><strong>Lesson fact:</strong> The rule used to interpret the operand and locate the data needed by the instruction.</li><li><strong>Lesson fact:</strong> Effective address</li><li><strong>Lesson fact:</strong> The actual memory address used after applying the addressing mode.</li><li><strong>Lesson fact:</strong> Fetched value</li><li><strong>Lesson fact:</strong> The final data value obtained or used by the instruction after interpretation.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Low-level language</li><li><strong>Lesson fact:</strong> Assembly language is close to machine code and closely linked to a processor's instruction set.</li><li><strong>Lesson fact:</strong> Uses mnemonics</li><li><strong>Lesson fact:</strong> Human-readable abbreviations represent machine-code operations.</li><li><strong>Lesson fact:</strong> Processor-specific</li><li><strong>Lesson fact:</strong> Assembly syntax and available instructions depend on the target architecture.</li><li><strong>Lesson fact:</strong> Needs translation</li><li><strong>Lesson fact:</strong> An assembler converts assembly language into machine code.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="modes" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
+        <!-- stage10-explanation:end assembly -->
+        <section class="panel" id="mnemonics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Four common addressing modes</h2>
+            <h2>Mnemonics represent operations</h2>
           </div>
-          <div class="mode-table" role="table" aria-label="Addressing modes">
+          <div class="mnemonic-table" role="table" aria-label="Mnemonic examples">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Mode</div>
-              <div role="columnheader">Operand means</div>
+              <div role="columnheader">Mnemonic</div>
+              <div role="columnheader">Likely operation</div>
               <div role="columnheader">Example</div>
               <div role="columnheader">Exam-safe wording</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Immediate</div>
-              <div role="cell">The actual value to use.</div>
-              <div role="cell">LOAD #20</div>
-              <div role="cell">The operand is the value 20 itself.</div>
+              <div role="cell">LOAD</div>
+              <div role="cell">Load a value into a register/ACC.</div>
+              <div role="cell">LOAD count</div>
+              <div role="cell">LOAD is a mnemonic for a machine-code load instruction.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Direct</div>
-              <div role="cell">The memory address of the value.</div>
-              <div role="cell">LOAD 20</div>
-              <div role="cell">The CPU loads the value stored at memory address 20.</div>
+              <div role="cell">STORE</div>
+              <div role="cell">Store a register/ACC value in memory.</div>
+              <div role="cell">STORE total</div>
+              <div role="cell">STORE represents an operation that writes a value to memory.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Indirect</div>
-              <div role="cell">The address of a memory location that stores another address.</div>
-              <div role="cell">LOAD (20)</div>
-              <div role="cell">The CPU looks at address 20 to find the address of the actual value.</div>
+              <div role="cell">ADD</div>
+              <div role="cell">Add a value to a register/ACC.</div>
+              <div role="cell">ADD value</div>
+              <div role="cell">ADD is easier to read than a binary opcode for addition.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Indexed</div>
-              <div role="cell">Base address plus an index register or offset.</div>
-              <div role="cell">LOAD 100, IX</div>
-              <div role="cell">The effective address is base address 100 plus the index value.</div>
+              <div role="cell">JMP</div>
+              <div role="cell">Change program flow to another address/label.</div>
+              <div role="cell">JMP LOOP</div>
+              <div role="cell">JMP maps to a machine-code branch/jump instruction.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start modes -->
-        <section class="panel explanation-panel" id="explanation-modes" data-explains="modes" data-explanation-kind="mechanism" aria-labelledby="explanation-modes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <h2 class="explanation-sr-only" id="explanation-modes-title">Five addressing modes</h2>
+        <!-- stage10-explanation:start mnemonics -->
+        <section class="panel explanation-panel" id="explanation-mnemonics" data-explains="mnemonics" data-explanation-kind="process" aria-labelledby="explanation-mnemonics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
+          <h2 class="explanation-sr-only" id="explanation-mnemonics-title">Mnemonics represent operations</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Five addressing modes with a structured visual model." />
-            <figcaption class="explanation-sr-only">Five addressing modes: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-mnemonics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Mnemonics represent operations with a structured visual model." />
+            <figcaption class="explanation-sr-only">Mnemonics represent operations: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Immediate addressing uses the operand field as the value itself.</li><li><strong>Lesson fact:</strong> Direct addressing uses the operand field as the address of the value.</li><li><strong>Lesson fact:</strong> Indirect addressing follows an address stored at the operand address to reach the value.</li><li><strong>Lesson fact:</strong> Indexed addressing adds an index value to a base address to form the effective address.</li><li><strong>Lesson fact:</strong> Relative addressing adds an offset to a PC-based instruction address to form the target or effective address.</li><li><strong>Lesson fact:</strong> LDR #n loads the immediate value n into IX; it is not relative addressing.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mnemonic</li><li><strong>Lesson fact:</strong> Likely operation</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Load a value into a register/ACC.</li><li><strong>Lesson fact:</strong> LOAD count</li><li><strong>Lesson fact:</strong> LOAD is a mnemonic for a machine-code load instruction.</li><li><strong>Lesson fact:</strong> Store a register/ACC value in memory.</li><li><strong>Lesson fact:</strong> STORE total</li><li><strong>Lesson fact:</strong> STORE represents an operation that writes a value to memory.</li><li><strong>Lesson fact:</strong> Add a value to a register/ACC.</li><li><strong>Lesson fact:</strong> ADD value</li><li><strong>Lesson fact:</strong> ADD is easier to read than a binary opcode for addition.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end modes -->
-        <section class="panel" id="effective" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
+        <!-- stage10-explanation:end mnemonics -->
+        <section class="panel" id="structure" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Effective address: where the CPU actually reads</h2>
+            <h2>Structure of a simple assembly line</h2>
           </div>
-          <div class="memory-table" role="table" aria-label="Example memory table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Address</div>
-              <div role="columnheader">Stored value</div>
-              <div role="columnheader">Note</div>
+          <div class="line-card">
+            <code>LOOP: ADD value ; add next item</code>
+            <div class="line-grid">
+              <span><strong>LOOP:</strong> label</span>
+              <span><strong>ADD</strong> mnemonic</span>
+              <span><strong>value</strong> operand</span>
+              <span><strong>; add next item</strong> comment</span>
             </div>
-            <div class="table-row" role="row"><div role="cell">20</div><div role="cell">70</div><div role="cell">Can be a data value or pointer, depending on mode.</div></div>
-            <div class="table-row" role="row"><div role="cell">70</div><div role="cell">999</div><div role="cell">Used by indirect example.</div></div>
-            <div class="table-row" role="row"><div role="cell">100</div><div role="cell">11</div><div role="cell">Start of an array-like block.</div></div>
-            <div class="table-row" role="row"><div role="cell">103</div><div role="cell">44</div><div role="cell">Used when base 100 and IX = 3.</div></div>
           </div>
-          <div class="trace-grid">
-            <article><strong>LOAD #20</strong><span>Use value 20 directly. No memory lookup for the operand value.</span></article>
-            <article><strong>LOAD 20</strong><span>Read memory[20], so the value loaded is 70.</span></article>
-            <article><strong>LOAD (20)</strong><span>Read memory[20] to get address 70, then read memory[70] to get 999.</span></article>
-            <article><strong>LOAD 100, IX=3</strong><span>Effective address = 100 + 3 = 103, so value loaded is memory[103] = 44.</span></article>
+          <div class="structure-grid">
+            <article>
+              <h3>Label</h3>
+              <p>A symbolic name for an address or line, often used by jump/branch instructions.</p>
+            </article>
+            <article>
+              <h3>Operand</h3>
+              <p>The value, address, register or label used by the instruction.</p>
+            </article>
+            <article>
+              <h3>Comment</h3>
+              <p>Text for human readers. Comments are ignored by the assembler.</p>
+            </article>
+            <article>
+              <h3>Directive</h3>
+              <p>An instruction to the assembler, not a CPU instruction. It may reserve storage or define constants.</p>
+            </article>
           </div>
         </section>
 
-        <section class="panel" id="arrays" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
+        <!-- stage10-explanation:start structure -->
+        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
+          <h2 class="explanation-sr-only" id="explanation-structure-title">Instruction labels and symbolic data addresses</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction labels and symbolic data addresses with a structured visual model." />
+            <figcaption class="explanation-sr-only">Instruction labels and symbolic data addresses: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> &lt;label&gt;: &lt;opcode&gt; &lt;operand&gt; gives a symbolic address to an instruction.</li><li><strong>Lesson fact:</strong> &lt;label&gt;: &lt;data&gt; gives a symbolic address to a memory location containing data.</li><li><strong>Lesson fact:</strong> Pass 1 records both instruction and data labels in the symbol table.</li><li><strong>Lesson fact:</strong> Pass 2 replaces a label reference with its resolved address while translating.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end structure -->
+        <section class="panel" id="assembler" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Indexed addressing and arrays</h2>
+            <h2>Assembler: text to machine code</h2>
           </div>
-          <div class="array-grid">
-            <article>
-              <strong>Base address</strong>
-              <span>The start address of a block of related values, such as an array.</span>
-            </article>
-            <article>
-              <strong>Index register</strong>
-              <span>A register holding an offset from the base address.</span>
-            </article>
-            <article>
-              <strong>Effective address</strong>
-              <span>Calculated as base address + index/offset.</span>
-            </article>
-            <article>
-              <strong>Why useful</strong>
-              <span>Changing the index can access different array elements without changing the instruction's base address.</span>
-            </article>
+          <div class="flow-grid">
+            <article><strong>1. Read source</strong><span>Assembly source contains mnemonics, labels, operands, comments and directives.</span></article>
+            <article><strong>2. Resolve labels</strong><span>Labels are replaced with actual addresses or offsets.</span></article>
+            <article><strong>3. Translate mnemonics</strong><span>Mnemonics are converted to binary opcodes and operands are encoded.</span></article>
+            <article><strong>4. Output object/machine code</strong><span>The generated machine code can be loaded and executed by the processor.</span></article>
           </div>
           <div class="trap-card inline-card">
             <h3>Common error</h3>
-            <p>Indexed addressing does not mean "convert the operand into an index number". It calculates an effective address using a base and an offset.</p>
+            <p>An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.</p>
           </div>
         </section>
 
@@ -343,36 +370,36 @@
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Addressing mode simulator</h2>
-            <p>Use the memory table above: memory[20] = 70, memory[70] = 999, memory[103] = 44, and IX = 3.</p>
+            <h2>Assembly instruction parser</h2>
+            <p>Select a line and identify its mnemonic, operand and translation role.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Instruction
-              <select id="modeInput">
-                <option value="immediate">LOAD #20</option>
-                <option value="direct">LOAD 20</option>
-                <option value="indirect">LOAD (20)</option>
-                <option value="indexed">LOAD 100, IX</option>
-                <option value="direct103">LOAD 103</option>
+              Assembly line
+              <select id="lineInput">
+                <option value="load">LOAD count</option>
+                <option value="add">ADD value</option>
+                <option value="jump">LOOP: JMP START</option>
+                <option value="comment">STORE total ; save result</option>
+                <option value="directive">COUNT: DAT 5</option>
               </select>
             </label>
-            <button type="button" id="simulateBtn">Simulate</button>
+            <button type="button" id="parseBtn">Parse line</button>
           </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
+          <div class="result-box" id="parseResult" aria-live="polite"></div>
+          <div class="method-box" id="parseMethod"></div>
+          <div class="reject-box" id="parseTrap"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trace the operand interpretation</h2>
+            <h2>Read assembly like a structured sentence</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="compare">Compare modes</button>
-            <button class="tab" type="button" data-example="indirect">Indirect trace</button>
-            <button class="tab" type="button" data-example="indexed">Indexed array</button>
+            <button class="tab active" type="button" data-example="parse">Parse</button>
+            <button class="tab" type="button" data-example="translate">Translate concept</button>
+            <button class="tab" type="button" data-example="compare">Compare languages</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -381,7 +408,7 @@
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
-            <p>Be precise. "The CPU just kind of goes there" is not a valid addressing mode.</p>
+            <p>Use exact vocabulary. The CPU will not be offended, but the mark scheme might be.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -389,7 +416,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the operand interpretation</h2>
+            <h2>Fix the assembly misconception</h2>
           </div>
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
@@ -398,7 +425,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS wording distinguishes address, value, pointer and effective address.</p>
+            <p>These are original Cambridge-style questions. MS wording is strict about assembler vs compiler and assembly vs machine code.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -406,36 +433,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Operand meaning depends on mode</h2>
+            <h2>Readable, low-level, still translated</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Immediate</strong><span>Operand is the value itself.</span></div>
-            <div><strong>Direct</strong><span>Operand is the address of the value.</span></div>
-            <div><strong>Indirect</strong><span>Operand points to an address that stores the actual address.</span></div>
-            <div><strong>Indexed</strong><span>Effective address = base + index/offset.</span></div>
-            <div><strong>Effective address</strong><span>The actual address used after interpretation.</span></div>
-            <div><strong>Exam habit</strong><span>State what the operand represents before calculating.</span></div>
+            <div><strong>Assembly</strong><span>Low-level language close to machine code.</span></div>
+            <div><strong>Mnemonic</strong><span>Readable abbreviation for an operation, e.g. ADD.</span></div>
+            <div><strong>Operand</strong><span>Value, address, register or label used by instruction.</span></div>
+            <div><strong>Label</strong><span>Symbolic name for an address or line.</span></div>
+            <div><strong>Assembler</strong><span>Translates assembly into machine code.</span></div>
+            <div><strong>Machine code</strong><span>Binary instructions executed by the CPU.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Make addressing mode traces exact</h2>
+            <h2>Make assembly vocabulary exam-ready</h2>
           </div>
           <ol class="homework-list">
-            <li>Define immediate, direct, indirect and indexed addressing in one sentence each.</li>
-            <li>Using memory[40] = 88 and memory[88] = 123, explain the difference between `LOAD #40`, `LOAD 40` and `LOAD (40)`.</li>
-            <li>For base address 200 and index register 6, calculate the effective address and explain why indexed addressing is useful for arrays.</li>
-            <li>Write a 5-mark answer: "Explain the difference between direct and indirect addressing."</li>
-            <li>Correct this sentence: "In immediate addressing, the operand is always a memory address."</li>
+            <li>Define assembly language, mnemonic, assembler, label and directive in one sentence each.</li>
+            <li>Annotate these lines: `START: LOAD count`, `ADD value`, `STORE total ; save answer`, `JMP START`.</li>
+            <li>Write a 5-mark answer: "Explain how an assembler translates assembly language into machine code."</li>
+            <li>Compare assembly language and machine code using the words mnemonic, binary and execute.</li>
+            <li>Correct this sentence: "Assembly is high-level machine code that is run directly by the CPU."</li>
           </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

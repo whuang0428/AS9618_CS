@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 058 | Linkers, loaders and libraries</title>
+    <title>AS9618 Lesson 058 | Compilation stages: lexical analysis to object code</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Linkers, loaders and libraries</h1>
+        <h1>Compilation stages: lexical analysis to object code</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,343 +29,260 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#libraries">Libraries</a>
-        <a href="#linkers">Linkers</a>
-        <a href="#loaders">Loaders</a>
-        <a href="#static-dynamic">Static/dynamic</a>
-        <a href="#compare">Comparison</a>
-        <a href="#tool">Pipeline tool</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#lexical">Lexical analysis</a>
+        <a href="#syntax">Syntax analysis</a>
+        <a href="#semantic">Semantic analysis</a>
+        <a href="#generation">Code generation</a>
+        <a href="#optimisation">Optimisation</a>
+        <a href="#tool">Stage tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
         <!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
-          <p>linker, loader, static-linking and extended dynamic-linking mechanics. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S5.03 program libraries and benefits of dynamically linked library files.</p>
+          <p>compiler phases from lexical analysis through optimisation and code generation. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S5.04-S5.05 purposes of translators and compiler/interpreter comparison.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Libraries and dynamically linked library files</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.</p>
-            <p>Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.</p>
-            <p>DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.</p>
-            <p>A developer benefit of a program library is reuse of existing tested routines, which can reduce development time and duplicated code.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Three programs use one graphics DLL</h3>
-            <p>All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.</p>
-          </article>
-        </section>
 
-        <!-- stage10-explanation:start libraries -->
-        <section class="panel explanation-panel" id="explanation-libraries" data-explains="libraries" data-explanation-kind="mechanism" aria-labelledby="explanation-libraries-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="libraries">
-          <h2 class="explanation-sr-only" id="explanation-libraries-title">Libraries provide reusable routines and modules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Libraries provide reusable routines and modules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Libraries provide reusable routines and modules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Provide pre-written, tested routines that programs can use.</li><li><strong>Lesson fact:</strong> Examples Mathematical functions, input/output routines, graphics or string-handling routines.</li><li><strong>Lesson fact:</strong> Benefits Saves development time, reduces duplication and may improve reliability.</li><li><strong>Lesson fact:</strong> Requirement Calls to library routines must be linked or made available at run time.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end libraries -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Libraries and dynamically linked library files: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How do program libraries support software under development?</p>
-              <details><summary>Show answer</summary><p>They supply existing reusable routines or modules, avoiding the need to write common code again.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> When is a dynamically linked library connected to a program?</p>
-              <details><summary>Show answer</summary><p>At load time or run time when required.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Give one storage benefit of dynamic linking.</p>
-              <details><summary>Show answer</summary><p>Library code need not be copied into every executable.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one DLL risk.</p>
-              <details><summary>Show answer</summary><p>A missing/incompatible version can prevent execution or cause faults.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain two benefits and one drawback of using a dynamically linked library.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>shared reusable code / avoids rewriting</td><td>Do not accept 'saves space' unless duplication or executable size is explained.</td><td>1</td></tr>
-                  <tr><td>smaller executables or reduced duplicate memory/storage</td><td></td><td>1</td></tr>
-                  <tr><td>shared library can be updated once</td><td></td><td>1</td></tr>
-                  <tr><td>missing/incompatible DLL can stop or alter programs</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 058 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>Object code is not always ready to run. It may still need friends, addresses and memory.</h2>
+            <h2>A compiler is not one giant button. It is a careful sequence of checks and transformations.</h2>
             <p>
-              After compilation, a program may depend on other object modules and library routines.
-              Linkers combine the pieces. Loaders place the program into memory and prepare it for execution.
-              Libraries provide reusable routines so programmers do not rewrite common code from scratch.
+              This lesson follows source code through the main compilation stages:
+              lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.
+              The aim is to explain what each stage does and what kind of error it can detect.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>the purpose of libraries, linkers and loaders</span></div>
-              <div><strong>Sequence</strong><span>object code, linking, executable code, loading and execution</span></div>
-              <div><strong>Apply</strong><span>static/dynamic linking ideas and common common errors</span></div>
+              <div><strong>Sequence</strong><span>the main stages from source code to object code</span></div>
+              <div><strong>Explain</strong><span>tokens, grammar checks, semantic checks and code generation</span></div>
+              <div><strong>Classify</strong><span>compiler errors and outputs using precise exam wording</span></div>
             </div>
           </div>
-          <div class="link-card" aria-label="Linking and loading pathway">
-            <div class="link-stack">
-              <span>object modules</span>
-              <span>+ library routines</span>
-              <span>linker -> executable</span>
-              <span>loader -> memory</span>
-              <span>program runs</span>
+          <div class="pipeline-card" aria-label="Compilation pipeline">
+            <div class="pipeline-stack">
+              <span>source code</span>
+              <span>lexical analysis</span>
+              <span>syntax analysis</span>
+              <span>semantic analysis</span>
+              <span>code generation</span>
+              <span>optimisation</span>
+              <span>object code</span>
             </div>
-            <p>The executable does not appear by wishing politely at object code.</p>
+            <p>Compilers are strict because processors are even stricter.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Marks often depend on separating linker and loader roles. "Makes it run" is too vague for full credit.</p>
+            <p>Exam questions often ask students to name a stage and describe its role. Stage names alone rarely earn full marks.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not say a library is a folder of books. It is reusable program code such as routines or modules.</p>
+            <p>Do not mix syntax and semantic errors. Grammar may be valid while meaning is still wrong.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Your object file calls <code>SQRT()</code>, but the routine is not inside your code. What helps?</h2>
-            <p>Click the best answer. The computer will not invent square root because it feels mathematical today.</p>
+            <h2>What happens first when a compiler reads <code>total = price + tax</code>?</h2>
+            <p>Click the best answer. The compiler does not begin by panicking; it tokenises first.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="linker">A linker connects the object code to the library routine.</button>
-            <button class="choice-card" type="button" data-hook="loader">A loader writes the missing routine.</button>
-            <button class="choice-card" type="button" data-hook="syntax">Syntax analysis creates the library.</button>
-            <button class="choice-card" type="button" data-hook="antivirus">Antivirus scans the missing routine into existence.</button>
+            <button class="choice-card" type="button" data-hook="tokens">Break the text into tokens.</button>
+            <button class="choice-card" type="button" data-hook="run">Run the program immediately.</button>
+            <button class="choice-card" type="button" data-hook="link">Link external libraries.</button>
+            <button class="choice-card" type="button" data-hook="load">Load the executable into memory.</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. External references need to be resolved before the program can run correctly.
+            Choose one. The early compiler stages inspect the source code before object code exists.
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section class="panel" id="pipeline" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>The post-compilation pathway connects code and prepares execution</h2>
+            <h2>The compilation pipeline transforms source code into object code</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>Object code</strong><span>Translated output from compilation or assembly, not always a complete executable.</span></article>
-            <article><strong>External reference</strong><span>A call to code or data defined in another module or library.</span></article>
-            <article><strong>Executable file</strong><span>A program file with required code linked and arranged for execution.</span></article>
-            <article><strong>In memory</strong><span>Code and data must be placed into main memory before the CPU can execute it.</span></article>
+          <div class="stage-grid">
+            <article><strong>Source code</strong><span>The high-level program written by the programmer.</span></article>
+            <article><strong>Tokens</strong><span>Meaningful units such as identifiers, keywords, operators and literals.</span></article>
+            <article><strong>Checks</strong><span>The compiler checks structure and meaning before generating code.</span></article>
+            <article><strong>Object code</strong><span>Translated low-level code output by the compiler before linking/loading details.</span></article>
           </div>
-          <div class="callout">Chinese support: linker = 连接器；loader = 装入程序；library = 库；library routine = 库例程；object module = 目标模块；executable = 可执行文件。</div>
+          <div class="callout">Chinese support: lexical analysis = 词法分析；syntax analysis = 语法分析；semantic analysis = 语义分析；token = 词法单元；object code = 目标代码。</div>
         </section>
 
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">The post-compilation pathway connects code and prepares execution</h2>
+        <!-- stage10-explanation:start pipeline -->
+        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
+          <h2 class="explanation-sr-only" id="explanation-pipeline-title">The compilation pipeline transforms source code into object code</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The post-compilation pathway connects code and prepares execution with a structured visual model." />
-            <figcaption class="explanation-sr-only">The post-compilation pathway connects code and prepares execution: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-pipeline.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The compilation pipeline transforms source code into object code with a structured visual model." />
+            <figcaption class="explanation-sr-only">The compilation pipeline transforms source code into object code: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Object code Translated output from compilation or assembly, not always a complete executable.</li><li><strong>Lesson fact:</strong> External reference A call to code or data defined in another module or library.</li><li><strong>Lesson fact:</strong> Executable file A program file with required code linked and arranged for execution.</li><li><strong>Lesson fact:</strong> In memory Code and data must be placed into main memory before the CPU can execute it.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Source code The high-level program written by the programmer.</li><li><strong>Lesson fact:</strong> Tokens Meaningful units such as identifiers, keywords, operators and literals.</li><li><strong>Lesson fact:</strong> Checks The compiler checks structure and meaning before generating code.</li><li><strong>Lesson fact:</strong> Object code Translated low-level code output by the compiler before linking/loading details.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="libraries" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <!-- stage10-explanation:end pipeline -->
+        <section class="panel" id="lexical" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Libraries provide reusable routines and modules</h2>
+            <h2>Lexical analysis converts character streams into tokens</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>Purpose</strong><span>Provide pre-written, tested routines that programs can use.</span></article>
-            <article><strong>Examples</strong><span>Mathematical functions, input/output routines, graphics or string-handling routines.</span></article>
-            <article><strong>Benefits</strong><span>Saves development time, reduces duplication and may improve reliability.</span></article>
-            <article><strong>Requirement</strong><span>Calls to library routines must be linked or made available at run time.</span></article>
+          <div class="stage-grid">
+            <article><strong>Input</strong><span>Source code as a stream of characters.</span></article>
+            <article><strong>Action</strong><span>Groups characters into tokens such as identifiers, operators, constants and keywords.</span></article>
+            <article><strong>Also</strong><span>May remove unnecessary whitespace and comments.</span></article>
+            <article><strong>Errors</strong><span>Can detect invalid characters or unrecognised symbols.</span></article>
           </div>
         </section>
 
-        <section class="panel" id="linkers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <!-- stage10-explanation:start lexical -->
+        <section class="panel explanation-panel" id="explanation-lexical" data-explains="lexical" data-explanation-kind="mechanism" aria-labelledby="explanation-lexical-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
+          <h2 class="explanation-sr-only" id="explanation-lexical-title">Lexical analysis converts character streams into tokens</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-lexical.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lexical analysis converts character streams into tokens with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lexical analysis converts character streams into tokens: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Lexical analysis converts source characters into tokens.</li><li><strong>Lesson fact:</strong> Keywords, identifiers, literals and operators are distinct token categories.</li><li><strong>Lesson fact:</strong> Semicolons, parentheses and braces are delimiters or punctuation, not all operators.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lexical -->
+        <section class="panel" id="syntax" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Linkers combine object modules and resolve references</h2>
+            <h2>Syntax analysis checks grammar and program structure</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>Input</strong><span>Object code modules and required library routines or references.</span></article>
-            <article><strong>Action</strong><span>Resolves external references between modules and libraries.</span></article>
-            <article><strong>Output</strong><span>Produces executable code or a linked object file.</span></article>
-            <article><strong>Error</strong><span>Can report unresolved external references if a required routine cannot be found.</span></article>
+          <div class="stage-grid">
+            <article><strong>Input</strong><span>Tokens produced by lexical analysis.</span></article>
+            <article><strong>Action</strong><span>Checks whether tokens follow the grammar rules of the language.</span></article>
+            <article><strong>Output</strong><span>May build a parse tree or syntax tree to represent structure.</span></article>
+            <article><strong>Errors</strong><span>Can detect missing brackets, invalid statement order or malformed expressions.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start linkers -->
-        <section class="panel explanation-panel" id="explanation-linkers" data-explains="linkers" data-explanation-kind="mechanism" aria-labelledby="explanation-linkers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-linkers-title">Linkers combine object modules and resolve references</h2>
+        <!-- stage10-explanation:start syntax -->
+        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
+          <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax analysis checks grammar and program structure</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-linkers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linkers combine object modules and resolve references with a structured visual model." />
-            <figcaption class="explanation-sr-only">Linkers combine object modules and resolve references: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax analysis checks grammar and program structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Syntax analysis checks grammar and program structure: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input Object code modules and required library routines or references.</li><li><strong>Lesson fact:</strong> Action Resolves external references between modules and libraries.</li><li><strong>Lesson fact:</strong> Output Produces executable code or a linked object file.</li><li><strong>Lesson fact:</strong> Error Can report unresolved external references if a required routine cannot be found.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Input Tokens produced by lexical analysis.</li><li><strong>Lesson fact:</strong> Action Checks whether tokens follow the grammar rules of the language.</li><li><strong>Lesson fact:</strong> Output May build a parse tree or syntax tree to represent structure.</li><li><strong>Lesson fact:</strong> Errors Can detect missing brackets, invalid statement order or malformed expressions.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end linkers -->
-        <section class="panel" id="loaders" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <!-- stage10-explanation:end syntax -->
+        <section class="panel" id="semantic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Loaders place executable code into memory</h2>
+            <h2>Semantic analysis checks meaning and context</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>Input</strong><span>An executable program or loadable program image.</span></article>
-            <article><strong>Action</strong><span>Loads code and data into main memory and prepares it to run.</span></article>
-            <article><strong>Addresses</strong><span>May allocate memory and adjust addresses depending on where the program is loaded.</span></article>
-            <article><strong>Boundary</strong><span>A loader does not translate source code or combine object modules.</span></article>
+          <div class="stage-grid">
+            <article><strong>Meaning</strong><span>Code can be grammatically correct but still not make valid sense.</span></article>
+            <article><strong>Checks</strong><span>Type compatibility, variable declarations, scope and valid operations.</span></article>
+            <article><strong>Symbol table</strong><span>Stores information about identifiers such as names, types and locations.</span></article>
+            <article><strong>Errors</strong><span>Examples include using an undeclared variable or adding incompatible types.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start loaders -->
-        <section class="panel explanation-panel" id="explanation-loaders" data-explains="loaders" data-explanation-kind="mechanism" aria-labelledby="explanation-loaders-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-loaders-title">Loaders place executable code into memory</h2>
+        <!-- stage10-explanation:start semantic -->
+        <section class="panel explanation-panel" id="explanation-semantic" data-explains="semantic" data-explanation-kind="mechanism" aria-labelledby="explanation-semantic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
+          <h2 class="explanation-sr-only" id="explanation-semantic-title">Semantic analysis checks meaning and context</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-loaders.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loaders place executable code into memory with a structured visual model." />
-            <figcaption class="explanation-sr-only">Loaders place executable code into memory: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-semantic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Semantic analysis checks meaning and context with a structured visual model." />
+            <figcaption class="explanation-sr-only">Semantic analysis checks meaning and context: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input An executable program or loadable program image.</li><li><strong>Lesson fact:</strong> Action Loads code and data into main memory and prepares it to run.</li><li><strong>Lesson fact:</strong> Addresses May allocate memory and adjust addresses depending on where the program is loaded.</li><li><strong>Lesson fact:</strong> Boundary A loader does not translate source code or combine object modules.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Meaning Code can be grammatically correct but still not make valid sense.</li><li><strong>Lesson fact:</strong> Checks Type compatibility, variable declarations, scope and valid operations.</li><li><strong>Lesson fact:</strong> Symbol table Stores information about identifiers such as names, types and locations.</li><li><strong>Lesson fact:</strong> Errors Examples include using an undeclared variable or adding incompatible types.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end loaders -->
-        <section class="panel" id="static-dynamic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <!-- stage10-explanation:end semantic -->
+        <section class="panel" id="generation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Static and dynamic linking affect when library code is connected</h2>
+            <h2>Code generation produces object code</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>Static linking</strong><span>Library code is copied into the executable at link time.</span></article>
-            <article><strong>Static trade-off</strong><span>Executable can be more self-contained but may be larger.</span></article>
-            <article><strong>Dynamic linking</strong><span>Library code is linked at load time or run time from a shared library.</span></article>
-            <article><strong>Dynamic trade-off</strong><span>Can reduce duplication, but the required shared library must be available and compatible.</span></article>
+          <div class="stage-grid">
+            <article><strong>Input</strong><span>Checked intermediate representation or syntax tree.</span></article>
+            <article><strong>Action</strong><span>Generates target low-level instructions for the processor or virtual machine.</span></article>
+            <article><strong>Output</strong><span>Object code, often not yet a complete final executable.</span></article>
+            <article><strong>Boundary</strong><span>Linking external modules and loading into memory belong to the next lesson.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start static-dynamic -->
-        <section class="panel explanation-panel" id="explanation-static-dynamic" data-explains="static-dynamic" data-explanation-kind="mechanism" aria-labelledby="explanation-static-dynamic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-static-dynamic-title">Static and dynamic linking affect when library code is connected</h2>
+        <!-- stage10-explanation:start generation -->
+        <section class="panel explanation-panel" id="explanation-generation" data-explains="generation" data-explanation-kind="mechanism" aria-labelledby="explanation-generation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
+          <h2 class="explanation-sr-only" id="explanation-generation-title">Code generation produces object code</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-static-dynamic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Static and dynamic linking affect when library code is connected with a structured visual model." />
-            <figcaption class="explanation-sr-only">Static and dynamic linking affect when library code is connected: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-generation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Code generation produces object code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Code generation produces object code: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Static linking Library code is copied into the executable at link time.</li><li><strong>Lesson fact:</strong> Static trade-off Executable can be more self-contained but may be larger.</li><li><strong>Lesson fact:</strong> Dynamic linking Library code is linked at load time or run time from a shared library.</li><li><strong>Lesson fact:</strong> Dynamic trade-off Can reduce duplication, but the required shared library must be available and compatible.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Input Checked intermediate representation or syntax tree.</li><li><strong>Lesson fact:</strong> Action Generates target low-level instructions for the processor or virtual machine.</li><li><strong>Lesson fact:</strong> Output Object code, often not yet a complete final executable.</li><li><strong>Lesson fact:</strong> Boundary Linking external modules and loading into memory belong to the next lesson.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end static-dynamic -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <!-- stage10-explanation:end generation -->
+        <section class="panel" id="optimisation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
-            <h2>Compare the roles without blending them</h2>
+            <h2>Optimisation improves code without changing what it does</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Linker loader library comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Item</div>
-              <div role="columnheader">Main role</div>
-              <div role="columnheader">Typical input</div>
-              <div role="columnheader">Typical output/result</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Library</div>
-              <div role="cell">Stores reusable routines/modules.</div>
-              <div role="cell">Calls from a program.</div>
-              <div role="cell">Routine code can be linked or used at run time.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Linker</div>
-              <div role="cell">Combines object modules and resolves external references.</div>
-              <div role="cell">Object files and library references.</div>
-              <div role="cell">Executable/linked object code.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Loader</div>
-              <div role="cell">Places executable program into main memory.</div>
-              <div role="cell">Executable file/program image.</div>
-              <div role="cell">Program ready for execution in memory.</div>
-            </div>
+          <div class="stage-grid">
+            <article><strong>Purpose</strong><span>Improve efficiency, such as speed or memory use.</span></article>
+            <article><strong>Examples</strong><span>Remove unreachable code or avoid repeated calculations.</span></article>
+            <article><strong>Rule</strong><span>The program's intended behaviour should remain the same.</span></article>
+            <article><strong>Common error</strong><span>Optimisation does not mean fixing all logic errors in the programmer's algorithm.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare the roles without blending them</h2>
+        <!-- stage10-explanation:start optimisation -->
+        <section class="panel explanation-panel" id="explanation-optimisation" data-explains="optimisation" data-explanation-kind="mechanism" aria-labelledby="explanation-optimisation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
+          <h2 class="explanation-sr-only" id="explanation-optimisation-title">Optimisation improves code without changing what it does</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare the roles without blending them with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare the roles without blending them: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-optimisation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optimisation improves code without changing what it does with a structured visual model." />
+            <figcaption class="explanation-sr-only">Optimisation improves code without changing what it does: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Main role</li><li><strong>Lesson fact:</strong> Typical input</li><li><strong>Lesson fact:</strong> Typical output/result</li><li><strong>Lesson fact:</strong> Stores reusable routines/modules.</li><li><strong>Lesson fact:</strong> Calls from a program.</li><li><strong>Lesson fact:</strong> Routine code can be linked or used at run time.</li><li><strong>Lesson fact:</strong> Combines object modules and resolves external references.</li><li><strong>Lesson fact:</strong> Object files and library references.</li><li><strong>Lesson fact:</strong> Executable/linked object code.</li><li><strong>Lesson fact:</strong> Places executable program into main memory.</li><li><strong>Lesson fact:</strong> Executable file/program image.</li><li><strong>Lesson fact:</strong> Program ready for execution in memory.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Purpose Improve efficiency, such as speed or memory use.</li><li><strong>Lesson fact:</strong> Examples Remove unreachable code or avoid repeated calculations.</li><li><strong>Lesson fact:</strong> Rule The program's intended behaviour should remain the same.</li><li><strong>Lesson fact:</strong> Common error Optimisation does not mean fixing all logic errors in the programmer's algorithm.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <!-- stage10-explanation:end optimisation -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Post-compilation pipeline selector</h2>
-            <p>Select a situation and identify whether it involves a library, linker or loader.</p>
+            <h2>Compilation stage selector</h2>
+            <p>Select a compiler task and identify the relevant stage.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Situation
+              Compiler task
               <select id="scenarioInput">
-                <option value="math">A program calls a pre-written square root routine</option>
-                <option value="combine">Several object modules must become one executable</option>
-                <option value="missing">Build fails because a referenced routine cannot be found</option>
-                <option value="memory">The executable must be placed into RAM before running</option>
-                <option value="static">Library code is copied into the executable file</option>
-                <option value="dynamic">A shared library is used when the program loads</option>
+                <option value="tokenise">Group characters into identifiers, keywords and operators</option>
+                <option value="grammar">Check whether a statement follows language grammar</option>
+                <option value="type">Detect assigning a string to an integer variable</option>
+                <option value="symbol">Look up an identifier's declared type and scope</option>
+                <option value="target">Produce low-level target instructions</option>
+                <option value="remove">Remove unreachable code without changing output</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="simulateBtn">Classify</button>
@@ -375,21 +292,21 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>From object files to running program</h2>
+            <h2>Track one line through compiler stages</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="library">Library</button>
-            <button class="tab" type="button" data-example="linker">Linker</button>
-            <button class="tab" type="button" data-example="loader">Loader</button>
-            <button class="tab" type="button" data-example="dynamic">Dynamic linking</button>
+            <button class="tab active" type="button" data-example="lexical">Lexical</button>
+            <button class="tab" type="button" data-example="syntax">Syntax</button>
+            <button class="tab" type="button" data-example="semantic">Semantic</button>
+            <button class="tab" type="button" data-example="codegen">Code generation</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -398,7 +315,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -406,7 +323,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
@@ -415,18 +332,18 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-058">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Post-compilation memory map</h2>
+            <h2>Compilation memory map</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Library</strong><span>Reusable routines/modules that programs can call.</span></div>
-            <div><strong>Linker</strong><span>Combines object code and resolves external references.</span></div>
-            <div><strong>Loader</strong><span>Places executable code into memory and prepares it to run.</span></div>
-            <div><strong>Static</strong><span>Library code copied into executable at link time.</span></div>
-            <div><strong>Dynamic</strong><span>Shared library linked at load/run time.</span></div>
-            <div><strong>Exam rule</strong><span>Use the correct stage: compile, link, load, execute.</span></div>
+            <div><strong>Lexical</strong><span>Characters to tokens; removes comments/extra whitespace.</span></div>
+            <div><strong>Syntax</strong><span>Checks grammar and may build a parse tree.</span></div>
+            <div><strong>Semantic</strong><span>Checks meaning, types, declarations and scope.</span></div>
+            <div><strong>Symbol table</strong><span>Stores identifier information for compiler checks.</span></div>
+            <div><strong>Code generation</strong><span>Produces object/target code.</span></div>
+            <div><strong>Optimisation</strong><span>Improves efficiency without changing behaviour.</span></div>
           </div>
         </section>
 
@@ -437,24 +354,24 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Role table</strong>
-              <span>Create a table for library, linker and loader: input, action, output/result, one common error.</span>
+              <strong>Task 1: Stage table</strong>
+              <span>Create a table for lexical, syntax, semantic, code generation and optimisation: input, action, output/error.</span>
             </article>
             <article>
-              <strong>Task 2: Pipeline explanation</strong>
-              <span>Write a 6-mark answer explaining how object modules and library routines become a running program.</span>
+              <strong>Task 2: Error classification</strong>
+              <span>Classify five errors as lexical, syntax or semantic, and justify each classification in one sentence.</span>
             </article>
             <article>
-              <strong>Task 3: Static vs dynamic</strong>
-              <span>Write two advantages and two limitations across static and dynamic linking. Use precise wording about file size, sharing and availability.</span>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Explain how a compiler can process source code and produce object code. Use the words token, grammar, semantic and object code.</span>
             </article>
           </div>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

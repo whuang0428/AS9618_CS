@@ -1,89 +1,130 @@
-const classifierMap = {
-  area: {
-    title: "Sequence",
-    detail: "The steps happen once in a fixed order: input, calculate, output.",
+const sorterMap = {
+  split: {
+    topic: "Decomposition",
+    detail: "The large booking problem is being divided into sub-problems that can be planned and tested separately.",
   },
-  pass: {
-    title: "Selection",
-    detail: "A condition chooses between Pass and Resit.",
+  ignore: {
+    topic: "Abstraction",
+    detail: "The printed ticket colour does not change the algorithm's input, process, output or constraints.",
   },
-  five: {
-    title: "Count-controlled iteration",
-    detail: "Exactly five values are processed, so a FOR loop is suitable.",
+  keep: {
+    topic: "Abstraction",
+    detail: "PlacesLeft is relevant because it changes whether the booking should be accepted or rejected.",
   },
-  sentinel: {
-    title: "Condition-controlled iteration",
-    detail: "The loop continues until the sentinel value -1 is entered.",
-  },
-  countpass: {
-    title: "Iteration with nested selection",
-    detail: "The algorithm repeats for ten marks and uses IF inside the loop to count passes.",
+  bad: {
+    topic: "Trap",
+    detail: "A module should have a useful purpose. Splitting every assignment line creates noise, not a clearer design.",
   },
 };
 
-const builderMap = {
-  area: "INPUT Length\nINPUT Width\nArea <- Length * Width\nOUTPUT Area",
-  pass: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
-  total5: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total",
-  passcount: "PassCount <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    IF Mark >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Count\nOUTPUT PassCount",
+const filterItems = [
+  { id: "places", text: "PlacesLeft in an event booking system", keep: true, reason: "It controls whether the booking can be accepted." },
+  { id: "poster", text: "Poster colour used to advertise the event", keep: false, reason: "It does not affect the booking algorithm." },
+  { id: "age", text: "StudentAge when only ages 11-18 are allowed", keep: true, reason: "It is needed to check the stated eligibility rule." },
+  { id: "desk", text: "The desk where the organiser sits", keep: false, reason: "It is real-world context but not part of the algorithm." },
+  { id: "price", text: "TicketPrice used to calculate TotalCost", keep: true, reason: "It affects the calculation and output." },
+  { id: "logo", text: "School logo shape on the ticket", keep: false, reason: "It does not change any processing step in the algorithm." },
+];
+
+const scenarioPlans = {
+  average: {
+    title: "Class average from marks",
+    modules: ["Receive marks", "Check each mark is 0-100", "Calculate Total", "Calculate Average", "Produce Average"],
+    abstraction: "Keep marks, number of marks and valid range. Ignore student handwriting, classroom layout and display colour.",
+  },
+  booking: {
+    title: "Event booking with limited places",
+    modules: ["Receive booking request", "Check required details", "Check PlacesLeft", "Calculate TotalCost", "Update PlacesLeft", "Produce confirmation"],
+    abstraction: "Keep requested tickets, price, age rule and places left. Ignore poster design and room decoration.",
+  },
+  login: {
+    title: "Login attempt check",
+    modules: ["Input username and password", "Check blank input", "Compare stored username", "Compare stored password", "Output access decision"],
+    abstraction: "Keep entered credentials, stored credentials and attempt result. Ignore keyboard colour and background image.",
+  },
+  shop: {
+    title: "Small shop receipt total",
+    modules: ["Receive item prices", "Check prices are not negative", "Calculate Total", "Apply discount rule", "Produce receipt total"],
+    abstraction: "Keep prices, discount rule and total. Ignore shelf position unless the question uses it as an input.",
+  },
 };
 
 const examples = {
-  sequence: {
-    title: "Example 1: Sequence",
-    problem: "Calculate the area of a rectangle.",
-    structure: "Sequence only: every step happens once in order.",
-    code: builderMap.area,
+  average: {
+    title: "Example 1: Class average",
+    problem: "A program inputs 20 marks and outputs the class average.",
+    steps: [
+      "Decompose: ReceiveMarks, CheckMarks, CalculateTotal, CalculateAverage, ProduceAverage.",
+      "Abstract: keep Mark, Count, Total, Average and the 0-100 range.",
+      "Ignore: student's name if the average only needs marks; desk order; screen colour.",
+      "Responsibility plan: receive all 20 marks, check the stated range, calculate the total, calculate the average, produce the result.",
+      "Review focus: every sub-problem has a clear input, responsibility and output.",
+    ],
   },
-  selection: {
-    title: "Example 2: Selection",
-    problem: "Output Pass if Mark is at least 50, otherwise Resit.",
-    structure: "Selection: IF chooses one branch.",
-    code: builderMap.pass,
+  booking: {
+    title: "Example 2: Event booking",
+    problem: "A student books places for an event. The system must reject a booking if there are not enough places.",
+    steps: [
+      "Decompose: InputRequest, CheckEligibility, CheckPlaces, CalculateCost, UpdatePlaces, OutputDecision.",
+      "Abstract: keep RequestedPlaces, PlacesLeft and TicketPrice because they affect decisions and calculations.",
+      "Ignore: poster font, exact colour of the ticket and the organiser's desk.",
+      "Decision responsibility: compare RequestedPlaces with PlacesLeft before accepting and updating the booking.",
+      "Trap: outputting confirmation before checking places creates a false booking.",
+    ],
   },
-  iteration: {
-    title: "Example 3: Iteration",
-    problem: "Input exactly five marks and output the total.",
-    structure: "Count-controlled iteration: FOR loop repeats exactly five times.",
-    code: builderMap.total5,
+  login: {
+    title: "Example 3: Login check",
+    problem: "A user enters a username and password. The program outputs Access granted or Access denied.",
+    steps: [
+      "Decompose: InputCredentials, ValidateNotBlank, CompareUsername, ComparePassword, OutputResult.",
+      "Abstract: keep EnteredUsername, EnteredPassword, StoredUsername and StoredPassword.",
+      "Ignore: the shape of the login button; it is interface design, not algorithm logic.",
+      "Comparison responsibility: compare both entered credential values with the stored values.",
+      "Security note: do not print the password as an output.",
+    ],
   },
-  combined: {
-    title: "Example 4: Iteration with selection",
-    problem: "Input five marks and count how many are at least 50.",
-    structure: "Sequence initialises PassCount, FOR repeats input, IF decides whether to increment.",
-    code: builderMap.passcount,
+  receipt: {
+    title: "Example 4: Receipt total",
+    problem: "A shop plan receives four item prices and produces the total.",
+    steps: [
+      "Decompose: ReceivePrices, CheckPrices, CalculateTotal, ApplyDiscount, ProduceReceipt.",
+      "Abstract: keep the four prices, any stated discount rule and the required total.",
+      "Ignore: shelf colour and cashier name unless the question makes them required outputs.",
+      "Quantity constraint: exactly four prices are supplied.",
+      "Review focus: the sub-problems collectively account for every required calculation and output.",
+    ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which structure runs steps once in a fixed order?", accepted: ["sequence"], answer: "Sequence" },
-  { id: "p2", prompt: "Which structure chooses between actions using a condition?", accepted: ["selection", "if"], answer: "Selection / IF" },
-  { id: "p3", prompt: "Which structure repeats steps?", accepted: ["iteration", "loop", "repetition"], answer: "Iteration / loop" },
-  { id: "p4", prompt: "Exactly five marks are input. Which loop type is most suitable?", accepted: ["count controlled", "count-controlled", "for", "for loop", "count controlled loop"], answer: "Count-controlled loop / FOR loop" },
-  { id: "p5", prompt: "Input continues until -1 is entered. Which loop type is suitable?", accepted: ["condition controlled", "condition-controlled", "while", "while loop", "condition controlled loop"], answer: "Condition-controlled loop / WHILE loop" },
-  { id: "p6", prompt: "Which Cambridge keyword starts a selection statement?", accepted: ["if"], answer: "IF" },
-  { id: "p7", prompt: "Which Cambridge keyword closes an IF structure?", accepted: ["endif", "end if"], answer: "ENDIF" },
-  { id: "p8", prompt: "When an IF is inside a FOR loop, what is the IF called?", accepted: ["nested", "nested selection", "selection nested inside iteration"], answer: "Nested selection / IF inside iteration" },
-  { id: "p9", prompt: "Should Java braces be used in the expected Paper 2 pseudocode answer? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
-  { id: "p10", prompt: "Name the three basic control structures in this lesson.", accepted: ["sequence selection iteration", "sequence, selection, iteration"], answer: "Sequence, selection and iteration." },
+  { id: "p1", prompt: "What term means splitting a problem into smaller sub-problems?", accepted: ["decomposition"], answer: "Decomposition" },
+  { id: "p2", prompt: "What term means keeping relevant details and ignoring irrelevant details?", accepted: ["abstraction"], answer: "Abstraction" },
+  { id: "p3", prompt: "In a booking system, should PlacesLeft be kept or ignored?", accepted: ["kept", "keep"], answer: "Keep it because it affects whether a booking is accepted." },
+  { id: "p4", prompt: "In an average mark solution, name one useful sub-problem.", accepted: ["receive marks", "receivemarks", "check marks", "checkmarks", "calculate total", "calculatetotal", "calculate average", "calculateaverage", "produce average", "produceaverage"], answer: "For example: Receive marks, Check marks, Calculate total, Calculate average or Produce average." },
+  { id: "p5", prompt: "Should poster colour usually be kept in an event-booking algorithm? yes or no.", accepted: ["no"], answer: "No. It normally does not affect the algorithm." },
+  { id: "p6", prompt: "Which is a better sub-problem name: ProcessData or CheckMarkRange?", accepted: ["checkmarkrange", "check mark range"], answer: "CheckMarkRange / Check mark range, because it states a clear purpose." },
+  { id: "p7", prompt: "What should you identify before writing sub-problems: required input or decorative detail?", accepted: ["required input", "input", "inputs"], answer: "Required input / inputs." },
+  { id: "p8", prompt: "Give one reason decomposition helps testing.", accepted: ["each part can be tested", "test separately", "tested separately", "easier to test", "find errors"], answer: "Each sub-problem can be tested separately, making errors easier to find." },
+  { id: "p9", prompt: "Should each sub-problem state a clear responsibility? yes or no.", accepted: ["yes"], answer: "Yes. A clear responsibility prevents overlap and omissions." },
+  { id: "p10", prompt: "Should a decorative detail be kept when it does not affect the required result? yes or no.", accepted: ["no"], answer: "No. Abstraction removes details that do not affect the result." },
 ];
 
 const mistakes = [
   {
-    wrong: "I used a loop for Length, Width and Area even though each step happens once.",
-    fix: "Use sequence. A loop is only needed when steps repeat.",
+    wrong: "I decomposed a program into modules called Part1, Part2 and Part3.",
+    fix: "Use meaningful verb-based names such as ReceiveMarks, CheckMarkRange and CalculateAverage so the purpose is clear.",
   },
   {
-    wrong: "I wrote Pass and Resit one after the other with no IF.",
-    fix: "Use selection. The condition determines which output should happen.",
+    wrong: "I kept the poster colour because it was mentioned in the story.",
+    fix: "Only keep a detail if it affects input, processing, output or constraints. Mentioned does not always mean relevant.",
   },
   {
-    wrong: "I used WHILE for exactly five marks but forgot to update Count.",
-    fix: "Use a FOR loop for a known count, or update the counter clearly if using WHILE.",
+    wrong: "I made every tiny action a separate sub-problem.",
+    fix: "A sub-problem should represent a useful task that can be understood and tested, not one tiny statement.",
   },
   {
-    wrong: "I placed PassCount <- 0 inside the loop.",
-    fix: "Initialise PassCount before the loop. Otherwise it resets every iteration.",
+    wrong: "I started coding the whole solution before deciding the sub-problems.",
+    fix: "Plan meaningful sub-problems first and state how their responsibilities and outputs connect.",
   },
 ];
 
@@ -96,100 +137,99 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Identify whether each task mainly uses sequence, selection or iteration: calculate area from length and width; output Pass/Resit from a mark; input ten scores; input values until -1; count passes from ten marks.",
-    answer: "Calculate area uses sequence. Pass/Resit uses selection. Input ten scores uses count-controlled iteration. Input until -1 uses condition-controlled iteration. Count passes from ten marks uses iteration with selection inside the loop.",
+    marks: "4 marks",
+    prompt: "A program is required to process event bookings. It must input the number of requested places, check if enough places are available, calculate the total cost and output a booking decision. Decompose this problem into four suitable sub-problems.",
+    answer: "Suitable sub-problems include input booking request / requested places, check available places, calculate total cost, update places left and output booking decision. The names should describe the purpose of each part.",
     marking: [
-      { mark: "B1", text: "area calculation identified as sequence" },
-      { mark: "B1", text: "Pass/Resit identified as selection" },
-      { mark: "B1", text: "ten scores identified as count-controlled iteration" },
-      { mark: "B1", text: "until -1 identified as condition-controlled iteration" },
-      { mark: "B1", text: "count passes identified as iteration with selection / nested IF" },
+      { mark: "B1", text: "identifies input/request sub-problem" },
+      { mark: "B1", text: "identifies check available places / validation sub-problem" },
+      { mark: "B1", text: "identifies calculate total cost sub-problem" },
+      { mark: "B1", text: "identifies output booking decision/confirmation sub-problem" },
     ],
     strict: [
-      "Do not accept iteration for area unless repeated calculations are stated.",
-      "Allow loop for iteration.",
-      "Do not require the word nested if the combined structure is clear.",
+      "Do not award a mark for vague names such as DoStuff unless purpose is explained.",
+      "Allow update PlacesLeft as an additional valid sub-problem.",
+      "Do not require implementation syntax.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input a Mark and output Pass if Mark is at least 50, otherwise output Resit. State the control structure used.",
-    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF\n\nThe control structure is selection.",
+    prompt: "Explain abstraction using the event booking problem. Give two details that should be kept and two details that can be ignored.",
+    answer: "Abstraction means selecting details relevant to the algorithm and ignoring irrelevant details. RequestedPlaces and PlacesLeft should be kept because they decide whether the booking is accepted. TicketPrice should also be kept if total cost is required. Poster colour and room decoration can be ignored because they do not change the input, processing, output or constraints.",
     marking: [
-      { mark: "B1", text: "inputs Mark" },
-      { mark: "M1", text: "uses IF with condition Mark >= 50 or equivalent" },
-      { mark: "A1", text: "outputs Pass on true branch" },
-      { mark: "A1", text: "outputs Resit on false branch" },
-      { mark: "B1", text: "uses clear Cambridge-style IF/THEN/ELSE/ENDIF structure" },
-      { mark: "B1", text: "identifies structure as selection" },
+      { mark: "B1", text: "defines abstraction as keeping relevant details / ignoring irrelevant details" },
+      { mark: "B1", text: "identifies RequestedPlaces or equivalent as relevant" },
+      { mark: "B1", text: "identifies PlacesLeft or TicketPrice as relevant" },
+      { mark: "B1", text: "identifies a suitable irrelevant detail such as poster colour" },
+      { mark: "B1", text: "identifies a second suitable irrelevant detail such as room decoration" },
+      { mark: "B1", text: "explains relevance in terms of algorithm logic, not personal preference" },
     ],
     strict: [
-      "Do not award style mark for Java-only syntax.",
-      "Allow Mark > 49 if integer marks are implied.",
-      "Do not require exact output wording if meaning is equivalent.",
+      "Do not accept 'important details' alone without saying relevant to the algorithm.",
+      "Allow other details if clearly tied to decision, calculation, input or output.",
+      "Do not award irrelevant-detail marks for details that affect the stated output.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input exactly five marks and output their total. State why iteration is suitable.",
-    answer: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total\n\nIteration is suitable because the same input-and-add steps are repeated exactly five times.",
+    prompt: "A student decomposes a class-average program into InputMarks, ValidateMark, CalculateTotal, CalculateAverage and OutputAverage. Explain why this decomposition is useful when designing and testing the algorithm.",
+    answer: "The decomposition separates the problem into smaller tasks with clear purposes. Receiving and checking marks can be reviewed before calculations. CalculateTotal and CalculateAverage can be checked with known values. ProduceAverage can be checked against the required output. Errors can therefore be located in one sub-problem.",
     marking: [
-      { mark: "B1", text: "initialises Total to 0 before the loop" },
-      { mark: "M1", text: "uses a loop that repeats five times" },
-      { mark: "M1", text: "inputs Mark inside the loop" },
-      { mark: "M1", text: "adds Mark to Total inside the loop" },
-      { mark: "A1", text: "outputs Total after the loop" },
-      { mark: "B1", text: "explains iteration is suitable because steps repeat / known count" },
+      { mark: "B1", text: "states problem is split into smaller tasks/sub-problems" },
+      { mark: "B1", text: "links named modules to clear purposes" },
+      { mark: "B1", text: "explains mark checking can be reviewed before calculations" },
+      { mark: "B1", text: "explains calculation sub-problems can be checked separately" },
+      { mark: "B1", text: "explains errors can be located/corrected more easily" },
+      { mark: "B1", text: "uses the class-average context rather than a generic claim only" },
     ],
     strict: [
-      "Do not award full credit if Total is reset inside the loop.",
-      "Allow WHILE with a correctly updated counter.",
-      "Do not require exact variable names.",
+      "Do not award repeated vague claims such as 'it is better' without cause.",
+      "Allow maintainability/readability if linked to a named sub-problem.",
+      "Do not require every listed module to be discussed.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A program inputs five marks and counts how many are at least 50. Explain how sequence, selection and iteration are all used.",
-    answer: "Sequence is used to initialise PassCount before the loop and to output the final count after the loop. Iteration is used because five marks are input and processed using repeated steps. Selection is used inside the loop to test whether each Mark is at least 50; if true, PassCount is increased.",
+    prompt: "A login algorithm uses EnteredUsername, EnteredPassword, StoredUsername and StoredPassword. State whether each is part of the abstraction and explain one detail that should not be included.",
+    answer: "All four named values are part of the abstraction because they are required to compare entered credentials with stored credentials. A detail such as the colour of the login button or background image should not be included because it does not affect the comparison or the access decision.",
     marking: [
-      { mark: "B1", text: "identifies initialisation/output as sequence" },
-      { mark: "B1", text: "identifies repeated processing of five marks as iteration" },
-      { mark: "B1", text: "identifies Mark >= 50 test as selection" },
-      { mark: "B1", text: "explains selection occurs inside the loop" },
-      { mark: "B1", text: "explains PassCount is updated only when condition is true" },
+      { mark: "B1", text: "states EnteredUsername is relevant" },
+      { mark: "B1", text: "states EnteredPassword is relevant" },
+      { mark: "B1", text: "states stored username/password values are relevant" },
+      { mark: "B1", text: "gives a suitable irrelevant interface/detail example" },
+      { mark: "B1", text: "explains relevance using comparison/access decision" },
     ],
     strict: [
-      "Do not accept generic definitions only; answer must refer to this problem.",
-      "Allow CountPasses or similar variable names.",
-      "Do not require full pseudocode.",
+      "Do not require discussion of hashing/encryption; this is an abstraction question.",
+      "Allow credential values as a grouped explanation.",
+      "Do not accept ignoring passwords because they are private; privacy does not make them irrelevant to this algorithm.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student uses WHILE for a known five-repetition task and forgets to update Count. Explain the likely error and give a safer structure.",
-    answer: "If Count is not updated in a WHILE loop, the loop condition may never become false, causing an infinite loop or incorrect number of repetitions. Since exactly five repetitions are required, a FOR Count <- 1 TO 5 ... NEXT Count loop is safer and clearer.",
+    prompt: "Describe five sub-problems for a mark-processing solution and state the responsibility of each.",
+    answer: "ReceiveMarks obtains the required values; CheckMarks checks the stated range; CalculateTotal combines the accepted values; CalculateAverage uses the total and number of marks; ProduceResult provides the required average.",
     marking: [
-      { mark: "B1", text: "identifies missing Count update" },
-      { mark: "B1", text: "explains condition may never become false / infinite loop risk" },
-      { mark: "B1", text: "recognises five repetitions are known in advance" },
-      { mark: "B1", text: "suggests FOR loop / count-controlled loop" },
-      { mark: "B1", text: "gives clear Cambridge-style FOR...TO...NEXT idea" },
+      { mark: "B1", text: "receives the required marks" },
+      { mark: "B1", text: "checks marks against the stated requirement" },
+      { mark: "B1", text: "calculates the total" },
+      { mark: "B1", text: "calculates the average" },
+      { mark: "B1", text: "produces the required result" },
     ],
     strict: [
-      "Do not accept only 'WHILE is wrong' without explanation.",
-      "Allow WHILE as a possible solution if Count is correctly updated, but safer structure must be count-controlled.",
-      "Do not require complete pseudocode.",
+      "Do not require implementation notation.",
+      "Allow equivalent verb-based sub-problem names.",
+      "Do not award vague labels without responsibilities.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9, -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9 ]/g, "");
 }
 
 function setupPrint() {
@@ -199,10 +239,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    sequence: "Sequence. These steps happen once in order.",
-    selection: "Selection. IF chooses whether the toasting step happens.",
-    iteration: "Iteration. The same steps repeat for each order.",
-    bad: "Common error: importance is not a reason for using WHILE. Repetition needs a real stopping rule.",
+    places: "Keep it. PlacesLeft affects whether the booking can be accepted.",
+    font: "Ignore it. The poster font does not change the booking algorithm.",
+    age: "Keep it if eligibility depends on age. It becomes an eligibility constraint.",
+    weather: "Ignore it unless the question explicitly makes weather a condition. Nice photo, not useful logic.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -213,20 +253,49 @@ function setupHook() {
   });
 }
 
-function setupClassifier() {
-  const input = document.querySelector("#classifierInput");
-  const result = document.querySelector("#classifyResult");
-  document.querySelector("#classifyBtn").addEventListener("click", () => {
-    const item = classifierMap[input.value];
-    result.innerHTML = `<strong>${item.title}</strong><span>${item.detail}</span>`;
+function setupSorter() {
+  const input = document.querySelector("#sorterInput");
+  const result = document.querySelector("#sorterResult");
+  document.querySelector("#sorterBtn").addEventListener("click", () => {
+    const item = sorterMap[input.value];
+    result.innerHTML = `<strong>${item.topic}</strong><span>${item.detail}</span>`;
+  });
+}
+
+function setupFilter() {
+  const grid = document.querySelector("#filterGrid");
+  grid.innerHTML = filterItems.map((item) => `
+    <article class="filter-card">
+      <h3>${item.text}</h3>
+      <div class="button-row">
+        <button type="button" data-filter="${item.id}" data-choice="keep">Keep</button>
+        <button type="button" data-filter="${item.id}" data-choice="ignore">Ignore</button>
+      </div>
+      <p id="filter-${item.id}" aria-live="polite">Choose keep or ignore.</p>
+    </article>
+  `).join("");
+
+  grid.querySelectorAll("button[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = filterItems.find((entry) => entry.id === button.dataset.filter);
+      const chosenKeep = button.dataset.choice === "keep";
+      const correct = chosenKeep === item.keep;
+      const target = document.querySelector(`#filter-${item.id}`);
+      target.innerHTML = `<strong class="${correct ? "mark correct" : "mark incorrect"}">${correct ? "Correct" : "Not quite"}</strong> ${item.reason}`;
+    });
   });
 }
 
 function setupBuilder() {
-  const input = document.querySelector("#builderInput");
+  const input = document.querySelector("#scenarioInput");
   const result = document.querySelector("#builderResult");
   document.querySelector("#buildBtn").addEventListener("click", () => {
-    result.innerHTML = `<pre><code>${builderMap[input.value]}</code></pre>`;
+    const plan = scenarioPlans[input.value];
+    result.innerHTML = `
+      <strong>${plan.title}</strong>
+      <span><strong>Sub-problems:</strong> ${plan.modules.join(" -> ")}</span>
+      <span><strong>Abstraction:</strong> ${plan.abstraction}</span>
+    `;
   });
 }
 
@@ -235,8 +304,7 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <p><strong>Structure:</strong> ${example.structure}</p>
-    <pre><code>${example.code}</code></pre>
+    <ol>${example.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
   `;
 }
 
@@ -248,7 +316,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("sequence");
+  renderExample("average");
 }
 
 function setupPractice() {
@@ -336,7 +404,8 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupClassifier();
+setupSorter();
+setupFilter();
 setupBuilder();
 setupExamples();
 setupPractice();

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 086 | SQL joins using related tables</title>
+    <title>AS9618 Lesson 086 | DDL and two-table data queries</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>SQL joins using related tables</h1>
+        <h1>DDL and two-table data queries</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,11 +29,11 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#relationships">Relationships</a>
-        <a href="#join">Join conditions</a>
-        <a href="#aliases">Aliases</a>
+        <a href="#orderby">ORDER BY</a>
+        <a href="#aggregates">Aggregates</a>
+        <a href="#groupby">GROUP BY</a>
         <a href="#trace">Trace results</a>
-        <a href="#builder">Join builder</a>
+        <a href="#builder">Query builder</a>
         <a href="#runner">Result runner</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -53,16 +53,18 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Two-table INNER JOIN queries</h2>
+            <h2>DDL and two-table data queries</h2>
           </div>
           <div class="stage2-explanation">
+            <p>Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.</p>
+            <p>A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.</p>
             <p>AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.</p>
             <p>For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.</p>
-            <p>For the required at-most-two-table subset, queries can use ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG as well as SELECT, FROM and WHERE.</p>
+            <p>A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: List overdue borrowers</h3>
-            <p>SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate &lt; '2027-05-01'; uses two tables, one explicit join condition and one separate filter.</p>
+            <h3>Worked example: Define two related tables / List overdue borrowers</h3>
+            <p>CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate &lt; '2027-05-01'; uses two tables, one explicit join condition and one separate filter.</p>
           </article>
         </section>
 
@@ -70,7 +72,7 @@
         <section class="panel explanation-panel" id="explanation-join" data-explains="join" data-explanation-kind="mechanism" aria-labelledby="explanation-join-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
           <h2 class="explanation-sr-only" id="explanation-join-title">Two-table INNER JOIN with ON</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model." />
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model." />
             <figcaption class="explanation-sr-only">Two-table INNER JOIN with ON: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
@@ -82,32 +84,44 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Two-table INNER JOIN queries: apply and assess</h2>
+            <h2>DDL and two-table data queries: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which clause states how two joined tables match?</p>
+              <p><strong>1.</strong> Identify four required SQL field types.</p>
+              <details><summary>Show answer</summary><p>Any four of CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which clause declares the referenced table?</p>
+              <details><summary>Show answer</summary><p>REFERENCES.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which clause states how two joined tables match?</p>
               <details><summary>Show answer</summary><p>ON.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> How many tables are required at most in the AS syllabus query?</p>
+              <p><strong>4.</strong> How many tables are required at most in the AS syllabus query?</p>
               <details><summary>Show answer</summary><p>Two.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why qualify Student.StudentID and Loan.StudentID?</p>
+              <p><strong>5.</strong> Why qualify Student.StudentID and Loan.StudentID?</p>
               <details><summary>Show answer</summary><p>To identify which table supplies each otherwise identical field name.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
+            <p>Write DDL to create a Student table with suitable data types, a primary key and one foreign key. Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>SELECT includes DepartmentName and EmployeeName</td><td>Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join.</td><td>1</td></tr>
+                  <tr><td>CREATE TABLE and named fields</td><td>Do not award DML statements for a schema-definition task. Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join.</td><td>1</td></tr>
+                  <tr><td>suitable required data types</td><td></td><td>1</td></tr>
+                  <tr><td>PRIMARY KEY</td><td></td><td>1</td></tr>
+                  <tr><td>FOREIGN KEY with REFERENCES</td><td></td><td>1</td></tr>
+                  <tr><td>SELECT includes DepartmentName and EmployeeName</td><td></td><td>1</td></tr>
                   <tr><td>FROM Department</td><td></td><td>1</td></tr>
                   <tr><td>INNER JOIN Employee</td><td></td><td>1</td></tr>
                   <tr><td>ON Department.DepartmentID = Employee.DepartmentID</td><td></td><td>1</td></tr>
@@ -120,156 +134,178 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 086 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
-            <h2>A join is the database version of introducing two people who already have the same ID card.</h2>
+            <p class="lesson-meta">Lesson 086 | 45 minutes | Paper 1 Section 8 | 5-minute quiz</p>
+            <h2>SQL can sort the mess, count the mess, and summarise the mess. Sadly, it cannot mark your homework.</h2>
             <p>
-              This lesson shows how related tables are joined using matching key fields. You will read table
-              relationships, write join conditions, trace joined rows and avoid the classic exam mistake:
-              naming three tables but forgetting how they are connected.
+              This lesson extends basic <code>SELECT</code> queries with <code>ORDER BY</code>, aggregate functions
+              and <code>GROUP BY</code>. You will sort rows, calculate summaries and group records by category.
+              Multi-table joins are left for Lesson 087.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Connect</strong><span>tables using primary key and foreign key fields</span></div>
-              <div><strong>Write</strong><span>SQL joins with clear table-qualified field names</span></div>
-              <div><strong>Trace</strong><span>which rows appear in a joined result</span></div>
+              <div><strong>Sort</strong><span>records using <code>ORDER BY</code>, <code>ASC</code> and <code>DESC</code></span></div>
+              <div><strong>Summarise</strong><span>data using <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code></span></div>
+              <div><strong>Group</strong><span>records using <code>GROUP BY</code> with aggregate functions</span></div>
             </div>
           </div>
-          <div class="sql-visual" aria-label="SQL join visual">
-            <span class="keyword">Student.StudentID</span><span>= Loan.StudentID</span>
-            <span class="keyword">Loan.BookID</span><span>= Book.BookID</span>
-            <p>Do not just invite tables to the party. Tell SQL how they know each other.</p>
+          <div class="sql-visual" aria-label="SQL aggregate visual">
+            <span class="keyword">SELECT</span><span>Category, COUNT(*)</span>
+            <span class="keyword">FROM</span><span>Book</span>
+            <span class="keyword">GROUP BY</span><span>Category</span>
+            <p>When the question asks "per category", GROUP BY has entered the room.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style mark schemes often credit the correct join condition separately from SELECT and FROM.</p>
+            <p>Students often write a correct WHERE clause but miss the aggregate or GROUP BY, losing the summary mark.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p><code>Student.StudentID = Book.BookID</code> looks tidy but is logically wrong. Join fields must represent the same item.</p>
+            <p>If you select a normal field alongside an aggregate, you usually need <code>GROUP BY</code> for that field.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which condition correctly links students to their loans?</h2>
-            <p>If a table relationship is a bridge, a wrong join is a bridge drawn in pencil over a lake. The join path must follow the defined relationships.</p>
+            <h2>Which query counts how many books are in each category?</h2>
+            <p>Counting by category without grouping is like sorting socks with your eyes closed: brave, but not useful.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="studentLoan">Student.StudentID = Loan.StudentID</button>
-            <button class="choice-card" type="button" data-hook="studentBook">Student.StudentID = Book.BookID</button>
-            <button class="choice-card" type="button" data-hook="title">Student.StudentName = Book.Title</button>
-            <button class="choice-card" type="button" data-hook="category">Loan.StudentID = Book.Category</button>
+            <button class="choice-card" type="button" data-hook="group">SELECT Category, COUNT(*) FROM Book GROUP BY Category</button>
+            <button class="choice-card" type="button" data-hook="order">SELECT Category FROM Book ORDER BY Category</button>
+            <button class="choice-card" type="button" data-hook="where">SELECT Category FROM Book WHERE COUNT(*)</button>
+            <button class="choice-card" type="button" data-hook="star">SELECT * FROM Book</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the condition where both fields store the same kind of value.
+            Choose the query that creates a count per category.
           </div>
         </section>
 
-        <section class="panel" id="relationships" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
+        <section class="panel" id="orderby" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Related tables use primary keys and foreign keys</h2>
-            <p>A join combines rows when matching key fields refer to the same real-world item.</p>
+            <h2><code>ORDER BY</code> sorts output rows</h2>
+            <p><code>ORDER BY</code> controls the order of the result rows. <code>ASC</code> means ascending; <code>DESC</code> means descending.</p>
           </div>
-          <div class="relationship-map">
-            <article>
-              <h3>Student</h3>
-              <p><code>StudentID</code> primary key</p>
-              <p><code>StudentName</code>, <code>TutorGroup</code></p>
-            </article>
-            <div class="connector">1 to many<br /><code>StudentID</code></div>
-            <article>
-              <h3>Loan</h3>
-              <p><code>LoanID</code> primary key</p>
-              <p><code>StudentID</code>, <code>BookID</code> foreign keys</p>
-            </article>
-            <div class="connector">many to 1<br /><code>BookID</code></div>
-            <article>
-              <h3>Book</h3>
-              <p><code>BookID</code> primary key</p>
-              <p><code>Title</code>, <code>Category</code></p>
-            </article>
+          <div class="clause-grid">
+            <article><strong>Ascending</strong><span><code>ORDER BY Price ASC</code>: low to high, A to Z, oldest to newest.</span></article>
+            <article><strong>Descending</strong><span><code>ORDER BY Price DESC</code>: high to low, Z to A, newest to oldest.</span></article>
+            <article><strong>Default</strong><span>Many SQL systems default to ascending, but exams may expect explicit <code>ASC</code> if asked.</span></article>
           </div>
-          <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；join = 连接/关联查询；related tables = 相关联的数据表。</div>
         </section>
 
-        <!-- stage10-explanation:start relationships -->
-        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <h2 class="explanation-sr-only" id="explanation-relationships-title">Related tables use primary keys and foreign keys</h2>
+        <!-- stage10-explanation:start orderby -->
+        <section class="panel explanation-panel" id="explanation-orderby" data-explains="orderby" data-explanation-kind="process" aria-labelledby="explanation-orderby-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
+          <h2 class="explanation-sr-only" id="explanation-orderby-title">ORDER BY sorts output rows</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-relationships.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Related tables use primary keys and foreign keys with a structured visual model." />
-            <figcaption class="explanation-sr-only">Related tables use primary keys and foreign keys: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-orderby.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ORDER BY sorts output rows with a structured visual model." />
+            <figcaption class="explanation-sr-only">ORDER BY sorts output rows: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A join combines rows when matching key fields refer to the same real-world item.</li><li><strong>Lesson fact:</strong> StudentID primary key</li><li><strong>Lesson fact:</strong> StudentName , TutorGroup</li><li><strong>Lesson fact:</strong> 1 to many</li><li><strong>Lesson fact:</strong> StudentID</li><li><strong>Lesson fact:</strong> LoanID primary key</li><li><strong>Lesson fact:</strong> StudentID , BookID foreign keys</li><li><strong>Lesson fact:</strong> many to 1</li><li><strong>Lesson fact:</strong> BookID primary key</li><li><strong>Lesson fact:</strong> Title , Category</li></ol>
+            <ol><li><strong>Lesson fact:</strong> ORDER BY controls the order of the result rows. ASC means ascending; DESC means descending.</li><li><strong>Lesson fact:</strong> Ascending ORDER BY Price ASC : low to high, A to Z, oldest to newest.</li><li><strong>Lesson fact:</strong> Descending ORDER BY Price DESC : high to low, Z to A, newest to oldest.</li><li><strong>Lesson fact:</strong> Default Many SQL systems default to ascending, but exams may expect explicit ASC if asked.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end relationships -->
-        <section class="panel" id="join" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
+        <!-- stage10-explanation:end orderby -->
+        <section class="panel" id="aggregates" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Join conditions say which fields match</h2>
-            <p>AS questions require explicit <code>INNER JOIN</code> syntax using at most two tables. Put the matching-key relationship after <code>ON</code>.</p>
+            <h2>Aggregate functions calculate one summary value</h2>
           </div>
-          <div class="answer-frame">
-            <strong>Two-table pattern:</strong>
-            <span><code>SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID</code></span>
-          </div>
-          <div class="clause-grid">
-            <article><strong>INNER JOIN</strong><span>Names the second table that supplies related fields.</span></article>
-            <article><strong>ON</strong><span><code>Student.StudentID = Loan.StudentID</code> matches rows describing the same student.</span></article>
-            <article><strong>Extra filter</strong><span>Use <code>WHERE Loan.Returned = FALSE</code> after the join for a separate row condition.</span></article>
+          <div class="aggregate-table" role="table" aria-label="Aggregate functions">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Function</div>
+              <div role="columnheader">Purpose</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>COUNT</code></div>
+              <div role="cell">Counts records or non-null values</div>
+              <div role="cell"><code>SELECT COUNT(*) FROM Book</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>SUM</code></div>
+              <div role="cell">Adds numeric values</div>
+              <div role="cell"><code>SELECT SUM(Price) FROM Book</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>AVG</code></div>
+              <div role="cell">Calculates the mean</div>
+              <div role="cell"><code>SELECT AVG(Price) FROM Book</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>MIN</code>, <code>MAX</code></div>
+              <div role="cell">Finds smallest or largest value</div>
+              <div role="cell"><code>SELECT MAX(Price) FROM Book</code></div>
+            </div>
           </div>
         </section>
 
-        <section class="panel" id="aliases" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Table-qualified names and aliases prevent ambiguity</h2>
-            <p>If two tables have a field with the same name, write the table name or alias before the field.</p>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Full name</strong><span><code>Student.StudentID</code> clearly means the field from Student.</span></article>
-            <article><strong>Alias</strong><span><code>Student AS S</code> lets you write <code>S.StudentID</code>.</span></article>
-            <article><strong>Exam caution</strong><span>Only use aliases if they make the query clear. Do not hide the join logic.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start aliases -->
-        <section class="panel explanation-panel" id="explanation-aliases" data-explains="aliases" data-explanation-kind="mechanism" aria-labelledby="explanation-aliases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <h2 class="explanation-sr-only" id="explanation-aliases-title">Table-qualified names and aliases prevent ambiguity</h2>
+        <!-- stage10-explanation:start aggregates -->
+        <section class="panel explanation-panel" id="explanation-aggregates" data-explains="aggregates" data-explanation-kind="mechanism" aria-labelledby="explanation-aggregates-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
+          <h2 class="explanation-sr-only" id="explanation-aggregates-title">Aggregate functions calculate one summary value</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-aliases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Table-qualified names and aliases prevent ambiguity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Table-qualified names and aliases prevent ambiguity: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-aggregates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Aggregate functions calculate one summary value with a structured visual model." />
+            <figcaption class="explanation-sr-only">Aggregate functions calculate one summary value: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> If two tables have a field with the same name, write the table name or alias before the field.</li><li><strong>Lesson fact:</strong> Full name Student.StudentID clearly means the field from Student.</li><li><strong>Lesson fact:</strong> Alias Student AS S lets you write S.StudentID .</li><li><strong>Lesson fact:</strong> Exam caution Only use aliases if they make the query clear. Do not hide the join logic.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> COUNT(*) counts all rows in the result, including rows containing null values.</li><li><strong>Lesson fact:</strong> COUNT(column) counts only non-null values in the named column.</li><li><strong>Lesson fact:</strong> SUM, AVG and COUNT operate on the rows remaining after filtering and grouping rules are applied.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end aliases -->
+        <!-- stage10-explanation:end aggregates -->
+        <section class="panel" id="groupby" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2><code>GROUP BY</code> calculates summaries per group</h2>
+            <p>Use <code>GROUP BY</code> when the question asks for a summary for each category, each borrower, each course or each group.</p>
+          </div>
+          <div class="answer-frame">
+            <strong>Pattern:</strong>
+            <span><code>SELECT Category, COUNT(*) FROM Book GROUP BY Category;</code></span>
+          </div>
+          <div class="callout">Chinese support: sort = 排序；aggregate = 汇总函数；group = 分组；per category = 每个类别。</div>
+        </section>
+
+        <!-- stage10-explanation:start groupby -->
+        <section class="panel explanation-panel" id="explanation-groupby" data-explains="groupby" data-explanation-kind="mechanism" aria-labelledby="explanation-groupby-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
+          <h2 class="explanation-sr-only" id="explanation-groupby-title">GROUP BY calculates summaries per group</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-groupby.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining GROUP BY calculates summaries per group with a structured visual model." />
+            <figcaption class="explanation-sr-only">GROUP BY calculates summaries per group: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> SELECT Category, COUNT(*) FROM Book GROUP BY Category;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end groupby -->
         <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Trace joined rows from small tables</h2>
+            <h2>Trace summaries from a small table</h2>
           </div>
-          <div class="table-stack">
-            <div class="data-table student-table" role="table" aria-label="Student table">
-              <div class="table-row table-head" role="row"><div>StudentID</div><div>StudentName</div><div>TutorGroup</div></div>
-              <div class="table-row" role="row"><div>S01</div><div>Amira</div><div>12A</div></div>
-              <div class="table-row" role="row"><div>S02</div><div>Leo</div><div>12B</div></div>
-              <div class="table-row" role="row"><div>S03</div><div>Maya</div><div>12A</div></div>
+          <div class="data-table" role="table" aria-label="Book table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">BookID</div>
+              <div role="columnheader">Title</div>
+              <div role="columnheader">Category</div>
+              <div role="columnheader">Price</div>
+              <div role="columnheader">Copies</div>
             </div>
-            <div class="data-table loan-table" role="table" aria-label="Loan table">
-              <div class="table-row table-head" role="row"><div>LoanID</div><div>StudentID</div><div>BookID</div><div>Returned</div></div>
-              <div class="table-row" role="row"><div>L01</div><div>S01</div><div>B01</div><div>FALSE</div></div>
-              <div class="table-row" role="row"><div>L02</div><div>S02</div><div>B02</div><div>TRUE</div></div>
-              <div class="table-row" role="row"><div>L03</div><div>S03</div><div>B03</div><div>FALSE</div></div>
-              <div class="table-row" role="row"><div>L04</div><div>S01</div><div>B03</div><div>TRUE</div></div>
+            <div class="table-row" role="row">
+              <div role="cell">B01</div><div role="cell">Networks</div><div role="cell">Computing</div><div role="cell">12.50</div><div role="cell">4</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">B02</div><div role="cell">Poems</div><div role="cell">Literature</div><div role="cell">8.00</div><div role="cell">7</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">B03</div><div role="cell">Databases</div><div role="cell">Computing</div><div role="cell">15.00</div><div role="cell">3</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">B04</div><div role="cell">Drama</div><div role="cell">Literature</div><div role="cell">9.50</div><div role="cell">2</div>
             </div>
           </div>
         </section>
@@ -277,57 +313,57 @@
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
-            <p class="eyebrow">Interactive join builder</p>
-            <h2>Choose the join path for the request</h2>
+            <p class="eyebrow">Interactive query builder</p>
+            <h2>Choose the right summary query</h2>
           </div>
           <div class="converter-grid">
             <label>
               English request
               <select id="builderInput">
-                <option value="studentLoans">Show StudentName and LoanID for all loans.</option>
-                <option value="loanTitles">Start from Loan and show LoanID with StudentName.</option>
-                <option value="currentBooks">Show StudentName and LoanID for current loans only.</option>
-                <option value="computingBorrowers">Show 12A students who have a loan.</option>
-                <option value="aliasCurrent">Use aliases for the current-loan query.</option>
+                <option value="priceDesc">Show Title and Price sorted by Price highest first.</option>
+                <option value="countAll">Count all books.</option>
+                <option value="avgPrice">Find the average price of all books.</option>
+                <option value="countCategory">Count books in each Category.</option>
+                <option value="sumCopiesCategory">Show total Copies for each Category.</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
           </div>
           <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
-          <div class="feedback" id="builderReason">The output will show which relationship path is needed.</div>
+          <div class="feedback" id="builderReason">The output will choose sorting, aggregate or grouping as needed.</div>
         </section>
 
         <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Interactive result runner</p>
-            <h2>Run preset joins against the sample tables</h2>
+            <h2>Run preset queries against the Book table</h2>
           </div>
           <div class="converter-grid">
             <label>
               Query
               <select id="queryInput">
-                <option value="q1">StudentName and LoanID for all loans</option>
-                <option value="q2">LoanID and StudentName for all loans</option>
-                <option value="q3">StudentName and LoanID for current loans</option>
-                <option value="q4">12A students who have a loan</option>
-                <option value="q5">StudentName, LoanID and TutorGroup for returned loans</option>
+                <option value="q1">SELECT Title, Price FROM Book ORDER BY Price DESC</option>
+                <option value="q2">SELECT COUNT(*) FROM Book</option>
+                <option value="q3">SELECT AVG(Price) FROM Book</option>
+                <option value="q4">SELECT Category, COUNT(*) FROM Book GROUP BY Category</option>
+                <option value="q5">SELECT Category, SUM(Copies) FROM Book GROUP BY Category</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="queryBtn">Run join</button>
+            <button class="primary-button" type="button" id="queryBtn">Run query</button>
           </div>
-          <div class="result-table" id="queryResult">Choose a query to see the joined result.</div>
+          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Build the relationship path first</h2>
+            <h2>Choose the correct SQL tool</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="twoTable">Two-table join</button>
-            <button class="tab" type="button" data-example="threeTable">Reverse table order</button>
-            <button class="tab" type="button" data-example="filter">Join plus filter</button>
-            <button class="tab" type="button" data-example="alias">Alias version</button>
+            <button class="tab active" type="button" data-example="sort">Sorting</button>
+            <button class="tab" type="button" data-example="count">COUNT</button>
+            <button class="tab" type="button" data-example="average">AVG</button>
+            <button class="tab" type="button" data-example="group">GROUP BY</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -335,7 +371,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short quiz and core checks</h2>
+            <h2>5-minute quiz and core checks</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -344,7 +380,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak join logic</h2>
+            <h2>Repair sorting and aggregate errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -353,7 +389,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about join paths and requested fields.</p>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about aggregate choice and GROUP BY use.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -361,12 +397,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Join checklist</h2>
+            <h2>SQL extension checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Identify keys</strong><span>Find the primary key and matching foreign key fields.</span></div>
-            <div><strong>Write conditions</strong><span>Use one join condition for each relationship bridge.</span></div>
-            <div><strong>Output exactly</strong><span>Select only the fields requested by the question.</span></div>
+            <div><strong>ORDER BY</strong><span>Sort result rows; use ASC or DESC as required.</span></div>
+            <div><strong>Aggregates</strong><span>Calculate summaries: count, total, average, minimum or maximum.</span></div>
+            <div><strong>GROUP BY</strong><span>Use when the summary is needed for each group.</span></div>
           </div>
         </section>
 
@@ -377,25 +413,25 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Draw the path</strong>
-              <span>Draw the relationship between <code>Student</code> and <code>Loan</code>. Label the primary key and matching foreign key.</span>
+              <strong>Task 1: Query writing</strong>
+              <span>Write one query each using <code>ORDER BY</code>, <code>COUNT</code>, <code>AVG</code> and <code>GROUP BY</code> for the Book table.</span>
             </article>
             <article>
-              <strong>Task 2: Write three joins</strong>
-              <span>Using only <code>Student</code> and <code>Loan</code>, write SQL for: all matched loans; current loans; and current loans for TutorGroup 12A.</span>
+              <strong>Task 2: Result tracing</strong>
+              <span>Trace the result of <code>SELECT Category, SUM(Copies) FROM Book GROUP BY Category</code> using the table on this page.</span>
             </article>
             <article>
-              <strong>Task 3: 6-mark correction</strong>
-              <span>Correct this query and explain the errors: <code>SELECT * FROM Student, Loan WHERE Student.StudentID = Loan.LoanID;</code></span>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Write SQL to show the number of books in each category." Then annotate the aggregate and grouping clauses.</span>
             </article>
           </div>
         </section>
       </div>
     </main>
 
-    <script src="./app.js?v=2"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

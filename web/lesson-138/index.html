@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 138 | Debugging using traces and breakpoints</title>
+    <title>AS9618 Lesson 138 | Testing with normal, abnormal, and extreme/boundary data</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Debugging using traces and breakpoints</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11 | Optional enrichment preview of Section 12.3</p>
+        <h1>Testing with normal, abnormal, and extreme/boundary data</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,444 +29,337 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#purpose">Debugging</a>
-        <a href="#trace">Trace table</a>
-        <a href="#breakpoint">Breakpoint</a>
-        <a href="#watch">Watch variables</a>
-        <a href="#stepping">Stepping</a>
-        <a href="#bug">Fault example</a>
+        <a href="#purpose">Why testing</a>
+        <a href="#normal">Normal data</a>
+        <a href="#boundary">Boundary data</a>
+        <a href="#erroneous">Abnormal data</a>
+        <a href="#table">Test table</a>
+        <a href="#validation">Validation</a>
         <a href="#java">Java support</a>
-        <a href="#simulator">Trace simulator</a>
-        <a href="#chooser">Breakpoint chooser</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#builder">Table builder</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
-        <a href="#debug">Mistakes</a>
+        <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Debugging, error correction and program enhancement</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</p>
-            <p>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</p>
-            <p>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</p>
-            <p>A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.</p>
-            <p>Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.</p>
-            <p>Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.</p>
-            <p>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</p>
-            <p>Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Correct three different faults / Add a Merit count without breaking PassCount</h3>
-            <p>A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark &gt; 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark &gt;= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division. The existing program counts marks at least 50 in PassCount. Analysis shows one traversal already reads every mark, so declare and initialise MeritCount, add IF Marks[Index] &gt;= 70 THEN MeritCount &lt;- MeritCount + 1 ENDIF inside the same loop, and output both counters after the loop. Test 49, 50, 69 and 70 to cover unchanged pass behaviour and the new merit boundary.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start logic -->
-        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="mechanism" aria-labelledby="explanation-logic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
-          <h2 class="explanation-sr-only" id="explanation-logic-title">Logic errors make the program do the wrong thing</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Logic errors make the program do the wrong thing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Logic errors make the program do the wrong thing: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li><strong>Lesson fact:</strong> Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li><strong>Lesson fact:</strong> Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li><strong>Lesson fact:</strong> Common error A translator may not detect it because the instructions are legal.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end logic -->
-
-        <!-- stage10-explanation:start bug -->
-        <section class="panel explanation-panel" id="explanation-bug" data-explains="bug" data-explanation-kind="mechanism" aria-labelledby="explanation-bug-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
-          <h2 class="explanation-sr-only" id="explanation-bug-title">Analyse and amend an existing program</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Analyse and amend an existing program with a structured visual model." />
-            <figcaption class="explanation-sr-only">Analyse and amend an existing program: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.</li><li><strong>Lesson fact:</strong> Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.</li><li><strong>Lesson fact:</strong> Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end bug -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Debugging, error correction and program enhancement: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which method can expose a syntactically valid wrong boundary?</p>
-              <details><summary>Show answer</summary><p>A trace, dry run, walkthrough or selected boundary test can expose the wrong result.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why is a translator insufficient for all logic errors?</p>
-              <details><summary>Show answer</summary><p>Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What must happen after a correction?</p>
-              <details><summary>Show answer</summary><p>Rerun the failing test and relevant regression tests to check the correction and existing behaviour.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> What should be recorded before changing existing code?</p>
-              <details><summary>Show answer</summary><p>Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why rerun old tests after adding a feature?</p>
-              <details><summary>Show answer</summary><p>Regression tests check that the amendment has not broken existing behaviour.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> How is an enhancement different from merely correcting a fault?</p>
-              <details><summary>Show answer</summary><p>An enhancement adds or improves required functionality; a correction restores behaviour that was already required.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
-            <p>For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark &gt; 50 when 50 should pass; Average &lt;- Total / Count when Count can be zero. An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>missing ENDIF identified as syntax error and translator/dynamic syntax check used</td><td>Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct. Do not accept a rewrite that removes the existing pass count, changes its boundary, or tests only the new feature.</td><td>1</td></tr>
-                  <tr><td>adds the required ENDIF</td><td></td><td>1</td></tr>
-                  <tr><td>Mark &gt; 50 identified as logic error and boundary trace/test at 50 used</td><td></td><td>1</td></tr>
-                  <tr><td>changes the condition to Mark &gt;= 50 or equivalent</td><td></td><td>1</td></tr>
-                  <tr><td>division by zero identified as run-time error/risk and execution/test diagnostics used</td><td></td><td>1</td></tr>
-                  <tr><td>guards the division by checking Count or handles the zero case</td><td></td><td>1</td></tr>
-                  <tr><td>analysis identifies the existing traversal and output that must remain</td><td></td><td>1</td></tr>
-                  <tr><td>declares and initialises MeritCount without removing PassCount</td><td></td><td>1</td></tr>
-                  <tr><td>increments MeritCount inside the existing traversal when mark is at least 70</td><td></td><td>1</td></tr>
-                  <tr><td>preserves the existing pass condition at 50 and outputs both results after the loop</td><td></td><td>1</td></tr>
-                  <tr><td>uses 49 and 50 to regression-test the pass boundary</td><td></td><td>1</td></tr>
-                  <tr><td>uses 69 and 70 to test the new merit boundary</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 138 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
-            <h2>A debugger provides evidence about program state and execution flow.</h2>
+            <p class="lesson-meta">Lesson 138 | 45 minutes | Paper 2 Section 11 | Optional enrichment preview of Section 12.3 | informal questioning</p>
+            <h2>Testing is not “try three lucky numbers and hope the program behaves”.</h2>
             <p>
-              Debugging means finding and correcting faults in an algorithm or program. In this lesson, traces show how
-              variable values change, while breakpoints pause execution so the program can be inspected before it confidently
-              walks into the wrong answer. Chinese support: trace 跟踪, breakpoint 断点, watch 监视变量, step 单步执行。
+              A good test set checks typical valid data, edge values, and invalid data. Cambridge questions often ask for
+              <strong>normal</strong>, <strong>abnormal</strong> and <strong>extreme/boundary</strong> test data, plus the expected result.
+              Chinese support: normal 正常数据, abnormal 异常数据, extreme/boundary 极限/边界数据, expected result 预期结果。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Trace</strong><span>variables through pseudocode using a clear table</span></div>
-              <div><strong>Pause</strong><span>execution at a breakpoint and inspect state</span></div>
-              <div><strong>Explain</strong><span>how debugging tools help locate logic errors</span></div>
+              <div><strong>Classify</strong><span>test data as normal, abnormal or extreme/boundary</span></div>
+              <div><strong>Design</strong><span>a test table with data, reason and expected result</span></div>
+              <div><strong>Explain</strong><span>why edge cases reveal faults that normal data can miss</span></div>
             </div>
           </div>
-          <div class="debug-visual" aria-label="Debugging visual">
-            <div><strong>Line 1</strong><span>INPUT Mark</span><em>state begins</em></div>
-            <div><strong>Line 2</strong><span>IF Mark &gt;= 50</span><em>decision point</em></div>
-            <div><strong>Trace</strong><span>Mark = 49</span><em>expected Resit needed</em></div>
-            <div><strong>Breakpoint</strong><span>pause before branch</span><em>inspect, then step</em></div>
+          <div class="test-visual" aria-label="Test data visual">
+            <div><strong>0</strong><span>lower boundary</span><em>valid if range includes 0</em></div>
+            <div><strong>50</strong><span>normal</span><em>typical valid mark</em></div>
+            <div><strong>100</strong><span>upper boundary</span><em>valid if range includes 100</em></div>
+            <div><strong>-1 / 101 / "cat"</strong><span>abnormal</span><em>invalid and should be rejected</em></div>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 may ask students to trace an algorithm, identify a logic error, or explain why breakpoints help debugging.</p>
+            <p>Paper 2 answers need precise test data and expected outcomes. “Test it a lot” is effort, not a mark-worthy method.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A syntax error stops code from running. A logic error runs, but produces the wrong result. Traces are especially useful for logic errors.</p>
+            <p>Boundary data is not automatically invalid. For a mark range 0 to 100 inclusive, <code>0</code> and <code>100</code> are valid boundary values.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>The pass mark is 50. Which line is best for a breakpoint?</h2>
-            <p>The program sometimes outputs the wrong message. Choose where to pause so you can inspect the decision.</p>
+            <h2>A mark must be an integer from 0 to 100 inclusive. Which value is valid boundary data?</h2>
+            <p>Select one option. The program is not allowed to “feel the vibe”; it must follow the range rule.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="input">Line 1: INPUT Mark</button>
-            <button class="choice-card" type="button" data-hook="if">Line 2: IF Mark &gt; 50 THEN</button>
-            <button class="choice-card" type="button" data-hook="pass">Line 3: OUTPUT "Pass"</button>
-            <button class="choice-card" type="button" data-hook="end">Line 6: ENDIF</button>
+            <button class="choice-card" type="button" data-hook="50">50</button>
+            <button class="choice-card" type="button" data-hook="0">0</button>
+            <button class="choice-card" type="button" data-hook="101">101</button>
+            <button class="choice-card" type="button" data-hook="cat">"cat"</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line where the branch decision is made.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the value at the edge of the valid range.</div>
         </section>
 
         <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
-            <p class="eyebrow">Debugging</p>
-            <h2>Debugging locates and corrects faults</h2>
+            <p class="eyebrow">Why testing</p>
+            <h2>Testing compares actual results with expected results</h2>
             <p>
-              A program can be syntactically valid and still wrong. Debugging checks the actual behaviour against the intended
-              behaviour, then narrows down where the fault occurs.
+              A test is useful only if it can reveal whether the program behaves correctly. A strong test case has input data,
+              a reason for choosing it, and a clear expected result.
             </p>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Faulty pseudocode</h3>
-              <pre><code>INPUT Mark
-IF Mark &gt; 50 THEN
-    OUTPUT "Pass"
+              <h3>Validation rule</h3>
+              <pre><code>IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+    OUTPUT "Accepted"
 ELSE
-    OUTPUT "Resit needed"
+    OUTPUT "Rejected"
 ENDIF</code></pre>
             </article>
             <article>
-              <h3>Intended rule</h3>
-              <p>A mark of <code>50</code> should pass. The code uses <code>&gt;</code>, so <code>50</code> incorrectly goes to the ELSE branch.</p>
-              <div class="callout">The bug is small. Its exam mark consequences are not.</div>
+              <h3>Testing question</h3>
+              <p>Which values provide evidence that the rule accepts valid marks and rejects invalid marks for the selected cases?</p>
+              <div class="callout">Normal data checks typical valid use. Extreme/boundary data checks accepted limits. Abnormal data checks rejection of invalid input.</div>
             </article>
           </div>
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">Debugging locates and corrects faults</h2>
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="comparison" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Testing compares actual results with expected results</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Debugging locates and corrects faults with a structured visual model." />
-            <figcaption class="explanation-sr-only">Debugging locates and corrects faults: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Testing compares actual results with expected results with a structured visual model." />
+            <figcaption class="explanation-sr-only">Testing compares actual results with expected results: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> IF Mark &gt; 50 THEN
-    OUTPUT &quot;Pass&quot;
+            <ol><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+    OUTPUT &quot;Valid&quot;
 ELSE
-    OUTPUT &quot;Fail&quot;
-ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid but still contains the deliberate logic error Mark &gt; 50 at the boundary.</li><li><strong>Lesson fact:</strong> Cambridge pseudocode closes the selection with ENDIF, not END IF.</li></ol>
+    OUTPUT &quot;Invalid&quot;
+ENDIF</li><li><strong>Lesson fact:</strong> Normal, abnormal and extreme/boundary test data provide evidence for the selected cases.</li><li><strong>Lesson fact:</strong> Finite testing can expose faults but does not prove correctness for every possible input.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+        <section class="panel" id="normal" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
-            <p class="eyebrow">Trace table</p>
-            <h2>A trace table records values after each important step</h2>
+            <p class="eyebrow">Normal data</p>
+            <h2>Normal data is valid, typical data inside the allowed range</h2>
           </div>
-          <div class="data-table four-col" role="table" aria-label="Trace table example">
-            <div class="table-row table-head"><div>Step</div><div>Mark</div><div>Condition</div><div>Output</div></div>
-            <div class="table-row"><div>Input</div><div><code>50</code></div><div>-</div><div>-</div></div>
-            <div class="table-row"><div>IF Mark &gt; 50</div><div><code>50</code></div><div>False</div><div>-</div></div>
-            <div class="table-row"><div>ELSE branch</div><div><code>50</code></div><div>-</div><div>Resit needed</div></div>
+          <div class="data-table three-col" role="table" aria-label="Normal data examples">
+            <div class="table-row table-head"><div>Rule</div><div>Normal test data</div><div>Expected result</div></div>
+            <div class="table-row"><div>Mark 0 to 100 inclusive</div><div><code>50</code></div><div>Accepted</div></div>
+            <div class="table-row"><div>Password length 8 to 20</div><div><code>12</code> characters</div><div>Accepted</div></div>
+            <div class="table-row"><div>Age 11 to 18 inclusive</div><div><code>15</code></div><div>Accepted</div></div>
           </div>
-          <div class="callout">The trace shows the actual route through the program. The expected route for 50 should have been Pass.</div>
         </section>
 
-        <section class="panel" id="breakpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+        <!-- stage10-explanation:start normal -->
+        <section class="panel explanation-panel" id="explanation-normal" data-explains="normal" data-explanation-kind="mechanism" aria-labelledby="explanation-normal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+          <h2 class="explanation-sr-only" id="explanation-normal-title">Normal data is valid, typical data inside the allowed range</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-normal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Normal data is valid, typical data inside the allowed range with a structured visual model." />
+            <figcaption class="explanation-sr-only">Normal data is valid, typical data inside the allowed range: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Normal data</li><li><strong>Lesson fact:</strong> Normal test data</li><li><strong>Lesson fact:</strong> Expected result</li><li><strong>Lesson fact:</strong> Mark 0 to 100 inclusive</li><li><strong>Lesson fact:</strong> Accepted</li><li><strong>Lesson fact:</strong> Password length 8 to 20</li><li><strong>Lesson fact:</strong> 12 characters</li><li><strong>Lesson fact:</strong> Age 11 to 18 inclusive</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end normal -->
+        <section class="panel" id="boundary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
-            <p class="eyebrow">Breakpoint</p>
-            <h2>A breakpoint pauses execution at a chosen line</h2>
+            <p class="eyebrow">Extreme / boundary data</p>
+            <h2>Extreme or boundary data uses valid values at accepted limits</h2>
+            <p>Use the exact valid lower and upper limits. Values just outside those limits are abnormal, not valid extreme/boundary data.</p>
+          </div>
+          <div class="range-strip" aria-label="Range 0 to 100">
+            <span class="bad">-1<br />just outside</span>
+            <span class="edge">0<br />lower boundary</span>
+            <span class="normal">50<br />normal</span>
+            <span class="edge">100<br />upper boundary</span>
+            <span class="bad">101<br />just outside</span>
+          </div>
+          <div class="callout">Cambridge marking rewards precise limit values. “Near the edge” is not a test case, and a value outside the accepted range is abnormal.</div>
+        </section>
+        <section class="panel" id="erroneous" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+          <div class="section-title">
+            <p class="eyebrow">Abnormal data</p>
+            <h2>Abnormal data is invalid data that should be rejected</h2>
           </div>
           <div class="card-grid">
             <article>
-              <h3>Best place</h3>
-              <p>Place a breakpoint before or on the line where the suspected decision or calculation happens.</p>
+              <h3>Out of range</h3>
+              <p><code>-1</code> or <code>101</code> for a mark from 0 to 100. Expected result: rejected.</p>
             </article>
             <article>
-              <h3>What to inspect</h3>
-              <p>Check variable values, the next line to execute, and whether the condition is true or false.</p>
+              <h3>Wrong type</h3>
+              <p><code>"cat"</code> where an integer mark is required. Expected result: rejected or error handled.</p>
             </article>
             <article>
-              <h3>What not to do</h3>
-              <p>Do not scatter breakpoints randomly. Random pausing is just procrastination wearing a technical hat.</p>
+              <h3>Missing required data</h3>
+              <p>An empty name when a name must be entered. Expected result: rejected with a suitable message.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start breakpoint -->
-        <section class="panel explanation-panel" id="explanation-breakpoint" data-explains="breakpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-breakpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
-          <h2 class="explanation-sr-only" id="explanation-breakpoint-title">A breakpoint pauses execution at a chosen line</h2>
+        <!-- stage10-explanation:start erroneous -->
+        <section class="panel explanation-panel" id="explanation-erroneous" data-explains="erroneous" data-explanation-kind="mechanism" aria-labelledby="explanation-erroneous-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+          <h2 class="explanation-sr-only" id="explanation-erroneous-title">Abnormal data is invalid data that should be rejected</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-breakpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A breakpoint pauses execution at a chosen line with a structured visual model." />
-            <figcaption class="explanation-sr-only">A breakpoint pauses execution at a chosen line: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-erroneous.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Abnormal data is invalid data that should be rejected with a structured visual model." />
+            <figcaption class="explanation-sr-only">Abnormal data is invalid data that should be rejected: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Breakpoint</li><li><strong>Lesson fact:</strong> Best place</li><li><strong>Lesson fact:</strong> Place a breakpoint before or on the line where the suspected decision or calculation happens.</li><li><strong>Lesson fact:</strong> What to inspect</li><li><strong>Lesson fact:</strong> Check variable values, the next line to execute, and whether the condition is true or false.</li><li><strong>Lesson fact:</strong> What not to do</li><li><strong>Lesson fact:</strong> Do not scatter breakpoints randomly. Random pausing is just procrastination wearing a technical hat.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Abnormal data is invalid data that should be rejected or handled.</li><li><strong>Lesson fact:</strong> For a mark from 0 to 100, -1 and 101 are out-of-range abnormal data.</li><li><strong>Lesson fact:</strong> The string &quot;cat&quot; is wrong-type abnormal data when an integer mark is required.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end breakpoint -->
-        <section class="panel" id="watch" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+        <!-- stage10-explanation:end erroneous -->
+        <section class="panel" id="table" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
-            <p class="eyebrow">Watch variables</p>
-            <h2>Watching variables shows state changes while stepping</h2>
+            <p class="eyebrow">Test table</p>
+            <h2>A clear test table turns thinking into marks</h2>
           </div>
-          <div class="data-table three-col" role="table" aria-label="Watched variable example">
-            <div class="table-row table-head"><div>Variable</div><div>Expected</div><div>Suspicious result</div></div>
-            <div class="table-row"><div><code>Total</code></div><div>increases by each item price</div><div>resets to 0 inside loop</div></div>
-            <div class="table-row"><div><code>Index</code></div><div>moves through every array element</div><div>skips first or last element</div></div>
-            <div class="table-row"><div><code>Mark</code></div><div>50 passes</div><div>50 goes to ELSE branch</div></div>
+          <div class="data-table four-col" role="table" aria-label="Test table structure">
+            <div class="table-row table-head"><div>Test data</div><div>Type</div><div>Reason</div><div>Expected result</div></div>
+            <div class="table-row"><div><code>50</code></div><div>Normal</div><div>typical valid mark</div><div>Accepted</div></div>
+            <div class="table-row"><div><code>0</code></div><div>Boundary</div><div>lowest valid mark</div><div>Accepted</div></div>
+            <div class="table-row"><div><code>100</code></div><div>Boundary</div><div>highest valid mark</div><div>Accepted</div></div>
+            <div class="table-row"><div><code>-1</code></div><div>Abnormal</div><div>below valid range</div><div>Rejected</div></div>
+            <div class="table-row"><div><code>"cat"</code></div><div>Abnormal</div><div>wrong data type</div><div>Rejected or handled</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start watch -->
-        <section class="panel explanation-panel" id="explanation-watch" data-explains="watch" data-explanation-kind="mechanism" aria-labelledby="explanation-watch-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
-          <h2 class="explanation-sr-only" id="explanation-watch-title">Watching variables shows state changes while stepping</h2>
+        <!-- stage10-explanation:start table -->
+        <section class="panel explanation-panel" id="explanation-table" data-explains="table" data-explanation-kind="mechanism" aria-labelledby="explanation-table-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+          <h2 class="explanation-sr-only" id="explanation-table-title">A clear test table turns thinking into marks</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-watch.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Watching variables shows state changes while stepping with a structured visual model." />
-            <figcaption class="explanation-sr-only">Watching variables shows state changes while stepping: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-table.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A clear test table turns thinking into marks with a structured visual model." />
+            <figcaption class="explanation-sr-only">A clear test table turns thinking into marks: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Watch variables</li><li><strong>Lesson fact:</strong> Variable</li><li><strong>Lesson fact:</strong> Expected</li><li><strong>Lesson fact:</strong> Suspicious result</li><li><strong>Lesson fact:</strong> increases by each item price</li><li><strong>Lesson fact:</strong> resets to 0 inside loop</li><li><strong>Lesson fact:</strong> moves through every array element</li><li><strong>Lesson fact:</strong> skips first or last element</li><li><strong>Lesson fact:</strong> 50 passes</li><li><strong>Lesson fact:</strong> 50 goes to ELSE branch</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A test table records test data, its category and the expected result.</li><li><strong>Lesson fact:</strong> Use 50 as normal accepted data and 0 or 100 as valid extreme/boundary accepted data.</li><li><strong>Lesson fact:</strong> Use -1, 101 or a wrong-type input as abnormal data with a rejected or handled expected result.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end watch -->
-        <section class="panel" id="stepping" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+        <!-- stage10-explanation:end table -->
+        <section class="panel" id="validation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
-            <p class="eyebrow">Stepping</p>
-            <h2>Step through code one instruction at a time</h2>
+            <p class="eyebrow">Validation vs testing</p>
+            <h2>Validation is the rule; testing compares actual and expected results for selected cases.</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Step over</h3>
-              <p>Run the next line without entering a called procedure or function. Useful when the call itself is not suspicious.</p>
+              <h3>Validation</h3>
+              <p>A program rule, such as “Mark must be from 0 to 100 inclusive”.</p>
             </article>
             <article>
-              <h3>Step into</h3>
-              <p>Enter a called procedure or function. Useful when the fault may be inside that subroutine.</p>
+              <h3>Testing</h3>
+              <p>A planned set of inputs, such as <code>50</code>, <code>0</code>, <code>100</code>, <code>-1</code>, <code>101</code> and <code>"cat"</code>.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start stepping -->
-        <section class="panel explanation-panel" id="explanation-stepping" data-explains="stepping" data-explanation-kind="mechanism" aria-labelledby="explanation-stepping-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
-          <h2 class="explanation-sr-only" id="explanation-stepping-title">Step through code one instruction at a time</h2>
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Testing checks validation against expected results</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-stepping.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Step through code one instruction at a time with a structured visual model." />
-            <figcaption class="explanation-sr-only">Step through code one instruction at a time: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Testing checks validation against expected results with a structured visual model." />
+            <figcaption class="explanation-sr-only">Testing checks validation against expected results: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Stepping</li><li><strong>Lesson fact:</strong> Step over</li><li><strong>Lesson fact:</strong> Run the next line without entering a called procedure or function. Useful when the call itself is not suspicious.</li><li><strong>Lesson fact:</strong> Step into</li><li><strong>Lesson fact:</strong> Enter a called procedure or function. Useful when the fault may be inside that subroutine.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Testing checks whether validation behaves as expected for selected normal, abnormal and extreme/boundary cases.</li><li><strong>Lesson fact:</strong> Expected and actual results are compared for each test.</li><li><strong>Lesson fact:</strong> Passing a finite test set is evidence, not a proof of universal correctness.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end stepping -->
-        <section class="panel" id="bug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
-          <div class="section-title">
-            <p class="eyebrow">Fault example</p>
-            <h2>Trace the boundary case to expose a logic error</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Buggy condition</h3>
-              <pre><code>IF Mark &gt; 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF</code></pre>
-            </article>
-            <article>
-              <h3>Corrected condition</h3>
-              <pre><code>IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF</code></pre>
-            </article>
-          </div>
-        </section>
-
+        <!-- stage10-explanation:end validation -->
         <section class="panel" id="java" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
-            <h2>Java debugging tools help practice, but Cambridge pseudocode remains the exam format</h2>
+            <h2>Java can help you run examples, but Cambridge pseudocode is the exam answer format</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>INPUT Mark
-IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
+              <pre><code>IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+    OUTPUT "Accepted"
 ELSE
-    OUTPUT "Resit needed"
+    OUTPUT "Rejected"
 ENDIF</code></pre>
             </article>
             <article>
               <h3>Java support example only</h3>
-              <pre><code>int mark = 50;
-if (mark &gt;= 50) {
-    System.out.println("Pass");
+              <pre><code>if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {
+    System.out.println("Accepted");
 } else {
-    System.out.println("Resit needed");
+    System.out.println("Rejected");
 }</code></pre>
             </article>
           </div>
-          <div class="callout">Breakpoints in an IDE are useful for learning, but do not replace a trace table when the exam asks for one.</div>
+          <div class="callout">Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.</div>
         </section>
 
         <!-- stage10-explanation:start java -->
         <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Java debugging tools help practice, but Cambridge pseudocode remains the exam format</h2>
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java can help you run examples, but Cambridge pseudocode is the exam answer format</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java debugging tools help practice, but Cambridge pseudocode remains the exam format with a structured visual model." />
-            <figcaption class="explanation-sr-only">Java debugging tools help practice, but Cambridge pseudocode remains the exam format: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java can help you run examples, but Cambridge pseudocode is the exam answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java can help you run examples, but Cambridge pseudocode is the exam answer format: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> int mark = 50;</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Accepted&quot;</li><li><strong>Lesson fact:</strong> ELSE</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Rejected&quot;</li><li><strong>Lesson fact:</strong> ENDIF</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Accepted&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Rejected&quot;);</li><li><strong>Lesson fact:</strong> }</li><li><strong>Lesson fact:</strong> Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
-            <p class="eyebrow">Interactive trace simulator</p>
-            <h2>Run the faulty condition with a chosen mark</h2>
-            <p>Faulty condition: <code>IF Mark &gt; 50 THEN</code>. Intended rule: 50 or more should pass.</p>
+            <p class="eyebrow">Interactive classifier</p>
+            <h2>Classify a test value for the mark rule</h2>
+            <p>Rule: mark must be an integer from 0 to 100 inclusive.</p>
           </div>
           <div class="tool-grid">
             <label>
-              Mark
-              <input id="markInput" type="number" value="50" />
+              Test value
+              <input id="testValue" type="text" value="50" />
             </label>
-            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
           </div>
-          <div class="trace-output" id="traceOutput" aria-live="polite"></div>
+          <div class="trace-output" id="classifierOutput" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
-            <p class="eyebrow">Breakpoint chooser</p>
-            <h2>Select the most useful breakpoint for a suspected fault</h2>
+            <p class="eyebrow">Test table builder</p>
+            <h2>Choose a validation rule and generate a balanced test set</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Suspected problem
-              <select id="bugSelect">
-                <option value="condition">50 should pass but does not</option>
-                <option value="total">Total is wrong after a loop</option>
-                <option value="procedure">Output from CalculateGrade is wrong</option>
+              Scenario
+              <select id="scenarioSelect">
+                <option value="mark">Mark: integer 0 to 100 inclusive</option>
+                <option value="password">Password length: 8 to 20 characters inclusive</option>
+                <option value="age">Competition age: integer 11 to 18 inclusive</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="chooseBtn">Choose breakpoint</button>
+            <button class="primary-button" type="button" id="buildBtn">Build table</button>
           </div>
-          <div id="breakpointOutput" class="trace-output" aria-live="polite"></div>
+          <div id="builderOutput" class="table-output" aria-live="polite"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Use traces and breakpoints to narrow the fault</h2>
+            <h2>Three ways exam questions ask for testing knowledge</h2>
           </div>
+          <p><strong>Worked classification:</strong> for an integer mark from 0 to 100 inclusive, 50 is normal and accepted; 0 and 100 are valid extreme/boundary values and accepted; -1, 101 and <code>"cat"</code> are abnormal and rejected or handled.</p>
           <div class="tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab-button active" type="button" data-example="trace">Trace table</button>
-            <button class="tab-button" type="button" data-example="breakpoint">Breakpoint</button>
-            <button class="tab-button" type="button" data-example="step">Step into</button>
+            <button class="tab-button active" type="button" data-example="classify">Classify data</button>
+            <button class="tab-button" type="button" data-example="design">Design table</button>
+            <button class="tab-button" type="button" data-example="explain">Explain edge cases</button>
           </div>
           <div id="exampleOutput" class="example-output"></div>
         </section>
@@ -474,15 +367,20 @@ if (mark &gt;= 50) {
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
-            <h2>Instant checking: answer first, reveal second</h2>
+            <h2>Instant checking: short answers first, then reveal the answer</h2>
           </div>
+          <p>Classify each supplied value as normal, abnormal or extreme/boundary, then state its expected result before revealing the model answer.</p>
+          <details>
+            <summary>Show answer</summary>
+            <p>Normal means valid and typical. Abnormal means invalid and rejected or handled. Extreme/boundary means a valid accepted value at the lower or upper limit.</p>
+          </details>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Debug the debugging plan</h2>
+            <h2>Fix the testing plan before the bug writes a memoir</h2>
           </div>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
@@ -502,29 +400,29 @@ if (mark &gt;= 50) {
             <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Trace</strong><span>records variable values and outputs step by step</span></div>
-            <div><strong>Breakpoint</strong><span>pauses execution so state can be inspected</span></div>
-            <div><strong>Debugging</strong><span>uses evidence to locate and correct faults</span></div>
+            <div><strong>Normal</strong><span>valid, typical data inside the allowed range</span></div>
+            <div><strong>Extreme / boundary</strong><span>valid values at the accepted lower or upper limit</span></div>
+            <div><strong>Abnormal</strong><span>invalid data that should be rejected or handled</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Make the bug leave footprints</h2>
+            <h2>Make the expected result impossible to miss</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a trace table for the faulty condition <code>IF Mark &gt; 50</code> using marks 49, 50 and 51. State expected and actual output.</li>
-            <li>Write a 5-mark explanation of how breakpoints and watched variables help debug a loop that calculates a total.</li>
-            <li>Design two debugging steps for a procedure that returns the wrong grade. Include where to place a breakpoint and which variable to watch.</li>
+            <li>Create a test table for a password length rule: 8 to 20 characters inclusive. Include two normal, two valid extreme/boundary and three abnormal tests.</li>
+            <li>Write a 5-mark explanation of why boundary data is useful when testing validation rules.</li>
+            <li>Write Cambridge-style pseudocode for a mark validation check, then list six test cases and their expected results.</li>
           </ol>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

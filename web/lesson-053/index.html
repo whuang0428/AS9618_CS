@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 053 | Operating system roles: process, memory, file and device management</title>
+    <title>AS9618 Lesson 053 | Why an operating system is required and what it manages</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Operating system roles: process, memory, file and device management</h1>
+        <h1>Why an operating system is required and what it manages</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,12 +30,12 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#concept">Core idea</a>
-        <a href="#process">Process</a>
-        <a href="#memory">Memory</a>
-        <a href="#file">File</a>
-        <a href="#device">Device</a>
-        <a href="#services">Other services</a>
-        <a href="#tool">OS role tool</a>
+        <a href="#categories">Categories</a>
+        <a href="#os">Operating system</a>
+        <a href="#utility">Utility software</a>
+        <a href="#translators">Translators</a>
+        <a href="#pathway">Translation pathway</a>
+        <a href="#tool">Classifier</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -66,6 +66,20 @@
             <p>The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start os -->
+        <section class="panel explanation-panel" id="explanation-os" data-explains="os" data-explanation-kind="mechanism" aria-labelledby="explanation-os-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="os">
+          <h2 class="explanation-sr-only" id="explanation-os-title">Operating system: the main coordinator</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-os.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Operating system: the main coordinator with a structured visual model." />
+            <figcaption class="explanation-sr-only">Operating system: the main coordinator: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> User interface Provides a way for users to interact with the computer, such as GUI or command line.</li><li><strong>Lesson fact:</strong> Resource management Allocates and controls hardware resources such as processor time, memory and devices.</li><li><strong>Lesson fact:</strong> File services Provides file organisation, storage access and permission support.</li><li><strong>Lesson fact:</strong> Application services Provides services and APIs that application software can use.</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end os -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
@@ -114,283 +128,281 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 053 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>The operating system is the resource referee.</h2>
+            <h2>System software keeps the computer useful before the apps arrive.</h2>
             <p>
-              Programs want CPU time, memory, files and devices. The operating system
-              coordinates those requests so applications can run without each one
-              grabbing the whole machine and yelling "mine".
+              System software manages the computer, supports application software
+              and helps programs run. This lesson separates operating systems,
+              utility software and language translators so students do not put
+              every program into the same digital drawer.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>process, memory, file and device management roles</span></div>
-              <div><strong>Apply</strong><span>OS roles to realistic user and application scenarios</span></div>
-              <div><strong>Correct</strong><span>confusions between OS, utilities, applications and hardware</span></div>
+              <div><strong>Classify</strong><span>operating systems, utility software and language translators</span></div>
+              <div><strong>Explain</strong><span>how system software supports hardware, applications and users</span></div>
+              <div><strong>Compare</strong><span>compiler, interpreter and assembler at overview level</span></div>
             </div>
           </div>
-          <div class="os-card" aria-label="Operating system role sketch">
-            <div class="os-stack">
-              <span>Applications request resources</span>
-              <span>OS manages access</span>
-              <span>Hardware is used safely</span>
-              <span>User sees a usable system</span>
+          <div class="system-card" aria-label="System software sketch">
+            <div class="system-stack">
+              <span>Hardware</span>
+              <span>System software</span>
+              <span>Application software</span>
+              <span>User tasks</span>
             </div>
-            <p>The OS does not do your homework. It makes the computer able to run the homework app.</p>
+            <p>Distinguish the operating system, application software, translators and utility software by function.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam answers need a role plus a service. "The OS manages things" is a start, not a complete mark.</p>
+            <p>Section 5 answers often fail because students name software but do not state the service it provides.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>An OS role is not the same as a utility tool. Antivirus and backup are utilities; process scheduling and memory allocation are OS roles.</p>
+            <p>Do not call a word processor an operating system. Application software performs user tasks; system software supports the system.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A video editor, browser and music player are open. Who decides who gets CPU time?</h2>
-            <p>Click the best answer. The browser may think it deserves everything, but the OS has the clipboard.</p>
+            <h2>A user writes `PRINT("Hello")`. The CPU wants machine code. Who translates?</h2>
+            <p>Click the best answer. The processor is powerful, but it is not fluent in every high-level language.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="os">The operating system scheduler / process management</button>
-            <button class="choice-card" type="button" data-hook="printer">The printer driver</button>
-            <button class="choice-card" type="button" data-hook="spreadsheet">Spreadsheet software</button>
-            <button class="choice-card" type="button" data-hook="random">Whichever app asks most loudly</button>
+            <button class="choice-card" type="button" data-hook="translator">A language translator such as a compiler or interpreter</button>
+            <button class="choice-card" type="button" data-hook="word">A word processor</button>
+            <button class="choice-card" type="button" data-hook="antivirus">Antivirus software</button>
+            <button class="choice-card" type="button" data-hook="monitor">The monitor</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Multitasking needs controlled allocation of CPU time.
+            Choose one. Source code must be translated into code the processor can execute.
           </div>
         </section>
 
         <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>An OS manages resources and provides services</h2>
+            <h2>System software supports the running and maintenance of the computer</h2>
           </div>
           <div class="concept-grid">
             <article>
-              <strong>Process management</strong>
-              <span>Controls running programs/processes and allocates processor time.</span>
+              <strong>System software</strong>
+              <span>Software that manages hardware, supports applications and helps maintain the computer system.</span>
             </article>
             <article>
-              <strong>Memory management</strong>
-              <span>Allocates memory to programs and helps prevent one process accessing another's memory incorrectly.</span>
+              <strong>Operating system</strong>
+              <span>System software that manages resources and provides an interface and services for users and applications.</span>
             </article>
             <article>
-              <strong>File management</strong>
-              <span>Organises, stores, retrieves and controls access to files and directories.</span>
+              <strong>Utility software</strong>
+              <span>System software that performs maintenance, protection or optimisation tasks.</span>
             </article>
             <article>
-              <strong>Device management</strong>
-              <span>Controls communication with peripherals using drivers, buffers and queues.</span>
+              <strong>Translator</strong>
+              <span>System software that converts source code into code that can be executed or further processed.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: process management = 进程管理；memory management = 内存管理；file management = 文件管理；device management = 设备管理；scheduler = 调度程序。</div>
+          <div class="callout">Chinese support: system software = 系统软件；operating system = 操作系统；utility software = 实用程序；translator = 语言翻译程序。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
         <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Why applications need an operating system</h2>
+          <h2 class="explanation-sr-only" id="explanation-concept-title">System software supports the running and maintenance of the computer</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why applications need an operating system through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why applications need an operating system: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software supports the running and maintenance of the computer with a structured visual model." />
+            <figcaption class="explanation-sr-only">System software supports the running and maintenance of the computer: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Applications request services instead of controlling hardware directly.</li><li><strong>Reason:</strong> The operating system checks and schedules those requests.</li><li><strong>Result:</strong> Drivers translate approved requests for particular devices.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> System software</li><li><strong>Lesson fact:</strong> Software that manages hardware, supports applications and helps maintain the computer system.</li><li><strong>Lesson fact:</strong> Operating system</li><li><strong>Lesson fact:</strong> System software that manages resources and provides an interface and services for users and applications.</li><li><strong>Lesson fact:</strong> Utility software</li><li><strong>Lesson fact:</strong> System software that performs maintenance, protection or optimisation tasks.</li><li><strong>Lesson fact:</strong> Translator</li><li><strong>Lesson fact:</strong> System software that converts source code into code that can be executed or further processed.</li></ol>
 
-            <p><strong>Analogy:</strong> A control centre coordinates many users of limited shared infrastructure.</p>
-            <p><strong>Boundary:</strong> The OS manages access; it cannot make finite hardware unlimited.</p>
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="process" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+        <section class="panel" id="categories" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Process management: sharing processor time</h2>
+            <h2>System software versus application software</h2>
           </div>
-          <div class="role-grid">
-            <article><strong>Process</strong><span>A program in execution, with its own state and resources.</span></article>
-            <article><strong>Scheduling</strong><span>Decides which process gets CPU time and when.</span></article>
-            <article><strong>Multitasking</strong><span>Allows several processes to appear to run at the same time by sharing CPU time.</span></article>
-            <article><strong>State tracking</strong><span>Keeps information such as running, ready or blocked/waiting status.</span></article>
-          </div>
-          <div class="why-card inline-card">
-            <h3>Why this matters</h3>
-            <p>When an app freezes, it may be waiting for I/O, blocked, or not receiving CPU time. The OS must track and manage that behaviour.</p>
+          <div class="compare-grid">
+            <article>
+              <h3>System software</h3>
+              <p>Runs, manages or maintains the computer system. It provides services that applications depend on.</p>
+              <ul>
+                <li>Operating system</li>
+                <li>Utility software</li>
+                <li>Language translators</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Application software</h3>
+              <p>Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</p>
+              <ul>
+                <li>Word processor</li>
+                <li>Spreadsheet</li>
+                <li>Web browser</li>
+              </ul>
+            </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start process -->
-        <section class="panel explanation-panel" id="explanation-process" data-explains="process" data-explanation-kind="process" aria-labelledby="explanation-process-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-process-title">How time-slicing creates apparent simultaneity</h2>
+        <!-- stage10-explanation:start categories -->
+        <section class="panel explanation-panel" id="explanation-categories" data-explains="categories" data-explanation-kind="mechanism" aria-labelledby="explanation-categories-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+          <h2 class="explanation-sr-only" id="explanation-categories-title">System software versus application software</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-process.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How time-slicing creates apparent simultaneity through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How time-slicing creates apparent simultaneity: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-categories.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software versus application software with a structured visual model." />
+            <figcaption class="explanation-sr-only">System software versus application software: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A running process receives a short interval of CPU time.</li><li><strong>Reason:</strong> Its state is saved before another ready process runs.</li><li><strong>Result:</strong> Rapid switching keeps several programs responsive.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> System software</li><li><strong>Lesson fact:</strong> Runs, manages or maintains the computer system. It provides services that applications depend on.</li><li><strong>Lesson fact:</strong> Operating system</li><li><strong>Lesson fact:</strong> Utility software</li><li><strong>Lesson fact:</strong> Language translators</li><li><strong>Lesson fact:</strong> Application software</li><li><strong>Lesson fact:</strong> Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</li><li><strong>Lesson fact:</strong> Word processor</li><li><strong>Lesson fact:</strong> Spreadsheet</li><li><strong>Lesson fact:</strong> Web browser</li></ol>
 
-            <p><strong>Analogy:</strong> One service desk handles many queues by switching between short tasks.</p>
-            <p><strong>Boundary:</strong> Switching has overhead; too much switching reduces useful work.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end process -->
-        <section class="panel" id="memory" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+        <!-- stage10-explanation:end categories -->
+        <section class="panel" id="os" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Memory management: allocate, protect, reuse</h2>
+            <h2>Operating system: the main coordinator</h2>
           </div>
-          <div class="memory-flow" aria-label="Memory management flow">
-            <div><strong>1. Program starts</strong><span>The OS allocates memory for code, data and stack/working space.</span></div>
-            <div><strong>2. Program runs</strong><span>The OS tracks which memory blocks are in use.</span></div>
-            <div><strong>3. Protection</strong><span>The OS helps stop processes overwriting each other's memory.</span></div>
-            <div><strong>4. Program ends</strong><span>The OS releases memory so it can be reused.</span></div>
+          <div class="role-grid">
+            <article><strong>User interface</strong><span>Provides a way for users to interact with the computer, such as GUI or command line.</span></article>
+            <article><strong>Resource management</strong><span>Allocates and controls hardware resources such as processor time, memory and devices.</span></article>
+            <article><strong>File services</strong><span>Provides file organisation, storage access and permission support.</span></article>
+            <article><strong>Application services</strong><span>Provides services and APIs that application software can use.</span></article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Boundary</h3>
+            <p>Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="utility" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Utility software: maintenance and protection tools</h2>
+          </div>
+          <div class="utility-table" role="table" aria-label="Utility software examples">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Utility</div>
+              <div role="columnheader">Purpose</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Antivirus</div>
+              <div role="cell">Detects, quarantines or removes malware.</div>
+              <div role="cell">Protects the system from malicious software.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Backup</div>
+              <div role="cell">Creates copies of files/data.</div>
+              <div role="cell">Allows recovery after data loss, corruption or hardware failure.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Compression</div>
+              <div role="cell">Reduces file size.</div>
+              <div role="cell">Saves storage space or reduces transmission time.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Disk/file tools</div>
+              <div role="cell">Manage storage, clean temporary files or check disks.</div>
+              <div role="cell">Maintains storage organisation and may improve usability.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start utility -->
+        <section class="panel explanation-panel" id="explanation-utility" data-explains="utility" data-explanation-kind="mechanism" aria-labelledby="explanation-utility-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+          <h2 class="explanation-sr-only" id="explanation-utility-title">Utility software: maintenance and protection tools</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-utility.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software: maintenance and protection tools with a structured visual model." />
+            <figcaption class="explanation-sr-only">Utility software: maintenance and protection tools: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Antivirus</li><li><strong>Lesson fact:</strong> Detects, quarantines or removes malware.</li><li><strong>Lesson fact:</strong> Protects the system from malicious software.</li><li><strong>Lesson fact:</strong> Creates copies of files/data.</li><li><strong>Lesson fact:</strong> Allows recovery after data loss, corruption or hardware failure.</li><li><strong>Lesson fact:</strong> Compression</li><li><strong>Lesson fact:</strong> Reduces file size.</li><li><strong>Lesson fact:</strong> Saves storage space or reduces transmission time.</li><li><strong>Lesson fact:</strong> Disk/file tools</li><li><strong>Lesson fact:</strong> Manage storage, clean temporary files or check disks.</li><li><strong>Lesson fact:</strong> Maintains storage organisation and may improve usability.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end utility -->
+        <section class="panel" id="translators" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Language translators: source code to executable behaviour</h2>
+          </div>
+          <div class="translator-grid">
+            <article>
+              <strong>Compiler</strong>
+              <span>Translates the whole source program before execution, often producing object or executable code.</span>
+            </article>
+            <article>
+              <strong>Interpreter</strong>
+              <span>Translates and executes source code statement by statement, often useful during development and debugging.</span>
+            </article>
+            <article>
+              <strong>Assembler</strong>
+              <span>Translates assembly language mnemonics into machine code for a specific processor.</span>
+            </article>
           </div>
           <div class="trap-card inline-card">
             <h3>Common error</h3>
-            <p>Memory management is not the same as file storage. RAM holds running program data; files are stored and organised on storage devices.</p>
+            <p>An interpreter is not a "bad compiler". It is a different translation approach with different trade-offs.</p>
           </div>
         </section>
 
-        <!-- stage10-explanation:start memory -->
-        <section class="panel explanation-panel" id="explanation-memory" data-explains="memory" data-explanation-kind="mechanism" aria-labelledby="explanation-memory-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-memory-title">Why memory needs allocation and protection</h2>
+        <!-- stage10-explanation:start translators -->
+        <section class="panel explanation-panel" id="explanation-translators" data-explains="translators" data-explanation-kind="mechanism" aria-labelledby="explanation-translators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+          <h2 class="explanation-sr-only" id="explanation-translators-title">Language translators: source code to executable behaviour</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-memory.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why memory needs allocation and protection through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why memory needs allocation and protection: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-translators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Language translators: source code to executable behaviour with a structured visual model." />
+            <figcaption class="explanation-sr-only">Language translators: source code to executable behaviour: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Each process receives addresses for its code and data.</li><li><strong>Reason:</strong> Protection blocks one process from overwriting another's region.</li><li><strong>Result:</strong> Released memory can be reassigned safely to later work.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Compiler</li><li><strong>Lesson fact:</strong> Translates the whole source program before execution, often producing object or executable code.</li><li><strong>Lesson fact:</strong> Interpreter</li><li><strong>Lesson fact:</strong> Translates and executes source code statement by statement, often useful during development and debugging.</li><li><strong>Lesson fact:</strong> Assembler</li><li><strong>Lesson fact:</strong> Translates assembly language mnemonics into machine code for a specific processor.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> An interpreter is not a &quot;bad compiler&quot;. It is a different translation approach with different trade-offs.</li></ol>
 
-            <p><strong>Analogy:</strong> Separate laboratory benches prevent experiments contaminating each other.</p>
-            <p><strong>Boundary:</strong> Isolation must still allow controlled sharing through OS services.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end memory -->
-        <section class="panel" id="file" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>File management: names, folders, access and storage</h2>
-          </div>
-          <div class="file-grid">
-            <article><strong>Directory structure</strong><span>Organises files into folders/directories so users and applications can locate them.</span></article>
-            <article><strong>Metadata</strong><span>Stores information such as file name, type, size, location and timestamps.</span></article>
-            <article><strong>Access control</strong><span>Uses permissions to control who can read, write or execute files.</span></article>
-            <article><strong>File operations</strong><span>Provides services to create, open, save, move, copy and delete files.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start file -->
-        <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" aria-labelledby="explanation-file-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-file-title">Why files need metadata and access rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-file.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why files need metadata and access rules through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why files need metadata and access rules: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A name and path let software locate stored content.</li><li><strong>Reason:</strong> Metadata records size, timestamps, type and storage information.</li><li><strong>Result:</strong> Permissions determine which users may read or change it.</li></ol>
-
-            <p><strong>Analogy:</strong> A catalogue locates an archive item while rules control who may handle it.</p>
-            <p><strong>Boundary:</strong> A filename alone neither protects data nor proves its contents.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end file -->
-        <section class="panel" id="device" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Device management: drivers, buffers and queues</h2>
-          </div>
-          <div class="device-table" role="table" aria-label="Device management roles">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Purpose</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Device driver</div>
-              <div role="cell">Software that allows the OS to communicate with a specific device.</div>
-              <div role="cell">Printer driver translates OS print requests into commands the printer understands.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Buffer</div>
-              <div role="cell">Temporary storage used when devices and CPU work at different speeds.</div>
-              <div role="cell">Keyboard buffer stores keystrokes before a program reads them.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Queue</div>
-              <div role="cell">Orders requests waiting for a device.</div>
-              <div role="cell">Print queue stores documents waiting to print.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Interrupt handling</div>
-              <div role="cell">Responds when a device needs attention.</div>
-              <div role="cell">Printer signals that it is ready for more data.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start device -->
-        <section class="panel explanation-panel" id="explanation-device" data-explains="device" data-explanation-kind="process" aria-labelledby="explanation-device-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-device-title">Why drivers, buffers and queues work together</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-device.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why drivers, buffers and queues work together through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why drivers, buffers and queues work together: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A driver converts a general request into device-specific commands.</li><li><strong>Reason:</strong> A buffer absorbs the speed difference between producer and device.</li><li><strong>Result:</strong> A queue preserves an orderly sequence of pending requests.</li></ol>
-
-            <p><strong>Analogy:</strong> A loading bay stages deliveries before a slower vehicle can collect them.</p>
-            <p><strong>Boundary:</strong> Buffering smooths bursts but cannot remove a permanently overloaded device.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end device -->
-        <section class="panel" id="services" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+        <!-- stage10-explanation:end translators -->
+        <section class="panel" id="pathway" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
-            <h2>Other OS services at overview level</h2>
+            <h2>Translation pathway</h2>
           </div>
-          <div class="service-grid">
-            <article><strong>User interface</strong><span>Provides a way for users to interact with the system; Lesson 054 expands interface types.</span></article>
-            <article><strong>Security</strong><span>Supports user accounts, authentication and access rights.</span></article>
-            <article><strong>Error handling</strong><span>Detects and reports system or application errors where possible.</span></article>
-            <article><strong>Application support</strong><span>Provides common services/APIs so applications do not control hardware directly.</span></article>
+          <div class="pathway-grid">
+            <div><strong>High-level source code</strong><span>Human-readable instructions such as Python, Java or pseudocode-like code.</span></div>
+            <div><strong>Translator</strong><span>Compiler/interpreter converts or executes the source language.</span></div>
+            <div><strong>Object / executable / machine code</strong><span>Low-level code that the processor can execute directly or as part of a build process.</span></div>
+            <div><strong>Error feedback</strong><span>Syntax and translation errors must be reported so the programmer can correct them.</span></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start services -->
-        <section class="panel explanation-panel" id="explanation-services" data-explains="services" data-explanation-kind="synthesis" aria-labelledby="explanation-services-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-services-title">How OS services form one control layer</h2>
+        <!-- stage10-explanation:start pathway -->
+        <section class="panel explanation-panel" id="explanation-pathway" data-explains="pathway" data-explanation-kind="mechanism" aria-labelledby="explanation-pathway-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
+          <h2 class="explanation-sr-only" id="explanation-pathway-title">Translation pathway</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-services.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How OS services form one control layer through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How OS services form one control layer: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-pathway.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation pathway with a structured visual model." />
+            <figcaption class="explanation-sr-only">Translation pathway: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Process, memory, file and device managers track different resources.</li><li><strong>Reason:</strong> Common permissions and scheduling rules coordinate their decisions.</li><li><strong>Result:</strong> Applications receive a stable service interface above changing hardware.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> High-level source code Human-readable instructions such as Python, Java or pseudocode-like code.</li><li><strong>Lesson fact:</strong> Translator Compiler/interpreter converts or executes the source language.</li><li><strong>Lesson fact:</strong> Object / executable / machine code Low-level code that the processor can execute directly or as part of a build process.</li><li><strong>Lesson fact:</strong> Error feedback Syntax and translation errors must be reported so the programmer can correct them.</li></ol>
 
-            <p><strong>Analogy:</strong> Departments share one operating policy instead of issuing conflicting instructions.</p>
-            <p><strong>Boundary:</strong> Weak coordination between services can still create deadlock or starvation.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end services -->
+        <!-- stage10-explanation:end pathway -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>OS role classifier</h2>
-            <p>Select a scenario and identify the operating system role being tested.</p>
+            <h2>System software classifier</h2>
+            <p>Select a scenario and classify the software type before reading the explanation.</p>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="process">A game and browser both need CPU time</option>
-                <option value="memory">A program starts and needs RAM allocated</option>
-                <option value="file">A user saves a document into a folder</option>
-                <option value="device">A document waits in a print queue</option>
-                <option value="security">A user account is denied access to a file</option>
-                <option value="error">An application crashes and an error message is shown</option>
+                <option value="os">The software allocates memory and processor time to programs</option>
+                <option value="backup">The software creates copies of user files for recovery</option>
+                <option value="compiler">The software translates a complete high-level program before it runs</option>
+                <option value="interpreter">The software runs source code line by line during testing</option>
+                <option value="assembler">The software converts assembly mnemonics into machine code</option>
+                <option value="app">The software helps a user write an essay</option>
               </select>
             </label>
             <button type="button" id="simulateBtn">Classify</button>
@@ -403,13 +415,13 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Name the OS role and justify it</h2>
+            <h2>Choose the category, then justify it</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="slow">Slow laptop</button>
-            <button class="tab" type="button" data-example="print">Print job</button>
-            <button class="tab" type="button" data-example="save">Save file</button>
-            <button class="tab" type="button" data-example="memory">Memory conflict</button>
+            <button class="tab active" type="button" data-example="classify">Classify software</button>
+            <button class="tab" type="button" data-example="compiler">Choose compiler</button>
+            <button class="tab" type="button" data-example="interpreter">Choose interpreter</button>
+            <button class="tab" type="button" data-example="utility">Choose utility</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -418,7 +430,7 @@
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
-            <p>Type the exact OS role or feature. The best answers are boringly precise.</p>
+            <p>Type short answers. Classification questions reward exact category names.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -426,7 +438,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the OS role confusion</h2>
+            <h2>Fix the system software confusion</h2>
           </div>
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
@@ -435,7 +447,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about role, mechanism and user/system consequence.</p>
+            <p>These are original Cambridge-style questions. MS notes are strict about category, purpose and consequence.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -443,36 +455,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>The OS manages resources so applications can run</h2>
+            <h2>System software supports the system</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Process</strong><span>Schedules and tracks running programs/processes.</span></div>
-            <div><strong>Memory</strong><span>Allocates, protects and releases RAM.</span></div>
-            <div><strong>File</strong><span>Organises, stores and controls access to files.</span></div>
-            <div><strong>Device</strong><span>Uses drivers, buffers and queues to manage peripherals.</span></div>
-            <div><strong>Services</strong><span>Provides interface, security, error handling and APIs.</span></div>
-            <div><strong>Exam habit</strong><span>Name the role, describe the mechanism, then state the benefit.</span></div>
+            <div><strong>OS</strong><span>Manages resources and provides services/interface.</span></div>
+            <div><strong>Utility</strong><span>Maintains, protects or optimises the system.</span></div>
+            <div><strong>Translator</strong><span>Converts source code into executable or lower-level code.</span></div>
+            <div><strong>Compiler</strong><span>Translates the whole program before execution.</span></div>
+            <div><strong>Interpreter</strong><span>Translates and executes statement by statement.</span></div>
+            <div><strong>Exam habit</strong><span>Name the category, then state its purpose and consequence.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Connect each OS role to a real scenario</h2>
+            <h2>Build a clean Section 5 vocabulary base</h2>
           </div>
           <ol class="homework-list">
-            <li>Define process management, memory management, file management and device management.</li>
-            <li>Create a four-column table: user action, OS role, mechanism, benefit.</li>
-            <li>Write a 5-mark answer explaining how an OS manages a print job.</li>
-            <li>Correct this sentence: "The application decides exactly where in memory every other program is stored."</li>
-            <li>Prepare one example each of a CLI, GUI, menu-driven interface and natural language interface for Lesson 054.</li>
+            <li>Define system software, operating system, utility software and language translator.</li>
+            <li>Create a table with six examples: two OS roles, two utilities and two translators.</li>
+            <li>Write a 4-mark answer explaining why a compiler may be suitable for distributing a finished program.</li>
+            <li>Correct this sentence: "A spreadsheet is system software because it runs on the computer."</li>
+            <li>Prepare three questions you expect in Lesson 054 about operating system roles.</li>
           </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

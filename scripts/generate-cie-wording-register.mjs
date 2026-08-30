@@ -15,7 +15,7 @@ const rows = [];
 const hash = (value) => crypto.createHash("sha256").update(String(value)).digest("hex");
 const csv = (value) => /[",\n]/.test(String(value)) ? `"${String(value).replaceAll('"', '""')}"` : String(value);
 
-for (let lesson = 1; lesson <= 150; lesson += 1) {
+for (let lesson = 1; lesson <= 151; lesson += 1) {
   const id = String(lesson).padStart(3, "0");
   const markdownName = fs.readdirSync(path.join(root, "lessons"))
     .find((name) => name.startsWith(`${id}-`) && name.endsWith(".md"));

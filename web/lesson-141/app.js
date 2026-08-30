@@ -1,97 +1,112 @@
-const skeletons = {
-  pass: {
-    title: "Count pass marks in an array",
-    code: "PassCount <- 0\nFOR Index <- 1 TO 10\n    INPUT Marks[Index]\n    IF Marks[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
-    checks: ["counter initialised", "loop bounds match 10 marks", "array index consistent", "count updated only for passes", "final output after loop"],
+const conversions = {
+  output: {
+    java: "System.out.println(Total);",
+    pseudo: "OUTPUT Total",
+    note: "Replace Java's library output call with the OUTPUT keyword.",
   },
-  valid: {
-    title: "Input a valid mark",
-    code: "REPEAT\n    INPUT Mark\n    IF Mark >= 0 AND Mark <= 100 THEN\n        Valid <- TRUE\n    ELSE\n        OUTPUT \"Enter a mark from 0 to 100\"\n        Valid <- FALSE\n    ENDIF\nUNTIL Valid = TRUE",
-    checks: ["input occurs inside loop", "lower and upper bounds checked", "error message is useful", "loop stops when valid"],
+  assign: {
+    java: "total = total + mark;",
+    pseudo: "Total <- Total + Mark",
+    note: "Use the assignment arrow in Cambridge-style pseudocode.",
   },
-  file: {
-    title: "Read and output every file line",
-    code: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
-    checks: ["file opened for read", "EOF used safely", "record read inside loop", "file closed after loop"],
+  if: {
+    java: "if (mark >= 50) { ... }",
+    pseudo: "IF Mark >= 50 THEN ... ENDIF",
+    note: "Remove brackets and braces; use IF, THEN and ENDIF.",
+  },
+  for: {
+    java: "for (int i = 1; i <= 5; i++)",
+    pseudo: "FOR I <- 1 TO 5 ... NEXT I",
+    note: "A count-controlled Java loop becomes a FOR ... TO ... NEXT loop.",
+  },
+  function: {
+    java: "static boolean isValidMark(int mark)",
+    pseudo: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN",
+    note: "Use FUNCTION, parameter types and RETURNS instead of Java method modifiers.",
   },
 };
 
-const checklist = [
-  "Have I initialised counters/totals before using them?",
-  "Do loop bounds match the question exactly?",
-  "Are array indexes consistent?",
-  "Does every IF have a clear condition and ending?",
-  "Are subroutine parameters and return values clear?",
-  "Is file handling opened, processed and closed?",
-  "Is Java syntax removed from the pseudocode answer?",
-  "Can the fragment be traced with a small example?",
-];
+const spotter = {
+  semicolon: {
+    issue: "The semicolon is a Java/C-style habit.",
+    fix: "Use OUTPUT Total without the semicolon.",
+  },
+  brace: {
+    issue: "The brace is Java-style block syntax.",
+    fix: "Use IF Mark >= 50 THEN and close the block with ENDIF.",
+  },
+  main: {
+    issue: "The main method wrapper is Java-specific.",
+    fix: "Start directly with the algorithm steps unless the question asks for a procedure or function.",
+  },
+  scanner: {
+    issue: "Scanner is a Java library class.",
+    fix: "Use INPUT Variable in Cambridge-style pseudocode.",
+  },
+};
 
 const examples = {
-  pass: {
-    title: "Example 1: Pass counter",
-    code: skeletons.pass.code,
-    marks: [
-      ["B1", "PassCount initialised to 0"],
-      ["M1", "FOR loop processes all 10 marks"],
-      ["M1", "IF tests pass condition"],
-      ["A1", "PassCount increments inside correct branch"],
-      ["A1", "outputs final PassCount after loop"],
+  if: {
+    title: "Example 1: Convert a Java IF statement",
+    java: "if (mark >= 50) {\n    System.out.println(\"Pass\");\n} else {\n    System.out.println(\"Resit needed\");\n}",
+    pseudo: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
+    points: [
+      "The condition is preserved.",
+      "Java braces are replaced by THEN, ELSE and ENDIF.",
+      "System.out.println becomes OUTPUT.",
     ],
   },
-  max: {
-    title: "Example 2: Highest mark",
-    code: "Highest <- Marks[1]\nFOR Index <- 2 TO 10\n    IF Marks[Index] > Highest THEN\n        Highest <- Marks[Index]\n    ENDIF\nNEXT Index\nOUTPUT Highest",
-    marks: [
-      ["B1", "Highest initialised to a real array value"],
-      ["M1", "loop starts after initial value"],
-      ["M1", "compares current element with Highest"],
-      ["A1", "updates Highest correctly"],
-      ["A1", "outputs Highest after loop"],
+  loop: {
+    title: "Example 2: Convert a count-controlled loop",
+    java: "for (int i = 1; i <= 5; i++) {\n    total = total + scores[i];\n}",
+    pseudo: "FOR I <- 1 TO 5\n    Total <- Total + Scores[I]\nNEXT I",
+    points: [
+      "The known count maps naturally to FOR ... TO ... NEXT.",
+      "Assignment uses the left arrow.",
+      "Follow the question's array indexing convention.",
     ],
   },
-  file: {
-    title: "Example 3: File output",
-    code: skeletons.file.code,
-    marks: [
-      ["B1", "OPENFILE uses FOR READ"],
-      ["M1", "WHILE NOT EOF loop used"],
-      ["M1", "READFILE reads into variable"],
-      ["B1", "outputs line read"],
-      ["A1", "CLOSEFILE after loop"],
+  function: {
+    title: "Example 3: Convert a Java method",
+    java: "static boolean isValidMark(int mark) {\n    return mark >= 0 && mark <= 100;\n}",
+    pseudo: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN\n    RETURN Mark >= 0 AND Mark <= 100\nENDFUNCTION",
+    points: [
+      "Java modifiers such as static are removed.",
+      "The parameter type is still clear.",
+      "The Boolean expression keeps the same meaning.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which variable should be initialised before counting pass marks?", accepted: ["passcount", "pass count", "counter"], answer: "PassCount / counter should be initialised before the loop." },
-  { id: "p2", prompt: "For 10 array items using 1-based indexing, write the loop range.", accepted: ["1 to 10"], answer: "FOR Index <- 1 TO 10." },
-  { id: "p3", prompt: "Which construct is used to choose between pass and fail branches?", accepted: ["if", "selection"], answer: "IF / selection." },
-  { id: "p4", prompt: "Which file function prevents reading beyond the end of a file?", accepted: ["eof"], answer: "EOF." },
-  { id: "p5", prompt: "Which command should finish a file handling fragment?", accepted: ["closefile"], answer: "CLOSEFILE." },
-  { id: "p6", prompt: "Which subroutine type returns a value?", accepted: ["function"], answer: "FUNCTION." },
-  { id: "p7", prompt: "Which subroutine type performs actions but does not need to return a value?", accepted: ["procedure"], answer: "PROCEDURE." },
-  { id: "p8", prompt: "Where should an average usually be calculated: inside or after the total loop?", accepted: ["after"], answer: "After the total loop, once the final Total is known." },
-  { id: "p9", prompt: "What should be removed from a Cambridge pseudocode answer: Java braces or algorithm logic?", accepted: ["braces"], answer: "Remove Java braces; keep the algorithm logic." },
-  { id: "p10", prompt: "What quick method checks a fragment's variable values step by step?", accepted: ["trace", "trace table"], answer: "A trace / trace table." },
+  { id: "p1", prompt: "Convert System.out.println(Total);", accepted: ["output total"], answer: "OUTPUT Total." },
+  { id: "p2", prompt: "Convert total = total + mark;", accepted: ["total <- total + mark", "total ← total + mark"], answer: "Total <- Total + Mark." },
+  { id: "p3", prompt: "Which pseudocode keyword replaces Java Scanner input?", accepted: ["input"], answer: "INPUT." },
+  { id: "p4", prompt: "Which keyword closes an IF block in Cambridge-style pseudocode?", accepted: ["endif"], answer: "ENDIF." },
+  { id: "p5", prompt: "Which keyword pair usually closes a WHILE loop?", accepted: ["endwhile"], answer: "ENDWHILE." },
+  { id: "p6", prompt: "What does Java && usually become in pseudocode?", accepted: ["and"], answer: "AND." },
+  { id: "p7", prompt: "What does Java || usually become in pseudocode?", accepted: ["or"], answer: "OR." },
+  { id: "p8", prompt: "Convert static boolean isValidMark(int mark) as a Cambridge-style header keyword.", accepted: ["function"], answer: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN." },
+  { id: "p9", prompt: "Should public static void main be included in a normal pseudocode answer? true or false", accepted: ["false"], answer: "False." },
+  { id: "p10", prompt: "What should be preserved when converting Java into pseudocode: exact punctuation or algorithm meaning?", accepted: ["meaning", "algorithm", "logic"], answer: "Preserve the algorithm meaning / logic." },
 ];
 
 const mistakes = [
   {
-    wrong: "A fragment increments PassCount but never initialises it.",
-    fix: "Add PassCount <- 0 before the loop so the counter has a defined starting value.",
+    wrong: "A student writes public static void main(String[] args) at the start of a pseudocode answer.",
+    fix: "Remove the Java wrapper. Write the algorithm steps directly, or use PROCEDURE/FUNCTION only if appropriate.",
   },
   {
-    wrong: "A fragment reads Marks[Index] after testing Marks[Index] >= 50.",
-    fix: "Input or assign Marks[Index] before using it in a condition.",
+    wrong: "A student writes System.out.println(Result); throughout the answer.",
+    fix: "Use OUTPUT Result in Cambridge-style pseudocode.",
   },
   {
-    wrong: "A file loop uses READFILE but never closes the file.",
-    fix: "Add CLOSEFILE after the EOF loop.",
+    wrong: "A student keeps Java braces around an IF block.",
+    fix: "Use IF condition THEN, ELSE if needed, and ENDIF to close the block.",
   },
   {
-    wrong: "A review answer mixes Java braces with Cambridge pseudocode keywords.",
-    fix: "Use Cambridge-style structure consistently: IF...THEN...ENDIF, FOR...NEXT, FUNCTION...ENDFUNCTION.",
+    wrong: "A student changes the loop bounds while translating from Java.",
+    fix: "The syntax can change, but the algorithm meaning must not. Check start value, end value and whether the end is included.",
   },
 ];
 
@@ -105,93 +120,98 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Write pseudocode to input 10 marks into an array and output how many marks are 50 or above.",
-    answer: "PassCount <- 0\nFOR Index <- 1 TO 10\n    INPUT Marks[Index]\n    IF Marks[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+    prompt: "A flowchart inputs Mark, tests Mark >= 50, outputs Pass on the Yes branch and Resit needed on the No branch. Write equivalent Cambridge-style pseudocode.",
+    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
     marking: [
-      { mark: "B1", text: "initialises PassCount/counter to 0" },
-      { mark: "M1", text: "uses loop to process 10 marks" },
-      { mark: "M1", text: "inputs each mark into an array element or equivalent variable" },
-      { mark: "M1", text: "tests each mark against 50 or above" },
-      { mark: "A1", text: "increments counter only for pass marks" },
-      { mark: "A1", text: "outputs the final counter after the loop" },
+      { mark: "B1", text: "translates the flowchart input as INPUT Mark" },
+      { mark: "M1", text: "uses IF with the correct decision Mark >= 50" },
+      { mark: "B1", text: "outputs Pass in the true branch using OUTPUT or equivalent pseudocode" },
+      { mark: "B1", text: "uses ELSE for the false branch" },
+      { mark: "B1", text: "outputs Resit needed in the false branch" },
+      { mark: "A1", text: "closes the selection and preserves both flowchart branches" },
     ],
     strict: [
-      "Do not award final output mark if output occurs only inside the loop.",
-      "Allow processing without storing in array if the question wording allows, but here array storage is required for full marks.",
-      "Do not accept Java-only syntax as Cambridge pseudocode.",
+      "Do not award full marks for Java code or for omitting the flowchart input.",
+      "Allow equivalent variable capitalisation if consistent.",
+      "Do not require exact indentation, but both flowchart paths must be clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Write pseudocode to input valid marks from 0 to 100 until a valid mark is entered.",
-    answer: "REPEAT\n    INPUT Mark\n    IF Mark >= 0 AND Mark <= 100 THEN\n        Valid <- TRUE\n    ELSE\n        OUTPUT \"Enter a mark from 0 to 100\"\n        Valid <- FALSE\n    ENDIF\nUNTIL Valid = TRUE",
+    prompt: "Write this Java loop in Cambridge-style pseudocode: for (int i = 1; i <= 5; i++) { total = total + scores[i]; }",
+    answer: "FOR I <- 1 TO 5\n    Total <- Total + Scores[I]\nNEXT I",
     marking: [
-      { mark: "B1", text: "uses a loop that can repeat after invalid input" },
-      { mark: "B1", text: "inputs Mark inside the loop" },
-      { mark: "M1", text: "checks Mark >= 0 or equivalent lower bound" },
-      { mark: "M1", text: "checks Mark <= 100 or equivalent upper bound" },
-      { mark: "A1", text: "sets a valid flag or exits only when both checks pass" },
-      { mark: "B1", text: "outputs useful error message for invalid data" },
-      { mark: "A1", text: "loop condition correctly repeats until valid" },
+      { mark: "B1", text: "uses a FOR loop or equivalent count-controlled loop" },
+      { mark: "B1", text: "initialises loop counter to 1" },
+      { mark: "B1", text: "uses final value 5 inclusively" },
+      { mark: "M1", text: "updates Total inside the loop" },
+      { mark: "A1", text: "adds the correct array element Scores[I] or equivalent" },
+      { mark: "B1", text: "uses pseudocode assignment rather than Java-only syntax" },
+      { mark: "A1", text: "closes the loop with NEXT or clear equivalent" },
     ],
     strict: [
-      "Do not award both bound marks if OR is used incorrectly for the valid condition.",
-      "Allow WHILE structure if it safely repeats until valid.",
-      "Do not accept validation after the mark has already been processed.",
+      "Do not award inclusive end mark if the answer loops only to 4.",
+      "Allow Index instead of I if used consistently.",
+      "Do not accept Java loop syntax alone as Cambridge pseudocode.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Write pseudocode to read every line from Scores.txt and output each line.",
-    answer: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
+    prompt: "Explain why Java support examples should not simply be copied as answers to Cambridge pseudocode questions.",
+    answer: "Java is a programming language with language-specific syntax such as braces, semicolons, class wrappers and library calls. Cambridge pseudocode uses readable algorithm keywords such as INPUT, OUTPUT, IF, ENDIF and FUNCTION. Copying Java may obscure the algorithm and may not meet the expected pseudocode conventions.",
     marking: [
-      { mark: "B1", text: "opens Scores.txt using OPENFILE" },
-      { mark: "A1", text: "uses FOR READ mode" },
-      { mark: "M1", text: "uses WHILE NOT EOF or equivalent safe EOF loop" },
-      { mark: "M1", text: "reads each line/record with READFILE" },
-      { mark: "B1", text: "outputs the line/record read" },
-      { mark: "A1", text: "closes the file after the loop" },
+      { mark: "B1", text: "states Java has language-specific syntax" },
+      { mark: "B1", text: "gives a suitable Java-specific example such as braces, semicolons, main method or System.out.println" },
+      { mark: "B1", text: "states Cambridge pseudocode uses algorithmic keywords/conventions" },
+      { mark: "B1", text: "gives a suitable pseudocode example such as INPUT, OUTPUT, IF/ENDIF or FUNCTION" },
+      { mark: "B1", text: "explains copied Java may not match the required answer format" },
+      { mark: "B1", text: "links clear pseudocode to communicating the algorithm rather than language syntax" },
     ],
     strict: [
-      "Do not award READ mode mark for WRITE or APPEND.",
-      "Allow equivalent variable and file names if consistent.",
-      "Do not require Java file classes.",
+      "Do not award full marks for saying only 'Java is wrong'.",
+      "Allow 'exam standard' or 'Cambridge convention' as wording for required format.",
+      "Do not accept claims that Java can never be used for learning; Java is support only here.",
     ],
   },
   {
     title: "Question 4",
-    marks: "3 marks",
-    prompt: "A student writes a fragment with Total <- Total + Mark inside a loop but does not initialise Total. Explain the problem and correct it.",
-    answer: "Total has no defined starting value before it is used, so the accumulated result may be wrong. Add Total <- 0 once before the loop.",
+    marks: "7 marks",
+    prompt: "Write Cambridge-style pseudocode for a function IsValidMark that returns TRUE if Mark is from 0 to 100 inclusive. Do not use Java method syntax.",
+    answer: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN\n    IF Mark >= 0 AND Mark <= 100 THEN\n        RETURN TRUE\n    ELSE\n        RETURN FALSE\n    ENDIF\nENDFUNCTION",
     marking: [
-      { mark: "B1", text: "identifies Total is not initialised" },
-      { mark: "B1", text: "explains an undefined/previous value may affect the result" },
-      { mark: "B1", text: "adds Total <- 0 before the loop" },
+      { mark: "B1", text: "uses FUNCTION header with meaningful name" },
+      { mark: "B1", text: "includes Mark as a parameter with suitable type or clear meaning" },
+      { mark: "B1", text: "states or implies BOOLEAN return type" },
+      { mark: "M1", text: "checks lower bound Mark >= 0" },
+      { mark: "M1", text: "checks upper bound Mark <= 100" },
+      { mark: "A1", text: "returns TRUE for valid marks and FALSE otherwise" },
+      { mark: "A1", text: "uses pseudocode structure and ends with ENDFUNCTION or clear equivalent" },
     ],
     strict: [
-      "Do not award correction mark if Total is initialised inside the loop each iteration.",
-      "Allow Sum instead of Total if consistent.",
-      "Do not accept 'the program crashes' as the only explanation.",
+      "Do not award final structure mark for Java-only static boolean syntax.",
+      "Allow direct RETURN Mark >= 0 AND Mark <= 100 if the function header is clear.",
+      "Do not accept OR for the valid range condition.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Write a function IsPass(Mark : INTEGER) that returns a BOOLEAN, and show the returned value used in an IF expression. Explain how this differs from a procedure.",
-    answer: "FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN returns Mark >= 50. The caller can use IF IsPass(Score) THEN ... ENDIF because the function call returns a BOOLEAN value in an expression. A procedure performs a named action and is called as a statement rather than supplying a return value to the expression.",
+    prompt: "A candidate writes OUTPUT Total; and IF Mark >= 50 { OUTPUT \"Pass\" }. Identify the Java habits and correct them.",
+    answer: "The semicolon after OUTPUT Total is a Java/C-style habit and should be removed. The brace after the IF condition is Java-style block syntax. The corrected pseudocode should use IF Mark >= 50 THEN, then OUTPUT \"Pass\", and close with ENDIF.",
     marking: [
-      { mark: "B1", text: "complete function header with INTEGER parameter" },
-      { mark: "B1", text: "declares BOOLEAN return type" },
-      { mark: "B1", text: "returns the pass comparison" },
-      { mark: "M1", text: "uses IsPass(Score) in an IF expression" },
-      { mark: "B1", text: "procedure described as named action/call" },
-      { mark: "B1", text: "distinguishes procedure from function return value" },
+      { mark: "B1", text: "identifies semicolon as unnecessary Java/C-style punctuation" },
+      { mark: "B1", text: "corrects output to OUTPUT Total" },
+      { mark: "B1", text: "identifies brace as Java-style block syntax" },
+      { mark: "B1", text: "uses THEN after IF condition" },
+      { mark: "B1", text: "keeps OUTPUT Pass in the true branch" },
+      { mark: "B1", text: "closes the IF block with ENDIF or clear equivalent" },
     ],
     strict: [
-      "Do not credit OUTPUT as the function return.",
-      "Require the returned BOOLEAN to be used in an expression.",
+      "Do not penalise harmless capitalisation differences.",
+      "Allow removal of semicolon without naming Java if the correction is clear.",
+      "Do not award brace correction mark unless a pseudocode block ending is supplied.",
     ],
   },
 ];
@@ -216,11 +236,12 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    database: { text: "This applies database concepts from Paper 1 rather than program-fragment analysis.", correct: false },
-    array: { text: "Correct. The task needs an array, a loop and an IF condition.", correct: true },
-    file: { text: "File handling is useful elsewhere, but this task does not mention a file.", correct: false },
-    html: { text: "No HTML needed. Stay in Cambridge pseudocode.", correct: false },
+    java: { text: "This is valid Java support syntax, but not the Cambridge-style pseudocode form.", correct: false },
+    pseudo: { text: "Correct. OUTPUT Total is the Cambridge-style pseudocode form.", correct: true },
+    console: { text: "That is JavaScript-style output, another language habit.", correct: false },
+    print: { text: "This is language-like syntax, not the standard form used in these lessons.", correct: false },
   };
+
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
@@ -232,29 +253,35 @@ function setupHook() {
   });
 }
 
-function setupBuilder() {
-  const select = document.querySelector("#scenarioSelect");
-  const output = document.querySelector("#builderOutput");
+function setupConverter() {
+  const select = document.querySelector("#convertSelect");
+  const output = document.querySelector("#convertOutput");
   const render = () => {
-    const item = skeletons[select.value];
+    const item = conversions[select.value];
     output.innerHTML = `
-      <h3>${escapeHtml(item.title)}</h3>
-      <pre><code>${escapeHtml(item.code)}</code></pre>
-      <ul>${item.checks.map((check) => `<li>${escapeHtml(check)}</li>`).join("")}</ul>
+      <p><strong>Java habit:</strong> <code>${escapeHtml(item.java)}</code></p>
+      <p><strong>Cambridge-style pseudocode:</strong> <code>${escapeHtml(item.pseudo)}</code></p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.note)}</p>
     `;
   };
-  document.querySelector("#buildBtn").addEventListener("click", render);
+  document.querySelector("#convertBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupChecklist() {
-  document.querySelector("#checklistOutput").innerHTML = checklist.map((item, index) => `
-    <label class="check-item">
-      <input type="checkbox" />
-      <span><strong>${index + 1}.</strong> ${escapeHtml(item)}</span>
-    </label>
-  `).join("");
+function setupSpotter() {
+  const select = document.querySelector("#spotSelect");
+  const output = document.querySelector("#spotOutput");
+  const render = () => {
+    const item = spotter[select.value];
+    output.innerHTML = `
+      <p><strong>Issue:</strong> ${escapeHtml(item.issue)}</p>
+      <p><strong>Correction:</strong> ${escapeHtml(item.fix)}</p>
+    `;
+  };
+  document.querySelector("#spotBtn").addEventListener("click", render);
+  select.addEventListener("change", render);
+  render();
 }
 
 function renderExample(key) {
@@ -262,11 +289,17 @@ function renderExample(key) {
   document.querySelector("#exampleOutput").innerHTML = `
     <article class="example-card">
       <h3>${escapeHtml(example.title)}</h3>
-      <pre><code>${escapeHtml(example.code)}</code></pre>
-      <div class="data-table two-col">
-        <div class="table-row table-head"><div>Mark</div><div>Why it earns credit</div></div>
-        ${example.marks.map((row) => `<div class="table-row"><div>${escapeHtml(row[0])}</div><div>${escapeHtml(row[1])}</div></div>`).join("")}
+      <div class="code-grid">
+        <div>
+          <h4>Java support example only</h4>
+          <pre><code>${escapeHtml(example.java)}</code></pre>
+        </div>
+        <div>
+          <h4>Cambridge-style pseudocode</h4>
+          <pre><code>${escapeHtml(example.pseudo)}</code></pre>
+        </div>
       </div>
+      <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
     </article>
   `;
 }
@@ -279,7 +312,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("pass");
+  renderExample("if");
 }
 
 function setupPractice() {
@@ -304,7 +337,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const value = normalise(input.value);
       const correct = item.accepted.some((answer) => value.includes(answer));
-      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and compare the Section 11 logic.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and compare the convention.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -369,8 +402,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupBuilder();
-  setupChecklist();
+  setupConverter();
+  setupSpotter();
   setupExamples();
   setupPractice();
   setupMistakes();

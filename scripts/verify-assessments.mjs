@@ -35,19 +35,20 @@ for (const entry of quizzes) check(sum(entry.questions) === 10, `Quiz L${entry.l
 for (const entry of quizzes) {
   check(entry.questions.length === 5, `Quiz L${entry.lesson} must contain five lesson-linked questions`);
   check(entry.questions.every((question) => question.marks === 2), `Quiz L${entry.lesson} questions must each carry two marks`);
-  check(entry.coveredLessons.length === 5, `Quiz L${entry.lesson} must map five source lessons`);
-  check(entry.questions.every((question, index) => question.sourceLesson === entry.coveredLessons[index]), `Quiz L${entry.lesson} source-lesson mapping is inconsistent`);
-  const expectedObjectives = entry.lesson <= 95 ? ["AO1", "AO2"] : entry.lesson === 100 ? ["AO1", "AO2", "AO3"] : ["AO2", "AO3"];
+  check(entry.coveredLessons.length >= 5 && entry.coveredLessons.length <= 6, `Quiz L${entry.lesson} must map five source lessons, with at most one explicit two-lesson integration`);
+  check(entry.questions.every((question) => Array.isArray(question.sourceLessons) && question.sourceLessons.length >= 1 && question.sourceLessons.length <= 2 && question.sourceLesson === question.sourceLessons[0]), `Quiz L${entry.lesson} source-lesson mapping is inconsistent`);
+  check(entry.questions.flatMap((question) => question.sourceLessons).join() === entry.coveredLessons.join(), `Quiz L${entry.lesson} covered-lessons summary is stale`);
+  const expectedObjectives = entry.lesson <= 96 ? ["AO1", "AO2"] : entry.lesson === 101 ? ["AO1", "AO2", "AO3"] : ["AO2", "AO3"];
   check(entry.assessmentObjectives.join() === expectedObjectives.join(), `Quiz L${entry.lesson} has incorrect assessment objectives`);
 }
 const quizLessonCoverage = quizzes.flatMap((entry) => entry.coveredLessons);
-check(quizLessonCoverage.length === 150, "Quiz mapping must contain 150 lesson references");
-check(new Set(quizLessonCoverage).size === 150, "Each lesson must map to exactly one quiz question");
-check(quizLessonCoverage.every((lesson, index) => lesson === index + 1), "Quiz lesson mapping must cover Lessons 001-150 in order");
+check(quizLessonCoverage.length === 151, "Quiz mapping must contain 151 lesson references");
+check(new Set(quizLessonCoverage).size === 151, "Each lesson must map to exactly one quiz question");
+check(quizLessonCoverage.every((lesson, index) => lesson === index + 1), "Quiz lesson mapping must cover Lessons 001-151 in order");
 for (const entry of monthlyAssessments) check(sum(entry.questions) === 30, `Monthly L${entry.lesson} must total 30 marks`);
 for (const entry of monthlyAssessments) {
   check(entry.questions.length === 5, `Monthly L${entry.lesson} must contain five questions`);
-  const expectedObjectives = entry.lesson < 100 ? ["AO1", "AO2"] : entry.lesson === 100 ? ["AO1", "AO2", "AO3"] : ["AO2", "AO3"];
+  const expectedObjectives = entry.lesson < 101 ? ["AO1", "AO2"] : entry.lesson === 101 ? ["AO1", "AO2", "AO3"] : ["AO2", "AO3"];
   check(entry.assessmentObjectives.join() === expectedObjectives.join(), `Monthly L${entry.lesson} has incorrect assessment objectives`);
 }
 for (const entry of stageReviews) {
@@ -55,7 +56,7 @@ for (const entry of stageReviews) {
   check(entry.retrieval.length === 6, `Review L${entry.lesson} must have six retrieval items`);
   check(entry.errors.length === 2, `Review L${entry.lesson} must have two corrections`);
   check(sum(entry.questions) + entry.retrieval.length + (entry.errors.length * 2) === 20, `Review L${entry.lesson} must total 20 marks`);
-  const expectedObjectives = entry.lesson <= 97 ? ["AO1", "AO2"] : ["AO2", "AO3"];
+  const expectedObjectives = entry.lesson <= 98 ? ["AO1", "AO2"] : ["AO2", "AO3"];
   check(entry.assessmentObjectives.join() === expectedObjectives.join(), `Review L${entry.lesson} has incorrect assessment objectives`);
 }
 for (const question of allQuestions) {
@@ -135,4 +136,4 @@ if (failures.length) {
   console.error(failures.join("\n"));
   process.exit(1);
 }
-console.log(`Stage 4 assessment verification passed: 30 quizzes covering Lessons 001-150, 7 x 30-mark monthly assessments, 14 x 20-mark stage reviews, ${allQuestions.length} unique exam questions, and matching Markdown/web MS content.`);
+console.log(`Stage 4 assessment verification passed: 30 quizzes covering Lessons 001-151, 7 x 30-mark monthly assessments, 14 x 20-mark stage reviews, ${allQuestions.length} unique exam questions, and matching Markdown/web MS content.`);

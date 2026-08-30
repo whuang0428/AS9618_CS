@@ -1,47 +1,74 @@
+const scenarios = {
+  public: {
+    result: "Internet",
+    method: "The product pages are intended for public access on the global network. Individual services may require login, but the public-facing network context is the internet.",
+  },
+  staff: {
+    result: "Intranet",
+    method: "The resources are private to the organisation and restricted to authorised internal users such as staff.",
+  },
+  supplier: {
+    result: "Extranet",
+    method: "A selected external organisation is given controlled access to private data, so this is an extranet scenario rather than fully public access.",
+  },
+  files: {
+    result: "Cloud storage",
+    method: "Files are stored on remote servers and accessed over a network from different locations/devices.",
+  },
+  scale: {
+    result: "Cloud infrastructure",
+    method: "The startup rents remote computing resources and can scale capacity without buying and maintaining all hardware locally.",
+  },
+  risk: {
+    result: "Cloud service risk evaluation",
+    method: "Remote provider storage may help access and backup, but patient records require careful security, privacy, compliance and provider-dependence analysis.",
+  },
+};
+
 const examples = {
-  download: {
-    title: "Example 1: ideal download time",
-    problem: "A 60 MB update is downloaded over a 30 Mbps connection.",
+  school: {
+    title: "Example 1: school staff portal",
+    problem: "A school wants staff to access internal policies, forms and notices.",
     steps: [
-      "Convert file size to megabits: 60 MB x 8 = 480 Mb.",
-      "Use transfer time = file size / bandwidth.",
-      "480 Mb / 30 Mbps = 16 seconds.",
-      "State that real time may be longer due to overheads, congestion or lower throughput.",
+      "The information is for internal users, not the public.",
+      "The organisation controls access to the resources.",
+      "An intranet is suitable because it is a private network for authorised users inside the organisation.",
+      "A strong answer mentions restricted access, not just 'it is online'.",
     ],
   },
-  gaming: {
-    title: "Example 2: online game delay",
-    problem: "An online game has small data packets but feels delayed.",
+  supplier: {
+    title: "Example 2: supplier stock portal",
+    problem: "A shop lets selected suppliers log in to view stock levels and delivery schedules.",
     steps: [
-      "The amount of data per packet may be small, so bandwidth may not be the main issue.",
-      "High latency delays the response between player action and server reply.",
-      "Distance, route, server load and wireless interference can increase latency.",
-      "A good answer links delay to gameplay consequence, such as late movement updates.",
+      "The supplier is external to the organisation.",
+      "The access is controlled and limited to selected information.",
+      "This is an extranet because authorised external users are given access to private resources.",
+      "It is not the public internet because not everyone can access the data.",
     ],
   },
-  congestion: {
-    title: "Example 3: shared school network",
-    problem: "Downloads become slower when many students stream video at lunchtime.",
+  cloud: {
+    title: "Example 3: moving files to cloud storage",
+    problem: "A school considers storing student work on a cloud service.",
     steps: [
-      "Many users share the same network capacity.",
-      "Traffic can exceed the capacity of a link or device, causing congestion.",
-      "Queues form, throughput per user falls, and packets may be delayed or lost.",
-      "The symptom is slower downloads, buffering or lag.",
+      "Cloud storage uses remote servers accessed over a network.",
+      "Benefits may include remote access, collaboration, backups and less local storage management.",
+      "Risks may include dependence on internet connection, provider availability, privacy and security.",
+      "A balanced answer gives both benefits and drawbacks linked to the school scenario.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which term means the maximum amount of data that can be transmitted per second?", accepted: ["bandwidth"], answer: "Bandwidth" },
-  { id: "p2", prompt: "Which term means delay before a response or before data starts to arrive?", accepted: ["latency"], answer: "Latency" },
-  { id: "p3", prompt: "Which term means too much traffic using part of the network?", accepted: ["congestion", "network congestion"], answer: "Congestion" },
-  { id: "p4", prompt: "Which is normally measured in ms: bandwidth or latency?", accepted: ["latency"], answer: "Latency" },
-  { id: "p5", prompt: "Which is normally measured in Mbps or Gbps: bandwidth or latency?", accepted: ["bandwidth"], answer: "Bandwidth" },
-  { id: "p6", prompt: "Convert 10 MB to megabits.", accepted: ["80", "80 mb", "80 megabits"], answer: "80 Mb" },
-  { id: "p7", prompt: "A 10 MB file over 8 Mbps takes how many seconds ideally?", accepted: ["10", "10 seconds", "10s"], answer: "10 seconds" },
-  { id: "p8", prompt: "Name one effect of congestion.", accepted: ["delay", "latency", "packet loss", "lower throughput", "slower download", "buffering", "lag"], answer: "Delay / packet loss / lower throughput / buffering / lag" },
-  { id: "p9", prompt: "Does high bandwidth always mean low latency? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "What is the actual successful data transfer rate called?", accepted: ["throughput"], answer: "Throughput" },
+  { id: "p1", prompt: "Which term means a global public network of interconnected networks?", accepted: ["internet"], answer: "Internet" },
+  { id: "p2", prompt: "Which term means a private internal network for an organisation?", accepted: ["intranet"], answer: "Intranet" },
+  { id: "p3", prompt: "Which term means a private network with controlled access for selected external users?", accepted: ["extranet"], answer: "Extranet" },
+  { id: "p4", prompt: "Cloud storage keeps files on local-only drives or remote servers?", accepted: ["remote servers", "remote", "servers"], answer: "Remote servers" },
+  { id: "p5", prompt: "A supplier logs in to see selected stock data. Internet, intranet or extranet?", accepted: ["extranet"], answer: "Extranet" },
+  { id: "p6", prompt: "Staff-only HR policies are likely on an internet, intranet or extranet?", accepted: ["intranet"], answer: "Intranet" },
+  { id: "p7", prompt: "Name one benefit of cloud services.", accepted: ["remote access", "collaboration", "backup", "backups", "scalability", "scale", "less maintenance", "lower local maintenance", "cost"], answer: "Remote access / collaboration / backup / scalability / less local maintenance" },
+  { id: "p8", prompt: "Name one risk or drawback of cloud services.", accepted: ["security", "privacy", "internet connection", "connection", "provider", "downtime", "latency", "cost", "compliance"], answer: "Security / privacy / dependence on connection or provider / downtime / cost" },
+  { id: "p9", prompt: "Does an extranet allow everyone on the public internet to access all data? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "A startup rents remote servers instead of buying local hardware. Which service idea is this?", accepted: ["cloud", "cloud infrastructure", "iaas", "infrastructure as a service"], answer: "Cloud infrastructure" },
 ];
 
 
@@ -54,93 +81,95 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Compare bandwidth and latency.",
-    answer: "Bandwidth is the amount of data that can be transmitted per second, often measured in Mbps or Gbps. Latency is the delay before data starts to arrive or before a response is received, often measured in milliseconds. A connection can have high bandwidth but still have high latency.",
+    prompt: "Compare the internet and an intranet.",
+    answer: "The internet is a global public network of interconnected networks. An intranet is a private network used within an organisation and restricted to authorised internal users. Both may use web technologies, but the access scope and control are different.",
     marking: [
-      { mark: "B1", text: "bandwidth is data capacity/rate per second" },
-      { mark: "B1", text: "higher bandwidth allows more data to be transferred in a given time" },
-      { mark: "B1", text: "latency is delay/response time" },
-      { mark: "B1", text: "high latency causes a longer wait for a response even when bandwidth is high" },
+      { mark: "B1", text: "internet is global/public/interconnected networks" },
+      { mark: "B1", text: "intranet is private/internal to an organisation" },
+      { mark: "B1", text: "intranet access restricted to authorised users/staff" },
+      { mark: "B1", text: "contrasts internet access across public interconnected networks with organisation-controlled intranet access" },
     ],
     strict: [
-      "Do not accept only 'bandwidth is speed' without data-rate idea.",
-      "Do not accept latency as the amount of data sent.",
-      "Allow 'time taken for data to travel' if delay is clear.",
+      "Do not accept 'intranet is a small internet' for full credit.",
+      "Do not require discussion of physical hardware.",
+      "Allow reference to web technologies if access distinction is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "A 75 MB file is transferred over a 25 Mbps connection. Calculate the ideal transfer time.",
-    answer: "75 MB = 75 x 8 = 600 Mb. Transfer time = 600 Mb / 25 Mbps = 24 seconds.",
+    prompt: "A company gives selected suppliers access to stock levels and delivery information. Explain why this is an extranet.",
+    answer: "This is an extranet because it gives selected external users, the suppliers, controlled access to private company information. The data is not available to the general public, and the company can restrict what each supplier can access.",
     marking: [
-      { mark: "M1", text: "converts MB to megabits by multiplying by 8" },
-      { mark: "A1", text: "600 Mb" },
-      { mark: "M1", text: "divides file size in bits by bandwidth in bits per second" },
-      { mark: "A1", text: "24 seconds with suitable unit" },
+      { mark: "B1", text: "identifies selected suppliers as external users/organisations" },
+      { mark: "B1", text: "controlled/restricted access" },
+      { mark: "B1", text: "access to private/internal company information" },
+      { mark: "B1", text: "not available to the general public / differs from public internet" },
     ],
     strict: [
-      "Do not award final A1 if answer is 3 seconds from confusing MB with Mb.",
-      "Ignore real-world overheads unless the question asks for actual transfer time.",
+      "Do not accept only 'it is online'.",
+      "Do not call it an intranet unless external controlled access is still explained; no identification mark for wrong term.",
+      "Allow partner/customer portal examples if access is controlled.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "Explain how congestion can affect users on a school network at lunchtime.",
-    answer: "At lunchtime many users may stream videos or download files at the same time. The traffic may exceed the capacity of a link, router, access point or internet connection, causing congestion. Packets may be queued, delayed or lost, so throughput per user falls and users experience buffering, lag or slow downloads.",
+    prompt: "A school is considering cloud storage for student work. Discuss two benefits and one drawback.",
+    answer: "Cloud storage can allow students and staff to access files from different locations and devices. It can also support collaboration and backup because files are stored on remote servers managed by a provider. A drawback is dependence on internet connection/provider availability, or concerns about security and privacy of student data.",
     marking: [
-      { mark: "B1", text: "many users/devices generate high traffic at same time" },
-      { mark: "B1", text: "traffic exceeds/shared capacity of link/device/connection" },
-      { mark: "B1", text: "queues/delays occur" },
-      { mark: "B1", text: "packet loss/retransmission or reduced throughput" },
-      { mark: "B1", text: "valid user symptom such as buffering/lag/slow download linked to lunchtime scenario" },
+      { mark: "B1", text: "files stored/accessed on remote servers over a network" },
+      { mark: "B1", text: "benefit: access from different locations/devices" },
+      { mark: "B1", text: "benefit: collaboration/backup/reduced local maintenance" },
+      { mark: "B1", text: "drawback: dependence on internet/provider/downtime" },
+      { mark: "B1", text: "drawback or benefit linked to school/student data context such as security/privacy" },
     ],
     strict: [
-      "Do not accept only 'more users make it slower' for full credit.",
-      "Do not require a specific congestion-control algorithm.",
-      "Allow access point/router/server as bottleneck if cause and effect are clear.",
+      "Do not accept only 'it is cheaper' without a reason or context.",
+      "Do not say data is stored 'in the air'.",
+      "Award a maximum of 3 marks if no cloud-service mechanism is described.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Compare real-time bit streaming from on-demand bit streaming and explain why broadband speed must normally exceed the stream bit rate.",
-    answer: "Real-time bit streaming carries a live event with minimal delay, whereas on-demand bit streaming sends stored content selected by the user. The stream bit rate is the number of bits consumed each second. Available broadband speed must normally exceed that rate and allow for overhead or variation; otherwise the playback buffer eventually empties and playback pauses or quality is reduced.",
+    prompt: "Explain why an organisation may use an intranet instead of publishing documents on the internet.",
+    answer: "An intranet restricts access to authorised internal users, so confidential or staff-only documents are not publicly available. The organisation can control the content and access permissions. This is suitable for internal policies, forms and notices that should not be exposed on the public internet.",
     marking: [
-      { mark: "B1", text: "real-time streaming carries live content with minimal delay" },
-      { mark: "B1", text: "on-demand streaming sends stored content chosen by the user" },
-      { mark: "B1", text: "broadband/arrival rate must normally exceed the stream bit rate / bits consumed per second" },
-      { mark: "B1", text: "otherwise the buffer empties and playback pauses or quality is reduced" },
+      { mark: "B1", text: "restricted to authorised/internal users" },
+      { mark: "B1", text: "protects confidential/staff-only information from public access" },
+      { mark: "B1", text: "organisation controls content/permissions" },
+      { mark: "B1", text: "valid internal document example or scenario link" },
     ],
     strict: [
-      "Do not define real-time as merely fast playback; it must be linked to live content.",
-      "Do not accept 'better internet is needed' without comparing broadband speed with stream bit rate.",
-      "A starting buffer delays a shortage but does not fix a sustained arrival rate below the stream bit rate.",
+      "Do not accept vague 'more secure' unless access restriction/control is explained.",
+      "Do not require encryption details.",
+      "Allow 'private network' if internal organisation use is clear.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "Describe factors that could reduce the actual throughput of a network below its advertised bandwidth.",
-    answer: "Actual throughput may be lower than advertised bandwidth because many users share the same connection, causing congestion. Wireless interference or weak signal can cause errors and retransmission. Protocol overheads such as headers, error checking and encryption use some capacity. Slow network hardware or overloaded servers can also become bottlenecks.",
+    prompt: "A regulated organisation is choosing between a public cloud and a private cloud for confidential documents. Compare the two and Suggest one.",
+    answer: "A public cloud uses provider infrastructure shared between customers. It can scale quickly and reduce the organisation's need to buy and maintain hardware, but gives less direct control and creates provider, privacy and data-location concerns. A private cloud is dedicated to one organisation and can give greater control over configuration, access and data location, but costs more to operate and requires more administration. A private cloud may therefore suit the confidential regulated documents when control requirements outweigh cost, although either choice still needs access controls and backup.",
     marking: [
-      { mark: "B1", text: "many users/shared connection/congestion" },
-      { mark: "B1", text: "wireless interference/weak signal/errors" },
-      { mark: "B1", text: "packet loss/retransmission reduces effective rate" },
-      { mark: "B1", text: "protocol overheads such as headers/encryption/error checking" },
-      { mark: "B1", text: "hardware/server bottleneck or overloaded device" },
+      { mark: "B1", text: "public cloud uses shared provider infrastructure" },
+      { mark: "B1", text: "public-cloud benefit such as scalability/lower capital or maintenance requirement" },
+      { mark: "B1", text: "private cloud is dedicated to one organisation / gives greater control" },
+      { mark: "B1", text: "private-cloud drawback such as higher cost or administration" },
+      { mark: "B1", text: "supported recommendation linked to confidential regulated documents" },
     ],
     strict: [
-      "Do not accept a list of vague words without explaining effect.",
-      "Do not require all factors; award any valid distinct factors up to the mark limit.",
-      "Allow environmental obstacles if linked to wireless performance.",
+      "Do not accept that public means anyone can read the customer's files.",
+      "Do not accept that private cloud automatically guarantees security.",
+      "No recommendation mark without a scenario-linked reason.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ");
+  return value.trim().toLowerCase().replace(/[-\s]+/g, " ");
 }
 
 function setupPrint() {
@@ -153,47 +182,25 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "latency"
-        ? "Correct. Long pauses are a delay problem, so latency is the first suspect."
-        : "Not quite. The clue is delay between replies, not just how much data can be carried.";
+      feedback.textContent = button.dataset.hook === "extranet"
+        ? "Correct. Internal-only access is intranet; controlled access for an external partner is extranet."
+        : "Not quite. Focus on who is authorised to access the private information.";
     });
   });
 }
 
-function convertToMegabits(size, unit) {
-  if (unit === "MB") return size * 8;
-  if (unit === "MiB") return size * 8.388608;
-  return size;
-}
-
-function setupCalculator() {
-  const fileSize = document.querySelector("#fileSizeInput");
-  const fileUnit = document.querySelector("#fileUnitInput");
-  const bandwidth = document.querySelector("#bandwidthInput");
-  const latency = document.querySelector("#latencyInput");
-  const result = document.querySelector("#calcResult");
-  const method = document.querySelector("#calcMethod");
-
-  function calculate() {
-    const size = Number(fileSize.value);
-    const speed = Number(bandwidth.value);
-    const latencyMs = Number(latency.value);
-    if (!Number.isFinite(size) || !Number.isFinite(speed) || size < 0 || speed <= 0) {
-      result.textContent = "Enter a non-negative file size and a bandwidth greater than 0.";
-      method.textContent = "";
-      return;
-    }
-    const megabits = convertToMegabits(size, fileUnit.value);
-    const transferSeconds = megabits / speed;
-    const latencySeconds = latencyMs / 1000;
-    const roughTotal = transferSeconds + latencySeconds;
-    result.textContent = `Ideal estimate: ${roughTotal.toFixed(2)} seconds`;
-    method.textContent = `${size} ${fileUnit.value} = ${megabits.toFixed(2)} Mb. ${megabits.toFixed(2)} Mb / ${speed} Mbps = ${transferSeconds.toFixed(2)} s. Add one latency estimate of ${latencySeconds.toFixed(3)} s. Real throughput may be lower.`;
+function setupChoiceTool() {
+  const select = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#choiceResult");
+  const method = document.querySelector("#choiceMethod");
+  function choose() {
+    const item = scenarios[select.value];
+    result.textContent = item.result;
+    method.textContent = item.method;
   }
-
-  [fileSize, fileUnit, bandwidth, latency].forEach((control) => control.addEventListener("input", calculate));
-  document.querySelector("#calculateBtn").addEventListener("click", calculate);
-  calculate();
+  select.addEventListener("change", choose);
+  document.querySelector("#chooseBtn").addEventListener("click", choose);
+  choose();
 }
 
 function renderExample(key) {
@@ -213,7 +220,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("download");
+  renderExample("school");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -261,7 +268,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check whether the question asks about capacity, delay, traffic load or actual throughput.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Use access scope and scenario consequences, not vague online/offline labels.`;
   });
 }
 
@@ -298,7 +305,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupCalculator();
+  setupChoiceTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

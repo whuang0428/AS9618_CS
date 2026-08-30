@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 110 | Cambridge pseudocode conventions and exam readability</title>
+    <title>AS9618 Lesson 110 | Algorithm efficiency at AS level</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Cambridge pseudocode conventions and exam readability</h1>
+        <h1>Algorithm efficiency at AS level</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#notation">Core notation</a>
-        <a href="#structure">Block structure</a>
-        <a href="#readability">Readability</a>
-        <a href="#java">Java traps</a>
-        <a href="#conversion">Conversion routine</a>
-        <a href="#classifier">Notation checker</a>
-        <a href="#cleaner">Java cleaner</a>
+        <a href="#measure">What to measure</a>
+        <a href="#cases">Best/worst cases</a>
+        <a href="#search">Search comparison</a>
+        <a href="#loops">Loop growth</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#chooser">Efficiency chooser</a>
+        <a href="#estimator">Step estimator</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -47,288 +47,303 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 110 | 45 minutes | Paper 2 Section 9 | 5-minute quiz</p>
-            <h2>Pseudocode is not Java wearing a fake moustache.</h2>
+            <p class="lesson-meta">Lesson 110 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Fast is not a vibe. Count the work.</h2>
             <p>
-              Cambridge pseudocode is the exam answer format. Java can support implementation practice, but Paper 2
-              rewards clear algorithm expression: assignment arrows, readable identifiers, correct block endings,
-              indentation and logic that a marker can follow without running a compiler.
+              Algorithm efficiency at AS level means comparing how much work an algorithm does as the input size grows.
+              We mainly use step counts, comparisons, loop repetitions, memory used and best/worst case reasoning. You
+              do not need a university-level proof; you do need a precise explanation that matches the algorithm.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Use</strong><span>Cambridge-style assignment, input, output, selection and loop notation</span></div>
-              <div><strong>Improve</strong><span>readability through indentation, identifiers and block endings</span></div>
-              <div><strong>Convert</strong><span>Java-like fragments into exam-appropriate pseudocode</span></div>
+              <div><strong>Measure</strong><span>comparisons, loop repetitions, assignments and memory use</span></div>
+              <div><strong>Compare</strong><span>linear search, binary search, simple loops and nested loops</span></div>
+              <div><strong>Explain</strong><span>best case, worst case and input-size effects clearly</span></div>
             </div>
           </div>
-          <div class="pseudo-visual" aria-label="Pseudocode visual">
-            <div class="compare-card">
-              <strong>Cambridge-style</strong>
-              <pre><code>Total &lt;- Total + Mark
-IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
-ENDIF</code></pre>
+          <div class="efficiency-visual" aria-label="Efficiency visual">
+            <div class="scale-line">
+              <div><strong>n = 8</strong><span>linear: up to 8 checks</span><span>binary: up to 4 checks</span></div>
+              <div><strong>n = 64</strong><span>linear: up to 64 checks</span><span>binary: up to 7 checks</span></div>
             </div>
-            <div class="compare-card warning">
-              <strong>Java support only</strong>
-              <pre><code>total = total + mark;
-if (mark &gt;= 50) {
-    System.out.println("Pass");
-}</code></pre>
+            <div class="growth-grid">
+              <span>1 loop: n</span>
+              <span>2 nested loops: n x n</span>
+              <span>binary search: repeatedly halve</span>
             </div>
-            <p>Same logic, different answer style. In Paper 2, make the algorithm readable first.</p>
+            <p>The exam reward is usually the reason, not the slogan "more efficient".</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style marking rewards clear intent. Ambiguous braces, missing ENDIFs or overwritten variables can hide correct logic.</p>
+            <p>Paper 2 may ask students to choose or justify an algorithm. Marks depend on linking the method to work done.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A runnable Java answer is not automatically a good Paper 2 pseudocode answer. Syntax habits can cost clarity marks.</p>
+            <p>Binary search is not automatically valid. It only works when the data is sorted and random/midpoint access is available.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which line looks most like Cambridge-style assignment?</h2>
-            <p>The algorithm adds `Mark` to `Total`. Choose the clearest Paper 2 style.</p>
+            <h2>Where would you search for page 512?</h2>
+            <p>A book has 1000 numbered pages. You need page 512. Which strategy is usually more efficient?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="arrow">Total &lt;- Total + Mark</button>
-            <button class="choice-card" type="button" data-hook="equals">Total = Total + Mark;</button>
-            <button class="choice-card" type="button" data-hook="plus">Total++Mark</button>
-            <button class="choice-card" type="button" data-hook="print">System.out.println(Total)</button>
+            <button class="choice-card" type="button" data-hook="linear">Check page 1, then 2, then 3...</button>
+            <button class="choice-card" type="button" data-hook="binary">Open near the middle and halve the search area.</button>
+            <button class="choice-card" type="button" data-hook="random">Open random pages until lucky.</button>
+            <button class="choice-card" type="button" data-hook="sort">Alphabetically sort the pages first.</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the notation that clearly assigns a new value to Total.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the strategy that reduces the remaining search space fastest.</div>
         </section>
 
-        <section class="panel" id="notation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="notation">
+        <section class="panel" id="measure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="measure">
           <div class="section-title">
-            <p class="eyebrow">Core notation</p>
-            <h2>Use the symbols that make algorithm intent visible</h2>
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Efficiency is about resources used</h2>
           </div>
-          <div class="data-table pattern-table" role="table" aria-label="Cambridge pseudocode notation">
-            <div class="table-row table-head" role="row"><div>Idea</div><div>Cambridge-style pseudocode</div><div>Java support only</div><div>Exam note</div></div>
-            <div class="table-row" role="row"><div>Assignment</div><div>`Total &lt;- Total + 1`</div><div>`total = total + 1;`</div><div>`&lt;-` shows value is stored</div></div>
-            <div class="table-row" role="row"><div>Input</div><div>`INPUT Mark`</div><div>`scanner.nextInt()`</div><div>name the value being read</div></div>
-            <div class="table-row" role="row"><div>Output</div><div>`OUTPUT Total`</div><div>`System.out.println(total);`</div><div>state what is displayed</div></div>
-            <div class="table-row" role="row"><div>Selection</div><div>`IF ... THEN ... ELSE ... ENDIF`</div><div>`if (...) { ... } else { ... }`</div><div>close the block clearly</div></div>
-            <div class="table-row" role="row"><div>Loops</div><div>`FOR ... NEXT` / `WHILE ... ENDWHILE`</div><div>`for (...) {}` / `while (...) {}`</div><div>show loop boundaries</div></div>
+          <div class="data-table pattern-table" role="table" aria-label="Efficiency measures">
+            <div class="table-row table-head" role="row"><div>Measure</div><div>What to count</div><div>Exam wording</div><div>Common error</div></div>
+            <div class="table-row" role="row"><div>Time</div><div>comparisons, loop repetitions, steps</div><div>fewer checks / fewer iterations</div><div>"faster" without reason</div></div>
+            <div class="table-row" role="row"><div>Space</div><div>extra variables, arrays, copied data</div><div>uses less memory / no extra list</div><div>ignoring memory when data is copied</div></div>
+            <div class="table-row" role="row"><div>Input size</div><div>number of items, characters, rows, columns</div><div>as n increases, work increases...</div><div>testing only one tiny example</div></div>
+            <div class="table-row" role="row"><div>Case</div><div>best, average or worst scenario</div><div>target at start / absent / middle</div><div>using best case as if always true</div></div>
           </div>
-          <div class="callout">Chinese support: assignment = 赋值；indentation = 缩进；block ending = 代码块结束标记。</div>
+          <div class="callout">Chinese support: efficiency = 效率；time complexity idea = 随输入规模增长的运行时间；space = 额外内存。</div>
         </section>
 
-        <!-- stage10-explanation:start notation -->
-        <section class="panel explanation-panel" id="explanation-notation" data-explains="notation" data-explanation-kind="process" aria-labelledby="explanation-notation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="notation">
-          <h2 class="explanation-sr-only" id="explanation-notation-title">Use the symbols that make algorithm intent visible</h2>
+        <!-- stage10-explanation:start measure -->
+        <section class="panel explanation-panel" id="explanation-measure" data-explains="measure" data-explanation-kind="mechanism" aria-labelledby="explanation-measure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="measure">
+          <h2 class="explanation-sr-only" id="explanation-measure-title">Efficiency is about resources used</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-notation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the symbols that make algorithm intent visible with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the symbols that make algorithm intent visible: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-measure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Efficiency is about resources used with a structured visual model." />
+            <figcaption class="explanation-sr-only">Efficiency is about resources used: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Core notation</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Total &lt;- Total + 1</li><li><strong>Lesson fact:</strong> total = total + 1;</li><li><strong>Lesson fact:</strong> &lt;- shows value is stored</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> scanner.nextInt()</li><li><strong>Lesson fact:</strong> name the value being read</li><li><strong>Lesson fact:</strong> OUTPUT Total</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What to count</li><li><strong>Lesson fact:</strong> Exam wording</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> comparisons, loop repetitions, steps</li><li><strong>Lesson fact:</strong> fewer checks / fewer iterations</li><li><strong>Lesson fact:</strong> &quot;faster&quot; without reason</li><li><strong>Lesson fact:</strong> extra variables, arrays, copied data</li><li><strong>Lesson fact:</strong> uses less memory / no extra list</li><li><strong>Lesson fact:</strong> ignoring memory when data is copied</li><li><strong>Lesson fact:</strong> Input size</li><li><strong>Lesson fact:</strong> number of items, characters, rows, columns</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end notation -->
-        <section class="panel" id="structure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
+        <!-- stage10-explanation:end measure -->
+        <section class="panel" id="cases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cases">
           <div class="section-title">
-            <p class="eyebrow">Block structure</p>
-            <h2>Every opening should have a visible ending</h2>
+            <p class="eyebrow">Best and worst cases</p>
+            <h2>The same algorithm can behave differently on different inputs</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Readable selection</h3>
-              <pre><code>IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit"
-ENDIF</code></pre>
-              <p>`ENDIF` makes the selection boundary clear.</p>
+              <h3>Linear search</h3>
+              <pre><code>Found &lt;- FALSE
+Index &lt;- 1
+WHILE Found = FALSE AND Index &lt;= Length
+    IF List[Index] = Target THEN
+        Found &lt;- TRUE
+    ELSE
+        Index &lt;- Index + 1
+    ENDIF
+ENDWHILE</code></pre>
             </article>
             <article>
-              <h3>Readable loop</h3>
-              <pre><code>FOR Index &lt;- 1 TO 5
-    INPUT Mark
-    Total &lt;- Total + Mark
-NEXT Index</code></pre>
-              <p>`NEXT Index` shows which loop is ending, useful when loops are nested.</p>
+              <h3>Case language</h3>
+              <p>Best case: target is first, so only 1 comparison. Worst case: target is last or absent, so all n items may be checked.</p>
+              <div class="callout">Do not say "linear search is always slow". It can be quick in the best case, but grows linearly in the worst case.</div>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start structure -->
-        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="structure">
-          <h2 class="explanation-sr-only" id="explanation-structure-title">Every opening should have a visible ending</h2>
+        <!-- stage10-explanation:start cases -->
+        <section class="panel explanation-panel" id="explanation-cases" data-explains="cases" data-explanation-kind="process" aria-labelledby="explanation-cases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="cases">
+          <h2 class="explanation-sr-only" id="explanation-cases-title">The same algorithm can behave differently on different inputs</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Every opening should have a visible ending with a structured visual model." />
-            <figcaption class="explanation-sr-only">Every opening should have a visible ending: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-cases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The same algorithm can behave differently on different inputs with a structured visual model." />
+            <figcaption class="explanation-sr-only">The same algorithm can behave differently on different inputs: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Block structure</li><li><strong>Lesson fact:</strong> Readable selection</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit&quot;</li><li><strong>Lesson fact:</strong> ENDIF makes the selection boundary clear.</li><li><strong>Lesson fact:</strong> Readable loop</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> NEXT Index shows which loop is ending, useful when loops are nested.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Best and worst cases</li><li><strong>Lesson fact:</strong> Linear search</li><li><strong>Lesson fact:</strong> Found &lt;- FALSE</li><li><strong>Lesson fact:</strong> Index &lt;- 1</li><li><strong>Lesson fact:</strong> WHILE Found = FALSE AND Index &lt;= Length</li><li><strong>Lesson fact:</strong> IF List[Index] = Target THEN</li><li><strong>Lesson fact:</strong> Found &lt;- TRUE</li><li><strong>Lesson fact:</strong> Index &lt;- Index + 1</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> Case language</li><li><strong>Lesson fact:</strong> Best case: target is first, so only 1 comparison. Worst case: target is last or absent, so all n items may be checked.</li><li><strong>Lesson fact:</strong> Do not say &quot;linear search is always slow&quot;. It can be quick in the best case, but grows linearly in the worst case.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end structure -->
-        <section class="panel" id="readability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="readability">
+        <!-- stage10-explanation:end cases -->
+        <section class="panel" id="search" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
           <div class="section-title">
-            <p class="eyebrow">Readability</p>
-            <h2>A marker should not need detective training</h2>
-          </div>
-          <div class="data-table readability-table" role="table" aria-label="Readability features">
-            <div class="table-row table-head" role="row"><div>Feature</div><div>Weak answer</div><div>Improved answer</div><div>Why it helps</div></div>
-            <div class="table-row" role="row"><div>Identifier</div><div>`x`, `y`, `z`</div><div>`Mark`, `Total`, `PassCount`</div><div>purpose is visible</div></div>
-            <div class="table-row" role="row"><div>Indentation</div><div>all lines aligned</div><div>nested lines indented</div><div>block ownership is clear</div></div>
-            <div class="table-row" role="row"><div>Output position</div><div>inside loop by accident</div><div>after loop when final result required</div><div>avoids repeated output</div></div>
-            <div class="table-row" role="row"><div>Condition</div><div>`IF good THEN`</div><div>`IF Mark &gt;= 50 THEN`</div><div>test is precise</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start readability -->
-        <section class="panel explanation-panel" id="explanation-readability" data-explains="readability" data-explanation-kind="mechanism" aria-labelledby="explanation-readability-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="readability">
-          <h2 class="explanation-sr-only" id="explanation-readability-title">A marker should not need detective training</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-readability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A marker should not need detective training with a structured visual model." />
-            <figcaption class="explanation-sr-only">A marker should not need detective training: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Readability</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Improved answer</li><li><strong>Lesson fact:</strong> Why it helps</li><li><strong>Lesson fact:</strong> Identifier</li><li><strong>Lesson fact:</strong> x, y, z</li><li><strong>Lesson fact:</strong> Mark, Total, PassCount</li><li><strong>Lesson fact:</strong> purpose is visible</li><li><strong>Lesson fact:</strong> Indentation</li><li><strong>Lesson fact:</strong> all lines aligned</li><li><strong>Lesson fact:</strong> nested lines indented</li><li><strong>Lesson fact:</strong> block ownership is clear</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end readability -->
-        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
-          <div class="section-title">
-            <p class="eyebrow">Java traps</p>
-            <h2>Keep Java syntax out of Paper 2 unless Java is explicitly requested</h2>
+            <p class="eyebrow">Search comparison</p>
+            <h2>Linear search checks one by one; binary search halves a sorted list</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Java-like answer</h3>
-              <pre><code>for (int i = 0; i &lt; 5; i++) {
-    if (marks[i] &gt;= 50) {
-        passCount++;
-    }
-}</code></pre>
+              <h3>Linear search on 8 items</h3>
+              <p>Worst case: check item 1, 2, 3, 4, 5, 6, 7, 8. That is up to 8 comparisons.</p>
+              <pre><code>[3, 8, 11, 18, 25, 31, 40, 52]
+target 52 -> 8 comparisons</code></pre>
             </article>
             <article>
-              <h3>Cambridge-style version</h3>
-              <pre><code>PassCount &lt;- 0
-FOR Index &lt;- 1 TO 5
-    IF Mark[Index] &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
+              <h3>Binary search on sorted 8 items</h3>
+              <p>Compare the middle item, discard half, repeat. For 8 items, the target is found or ruled out in about 4 checks.</p>
+              <pre><code>[3, 8, 11, 18, 25, 31, 40, 52]
+middle 18 -> search right
+middle 31 -> search right
+middle 40 -> search right
+middle 52 -> found</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start search -->
+        <section class="panel explanation-panel" id="explanation-search" data-explains="search" data-explanation-kind="process" aria-labelledby="explanation-search-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="search">
+          <h2 class="explanation-sr-only" id="explanation-search-title">Linear search checks one by one; binary search halves a sorted list</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-search.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks one by one; binary search halves a sorted list with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linear search checks one by one; binary search halves a sorted list: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Search comparison</li><li><strong>Lesson fact:</strong> Linear search on 8 items</li><li><strong>Lesson fact:</strong> Worst case: check item 1, 2, 3, 4, 5, 6, 7, 8. That is up to 8 comparisons.</li><li><strong>Lesson fact:</strong> [3, 8, 11, 18, 25, 31, 40, 52]</li><li><strong>Lesson fact:</strong> target 52 -&gt; 8 comparisons</li><li><strong>Lesson fact:</strong> Binary search on sorted 8 items</li><li><strong>Lesson fact:</strong> Compare the middle item, discard half, repeat. For 8 items, the target is found or ruled out in about 4 checks.</li><li><strong>Lesson fact:</strong> middle 18 -&gt; search right</li><li><strong>Lesson fact:</strong> middle 31 -&gt; search right</li><li><strong>Lesson fact:</strong> middle 40 -&gt; search right</li><li><strong>Lesson fact:</strong> middle 52 -&gt; found</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end search -->
+        <section class="panel" id="loops" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
+          <div class="section-title">
+            <p class="eyebrow">Loop growth</p>
+            <h2>Loops reveal how work grows</h2>
+          </div>
+          <div class="data-table loop-table" role="table" aria-label="Loop growth examples">
+            <div class="table-row table-head" role="row"><div>Structure</div><div>Example</div><div>Work for n items</div><div>AS-level explanation</div></div>
+            <div class="table-row" role="row"><div>Single loop</div><div>total all marks</div><div>n additions</div><div>one step per item</div></div>
+            <div class="table-row" role="row"><div>Nested loop</div><div>n rows and n columns</div><div>n x n visits</div><div>inner loop repeats for every outer value</div></div>
+            <div class="table-row" role="row"><div>Halving</div><div>binary search</div><div>few comparisons</div><div>remaining search area is halved each time</div></div>
+            <div class="table-row" role="row"><div>Repeated passes</div><div>bubble sort</div><div>many comparisons</div><div>several passes through the list</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start loops -->
+        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="loops">
+          <h2 class="explanation-sr-only" id="explanation-loops-title">Loops reveal how work grows</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loops reveal how work grows with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loops reveal how work grows: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Loop growth</li><li><strong>Lesson fact:</strong> Structure</li><li><strong>Lesson fact:</strong> Work for n items</li><li><strong>Lesson fact:</strong> AS-level explanation</li><li><strong>Lesson fact:</strong> Single loop</li><li><strong>Lesson fact:</strong> total all marks</li><li><strong>Lesson fact:</strong> n additions</li><li><strong>Lesson fact:</strong> one step per item</li><li><strong>Lesson fact:</strong> Nested loop</li><li><strong>Lesson fact:</strong> n rows and n columns</li><li><strong>Lesson fact:</strong> n x n visits</li><li><strong>Lesson fact:</strong> inner loop repeats for every outer value</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loops -->
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Efficiency explanations are language-independent</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style reasoning</h3>
+              <pre><code>FOR Index &lt;- 1 TO Length
+    IF List[Index] = Target THEN
+        Found &lt;- TRUE
     ENDIF
 NEXT Index</code></pre>
+              <p>This loop can perform up to `Length` comparisons.</p>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>for (int index = 0; index &lt; list.length; index++) {
+    if (list[index] == target) {
+        found = true;
+    }
+}</code></pre>
+              <p>Java syntax changes the notation, not the number of item comparisons.</p>
             </article>
           </div>
-          <div class="callout">Java arrays often use 0-based indexing. Cambridge-style course examples here use readable 1-based positions unless the question defines otherwise.</div>
+          <div class="callout">Exam reminder: explain the algorithm's work, not the programming language's punctuation.</div>
         </section>
 
-        <!-- stage10-explanation:start java -->
-        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="java">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Keep Java syntax out of Paper 2 unless Java is explicitly requested</h2>
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Efficiency explanations are language-independent</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Keep Java syntax out of Paper 2 unless Java is explicitly requested with a structured visual model." />
-            <figcaption class="explanation-sr-only">Keep Java syntax out of Paper 2 unless Java is explicitly requested: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Efficiency explanations are language-independent with a structured visual model." />
+            <figcaption class="explanation-sr-only">Efficiency explanations are language-independent: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java braces, semicolons and increment operators are support syntax, not Cambridge pseudocode.</li><li><strong>Lesson fact:</strong> In Cambridge pseudocode, initialise PassCount and iterate over explicitly defined array positions.</li><li><strong>Lesson fact:</strong> Increment PassCount only when the current mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the conditional with ENDIF before NEXT Index.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A linear search compares Target with each visited list item.</li><li><strong>Lesson fact:</strong> Set Found to TRUE only inside the matching IF branch.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Without early exit, the algorithm can perform up to Length comparisons in either language.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end java -->
-        <section class="panel" id="conversion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="conversion">
+        <!-- stage10-explanation:end pseudocode -->
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
-            <p class="eyebrow">Conversion routine</p>
-            <h2>Convert meaning first, syntax second</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>1. State the goal</strong><span>Example: input five marks and count how many are at least 50.</span></div>
-            <div><strong>2. Choose variables</strong><span>`Mark`, `Index`, `PassCount` are clearer than `m`, `i`, `pc` in first drafts.</span></div>
-            <div><strong>3. Write Cambridge blocks</strong><span>Use `FOR/NEXT`, `IF/ENDIF`, `&lt;-`, `INPUT`, `OUTPUT`.</span></div>
-            <div><strong>4. Trace once</strong><span>Check that each variable changes where the indentation says it changes.</span></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start conversion -->
-        <section class="panel explanation-panel" id="explanation-conversion" data-explains="conversion" data-explanation-kind="mechanism" aria-labelledby="explanation-conversion-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="conversion">
-          <h2 class="explanation-sr-only" id="explanation-conversion-title">Convert meaning first, syntax second</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-conversion.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Convert meaning first, syntax second with a structured visual model." />
-            <figcaption class="explanation-sr-only">Convert meaning first, syntax second: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Preserve the algorithm's meaning before converting notation or syntax.</li><li><strong>Lesson fact:</strong> Rename abbreviated draft variables toward clearer names: m to Mark, i to Index and pc to PassCount.</li><li><strong>Lesson fact:</strong> Use Cambridge blocks after the inputs, processing and outputs are defined.</li><li><strong>Lesson fact:</strong> Trace the completed algorithm once to verify where each value changes.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end conversion -->
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
-          <div class="section-title">
-            <p class="eyebrow">Interactive notation checker</p>
-            <h2>Identify the convention</h2>
+            <p class="eyebrow">Interactive efficiency chooser</p>
+            <h2>Choose the better explanation</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Code fragment
-              <select id="checkerInput">
-                <option value="assignment">Total &lt;- Total + Mark</option>
-                <option value="output">OUTPUT Total</option>
-                <option value="selection">IF Mark &gt;= 50 THEN ... ENDIF</option>
-                <option value="java">System.out.println(total);</option>
+              Scenario
+              <select id="chooserInput">
+                <option value="sortedSearch">Find a target in a sorted list of 1000 values.</option>
+                <option value="unsortedSearch">Find a target in an unsorted list of 1000 values.</option>
+                <option value="table">Process every cell in a 20 by 20 table.</option>
+                <option value="copy">Make a copy of a 500-item list before processing it.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="checkerBtn">Check</button>
+            <button class="primary-button" type="button" id="chooserBtn">Explain</button>
           </div>
-          <div class="feedback" id="checkerResult">Choose a fragment to classify it.</div>
+          <div class="feedback" id="chooserResult">Choose a scenario to see an efficiency explanation.</div>
         </section>
 
-        <section class="panel" id="cleaner" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cleaner">
+        <section class="panel" id="estimator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="estimator">
           <div class="section-title">
-            <p class="eyebrow">Interactive Java cleaner</p>
-            <h2>Convert Java-like syntax into Cambridge-style pseudocode</h2>
+            <p class="eyebrow">Interactive step estimator</p>
+            <h2>Estimate the work</h2>
           </div>
-          <div class="converter-grid">
+          <div class="converter-grid three-col">
             <label>
-              Java-like fragment
-              <select id="cleanerInput">
-                <option value="assign">total = total + mark;</option>
-                <option value="print">System.out.println(total);</option>
-                <option value="if">if (mark &gt;= 50) { passCount++; }</option>
-                <option value="for">for (int i = 1; i &lt;= 5; i++) { input mark; }</option>
+              Input size n
+              <select id="sizeInput">
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="64">64</option>
+                <option value="100">100</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="cleanerBtn">Convert</button>
+            <label>
+              Algorithm pattern
+              <select id="patternInput">
+                <option value="linear">Linear search worst case</option>
+                <option value="binary">Binary search worst case</option>
+                <option value="nested">n by n nested loop</option>
+                <option value="bubble">Bubble sort rough comparisons</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="estimateBtn">Estimate</button>
           </div>
-          <div class="trace-output" id="cleanerResult">Choose a fragment to convert.</div>
+          <div class="trace-output" id="estimateResult">Choose a size and pattern, then estimate the number of steps.</div>
         </section>
 
-        <!-- stage10-explanation:start cleaner -->
-        <section class="panel explanation-panel" id="explanation-cleaner" data-explains="cleaner" data-explanation-kind="mechanism" aria-labelledby="explanation-cleaner-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="cleaner">
-          <h2 class="explanation-sr-only" id="explanation-cleaner-title">Convert Java-like syntax into Cambridge-style pseudocode</h2>
+        <!-- stage10-explanation:start estimator -->
+        <section class="panel explanation-panel" id="explanation-estimator" data-explains="estimator" data-explanation-kind="mechanism" aria-labelledby="explanation-estimator-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="estimator">
+          <h2 class="explanation-sr-only" id="explanation-estimator-title">Estimate the work</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-cleaner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Convert Java-like syntax into Cambridge-style pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Convert Java-like syntax into Cambridge-style pseudocode: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-estimator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Estimate the work with a structured visual model." />
+            <figcaption class="explanation-sr-only">Estimate the work: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive Java cleaner</li><li><strong>Lesson fact:</strong> Java-like fragment</li><li><strong>Lesson fact:</strong> Choose a fragment to convert.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive step estimator</li><li><strong>Lesson fact:</strong> Input size n</li><li><strong>Lesson fact:</strong> Algorithm pattern</li><li><strong>Lesson fact:</strong> Choose a size and pattern, then estimate the number of steps.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end cleaner -->
+        <!-- stage10-explanation:end estimator -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Readable pseudocode transformations</h2>
+            <h2>Efficiency comparisons</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="assignment">Assignment and output</button>
-            <button class="tab" type="button" data-example="selection">Selection block</button>
-            <button class="tab" type="button" data-example="loop">Loop block</button>
-            <button class="tab" type="button" data-example="full">Full clean-up</button>
+            <button class="tab active" type="button" data-example="linear">Linear search cases</button>
+            <button class="tab" type="button" data-example="binary">Binary search trace</button>
+            <button class="tab" type="button" data-example="nested">Nested loop count</button>
+            <button class="tab" type="button" data-example="space">Space trade-off</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -336,7 +351,7 @@ NEXT Index</code></pre>
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Exam-readable pseudocode</h2>
+            <h2>Efficiency language</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -345,7 +360,7 @@ NEXT Index</code></pre>
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix pseudocode readability problems</h2>
+            <h2>Fix vague efficiency claims</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -353,8 +368,8 @@ NEXT Index</code></pre>
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style pseudocode questions with expandable MS</h2>
-            <p>These questions target notation, block endings, indentation, variable naming and Java-to-pseudocode conversion.</p>
+            <h2>Original Cambridge-style efficiency questions with expandable MS</h2>
+            <p>These questions target measurable comparisons, preconditions, best/worst cases and strict explanation wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -362,12 +377,12 @@ NEXT Index</code></pre>
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Pseudocode readability checklist</h2>
+            <h2>Efficiency checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Notation</strong><span>Use `&lt;-`, `INPUT`, `OUTPUT`, `IF/ENDIF`, `FOR/NEXT`, `WHILE/ENDWHILE`.</span></div>
-            <div><strong>Layout</strong><span>Indent block contents and show where each selection or loop ends.</span></div>
-            <div><strong>Clarity</strong><span>Choose meaningful identifiers and avoid Java-only punctuation unless asked.</span></div>
+            <div><strong>Count</strong><span>Use comparisons, loop iterations, passes or memory use, not just "fast".</span></div>
+            <div><strong>Condition</strong><span>State preconditions such as sorted data for binary search.</span></div>
+            <div><strong>Case</strong><span>Separate best, worst and average cases when the algorithm behaves differently.</span></div>
           </div>
         </section>
 
@@ -378,16 +393,16 @@ NEXT Index</code></pre>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Conversion</strong>
-              <span>Convert this Java-like fragment into Cambridge-style pseudocode: `if (mark &gt;= 50) { passCount++; }`.</span>
+              <strong>Task 1: Search comparison</strong>
+              <span>For a sorted list of 64 values, compare worst-case linear search and binary search using number of comparisons.</span>
             </article>
             <article>
-              <strong>Task 2: Readability edit</strong>
-              <span>Rewrite a 6-line algorithm using meaningful variable names, correct indentation and visible block endings.</span>
+              <strong>Task 2: Loop count</strong>
+              <span>Explain how many times an inner statement runs in a nested loop with 12 rows and 5 columns.</span>
             </article>
             <article>
-              <strong>Task 3: Mini algorithm</strong>
-              <span>Write Cambridge-style pseudocode to input 5 marks, total them, and output the final total.</span>
+              <strong>Task 3: Correction paragraph</strong>
+              <span>Rewrite this vague claim with evidence: "Binary search is better because it is faster."</span>
             </article>
           </div>
         </section>
@@ -395,8 +410,8 @@ NEXT Index</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

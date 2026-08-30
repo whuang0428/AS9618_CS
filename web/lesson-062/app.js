@@ -1,108 +1,108 @@
 const scenarioMap = {
-  readmarks: {
-    result: "Main goal: confidentiality.",
-    method: "The risk is unauthorised viewing of exam marks. Controls such as access rights and authentication can restrict who can read the data.",
-    trap: "Do not say availability; the issue is not whether authorised users can access the system.",
+  memory: {
+    result: "Topic: operating system memory management.",
+    method: "The OS allocates and manages main memory for running processes.",
+    trap: "Do not call this a loader unless the clue is specifically placing an executable into memory ready to run.",
   },
-  editmarks: {
-    result: "Main goal: integrity.",
-    method: "The risk is unauthorised alteration of data. Controls such as access rights, audit trails and validation can reduce or detect incorrect changes.",
-    trap: "Do not say confidentiality if the main harm is changed marks rather than viewed marks.",
+  restore: {
+    result: "Topic: backup utility.",
+    method: "Backup software creates previous copies so data can be restored after deletion or failure.",
+    trap: "Do not use encryption as the answer; encryption protects confidentiality, not recovery.",
   },
-  serverdown: {
-    result: "Main goal: availability.",
-    method: "The risk is that authorised users cannot access a service when required. Redundancy, backups or recovery planning can help.",
-    trap: "Do not use encryption as the main control for a service outage.",
+  prompt: {
+    result: "Topic: command line interface.",
+    method: "A CLI lets the user type commands and parameters at a prompt.",
+    trap: "Do not say GUI just because all interfaces are used by humans.",
   },
-  fakebank: {
-    result: "Main goal: authenticity.",
-    method: "The user needs evidence that the website identity or origin is genuine, for example through a digital certificate.",
-    trap: "Do not describe only confidentiality; the first issue is verifying identity.",
+  tokens: {
+    result: "Topic: lexical analysis.",
+    method: "Lexical analysis scans source-code characters and groups them into tokens.",
+    trap: "Do not confuse this with syntax analysis, which checks grammar using tokens.",
   },
-  backup: {
-    result: "Main goal: availability.",
-    method: "Backups support recovery after failure, helping data remain accessible to authorised users.",
-    trap: "Do not claim backups stop unauthorised reading of the original data.",
+  references: {
+    result: "Topic: linker.",
+    method: "A linker resolves external references between object modules and libraries.",
+    trap: "Do not call this loading; a loader places executable code into memory.",
   },
-  weakpass: {
-    result: "Goals affected: confidentiality and authenticity.",
-    method: "A weak password may allow an attacker to access private data and impersonate a genuine user.",
-    trap: "Do not call the password the threat; it is a vulnerability.",
+  wrongresult: {
+    result: "Topic: logic error.",
+    method: "A logic error lets the program run but produces an incorrect result due to a faulty algorithm or condition.",
+    trap: "Do not call it runtime if the program completes without crashing.",
   },
 };
 
 const examples = {
-  confidentiality: {
-    title: "Example 1: Confidentiality",
-    problem: "A school stores students' addresses and exam marks online.",
+  translator: {
+    title: "Example 1: Compiler versus interpreter",
+    problem: "Compare a compiler and an interpreter for a 4-mark answer.",
     steps: [
-      "Asset: personal student data and exam records.",
-      "Risk: unauthorised users could view private data.",
-      "Control: access rights and authentication restrict data to authorised staff.",
-      "Goal protected: confidentiality, because unauthorised viewing is prevented or reduced.",
+      "Compiler: translates the whole high-level program before execution.",
+      "Compiler output: object/executable code, useful for deployment without source code.",
+      "Interpreter: translates and executes statement by statement as the program runs.",
+      "Interpreter use: useful during development for immediate feedback near errors.",
     ],
   },
-  integrity: {
-    title: "Example 2: Integrity",
-    problem: "A teacher accidentally enters a mark of 900 instead of 90.",
+  utility: {
+    title: "Example 2: Utility choice",
+    problem: "A laptop is stolen with customer records on it. Recommend a utility and justify it.",
     steps: [
-      "Asset: accuracy of exam mark records.",
-      "Risk: data is incorrect or has been altered incorrectly.",
-      "Control: validation range check can reject marks outside 0-100; audit trails can record changes.",
-      "Goal protected: integrity, because the data remains accurate and trustworthy.",
+      "Encryption is suitable because it protects confidentiality.",
+      "It converts plaintext into ciphertext using a key.",
+      "If the laptop is stolen, an unauthorised user cannot read the records without the key.",
+      "Do not say backup: backup helps recovery, not confidentiality of a stolen copy.",
     ],
   },
-  availability: {
-    title: "Example 3: Availability",
-    problem: "The learning platform fails before a homework deadline.",
+  linkload: {
+    title: "Example 3: Linker versus loader",
+    problem: "Object modules use a graphics library before the program runs.",
     steps: [
-      "Asset: access to the learning platform and submitted work.",
-      "Risk: authorised users cannot access the service when needed.",
-      "Control: backups, redundancy and disaster recovery can restore service or data.",
-      "Goal protected: availability, because legitimate access can continue or be recovered.",
+      "The linker combines object modules and resolves references to the graphics library.",
+      "It can produce linked/executable code or report unresolved references.",
+      "The loader then places executable code and data into main memory.",
+      "The loader prepares the program for execution; it does not translate source code.",
     ],
   },
-  authenticity: {
-    title: "Example 4: Authenticity",
-    problem: "A student receives a link claiming to be the school's payment page.",
+  errors: {
+    title: "Example 4: Error diagnosis",
+    problem: "A program compiles and runs, but calculates the wrong average.",
     steps: [
-      "Asset: trust in the identity of the website and transaction.",
-      "Risk: the website may be fake and impersonating the school.",
-      "Control: digital certificates and secure authentication help verify identity or origin.",
-      "Goal protected: authenticity, because the source is checked as genuine.",
+      "This is most likely a logic error.",
+      "The program can run, so it is not necessarily syntax or runtime.",
+      "The algorithm or formula is wrong, such as using an incorrect divisor.",
+      "Testing with known data or tracing variable values can find the fault.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which security goal prevents unauthorised viewing of data?", accepted: ["confidentiality"], answer: "Confidentiality" },
-  { id: "p2", prompt: "Which security goal protects data from unauthorised or accidental alteration?", accepted: ["integrity"], answer: "Integrity" },
-  { id: "p3", prompt: "Which security goal ensures authorised users can access systems when required?", accepted: ["availability"], answer: "Availability" },
-  { id: "p4", prompt: "Which security goal verifies identity or origin is genuine?", accepted: ["authenticity", "authentication"], answer: "Authenticity" },
-  { id: "p5", prompt: "In the risk chain, what is a weakness that can be exploited?", accepted: ["vulnerability", "weakness"], answer: "Vulnerability" },
-  { id: "p6", prompt: "In the risk chain, what is something valuable that needs protection?", accepted: ["asset"], answer: "Asset" },
-  { id: "p7", prompt: "Which goal does encryption mainly support when used on a stolen laptop?", accepted: ["confidentiality"], answer: "Confidentiality" },
-  { id: "p8", prompt: "Which goal do backups mainly support after disk failure?", accepted: ["availability"], answer: "Availability" },
-  { id: "p9", prompt: "Which goal can a hash/checksum help check?", accepted: ["integrity"], answer: "Integrity" },
-  { id: "p10", prompt: "Which goal can a digital certificate help support for a website?", accepted: ["authenticity"], answer: "Authenticity" },
+  { id: "p1", prompt: "Which system software manages processes, memory, files and devices?", accepted: ["operating system", "os"], answer: "Operating system / OS" },
+  { id: "p2", prompt: "Which utility restores data from a previous copy?", accepted: ["backup", "backup utility", "backup software"], answer: "Backup utility" },
+  { id: "p3", prompt: "Which interface uses typed commands at a prompt?", accepted: ["cli", "command line", "command line interface"], answer: "Command line interface / CLI" },
+  { id: "p4", prompt: "Which translator converts assembly language into machine code?", accepted: ["assembler"], answer: "Assembler" },
+  { id: "p5", prompt: "Which compiler stage groups characters into tokens?", accepted: ["lexical", "lexical analysis"], answer: "Lexical analysis" },
+  { id: "p6", prompt: "Which compiler stage checks grammar?", accepted: ["syntax", "syntax analysis", "parsing"], answer: "Syntax analysis" },
+  { id: "p7", prompt: "Which tool resolves external references between object modules?", accepted: ["linker"], answer: "Linker" },
+  { id: "p8", prompt: "Which tool loads executable code into main memory?", accepted: ["loader"], answer: "Loader" },
+  { id: "p9", prompt: "Which error type runs but gives the wrong result?", accepted: ["logic", "logic error"], answer: "Logic error" },
+  { id: "p10", prompt: "Which error type occurs while the program is executing and may halt it?", accepted: ["runtime", "run time", "runtime error", "run-time"], answer: "Runtime error" },
 ];
 
 const mistakes = [
   {
-    wrong: "Encryption fixes every security problem.",
-    fix: "Encryption mainly protects confidentiality by making data unreadable without the key. It does not by itself restore lost data, stop weak permissions or guarantee availability.",
+    wrong: "A compiler and interpreter both turn code into machine code, so they are basically the same.",
+    fix: "Both are translators for high-level code, but a compiler translates the whole program before execution and can produce object/executable code, while an interpreter translates and executes statement by statement.",
   },
   {
-    wrong: "Backups protect confidentiality because they make another copy.",
-    fix: "Backups mainly support availability and recovery. They may increase confidentiality risk if the copy is not protected.",
+    wrong: "A linker puts executable code into memory.",
+    fix: "A linker combines object modules and resolves external references. A loader places executable code and data into main memory.",
   },
   {
-    wrong: "Integrity means the data is secret.",
-    fix: "Integrity means data remains accurate, complete and unaltered except by authorised processes. Confidentiality is about keeping data from unauthorised access.",
+    wrong: "A backup makes stolen customer data unreadable.",
+    fix: "A backup supports recovery from loss. Encryption makes data unreadable without the key and protects confidentiality.",
   },
   {
-    wrong: "Authentication and authenticity are exactly the same word in every answer.",
-    fix: "Authentication is a process for verifying identity. Authenticity is the goal that an identity, message or source is genuine.",
+    wrong: "A syntax error is when the answer is wrong.",
+    fix: "A syntax error breaks language grammar. A wrong answer from a program that runs is usually a logic error.",
   },
 ];
 
@@ -115,92 +115,99 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "3 marks",
-    prompt: "Define confidentiality, integrity and availability.",
-    answer: "Confidentiality means data is only accessible to authorised users and is protected from unauthorised viewing. Integrity means data remains accurate, complete and protected from unauthorised or accidental alteration. Availability means data or services are accessible to authorised users when required. These goals protect different aspects of a system, so the control must match the risk.",
+    marks: "6 marks",
+    prompt: "Compare an operating system and utility software, using examples.",
+    answer: "An operating system is system software that manages computer resources and provides services, such as process management, memory management, file management and device management. Utility software is system software designed for a specific maintenance, protection or management task. For example, backup software creates copies so data can be restored, while antivirus software scans for malware. The OS manages general operation of the system, whereas a utility performs a narrower support task.",
     marking: [
-      { mark: "B1", text: "confidentiality linked to authorised access / preventing unauthorised viewing" },
-      { mark: "B1", text: "integrity linked to accuracy/completeness/no unauthorised alteration" },
-      { mark: "B1", text: "availability linked to authorised users accessing data/services when needed" },
+      { mark: "B1", text: "operating system identified as system software managing resources/providing services" },
+      { mark: "B1", text: "valid OS role such as process, memory, file or device management" },
+      { mark: "B1", text: "utility software identified as specific maintenance/protection/support task" },
+      { mark: "B1", text: "valid utility example and mechanism, e.g. backup restores copies / antivirus scans malware" },
+      { mark: "B1", text: "clear distinction between general OS role and narrower utility role" },
+      { mark: "B1", text: "second valid utility example with its specific purpose" },
     ],
     strict: [
-      "Do not accept 'confidentiality means secure' without access/viewing idea.",
-      "Do not accept integrity as secrecy.",
-      "Allow accessible/usable when needed for availability.",
-      "Award each definition independently.",
+      "Do not accept 'both are apps' as a comparison.",
+      "Do not accept a utility example without saying what it does.",
+      "Allow system software for both if roles are distinguished.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A school stores exam marks on a networked computer system. Explain why both the data and the computer system need security, then Suggest one control for each.",
-    answer: "The mark data needs security because unauthorised viewing would breach confidentiality and unauthorised or accidental alteration would damage integrity. The computer system also needs security because malware, stolen accounts or an unavailable server could expose, alter, delete or prevent access to the data it processes. Access rights or encryption can protect the data. Updated anti-virus, a firewall or strong authentication can reduce a matching computer-system risk. Protecting only one layer leaves the other attack route open.",
+    prompt: "A developer writes a high-level program, tests it, and then distributes it. Compare suitable translator choices for testing and distribution.",
+    answer: "During testing, an interpreter may be suitable because it translates and executes statements as the program runs, allowing quick feedback near the faulty statement. This can help development and debugging. For distribution, a compiler may be suitable because it translates the whole program before execution and can produce object or executable code. Users can run the executable without needing the source code, and the program may run repeatedly without retranslation.",
     marking: [
-      { mark: "B1", text: "data-security need linked to unauthorised viewing/disclosure or confidentiality" },
-      { mark: "B1", text: "data-security need linked to unauthorised/incorrect alteration, loss or integrity" },
-      { mark: "B1", text: "computer-system compromise/unavailability can expose, alter, delete or prevent access to processed data" },
-      { mark: "B1", text: "suitable data control such as access rights or encryption" },
-      { mark: "B1", text: "suitable computer-system control such as anti-virus, firewall or strong authentication" },
-      { mark: "B1", text: "explains why protecting one layer does not replace protection of the other" },
+      { mark: "B1", text: "interpreter selected for testing/development" },
+      { mark: "B1", text: "interpreter translates/executes statement by statement" },
+      { mark: "B1", text: "development benefit such as quick feedback/debugging" },
+      { mark: "B1", text: "compiler selected for distribution" },
+      { mark: "B1", text: "compiler translates whole program before execution / produces object or executable code" },
+      { mark: "B1", text: "distribution benefit such as source code not needed or repeated execution without retranslation" },
     ],
     strict: [
-      "Do not accept two generic statements that everything should be secure.",
-      "Do not treat file encryption as complete protection of the computer system.",
-      "Each control must be linked to the layer and risk it addresses.",
+      "Do not award full marks for saying only 'compiler is faster'.",
+      "Do not accept interpreter as producing standalone executable in this context.",
+      "Allow line by line for statement by statement.",
+      "Award each stage independently if one stage choice is incorrect.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain why encryption is not a suitable control for every security risk.",
-    answer: "Encryption converts plaintext into ciphertext so unauthorised users cannot read the data without the key, so it mainly protects confidentiality. It does not by itself ensure that data is available after a disk failure, so backups or redundancy may be needed. It also does not prove that data has not been changed unless combined with other checks such as hashes or digital signatures. Therefore the control must match the security goal in the scenario.",
+    marks: "5 marks",
+    prompt: "Explain the difference between lexical analysis, syntax analysis and semantic analysis.",
+    answer: "Lexical analysis scans source-code characters and groups them into tokens such as identifiers, keywords, operators and literals. Syntax analysis checks whether the token sequence follows the grammar rules of the programming language, and may build a parse tree. Semantic analysis checks meaning, such as type compatibility, declarations and scope, often using a symbol table.",
     marking: [
-      { mark: "B1", text: "encryption described as plaintext to ciphertext / unreadable without key" },
-      { mark: "B1", text: "confidentiality identified as main goal protected" },
-      { mark: "B1", text: "valid risk not solved by encryption such as availability after failure or weak permissions" },
-      { mark: "B1", text: "suitable alternative goal/control or conclusion that control must match risk" },
+      { mark: "B1", text: "lexical analysis scans source characters / produces tokens" },
+      { mark: "B1", text: "valid token examples such as identifiers, keywords, operators or literals" },
+      { mark: "B1", text: "syntax analysis checks grammar/structure of token sequence" },
+      { mark: "B1", text: "semantic analysis checks meaning/context" },
+      { mark: "B1", text: "valid semantic example such as type compatibility/declaration/scope or symbol table use" },
     ],
     strict: [
-      "Do not accept 'encryption is bad' as a limitation.",
-      "Do not require technical encryption algorithm detail.",
-      "Allow 'does not restore data' for availability limitation.",
+      "Do not accept syntax as spelling only.",
+      "Do not confuse lexical tokenising with grammar checking.",
+      "Allow parsing for syntax analysis.",
+      "Award each stage mark independently.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Describe authenticity and explain one control that can support it.",
-    answer: "Authenticity means that the identity of a user, device, message, website or file origin can be verified as genuine. A digital certificate can support authenticity by helping a browser verify that a website is associated with the claimed organisation. Multi-factor authentication can also support authenticity by requiring more than one form of evidence before accepting a user's identity. This reduces impersonation risk.",
+    marks: "6 marks",
+    prompt: "Object modules use a library routine. Explain the roles of the linker and loader before the program runs.",
+    answer: "The linker combines object modules and resolves external references between modules and libraries, such as a reference to the library routine. It can produce linked or executable code, or report an unresolved external reference if the routine cannot be found. The loader then places the executable code and required data into main memory, may adjust addresses, and prepares the program for execution by the processor.",
     marking: [
-      { mark: "B1", text: "authenticity linked to identity/origin being genuine" },
-      { mark: "B1", text: "valid control such as digital certificate/digital signature/MFA/authentication" },
-      { mark: "B1", text: "mechanism of control explained, e.g. verifies claimed identity/source or uses multiple factors" },
-      { mark: "B1", text: "consequence such as reducing impersonation/spoofing/fake-source risk" },
+      { mark: "B1", text: "linker combines object modules" },
+      { mark: "B1", text: "linker resolves external references/library routine references" },
+      { mark: "B1", text: "linker produces executable/linked code or can report unresolved reference" },
+      { mark: "B1", text: "loader places executable/program/data into main memory" },
+      { mark: "B1", text: "loader may relocate/adjust addresses or allocate memory" },
+      { mark: "B1", text: "program prepared for execution / processor can execute" },
     ],
     strict: [
-      "Do not accept 'authenticity means password' without verification idea.",
-      "Do not require both certificate and MFA; one valid control is enough.",
-      "Allow authentication process if linked to authenticity goal.",
+      "Do not award linker marks for source-code translation.",
+      "Do not award loader marks for resolving library references.",
+      "Allow RAM for main memory.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Identify each scenario by the main security goal and justify it: customer records are read by an unauthorised employee; stock values are altered incorrectly; a website is offline during a sale.",
-    answer: "Customer records read by an unauthorised employee is a confidentiality issue because private data is accessed by someone who should not view it. Stock values altered incorrectly is an integrity issue because the accuracy and correctness of the data has been damaged. A website offline during a sale is an availability issue because authorised customers or staff cannot access the service when required.",
+    prompt: "Identify each error and justify it: missing bracket; program calculates wrong average but completes; file not found while running.",
+    answer: "A missing bracket is a syntax error because the code does not follow the grammar rules of the language. A program that calculates the wrong average but completes has a logic error because it runs but the algorithm or formula gives the wrong result. File not found while running is a runtime error because the program fails during execution due to a resource or external condition.",
     marking: [
-      { mark: "B1", text: "unauthorised reading classified as confidentiality" },
-      { mark: "B1", text: "confidentiality justification linked to unauthorised access/viewing of private data" },
-      { mark: "B1", text: "incorrect stock alteration classified as integrity" },
-      { mark: "B1", text: "integrity justification linked to accuracy/correctness/unauthorised alteration" },
-      { mark: "B1", text: "offline website classified as availability" },
-      { mark: "B1", text: "availability justification linked to authorised users unable to access service when needed" },
+      { mark: "B1", text: "missing bracket classified as syntax" },
+      { mark: "B1", text: "syntax justification linked to grammar/structure" },
+      { mark: "B1", text: "wrong average classified as logic" },
+      { mark: "B1", text: "logic justification linked to runs/completes but wrong result/algorithm" },
+      { mark: "B1", text: "file not found while running classified as runtime" },
+      { mark: "B1", text: "runtime justification linked to failure during execution/external resource" },
     ],
     strict: [
-      "Do not award justification mark for repeating only the goal name.",
-      "Do not classify altered stock as confidentiality unless viewing is the stated harm.",
-      "Allow service unavailable for offline website.",
-      "Award each scenario independently.",
+      "Do not award justification marks for repeating only the category name.",
+      "Do not classify wrong completed output as runtime.",
+      "Allow run-time as runtime.",
+      "Award each classification independently.",
     ],
   },
 ];
@@ -216,10 +223,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    vulnerability: "Correct. A weak password is a vulnerability that can allow impersonation or unauthorised access.",
-    threat: "No. A threat is a possible cause of harm, such as an attacker trying to log in.",
-    availability: "No. Weak passwords mainly threaten confidentiality and authenticity; the system may still be online.",
-    encryption: "No. Encryption can protect stored/transmitted data, but password policy and authentication controls are also needed.",
+    precise: "Correct. It names the tool, action, target and result.",
+    vague: "Too vague. It might be true in casual speech, but it does not show the loader's mechanism.",
+    wrong: "No. Translating source code is a compiler/interpreter role, not a loader role.",
+    mixed: "No. Resolving library references is linker work; syntax checking is translator work.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -263,7 +270,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("confidentiality");
+  renderExample("translator");
 }
 
 function renderPractice() {

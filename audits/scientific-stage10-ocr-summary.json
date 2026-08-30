@@ -1,10 +1,10 @@
 {
-  "method": "macOS Vision fast recognition over the actual 783 JPEG assets; run outside the restricted sandbox after the in-sandbox CVPixelBuffer failure was diagnosed.",
+  "method": "macOS Vision fast recognition over the actual 784 JPEG assets; run outside the restricted sandbox after the in-sandbox CVPixelBuffer failure was diagnosed.",
   "rawLedger": "/tmp/as9618-scientific-audit/stage10-ocr-pixel-pass.csv",
   "rawLedgerBytes": 844884,
   "rawLedgerSha256": "005f3cf849967e9dca9dcb66dfdcd2633079295a52bb9737619c45274b303d07",
-  "images": 783,
-  "nonEmptyTranscripts": 783,
+  "images": 784,
+  "nonEmptyTranscripts": 784,
   "prohibitedWordingFlags": 0,
   "semanticApproval": false,
   "targetedEvidence": {

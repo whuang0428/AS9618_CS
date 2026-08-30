@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 092 | Paper 1 review: system software and security</title>
+    <title>AS9618 Lesson 092 | Paper 1 review: hardware and processor fundamentals</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 5-6</p>
-        <h1>Paper 1 review: system software and security</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 3-4</p>
+        <h1>Paper 1 review: hardware and processor fundamentals</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,11 +30,11 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#map">Retrieval map</a>
-        <a href="#software">System software</a>
-        <a href="#translators">Translators</a>
-        <a href="#security">Security</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#processor">Processor</a>
+        <a href="#logic">Logic gates</a>
         <a href="#classifier">Classifier</a>
-        <a href="#matcher">Risk matcher</a>
+        <a href="#fde">FDE tracer</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -46,35 +46,35 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 092 | 45 minutes | Paper 1 Sections 5-6 | informal questioning</p>
-            <h2>System software runs the show. Security stops the show becoming a crime scene.</h2>
+            <p class="lesson-meta">Lesson 092 | 45 minutes | Paper 1 Sections 3-4 | informal questioning</p>
+            <h2>Hardware questions reward precise parts. "The CPU does stuff" is not a lifestyle.</h2>
             <p>
-              This review joins two explanation-heavy areas: system software and security. You will distinguish
-              OS roles, utility software and translators, then match security threats to controls using precise
-              mechanism-and-consequence language.
+              This review connects hardware selection, storage, embedded systems, logic gates, CPU architecture,
+              registers, the fetch-decode-execute cycle, interrupts and processor performance. The goal is to
+              explain mechanisms, not merely list component names.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Compare</strong><span>OS roles, utility software and translation approaches</span></div>
-              <div><strong>Match</strong><span>security risks to suitable controls and justifications</span></div>
-              <div><strong>Correct</strong><span>vague answers about malware, encryption, firewalls and backups</span></div>
+              <div><strong>Select</strong><span>hardware and storage by matching characteristics to user needs</span></div>
+              <div><strong>Trace</strong><span>processor behaviour using registers and buses</span></div>
+              <div><strong>Explain</strong><span>logic circuits, interrupts and performance factors precisely</span></div>
             </div>
           </div>
-          <div class="sql-visual" aria-label="System software and security visual">
-            <span class="keyword">OS</span><span>process, memory, file and device management</span>
-            <span class="keyword">Translator</span><span>compiler, interpreter, assembler</span>
-            <span class="keyword">Security</span><span>CIA, authentication, encryption, firewall, backup</span>
-            <p>If the answer says "protects it", the examiner asks: from what, how, and with what consequence?</p>
+          <div class="sql-visual" aria-label="Processor review visual">
+            <span class="keyword">Fetch</span><span>PC, MAR, memory, MDR, CIR</span>
+            <span class="keyword">Decode</span><span>CU interprets opcode and addressing</span>
+            <span class="keyword">Execute</span><span>ALU/registers perform operation</span>
+            <p>Registers are tiny, fast and examiners love them more than vague paragraphs.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>These questions are often wordy. Marks reward precise roles and controls, not unsupported security terminology.</p>
+            <p>Hardware review questions often look descriptive, but marks sit in cause, consequence and exact register names.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Encryption does not prove who a user is. Authentication checks identity; encryption protects data readability.</p>
+            <p>Cache is not the same as RAM. Cache is smaller, faster memory close to/on the CPU for frequently used data and instructions.</p>
           </article>
         </section>
 
@@ -82,127 +82,115 @@
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which topic is being tested?</h2>
-            <p>Security answers are not action movie scripts. "Hackers bad, firewall good" needs a mechanism before it gets marks.</p>
+            <p>If an answer starts with "it makes it faster", pause. Faster how? Because of which part? Under what workload?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="os">The system allocates RAM to running programs.</button>
-            <button class="choice-card" type="button" data-hook="compiler">Source code is translated before execution into object code.</button>
-            <button class="choice-card" type="button" data-hook="phishing">A fake login email asks a user for credentials.</button>
-            <button class="choice-card" type="button" data-hook="hash">A password is stored as a digest rather than plain text.</button>
+            <button class="choice-card" type="button" data-hook="cache">A CPU reuses the same instructions many times.</button>
+            <button class="choice-card" type="button" data-hook="interrupt">A printer signals that it needs attention.</button>
+            <button class="choice-card" type="button" data-hook="ssd">A laptop needs light, durable secondary storage.</button>
+            <button class="choice-card" type="button" data-hook="xor">A circuit output is 1 when inputs are different.</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose a card to identify the topic and first exam phrase.
+            Choose a card to identify the topic and the first exam phrase.
           </div>
         </section>
 
         <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
           <div class="section-title">
             <p class="eyebrow">Retrieval map</p>
-            <h2>Sections 5-6 knowledge map</h2>
+            <h2>Sections 3-4 knowledge map</h2>
           </div>
           <div class="retrieval-grid">
-            <article><strong>Operating system</strong><span>process, memory, file, device and security/user management</span></article>
-            <article><strong>User interfaces</strong><span>CLI, GUI, menu-driven and natural language interfaces</span></article>
-            <article><strong>Utilities</strong><span>backup, compression, encryption, defragmentation and anti-malware tools</span></article>
-            <article><strong>Translators</strong><span>assembler, compiler, interpreter, linker, loader and libraries</span></article>
-            <article><strong>Security goals</strong><span>confidentiality, integrity, availability, authenticity</span></article>
-            <article><strong>Controls</strong><span>authentication, access rights, encryption, hashing, certificates, firewalls and audit trails</span></article>
+            <article><strong>Computer system</strong><span>input, output, storage, memory, processor and data capture</span></article>
+            <article><strong>Storage and memory</strong><span>RAM, ROM, cache, virtual memory, magnetic/optical/solid-state storage</span></article>
+            <article><strong>Embedded systems</strong><span>sensors, actuators, microcontrollers and control systems</span></article>
+            <article><strong>Logic</strong><span>NOT, AND, OR, NAND, NOR, XOR, truth tables and Boolean expressions</span></article>
+            <article><strong>Processor</strong><span>ALU, CU, registers, buses, fetch-decode-execute and addressing modes</span></article>
+            <article><strong>Performance</strong><span>clock speed, cores, cache, word length, pipelining and interrupts</span></article>
           </div>
         </section>
 
         <!-- stage10-explanation:start map -->
         <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Sections 5-6 knowledge map</h2>
+          <h2 class="explanation-sr-only" id="explanation-map-title">Sections 3-4 knowledge map</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sections 5-6 knowledge map with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sections 5-6 knowledge map: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sections 3-4 knowledge map with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sections 3-4 knowledge map: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Compiler, interpreter and assembler are alternative translator paths rather than one serial pipeline.</li><li><strong>Lesson fact:</strong> High-level source can be compiled to object code and then linked and loaded.</li><li><strong>Lesson fact:</strong> High-level source can instead be interpreted and executed at runtime.</li><li><strong>Lesson fact:</strong> Assembly source is translated by an assembler into machine or object code.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Computer system input, output, storage, memory, processor and data capture</li><li><strong>Lesson fact:</strong> Storage and memory RAM, ROM, cache, virtual memory, magnetic/optical/solid-state storage</li><li><strong>Lesson fact:</strong> Embedded systems sensors, actuators, microcontrollers and control systems</li><li><strong>Lesson fact:</strong> Logic NOT, AND, OR, NAND, NOR, XOR, truth tables and Boolean expressions</li><li><strong>Lesson fact:</strong> Processor ALU, CU, registers, buses, fetch-decode-execute and addressing modes</li><li><strong>Lesson fact:</strong> Performance clock speed, cores, cache, word length, pipelining and interrupts</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end map -->
-        <section class="panel" id="software" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="software">
+        <section class="panel" id="hardware" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hardware">
           <div class="section-title">
-            <p class="eyebrow">System software review</p>
-            <h2>OS and utility roles</h2>
+            <p class="eyebrow">Hardware review</p>
+            <h2>Choose hardware by matching characteristics to use</h2>
           </div>
-          <div class="data-table review-table" role="table" aria-label="System software review">
-            <div class="table-row table-head" role="row"><div>Area</div><div>Role</div><div>Mark-worthy phrase</div></div>
-            <div class="table-row" role="row"><div>OS process management</div><div>schedules processes</div><div>allocates processor time and manages multitasking</div></div>
-            <div class="table-row" role="row"><div>OS memory management</div><div>allocates memory</div><div>keeps programs/data in separate memory areas and manages virtual memory</div></div>
-            <div class="table-row" role="row"><div>File management</div><div>organises files</div><div>stores, names, retrieves and controls access to files</div></div>
-            <div class="table-row" role="row"><div>Utility software</div><div>maintains system</div><div>performs specialist maintenance such as backup, compression or anti-malware scanning</div></div>
+          <div class="data-table hardware-table" role="table" aria-label="Hardware selection review">
+            <div class="table-row table-head" role="row"><div>Need</div><div>Likely choice</div><div>Justification phrase</div></div>
+            <div class="table-row" role="row"><div>fast temporary access</div><div>RAM / cache</div><div>volatile memory used while programs run / frequently used data close to CPU</div></div>
+            <div class="table-row" role="row"><div>portable durable storage</div><div>SSD</div><div>no moving parts, fast access, resistant to shock</div></div>
+            <div class="table-row" role="row"><div>cheap high-capacity archive</div><div>magnetic disk</div><div>large capacity and lower cost per GiB</div></div>
+            <div class="table-row" role="row"><div>automatic physical response</div><div>actuator</div><div>converts control signals into movement or action</div></div>
           </div>
-          <div class="callout">Chinese support: operating system = 操作系统；utility software = 实用程序；translator = 翻译程序；authentication = 身份认证。</div>
+          <div class="callout">Chinese support: volatile = 易失性；register = 寄存器；bus = 总线；interrupt = 中断；actuator = 执行器。</div>
         </section>
 
-        <!-- stage10-explanation:start software -->
-        <section class="panel explanation-panel" id="explanation-software" data-explains="software" data-explanation-kind="synthesis" aria-labelledby="explanation-software-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="software">
-          <h2 class="explanation-sr-only" id="explanation-software-title">OS and utility roles</h2>
+        <!-- stage10-explanation:start hardware -->
+        <section class="panel explanation-panel" id="explanation-hardware" data-explains="hardware" data-explanation-kind="synthesis" aria-labelledby="explanation-hardware-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="hardware">
+          <h2 class="explanation-sr-only" id="explanation-hardware-title">Choose hardware by matching characteristics to use</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-software.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining OS and utility roles with a structured visual model." />
-            <figcaption class="explanation-sr-only">OS and utility roles: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-hardware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose hardware by matching characteristics to use with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose hardware by matching characteristics to use: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> System software review</li><li><strong>Lesson fact:</strong> Mark-worthy phrase</li><li><strong>Lesson fact:</strong> OS process management</li><li><strong>Lesson fact:</strong> schedules processes</li><li><strong>Lesson fact:</strong> allocates processor time and manages multitasking</li><li><strong>Lesson fact:</strong> OS memory management</li><li><strong>Lesson fact:</strong> allocates memory</li><li><strong>Lesson fact:</strong> keeps programs/data in separate memory areas and manages virtual memory</li><li><strong>Lesson fact:</strong> File management</li><li><strong>Lesson fact:</strong> organises files</li><li><strong>Lesson fact:</strong> stores, names, retrieves and controls access to files</li><li><strong>Lesson fact:</strong> Utility software</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Hardware review</li><li><strong>Lesson fact:</strong> Likely choice</li><li><strong>Lesson fact:</strong> Justification phrase</li><li><strong>Lesson fact:</strong> fast temporary access</li><li><strong>Lesson fact:</strong> RAM / cache</li><li><strong>Lesson fact:</strong> volatile memory used while programs run / frequently used data close to CPU</li><li><strong>Lesson fact:</strong> portable durable storage</li><li><strong>Lesson fact:</strong> no moving parts, fast access, resistant to shock</li><li><strong>Lesson fact:</strong> cheap high-capacity archive</li><li><strong>Lesson fact:</strong> magnetic disk</li><li><strong>Lesson fact:</strong> large capacity and lower cost per GiB</li><li><strong>Lesson fact:</strong> automatic physical response</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end software -->
-        <section class="panel" id="translators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="translators">
+        <!-- stage10-explanation:end hardware -->
+        <section class="panel" id="processor" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="processor">
           <div class="section-title">
-            <p class="eyebrow">Translator review</p>
-            <h2>Compiler, interpreter and assembler</h2>
+            <p class="eyebrow">Processor review</p>
+            <h2>Registers and buses: the FDE cycle vocabulary</h2>
           </div>
           <div class="clause-grid">
-            <article><strong>Compiler</strong><span>Translates whole source program into object code before execution; can report errors after compilation.</span></article>
-            <article><strong>Interpreter</strong><span>Translates and executes code line by line; useful for testing and debugging.</span></article>
-            <article><strong>Assembler</strong><span>Translates assembly language mnemonics into machine code.</span></article>
+            <article><strong>PC</strong><span>Stores the address of the next instruction to be fetched.</span></article>
+            <article><strong>MAR / MDR</strong><span>MAR stores an address; MDR stores data/instruction being transferred.</span></article>
+            <article><strong>CIR / ACC</strong><span>CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</span></article>
           </div>
         </section>
-
-        <!-- stage10-explanation:start translators -->
-        <section class="panel explanation-panel" id="explanation-translators" data-explains="translators" data-explanation-kind="synthesis" aria-labelledby="explanation-translators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="translators">
-          <h2 class="explanation-sr-only" id="explanation-translators-title">Compiler, interpreter and assembler</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-translators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compiler, interpreter and assembler with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compiler, interpreter and assembler: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Translator review</li><li><strong>Lesson fact:</strong> Compiler Translates whole source program into object code before execution; can report errors after compilation.</li><li><strong>Lesson fact:</strong> Interpreter Translates and executes code line by line; useful for testing and debugging.</li><li><strong>Lesson fact:</strong> Assembler Translates assembly language mnemonics into machine code.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end translators -->
-        <section class="panel" id="security" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="security">
+        <section class="panel" id="logic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
           <div class="section-title">
-            <p class="eyebrow">Security review</p>
-            <h2>Match the control to the threat</h2>
+            <p class="eyebrow">Logic gate review</p>
+            <h2>Truth table shortcuts</h2>
           </div>
-          <div class="data-table review-table" role="table" aria-label="Security controls">
-            <div class="table-row table-head" role="row"><div>Threat / need</div><div>Control</div><div>Mechanism</div></div>
-            <div class="table-row" role="row"><div>unauthorised login</div><div>authentication / MFA</div><div>checks user identity using factors such as password and token</div></div>
-            <div class="table-row" role="row"><div>intercepted data</div><div>encryption</div><div>encodes data so it is unreadable without the key</div></div>
-            <div class="table-row" role="row"><div>malicious traffic</div><div>firewall</div><div>filters traffic using rules such as IP address, port or protocol</div></div>
-            <div class="table-row" role="row"><div>data loss</div><div>backup</div><div>allows recovery from a separate copy after failure or corruption</div></div>
+          <div class="data-table logic-table" role="table" aria-label="Logic gate review">
+            <div class="table-row table-head" role="row"><div>Gate</div><div>Output 1 when...</div><div>Common error</div></div>
+            <div class="table-row" role="row"><div>AND</div><div>both inputs are 1</div><div>OR is not "also"; it has its own rule.</div></div>
+            <div class="table-row" role="row"><div>OR</div><div>at least one input is 1</div><div>Includes both inputs being 1.</div></div>
+            <div class="table-row" role="row"><div>XOR</div><div>inputs are different</div><div>Not the same as OR when both inputs are 1.</div></div>
+            <div class="table-row" role="row"><div>NAND / NOR</div><div>inverse of AND / OR</div><div>Invert only after applying the original gate.</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start security -->
-        <section class="panel explanation-panel" id="explanation-security" data-explains="security" data-explanation-kind="synthesis" aria-labelledby="explanation-security-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="security">
-          <h2 class="explanation-sr-only" id="explanation-security-title">Match the control to the threat</h2>
+        <!-- stage10-explanation:start logic -->
+        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="synthesis" aria-labelledby="explanation-logic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="logic">
+          <h2 class="explanation-sr-only" id="explanation-logic-title">How hardware facts become mechanisms</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-security.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the control to the threat with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match the control to the threat: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-logic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How hardware facts become mechanisms through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How hardware facts become mechanisms: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Security review</li><li><strong>Lesson fact:</strong> Threat / need</li><li><strong>Lesson fact:</strong> Mechanism</li><li><strong>Lesson fact:</strong> unauthorised login</li><li><strong>Lesson fact:</strong> authentication / MFA</li><li><strong>Lesson fact:</strong> checks user identity using factors such as password and token</li><li><strong>Lesson fact:</strong> intercepted data</li><li><strong>Lesson fact:</strong> encryption</li><li><strong>Lesson fact:</strong> encodes data so it is unreadable without the key</li><li><strong>Lesson fact:</strong> malicious traffic</li><li><strong>Lesson fact:</strong> firewall</li><li><strong>Lesson fact:</strong> filters traffic using rules such as IP address, port or protocol</li></ol>
+            <ol><li><strong>Mechanism:</strong> Name the component or representation involved.</li><li><strong>Reason:</strong> Explain the operation performed on data or signals.</li><li><strong>Result:</strong> Link that operation to the observable result or limitation.</li></ol>
 
+            <p><strong>Analogy:</strong> A useful technical answer connects parts like a working machine, not a parts list.</p>
+            <p><strong>Boundary:</strong> An isolated definition rarely explains why the stated outcome occurs.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end security -->
+        <!-- stage10-explanation:end logic -->
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive question classifier</p>
@@ -212,11 +200,11 @@
             <label>
               Mixed question clue
               <select id="classifierInput">
-                <option value="memory">The OS allocates RAM to a newly opened program.</option>
-                <option value="debug">A developer wants to test code one line at a time.</option>
-                <option value="linker">Several object files and library routines are combined.</option>
-                <option value="malware">A file encrypts user documents and demands payment.</option>
-                <option value="firewall">Network traffic is blocked based on ports and IP addresses.</option>
+                <option value="fde">Describe how the next instruction is fetched.</option>
+                <option value="cache">Explain why increasing cache size may improve performance.</option>
+                <option value="ssd">Justify using SSD storage in a tablet.</option>
+                <option value="interrupt">Explain how the processor handles an interrupt.</option>
+                <option value="logic">Draw a truth table for A XOR B.</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="classifyBtn">Classify</button>
@@ -224,50 +212,37 @@
           <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
         </section>
 
-        <section class="panel" id="matcher" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matcher">
+        <section class="panel" id="fde" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fde">
           <div class="section-title">
-            <p class="eyebrow">Interactive risk-control matcher</p>
-            <h2>Choose the best control</h2>
+            <p class="eyebrow">Interactive FDE tracer</p>
+            <h2>Trace register actions</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Risk
-              <select id="riskInput">
-                <option value="phishing">Users are tricked by fake emails into entering passwords.</option>
-                <option value="lost">Database server storage fails and recent data is lost.</option>
-                <option value="sniffing">Data is intercepted while travelling across a network.</option>
-                <option value="privilege">A student account can edit administrator settings.</option>
-                <option value="tamper">A downloaded installer may have been altered.</option>
+              Processor action
+              <select id="fdeInput">
+                <option value="pcToMar">Copy address of next instruction from PC to MAR.</option>
+                <option value="memoryToMdr">Fetch instruction from memory into MDR.</option>
+                <option value="mdrToCir">Copy fetched instruction from MDR to CIR.</option>
+                <option value="incrementPc">Increment PC to point to next instruction.</option>
+                <option value="decode">Decode opcode and identify operation.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="matchBtn">Match control</button>
+            <button class="primary-button" type="button" id="fdeBtn">Explain step</button>
           </div>
-          <div class="result-table" id="matchResult">Choose a risk to see a suitable control and justification.</div>
+          <div class="result-table" id="fdeResult">Choose a step to see the register role.</div>
         </section>
 
-        <!-- stage10-explanation:start matcher -->
-        <section class="panel explanation-panel" id="explanation-matcher" data-explains="matcher" data-explanation-kind="synthesis" aria-labelledby="explanation-matcher-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="matcher">
-          <h2 class="explanation-sr-only" id="explanation-matcher-title">Choose the best control</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-matcher.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best control with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the best control: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive risk-control matcher</li><li><strong>Lesson fact:</strong> Choose a risk to see a suitable control and justification.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end matcher -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Annotate where the marks are</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="os">OS role</button>
-            <button class="tab" type="button" data-example="translator">Translator</button>
-            <button class="tab" type="button" data-example="security">Security control</button>
-            <button class="tab" type="button" data-example="backup">Backup</button>
+            <button class="tab active" type="button" data-example="hardware">Hardware choice</button>
+            <button class="tab" type="button" data-example="fde">FDE cycle</button>
+            <button class="tab" type="button" data-example="interrupt">Interrupts</button>
+            <button class="tab" type="button" data-example="performance">Performance</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -284,7 +259,7 @@
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak system software and security answers</h2>
+            <h2>Repair weak hardware and processor answers</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -293,7 +268,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style review with expandable MS</h2>
-            <p>These questions mix system software and security. The MS rewards precise roles, threat-control matching and scenario consequence.</p>
+            <p>These questions mix hardware choice and processor fundamentals. The MS rewards precise component roles and scenario links.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -304,9 +279,9 @@
             <h2>Review checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Name</strong><span>Name the OS role, utility, translator, threat or control.</span></div>
-            <div><strong>Mechanism</strong><span>Explain how it works, not just that it helps.</span></div>
-            <div><strong>Consequence</strong><span>Link to reliability, development, confidentiality, integrity or recovery.</span></div>
+            <div><strong>Name</strong><span>Use exact component/register/gate names.</span></div>
+            <div><strong>Role</strong><span>State what the part stores, controls, transfers or calculates.</span></div>
+            <div><strong>Scenario</strong><span>Link the mechanism to performance, reliability, cost or user need.</span></div>
           </div>
         </section>
 
@@ -317,16 +292,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Comparison answers</strong>
-              <span>Write one compiler-vs-interpreter comparison and one OS-vs-utility comparison. Use two precise differences each.</span>
+              <strong>Task 1: Register retrieval</strong>
+              <span>Create flashcards for PC, MAR, MDR, CIR, ACC, ALU and CU. Each card must include role and one FDE step.</span>
             </article>
             <article>
-              <strong>Task 2: Risk-control grid</strong>
-              <span>Create a table with five risks and suitable controls. Include mechanism and limitation for each control.</span>
+              <strong>Task 2: Hardware justification</strong>
+              <span>Answer two 4-mark questions choosing storage and input/output devices for different users. Include characteristics and scenario links.</span>
             </article>
             <article>
-              <strong>Task 3: Improve weak answer</strong>
-              <span>Rewrite: "Encryption is good because it makes data secure." Include what encryption does and what it does not do.</span>
+              <strong>Task 3: Logic and performance</strong>
+              <span>Draw truth tables for XOR and NAND, then explain why cache size can improve processor performance.</span>
             </article>
           </div>
         </section>
@@ -334,8 +309,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

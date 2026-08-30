@@ -1,108 +1,116 @@
-const stageScenarios = {
-  build: {
-    stage: "Implementation",
-    reason: "The design is being turned into program modules, files, interfaces and configuration.",
-    examTip: "Mention implementation only when the answer is about building, installing or configuring the system.",
+const artefacts = {
+  steps: {
+    artefact: "Algorithm design",
+    reason: "The task is about processing logic: compare the requested room, date and time against existing booking records.",
+    warning: "Do not write final Java code as the whole design answer. Cambridge-style pseudocode or a flowchart is better for the design stage.",
   },
-  compare: {
-    stage: "Testing",
-    reason: "The key evidence is actual output compared with expected output for planned test data.",
-    examTip: "A strong testing answer names test data, expected result and actual result.",
+  field: {
+    artefact: "Data dictionary",
+    reason: "The task defines a data item, its type and its format. That belongs in the data dictionary.",
+    warning: "Do not confuse a data dictionary with sample records stored in a table.",
   },
-  fix: {
-    stage: "Maintenance",
-    reason: "The system has already been released, and a change is being made after delivery.",
-    examTip: "Classify the change if possible: corrective, adaptive or perfective.",
+  screen: {
+    artefact: "Interface design",
+    reason: "The task is about what the user sees and uses: controls, navigation, prompts and feedback.",
+    warning: "Do not reduce interface design to colours and logos.",
   },
-  judge: {
-    stage: "Evaluation",
-    reason: "The final system is being judged against requirements and measurable success criteria.",
-    examTip: "Evaluation needs evidence, not just opinions.",
+  need: {
+    artefact: "Requirements specification",
+    reason: "The task states what users need the system to do. It comes before detailed design.",
+    warning: "Do not jump to implementation before the requirement is clear.",
   },
 };
 
-const testValues = {
-  24: {
-    category: "Normal data",
-    expected: "Accepted",
-    reason: "24 is a typical valid value within the range 1 to 30.",
+const fieldDefinitions = {
+  RoomID: {
+    type: "STRING",
+    size: "6 characters",
+    format: "one letter followed by digits, such as R102A",
+    validation: "not blank; must exist in the room file",
+    purpose: "uniquely identifies the room being booked",
   },
-  30: {
-    category: "Boundary / extreme valid data",
-    expected: "Accepted",
-    reason: "30 is the upper valid limit, so it checks the edge of the rule.",
+  BookingDate: {
+    type: "DATE",
+    size: "fixed date value",
+    format: "YYYY-MM-DD",
+    validation: "valid school day; not in the past",
+    purpose: "stores the date of the booking",
   },
-  31: {
-    category: "Boundary invalid data",
-    expected: "Rejected",
-    reason: "31 is just outside the valid range, so it should trigger validation.",
+  StartTime: {
+    type: "TIME",
+    size: "fixed time value",
+    format: "HH:MM using school period start times",
+    validation: "must match a valid period start time",
+    purpose: "stores when the booking begins",
   },
-  text: {
-    category: "Abnormal data",
-    expected: "Rejected",
-    reason: "The value 'many' is the wrong data type for a numeric field.",
+  StaffID: {
+    type: "STRING",
+    size: "8 characters",
+    format: "staff code",
+    validation: "must match an authorised staff record",
+    purpose: "identifies the member of staff making the booking",
   },
 };
 
 const examples = {
-  testcase: {
-    title: "Example 1: Test case with expected result",
+  algorithm: {
+    title: "Example 1: Algorithm design for clash checking",
     rows: [
-      ["Requirement", "NumberOfStudents must be between 1 and the room capacity."],
-      ["Test data", "31 when room capacity is 30"],
-      ["Expected result", "Reject value and display an error message."],
-      ["Exam point", "A test case needs expected result; test data alone is not enough."],
+      ["Requirement", "Reject a booking if the room is already booked at the requested time."],
+      ["Design artefact", "Pseudocode or flowchart showing how each existing booking is checked."],
+      ["Useful detail", "Compare RoomID, BookingDate, StartTime and EndTime; output a clash message if overlap is found."],
+      ["Exam point", "Credit is for clear processing logic, not for saying 'the program checks it'."],
     ],
   },
-  changeover: {
-    title: "Example 2: Choosing a changeover method",
+  dictionary: {
+    title: "Example 2: Data dictionary entry",
     rows: [
-      ["Scenario", "A school cannot risk losing room bookings during term time."],
-      ["Choice", "Parallel running."],
-      ["Justification", "The old system remains available while outputs from the new system are checked."],
-      ["Trade-off", "It costs more time and staff effort because both systems are used together."],
+      ["Data item", "NumberOfStudents"],
+      ["Type and range", "INTEGER, 1 to room capacity"],
+      ["Validation", "must be numeric and cannot exceed the selected room capacity"],
+      ["Exam point", "A data dictionary should define field rules, not list many example values."],
     ],
   },
-  evaluation: {
-    title: "Example 3: Evaluation against success criteria",
+  interface: {
+    title: "Example 3: Interface design for booking form",
     rows: [
-      ["Success criterion", "A teacher can create a booking in under 2 minutes."],
-      ["Evidence", "8 out of 10 teachers met the target in user trials."],
-      ["Judgement", "Criterion mostly met; training or interface changes may help the remaining users."],
-      ["Exam point", "Evaluation earns marks when evidence is linked to a criterion."],
+      ["Screen", "Create room booking"],
+      ["Controls", "date picker, period drop-down, room list, submit button"],
+      ["Feedback", "availability result and validation messages are shown before saving"],
+      ["Exam point", "Interface design includes navigation and user feedback, not just visual style."],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which stage turns the design into a working system?", accepted: ["implementation"], answer: "Implementation." },
-  { id: "p2", prompt: "Which stage compares actual output with expected output?", accepted: ["testing", "test"], answer: "Testing." },
-  { id: "p3", prompt: "Which stage judges the final system against requirements and success criteria?", accepted: ["evaluation"], answer: "Evaluation." },
-  { id: "p4", prompt: "What test data category is a typical valid value?", accepted: ["normal"], answer: "Normal data." },
-  { id: "p5", prompt: "What test data category is just at or just outside the valid limit?", accepted: ["boundary"], answer: "Boundary data." },
-  { id: "p6", prompt: "What test data category uses an invalid type or invalid value?", accepted: ["abnormal", "erroneous", "invalid"], answer: "Abnormal / erroneous data." },
-  { id: "p7", prompt: "What maintenance type fixes faults after release?", accepted: ["corrective"], answer: "Corrective maintenance." },
-  { id: "p8", prompt: "What maintenance type changes the system for a new environment or rule?", accepted: ["adaptive"], answer: "Adaptive maintenance." },
-  { id: "p9", prompt: "What maintenance type improves performance or usability?", accepted: ["perfective"], answer: "Perfective maintenance." },
-  { id: "p10", prompt: "Which changeover method runs old and new systems together?", accepted: ["parallel"], answer: "Parallel running / parallel changeover." },
+  { id: "p1", prompt: "Which lifecycle stage produces detailed algorithm, data and interface designs?", accepted: ["design"], answer: "Design." },
+  { id: "p2", prompt: "Which document lists data item names, data types, sizes, formats and validation rules?", accepted: ["data dictionary", "dictionary"], answer: "Data dictionary." },
+  { id: "p3", prompt: "Which design artefact is best for processing steps such as checking for a clash?", accepted: ["algorithm", "pseudocode", "flowchart"], answer: "Algorithm design, such as pseudocode or a flowchart." },
+  { id: "p4", prompt: "Which design artefact shows screen layout, input controls, navigation and messages?", accepted: ["interface", "interface design", "screen design"], answer: "Interface design." },
+  { id: "p5", prompt: "What data type is most suitable for BookingDate?", accepted: ["date"], answer: "DATE." },
+  { id: "p6", prompt: "Why include validation rules in a data dictionary?", accepted: ["consistent", "testing", "validation", "rules", "errors"], answer: "So validation is implemented consistently and can be tested against clear rules." },
+  { id: "p7", prompt: "Is 'make it look nice' enough for interface design? yes or no", accepted: ["no"], answer: "No. Interface design should include controls, navigation, prompts, validation and feedback." },
+  { id: "p8", prompt: "Is final Java code the same as an algorithm design document? yes or no", accepted: ["no"], answer: "No. Java may implement the design, but the design should describe the logic before coding." },
+  { id: "p9", prompt: "The requirement is 'reject double bookings'. Which design artefact should describe the clash-checking logic?", accepted: ["algorithm", "pseudocode", "flowchart"], answer: "An algorithm design, commonly pseudocode or a flowchart." },
+  { id: "p10", prompt: "Give one reason design documentation helps maintenance.", accepted: ["understand", "rules", "structure", "future", "changes", "maintain"], answer: "It helps future developers understand existing data rules, algorithms and interface behaviour before changing the system." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student says one successful run is enough testing.",
-    fix: "Correction: testing should be planned with test data, expected results and actual results. One successful run may miss boundary, abnormal and integration faults.",
+    wrong: "A student says a data dictionary is a list of all stored records.",
+    fix: "Correction: a data dictionary defines metadata about data items, such as name, type, size, format, validation and purpose. It is not the table contents.",
   },
   {
-    wrong: "A student writes 'evaluation means testing the program'.",
-    fix: "Correction: testing finds faults by comparing expected and actual results. Evaluation judges whether the finished system meets requirements and success criteria, using evidence.",
+    wrong: "A student writes only 'use blue buttons and a logo' for interface design.",
+    fix: "Correction: include controls, labels, navigation, validation messages, error feedback and how users complete the task. Appearance alone is too thin for strong marks.",
   },
   {
-    wrong: "A student classifies a new timetable rule after release as corrective maintenance.",
-    fix: "Correction: this is adaptive maintenance because the system changes to fit a changed environment or requirement, not just to fix a fault.",
+    wrong: "A student skips algorithm design because 'the developer can just code it'.",
+    fix: "Correction: algorithm design records the processing logic before coding, which reduces ambiguity and supports testing. Java implementation is not a substitute for the design explanation.",
   },
   {
-    wrong: "A student recommends direct changeover because it is always best.",
-    fix: "Correction: direct changeover is fast and cheaper, but high risk. The best method depends on the scenario, risk tolerance and cost.",
+    wrong: "A student mixes requirements and design by saying 'the requirement is to use a drop-down list'.",
+    fix: "Correction: the requirement might be 'select a room quickly and accurately'. The drop-down list is a design choice that helps satisfy that requirement.",
   },
 ];
 
@@ -116,95 +124,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "For a login system, explain how dry run, walkthrough, white-box, black-box, integration testing and a stub expose different faults.",
-    answer: "A dry run manually traces values and paths, while a walkthrough is a structured peer review of the design or code. White-box tests are selected from internal paths and conditions; black-box tests are selected from the specification without relying on source structure. Integration testing checks combined modules, and a stub simulates a called module that is not yet available so the caller can be tested.",
+    prompt: "A login system has Main calling ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid). Describe the structure chart, derive equivalent pseudocode headers and calls, and state how a state-transition diagram would document LoggedOut, LoggedIn and Locked.",
+    answer: "The structure chart places Main above ReadCredentials and CheckLogin, with labelled parameter arrows for UserID, Password and IsValid. Equivalent pseudocode has complete subprogram headers declaring those parameters and Main calls each subprogram with matching arguments. The state-transition diagram has a marked start at LoggedOut, a valid-login transition to LoggedIn, logout back to LoggedOut and three invalid attempts from LoggedOut to Locked.",
     marking: [
-      { mark: "B1", text: "dry run described as manual tracing of values/control flow" },
-      { mark: "B1", text: "walkthrough described as structured peer review" },
-      { mark: "B1", text: "white-box testing linked to internal code paths/conditions" },
-      { mark: "B1", text: "black-box testing linked to requirements/specification and observable results" },
-      { mark: "B1", text: "integration testing linked to combined modules/interfaces" },
-      { mark: "B1", text: "stub described as simulation of an unavailable called module" },
+      { mark: "B1", text: "places Main above the two called modules in a hierarchy" },
+      { mark: "B1", text: "labels the data/control parameters passed between modules" },
+      { mark: "M1", text: "derives complete headers with corresponding parameters" },
+      { mark: "A1", text: "derives matching calls from Main with arguments" },
+      { mark: "B1", text: "marks LoggedOut as the start and gives valid-login/logout transitions" },
+      { mark: "B1", text: "gives the three-invalid-attempts transition from LoggedOut to Locked" },
     ],
     strict: [
-      "Do not accept walkthrough as automatic program execution.",
-      "Do not reverse white-box and black-box testing.",
-      "A stub replaces an unavailable called module, not test data or the completed caller.",
+      "Do not accept a flowchart in place of the module hierarchy and parameter arrows.",
+      "Headers and calls must use matching parameter/argument roles.",
+      "The state-transition diagram must show persistent states and directed event-labelled transitions.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write a test strategy for NumberOfStudents, valid from 1 to 30, then give one complete test-plan row.",
-    answer: "The strategy states that black-box tests will check the range requirement, white-box tests will cover both accepted and rejected paths, integration tests will check the form with the booking module, and the tester is responsible before user acceptance. Example plan row: T03; purpose upper accepted limit; data 30; expected accepted; actual accepted; Pass.",
+    prompt: "Develop suitable data dictionary details for RoomID, BookingDate and NumberOfStudents in a room booking system.",
+    answer: "RoomID: STRING, length 6, must not be blank and must match an existing room record. BookingDate: DATE, format YYYY-MM-DD, must be a valid school day and not in the past. NumberOfStudents: INTEGER, range 1 to room capacity, must be numeric and cannot exceed the selected room capacity.",
     marking: [
-      { mark: "B1", text: "strategy names suitable methods/levels such as black-box, white-box and integration" },
-      { mark: "B1", text: "strategy states suitable responsibility or sequence" },
-      { mark: "B1", text: "test-plan row has an identifier and purpose" },
-      { mark: "B1", text: "row gives suitable test data and expected result" },
-      { mark: "B1", text: "row records an actual result" },
-      { mark: "B1", text: "row records a coherent pass/fail outcome" },
+      { mark: "B1", text: "RoomID has a suitable data type such as STRING" },
+      { mark: "B1", text: "RoomID includes size/format and a valid validation rule" },
+      { mark: "B1", text: "BookingDate has a suitable type such as DATE" },
+      { mark: "B1", text: "BookingDate includes format or date validation" },
+      { mark: "B1", text: "NumberOfStudents has a suitable numeric type such as INTEGER" },
+      { mark: "B1", text: "NumberOfStudents includes valid range or room-capacity validation" },
     ],
     strict: [
-      "A list of data values alone is not a test strategy.",
-      "Expected result must be stated before comparing it with the actual result.",
-      "The pass/fail outcome must agree with the expected and actual results.",
+      "Do not award validation marks for vague 'must be correct' without a rule.",
+      "Allow alternative reasonable lengths and formats if consistent.",
+      "Do not accept sample values only; the answer must describe field definitions.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Explain the difference between testing and evaluation in the software development lifecycle.",
-    answer: "Testing is used to find faults by running the system or module with planned test data and comparing actual results with expected results. Evaluation is carried out to judge whether the finished system meets the original requirements and success criteria. Testing may provide evidence for evaluation, but evaluation also considers user feedback, performance against criteria and whether the system is fit for purpose.",
+    prompt: "Explain how design documentation can help during implementation, testing and maintenance.",
+    answer: "During implementation, design documentation tells developers what data fields, processing logic and interface behaviour to build. During testing, expected validation rules and algorithm behaviour can be compared with actual program output. During maintenance, future developers can understand existing rules and assumptions before changing the system, reducing the risk of introducing faults.",
     marking: [
-      { mark: "B1", text: "states testing uses planned test data or test cases" },
-      { mark: "B1", text: "explains testing compares actual and expected results or finds faults" },
-      { mark: "B1", text: "states evaluation judges the finished system" },
-      { mark: "B1", text: "links evaluation to requirements, objectives or success criteria" },
-      { mark: "B1", text: "explains that test evidence can support evaluation" },
-      { mark: "B1", text: "gives a valid extra evaluation evidence source such as user feedback or performance data" },
+      { mark: "B1", text: "states design documentation guides implementation" },
+      { mark: "B1", text: "explains implementation using fields, algorithms, interface behaviour or structure" },
+      { mark: "B1", text: "states design documentation helps testing" },
+      { mark: "B1", text: "explains testing by comparing actual behaviour with designed rules or expected results" },
+      { mark: "B1", text: "states design documentation helps maintenance" },
+      { mark: "B1", text: "explains maintenance using future understanding, safer changes or reduced faults" },
     ],
     strict: [
-      "Do not award full marks for treating testing and evaluation as identical.",
-      "Allow acceptance testing as a bridge if explained clearly.",
-      "Do not accept 'evaluation is checking for errors' alone.",
+      "Do not award explanation marks for 'it makes it easier' without saying what becomes easier and why.",
+      "Allow references to traceability between requirements, design and tests.",
+      "Do not require all three design artefacts if the lifecycle links are clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "Identify each maintenance request as corrective, adaptive or perfective: fixing a crash when saving; changing term dates for a new timetable; making search results display faster.",
-    answer: "Fixing a crash when saving is corrective maintenance because it fixes a fault. Changing term dates for a new timetable is adaptive maintenance because the system is being changed for a new environment or rule. Making search results display faster is perfective maintenance because it improves performance rather than fixing a fault.",
+    prompt: "A requirement says: 'The system must prevent double bookings.' Describe one algorithm design feature and one interface design feature that could help meet this requirement.",
+    answer: "The algorithm design should compare the requested RoomID, date and time interval with existing bookings and set a clash flag or reject the booking if an overlap is found. The interface design could include a Check availability button and display a clear error message before the booking is saved if the room is already booked.",
     marking: [
-      { mark: "B1", text: "classifies crash fix as corrective" },
-      { mark: "B1", text: "reason links corrective maintenance to fixing a fault" },
-      { mark: "B1", text: "classifies new timetable dates as adaptive" },
-      { mark: "B1", text: "reason links adaptive maintenance to changed environment/rules" },
-      { mark: "B1", text: "classifies faster search as perfective" },
-      { mark: "B1", text: "reason links perfective maintenance to improvement" },
+      { mark: "B1", text: "identifies comparison with existing bookings as part of the algorithm" },
+      { mark: "B1", text: "uses relevant fields such as RoomID, date and time interval" },
+      { mark: "B1", text: "describes a reject/clash outcome from the algorithm" },
+      { mark: "B1", text: "identifies a relevant interface feature such as availability check or disabled submit" },
+      { mark: "B1", text: "describes user feedback such as a clear clash/error message" },
+      { mark: "B1", text: "links interface behaviour to preventing the invalid booking before saving" },
     ],
     strict: [
-      "Award reason marks only when the explanation matches the classification.",
-      "Allow enhancement for perfective if improvement is clear.",
-      "Do not accept adaptive for every post-release change.",
+      "Do not award full algorithm marks for 'check it' without saying what is checked.",
+      "Allow equivalent overlap logic using start and end times.",
+      "Do not accept colour-only interface features.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A success criterion says: '95% of room searches should return results within 2 seconds.' Explain how this could be evaluated after implementation.",
-    answer: "A representative set of room searches should be run after implementation, such as searches for different days, rooms and periods. The response time for each search should be recorded and compared with the 2-second target. The percentage meeting the target should be calculated and compared with the 95% success criterion. If fewer than 95% meet the target, the system does not fully meet this criterion and maintenance or optimisation may be needed.",
+    marks: "6 marks",
+    prompt: "A draft design document only says: 'The booking screen should be nice and the program should check bookings.' Identify three weaknesses and suggest an improvement for each.",
+    answer: "Weakness: 'nice' is subjective. Improvement: specify controls, labels, navigation and error messages for the booking screen. Weakness: 'check bookings' is vague. Improvement: write pseudocode or a flowchart that compares RoomID, date and time with existing records. Weakness: there are no data definitions. Improvement: add a data dictionary for fields such as RoomID, BookingDate and StaffID with types and validation rules.",
     marking: [
-      { mark: "B1", text: "uses representative searches or suitable test/user tasks" },
-      { mark: "B1", text: "records response time or measurable evidence" },
-      { mark: "B1", text: "compares results with the 2-second target" },
-      { mark: "B1", text: "calculates or judges percentage against 95% criterion" },
-      { mark: "B1", text: "states a valid conclusion about whether the criterion is met" },
+      { mark: "B1", text: "identifies subjective or vague interface wording as a weakness" },
+      { mark: "B1", text: "improves it with concrete interface design details" },
+      { mark: "B1", text: "identifies vague processing/checking as a weakness" },
+      { mark: "B1", text: "improves it with algorithm design detail such as pseudocode or flowchart" },
+      { mark: "B1", text: "identifies missing data definitions or validation as a weakness" },
+      { mark: "B1", text: "improves it with data dictionary content" },
     ],
     strict: [
-      "Do not award full marks for saying 'ask users if it is fast' without measurement.",
-      "Allow automated timing logs or manual timed tests.",
-      "Do not require exactly 100 searches if percentage can be judged from sufficient evidence.",
+      "Improvement must match the identified weakness.",
+      "Allow other valid weaknesses, such as missing navigation, missing error messages or no link to requirements.",
+      "Do not award improvement marks for simply saying 'add more detail' without naming the detail.",
     ],
   },
 ];
@@ -238,10 +247,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    ship: { text: "One successful run is not enough. It may miss boundary, abnormal and integration faults.", correct: false },
-    test: { text: "Correct. Planned testing gives evidence across valid and invalid cases.", correct: true },
-    pretty: { text: "A modern interface can still save wrong data. Appearance is not proof of correctness.", correct: false },
-    wait: { text: "User feedback matters, but the answer needs planned testing and evidence.", correct: false },
+    requirements: { text: "Close, but requirements usually state the need. Field type and validation belong in the data dictionary.", correct: false },
+    dictionary: { text: "Correct. A data dictionary defines data item type, size, format, validation and purpose.", correct: true },
+    interface: { text: "The interface may show a RoomID input, but it should not be the main source of the field rule.", correct: false },
+    code: { text: "Java may implement the rule later. It is not the best design artefact for defining the field.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -254,34 +263,36 @@ function setupHook() {
   });
 }
 
-function setupStageChooser() {
-  const select = document.querySelector("#stageSelect");
-  const output = document.querySelector("#stageOutput");
+function setupArtefactChooser() {
+  const select = document.querySelector("#artefactSelect");
+  const output = document.querySelector("#artefactOutput");
   const render = () => {
-    const item = stageScenarios[select.value];
+    const item = artefacts[select.value];
     output.innerHTML = `
-      <p><strong>Stage:</strong> ${escapeHtml(item.stage)}</p>
+      <p><strong>Best artefact:</strong> ${escapeHtml(item.artefact)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Exam tip:</strong> ${escapeHtml(item.examTip)}</p>
+      <p><strong>Common error:</strong> ${escapeHtml(item.warning)}</p>
     `;
   };
-  document.querySelector("#stageBtn").addEventListener("click", render);
+  document.querySelector("#artefactBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupDataClassifier() {
-  const select = document.querySelector("#dataSelect");
-  const output = document.querySelector("#dataOutput");
+function setupFieldChecker() {
+  const select = document.querySelector("#fieldSelect");
+  const output = document.querySelector("#fieldOutput");
   const render = () => {
-    const item = testValues[select.value];
+    const item = fieldDefinitions[select.value];
     output.innerHTML = `
-      <p><strong>Category:</strong> ${escapeHtml(item.category)}</p>
-      <p><strong>Expected result:</strong> ${escapeHtml(item.expected)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+      <p><strong>Type:</strong> ${escapeHtml(item.type)}</p>
+      <p><strong>Size:</strong> ${escapeHtml(item.size)}</p>
+      <p><strong>Format:</strong> ${escapeHtml(item.format)}</p>
+      <p><strong>Validation:</strong> ${escapeHtml(item.validation)}</p>
+      <p><strong>Purpose:</strong> ${escapeHtml(item.purpose)}</p>
     `;
   };
-  document.querySelector("#dataBtn").addEventListener("click", render);
+  document.querySelector("#fieldBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -298,7 +309,7 @@ function setupExamples() {
   document.querySelectorAll("[data-example]").forEach((button) => {
     button.addEventListener("click", () => render(button.dataset.example));
   });
-  render("testcase");
+  render("algorithm");
 }
 
 function setupPractice() {
@@ -324,7 +335,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const response = normalise(input.value);
       const correct = item.accepted.some((accepted) => response.includes(accepted));
-      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the precise lifecycle or testing keyword.";
+      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Tighten the keyword or reveal the model answer.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -389,8 +400,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupStageChooser();
-  setupDataClassifier();
+  setupArtefactChooser();
+  setupFieldChecker();
   setupExamples();
   setupPractice();
   setupMistakes();

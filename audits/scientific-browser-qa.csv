@@ -103,10 +103,10 @@ lesson-048,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pen
 lesson-048,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
 lesson-049,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
 lesson-049,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
-lesson-050,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,Pass:contents-answer,Pass,Rendered through local HTTP server.
-lesson-050,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,Pass:contents-answer,Fail,Rendered through local HTTP server.
-lesson-051,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
-lesson-051,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
+lesson-050,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
+lesson-050,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
+lesson-051,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,Pass:contents-answer,Pass,Rendered through local HTTP server.
+lesson-051,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,Pass:contents-answer,Fail,Rendered through local HTTP server.
 lesson-052,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
 lesson-052,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
 lesson-053,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
@@ -203,10 +203,10 @@ lesson-098,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pen
 lesson-098,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
 lesson-099,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
 lesson-099,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
-lesson-100,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Fresh-port cache-busted retest produced zero console errors.
-lesson-100,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Fresh-port cache-busted retest produced zero console errors.
-lesson-101,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
-lesson-101,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
+lesson-100,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
+lesson-100,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
+lesson-101,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Fresh-port cache-busted retest produced zero console errors.
+lesson-101,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Fresh-port cache-busted retest produced zero console errors.
 lesson-102,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
 lesson-102,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
 lesson-103,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
@@ -305,3 +305,5 @@ lesson-149,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pen
 lesson-149,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
 lesson-150,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
 lesson-150,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.
+lesson-151,1440x900,Pass,Pass,Pass,Pass,PassFreshPort,PendingByComponentType,Pending,Rendered through local HTTP server.
+lesson-151,390x844,Pass,Pass,Pass,Fail:Stage10Container,PassFreshPort,PendingByComponentType,Fail,Rendered through local HTTP server.

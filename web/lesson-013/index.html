@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 013 | Run-length encoding and dictionary-style compression</title>
+    <title>AS9618 Lesson 013 | Compression methods for text, bitmap, vector and sound files</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
-  <body>
+  <body class="stage7-contrast-lesson-013">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Run-length encoding and dictionary-style compression</h1>
+        <h1>Compression methods for text, bitmap, vector and sound files</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,218 +29,307 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#rle">RLE</a>
-        <a href="#dictionary">Dictionary</a>
-        <a href="#effectiveness">Effectiveness</a>
-        <a href="#tool">RLE tool</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#lossless">Lossless</a>
+        <a href="#lossy">Lossy</a>
+        <a href="#ratio">Ratio</a>
+        <a href="#tool">Calculator</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Compression methods for text, bitmap, vector and sound files</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Compression represents a file using fewer bits. Lossless compression must reconstruct every original bit, so it is required where any change would alter meaning, such as program source or exact text. Lossy compression permanently discards selected detail and is suitable only when the resulting quality remains acceptable for the purpose.</p>
+            <p>Text can be compressed losslessly by run-length encoding repeated characters or by replacing repeated words/strings with shorter dictionary references. Bitmap data can use run-length encoding when adjacent pixels repeat; lossy bitmap compression may reduce colour precision or discard fine spatial detail. RLE is effective only when the runs save more space than their symbol-count representation.</p>
+            <p>A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.</p>
+            <p>Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming 'lossy' or 'lossless' alone is not enough.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose methods for four files</h3>
+            <p>Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start lossless -->
+        <section class="panel explanation-panel" id="explanation-lossless" data-explains="lossless" data-explanation-kind="mechanism" aria-labelledby="explanation-lossless-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossless">
+          <h2 class="explanation-sr-only" id="explanation-lossless-title">Lossless compression: exact reconstruction</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-lossless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossless compression: exact reconstruction with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lossless compression: exact reconstruction: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossless compression reduces file size while allowing the original data to be restored exactly.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Text files, program files, spreadsheets, databases, medical records and backups.</li><li><strong>Lesson fact:</strong> If one changed bit could change meaning or break the file, lossless is the safer answer.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lossless -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Compression methods for text, bitmap, vector and sound files: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why must program source code use lossless compression?</p>
+              <details><summary>Show answer</summary><p>Every character must be reconstructed exactly; a discarded or changed character can alter syntax or behaviour.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> When is RLE effective for a bitmap?</p>
+              <details><summary>Show answer</summary><p>When many adjacent pixels have the same value, so symbol-count pairs use fewer bits than storing each pixel separately.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How can repeated objects in a vector file be compressed?</p>
+              <details><summary>Show answer</summary><p>Store the repeated shape/properties once and use shorter references for each occurrence.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one lossy method for sound and its trade-off.</p>
+              <details><summary>Show answer</summary><p>Remove less-audible frequency/detail information, or reduce sample rate/resolution; the file is smaller but the discarded detail cannot be recovered.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>text: lossless RLE or dictionary/token substitution with exact reconstruction</td><td>Do not award generic 'make the file smaller' statements without a method tied to the named media type.</td><td>1</td></tr>
+                  <tr><td>bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact</td><td></td><td>1</td></tr>
+                  <tr><td>vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly</td><td></td><td>1</td></tr>
+                  <tr><td>sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail</td><td></td><td>1</td></tr>
+                  <tr><td>distinguishes exact lossless reconstruction from irreversible lossy removal</td><td></td><td>1</td></tr>
+                  <tr><td>links at least one method to repetition, fidelity or intended use</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 013 | 45 minutes | Informal questioning</p>
-            <h2>Compression likes patterns. Randomness is less polite.</h2>
+            <h2>Compression makes files smaller, but the method matters.</h2>
             <p>
-              This lesson shows two lossless compression ideas: run-length encoding
-              stores repeated runs as count plus value, while dictionary-style compression
-              replaces repeated patterns with shorter references.
+              Compression reduces file size so files take less storage and transfer faster.
+              Lossless compression allows exact reconstruction. Lossy compression permanently
+              removes data, usually aiming to remove data that is less noticeable.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div>
-                <strong>Encode</strong>
-                <span>simple repeated data using run-length encoding</span>
+                <strong>Define</strong>
+                <span>compression, lossless compression and lossy compression</span>
               </div>
               <div>
-                <strong>Decode</strong>
-                <span>RLE strings back to the original data</span>
+                <strong>Choose</strong>
+                <span>suitable compression for text, images, sound and backups</span>
               </div>
               <div>
-                <strong>Explain</strong>
-                <span>when RLE and dictionary-style compression are effective</span>
+                <strong>Calculate</strong>
+                <span>compressed size, saved space and compression ratio</span>
               </div>
             </div>
           </div>
-          <div class="compress-card" aria-label="RLE focus">
-            <span>AAAAAABBBBCCCCCCCC → 6A4B8C</span>
-            <p>Great when runs are long. Less impressive when the data refuses to repeat.</p>
+          <div class="compress-card" aria-label="Compression focus">
+            <span>AAAAAABBBBCCCCCCCC</span>
+            <p>Repeated data is friendly to compression. Random-looking data may be less cooperative.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge questions often test the mechanism, not just the name of the compression method.</p>
+            <p>The wrong compression choice can damage data, waste bandwidth or make a file unusable for its purpose.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>RLE can make alternating data larger because every short run still needs a count and value.</p>
+            <p>Compression does not guarantee a smaller file. Overhead and lack of patterns can limit the benefit.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which string is most suitable for RLE?</h2>
+            <h2>Which file must use lossless compression?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="runs">AAAAAABBBBBBCCCC</button>
-            <button class="choice-card" type="button" data-hook="alternating">ABABABABABAB</button>
-            <button class="choice-card" type="button" data-hook="random">Q7MZP2KX</button>
-            <button class="choice-card" type="button" data-hook="short">ABC</button>
+            <button class="choice-card" type="button" data-hook="photo">Holiday photo for a website</button>
+            <button class="choice-card" type="button" data-hook="backup">Database backup</button>
+            <button class="choice-card" type="button" data-hook="music">Streaming music preview</button>
+            <button class="choice-card" type="button" data-hook="thumbnail">Tiny image thumbnail</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. RLE likes long repeated runs, not a keyboard having a restless day.
+            Pick an answer. The word “must” is doing a lot of work here.
           </div>
         </section>
 
-        <section class="panel" id="rle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rle">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Run-length encoding</h2>
+            <h2>Why compress data?</h2>
+          </div>
+          <div class="purpose-grid">
+            <article>
+              <h3>Less storage</h3>
+              <p>Smaller files use less disk or memory space.</p>
+            </article>
+            <article>
+              <h3>Faster transfer</h3>
+              <p>Smaller files need less bandwidth and may download or upload faster.</p>
+            </article>
+            <article>
+              <h3>Trade-off</h3>
+              <p>Compression and decompression may require processing time.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: compression = 压缩；decompression = 解压；reconstruct = 还原。</div>
+        </section>
+
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why compress data?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why compress data? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Why compress data?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Less storage</li><li><strong>Lesson fact:</strong> Smaller files use less disk or memory space.</li><li><strong>Lesson fact:</strong> Faster transfer</li><li><strong>Lesson fact:</strong> Smaller files need less bandwidth and may download or upload faster.</li><li><strong>Lesson fact:</strong> Trade-off</li><li><strong>Lesson fact:</strong> Compression and decompression may require processing time.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+        <section class="panel" id="lossless" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Lossless compression: exact reconstruction</h2>
           </div>
           <div class="method-grid">
             <article>
-              <h3>Encoding rule</h3>
-              <p>Replace each consecutive run with `count + value`.</p>
-              <p class="mini-formula">`AAAAAABBBBCCCCCCCC → 6A4B8C`</p>
+              <h3>Definition</h3>
+              <p>Lossless compression reduces file size while allowing the original data to be restored exactly.</p>
             </article>
             <article>
-              <h3>Decoding rule</h3>
-              <p>Expand each count and value back into repeated data.</p>
-              <p class="mini-formula">`3A2B1C → AAABBC`</p>
+              <h3>Suitable uses</h3>
+              <p>Text files, program files, spreadsheets, databases, medical records and backups.</p>
             </article>
           </div>
-          <div class="callout">Chinese support: run = 连续重复段；encode = 编码；decode = 解码。</div>
+          <div class="callout warning">If one changed bit could change meaning or break the file, lossless is the safer answer.</div>
         </section>
 
-        <!-- stage10-explanation:start rle -->
-        <section class="panel explanation-panel" id="explanation-rle" data-explains="rle" data-explanation-kind="mechanism" aria-labelledby="explanation-rle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="rle">
-          <h2 class="explanation-sr-only" id="explanation-rle-title">Run-length encoding</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-rle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Run-length encoding with a structured visual model." />
-            <figcaption class="explanation-sr-only">Run-length encoding: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Encoding rule</li><li><strong>Lesson fact:</strong> Replace each consecutive run with count + value.</li><li><strong>Lesson fact:</strong> AAAAAABBBBCCCCCCCC → 6A4B8C</li><li><strong>Lesson fact:</strong> Decoding rule</li><li><strong>Lesson fact:</strong> Expand each count and value back into repeated data.</li><li><strong>Lesson fact:</strong> 3A2B1C → AAABBC</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end rle -->
-        <section class="panel" id="dictionary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Dictionary-style compression</h2>
-          </div>
-          <div class="dictionary-grid">
-            <article>
-              <h3>Idea</h3>
-              <p>Find repeated patterns and store them once in a dictionary.</p>
-            </article>
-            <article>
-              <h3>Reference</h3>
-              <p>Replace later occurrences with a shorter code or pointer to the dictionary entry.</p>
-            </article>
-            <article>
-              <h3>Example</h3>
-              <p>`COMPUTER COMPUTER COMPUTER` can store `COMPUTER` once, then use references.</p>
-            </article>
-          </div>
-          <div class="dictionary-demo">
-            <div><strong>Dictionary</strong><span>`#1 = COMPUTER`</span></div>
-            <div><strong>Compressed form</strong><span>`#1 #1 #1`</span></div>
-            <div><strong>Decoded form</strong><span>`COMPUTER COMPUTER COMPUTER`</span></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start dictionary -->
-        <section class="panel explanation-panel" id="explanation-dictionary" data-explains="dictionary" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="dictionary">
-          <h2 class="explanation-sr-only" id="explanation-dictionary-title">Dictionary-style compression</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-dictionary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Dictionary-style compression with a structured visual model." />
-            <figcaption class="explanation-sr-only">Dictionary-style compression: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Find repeated patterns and store them once in a dictionary.</li><li><strong>Lesson fact:</strong> Reference</li><li><strong>Lesson fact:</strong> Replace later occurrences with a shorter code or pointer to the dictionary entry.</li><li><strong>Lesson fact:</strong> COMPUTER COMPUTER COMPUTER can store COMPUTER once, then use references.</li><li><strong>Lesson fact:</strong> Dictionary #1 = COMPUTER</li><li><strong>Lesson fact:</strong> Compressed form #1 #1 #1</li><li><strong>Lesson fact:</strong> Decoded form COMPUTER COMPUTER COMPUTER</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end dictionary -->
-        <section class="panel" id="effectiveness" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effectiveness">
+        <section class="panel" id="lossy" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>When does it help?</h2>
+            <h2>Lossy compression: smaller, but not exact</h2>
           </div>
-          <div class="effect-grid">
+          <div class="method-grid">
             <article>
-              <h3>RLE helps</h3>
-              <p>Long repeated runs, simple graphics, repeated pixels or repeated characters.</p>
+              <h3>Definition</h3>
+              <p>Lossy compression reduces file size by permanently removing some data.</p>
             </article>
             <article>
-              <h3>RLE struggles</h3>
-              <p>Alternating or random-looking data with very short runs.</p>
-            </article>
-            <article>
-              <h3>Dictionary helps</h3>
-              <p>Repeated words, phrases, byte patterns or sequences across the file.</p>
+              <h3>Suitable uses</h3>
+              <p>Images, video and sound where small quality loss may be acceptable.</p>
             </article>
           </div>
-          <div class="callout warning">Both methods are lossless if the dictionary and encoded data allow exact reconstruction.</div>
+          <div class="callout warning">Lossy is not suitable when exact reconstruction is required.</div>
         </section>
 
-        <!-- stage10-explanation:start effectiveness -->
-        <section class="panel explanation-panel" id="explanation-effectiveness" data-explains="effectiveness" data-explanation-kind="mechanism" aria-labelledby="explanation-effectiveness-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="effectiveness">
-          <h2 class="explanation-sr-only" id="explanation-effectiveness-title">When does it help?</h2>
+        <!-- stage10-explanation:start lossy -->
+        <section class="panel explanation-panel" id="explanation-lossy" data-explains="lossy" data-explanation-kind="mechanism" aria-labelledby="explanation-lossy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
+          <h2 class="explanation-sr-only" id="explanation-lossy-title">Lossy compression: smaller, but not exact</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-effectiveness.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When does it help? with a structured visual model." />
-            <figcaption class="explanation-sr-only">When does it help?: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-lossy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossy compression: smaller, but not exact with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lossy compression: smaller, but not exact: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> RLE helps</li><li><strong>Lesson fact:</strong> Long repeated runs, simple graphics, repeated pixels or repeated characters.</li><li><strong>Lesson fact:</strong> RLE struggles</li><li><strong>Lesson fact:</strong> Alternating or random-looking data with very short runs.</li><li><strong>Lesson fact:</strong> Dictionary helps</li><li><strong>Lesson fact:</strong> Repeated words, phrases, byte patterns or sequences across the file.</li><li><strong>Lesson fact:</strong> Both methods are lossless if the dictionary and encoded data allow exact reconstruction.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossy compression reduces file size by permanently removing some data.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Images, video and sound where small quality loss may be acceptable.</li><li><strong>Lesson fact:</strong> Lossy is not suitable when exact reconstruction is required.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end effectiveness -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <!-- stage10-explanation:end lossy -->
+        <section class="panel" id="ratio" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Compression ratio and saved space</h2>
+          </div>
+          <div class="formula-box">
+            <strong>compression ratio = original size : compressed size</strong>
+            <span>percentage saved = ((original - compressed) ÷ original) × 100</span>
+          </div>
+          <div class="worked-line">Example: `1000 KB → 250 KB` gives ratio `4:1` and `75%` saved.</div>
+        </section>
+
+        <!-- stage10-explanation:start ratio -->
+        <section class="panel explanation-panel" id="explanation-ratio" data-explains="ratio" data-explanation-kind="mechanism" aria-labelledby="explanation-ratio-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
+          <h2 class="explanation-sr-only" id="explanation-ratio-title">Compression ratio and saved space</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-ratio.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression ratio and saved space with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compression ratio and saved space: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> compression ratio = original size : compressed size</li><li><strong>Lesson fact:</strong> percentage saved = ((original - compressed) ÷ original) × 100</li><li><strong>Lesson fact:</strong> Example: 1000 KB → 250 KB gives ratio 4:1 and 75% saved.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end ratio -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>RLE encoder and decoder</h2>
+            <h2>Compression result calculator</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Mode
-              <select id="modeInput">
-                <option value="encode" selected>Encode original data</option>
-                <option value="decode">Decode RLE data</option>
-              </select>
+              Original size
+              <input id="originalInput" type="number" min="1" value="1000" />
             </label>
             <label>
-              Data
-              <input id="dataInput" type="text" value="AAAAAABBBBCCCCCCCC" />
+              Compressed size
+              <input id="compressedInput" type="number" min="1" value="250" />
             </label>
-            <button type="button" id="convertBtn">Convert</button>
+            <label>
+              Unit
+              <select id="unitInput">
+                <option value="bytes">bytes</option>
+                <option value="KB" selected>KB</option>
+                <option value="MiB">MiB</option>
+              </select>
+            </label>
+            <button type="button" id="calculateBtn">Calculate</button>
           </div>
-          <div class="result-box" id="convertResult" aria-live="polite"></div>
-          <div class="method-box" id="convertMethod"></div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="encode">RLE encode</button>
-            <button class="tab" type="button" data-example="decode">RLE decode</button>
-            <button class="tab" type="button" data-example="dictionary">Dictionary style</button>
+            <button class="tab active" type="button" data-example="lossless">Choose lossless</button>
+            <button class="tab" type="button" data-example="lossy">Choose lossy</button>
+            <button class="tab" type="button" data-example="ratio">Calculate ratio</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -250,26 +339,26 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the run count</h2>
+            <h2>Correct the compression myth</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">`AAAAAABBBBCCCCCCCC → 5A4B8C`</p>
+              <p class="wrong">“Lossless compression always gives the smallest possible file.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">There are six `A` characters, so the correct encoding is `6A4B8C`.</p>
+              <p class="answer" id="mistake1">Lossless keeps exact reconstruction, but the file may not shrink much if there are few patterns or if overhead is high.</p>
             </article>
             <article>
-              <p class="wrong">“RLE is always smaller because it is compression.”</p>
+              <p class="wrong">“Lossy compression is fine for database backups because it saves space.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">RLE can be larger for data such as `ABABAB`, because each short run needs its own count and value.</p>
+              <p class="answer" id="mistake2">Backups must be restored exactly. Lossy compression permanently removes data, so it is unsuitable.</p>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -281,16 +370,16 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-013">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Patterns are the target</h2>
+            <h2>Compression choices depend on purpose</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>1</strong><span>RLE stores repeated runs as count plus value.</span></div>
-            <div><strong>2</strong><span>Dictionary-style compression stores repeated patterns once and references them.</span></div>
-            <div><strong>3</strong><span>Both can be lossless if exact reconstruction is possible.</span></div>
-            <div><strong>4</strong><span>Compression is effective only when the replacement is shorter than the original plus overhead.</span></div>
+            <div><strong>1</strong><span>Compression reduces file size for storage or transfer.</span></div>
+            <div><strong>2</strong><span>Lossless allows exact reconstruction of the original data.</span></div>
+            <div><strong>3</strong><span>Lossy permanently removes data and may reduce quality.</span></div>
+            <div><strong>4</strong><span>Compression is not guaranteed to make every file smaller.</span></div>
           </div>
         </section>
 
@@ -300,25 +389,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>RLE encode `AAAABBCCCCDDDDDD`.</li>
-            <li>Decode `2A3B4C1D`.</li>
-            <li>Explain why `ABABABAB` is not a good candidate for simple RLE.</li>
-            <li>Write a 4-mark explanation of how dictionary-style compression can reduce file size.</li>
+            <li>Define compression, lossless compression and lossy compression.</li>
+            <li>Choose lossless or lossy for: database backup, website photo, source code file and music stream. Give one reason for each.</li>
+            <li>A file reduces from 2400 KB to 600 KB. Calculate the ratio and percentage saved.</li>
+            <li>Write a 4-mark explanation of why lossy compression is unsuitable for a legal document archive.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Task 1:</strong> `4A2B4C6D`.</p>
-            <p><strong>Task 2:</strong> `AABBBCCCCD`.</p>
-            <p><strong>Task 3:</strong> simple RLE creates many short runs, so the encoded form may not be shorter.</p>
-            <p><strong>Task 4 focus:</strong> repeated patterns are stored once in a dictionary; later occurrences are replaced by shorter references; the original can be reconstructed using the dictionary.</p>
+            <p><strong>Definitions:</strong> compression reduces file size; lossless restores the original exactly; lossy permanently removes some data.</p>
+            <p><strong>Choices:</strong> backup and source code need lossless; website photo and music stream may use lossy if quality loss is acceptable.</p>
+            <p><strong>Calculation:</strong> `2400:600 = 4:1`; saved `1800/2400 × 100 = 75%`.</p>
+            <p><strong>Explanation focus:</strong> legal documents must preserve exact content, so lossy removal of data could alter evidence or meaning.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

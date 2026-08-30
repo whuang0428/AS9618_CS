@@ -1,114 +1,144 @@
 const scenarios = [
   {
-    id: "sequence",
-    text: "Input Price, input Quantity, calculate Total, output Total.",
-    construct: "Sequence",
-    reason: "The statements must run in a fixed order so the calculation uses values that already exist.",
+    id: "records",
+    text: "A school stores 120 students. Each student has an ID, name and mark.",
+    topic: "Array of records",
+    reason: "There are many students, and each student has several fields that should stay together.",
+    cue: "Look for: many items + different fields per item.",
   },
   {
-    id: "selection",
-    text: "Output Pass if Mark is at least 50, otherwise output Resit needed.",
-    construct: "Selection",
-    reason: "A condition decides which path is taken.",
+    id: "stack",
+    text: "A drawing app must undo the most recent action first.",
+    topic: "Stack",
+    reason: "The most recently added action is the first one removed, so the access rule is LIFO.",
+    cue: "Look for: most recent first, undo, backtracking.",
   },
   {
-    id: "forLoop",
-    text: "Output every element from index 1 to index 30.",
-    construct: "Iteration using FOR",
-    reason: "The number of repetitions is known from the index range.",
+    id: "queue",
+    text: "Print jobs must be processed in the order they arrive.",
+    topic: "Queue",
+    reason: "The first job added should be the first job removed, so the access rule is FIFO.",
+    cue: "Look for: arrival order, waiting line, service order.",
   },
   {
-    id: "whileLoop",
-    text: "Keep asking for a password while the password is not correct.",
-    construct: "Iteration using WHILE",
-    reason: "The number of attempts is not known in advance and the condition is checked before repeating.",
+    id: "csv",
+    text: "A program reads product data from Products.csv, one line at a time.",
+    topic: "Text file / CSV file",
+    reason: "The data is stored outside the program and each line must be read, split into fields and converted if needed.",
+    cue: "Look for: .csv, line-based data, fields separated by commas.",
   },
   {
-    id: "repeatLoop",
-    text: "Ask for a menu choice at least once and repeat until it is valid.",
-    construct: "Iteration using REPEAT UNTIL",
-    reason: "The prompt must run once before the stopping condition is checked.",
+    id: "array",
+    text: "A program stores 30 integer marks and loops through them to find the highest.",
+    topic: "Array",
+    reason: "The same type of value is stored repeatedly, and indexes allow iteration through all elements.",
+    cue: "Look for: fixed collection of same-type values.",
+  },
+];
+
+const weakAnswers = [
+  {
+    weak: "Use a record because it is better.",
+    improved: "Use a record because all fields for one student, such as ID, name and mark, are stored together as one logical item.",
+    why: "The improved answer names the structure, links it to the scenario and states the consequence.",
+  },
+  {
+    weak: "Use a queue because it is ordered.",
+    improved: "Use a queue because jobs are removed in the same order they arrive; this follows FIFO.",
+    why: "The improved answer gives the exact removal rule and connects it to arrival order.",
+  },
+  {
+    weak: "Use a file to save it.",
+    improved: "Use a text file so the data remains available after the program stops running and can be read again later.",
+    why: "The improved answer explains persistence instead of using a vague word.",
+  },
+  {
+    weak: "Use Java: int[] mark = new int[30];",
+    improved: "Use Cambridge-style pseudocode: DECLARE Mark : ARRAY[1:30] OF INTEGER.",
+    why: "The improved answer uses the expected Paper 2 declaration style.",
   },
 ];
 
 const examples = {
-  sequence: {
-    title: "Example 1: Sequence",
-    problem: "Calculate and output the total cost from Price and Quantity.",
+  records: {
+    title: "Example 1: Choose an array of records",
+    problem: "A school stores 120 students. Each student has StudentID, Name and Mark.",
+    decision: "Use an array of records.",
     rows: [
-      ["1", "INPUT Price", "value must exist before use"],
-      ["2", "INPUT Quantity", "second input value"],
-      ["3", "Total <- Price * Quantity", "calculation after inputs"],
-      ["4", "OUTPUT Total", "output after calculation"],
+      ["Clue", "many students", "array"],
+      ["Clue", "each student has several fields", "record"],
+      ["Combined model", "many records", "array of records"],
     ],
-    code: "INPUT Price\nINPUT Quantity\nTotal <- Price * Quantity\nOUTPUT Total",
-    points: ["Order matters.", "Assignment stores the result.", "Output should happen after the value is calculated."],
+    code: "TYPE TStudent\n    DECLARE StudentID : STRING\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\nENDTYPE\n\nDECLARE Students : ARRAY[1:120] OF TStudent",
+    points: ["The array handles many students.", "The record keeps one student's fields together.", "This is more suitable than several unrelated parallel arrays."],
   },
-  selection: {
-    title: "Example 2: Selection with a boundary",
-    problem: "Output Pass when Mark is at least 50.",
+  csv: {
+    title: "Example 2: Read and process CSV data",
+    problem: "A line from Scores.csv is S017,Ava,82. Extract the mark and add it to Total.",
+    decision: "Read the line, split it into fields, convert the mark, then process it.",
     rows: [
-      ["Mark = 49", "condition false", "Resit needed"],
-      ["Mark = 50", "condition true", "Pass"],
-      ["Mark = 51", "condition true", "Pass"],
+      ["Read", "READFILE", "gets one line from the file"],
+      ["Split", "SPLIT(Line, \",\")", "separates comma-delimited fields"],
+      ["Convert", "STRING_TO_INTEGER", "allows arithmetic on the mark"],
     ],
-    code: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
-    points: [">= is needed because 50 is included.", "ELSE handles the false path.", "ENDIF closes the selection."],
+    code: "READFILE \"Scores.csv\", Line\nFields <- SPLIT(Line, \",\")\nMark <- STRING_TO_INTEGER(Fields[3])\nTotal <- Total + Mark",
+    points: ["CSV fields are initially text.", "Numeric fields need conversion before arithmetic.", "Close the file after processing."],
   },
-  forLoop: {
-    title: "Example 3: Count-controlled iteration",
-    problem: "Add the numbers 1 to 4.",
+  stack: {
+    title: "Example 3: Identify stack behaviour",
+    problem: "An editor stores actions so the newest action is undone first.",
+    decision: "Use a stack.",
     rows: [
-      ["Count = 1", "Total = 1", "first iteration"],
-      ["Count = 2", "Total = 3", "second iteration"],
-      ["Count = 3", "Total = 6", "third iteration"],
-      ["Count = 4", "Total = 10", "fourth iteration"],
+      ["Add action", "PUSH(Action)", "places the newest action on top"],
+      ["Undo", "POP()", "removes the top item"],
+      ["Rule", "LIFO", "last in, first out"],
     ],
-    code: "Total <- 0\nFOR Count <- 1 TO 4\n    Total <- Total + Count\nNEXT Count\nOUTPUT Total",
-    points: ["FOR is suitable because the number of repeats is known.", "Total must be initialised before the loop.", "The final output is 10."],
+    code: "PUSH(ActionStack, NewAction)\nLastAction <- POP(ActionStack)\nUndo(LastAction)",
+    points: ["The newest item is removed first.", "That is LIFO behaviour.", "A queue would remove the oldest action first, which is wrong for undo."],
   },
-  whileLoop: {
-    title: "Example 4: Condition-controlled iteration",
-    problem: "Keep asking while Password is not correct.",
+  queue: {
+    title: "Example 4: Identify queue behaviour",
+    problem: "A printer processes jobs in the order they arrive.",
+    decision: "Use a queue.",
     rows: [
-      ["Before loop", "condition checked", "may run zero times"],
-      ["Inside loop", "INPUT Password", "state changes"],
-      ["After input", "condition checked again", "loop may stop"],
+      ["Add job", "ENQUEUE(Job)", "adds to the rear"],
+      ["Process job", "DEQUEUE()", "removes from the front"],
+      ["Rule", "FIFO", "first in, first out"],
     ],
-    code: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"",
-    points: ["The condition is checked before each iteration.", "The variable in the condition must be updated.", "Missing the second input can cause an infinite loop."],
+    code: "ENQUEUE(PrintQueue, NewJob)\nNextJob <- DEQUEUE(PrintQueue)\nPrint(NextJob)",
+    points: ["The oldest waiting job is processed first.", "That is FIFO behaviour.", "A stack would unfairly process the newest job first."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What construct runs statements one after another in order?", accepted: ["sequence"], answer: "Sequence." },
-  { id: "p2", prompt: "What construct chooses between paths using a condition?", accepted: ["selection"], answer: "Selection." },
-  { id: "p3", prompt: "What construct repeats a block of statements?", accepted: ["iteration", "loop"], answer: "Iteration, also called looping." },
-  { id: "p4", prompt: "Which loop is best when the number of repetitions is known?", accepted: ["for", "for loop"], answer: "FOR loop." },
-  { id: "p5", prompt: "Which loop checks the condition before the body may run?", accepted: ["while", "while loop"], answer: "WHILE loop." },
-  { id: "p6", prompt: "Which loop runs at least once before checking the stopping condition?", accepted: ["repeat", "repeat until", "repeat...until"], answer: "REPEAT...UNTIL." },
-  { id: "p7", prompt: "For pass mark 50, should the condition be Mark > 50 or Mark >= 50?", accepted: [">=", "mark >= 50", "greater than or equal"], answer: "Mark >= 50, because 50 is a pass." },
-  { id: "p8", prompt: "Trace: Total <- 0; FOR Count <- 1 TO 3; Total <- Total + Count. Final Total?", accepted: ["6"], answer: "6." },
-  { id: "p9", prompt: "What keyword closes an IF selection in Cambridge-style pseudocode?", accepted: ["endif"], answer: "ENDIF." },
-  { id: "p10", prompt: "What keyword closes a FOR loop in Cambridge-style pseudocode?", accepted: ["next", "next count"], answer: "NEXT, often written as NEXT Count." },
+  { id: "p1", prompt: "Which data structure is best for 40 INTEGER marks of the same type?", accepted: ["array"], answer: "Array. It stores many values of the same type and can be processed using indexes." },
+  { id: "p2", prompt: "Which structure keeps Name, ID and Mark together for one student?", accepted: ["record"], answer: "Record. It stores related fields for one logical item." },
+  { id: "p3", prompt: "What combined model stores many students, each with several fields?", accepted: ["array of records", "array record", "records array"], answer: "Array of records." },
+  { id: "p4", prompt: "Which ADT uses LIFO?", accepted: ["stack"], answer: "Stack. LIFO means Last In, First Out." },
+  { id: "p5", prompt: "Which ADT uses FIFO?", accepted: ["queue"], answer: "Queue. FIFO means First In, First Out." },
+  { id: "p6", prompt: "Name the operation that adds an item to a stack.", accepted: ["push"], answer: "PUSH." },
+  { id: "p7", prompt: "Name the operation that removes an item from a queue.", accepted: ["dequeue"], answer: "DEQUEUE." },
+  { id: "p8", prompt: "Why is a text file useful for stored program data? Use one keyword.", accepted: ["persistent", "persistence", "permanent", "after program", "stored"], answer: "It provides persistent storage, so data remains after the program stops." },
+  { id: "p9", prompt: "In a CSV line, what usually separates fields?", accepted: ["comma", ","], answer: "A comma separates fields." },
+  { id: "p10", prompt: "Write the Cambridge-style declaration for Scores as ARRAY[1:30] OF INTEGER.", accepted: ["declare scores : array[1:30] of integer", "declare scores array[1:30] of integer", "array[1:30] of integer"], answer: "DECLARE Scores : ARRAY[1:30] OF INTEGER." },
 ];
 
 const mistakes = [
   {
-    wrong: "The condition is IF Mark > 50 THEN, but 50 should pass.",
-    fix: "Use IF Mark >= 50 THEN. Boundary values such as 49, 50 and 51 expose this error.",
+    wrong: "A student chooses a stack for print jobs because both stacks and queues are ordered.",
+    fix: "Use a queue. Print jobs should be removed in arrival order, which is FIFO. A stack would process the newest job first.",
   },
   {
-    wrong: "The WHILE loop condition uses Password, but Password is never input again inside the loop.",
-    fix: "Update the variable tested by the condition inside the loop, otherwise the loop may never terminate.",
+    wrong: "A student says a record is useful because it is 'efficient'.",
+    fix: "State the scenario consequence: a record keeps related fields for one item together, such as ID, name and mark for one student.",
   },
   {
-    wrong: "The answer uses Java braces and semicolons in a Cambridge pseudocode question.",
-    fix: "Write Cambridge-style pseudocode with THEN, ELSE, ENDIF, NEXT or ENDWHILE. Java is support only.",
+    wrong: "A student reads Mark from a CSV file and adds it to Total without conversion.",
+    fix: "CSV data is read as text. Convert Mark to INTEGER before arithmetic, for example Mark <- STRING_TO_INTEGER(Fields[3]).",
   },
   {
-    wrong: "The program calculates Total before inputting Price and Quantity.",
-    fix: "Use sequence correctly: input values first, then calculate, then output.",
+    wrong: "A student writes Java declarations in a Cambridge pseudocode answer.",
+    fix: "Use Cambridge-style pseudocode unless the question asks for Java. For example: DECLARE Scores : ARRAY[1:30] OF INTEGER.",
   },
 ];
 
@@ -121,99 +151,96 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode that inputs Price and Quantity, calculates TotalCost, then outputs TotalCost. Identify the construct mainly used.",
-    answer: "INPUT Price\nINPUT Quantity\nTotalCost <- Price * Quantity\nOUTPUT TotalCost\n\nThe main construct is sequence.",
+    marks: "4 marks",
+    prompt: "A school stores data for 200 students. Each student has StudentID, Name and Mark. State a suitable data model and justify your choice.",
+    answer: "Use an array of records. The array stores many students, and each record keeps the fields StudentID, Name and Mark together for one student.",
     marking: [
-      { mark: "B1", text: "inputs Price" },
-      { mark: "B1", text: "inputs Quantity" },
-      { mark: "M1", text: "calculates TotalCost using Price * Quantity after the inputs" },
-      { mark: "A1", text: "uses correct assignment to store the calculated value" },
-      { mark: "B1", text: "outputs TotalCost" },
-      { mark: "A1", text: "identifies sequence as the main construct" },
+      { mark: "B1", text: "identifies a record as suitable for one student's fields" },
+      { mark: "B1", text: "identifies an array or equivalent collection for many students" },
+      { mark: "B1", text: "combines the ideas as an array of records" },
+      { mark: "B1", text: "explains that fields for one student are kept together" },
     ],
     strict: [
-      "Do not award calculation method mark if TotalCost is calculated before inputs are available.",
-      "Allow different sensible variable names if used consistently.",
-      "Do not accept Java-only syntax as Cambridge pseudocode.",
+      "Do not award full marks for 'array' alone unless the need for fields is addressed.",
+      "Allow table or list of records if the meaning is clearly equivalent.",
+      "Do not accept vague claims such as 'more efficient' without a cause and consequence.",
     ],
   },
   {
     title: "Question 2",
-    marks: "7 marks",
-    prompt: "A pass mark is 50. Write pseudocode to input Mark and output Pass or Resit needed. Explain one boundary test.",
-    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF\n\nBoundary test: Mark = 50 should output Pass because the pass mark is included.",
+    marks: "8 marks",
+    prompt: "Write Cambridge-style pseudocode to define a record type TProduct with ProductID, Name, Price and InStock fields, then declare Products as an array of 50 TProduct records.",
+    answer: "TYPE TProduct\n    DECLARE ProductID : STRING\n    DECLARE Name : STRING\n    DECLARE Price : REAL\n    DECLARE InStock : BOOLEAN\nENDTYPE\n\nDECLARE Products : ARRAY[1:50] OF TProduct",
     marking: [
-      { mark: "B1", text: "inputs Mark" },
-      { mark: "M1", text: "uses IF selection with a condition" },
-      { mark: "A1", text: "uses Mark >= 50 or equivalent including the boundary value" },
-      { mark: "B1", text: "outputs Pass on the true path" },
-      { mark: "B1", text: "outputs Resit needed on the false/ELSE path" },
-      { mark: "B1", text: "closes the selection appropriately" },
-      { mark: "A1", text: "explains Mark = 50 as a boundary test with expected output Pass" },
+      { mark: "B1", text: "starts record type using TYPE TProduct or equivalent" },
+      { mark: "B1", text: "declares ProductID using a suitable text type" },
+      { mark: "B1", text: "declares Name using STRING" },
+      { mark: "B1", text: "declares Price using REAL or suitable numeric type" },
+      { mark: "B1", text: "declares InStock using BOOLEAN" },
+      { mark: "A1", text: "closes the record using ENDTYPE" },
+      { mark: "M1", text: "declares Products as an array with 50 elements" },
+      { mark: "A1", text: "uses TProduct as the element type" },
     ],
     strict: [
-      "Do not award boundary condition mark for Mark > 50.",
-      "Allow >= PassMark if PassMark is defined as 50.",
-      "Do not accept an unexplained test value as the boundary explanation.",
+      "Do not award pseudocode syntax marks for Java class syntax alone.",
+      "Allow INTEGER for Price only if prices are whole-number values in the candidate's answer.",
+      "Do not accept CHAR for Name or ProductID unless only one character is stated.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Complete a trace table for this pseudocode and state the final output: Total <- 0; FOR Count <- 1 TO 4; Total <- Total + Count; NEXT Count; OUTPUT Total.",
-    answer: "The values of Total after each iteration are 1, 3, 6 and 10. The final output is 10.",
+    prompt: "A program reads a line from Sales.csv in the form ItemCode,Quantity,Price. Explain the processing needed before calculating Quantity * Price.",
+    answer: "Read one line from the file, split the line using commas into fields, keep ItemCode as text, convert Quantity to INTEGER and Price to REAL, then calculate Quantity * Price using the converted numeric values.",
     marking: [
-      { mark: "M1", text: "initialises Total to 0 before tracing" },
-      { mark: "B1", text: "traces Count = 1 and Total = 1" },
-      { mark: "B1", text: "traces Count = 2 and Total = 3" },
-      { mark: "B1", text: "traces Count = 3 and Total = 6" },
-      { mark: "B1", text: "traces Count = 4 and Total = 10" },
-      { mark: "A1", text: "states final output 10" },
+      { mark: "B1", text: "reads a line/record from the CSV file" },
+      { mark: "B1", text: "splits or separates the line into fields using commas" },
+      { mark: "B1", text: "identifies ItemCode as text/string data" },
+      { mark: "B1", text: "converts Quantity to INTEGER or numeric form" },
+      { mark: "B1", text: "converts Price to REAL or numeric form" },
+      { mark: "B1", text: "uses the converted numeric fields in the calculation" },
     ],
     strict: [
-      "Do not award final output mark for 6 or 15.",
-      "Allow a clear trace table instead of prose.",
-      "Do not accept only 'adds numbers' without values for trace marks.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award conversion marks for merely saying 'process the data'.",
+      "Allow parse, cast or convert if the numeric conversion is clear.",
+      "Do not accept arithmetic directly on CSV text fields without conversion.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "A program should keep asking for a password while the password is incorrect. Write pseudocode and explain why a WHILE loop is suitable.",
-    answer: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"\n\nA WHILE loop is suitable because the number of attempts is not known and the condition is checked before each repeat.",
+    marks: "5 marks",
+    prompt: "A browser keeps a history of pages so the Back button returns to the most recently visited previous page. Identify a suitable ADT and explain the operations used.",
+    answer: "Use a stack. When a page is visited, push it onto the stack. When Back is selected, pop the most recent page. This works because a stack is LIFO.",
     marking: [
-      { mark: "B1", text: "inputs Password before the loop condition" },
-      { mark: "M1", text: "uses a WHILE loop with condition Password <> CorrectPassword or equivalent" },
-      { mark: "A1", text: "re-inputs or updates Password inside the loop" },
-      { mark: "B1", text: "outputs a retry message or equivalent inside the loop" },
-      { mark: "B1", text: "closes the loop using ENDWHILE" },
-      { mark: "A1", text: "explains number of attempts is not known in advance" },
-      { mark: "A1", text: "explains condition is checked before repeating" },
+      { mark: "B1", text: "identifies stack as the suitable ADT" },
+      { mark: "B1", text: "states LIFO or Last In, First Out" },
+      { mark: "B1", text: "uses PUSH/add operation for visited pages" },
+      { mark: "B1", text: "uses POP/remove operation for the Back button" },
+      { mark: "B1", text: "explains that the most recent page is returned first" },
     ],
     strict: [
-      "Do not award update mark if Password cannot change inside the loop.",
-      "Allow UNTIL-style alternative only if the question is interpreted as at-least-once input and the logic is correct.",
-      "Do not accept a FOR loop unless a fixed maximum number of attempts is stated.",
+      "Do not award ADT mark for queue in this scenario.",
+      "Allow top/remove top if POP terminology is not used but stack behaviour is clear.",
+      "Do not accept 'ordered list' without LIFO behaviour.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "Compare sequence, selection and iteration. Include one pseudocode keyword or structure for each.",
-    answer: "Sequence executes statements in order. Selection chooses a path using a condition, for example IF...THEN...ELSE...ENDIF. Iteration repeats a block, for example FOR...NEXT or WHILE...ENDWHILE.",
+    marks: "6 marks",
+    prompt: "Compare a stack and a queue using an example for each. Your answer must include the removal rule for each ADT.",
+    answer: "A stack uses LIFO, so the last item added is the first removed; an undo feature is an example. A queue uses FIFO, so the first item added is the first removed; print jobs or customer calls are examples.",
     marking: [
-      { mark: "B1", text: "defines sequence as statements executed in order" },
-      { mark: "B1", text: "defines selection as choosing a path using a condition" },
-      { mark: "B1", text: "gives IF/THEN/ELSE/ENDIF or CASE as selection evidence" },
-      { mark: "B1", text: "defines iteration as repetition of a block" },
-      { mark: "B1", text: "gives FOR/NEXT, WHILE/ENDWHILE or REPEAT/UNTIL as iteration evidence" },
+      { mark: "B1", text: "states stack uses LIFO" },
+      { mark: "B1", text: "explains last item added is first removed" },
+      { mark: "B1", text: "gives a suitable stack example such as undo/backtracking" },
+      { mark: "B1", text: "states queue uses FIFO" },
+      { mark: "B1", text: "explains first item added is first removed" },
+      { mark: "B1", text: "gives a suitable queue example such as print jobs or calls" },
     ],
     strict: [
-      "Do not award iteration definition mark for a single repeated word without a loop idea.",
-      "Allow control structure instead of construct.",
-      "Do not accept Java braces alone as pseudocode evidence.",
+      "Examples must match the stated removal rule.",
+      "Allow push/pop and enqueue/dequeue descriptions as evidence of the rules.",
+      "Do not accept 'both store data' as a comparison mark.",
     ],
   },
 ];
@@ -228,7 +255,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>=\[\] _,.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>\[\] _,.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -247,10 +274,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    input: "The input line is fine. The bug appears when the boundary value 50 is tested.",
-    condition: "Correct. It should be Mark >= 50, because 50 is included in 'at least 50'.",
-    output: "The output is fine; the wrong path is caused by the condition.",
-    endif: "ENDIF is needed to close the selection. The boundary bug is earlier.",
+    array: "Likely array: same-type values, indexed and processed in a loop.",
+    record: "Likely record: several fields belong to one logical item.",
+    queue: "Likely queue: jobs leave in the same order they arrive, so FIFO.",
+    file: "Likely file/CSV handling: line-based persistent data must be read and processed.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -261,33 +288,29 @@ function setupHook() {
   });
 }
 
-function setupTraceTool() {
-  const result = document.querySelector("#traceResult");
-  document.querySelector("#traceBtn").addEventListener("click", () => {
-    const limit = Number(document.querySelector("#loopLimit").value);
-    let total = 0;
-    const rows = [];
-    for (let count = 1; count <= limit; count += 1) {
-      total += count;
-      rows.push([String(count), String(total)]);
-    }
-    result.innerHTML = `
-      <p><strong>Pseudocode:</strong> Total &lt;- 0; FOR Count &lt;- 1 TO ${limit}; Total &lt;- Total + Count</p>
-      ${tableMarkup(["Count", "Total after update"], rows)}
-      <p><strong>Final output:</strong> ${total}</p>
-    `;
-  });
-}
-
 function setupClassifier() {
-  const select = document.querySelector("#constructSelect");
+  const select = document.querySelector("#scenarioSelect");
   const result = document.querySelector("#classifyResult");
   select.innerHTML = scenarios.map((item) => `<option value="${item.id}">${escapeHtml(item.text)}</option>`).join("");
   document.querySelector("#classifyBtn").addEventListener("click", () => {
     const item = scenarios.find((entry) => entry.id === select.value);
     result.innerHTML = `
-      <p><strong>Construct:</strong> ${escapeHtml(item.construct)}</p>
+      <p><strong>Likely topic:</strong> ${escapeHtml(item.topic)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+      <p><strong>Exam cue:</strong> ${escapeHtml(item.cue)}</p>
+    `;
+  });
+}
+
+function setupImprover() {
+  const select = document.querySelector("#weakSelect");
+  const result = document.querySelector("#improveResult");
+  select.innerHTML = weakAnswers.map((item, index) => `<option value="${index}">${escapeHtml(item.weak)}</option>`).join("");
+  document.querySelector("#improveBtn").addEventListener("click", () => {
+    const item = weakAnswers[Number(select.value)];
+    result.innerHTML = `
+      <p><strong>Improved answer:</strong> ${escapeHtml(item.improved)}</p>
+      <p><strong>Why it is stronger:</strong> ${escapeHtml(item.why)}</p>
     `;
   });
 }
@@ -298,7 +321,8 @@ function renderExample(key) {
     <article class="worked-card">
       <h3>${escapeHtml(example.title)}</h3>
       <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-      ${tableMarkup(["Step", "Value / action", "Reason"], example.rows)}
+      <p><strong>Decision:</strong> ${escapeHtml(example.decision)}</p>
+      ${tableMarkup(["Step", "Evidence", "Decision"], example.rows)}
       <p><strong>Cambridge-style pseudocode:</strong></p>
       <pre><code>${escapeHtml(example.code)}</code></pre>
       <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
@@ -307,7 +331,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("sequence");
+  renderExample("records");
   document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -341,7 +365,7 @@ function renderPractice() {
       const mark = document.querySelector(`#${item.id}-mark`);
       const response = normalise(input.value);
       const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. The construct or trace result is accurate." : "Not quite. Check the control structure and any boundary value.";
+      mark.textContent = correct ? "Correct. That is the right Section 10 idea." : "Not quite. Identify the topic clue, then answer with the precise term.";
       mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -407,8 +431,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupTraceTool();
 setupClassifier();
+setupImprover();
 setupExamples();
 renderPractice();
 renderMistakes();

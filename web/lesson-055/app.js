@@ -1,118 +1,108 @@
 const scenarioMap = {
-  deleted: {
-    result: "Best fit: backup utility.",
-    method: "A backup utility can restore a previous copy of files if the backup was made before the deletion.",
-    trap: "Do not say antivirus can recover deleted work. Antivirus targets malware, not ordinary file loss.",
+  admin: {
+    result: "Best fit: command line interface.",
+    method: "An expert user can type a precise command or script to repeat the operation quickly and consistently.",
+    trap: "Do not choose GUI only because it looks friendly; repeated expert tasks may be faster with commands.",
   },
-  email: {
-    result: "Best fit: compression utility.",
-    method: "Compression reduces file size, which can reduce upload time and help the file meet an attachment limit.",
-    trap: "Do not claim compression always improves quality. Lossy compression may reduce quality.",
+  photo: {
+    result: "Best fit: graphical user interface.",
+    method: "Photo editing benefits from visual feedback, icons, pointer/touch actions and direct manipulation of images.",
+    trap: "Do not recommend CLI for a novice visual editing task without a strong reason.",
   },
-  stolen: {
-    result: "Best fit: encryption utility.",
-    method: "Encryption changes readable plaintext into ciphertext, so stolen data cannot be read without the key.",
-    trap: "Do not say encryption prevents theft or deletion. It protects confidentiality if data is accessed.",
+  atm: {
+    result: "Best fit: menu-driven interface.",
+    method: "An ATM offers a limited set of safe options such as withdraw, balance and deposit, reducing invalid input.",
+    trap: "Do not say menu-driven means the user can type any command.",
   },
-  slowhdd: {
-    result: "Best fit: defragmentation utility.",
-    method: "On a magnetic hard disk, defragmentation rearranges scattered file blocks to reduce disk head movement.",
-    trap: "Do not apply this explanation to SSD storage; SSDs do not use a moving disk head.",
+  voice: {
+    result: "Best fit: natural language interface.",
+    method: "The user can speak ordinary language commands, which is useful for hands-free or accessibility-focused interaction.",
+    trap: "Do not ignore misinterpretation, noise and ambiguity as limitations.",
   },
-  malware: {
-    result: "Best fit: antivirus utility.",
-    method: "Antivirus software can scan the attachment, detect known or suspicious malware, then quarantine or remove it.",
-    trap: "Do not say antivirus guarantees complete protection against all new threats.",
+  server: {
+    result: "Best fit: command line interface.",
+    method: "CLI can work well over remote connections, uses little bandwidth and supports precise administrative commands.",
+    trap: "Do not require a full graphical desktop for every server task.",
   },
-  ssd: {
-    result: "Best fit: not defragmentation as the main answer.",
-    method: "An SSD has no mechanical disk head, so classic defragmentation does not give the same access-time benefit.",
-    trap: "Do not recommend defragmentation just because the word sounds like 'make storage tidy'.",
+  kiosk: {
+    result: "Best fit: menu-driven interface.",
+    method: "A kiosk can guide visitors through fixed choices without requiring command knowledge.",
+    trap: "Do not assume natural language is best if the set of choices is small and predictable.",
   },
 };
 
 const examples = {
-  backup: {
-    title: "Example 1: Backup after accidental deletion",
-    problem: "A student deletes a project folder and needs to restore yesterday's version.",
+  cli: {
+    title: "Example 1: CLI for expert administration",
+    problem: "A technician needs to rename many files using a repeated pattern.",
     steps: [
-      "The correct utility is a backup utility.",
-      "It creates copies of data on another drive, server or cloud service.",
-      "The deleted folder can be restored from a backup made before the deletion.",
-      "A limitation is that work created after the most recent backup may still be lost.",
+      "A command line interface is suitable because commands can include parameters and wildcards.",
+      "The task can be automated or repeated with a script.",
+      "This is efficient for an expert who knows the command syntax.",
+      "A limitation is that commands must be remembered and typing mistakes can cause errors.",
     ],
   },
-  compression: {
-    title: "Example 2: Compression for file transfer",
-    problem: "A video file is too large to upload to a learning platform.",
+  gui: {
+    title: "Example 2: GUI for a novice editing photos",
+    problem: "A novice user needs to crop, rotate and arrange photos.",
     steps: [
-      "The correct utility is a compression utility.",
-      "It reduces the number of bits needed to store or transmit the file.",
-      "This can reduce upload time and help fit within a size limit.",
-      "A limitation is that lossy compression may reduce image or sound quality.",
+      "A GUI is suitable because it uses visual objects such as windows, icons and buttons.",
+      "The user can see the photo and manipulate it directly with a mouse or touch.",
+      "It is usually easier to learn for common visual tasks.",
+      "A limitation is that repetitive batch operations may be slower than using commands.",
     ],
   },
-  encryption: {
-    title: "Example 3: Encryption for confidential data",
-    problem: "A company stores customer records on laptops used outside the office.",
+  menu: {
+    title: "Example 3: menu-driven ticket machine",
+    problem: "A public ticket machine must guide users through buying a train ticket.",
     steps: [
-      "The correct utility is encryption software.",
-      "It converts plaintext records into ciphertext using an algorithm and key.",
-      "If the laptop is stolen, an unauthorised person cannot read the records without the key.",
-      "A limitation is that losing the key can prevent authorised recovery too.",
+      "A menu-driven interface is suitable because users select from fixed options.",
+      "It reduces the need to remember commands.",
+      "It can prevent invalid choices by only showing permitted options.",
+      "A limitation is that nested menus may be slow if many steps are required.",
     ],
   },
-  defrag: {
-    title: "Example 4: Defragmentation for a magnetic hard disk",
-    problem: "An older desktop with an HDD opens large files slowly after years of file changes.",
+  natural: {
+    title: "Example 4: natural language for hands-free control",
+    problem: "A driver wants to ask for directions without touching a screen.",
     steps: [
-      "The relevant utility is defragmentation.",
-      "Files may be split into fragments stored in different physical locations on the disk.",
-      "Defragmentation rearranges blocks so file parts are stored closer together.",
-      "This can reduce disk head movement, but the same reasoning is not valid for SSDs.",
-    ],
-  },
-  antivirus: {
-    title: "Example 5: Antivirus for suspicious downloads",
-    problem: "A user downloads an attachment from an unknown sender.",
-    steps: [
-      "The correct utility is antivirus software.",
-      "It scans the file for malware signatures or suspicious behaviour.",
-      "It may warn the user, quarantine the file, delete malware or block the action.",
-      "A limitation is that new malware may not be detected immediately, so updates matter.",
+      "A natural language interface is suitable because the user can speak ordinary language.",
+      "It supports hands-free interaction and may improve accessibility.",
+      "It can be intuitive for simple requests.",
+      "A limitation is that noise, accent or ambiguous wording may cause misinterpretation.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which utility creates copies of data so files can be restored later?", accepted: ["backup", "backup utility", "backup software"], answer: "Backup utility" },
-  { id: "p2", prompt: "Which utility reduces the size of files?", accepted: ["compression", "compression utility", "file compression"], answer: "Compression utility" },
-  { id: "p3", prompt: "Which utility converts plaintext into ciphertext using a key?", accepted: ["encryption", "encryption utility", "encrypt"], answer: "Encryption utility" },
-  { id: "p4", prompt: "Which utility rearranges fragmented files on a magnetic hard disk?", accepted: ["defragmentation", "defrag", "disk defragmentation", "defragmentation utility"], answer: "Defragmentation utility" },
-  { id: "p5", prompt: "Which utility scans for, quarantines or removes malware?", accepted: ["antivirus", "anti virus", "antivirus software", "anti-virus"], answer: "Antivirus software" },
-  { id: "p6", prompt: "State one reason backups should be made regularly.", accepted: ["recent", "restore recent", "reduce data loss", "less data lost", "up to date", "current"], answer: "So a recent copy can be restored and less new data is lost" },
-  { id: "p7", prompt: "State one benefit of compression when sending a file over a network.", accepted: ["less bandwidth", "faster", "less time", "reduced upload", "reduced download", "smaller file"], answer: "Smaller files may take less time/bandwidth to transmit" },
-  { id: "p8", prompt: "Does encryption stop a file from being deleted? Answer yes or no.", accepted: ["no"], answer: "No. Encryption protects confidentiality, not availability" },
-  { id: "p9", prompt: "Why is classic defragmentation mainly linked to magnetic hard disks rather than SSDs?", accepted: ["moving head", "disk head", "mechanical", "no moving parts", "ssd no moving"], answer: "HDDs have moving disk heads; SSDs do not" },
-  { id: "p10", prompt: "Why should antivirus software be updated?", accepted: ["new malware", "new threats", "definitions", "signatures", "detection rules"], answer: "To recognise newer malware signatures or detection patterns" },
+  { id: "p1", prompt: "Which interface uses typed commands at a prompt?", accepted: ["cli", "command line", "command line interface"], answer: "CLI / command line interface" },
+  { id: "p2", prompt: "Which interface uses windows, icons, menus and a pointer?", accepted: ["gui", "graphical user interface", "graphical interface"], answer: "GUI / graphical user interface" },
+  { id: "p3", prompt: "Which interface lets users choose from fixed options?", accepted: ["menu driven", "menu-driven", "menu driven interface", "menu-driven interface"], answer: "Menu-driven interface" },
+  { id: "p4", prompt: "Which interface uses ordinary spoken or written language?", accepted: ["natural language", "natural language interface", "nli"], answer: "Natural language interface" },
+  { id: "p5", prompt: "Which interface is often efficient for expert users and scripts?", accepted: ["cli", "command line", "command line interface"], answer: "CLI" },
+  { id: "p6", prompt: "Which interface is common for ATMs and ticket machines?", accepted: ["menu driven", "menu-driven", "menu driven interface", "menu-driven interface"], answer: "Menu-driven interface" },
+  { id: "p7", prompt: "Which interface may use more memory and processing power because of visual elements?", accepted: ["gui", "graphical user interface"], answer: "GUI" },
+  { id: "p8", prompt: "Name one limitation of natural language interfaces.", accepted: ["misinterpretation", "ambiguous", "ambiguity", "noise", "accent", "may misunderstand", "misunderstand"], answer: "May misinterpret ambiguous language, accents or background noise" },
+  { id: "p9", prompt: "Name one advantage of menu-driven interfaces.", accepted: ["reduces errors", "fixed options", "no commands", "guides users", "reduces memorisation", "reduces memorization"], answer: "Guides users with fixed options and reduces memorisation" },
+  { id: "p10", prompt: "Does the best interface always depend on the user, task and context? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
 ];
 
 const mistakes = [
   {
-    wrong: "Backup software protects data by stopping hackers from reading it.",
-    fix: "Backup software helps restore data after loss or damage. Encryption is the utility that protects confidentiality by making data unreadable without a key.",
+    wrong: "GUI is always best because it has pictures.",
+    fix: "GUI is useful for many visual and novice tasks, but CLI may be better for expert users, automation or low-resource remote administration.",
   },
   {
-    wrong: "Compression always keeps every bit of the original data.",
-    fix: "Lossless compression reconstructs the original exactly. Lossy compression discards some detail to reduce file size further.",
+    wrong: "CLI is impossible for users because it has no mouse.",
+    fix: "CLI can be efficient for users who know the commands, especially for precise, repeated or automated tasks.",
   },
   {
-    wrong: "Encryption prevents malware infection.",
-    fix: "Encryption protects data from being read by unauthorised users. Antivirus software scans for and deals with malware.",
+    wrong: "Menu-driven interfaces let users enter any command they want.",
+    fix: "Menu-driven interfaces restrict users to displayed options, which can guide users and reduce invalid input.",
   },
   {
-    wrong: "Defragmentation is equally useful for SSDs because it tidies the drive.",
-    fix: "Classic defragmentation is linked to magnetic disks because it reduces disk head movement. SSDs have no moving head, so this benefit does not apply in the same way.",
+    wrong: "Natural language interfaces always understand exactly what the user means.",
+    fix: "Natural language interfaces can misinterpret ambiguous wording, accents, background noise or missing context.",
   },
 ];
 
@@ -125,89 +115,91 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Describe the purpose of backup software and explain two reasons why a school should use it.",
-    answer: "Backup software creates copies of files or systems, usually on another storage device, server or cloud location. A school should use it so deleted or corrupted coursework can be restored from a previous copy. It also helps recover data after hardware failure or malware damage. Backups should be regular and tested so the restored version is recent and usable.",
+    marks: "5 marks",
+    prompt: "Compare a command line interface and a graphical user interface.",
+    answer: "A command line interface allows the user to type text commands at a prompt. It can be fast for expert users and supports scripts or repeated tasks, but users must remember exact commands and syntax errors can occur. A graphical user interface uses visual objects such as windows, icons, menus and a pointer. It is often easier for novice users and visual tasks, but may use more system resources and can be slower for repetitive expert tasks.",
     marking: [
-      { mark: "B1", text: "backup software creates/copies data or system files" },
-      { mark: "B1", text: "copy is stored separately / on another medium / cloud / off-site" },
-      { mark: "B1", text: "allows restoration after accidental deletion or corruption" },
-      { mark: "B1", text: "allows recovery after hardware failure, malware or similar data loss event" },
+      { mark: "B1", text: "CLI described as typed/text commands at a prompt" },
+      { mark: "B1", text: "valid CLI advantage such as efficiency for experts, scripts or automation" },
+      { mark: "B1", text: "valid CLI limitation such as command knowledge/syntax errors" },
+      { mark: "B1", text: "GUI described using visual objects such as windows/icons/menus/pointer" },
+      { mark: "B1", text: "valid GUI advantage or limitation linked to user/task" },
     ],
     strict: [
-      "Do not accept 'backup makes data secure' without restore/recovery idea.",
-      "Do not award separate marks for repeated examples of the same loss event.",
-      "Allow cloud backup if restoration is clear.",
+      "Do not accept 'CLI is old and GUI is modern' as a technical comparison.",
+      "Do not award GUI mark for only saying 'has pictures' without interaction idea.",
+      "Allow WIMP terminology for GUI.",
     ],
   },
   {
     title: "Question 2",
-    marks: "3 marks",
-    prompt: "Explain why compression software may be used before sending files over a network.",
-    answer: "Compression software reduces the file size by encoding the data using fewer bits. A smaller file may need less bandwidth and take less time to upload or download. It may also help the file fit within an attachment or storage limit. If lossy compression is used, some quality or detail may be lost, while lossless compression allows exact reconstruction.",
+    marks: "4 marks",
+    prompt: "Explain why a menu-driven interface is suitable for a cash machine.",
+    answer: "A menu-driven interface presents a fixed set of options such as withdraw cash, check balance or deposit. Users do not need to remember commands. Invalid choices can be reduced because only available options are shown. The interface can guide many different users through a simple sequence of steps, although it may be slow if many menus are required.",
     marking: [
-      { mark: "B1", text: "compression reduces file size / number of bits" },
-      { mark: "B1", text: "less data to transmit so upload/download time or bandwidth use is reduced" },
-      { mark: "B1", text: "reduced transmission time and/or reduced bandwidth requirement explained" },
+      { mark: "B1", text: "menu-driven interface presents fixed/displayed options" },
+      { mark: "B1", text: "users do not need to remember commands / easier for public users" },
+      { mark: "B1", text: "reduces invalid choices/input errors" },
+      { mark: "B1", text: "guides users through a simple sequence suitable for a public cash machine" },
     ],
     strict: [
-      "Do not accept 'makes the file faster' unless transmission or processing context is clear.",
-      "Do not accept 'zips it' alone without reduced size idea.",
-      "Allow 'smaller file' for B1.",
+      "Do not accept CLI advantages for this public-user scenario unless justified.",
+      "Do not require the exact words cash machine if ATM context is clear.",
+      "Allow step-by-step guidance as a valid reason.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A company stores customer data on laptops used by employees. Explain how encryption software can help and give one limitation.",
-    answer: "Encryption software converts plaintext customer data into ciphertext using an encryption algorithm and a key. If a laptop is stolen, the data cannot be read by an unauthorised person without the correct key, so confidentiality is protected. A limitation is that encryption does not prevent the laptop being stolen or the file being deleted. If the key is lost, authorised users may also be unable to decrypt the data.",
+    prompt: "A company is choosing an interface for technicians managing remote servers. Justify a suitable interface.",
+    answer: "A command line interface is suitable because technicians are likely to be expert users who know the commands. CLI can use fewer system resources and less bandwidth than a full graphical desktop, which is useful for remote server access. Commands can be precise and repeated or scripted for administration tasks. A limitation is that commands and syntax must be known, and typing mistakes may cause errors.",
     marking: [
-      { mark: "B1", text: "plaintext/readable data is converted into ciphertext/unreadable form" },
-      { mark: "B1", text: "uses an algorithm and/or key" },
-      { mark: "B1", text: "unauthorised user cannot read data without correct key" },
-      { mark: "B1", text: "benefit linked to laptop/customer data scenario or confidentiality" },
-      { mark: "B1", text: "valid limitation such as no prevention of theft/deletion/malware or key loss" },
+      { mark: "B1", text: "CLI selected as suitable interface" },
+      { mark: "B1", text: "technicians/expert users can use known commands" },
+      { mark: "B1", text: "uses fewer resources or less bandwidth than GUI" },
+      { mark: "B1", text: "supports precise/repeated/scripted administration tasks" },
+      { mark: "B1", text: "valid limitation such as command memorisation or syntax errors" },
     ],
     strict: [
-      "Do not accept 'data is hidden' without unreadable/ciphertext idea.",
-      "Do not accept encryption as backup or antivirus.",
-      "Allow symmetric/asymmetric references if technically correct.",
+      "Do not award full marks for choosing GUI unless scenario-linked reasons are strong.",
+      "Do not accept 'CLI is more professional' without mechanism.",
+      "Allow remote administration as scenario link.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Describe defragmentation and explain why it may improve performance on a magnetic hard disk.",
-    answer: "Defragmentation rearranges file fragments or blocks so parts of a file are stored closer together or contiguously on a magnetic hard disk. This can reduce the amount of movement required by the disk read/write head. As a result, file access can be faster. This explanation is linked to HDDs and should not be stated as the same benefit for SSDs, which have no moving disk head.",
+    prompt: "Describe one advantage and one limitation of a natural language interface.",
+    answer: "A natural language interface allows users to speak or type instructions using ordinary language. One advantage is that it can be intuitive or hands-free, which can help accessibility or use while driving. One limitation is that it may misinterpret ambiguous wording, accents, background noise or missing context, so the wrong action may be taken.",
     marking: [
-      { mark: "B1", text: "file fragments/blocks are rearranged" },
-      { mark: "B1", text: "parts of a file are made contiguous/closer together" },
-      { mark: "B1", text: "reduces movement of magnetic disk read/write head" },
-      { mark: "B1", text: "access time/performance improvement linked to HDD, or SSD boundary correctly stated" },
+      { mark: "B1", text: "natural language interface uses ordinary spoken/written language" },
+      { mark: "B1", text: "valid advantage such as intuitive, hands-free or accessible" },
+      { mark: "B1", text: "valid limitation such as ambiguity, accent, noise or context" },
+      { mark: "B1", text: "limitation consequence explained, such as misunderstanding/wrong action" },
     ],
     strict: [
-      "Do not accept 'deletes unnecessary files' as defragmentation.",
-      "Do not accept performance mark without mechanism on HDD.",
-      "Allow 'hard disk' for magnetic disk if context implies HDD.",
+      "Do not accept 'it talks' without user-language interaction.",
+      "Do not accept 'always understands people' as an advantage.",
+      "Allow voice interface examples if natural language is clear.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, Identify a suitable utility and justify it: recovering deleted documents; protecting files if a laptop is stolen; checking a suspicious download.",
-    answer: "For recovering deleted documents, a backup utility is suitable because it can restore a previous copy made before the deletion. For protecting files if a laptop is stolen, encryption is suitable because it converts readable data into ciphertext that cannot be read without the key. For checking a suspicious download, antivirus software is suitable because it scans for malware and can quarantine or remove infected files.",
+    prompt: "For each scenario, Suggest a suitable interface and justify it: expert batch file task; public museum kiosk; novice arranging photos.",
+    answer: "For an expert batch file task, a CLI is suitable because typed commands or scripts can carry out repeated operations efficiently. For a public museum kiosk, a menu-driven interface is suitable because visitors can choose from fixed options without learning commands. For a novice arranging photos, a GUI is suitable because visual objects and pointer/touch actions allow direct manipulation of images. In each case the suitability depends on the user's skill and the task.",
     marking: [
-      { mark: "B1", text: "backup selected for recovering deleted documents" },
-      { mark: "B1", text: "backup justification linked to restoring a previous copy" },
-      { mark: "B1", text: "encryption selected for stolen laptop/files" },
-      { mark: "B1", text: "encryption justification linked to ciphertext/key/unauthorised reading" },
-      { mark: "B1", text: "antivirus selected for suspicious download" },
-      { mark: "B1", text: "antivirus justification linked to scanning, quarantine or removal of malware" },
+      { mark: "B1", text: "CLI selected for expert batch file task" },
+      { mark: "B1", text: "CLI justification linked to commands/scripts/repeated operations" },
+      { mark: "B1", text: "menu-driven interface selected for public kiosk" },
+      { mark: "B1", text: "menu justification linked to fixed options/guided public use" },
+      { mark: "B1", text: "GUI selected for novice photo task" },
+      { mark: "B1", text: "GUI justification linked to visual/direct manipulation or overall suitability conclusion" },
     ],
     strict: [
-      "Do not award selection mark if the utility is matched to the wrong scenario.",
-      "Do not accept 'secure' as justification unless the mechanism is clear.",
-      "Allow anti-malware as antivirus equivalent.",
+      "Do not award selection mark without matching the scenario.",
+      "Do not accept a single interface for all scenarios unless each is justified separately.",
+      "Allow natural language for kiosk only if a strong accessibility scenario is given.",
     ],
   },
 ];
@@ -223,10 +215,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    backup: "Correct. A backup made before deletion can be used to restore the coursework folder.",
-    compression: "No. Compression may make files smaller, but it does not restore deleted data.",
-    encryption: "No. Encryption protects confidentiality, but it does not bring deleted files back.",
-    defrag: "No. Defragmentation rearranges blocks on a magnetic disk; it is not a time machine.",
+    cli: "Correct. CLI supports precise repeated commands and scripting for expert users.",
+    gui: "Not best here. A GUI may be easy for one file, but batch renaming is often faster with commands.",
+    menu: "No. A fixed menu with no batch option would slow the task down.",
+    natural: "No. Natural language may be convenient, but vague wording is risky for precise batch operations.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -270,87 +262,84 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("backup");
+  renderExample("cli");
+}
+
+function setupAnswerToggles(scope = document) {
+  scope.querySelectorAll(".answer-toggle, .ms-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = document.querySelector(`#${button.dataset.answer}`);
+      target.classList.toggle("visible");
+      button.textContent = target.classList.contains("visible")
+        ? button.textContent.replace("Show", "Hide")
+        : button.textContent.replace("Hide", "Show");
+    });
+  });
 }
 
 function renderPractice() {
   const list = document.querySelector("#practiceList");
   list.innerHTML = practice.map((item, index) => `
-    <article class="practice-item">
-      <p><strong>${index + 1}.</strong> ${item.prompt}</p>
+    <div class="practice-item" id="${item.id}">
+      <label>${index + 1}. ${item.prompt}</label>
       <div class="practice-row">
-        <input id="${item.id}" type="text" autocomplete="off" aria-label="Answer for question ${index + 1}" />
-        <button class="primary-button" type="button" data-check="${item.id}">Check</button>
+        <input type="text" aria-label="${item.prompt}" />
+        <span class="mark" aria-live="polite"></span>
       </div>
-      <div class="mark" id="${item.id}Mark" aria-live="polite"></div>
-      <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
-      <div class="answer-panel" id="${item.id}Answer">${item.answer}</div>
-    </article>
+      <button type="button" class="answer-toggle" data-answer="answer-${item.id}">Show answer</button>
+      <div class="answer-panel" id="answer-${item.id}">${item.answer}</div>
+    </div>
   `).join("");
 
-  document.querySelectorAll("[data-check]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const item = practice.find((entry) => entry.id === button.dataset.check);
-      const value = normalise(document.querySelector(`#${item.id}`).value);
-      const correct = item.accepted.some((answer) => value.includes(normalise(answer)));
-      const mark = document.querySelector(`#${item.id}Mark`);
-      mark.textContent = correct ? "Correct." : "Not quite. Reveal the answer, then improve the wording.";
-      mark.className = `mark ${correct ? "correct" : "incorrect"}`;
+  list.querySelectorAll(".practice-item").forEach((item) => {
+    const data = practice.find((entry) => entry.id === item.id);
+    const input = item.querySelector("input");
+    const mark = item.querySelector(".mark");
+    input.addEventListener("input", () => {
+      const value = normalise(input.value);
+      if (!value) {
+        mark.textContent = "";
+        mark.className = "mark";
+        return;
+      }
+      const correct = data.accepted.some((answer) => value === normalise(answer));
+      mark.textContent = correct ? "Correct" : "Try again";
+      mark.className = correct ? "mark correct" : "mark incorrect";
     });
   });
-
-  document.querySelectorAll("[data-answer]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.answer}Answer`);
-      panel.classList.toggle("visible");
-      button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer";
-    });
-  });
+  setupAnswerToggles(list);
 }
 
 function renderMistakes() {
-  document.querySelector("#mistakeGrid").innerHTML = mistakes.map((item, index) => `
+  const list = document.querySelector("#mistakeList");
+  list.innerHTML = mistakes.map((item, index) => `
     <article>
-      <p class="wrong"><strong>Mistake ${index + 1}:</strong> ${item.wrong}</p>
-      <button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button>
-      <div class="answer-panel" id="fix${index}">${item.fix}</div>
+      <p><strong class="wrong">Wrong:</strong> ${item.wrong}</p>
+      <button type="button" class="answer-toggle" data-answer="mistake-${index}">Show correction</button>
+      <div class="answer-panel" id="mistake-${index}">${item.fix}</div>
     </article>
   `).join("");
-
-  document.querySelectorAll("[data-fix]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.fix}`);
-      panel.classList.toggle("visible");
-      button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
-    });
-  });
+  setupAnswerToggles(list);
 }
 
-function renderExam() {
-  document.querySelector("#examList").innerHTML = examQuestions.map((question, index) => `
+function renderExamQuestions() {
+  const list = document.querySelector("#examList");
+  list.innerHTML = examQuestions.map((question, index) => `
     <article class="exam-card">
       <div class="exam-head">
         <h3>${question.title}</h3>
         <span>${question.marks}</span>
       </div>
       <p>${question.prompt}</p>
-      <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
-      <div class="ms-panel" id="ms${index}">
-        <h4>Indicative answer</h4>
-        <p>${question.answer}</p>
+      <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
+      <div class="ms-panel" id="ms-${index}">
+        <p><strong>Answer:</strong> ${question.answer}</p>
         <h4>Mark scheme</h4>
         ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");
-
-  document.querySelectorAll("[data-ms]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.ms}`);
-      panel.classList.toggle("visible");
-      button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
-    });
-  });
+  setupAnswerToggles(list);
 }
 
 setupPrint();
@@ -359,4 +348,4 @@ setupSimulator();
 setupExamples();
 renderPractice();
 renderMistakes();
-renderExam();
+renderExamQuestions();

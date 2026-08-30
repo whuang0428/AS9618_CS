@@ -1,111 +1,116 @@
 const scenarioMap = {
-  os: {
-    result: "Category: operating system.",
-    method: "The software manages resources such as memory and processor time and provides services for applications.",
-    trap: "Do not call this an application just because applications benefit from it.",
+  fde: {
+    result: "Topic: fetch-decode-execute cycle and registers.",
+    method: "Use PC, MAR, MDR and CIR in sequence. State what each register holds, not just its name.",
+    trap: "Do not answer with a general description of the CPU if the question asks for the fetch stage.",
   },
-  backup: {
-    result: "Category: utility software.",
-    method: "Backup software performs a maintenance/protection task by copying data so it can be recovered after loss or corruption.",
-    trap: "Do not say backup prevents every data loss; it allows recovery if a usable copy exists.",
+  bus: {
+    result: "Topic: system buses.",
+    method: "Identify which bus is used, what it carries and whether direction matters. Control bus carries control and timing signals.",
+    trap: "Do not say the control bus carries data values; that is the data bus.",
   },
-  compiler: {
-    result: "Category: language translator: compiler.",
-    method: "A compiler translates the whole high-level source program before execution, often producing object or executable code.",
-    trap: "Do not describe a compiler as translating one line at a time during execution.",
+  mode: {
+    result: "Topic: addressing modes.",
+    method: "Explain how the operand is interpreted. #20 is immediate value; 20 in direct addressing is a memory address.",
+    trap: "Do not calculate before stating whether the operand is value, address or pointer.",
   },
-  interpreter: {
-    result: "Category: language translator: interpreter.",
-    method: "An interpreter translates and executes source code statement by statement, which can help during development and debugging.",
-    trap: "Do not call an interpreter a failed compiler; it is a different translation method.",
+  interrupt: {
+    result: "Topic: interrupts and ISRs.",
+    method: "Use the sequence: finish instruction, check/accept interrupt, save state, run ISR, restore state, resume.",
+    trap: "Do not say the interrupt deletes or replaces the interrupted program.",
   },
-  assembler: {
-    result: "Category: language translator: assembler.",
-    method: "An assembler translates assembly language mnemonics into machine code for a specific processor.",
-    trap: "Do not use assembler for high-level languages such as Python or Java.",
+  pipeline: {
+    result: "Topic: pipelining and control hazards.",
+    method: "A branch can change the next instruction. Already fetched instructions may be flushed and the pipeline may stall.",
+    trap: "Do not write only that pipelining is faster; the question is asking why the benefit is reduced.",
   },
-  app: {
-    result: "Category: application software, not system software.",
-    method: "A word processor helps the user perform a specific task. It depends on the operating system but is not itself the OS.",
-    trap: "Do not classify all software as system software simply because it runs on a computer.",
+  performance: {
+    result: "Topic: processor performance factors.",
+    method: "Discuss mechanism and condition: cores help parallel tasks; cache reduces memory access time; clock speed is cycles per second.",
+    trap: "Do not rank processors using one factor only.",
   },
 };
 
 const examples = {
-  classify: {
-    title: "Example 1: classify software",
-    problem: "Classify antivirus, compiler and spreadsheet software.",
+  fde: {
+    title: "Example 1: FDE trace with mark annotations",
+    problem: "Trace the fetch stage and name the role of PC, MAR and MDR.",
     steps: [
-      "Antivirus is utility software because it detects, quarantines or removes malware.",
-      "A compiler is a language translator because it translates source code before execution.",
-      "A spreadsheet is application software because it helps users perform a specific task.",
-      "A strong answer names the category and states the purpose.",
+      "Topic recognition: this is a register/FDE question.",
+      "The PC holds the address of the next instruction to be fetched.",
+      "That address is copied to the MAR.",
+      "The instruction at that memory address is fetched from memory and placed in the MDR.",
+      "The instruction is then copied to the CIR for decoding.",
+      "Mark-worthy phrases name the register and state what it holds or transfers.",
     ],
   },
-  compiler: {
-    title: "Example 2: choosing a compiler",
-    problem: "A developer wants to distribute a finished program without sharing source code. Which translator is suitable?",
+  addressing: {
+    title: "Example 2: direct versus indirect",
+    problem: "Given memory[20] = 70 and memory[70] = 999, compare LOAD 20 and LOAD (20).",
     steps: [
-      "A compiler is usually suitable because it translates the whole source program before execution.",
-      "It can produce object or executable code.",
-      "The user can run the translated program without needing the original source code.",
-      "A limitation is that recompilation is needed after changes to the source code.",
-      "The exam answer should connect the translator to the scenario.",
+      "Topic recognition: this is addressing mode and operand interpretation.",
+      "LOAD 20 uses direct addressing, so 20 is the address of the value.",
+      "The CPU reads memory[20], so the loaded value is 70.",
+      "LOAD (20) uses indirect addressing, so memory[20] stores the effective address.",
+      "The CPU reads memory[20] to get 70, then memory[70] to get 999.",
+      "The contrast earns marks because it states value, address and pointer clearly.",
     ],
   },
-  interpreter: {
-    title: "Example 3: choosing an interpreter",
-    problem: "A programmer is testing code and wants errors reported close to where they occur.",
+  interrupt: {
+    title: "Example 3: interrupt sequence",
+    problem: "Explain why the CPU saves state before an ISR.",
     steps: [
-      "An interpreter translates and executes code statement by statement.",
-      "This can help during development because errors can be reported as the relevant statement is reached.",
-      "It may make testing and debugging more convenient.",
-      "A limitation is that execution may require the interpreter and may be slower than compiled code.",
-      "Do not describe it as producing a standalone executable in the same way as a compiler.",
+      "Topic recognition: this is interrupt handling, not a general FDE question.",
+      "The interrupted program must be able to continue later.",
+      "The CPU saves processor state such as PC, registers and status flags.",
+      "The ISR handles the device/event.",
+      "After the ISR, the saved state is restored.",
+      "This allows the interrupted program to resume from the correct point.",
     ],
   },
-  utility: {
-    title: "Example 4: choosing a utility",
-    problem: "A school wants to recover coursework after accidental deletion. Which utility is relevant?",
+  pipeline: {
+    title: "Example 4: pipeline limitation",
+    problem: "Explain why a branch may reduce the benefit of pipelining.",
     steps: [
-      "Backup software is the relevant utility.",
-      "It creates copies of files/data at another location or time.",
-      "If coursework is deleted, a previous copy can be restored.",
-      "This reduces the impact of data loss, but only if backups are recent and usable.",
-      "The mark-worthy words are utility, backup, copy and recovery.",
+      "Topic recognition: this is pipelining, specifically a control hazard.",
+      "A branch may change the program counter and therefore the next instruction.",
+      "The pipeline may already have fetched instructions from the wrong path.",
+      "Those instructions may be flushed or discarded.",
+      "The pipeline may wait while fetching from the correct address.",
+      "This reduces throughput compared with the ideal pipeline.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What type of software manages hardware and supports applications?", accepted: ["system software"], answer: "System software" },
-  { id: "p2", prompt: "What system software manages resources and provides an interface?", accepted: ["operating system", "os"], answer: "Operating system / OS" },
-  { id: "p3", prompt: "What type of system software performs maintenance or protection tasks?", accepted: ["utility software", "utility", "utilities"], answer: "Utility software" },
-  { id: "p4", prompt: "What type of system software converts source code?", accepted: ["translator", "language translator", "translators", "language translators"], answer: "Language translator" },
-  { id: "p5", prompt: "Which translator translates the whole program before execution?", accepted: ["compiler", "a compiler"], answer: "Compiler" },
-  { id: "p6", prompt: "Which translator translates and executes statement by statement?", accepted: ["interpreter", "an interpreter"], answer: "Interpreter" },
-  { id: "p7", prompt: "Which translator converts assembly language into machine code?", accepted: ["assembler", "an assembler"], answer: "Assembler" },
-  { id: "p8", prompt: "Is a spreadsheet usually system software or application software?", accepted: ["application software", "application", "app"], answer: "Application software" },
-  { id: "p9", prompt: "Name one utility used to recover data after loss.", accepted: ["backup", "backup software", "restore utility"], answer: "Backup software" },
-  { id: "p10", prompt: "Name one utility used to detect or remove malware.", accepted: ["antivirus", "anti virus", "anti-virus", "antivirus software"], answer: "Antivirus software" },
+  { id: "p1", prompt: "Which register holds the address of the next instruction?", accepted: ["pc", "program counter"], answer: "PC / program counter" },
+  { id: "p2", prompt: "Which register holds the memory address currently being accessed?", accepted: ["mar", "memory address register"], answer: "MAR / memory address register" },
+  { id: "p3", prompt: "Which bus carries read, write and interrupt signals?", accepted: ["control bus"], answer: "Control bus" },
+  { id: "p4", prompt: "Which addressing mode uses the operand as the actual value?", accepted: ["immediate", "immediate addressing"], answer: "Immediate addressing" },
+  { id: "p5", prompt: "What routine handles a specific interrupt?", accepted: ["isr", "interrupt service routine"], answer: "ISR / interrupt service routine" },
+  { id: "p6", prompt: "What performance factor is small fast memory close to the CPU?", accepted: ["cache", "cache memory"], answer: "Cache / cache memory" },
+  { id: "p7", prompt: "What term means overlapping stages of different instructions?", accepted: ["pipelining", "instruction pipelining", "pipeline"], answer: "Pipelining" },
+  { id: "p8", prompt: "What is the term for instructions completed per unit time?", accepted: ["throughput"], answer: "Throughput" },
+  { id: "p9", prompt: "What addressing mode uses base address plus index?", accepted: ["indexed", "indexed addressing", "index addressing"], answer: "Indexed addressing" },
+  { id: "p10", prompt: "What must the CPU save before running an ISR so it can resume later?", accepted: ["state", "processor state", "cpu state", "context", "registers pc and flags", "pc registers and status flags"], answer: "Processor state, such as PC, registers and status flags" },
 ];
 
 const mistakes = [
   {
-    wrong: "Any program that runs on a computer is system software.",
-    fix: "System software manages, supports or maintains the computer system. Application software performs user tasks such as writing documents or editing images.",
+    wrong: "MAR and MDR both store whatever comes from memory, so either term is fine.",
+    fix: "MAR stores the memory address being accessed. MDR stores the data or instruction transferred to/from memory.",
   },
   {
-    wrong: "A compiler and interpreter do exactly the same thing in exactly the same way.",
-    fix: "Both are translators, but a compiler translates the whole program before execution, while an interpreter translates and executes statement by statement.",
+    wrong: "Direct addressing and immediate addressing both load the number written in the instruction.",
+    fix: "Immediate uses the operand as the value itself. Direct uses the operand as the memory address of the value.",
   },
   {
-    wrong: "Utility software is only software that makes the computer faster.",
-    fix: "Utility software performs maintenance, protection or optimisation tasks, such as backup, antivirus, compression or disk/file tools.",
+    wrong: "An interrupt means the current program is deleted and the ISR replaces it.",
+    fix: "The CPU saves state, runs the ISR, restores state and can resume the interrupted program.",
   },
   {
-    wrong: "An assembler translates high-level languages directly into English.",
-    fix: "An assembler translates assembly language mnemonics into machine code for a specific processor.",
+    wrong: "Pipelining makes one instruction complete fetch, decode and execute at the same time.",
+    fix: "Pipelining overlaps different instructions in different stages; one instruction still passes through the stages in order.",
   },
 ];
 
@@ -118,93 +123,95 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Explain what is meant by system software and give two examples.",
-    answer: "System software is software that manages the computer system, supports hardware and provides services for application software or users. Examples include an operating system, which manages resources and provides an interface, and utility software, such as antivirus or backup software, which maintains or protects the system. A language translator is also system software because it converts source code.",
+    marks: "6 marks",
+    prompt: "Describe the fetch stage of the fetch-decode-execute cycle, referring to PC, MAR, MDR and CIR.",
+    answer: "The PC holds the address of the next instruction. This address is copied to the MAR. The address is placed on the address bus and a read signal is sent. The instruction at that memory address is fetched from memory into the MDR. The instruction is then copied from the MDR to the CIR, where it can be decoded. The PC is updated to point to the next instruction.",
     marking: [
-      { mark: "B1", text: "system software manages/supports/maintains the computer system" },
-      { mark: "B1", text: "provides services for hardware, users or application software" },
-      { mark: "B1", text: "valid example such as operating system, utility software or translator" },
-      { mark: "B1", text: "second valid example with purpose or role" },
+      { mark: "B1", text: "PC holds address of next instruction" },
+      { mark: "B1", text: "address from PC is copied to MAR / MAR holds address being accessed" },
+      { mark: "B1", text: "read signal/address bus used to access memory" },
+      { mark: "B1", text: "instruction/data fetched from memory into MDR" },
+      { mark: "B1", text: "instruction copied to CIR for decoding" },
+      { mark: "B1", text: "PC is incremented/updated to next instruction" },
     ],
     strict: [
-      "Do not accept only a list of application programs.",
-      "Do not accept 'software inside the computer' without a management/support role.",
-      "Allow OS for operating system.",
+      "Do not accept MAR as holding the instruction itself.",
+      "Do not accept MDR as holding the memory address.",
+      "Allow equivalent sequence if PC update occurs at a different stated point.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Compare operating system software and utility software.",
-    answer: "An operating system is system software that manages resources, provides a user interface and provides services for applications. Utility software is system software that performs maintenance, protection or optimisation tasks. For example, an OS may allocate memory or manage devices, while antivirus software detects malware and backup software creates copies for recovery. Utilities often support or maintain the system rather than acting as the main coordinator.",
+    prompt: "Compare direct addressing and indirect addressing using a memory example.",
+    answer: "In direct addressing, the operand is the memory address of the value. For example, if memory[20] = 70, LOAD 20 loads 70. In indirect addressing, the operand is the address of a location that stores another address. If memory[20] = 70 and memory[70] = 999, LOAD (20) first reads memory[20] to get effective address 70, then loads memory[70], which is 999.",
     marking: [
-      { mark: "B1", text: "operating system identified as system software/main coordinator" },
-      { mark: "B1", text: "OS role explained, such as resource management/interface/application services" },
-      { mark: "B1", text: "utility software identified as maintenance/protection/optimisation software" },
-      { mark: "B1", text: "valid utility example with purpose" },
-      { mark: "B1", text: "states the OS manages core system resources while a utility performs a narrower maintenance, protection or optimisation task" },
+      { mark: "B1", text: "direct addressing uses operand as address of value" },
+      { mark: "B1", text: "valid direct example such as memory[20] = 70 gives loaded value 70" },
+      { mark: "B1", text: "indirect addressing uses operand as address of a pointer / address of an address" },
+      { mark: "B1", text: "indirect example performs first lookup to get effective address" },
+      { mark: "B1", text: "indirect example performs second lookup to get final value" },
     ],
     strict: [
-      "Do not accept 'utility software is more useful' as a comparison.",
-      "Do not require detailed process scheduling in this overview question.",
-      "Allow backup, antivirus, compression or disk/file tools as utilities.",
+      "Do not award direct mark if operand is described as the actual value.",
+      "Do not award final indirect mark if answer stops at the pointer value.",
+      "Allow bracket notation or equivalent words for indirection.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A programmer wants to distribute a finished program to users without giving them the source code. Explain why a compiler may be suitable.",
-    answer: "A compiler translates the whole source program before execution. It produces object code, which can be linked to form executable code for distribution. Users can run the executable without receiving the original source code, and source statements are not translated again during each execution. The source must be recompiled after a change.",
+    prompt: "Explain how a processor handles an interrupt from an input device.",
+    answer: "The processor completes the current instruction and recognises the interrupt. It saves the current processor state, such as the PC, registers and status flags, so the interrupted program can continue later. The appropriate interrupt service routine is located and run to handle the input device event. The interrupt may be acknowledged or cleared. The saved state is restored and the original program resumes.",
     marking: [
-      { mark: "B1", text: "compiler translates the whole source program before execution" },
-      { mark: "B1", text: "produces object code or executable machine code after any required linking" },
-      { mark: "B1", text: "executable code can be distributed/run without supplying source code" },
-      { mark: "B1", text: "does not translate each statement during execution / can run after compilation" },
-      { mark: "B1", text: "valid limitation such as recompilation needed after changes" },
+      { mark: "B1", text: "current instruction completed / interrupt recognised" },
+      { mark: "B1", text: "processor state saved, with valid examples such as PC/registers/flags" },
+      { mark: "B1", text: "appropriate ISR/handler is located or run" },
+      { mark: "B1", text: "device event is handled / interrupt acknowledged or cleared" },
+      { mark: "B1", text: "state restored and interrupted program resumes" },
     ],
     strict: [
-      "Do not accept compiler as line-by-line execution.",
-      "Do not require a specific programming language example.",
-      "Allow object code if executable code is not stated.",
+      "Do not accept that the current program is deleted.",
+      "Do not require every register name if processor state is clearly explained.",
+      "Allow handler for ISR if role is clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Explain why an interpreter may be useful during program development.",
-    answer: "An interpreter translates and executes source code statement by statement. This can help during development because errors can be reported when the relevant statement is reached. The programmer can test small parts of the program without compiling the whole program first. This can support debugging, although the program may run more slowly or require the interpreter.",
+    marks: "6 marks",
+    prompt: "Discuss two factors that can affect processor performance and include a limitation for each.",
+    answer: "A higher clock speed can allow more clock cycles per second, so more instruction-cycle steps may be performed per second. However, performance may be limited by memory access, architecture or heat. More cores can allow parallel execution of tasks or threads, improving performance for parallel workloads or multitasking. However, a single-threaded program may not use extra cores fully. Cache can also improve performance by reducing slow main-memory access when frequently used data is found in cache, but cache misses still require slower memory access.",
     marking: [
-      { mark: "B1", text: "interpreter translates/executes statement by statement" },
-      { mark: "B1", text: "errors can be reported as statements are reached / useful diagnostics" },
-      { mark: "B1", text: "programmer can test/debug without compiling whole program first" },
-      { mark: "B1", text: "valid limitation or trade-off such as slower execution or interpreter required" },
+      { mark: "B1", text: "valid factor identified, such as clock speed, cores, cache or word length" },
+      { mark: "B1", text: "mechanism for first factor explained" },
+      { mark: "B1", text: "valid limitation/condition for first factor" },
+      { mark: "B1", text: "second valid factor identified" },
+      { mark: "B1", text: "mechanism for second factor explained" },
+      { mark: "B1", text: "valid limitation/condition for second factor" },
     ],
     strict: [
-      "Do not accept interpreter as always producing a standalone executable.",
-      "Do not accept 'easier' without explaining debugging/testing.",
-      "Allow line-by-line as equivalent to statement by statement.",
+      "Do not accept factor names alone without explaining how each affects performance.",
+      "Do not accept 'it is better' as a limitation or consequence.",
+      "Allow any two valid Section 4 performance factors.",
     ],
   },
   {
     title: "Question 5",
-    marks: "8 marks",
-    prompt: "Identify each item as operating system, utility software, language translator or application software: backup software, assembler, word processor, memory manager. Give a reason for each.",
-    answer: "Backup software is utility software because it creates copies of data so files can be recovered after loss or corruption. An assembler is a language translator because it converts assembly language mnemonics into machine code. A word processor is application software because it helps the user produce documents. A memory manager is part of, or a function of, an operating system because it allocates and manages memory resources.",
+    marks: "6 marks",
+    prompt: "Explain how pipelining can improve performance and why a branch instruction may reduce this improvement.",
+    answer: "Pipelining overlaps stages of different instructions, such as fetching one instruction while decoding another and executing a third. Once the pipeline is full, this can increase throughput because instructions may complete more frequently. A branch instruction may change the program counter and therefore the next instruction address. The pipeline may have already fetched instructions from the wrong path. These may need to be flushed or discarded, causing a stall or delay, which reduces the ideal performance gain.",
     marking: [
-      { mark: "B1", text: "backup software classified as utility software" },
-      { mark: "B1", text: "backup reason linked to creating/restoring copies of data" },
-      { mark: "B1", text: "assembler classified as a language translator" },
-      { mark: "B1", text: "assembler reason linked to translating assembly language into machine code" },
-      { mark: "B1", text: "word processor classified as application software" },
-      { mark: "B1", text: "word-processor reason linked to performing a user document task" },
-      { mark: "B1", text: "memory manager classified as part/function of an operating system" },
-      { mark: "B1", text: "memory-manager reason linked to allocating/managing main memory" },
+      { mark: "B1", text: "pipelining overlaps stages of different instructions" },
+      { mark: "B1", text: "valid fetch/decode/execute overlap example" },
+      { mark: "B1", text: "throughput can increase / instructions complete more frequently" },
+      { mark: "B1", text: "branch may change PC / next instruction address" },
+      { mark: "B1", text: "wrong instructions may already have been fetched" },
+      { mark: "B1", text: "flush/stall/delay reduces ideal performance gain" },
     ],
     strict: [
-      "Do not award a classification mark if no reason is given for that item.",
-      "Do not accept word processor as system software because it runs on an OS.",
-      "Allow memory management as an OS role rather than a separate named program.",
+      "Do not accept that one instruction performs all stages simultaneously.",
+      "Do not require branch prediction terminology.",
+      "Allow control hazard if explained with branch effect.",
     ],
   },
 ];
@@ -220,10 +227,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    translator: "Correct. A language translator converts source code into code that can be executed or processed further.",
-    word: "No. A word processor helps users write documents; it does not translate source code for the CPU.",
-    antivirus: "No. Antivirus is utility software for malware protection, not source-code translation.",
-    monitor: "No. A monitor displays output; it does not translate programs.",
+    addressing: "Correct. The clue is #5 versus 5: immediate and direct addressing interpret the operand differently.",
+    interrupts: "No. There is no device signal, ISR or state-saving sequence here.",
+    pipelining: "No. No overlapping fetch/decode/execute stages are mentioned.",
+    cache: "No. The question is about operand meaning, not memory access speed.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -242,7 +249,7 @@ function setupSimulator() {
   function simulate() {
     const item = scenarioMap[select.value];
     result.textContent = item.result;
-    method.innerHTML = `<strong>Reasoning:</strong> ${item.method}`;
+    method.innerHTML = `<strong>Response pattern:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
   select.addEventListener("change", simulate);
@@ -267,7 +274,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("classify");
+  renderExample("fde");
 }
 
 function setupAnswerToggles(scope = document) {

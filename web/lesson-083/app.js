@@ -1,88 +1,89 @@
-const redundancyMap = {
-  courseTitle: {
-    result: "Problem: unnecessary redundancy.",
-    reason: "CourseTitle depends on CourseID, not on the enrolment row. It should be stored once in a Course table.",
+const scenarioMap = {
+  library: {
+    result: "Entities: Student, Book, Loan.",
+    reason: "Student and Book are main things; Loan is an event/entity that records the borrowing relationship with attributes such as LoanID and DateBorrowed.",
   },
-  studentId: {
-    result: "Usually acceptable repetition.",
-    reason: "StudentID may repeat as a linking value in Enrolment when a student takes several courses. This is not the same as repeating descriptive student facts.",
+  clinic: {
+    result: "Entities: Patient, Doctor, Appointment.",
+    reason: "Appointment is an event linking a patient and a doctor, with attributes such as AppointmentID, Date and Time.",
   },
-  orderId: {
-    result: "Usually acceptable repetition.",
-    reason: "OrderID can repeat in OrderLine to link several items to the same order.",
+  shop: {
+    result: "Entities: Customer, Order, Product, OrderLine.",
+    reason: "OrderLine is useful as a linking entity because an order can contain many products and a product can appear on many orders.",
   },
-  tutorEmail: {
-    result: "Problem: unnecessary redundancy.",
-    reason: "TutorEmail describes the tutor and may be repeated many times. Store it in a Tutor table and link to it.",
+  club: {
+    result: "Entities: Student, Club, Membership.",
+    reason: "Membership resolves the many-to-many relationship between Student and Club and can store attributes such as JoinDate.",
   },
-  membershipId: {
-    result: "Not a redundancy problem.",
-    reason: "MembershipID is unique for each membership row, so it is not a repeated descriptive fact.",
+  parking: {
+    result: "Entities: Employee, ParkingPermit.",
+    reason: "The relationship may be optional: an employee may have zero or one permit, and each permit belongs to one employee.",
   },
 };
 
-const anomalyMap = {
-  update: {
-    result: "Anomaly: update anomaly.",
-    reason: "A repeated fact is changed in some copies but not others, leaving inconsistent data.",
+const cardinalityMap = {
+  customerOrders: {
+    result: "Cardinality: one-to-many.",
+    reason: "One customer can place many orders; each order belongs to one customer.",
   },
-  insert: {
-    result: "Anomaly: insertion anomaly.",
-    reason: "A course fact cannot be stored unless an unrelated enrolment fact also exists.",
+  studentsClubs: {
+    result: "Cardinality: many-to-many.",
+    reason: "Many students can join many clubs. A linking entity such as Membership is normally used.",
   },
-  delete: {
-    result: "Anomaly: deletion anomaly.",
-    reason: "Deleting a row removes the only stored copy of a separate fact such as CourseTitle.",
+  orderLines: {
+    result: "Cardinality: one-to-many, mandatory on the order line side.",
+    reason: "Each order has one or more order lines; each order line belongs to exactly one order.",
   },
-  atomic: {
-    result: "Issue: not in first normal form.",
-    reason: "A field should store one atomic value, not a repeating list of phone numbers.",
+  personPassport: {
+    result: "Cardinality: one-to-one.",
+    reason: "In this simplified system, each person links to one passport and each passport links to one person.",
   },
-  validLink: {
-    result: "Not an anomaly by itself.",
-    reason: "A foreign key such as CourseID may repeat to link many enrolments to one course.",
+  studentLoans: {
+    result: "Cardinality: one-to-many with optional participation for Student.",
+    reason: "A student may have zero or many loans; each loan must refer to exactly one student.",
   },
 };
 
 const examples = {
-  course: {
-    title: "Example 1: Course enrolments",
-    problem: "Enrolment(StudentID, StudentName, CourseID, CourseTitle, TutorEmail)",
+  library: {
+    title: "Example 1: Library ER model",
+    problem: "A library stores students, books and loans. A student may borrow many books over time.",
     steps: [
-      "Problem: StudentName repeats when a student takes several courses.",
-      "Problem: CourseTitle and TutorEmail repeat for every student on the same course.",
-      "Better design: Student(StudentID, StudentName), Course(CourseID, CourseTitle, TutorEmail), Enrolment(StudentID, CourseID).",
-      "Effect: updating a course title or tutor email needs one change, reducing inconsistent data.",
+      "Entities: Student, Book and Loan.",
+      "Student attributes: StudentID, Name, TutorGroup.",
+      "Book attributes: BookID, Title, Author.",
+      "Loan attributes: LoanID, StudentID, BookID, DateBorrowed, DateReturned.",
+      "Cardinality: one Student can have many Loan records; one Book can appear in many Loan records over time.",
     ],
   },
-  order: {
-    title: "Example 2: Order lines",
-    problem: "OrderLine(OrderID, CustomerName, ProductID, ProductName, Quantity, UnitPrice)",
+  clinic: {
+    title: "Example 2: Clinic appointments",
+    problem: "A clinic stores patients, doctors and appointments.",
     steps: [
-      "CustomerName depends on the customer/order, not each product line.",
-      "ProductName and UnitPrice may repeat for every order line containing that product.",
-      "Better design separates Customer, Order, Product and OrderLine.",
-      "OrderLine keeps linking fields and transaction-specific facts such as Quantity.",
+      "Entities: Patient, Doctor and Appointment.",
+      "Appointment is an event entity because it links a patient to a doctor at a date and time.",
+      "A patient can have many appointments; each appointment has one patient.",
+      "A doctor can have many appointments; each appointment has one doctor.",
     ],
   },
-  phone: {
-    title: "Example 3: 1NF issue",
-    problem: "Student(StudentID, Name, PhoneNumbers) where PhoneNumbers stores '0207..., 0799..., 0161...'.",
+  club: {
+    title: "Example 3: Many-to-many relationship",
+    problem: "Students can join many clubs and each club can have many students.",
     steps: [
-      "The PhoneNumbers field contains a repeating group/list.",
-      "This violates the 1NF idea because values are not atomic.",
-      "Better design: store one phone number per row in a related StudentPhone table if multiple phone numbers are needed.",
-      "This makes searching, updating and validating each phone number clearer.",
+      "Direct Student-to-Club is many-to-many.",
+      "Create a linking entity: Membership.",
+      "Membership can store StudentID, ClubID and JoinDate.",
+      "This converts the design into two one-to-many relationships: Student to Membership, and Club to Membership.",
     ],
   },
-  judge: {
-    title: "Example 4: Judgement answer",
-    problem: "Explain why normalisation is useful for reducing redundancy and update anomalies.",
+  critique: {
+    title: "Example 4: Critique weak ER modelling",
+    problem: "A student draws PhoneNumber as a separate entity for a simple Student database.",
     steps: [
-      "Useful: it reduces unnecessary redundancy and the risk of anomalies.",
-      "Useful: it can improve data integrity by storing each fact in one appropriate place.",
-      "Limitation: it can make the design more complex because data is split across more tables.",
-      "Precise judgement: normalisation is justified when repeated related data creates maintenance risks.",
+      "If each student stores only one phone number, PhoneNumber is likely an attribute of Student.",
+      "Making it an entity adds unnecessary complexity.",
+      "It may become an entity only if the system stores multiple phone numbers, phone types, ownership history or shared contact records.",
+      "Exam wording: justify the decision using the scenario, not personal preference.",
     ],
   },
 };
@@ -90,82 +91,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "What process organises tables to reduce unnecessary redundancy?",
-    accepted: ["normalisation", "normalization"],
-    answer: "Normalisation / normalization",
+    prompt: "What term means a thing the database stores data about?",
+    accepted: ["entity"],
+    answer: "Entity",
   },
   {
     id: "p2",
-    prompt: "What term means unnecessary repeated storage of the same data?",
-    accepted: ["redundancy", "data redundancy"],
-    answer: "Redundancy / data redundancy",
+    prompt: "What term means a property stored about an entity?",
+    accepted: ["attribute", "field"],
+    answer: "Attribute / field",
   },
   {
     id: "p3",
-    prompt: "What anomaly happens when repeated data is changed in some rows but not others?",
-    accepted: ["update anomaly", "update"],
-    answer: "Update anomaly",
+    prompt: "What term describes how many records in one entity may link to another?",
+    accepted: ["cardinality"],
+    answer: "Cardinality",
   },
   {
     id: "p4",
-    prompt: "What anomaly happens when a new fact cannot be stored until another unrelated fact exists?",
-    accepted: ["insertion anomaly", "insert anomaly", "insertion"],
-    answer: "Insertion anomaly",
+    prompt: "In a library model, Student, Book and Loan are examples of what?",
+    accepted: ["entities", "entity"],
+    answer: "Entities",
   },
   {
     id: "p5",
-    prompt: "What anomaly happens when deleting a row removes the only copy of another fact?",
-    accepted: ["deletion anomaly", "delete anomaly", "deletion"],
-    answer: "Deletion anomaly",
+    prompt: "StudentID and Name are likely attributes of which entity?",
+    accepted: ["student"],
+    answer: "Student",
   },
   {
     id: "p6",
-    prompt: "In 1NF, should a field store one atomic value or a list?",
-    accepted: ["one atomic value", "atomic value", "one value", "single value"],
-    answer: "One atomic value",
+    prompt: "What relationship exists if one customer can place many orders?",
+    accepted: ["one to many", "one-to-many", "1:m", "1 to many"],
+    answer: "One-to-many",
   },
   {
     id: "p7",
-    prompt: "If CourseTitle depends on CourseID, which table should normally store CourseTitle?",
-    accepted: ["course", "course table"],
-    answer: "Course table",
+    prompt: "What relationship exists if students can join many clubs and clubs can have many students?",
+    accepted: ["many to many", "many-to-many", "m:n"],
+    answer: "Many-to-many",
   },
   {
     id: "p8",
-    prompt: "Is repeated foreign key CourseID in Enrolment always a bad redundancy? yes or no.",
-    accepted: ["no"],
-    answer: "No",
+    prompt: "What kind of entity often resolves a many-to-many relationship?",
+    accepted: ["linking entity", "link entity", "associative entity", "junction entity", "linking table"],
+    answer: "Linking entity / associative entity",
   },
   {
     id: "p9",
-    prompt: "What does normalisation usually improve by reducing inconsistent repeated data?",
-    accepted: ["data integrity", "integrity"],
-    answer: "Data integrity",
+    prompt: "In 0..*, does zero mean optional or mandatory?",
+    accepted: ["optional"],
+    answer: "Optional",
   },
   {
     id: "p10",
-    prompt: "Can normalisation make a database design more complex by adding tables? yes or no.",
-    accepted: ["yes"],
-    answer: "Yes",
+    prompt: "Is every noun in a scenario automatically an entity? yes or no.",
+    accepted: ["no"],
+    answer: "No",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "Normalisation removes all repeated values.",
-    fix: "Normalisation reduces unnecessary repeated facts. Foreign key values may still repeat to link records.",
+    wrong: "Every noun in the scenario should be an entity.",
+    fix: "Only model a noun as an entity if the system stores separate records about it. Some nouns are attributes.",
   },
   {
-    wrong: "An update anomaly means the database cannot be updated.",
-    fix: "An update anomaly means repeated copies of a fact may be updated inconsistently.",
+    wrong: "PhoneNumber must be an entity because it is important.",
+    fix: "Importance does not decide entity status. If it is just one value stored for each student, it is usually an attribute.",
   },
   {
-    wrong: "1NF means every table must have exactly one field.",
-    fix: "1NF means fields should store atomic values and avoid repeating groups, not that a table has one field.",
+    wrong: "Many-to-many relationships can be left as one direct relationship in a relational database design.",
+    fix: "They are usually resolved using a linking entity/table, such as Membership between Student and Club.",
   },
   {
-    wrong: "Normalisation is done mainly to make SQL shorter.",
-    fix: "Normalisation is mainly about reducing redundancy, avoiding anomalies and improving data integrity. SQL comes later.",
+    wrong: "Cardinality means the data type of an attribute.",
+    fix: "Cardinality describes how many records in one entity can be associated with records in another entity.",
   },
 ];
 
@@ -179,93 +180,92 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Explain two reasons for normalising a database.",
-    answer: "Normalisation reduces unnecessary data redundancy by storing each fact in an appropriate table. It also helps avoid update, insertion and deletion anomalies, which improves data integrity and reduces inconsistent data.",
+    prompt: "Define entity and attribute in the context of entity-relationship modelling.",
+    answer: "An entity is a thing about which the database stores data, such as Student or Book. An attribute is a property stored about an entity, such as StudentID or Name for a Student.",
     marking: [
-      { mark: "B1", text: "reduces unnecessary redundancy/repeated data" },
-      { mark: "B1", text: "explains storing facts once/in appropriate table" },
-      { mark: "B1", text: "avoids anomalies or names update/insertion/deletion anomaly" },
-      { mark: "B1", text: "links to improved data integrity/consistency" },
+      { mark: "B1", text: "entity described as thing/object/person/event/concept about which data is stored" },
+      { mark: "B1", text: "valid entity example" },
+      { mark: "B1", text: "attribute described as property/field describing an entity" },
+      { mark: "B1", text: "valid attribute example linked to an entity" },
     ],
     strict: [
-      "Do not accept vague 'makes it better' without a database-design reason.",
-      "Do not accept 'removes all duplicates' without qualification.",
-      "Allow normalization spelling.",
+      "Do not accept only 'entity is a table' without stored-data idea.",
+      "Do not accept only 'attribute is data' without property/field idea.",
+      "Allow table/field wording if entity/attribute meaning is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A table stores StudentID, StudentName, CourseID, CourseTitle and TutorEmail for every enrolment. Explain three problems this may cause.",
-    answer: "The table repeats CourseTitle and TutorEmail for every student enrolled on the same course, causing redundancy. If TutorEmail changes, some rows may be updated and others missed, causing an update anomaly and inconsistent data. It may also cause an insertion anomaly because a new course may not be stored until a student enrols, or a deletion anomaly if deleting the last enrolment removes the only copy of the course title.",
+    prompt: "A library stores data about students, books and loans. Identify three entities and give one suitable attribute for each.",
+    answer: "Student is an entity with attributes such as StudentID or Name. Book is an entity with attributes such as BookID, ISBN or Title. Loan is an entity/event with attributes such as LoanID, DateBorrowed, StudentID or BookID.",
     marking: [
-      { mark: "B1", text: "repeated CourseTitle/TutorEmail or similar redundancy identified" },
-      { mark: "B1", text: "redundancy linked to every enrolment/student row" },
-      { mark: "B1", text: "update anomaly/inconsistent update identified" },
-      { mark: "B1", text: "update problem explained with some rows changed and others not" },
-      { mark: "B1", text: "insertion or deletion anomaly identified" },
-      { mark: "B1", text: "insertion/deletion problem explained in course/enrolment context" },
+      { mark: "B1", text: "Student identified as entity" },
+      { mark: "B1", text: "suitable Student attribute" },
+      { mark: "B1", text: "Book identified as entity" },
+      { mark: "B1", text: "suitable Book attribute" },
+      { mark: "B1", text: "Loan identified as entity/event" },
+      { mark: "B1", text: "suitable Loan attribute" },
     ],
     strict: [
-      "Do not award anomaly marks for only listing anomaly names without mechanism.",
-      "Do not accept security or backup issues as normalisation problems here.",
-      "Allow CourseTitle, TutorEmail or StudentName as repeated facts if context is clear.",
+      "Do not award attribute mark if it belongs mainly to a different entity.",
+      "Do not require exact attribute names if scenario meaning is clear.",
+      "Allow DateReturned as Loan attribute.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Suggest a more normalised design for Enrolment(StudentID, StudentName, CourseID, CourseTitle, TutorEmail).",
-    answer: "A more normalised design is Student(StudentID, StudentName), Course(CourseID, CourseTitle, TutorEmail) and Enrolment(StudentID, CourseID). StudentID is the primary key in Student and CourseID is the primary key in Course. Enrolment uses StudentID and CourseID as linking fields/foreign keys so the student's name and course details do not need to be repeated in every enrolment row.",
+    marks: "4 marks",
+    prompt: "Explain the cardinality between Customer and Order if one customer can place many orders and each order is placed by one customer.",
+    answer: "The relationship is one-to-many from Customer to Order. One Customer record can be linked to many Order records. Each Order record is linked to exactly one Customer. This means CustomerID would typically be used in Order to identify which customer placed the order.",
     marking: [
-      { mark: "B1", text: "Student table with StudentID and StudentName" },
-      { mark: "B1", text: "Course table with CourseID and CourseTitle/TutorEmail" },
-      { mark: "B1", text: "Enrolment/linking table with StudentID and CourseID" },
-      { mark: "B1", text: "primary key or unique identifier roles described correctly" },
-      { mark: "B1", text: "foreign key/linking role described correctly" },
-      { mark: "B1", text: "explains reduced repetition of student/course details" },
+      { mark: "B1", text: "one-to-many relationship identified" },
+      { mark: "B1", text: "one customer can have many orders" },
+      { mark: "B1", text: "each order belongs to one customer" },
+      { mark: "B1", text: "foreign key/linking field such as CustomerID in Order" },
     ],
     strict: [
-      "Do not require exact table names if roles are clear.",
-      "Do not award reduced-repetition mark if all descriptive fields remain in Enrolment.",
-      "Allow composite key in Enrolment if explained.",
+      "Do not accept many-to-many for this wording.",
+      "Do not award direction mark if the answer is ambiguous about which side is many.",
+      "Allow 1:M notation.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A field PhoneNumbers stores several phone numbers separated by commas. Explain the normalisation issue and a possible solution.",
-    answer: "The field stores a repeating group/list rather than one atomic value, so it does not follow the first normal form idea. This makes individual phone numbers harder to search, update or validate. A solution is to create a related StudentPhone table with one phone number per record, linked to the Student table by StudentID.",
+    marks: "6 marks",
+    prompt: "Students can join many clubs, and each club can have many students. Explain how this relationship can be represented in an ER model.",
+    answer: "Student and Club have a many-to-many relationship. This can be represented using a linking entity such as Membership. Membership would include attributes such as StudentID, ClubID and JoinDate. The model then has a one-to-many relationship from Student to Membership and a one-to-many relationship from Club to Membership.",
     marking: [
-      { mark: "B1", text: "repeating group/list identified" },
-      { mark: "B1", text: "atomic value / 1NF idea stated" },
-      { mark: "B1", text: "problem such as hard to search/update/validate individual numbers" },
-      { mark: "B1", text: "separate related table suggested" },
-      { mark: "B1", text: "one phone number per record and linked to Student/StudentID" },
+      { mark: "B1", text: "many-to-many relationship identified" },
+      { mark: "B1", text: "linking/associative entity named, such as Membership" },
+      { mark: "B1", text: "StudentID included or Student link explained" },
+      { mark: "B1", text: "ClubID included or Club link explained" },
+      { mark: "B1", text: "attribute of linking entity such as JoinDate/MembershipID" },
+      { mark: "B1", text: "explains conversion into two one-to-many relationships" },
     ],
     strict: [
-      "Do not accept only 'use text' as a normalisation solution.",
-      "Do not require the formal term 1NF if atomic-value idea is clear.",
-      "Allow ContactNumber table or Phone table as equivalent.",
+      "Do not accept direct one-to-many only.",
+      "Do not require the term associative entity if linking entity/table is clear.",
+      "Allow Enrolment as a valid linking entity name.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Evaluate whether normalisation is always beneficial.",
-    answer: "Normalisation is beneficial because it reduces unnecessary redundancy, avoids update, insertion and deletion anomalies, and improves data integrity. For example, storing tutor email once avoids inconsistent repeated copies. However, normalisation may create more tables and make the design more complex, so retrieving data may require combining related tables. It is most justified when repeated related data is causing maintenance or integrity risks.",
+    prompt: "A designer models Address as a separate entity in a simple Student database where each student has one address. Evaluate this modelling choice.",
+    answer: "If the system stores only one address for each student and no separate facts about addresses, Address could be an attribute of Student rather than a separate entity. Making it a separate entity may add unnecessary complexity. However, Address may be a separate entity if several students can share an address, if address history is stored, or if multiple addresses per student are required. The choice depends on the scenario requirements.",
     marking: [
-      { mark: "B1", text: "benefit: reduced redundancy" },
-      { mark: "B1", text: "benefit: avoids anomalies/improves integrity" },
-      { mark: "B1", text: "benefit explained with repeated fact example" },
-      { mark: "B1", text: "limitation: more tables/increased complexity" },
-      { mark: "B1", text: "limitation explained, e.g. data must be combined from tables" },
-      { mark: "B1", text: "concludes whether further normalisation is worthwhile by weighing anomaly reduction against extra tables and query complexity" },
+      { mark: "B1", text: "recognises Address may be an attribute of Student in simple case" },
+      { mark: "B1", text: "reason: one address per student / no separate address records needed" },
+      { mark: "B1", text: "unnecessary complexity identified" },
+      { mark: "B1", text: "condition where Address could be an entity, such as shared/multiple/history" },
+      { mark: "B1", text: "condition explained using stored records or relationships" },
+      { mark: "B1", text: "concludes Address should remain an attribute for one address per student, but could become an entity when addresses are shared, multiple or historically stored" },
     ],
     strict: [
-      "Do not accept 'always good' without limitation.",
-      "Do not accept performance claims without clear explanation.",
-      "Allow maintainability as a benefit if linked to reduced repeated data.",
+      "Do not accept 'Address is always an attribute' without considering scenario.",
+      "Do not accept 'Address is important so it is an entity' as a reason.",
+      "Allow contact details or phone number as parallel explanation if linked back to Address.",
     ],
   },
 ];
@@ -281,10 +281,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    update: "Correct. This is an update anomaly risk caused by repeated data.",
-    binary: "No. The storage design is messy, unrelated to binary representation.",
-    faster: "No. Normalisation is mainly about integrity and redundancy, not automatic speed.",
-    format: "No. Font drama is not a database anomaly.",
+    student: "Student is an entity, but it is not the relationship event here.",
+    book: "Book is an entity, but the borrowing event is more useful for the relationship.",
+    loan: "Correct. Loan records the event linking a student and a book.",
+    title: "BookTitle is usually an attribute of Book, not an entity or relationship event.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -295,23 +295,23 @@ function setupHook() {
   });
 }
 
-function setupRedundancyDetector() {
-  const input = document.querySelector("#redundancyInput");
-  const result = document.querySelector("#redundancyResult");
-  const reason = document.querySelector("#redundancyReason");
-  document.querySelector("#redundancyBtn").addEventListener("click", () => {
-    const item = redundancyMap[input.value];
+function setupScenarioParser() {
+  const input = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#scenarioResult");
+  const reason = document.querySelector("#scenarioReason");
+  document.querySelector("#scenarioBtn").addEventListener("click", () => {
+    const item = scenarioMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
 }
 
-function setupAnomalyClassifier() {
-  const input = document.querySelector("#anomalyInput");
-  const result = document.querySelector("#anomalyResult");
-  const reason = document.querySelector("#anomalyReason");
-  document.querySelector("#anomalyBtn").addEventListener("click", () => {
-    const item = anomalyMap[input.value];
+function setupCardinalityChecker() {
+  const input = document.querySelector("#cardinalityInput");
+  const result = document.querySelector("#cardinalityResult");
+  const reason = document.querySelector("#cardinalityReason");
+  document.querySelector("#cardinalityBtn").addEventListener("click", () => {
+    const item = cardinalityMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
@@ -337,7 +337,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("course");
+  renderExample("library");
 }
 
 function renderPractice() {
@@ -436,8 +436,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupRedundancyDetector();
-  setupAnomalyClassifier();
+  setupScenarioParser();
+  setupCardinalityChecker();
   setupExamples();
   renderPractice();
   renderMistakes();

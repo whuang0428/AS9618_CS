@@ -65,14 +65,14 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["062", ["data security", "privacy", "integrity", "computer-system security"]],
-  ["063", ["virus", "spyware", "anti-virus", "anti-spyware"]],
-  ["064", ["hacker", "phishing", "pharming", "restrict", "risk"]],
-  ["065", ["user account", "password", "biometric", "authentication", "authorisation"]],
-  ["066", ["access rights", "encryption", "plaintext", "ciphertext"]],
-  ["067", ["digital signature", "private key", "public key", "encryption"]],
-  ["068", ["firewall", "stand-alone PC", "network firewall"]],
-  ["069", ["range check", "format check", "length check", "presence check", "existence check", "limit check", "check digit", "visual check", "double entry", "byte parity", "block parity", "checksum"]],
+  ["063", ["data security", "privacy", "integrity", "computer-system security"]],
+  ["064", ["virus", "spyware", "anti-virus", "anti-spyware"]],
+  ["065", ["hacker", "phishing", "pharming", "restrict", "risk"]],
+  ["066", ["user account", "password", "biometric", "authentication", "authorisation"]],
+  ["067", ["access rights", "encryption", "plaintext", "ciphertext"]],
+  ["068", ["digital signature", "private key", "public key", "encryption"]],
+  ["069", ["firewall", "stand-alone PC", "network firewall"]],
+  ["070", ["range check", "format check", "length check", "presence check", "existence check", "limit check", "check digit", "visual check", "double entry", "byte parity", "block parity", "checksum"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -86,15 +86,15 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["L062-Q2", ["data", "computer system", "security"]],
-  ["L063-Q5", ["anti-virus", "anti-spyware"]],
-  ["L065-Q1", ["user account", "authentication", "authorisation"]],
-  ["L069-Q5", ["parity", "byte", "block parity", "checksum"]],
-  ["AQ065-Q2", ["virus", "spyware"]],
-  ["AQ065-Q5", ["phishing", "pharming"]],
-  ["AQ070-Q4", ["range check", "limit check", "lower", "upper"]],
-  ["AQ070-Q5", ["parity", "byte", "block parity"]],
-  ["AR071-Q1", ["visual check", "double entry", "byte parity", "block parity", "checksum"]],
+  ["L063-Q2", ["data", "computer system", "security"]],
+  ["L064-Q5", ["anti-virus", "anti-spyware"]],
+  ["L066-Q1", ["user account", "authentication", "authorisation"]],
+  ["L070-Q5", ["parity", "byte", "block parity", "checksum"]],
+  ["AQ066-Q2", ["virus", "spyware"]],
+  ["AQ066-Q5", ["phishing", "pharming"]],
+  ["AQ071-Q4", ["range check", "limit check", "lower", "upper"]],
+  ["AQ071-Q5", ["parity", "byte", "block parity"]],
+  ["AR072-Q1", ["visual check", "double entry", "byte parity", "block parity", "checksum"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 6 assessment`);
 
@@ -107,17 +107,17 @@ for (const [label, pattern] of [
 ]) expect(!pattern.test(acceptedAssessment), `accepted assessment semantics still contain ${label}`);
 
 for (const [key, terms, label] of [
-  ["062/controls", ["access rights", "prevent unauthorised", "do not detect whether data changed", "hash/checksum", "encryption"], "L062 controls maintained visual facts"],
-  ["065/biometrics", ["authenticates", "authorisation is a separate", "false reject", "false accept"], "L065 biometrics maintained visual facts"],
-  ["069/checks", ["range", "format", "length", "presence", "existence", "limit", "check digit", "does not prove"], "L069 validation maintained visual facts"],
-  ["069/verification", ["visual checking", "double entry", "parity check on a byte", "block parity", "checksum", "do not prove truth"], "L069 verification maintained visual facts"],
+  ["063/controls", ["access rights", "prevent unauthorised", "do not detect whether data changed", "hash/checksum", "encryption"], "L063 controls maintained visual facts"],
+  ["066/biometrics", ["authenticates", "authorisation is a separate", "false reject", "false accept"], "L066 biometrics maintained visual facts"],
+  ["070/checks", ["range", "format", "length", "presence", "existence", "limit", "check digit", "does not prove"], "L070 validation maintained visual facts"],
+  ["070/verification", ["visual checking", "double entry", "parity check on a byte", "block parity", "checksum", "do not prove truth"], "L070 verification maintained visual facts"],
 ]) includesAll(sourceFactOverrides[key].join(" "), terms, label);
 
 for (const [file, label] of [
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg", "L062 controls visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-065-biometrics.jpg", "L065 biometrics visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-069-checks.jpg", "L069 validation visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-069-verification.jpg", "L069 verification visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-063-controls.jpg", "L063 controls visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-066-biometrics.jpg", "L066 biometrics visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-070-checks.jpg", "L070 validation visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-070-verification.jpg", "L070 verification visual"],
 ]) {
   const dimensions = jpegDimensions(file);
   expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${label}: expected 1536x1024 JPEG`);
@@ -144,8 +144,8 @@ for (const [id, pattern] of mutations) {
 }
 
 for (const [requirementId, questionIds, pattern, label] of [
-  ["S6.07", ["L069-Q2", "AQ070-Q4"], /limit|lower|upper/gi, "range/limit assessment"],
-  ["S6.08", ["L069-Q5", "AQ070-Q5", "AR071-Q1"], /checksum|block parity|byte parity|parity check on (?:one |a )?byte/gi, "transfer verification assessment"],
+  ["S6.07", ["L070-Q2", "AQ071-Q4"], /limit|lower|upper/gi, "range/limit assessment"],
+  ["S6.08", ["L070-Q5", "AQ071-Q5", "AR072-Q1"], /checksum|block parity|byte parity|parity check on (?:one |a )?byte/gi, "transfer verification assessment"],
 ]) {
   const mutation = evaluateRequirement(requirements.get(requirementId), {
     questionTransform: (question) => questionIds.includes(question.id)
@@ -169,8 +169,8 @@ for (const key of ["062/explanation-controls-img-1", "065/explanation-biometrics
   expect(record?.pass1?.status === "passed" && /maintained facts/i.test(record?.pass1?.evidence ?? ""), `${key}: maintained source facts were not confirmed`);
 }
 
-const lesson069Css = read("web/lesson-069/styles.css");
-expect(/\.lesson-content\s*>\s*\.hero\s+\.data-card\s+p\s*\{[^}]*color:\s*#fff(?:fff)?/is.test(lesson069Css), "L069 hero explanation does not retain a high-specificity white text rule");
+const lesson069Css = read("web/lesson-070/styles.css");
+expect(/\.lesson-content\s*>\s*\.hero\s+\.data-card\s+p\s*\{[^}]*color:\s*#fff(?:fff)?/is.test(lesson069Css), "L070 hero explanation does not retain a high-specificity white text rule");
 
 const ledger = JSON.parse(read("audits/repair-batch-11-section6-security-data-integrity.json"));
 expect(ledger.status === "Resolved" && ledger.records.length === 13, "Batch 11 ledger must resolve eight requirements, four semantic visual defects and one rendered contrast defect");
@@ -182,4 +182,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Batch 11 verification passed: eight Section 6 requirements are Complete, nine assessment checks, four repaired visuals and the L069 contrast regression pass, and ten mutations are rejected.");
+console.log("Batch 11 verification passed: eight Section 6 requirements are Complete, nine assessment checks, four repaired visuals and the L070 contrast regression pass, and ten mutations are rejected.");

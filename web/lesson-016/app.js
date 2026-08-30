@@ -1,66 +1,70 @@
-const recommendations = {
-  school: {
-    result: "Likely choice: star topology on a LAN.",
-    method: "A school computer room is a local area. A star topology lets each device connect to a central switch, so individual cable/device faults are easier to isolate.",
+const triageData = {
+  mib: {
+    result: "Use binary prefix conversion.",
+    method: "KiB and MiB use powers of 1024. Show each step and write the final unit.",
   },
-  temporary: {
-    result: "Possible choice: bus topology, with clear limitations.",
-    method: "A bus can be cheap and simple for a very small temporary network, but the shared backbone can become a bottleneck and a single point of failure.",
+  image: {
+    result: "Use bitmap file-size calculation.",
+    method: "File size in bits = width x height x colour depth. Convert to bytes only if asked.",
   },
-  critical: {
-    result: "Likely choice: mesh or redundant star design.",
-    method: "Critical systems benefit from multiple paths or redundant central devices. The reason is fault tolerance, not because mesh sounds impressive.",
+  sound: {
+    result: "Use sound file-size calculation.",
+    method: "File size in bits = sampling rate x sampling resolution x duration x channels.",
   },
-  branches: {
-    result: "Network type: WAN.",
-    method: "Branches in different countries require communication over a large geographical area and may use telecommunications provider infrastructure.",
+  negative: {
+    result: "Use signed representation reasoning.",
+    method: "Check whether sign and magnitude or two's complement is being used before converting.",
+  },
+  exact: {
+    result: "Use lossless compression reasoning.",
+    method: "Exact reconstruction means the decompressed file must be identical to the original.",
   },
 };
 
 const examples = {
-  lan: {
-    title: "Example 1: deciding LAN or WAN",
-    problem: "A school connects computers in two classrooms and a local server.",
+  units: {
+    title: "Example 1: binary prefix calculation",
+    problem: "Convert 3 MiB into bytes.",
     steps: [
-      "The devices are in a limited geographical area.",
-      "The school can own and manage the network equipment.",
-      "This is a LAN, not a WAN.",
-      "Do not say LAN only because it is wireless or fast; use area and ownership.",
+      "MiB is a binary prefix, so use 1024.",
+      "3 MiB = 3 x 1024 KiB.",
+      "3 x 1024 x 1024 bytes = 3 145 728 bytes.",
+      "Final answer must include bytes.",
     ],
   },
-  star: {
-    title: "Example 2: choosing star topology",
-    problem: "A computer room needs 30 PCs connected to a switch.",
+  image: {
+    title: "Example 2: bitmap file size",
+    problem: "A 640 x 480 image uses 16-bit colour depth. Calculate the file size in bytes.",
     steps: [
-      "Each PC has its own connection to the central switch.",
-      "If one cable fails, usually only that device is affected.",
-      "Adding or removing a device is straightforward.",
-      "The central switch is a possible single point of failure.",
+      "Pixels = 640 x 480 = 307 200.",
+      "Bits = 307 200 x 16 = 4 915 200 bits.",
+      "Bytes = 4 915 200 / 8 = 614 400 bytes.",
+      "Metadata is ignored unless the question includes it.",
     ],
   },
-  mesh: {
-    title: "Example 3: choosing mesh topology",
-    problem: "A hospital monitoring network needs high availability.",
+  explain: {
+    title: "Example 3: scenario explanation",
+    problem: "A museum archive stores original scanned documents. Explain why lossless compression is suitable.",
     steps: [
-      "A mesh network can provide multiple paths between devices.",
-      "If one link fails, data may still travel by another path.",
-      "This improves fault tolerance.",
-      "The trade-off is higher cost and complexity.",
+      "Name the mechanism: lossless compression.",
+      "Explain it: the original file can be reconstructed exactly after decompression.",
+      "Link to context: archive documents must preserve the original content.",
+      "Consequence: no data is permanently removed, so meaning/evidence is not changed.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What does LAN stand for?", accepted: ["local area network"], answer: "Local Area Network" },
-  { id: "p2", prompt: "What does WAN stand for?", accepted: ["wide area network"], answer: "Wide Area Network" },
-  { id: "p3", prompt: "Name one purpose of a network.", accepted: ["communication", "resource sharing", "sharing resources", "collaboration", "central management", "file sharing"], answer: "Communication / resource sharing / collaboration / central management" },
-  { id: "p4", prompt: "A school network in one building is usually a LAN or WAN?", accepted: ["lan", "local area network"], answer: "LAN" },
-  { id: "p5", prompt: "A bank connects branches in several countries. LAN or WAN?", accepted: ["wan", "wide area network"], answer: "WAN" },
-  { id: "p6", prompt: "Which topology connects devices to a central switch or hub?", accepted: ["star", "star topology"], answer: "Star topology" },
-  { id: "p7", prompt: "Which topology has many possible paths between nodes?", accepted: ["mesh", "mesh topology"], answer: "Mesh topology" },
-  { id: "p8", prompt: "In a bus topology, what shared component can become a single point of failure?", accepted: ["backbone", "backbone cable", "bus", "main cable"], answer: "The backbone/main cable" },
-  { id: "p9", prompt: "Name one disadvantage of mesh topology.", accepted: ["cost", "expensive", "complex", "complexity", "difficult to install", "lots of cabling"], answer: "High cost / complexity / more cabling" },
-  { id: "p10", prompt: "Bandwidth means capacity or delay?", accepted: ["capacity"], answer: "Capacity" },
+  { id: "p1", prompt: "1 KiB = how many bytes?", accepted: ["1024", "1024 bytes"], answer: "1024 bytes" },
+  { id: "p2", prompt: "6 MiB = how many bytes?", accepted: ["6291456", "6291456 bytes", "6,291,456", "6,291,456 bytes"], answer: "6 x 1024 x 1024 = 6 291 456 bytes" },
+  { id: "p3", prompt: "Convert unsigned binary 11010110 to denary.", accepted: ["214"], answer: "214" },
+  { id: "p4", prompt: "How many values can 8 bits represent?", accepted: ["256"], answer: "256 values" },
+  { id: "p5", prompt: "A 200 x 150 bitmap uses 8-bit colour depth. File size in bits?", accepted: ["240000", "240000 bits", "240,000", "240,000 bits"], answer: "200 x 150 x 8 = 240 000 bits" },
+  { id: "p6", prompt: "A mono sound file uses 8000 Hz, 8-bit samples, 10 seconds. Size in bits?", accepted: ["640000", "640000 bits", "640,000", "640,000 bits"], answer: "8000 x 8 x 10 x 1 = 640 000 bits" },
+  { id: "p7", prompt: "Which compression type allows exact reconstruction?", accepted: ["lossless"], answer: "Lossless compression" },
+  { id: "p8", prompt: "Which character set is normally more suitable for multilingual text: ASCII or Unicode?", accepted: ["unicode"], answer: "Unicode" },
+  { id: "p9", prompt: "In a file-size answer, what should be written after the number?", accepted: ["unit", "units"], answer: "A unit, such as bits or bytes" },
+  { id: "p10", prompt: "For an exam explanation, what should follow a correct keyword?", accepted: ["explanation", "reason", "consequence", "reason and consequence"], answer: "A reason/explanation and a consequence linked to the scenario" },
 ];
 
 
@@ -73,95 +77,97 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A school connects computers, printers and a file server within one site. Explain two purposes of using a network in this situation.",
-    answer: "The network allows resource sharing, such as several computers using the same printer or file server. It also supports communication/collaboration because users can exchange files or access shared services through the network.",
+    prompt: "A bitmap image is 300 pixels wide and 200 pixels high. It uses 16-bit colour depth. Calculate the file size in bytes. Demonstrate your working.",
+    answer: "300 x 200 x 16 = 960 000 bits. 960 000 / 8 = 120 000 bytes.",
     marking: [
-      { mark: "B1", text: "identifies resource sharing" },
-      { mark: "B1", text: "links resource sharing to printer/server/files in the school" },
-      { mark: "B1", text: "identifies communication/collaboration/central management" },
-      { mark: "B1", text: "links second purpose to the school scenario" },
+      { mark: "M1", text: "uses width x height x colour depth" },
+      { mark: "A1", text: "300 x 200 x 16 = 960 000 bits" },
+      { mark: "M1", text: "divides by 8 to convert bits to bytes" },
+      { mark: "A1", text: "120 000 bytes" },
     ],
     strict: [
-      "Do not accept only 'it is easier' without saying what is easier and why.",
-      "Do not require internet access as a purpose.",
-      "Award different purposes only; repeated resource-sharing examples cannot earn both purpose marks.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not award final A1 if the unit is missing or incorrect.",
+      "Do not include metadata unless stated in the question.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Compare a LAN and a WAN.",
-    answer: "A LAN covers a limited area such as a building or school site and is usually owned or managed by one organisation. A WAN covers a large geographical area and often uses telecommunications provider infrastructure to connect separate sites.",
+    prompt: "A mono sound file is sampled at 44 100 Hz using 16-bit sampling resolution for 10 seconds. Calculate the file size in bits.",
+    answer: "44 100 x 16 x 10 x 1 = 7 056 000 bits.",
     marking: [
-      { mark: "B1", text: "LAN covers a limited/local geographical area" },
-      { mark: "B1", text: "LAN is usually privately owned/managed by one organisation" },
-      { mark: "B1", text: "WAN covers a large geographical area" },
-      { mark: "B1", text: "WAN may use telecommunications provider/public infrastructure" },
+      { mark: "M1", text: "uses sampling rate x sampling resolution x duration" },
+      { mark: "B1", text: "recognises mono means one channel" },
+      { mark: "A1", text: "44 100 x 16 x 10" },
+      { mark: "A1", text: "7 056 000 bits" },
     ],
     strict: [
-      "Do not accept only 'LAN is small, WAN is big' for full credit.",
-      "Do not say LAN is always wired or WAN is always wireless.",
-      "Examples may support but not replace a clear comparison.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not divide by 8 because the question asks for bits.",
+      "Do not confuse sampling resolution with sampling rate.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "A computer room uses a star topology. Explain two advantages and one disadvantage of this topology.",
-    answer: "In a star topology, each computer is connected to a central switch or hub. One advantage is that a cable fault usually affects only one device. Another advantage is that devices can be added or removed more easily. A disadvantage is that if the central switch fails, communication through the network may fail.",
+    marks: "3 marks",
+    prompt: "Convert the unsigned binary number 10110101 to denary. Demonstrate your working.",
+    answer: "128 + 32 + 16 + 4 + 1 = 181.",
     marking: [
-      { mark: "B1", text: "recognises devices connect to a central switch/hub" },
-      { mark: "B1", text: "individual cable/device failure affects only that device" },
-      { mark: "B1", text: "easy to add/remove devices or isolate faults" },
-      { mark: "B1", text: "central switch/hub is a single point of failure" },
-      { mark: "B1", text: "links disadvantage to loss of communication/network failure" },
+      { mark: "M1", text: "uses 8-bit place values correctly" },
+      { mark: "M1", text: "selects active place values 128, 32, 16, 4 and 1" },
+      { mark: "A1", text: "181" },
     ],
     strict: [
-      "Do not accept 'faster' without explaining why or compared with what.",
-      "Do not award two marks for the same advantage repeated in different words.",
-      "Allow 'hub' where older terminology is used, but switch is preferred.",
+      "Do not accept 10110101 as denary.",
+      "No sign bit is involved because the question says unsigned.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Explain why a mesh topology may be suitable for a critical hospital monitoring network.",
-    answer: "A mesh topology can provide multiple paths between devices. If one link fails, data may still be sent by another route. This improves fault tolerance and availability, which is important because hospital monitoring data may be time-critical.",
+    marks: "5 marks",
+    prompt: "A school website stores pages in English, Chinese and Arabic. Explain why Unicode is more suitable than ASCII.",
+    answer: "Unicode supports a much wider range of characters and can represent characters from many languages. ASCII is limited mainly to basic English characters, so it may not represent Chinese or Arabic text correctly. This makes Unicode more suitable for a multilingual website.",
     marking: [
-      { mark: "B1", text: "mesh provides multiple paths/connections" },
-      { mark: "B1", text: "communication can continue if one link/path fails" },
-      { mark: "B1", text: "improves fault tolerance/reliability/availability" },
-      { mark: "B1", text: "links reliability to critical hospital monitoring context" },
+      { mark: "B1", text: "Unicode supports a wider range of characters" },
+      { mark: "B1", text: "Unicode supports many languages / multilingual text" },
+      { mark: "B1", text: "ASCII is limited / mainly basic English characters" },
+      { mark: "B1", text: "links to Chinese and Arabic characters" },
+      { mark: "B1", text: "links choice to the website requirement" },
     ],
     strict: [
-      "Do not accept only 'mesh is more secure'.",
-      "Do not require a fully connected mesh unless the answer specifies it.",
-      "Award scenario-linked consequence, not a generic definition alone.",
+      "Do not accept only 'Unicode has more bits'.",
+      "Do not accept only 'Unicode is better'.",
+      "Answer must be linked to multilingual content.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "3 marks",
-    prompt: "A student says bandwidth and latency both mean the speed of a network. Explain why this is inaccurate.",
-    answer: "Bandwidth is the capacity of a connection, often the amount of data that can be transferred per second. Latency is the delay before or during transfer. A network may have high bandwidth but still feel slow if latency is high.",
+    marks: "6 marks",
+    prompt: "A legal archive stores scanned contracts. Discuss whether lossless or lossy compression is more suitable.",
+    answer: "Lossless compression is more suitable for original contracts because the file can be reconstructed exactly after decompression. This matters because legal documents must not have content altered or removed. Lossy compression permanently removes data and could change detail or meaning, although it may reduce file size more. Lossy compression may be suitable only for non-critical preview copies, not the original archive.",
     marking: [
-      { mark: "B1", text: "bandwidth is capacity / amount of data transferred per second" },
-      { mark: "B1", text: "latency is delay" },
-      { mark: "B1", text: "explains they affect performance differently" },
+      { mark: "B1", text: "identifies lossless as suitable for originals" },
+      { mark: "B1", text: "explains exact reconstruction" },
+      { mark: "B1", text: "links exact reconstruction to legal documents/contracts" },
+      { mark: "B1", text: "explains lossy permanently removes data" },
+      { mark: "B1", text: "gives a consequence such as changed detail/meaning/evidence" },
+      { mark: "B1", text: "balanced point, e.g. lossy may be used only for preview/non-critical copies" },
     ],
     strict: [
-      "Do not accept only 'bandwidth is speed'.",
-      "Do not require numerical units.",
-      "Allow examples such as video call delay if clearly linked to latency.",
+      "Do not award for 'lossless is higher quality' without exact reconstruction.",
+      "Do not recommend lossy for originals unless risk is clearly discussed.",
+      "Award scenario-linked reasoning over generic definitions.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
 ];
 
+let remainingSeconds = 360;
+let timerId = null;
+
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ");
+  return value.trim().toLowerCase().replace(/,/g, "").replace(/\s+/g, " ");
 }
 
 function setupPrint() {
@@ -174,25 +180,63 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "resource"
-        ? "Correct. Several computers using one printer is resource sharing."
-        : "Not the main purpose here. The clue is that many computers use the same printer.";
+      feedback.textContent = button.dataset.hook === "units"
+        ? "Correct. A missing unit can block a final accuracy mark even when the arithmetic is fine."
+        : "This answer may be good, but it is not the most dangerous one here because it already includes a clear method or scenario link.";
     });
   });
 }
 
-function setupRecommendationTool() {
-  const select = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#recommendResult");
-  const method = document.querySelector("#recommendMethod");
-  function recommend() {
-    const item = recommendations[select.value];
+function formatTime(seconds) {
+  const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const secs = String(seconds % 60).padStart(2, "0");
+  return `${minutes}:${secs}`;
+}
+
+function renderTimer() {
+  document.querySelector("#timerDisplay").textContent = formatTime(remainingSeconds);
+}
+
+function setupTimer() {
+  document.querySelector("#startTimer").addEventListener("click", () => {
+    if (timerId) return;
+    timerId = window.setInterval(() => {
+      remainingSeconds = Math.max(0, remainingSeconds - 1);
+      renderTimer();
+      if (remainingSeconds === 0) {
+        window.clearInterval(timerId);
+        timerId = null;
+      }
+    }, 1000);
+  });
+
+  document.querySelector("#pauseTimer").addEventListener("click", () => {
+    window.clearInterval(timerId);
+    timerId = null;
+  });
+
+  document.querySelector("#resetTimer").addEventListener("click", () => {
+    window.clearInterval(timerId);
+    timerId = null;
+    remainingSeconds = 360;
+    renderTimer();
+  });
+
+  renderTimer();
+}
+
+function setupTriageTool() {
+  const select = document.querySelector("#clueInput");
+  const result = document.querySelector("#triageResult");
+  const method = document.querySelector("#triageMethod");
+  function update() {
+    const item = triageData[select.value];
     result.textContent = item.result;
     method.textContent = item.method;
   }
-  select.addEventListener("change", recommend);
-  document.querySelector("#recommendBtn").addEventListener("click", recommend);
-  recommend();
+  select.addEventListener("change", update);
+  document.querySelector("#triageBtn").addEventListener("click", update);
+  update();
 }
 
 function renderExample(key) {
@@ -212,7 +256,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("lan");
+  renderExample("units");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -260,7 +304,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For explanation questions, add a comparison basis and a consequence.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Review any missing method, unit or scenario link.`;
   });
 }
 
@@ -297,7 +341,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupRecommendationTool();
+  setupTimer();
+  setupTriageTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

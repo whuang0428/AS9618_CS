@@ -43,7 +43,7 @@ const result = {
   mutationCoverage: {
     allRequirementConceptDeletion: 121,
     coreToOptional: ["S4.15"],
-    directAssessmentMutation: ["AQ050-Q4"],
+    directAssessmentMutation: ["AQ051-Q4"],
     prerequisiteOrderMutation: ["S1.01->S1.08"],
     forbiddenSemanticPatterns: coverageContract.forbiddenSemanticPatterns.length,
     command: "node scripts/test-syllabus-gate-mutations.mjs",

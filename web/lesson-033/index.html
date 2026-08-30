@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 033 | Embedded systems and microcontrollers</title>
+    <title>AS9618 Lesson 033 | Logic-gate symbols, functions and representation conversions</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Embedded systems and microcontrollers</h1>
+        <h1>Logic-gate symbols, functions and representation conversions</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,9 +29,10 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#embedded">Embedded system</a>
-        <a href="#microcontroller">Microcontroller</a>
-        <a href="#tool">Design tool</a>
+        <a href="#criteria">Criteria</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#answer">Answer pattern</a>
+        <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -49,55 +50,68 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Embedded systems: purpose, benefits and drawbacks</h2>
+            <h2>Logic-gate symbols, functions and representation conversions</h2>
           </div>
           <div class="stage2-explanation">
-            <p>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.</p>
-            <p>Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.</p>
-            <p>An embedded system can have a benefit such as efficient dedicated operation and a drawback such as limited flexibility; both must be applied to the device.</p>
+            <p>Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.</p>
+            <p>You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.</p>
+            <p>Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Washing-machine controller</h3>
-            <p>A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.</p>
+            <h3>Worked example: Convert one rule among four representations</h3>
+            <p>Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start gate-visual -->
+        <section class="panel explanation-panel" id="explanation-gate-visual" data-explains="gate-visual" data-explanation-kind="mechanism" aria-labelledby="explanation-gate-visual-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gate-visual">
+          <h2 class="explanation-sr-only" id="explanation-gate-visual-title">Six symbols, six exact output rules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-gate-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Six symbols, six exact output rules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Six symbols, six exact output rules: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</li><li><strong>Lesson fact:</strong> NOT One input; output is the opposite value.</li><li><strong>Lesson fact:</strong> AND / NAND AND tests whether both are 1; NAND inverts that result.</li><li><strong>Lesson fact:</strong> OR / NOR OR tests whether at least one is 1; NOR inverts that result.</li><li><strong>Lesson fact:</strong> XOR Output is 1 only when the two inputs are different.</li><li><strong>Lesson fact:</strong> Check the diagram: what two visual clues separate NOR from XOR?</li><li><strong>Lesson fact:</strong> NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end gate-visual -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Embedded systems: purpose, benefits and drawbacks: apply and assess</h2>
+            <h2>Logic-gate symbols, functions and representation conversions: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What two features define an embedded system?</p>
-              <details><summary>Show answer</summary><p>It is built into a larger device and performs a dedicated task or closely related set of tasks.</p></details>
+              <p><strong>1.</strong> What distinguishes the XOR symbol from the OR symbol?</p>
+              <details><summary>Show answer</summary><p>XOR has an additional curved line on the input side.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Give one benefit of an embedded controller and explain its consequence.</p>
-              <details><summary>Show answer</summary><p>For example, low power use reduces energy or battery demand for the device.</p></details>
+              <p><strong>2.</strong> How many inputs does NOT have, and how many do the other specified gates have in this syllabus?</p>
+              <details><summary>Show answer</summary><p>NOT has one input; AND, OR, NAND, NOR and XOR each have two inputs.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one drawback of an embedded controller and explain its consequence.</p>
-              <details><summary>Show answer</summary><p>For example, limited resources make it difficult to add unrelated functions or run general-purpose software.</p></details>
+              <p><strong>3.</strong> Identify the three possible sources from which a logic circuit may be constructed.</p>
+              <details><summary>Show answer</summary><p>A problem statement, a logic expression or a truth table.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why can failure of an embedded controller be serious?</p>
-              <details><summary>Show answer</summary><p>The larger device may lose the function controlled by that computer or stop operating.</p></details>
+              <p><strong>4.</strong> How do intermediate columns help convert a circuit into a truth table?</p>
+              <details><summary>Show answer</summary><p>Each intermediate column records one gate output, allowing the final result to be calculated and checked row by row.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A truth table gives output 1 only when input A is 1 and input B is 0. Construct a logic expression and describe the corresponding circuit.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>benefit such as low power, compact size or predictable automatic operation</td><td>Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence.</td><td>1</td></tr>
-                  <tr><td>first benefit linked to battery life, portability or continuous monitoring</td><td></td><td>1</td></tr>
-                  <tr><td>drawback such as limited resources/upgrading/interface or controller dependence</td><td></td><td>1</td></tr>
-                  <tr><td>first drawback linked to limited new functions or device failure</td><td></td><td>1</td></tr>
-                  <tr><td>second distinct benefit or drawback correctly developed</td><td></td><td>1</td></tr>
+                  <tr><td>identifies that B must be inverted</td><td>Do not accept XOR: XOR is also 1 for A=0, B=1, which contradicts the given truth table.</td><td>1</td></tr>
+                  <tr><td>constructs expression Q = A AND NOT B</td><td></td><td>1</td></tr>
+                  <tr><td>B is connected to a NOT gate</td><td></td><td>1</td></tr>
+                  <tr><td>A and the NOT-gate output are connected to an AND gate whose output is Q</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -108,144 +122,182 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 033 | 45 minutes | Paper 1 Section 3</p>
-            <h2>An embedded system is a computer that quietly does one job very seriously.</h2>
+            <h2>Storage choice is a trade-off, not a popularity contest.</h2>
             <p>
-              This lesson explains why embedded systems are built for dedicated tasks and
-              how a microcontroller can integrate processing, memory and input/output on one
-              chip. Control-system components and feedback are introduced in Lesson 034.
+              This lesson trains the comparison language needed for storage questions:
+              capacity, speed, durability, portability and cost. The goal is to justify
+              a choice for a specific user, not to declare one storage type "best".
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>embedded systems and microcontrollers accurately</span></div>
-              <div><strong>Compare</strong><span>microcontrollers with general-purpose computers</span></div>
-              <div><strong>Explain</strong><span>why embedded systems are designed for specific tasks</span></div>
+              <div><strong>Define</strong><span>five key storage characteristics accurately</span></div>
+              <div><strong>Compare</strong><span>storage devices using scenario-linked trade-offs</span></div>
+              <div><strong>Write</strong><span>Cambridge-style justifications with cause and consequence</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Embedded system focus">
-            <span>dedicated task -> integrated hardware -> predictable operation</span>
-            <p>A washing machine contains an embedded computer designed around the appliance rather than around many unrelated user programs.</p>
+          <div class="system-card" aria-label="Storage trade-off">
+            <span>capacity + speed + durability + portability + cost</span>
+            <p>"Best storage" without a scenario is like "best shoe" without saying hiking, running or wedding.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Embedded-system answers need more than “a small computer”: identify its dedicated purpose and its place inside a larger device.</p>
+            <p>CIE marking is strict with vague claims. "Efficient" or "better" usually needs a named characteristic and a scenario consequence.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A microcontroller is not just "a tiny CPU". It often integrates CPU, memory and input/output interfaces on one chip.</p>
+            <p>Students often compare only speed. Capacity, durability, portability and cost can be the real deciding factors.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Why does a washing machine use an embedded computer instead of a general-purpose laptop?</h2>
+            <h2>Choose storage for a travel photographer: huge photo library, rough travel bag, limited budget and quick editing. Which feature matters most?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="purpose">It performs a dedicated set of tasks</button>
-            <button class="choice-card" type="button" data-hook="integrated">Its hardware can be integrated on one chip</button>
-            <button class="choice-card" type="button" data-hook="interface">It needs only a limited user interface</button>
-            <button class="choice-card" type="button" data-hook="reliability">It must operate predictably for repeated cycles</button>
+            <button class="choice-card" type="button" data-hook="capacity">Capacity: enough space for many large files</button>
+            <button class="choice-card" type="button" data-hook="durability">Durability: survives movement and knocks</button>
+            <button class="choice-card" type="button" data-hook="speed">Speed: loads and saves large files quickly</button>
+            <button class="choice-card" type="button" data-hook="cost">Cost: affordable per GB</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one design reason, then connect it to the appliance's dedicated purpose.
+            Click one feature. Good answers often combine two features, then explain the trade-off.
           </div>
         </section>
 
-        <section class="panel" id="embedded" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
+        <section class="panel" id="criteria" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>What is an embedded system?</h2>
+            <h2>The five core characteristics</h2>
           </div>
           <div class="criteria-grid">
-            <article><strong>Dedicated purpose</strong><span>Designed to perform a specific task or set of tasks.</span></article>
-            <article><strong>Built into device</strong><span>Part of a larger product, such as a washing machine or traffic light.</span></article>
-            <article><strong>Limited interface</strong><span>Often has few controls or displays compared with a general-purpose computer.</span></article>
-            <article><strong>Limited resources</strong><span>Hardware is selected for the required task rather than maximum general performance.</span></article>
-            <article><strong>Reliability focus</strong><span>Usually expected to run repeatedly and predictably.</span></article>
+            <article><strong>Capacity</strong><span>How much data can be stored, usually measured in GB or TB.</span></article>
+            <article><strong>Speed</strong><span>How quickly data can be read or written; affects startup, loading and transfer.</span></article>
+            <article><strong>Durability</strong><span>How well the device resists damage, wear, shock, scratches or environmental conditions.</span></article>
+            <article><strong>Portability</strong><span>How easy it is to carry, remove, connect and use between devices.</span></article>
+            <article><strong>Cost</strong><span>Price of the device and cost per unit of storage; not always the same thing.</span></article>
           </div>
-          <div class="callout">Chinese support: embedded system = 嵌入式系统；microcontroller = 微控制器；dedicated purpose = 专用功能；general-purpose computer = 通用计算机。</div>
+          <div class="callout">Chinese support: capacity = 容量；speed = 速度；durability = 耐用性；portability = 便携性；cost per GB = 每 GB 成本。</div>
         </section>
 
-        <!-- stage10-explanation:start embedded -->
-        <section class="panel explanation-panel" id="explanation-embedded" data-explains="embedded" data-explanation-kind="mechanism" aria-labelledby="explanation-embedded-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <h2 class="explanation-sr-only" id="explanation-embedded-title">What is an embedded system?</h2>
+        <!-- stage10-explanation:start criteria -->
+        <section class="panel explanation-panel" id="explanation-criteria" data-explains="criteria" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
+          <h2 class="explanation-sr-only" id="explanation-criteria-title">The five core characteristics</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-embedded.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is an embedded system? with a structured visual model." />
-            <figcaption class="explanation-sr-only">What is an embedded system?: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-criteria.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The five core characteristics with a structured visual model." />
+            <figcaption class="explanation-sr-only">The five core characteristics: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An embedded system is designed to perform a specific task or closely related set of tasks.</li><li><strong>Lesson fact:</strong> It forms part of a larger product, such as a washing machine, microwave oven or router.</li><li><strong>Lesson fact:</strong> It often uses a limited interface and task-specific resources.</li><li><strong>Lesson fact:</strong> Low cost, low power and reliable repeated operation may be relevant design priorities.</li><li><strong>Lesson fact:</strong> Define an embedded system by purpose and context, not only by physical size.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Capacity How much data can be stored, usually measured in GB or TB.</li><li><strong>Lesson fact:</strong> Speed How quickly data can be read or written; affects startup, loading and transfer.</li><li><strong>Lesson fact:</strong> Durability How well the device resists damage, wear, shock, scratches or environmental conditions.</li><li><strong>Lesson fact:</strong> Portability How easy it is to carry, remove, connect and use between devices.</li><li><strong>Lesson fact:</strong> Cost Price of the device and cost per unit of storage; not always the same thing.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end embedded -->
-        <section class="panel" id="microcontroller" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
+        <!-- stage10-explanation:end criteria -->
+        <section class="panel" id="tradeoffs" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Trade-offs by common storage device</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Storage characteristics comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Device</div>
+              <div role="columnheader">Strengths</div>
+              <div role="columnheader">Weaknesses</div>
+              <div role="columnheader">Suitable when...</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">HDD</div>
+              <div role="cell">High capacity; low cost per GB.</div>
+              <div role="cell">Moving parts; slower; less shock-resistant than SSD.</div>
+              <div role="cell">Large storage is needed cheaply and portability is less critical.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">SSD</div>
+              <div role="cell">Fast; durable; no moving parts; low power.</div>
+              <div role="cell">Often higher cost per GB than HDD.</div>
+              <div role="cell">Speed and durability matter, especially in laptops.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Magnetic tape</div>
+              <div role="cell">Very high capacity; low cost for archives.</div>
+              <div role="cell">Slow sequential access; not convenient for frequent random access.</div>
+              <div role="cell">Huge backups are rarely accessed.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Optical disc</div>
+              <div role="cell">Cheap removable media; useful for fixed offline copies.</div>
+              <div role="cell">Lower capacity; slower; can scratch.</div>
+              <div role="cell">Data rarely changes and low-cost distribution matters.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">USB flash / memory card</div>
+              <div role="cell">Very portable and removable; no moving parts.</div>
+              <div role="cell">Small devices can be lost; speed and quality vary.</div>
+              <div role="cell">Files need to be moved between devices or used in cameras/phones.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start tradeoffs -->
+        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
+          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Trade-offs by common storage device</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trade-offs by common storage device with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trade-offs by common storage device: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Strengths</li><li><strong>Lesson fact:</strong> Weaknesses</li><li><strong>Lesson fact:</strong> Suitable when...</li><li><strong>Lesson fact:</strong> High capacity; low cost per GB.</li><li><strong>Lesson fact:</strong> Moving parts; slower; less shock-resistant than SSD.</li><li><strong>Lesson fact:</strong> Large storage is needed cheaply and portability is less critical.</li><li><strong>Lesson fact:</strong> Fast; durable; no moving parts; low power.</li><li><strong>Lesson fact:</strong> Often higher cost per GB than HDD.</li><li><strong>Lesson fact:</strong> Speed and durability matter, especially in laptops.</li><li><strong>Lesson fact:</strong> Magnetic tape</li><li><strong>Lesson fact:</strong> Very high capacity; low cost for archives.</li><li><strong>Lesson fact:</strong> Slow sequential access; not convenient for frequent random access.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end tradeoffs -->
+        <section class="panel" id="answer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Microcontroller vs general-purpose computer</h2>
+            <h2>The answer pattern: choice -> characteristic -> context -> consequence</h2>
           </div>
-          <div class="device-table" role="table" aria-label="Microcontroller comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Microcontroller / embedded system</div>
-              <div role="columnheader">General-purpose computer</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Purpose</div>
-              <div role="cell">Designed for a specific control task.</div>
-              <div role="cell">Designed to run many different programs.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Hardware</div>
-              <div role="cell">Often integrates CPU, memory and I/O on one chip.</div>
-              <div role="cell">Separate high-performance components are common.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Interface</div>
-              <div role="cell">May have simple buttons, LEDs or no screen.</div>
-              <div role="cell">Usually has richer input/output and user interface.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Design priorities</div>
-              <div role="cell">Low cost, low power, reliability, real-time response.</div>
-              <div role="cell">Flexibility, performance and user interaction.</div>
-            </div>
+          <div class="answer-pattern">
+            <div><strong>Choice</strong><span>Use an SSD</span></div>
+            <div><strong>Characteristic</strong><span>because it has fast access and no moving parts</span></div>
+            <div><strong>Context</strong><span>for a laptop carried to school each day</span></div>
+            <div><strong>Consequence</strong><span>so programs load quickly and it is less likely to be damaged by knocks</span></div>
           </div>
+          <div class="callout">Weak: "SSD is better." Strong: "SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop."</div>
         </section>
 
-        <!-- stage10-explanation:start microcontroller -->
-        <section class="panel explanation-panel" id="explanation-microcontroller" data-explains="microcontroller" data-explanation-kind="comparison" aria-labelledby="explanation-microcontroller-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <h2 class="explanation-sr-only" id="explanation-microcontroller-title">Microcontroller vs general-purpose computer</h2>
+        <!-- stage10-explanation:start answer -->
+        <section class="panel explanation-panel" id="explanation-answer" data-explains="answer" data-explanation-kind="mechanism" aria-labelledby="explanation-answer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
+          <h2 class="explanation-sr-only" id="explanation-answer-title">The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-microcontroller.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Microcontroller vs general-purpose computer with a structured visual model." />
-            <figcaption class="explanation-sr-only">Microcontroller vs general-purpose computer: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-answer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence with a structured visual model." />
+            <figcaption class="explanation-sr-only">The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Microcontroller / embedded system</li><li><strong>Lesson fact:</strong> General-purpose computer</li><li><strong>Lesson fact:</strong> Designed for a specific control task.</li><li><strong>Lesson fact:</strong> Designed to run many different programs.</li><li><strong>Lesson fact:</strong> Hardware</li><li><strong>Lesson fact:</strong> Often integrates CPU, memory and I/O on one chip.</li><li><strong>Lesson fact:</strong> Separate high-performance components are common.</li><li><strong>Lesson fact:</strong> Interface</li><li><strong>Lesson fact:</strong> May have simple buttons, LEDs or no screen.</li><li><strong>Lesson fact:</strong> Usually has richer input/output and user interface.</li><li><strong>Lesson fact:</strong> Design priorities</li><li><strong>Lesson fact:</strong> Low cost, low power, reliability, real-time response.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Choice Use an SSD</li><li><strong>Lesson fact:</strong> Characteristic because it has fast access and no moving parts</li><li><strong>Lesson fact:</strong> Context for a laptop carried to school each day</li><li><strong>Lesson fact:</strong> Consequence so programs load quickly and it is less likely to be damaged by knocks</li><li><strong>Lesson fact:</strong> Weak: &quot;SSD is better.&quot; Strong: &quot;SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop.&quot;</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end microcontroller -->
+        <!-- stage10-explanation:end answer -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Match a device to its embedded-system design</h2>
+            <h2>Choose by priority</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="greenhouse">Microwave oven</option>
-                <option value="door">Network printer</option>
-                <option value="traffic">Home router</option>
-                <option value="washer">Washing machine</option>
-                <option value="car">Smartwatch</option>
-                <option value="heater">Laptop computer</option>
+                <option value="budget">Store 10 TB of video as cheaply as possible</option>
+                <option value="mobile">Run applications on a laptop carried every day</option>
+                <option value="archive">Keep huge backups for years, rarely accessed</option>
+                <option value="transfer">Move small files between school computers</option>
+                <option value="distribution">Distribute fixed read-only content cheaply</option>
+                <option value="camera">Store photos on a small removable device inside a camera</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Explain design</button>
+            <button type="button" id="chooseBtn">Recommend</button>
           </div>
           <div class="result-box" id="componentResult" aria-live="polite"></div>
           <div class="method-box" id="componentMethod"></div>
@@ -254,12 +306,12 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Embedded-system design explanations</h2>
+            <h2>Trade-off answers in exam style</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="greenhouse">Microwave</button>
-            <button class="tab" type="button" data-example="door">Router</button>
-            <button class="tab" type="button" data-example="washing">Washing machine</button>
+            <button class="tab active" type="button" data-example="laptop">Laptop</button>
+            <button class="tab" type="button" data-example="backup">Backup</button>
+            <button class="tab" type="button" data-example="video">Video editor</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -277,18 +329,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak embedded-system answer</h2>
+            <h2>Fix the vague comparison</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"An embedded system is any small computer."</p>
+              <p class="wrong">"SSD is more efficient than HDD."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Size alone is not the definition. An embedded system is built into a larger device and performs a specific task or set of tasks.</p>
+              <p class="answer" id="mistake1">Say what "efficient" means. For example: SSD has faster access and no moving parts, so applications load faster and the laptop is less likely to be damaged by knocks.</p>
             </article>
             <article>
-              <p class="wrong">"An embedded system is just a normal computer inside a machine."</p>
+              <p class="wrong">"Tape is bad because it is slow."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">An embedded system is built into a larger device and designed for a specific task, often with limited interface, low power use and predictable control behaviour.</p>
+              <p class="answer" id="mistake2">Tape can be suitable for huge backups because it has high capacity and low cost. Slow sequential access is acceptable if data is rarely restored.</p>
             </article>
           </div>
         </section>
@@ -297,7 +349,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on purpose, integration, interface and design priorities.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on explicit characteristics and scenario-linked consequences.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -305,15 +357,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Embedded systems in six exam points</h2>
+            <h2>Characteristics decide suitability</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Embedded system</strong><span>Computer system built into a larger device for a specific task.</span></div>
-            <div><strong>Microcontroller</strong><span>Often integrates CPU, memory and I/O for control tasks.</span></div>
-            <div><strong>Integration</strong><span>CPU, memory and input/output interfaces may share one chip.</span></div>
-            <div><strong>Interface</strong><span>Usually limited to the controls and displays needed for the task.</span></div>
-            <div><strong>Resources</strong><span>Selected for cost, power and required performance.</span></div>
-            <div><strong>Reliability</strong><span>Designed for predictable repeated operation.</span></div>
+            <div><strong>Capacity</strong><span>Enough space for current and future data.</span></div>
+            <div><strong>Speed</strong><span>Read/write access affects loading, saving and transfer.</span></div>
+            <div><strong>Durability</strong><span>Resistance to shock, scratches, wear or damage.</span></div>
+            <div><strong>Portability</strong><span>Ease of carrying, removing and using between devices.</span></div>
+            <div><strong>Cost</strong><span>Device price and cost per GB.</span></div>
+            <div><strong>Exam rule</strong><span>Characteristic plus context plus consequence earns stronger credit.</span></div>
           </div>
         </section>
 
@@ -323,25 +375,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Explain why a microwave oven is an embedded system using purpose, integration and interface.</li>
-            <li>Write a 5-mark comparison between a microcontroller and a general-purpose computer.</li>
-            <li>Compare an embedded system with a general-purpose computer using purpose, interface and hardware.</li>
-            <li>Rewrite this weak sentence: "An embedded system is just a small computer."</li>
+            <li>Create a ranking table for HDD, SSD, tape, optical disc and USB flash using the five characteristics.</li>
+            <li>Write a 5-mark answer recommending storage for a school video archive and an active editing workstation.</li>
+            <li>Rewrite three vague phrases: "better", "more efficient", "more reliable" into precise storage explanations.</li>
+            <li>Write one trade-off sentence using "however" about SSD and HDD.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Microwave:</strong> it is built into the appliance, performs a dedicated set of cooking and timing tasks, and needs only a limited interface.</p>
-            <p><strong>Microcontroller:</strong> it can integrate CPU, memory and input/output interfaces on one chip, supporting low cost and low power use.</p>
-            <p><strong>Comparison:</strong> embedded system has a dedicated purpose and limited interface; general-purpose computer runs many programs.</p>
-            <p><strong>Correction:</strong> an embedded system is defined by its dedicated role inside a larger device, not merely by physical size.</p>
+            <p><strong>Ranking:</strong> use relative words such as high/medium/low and include a reason, not just ticks.</p>
+            <p><strong>Archive/editing:</strong> HDD or tape may suit large low-cost archive storage; SSD suits active editing because speed matters.</p>
+            <p><strong>Vague phrases:</strong> replace with named characteristics such as read/write speed, shock resistance or cost per GB.</p>
+            <p><strong>Trade-off:</strong> SSD is faster and more durable; however, HDD may offer more capacity for the same cost.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

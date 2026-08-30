@@ -46,9 +46,9 @@ for (const group of [["verification"], ["integrity", "data integrity"]]) {
   if (!validation.firstTeachingEvidence.conceptGroups.some((candidate) => JSON.stringify(candidate) === JSON.stringify(group))) validation.firstTeachingEvidence.conceptGroups.push(group);
 }
 validation.practiceEvidence[0].conceptGroups = [["targeted practice"], ["integrity", "data integrity"]];
-if (!validation.assessmentEvidence.some(({ questionId }) => questionId === "L069-Q1")) {
+if (!validation.assessmentEvidence.some(({ questionId }) => questionId === "L070-Q1")) {
   validation.assessmentEvidence.unshift({
-    questionId: "L069-Q1",
+    questionId: "L070-Q1",
     conceptGroups: [["validation"], ["verification"], ["integrity", "data integrity"]],
   });
 }

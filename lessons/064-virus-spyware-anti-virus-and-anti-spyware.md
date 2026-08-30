@@ -1,0 +1,216 @@
+# Lesson 064: Virus, spyware, anti-virus and anti-spyware
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Virus, spyware, anti-virus and anti-spyware
+
+### Direct explanation
+
+- A virus is malware that attaches to a host file or program and spreads when the infected host is run or shared. Spyware secretly monitors activity or collects data, such as keystrokes, credentials or browsing behaviour. These threats can damage the security of both data and the computer system.
+- Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes detected malicious code. Anti-spyware performs corresponding detection and removal for spyware; the categories may be combined in one security product, but their syllabus roles must still be stated accurately.
+- Anti-virus and anti-spyware definitions and detection rules must be updated because new threats appear. Both measures reduce risk but cannot guarantee detection of every new, modified or concealed threat.
+- Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.
+
+### Worked example
+
+**Infected attachment and keylogger:** Anti-virus scans an attachment, matches a virus signature and quarantines the infected host file before it runs. Anti-spyware detects a keylogger process, blocks it and quarantines its file so it cannot continue recording credentials. Each control is matched to the threat mechanism rather than described as a universal guarantee.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. How does a virus differ from spyware?
+   **Answer:** A virus attaches to a host and spreads when that host runs or is shared; spyware secretly monitors activity or collects data.
+2. What is the role of anti-virus software?
+   **Answer:** It scans for virus signatures or suspicious behaviour and can block, quarantine or remove detected malicious code.
+3. What is spyware designed to do?
+   **Answer:** Secretly monitor activity or collect user/system data.
+4. What does quarantine do?
+   **Answer:** Isolates suspicious code so it cannot execute normally.
+5. Why update anti-spyware definitions?
+   **Answer:** To recognise newly identified spyware.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain how anti-virus and anti-spyware software reduce different malware risks.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| anti-virus scans for virus signatures/suspicious behaviour | Do not accept that virus and spyware are synonyms, or that either security measure prevents every form of malware. | 1 |
+| blocks/quarantines/removes detected infected code |  | 1 |
+| anti-spyware scans for secret monitoring/data collection |  | 1 |
+| blocks/quarantines/removes detected spyware |  | 1 |
+| updates improve recognition of newly identified threats |  | 1 |
+| neither measure guarantees detection of every threat |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
+
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 6
+**Duration:** 45 minutes
+**Assessment rhythm:** informal questioning
+## Learning Objectives
+By the end of the lesson, students should be able to:
+1. Identify the threats, controls or security properties involved in **Malware types and social engineering**.
+2. Explain how a named control reduces a stated risk.
+3. Recommend controls for a scenario and state any relevant limitation.
+
+## Key Vocabulary
+English first, Chinese support:
+
+- confidentiality 机密性, integrity 完整性, authentication 认证, encryption 加密
+
+## Warm-Up Hook
+Ask: If the school password is `Password123`, is the threat the hacker or our optimism? Use the answer to separate threat, vulnerability and control.
+
+Focus question: Which feature distinguishes **Malware types and social engineering** from the most closely related syllabus concept?
+
+## Guided Explanation
+Build a risk chain: asset, threat, vulnerability, impact and control. For Malware types and social engineering, classify whether the control protects confidentiality, integrity, availability or authenticity. Finish with a short scenario so students choose a proportionate safeguard.
+
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
+
+Suggested timing:
+- 0-5 min: warm-up and prediction.
+- 5-18 min: teacher modelling with one visible worked example.
+- 18-30 min: guided pair task.
+- 30-38 min: exam-style question and correction.
+- 38-45 min: mini-quiz and exit ticket.
+
+## Board Plan / Teacher Talk Track
+Left: asset and threat. Middle: risk chain. Right: control mapped to CIA/authenticity.
+
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
+
+## Worked Example
+**Problem:** A school stores exam marks online. Identify two risks and one control for each.
+
+**Worked answer / marking focus:** Good answers pair the control with the risk: access rights limit unauthorised viewing, hashing protects stored passwords, backups support recovery.
+
+## Student Task
+Groups create a risk-control table for a school database, online shop or hospital system. They must include one human weakness, not only technical attacks.
+
+## Mini-Quiz
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
+
+## Exit Ticket
+Complete this sentence in English:
+"One important point from this lesson is ... . One common error is ... because ... ."
+
+## Homework
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Malware types and social engineering**. Follow its command word and apply each point to the stated context.
+
+## Marking Notes
+Award credit for:
+- Accurate terminology from Syllabus Section 6.
+- A method, diagram, trace or example that matches the topic.
+- Clear explanation of why the answer matters in the scenario.
+Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
+
+## Common Misconception and Correction Prompt
+Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Malware is malicious software; social engineering manipulates people
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-concept.jpg`
+
+1. Malware Software created to disrupt, damage, steal data or gain unauthorised access.
+2. Payload The harmful action, such as deleting files, encrypting data or stealing credentials.
+3. Propagation How it spreads, such as infected files, networks, removable media or deceptive downloads.
+4. Social engineering Manipulating a person into revealing information or performing an unsafe action.
+
+### Match controls to mechanism, not just the word "malware"
+
+- **Explains:** `controls`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-controls.jpg`
+
+1. Likely impact
+2. Suitable controls
+3. Virus/worm
+4. Corrupts data, spreads, slows systems, uses resources.
+5. Anti-malware, patching, scanning removable media, network monitoring.
+6. Disguised malicious installation or backdoor.
+7. Trusted sources, permissions review, user education, anti-malware.
+8. Secret monitoring, credential/data theft.
+9. Anti-spyware, least privilege, MFA, patching, download caution.
+10. Ransomware
+11. Loss of access to files/services.
+12. Offline backups, patching, anti-malware, restricted write access.
+
+### Ransomware denies access by encrypting or locking data
+
+- **Explains:** `ransomware`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-ransomware.jpg`
+
+1. Mechanism Encrypts files or locks systems, then demands payment for restoration.
+2. Goal affected Mainly threatens availability; may also threaten confidentiality if data is stolen.
+3. Control Offline backups, patching, anti-malware, restricted permissions and user training.
+4. Common error Paying is not a reliable recovery strategy in an exam answer.
+
+### Social engineering exploits people rather than code
+
+- **Explains:** `social`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-social.jpg`
+
+1. Mechanism Uses trust, urgency, authority, curiosity or fear to influence a user.
+2. Action User may reveal passwords, approve access, install software or transfer data.
+3. Goal affected Often threatens confidentiality and authenticity through impersonation or credential theft.
+4. Control User training, verification procedures, MFA, reporting routes and least privilege.
+
+### Spyware secretly monitors activity or collects data
+
+- **Explains:** `spyware`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-spyware.jpg`
+
+1. Mechanism Runs without clear user awareness and gathers information.
+2. Examples Keylogger, screen monitoring or browser tracking used to capture credentials.
+3. Goal affected Often threatens confidentiality and authenticity if credentials are stolen.
+4. Control Anti-malware, least privilege, patching, browser controls and caution with downloads.
+
+### Trojan: malicious code disguised as legitimate software
+
+- **Explains:** `trojan`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-trojan.jpg`
+
+1. Mechanism Appears useful or harmless so a user installs or runs it.
+2. Impact May create a backdoor, steal data, install other malware or change settings.
+3. Control Download from trusted sources, check permissions, use anti-malware and user education.
+4. Common error A Trojan does not need to self-replicate to be harmful.
+
+### Virus and worm: both can spread, but not in the same way
+
+- **Explains:** `virus`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-virus.jpg`
+
+1. Virus Attaches to a host file/program and often needs the host to be run or shared.
+2. Worm Self-replicates, often across networks, without needing to attach to a host file.
+3. Impact Can corrupt data, slow systems, consume bandwidth or install further malware.
+4. Common error Do not say every self-spreading threat is a virus.
+<!-- stage10-explanations:end -->

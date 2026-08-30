@@ -8,15 +8,15 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit is generated from a 121-requirement coverage contract and maps each requirement to direct teaching, practice/mark-scheme and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 150-lesson catalogue. Stage 10 adds 783 maintained academic infographics with source-grounded text alternatives across all 150 lessons.
+All 151 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit is generated from a 121-requirement coverage contract and maps each requirement to direct teaching, practice/mark-scheme and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 968 exam-style mark schemes (755 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 151 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 154 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 151-lesson catalogue. Stage 10 adds 784 maintained academic infographics with source-grounded text alternatives across all 151 lessons.
 
-The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. The comprehensive visual register tracks 969 diagrams and interactive visuals, including 783 Stage 10 knowledge-point infographics. Those 783 images have two recorded semantic review passes, while automated checks cover structure, dimensions, file budgets, accessible transcripts and current asset hashes.
+The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. The comprehensive visual register tracks 971 diagrams and interactive visuals, including 784 Stage 10 knowledge-point infographics. Those 784 images have two recorded semantic review passes, while automated checks cover structure, dimensions, file budgets, accessible transcripts and current asset hashes.
 
 ## Course Design
 
 - Target: AS Level only.
 - Papers: Paper 1, Sections 1-8; Paper 2, Sections 9-12.
-- Length: 150 lessons, 45 minutes each.
+- Length: 151 lessons, 45 minutes each.
 - Orientation-only lessons are not included; Lesson 001 starts with syllabus content.
 - Included: stage review, short quizzes, monthly assessments, marking guidance.
 - Excluded: school midterm and final examinations.
@@ -29,10 +29,10 @@ The shared web version prioritises classroom teaching while preserving each comp
 - `syllabus-audit.md`: requirement-level coverage evidence, gaps, and fixed repair targets.
 - `stage4-assessment-audit.md`: Stage 4 assessment acceptance criteria and verification evidence.
 - `audits/`: Stage 5 question-level approvals, Stage 6 visual QA, Stage 7 accessibility, Stage 8 release evidence and the Stage 9 classroom-delivery register.
-- `lessons/`: 150 generated lesson plans undergoing syllabus coverage and content-quality review.
+- `lessons/`: 151 generated lesson plans undergoing syllabus coverage and content-quality review.
 - `assessments/`: 51 topic-specific assessment items: 30 quizzes, 7 monthly checkpoints and 14 stage reviews, all with answer keys/MS.
 - `resources/`: glossary, pseudocode-Java guide, misconception bank, and Cambridge-style MS conventions.
-- `web/`: 150 independent teaching/self-study lesson webpages, a searchable course index, and the interactive assessment bank.
+- `web/`: 151 independent teaching/self-study lesson webpages, a searchable course index, and the interactive assessment bank.
 - `release/`: final release metadata and handover notes.
 - `dist/`: generated final ZIP and SHA-256 sidecar; ignored because they are reproducible build outputs.
 
@@ -62,7 +62,7 @@ Then open:
 
 Each lesson always displays the complete teaching and revision page. The lesson contents navigation is collapsed by default so the teaching content can use the full width; use `Show contents` to open it when needed. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework or open the Assessment Bank.
 
-All 153 web pages load `web/academic-theme.css` after their page-specific styles. This shared offline theme supplies the academic editorial typography, colour, spacing and responsive masthead while preserving each lesson's specialised diagrams and interactions. The assessment and resource generators, plus the classroom-delivery pass, retain the theme link when generated HTML is rebuilt.
+All 154 web pages load `web/academic-theme.css` after their page-specific styles. This shared offline theme supplies the academic editorial typography, colour, spacing and responsive masthead while preserving each lesson's specialised diagrams and interactions. The assessment and resource generators, plus the classroom-delivery pass, retain the theme link when generated HTML is rebuilt.
 
 If lesson HTML is regenerated, restore the shared course-home control with the idempotent command:
 
@@ -95,7 +95,7 @@ node scripts/generate-question-ao-contract.mjs
 node scripts/generate-scientific-final-audit.mjs
 ```
 
-Stage 10 covers all 783 maintained explanation targets across all 150 lessons. Each target declares its delivery role and classroom activity and uses an academically styled infographic grounded in the corresponding lesson facts, with a synchronised screen-reader transcript and matching Markdown record. At mobile width, the image is replaced by the complete transcript as readable cards instead of forcing a 720 px horizontal-scroll container.
+Stage 10 covers all 784 maintained visual explanations across all 151 lessons. Each target declares its delivery role and classroom activity and uses an academically styled infographic grounded in the corresponding lesson facts, with a synchronised screen-reader transcript and matching Markdown record. At mobile width, the image is replaced by the complete transcript as readable cards instead of forcing a 720 px horizontal-scroll container.
 
 ## Verification
 
@@ -122,7 +122,7 @@ python3 scripts/build-stage8-release.py
 node scripts/verify-stage8-release.mjs
 ```
 
-`verify-stage10.mjs --audit-only` validates the 783-row two-pass review coverage, current asset hashes, register consistency and defect accounting without requiring a clean defect gate. The default Stage 10 verifier fails while any unresolved Critical or Major semantic defect remains, so the unified verifier and release build stop before packaging.
+`verify-stage10.mjs --audit-only` validates the 784-row two-pass review coverage, current asset hashes, register consistency and defect accounting without requiring a clean defect gate. The default Stage 10 verifier fails while any unresolved Critical or Major semantic defect remains, so the unified verifier and release build stop before packaging.
 
 For the complete final acceptance workflow, run:
 
@@ -134,4 +134,4 @@ This runs every Stage 2-10 verifier plus the 121-requirement syllabus coverage g
 
 ## Generated Lesson Count
 
-Total lessons generated: 150
+Total lessons generated: 151

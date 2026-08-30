@@ -1,109 +1,115 @@
-const scores = [42, 67, 55, 81, 49];
+const marks = [
+  [12, 15, 11, 10],
+  [18, 16, 14, 13],
+  [20, 17, 19, 15],
+];
 
-const patternMap = {
+const builderMap = {
+  declare: {
+    title: "Declare a 3 by 4 mark table",
+    code: "DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER",
+    reason: "The first range is rows, the second range is columns, and each cell stores an INTEGER.",
+  },
+  input: {
+    title: "Input every cell",
+    code: "FOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        INPUT Marks[Row, Column]\n    NEXT Column\nNEXT Row",
+    reason: "The inner loop runs once for every column in each row.",
+  },
   output: {
-    title: "Traversal",
-    code: "FOR Index <- 1 TO 5\n    OUTPUT Scores[Index]\nNEXT Index",
-    reason: "Every element is visited once and output.",
+    title: "Output every cell",
+    code: "FOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        OUTPUT Marks[Row, Column]\n    NEXT Column\nNEXT Row",
+    reason: "Marks[Row, Column] accesses one cell at a time.",
   },
-  bonus: {
-    title: "Conditional update",
-    code: "FOR Index <- 1 TO 5\n    IF Scores[Index] < 50 THEN\n        Scores[Index] <- Scores[Index] + 5\n    ENDIF\nNEXT Index",
-    reason: "Only elements below 50 are changed.",
+  rowTotal: {
+    title: "Calculate one row total",
+    code: "RowTotal <- 0\nFOR Column <- 1 TO 4\n    RowTotal <- RowTotal + Marks[2, Column]\nNEXT Column\nOUTPUT RowTotal",
+    reason: "The row is fixed at 2 while the column changes.",
   },
-  find: {
-    title: "Linear search",
-    code: "Found <- FALSE\nFOR Index <- 1 TO 5\n    IF Names[Index] = TargetName THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nOUTPUT Found",
-    reason: "Each element is compared with the target and a flag records the result.",
-  },
-  count: {
-    title: "Conditional count",
-    code: "PassCount <- 0\nFOR Index <- 1 TO 5\n    IF Scores[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
-    reason: "The counter increases only when the condition is true.",
-  },
-  total: {
-    title: "Running total",
-    code: "Total <- 0\nFOR Index <- 1 TO 5\n    Total <- Total + Scores[Index]\nNEXT Index\nOUTPUT Total",
-    reason: "The running total includes every array element.",
+  allTotal: {
+    title: "Calculate whole table total",
+    code: "Total <- 0\nFOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        Total <- Total + Marks[Row, Column]\n    NEXT Column\nNEXT Row\nOUTPUT Total",
+    reason: "Both row and column change, so every cell is included.",
   },
 };
 
 const examples = {
-  traversal: {
-    title: "Example 1: Traversal",
-    problem: "Output all values in Scores[1:5].",
+  declare: {
+    title: "Example 1: Declare and input",
+    problem: "Store marks for 3 students across 4 tests.",
     rows: [
-      ["Initialise", "not needed", "no running variable"],
-      ["Loop", "FOR Index <- 1 TO 5", "all valid indexes"],
-      ["Action", "OUTPUT Scores[Index]", "one element each iteration"],
+      ["Declaration", "DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER", "3 rows and 4 columns"],
+      ["Outer loop", "FOR Row <- 1 TO 3", "selects each student"],
+      ["Inner loop", "FOR Column <- 1 TO 4", "selects each test"],
+      ["Input", "INPUT Marks[Row, Column]", "stores one cell"],
     ],
-    code: patternMap.output.code,
-    points: ["The loop bounds match the array.", "The array is accessed with an index.", "No element is skipped."],
+    code: "DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER\n\nFOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        INPUT Marks[Row, Column]\n    NEXT Column\nNEXT Row",
+    points: ["Two ranges are needed.", "Two indexes access one cell.", "The nested loops match the declared bounds."],
   },
-  update: {
-    title: "Example 2: Conditional update",
-    problem: "Add 5 bonus marks to scores below 50.",
+  lookup: {
+    title: "Example 2: Cell lookup",
+    problem: "For Marks[1:3, 1:4], find the value at row 2, column 3 when the row is 18, 16, 14, 13.",
     rows: [
-      ["Condition", "Scores[Index] < 50", "only low scores change"],
-      ["Assignment", "Scores[Index] <- Scores[Index] + 5", "same element updated"],
-      ["Unchanged values", ">= 50", "do not enter IF body"],
+      ["Row", "2", "second row"],
+      ["Column", "3", "third column"],
+      ["Cell", "Marks[2, 3]", "value is 14"],
     ],
-    code: patternMap.bonus.code,
-    points: ["The update is inside the IF.", "Only the selected element changes.", "Use the old element value on the right side."],
+    code: "OUTPUT Marks[2, 3]",
+    points: ["Row is chosen first.", "Column is chosen second.", "A single index is not enough for a 2D array."],
   },
-  search: {
-    title: "Example 3: Linear search",
-    problem: "Check whether a target name is in Names[1:5].",
+  total: {
+    title: "Example 3: Whole table total",
+    problem: "Calculate the total of all 12 marks.",
     rows: [
-      ["Flag", "Found <- FALSE", "target not seen yet"],
-      ["Compare", "Names[Index] = TargetName", "one element at a time"],
-      ["Update", "Found <- TRUE", "target appears"],
+      ["Initialise", "Total <- 0", "before both loops"],
+      ["Rows", "1 to 3", "outer loop"],
+      ["Columns", "1 to 4", "inner loop"],
+      ["Update", "Total <- Total + Marks[Row, Column]", "every cell once"],
     ],
-    code: patternMap.find.code,
-    points: ["Found is initialised before the loop.", "The comparison uses indexed access.", "Output after the loop reports the result."],
+    code: "Total <- 0\nFOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        Total <- Total + Marks[Row, Column]\n    NEXT Column\nNEXT Row\nOUTPUT Total",
+    points: ["3 * 4 = 12 updates.", "The update belongs inside the inner loop.", "Output the final total after both loops."],
   },
-  count: {
-    title: "Example 4: Conditional count",
-    problem: "Count how many scores are at least 50.",
+  rowTotal: {
+    title: "Example 4: Row total",
+    problem: "Calculate the total for row 2 only.",
     rows: [
-      ["Initialise", "PassCount <- 0", "before loop"],
-      ["Condition", "Scores[Index] >= 50", "pass threshold"],
-      ["Increment", "PassCount <- PassCount + 1", "only when true"],
+      ["Fixed row", "2", "do not loop over rows"],
+      ["Changing column", "1 to 4", "visit all columns"],
+      ["Values", "18 + 16 + 14 + 13", "row total is 61"],
     ],
-    code: patternMap.count.code,
-    points: ["Counter starts at 0.", "Counter changes only inside the IF.", "Final output is after traversal."],
+    code: "RowTotal <- 0\nFOR Column <- 1 TO 4\n    RowTotal <- RowTotal + Marks[2, Column]\nNEXT Column\nOUTPUT RowTotal",
+    points: ["The row index is fixed.", "The column index changes.", "This is not the whole table total."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which pattern visits every element once?", accepted: ["traversal", "traverse"], answer: "Traversal." },
-  { id: "p2", prompt: "Which pattern uses a Found flag?", accepted: ["search", "linear search"], answer: "Search / linear search." },
-  { id: "p3", prompt: "Which pattern increments Count only when a condition is true?", accepted: ["count", "conditional count", "counting"], answer: "Conditional count." },
-  { id: "p4", prompt: "Where should Total <- Total + Scores[Index] be placed to include every element?", accepted: ["inside loop", "inside the loop"], answer: "Inside the loop." },
-  { id: "p5", prompt: "For Scores[1:5], should the loop be Index <- 1 TO 5 or 0 TO 4 in Cambridge pseudocode?", accepted: ["1 to 5", "index <- 1 to 5", "1"], answer: "Index <- 1 TO 5, unless different bounds are declared." },
-  { id: "p6", prompt: "If scores are 42, 67, 55, 81, 49, how many are >= 50?", accepted: ["3"], answer: "3." },
-  { id: "p7", prompt: "If Total starts at 0, what is the total of 42, 67 and 55?", accepted: ["164"], answer: "164." },
-  { id: "p8", prompt: "In Scores[Index] <- Scores[Index] + 5, does the whole array change or one element?", accepted: ["one element", "element", "one"], answer: "One element at the current index." },
-  { id: "p9", prompt: "Should Found usually be initialised before or after the search loop?", accepted: ["before", "before loop", "before the loop"], answer: "Before the loop." },
-  { id: "p10", prompt: "Is Java syntax the expected Paper 2 answer format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
+  { id: "p1", prompt: "How many indexes are needed to access one cell in a two-dimensional array?", accepted: ["2", "two"], answer: "Two indexes: row and column." },
+  { id: "p2", prompt: "In Marks[2, 3], which index is usually the row?", accepted: ["2", "first", "first index"], answer: "2, the first index." },
+  { id: "p3", prompt: "In Marks[2, 3], which index is usually the column?", accepted: ["3", "second", "second index"], answer: "3, the second index." },
+  { id: "p4", prompt: "How many cells are in ARRAY[1:3, 1:4]?", accepted: ["12"], answer: "12 cells." },
+  { id: "p5", prompt: "For ARRAY[1:3, 1:4], is Marks[4, 1] valid? yes or no.", accepted: ["no"], answer: "No. Row 4 is outside 1 to 3." },
+  { id: "p6", prompt: "For ARRAY[1:3, 1:4], is Marks[3, 4] valid? yes or no.", accepted: ["yes"], answer: "Yes. Row 3 and column 4 are both within bounds." },
+  { id: "p7", prompt: "What kind of loop structure is used to traverse every cell?", accepted: ["nested", "nested loop", "nested loops"], answer: "Nested loops." },
+  { id: "p8", prompt: "If the outer loop runs 3 times and inner loop runs 4 times each outer pass, how many inner actions run?", accepted: ["12"], answer: "12 inner actions." },
+  { id: "p9", prompt: "For a row total of row 2, should Row change or stay fixed?", accepted: ["fixed", "stay fixed", "stay the same"], answer: "Row stays fixed; Column changes." },
+  { id: "p10", prompt: "Is Java's row 0 automatically correct for Cambridge ARRAY[1:3, 1:4]? yes or no.", accepted: ["no"], answer: "No. Follow the bounds given in the Cambridge pseudocode question." },
 ];
 
 const mistakes = [
   {
-    wrong: "I wrote IF Scores >= 50 THEN instead of using an element.",
-    fix: "Use indexed access: IF Scores[Index] >= 50 THEN. The whole array cannot be compared as one mark.",
+    wrong: "I wrote Marks[Index] for a two-dimensional array.",
+    fix: "Use two indexes for one cell, for example Marks[Row, Column].",
   },
   {
-    wrong: "I initialised PassCount inside the loop.",
-    fix: "Initialise PassCount before the loop. If it is set to 0 each iteration, the previous count is lost.",
+    wrong: "I looped Row from 1 to 4 and Column from 1 to 3 for ARRAY[1:3, 1:4].",
+    fix: "Match the declaration: Row is 1 to 3 and Column is 1 to 4.",
   },
   {
-    wrong: "I output the final count inside the loop.",
-    fix: "Output the final count after the loop unless the question asks for a running count.",
+    wrong: "I put the total update after the inner loop when I needed every cell.",
+    fix: "The update using Marks[Row, Column] must be inside the inner loop so every column in every row is included.",
   },
   {
-    wrong: "I copied Java indexes into Cambridge pseudocode.",
-    fix: "Use the bounds declared in the question, for example ARRAY[1:5] means FOR Index <- 1 TO 5.",
+    wrong: "I copied Java zero-based indexing into Cambridge pseudocode.",
+    fix: "Java support may use row 0 and column 0, but Cambridge pseudocode should follow the declared bounds.",
   },
 ];
 
@@ -117,99 +123,98 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Write pseudocode to count how many values in Scores[1:20] are greater than or equal to 50.",
-    answer: "PassCount <- 0\nFOR Index <- 1 TO 20\n    IF Scores[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+    prompt: "Write declarations for a two-dimensional array called Marks to store integer marks for 5 students and 4 tests. Then write pseudocode to input every mark.",
+    answer: "DECLARE Marks : ARRAY[1:5, 1:4] OF INTEGER\n\nFOR Student <- 1 TO 5\n    FOR Test <- 1 TO 4\n        INPUT Marks[Student, Test]\n    NEXT Test\nNEXT Student",
     marking: [
-      { mark: "B1", text: "initialises PassCount/count to 0" },
-      { mark: "M1", text: "uses loop covering indexes 1 to 20" },
-      { mark: "M1", text: "accesses Scores[Index] or equivalent indexed element" },
-      { mark: "A1", text: "tests element >= 50" },
-      { mark: "A1", text: "increments count only when condition is true" },
-      { mark: "B1", text: "outputs final count after loop" },
+      { mark: "B1", text: "uses identifier Marks" },
+      { mark: "B1", text: "declares a two-dimensional ARRAY" },
+      { mark: "B1", text: "uses suitable row/student bounds for 5 students" },
+      { mark: "B1", text: "uses suitable column/test bounds for 4 tests and INTEGER type" },
+      { mark: "M1", text: "uses nested loops matching the array bounds" },
+      { mark: "A1", text: "inputs into Marks[Student, Test] or equivalent two-index cell" },
     ],
     strict: [
-      "Do not award condition mark for IF Scores >= 50 without index.",
-      "Allow > 49 as equivalent condition.",
-      "Do not award final output mark if only running counts are output inside the loop.",
+      "Do not award 2D declaration marks for five separate one-dimensional arrays.",
+      "Allow ARRAY[0:4, 0:3] only if loops and explanation are consistent.",
+      "Do not award input mark for INPUT Marks without two indexes.",
     ],
   },
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Scores[1:5] stores 42, 67, 55, 81, 49. Complete a trace table for PassCount after counting scores >= 50.",
-    answer: "PassCount starts at 0. Index 1, 42 is not >= 50 so PassCount remains 0. Index 2, 67 is >= 50 so PassCount becomes 1. Index 3, 55 is >= 50 so PassCount becomes 2. Index 4, 81 is >= 50 so PassCount becomes 3. Index 5, 49 is not >= 50 so final PassCount is 3.",
+    prompt: "A 2 by 3 array Values stores row 1 as 2, 4, 6 and row 2 as 1, 3, 5. Complete a trace table for the total when nested loops add every cell.",
+    answer: "Total starts at 0. Row 1 column 1 adds 2 so Total = 2. Row 1 column 2 adds 4 so Total = 6. Row 1 column 3 adds 6 so Total = 12. Row 2 column 1 adds 1 so Total = 13. Row 2 column 2 adds 3 so Total = 16. Row 2 column 3 adds 5 so final Total = 21.",
     marking: [
-      { mark: "M1", text: "initialises PassCount to 0 before tracing the array" },
-      { mark: "A1", text: "PassCount remains 0 after 42" },
-      { mark: "A1", text: "PassCount becomes 1 after 67" },
-      { mark: "A1", text: "PassCount becomes 2 after 55" },
-      { mark: "A1", text: "PassCount becomes 3 after 81" },
-      { mark: "A1", text: "PassCount remains 3 after 49" },
-      { mark: "B1", text: "final PassCount = 3 clearly stated" },
+      { mark: "B1", text: "states Total starts at 0" },
+      { mark: "M1", text: "uses row 1 values in column order" },
+      { mark: "A1", text: "Total = 2 after first cell" },
+      { mark: "A1", text: "Total = 6 after second cell" },
+      { mark: "A1", text: "Total = 12 after row 1" },
+      { mark: "A1", text: "Total = 16 after row 2 column 2" },
+      { mark: "A1", text: "final Total = 21" },
     ],
     strict: [
-      "Award values in iteration order.",
-      "Allow trace table format.",
-      "Do not award final mark if 49 is counted as passing.",
+      "Award trace marks for values in nested-loop order.",
+      "Allow a table format.",
+      "Do not award final mark if row/column order skips a cell.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 3",
-    marks: "8 marks",
-    prompt: "Write pseudocode to search Codes[1:30] for TargetCode and output Found or Not found.",
-    answer: "Found <- FALSE\nFOR Index <- 1 TO 30\n    IF Codes[Index] = TargetCode THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nIF Found = TRUE THEN\n    OUTPUT \"Found\"\nELSE\n    OUTPUT \"Not found\"\nENDIF",
+    marks: "5 marks",
+    prompt: "Explain why Grid[4, 2] is invalid if Grid is declared as ARRAY[1:3, 1:5] OF BOOLEAN.",
+    answer: "The declaration gives valid row indexes from 1 to 3 and valid column indexes from 1 to 5. Grid[4, 2] uses row index 4, which is outside the row bounds. Therefore it does not refer to a valid cell even though column 2 is valid.",
     marking: [
-      { mark: "B1", text: "initialises Found to FALSE" },
-      { mark: "M1", text: "uses loop covering indexes 1 to 30" },
-      { mark: "M1", text: "accesses Codes[Index] or equivalent" },
-      { mark: "A1", text: "compares element with TargetCode" },
-      { mark: "A1", text: "sets Found to TRUE when match found" },
-      { mark: "B1", text: "outputs Found when Found is TRUE" },
-      { mark: "B1", text: "outputs Not found when Found is FALSE" },
-      { mark: "B1", text: "uses clear Cambridge-style block structure" },
+      { mark: "B1", text: "states valid row bounds are 1 to 3" },
+      { mark: "B1", text: "states valid column bounds are 1 to 5" },
+      { mark: "B1", text: "identifies row 4 is outside the declared bounds" },
+      { mark: "B1", text: "states Grid[4, 2] does not refer to a valid cell" },
+      { mark: "B1", text: "recognises column 2 itself is valid" },
     ],
     strict: [
-      "Do not award comparison mark for comparing Codes without an index.",
-      "Allow early exit if logic remains correct.",
-      "Do not require exact output strings if meaning is clear.",
+      "Do not accept only 'out of range' without naming which dimension is out of range.",
+      "Allow 'subscript' for index.",
+      "Do not award valid-cell mark if candidate claims row 4 is allowed.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Write pseudocode to add 5 to every value in Marks[1:10] that is below 40.",
-    answer: "FOR Index <- 1 TO 10\n    IF Marks[Index] < 40 THEN\n        Marks[Index] <- Marks[Index] + 5\n    ENDIF\nNEXT Index",
+    marks: "7 marks",
+    prompt: "Write pseudocode to calculate and output the total of row 2 only in Sales[1:3, 1:4].",
+    answer: "RowTotal <- 0\nFOR Column <- 1 TO 4\n    RowTotal <- RowTotal + Sales[2, Column]\nNEXT Column\nOUTPUT RowTotal",
     marking: [
-      { mark: "M1", text: "uses loop covering indexes 1 to 10" },
-      { mark: "M1", text: "accesses Marks[Index] or equivalent indexed element" },
-      { mark: "A1", text: "tests element < 40" },
-      { mark: "A1", text: "updates the same indexed element" },
-      { mark: "A1", text: "adds 5 to existing value, not replaces with 5" },
-      { mark: "B1", text: "does not change values that are 40 or above" },
+      { mark: "B1", text: "initialises RowTotal to 0" },
+      { mark: "M1", text: "uses loop over Column 1 to 4" },
+      { mark: "B1", text: "keeps row index fixed at 2" },
+      { mark: "M1", text: "accesses Sales[2, Column] or equivalent" },
+      { mark: "A1", text: "adds each selected cell to RowTotal" },
+      { mark: "B1", text: "does not loop over all rows" },
+      { mark: "A1", text: "outputs RowTotal after the loop" },
     ],
     strict: [
-      "Do not award update mark if assignment is Marks[Index] <- 5.",
-      "Allow <= 39 for integer marks.",
-      "Do not award condition mark if the whole array is compared.",
+      "Do not award fixed-row mark if Row is looped from 1 to 3.",
+      "Allow a named constant for selected row 2.",
+      "Do not award output mark if only partial totals are output inside the loop.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A student initialises Count <- 0 inside the loop used to count negative values in Data[1:50]. Explain the error and correct it.",
-    answer: "The error is that Count is reset to 0 on every iteration, so previous negative values that were counted are lost. Count should be initialised once before the loop. Inside the loop, the algorithm should test Data[Index] < 0 and increment Count only when that condition is true.",
+    marks: "6 marks",
+    prompt: "A student writes Total <- Total + Marks[Row] inside nested loops for Marks[1:3, 1:4]. Explain the error and correct it.",
+    answer: "Marks is a two-dimensional array, so one cell needs two indexes. Marks[Row] gives only one index and does not identify a column. The correction is Total <- Total + Marks[Row, Column] inside the inner loop, so each row-column cell is added.",
     marking: [
-      { mark: "B1", text: "identifies Count is reset each iteration" },
-      { mark: "B1", text: "explains previous count is lost" },
-      { mark: "B1", text: "states Count should be initialised before the loop" },
-      { mark: "B1", text: "uses indexed condition Data[Index] < 0" },
-      { mark: "B1", text: "increments Count only when condition is true" },
+      { mark: "B1", text: "states Marks is two-dimensional" },
+      { mark: "B1", text: "identifies one index is insufficient" },
+      { mark: "B1", text: "explains the column is missing / cell not identified" },
+      { mark: "B1", text: "gives corrected access Marks[Row, Column]" },
+      { mark: "B1", text: "places correction inside the inner loop / every cell processed" },
+      { mark: "B1", text: "explains corrected statement adds each cell to Total" },
     ],
     strict: [
-      "Do not accept only 'it is in the wrong place' without explaining reset/loss.",
-      "Allow negative test phrased as less than zero.",
-      "Do not award indexed condition mark for testing Data without index.",
-      "Allow an equivalent counter if it is used consistently.",
+      "Do not award correction for Marks[Column] because row is then missing.",
+      "Allow equivalent row/column variable names.",
+      "Do not accept 'syntax is wrong' without explaining missing dimension.",
     ],
   },
 ];
@@ -224,7 +229,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9 <>=+-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9 -]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -243,10 +248,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    traversal: "Traversal is part of it, but the task also counts selected elements.",
-    update: "No element is changed here; only a counter changes.",
-    search: "Search asks whether a target exists. This asks how many scores satisfy a condition.",
-    count: "Correct. The array is traversed and the counter increases only for scores at least 50.",
+    single: "One index gives a position in a line, not a row-and-column seat.",
+    two: "Correct. Row and column are kept as two separate indexes.",
+    string: "Text can describe the seat, but it is not ideal for numeric indexed access.",
+    constant: "A constant cannot represent many seats in a grid.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -257,33 +262,28 @@ function setupHook() {
   });
 }
 
-function setupPatternSelector() {
-  const input = document.querySelector("#patternInput");
-  const result = document.querySelector("#patternResult");
-  document.querySelector("#patternBtn").addEventListener("click", () => {
-    const item = patternMap[input.value];
+function setupLookup() {
+  const result = document.querySelector("#lookupResult");
+  document.querySelector("#lookupBtn").addEventListener("click", () => {
+    const row = Number(document.querySelector("#rowInput").value);
+    const column = Number(document.querySelector("#columnInput").value);
+    if (row < 1 || row > marks.length || column < 1 || column > marks[0].length) {
+      result.innerHTML = `<p><strong>Out of range.</strong> Marks is ARRAY[1:3, 1:4], so row ${row} and column ${column} must both be within bounds.</p>`;
+      return;
+    }
+    result.innerHTML = `<p>Marks[${row}, ${column}] = <strong>${marks[row - 1][column - 1]}</strong>.</p>`;
+  });
+}
+
+function setupBuilder() {
+  const input = document.querySelector("#builderInput");
+  const result = document.querySelector("#builderResult");
+  document.querySelector("#builderBtn").addEventListener("click", () => {
+    const item = builderMap[input.value];
     result.innerHTML = `
       <h3>${escapeHtml(item.title)}</h3>
       <pre><code>${escapeHtml(item.code)}</code></pre>
       <p>${escapeHtml(item.reason)}</p>
-    `;
-  });
-}
-
-function setupTraceRunner() {
-  const result = document.querySelector("#traceResult");
-  document.querySelector("#traceBtn").addEventListener("click", () => {
-    const threshold = Number(document.querySelector("#thresholdInput").value);
-    let count = 0;
-    const rows = scores.map((score, index) => {
-      const passed = score >= threshold;
-      if (passed) count += 1;
-      return [String(index + 1), String(score), passed ? "TRUE" : "FALSE", String(count)];
-    });
-    result.innerHTML = `
-      <p>Counting scores greater than or equal to ${threshold}.</p>
-      ${tableMarkup(["Index", "Score", "Condition", "Count"], rows)}
-      <p><strong>Final count: ${count}</strong></p>
     `;
   });
 }
@@ -301,7 +301,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("traversal");
+  renderExample("declare");
   document.querySelectorAll("[data-example]").forEach((tab) => {
     tab.addEventListener("click", () => {
       document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
@@ -332,7 +332,7 @@ function renderPractice() {
       const value = normalise(document.querySelector(`#${item.id}`).value);
       const correct = item.accepted.some((answer) => value === normalise(answer));
       const mark = document.querySelector(`#${item.id}Mark`);
-      mark.textContent = correct ? "Correct. The algorithm pattern is clear." : "Not quite. Check the pattern, index or update placement.";
+      mark.textContent = correct ? "Correct. The row/column reasoning is precise." : "Not quite. Check row, column, bounds or nested loop count.";
       mark.className = correct ? "mark correct" : "mark incorrect";
     });
   });
@@ -395,8 +395,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupPatternSelector();
-setupTraceRunner();
+setupLookup();
+setupBuilder();
 setupExamples();
 renderPractice();
 renderMistakes();

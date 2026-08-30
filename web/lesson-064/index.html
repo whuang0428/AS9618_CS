@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 064 | Hacking, phishing, pharming, and denial-of-service attacks</title>
+    <title>AS9618 Lesson 064 | Virus, spyware, anti-virus and anti-spyware</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Hacking, phishing, pharming, and denial-of-service attacks</h1>
+        <h1>Virus, spyware, anti-virus and anti-spyware</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,14 +29,14 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#core">Core idea</a>
-        <a href="#hacking">Hacking</a>
-        <a href="#phishing">Phishing</a>
-        <a href="#pharming">Pharming</a>
-        <a href="#dos">DoS</a>
-        <a href="#compare">Compare</a>
+        <a href="#concept">Core idea</a>
+        <a href="#virus">Virus/worm</a>
+        <a href="#trojan">Trojan</a>
+        <a href="#spyware">Spyware</a>
+        <a href="#ransomware">Ransomware</a>
+        <a href="#social">Social engineering</a>
         <a href="#controls">Controls</a>
-        <a href="#tool">Attack tool</a>
+        <a href="#tool">Threat tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -55,56 +55,61 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Required internet threats and matching risk-reduction methods</h2>
+            <h2>Virus, spyware, anti-virus and anti-spyware</h2>
           </div>
           <div class="stage2-explanation">
-            <p>The required threats are malware (virus and spyware), hackers, phishing and pharming. A hacker gains unauthorised access to a computer system or data. Phishing uses a deceptive message, link or site to persuade a user to disclose information. Pharming redirects traffic to a fake website, possibly even after the user enters the correct address.</p>
-            <p>Methods restrict risk only when their mechanism matches the threat: updated anti-virus and anti-spyware can detect known malware; user training and independent contact checks reduce phishing; secure DNS, certificate/HTTPS checks and patched software reduce pharming risk; strong authentication, access rights, patching, firewalls and monitoring reduce unauthorised access by hackers.</p>
-            <p>A control reduces likelihood or impact; it rarely makes an attack impossible. Layered controls are needed because people, software, credentials and network traffic provide different attack routes.</p>
+            <p>A virus is malware that attaches to a host file or program and spreads when the infected host is run or shared. Spyware secretly monitors activity or collects data, such as keystrokes, credentials or browsing behaviour. These threats can damage the security of both data and the computer system.</p>
+            <p>Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes detected malicious code. Anti-spyware performs corresponding detection and removal for spyware; the categories may be combined in one security product, but their syllabus roles must still be stated accurately.</p>
+            <p>Anti-virus and anti-spyware definitions and detection rules must be updated because new threats appear. Both measures reduce risk but cannot guarantee detection of every new, modified or concealed threat.</p>
+            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Protect an online payroll service</h3>
-            <p>Staff receive a phishing email while a hacker probes the server and pharming redirects one user towards a fake site. Training and an independent sender check reduce phishing risk; multi-factor authentication reduces the value of a stolen password; a firewall filters unwanted traffic; access rights limit what an authenticated account may change; updated anti-virus and anti-spyware detect known virus or spyware signatures; secure DNS and certificate warnings reduce pharming risk.</p>
+            <h3>Worked example: Infected attachment and keylogger</h3>
+            <p>Anti-virus scans an attachment, matches a virus signature and quarantines the infected host file before it runs. Anti-spyware detects a keylogger process, blocks it and quarantines its file so it cannot continue recording credentials. Each control is matched to the threat mechanism rather than described as a universal guarantee.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required internet threats and matching risk-reduction methods: apply and assess</h2>
+            <h2>Virus, spyware, anti-virus and anti-spyware: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Compare phishing from pharming.</p>
-              <details><summary>Show answer</summary><p>Phishing persuades through a deceptive message/link/site; pharming redirects traffic to a fake site, potentially after the correct address is entered.</p></details>
+              <p><strong>1.</strong> How does a virus differ from spyware?</p>
+              <details><summary>Show answer</summary><p>A virus attaches to a host and spreads when that host runs or is shared; spyware secretly monitors activity or collects data.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What is the syllabus meaning of a hacker threat?</p>
-              <details><summary>Show answer</summary><p>A person gaining or attempting unauthorised access to a computer system or data.</p></details>
+              <p><strong>2.</strong> What is the role of anti-virus software?</p>
+              <details><summary>Show answer</summary><p>It scans for virus signatures or suspicious behaviour and can block, quarantine or remove detected malicious code.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Draw lines to match virus, spyware, phishing and pharming to one suitable risk-reduction method each.</p>
-              <details><summary>Show answer</summary><p>Updated anti-virus; updated anti-spyware; training/independent verification; secure DNS plus certificate/HTTPS checks, respectively.</p></details>
+              <p><strong>3.</strong> What is spyware designed to do?</p>
+              <details><summary>Show answer</summary><p>Secretly monitor activity or collect user/system data.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why are layered controls required?</p>
-              <details><summary>Show answer</summary><p>Different controls address different attack routes, so failure or bypass of one control need not expose the whole system.</p></details>
+              <p><strong>4.</strong> What does quarantine do?</p>
+              <details><summary>Show answer</summary><p>Isolates suspicious code so it cannot execute normally.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why update anti-spyware definitions?</p>
+              <details><summary>Show answer</summary><p>To recognise newly identified spyware.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For each of virus, spyware, hacking, phishing and pharming, describe the threat route and one matching method that restricts its risk.</p>
+            <p>Explain how anti-virus and anti-spyware software reduce different malware risks.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>virus route plus anti-virus mechanism</td><td>Do not define phishing and pharming identically or award a control that is unrelated to the stated attack route.</td><td>1</td></tr>
-                  <tr><td>spyware route plus anti-spyware mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>hacker/unauthorised-access route plus a matching access/network control</td><td></td><td>1</td></tr>
-                  <tr><td>phishing/deception route plus training or independent verification</td><td></td><td>1</td></tr>
-                  <tr><td>pharming/redirection route plus secure DNS/certificate/HTTPS or patched-software control</td><td></td><td>1</td></tr>
-                  <tr><td>states that controls reduce rather than eliminate risk</td><td></td><td>1</td></tr>
+                  <tr><td>anti-virus scans for virus signatures/suspicious behaviour</td><td>Do not accept that virus and spyware are synonyms, or that either security measure prevents every form of malware.</td><td>1</td></tr>
+                  <tr><td>blocks/quarantines/removes detected infected code</td><td></td><td>1</td></tr>
+                  <tr><td>anti-spyware scans for secret monitoring/data collection</td><td></td><td>1</td></tr>
+                  <tr><td>blocks/quarantines/removes detected spyware</td><td></td><td>1</td></tr>
+                  <tr><td>updates improve recognition of newly identified threats</td><td></td><td>1</td></tr>
+                  <tr><td>neither measure guarantees detection of every threat</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -115,277 +120,283 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 064 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Same target, different route: access, trick, redirect, overload.</h2>
+            <h2>Some attacks target software. Some target the person holding the keyboard.</h2>
             <p>
-              This lesson separates four common attack types. Hacking focuses on unauthorised access.
-              Phishing tricks users into giving information. Pharming redirects users to a fake site.
-              Denial-of-service attacks make a service unavailable.
+              Malware is malicious software designed to damage, disrupt, steal or gain unauthorised access.
+              Social engineering manipulates people into giving access, information or permission.
+              Exam answers need the mechanism, not just a scary label.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>hacking, phishing, pharming and DoS with precise wording</span></div>
-              <div><strong>Classify</strong><span>attack scenarios by mechanism, not by panic level</span></div>
-              <div><strong>Explain</strong><span>impact and suitable controls using CIA and authenticity language</span></div>
+              <div><strong>Classify</strong><span>common malware types by mechanism and impact</span></div>
+              <div><strong>Explain</strong><span>how social engineering exploits human trust or pressure</span></div>
+              <div><strong>Recommend</strong><span>controls that match the threat and protected security goal</span></div>
             </div>
           </div>
-          <div class="attack-card" aria-label="Attack routes">
-            <div class="route-stack">
-              <span>Hacking -> unauthorised access</span>
-              <span>Phishing -> fake request / fake page</span>
-              <span>Pharming -> redirected to fake site</span>
-              <span>DoS -> service overwhelmed</span>
+          <div class="threat-card" aria-label="Threat map">
+            <div class="threat-stack">
+              <span>Virus: attaches, needs host/action</span>
+              <span>Worm: self-replicates across networks</span>
+              <span>Trojan: disguised as legitimate</span>
+              <span>Spyware: secretly monitors/steals</span>
+              <span>Social engineering: manipulates people</span>
             </div>
-            <p>Exam shortcut: name the route, then explain the damage.</p>
+            <p>If the attack starts with "just click this", check both the device and the decision.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style answers reward the mechanism. "It is dangerous" is true, but it is not a full mark machine.</p>
+            <p>Many candidates list names of malware but do not describe what each one does. Names alone are low-yield.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Phishing and pharming both involve fake destinations, but phishing tricks the user; pharming redirects the traffic.</p>
+            <p>Do not use encryption as a cure for every threat. It may protect confidentiality but does not remove malware or train users.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A user types the correct bank URL but lands on a convincing fake banking page. What is the best diagnosis?</h2>
-            <p>The user did not mistype. The browser is basically saying, "I followed the map; the map lied."</p>
+            <h2>A user installs a "free game update" that secretly records keystrokes. What is the best diagnosis?</h2>
+            <p>Click the best answer. The update was free in the same way a trapdoor is open-plan architecture.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="pharming">Pharming, because redirection sends the user to a fake site</button>
-            <button class="choice-card" type="button" data-hook="phishing">Phishing only, because every fake site is phishing</button>
-            <button class="choice-card" type="button" data-hook="dos">DoS, because the bank service is unavailable</button>
-            <button class="choice-card" type="button" data-hook="hacking">Hacking only, because someone must have guessed a password</button>
+            <button class="choice-card" type="button" data-hook="trojan-spyware">Trojan delivery with spyware/keylogging behaviour</button>
+            <button class="choice-card" type="button" data-hook="worm">Worm only, because all malware spreads by itself</button>
+            <button class="choice-card" type="button" data-hook="availability">Availability control, because it is always about uptime</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup, because every security question wants backup</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The clue is correct URL plus redirection.
+            Choose one. Look for disguise, behaviour and data impact.
           </div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Start from mechanism, then discuss impact</h2>
+            <h2>Malware is malicious software; social engineering manipulates people</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Asset</strong><span>Data, account, system or service being protected.</span></article>
-            <article><strong>Attack vector</strong><span>The route used by the attacker: access, deception, redirection or flooding.</span></article>
-            <article><strong>Impact</strong><span>Loss of confidentiality, integrity, availability or authenticity.</span></article>
-            <article><strong>Control</strong><span>A safeguard that reduces risk, detects attack or supports recovery.</span></article>
+            <article><strong>Malware</strong><span>Software created to disrupt, damage, steal data or gain unauthorised access.</span></article>
+            <article><strong>Payload</strong><span>The harmful action, such as deleting files, encrypting data or stealing credentials.</span></article>
+            <article><strong>Propagation</strong><span>How it spreads, such as infected files, networks, removable media or deceptive downloads.</span></article>
+            <article><strong>Social engineering</strong><span>Manipulating a person into revealing information or performing an unsafe action.</span></article>
           </div>
-          <div class="callout">Chinese support: attack vector = 攻击途径；unauthorised access = 未授权访问；availability = 可用性；authenticity = 真实性/身份可信。</div>
+          <div class="callout">Chinese support: malware = 恶意软件；payload = 有害载荷/破坏行为；propagation = 传播方式；social engineering = 社会工程学攻击。</div>
         </section>
 
-        <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Start from mechanism, then discuss impact</h2>
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Malware is malicious software; social engineering manipulates people</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Start from mechanism, then discuss impact with a structured visual model." />
-            <figcaption class="explanation-sr-only">Start from mechanism, then discuss impact: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Malware is malicious software; social engineering manipulates people with a structured visual model." />
+            <figcaption class="explanation-sr-only">Malware is malicious software; social engineering manipulates people: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Asset Data, account, system or service being protected.</li><li><strong>Lesson fact:</strong> Attack vector The route used by the attacker: access, deception, redirection or flooding.</li><li><strong>Lesson fact:</strong> Impact Loss of confidentiality, integrity, availability or authenticity.</li><li><strong>Lesson fact:</strong> Control A safeguard that reduces risk, detects attack or supports recovery.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Malware Software created to disrupt, damage, steal data or gain unauthorised access.</li><li><strong>Lesson fact:</strong> Payload The harmful action, such as deleting files, encrypting data or stealing credentials.</li><li><strong>Lesson fact:</strong> Propagation How it spreads, such as infected files, networks, removable media or deceptive downloads.</li><li><strong>Lesson fact:</strong> Social engineering Manipulating a person into revealing information or performing an unsafe action.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end core -->
-        <section class="panel" id="hacking" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+        <!-- stage10-explanation:end concept -->
+        <section class="panel" id="virus" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Hacking: gaining unauthorised access to a system or data</h2>
+            <h2>Virus and worm: both can spread, but not in the same way</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Bypasses or abuses access controls to enter an account, device or system.</span></article>
-            <article><strong>Examples</strong><span>Using stolen credentials, exploiting a vulnerability or accessing an account without permission.</span></article>
-            <article><strong>Impact</strong><span>Data may be viewed, copied, changed or deleted; system settings may be altered.</span></article>
-            <article><strong>Common error</strong><span>Do not use "hacking" as a label for every cyber attack. It specifically involves unauthorised access.</span></article>
+            <article><strong>Virus</strong><span>Attaches to a host file/program and often needs the host to be run or shared.</span></article>
+            <article><strong>Worm</strong><span>Self-replicates, often across networks, without needing to attach to a host file.</span></article>
+            <article><strong>Impact</strong><span>Can corrupt data, slow systems, consume bandwidth or install further malware.</span></article>
+            <article><strong>Common error</strong><span>Do not say every self-spreading threat is a virus.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start hacking -->
-        <section class="panel explanation-panel" id="explanation-hacking" data-explains="hacking" data-explanation-kind="mechanism" aria-labelledby="explanation-hacking-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-hacking-title">Hacking: gaining unauthorised access to a system or data</h2>
+        <!-- stage10-explanation:start virus -->
+        <section class="panel explanation-panel" id="explanation-virus" data-explains="virus" data-explanation-kind="mechanism" aria-labelledby="explanation-virus-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+          <h2 class="explanation-sr-only" id="explanation-virus-title">Virus and worm: both can spread, but not in the same way</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-hacking.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Hacking: gaining unauthorised access to a system or data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Hacking: gaining unauthorised access to a system or data: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-virus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Virus and worm: both can spread, but not in the same way with a structured visual model." />
+            <figcaption class="explanation-sr-only">Virus and worm: both can spread, but not in the same way: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Bypasses or abuses access controls to enter an account, device or system.</li><li><strong>Lesson fact:</strong> Examples Using stolen credentials, exploiting a vulnerability or accessing an account without permission.</li><li><strong>Lesson fact:</strong> Impact Data may be viewed, copied, changed or deleted; system settings may be altered.</li><li><strong>Lesson fact:</strong> Common error Do not use &quot;hacking&quot; as a label for every cyber attack. It specifically involves unauthorised access.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Virus Attaches to a host file/program and often needs the host to be run or shared.</li><li><strong>Lesson fact:</strong> Worm Self-replicates, often across networks, without needing to attach to a host file.</li><li><strong>Lesson fact:</strong> Impact Can corrupt data, slow systems, consume bandwidth or install further malware.</li><li><strong>Lesson fact:</strong> Common error Do not say every self-spreading threat is a virus.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end hacking -->
-        <section class="panel" id="phishing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+        <!-- stage10-explanation:end virus -->
+        <section class="panel" id="trojan" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Phishing: tricking users into revealing information or visiting a fake page</h2>
+            <h2>Trojan: malicious code disguised as legitimate software</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Uses deceptive emails, messages or websites that appear to come from a trusted source.</span></article>
-            <article><strong>User action</strong><span>The user may enter credentials, personal data or payment details.</span></article>
-            <article><strong>Clues</strong><span>Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.</span></article>
-            <article><strong>Impact</strong><span>Credential theft can lead to unauthorised access and impersonation.</span></article>
+            <article><strong>Mechanism</strong><span>Appears useful or harmless so a user installs or runs it.</span></article>
+            <article><strong>Impact</strong><span>May create a backdoor, steal data, install other malware or change settings.</span></article>
+            <article><strong>Control</strong><span>Download from trusted sources, check permissions, use anti-malware and user education.</span></article>
+            <article><strong>Common error</strong><span>A Trojan does not need to self-replicate to be harmful.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start phishing -->
-        <section class="panel explanation-panel" id="explanation-phishing" data-explains="phishing" data-explanation-kind="mechanism" aria-labelledby="explanation-phishing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-phishing-title">Phishing: tricking users into revealing information or visiting a fake page</h2>
+        <!-- stage10-explanation:start trojan -->
+        <section class="panel explanation-panel" id="explanation-trojan" data-explains="trojan" data-explanation-kind="mechanism" aria-labelledby="explanation-trojan-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+          <h2 class="explanation-sr-only" id="explanation-trojan-title">Trojan: malicious code disguised as legitimate software</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-phishing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Phishing: tricking users into revealing information or visiting a fake page with a structured visual model." />
-            <figcaption class="explanation-sr-only">Phishing: tricking users into revealing information or visiting a fake page: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-trojan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trojan: malicious code disguised as legitimate software with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trojan: malicious code disguised as legitimate software: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Uses deceptive emails, messages or websites that appear to come from a trusted source.</li><li><strong>Lesson fact:</strong> User action The user may enter credentials, personal data or payment details.</li><li><strong>Lesson fact:</strong> Clues Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.</li><li><strong>Lesson fact:</strong> Impact Credential theft can lead to unauthorised access and impersonation.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Appears useful or harmless so a user installs or runs it.</li><li><strong>Lesson fact:</strong> Impact May create a backdoor, steal data, install other malware or change settings.</li><li><strong>Lesson fact:</strong> Control Download from trusted sources, check permissions, use anti-malware and user education.</li><li><strong>Lesson fact:</strong> Common error A Trojan does not need to self-replicate to be harmful.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end phishing -->
-        <section class="panel" id="pharming" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+        <!-- stage10-explanation:end trojan -->
+        <section class="panel" id="spyware" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Pharming: redirecting users to a fake website</h2>
+            <h2>Spyware secretly monitors activity or collects data</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.</span></article>
-            <article><strong>User clue</strong><span>The user may type the correct URL but still arrive at a fraudulent page.</span></article>
-            <article><strong>Impact</strong><span>Users may submit credentials or payment details to the attacker.</span></article>
-            <article><strong>Common error</strong><span>Do not define pharming as just "sending a fake email"; that is phishing.</span></article>
+            <article><strong>Mechanism</strong><span>Runs without clear user awareness and gathers information.</span></article>
+            <article><strong>Examples</strong><span>Keylogger, screen monitoring or browser tracking used to capture credentials.</span></article>
+            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity if credentials are stolen.</span></article>
+            <article><strong>Control</strong><span>Anti-malware, least privilege, patching, browser controls and caution with downloads.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start pharming -->
-        <section class="panel explanation-panel" id="explanation-pharming" data-explains="pharming" data-explanation-kind="mechanism" aria-labelledby="explanation-pharming-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-pharming-title">Pharming: redirecting users to a fake website</h2>
+        <!-- stage10-explanation:start spyware -->
+        <section class="panel explanation-panel" id="explanation-spyware" data-explains="spyware" data-explanation-kind="mechanism" aria-labelledby="explanation-spyware-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+          <h2 class="explanation-sr-only" id="explanation-spyware-title">Spyware secretly monitors activity or collects data</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-pharming.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pharming: redirecting users to a fake website with a structured visual model." />
-            <figcaption class="explanation-sr-only">Pharming: redirecting users to a fake website: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-spyware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spyware secretly monitors activity or collects data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Spyware secretly monitors activity or collects data: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.</li><li><strong>Lesson fact:</strong> User clue The user may type the correct URL but still arrive at a fraudulent page.</li><li><strong>Lesson fact:</strong> Impact Users may submit credentials or payment details to the attacker.</li><li><strong>Lesson fact:</strong> Common error Do not define pharming as just &quot;sending a fake email&quot;; that is phishing.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Runs without clear user awareness and gathers information.</li><li><strong>Lesson fact:</strong> Examples Keylogger, screen monitoring or browser tracking used to capture credentials.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity if credentials are stolen.</li><li><strong>Lesson fact:</strong> Control Anti-malware, least privilege, patching, browser controls and caution with downloads.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end pharming -->
-        <section class="panel" id="dos" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+        <!-- stage10-explanation:end spyware -->
+        <section class="panel" id="ransomware" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Denial-of-service: making a service unavailable</h2>
+            <h2>Ransomware denies access by encrypting or locking data</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Floods a server, network or service with traffic or requests so legitimate users cannot access it.</span></article>
-            <article><strong>DDoS</strong><span>Distributed DoS uses many devices/sources, making filtering harder.</span></article>
-            <article><strong>Impact</strong><span>Loss of availability, lost sales, disrupted lessons or inability to access online services.</span></article>
-            <article><strong>Common error</strong><span>DoS does not primarily mean data is stolen; the main issue is service availability.</span></article>
+            <article><strong>Mechanism</strong><span>Encrypts files or locks systems, then demands payment for restoration.</span></article>
+            <article><strong>Goal affected</strong><span>Mainly threatens availability; may also threaten confidentiality if data is stolen.</span></article>
+            <article><strong>Control</strong><span>Offline backups, patching, anti-malware, restricted permissions and user training.</span></article>
+            <article><strong>Common error</strong><span>Paying is not a reliable recovery strategy in an exam answer.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start dos -->
-        <section class="panel explanation-panel" id="explanation-dos" data-explains="dos" data-explanation-kind="mechanism" aria-labelledby="explanation-dos-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-dos-title">Denial-of-service: making a service unavailable</h2>
+        <!-- stage10-explanation:start ransomware -->
+        <section class="panel explanation-panel" id="explanation-ransomware" data-explains="ransomware" data-explanation-kind="mechanism" aria-labelledby="explanation-ransomware-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+          <h2 class="explanation-sr-only" id="explanation-ransomware-title">Ransomware denies access by encrypting or locking data</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-dos.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Denial-of-service: making a service unavailable with a structured visual model." />
-            <figcaption class="explanation-sr-only">Denial-of-service: making a service unavailable: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-ransomware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ransomware denies access by encrypting or locking data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Ransomware denies access by encrypting or locking data: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Floods a server, network or service with traffic or requests so legitimate users cannot access it.</li><li><strong>Lesson fact:</strong> DDoS Distributed DoS uses many devices/sources, making filtering harder.</li><li><strong>Lesson fact:</strong> Impact Loss of availability, lost sales, disrupted lessons or inability to access online services.</li><li><strong>Lesson fact:</strong> Common error DoS does not primarily mean data is stolen; the main issue is service availability.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Encrypts files or locks systems, then demands payment for restoration.</li><li><strong>Lesson fact:</strong> Goal affected Mainly threatens availability; may also threaten confidentiality if data is stolen.</li><li><strong>Lesson fact:</strong> Control Offline backups, patching, anti-malware, restricted permissions and user training.</li><li><strong>Lesson fact:</strong> Common error Paying is not a reliable recovery strategy in an exam answer.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end dos -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+        <!-- stage10-explanation:end ransomware -->
+        <section class="panel" id="social" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
-            <h2>Compare by route and result</h2>
+            <h2>Social engineering exploits people rather than code</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Attack comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Attack</div>
-              <div role="columnheader">Route or mechanism</div>
-              <div role="columnheader">Direct result</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Hacking</div>
-              <div role="cell">Access controls are bypassed or abused.</div>
-              <div role="cell">Unauthorised access; data may then be viewed, copied, changed or deleted.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Phishing</div>
-              <div role="cell">A deceptive message, link or site persuades the user to reveal information.</div>
-              <div role="cell">Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Pharming</div>
-              <div role="cell">Traffic is redirected to a fake site, possibly after the correct URL is entered.</div>
-              <div role="cell">The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">DoS/DDoS</div>
-              <div role="cell">A server or network is overwhelmed by requests or traffic.</div>
-              <div role="cell">Legitimate users cannot access the service.</div>
-            </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Uses trust, urgency, authority, curiosity or fear to influence a user.</span></article>
+            <article><strong>Action</strong><span>User may reveal passwords, approve access, install software or transfer data.</span></article>
+            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity through impersonation or credential theft.</span></article>
+            <article><strong>Control</strong><span>User training, verification procedures, MFA, reporting routes and least privilege.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by route and result</h2>
+        <!-- stage10-explanation:start social -->
+        <section class="panel explanation-panel" id="explanation-social" data-explains="social" data-explanation-kind="mechanism" aria-labelledby="explanation-social-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+          <h2 class="explanation-sr-only" id="explanation-social-title">Social engineering exploits people rather than code</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by route and result with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare by route and result: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-social.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Social engineering exploits people rather than code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Social engineering exploits people rather than code: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Route or mechanism</li><li><strong>Lesson fact:</strong> Direct result</li><li><strong>Lesson fact:</strong> Access controls are bypassed or abused.</li><li><strong>Lesson fact:</strong> Unauthorised access; data may then be viewed, copied, changed or deleted.</li><li><strong>Lesson fact:</strong> Phishing</li><li><strong>Lesson fact:</strong> A deceptive message, link or site persuades the user to reveal information.</li><li><strong>Lesson fact:</strong> Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.</li><li><strong>Lesson fact:</strong> Pharming</li><li><strong>Lesson fact:</strong> Traffic is redirected to a fake site, possibly after the correct URL is entered.</li><li><strong>Lesson fact:</strong> The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.</li><li><strong>Lesson fact:</strong> DoS/DDoS</li><li><strong>Lesson fact:</strong> A server or network is overwhelmed by requests or traffic.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Mechanism Uses trust, urgency, authority, curiosity or fear to influence a user.</li><li><strong>Lesson fact:</strong> Action User may reveal passwords, approve access, install software or transfer data.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity through impersonation or credential theft.</li><li><strong>Lesson fact:</strong> Control User training, verification procedures, MFA, reporting routes and least privilege.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
+        <!-- stage10-explanation:end social -->
         <section class="panel" id="controls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 7</p>
-            <h2>Controls must fit the attack route</h2>
+            <h2>Match controls to mechanism, not just the word "malware"</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>Against hacking</strong><span>Strong authentication, access rights, patching, audit logs and monitoring.</span></article>
-            <article><strong>Against phishing</strong><span>User training, checking URLs/senders, email filtering, reporting routes and MFA.</span></article>
-            <article><strong>Against pharming</strong><span>Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.</span></article>
-            <article><strong>Against DoS</strong><span>Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.</span></article>
+          <div class="comparison-table" role="table" aria-label="Threat control comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Threat</div>
+              <div role="columnheader">Likely impact</div>
+              <div role="columnheader">Suitable controls</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Virus/worm</div>
+              <div role="cell">Corrupts data, spreads, slows systems, uses resources.</div>
+              <div role="cell">Anti-malware, patching, scanning removable media, network monitoring.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Trojan</div>
+              <div role="cell">Disguised malicious installation or backdoor.</div>
+              <div role="cell">Trusted sources, permissions review, user education, anti-malware.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Spyware</div>
+              <div role="cell">Secret monitoring, credential/data theft.</div>
+              <div role="cell">Anti-spyware, least privilege, MFA, patching, download caution.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Ransomware</div>
+              <div role="cell">Loss of access to files/services.</div>
+              <div role="cell">Offline backups, patching, anti-malware, restricted write access.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Social engineering</div>
+              <div role="cell">User reveals credentials or performs unsafe action.</div>
+              <div role="cell">Training, verification, MFA, clear reporting procedure.</div>
+            </div>
           </div>
-          <div class="callout">Do not overclaim. A control reduces risk; it rarely makes the attack impossible.</div>
         </section>
 
         <!-- stage10-explanation:start controls -->
         <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">Controls must fit the attack route</h2>
+          <h2 class="explanation-sr-only" id="explanation-controls-title">Match controls to mechanism, not just the word &quot;malware&quot;</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls must fit the attack route with a structured visual model." />
-            <figcaption class="explanation-sr-only">Controls must fit the attack route: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match controls to mechanism, not just the word &quot;malware&quot; with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match controls to mechanism, not just the word &quot;malware&quot;: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Against hacking Strong authentication, access rights, patching, audit logs and monitoring.</li><li><strong>Lesson fact:</strong> Against phishing User training, checking URLs/senders, email filtering, reporting routes and MFA.</li><li><strong>Lesson fact:</strong> Against pharming Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.</li><li><strong>Lesson fact:</strong> Against DoS Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.</li><li><strong>Lesson fact:</strong> Do not overclaim. A control reduces risk; it rarely makes the attack impossible.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Likely impact</li><li><strong>Lesson fact:</strong> Suitable controls</li><li><strong>Lesson fact:</strong> Virus/worm</li><li><strong>Lesson fact:</strong> Corrupts data, spreads, slows systems, uses resources.</li><li><strong>Lesson fact:</strong> Anti-malware, patching, scanning removable media, network monitoring.</li><li><strong>Lesson fact:</strong> Disguised malicious installation or backdoor.</li><li><strong>Lesson fact:</strong> Trusted sources, permissions review, user education, anti-malware.</li><li><strong>Lesson fact:</strong> Secret monitoring, credential/data theft.</li><li><strong>Lesson fact:</strong> Anti-spyware, least privilege, MFA, patching, download caution.</li><li><strong>Lesson fact:</strong> Ransomware</li><li><strong>Lesson fact:</strong> Loss of access to files/services.</li><li><strong>Lesson fact:</strong> Offline backups, patching, anti-malware, restricted write access.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end controls -->
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
-            <p class="eyebrow">Interactive classifier</p>
-            <h2>Classify the attack by the clue</h2>
-            <p>Select a scenario and compare the route, impact and common wrong answer.</p>
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Threat classifier</h2>
+            <p>Select a clue and identify the most likely malware/social engineering category.</p>
           </div>
           <div class="converter-grid">
             <label>
               Scenario clue
               <select id="scenarioInput">
-                <option value="access">An attacker logs in using stolen credentials and changes records.</option>
-                <option value="email">A fake delivery email asks the user to enter account details.</option>
-                <option value="redirect">The correct URL leads to a fake banking website.</option>
-                <option value="flood">Thousands of requests stop users accessing a ticket website.</option>
-                <option value="botnet">Many infected devices flood one server at the same time.</option>
+                <option value="host">Malicious code attaches to a document and runs when opened</option>
+                <option value="network">Malicious code self-replicates across a network</option>
+                <option value="disguise">A useful-looking installer secretly opens a backdoor</option>
+                <option value="keys">Software secretly records keystrokes</option>
+                <option value="locked">Files are encrypted and payment is demanded</option>
+                <option value="urgent">A caller pressures staff to reveal a password urgently</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="simulateBtn">Classify</button>
@@ -398,22 +409,22 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with the mark-winning mechanism visible</h2>
+            <h2>Threat, impact, control</h2>
           </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="hacking">Hacking</button>
-            <button class="tab" type="button" data-example="phishing">Phishing</button>
-            <button class="tab" type="button" data-example="pharming">Pharming</button>
-            <button class="tab" type="button" data-example="dos">DoS</button>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="worm">Worm</button>
+            <button class="tab" type="button" data-example="trojan">Trojan</button>
+            <button class="tab" type="button" data-example="ransomware">Ransomware</button>
+            <button class="tab" type="button" data-example="social">Social engineering</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
 
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: be precise, then check</h2>
-            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -421,7 +432,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the sentence before it loses marks</h2>
+            <h2>Fix the almost-right answers</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -429,8 +440,8 @@
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes reward mechanism, impact and control linkage.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -438,41 +449,43 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>The four labels are not interchangeable</h2>
+            <h2>Threat memory map</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Hacking</strong><span>Unauthorised access is the core idea.</span></div>
-            <div><strong>Phishing/pharming</strong><span>Phishing persuades; pharming redirects.</span></div>
-            <div><strong>DoS</strong><span>The main impact is unavailable service, not necessarily stolen data.</span></div>
+            <div><strong>Virus</strong><span>Attaches to host file/program and spreads when run/shared.</span></div>
+            <div><strong>Worm</strong><span>Self-replicates, often across networks.</span></div>
+            <div><strong>Trojan</strong><span>Disguised as legitimate software.</span></div>
+            <div><strong>Spyware</strong><span>Secretly monitors or steals information.</span></div>
+            <div><strong>Ransomware</strong><span>Locks/encrypts data and demands payment.</span></div>
+            <div><strong>Social engineering</strong><span>Manipulates people into unsafe actions.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
+            <h2>Clear output, not vague revision</h2>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Four definitions</strong>
-              <span>Write one precise definition each for hacking, phishing, pharming and DoS. Each must include the attack route.</span>
+              <strong>Task 1: Threat comparison cards</strong>
+              <span>Create six cards: virus, worm, Trojan, spyware, ransomware and social engineering. Include mechanism, impact and control.</span>
             </article>
             <article>
-              <strong>Task 2: Scenario table</strong>
-              <span>Create a table with five new scenarios. For each, classify the attack, state the impact and recommend one control.</span>
+              <strong>Task 2: Risk-control table</strong>
+              <span>For a school network, list three malware/social engineering risks and one suitable control for each.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Compare phishing and pharming, and explain how each can lead to unauthorised access." Use two paragraphs and Cambridge-style keywords.</span>
+              <span>Compare ransomware and spyware, then recommend two controls that reduce risk from both technical and human weaknesses.</span>
             </article>
           </div>
         </section>
       </div>
     </main>
-
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

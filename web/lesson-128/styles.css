@@ -122,7 +122,7 @@ pre {
   margin-bottom: 4px;
 }
 
-.loop-visual {
+.selection-visual {
   display: grid;
   gap: 14px;
   align-content: center;
@@ -132,7 +132,7 @@ pre {
   background: linear-gradient(135deg, #11314b, #2563eb 52%, #047857);
   border-radius: 8px;
 }
-.loop-visual > div {
+.selection-visual > div {
   display: grid;
   gap: 6px;
   min-height: 86px;
@@ -144,8 +144,8 @@ pre {
   padding: 16px;
   font-weight: 850;
 }
-.loop-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; }
-.loop-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.selection-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; }
+.selection-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
 
 .guidance-grid {
   display: grid;
@@ -191,9 +191,8 @@ pre {
   border-radius: 8px;
   overflow: hidden;
 }
-.counter-table .table-row { grid-template-columns: 0.75fr 1.25fr 1fr; }
-.trace-table .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.bounds-table .table-row { grid-template-columns: 0.8fr 1.2fr 0.6fr 1.3fr; }
+.if-table .table-row, .choose-table .table-row { grid-template-columns: 0.8fr 1.2fr 1.3fr; }
+.trace-table .table-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .result-table .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
 .table-row { display: grid; }
 .table-row > div {
@@ -221,7 +220,7 @@ pre {
 
 .converter-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 0.45fr) auto;
   gap: 14px;
   align-items: end;
 }
@@ -312,14 +311,14 @@ pre {
   .layout { grid-template-columns: 1fr; }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid, .converter-grid.two-control { grid-template-columns: 1fr; }
-  .loop-visual { min-height: 320px; }
+  .selection-visual { min-height: 320px; }
 }
 
 @media (max-width: 640px) {
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
   .hook-grid, .mistake-grid, .answer-row { grid-template-columns: 1fr; }
-  .counter-table .table-row, .trace-table .table-row, .bounds-table .table-row, .result-table .table-row {
+  .if-table .table-row, .choose-table .table-row, .trace-table .table-row, .result-table .table-row {
     grid-template-columns: 1fr;
   }
   .table-row > div { border-right: 0; }

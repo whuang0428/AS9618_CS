@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 003 | Hexadecimal notation and binary grouping</title>
+    <title>AS9618 Lesson 003 | Hexadecimal as a base-16 representation</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Hexadecimal notation and binary grouping</h1>
+        <h1>Hexadecimal as a base-16 representation</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -49,26 +49,22 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Hexadecimal and BCD representations in practical systems</h2>
+            <h2>Hexadecimal as a base-16 representation</h2>
           </div>
           <div class="stage2-explanation">
             <p>Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.</p>
             <p>To convert hexadecimal to denary, multiply each digit value by its power-of-16 place value. Binary, denary and hexadecimal may encode the same integer value even though their written representations differ.</p>
-            <p>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</p>
-            <p>Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.</p>
-            <p>Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.</p>
-            <p>A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.</p>
             <p>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Convert D6 hexadecimal / Choose representations for a clock and an address</h3>
-            <p>D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214. A clock can encode 407 as BCD 0100 0000 0111 so each displayed denary digit maps to one four-bit group. A binary memory address can be written compactly in hexadecimal because each hexadecimal digit maps exactly to one nibble.</p>
+            <h3>Worked example: Convert D6 hexadecimal</h3>
+            <p>D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Hexadecimal and BCD representations in practical systems: apply and assess</h2>
+            <h2>Hexadecimal as a base-16 representation: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
@@ -84,39 +80,19 @@
               <p><strong>3.</strong> Convert binary 00111100 to hexadecimal.</p>
               <details><summary>Show answer</summary><p>3C.</p></details>
             </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Write denary 82 in BCD.</p>
-              <details><summary>Show answer</summary><p>1000 0010.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Give the decoded form of BCD 0011 1001.</p>
-              <details><summary>Show answer</summary><p>39.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Why is BCD suitable for a digital clock?</p>
-              <details><summary>Show answer</summary><p>Each displayed denary digit maps directly to one four-bit group.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> Why is hexadecimal suitable for a memory address?</p>
-              <details><summary>Show answer</summary><p>It is a compact form of binary with one digit per four-bit nibble.</p></details>
-            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Convert the integer 159 denary to hexadecimal and then to 8-bit binary. Explain one practical application of BCD and one practical application of hexadecimal.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Convert the integer 159 denary to hexadecimal and then to 8-bit binary.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>159 = 9 x 16 + 15</td><td>Do not treat A to F as decimal two-digit values. Do not award a named application without explaining why the representation suits it.</td><td>1</td></tr>
+                  <tr><td>159 = 9 x 16 + 15</td><td>Do not treat A to F as decimal two-digit values.</td><td>1</td></tr>
                   <tr><td>9F hexadecimal</td><td></td><td>1</td></tr>
                   <tr><td>maps 9 to 1001 and F to 1111</td><td></td><td>1</td></tr>
                   <tr><td>10011111 binary</td><td></td><td>1</td></tr>
-                  <tr><td>BCD application such as a digital clock, calculator or financial display</td><td></td><td>1</td></tr>
-                  <tr><td>links BCD to separate exact denary digits</td><td></td><td>1</td></tr>
-                  <tr><td>hexadecimal application such as memory addresses, machine-code/debug output or colour values</td><td></td><td>1</td></tr>
-                  <tr><td>links hexadecimal to compact four-bit grouping</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -429,8 +405,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -55,14 +55,12 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["027", ["input is needed", "output is needed", "primary memory", "secondary storage", "removable storage"]],
-  ["028", ["microphone", "analogue electrical signal", "adc", "capacitive touchscreen", "vr headset", "orientation sensors"]],
-  ["029", ["laser printer", "charges a drum", "toner", "3d printer", "speaker", "output buffer", "temporarily"]],
-  ["030", ["ram is volatile", "rom is non-volatile", "sram", "dram", "prom", "eprom", "eeprom", "ultraviolet", "electrically"]],
-  ["031", ["magnetic platters", "floating-gate cells", "optical drive", "reflected-light", "higher-power laser"]],
-  ["033", ["embedded system", "dedicated task", "benefit", "drawback", "limited processing"]],
-  ["034", ["monitoring system", "control system", "sensor", "actuator", "feedback", "temperature", "pressure", "infra-red", "sound sensor"]],
-  ["035", ["not, and, or, nand, nor and xor", "not has one input", "two inputs", "problem statement", "logic expression", "logic circuit", "truth table"]],
+  ["028", ["input is needed", "output is needed", "primary memory", "secondary storage", "removable storage"]],
+  ["029", ["embedded system", "dedicated task", "benefit", "drawback", "limited processing"]],
+  ["030", ["microphone", "analogue electrical signal", "adc", "capacitive touchscreen", "vr headset", "orientation sensors"]],
+  ["031", ["laser printer", "charges a drum", "toner", "3d printer", "speaker", "output buffer", "temporarily", "magnetic platters", "floating-gate cells", "optical drive", "reflected-light", "higher-power laser", "ram is volatile", "rom is non-volatile", "sram", "dram", "prom", "eprom", "eeprom", "ultraviolet", "electrically"]],
+  ["032", ["monitoring system", "control system", "sensor", "actuator", "feedback", "temperature", "pressure", "infra-red", "sound sensor"]],
+  ["033", ["not, and, or, nand, nor and xor", "not has one input", "two inputs", "problem statement", "logic expression", "logic circuit", "truth table"]],
 ];
 
 for (const [lesson, terms] of lessonChecks) {
@@ -77,29 +75,29 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["AQ030-Q1", ["primary memory", "removable secondary storage"]],
-  ["AQ030-Q2", ["laser printer", "charged drum", "toner", "heat/pressure"]],
-  ["AQ030-Q3", ["buffer", "temporarily"]],
-  ["AQ030-Q5", ["sram", "dram", "cache", "main memory"]],
-  ["AQ035-Q1", ["flash memory", "floating-gate cells", "no moving parts"]],
-  ["AQ035-Q3", ["benefit", "drawback", "embedded controller"]],
-  ["AQ035-Q4", ["infra-red sensor", "sound sensor"]],
-  ["AQ040-Q2", ["truth table", "boolean expression", "gate sequence"]],
-  ["AQ040-Q5", ["monitoring", "control"]],
-  ["L028-Q5", ["microphone", "capacitive touchscreen", "vr headset"]],
-  ["L029-Q1", ["buffer", "temporarily", "different rates"]],
-  ["L029-Q2", ["laser printer", "3d printer", "speaker"]],
-  ["L030-Q4", ["prom", "eprom", "eeprom", "ultraviolet", "electrically"]],
-  ["L031-Q4", ["magnetic hard disk", "flash memory", "optical disc reader/writer"]],
-  ["L033-Q4", ["embedded system", "benefit", "drawback"]],
+  ["AQ031-Q1", ["primary memory", "removable secondary storage"]],
+  ["AQ031-Q2", ["laser printer", "charged drum", "toner", "heat/pressure"]],
+  ["AQ031-Q3", ["buffer", "temporarily"]],
+  ["AQ031-Q5", ["sram", "dram", "cache", "main memory"]],
+  ["AQ036-Q1", ["flash memory", "floating-gate cells", "no moving parts"]],
+  ["AQ036-Q3", ["benefit", "drawback", "embedded controller"]],
+  ["AQ036-Q4", ["infra-red sensor", "sound sensor"]],
+  ["AQ041-Q2", ["truth table", "boolean expression", "gate sequence"]],
+  ["AQ041-Q5", ["monitoring", "control"]],
+  ["L029-Q5", ["microphone", "capacitive touchscreen", "vr headset"]],
+  ["L030-Q1", ["buffer", "temporarily", "different rates"]],
+  ["L030-Q2", ["laser printer", "3d printer", "speaker"]],
+  ["L031-Q4", ["prom", "eprom", "eeprom", "ultraviolet", "electrically"]],
+  ["L032-Q4", ["magnetic hard disk", "flash memory", "optical disc reader/writer"]],
+  ["L034-Q4", ["embedded system", "benefit", "drawback"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 3 assessment`);
 
 const forbiddenChecks = [
-  ["L029-Q1", /buffer (?:is|provides) permanent|buffer makes the printer faster/i, "buffer misconception"],
-  ["L031-Q4", /hard disk[^.]{0,80}laser|flash[^.]{0,80}magnetic/i, "storage-mechanism confusion"],
-  ["L030-Q4", /\beprom\b[^.]{0,80}electrically|\beeprom\b[^.]{0,80}ultraviolet/i, "ROM erasure confusion"],
-  ["AQ040-Q2", /\bxor\b(?![^.]{0,100}do not accept)/i, "incorrect XOR construction"],
+  ["L030-Q1", /buffer (?:is|provides) permanent|buffer makes the printer faster/i, "buffer misconception"],
+  ["L032-Q4", /hard disk[^.]{0,80}laser|flash[^.]{0,80}magnetic/i, "storage-mechanism confusion"],
+  ["L031-Q4", /\beprom\b[^.]{0,80}electrically|\beeprom\b[^.]{0,80}ultraviolet/i, "ROM erasure confusion"],
+  ["AQ041-Q2", /\bxor\b(?![^.]{0,100}do not accept)/i, "incorrect XOR construction"],
 ];
 for (const [id, pattern, label] of forbiddenChecks) expect(!pattern.test(acceptedQuestionText(id)), `${id}: ${label} remains in accepted assessment semantics`);
 
@@ -126,7 +124,7 @@ for (const [id, pattern] of mutations) {
 }
 
 const assessmentMutation = evaluateRequirement(requirements.get("S3.03"), {
-  questionTransform: (question) => ["L028-Q5", "L029-Q2", "L031-Q4", "AQ030-Q2", "AQ035-Q1"].includes(question.id)
+  questionTransform: (question) => ["L029-Q5", "L030-Q2", "L032-Q4", "AQ031-Q2", "AQ036-Q1"].includes(question.id)
     ? {
         ...question,
         prompt: question.prompt.replace(/microphone|touchscreen|VR headset|laser printer|3D printer|speaker|magnetic hard disk|flash memory|optical disc reader\/writer/gi, "device"),

@@ -63,7 +63,7 @@ function semanticTokens(source) {
 }
 
 const ocrRows = csvRows(read("audits/stage10-ocr-wording.csv"));
-if (ocrRows.length !== 783) throw new Error(`Fresh OCR ledger must contain 783 rows; found ${ocrRows.length}`);
+if (ocrRows.length !== 784) throw new Error(`Fresh OCR ledger must contain 784 rows; found ${ocrRows.length}`);
 const ocrByFile = new Map(ocrRows.map((row) => [row.file, row]));
 const calculationByKey = new Map();
 for (const calculation of semanticCalculations) {
@@ -96,7 +96,14 @@ const imageRecords = explanations.map((item) => {
     htmlTranscript: item.transcript.every((statement) => deliveryHtml.includes(escapeHtml(statement))),
     markdownTranscript: item.transcript.every((statement) => markdown.includes(statement)),
   };
-  const calculations = calculationByKey.get(key) ?? [];
+  const deliveryKey = `${item.lesson}/${item.targetId}`;
+  const legacySourceKey = Number(sourceLesson) >= 11
+    ? `${String(Number(sourceLesson) - 1).padStart(3, "0")}/${sourceTargetId}`
+    : null;
+  const calculations = [...new Map([deliveryKey, key, legacySourceKey]
+    .filter(Boolean)
+    .flatMap((candidate) => calculationByKey.get(candidate) ?? [])
+    .map((calculation) => [calculation.id, calculation])).values()];
   const risk = highRiskPattern.test(combined) ? "High" : "Standard";
   const passChecks = ocr?.status === "Clear" && Boolean(ocr?.ocr_sha256) && Boolean(ocr?.ocr_text) && coverage >= 0.25
     && dimensions?.width === 1536 && dimensions?.height === 1024 && assetBuffer.length <= 550_000
@@ -155,7 +162,7 @@ const imageReview = readJson(frozenImageReviewPath);
 if (imageReview.sourceApprovalImported !== false || imageReview.oldApprovedRowsUsedForDecision !== false) {
   throw new Error("Frozen Stage 6 image decisions improperly import an old approval");
 }
-if (imageReview.records?.length !== 783
+if (imageReview.records?.length !== 784
     || JSON.stringify(imageReview.forwardOrder) !== JSON.stringify(computedImageReview.forwardOrder)
     || JSON.stringify(imageReview.reverseOrder) !== JSON.stringify(computedImageReview.reverseOrder)) {
   throw new Error("Frozen Stage 6 image decisions do not cover the current exact forward/reverse order");
@@ -183,9 +190,9 @@ for (const decision of imageReview.records) {
 const visualRows = scanVisualSemanticHashes((relative) => read(relative), (relative) => fs.readFileSync(path.join(root, relative)));
 const imageByAsset = new Map(imageReview.records.map((row) => [row.relativeAsset, row]));
 const extraRasterManualReview = {
-  "web/assets/diagrams/lesson-017-peer-devices.jpg": "Current pixels show four equal peer devices with upload/download controls; alt matches.",
-  "web/assets/diagrams/lesson-031-storage-media.jpg": "Current pixels show magnetic, optical and solid-state storage; alt matches.",
-  "web/assets/diagrams/lesson-034-greenhouse-control.jpg": "Current pixels show greenhouse sensor, controller, fan and open vent; alt matches.",
+  "web/assets/diagrams/lesson-018-peer-devices.jpg": "Current pixels show four equal peer devices with upload/download controls; alt matches.",
+  "web/assets/diagrams/lesson-032-storage-media.jpg": "Current pixels show magnetic, optical and solid-state storage; alt matches.",
+  "web/assets/diagrams/lesson-035-greenhouse-control.jpg": "Current pixels show greenhouse sensor, controller, fan and open vent; alt matches.",
 };
 const visualRecords = visualRows.map((row) => {
   const html = read(`web/lesson-${row.lesson}/index.html`);
@@ -220,7 +227,7 @@ const visualRecords = visualRows.map((row) => {
 
 const visualReview = {
   schemaVersion: 1, remediation: "v2", stage: 6, generatedDate,
-  scope: "Fresh census of every visual semantic object from the current 150 lesson DOM/CSS sources and current raster bytes.",
+  scope: "Fresh census of every visual semantic object from the current 151 lesson DOM/CSS sources and current raster bytes.",
   sourceApprovalImported: false,
   oldApprovedRowsUsedForDecision: false,
   visualObjectCount: visualRecords.length,
@@ -264,10 +271,10 @@ function browserRecord(row) {
 const browserRecords = [...desktopRaw.map(browserRecord), ...mobileRaw.map(browserRecord)];
 const browserEvidence = {
   schemaVersion: 1, remediation: "v2", stage: 6, generatedDate,
-  scope: "Actual in-app browser matrix for all 153 pages at 1440x900 and 390x844 after cache-busting current HTML/CSS.",
+  scope: "Actual in-app browser matrix for all 154 pages at 1440x900 and 390x844 after cache-busting current HTML/CSS.",
   sourceApprovalImported: false,
   oldPageRegisterUsedForDecision: false,
-  runtime: "Codex in-app Browser; local Python HTTP server at 127.0.0.1:8765; cache-bust stage6qa=20260828c",
+  runtime: "Codex in-app Browser; local Python HTTP server at 127.0.0.1:8766; cache-bust finalqa=20260829; visible images inspected in both viewports; all local image references separately verified",
   pageCount: pageDefinitions.length, viewportRecordCount: browserRecords.length,
   failedRecords: browserRecords.filter(({ status }) => status !== "Pass").length,
   interactions,
@@ -287,15 +294,16 @@ if (gate.status !== "Ready") throw new Error(`Stage 6 evidence is blocked:\n${ga
 const semanticRegisterPath = "audits/stage10-semantic-review-register.csv";
 const semanticRows = csvRows(read(semanticRegisterPath));
 const semanticByKey = new Map(semanticRows.map((row) => [`${row.lesson}/${row.target_id}`, row]));
+const semanticByAsset = new Map(semanticRows.map((row) => [row.asset, row]));
 if (semanticRows.length !== imageRecords.length || semanticByKey.size !== imageRecords.length) {
-  throw new Error("Stage 10 semantic register cannot be reconciled with the 783-image Stage 6 review");
+  throw new Error("Stage 10 semantic register cannot be reconciled with the 784-image Stage 6 review");
 }
 const explanationBySourceKey = new Map(explanations.map((item) => [
   `${item.sourceLesson ?? item.lesson}/${item.sourceTargetId ?? item.targetId}`,
   item,
 ]));
 for (const image of imageReview.records) {
-  const row = semanticByKey.get(image.key);
+  const row = semanticByKey.get(`${image.lesson}/${image.targetId}`) ?? semanticByAsset.get(image.file);
   const item = explanationBySourceKey.get(image.key);
   if (!row || !item) throw new Error(`${image.key}: Stage 6 image has no semantic-register source row`);
   row.asset = image.file;
@@ -308,6 +316,8 @@ for (const image of imageReview.records) {
   row.max_severity = "None";
   row.confidence = "High";
   row.defect_ids = "";
+  row.automated_checks = image.calculations.map(({ id }) => id).join(";");
+  row.automated_check_status = !image.calculations.length ? "NotApplicable" : image.calculations.every(({ passed }) => passed) ? "Passed" : "KnownDefect";
   row.notes = "Stage 6 fresh current-pixel forward/reverse review; old Approved not imported; see remediation-v2-stage6-image-review.json";
 }
 const semanticHeader = ["lesson", "target_id", "asset", "sha256", "title", "source_facts_hash", "risk_flags", "pass1", "pass2", "status", "max_severity", "confidence", "defect_ids", "automated_checks", "automated_check_status", "notes"];
@@ -358,8 +368,8 @@ const openP0P1 = defects.issues.filter(({ status, severity }) => status !== "Res
 const gateResult = {
   schemaVersion: 1, remediation: "v2", stage: 6, generatedDate,
   implementationStatus: "Complete", approvalStatus: "AwaitingUserApproval", currentReleaseDecision: "BLOCKED",
-  images: { expected: 783, reviewed: imageReview.imageCount, forward: imageReview.forwardOrder.length, reverse: imageReview.reverseOrder.length, pending: imageReview.pending, disagreements: imageReview.disagreements, highRisk: imageReview.highRiskCount, freshOcr: imageReview.ocrProvenance },
-  visualObjects: { expected: 969, reviewed: visualReview.visualObjectCount, raster: visualReview.rasterCount, stage10Raster: visualReview.stage10RasterCount, highRisk: visualReview.highRiskCount, pending: visualReview.pending },
+  images: { expected: 784, reviewed: imageReview.imageCount, forward: imageReview.forwardOrder.length, reverse: imageReview.reverseOrder.length, pending: imageReview.pending, disagreements: imageReview.disagreements, highRisk: imageReview.highRiskCount, freshOcr: imageReview.ocrProvenance },
+  visualObjects: { expected: 971, reviewed: visualReview.visualObjectCount, raster: visualReview.rasterCount, stage10Raster: visualReview.stage10RasterCount, highRisk: visualReview.highRiskCount, pending: visualReview.pending },
   browser: { pages: browserEvidence.pageCount, viewportRecords: browserEvidence.viewportRecordCount, failed: browserEvidence.failedRecords, interactions: "Passed except the in-app Browser key-dispatch API did not toggle native controls; native semantic elements and focus return were verified." },
   responsiveFixes: ["real Cambridge mark-scheme tables use fixed table layout on narrow screens", "long literal URLs wrap in the mobile text alternative"],
   semanticPixelFixes: ["005/systems negative binary", "008/pixels file header", "034/sensors applications", "069/checks seven named checks", "098/concept defined steps", "099/decomposition modules", "101/equivalence IF condition", "116/pseudocode nested loops"],
@@ -377,18 +387,18 @@ const report = `# AS9618 remediation v2 — Stage 6 full image and browser accep
 
 ## Change summary
 
-- Replaced the inherited Stage 6 page approval path with evidence derived from 306 current in-app browser records and current page hashes.
-- Frozen the 783 current-pixel decisions as a separately recorded review input: the generator now rejects stale hashes or missing review rounds and cannot bulk-create semantic approvals.
-- Reviewed 783/783 current Stage 10 JPEGs in maintained source order and exact reverse order using current pixel SHA-256, a fresh 783-image Apple Vision OCR run, maintained transcript/alt reconciliation and deterministic subject assertions; no old Approved value was imported.
-- Re-censused 969/969 visual objects from the current lesson DOM/CSS and current raster bytes, including 786 raster files and all 783 Stage 10 images.
+- Replaced the inherited Stage 6 page approval path with evidence derived from 308 current in-app browser records and current page hashes.
+- Frozen the 784 current-pixel decisions as a separately recorded review input: the generator now rejects stale hashes or missing review rounds and cannot bulk-create semantic approvals.
+- Reviewed 784/784 current Stage 10 JPEGs in maintained source order and exact reverse order using current pixel SHA-256, a fresh 784-image Apple Vision OCR run, maintained transcript/alt reconciliation and deterministic subject assertions; no old Approved value was imported.
+- Re-censused 971/971 visual objects from the current lesson DOM/CSS and current raster bytes, including 787 raster files and all 784 Stage 10 images.
 - Fixed two defects found by the browser run: real Cambridge mark-scheme tables now remain within 390px, and long literal URLs wrap in the mobile accessible transcript.
 - Repaired eight deterministic images after the fresh OCR gate exposed requirement-specific pixel wording gaps: negative binary, file header, sensor applications, all seven validation checks, defined steps, program modules, IF condition and nested loops.
 
 ## Passed evidence
 
-- Current-pixel images: 783/783 forward pass; 783/783 reverse pass; pending=0; disagreements=0; fresh OCR Clear=${imageReview.ocrProvenance.clear}/783.
-- Visual objects: 969/969 passed current-source checks; raster=786; Stage 10 raster=783; pending=0.
-- Browser: 153 desktop pages + 153 mobile pages = 306/306 passed; zero document overflow, clipping, offscreen controls, loaded broken images, visible empty alt text, framework overlays or console warning/error.
+- Current-pixel images: 784/784 forward pass; 784/784 reverse pass; pending=0; disagreements=0; fresh OCR Clear=${imageReview.ocrProvenance.clear}/784.
+- Visual objects: 971/971 passed current-source checks; raster=787; Stage 10 raster=784; pending=0.
+- Browser: 154 desktop pages + 154 mobile pages = 308/308 passed; zero document overflow, clipping, offscreen controls, loaded broken images, visible empty alt text, framework overlays or console warning/error.
 - Interactions: course search/reset, course map open/close and focus return, lesson contents/jumps/focus status, lesson and Assessment Bank answer expansion, type/paper/AO filters and reset, ARIA pressed/expanded state, and print entry.
 - Extra raster inspection: peer-to-peer devices, storage media and greenhouse control pixels agree with their current alt text.
 
@@ -400,7 +410,7 @@ const report = `# AS9618 remediation v2 — Stage 6 full image and browser accep
 
 ## Command evidence
 
-- /tmp/as9618-stage6-ocr (783-image Apple Vision run)
+- /tmp/as9618-stage6-ocr (784-image Apple Vision run)
 - node scripts/generate-remediation-v2-stage6.mjs --desktop /tmp/as9618-stage6-browser-desktop-final.json --mobile /tmp/as9618-stage6-browser-mobile-final.json --interactions /tmp/as9618-stage6-interactions.json
 - node scripts/test-remediation-v2-stage6-mutations.mjs
 - node scripts/verify-remediation-v2-stage6.mjs

@@ -1,108 +1,108 @@
 const scenarioMap = {
-  host: {
-    result: "Most likely: virus.",
-    method: "A virus attaches to a host file or program and spreads when the host is run or shared.",
-    trap: "Do not call it a worm if it depends on a host file being opened.",
+  readmarks: {
+    result: "Main goal: confidentiality.",
+    method: "The risk is unauthorised viewing of exam marks. Controls such as access rights and authentication can restrict who can read the data.",
+    trap: "Do not say availability; the issue is not whether authorised users can access the system.",
   },
-  network: {
-    result: "Most likely: worm.",
-    method: "A worm self-replicates and spreads across networks without needing to attach to a host file.",
-    trap: "Do not say all self-replicating malware is a virus.",
+  editmarks: {
+    result: "Main goal: integrity.",
+    method: "The risk is unauthorised alteration of data. Controls such as access rights, audit trails and validation can reduce or detect incorrect changes.",
+    trap: "Do not say confidentiality if the main harm is changed marks rather than viewed marks.",
   },
-  disguise: {
-    result: "Most likely: Trojan.",
-    method: "A Trojan is disguised as legitimate or useful software but performs a malicious action.",
-    trap: "Do not require a Trojan to self-replicate.",
+  serverdown: {
+    result: "Main goal: availability.",
+    method: "The risk is that authorised users cannot access a service when required. Redundancy, backups or recovery planning can help.",
+    trap: "Do not use encryption as the main control for a service outage.",
   },
-  keys: {
-    result: "Most likely: spyware / keylogger.",
-    method: "Spyware secretly monitors user activity or collects data such as keystrokes and credentials.",
-    trap: "Do not describe only availability; the main risk is confidential data or credentials being stolen.",
+  fakebank: {
+    result: "Main goal: authenticity.",
+    method: "The user needs evidence that the website identity or origin is genuine, for example through a digital certificate.",
+    trap: "Do not describe only confidentiality; the first issue is verifying identity.",
   },
-  locked: {
-    result: "Most likely: ransomware.",
-    method: "Ransomware encrypts or locks files/systems and demands payment for restoration.",
-    trap: "Do not treat payment as a reliable recovery control; backups and prevention are better exam answers.",
+  backup: {
+    result: "Main goal: availability.",
+    method: "Backups support recovery after failure, helping data remain accessible to authorised users.",
+    trap: "Do not claim backups stop unauthorised reading of the original data.",
   },
-  urgent: {
-    result: "Most likely: social engineering.",
-    method: "The attacker manipulates the person using urgency or authority to obtain information or action.",
-    trap: "Do not focus only on technical controls; training and verification procedures matter.",
+  weakpass: {
+    result: "Goals affected: confidentiality and authenticity.",
+    method: "A weak password may allow an attacker to access private data and impersonate a genuine user.",
+    trap: "Do not call the password the threat; it is a vulnerability.",
   },
 };
 
 const examples = {
-  worm: {
-    title: "Example 1: Worm spreading across a school network",
-    problem: "Several computers become slow after one unpatched machine connects to the network.",
+  confidentiality: {
+    title: "Example 1: Confidentiality",
+    problem: "A school stores students' addresses and exam marks online.",
     steps: [
-      "A worm is likely if the malware self-replicates across the network.",
-      "It can consume bandwidth and processing resources, affecting availability.",
-      "Controls include patching, anti-malware, network monitoring and segmenting the network.",
-      "The answer should mention self-replication, not just 'virus'.",
+      "Asset: personal student data and exam records.",
+      "Risk: unauthorised users could view private data.",
+      "Control: access rights and authentication restrict data to authorised staff.",
+      "Goal protected: confidentiality, because unauthorised viewing is prevented or reduced.",
     ],
   },
-  trojan: {
-    title: "Example 2: Trojan disguised as a useful app",
-    problem: "A student installs a free tool that secretly opens remote access.",
+  integrity: {
+    title: "Example 2: Integrity",
+    problem: "A teacher accidentally enters a mark of 900 instead of 90.",
     steps: [
-      "A Trojan is disguised as legitimate software.",
-      "The user may install it because it appears useful.",
-      "It may open a backdoor, steal data or install further malware.",
-      "Controls include trusted download sources, permissions review, anti-malware and user education.",
+      "Asset: accuracy of exam mark records.",
+      "Risk: data is incorrect or has been altered incorrectly.",
+      "Control: validation range check can reject marks outside 0-100; audit trails can record changes.",
+      "Goal protected: integrity, because the data remains accurate and trustworthy.",
     ],
   },
-  ransomware: {
-    title: "Example 3: Ransomware locking files",
-    problem: "A department cannot access shared work because files have been encrypted and a payment is demanded.",
+  availability: {
+    title: "Example 3: Availability",
+    problem: "The learning platform fails before a homework deadline.",
     steps: [
-      "This is ransomware because data is locked/encrypted and payment is demanded.",
-      "The main security goal affected is availability because authorised users cannot access files.",
-      "Offline backups and disaster recovery can restore data without relying on the attacker.",
-      "Patching, least privilege and anti-malware can reduce infection risk.",
+      "Asset: access to the learning platform and submitted work.",
+      "Risk: authorised users cannot access the service when needed.",
+      "Control: backups, redundancy and disaster recovery can restore service or data.",
+      "Goal protected: availability, because legitimate access can continue or be recovered.",
     ],
   },
-  social: {
-    title: "Example 4: Social engineering call",
-    problem: "A caller claims to be IT support and asks urgently for a staff password.",
+  authenticity: {
+    title: "Example 4: Authenticity",
+    problem: "A student receives a link claiming to be the school's payment page.",
     steps: [
-      "This is social engineering because the attacker manipulates a person rather than exploiting only code.",
-      "Urgency and authority are used to pressure the user.",
-      "The risk is credential theft, threatening confidentiality and authenticity.",
-      "Controls include training, identity verification procedures, MFA and a clear reporting route.",
+      "Asset: trust in the identity of the website and transaction.",
+      "Risk: the website may be fake and impersonating the school.",
+      "Control: digital certificates and secure authentication help verify identity or origin.",
+      "Goal protected: authenticity, because the source is checked as genuine.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which malware attaches to a host file or program?", accepted: ["virus"], answer: "Virus" },
-  { id: "p2", prompt: "Which malware self-replicates across a network without a host file?", accepted: ["worm"], answer: "Worm" },
-  { id: "p3", prompt: "Which malware is disguised as legitimate software?", accepted: ["trojan", "trojan horse"], answer: "Trojan / Trojan horse" },
-  { id: "p4", prompt: "Which malware secretly monitors activity or records keystrokes?", accepted: ["spyware", "keylogger", "key logger"], answer: "Spyware / keylogger" },
-  { id: "p5", prompt: "Which malware encrypts or locks files and demands payment?", accepted: ["ransomware"], answer: "Ransomware" },
-  { id: "p6", prompt: "What attack method manipulates people into revealing information or taking unsafe action?", accepted: ["social engineering"], answer: "Social engineering" },
-  { id: "p7", prompt: "Which security goal is mainly threatened when spyware steals passwords?", accepted: ["confidentiality", "authenticity"], answer: "Confidentiality; also authenticity if credentials are used to impersonate the user" },
-  { id: "p8", prompt: "Name one control against ransomware.", accepted: ["backup", "backups", "offline backups", "patching", "anti malware", "antimalware", "least privilege", "training"], answer: "Offline backups, patching, anti-malware, least privilege or user training" },
-  { id: "p9", prompt: "Name one control against social engineering.", accepted: ["training", "verification", "mfa", "multi factor", "reporting", "least privilege"], answer: "User training, verification procedures, MFA, reporting routes or least privilege" },
-  { id: "p10", prompt: "Does encryption remove malware from a device? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p1", prompt: "Which security goal prevents unauthorised viewing of data?", accepted: ["confidentiality"], answer: "Confidentiality" },
+  { id: "p2", prompt: "Which security goal protects data from unauthorised or accidental alteration?", accepted: ["integrity"], answer: "Integrity" },
+  { id: "p3", prompt: "Which security goal ensures authorised users can access systems when required?", accepted: ["availability"], answer: "Availability" },
+  { id: "p4", prompt: "Which security goal verifies identity or origin is genuine?", accepted: ["authenticity", "authentication"], answer: "Authenticity" },
+  { id: "p5", prompt: "In the risk chain, what is a weakness that can be exploited?", accepted: ["vulnerability", "weakness"], answer: "Vulnerability" },
+  { id: "p6", prompt: "In the risk chain, what is something valuable that needs protection?", accepted: ["asset"], answer: "Asset" },
+  { id: "p7", prompt: "Which goal does encryption mainly support when used on a stolen laptop?", accepted: ["confidentiality"], answer: "Confidentiality" },
+  { id: "p8", prompt: "Which goal do backups mainly support after disk failure?", accepted: ["availability"], answer: "Availability" },
+  { id: "p9", prompt: "Which goal can a hash/checksum help check?", accepted: ["integrity"], answer: "Integrity" },
+  { id: "p10", prompt: "Which goal can a digital certificate help support for a website?", accepted: ["authenticity"], answer: "Authenticity" },
 ];
 
 const mistakes = [
   {
-    wrong: "A worm and a virus are the same because both spread.",
-    fix: "A virus attaches to a host file/program and often needs it to run. A worm self-replicates across networks without needing a host file.",
+    wrong: "Encryption fixes every security problem.",
+    fix: "Encryption mainly protects confidentiality by making data unreadable without the key. It does not by itself restore lost data, stop weak permissions or guarantee availability.",
   },
   {
-    wrong: "A Trojan is malware that spreads by copying itself.",
-    fix: "A Trojan is defined by disguise as legitimate software. It may install other malware or open a backdoor, but self-replication is not required.",
+    wrong: "Backups protect confidentiality because they make another copy.",
+    fix: "Backups mainly support availability and recovery. They may increase confidentiality risk if the copy is not protected.",
   },
   {
-    wrong: "Ransomware mainly threatens confidentiality because it encrypts files.",
-    fix: "Ransomware mainly threatens availability because authorised users cannot access their files. Confidentiality may also be threatened if data is stolen.",
+    wrong: "Integrity means the data is secret.",
+    fix: "Integrity means data remains accurate, complete and unaltered except by authorised processes. Confidentiality is about keeping data from unauthorised access.",
   },
   {
-    wrong: "Social engineering is fixed by antivirus software only.",
-    fix: "Anti-malware may help if a file is involved, but social engineering targets human behaviour, so training, verification, MFA and reporting procedures are important.",
+    wrong: "Authentication and authenticity are exactly the same word in every answer.",
+    fix: "Authentication is a process for verifying identity. Authenticity is the goal that an identity, message or source is genuine.",
   },
 ];
 
@@ -115,92 +115,92 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Compare a virus and a worm.",
-    answer: "A virus is malware that attaches to a host file or program and often spreads when that host is run, copied or shared. A worm is malware that self-replicates, often across a network, without needing to attach to a host file. Both can damage data, consume resources or install further malware, but the key difference is the method of propagation.",
+    marks: "3 marks",
+    prompt: "Define confidentiality, integrity and availability.",
+    answer: "Confidentiality means data is only accessible to authorised users and is protected from unauthorised viewing. Integrity means data remains accurate, complete and protected from unauthorised or accidental alteration. Availability means data or services are accessible to authorised users when required. These goals protect different aspects of a system, so the control must match the risk.",
     marking: [
-      { mark: "B1", text: "virus described as malware attached to host file/program" },
-      { mark: "B1", text: "virus spread linked to running/copying/sharing infected host" },
-      { mark: "B1", text: "worm described as self-replicating malware" },
-      { mark: "B1", text: "worm spread linked to network or no host file required" },
-      { mark: "B1", text: "valid shared impact or clear propagation comparison" },
+      { mark: "B1", text: "confidentiality linked to authorised access / preventing unauthorised viewing" },
+      { mark: "B1", text: "integrity linked to accuracy/completeness/no unauthorised alteration" },
+      { mark: "B1", text: "availability linked to authorised users accessing data/services when needed" },
     ],
     strict: [
-      "Do not accept 'both are viruses' as comparison.",
-      "Do not award worm mark for host-file attachment only.",
-      "Allow 'replicates itself' for self-replicating.",
+      "Do not accept 'confidentiality means secure' without access/viewing idea.",
+      "Do not accept integrity as secrecy.",
+      "Allow accessible/usable when needed for availability.",
+      "Award each definition independently.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Explain how a Trojan can lead to unauthorised access.",
-    answer: "A Trojan is malware disguised as legitimate or useful software. A user may install or run it because they believe it is safe. Once installed, it may open a backdoor, change permissions, download further malware or send credentials to an attacker. This can allow unauthorised access to the device or data.",
+    marks: "6 marks",
+    prompt: "A school stores exam marks on a networked computer system. Explain why both the data and the computer system need security, then Suggest one control for each.",
+    answer: "The mark data needs security because unauthorised viewing would breach confidentiality and unauthorised or accidental alteration would damage integrity. The computer system also needs security because malware, stolen accounts or an unavailable server could expose, alter, delete or prevent access to the data it processes. Access rights or encryption can protect the data. Updated anti-virus, a firewall or strong authentication can reduce a matching computer-system risk. Protecting only one layer leaves the other attack route open.",
     marking: [
-      { mark: "B1", text: "Trojan disguised as legitimate/useful software" },
-      { mark: "B1", text: "user is tricked into installing/running it" },
-      { mark: "B1", text: "valid malicious action such as backdoor/credential theft/further malware" },
-      { mark: "B1", text: "consequence linked to unauthorised access to device/data/account" },
+      { mark: "B1", text: "data-security need linked to unauthorised viewing/disclosure or confidentiality" },
+      { mark: "B1", text: "data-security need linked to unauthorised/incorrect alteration, loss or integrity" },
+      { mark: "B1", text: "computer-system compromise/unavailability can expose, alter, delete or prevent access to processed data" },
+      { mark: "B1", text: "suitable data control such as access rights or encryption" },
+      { mark: "B1", text: "suitable computer-system control such as anti-virus, firewall or strong authentication" },
+      { mark: "B1", text: "explains why protecting one layer does not replace protection of the other" },
     ],
     strict: [
-      "Do not require self-replication for Trojan.",
-      "Do not accept 'Trojan is a virus' without disguise mechanism.",
-      "Allow remote access tool/backdoor if malicious context is clear.",
+      "Do not accept two generic statements that everything should be secure.",
+      "Do not treat file encryption as complete protection of the computer system.",
+      "Each control must be linked to the layer and risk it addresses.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Describe ransomware and Suggest two controls to reduce its impact.",
-    answer: "Ransomware is malware that encrypts or locks files or systems and demands payment for restoring access. It mainly threatens availability because authorised users cannot access their data. Offline or isolated backups can reduce impact because data can be restored without relying on the attacker. Patching, anti-malware, restricted permissions and user training can reduce the chance of infection or limit what files can be encrypted.",
+    marks: "4 marks",
+    prompt: "Explain why encryption is not a suitable control for every security risk.",
+    answer: "Encryption converts plaintext into ciphertext so unauthorised users cannot read the data without the key, so it mainly protects confidentiality. It does not by itself ensure that data is available after a disk failure, so backups or redundancy may be needed. It also does not prove that data has not been changed unless combined with other checks such as hashes or digital signatures. Therefore the control must match the security goal in the scenario.",
     marking: [
-      { mark: "B1", text: "ransomware encrypts/locks files or systems" },
-      { mark: "B1", text: "payment/ransom demanded for access/restoration" },
-      { mark: "B1", text: "availability impact described" },
-      { mark: "B1", text: "valid control such as offline backups with recovery explanation" },
-      { mark: "B1", text: "second valid control with mechanism, e.g. patching/anti-malware/least privilege/training" },
+      { mark: "B1", text: "encryption described as plaintext to ciphertext / unreadable without key" },
+      { mark: "B1", text: "confidentiality identified as main goal protected" },
+      { mark: "B1", text: "valid risk not solved by encryption such as availability after failure or weak permissions" },
+      { mark: "B1", text: "suitable alternative goal/control or conclusion that control must match risk" },
     ],
     strict: [
-      "Do not accept paying ransom as a reliable control.",
-      "Do not award backup mark without recovery idea.",
-      "Allow confidentiality impact only as an additional point, not the main ransomware definition.",
+      "Do not accept 'encryption is bad' as a limitation.",
+      "Do not require technical encryption algorithm detail.",
+      "Allow 'does not restore data' for availability limitation.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain social engineering and give two controls that reduce the risk.",
-    answer: "Social engineering is a method of manipulating people into revealing confidential information or performing an unsafe action. It may use trust, urgency, authority, curiosity or fear. Controls include user training so users recognise suspicious requests, verification procedures such as calling a known number before sharing information, multi-factor authentication to reduce damage from stolen passwords, and reporting routes for suspicious contact.",
+    marks: "4 marks",
+    prompt: "Describe authenticity and explain one control that can support it.",
+    answer: "Authenticity means that the identity of a user, device, message, website or file origin can be verified as genuine. A digital certificate can support authenticity by helping a browser verify that a website is associated with the claimed organisation. Multi-factor authentication can also support authenticity by requiring more than one form of evidence before accepting a user's identity. This reduces impersonation risk.",
     marking: [
-      { mark: "B1", text: "manipulates/tricks people rather than only exploiting software" },
-      { mark: "B1", text: "user reveals information or performs unsafe action" },
-      { mark: "B1", text: "valid persuasion method such as urgency/authority/trust/fear/curiosity" },
-      { mark: "B1", text: "first valid control with mechanism, e.g. training/verification/MFA/reporting" },
-      { mark: "B1", text: "second distinct valid control with mechanism" },
+      { mark: "B1", text: "authenticity linked to identity/origin being genuine" },
+      { mark: "B1", text: "valid control such as digital certificate/digital signature/MFA/authentication" },
+      { mark: "B1", text: "mechanism of control explained, e.g. verifies claimed identity/source or uses multiple factors" },
+      { mark: "B1", text: "consequence such as reducing impersonation/spoofing/fake-source risk" },
     ],
     strict: [
-      "Do not accept only 'hacking people' without manipulation/action idea.",
-      "Do not award both control marks for repeated wording of training only.",
-      "Allow security awareness training as user training.",
+      "Do not accept 'authenticity means password' without verification idea.",
+      "Do not require both certificate and MFA; one valid control is enough.",
+      "Allow authentication process if linked to authenticity goal.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A downloaded host file contains a virus and a separate keylogger records credentials as spyware. Explain how anti-virus and anti-spyware software can reduce the two risks.",
-    answer: "Anti-virus scans files, memory or behaviour for virus signatures or suspicious activity and can block, quarantine or remove the infected host file before it spreads or damages the system. Anti-spyware scans for secret monitoring or credential-capture behaviour and can block, quarantine or remove the keylogger. Updated definitions or rules improve recognition of newly identified threats, but neither measure guarantees detection of every new or concealed threat.",
+    prompt: "Identify each scenario by the main security goal and justify it: customer records are read by an unauthorised employee; stock values are altered incorrectly; a website is offline during a sale.",
+    answer: "Customer records read by an unauthorised employee is a confidentiality issue because private data is accessed by someone who should not view it. Stock values altered incorrectly is an integrity issue because the accuracy and correctness of the data has been damaged. A website offline during a sale is an availability issue because authorised customers or staff cannot access the service when required.",
     marking: [
-      { mark: "B1", text: "anti-virus scans files/memory/behaviour for virus signatures or suspicious activity" },
-      { mark: "B1", text: "anti-virus blocks/quarantines/removes the infected host file" },
-      { mark: "B1", text: "anti-spyware scans for secret monitoring or credential-capture behaviour" },
-      { mark: "B1", text: "anti-spyware blocks/quarantines/removes the keylogger/spyware" },
-      { mark: "B1", text: "updated definitions/rules improve detection of newly identified threats" },
-      { mark: "B1", text: "neither security measure guarantees detection of every threat" },
+      { mark: "B1", text: "unauthorised reading classified as confidentiality" },
+      { mark: "B1", text: "confidentiality justification linked to unauthorised access/viewing of private data" },
+      { mark: "B1", text: "incorrect stock alteration classified as integrity" },
+      { mark: "B1", text: "integrity justification linked to accuracy/correctness/unauthorised alteration" },
+      { mark: "B1", text: "offline website classified as availability" },
+      { mark: "B1", text: "availability justification linked to authorised users unable to access service when needed" },
     ],
     strict: [
-      "Do not make anti-virus and anti-spyware universal guarantees.",
-      "Do not replace the requested mechanisms with only the word anti-malware.",
-      "Do not claim quarantine repairs credentials already stolen.",
+      "Do not award justification mark for repeating only the goal name.",
+      "Do not classify altered stock as confidentiality unless viewing is the stated harm.",
+      "Allow service unavailable for offline website.",
+      "Award each scenario independently.",
     ],
   },
 ];
@@ -216,10 +216,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    "trojan-spyware": "Correct. The game update disguise suggests a Trojan; recording keystrokes is spyware/keylogger behaviour.",
-    worm: "No. A worm self-replicates, often across a network. The clue is disguise plus monitoring.",
-    availability: "No. Keystroke recording mainly threatens confidentiality and authenticity.",
-    backup: "No. Backups help recovery, but they do not stop credentials being recorded.",
+    vulnerability: "Correct. A weak password is a vulnerability that can allow impersonation or unauthorised access.",
+    threat: "No. A threat is a possible cause of harm, such as an attacker trying to log in.",
+    availability: "No. Weak passwords mainly threaten confidentiality and authenticity; the system may still be online.",
+    encryption: "No. Encryption can protect stored/transmitted data, but password policy and authentication controls are also needed.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -263,7 +263,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("worm");
+  renderExample("confidentiality");
 }
 
 function renderPractice() {

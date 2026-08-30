@@ -1,106 +1,106 @@
-const subroutineScenarios = [
+const loopScenarios = [
   {
-    id: "menu",
-    text: "Display three menu options on screen.",
-    recommendation: "Procedure",
-    reason: "The subroutine performs output and does not need to return a value.",
+    id: "password",
+    text: "Keep asking for a password while it is incorrect.",
+    recommendation: "WHILE",
+    reason: "The number of attempts is not known and the condition can be checked before repeating.",
   },
   {
-    id: "vat",
-    text: "Calculate VAT and allow the caller to store the value.",
-    recommendation: "Function",
-    reason: "The calculated value must be returned to the caller.",
+    id: "mark",
+    text: "Ask for a mark at least once and repeat until it is between 0 and 100.",
+    recommendation: "REPEAT...UNTIL",
+    reason: "The input must be requested once before it can be tested.",
   },
   {
-    id: "valid",
-    text: "Check whether a mark is between 0 and 100 and use the TRUE/FALSE result.",
-    recommendation: "Function",
-    reason: "The caller needs a BOOLEAN result for selection or validation logic.",
+    id: "array",
+    text: "Process exactly 30 array elements.",
+    recommendation: "FOR",
+    reason: "The number of repetitions is known from the fixed array bounds.",
   },
   {
-    id: "print",
-    text: "Output a formatted receipt line.",
-    recommendation: "Procedure",
-    reason: "The subroutine is mainly performing an action, not returning a value.",
+    id: "sentinel",
+    text: "Keep adding numbers until the user enters -1.",
+    recommendation: "WHILE with a sentinel value",
+    reason: "The number of inputs is not known and -1 marks the stopping point.",
   },
 ];
 
 const examples = {
-  menu: {
-    title: "Example 1: Procedure to display a menu",
-    problem: "Create a reusable subroutine that outputs menu options.",
+  password: {
+    title: "Example 1: Password WHILE loop",
+    problem: "Keep asking while the password is incorrect.",
     rows: [
-      ["Header", "PROCEDURE DisplayMenu()", "procedure declaration"],
-      ["Body", "OUTPUT menu lines", "performs an action"],
-      ["Call", "CALL DisplayMenu()", "runs the procedure"],
+      ["open", "false", "body skipped"],
+      ["wrong, then open", "true then false", "one retry"],
+      ["wrong, wrong, open", "true, true, false", "two retries"],
     ],
-    code: "PROCEDURE DisplayMenu()\n    OUTPUT \"1. Add score\"\n    OUTPUT \"2. View scores\"\n    OUTPUT \"3. Quit\"\nENDPROCEDURE\n\nCALL DisplayMenu()",
-    points: ["No return type is needed.", "The procedure performs output.", "CALL is used to run it."],
+    code: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"",
+    points: ["WHILE checks before the body.", "Password must be updated inside the loop.", "If the first input is correct, the loop runs zero times."],
   },
-  vat: {
-    title: "Example 2: Function to calculate VAT",
-    problem: "Return VAT as 20% of a price.",
+  mark: {
+    title: "Example 2: Mark validation with REPEAT",
+    problem: "Input Mark until it is between 0 and 100 inclusive.",
     rows: [
-      ["Parameter", "Price : REAL", "value passed into the function"],
-      ["Return type", "RETURNS REAL", "function returns a real number"],
-      ["Return value", "Price * 0.20", "value sent back"],
+      ["-5", "condition false", "repeat"],
+      ["120", "condition false", "repeat"],
+      ["85", "condition true", "stop"],
     ],
-    code: "FUNCTION CalculateVAT(Price : REAL) RETURNS REAL\n    RETURN Price * 0.20\nENDFUNCTION\n\nVAT <- CalculateVAT(120.00)",
-    points: ["A function header includes RETURNS.", "RETURN sends a value back to the caller.", "The returned value can be assigned to VAT."],
+    code: "REPEAT\n    INPUT Mark\nUNTIL Mark >= 0 AND Mark <= 100",
+    points: ["REPEAT runs at least once.", "The UNTIL condition is the valid condition.", "Use AND because both limits must be satisfied."],
   },
-  pass: {
-    title: "Example 3: Boolean function",
-    problem: "Return TRUE if a mark is at least 50, otherwise FALSE.",
+  sentinel: {
+    title: "Example 3: Sentinel total",
+    problem: "Add numbers until -1 is entered.",
     rows: [
-      ["Input", "Mark : INTEGER", "parameter"],
-      ["Decision", "Mark >= 50", "condition"],
-      ["Result", "TRUE or FALSE", "BOOLEAN return value"],
+      ["4", "4", "accepted"],
+      ["7", "11", "accepted"],
+      ["-1", "11", "sentinel, not added"],
     ],
-    code: "FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN\n    IF Mark >= 50 THEN\n        RETURN TRUE\n    ELSE\n        RETURN FALSE\n    ENDIF\nENDFUNCTION",
-    points: ["The return type is BOOLEAN.", "Every path should return a value.", "The caller can use IsPass(Mark) in an IF condition."],
+    code: "Total <- 0\nINPUT Number\nWHILE Number <> -1\n    Total <- Total + Number\n    INPUT Number\nENDWHILE\nOUTPUT Total",
+    points: ["The sentinel stops the loop.", "-1 is not added to Total.", "The next input must be inside the loop."],
   },
-  refactor: {
-    title: "Example 4: Remove repeated code",
-    problem: "The same three header lines are output in several parts of a program.",
+  infinite: {
+    title: "Example 4: Infinite loop fix",
+    problem: "A WHILE loop tests Number but never changes Number.",
     rows: [
-      ["Problem", "repeated OUTPUT lines", "harder to maintain"],
-      ["Subroutine", "PROCEDURE DisplayHeader()", "write once"],
-      ["Call", "CALL DisplayHeader()", "reuse where needed"],
+      ["Problem", "Number is not updated", "condition may stay true forever"],
+      ["Fix", "INPUT Number inside loop", "condition can change"],
+      ["Test", "eventually enter -1", "loop stops"],
     ],
-    code: "PROCEDURE DisplayHeader()\n    OUTPUT \"School score system\"\n    OUTPUT \"-------------------\"\nENDPROCEDURE\n\nCALL DisplayHeader()",
-    points: ["Subroutines reduce duplication.", "A procedure fits repeated output.", "Changing the header later requires one edit."],
+    code: "INPUT Number\nWHILE Number <> -1\n    OUTPUT Number\n    INPUT Number\nENDWHILE",
+    points: ["A condition-controlled loop needs a route to termination.", "Update the variable used in the condition.", "Trace two iterations to check the update."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which subroutine type returns a value?", accepted: ["function"], answer: "Function." },
-  { id: "p2", prompt: "Which subroutine type performs actions and does not have to return a value?", accepted: ["procedure"], answer: "Procedure." },
-  { id: "p3", prompt: "What keyword returns a value from a function?", accepted: ["return"], answer: "RETURN." },
-  { id: "p4", prompt: "What keyword closes a Cambridge-style procedure?", accepted: ["endprocedure"], answer: "ENDPROCEDURE." },
-  { id: "p5", prompt: "What keyword closes a Cambridge-style function?", accepted: ["endfunction"], answer: "ENDFUNCTION." },
-  { id: "p6", prompt: "What keyword is commonly used to run a procedure?", accepted: ["call"], answer: "CALL." },
-  { id: "p7", prompt: "In FUNCTION CalculateVAT(Price : REAL), what is Price called?", accepted: ["parameter"], answer: "Price is a parameter." },
-  { id: "p8", prompt: "If a subroutine must calculate an average and the caller stores it, procedure or function?", accepted: ["function"], answer: "Function, because the average must be returned." },
-  { id: "p9", prompt: "Can a procedure be used as Total <- DisplayMenu()? yes or no.", accepted: ["no"], answer: "No. A procedure does not return a value for assignment." },
-  { id: "p10", prompt: "What Cambridge keyword states the data type returned by a function?", accepted: ["returns"], answer: "RETURNS." },
+  { id: "p1", prompt: "Which loop checks the condition before the body may run?", accepted: ["while", "while loop"], answer: "WHILE loop." },
+  { id: "p2", prompt: "Which loop runs at least once before checking the condition?", accepted: ["repeat", "repeat until", "repeat...until"], answer: "REPEAT...UNTIL." },
+  { id: "p3", prompt: "Can a WHILE loop run zero times? yes or no.", accepted: ["yes"], answer: "Yes. If the condition is false before the first iteration, the body is skipped." },
+  { id: "p4", prompt: "Can a REPEAT...UNTIL loop run zero times? yes or no.", accepted: ["no"], answer: "No. It runs the body once before checking the UNTIL condition." },
+  { id: "p5", prompt: "What is the sentinel value in a loop that stops when Number = -1?", accepted: ["-1"], answer: "-1." },
+  { id: "p6", prompt: "Should a sentinel such as -1 be added to the total? yes or no.", accepted: ["no"], answer: "No. It is used only to stop the loop." },
+  { id: "p7", prompt: "What keyword closes a WHILE loop in Cambridge-style pseudocode?", accepted: ["endwhile"], answer: "ENDWHILE." },
+  { id: "p8", prompt: "What keyword pair is used for a post-condition loop?", accepted: ["repeat until", "repeat...until"], answer: "REPEAT...UNTIL." },
+  { id: "p9", prompt: "For valid mark 0 to 100, should the UNTIL condition use AND or OR?", accepted: ["and"], answer: "AND, because Mark must be >= 0 and <= 100." },
+  { id: "p10", prompt: "What common error happens when the condition variable is never updated?", accepted: ["infinite loop", "infinite", "endless loop"], answer: "An infinite loop." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes FUNCTION CalculateVAT(Price : REAL) RETURNS REAL but never uses RETURN.",
-    fix: "Add a RETURN statement such as RETURN Price * 0.20 so a REAL value is sent back to the caller.",
+    wrong: "A student writes WHILE Password <> CorrectPassword but never inputs Password inside the loop.",
+    fix: "Input or otherwise update Password inside the loop so the condition can eventually become false.",
   },
   {
-    wrong: "A student uses a procedure call in an assignment: Total <- DisplayMenu().",
-    fix: "Use CALL DisplayMenu() for a procedure. Use a function only when a returned value is needed.",
+    wrong: "A student writes UNTIL Mark >= 0 OR Mark <= 100 for validation.",
+    fix: "Use AND for the valid range: UNTIL Mark >= 0 AND Mark <= 100. With OR, almost every value becomes valid.",
   },
   {
-    wrong: "A student says OUTPUT and RETURN are the same.",
-    fix: "OUTPUT displays a value to the user. RETURN sends a value back to the calling algorithm.",
+    wrong: "A student adds the sentinel value -1 to Total before stopping.",
+    fix: "Check the sentinel before adding. -1 is the stopping marker, not part of the data.",
   },
   {
-    wrong: "A student writes Java static double syntax in a Cambridge pseudocode answer.",
-    fix: "Use FUNCTION Name(Parameter : Type) RETURNS Type ... ENDFUNCTION. Java is support only.",
+    wrong: "A student uses Java while (condition) { } syntax as the Cambridge pseudocode answer.",
+    fix: "Use WHILE Condition ... ENDWHILE or REPEAT ... UNTIL Condition. Java is support only.",
   },
 ];
 
@@ -113,98 +113,97 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Write Cambridge-style pseudocode for a procedure DisplayMenu that outputs Add score and Quit. Demonstrate how the procedure is called.",
-    answer: "PROCEDURE DisplayMenu()\n    OUTPUT \"Add score\"\n    OUTPUT \"Quit\"\nENDPROCEDURE\n\nCALL DisplayMenu()",
+    marks: "6 marks",
+    prompt: "Write Cambridge-style pseudocode that repeatedly inputs Password while it is not equal to CorrectPassword. Output Access granted when the loop ends.",
+    answer: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"",
     marking: [
-      { mark: "M1", text: "uses PROCEDURE DisplayMenu or equivalent procedure header" },
-      { mark: "B1", text: "outputs Add score or equivalent menu option" },
-      { mark: "B1", text: "outputs Quit or equivalent menu option" },
-      { mark: "A1", text: "closes the procedure using ENDPROCEDURE" },
-      { mark: "B1", text: "calls the procedure using CALL DisplayMenu() or equivalent" },
+      { mark: "B1", text: "inputs Password before the loop condition is tested" },
+      { mark: "M1", text: "uses a WHILE loop with Password <> CorrectPassword or equivalent" },
+      { mark: "B1", text: "outputs a retry message inside the loop" },
+      { mark: "A1", text: "updates/re-inputs Password inside the loop" },
+      { mark: "B1", text: "closes loop using ENDWHILE or equivalent" },
+      { mark: "A1", text: "outputs Access granted after the loop, not inside the retry-only path" },
     ],
     strict: [
-      "Do not award function return marks for this procedure-only task.",
-      "Allow different menu wording if the two required choices are clear.",
-      "Do not accept Java method syntax alone as Cambridge pseudocode.",
-      "Allow an equivalent procedure if it is used consistently.",
+      "Do not award update mark if Password cannot change inside the loop.",
+      "Allow NOT Password = CorrectPassword as equivalent condition.",
+      "Do not accept Java braces and while syntax alone as Cambridge pseudocode.",
     ],
   },
   {
     title: "Question 2",
-    marks: "7 marks",
-    prompt: "Write a function CalculateVAT that takes Price as a REAL parameter and returns Price * 0.20 as a REAL. Demonstrate a call that stores the returned value in VAT.",
-    answer: "FUNCTION CalculateVAT(Price : REAL) RETURNS REAL\n    RETURN Price * 0.20\nENDFUNCTION\n\nVAT <- CalculateVAT(Price)",
+    marks: "6 marks",
+    prompt: "Write pseudocode to input Mark until it is in the range 0 to 100 inclusive. Use REPEAT...UNTIL.",
+    answer: "REPEAT\n    INPUT Mark\nUNTIL Mark >= 0 AND Mark <= 100",
     marking: [
-      { mark: "B1", text: "uses FUNCTION CalculateVAT or equivalent function header" },
-      { mark: "B1", text: "declares Price as a REAL parameter or equivalent" },
-      { mark: "A1", text: "states RETURNS REAL" },
-      { mark: "M1", text: "calculates Price * 0.20 or equivalent VAT calculation" },
-      { mark: "A1", text: "uses RETURN with the calculated value" },
-      { mark: "B1", text: "closes function using ENDFUNCTION" },
-      { mark: "A1", text: "shows returned value stored in VAT" },
+      { mark: "B1", text: "uses REPEAT" },
+      { mark: "B1", text: "inputs Mark inside the loop body" },
+      { mark: "M1", text: "uses UNTIL condition" },
+      { mark: "A1", text: "tests Mark >= 0 or equivalent lower bound" },
+      { mark: "A1", text: "tests Mark <= 100 or equivalent upper bound" },
+      { mark: "A1", text: "combines valid-range conditions using AND" },
     ],
     strict: [
-      "Do not award return mark for OUTPUT Price * 0.20 alone.",
-      "Allow Price * 20 / 100 as equivalent calculation.",
-      "Do not accept PROCEDURE if the value must be returned and stored.",
+      "Do not award final logic mark for OR between the valid lower and upper bound tests.",
+      "Allow 0 <= Mark <= 100 if written clearly.",
+      "Do not accept WHILE if the question specifically requires REPEAT...UNTIL.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain two differences between a procedure and a function. Use an example of each.",
-    answer: "A procedure performs an action and does not have to return a value, for example DisplayMenu outputs menu lines. A function returns a value to the caller, for example CalculateVAT returns Price * 0.20, which can be assigned to VAT.",
+    marks: "7 marks",
+    prompt: "Complete a trace table for this sentinel loop for inputs 4, 7, -1: Total <- 0; INPUT Number; WHILE Number <> -1; Total <- Total + Number; INPUT Number; ENDWHILE; OUTPUT Total.",
+    answer: "Input 4 is added so Total becomes 4. Input 7 is added so Total becomes 11. Input -1 stops the loop and is not added. The final output is 11.",
     marking: [
-      { mark: "B1", text: "states procedure performs an action / does not have to return a value" },
-      { mark: "B1", text: "gives suitable procedure example" },
-      { mark: "B1", text: "states function returns a value" },
-      { mark: "B1", text: "gives suitable function example" },
-      { mark: "B1", text: "explains returned value can be used by the caller" },
+      { mark: "M1", text: "initialises Total to 0" },
+      { mark: "B1", text: "adds 4 to give Total = 4" },
+      { mark: "B1", text: "continues loop because 4 <> -1" },
+      { mark: "B1", text: "adds 7 to give Total = 11" },
+      { mark: "M1", text: "recognises -1 is the sentinel that stops the loop" },
+      { mark: "A1", text: "does not add -1 to Total" },
+      { mark: "A1", text: "states final output 11" },
     ],
     strict: [
-      "Do not award difference marks for vague claims such as 'functions are better'.",
-      "Allow method/subroutine wording if procedure/function distinction is clear.",
-      "Do not accept OUTPUT as equivalent to RETURN.",
+      "Do not award final output mark for 10 if -1 has been added.",
+      "Allow a clear trace table instead of prose.",
+      "Do not accept only 'it stops' without showing Total values where trace is requested.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "Write a BOOLEAN function IsValidMark that takes Mark as an INTEGER and returns TRUE if Mark is between 0 and 100 inclusive, otherwise FALSE.",
-    answer: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN\n    IF Mark >= 0 AND Mark <= 100 THEN\n        RETURN TRUE\n    ELSE\n        RETURN FALSE\n    ENDIF\nENDFUNCTION",
+    marks: "4 marks",
+    prompt: "Compare WHILE and REPEAT...UNTIL loops. Include when the condition is checked and the minimum number of iterations.",
+    answer: "A WHILE loop checks the condition before the loop body and may run zero times. A REPEAT...UNTIL loop runs the body first, checks the condition after the body, and therefore runs at least once.",
     marking: [
-      { mark: "B1", text: "uses FUNCTION IsValidMark or equivalent function header" },
-      { mark: "B1", text: "declares Mark as INTEGER parameter" },
-      { mark: "A1", text: "states RETURNS BOOLEAN" },
-      { mark: "M1", text: "tests lower bound Mark >= 0" },
-      { mark: "M1", text: "tests upper bound Mark <= 100" },
-      { mark: "A1", text: "combines bounds correctly and returns TRUE for valid marks" },
-      { mark: "A1", text: "returns FALSE for invalid marks and closes the function" },
+      { mark: "B1", text: "states WHILE checks condition before the body" },
+      { mark: "B1", text: "states WHILE may run zero times" },
+      { mark: "B1", text: "states REPEAT...UNTIL body runs before condition is checked" },
+      { mark: "B1", text: "states REPEAT...UNTIL runs at least once" },
     ],
     strict: [
-      "Do not award valid-range logic mark for OR between the two valid bounds.",
-      "Allow 0 <= Mark <= 100 if written clearly.",
-      "Do not accept a procedure because a BOOLEAN result is required.",
-      "Allow an equivalent Boolean labels if it is used consistently.",
+      "Do not award comparison marks for only saying one is easier.",
+      "Allow pre-test/post-test terminology.",
+      "Do not accept that both always run once.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A student writes a function with RETURNS INTEGER but only outputs the calculated value. Explain the error and give the correction.",
-    answer: "The error is that OUTPUT displays the value but does not send it back to the caller. A function with RETURNS INTEGER must use RETURN with an INTEGER expression, for example RETURN Total.",
+    marks: "4 marks",
+    prompt: "A loop is intended to repeat until the user enters 0, but the variable tested by the WHILE condition is never changed inside the loop. Explain the error and give a correction.",
+    answer: "The loop may be infinite because the condition can stay true forever. The variable tested in the condition must be updated inside the loop, for example by inputting the value again before ENDWHILE.",
     marking: [
-      { mark: "B1", text: "explains OUTPUT displays to the user" },
-      { mark: "B1", text: "explains RETURN sends a value back to the caller" },
-      { mark: "B1", text: "states the function must use RETURN" },
-      { mark: "B1", text: "states returned expression should match INTEGER return type" },
-      { mark: "B1", text: "gives a suitable correction such as RETURN Total" },
+      { mark: "B1", text: "explains the variable is not changed/updated in the loop body" },
+      { mark: "B1", text: "states this can cause an infinite loop" },
+      { mark: "B1", text: "gives a correction that updates or re-inputs the variable inside the loop" },
+      { mark: "B1", text: "places the update before the next condition check / before ENDWHILE" },
     ],
     strict: [
-      "Do not award full correction for adding OUTPUT only.",
-      "Allow any suitable INTEGER expression in the RETURN statement.",
-      "Do not accept changing it to a procedure unless the question no longer requires a returned value.",
+      "Do not award correction mark for merely saying 'fix the condition' without an update.",
+      "Allow changing another state variable if it is the variable tested by the condition.",
+      "Do not accept switching to FOR without explaining a fixed repetition count.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
 ];
@@ -238,10 +237,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    procedure: "Not best. A procedure can calculate or output, but it does not return a value for the caller to store.",
-    function: "Correct. The caller needs a returned REAL value, so a function is appropriate.",
-    output: "This may display VAT, but it does not return VAT to the main program.",
-    java: "Java support only. In Cambridge pseudocode, use FUNCTION ... RETURNS ...",
+    zero: "Correct. The WHILE condition is false before the first pass, so the loop body is skipped.",
+    one: "Not here. A WHILE loop checks before running, so it can run zero times.",
+    forever: "No. It would only risk running forever if the condition were true and never changed.",
+    unknown: "We can tell: both values are already equal, so the condition is false.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -252,19 +251,36 @@ function setupHook() {
   });
 }
 
-function setupReturnSimulator() {
-  const result = document.querySelector("#returnResult");
-  document.querySelector("#returnBtn").addEventListener("click", () => {
-    const price = Number(document.querySelector("#priceInput").value);
-    if (!Number.isFinite(price) || price < 0) {
-      result.textContent = "Enter a non-negative numeric price.";
+function setupSentinelTrace() {
+  const result = document.querySelector("#traceResult");
+  document.querySelector("#traceBtn").addEventListener("click", () => {
+    const values = document.querySelector("#sequenceInput").value
+      .split(",")
+      .map((value) => Number(value.trim()))
+      .filter((value) => Number.isFinite(value));
+
+    if (values.length === 0) {
+      result.textContent = "Enter at least one numeric value.";
       return;
     }
-    const vat = price * 0.2;
+
+    let total = 0;
+    const rows = [];
+    let stopped = false;
+    for (const value of values) {
+      if (value === -1) {
+        rows.push([String(value), String(total), "sentinel reached; stop"]);
+        stopped = true;
+        break;
+      }
+      total += value;
+      rows.push([String(value), String(total), "accepted and added"]);
+    }
+
     result.innerHTML = `
-      <p><strong>Function call:</strong> VAT &lt;- CalculateVAT(${price.toFixed(2)})</p>
-      <p><strong>Returned value:</strong> ${vat.toFixed(2)}</p>
-      <p><strong>Why function?</strong> The value is returned and can be assigned to VAT.</p>
+      ${tableMarkup(["Input", "Total", "Action"], rows)}
+      <p><strong>Final output:</strong> ${total}</p>
+      <p><strong>Sentinel found:</strong> ${stopped ? "yes" : "no; this input sequence would need another input"}</p>
     `;
   });
 }
@@ -272,9 +288,9 @@ function setupReturnSimulator() {
 function setupChooser() {
   const select = document.querySelector("#scenarioSelect");
   const result = document.querySelector("#chooseResult");
-  select.innerHTML = subroutineScenarios.map((item) => `<option value="${item.id}">${escapeHtml(item.text)}</option>`).join("");
+  select.innerHTML = loopScenarios.map((item) => `<option value="${item.id}">${escapeHtml(item.text)}</option>`).join("");
   document.querySelector("#chooseBtn").addEventListener("click", () => {
-    const item = subroutineScenarios.find((entry) => entry.id === select.value);
+    const item = loopScenarios.find((entry) => entry.id === select.value);
     result.innerHTML = `
       <p><strong>Recommendation:</strong> ${escapeHtml(item.recommendation)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
@@ -288,7 +304,7 @@ function renderExample(key) {
     <article class="worked-card">
       <h3>${escapeHtml(example.title)}</h3>
       <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-      ${tableMarkup(["Part", "Pseudocode feature", "Reason"], example.rows)}
+      ${tableMarkup(["Input / case", "Condition / total", "Result"], example.rows)}
       <p><strong>Cambridge-style pseudocode:</strong></p>
       <pre><code>${escapeHtml(example.code)}</code></pre>
       <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
@@ -297,7 +313,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("menu");
+  renderExample("password");
   document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -331,7 +347,7 @@ function renderPractice() {
       const mark = document.querySelector(`#${item.id}-mark`);
       const response = normalise(input.value);
       const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. The subroutine concept is precise." : "Not quite. Check whether the subroutine returns a value, takes parameters or is being called.";
+      mark.textContent = correct ? "Correct. The condition-controlled loop idea is precise." : "Not quite. Check the condition timing, update or stopping value.";
       mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -397,7 +413,7 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupReturnSimulator();
+setupSentinelTrace();
 setupChooser();
 setupExamples();
 renderPractice();

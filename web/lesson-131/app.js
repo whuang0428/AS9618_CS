@@ -1,174 +1,106 @@
-const scenarios = [
+const subroutineScenarios = [
   {
-    id: "display",
-    text: "A procedure displays a student's mark but does not change it.",
-    recommendation: "by value",
-    reason: "The value is only read for output, so a copy is enough and avoids accidental changes.",
+    id: "menu",
+    text: "Display three menu options on screen.",
+    recommendation: "Procedure",
+    reason: "The subroutine performs output and does not need to return a value.",
   },
   {
-    id: "increase",
-    text: "A procedure must increase the stored score in the main algorithm.",
-    recommendation: "BYREF",
-    reason: "The caller's variable must be updated by the procedure.",
+    id: "vat",
+    text: "Calculate VAT and allow the caller to store the value.",
+    recommendation: "Function",
+    reason: "The calculated value must be returned to the caller.",
   },
   {
-    id: "swap",
-    text: "A procedure swaps the values of A and B in the calling algorithm.",
-    recommendation: "BYREF",
-    reason: "Both original variables must change; local copies would be swapped and then lost.",
+    id: "valid",
+    text: "Check whether a mark is between 0 and 100 and use the TRUE/FALSE result.",
+    recommendation: "Function",
+    reason: "The caller needs a BOOLEAN result for selection or validation logic.",
   },
   {
-    id: "check",
-    text: "A function checks whether a value is valid and returns TRUE or FALSE.",
-    recommendation: "by value",
-    reason: "The input value is tested, not changed. The Boolean result is returned separately.",
+    id: "print",
+    text: "Output a formatted receipt line.",
+    recommendation: "Procedure",
+    reason: "The subroutine is mainly performing an action, not returning a value.",
   },
 ];
 
 const examples = {
-  value: {
-    title: "Example 1: Passing by value",
-    problem: "Trace the final value of X after calling a procedure that increments its parameter.",
+  menu: {
+    title: "Example 1: Procedure to display a menu",
+    problem: "Create a reusable subroutine that outputs menu options.",
     rows: [
-      ["Before call", "X = 5", "caller variable is 5"],
-      ["Call", "CALL AddOne(X)", "Number receives a copy of 5"],
-      ["Inside procedure", "Number = 6", "local copy changes"],
-      ["After call", "X = 5", "original caller variable is unchanged"],
+      ["Header", "PROCEDURE DisplayMenu()", "procedure declaration"],
+      ["Body", "OUTPUT menu lines", "performs an action"],
+      ["Call", "CALL DisplayMenu()", "runs the procedure"],
     ],
-    code: "PROCEDURE AddOne(Number : INTEGER)\n    Number <- Number + 1\nENDPROCEDURE\n\nX <- 5\nCALL AddOne(X)\nOUTPUT X",
-    points: [
-      "There is no BYREF in the header.",
-      "Number is a local parameter holding a copied value.",
-      "The final output is 5, not 6.",
-    ],
+    code: "PROCEDURE DisplayMenu()\n    OUTPUT \"1. Add score\"\n    OUTPUT \"2. View scores\"\n    OUTPUT \"3. Quit\"\nENDPROCEDURE\n\nCALL DisplayMenu()",
+    points: ["No return type is needed.", "The procedure performs output.", "CALL is used to run it."],
   },
-  ref: {
-    title: "Example 2: Passing by reference",
-    problem: "Trace the final value of X when the parameter is declared with BYREF.",
+  vat: {
+    title: "Example 2: Function to calculate VAT",
+    problem: "Return VAT as 20% of a price.",
     rows: [
-      ["Before call", "X = 5", "caller variable is 5"],
-      ["Call", "CALL AddOne(X)", "Number is linked to X"],
-      ["Inside procedure", "Number becomes 6", "linked caller value changes"],
-      ["After call", "X = 6", "original variable has been updated"],
+      ["Parameter", "Price : REAL", "value passed into the function"],
+      ["Return type", "RETURNS REAL", "function returns a real number"],
+      ["Return value", "Price * 0.20", "value sent back"],
     ],
-    code: "PROCEDURE AddOne(BYREF Number : INTEGER)\n    Number <- Number + 1\nENDPROCEDURE\n\nX <- 5\nCALL AddOne(X)\nOUTPUT X",
-    points: [
-      "BYREF is the header clue.",
-      "The procedure changes the variable passed by the caller.",
-      "The final output is 6.",
-    ],
+    code: "FUNCTION CalculateVAT(Price : REAL) RETURNS REAL\n    RETURN Price * 0.20\nENDFUNCTION\n\nVAT <- CalculateVAT(120.00)",
+    points: ["A function header includes RETURNS.", "RETURN sends a value back to the caller.", "The returned value can be assigned to VAT."],
   },
-  swap: {
-    title: "Example 3: Swap needs BYREF",
-    problem: "Write a procedure that swaps two original integer variables.",
+  pass: {
+    title: "Example 3: Boolean function",
+    problem: "Return TRUE if a mark is at least 50, otherwise FALSE.",
     rows: [
-      ["Header", "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)", "both arguments must change"],
-      ["Temporary variable", "Temp <- A", "stores one value safely"],
-      ["Swap steps", "A <- B, B <- Temp", "updates original variables"],
+      ["Input", "Mark : INTEGER", "parameter"],
+      ["Decision", "Mark >= 50", "condition"],
+      ["Result", "TRUE or FALSE", "BOOLEAN return value"],
     ],
-    code: "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)\n    Temp <- A\n    A <- B\n    B <- Temp\nENDPROCEDURE",
-    points: [
-      "A and B must both be BYREF.",
-      "A temporary variable prevents one value from being overwritten.",
-      "A by-value swap would only swap local copies.",
-    ],
+    code: "FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN\n    IF Mark >= 50 THEN\n        RETURN TRUE\n    ELSE\n        RETURN FALSE\n    ENDIF\nENDFUNCTION",
+    points: ["The return type is BOOLEAN.", "Every path should return a value.", "The caller can use IsPass(Mark) in an IF condition."],
   },
-  mixed: {
-    title: "Example 4: Mixed parameters",
-    problem: "One parameter is read; another parameter is updated.",
+  refactor: {
+    title: "Example 4: Remove repeated code",
+    problem: "The same three header lines are output in several parts of a program.",
     rows: [
-      ["Amount", "Amount : INTEGER", "read-only amount passed by value"],
-      ["Total", "BYREF Total : INTEGER", "running total updated in caller"],
-      ["After call", "Total changes", "Amount remains a normal input value"],
+      ["Problem", "repeated OUTPUT lines", "harder to maintain"],
+      ["Subroutine", "PROCEDURE DisplayHeader()", "write once"],
+      ["Call", "CALL DisplayHeader()", "reuse where needed"],
     ],
-    code: "PROCEDURE AddToTotal(Amount : INTEGER, BYREF Total : INTEGER)\n    Total <- Total + Amount\nENDPROCEDURE\n\nRunningTotal <- 20\nCALL AddToTotal(7, RunningTotal)",
-    points: [
-      "Not every parameter needs BYREF.",
-      "Use BYREF only for the caller value that must be updated.",
-      "Final RunningTotal is 27.",
-    ],
+    code: "PROCEDURE DisplayHeader()\n    OUTPUT \"School score system\"\n    OUTPUT \"-------------------\"\nENDPROCEDURE\n\nCALL DisplayHeader()",
+    points: ["Subroutines reduce duplication.", "A procedure fits repeated output.", "Changing the header later requires one edit."],
   },
 };
 
 const practice = [
-  {
-    id: "p1",
-    prompt: "What Cambridge keyword is used to pass a parameter by reference?",
-    accepted: ["byref"],
-    answer: "BYREF.",
-  },
-  {
-    id: "p2",
-    prompt: "In PROCEDURE AddOne(Number : INTEGER), is Number passed by value or BYREF?",
-    accepted: ["by value", "value"],
-    answer: "By value, because BYREF is not used.",
-  },
-  {
-    id: "p3",
-    prompt: "X <- 5; CALL AddOne(X), where AddOne(Number : INTEGER) sets Number <- Number + 1. Final X?",
-    accepted: ["5"],
-    answer: "5. The procedure changes only the copied parameter.",
-  },
-  {
-    id: "p4",
-    prompt: "X <- 5; CALL AddOne(X), where AddOne(BYREF Number : INTEGER) sets Number <- Number + 1. Final X?",
-    accepted: ["6"],
-    answer: "6. BYREF links Number to the caller's X.",
-  },
-  {
-    id: "p5",
-    prompt: "In CALL DisplayMessage(Text), what is Text called: parameter or argument?",
-    accepted: ["argument"],
-    answer: "Argument. It is the value/variable supplied in the call.",
-  },
-  {
-    id: "p6",
-    prompt: "In PROCEDURE DisplayMessage(Message : STRING), what is Message called?",
-    accepted: ["parameter"],
-    answer: "Parameter. It is declared in the procedure header.",
-  },
-  {
-    id: "p7",
-    prompt: "A procedure Reset must set the caller's Count to 0. Should Count be by value or BYREF?",
-    accepted: ["byref", "by reference"],
-    answer: "BYREF / by reference, because the caller's variable must change.",
-  },
-  {
-    id: "p8",
-    prompt: "A function only checks if Mark is valid and returns TRUE/FALSE. Should Mark normally be by value or BYREF?",
-    accepted: ["by value", "value"],
-    answer: "By value. The mark is read, not changed.",
-  },
-  {
-    id: "p9",
-    prompt: "A swap procedure without BYREF swaps local copies only. Does the caller's A and B change? yes or no.",
-    accepted: ["no"],
-    answer: "No. Without BYREF, only local copies are changed.",
-  },
-  {
-    id: "p10",
-    prompt: "Complete the header: PROCEDURE Increase(_____ Score : INTEGER)",
-    accepted: ["byref"],
-    answer: "BYREF, giving PROCEDURE Increase(BYREF Score : INTEGER).",
-  },
+  { id: "p1", prompt: "Which subroutine type returns a value?", accepted: ["function"], answer: "Function." },
+  { id: "p2", prompt: "Which subroutine type performs actions and does not have to return a value?", accepted: ["procedure"], answer: "Procedure." },
+  { id: "p3", prompt: "What keyword returns a value from a function?", accepted: ["return"], answer: "RETURN." },
+  { id: "p4", prompt: "What keyword closes a Cambridge-style procedure?", accepted: ["endprocedure"], answer: "ENDPROCEDURE." },
+  { id: "p5", prompt: "What keyword closes a Cambridge-style function?", accepted: ["endfunction"], answer: "ENDFUNCTION." },
+  { id: "p6", prompt: "What keyword is commonly used to run a procedure?", accepted: ["call"], answer: "CALL." },
+  { id: "p7", prompt: "In FUNCTION CalculateVAT(Price : REAL), what is Price called?", accepted: ["parameter"], answer: "Price is a parameter." },
+  { id: "p8", prompt: "If a subroutine must calculate an average and the caller stores it, procedure or function?", accepted: ["function"], answer: "Function, because the average must be returned." },
+  { id: "p9", prompt: "Can a procedure be used as Total <- DisplayMenu()? yes or no.", accepted: ["no"], answer: "No. A procedure does not return a value for assignment." },
+  { id: "p10", prompt: "What Cambridge keyword states the data type returned by a function?", accepted: ["returns"], answer: "RETURNS." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student says any parameter assignment changes the argument in the main algorithm.",
-    fix: "Only a BYREF parameter can update the caller's variable. A normal parameter receives a copy.",
+    wrong: "A student writes FUNCTION CalculateVAT(Price : REAL) RETURNS REAL but never uses RETURN.",
+    fix: "Add a RETURN statement such as RETURN Price * 0.20 so a REAL value is sent back to the caller.",
   },
   {
-    wrong: "A student writes PROCEDURE Reset(Count : INTEGER) and expects Count in the main program to become 0.",
-    fix: "Use PROCEDURE Reset(BYREF Count : INTEGER). The caller value must be linked to the parameter.",
+    wrong: "A student uses a procedure call in an assignment: Total <- DisplayMenu().",
+    fix: "Use CALL DisplayMenu() for a procedure. Use a function only when a returned value is needed.",
   },
   {
-    wrong: "A student swaps A and B inside a procedure but leaves both parameters by value.",
-    fix: "Use BYREF for both A and B, otherwise the procedure swaps local copies and the caller variables stay unchanged.",
+    wrong: "A student says OUTPUT and RETURN are the same.",
+    fix: "OUTPUT displays a value to the user. RETURN sends a value back to the calling algorithm.",
   },
   {
-    wrong: "A student explains BYREF using Java primitive parameter syntax as the exam answer.",
-    fix: "Write Cambridge pseudocode with BYREF. Java can support understanding, but it is not the required exam format.",
+    wrong: "A student writes Java static double syntax in a Cambridge pseudocode answer.",
+    fix: "Use FUNCTION Name(Parameter : Type) RETURNS Type ... ENDFUNCTION. Java is support only.",
   },
 ];
 
@@ -181,93 +113,98 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Complete a trace table for the final value output by this pseudocode. Explain why. PROCEDURE AddTwo(Number : INTEGER) Number <- Number + 2\nENDPROCEDURE X <- 10\nCALL AddTwo(X)\nOUTPUT X",
-    answer: "The output is 10. Number is passed by value because BYREF is not used, so AddTwo changes only a local copy of X.",
+    marks: "5 marks",
+    prompt: "Write Cambridge-style pseudocode for a procedure DisplayMenu that outputs Add score and Quit. Demonstrate how the procedure is called.",
+    answer: "PROCEDURE DisplayMenu()\n    OUTPUT \"Add score\"\n    OUTPUT \"Quit\"\nENDPROCEDURE\n\nCALL DisplayMenu()",
     marking: [
-      { mark: "B1", text: "states that the final output/value of X is 10" },
-      { mark: "M1", text: "identifies that the parameter is passed by value / no BYREF is used" },
-      { mark: "M1", text: "explains that Number receives a copy of X" },
-      { mark: "A1", text: "explains that the assignment Number <- Number + 2 changes only the local parameter" },
+      { mark: "M1", text: "uses PROCEDURE DisplayMenu or equivalent procedure header" },
+      { mark: "B1", text: "outputs Add score or equivalent menu option" },
+      { mark: "B1", text: "outputs Quit or equivalent menu option" },
+      { mark: "A1", text: "closes the procedure using ENDPROCEDURE" },
+      { mark: "B1", text: "calls the procedure using CALL DisplayMenu() or equivalent" },
     ],
     strict: [
-      "Do not award the final value mark for 12.",
-      "Allow 'X is unchanged' for the explanation if linked to by-value passing.",
-      "Do not accept vague wording such as 'it does not work' without mechanism.",
+      "Do not award function return marks for this procedure-only task.",
+      "Allow different menu wording if the two required choices are clear.",
+      "Do not accept Java method syntax alone as Cambridge pseudocode.",
+      "Allow an equivalent procedure if it is used consistently.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Complete a trace table for the final value output by this pseudocode. Explain why. PROCEDURE AddTwo(BYREF Number : INTEGER) Number <- Number + 2\nENDPROCEDURE X <- 10\nCALL AddTwo(X)\nOUTPUT X",
-    answer: "The output is 12. Number is passed by reference using BYREF, so Number is linked to X and the assignment updates the caller variable.",
+    marks: "7 marks",
+    prompt: "Write a function CalculateVAT that takes Price as a REAL parameter and returns Price * 0.20 as a REAL. Demonstrate a call that stores the returned value in VAT.",
+    answer: "FUNCTION CalculateVAT(Price : REAL) RETURNS REAL\n    RETURN Price * 0.20\nENDFUNCTION\n\nVAT <- CalculateVAT(Price)",
     marking: [
-      { mark: "B1", text: "states that the final output/value of X is 12" },
-      { mark: "M1", text: "identifies BYREF / passing by reference" },
-      { mark: "M1", text: "explains that Number is linked to the caller's X" },
-      { mark: "A1", text: "explains that Number <- Number + 2 updates X" },
+      { mark: "B1", text: "uses FUNCTION CalculateVAT or equivalent function header" },
+      { mark: "B1", text: "declares Price as a REAL parameter or equivalent" },
+      { mark: "A1", text: "states RETURNS REAL" },
+      { mark: "M1", text: "calculates Price * 0.20 or equivalent VAT calculation" },
+      { mark: "A1", text: "uses RETURN with the calculated value" },
+      { mark: "B1", text: "closes function using ENDFUNCTION" },
+      { mark: "A1", text: "shows returned value stored in VAT" },
     ],
     strict: [
-      "Do not award the final value mark for 10.",
-      "Allow 'original variable changes' if it clearly refers to X in the caller.",
-      "Do not accept 'BYREF returns a value'; procedures do not return values merely because BYREF is used.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award return mark for OUTPUT Price * 0.20 alone.",
+      "Allow Price * 20 / 100 as equivalent calculation.",
+      "Do not accept PROCEDURE if the value must be returned and stored.",
     ],
   },
   {
     title: "Question 3",
-    marks: "7 marks",
-    prompt: "Write Cambridge-style pseudocode for a procedure Swap that swaps two INTEGER variables A and B in the calling algorithm.",
-    answer: "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)\n    Temp <- A\n    A <- B\n    B <- Temp\nENDPROCEDURE",
+    marks: "5 marks",
+    prompt: "Explain two differences between a procedure and a function. Use an example of each.",
+    answer: "A procedure performs an action and does not have to return a value, for example DisplayMenu outputs menu lines. A function returns a value to the caller, for example CalculateVAT returns Price * 0.20, which can be assigned to VAT.",
     marking: [
-      { mark: "B1", text: "uses PROCEDURE Swap or equivalent procedure header" },
-      { mark: "B1", text: "declares A as an INTEGER parameter" },
-      { mark: "B1", text: "declares B as an INTEGER parameter" },
-      { mark: "A1", text: "uses BYREF for A and B so caller variables are changed" },
-      { mark: "M1", text: "stores one value in a temporary variable before overwriting it" },
-      { mark: "M1", text: "assigns A <- B and B <- Temp or equivalent correct swap sequence" },
-      { mark: "A1", text: "closes the procedure with ENDPROCEDURE" },
+      { mark: "B1", text: "states procedure performs an action / does not have to return a value" },
+      { mark: "B1", text: "gives suitable procedure example" },
+      { mark: "B1", text: "states function returns a value" },
+      { mark: "B1", text: "gives suitable function example" },
+      { mark: "B1", text: "explains returned value can be used by the caller" },
     ],
     strict: [
-      "Do not award the BYREF mark if only one of A or B is passed by reference.",
-      "Allow different variable names if roles are clear and typed.",
-      "Do not accept a swap that overwrites one value before saving it.",
+      "Do not award difference marks for vague claims such as 'functions are better'.",
+      "Allow method/subroutine wording if procedure/function distinction is clear.",
+      "Do not accept OUTPUT as equivalent to RETURN.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Compare passing by value with passing by reference. Include one suitable example of when BYREF is needed.",
-    answer: "Passing by value sends a copy of the argument to the parameter, so changes inside the subroutine do not alter the caller's variable. Passing by reference uses BYREF to link the parameter to the caller's variable, so changes inside the subroutine can alter the original. BYREF is needed for a procedure such as Swap or Reset that must change caller variables.",
+    marks: "7 marks",
+    prompt: "Write a BOOLEAN function IsValidMark that takes Mark as an INTEGER and returns TRUE if Mark is between 0 and 100 inclusive, otherwise FALSE.",
+    answer: "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN\n    IF Mark >= 0 AND Mark <= 100 THEN\n        RETURN TRUE\n    ELSE\n        RETURN FALSE\n    ENDIF\nENDFUNCTION",
     marking: [
-      { mark: "B1", text: "states that by value passes a copy of the value" },
-      { mark: "B1", text: "states that by-value changes do not alter the caller variable" },
-      { mark: "B1", text: "states that by reference / BYREF links to the caller variable" },
-      { mark: "B1", text: "states that BYREF changes can alter the original caller variable" },
-      { mark: "B1", text: "gives a suitable BYREF example such as Swap, Reset or IncrementScore" },
+      { mark: "B1", text: "uses FUNCTION IsValidMark or equivalent function header" },
+      { mark: "B1", text: "declares Mark as INTEGER parameter" },
+      { mark: "A1", text: "states RETURNS BOOLEAN" },
+      { mark: "M1", text: "tests lower bound Mark >= 0" },
+      { mark: "M1", text: "tests upper bound Mark <= 100" },
+      { mark: "A1", text: "combines bounds correctly and returns TRUE for valid marks" },
+      { mark: "A1", text: "returns FALSE for invalid marks and closes the function" },
     ],
     strict: [
-      "Do not award full comparison for saying only 'one changes and one does not' without identifying copy/link mechanism.",
-      "Allow 'reference to original variable' for linked caller variable.",
-      "Do not accept 'BYREF returns a value' as the definition.",
+      "Do not award valid-range logic mark for OR between the two valid bounds.",
+      "Allow 0 <= Mark <= 100 if written clearly.",
+      "Do not accept a procedure because a BOOLEAN result is required.",
+      "Allow an equivalent Boolean labels if it is used consistently.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student writes this procedure and says it resets Count in the main algorithm. Identify the error and correct it. PROCEDURE Reset(Count : INTEGER) Count <- 0\nENDPROCEDURE",
-    answer: "The error is that Count is passed by value, so only a local copy is set to 0. The header should use BYREF: PROCEDURE Reset(BYREF Count : INTEGER).",
+    prompt: "A student writes a function with RETURNS INTEGER but only outputs the calculated value. Explain the error and give the correction.",
+    answer: "The error is that OUTPUT displays the value but does not send it back to the caller. A function with RETURNS INTEGER must use RETURN with an INTEGER expression, for example RETURN Total.",
     marking: [
-      { mark: "B1", text: "identifies that Count is currently passed by value / no BYREF is used" },
-      { mark: "B1", text: "explains that the procedure changes only a local copy" },
-      { mark: "B1", text: "explains that the caller's Count will not be reset" },
-      { mark: "B1", text: "states that BYREF is required" },
-      { mark: "B1", text: "gives corrected header PROCEDURE Reset(BYREF Count : INTEGER) or equivalent" },
+      { mark: "B1", text: "explains OUTPUT displays to the user" },
+      { mark: "B1", text: "explains RETURN sends a value back to the caller" },
+      { mark: "B1", text: "states the function must use RETURN" },
+      { mark: "B1", text: "states returned expression should match INTEGER return type" },
+      { mark: "B1", text: "gives a suitable correction such as RETURN Total" },
     ],
     strict: [
-      "Do not award correction for adding OUTPUT Count only.",
-      "Allow wording 'pass Count by reference' if the corrected header includes or clearly implies BYREF.",
-      "Do not accept Java object/wrapper syntax alone as a Cambridge pseudocode correction.",
+      "Do not award full correction for adding OUTPUT only.",
+      "Allow any suitable INTEGER expression in the RETURN statement.",
+      "Do not accept changing it to a procedure unless the question no longer requires a returned value.",
     ],
   },
 ];
@@ -301,10 +238,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    a9: "Correct for Version A. Score is passed by value, so the procedure changes a copy and the caller's Score stays 9.",
-    a10: "Not for Version A. There is no BYREF, so the caller's Score is not updated.",
-    b9: "Not for Version B. BYREF links the parameter to the caller's Score.",
-    b10: "Correct for Version B. BYREF means the increment updates the caller's Score to 10.",
+    procedure: "Not best. A procedure can calculate or output, but it does not return a value for the caller to store.",
+    function: "Correct. The caller needs a returned REAL value, so a function is appropriate.",
+    output: "This may display VAT, but it does not return VAT to the main program.",
+    java: "Java support only. In Cambridge pseudocode, use FUNCTION ... RETURNS ...",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -315,184 +252,154 @@ function setupHook() {
   });
 }
 
-function setupTraceSimulator() {
-  const result = document.querySelector("#traceResult");
-  document.querySelector("#traceBtn").addEventListener("click", () => {
-    const start = Number(document.querySelector("#startValue").value);
-    const mode = document.querySelector("#passMode").value;
-
-    if (!Number.isInteger(start)) {
-      result.textContent = "Enter an integer starting value.";
+function setupReturnSimulator() {
+  const result = document.querySelector("#returnResult");
+  document.querySelector("#returnBtn").addEventListener("click", () => {
+    const price = Number(document.querySelector("#priceInput").value);
+    if (!Number.isFinite(price) || price < 0) {
+      result.textContent = "Enter a non-negative numeric price.";
       return;
     }
-
-    const local = start + 1;
-    const finalCaller = mode === "ref" ? local : start;
-    const label = mode === "ref" ? "BYREF" : "by value";
-    const reason =
-      mode === "ref"
-        ? "Number is linked to X, so changing Number also changes X."
-        : "Number receives a copy, so changing Number does not change X.";
-
+    const vat = price * 0.2;
     result.innerHTML = `
-      <p><strong>Mode:</strong> ${escapeHtml(label)}</p>
-      <p><strong>Before call:</strong> X = ${start}</p>
-      <p><strong>Inside procedure:</strong> Number becomes ${local}</p>
-      <p><strong>After call:</strong> caller X = ${finalCaller}</p>
-      <p>${escapeHtml(reason)}</p>
+      <p><strong>Function call:</strong> VAT &lt;- CalculateVAT(${price.toFixed(2)})</p>
+      <p><strong>Returned value:</strong> ${vat.toFixed(2)}</p>
+      <p><strong>Why function?</strong> The value is returned and can be assigned to VAT.</p>
     `;
   });
 }
 
-function setupScenarioChooser() {
-  const grid = document.querySelector("#scenarioGrid");
-  const feedback = document.querySelector("#scenarioFeedback");
-  grid.innerHTML = scenarios
-    .map((scenario) => `<button class="choice-card" type="button" data-scenario="${scenario.id}">${escapeHtml(scenario.text)}</button>`)
-    .join("");
-
-  grid.querySelectorAll("[data-scenario]").forEach((button) => {
-    button.addEventListener("click", () => {
-      grid.querySelectorAll("[data-scenario]").forEach((item) => item.classList.remove("selected"));
-      button.classList.add("selected");
-      const scenario = scenarios.find((item) => item.id === button.dataset.scenario);
-      feedback.innerHTML = `<strong>${escapeHtml(scenario.recommendation)}</strong>: ${escapeHtml(scenario.reason)}`;
-    });
+function setupChooser() {
+  const select = document.querySelector("#scenarioSelect");
+  const result = document.querySelector("#chooseResult");
+  select.innerHTML = subroutineScenarios.map((item) => `<option value="${item.id}">${escapeHtml(item.text)}</option>`).join("");
+  document.querySelector("#chooseBtn").addEventListener("click", () => {
+    const item = subroutineScenarios.find((entry) => entry.id === select.value);
+    result.innerHTML = `
+      <p><strong>Recommendation:</strong> ${escapeHtml(item.recommendation)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+    `;
   });
+}
+
+function renderExample(key) {
+  const example = examples[key];
+  document.querySelector("#exampleOutput").innerHTML = `
+    <article class="worked-card">
+      <h3>${escapeHtml(example.title)}</h3>
+      <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
+      ${tableMarkup(["Part", "Pseudocode feature", "Reason"], example.rows)}
+      <p><strong>Cambridge-style pseudocode:</strong></p>
+      <pre><code>${escapeHtml(example.code)}</code></pre>
+      <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
+    </article>
+  `;
 }
 
 function setupExamples() {
-  const tabs = document.querySelector("#exampleTabs");
-  const output = document.querySelector("#exampleOutput");
-  const keys = Object.keys(examples);
-
-  function render(key) {
-    const example = examples[key];
-    tabs.querySelectorAll(".tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.example === key));
-    output.innerHTML = `
-      <article class="worked-card">
-        <h3>${escapeHtml(example.title)}</h3>
-        <p>${escapeHtml(example.problem)}</p>
-        ${tableMarkup(["Point", "Value / code", "Reason"], example.rows)}
-        <pre><code>${escapeHtml(example.code)}</code></pre>
-        <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
-      </article>
-    `;
-  }
-
-  tabs.innerHTML = keys
-    .map((key, index) => `<button class="tab${index === 0 ? " active" : ""}" type="button" data-example="${key}">${escapeHtml(examples[key].title)}</button>`)
-    .join("");
-  tabs.querySelectorAll("[data-example]").forEach((tab) => tab.addEventListener("click", () => render(tab.dataset.example)));
-  render(keys[0]);
+  renderExample("menu");
+  document.querySelectorAll(".tab").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      renderExample(button.dataset.example);
+    });
+  });
 }
 
-function setupPractice() {
+function renderPractice() {
   const list = document.querySelector("#practiceList");
   list.innerHTML = practice
-    .map(
-      (item, index) => `
-        <article class="practice-card">
-          <h3>Practice ${index + 1}</h3>
-          <p>${escapeHtml(item.prompt)}</p>
-          <div class="practice-controls">
-            <input type="text" aria-label="Answer for practice ${index + 1}" data-practice-input="${item.id}" />
-            <button class="check-btn" type="button" data-check="${item.id}">Check</button>
-          </div>
-          <div class="feedback" data-feedback="${item.id}">Type your answer, then check.</div>
-          <button class="answer-toggle" type="button" data-answer-toggle="${item.id}">Show answer</button>
-          <div class="answer-panel" data-answer="${item.id}" hidden>${escapeHtml(item.answer)}</div>
-        </article>
-      `,
-    )
+    .map((item, index) => `
+      <article class="practice-card">
+        <label for="${item.id}"><strong>${index + 1}. ${escapeHtml(item.prompt)}</strong></label>
+        <div class="answer-row">
+          <input id="${item.id}" type="text" autocomplete="off" />
+          <button type="button" class="check-btn" data-practice="${item.id}">Check</button>
+        </div>
+        <p class="mark" id="${item.id}-mark" aria-live="polite"></p>
+        <button type="button" class="answer-toggle" data-answer="${item.id}">Show answer</button>
+        <div class="answer-panel" id="${item.id}-answer">${escapeHtml(item.answer)}</div>
+      </article>
+    `)
     .join("");
 
-  list.querySelectorAll("[data-check]").forEach((button) => {
+  document.querySelectorAll("[data-practice]").forEach((button) => {
     button.addEventListener("click", () => {
-      const item = practice.find((entry) => entry.id === button.dataset.check);
-      const input = list.querySelector(`[data-practice-input="${item.id}"]`);
-      const feedback = list.querySelector(`[data-feedback="${item.id}"]`);
-      const answer = normalise(input.value);
-      const correct = item.accepted.some((accepted) => normalise(accepted) === answer);
-      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer, then compare the exact term/value.";
-      feedback.classList.toggle("correct", correct);
-      feedback.classList.toggle("incorrect", !correct);
+      const item = practice.find((entry) => entry.id === button.dataset.practice);
+      const input = document.querySelector(`#${item.id}`);
+      const mark = document.querySelector(`#${item.id}-mark`);
+      const response = normalise(input.value);
+      const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
+      mark.textContent = correct ? "Correct. The subroutine concept is precise." : "Not quite. Check whether the subroutine returns a value, takes parameters or is being called.";
+      mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
 
-  list.querySelectorAll("[data-answer-toggle]").forEach((button) => {
+  document.querySelectorAll("[data-answer]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = list.querySelector(`[data-answer="${button.dataset.answerToggle}"]`);
-      const isHidden = panel.hidden;
-      panel.hidden = !isHidden;
-      button.textContent = isHidden ? "Hide answer" : "Show answer";
+      const panel = document.querySelector(`#${button.dataset.answer}-answer`);
+      panel.classList.toggle("visible");
+      button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer";
     });
   });
 }
 
-function setupMistakes() {
-  const grid = document.querySelector("#mistakeGrid");
-  grid.innerHTML = mistakes
-    .map(
-      (item, index) => `
-        <article>
-          <h3>Mistake ${index + 1}</h3>
-          <p>${escapeHtml(item.wrong)}</p>
-          <button class="answer-toggle" type="button" data-correction-toggle="${index}">Show correction</button>
-          <div class="answer-panel" data-correction="${index}" hidden>${escapeHtml(item.fix)}</div>
-        </article>
-      `,
-    )
+function renderMistakes() {
+  document.querySelector("#mistakeGrid").innerHTML = mistakes
+    .map((item, index) => `
+      <article>
+        <h3>Mistake ${index + 1}</h3>
+        <p>${escapeHtml(item.wrong)}</p>
+        <button class="answer-toggle" type="button" data-fix="${index}">Show correction</button>
+        <div class="answer-panel" id="fix-${index}">${escapeHtml(item.fix)}</div>
+      </article>
+    `)
     .join("");
 
-  grid.querySelectorAll("[data-correction-toggle]").forEach((button) => {
+  document.querySelectorAll("[data-fix]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = grid.querySelector(`[data-correction="${button.dataset.correctionToggle}"]`);
-      const isHidden = panel.hidden;
-      panel.hidden = !isHidden;
-      button.textContent = isHidden ? "Hide correction" : "Show correction";
+      const panel = document.querySelector(`#fix-${button.dataset.fix}`);
+      panel.classList.toggle("visible");
+      button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
     });
   });
 }
 
-function setupExamQuestions() {
-  const list = document.querySelector("#examList");
-  list.innerHTML = examQuestions
-    .map(
-      (question, index) => `
-        <article class="exam-card">
-          <div class="exam-head">
-            <h3>${escapeHtml(question.title)}</h3>
-            <span>${escapeHtml(question.marks)}</span>
-          </div>
-          <pre><code>${escapeHtml(question.prompt)}</code></pre>
-          <button class="ms-toggle" type="button" data-ms-toggle="${index}">Show MS</button>
-          <div class="ms-panel" data-ms="${index}" hidden>
-            <h4>Indicative answer</h4>
-            <pre><code>${escapeHtml(question.answer)}</code></pre>
-            <h4>Mark scheme</h4>
-            ${renderStudentMarkPoints(question)}
-          </div>
-        </article>
-      `,
-    )
+function renderExam() {
+  document.querySelector("#examList").innerHTML = examQuestions
+    .map((question, index) => `
+      <article class="exam-card">
+        <div class="exam-head">
+          <h3>${escapeHtml(question.title)}</h3>
+          <span>${escapeHtml(question.marks)}</span>
+        </div>
+        <p>${escapeHtml(question.prompt)}</p>
+        <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
+        <div class="ms-panel" id="ms-${index}">
+          <p><strong>Answer:</strong></p>
+          <pre><code>${escapeHtml(question.answer)}</code></pre>
+          <p><strong>Mark scheme:</strong></p>
+          ${renderStudentMarkPoints(question)}
+        </div>
+      </article>
+    `)
     .join("");
 
-  list.querySelectorAll("[data-ms-toggle]").forEach((button) => {
+  document.querySelectorAll("[data-ms]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = list.querySelector(`[data-ms="${button.dataset.msToggle}"]`);
-      const isHidden = panel.hidden;
-      panel.hidden = !isHidden;
-      button.textContent = isHidden ? "Hide MS" : "Show MS";
+      const panel = document.querySelector(`#ms-${button.dataset.ms}`);
+      panel.classList.toggle("visible");
+      button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
     });
   });
 }
 
 setupPrint();
 setupHook();
-setupTraceSimulator();
-setupScenarioChooser();
+setupReturnSimulator();
+setupChooser();
 setupExamples();
-setupPractice();
-setupMistakes();
-setupExamQuestions();
+renderPractice();
+renderMistakes();
+renderExam();

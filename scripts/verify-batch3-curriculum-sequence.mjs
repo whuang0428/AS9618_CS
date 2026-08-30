@@ -24,6 +24,12 @@ const includesAll = (text, terms, label) => {
   const source = text.toLowerCase();
   for (const term of terms) expect(source.includes(term.toLowerCase()), `${label}: missing ${term}`);
 };
+const lessonMarkdown = (lesson) => {
+  const prefix = `${String(lesson).padStart(3, "0")}-`;
+  const matches = fs.readdirSync(path.join(root, "lessons")).filter((name) => name.startsWith(prefix) && name.endsWith(".md"));
+  if (matches.length !== 1) throw new Error(`Lesson ${lesson}: expected one current Markdown file, found ${matches.length}`);
+  return fs.readFileSync(path.join(root, "lessons", matches[0]), "utf8");
+};
 
 const model = buildCurriculumSequenceModel();
 expect(model.problems.length === 0, `current sequence model has ${model.problems.length} blocking problem(s)`);
@@ -32,47 +38,48 @@ includesAll(questionText("L001-Q1"), ["storage block", "16 KiB", "bits"], "L001-
 expect(!/file header/i.test(questionText("L001-Q1")), "L001-Q1 still assesses a bitmap file header before L008");
 includesAll(questionText("L008-Q1"), ["pixel data", "file header", "ignored"], "L008-Q1");
 
-includesAll(questionText("AM080-Q4"), ["flat file", "relational database", "DBMS", "duplication", "candidate/primary key", "query processor"], "AM080-Q4");
-expect(!/\b(?:INNER JOIN|SELECT\b|WHERE\b|referential integrity)\b/i.test(questionText("AM080-Q4")), "AM080-Q4 still requires post-L080 SQL or referential integrity");
-includesAll(questionText("AQ100-Q5"), ["selection", "iteration"], "AQ100-Q5");
-expect(!/flowchart/i.test(questionText("AQ100-Q5")), "AQ100-Q5 still assesses L101 flowcharts");
-includesAll(questionText("AQ105-Q1"), ["flowchart", "pseudocode", "IF Score", "ELSE", "ENDIF"], "AQ105-Q1");
-includesAll(questionText("AR112-Q1"), ["StudentName", "STRING", "Count", "INTEGER"], "AR112-Q1");
-expect(!/ARRAY\s*\[/i.test(questionText("AR112-Q1")), "AR112-Q1 still requires an array declaration before the Section 10 review");
-includesAll(questionText("AM120-Q3"), ["array of records", "StudentID", "lower and upper bounds", "field access"], "AM120-Q3");
-expect(!/\b(?:stack|queue|linked list|linked-list)\b/i.test(assessedText("AM120-Q3")), "AM120-Q3 still assesses ADTs before L122");
-includesAll(questionText("AM140-Q4"), ["interfaces", "parameters", "scope", "validation", "file handling", "debugging"], "AM140-Q4");
-expect(!/\b(?:waterfall|iterative|RAD|rapid application)\b/i.test(questionText("AM140-Q4")), "AM140-Q4 still assesses lifecycle models before L142");
-includesAll(questionText("L142-Q2"), ["waterfall", "iterative", "RAD", "rapid prototyping", "time-boxing"], "L142-Q2");
+includesAll(questionText("AM081-Q4"), ["flat file", "relational database", "DBMS", "duplication", "candidate/primary key", "query processor"], "AM081-Q4");
+expect(!/\b(?:INNER JOIN|SELECT\b|WHERE\b|referential integrity)\b/i.test(questionText("AM081-Q4")), "AM081-Q4 still requires post-L081 SQL or referential integrity");
+includesAll(questionText("AQ101-Q5"), ["selection", "iteration"], "AQ101-Q5");
+expect(!/flowchart/i.test(questionText("AQ101-Q5")), "AQ101-Q5 still assesses L102 flowcharts");
+includesAll(questionText("AQ106-Q1"), ["flowchart", "pseudocode", "IF Score", "ELSE", "ENDIF"], "AQ106-Q1");
+includesAll(questionText("AR113-Q1"), ["StudentName", "STRING", "Count", "INTEGER"], "AR113-Q1");
+expect(!/ARRAY\s*\[/i.test(questionText("AR113-Q1")), "AR113-Q1 still requires an array declaration before formal L116 array teaching");
+includesAll(questionText("AM121-Q3"), ["array of records", "StudentID", "lower and upper bounds", "field access"], "AM121-Q3");
+expect(!/\b(?:stack|queue|linked list|linked-list)\b/i.test(assessedText("AM121-Q3")), "AM121-Q3 still assesses ADTs before L123");
+includesAll(questionText("AM141-Q4"), ["interfaces", "parameters", "scope", "validation", "file handling", "debugging"], "AM141-Q4");
+expect(!/\b(?:waterfall|iterative|RAD|rapid application)\b/i.test(questionText("AM141-Q4")), "AM141-Q4 still assesses lifecycle models before L143");
+includesAll(questionText("L143-Q2"), ["waterfall", "iterative", "RAD", "rapid prototyping", "time-boxing"], "L143-Q2");
 
 const arrayRequirement = requirements.get("S10.03");
-expect(Math.min(...arrayRequirement.teachingLessons) === 104, "S10.03 array terminology must be introduced no later than the L104 search/sort CORE lesson");
+expect(Math.min(...arrayRequirement.teachingLessons) === 116, "S10.03 array terminology must establish formal first use in L116");
 expect(arrayRequirement.prerequisites.length === 0, "S10.03 has no additional official prerequisite");
-const l104Markdown = fs.readFileSync(path.join(root, "lessons", "104-linear-search-and-binary-search.md"), "utf8");
-includesAll(l104Markdown, ["array", "lower bound", "upper bound", "linear search", "binary search", "bubble sort"], "L104 array/search/sort introduction");
-const l115Markdown = fs.readFileSync(path.join(root, "lessons", "115-one-dimensional-arrays.md"), "utf8");
-const l115Html = fs.readFileSync(path.join(root, "web", "lesson-115", "index.html"), "utf8");
-includesAll(l115Markdown, ["array is a collection", "lower bound", "upper bound", "ARRAY[1:20] OF INTEGER"], "L115 array introduction");
+const l104Markdown = lessonMarkdown(105);
+includesAll(l104Markdown, ["linear search", "binary search"], "L105 search introduction");
+expect(!/ARRAY\s*\[/i.test(l104Markdown), "L105 must not establish formal S10 array-declaration teaching before L116");
+const l115Markdown = lessonMarkdown(116);
+const l115Html = fs.readFileSync(path.join(root, "web", "lesson-116", "index.html"), "utf8");
+includesAll(l115Markdown, ["array is a collection", "lower bound", "upper bound", "ARRAY[1:20] OF INTEGER"], "L116 array introduction");
 const l115CoreTag = l115Html.match(/<section\b[^>]*id="stage2-completion"[^>]*>/i)?.[0] ?? "";
-expect(/data-delivery-role="CORE"/i.test(l115CoreTag) && /data-classroom-activity="TEACH"/i.test(l115CoreTag), "L115 array introduction is not visible CORE/TEACH");
+expect(/data-delivery-role="CORE"/i.test(l115CoreTag) && /data-classroom-activity="TEACH"/i.test(l115CoreTag), "L116 array introduction is not visible CORE/TEACH");
 
 const transferRequirement = requirements.get("S4.07");
-expect(transferRequirement.prerequisites.join() === "S4.01", "S4.07 should depend on L041 architecture, not completion of all later register/bus requirements");
+expect(transferRequirement.prerequisites.join() === "S4.01", "S4.07 should depend on L042 architecture, not completion of all later register/bus requirements");
 
 const evidenceIds = (id) => requirements.get(id).assessmentEvidence.map(({ questionId }) => questionId);
 expect(evidenceIds("S1.08").includes("L008-Q1") && !evidenceIds("S1.08").includes("L001-Q1"), "S1.08 assessment mapping is not post-teaching");
-expect(evidenceIds("S8.10").every((id) => !id.startsWith("AM080")), "S8.10 still maps a pre-SQL monthly question");
-expect(evidenceIds("S9.07").includes("AQ105-Q1") && !evidenceIds("S9.07").includes("AQ100-Q5"), "S9.07 assessment mapping is not post-teaching");
-expect(evidenceIds("S10.03").includes("AQ115-Q5") && !evidenceIds("S10.03").includes("AR112-Q1"), "S10.03 assessment mapping is not post-teaching");
-expect(evidenceIds("S10.09").some((id) => id.startsWith("AQ125")) && !evidenceIds("S10.09").includes("AM120-Q3"), "S10.09 assessment mapping is not post-teaching");
-expect(evidenceIds("S12.01").includes("L142-Q2") && !evidenceIds("S12.01").includes("AM140-Q4"), "S12.01 assessment mapping is not post-teaching");
+expect(evidenceIds("S8.10").every((id) => !id.startsWith("AM081")), "S8.10 still maps a pre-SQL monthly question");
+expect(evidenceIds("S9.07").includes("AQ106-Q1") && !evidenceIds("S9.07").includes("AQ101-Q5"), "S9.07 assessment mapping is not post-teaching");
+expect(evidenceIds("S10.03").includes("AQ116-Q5") && !evidenceIds("S10.03").includes("AR113-Q1"), "S10.03 assessment mapping is not post-teaching");
+expect(evidenceIds("S10.09").some((id) => id.startsWith("AQ126")) && !evidenceIds("S10.09").includes("AM121-Q3"), "S10.09 assessment mapping is not post-teaching");
+expect(evidenceIds("S12.01").includes("L143-Q2") && !evidenceIds("S12.01").includes("AM141-Q4"), "S12.01 assessment mapping is not post-teaching");
 
 const earlyAssessmentMutation = structuredClone(coverageContract);
-earlyAssessmentMutation.requirements.find(({ id }) => id === "S9.07").assessmentEvidence.push({ questionId: "AQ100-Q5", conceptGroups: [["selection"]] });
-expect(buildCurriculumSequenceModel(earlyAssessmentMutation).problems.some(({ id }) => id === "AQ100-Q5->S9.07"), "mutation escaped: reintroducing the early Quiz 100 mapping must fail");
+earlyAssessmentMutation.requirements.find(({ id }) => id === "S9.07").assessmentEvidence.push({ questionId: "AQ101-Q5", conceptGroups: [["selection"]] });
+expect(buildCurriculumSequenceModel(earlyAssessmentMutation).problems.some(({ id }) => id === "AQ101-Q5->S9.07"), "mutation escaped: reintroducing the early Quiz 100 mapping must fail");
 
 const lateArrayMutation = structuredClone(coverageContract);
-lateArrayMutation.requirements.find(({ id }) => id === "S10.03").teachingLessons = [118];
+lateArrayMutation.requirements.find(({ id }) => id === "S10.03").teachingLessons = [120];
 expect(buildCurriculumSequenceModel(lateArrayMutation).problems.some(({ id }) => id === "S10.03->S10.06"), "mutation escaped: moving array terminology after search/sort must fail");
 
 const broadPrerequisiteMutation = structuredClone(coverageContract);

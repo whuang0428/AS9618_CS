@@ -1,90 +1,83 @@
-const samples = {
-  good: "S001,Ali,72",
-  missing: "S002,Bea",
-  textmark: "S003,Chen,Ninety",
-  wrongdelimiter: "S004;Dina;88",
-};
-
-const suppliedCsvFunctions = "// Question-supplied functions; Fields starts at index 1.\nFUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING\nFUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER\nFUNCTION IS_NUMERIC(Value : STRING) RETURNS BOOLEAN\nFUNCTION FIELD_COUNT(Fields : ARRAY OF STRING) RETURNS INTEGER";
+const fileLines = ["Ali,72", "Bea,64", "Chen,85"];
 
 const examples = {
-  parse: {
-    title: "Example 1: Parse one CSV-style line",
-    problem: "Extract StudentID, Name and Mark from S001,Ali,72.",
+  read: {
+    title: "Example 1: Read every line",
+    problem: "Output every line stored in Scores.txt.",
     rows: [
-      ["Read", "READFILE \"Scores.csv\", Line", "line enters a variable"],
-      ["Split", "Fields <- SPLIT(Line, \",\")", "comma separates fields"],
-      ["Assign", "StudentID <- Fields[1]", "position 1 is ID"],
-      ["Convert", "Mark <- STRING_TO_INTEGER(Fields[3])", "mark becomes numeric"],
+      ["Open", "OPENFILE \"Scores.txt\" FOR READ", "existing contents are needed"],
+      ["Loop", "WHILE NOT EOF(\"Scores.txt\")", "unknown number of lines"],
+      ["Read", "READFILE \"Scores.txt\", Line", "file data moves into a variable"],
+      ["Close", "CLOSEFILE \"Scores.txt\"", "file is released"],
     ],
-    code: `${suppliedCsvFunctions}\nREADFILE "Scores.csv", Line\nFields <- SPLIT(Line, ',')\nStudentID <- Fields[1]\nName <- Fields[2]\nMark <- STRING_TO_INTEGER(Fields[3])`,
-    points: ["Read before parsing.", "Use the agreed delimiter.", "Convert numeric text before numeric comparisons."],
-  },
-  validate: {
-    title: "Example 2: Validate before using fields",
-    problem: "Reject a line if it does not contain exactly three fields.",
-    rows: [
-      ["Split", "Fields <- SPLIT(Line, ',' )", "uses supplied STRING, CHAR signature"],
-      ["Check count", "FIELD_COUNT(Fields) = 3", "uses supplied array-count signature"],
-      ["Check mark", "IS_NUMERIC(Fields[3])", "prevents failed conversion"],
-    ],
-    code: "// Supplied functions: SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING; FIELD_COUNT(Fields : ARRAY OF STRING) RETURNS INTEGER; IS_NUMERIC(Value : STRING) RETURNS BOOLEAN; STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Fields starts at index 1.\nFields <- SPLIT(Line, ',')\nIF FIELD_COUNT(Fields) = 3 AND IS_NUMERIC(Fields[3]) THEN\n    Mark <- STRING_TO_INTEGER(Fields[3])\nELSE\n    OUTPUT \"Invalid line\"\nENDIF",
-    points: ["Malformed lines still exist in structured files.", "Check field count before using Fields[3].", "Check numeric text before conversion."],
-  },
-  count: {
-    title: "Example 3: Count marks over 70",
-    problem: "Read Scores.csv and count students with Mark greater than 70.",
-    rows: [
-      ["Open", "FOR READ", "existing file"],
-      ["Loop", "WHILE NOT EOF", "all lines"],
-      ["Parse", "SPLIT(Line, ',')", "uses supplied signature"],
-      ["Count", "IF Mark > 70", "numeric comparison"],
-    ],
-    code: "// Supplied: SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING; STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Fields starts at index 1.\nCount <- 0\nOPENFILE \"Scores.csv\" FOR READ\nWHILE NOT EOF(\"Scores.csv\")\n    READFILE \"Scores.csv\", Line\n    Fields <- SPLIT(Line, ',')\n    Mark <- STRING_TO_INTEGER(Fields[3])\n    IF Mark > 70 THEN\n        Count <- Count + 1\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.csv\"\nOUTPUT Count",
-    points: ["The file loop is from Lesson 120.", "CSV parsing happens inside the loop.", "The mark must be converted before comparison."],
+    code: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
+    points: ["Use READ for existing data.", "EOF stops the loop after the final line.", "Read into a variable before processing."],
   },
   write: {
-    title: "Example 4: Write a CSV-style line",
-    problem: "Write one new student record in the agreed field order.",
+    title: "Example 2: Write a new report",
+    problem: "Create a fresh report containing a pass count.",
     rows: [
-      ["Format", "StudentID,Name,Mark", "fixed order"],
-      ["Build line", "StudentID & \",\" & Name & \",\" & Mark", "delimiter between fields"],
-      ["Write", "WRITEFILE", "store the structured line"],
+      ["Open", "FOR WRITE", "new output file or replacement contents"],
+      ["Write", "WRITEFILE", "stores one output line"],
+      ["Close", "CLOSEFILE", "finalises the file"],
     ],
-    code: "Line <- StudentID & \",\" & Name & \",\" & Mark\nOPENFILE \"Scores.csv\" FOR APPEND\nWRITEFILE \"Scores.csv\", Line\nCLOSEFILE \"Scores.csv\"",
-    points: ["Use the same delimiter when writing.", "Preserve the field order.", "APPEND is suitable for adding a new record."],
+    code: "OPENFILE \"Report.txt\" FOR WRITE\nWRITEFILE \"Report.txt\", \"Pass count: \" & Count\nCLOSEFILE \"Report.txt\"",
+    points: ["WRITE is appropriate for a fresh result file.", "Mention the value being written.", "Do not use READ when the algorithm writes output."],
+  },
+  append: {
+    title: "Example 3: Append a new line",
+    problem: "Add a new score to the end of Scores.txt without deleting old scores.",
+    rows: [
+      ["Open", "FOR APPEND", "keeps existing lines"],
+      ["Write", "WRITEFILE", "adds the new line"],
+      ["Close", "CLOSEFILE", "saves and releases the file"],
+    ],
+    code: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Dina,91\"\nCLOSEFILE \"Scores.txt\"",
+    points: ["APPEND is the key mark when old contents must remain.", "The new data is written after existing lines.", "Using WRITE here risks overwriting."],
+  },
+  count: {
+    title: "Example 4: Count records in a file",
+    problem: "Count how many lines are in Scores.txt.",
+    rows: [
+      ["Initialise", "Count <- 0", "before reading starts"],
+      ["Read each line", "READFILE ... Line", "one line per loop"],
+      ["Increment", "Count <- Count + 1", "after a successful read"],
+      ["Output", "OUTPUT Count", "after the loop"],
+    ],
+    code: "Count <- 0\nOPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    Count <- Count + 1\nENDWHILE\nCLOSEFILE \"Scores.txt\"\nOUTPUT Count",
+    points: ["Initialise Count before the loop.", "Increment once per line read.", "Output after the file is closed or after the loop."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "In S001,Ali,72, what is the delimiter?", accepted: ["comma", ","], answer: "Comma (,)." },
-  { id: "p2", prompt: "In the format StudentID,Name,Mark, which field position is Name?", accepted: ["2", "second", "field 2"], answer: "Field 2." },
-  { id: "p3", prompt: "Which question-supplied function can separate Line into fields using a comma?", accepted: ["split", "split line", "split(line, comma)"], answer: "SPLIT(Line, ',')." },
-  { id: "p4", prompt: "Before using Fields[3], what should be checked?", accepted: ["field count", "field_count", "3 fields"], answer: "Use the supplied FIELD_COUNT function to check that the line has exactly three fields." },
-  { id: "p5", prompt: "If Mark is read from a text file, is it text first? yes or no.", accepted: ["yes"], answer: "Yes. Convert it before numeric comparison." },
-  { id: "p6", prompt: "Which conversion is needed before comparing Fields[3] > 70?", accepted: ["string to integer", "string_to_integer", "integer"], answer: "STRING_TO_INTEGER(Fields[3])." },
-  { id: "p7", prompt: "Is S002,Bea valid for expected fields StudentID,Name,Mark? yes or no.", accepted: ["no"], answer: "No. It is missing the Mark field." },
-  { id: "p8", prompt: "What does one line usually represent in a CSV-style file?", accepted: ["record", "one record"], answer: "One record." },
-  { id: "p9", prompt: "Is Java's fields[2] the same index style as Cambridge Fields[3] in this page? yes or no.", accepted: ["no"], answer: "No. Java is zero-based; the Cambridge-style examples here use 1-based field positions." },
-  { id: "p10", prompt: "When writing CSV, what must be kept consistent between fields?", accepted: ["delimiter", "comma", "field order"], answer: "The delimiter and field order must be consistent." },
+  { id: "p1", prompt: "Which mode opens an existing text file so its contents can be read?", accepted: ["read", "for read"], answer: "FOR READ." },
+  { id: "p2", prompt: "Which mode adds new data to the end without removing existing lines?", accepted: ["append", "for append"], answer: "FOR APPEND." },
+  { id: "p3", prompt: "Which command reads a line from a file into a variable in Cambridge-style pseudocode?", accepted: ["readfile"], answer: "READFILE." },
+  { id: "p4", prompt: "Which condition is commonly used to keep reading until the end of a file?", accepted: ["not eof", "while not eof", "eof"], answer: "WHILE NOT EOF(filename)." },
+  { id: "p5", prompt: "Which command should be used after file processing is complete?", accepted: ["closefile"], answer: "CLOSEFILE." },
+  { id: "p6", prompt: "If old contents must remain, should the file be opened FOR WRITE or FOR APPEND?", accepted: ["for append", "append"], answer: "FOR APPEND." },
+  { id: "p7", prompt: "In READFILE \"Scores.txt\", Line, what is Line?", accepted: ["variable", "a variable"], answer: "Line is a variable that receives data read from the file." },
+  { id: "p8", prompt: "What can happen if FOR WRITE is used on an existing file?", accepted: ["overwrite", "overwritten", "replace", "replaced"], answer: "Existing contents may be overwritten/replaced." },
+  { id: "p9", prompt: "Is Java try-with-resources the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style OPENFILE, READFILE, WRITEFILE and CLOSEFILE." },
+  { id: "p10", prompt: "Give the three-step file lifecycle in words.", accepted: ["open process close", "open read close", "open write close"], answer: "Open, process, close." },
 ];
 
 const mistakes = [
   {
-    wrong: "I compared Fields[3] > 70 immediately after splitting the line.",
-    fix: "Convert first: Mark <- STRING_TO_INTEGER(Fields[3]); then compare Mark > 70.",
+    wrong: "I used OPENFILE \"Scores.txt\" FOR WRITE to add one new score while keeping old scores.",
+    fix: "Use FOR APPEND. WRITE is for creating or replacing contents; APPEND adds to the end.",
   },
   {
-    wrong: "I used Fields[3] even when the line was S002,Bea.",
-    fix: "Use the supplied FIELD_COUNT function and check FIELD_COUNT(Fields) = 3 before accessing Fields[3].",
+    wrong: "I processed Line before using READFILE.",
+    fix: "Read first: READFILE \"Scores.txt\", Line. The variable only has the next file line after reading.",
   },
   {
-    wrong: "I wrote new records as Name,Mark,StudentID even though the format says StudentID,Name,Mark.",
-    fix: "Preserve the agreed field order. A structured file is only useful if every line follows the same structure.",
+    wrong: "I wrote a fixed FOR loop for a file with an unknown number of lines.",
+    fix: "Use WHILE NOT EOF(\"Scores.txt\") when the number of lines is not known.",
   },
   {
-    wrong: "I used Java split syntax as the full Paper 2 answer.",
-    fix: "Java can support understanding, but a Paper 2 answer must follow the complete SPLIT signature and index convention supplied by the question.",
+    wrong: "I opened a file and never closed it.",
+    fix: "Add CLOSEFILE after reading or writing. Mark schemes commonly reward closing the file.",
   },
 ];
 
@@ -97,95 +90,93 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A file Scores.csv stores lines in the format StudentID,Name,Mark. The question supplies FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING, with the first returned element at index 1, and FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Write pseudocode to read one line and assign the fields to StudentID, Name and Mark. Mark must be stored as an integer.",
-    answer: "READFILE \"Scores.csv\", Line\nFields <- SPLIT(Line, ',')\nStudentID <- Fields[1]\nName <- Fields[2]\nMark <- STRING_TO_INTEGER(Fields[3])",
+    marks: "5 marks",
+    prompt: "Write pseudocode to open Scores.txt for reading, output every line in the file, and close the file.",
+    answer: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
     marking: [
-      { mark: "B1", text: "reads a line from Scores.csv into a variable" },
-      { mark: "M1", text: "splits the line using comma delimiter" },
-      { mark: "A1", text: "assigns StudentID from field 1" },
-      { mark: "A1", text: "assigns Name from field 2" },
-      { mark: "M1", text: "uses field 3 for Mark" },
-      { mark: "A1", text: "converts Mark to INTEGER or equivalent numeric type" },
+      { mark: "B1", text: "opens Scores.txt using FOR READ" },
+      { mark: "M1", text: "uses a loop controlled by NOT EOF" },
+      { mark: "M1", text: "reads a line using READFILE into a variable" },
+      { mark: "A1", text: "outputs the variable read from the file" },
+      { mark: "B1", text: "closes the file using CLOSEFILE" },
     ],
     strict: [
-      "Do not award conversion mark if Mark remains only as text.",
-      "Allow equivalent clear parse operation instead of SPLIT.",
-      "Do not accept parsing before READFILE unless Line is already stated as read.",
+      "Do not award READFILE mark if no receiving variable is shown.",
+      "Allow equivalent variable names such as ThisLine.",
+      "Do not accept FOR WRITE for a read-only task.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "The question supplies FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING, with the first returned element at index 1, and FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Write pseudocode to read all lines from Scores.csv and output the Name field for every student with Mark greater than 70.",
-    answer: "OPENFILE \"Scores.csv\" FOR READ\nWHILE NOT EOF(\"Scores.csv\")\n    READFILE \"Scores.csv\", Line\n    Fields <- SPLIT(Line, ',')\n    Name <- Fields[2]\n    Mark <- STRING_TO_INTEGER(Fields[3])\n    IF Mark > 70 THEN\n        OUTPUT Name\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.csv\"",
+    marks: "4 marks",
+    prompt: "A new score line \"Dina,91\" must be added to Scores.txt without removing existing data. Write suitable pseudocode.",
+    answer: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Dina,91\"\nCLOSEFILE \"Scores.txt\"",
     marking: [
-      { mark: "B1", text: "opens Scores.csv for READ" },
-      { mark: "M1", text: "uses NOT EOF loop" },
-      { mark: "M1", text: "reads each line inside the loop" },
-      { mark: "M1", text: "splits line into fields using comma delimiter" },
-      { mark: "A1", text: "converts Mark from field 3 before numeric comparison" },
-      { mark: "A1", text: "outputs Name from field 2 only when Mark > 70" },
+      { mark: "B1", text: "opens Scores.txt using FOR APPEND" },
+      { mark: "M1", text: "uses WRITEFILE to write the new line" },
+      { mark: "A1", text: "writes the correct line Dina,91 or equivalent new score data" },
+      { mark: "B1", text: "closes the file" },
     ],
     strict: [
-      "Do not award comparison mark for text comparison of Fields[3] unless conversion is clear.",
-      "Allow >= 71 for integer marks as equivalent to > 70.",
-      "Do not accept outputting the whole line when Name is specifically required.",
+      "Do not award mode mark for FOR WRITE.",
+      "Allow NewLine variable if it is clearly assigned the new score before writing.",
+      "Do not accept READFILE for adding the new line.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain why the line S002,Bea is malformed for the expected format StudentID,Name,Mark, and describe one suitable action.",
-    answer: "The line is malformed because it has only two fields after splitting by comma: StudentID and Name. The expected format requires three fields, with Mark in field 3. The program should reject the line, output an error message, or skip it rather than trying to access Fields[3].",
+    marks: "6 marks",
+    prompt: "Write pseudocode to count how many lines are stored in Scores.txt and output the count.",
+    answer: "Count <- 0\nOPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    Count <- Count + 1\nENDWHILE\nCLOSEFILE \"Scores.txt\"\nOUTPUT Count",
     marking: [
-      { mark: "B1", text: "states the expected format has three fields" },
-      { mark: "B1", text: "identifies S002,Bea has only two fields" },
-      { mark: "B1", text: "states Mark / field 3 is missing" },
-      { mark: "B1", text: "explains accessing Fields[3] would be invalid or unsafe" },
-      { mark: "B1", text: "gives suitable action such as reject, skip, or report error" },
+      { mark: "B1", text: "initialises Count to 0 before the loop" },
+      { mark: "B1", text: "opens the file for READ" },
+      { mark: "M1", text: "uses NOT EOF loop to process all lines" },
+      { mark: "M1", text: "reads each line inside the loop" },
+      { mark: "A1", text: "increments Count once for each line read" },
+      { mark: "B1", text: "outputs Count after processing" },
     ],
     strict: [
-      "Do not award full credit for only saying 'it is wrong'.",
-      "Allow 'invalid line' for malformed if field-count reason is clear.",
-      "Do not accept filling Mark with a guessed value as a suitable action.",
+      "Do not award initialisation mark if Count is reset inside the loop.",
+      "Allow output before CLOSEFILE if file processing is otherwise complete.",
+      "Do not accept counting characters unless the question is reinterpreted explicitly and correctly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "The question supplies FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. A student writes Mark <- Fields[3] then IF Mark > 70. Explain the weakness and correct it.",
-    answer: "Fields[3] is text because it has been read from a text file. A numeric comparison should use an integer value. Corrected pseudocode:\nMark <- STRING_TO_INTEGER(Fields[3])\nIF Mark > 70 THEN\n    OUTPUT Name\nENDIF",
+    marks: "4 marks",
+    prompt: "A student writes OUTPUT Line before READFILE has been used in the loop. Explain the error and correct the order of statements.",
+    answer: "The error is that Line does not yet contain the next file line. The program must read from the file into Line before Line is processed. Correct order inside the loop:\nREADFILE \"Scores.txt\", Line\nOUTPUT Line",
     marking: [
-      { mark: "B1", text: "states fields read from CSV/text file are text initially" },
-      { mark: "B1", text: "explains Mark should be converted before numeric comparison" },
-      { mark: "B1", text: "uses a suitable string-to-integer conversion" },
-      { mark: "B1", text: "uses converted Mark in comparison with 70" },
-      { mark: "B1", text: "keeps the output dependent on the condition" },
+      { mark: "B1", text: "states Line is a variable used to hold file data" },
+      { mark: "B1", text: "explains Line must be assigned by READFILE before processing" },
+      { mark: "B1", text: "gives READFILE before OUTPUT" },
+      { mark: "B1", text: "keeps the correction inside the file-reading loop or clearly implies it" },
     ],
     strict: [
-      "Do not award conversion mark for simply renaming Fields[3] as Mark.",
-      "Allow another conversion only when the question supplies its complete typed signature.",
-      "Do not accept Java parseInt alone as a Cambridge pseudocode answer.",
+      "Do not award explanation marks for only saying 'syntax error'.",
+      "Allow display/print instead of output if pseudocode meaning is clear.",
+      "Do not accept reading after output as a correction.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Write pseudocode to append a new record to Scores.csv. The variables StudentID, Name and Mark already contain valid values. The file format is StudentID,Name,Mark.",
-    answer: "Line <- StudentID & \",\" & Name & \",\" & Mark\nOPENFILE \"Scores.csv\" FOR APPEND\nWRITEFILE \"Scores.csv\", Line\nCLOSEFILE \"Scores.csv\"",
+    marks: "7 marks",
+    prompt: "A program must read every line from Scores.txt and write only lines containing PASS to PassList.txt. Write suitable pseudocode.",
+    answer: "OPENFILE \"Scores.txt\" FOR READ\nOPENFILE \"PassList.txt\" FOR WRITE\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    IF Line CONTAINS \"PASS\" THEN\n        WRITEFILE \"PassList.txt\", Line\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.txt\"\nCLOSEFILE \"PassList.txt\"",
     marking: [
-      { mark: "M1", text: "builds a line using StudentID, Name and Mark" },
-      { mark: "A1", text: "uses comma delimiter between fields" },
-      { mark: "A1", text: "uses correct field order StudentID,Name,Mark" },
-      { mark: "B1", text: "opens Scores.csv FOR APPEND" },
-      { mark: "M1", text: "writes the constructed line using WRITEFILE" },
-      { mark: "B1", text: "closes the file" },
+      { mark: "B1", text: "opens input file Scores.txt for READ" },
+      { mark: "B1", text: "opens output file PassList.txt for WRITE" },
+      { mark: "M1", text: "uses NOT EOF loop on the input file" },
+      { mark: "M1", text: "reads each input line into a variable" },
+      { mark: "A1", text: "tests whether the line contains PASS or equivalent pass condition" },
+      { mark: "A1", text: "writes only matching lines to the output file" },
+      { mark: "B1", text: "closes both files" },
     ],
     strict: [
-      "Do not award field-order mark if values are written as Name,Mark,StudentID.",
-      "Allow writing expression directly in WRITEFILE if delimiters and order are clear.",
-      "Do not accept FOR READ for appending a new record.",
+      "Do not award output-file mark if WRITEFILE writes back to the input file only.",
+      "Allow a parsed field comparison if PASS is stored as a status field.",
+      "Do not accept opening PassList.txt for READ when writing output.",
     ],
   },
 ];
@@ -200,7 +191,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9_, -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9_ -]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -219,10 +210,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    sentence: "A human understands it; a program must work much harder to find each field.",
-    csv: "Correct. The comma clearly separates StudentID, Name and Mark.",
-    random: "The order is unclear. Computers prefer less interpretive theatre.",
-    onefield: "This has no visible field boundaries, so parsing becomes unreliable.",
+    variable: "More variables forget things at shutdown just as confidently as the old variables.",
+    array: "An array is useful while the program runs, but it is still in memory unless saved.",
+    file: "Correct. A text file stores data persistently so the next run can read it.",
+    print: "Screenshots are not a data storage strategy that Paper 2 wants to see.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -233,39 +224,38 @@ function setupHook() {
   });
 }
 
-function setupParser() {
-  const input = document.querySelector("#csvInput");
-  const delimiter = document.querySelector("#delimiterInput");
-  const result = document.querySelector("#parseResult");
-  document.querySelector("#parseBtn").addEventListener("click", () => {
-    const fields = input.value.split(delimiter.value);
-    result.innerHTML = `
-      <p><strong>${fields.length} field(s)</strong> found using delimiter <code>${escapeHtml(delimiter.value)}</code>.</p>
-      ${tableMarkup(["Position", "Field value"], fields.map((field, index) => [String(index + 1), field.trim()]))}
-    `;
+function setupModeLab() {
+  const scenario = document.querySelector("#modeScenario");
+  const choice = document.querySelector("#modeChoice");
+  const result = document.querySelector("#modeResult");
+  const correctModes = { read: "READ", write: "WRITE", append: "APPEND" };
+  const explanations = {
+    read: "READ is needed because the program uses existing file contents.",
+    write: "WRITE is suitable because a fresh summary report is being created.",
+    append: "APPEND is needed because old scores must remain and the new score goes at the end.",
+  };
+  document.querySelector("#modeBtn").addEventListener("click", () => {
+    const expected = correctModes[scenario.value];
+    const correct = choice.value === expected;
+    result.innerHTML = `<p><strong>${correct ? "Correct" : "Not quite"}.</strong> ${escapeHtml(explanations[scenario.value])}</p>`;
   });
 }
 
-function validateLine(line) {
-  const fields = line.split(",");
-  if (fields.length !== 3) {
-    return { ok: false, message: `${line} has ${fields.length} field(s), expected 3.` };
-  }
-  const mark = Number(fields[2]);
-  if (!Number.isInteger(mark)) {
-    return { ok: false, message: `${fields[2]} is not an integer mark.` };
-  }
-  return { ok: true, message: `${line} is valid: ID=${fields[0]}, Name=${fields[1]}, Mark=${mark}.` };
-}
-
-function setupValidator() {
-  const output = document.querySelector("#validationResult");
-  document.querySelectorAll("[data-sample]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const line = samples[button.dataset.sample];
-      const result = validateLine(line);
-      output.innerHTML = `<p><code>${escapeHtml(line)}</code></p><p><strong>${result.ok ? "Valid" : "Invalid"}.</strong> ${escapeHtml(result.message)}</p>`;
-    });
+function setupReadTrace() {
+  let index = 0;
+  const output = document.querySelector("#readTrace");
+  document.querySelector("#readStepBtn").addEventListener("click", () => {
+    if (index >= fileLines.length) {
+      output.innerHTML = `<p><strong>EOF reached.</strong> The next step is CLOSEFILE "Scores.txt".</p>`;
+      return;
+    }
+    const line = fileLines[index];
+    output.innerHTML = `<p>READFILE "Scores.txt", Line</p><p>Line now contains <strong>${escapeHtml(line)}</strong>.</p><p>Line ${index + 1} of ${fileLines.length} has been processed.</p>`;
+    index += 1;
+  });
+  document.querySelector("#resetReadBtn").addEventListener("click", () => {
+    index = 0;
+    output.textContent = "File is open. No line has been read yet.";
   });
 }
 
@@ -284,7 +274,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("parse");
+  renderExample("read");
   document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -318,7 +308,7 @@ function renderPractice() {
       const mark = document.querySelector(`#${item.id}-mark`);
       const response = normalise(input.value);
       const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. The CSV structure is being treated precisely." : "Not quite. Check delimiter, field position, validation or conversion.";
+      mark.textContent = correct ? "Correct. The file-operation wording is precise." : "Not quite. Check the mode, command name, or file lifecycle step.";
       mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -384,8 +374,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupParser();
-setupValidator();
+setupModeLab();
+setupReadTrace();
 setupExamples();
 renderPractice();
 renderMistakes();

@@ -1,108 +1,108 @@
 const scenarioMap = {
-  tokenise: {
-    result: "Stage: lexical analysis.",
-    method: "Lexical analysis scans source-code characters and groups them into tokens such as identifiers, keywords, operators and literals.",
-    trap: "Do not call this syntax analysis; syntax uses the tokens to check grammar.",
+  deploy: {
+    result: "Best fit: compiler.",
+    method: "A compiler translates the whole high-level program before execution and can produce object or executable code for distribution.",
+    trap: "Do not choose interpreter if the key requirement is distributing a finished program without the source code.",
   },
-  grammar: {
-    result: "Stage: syntax analysis.",
-    method: "Syntax analysis checks whether the sequence of tokens follows the grammar rules of the programming language.",
-    trap: "Do not call every compiler error a syntax error; type and scope errors are semantic.",
+  debug: {
+    result: "Best fit: interpreter.",
+    method: "An interpreter translates and executes code statement by statement, which can help identify errors during development.",
+    trap: "Do not say interpreters produce a separate executable in the same way as compilers.",
   },
-  type: {
-    result: "Stage: semantic analysis.",
-    method: "Semantic analysis checks meaning, including type compatibility, declarations and valid operations.",
-    trap: "Do not call this lexical analysis; the tokens may be valid even when the meaning is invalid.",
+  assembly: {
+    result: "Best fit: assembler.",
+    method: "An assembler translates assembly language mnemonics into machine code for a specific processor.",
+    trap: "Do not use assembler for high-level language source code.",
   },
-  symbol: {
-    result: "Compiler structure: symbol table, used during semantic analysis.",
-    method: "A symbol table records identifiers and information such as type, scope and memory location.",
-    trap: "Do not describe the symbol table as the final object code.",
+  repeat: {
+    result: "Best fit: compiler.",
+    method: "After compilation, the executable can be run repeatedly without translating the whole source code each time.",
+    trap: "Do not claim compiled code never needs testing; compilation and correctness are different issues.",
   },
-  target: {
-    result: "Stage: code generation.",
-    method: "Code generation converts the checked intermediate representation into target low-level/object code.",
-    trap: "Do not mix this with linking or loading; those are separate steps after compilation.",
+  student: {
+    result: "Best fit: interpreter.",
+    method: "Interactive execution can help a beginner test small parts of a program and see errors near the relevant statement.",
+    trap: "Do not say an interpreter is always faster because it feels immediate.",
   },
-  remove: {
-    result: "Stage: optimisation.",
-    method: "Optimisation improves efficiency, for example by removing unreachable code, while preserving program behaviour.",
-    trap: "Do not say optimisation fixes the programmer's logic errors.",
+  wrongasm: {
+    result: "Not suitable: assembler.",
+    method: "An assembler translates assembly language, not Java or other high-level source code. A compiler or interpreter would be relevant depending on the language and use case.",
+    trap: "Do not confuse assembly language with any program code that looks technical.",
   },
 };
 
 const examples = {
-  lexical: {
-    title: "Example 1: Lexical analysis",
-    problem: "Source line: total = price + tax",
+  compiler: {
+    title: "Example 1: Compiler for distribution",
+    problem: "A developer wants to distribute a finished desktop application without giving users the source code.",
     steps: [
-      "The source line is read as a stream of characters.",
-      "The scanner groups characters into tokens such as identifier total, assignment operator, identifier price, plus operator and identifier tax.",
-      "Comments and unnecessary whitespace may be removed.",
-      "An invalid character at this stage could be reported as a lexical error.",
+      "A compiler is suitable because it translates the whole high-level program before it is run.",
+      "It can produce object or executable code.",
+      "Users can run the executable without needing the original source code.",
+      "A limitation is that errors may be reported after compilation, so debugging may require working through a list of messages.",
     ],
   },
-  syntax: {
-    title: "Example 2: Syntax analysis",
-    problem: "Source line: IF total > 100 THEN discount = 10",
+  interpreter: {
+    title: "Example 2: Interpreter during development",
+    problem: "A student is writing a program and wants immediate feedback on errors.",
     steps: [
-      "The parser receives tokens from lexical analysis.",
-      "It checks the token sequence against grammar rules for an IF statement.",
-      "It may build a parse tree or syntax tree representing the statement structure.",
-      "A missing THEN, bracket or operator would be a syntax error because the grammar is invalid.",
+      "An interpreter is suitable because it translates and executes code statement by statement.",
+      "It can stop at or near the statement where an error occurs.",
+      "This can make testing and debugging easier during development.",
+      "A limitation is that the program may run more slowly because translation happens while it runs.",
     ],
   },
-  semantic: {
-    title: "Example 3: Semantic analysis",
-    problem: "Source line: age = name + 1, where age is INTEGER and name is STRING.",
+  assembler: {
+    title: "Example 3: Assembler for low-level code",
+    problem: "A programmer writes assembly language instructions for a specific processor.",
     steps: [
-      "The statement may be grammatically valid because assignment and addition are in a legal structure.",
-      "Semantic analysis checks meaning using information such as variable types.",
-      "Adding a string to an integer in this context is invalid.",
-      "The compiler can report a semantic/type error even though the syntax shape is correct.",
+      "An assembler is suitable because the input is assembly language.",
+      "Assembly uses mnemonics such as LDA or ADD rather than raw binary.",
+      "The assembler converts these mnemonics into machine code/object code.",
+      "It is not the correct translator for high-level source code such as Java or Python.",
     ],
   },
-  codegen: {
-    title: "Example 4: Code generation and optimisation",
-    problem: "A checked expression is ready to be converted into low-level instructions.",
+  compare: {
+    title: "Example 4: Development versus deployment",
+    problem: "Choose one translator for testing and another for distributing the final program.",
     steps: [
-      "After earlier checks, the compiler can generate target low-level instructions.",
-      "The output is object code or an intermediate/target code form depending on the system.",
-      "Optimisation may remove unreachable code or avoid repeated calculations.",
-      "The next lesson handles linkers and loaders, so do not award those marks here unless asked.",
+      "For testing, an interpreter may be useful because errors can be found as statements are translated and executed.",
+      "For distribution, a compiler may be useful because it can produce executable code.",
+      "The compiled program can run without giving users the source code.",
+      "The choice depends on the stage of development and the need for speed, debugging or source-code protection.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which compilation stage groups characters into tokens?", accepted: ["lexical", "lexical analysis"], answer: "Lexical analysis" },
-  { id: "p2", prompt: "What is a token?", accepted: ["identifier", "keyword", "operator", "literal", "meaningful", "lexical unit"], answer: "A meaningful lexical unit such as an identifier, keyword, operator or literal" },
-  { id: "p3", prompt: "Which stage checks grammar rules?", accepted: ["syntax", "syntax analysis", "parsing", "parser"], answer: "Syntax analysis / parsing" },
-  { id: "p4", prompt: "Which stage checks type compatibility and declarations?", accepted: ["semantic", "semantic analysis"], answer: "Semantic analysis" },
-  { id: "p5", prompt: "What compiler structure stores identifier names, types and scope?", accepted: ["symbol table"], answer: "Symbol table" },
-  { id: "p6", prompt: "Which stage produces object code or target code?", accepted: ["code generation", "code generator", "generation"], answer: "Code generation" },
-  { id: "p7", prompt: "What is the purpose of optimisation?", accepted: ["improve efficiency", "faster", "less memory", "reduce memory", "without changing behaviour", "without changing output"], answer: "To improve efficiency without changing intended program behaviour" },
-  { id: "p8", prompt: "Is a missing bracket usually lexical, syntax or semantic?", accepted: ["syntax", "syntax error"], answer: "Syntax error" },
-  { id: "p9", prompt: "Is using an undeclared variable usually lexical, syntax or semantic?", accepted: ["semantic", "semantic error"], answer: "Semantic error" },
-  { id: "p10", prompt: "Do linkers and loaders belong to this lesson's main compilation stages? Answer yes or no.", accepted: ["no"], answer: "No. They are related later stages covered separately" },
+  { id: "p1", prompt: "Which translator converts a whole high-level program before execution?", accepted: ["compiler"], answer: "Compiler" },
+  { id: "p2", prompt: "Which translator executes high-level code statement by statement?", accepted: ["interpreter"], answer: "Interpreter" },
+  { id: "p3", prompt: "Which translator converts assembly language into machine code?", accepted: ["assembler"], answer: "Assembler" },
+  { id: "p4", prompt: "What is the usual input to an assembler?", accepted: ["assembly", "assembly language", "mnemonics"], answer: "Assembly language / mnemonics" },
+  { id: "p5", prompt: "What code can be executed directly by a processor?", accepted: ["machine code", "machine language", "binary instructions"], answer: "Machine code" },
+  { id: "p6", prompt: "Name one reason a compiler is useful for distributing software.", accepted: ["executable", "object code", "no source", "without source", "faster", "run repeatedly"], answer: "It can produce executable/object code that runs without the source code" },
+  { id: "p7", prompt: "Name one reason an interpreter is useful during development.", accepted: ["debug", "debugging", "statement by statement", "line by line", "immediate", "errors"], answer: "It can help find errors statement by statement during development" },
+  { id: "p8", prompt: "Does an interpreter normally produce a separate permanent object code file? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p9", prompt: "Does an assembler translate Python source code? Answer yes or no.", accepted: ["no"], answer: "No. It translates assembly language" },
+  { id: "p10", prompt: "Give one limitation of interpreted programs.", accepted: ["slower", "source code needed", "translated during execution", "needs interpreter"], answer: "They may run more slowly and often need the interpreter/source code available" },
 ];
 
 const mistakes = [
   {
-    wrong: "Lexical analysis checks whether the whole program follows grammar rules.",
-    fix: "Lexical analysis turns character streams into tokens. Syntax analysis checks whether token sequences follow grammar rules.",
+    wrong: "An interpreter is just a compiler that is worse.",
+    fix: "An interpreter translates and executes statements as the program runs. A compiler translates the whole program before execution and can produce object or executable code.",
   },
   {
-    wrong: "A semantic error means the code has a missing bracket.",
-    fix: "A missing bracket is usually a syntax error. A semantic error involves invalid meaning, such as incompatible types or undeclared variables.",
+    wrong: "An assembler translates any programming language into machine code.",
+    fix: "An assembler translates assembly language mnemonics into machine code. High-level languages use compilers or interpreters.",
   },
   {
-    wrong: "The symbol table is the same as object code.",
-    fix: "A symbol table stores information about identifiers for compiler checks. Object code is translated low-level output.",
+    wrong: "Compiled programs never have errors because the compiler checked them.",
+    fix: "A compiler can detect some syntax or translation errors, but logic errors may remain. Successful compilation does not prove the program is correct.",
   },
   {
-    wrong: "Optimisation changes the algorithm so the answer becomes correct.",
-    fix: "Optimisation aims to improve efficiency while preserving program behaviour. It does not automatically fix the programmer's logic.",
+    wrong: "Machine code is easier for humans because it is what the CPU understands.",
+    fix: "Machine code is directly executable by the CPU, but it is difficult for humans to read. High-level languages and assembly mnemonics are more human-readable.",
   },
 ];
 
@@ -116,91 +116,91 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Describe the purpose of lexical analysis during compilation.",
-    answer: "Lexical analysis reads the source code as a stream of characters and groups characters into tokens. Tokens may include identifiers, keywords, operators and constants/literals. The stage may remove unnecessary whitespace and comments. It can detect invalid characters or symbols before later compiler stages use the token stream.",
+    prompt: "Describe the role of a compiler and give one advantage and one disadvantage of using one.",
+    answer: "A compiler translates the whole high-level source program into object code or executable machine code before the program is run. An advantage is that the compiled program can be run repeatedly without translating the source code each time, and the source code does not need to be supplied to the user. A disadvantage is that errors may be reported after compilation, so the programmer may need to work through a list of error messages before the program can run.",
     marking: [
-      { mark: "B1", text: "source code/characters are scanned or read" },
-      { mark: "B1", text: "characters are grouped into tokens" },
-      { mark: "B1", text: "valid token examples such as identifiers, keywords, operators or literals" },
-      { mark: "B1", text: "comments/extra whitespace may be removed" },
-      { mark: "B1", text: "valid lexical error or token stream output described" },
+      { mark: "B1", text: "translates high-level source code" },
+      { mark: "B1", text: "whole program translated before execution" },
+      { mark: "B1", text: "produces object/executable/machine code" },
+      { mark: "B1", text: "valid advantage such as repeated execution without retranslation/source code not needed" },
+      { mark: "B1", text: "valid disadvantage such as compilation required before running or error list after compilation" },
     ],
     strict: [
-      "Do not accept grammar checking as lexical analysis.",
-      "Do not award token mark for saying only 'splits code up' without meaningful units.",
-      "Allow constants for literals.",
+      "Do not accept 'turns code into code' without source/object or machine code distinction.",
+      "Do not award output mark for saying only 'it runs the program'.",
+      "Allow executable code for object code if context is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Explain the difference between syntax analysis and semantic analysis.",
-    answer: "Syntax analysis checks whether the sequence of tokens follows the grammar rules of the programming language, for example whether brackets or statement structure are valid. Semantic analysis checks the meaning of the program, such as whether variables have been declared, whether scope is valid and whether data types are compatible. A program can be syntactically correct but semantically invalid.",
+    prompt: "Explain why an interpreter may be useful while developing a program.",
+    answer: "An interpreter translates and executes high-level source code statement by statement as the program runs. During development this can help the programmer test small parts of the program and locate errors near the statement being executed. It may give quicker feedback for debugging. A limitation is that the program may run more slowly than compiled code because translation occurs during execution.",
     marking: [
-      { mark: "B1", text: "syntax analysis checks grammar/structure of token sequence" },
-      { mark: "B1", text: "valid syntax example such as brackets, expression form or statement structure" },
-      { mark: "B1", text: "semantic analysis checks meaning/context" },
-      { mark: "B1", text: "valid semantic example such as type compatibility, declarations or scope" },
+      { mark: "B1", text: "interpreter translates/executes high-level source code" },
+      { mark: "B1", text: "statement by statement / line by line during execution" },
+      { mark: "B1", text: "helps locate or diagnose errors during development" },
+      { mark: "B1", text: "valid limitation or consequence such as slower execution/source code needed" },
     ],
     strict: [
-      "Do not accept 'syntax is spelling and semantic is grammar' as a correct distinction.",
-      "Do not require exact phrase token sequence if grammar checking is clear.",
-      "Allow parse tree reference for syntax analysis.",
+      "Do not accept 'finds all errors' because logic errors may remain.",
+      "Do not accept compiler-only features such as producing a standalone executable.",
+      "Allow line by line as equivalent to statement by statement.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Describe the role of a symbol table in compilation.",
-    answer: "A symbol table stores information about identifiers used in a program. This may include variable or procedure names, data types, scope and memory location/address information. The compiler can use the symbol table during semantic analysis to check whether identifiers have been declared and whether operations use compatible types. It is not the same as the object code output.",
+    marks: "4 marks",
+    prompt: "Describe the purpose of an assembler.",
+    answer: "An assembler translates assembly language into machine code or object code. Assembly language uses mnemonic instructions and labels that are easier for programmers to write than raw binary machine code. The resulting machine code can be executed by the processor. An assembler is not used to translate high-level languages such as Java or Python.",
     marking: [
-      { mark: "B1", text: "stores information about identifiers/names" },
-      { mark: "B1", text: "valid stored item such as type, scope, address/location or kind of identifier" },
-      { mark: "B1", text: "used by compiler during checking/semantic analysis" },
-      { mark: "B1", text: "checks declarations or undeclared identifiers" },
-      { mark: "B1", text: "checks type compatibility and/or identifier scope" },
+      { mark: "B1", text: "translates assembly language" },
+      { mark: "B1", text: "into machine code/object code" },
+      { mark: "B1", text: "assembly language contains mnemonics/low-level instructions" },
+      { mark: "B1", text: "machine code can be executed by processor or high-level-language boundary stated" },
     ],
     strict: [
-      "Do not accept 'stores all the program code' as symbol table role.",
-      "Do not award address/location mark unless linked to identifier information.",
-      "Allow variable table if identifier information is clearly described.",
+      "Do not accept high-level source code as assembler input.",
+      "Do not accept 'assembler is assembly language' as a role.",
+      "Allow examples of mnemonics such as LDA/ADD if linked to assembly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain how a compiler can produce object code after checking source code.",
-    answer: "The compiler first performs lexical analysis to convert source-code characters into tokens. Syntax analysis then checks whether the token sequence follows the grammar rules. Semantic analysis checks meaning, such as declarations and type compatibility, often using a symbol table. If the checks allow compilation to continue, code generation produces object or target code. Optimisation may improve efficiency without changing the program's behaviour.",
+    marks: "6 marks",
+    prompt: "Compare a compiler and an interpreter.",
+    answer: "Both are translator programs for high-level language source code. A compiler translates the whole program before execution and usually produces object or executable code. An interpreter translates and executes the program statement by statement as it runs and normally does not produce a separate permanent object code file. Compiled programs may run faster after translation and can be distributed without source code. Interpreters can be useful for development because errors may be identified as the relevant statement is executed.",
     marking: [
-      { mark: "B1", text: "lexical analysis produces tokens from source code" },
-      { mark: "B1", text: "syntax analysis checks grammar/structure" },
-      { mark: "B1", text: "semantic analysis checks meaning/types/declarations/scope" },
-      { mark: "B1", text: "code generation produces object/target code" },
-      { mark: "B1", text: "optimisation may improve efficiency without changing program behaviour" },
+      { mark: "B1", text: "both translate high-level/source code" },
+      { mark: "B1", text: "compiler translates whole program before execution" },
+      { mark: "B1", text: "compiler produces object/executable code" },
+      { mark: "B1", text: "interpreter translates/executes statement by statement during execution" },
+      { mark: "B1", text: "interpreter normally does not produce separate permanent object code" },
+      { mark: "B1", text: "valid comparative advantage/use case linked to development or deployment" },
     ],
     strict: [
-      "Do not award code generation mark for linker/loader descriptions.",
-      "Do not require every compiler implementation to use identical internal stages.",
-      "Allow parse tree/intermediate representation as part of the explanation.",
+      "Do not award comparison marks for vague faster/easier without mechanism.",
+      "Do not require the exact phrase 'permanent object code' if the idea is clear.",
+      "Allow line by line for statement by statement.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Identify each compiler issue as lexical, syntax or semantic and justify: an invalid character @ in an identifier; a missing ENDIF; adding a STRING value to an INTEGER variable.",
-    answer: "An invalid character @ in an identifier is a lexical issue because lexical analysis recognises valid tokens and characters. A missing ENDIF is a syntax issue because the token sequence does not match the grammar of the control structure. Adding a STRING value to an INTEGER variable is a semantic issue because the statement may have a valid grammatical form but the meaning/type compatibility is invalid.",
+    prompt: "For each scenario, Identify the most suitable translator and justify it: distributing a finished game; testing a beginner's program interactively; translating assembly language.",
+    answer: "For distributing a finished game, a compiler is suitable because it can produce executable/object code and users do not need the source code. For testing a beginner's program interactively, an interpreter is suitable because it translates and executes statements one at a time, helping locate errors during development. For translating assembly language, an assembler is suitable because it converts assembly mnemonics into machine code for the processor.",
     marking: [
-      { mark: "B1", text: "invalid @ classified as lexical" },
-      { mark: "B1", text: "lexical justification linked to invalid character/token recognition" },
-      { mark: "B1", text: "missing ENDIF classified as syntax" },
-      { mark: "B1", text: "syntax justification linked to grammar/statement structure" },
-      { mark: "B1", text: "STRING to INTEGER classified as semantic" },
-      { mark: "B1", text: "semantic justification linked to type compatibility/meaning" },
+      { mark: "B1", text: "compiler selected for distributing finished game" },
+      { mark: "B1", text: "compiler justification linked to executable/object code or source code not needed" },
+      { mark: "B1", text: "interpreter selected for interactive testing" },
+      { mark: "B1", text: "interpreter justification linked to statement-by-statement execution or debugging" },
+      { mark: "B1", text: "assembler selected for assembly language" },
+      { mark: "B1", text: "assembler justification linked to mnemonics or machine code output" },
     ],
     strict: [
-      "Do not award justification mark for repeating the stage name only.",
-      "Do not accept semantic for missing ENDIF unless a clear language-specific context justifies it.",
-      "Allow 'parsing error' for syntax issue.",
+      "Do not award selection mark if the translator is matched to the wrong scenario.",
+      "Do not accept 'compiler is faster' alone without deployment or translation context.",
+      "Allow low-level assembly code as assembly language.",
     ],
   },
 ];
@@ -216,10 +216,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    tokens: "Correct. Lexical analysis groups source-code characters into tokens before grammar checking.",
-    run: "No. A compiler checks and translates before the program can be executed as machine-level code.",
-    link: "No. Linking happens after object code exists and is not the first compilation stage here.",
-    load: "No. Loading is about placing executable code into memory, after compilation/linking.",
+    machine: "Correct. High-level source code must be translated into machine code before the processor can execute it.",
+    english: "No. PRINT is readable to humans, but the processor executes machine code instructions.",
+    assembler: "No. An assembler translates assembly language, not high-level source code such as PRINT statements.",
+    os: "No. The operating system provides services, but translator software converts program code.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -263,7 +263,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("lexical");
+  renderExample("compiler");
 }
 
 function renderPractice() {

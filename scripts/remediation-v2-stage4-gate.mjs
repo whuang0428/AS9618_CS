@@ -6,7 +6,7 @@ export function evaluateStage4QuestionPolicy(review, questions) {
   const rows = review.entries ?? [];
   const byId = new Map(rows.map((row) => [row.questionId, row]));
   if (officialCommandWords.length !== 27 || review.officialCommandWords?.join() !== officialCommandWords.join()) push("STAGE4-COMMAND-TABLE", "official 27-word table is missing or stale");
-  if (questions.length !== 963 || rows.length !== 963 || byId.size !== 963) push("STAGE4-QUESTION-COUNT", `questions=${questions.length}, rows=${rows.length}, unique=${byId.size}`);
+  if (questions.length !== 968 || rows.length !== 968 || byId.size !== 968) push("STAGE4-QUESTION-COUNT", `questions=${questions.length}, rows=${rows.length}, unique=${byId.size}`);
   for (const question of questions) {
     const row = byId.get(question.id);
     if (!row) { push("STAGE4-QUESTION-MISSING", question.id); continue; }

@@ -1,92 +1,91 @@
 const scenarios = [
   {
-    id: "temp",
-    text: "A temporary value used only while calculating a bonus inside one procedure.",
-    recommendation: "Local variable",
-    reason: "It is needed only inside the procedure, so limiting its scope avoids unnecessary access elsewhere.",
+    id: "display",
+    text: "A procedure displays a student's mark but does not change it.",
+    recommendation: "by value",
+    reason: "The value is only read for output, so a copy is enough and avoids accidental changes.",
   },
   {
-    id: "count",
-    text: "A running total used by several procedures throughout the program.",
-    recommendation: "Global variable, if carefully managed",
-    reason: "Several parts of the program need the same value, but updates must be traced carefully.",
+    id: "increase",
+    text: "A procedure must increase the stored score in the main algorithm.",
+    recommendation: "BYREF",
+    reason: "The caller's variable must be updated by the procedure.",
   },
   {
-    id: "loop",
-    text: "A loop counter used only inside a procedure that prints 10 lines.",
-    recommendation: "Local variable",
-    reason: "The counter has no useful purpose outside that procedure call.",
+    id: "swap",
+    text: "A procedure swaps the values of A and B in the calling algorithm.",
+    recommendation: "BYREF",
+    reason: "Both original variables must change; local copies would be swapped and then lost.",
   },
   {
-    id: "config",
-    text: "A constant maximum mark used by many validation routines.",
-    recommendation: "Global constant",
-    reason: "A shared constant is clearer than repeated literal values, and it should not be changed accidentally.",
+    id: "check",
+    text: "A function checks whether a value is valid and returns TRUE or FALSE.",
+    recommendation: "by value",
+    reason: "The input value is tested, not changed. The Boolean result is returned separately.",
   },
 ];
 
 const examples = {
-  local: {
-    title: "Example 1: Local variable lifetime",
-    problem: "Trace whether Bonus can be used after the procedure call.",
+  value: {
+    title: "Example 1: Passing by value",
+    problem: "Trace the final value of X after calling a procedure that increments its parameter.",
     rows: [
-      ["Procedure starts", "Mark = 78", "parameter is available inside the call"],
-      ["Inside procedure", "Bonus = 7", "Bonus is local"],
-      ["Procedure ends", "Bonus unavailable", "local variable lifetime ends"],
-      ["Main program", "cannot OUTPUT Bonus directly", "Bonus is outside scope"],
+      ["Before call", "X = 5", "caller variable is 5"],
+      ["Call", "CALL AddOne(X)", "Number receives a copy of 5"],
+      ["Inside procedure", "Number = 6", "local copy changes"],
+      ["After call", "X = 5", "original caller variable is unchanged"],
     ],
-    code: "PROCEDURE ShowBonus(Mark : INTEGER)\n    Bonus <- Mark DIV 10\n    OUTPUT Bonus\nENDPROCEDURE\n\nCALL ShowBonus(78)",
+    code: "PROCEDURE AddOne(Number : INTEGER)\n    Number <- Number + 1\nENDPROCEDURE\n\nX <- 5\nCALL AddOne(X)\nOUTPUT X",
     points: [
-      "Bonus is declared inside the procedure.",
-      "Its scope is limited to the procedure.",
-      "Its lifetime ends when the procedure call finishes.",
+      "There is no BYREF in the header.",
+      "Number is a local parameter holding a copied value.",
+      "The final output is 5, not 6.",
     ],
   },
-  global: {
-    title: "Example 2: Global variable update",
-    problem: "Trace a global total that is updated by a procedure.",
+  ref: {
+    title: "Example 2: Passing by reference",
+    problem: "Trace the final value of X when the parameter is declared with BYREF.",
     rows: [
-      ["Before call", "Total = 10", "Total is declared outside subroutines"],
-      ["Call", "CALL AddScore(5)", "Score is local parameter"],
-      ["Inside procedure", "Total = 15", "global Total is updated"],
-      ["After call", "Total = 15", "global value remains changed"],
+      ["Before call", "X = 5", "caller variable is 5"],
+      ["Call", "CALL AddOne(X)", "Number is linked to X"],
+      ["Inside procedure", "Number becomes 6", "linked caller value changes"],
+      ["After call", "X = 6", "original variable has been updated"],
     ],
-    code: "Total <- 10\n\nPROCEDURE AddScore(Score : INTEGER)\n    Total <- Total + Score\nENDPROCEDURE\n\nCALL AddScore(5)\nOUTPUT Total",
+    code: "PROCEDURE AddOne(BYREF Number : INTEGER)\n    Number <- Number + 1\nENDPROCEDURE\n\nX <- 5\nCALL AddOne(X)\nOUTPUT X",
     points: [
-      "Total is global because it is declared outside the procedure.",
-      "Score is local to the procedure call.",
-      "The final output is 15.",
+      "BYREF is the header clue.",
+      "The procedure changes the variable passed by the caller.",
+      "The final output is 6.",
     ],
   },
-  shadow: {
-    title: "Example 3: Same name, different scope",
-    problem: "Trace a local Score that hides a global Score.",
+  swap: {
+    title: "Example 3: Swap needs BYREF",
+    problem: "Write a procedure that swaps two original integer variables.",
     rows: [
-      ["Global declaration", "Score = 50", "main program variable"],
-      ["Inside procedure", "Score = 80", "local variable with same name"],
-      ["Procedure output", "80", "local value"],
-      ["Main output", "50", "global value unchanged"],
+      ["Header", "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)", "both arguments must change"],
+      ["Temporary variable", "Temp <- A", "stores one value safely"],
+      ["Swap steps", "A <- B, B <- Temp", "updates original variables"],
     ],
-    code: "Score <- 50\n\nPROCEDURE ChangeScore()\n    Score <- 80\n    OUTPUT Score\nENDPROCEDURE\n\nCALL ChangeScore()\nOUTPUT Score",
+    code: "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)\n    Temp <- A\n    A <- B\n    B <- Temp\nENDPROCEDURE",
     points: [
-      "The same identifier can refer to different variables in different scopes.",
-      "State which scope each output uses.",
-      "Do not assume the global value changed unless the code clearly updates it.",
+      "A and B must both be BYREF.",
+      "A temporary variable prevents one value from being overwritten.",
+      "A by-value swap would only swap local copies.",
     ],
   },
-  design: {
-    title: "Example 4: Prefer local variables for temporary work",
-    problem: "Explain why Temp should be local in a calculation procedure.",
+  mixed: {
+    title: "Example 4: Mixed parameters",
+    problem: "One parameter is read; another parameter is updated.",
     rows: [
-      ["Variable", "Temp", "temporary calculation result"],
-      ["Best scope", "local", "used only inside one procedure"],
-      ["Benefit", "reduced accidental changes", "other code cannot depend on it"],
+      ["Amount", "Amount : INTEGER", "read-only amount passed by value"],
+      ["Total", "BYREF Total : INTEGER", "running total updated in caller"],
+      ["After call", "Total changes", "Amount remains a normal input value"],
     ],
-    code: "PROCEDURE PrintAverage(A : INTEGER, B : INTEGER)\n    Temp <- (A + B) / 2\n    OUTPUT Temp\nENDPROCEDURE",
+    code: "PROCEDURE AddToTotal(Amount : INTEGER, BYREF Total : INTEGER)\n    Total <- Total + Amount\nENDPROCEDURE\n\nRunningTotal <- 20\nCALL AddToTotal(7, RunningTotal)",
     points: [
-      "Temporary calculation variables should usually be local.",
-      "This improves readability and reduces unexpected side effects.",
-      "The variable name can be reused safely in another subroutine.",
+      "Not every parameter needs BYREF.",
+      "Use BYREF only for the caller value that must be updated.",
+      "Final RunningTotal is 27.",
     ],
   },
 };
@@ -94,82 +93,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "What term means where a variable can be accessed?",
-    accepted: ["scope"],
-    answer: "Scope.",
+    prompt: "What Cambridge keyword is used to pass a parameter by reference?",
+    accepted: ["byref"],
+    answer: "BYREF.",
   },
   {
     id: "p2",
-    prompt: "What term means how long a variable exists during program execution?",
-    accepted: ["lifetime", "life time"],
-    answer: "Lifetime.",
+    prompt: "In PROCEDURE AddOne(Number : INTEGER), is Number passed by value or BYREF?",
+    accepted: ["by value", "value"],
+    answer: "By value, because BYREF is not used.",
   },
   {
     id: "p3",
-    prompt: "A variable declared inside a procedure is normally local or global?",
-    accepted: ["local", "local variable"],
-    answer: "Local variable.",
+    prompt: "X <- 5; CALL AddOne(X), where AddOne(Number : INTEGER) sets Number <- Number + 1. Final X?",
+    accepted: ["5"],
+    answer: "5. The procedure changes only the copied parameter.",
   },
   {
     id: "p4",
-    prompt: "A variable declared outside all subroutines and used by several subroutines is normally local or global?",
-    accepted: ["global", "global variable"],
-    answer: "Global variable.",
+    prompt: "X <- 5; CALL AddOne(X), where AddOne(BYREF Number : INTEGER) sets Number <- Number + 1. Final X?",
+    accepted: ["6"],
+    answer: "6. BYREF links Number to the caller's X.",
   },
   {
     id: "p5",
-    prompt: "If X is local to a procedure, can the main program directly access X after the procedure ends? yes or no.",
-    accepted: ["no"],
-    answer: "No. X is outside scope after the procedure ends.",
+    prompt: "In CALL DisplayMessage(Text), what is Text called: parameter or argument?",
+    accepted: ["argument"],
+    answer: "Argument. It is the value/variable supplied in the call.",
   },
   {
     id: "p6",
-    prompt: "Global Count starts at 10. Procedure creates local Count <- 3. Final global Count?",
-    accepted: ["10"],
-    answer: "10. The local Count does not change the global Count.",
+    prompt: "In PROCEDURE DisplayMessage(Message : STRING), what is Message called?",
+    accepted: ["parameter"],
+    answer: "Parameter. It is declared in the procedure header.",
   },
   {
     id: "p7",
-    prompt: "Global Total starts at 10. A procedure updates the global Total <- Total + 5. Final Total?",
-    accepted: ["15"],
-    answer: "15. The global variable has been changed.",
+    prompt: "A procedure Reset must set the caller's Count to 0. Should Count be by value or BYREF?",
+    accepted: ["byref", "by reference"],
+    answer: "BYREF / by reference, because the caller's variable must change.",
   },
   {
     id: "p8",
-    prompt: "A loop counter used only inside one procedure should usually be local or global?",
-    accepted: ["local", "local variable"],
-    answer: "Local variable.",
+    prompt: "A function only checks if Mark is valid and returns TRUE/FALSE. Should Mark normally be by value or BYREF?",
+    accepted: ["by value", "value"],
+    answer: "By value. The mark is read, not changed.",
   },
   {
     id: "p9",
-    prompt: "Same variable name in two scopes always means the same storage location. true or false?",
-    accepted: ["false"],
-    answer: "False. The same name may refer to different variables in different scopes.",
+    prompt: "A swap procedure without BYREF swaps local copies only. Does the caller's A and B change? yes or no.",
+    accepted: ["no"],
+    answer: "No. Without BYREF, only local copies are changed.",
   },
   {
     id: "p10",
-    prompt: "Which kind of variable can make debugging harder because many subroutines may change it?",
-    accepted: ["global", "global variable"],
-    answer: "Global variable.",
+    prompt: "Complete the header: PROCEDURE Increase(_____ Score : INTEGER)",
+    accepted: ["byref"],
+    answer: "BYREF, giving PROCEDURE Increase(BYREF Score : INTEGER).",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "A student says a local variable can always be output by the main program after the procedure ends.",
-    fix: "Local variables are only accessible within their scope. After the procedure ends, the main program cannot directly use that local variable.",
+    wrong: "A student says any parameter assignment changes the argument in the main algorithm.",
+    fix: "Only a BYREF parameter can update the caller's variable. A normal parameter receives a copy.",
   },
   {
-    wrong: "A student sees Score used in two places and assumes it must be the same variable.",
-    fix: "Check declarations and scope. A local Score can hide a global Score, so the same name may refer to different storage locations.",
+    wrong: "A student writes PROCEDURE Reset(Count : INTEGER) and expects Count in the main program to become 0.",
+    fix: "Use PROCEDURE Reset(BYREF Count : INTEGER). The caller value must be linked to the parameter.",
   },
   {
-    wrong: "A student makes every variable global because it is 'easier'.",
-    fix: "Use local variables when the data is only needed inside one subroutine. Too many globals increase accidental changes and make tracing harder.",
+    wrong: "A student swaps A and B inside a procedure but leaves both parameters by value.",
+    fix: "Use BYREF for both A and B, otherwise the procedure swaps local copies and the caller variables stay unchanged.",
   },
   {
-    wrong: "A student describes lifetime as 'where the variable can be used'.",
-    fix: "That is scope. Lifetime is how long the variable exists during execution.",
+    wrong: "A student explains BYREF using Java primitive parameter syntax as the exam answer.",
+    fix: "Write Cambridge pseudocode with BYREF. Java can support understanding, but it is not the required exam format.",
   },
 ];
 
@@ -182,91 +181,93 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "3 marks",
-    prompt: "Define scope and lifetime of a variable. Explain the difference between them.",
-    answer: "Scope is the part of a program where a variable or identifier can be accessed. Lifetime is the period during execution for which the variable exists. Scope is about where the variable can be used; lifetime is about when or how long it exists.",
+    marks: "4 marks",
+    prompt: "Complete a trace table for the final value output by this pseudocode. Explain why. PROCEDURE AddTwo(Number : INTEGER) Number <- Number + 2\nENDPROCEDURE X <- 10\nCALL AddTwo(X)\nOUTPUT X",
+    answer: "The output is 10. Number is passed by value because BYREF is not used, so AddTwo changes only a local copy of X.",
     marking: [
-      { mark: "B1", text: "defines scope as where an identifier/variable can be accessed or used" },
-      { mark: "B1", text: "defines lifetime as how long a variable exists during program execution" },
-      { mark: "B1", text: "distinguishes where/access from when/duration" },
+      { mark: "B1", text: "states that the final output/value of X is 10" },
+      { mark: "M1", text: "identifies that the parameter is passed by value / no BYREF is used" },
+      { mark: "M1", text: "explains that Number receives a copy of X" },
+      { mark: "A1", text: "explains that the assignment Number <- Number + 2 changes only the local parameter" },
     ],
     strict: [
-      "Do not award lifetime definition for merely repeating 'scope'.",
-      "Allow 'visibility' for scope if access/use is clear.",
-      "Do not accept 'global variables are better' as an example without mechanism.",
+      "Do not award the final value mark for 12.",
+      "Allow 'X is unchanged' for the explanation if linked to by-value passing.",
+      "Do not accept vague wording such as 'it does not work' without mechanism.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Complete a trace table for the output from this pseudocode, assuming the Count inside the procedure is local. Count <- 10 PROCEDURE ShowCount() Count <- 3 OUTPUT Count\nENDPROCEDURE CALL ShowCount()\nOUTPUT Count",
-    answer: "The first output is 3 from the local Count inside ShowCount. The second output is 10 from the global Count in the main program.",
+    marks: "4 marks",
+    prompt: "Complete a trace table for the final value output by this pseudocode. Explain why. PROCEDURE AddTwo(BYREF Number : INTEGER) Number <- Number + 2\nENDPROCEDURE X <- 10\nCALL AddTwo(X)\nOUTPUT X",
+    answer: "The output is 12. Number is passed by reference using BYREF, so Number is linked to X and the assignment updates the caller variable.",
     marking: [
-      { mark: "B1", text: "states first output is 3" },
-      { mark: "B1", text: "states second output is 10" },
-      { mark: "M1", text: "identifies Count inside ShowCount as local" },
-      { mark: "M1", text: "explains local Count does not change the global Count" },
-      { mark: "A1", text: "identifies the final Count as the global/main-program variable" },
+      { mark: "B1", text: "states that the final output/value of X is 12" },
+      { mark: "M1", text: "identifies BYREF / passing by reference" },
+      { mark: "M1", text: "explains that Number is linked to the caller's X" },
+      { mark: "A1", text: "explains that Number <- Number + 2 updates X" },
     ],
     strict: [
-      "Do not award both output marks for 3 then 3.",
-      "Allow 'main Count remains unchanged' for the global explanation.",
-      "Do not accept 'because procedure returns 3'; no return value is shown.",
+      "Do not award the final value mark for 10.",
+      "Allow 'original variable changes' if it clearly refers to X in the caller.",
+      "Do not accept 'BYREF returns a value'; procedures do not return values merely because BYREF is used.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain two reasons why unnecessary global variables can make a program harder to debug.",
-    answer: "A global variable can be changed by several parts of the program, so it may be difficult to find which subroutine caused an incorrect value. A global variable also increases coupling between subroutines because they depend on shared state, so changing one part of the program can affect another unexpectedly.",
+    marks: "7 marks",
+    prompt: "Write Cambridge-style pseudocode for a procedure Swap that swaps two INTEGER variables A and B in the calling algorithm.",
+    answer: "PROCEDURE Swap(BYREF A : INTEGER, BYREF B : INTEGER)\n    Temp <- A\n    A <- B\n    B <- Temp\nENDPROCEDURE",
     marking: [
-      { mark: "B1", text: "states global variables can be accessed/changed by multiple program parts" },
-      { mark: "B1", text: "explains this makes the source of an incorrect value harder to find" },
-      { mark: "B1", text: "states global variables create shared state/dependence between subroutines" },
-      { mark: "B1", text: "explains changes in one part may affect another unexpectedly" },
+      { mark: "B1", text: "uses PROCEDURE Swap or equivalent procedure header" },
+      { mark: "B1", text: "declares A as an INTEGER parameter" },
+      { mark: "B1", text: "declares B as an INTEGER parameter" },
+      { mark: "A1", text: "uses BYREF for A and B so caller variables are changed" },
+      { mark: "M1", text: "stores one value in a temporary variable before overwriting it" },
+      { mark: "M1", text: "assigns A <- B and B <- Temp or equivalent correct swap sequence" },
+      { mark: "A1", text: "closes the procedure with ENDPROCEDURE" },
     ],
     strict: [
-      "Do not award marks for vague statements such as 'globals are bad' without cause and consequence.",
-      "Allow 'side effects' if explained as unexpected changes to shared data.",
-      "Do not accept security or speed claims unless linked to the scenario.",
+      "Do not award the BYREF mark if only one of A or B is passed by reference.",
+      "Allow different variable names if roles are clear and typed.",
+      "Do not accept a swap that overwrites one value before saving it.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "Write Cambridge-style pseudocode for a procedure PrintAverage that takes A and B as INTEGER parameters, stores the average in a local variable Average, and outputs it. Explain why Average should be local.",
-    answer: "PROCEDURE PrintAverage(A : INTEGER, B : INTEGER)\n    Average <- (A + B) / 2\n    OUTPUT Average\nENDPROCEDURE\n\nAverage should be local because it is only needed inside the procedure. Limiting its scope prevents other parts of the program from accessing or changing a temporary calculation value.",
+    marks: "5 marks",
+    prompt: "Compare passing by value with passing by reference. Include one suitable example of when BYREF is needed.",
+    answer: "Passing by value sends a copy of the argument to the parameter, so changes inside the subroutine do not alter the caller's variable. Passing by reference uses BYREF to link the parameter to the caller's variable, so changes inside the subroutine can alter the original. BYREF is needed for a procedure such as Swap or Reset that must change caller variables.",
     marking: [
-      { mark: "B1", text: "uses PROCEDURE PrintAverage or equivalent procedure header" },
-      { mark: "B1", text: "declares A and B as INTEGER parameters or equivalent" },
-      { mark: "M1", text: "calculates the average using A and B" },
-      { mark: "A1", text: "stores the result in a variable named Average or equivalent" },
-      { mark: "B1", text: "outputs Average" },
-      { mark: "M1", text: "explains Average is only needed inside the procedure" },
-      { mark: "A1", text: "explains limited scope reduces accidental access/change or improves traceability" },
+      { mark: "B1", text: "states that by value passes a copy of the value" },
+      { mark: "B1", text: "states that by-value changes do not alter the caller variable" },
+      { mark: "B1", text: "states that by reference / BYREF links to the caller variable" },
+      { mark: "B1", text: "states that BYREF changes can alter the original caller variable" },
+      { mark: "B1", text: "gives a suitable BYREF example such as Swap, Reset or IncrementScore" },
     ],
     strict: [
-      "Do not require DECLARE syntax if the pseudocode clearly uses a local variable.",
-      "Allow DIV or / if the calculation method is consistent with the expected data type.",
-      "Do not accept a Java method alone as Cambridge-style pseudocode.",
-      "Allow an equivalent temporary variable if it is used consistently.",
+      "Do not award full comparison for saying only 'one changes and one does not' without identifying copy/link mechanism.",
+      "Allow 'reference to original variable' for linked caller variable.",
+      "Do not accept 'BYREF returns a value' as the definition.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A student writes OUTPUT Temp in the main program after calling a procedure where Temp was created inside the procedure. Identify the error and correct the design.",
-    answer: "The error is that Temp is a local variable, so it is outside scope in the main program after the procedure call. The design should either output Temp inside the procedure, return the value from a function, or pass a variable by reference if the caller must receive an updated value.",
+    marks: "5 marks",
+    prompt: "A student writes this procedure and says it resets Count in the main algorithm. Identify the error and correct it. PROCEDURE Reset(Count : INTEGER) Count <- 0\nENDPROCEDURE",
+    answer: "The error is that Count is passed by value, so only a local copy is set to 0. The header should use BYREF: PROCEDURE Reset(BYREF Count : INTEGER).",
     marking: [
-      { mark: "B1", text: "identifies Temp as local to the procedure" },
-      { mark: "B1", text: "explains Temp is outside scope in the main program" },
-      { mark: "B1", text: "gives one valid correction: output inside the procedure, return from a function, or update a caller variable BYREF" },
-      { mark: "B1", text: "explains how the correction makes the value available at the required point" },
+      { mark: "B1", text: "identifies that Count is currently passed by value / no BYREF is used" },
+      { mark: "B1", text: "explains that the procedure changes only a local copy" },
+      { mark: "B1", text: "explains that the caller's Count will not be reset" },
+      { mark: "B1", text: "states that BYREF is required" },
+      { mark: "B1", text: "gives corrected header PROCEDURE Reset(BYREF Count : INTEGER) or equivalent" },
     ],
     strict: [
-      "Award either correction mark for a valid design correction; both are not required unless two corrections are given.",
-      "Allow BYREF as an alternative correction only if the caller variable must be updated.",
-      "Do not accept 'make every variable global' as a good correction.",
+      "Do not award correction for adding OUTPUT Count only.",
+      "Allow wording 'pass Count by reference' if the corrected header includes or clearly implies BYREF.",
+      "Do not accept Java object/wrapper syntax alone as a Cambridge pseudocode correction.",
     ],
   },
 ];
@@ -300,10 +301,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    "3-3": "Not under the stated assumption. The local Count is 3 inside the procedure, but the global Count remains 10.",
-    "3-10": "Correct. The procedure outputs its local Count, then the main program outputs the unchanged global Count.",
-    "10-3": "The order is reversed. The first output happens inside the procedure.",
-    error: "Not always. The warm-up explicitly assumes the procedure Count is local, so the trace can be completed.",
+    a9: "Correct for Version A. Score is passed by value, so the procedure changes a copy and the caller's Score stays 9.",
+    a10: "Not for Version A. There is no BYREF, so the caller's Score is not updated.",
+    b9: "Not for Version B. BYREF links the parameter to the caller's Score.",
+    b10: "Correct for Version B. BYREF means the increment updates the caller's Score to 10.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -317,26 +318,27 @@ function setupHook() {
 function setupTraceSimulator() {
   const result = document.querySelector("#traceResult");
   document.querySelector("#traceBtn").addEventListener("click", () => {
-    const globalBefore = Number(document.querySelector("#globalInput").value);
-    const procedureValue = Number(document.querySelector("#localInput").value);
-    const mode = document.querySelector("#scopeMode").value;
+    const start = Number(document.querySelector("#startValue").value);
+    const mode = document.querySelector("#passMode").value;
 
-    if (!Number.isInteger(globalBefore) || !Number.isInteger(procedureValue)) {
-      result.textContent = "Enter integer values for both fields.";
+    if (!Number.isInteger(start)) {
+      result.textContent = "Enter an integer starting value.";
       return;
     }
 
-    const globalAfter = mode === "global" ? procedureValue : globalBefore;
-    const insideOutput = procedureValue;
+    const local = start + 1;
+    const finalCaller = mode === "ref" ? local : start;
+    const label = mode === "ref" ? "BYREF" : "by value";
     const reason =
-      mode === "global"
-        ? "The procedure updates the global Count, so the global value changes."
-        : "The procedure uses a local Count, so the global Count remains unchanged.";
+      mode === "ref"
+        ? "Number is linked to X, so changing Number also changes X."
+        : "Number receives a copy, so changing Number does not change X.";
 
     result.innerHTML = `
-      <p><strong>Before call:</strong> global Count = ${globalBefore}</p>
-      <p><strong>Inside procedure:</strong> Count = ${insideOutput}</p>
-      <p><strong>After call:</strong> global Count = ${globalAfter}</p>
+      <p><strong>Mode:</strong> ${escapeHtml(label)}</p>
+      <p><strong>Before call:</strong> X = ${start}</p>
+      <p><strong>Inside procedure:</strong> Number becomes ${local}</p>
+      <p><strong>After call:</strong> caller X = ${finalCaller}</p>
       <p>${escapeHtml(reason)}</p>
     `;
   });
@@ -371,7 +373,7 @@ function setupExamples() {
       <article class="worked-card">
         <h3>${escapeHtml(example.title)}</h3>
         <p>${escapeHtml(example.problem)}</p>
-        ${tableMarkup(["Step", "Value / state", "Reason"], example.rows)}
+        ${tableMarkup(["Point", "Value / code", "Reason"], example.rows)}
         <pre><code>${escapeHtml(example.code)}</code></pre>
         <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
       </article>
@@ -412,7 +414,7 @@ function setupPractice() {
       const feedback = list.querySelector(`[data-feedback="${item.id}"]`);
       const answer = normalise(input.value);
       const correct = item.accepted.some((accepted) => normalise(accepted) === answer);
-      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the exact term or final value.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer, then compare the exact term/value.";
       feedback.classList.toggle("correct", correct);
       feedback.classList.toggle("incorrect", !correct);
     });

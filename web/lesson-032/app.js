@@ -1,74 +1,74 @@
 const scenarios = {
-  budget: {
-    result: "High-capacity HDD",
-    method: "An HDD is suitable because it offers high capacity at a low cost per GB, which matters more than maximum access speed for a large video library.",
+  laptop: {
+    result: "Solid-state drive (SSD)",
+    method: "An SSD is fast and has no moving parts, so it is suitable for quick startup and a portable laptop that may be knocked.",
   },
-  mobile: {
-    result: "SSD",
-    method: "An SSD is suitable because it has fast access and no moving parts, so programs load quickly and the laptop is more resistant to knocks.",
+  backup: {
+    result: "Magnetic tape",
+    method: "Magnetic tape offers very high capacity and low cost for long-term sequential backup, though access is slower.",
   },
   archive: {
-    result: "Magnetic tape",
-    method: "Tape is suitable for huge long-term backups because it has high capacity and low cost, while slow sequential access is acceptable if data is rarely accessed.",
+    result: "Optical disc or external archive storage",
+    method: "Optical media can be useful for offline archive copies of finished data that is rarely changed, but capacity is lower than HDD/tape.",
   },
-  transfer: {
-    result: "USB flash drive",
-    method: "A USB flash drive is portable and removable, making it suitable for moving smaller files between computers.",
-  },
-  distribution: {
-    result: "Optical disc",
-    method: "Optical discs can be cheap to duplicate for fixed read-only content, although they are slower and lower capacity than many modern alternatives.",
+  desktop: {
+    result: "Magnetic hard disk drive (HDD)",
+    method: "An HDD gives high capacity at a low cost per GB, which suits large video files where top access speed is not the main requirement.",
   },
   camera: {
-    result: "Memory card",
-    method: "A memory card is small, removable and solid-state, so it suits portable cameras and can be swapped between devices.",
+    result: "Solid-state memory card",
+    method: "A memory card is small, removable and solid-state, making it suitable for portable cameras.",
+  },
+  software: {
+    result: "Optical disc or read-only distribution medium",
+    method: "Optical discs are cheap to duplicate and can distribute fixed content that users do not need to rewrite.",
   },
 };
 
 const examples = {
   laptop: {
-    title: "Example 1: student laptop",
-    problem: "Recommend storage for a laptop carried to school every day.",
+    title: "Example 1: laptop storage",
+    problem: "Recommend storage for a travelling student who needs fast startup and reliability when carrying the laptop.",
     steps: [
-      "Choice: SSD.",
-      "Characteristics: fast read/write access and no moving parts.",
-      "Context: the laptop is carried daily and used to open applications quickly.",
-      "Consequence: startup and loading are faster, and the storage is less likely to be damaged by knocks than an HDD.",
+      "SSD is suitable because it has fast read/write access compared with an HDD.",
+      "It has no moving parts, so it is more resistant to knocks while being carried.",
+      "It is also quiet and uses relatively little power.",
+      "Exam-ready answer: use an SSD because it is fast and durable for a portable laptop, although it may cost more per GB than an HDD.",
     ],
   },
   backup: {
-    title: "Example 2: long-term organisation backup",
-    problem: "Recommend storage for very large backups that are rarely restored.",
+    title: "Example 2: organisation backup",
+    problem: "A company must keep very large backups for several years and access them only occasionally.",
     steps: [
-      "Choice: magnetic tape.",
-      "Characteristics: very high capacity and low cost per unit of storage.",
-      "Context: backups are huge and not accessed frequently.",
-      "Consequence: slow sequential access is acceptable because restore speed is less important than capacity and cost.",
+      "Magnetic tape can be suitable because it has very high capacity.",
+      "It is relatively low cost for storing large backup sets.",
+      "Sequential access is slower, but this is acceptable when backups are rarely restored.",
+      "Do not recommend RAM or cache; backups need non-volatile long-term storage.",
     ],
   },
-  video: {
-    title: "Example 3: video editor with two storage needs",
-    problem: "Choose storage for archive footage and current editing projects.",
+  optical: {
+    title: "Example 3: fixed content distribution",
+    problem: "A small organisation distributes a fixed training video set that users do not need to edit.",
     steps: [
-      "Archive: HDD can be suitable because it provides high capacity at lower cost per GB.",
-      "Active editing: SSD can be suitable because faster read/write access helps load and save large video files.",
-      "Trade-off: the same device is not automatically best for both jobs.",
-      "Exam habit: separate the two roles before comparing characteristics.",
+      "Optical discs can be cheap to produce and distribute.",
+      "The data can be read many times and does not need frequent rewriting.",
+      "They are portable and can be stored offline.",
+      "However, capacity is limited and discs can be scratched, so the suitability depends on file size and handling.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which characteristic means how much data can be stored?", accepted: ["capacity"], answer: "Capacity" },
-  { id: "p2", prompt: "Which characteristic affects how quickly files are read or written?", accepted: ["speed", "access speed", "read write speed", "read/write speed"], answer: "Speed / read-write speed" },
-  { id: "p3", prompt: "Which characteristic means resistance to damage or wear?", accepted: ["durability", "reliability"], answer: "Durability" },
-  { id: "p4", prompt: "Which characteristic means ease of carrying or moving between devices?", accepted: ["portability"], answer: "Portability" },
-  { id: "p5", prompt: "Which storage is often low cost per GB for large video libraries?", accepted: ["hdd", "hard disk", "hard disk drive"], answer: "HDD" },
-  { id: "p6", prompt: "Which storage is usually chosen for fast laptop startup?", accepted: ["ssd", "solid state drive", "solid-state drive"], answer: "SSD" },
-  { id: "p7", prompt: "Which storage is suitable for huge rarely accessed backups?", accepted: ["magnetic tape", "tape"], answer: "Magnetic tape" },
-  { id: "p8", prompt: "Name one risk or limitation of a USB flash drive.", accepted: ["lost", "easy to lose", "small", "limited capacity", "variable speed", "damage"], answer: "Easy to lose / variable speed / limited capacity" },
-  { id: "p9", prompt: "In exam answers, is 'better' enough without a reason? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "What phrase means price for each unit of storage?", accepted: ["cost per gb", "cost per gigabyte", "cost per unit", "cost per unit of storage"], answer: "Cost per GB / cost per unit of storage" },
+  { id: "p1", prompt: "Which storage type uses magnetised areas, such as HDD or tape?", accepted: ["magnetic", "magnetic storage"], answer: "Magnetic storage" },
+  { id: "p2", prompt: "Which storage type uses lasers to read discs?", accepted: ["optical", "optical storage"], answer: "Optical storage" },
+  { id: "p3", prompt: "Which storage type has no moving parts and uses flash memory?", accepted: ["solid state", "solid-state", "solid state storage", "ssd", "flash"], answer: "Solid-state storage" },
+  { id: "p4", prompt: "Is secondary storage volatile or non-volatile?", accepted: ["non volatile", "non-volatile", "nonvolatile"], answer: "Non-volatile" },
+  { id: "p5", prompt: "Which medium is often suitable for huge low-cost sequential backups?", accepted: ["magnetic tape", "tape"], answer: "Magnetic tape" },
+  { id: "p6", prompt: "Which is usually faster for a laptop OS drive: SSD or optical disc?", accepted: ["ssd"], answer: "SSD" },
+  { id: "p7", prompt: "Name one example of optical storage.", accepted: ["cd", "dvd", "blu ray", "blu-ray", "bluray"], answer: "CD / DVD / Blu-ray" },
+  { id: "p8", prompt: "Name one limitation of HDDs compared with SSDs.", accepted: ["slower", "moving parts", "less durable", "shock", "noise"], answer: "Slower / moving parts / less shock-resistant" },
+  { id: "p9", prompt: "Name one advantage of HDDs compared with SSDs.", accepted: ["cheaper", "low cost", "higher capacity", "cost per gb", "capacity"], answer: "Lower cost per GB / high capacity" },
+  { id: "p10", prompt: "Is cache a secondary storage medium? Answer yes or no.", accepted: ["no"], answer: "No" },
 ];
 
 
@@ -81,90 +81,90 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "A laptop is carried between home and school every day. Suggest a suitable storage device and justify your answer using storage characteristics.",
-    answer: "An SSD is suitable because it has fast read/write access, so the laptop can start and load applications quickly. It has no moving parts, so it is more durable than an HDD when the laptop is carried and may be knocked. It is also compact and uses relatively low power, which suits a portable device.",
+    prompt: "Compare magnetic, optical and solid-state storage media.",
+    answer: "Magnetic storage such as HDD or tape uses magnetised areas and can provide high capacity at low cost per GB, but HDDs have moving parts and tape has slow sequential access. Optical storage such as CD, DVD or Blu-ray is read using a laser and is cheap and portable for fixed content, but normally has lower capacity and slower access. Solid-state storage such as SSD or USB flash has no moving parts and is fast and durable, but often costs more per GB than HDD.",
     marking: [
-      { mark: "B1", text: "suitable device named, e.g. SSD" },
-      { mark: "B1", text: "speed/read-write/startup advantage" },
-      { mark: "B1", text: "durability/no moving parts/shock resistance advantage" },
-      { mark: "B1", text: "portability/power/compactness linked to laptop use" },
-      { mark: "B1", text: "clear link to daily carrying/school scenario" },
+      { mark: "B1", text: "magnetic example and valid characteristic" },
+      { mark: "B1", text: "optical example and valid characteristic" },
+      { mark: "B1", text: "solid-state example and valid characteristic" },
+      { mark: "B1", text: "compares at least two media using the same criterion, e.g. HDD lower cost per GB than SSD" },
+      { mark: "B1", text: "gives a second cross-media comparison, e.g. SSD has faster access and greater shock resistance than HDD" },
     ],
     strict: [
-      "Do not award full credit for only saying 'SSD is better'.",
-      "Do not require every possible characteristic; credit valid scenario-linked characteristics.",
-      "Allow HDD only if justified for capacity/cost and the portability weakness is acknowledged.",
+      "Do not award full credit for only listing HDD, DVD and SSD with no characteristics.",
+      "Do not accept RAM/cache as secondary storage media.",
+      "Allow flash memory, memory card or USB drive as solid-state examples.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Explain why cost per GB is important when choosing storage for a large video archive.",
-    answer: "A video archive may contain many large files, so high capacity is required. Cost per GB is important because a small difference in storage cost becomes significant when many terabytes are needed. A high-capacity HDD or tape may be more suitable than SSD if speed is less important than storing large amounts cheaply.",
+    prompt: "A student carries a laptop to school every day. Explain why an SSD may be more suitable than an HDD.",
+    answer: "An SSD has no moving parts, so it is more resistant to damage from knocks while the laptop is carried. It has faster access times than an HDD, so the laptop can start and load applications more quickly. It can also be quieter and use less power, which suits a portable device.",
     marking: [
-      { mark: "B1", text: "video archive requires high capacity / many large files" },
-      { mark: "B1", text: "cost per GB affects total cost for large amounts of storage" },
-      { mark: "B1", text: "HDD/tape or similar lower cost high-capacity option identified" },
-      { mark: "B1", text: "trade-off against speed/SSD cost explained" },
+      { mark: "B1", text: "SSD has no moving parts" },
+      { mark: "B1", text: "linked to better durability/shock resistance in portable laptop" },
+      { mark: "B1", text: "faster access/read-write/startup than HDD" },
+      { mark: "B1", text: "links speed/power/noise advantage to laptop/student scenario" },
     ],
     strict: [
-      "Do not accept 'cheap is good' without linking to large capacity.",
-      "Do not award storage type mark for RAM/cache.",
-      "Allow cost per TB wording as equivalent.",
+      "Do not accept only 'SSD is better' without reason.",
+      "Do not require all advantages; any valid scenario-linked advantages may score.",
+      "Allow note that SSD may cost more per GB as evaluation, but it is not required.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Compare HDD and SSD using speed, durability and cost.",
-    answer: "An SSD usually has faster read/write access than an HDD, so it can load programs and files more quickly. An SSD has no moving parts, so it is more durable and resistant to shock. An HDD usually has a lower cost per GB and can provide high capacity more cheaply. Therefore SSD may suit portable or performance-focused devices, while HDD may suit large low-cost storage.",
+    marks: "4 marks",
+    prompt: "A company needs to keep very large backups that are rarely accessed. Explain why magnetic tape may be suitable.",
+    answer: "Magnetic tape is suitable because it can store very large amounts of data at a relatively low cost. Backups are usually written and restored sequentially, so tape's slower sequential access may be acceptable. It is also suitable for long-term offline storage of backup copies.",
     marking: [
-      { mark: "B1", text: "SSD faster read/write/access than HDD" },
-      { mark: "B1", text: "speed linked to loading/startup/file access consequence" },
-      { mark: "B1", text: "SSD durability/no moving parts/shock resistance" },
-      { mark: "B1", text: "HDD lower cost per GB/high capacity for cost" },
-      { mark: "B1", text: "scenario-based conclusion or trade-off" },
+      { mark: "B1", text: "high capacity / stores very large data sets" },
+      { mark: "B1", text: "low cost per unit of storage / cost-effective backups" },
+      { mark: "B1", text: "sequential/slower access acceptable because backups are rarely accessed" },
+      { mark: "B1", text: "tape can be stored offline or away from the live system as an archive copy" },
     ],
     strict: [
-      "Do not accept 'SSD is more reliable' unless durability cause is stated.",
-      "Do not accept 'HDD is cheaper' without linking to capacity or cost per GB for full cost credit.",
-      "Allow modern SSD/HDD qualifications if the general trade-off is clear.",
+      "Do not accept tape as fastest access medium.",
+      "Do not award backup marks for volatile storage such as RAM.",
+      "Allow offline/archive security point if linked to backup scenario.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "A school wants to transfer small files between computers. Explain why a USB flash drive may be suitable and give one limitation.",
-    answer: "A USB flash drive is suitable because it is portable, small and removable, so it can be carried between computers. It is solid-state, so it has no moving parts and can be reasonably durable for normal use. A limitation is that it can be lost easily because it is small, or it may have limited capacity or variable speed compared with other storage.",
+    marks: "6 marks",
+    prompt: "Describe the principal operation of a magnetic hard disk, flash memory and an optical disc reader/writer.",
+    answer: "An HDD rotates magnetic platters while an actuator positions a read/write head; writing changes magnetic orientation and reading senses the stored patterns. Flash memory stores charge in floating-gate cells and is read or changed electronically without moving parts. An optical drive rotates a disc and uses reflected laser light to read recorded marks; a writer uses a higher-power laser to change a dye or recording layer.",
     marking: [
-      { mark: "B1", text: "USB flash drive identified as suitable removable storage" },
-      { mark: "B1", text: "portability linked to transferring files between computers" },
-      { mark: "B1", text: "valid durability/no moving parts or convenience point" },
-      { mark: "B1", text: "valid limitation such as easy to lose, limited capacity, variable speed or security risk" },
+      { mark: "B1", text: "HDD rotates magnetic platters and positions a read/write head" },
+      { mark: "B1", text: "HDD stores/reads data as magnetic orientations or patterns" },
+      { mark: "B1", text: "flash memory stores electrical charge in floating-gate cells" },
+      { mark: "B1", text: "flash is accessed electronically and has no moving parts" },
+      { mark: "B1", text: "optical reader detects differences in reflected laser light" },
+      { mark: "B1", text: "optical writer uses a higher-power laser to alter a recording layer/dye" },
     ],
     strict: [
-      "Do not award limitation mark for an advantage repeated negatively without explanation.",
-      "Do not accept that USB flash is volatile.",
-      "Allow memory card if scenario is adapted with a reader and portability is clear.",
+      "Do not use a laser explanation for magnetic hard-disk operation.",
+      "Do not describe flash memory as storing data magnetically.",
+      "Distinguish the lower-power reading process from the write process for a recordable optical disc.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A media department needs one storage solution for active video editing and another for long-term archive. Suggest both and justify the trade-off.",
-    answer: "For active editing, an SSD is suitable because fast read/write access helps load, preview and save large video files quickly. It is also durable because it has no moving parts. For long-term archive, a high-capacity HDD or magnetic tape may be suitable because it offers more capacity at lower cost per GB. The trade-off is that active work needs speed, while archive storage prioritises capacity and cost because it is accessed less often.",
+    marks: "5 marks",
+    prompt: "A video editor needs storage for a large library of raw footage and a separate drive for active editing work. Suggest suitable storage for each and justify your choices.",
+    answer: "A high-capacity HDD may be suitable for the raw footage library because it offers large capacity at lower cost per GB. An SSD is suitable for active editing work because it has faster access speeds, which helps load and write video files during editing. The answer depends on balancing capacity and cost for archive storage against speed for current work.",
     marking: [
-      { mark: "B1", text: "suitable active editing storage, e.g. SSD" },
-      { mark: "B1", text: "active editing justification linked to fast read/write/access" },
-      { mark: "B1", text: "additional active-work characteristic such as durability/no moving parts" },
-      { mark: "B1", text: "suitable archive storage, e.g. HDD/tape" },
-      { mark: "B1", text: "archive justification linked to high capacity/low cost per GB" },
-      { mark: "B1", text: "explicit trade-off between speed for active work and capacity/cost for archive" },
+      { mark: "B1", text: "suitable high-capacity storage for library, e.g. HDD" },
+      { mark: "B1", text: "library justification linked to large capacity/low cost per GB" },
+      { mark: "B1", text: "suitable fast storage for active editing, e.g. SSD" },
+      { mark: "B1", text: "editing justification linked to faster read/write/access" },
+      { mark: "B1", text: "clear trade-off between capacity/cost and speed in the scenario" },
     ],
     strict: [
-      "Do not award full marks for one storage device with one generic reason for both roles.",
-      "Do not accept optical disc for active editing unless a special case is strongly justified.",
-      "Allow external SSD/HDD if role and characteristics are clear.",
+      "Do not award full marks for recommending the same device twice without separate scenario reasons.",
+      "Do not accept optical disc for active editing unless strongly justified for a special case.",
+      "Allow external HDD/SSD if the characteristic and role are clear.",
     ],
   },
 ];
@@ -180,10 +180,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    capacity: "Capacity matters because photos and videos can require many GB or TB, especially if RAW files are kept.",
-    durability: "Durability matters because portable storage may be knocked, dropped or used in poor conditions.",
-    speed: "Speed matters during active editing because large files must be loaded, saved and transferred quickly.",
-    cost: "Cost matters because high capacity gets expensive quickly; cost per GB is often the real comparison.",
+    hdd: "HDD: magnetic storage with high capacity and low cost per GB, useful for large file libraries.",
+    ssd: "SSD: solid-state storage with no moving parts, fast access and better shock resistance for portable devices.",
+    flash: "Flash drive: solid-state removable storage for moving files, but easy to lose and variable in quality.",
+    disc: "Optical disc: laser-read removable media, useful for fixed content or archive copies, but slower and lower capacity.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -273,7 +273,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, name the exact characteristic and link it to the scenario.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, check medium, example device and scenario-linked characteristic.`;
   });
 }
 

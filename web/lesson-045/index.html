@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 045 | Instruction sets and machine code</title>
+    <title>AS9618 Lesson 045 | Interrupt causes, detection and handling</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Instruction sets and machine code</h1>
+        <h1>Interrupt causes, detection and handling</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,11 +29,11 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#instruction-set">Instruction set</a>
-        <a href="#machine-code">Machine code</a>
-        <a href="#opcode">Opcode and operand</a>
-        <a href="#compatibility">Compatibility</a>
-        <a href="#tool">Decoder</a>
+        <a href="#concept">Bus concept</a>
+        <a href="#three-buses">Three buses</a>
+        <a href="#read-write">Read/write traces</a>
+        <a href="#width">Bus width</a>
+        <a href="#tool">Bus mapper</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -52,70 +52,61 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Assembly language and machine code</h2>
+            <h2>Interrupt causes, detection and handling</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Machine code is the binary instruction form executed directly by a processor. Each bit pattern is interpreted according to that processor's instruction set, so machine code is processor dependent.</p>
-            <p>Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions. Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used. An assembler translates assembly source into the corresponding machine code; assembly is not executed directly as text.</p>
-            <p>The relationship is close but not based on English spelling: a mnemonic maps to an opcode defined by the target instruction set, and an operand must be encoded in the form required by that instruction. Labels are resolved to addresses during assembly.</p>
+            <p>An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.</p>
+            <p>For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.</p>
+            <p>If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.</p>
+            <p>An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Translate one symbolic instruction</h3>
-            <p>For a target instruction set, ADD #3 is assembly source: ADD is the mnemonic and #3 is an immediate operand. The assembler selects that processor's binary ADD opcode and encodes the operand. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.</p>
+            <h3>Worked example: Handle a keyboard interrupt</h3>
+            <p>A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start machine-code -->
-        <section class="panel explanation-panel" id="explanation-machine-code" data-explains="machine-code" data-explanation-kind="mechanism" aria-labelledby="explanation-machine-code-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="machine-code">
-          <h2 class="explanation-sr-only" id="explanation-machine-code-title">Machine code is binary instructions for the CPU</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-machine-code.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Machine code is binary instructions for the CPU with a structured visual model." />
-            <figcaption class="explanation-sr-only">Machine code is binary instructions for the CPU: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Lowest-level executable form</li><li><strong>Lesson fact:</strong> Machine code consists of binary instructions that can be executed directly by the processor.</li><li><strong>Lesson fact:</strong> Not friendly for humans</li><li><strong>Lesson fact:</strong> Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.</li><li><strong>Lesson fact:</strong> Stored in memory</li><li><strong>Lesson fact:</strong> Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</li><li><strong>Lesson fact:</strong> CPU-specific meaning</li><li><strong>Lesson fact:</strong> The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end machine-code -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Assembly language and machine code: apply and assess</h2>
+            <h2>Interrupt causes, detection and handling: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which language form does the processor execute directly?</p>
-              <details><summary>Show answer</summary><p>Machine code: binary instructions defined by its instruction set.</p></details>
+              <p><strong>1.</strong> Give two possible causes or applications of interrupts.</p>
+              <details><summary>Show answer</summary><p>For example an I/O device request, timer/scheduler event, hardware fault or software exception.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Why is assembly language easier for people to use than machine code?</p>
-              <details><summary>Show answer</summary><p>It uses symbolic mnemonics, operands and labels instead of raw binary bit patterns.</p></details>
+              <p><strong>2.</strong> When is a normal maskable interrupt detected and accepted?</p>
+              <details><summary>Show answer</summary><p>After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What translates assembly language into machine code?</p>
-              <details><summary>Show answer</summary><p>An assembler.</p></details>
+              <p><strong>3.</strong> What is an ISR?</p>
+              <details><summary>Show answer</summary><p>An interrupt service routine: program code that handles a particular interrupt.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why are both forms processor specific?</p>
-              <details><summary>Show answer</summary><p>Their operations, opcodes and instruction formats are defined by the target processor's instruction set.</p></details>
+              <p><strong>4.</strong> Why must processor state be saved and restored?</p>
+              <details><summary>Show answer</summary><p>So the interrupted program can resume at the correct instruction with its earlier register and status values.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> List the handling sequence after detection.</p>
+              <details><summary>Show answer</summary><p>Check/accept, save state, locate and execute ISR, restore state, resume program.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain the relationship between assembly language and machine code and why an assembler and a target instruction set are required.</p>
+            <p>Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>machine code consists of binary instructions executed directly by the processor</td><td>Do not accept that assembly source is executed directly or that one machine-code instruction has a universal meaning across processors.</td><td>1</td></tr>
-                  <tr><td>assembly uses mnemonics/operands/labels as a symbolic low-level form</td><td></td><td>1</td></tr>
-                  <tr><td>assembler translates assembly source to machine code</td><td></td><td>1</td></tr>
-                  <tr><td>mnemonic maps to an opcode and operands are encoded</td><td></td><td>1</td></tr>
-                  <tr><td>instruction meanings/formats are defined by the processor instruction set</td><td></td><td>1</td></tr>
-                  <tr><td>therefore code for one processor may not execute correctly on another</td><td></td><td>1</td></tr>
+                  <tr><td>valid cause/application such as I/O, timer, fault or exception</td><td>Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts.</td><td>1</td></tr>
+                  <tr><td>current instruction completes and interrupt is detected/checked at the cycle boundary</td><td></td><td>1</td></tr>
+                  <tr><td>priority/enabled status is checked</td><td></td><td>1</td></tr>
+                  <tr><td>PC/register/status state is saved</td><td></td><td>1</td></tr>
+                  <tr><td>correct ISR is located and executed</td><td></td><td>1</td></tr>
+                  <tr><td>state is restored and the interrupted program resumes</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -126,258 +117,245 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 045 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>A processor executes instructions defined by its instruction set.</h2>
+            <h2>Buses move signals. They are not tiny school buses full of bytes wearing backpacks.</h2>
             <p>
-              An instruction set is the collection of machine-code instructions a
-              processor can recognise and execute. Machine code is binary, and each
-              instruction normally contains an opcode that says what to do and an
-              operand that says what to do it to.
+              A system bus is a communication pathway used to transfer signals between
+              the CPU, memory and other components. The address bus says where, the
+              data bus carries what, and the control bus says what operation is happening.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>instruction set and machine code accurately</span></div>
-              <div><strong>Decode</strong><span>simple opcode and operand instruction formats</span></div>
-              <div><strong>Explain</strong><span>why instruction sets affect compatibility</span></div>
+              <div><strong>Describe</strong><span>the roles of address, data and control buses</span></div>
+              <div><strong>Trace</strong><span>read and write operations using the correct bus</span></div>
+              <div><strong>Explain</strong><span>how address bus width affects addressable memory locations</span></div>
             </div>
           </div>
-          <div class="machine-card" aria-label="Machine code sketch">
-            <div class="instruction-word">
-              <span class="opcode">0011</span>
-              <span class="operand">01011010</span>
+          <div class="bus-card" aria-label="System bus sketch">
+            <div class="bus-board">
+              <span class="node">CPU</span>
+              <span class="bus-line address">address bus: where?</span>
+              <span class="bus-line data">data bus: what?</span>
+              <span class="bus-line control">control bus: read/write?</span>
+              <span class="node">Memory / I/O</span>
             </div>
-            <div class="legend">
-              <span>opcode: ADD</span>
-              <span>operand: address 90</span>
-            </div>
-            <p>Binary is not the mystery. The agreed meaning is the instruction set.</p>
+            <p>Exam shortcut: where, what, command.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Questions often separate definition marks from "why can this CPU run/not run this code?" explanation marks.</p>
+            <p>Cambridge marking often rewards the bus name only when the role is also accurate.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>An opcode is not the data itself. It specifies the operation; the operand supplies the associated value, address or register.</p>
+            <p>"The bus transfers data" is not enough if the question asks for three buses. Distinguish each pathway.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Two CPUs see the same bits. Why might they do different things?</h2>
-            <p>Click the best reason. Bits are innocent; the instruction set gives them meaning.</p>
+            <h2>The CPU wants to read memory address 500. Which bus carries 500?</h2>
+            <p>Click the best answer. Address 500 is a location, not the value hiding inside that location.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="isa">They use different instruction sets</button>
-            <button class="choice-card" type="button" data-hook="ram">They have different RAM colours</button>
-            <button class="choice-card" type="button" data-hook="font">The binary is written in a different font</button>
-            <button class="choice-card" type="button" data-hook="bus">The data bus refuses to cooperate</button>
+            <button class="choice-card" type="button" data-hook="address">Address bus</button>
+            <button class="choice-card" type="button" data-hook="data">Data bus</button>
+            <button class="choice-card" type="button" data-hook="control">Control bus</button>
+            <button class="choice-card" type="button" data-hook="register">MDR</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. The key idea is that instruction meaning is processor-specific.
+            Click one. Ask: is 500 a location, a value, or a command?
           </div>
         </section>
 
-        <section class="panel" id="instruction-set" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>What is an instruction set?</h2>
+            <h2>What a system bus does</h2>
           </div>
           <div class="concept-grid">
             <article>
-              <strong>Definition</strong>
-              <span>The set of instructions that a particular processor can recognise and execute.</span>
+              <strong>Communication pathway</strong>
+              <span>A bus is a set of parallel wires or connections used to carry signals.</span>
             </article>
             <article>
-              <strong>Includes operations</strong>
-              <span>Examples include load, store, add, subtract, compare, jump and input/output instructions.</span>
+              <strong>Connects components</strong>
+              <span>System buses connect CPU, main memory and other devices through controlled transfers.</span>
             </article>
             <article>
-              <strong>Processor-specific</strong>
-              <span>Different processor families can have different instruction sets and instruction formats.</span>
+              <strong>Not storage</strong>
+              <span>A bus transfers signals; it does not permanently store data or instructions.</span>
             </article>
             <article>
-              <strong>Defines meaning</strong>
-              <span>The instruction set tells the CPU what each opcode means and how operands are interpreted.</span>
+              <strong>Part of a trace</strong>
+              <span>In processor questions, bus roles often appear inside fetch, read and write sequences.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: instruction set = 指令集；machine code = 机器码；opcode = 操作码；operand = 操作数。</div>
+          <div class="callout">Chinese support: bus = 总线；address = 地址/位置；data = 数据/值；control signal = 控制信号；bidirectional = 双向。</div>
         </section>
 
-        <!-- stage10-explanation:start instruction-set -->
-        <section class="panel explanation-panel" id="explanation-instruction-set" data-explains="instruction-set" data-explanation-kind="mechanism" aria-labelledby="explanation-instruction-set-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <h2 class="explanation-sr-only" id="explanation-instruction-set-title">What is an instruction set?</h2>
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">What a system bus does</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-instruction-set.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is an instruction set? with a structured visual model." />
-            <figcaption class="explanation-sr-only">What is an instruction set?: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a system bus does with a structured visual model." />
+            <figcaption class="explanation-sr-only">What a system bus does: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> The set of instructions that a particular processor can recognise and execute.</li><li><strong>Lesson fact:</strong> Includes operations</li><li><strong>Lesson fact:</strong> Examples include load, store, add, subtract, compare, jump and input/output instructions.</li><li><strong>Lesson fact:</strong> Processor-specific</li><li><strong>Lesson fact:</strong> Different processor families can have different instruction sets and instruction formats.</li><li><strong>Lesson fact:</strong> Defines meaning</li><li><strong>Lesson fact:</strong> The instruction set tells the CPU what each opcode means and how operands are interpreted.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Communication pathway</li><li><strong>Lesson fact:</strong> A bus is a set of parallel wires or connections used to carry signals.</li><li><strong>Lesson fact:</strong> Connects components</li><li><strong>Lesson fact:</strong> System buses connect CPU, main memory and other devices through controlled transfers.</li><li><strong>Lesson fact:</strong> Not storage</li><li><strong>Lesson fact:</strong> A bus transfers signals; it does not permanently store data or instructions.</li><li><strong>Lesson fact:</strong> Part of a trace</li><li><strong>Lesson fact:</strong> In processor questions, bus roles often appear inside fetch, read and write sequences.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end instruction-set -->
-        <section class="panel" id="machine-code" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
+        <!-- stage10-explanation:end concept -->
+        <section class="panel" id="three-buses" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Machine code is binary instructions for the CPU</h2>
+            <h2>The three buses</h2>
           </div>
-          <div class="machine-grid">
-            <article>
-              <h3>Lowest-level executable form</h3>
-              <p>Machine code consists of binary instructions that can be executed directly by the processor.</p>
-            </article>
-            <article>
-              <h3>Not friendly for humans</h3>
-              <p>Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.</p>
-            </article>
-            <article>
-              <h3>Stored in memory</h3>
-              <p>Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</p>
-            </article>
-            <article>
-              <h3>CPU-specific meaning</h3>
-              <p>The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</p>
-            </article>
+          <div class="bus-table" role="table" aria-label="System bus roles">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Bus</div>
+              <div role="columnheader">Carries</div>
+              <div role="columnheader">Typical direction</div>
+              <div role="columnheader">Exam-safe sentence</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Address bus</div>
+              <div role="cell">Memory or I/O address identifying a location.</div>
+              <div role="cell">Usually from CPU to memory/I/O.</div>
+              <div role="cell">The address bus carries the address of the location to be read from or written to.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Data bus</div>
+              <div role="cell">Data or instructions being transferred.</div>
+              <div role="cell">Usually bidirectional.</div>
+              <div role="cell">The data bus carries the actual data or instruction between CPU, memory and devices.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Control bus</div>
+              <div role="cell">Control and timing signals such as read, write, interrupt and clock signals.</div>
+              <div role="cell">Signals can travel in different directions depending on purpose.</div>
+              <div role="cell">The control bus carries signals that coordinate and control the transfer.</div>
+            </div>
           </div>
         </section>
 
-        <section class="panel" id="opcode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
+        <!-- stage10-explanation:start three-buses -->
+        <section class="panel explanation-panel" id="explanation-three-buses" data-explains="three-buses" data-explanation-kind="mechanism" aria-labelledby="explanation-three-buses-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
+          <h2 class="explanation-sr-only" id="explanation-three-buses-title">The three buses</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-three-buses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The three buses with a structured visual model." />
+            <figcaption class="explanation-sr-only">The three buses: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The address bus carries the address of the location being accessed and is normally directed from the CPU.</li><li><strong>Lesson fact:</strong> The data bus carries data and instructions in both directions.</li><li><strong>Lesson fact:</strong> The control bus carries control and timing signals in both directions, including read/write from the CPU and interrupts toward the CPU.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end three-buses -->
+        <section class="panel" id="read-write" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Opcode and operand</h2>
+            <h2>Read and write traces</h2>
           </div>
-          <div class="format-card">
-            <div class="format-word">
-              <span class="opcode">opcode</span>
-              <span class="operand">operand</span>
-            </div>
-            <p><strong>Opcode</strong> tells the CPU which operation to perform. <strong>Operand</strong> gives the data, register, address or value used by the operation.</p>
-          </div>
-          <div class="instruction-table" role="table" aria-label="Example instruction set">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Opcode</div>
-              <div role="columnheader">Operation</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Example with operand</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0001</div>
-              <div role="cell">LOAD</div>
-              <div role="cell">Load value from memory into ACC.</div>
-              <div role="cell">0001 01011010 = LOAD address 90</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0010</div>
-              <div role="cell">STORE</div>
-              <div role="cell">Store ACC value into memory.</div>
-              <div role="cell">0010 01011010 = STORE address 90</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0011</div>
-              <div role="cell">ADD</div>
-              <div role="cell">Add value from memory to ACC.</div>
-              <div role="cell">0011 01011010 = ADD value at address 90</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0100</div>
-              <div role="cell">JMP</div>
-              <div role="cell">Jump to a different instruction address.</div>
-              <div role="cell">0100 00001100 = jump to address 12</div>
-            </div>
+          <div class="trace-grid">
+            <article>
+              <h3>Memory read</h3>
+              <ol>
+                <li>CPU places the required address on the address bus.</li>
+                <li>CPU sends a read signal on the control bus.</li>
+                <li>Memory places the requested data/instruction on the data bus.</li>
+                <li>CPU receives the data, often through the MDR.</li>
+              </ol>
+            </article>
+            <article>
+              <h3>Memory write</h3>
+              <ol>
+                <li>CPU places the target address on the address bus.</li>
+                <li>CPU places the data to be stored on the data bus.</li>
+                <li>CPU sends a write signal on the control bus.</li>
+                <li>Memory stores the data at the addressed location.</li>
+              </ol>
+            </article>
           </div>
           <div class="trap-card inline-card">
             <h3>Common error</h3>
-            <p>The operand is not always data itself. It may be an address, a register identifier or an immediate value depending on the instruction format.</p>
+            <p>Read and write both use all three buses, but the direction of data transfer changes.</p>
           </div>
         </section>
 
-        <!-- stage10-explanation:start opcode -->
-        <section class="panel explanation-panel" id="explanation-opcode" data-explains="opcode" data-explanation-kind="mechanism" aria-labelledby="explanation-opcode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <h2 class="explanation-sr-only" id="explanation-opcode-title">Opcode and operand</h2>
+        <!-- stage10-explanation:start read-write -->
+        <section class="panel explanation-panel" id="explanation-read-write" data-explains="read-write" data-explanation-kind="mechanism" aria-labelledby="explanation-read-write-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
+          <h2 class="explanation-sr-only" id="explanation-read-write-title">Read and write traces</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-opcode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Opcode and operand with a structured visual model." />
-            <figcaption class="explanation-sr-only">Opcode and operand: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-read-write.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read and write traces with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read and write traces: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.</li><li><strong>Lesson fact:</strong> Operation</li><li><strong>Lesson fact:</strong> Example with operand</li><li><strong>Lesson fact:</strong> Load value from memory into ACC.</li><li><strong>Lesson fact:</strong> 0001 01011010 = LOAD address 90</li><li><strong>Lesson fact:</strong> Store ACC value into memory.</li><li><strong>Lesson fact:</strong> 0010 01011010 = STORE address 90</li><li><strong>Lesson fact:</strong> Add value from memory to ACC.</li><li><strong>Lesson fact:</strong> 0011 01011010 = ADD value at address 90</li><li><strong>Lesson fact:</strong> Jump to a different instruction address.</li><li><strong>Lesson fact:</strong> 0100 00001100 = jump to address 12</li><li><strong>Lesson fact:</strong> Common error</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Memory read</li><li><strong>Lesson fact:</strong> CPU places the required address on the address bus.</li><li><strong>Lesson fact:</strong> CPU sends a read signal on the control bus.</li><li><strong>Lesson fact:</strong> Memory places the requested data/instruction on the data bus.</li><li><strong>Lesson fact:</strong> CPU receives the data, often through the MDR.</li><li><strong>Lesson fact:</strong> Memory write</li><li><strong>Lesson fact:</strong> CPU places the target address on the address bus.</li><li><strong>Lesson fact:</strong> CPU places the data to be stored on the data bus.</li><li><strong>Lesson fact:</strong> CPU sends a write signal on the control bus.</li><li><strong>Lesson fact:</strong> Memory stores the data at the addressed location.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Read and write both use all three buses, but the direction of data transfer changes.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end opcode -->
-        <section class="panel" id="compatibility" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
+        <!-- stage10-explanation:end read-write -->
+        <section class="panel" id="width" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Instruction sets and compatibility</h2>
+            <h2>Bus width and addressable locations</h2>
           </div>
-          <div class="compat-grid">
+          <div class="width-grid">
             <article>
-              <strong>Same ISA</strong>
-              <span>A program compiled to one instruction set can run on compatible processors that implement that instruction set.</span>
+              <strong>Address bus width</strong>
+              <span>If the address bus has n lines, it can represent 2^n different addresses.</span>
             </article>
             <article>
-              <strong>Different ISA</strong>
-              <span>Machine code for one architecture may not run correctly on another architecture.</span>
+              <strong>Example</strong>
+              <span>A 16-bit address bus can address 2^16 = 65,536 memory locations.</span>
             </article>
             <article>
-              <strong>Translation needed</strong>
-              <span>Source code may need to be recompiled, interpreted, emulated or translated for a different processor.</span>
+              <strong>Data bus width</strong>
+              <span>A wider data bus can transfer more bits at once, which can affect throughput.</span>
             </article>
             <article>
-              <strong>Exam wording</strong>
-              <span>Say "the CPU cannot recognise/execute those opcodes" rather than simply "the CPU does not like it".</span>
+              <strong>Precision</strong>
+              <span>Address bus width affects address range; data bus width affects transfer size.</span>
             </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compatibility -->
-        <section class="panel explanation-panel" id="explanation-compatibility" data-explains="compatibility" data-explanation-kind="mechanism" aria-labelledby="explanation-compatibility-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <h2 class="explanation-sr-only" id="explanation-compatibility-title">Instruction sets and compatibility</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-compatibility.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction sets and compatibility with a structured visual model." />
-            <figcaption class="explanation-sr-only">Instruction sets and compatibility: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Same ISA</li><li><strong>Lesson fact:</strong> A program compiled to one instruction set can run on compatible processors that implement that instruction set.</li><li><strong>Lesson fact:</strong> Different ISA</li><li><strong>Lesson fact:</strong> Machine code for one architecture may not run correctly on another architecture.</li><li><strong>Lesson fact:</strong> Translation needed</li><li><strong>Lesson fact:</strong> Source code may need to be recompiled, interpreted, emulated or translated for a different processor.</li><li><strong>Lesson fact:</strong> Exam wording</li><li><strong>Lesson fact:</strong> Say &quot;the CPU cannot recognise/execute those opcodes&quot; rather than simply &quot;the CPU does not like it&quot;.</li></ol>
-
           </div>
         </section>
-        <!-- stage10-explanation:end compatibility -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Simple instruction decoder</h2>
-            <p>Use the lesson's fake 12-bit format: first 4 bits are opcode, last 8 bits are operand.</p>
+            <h2>Bus role mapper</h2>
+            <p>Select a signal and identify the correct bus, reason and common error.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Machine-code instruction
-              <select id="instructionInput">
-                <option value="000101011010">0001 01011010</option>
-                <option value="001001011010">0010 01011010</option>
-                <option value="001101011010">0011 01011010</option>
-                <option value="010000001100">0100 00001100</option>
-                <option value="111101011010">1111 01011010</option>
+              Signal or task
+              <select id="busInput">
+                <option value="address500">CPU sends memory address 500</option>
+                <option value="instruction">Instruction transferred from memory to CPU</option>
+                <option value="read">Read signal sent to memory</option>
+                <option value="write">Write signal sent to memory</option>
+                <option value="interrupt">Interrupt signal sent to CPU</option>
+                <option value="width16">16-bit address bus capacity</option>
               </select>
             </label>
-            <button type="button" id="decodeBtn">Decode</button>
+            <button type="button" id="mapBtn">Map bus</button>
           </div>
-          <div class="result-box" id="decodeResult" aria-live="polite"></div>
-          <div class="method-box" id="decodeMethod"></div>
-          <div class="reject-box" id="decodeTrap"></div>
+          <div class="result-box" id="mapResult" aria-live="polite"></div>
+          <div class="method-box" id="mapMethod"></div>
+          <div class="reject-box" id="mapTrap"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Decode the instruction, then explain it</h2>
+            <h2>Sort the signal before writing the sentence</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="decode">Decode</button>
-            <button class="tab" type="button" data-example="compatibility">Compatibility</button>
-            <button class="tab" type="button" data-example="capacity">Format capacity</button>
+            <button class="tab active" type="button" data-example="read">Memory read</button>
+            <button class="tab" type="button" data-example="write">Memory write</button>
+            <button class="tab" type="button" data-example="width">Address width</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -386,7 +364,7 @@
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
-            <p>Short answers are fine. "Binary spell" is not a recognised Cambridge keyword, tempting though it is.</p>
+            <p>One-word answers are okay here, but they need to be the right bus. "The busy bus" remains sadly unmarkable.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -394,7 +372,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the vocabulary</h2>
+            <h2>Fix the bus confusion</h2>
           </div>
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
@@ -403,7 +381,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS wording rewards exact definitions and role-based explanation.</p>
+            <p>These are original Cambridge-style questions. MS wording separates bus identification from role explanation.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -411,36 +389,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Meaning comes from the instruction set</h2>
+            <h2>Three buses, three jobs</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Instruction set</strong><span>Instructions a processor can recognise and execute.</span></div>
-            <div><strong>Machine code</strong><span>Binary instructions executable by the CPU.</span></div>
-            <div><strong>Opcode</strong><span>Specifies the operation to perform.</span></div>
-            <div><strong>Operand</strong><span>Specifies data, address, register or value used by the operation.</span></div>
-            <div><strong>Compatibility</strong><span>Machine code depends on the processor's instruction set.</span></div>
-            <div><strong>Bit allocation</strong><span>More opcode bits allow more operations but leave fewer operand bits in a fixed-length instruction.</span></div>
+            <div><strong>Address bus</strong><span>Carries the address/location to be accessed.</span></div>
+            <div><strong>Data bus</strong><span>Carries the data or instruction being transferred.</span></div>
+            <div><strong>Control bus</strong><span>Carries control/timing signals such as read and write.</span></div>
+            <div><strong>Read</strong><span>Address out, read signal out, data back to CPU.</span></div>
+            <div><strong>Write</strong><span>Address out, data out, write signal out.</span></div>
+            <div><strong>Width</strong><span>n address lines can represent 2^n addresses.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Make instruction wording precise</h2>
+            <h2>Make bus answers precise</h2>
           </div>
           <ol class="homework-list">
-            <li>Define instruction set, machine code, opcode and operand in one sentence each.</li>
-            <li>Decode these fake instructions using the lesson table: `0001 00001111`, `0011 00001010`, `0100 00100000`.</li>
-            <li>Write a 5-mark answer: "Explain why machine code written for one processor may not run on another processor."</li>
-            <li>For a fixed 12-bit instruction, explain the trade-off between opcode width and operand width.</li>
-            <li>Correct this sentence: "The operand tells the CPU what operation to perform and the opcode stores the data."</li>
+            <li>Create a three-row table for address bus, data bus and control bus. Include what each carries and one example signal/value.</li>
+            <li>Write a 6-mark answer: "Describe the roles of the three system buses during a memory read operation."</li>
+            <li>Trace a memory write operation in four numbered steps using all three buses.</li>
+            <li>Calculate how many addresses can be represented by 12-bit, 16-bit and 20-bit address buses.</li>
+            <li>Correct this sentence: "The address bus carries the data and the data bus carries the address."</li>
           </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -1,94 +1,88 @@
-const loanRows = [
-  { LoanID: "L01", Title: "Networks", Borrower: "Amira", Category: "Computing", DaysOverdue: 5, Returned: false },
-  { LoanID: "L02", Title: "Poems", Borrower: "Leo", Category: "Literature", DaysOverdue: 0, Returned: true },
-  { LoanID: "L03", Title: "Databases", Borrower: "Maya", Category: "Computing", DaysOverdue: 12, Returned: false },
-];
-
-const builderMap = {
-  overdueTitles: {
-    sql: "SELECT Title, Borrower\nFROM Loan\nWHERE Returned = FALSE;",
-    reason: "Output fields are Title and Borrower; the source table is Loan; the condition is Returned = FALSE.",
+const redundancyMap = {
+  courseTitle: {
+    result: "Problem: unnecessary redundancy.",
+    reason: "CourseTitle depends on CourseID, not on the enrolment row. It should be stored once in a Course table.",
   },
-  computingBooks: {
-    sql: "SELECT Title\nFROM Loan\nWHERE Category = 'Computing';",
-    reason: "Text value 'Computing' is quoted because it is a string.",
+  studentId: {
+    result: "Usually acceptable repetition.",
+    reason: "StudentID may repeat as a linking value in Enrolment when a student takes several courses. This is not the same as repeating descriptive student facts.",
   },
-  bigOverdue: {
-    sql: "SELECT LoanID, Title\nFROM Loan\nWHERE DaysOverdue > 7;",
-    reason: "DaysOverdue is numeric, so the value 7 is not quoted.",
+  orderId: {
+    result: "Usually acceptable repetition.",
+    reason: "OrderID can repeat in OrderLine to link several items to the same order.",
   },
-  leoLoans: {
-    sql: "SELECT Title, DaysOverdue\nFROM Loan\nWHERE Borrower = 'Leo';",
-    reason: "Borrower is text, so 'Leo' is quoted.",
+  tutorEmail: {
+    result: "Problem: unnecessary redundancy.",
+    reason: "TutorEmail describes the tutor and may be repeated many times. Store it in a Tutor table and link to it.",
   },
-  notReturned: {
-    sql: "SELECT LoanID\nFROM Loan\nWHERE Returned = FALSE;",
-    reason: "Boolean condition returns only rows where Returned is false.",
+  membershipId: {
+    result: "Not a redundancy problem.",
+    reason: "MembershipID is unique for each membership row, so it is not a repeated descriptive fact.",
   },
 };
 
-const queryMap = {
-  q1: {
-    fields: ["Title", "Borrower"],
-    filter: (row) => row.Returned === false,
+const anomalyMap = {
+  update: {
+    result: "Anomaly: update anomaly.",
+    reason: "A repeated fact is changed in some copies but not others, leaving inconsistent data.",
   },
-  q2: {
-    fields: ["Title"],
-    filter: (row) => row.Category === "Computing",
+  insert: {
+    result: "Anomaly: insertion anomaly.",
+    reason: "A course fact cannot be stored unless an unrelated enrolment fact also exists.",
   },
-  q3: {
-    fields: ["LoanID", "Title"],
-    filter: (row) => row.DaysOverdue > 7,
+  delete: {
+    result: "Anomaly: deletion anomaly.",
+    reason: "Deleting a row removes the only stored copy of a separate fact such as CourseTitle.",
   },
-  q4: {
-    fields: ["Title", "DaysOverdue"],
-    filter: (row) => row.Borrower === "Leo",
+  atomic: {
+    result: "Issue: not in first normal form.",
+    reason: "A field should store one atomic value, not a repeating list of phone numbers.",
   },
-  q5: {
-    fields: ["Borrower"],
-    filter: (row) => row.DaysOverdue === 0,
+  validLink: {
+    result: "Not an anomaly by itself.",
+    reason: "A foreign key such as CourseID may repeat to link many enrolments to one course.",
   },
 };
 
 const examples = {
-  returned: {
-    title: "Example 1: Boolean condition",
-    problem: "Show Title and Borrower for loans that have not been returned.",
+  course: {
+    title: "Example 1: Course enrolments",
+    problem: "Enrolment(StudentID, StudentName, CourseID, CourseTitle, TutorEmail)",
     steps: [
-      "Fields needed: Title, Borrower.",
-      "Table: Loan.",
-      "Condition: Returned = FALSE.",
-      "SQL: SELECT Title, Borrower FROM Loan WHERE Returned = FALSE;",
+      "Problem: StudentName repeats when a student takes several courses.",
+      "Problem: CourseTitle and TutorEmail repeat for every student on the same course.",
+      "Better design: Student(StudentID, StudentName), Course(CourseID, CourseTitle, TutorEmail), Enrolment(StudentID, CourseID).",
+      "Effect: updating a course title or tutor email needs one change, reducing inconsistent data.",
     ],
   },
-  text: {
-    title: "Example 2: Text condition",
-    problem: "Show Title for loans where Category is Computing.",
+  order: {
+    title: "Example 2: Order lines",
+    problem: "OrderLine(OrderID, CustomerName, ProductID, ProductName, Quantity, UnitPrice)",
     steps: [
-      "Fields needed: Title.",
-      "Table: Loan.",
-      "Condition: Category = 'Computing'.",
-      "Text values such as 'Computing' need quotes.",
+      "CustomerName depends on the customer/order, not each product line.",
+      "ProductName and UnitPrice may repeat for every order line containing that product.",
+      "Better design separates Customer, Order, Product and OrderLine.",
+      "OrderLine keeps linking fields and transaction-specific facts such as Quantity.",
     ],
   },
-  number: {
-    title: "Example 3: Numeric condition",
-    problem: "Show LoanID and Title for loans more than 7 days overdue.",
+  phone: {
+    title: "Example 3: 1NF issue",
+    problem: "Student(StudentID, Name, PhoneNumbers) where PhoneNumbers stores '0207..., 0799..., 0161...'.",
     steps: [
-      "Fields needed: LoanID, Title.",
-      "Table: Loan.",
-      "Condition: DaysOverdue > 7.",
-      "Numeric values are not quoted in this basic SQL style.",
+      "The PhoneNumbers field contains a repeating group/list.",
+      "This violates the 1NF idea because values are not atomic.",
+      "Better design: store one phone number per row in a related StudentPhone table if multiple phone numbers are needed.",
+      "This makes searching, updating and validating each phone number clearer.",
     ],
   },
-  star: {
-    title: "Example 4: Avoid SELECT * unless needed",
-    problem: "The question asks for Title only. A student writes SELECT * FROM Loan WHERE Category = 'Computing';",
+  judge: {
+    title: "Example 4: Judgement answer",
+    problem: "Explain why normalisation is useful for reducing redundancy and update anomalies.",
     steps: [
-      "The condition may be correct, but SELECT * outputs every field.",
-      "If the question asks for Title only, write SELECT Title.",
-      "Cambridge mark schemes often credit the exact required fields.",
-      "Better: SELECT Title FROM Loan WHERE Category = 'Computing';",
+      "Useful: it reduces unnecessary redundancy and the risk of anomalies.",
+      "Useful: it can improve data integrity by storing each fact in one appropriate place.",
+      "Limitation: it can make the design more complex because data is split across more tables.",
+      "Precise judgement: normalisation is justified when repeated related data creates maintenance risks.",
     ],
   },
 };
@@ -96,82 +90,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "Which SQL clause names the fields to output?",
-    accepted: ["select"],
-    answer: "SELECT",
+    prompt: "What process organises tables to reduce unnecessary redundancy?",
+    accepted: ["normalisation", "normalization"],
+    answer: "Normalisation / normalization",
   },
   {
     id: "p2",
-    prompt: "Which SQL clause names the table?",
-    accepted: ["from"],
-    answer: "FROM",
+    prompt: "What term means unnecessary repeated storage of the same data?",
+    accepted: ["redundancy", "data redundancy"],
+    answer: "Redundancy / data redundancy",
   },
   {
     id: "p3",
-    prompt: "Which SQL clause filters records using a condition?",
-    accepted: ["where"],
-    answer: "WHERE",
+    prompt: "What anomaly happens when repeated data is changed in some rows but not others?",
+    accepted: ["update anomaly", "update"],
+    answer: "Update anomaly",
   },
   {
     id: "p4",
-    prompt: "Write the condition for records where Category is Computing.",
-    accepted: ["category = 'computing'", "category='computing'", "category = \"computing\"", "category=\"computing\""],
-    answer: "Category = 'Computing'",
+    prompt: "What anomaly happens when a new fact cannot be stored until another unrelated fact exists?",
+    accepted: ["insertion anomaly", "insert anomaly", "insertion"],
+    answer: "Insertion anomaly",
   },
   {
     id: "p5",
-    prompt: "Write the condition for records where DaysOverdue is greater than 7.",
-    accepted: ["daysoverdue > 7", "daysoverdue>7"],
-    answer: "DaysOverdue > 7",
+    prompt: "What anomaly happens when deleting a row removes the only copy of another fact?",
+    accepted: ["deletion anomaly", "delete anomaly", "deletion"],
+    answer: "Deletion anomaly",
   },
   {
     id: "p6",
-    prompt: "Should text values in WHERE conditions usually be quoted? yes or no.",
-    accepted: ["yes"],
-    answer: "Yes",
+    prompt: "In 1NF, should a field store one atomic value or a list?",
+    accepted: ["one atomic value", "atomic value", "one value", "single value"],
+    answer: "One atomic value",
   },
   {
     id: "p7",
-    prompt: "Should field names in SELECT usually be written in quotes? yes or no.",
-    accepted: ["no"],
-    answer: "No",
+    prompt: "If CourseTitle depends on CourseID, which table should normally store CourseTitle?",
+    accepted: ["course", "course table"],
+    answer: "Course table",
   },
   {
     id: "p8",
-    prompt: "Write the SQL keyword used to mean all fields.",
-    accepted: ["*"],
-    answer: "*",
-  },
-  {
-    id: "p9",
-    prompt: "If the question asks for Title only, is SELECT * usually the best answer? yes or no.",
+    prompt: "Is repeated foreign key CourseID in Enrolment always a bad redundancy? yes or no.",
     accepted: ["no"],
     answer: "No",
   },
   {
+    id: "p9",
+    prompt: "What does normalisation usually improve by reducing inconsistent repeated data?",
+    accepted: ["data integrity", "integrity"],
+    answer: "Data integrity",
+  },
+  {
     id: "p10",
-    prompt: "What comparison operator means not equal to in standard SQL style?",
-    accepted: ["<>"],
-    answer: "<>",
+    prompt: "Can normalisation make a database design more complex by adding tables? yes or no.",
+    accepted: ["yes"],
+    answer: "Yes",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "SELECT * FROM Loan WHERE Category = 'Computing' when the question asks for Title only.",
-    fix: "Use SELECT Title so only the requested field is output.",
+    wrong: "Normalisation removes all repeated values.",
+    fix: "Normalisation reduces unnecessary repeated facts. Foreign key values may still repeat to link records.",
   },
   {
-    wrong: "SELECT 'Title' FROM Loan WHERE Category = 'Computing';",
-    fix: "Do not quote field names in this basic SQL style. Use SELECT Title. Quote text values such as 'Computing'.",
+    wrong: "An update anomaly means the database cannot be updated.",
+    fix: "An update anomaly means repeated copies of a fact may be updated inconsistently.",
   },
   {
-    wrong: "SELECT Title WHERE Category = 'Computing';",
-    fix: "The FROM clause is missing. SQL needs the table name: SELECT Title FROM Loan WHERE Category = 'Computing';",
+    wrong: "1NF means every table must have exactly one field.",
+    fix: "1NF means fields should store atomic values and avoid repeating groups, not that a table has one field.",
   },
   {
-    wrong: "SELECT Title FROM Loan WHERE DaysOverdue = '> 7';",
-    fix: "The comparison operator is part of the condition, not a quoted string. Use WHERE DaysOverdue > 7.",
+    wrong: "Normalisation is done mainly to make SQL shorter.",
+    fix: "Normalisation is mainly about reducing redundancy, avoiding anomalies and improving data integrity. SQL comes later.",
   },
 ];
 
@@ -184,93 +178,100 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "3 marks",
-    prompt: "Write an SQL query to output Title and Borrower from Loan for records where Returned is FALSE.",
-    answer: "SELECT Title, Borrower FROM Loan WHERE Returned = FALSE;",
+    marks: "4 marks",
+    prompt: "Explain two reasons for normalising a database.",
+    answer: "Normalisation reduces unnecessary data redundancy by storing each fact in an appropriate table. It also helps avoid update, insertion and deletion anomalies, which improves data integrity and reduces inconsistent data.",
     marking: [
-      { mark: "B1", text: "SELECT Title, Borrower" },
-      { mark: "B1", text: "FROM Loan" },
-      { mark: "B1", text: "WHERE Returned = FALSE" },
+      { mark: "B1", text: "reduces unnecessary redundancy/repeated data" },
+      { mark: "B1", text: "explains storing facts once/in appropriate table" },
+      { mark: "B1", text: "avoids anomalies or names update/insertion/deletion anomaly" },
+      { mark: "B1", text: "links to improved data integrity/consistency" },
     ],
     strict: [
-      "Do not award SELECT mark for SELECT * unless all required fields are also clearly specified.",
-      "Do not require semicolon.",
-      "Allow field order Borrower, Title unless question specifies order.",
+      "Do not accept vague 'makes it better' without a database-design reason.",
+      "Do not accept 'removes all duplicates' without qualification.",
+      "Allow normalization spelling.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Write an SQL query to output Title for loans where Category is Computing.",
-    answer: "SELECT Title FROM Loan WHERE Category = 'Computing';",
+    marks: "6 marks",
+    prompt: "A table stores StudentID, StudentName, CourseID, CourseTitle and TutorEmail for every enrolment. Explain three problems this may cause.",
+    answer: "The table repeats CourseTitle and TutorEmail for every student enrolled on the same course, causing redundancy. If TutorEmail changes, some rows may be updated and others missed, causing an update anomaly and inconsistent data. It may also cause an insertion anomaly because a new course may not be stored until a student enrols, or a deletion anomaly if deleting the last enrolment removes the only copy of the course title.",
     marking: [
-      { mark: "B1", text: "SELECT Title" },
-      { mark: "B1", text: "FROM Loan" },
-      { mark: "M1", text: "WHERE Category = ..." },
-      { mark: "A1", text: "text value 'Computing' correctly quoted or clearly shown as string literal" },
+      { mark: "B1", text: "repeated CourseTitle/TutorEmail or similar redundancy identified" },
+      { mark: "B1", text: "redundancy linked to every enrolment/student row" },
+      { mark: "B1", text: "update anomaly/inconsistent update identified" },
+      { mark: "B1", text: "update problem explained with some rows changed and others not" },
+      { mark: "B1", text: "insertion or deletion anomaly identified" },
+      { mark: "B1", text: "insertion/deletion problem explained in course/enrolment context" },
     ],
     strict: [
-      "Do not award A1 if Computing is treated as a field name without quotes and no alternative string notation.",
-      "Do not award SELECT mark for extra fields unless the mark scheme allows additional fields; here it asks for Title.",
-      "Allow double quotes if used consistently for string literal.",
+      "Do not award anomaly marks for only listing anomaly names without mechanism.",
+      "Do not accept security or backup issues as normalisation problems here.",
+      "Allow CourseTitle, TutorEmail or StudentName as repeated facts if context is clear.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Write an SQL query to output LoanID and Title for loans more than 7 days overdue.",
-    answer: "SELECT LoanID, Title FROM Loan WHERE DaysOverdue > 7;",
+    marks: "6 marks",
+    prompt: "Suggest a more normalised design for Enrolment(StudentID, StudentName, CourseID, CourseTitle, TutorEmail).",
+    answer: "A more normalised design is Student(StudentID, StudentName), Course(CourseID, CourseTitle, TutorEmail) and Enrolment(StudentID, CourseID). StudentID is the primary key in Student and CourseID is the primary key in Course. Enrolment uses StudentID and CourseID as linking fields/foreign keys so the student's name and course details do not need to be repeated in every enrolment row.",
     marking: [
-      { mark: "B1", text: "SELECT LoanID, Title" },
-      { mark: "B1", text: "FROM Loan" },
-      { mark: "M1", text: "WHERE DaysOverdue uses greater-than comparison" },
-      { mark: "A1", text: "correct condition DaysOverdue > 7" },
+      { mark: "B1", text: "Student table with StudentID and StudentName" },
+      { mark: "B1", text: "Course table with CourseID and CourseTitle/TutorEmail" },
+      { mark: "B1", text: "Enrolment/linking table with StudentID and CourseID" },
+      { mark: "B1", text: "primary key or unique identifier roles described correctly" },
+      { mark: "B1", text: "foreign key/linking role described correctly" },
+      { mark: "B1", text: "explains reduced repetition of student/course details" },
     ],
     strict: [
-      "Do not accept DaysOverdue >= 7 because 'more than 7' excludes 7.",
-      "Do not quote the whole comparison as a string.",
-      "Allow Title, LoanID order unless question requires order.",
+      "Do not require exact table names if roles are clear.",
+      "Do not award reduced-repetition mark if all descriptive fields remain in Enrolment.",
+      "Allow composite key in Enrolment if explained.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "The table Book has fields BookID, Title, Category and Price. Write an SQL query to output BookID and Title for books with Price less than 10.00.",
-    answer: "SELECT BookID, Title FROM Book WHERE Price < 10.00;",
+    prompt: "A field PhoneNumbers stores several phone numbers separated by commas. Explain the normalisation issue and a possible solution.",
+    answer: "The field stores a repeating group/list rather than one atomic value, so it does not follow the first normal form idea. This makes individual phone numbers harder to search, update or validate. A solution is to create a related StudentPhone table with one phone number per record, linked to the Student table by StudentID.",
     marking: [
-      { mark: "B1", text: "SELECT BookID, Title" },
-      { mark: "B1", text: "FROM Book" },
-      { mark: "M1", text: "WHERE Price condition" },
-      { mark: "A1", text: "correct less-than operator <" },
-      { mark: "A1", text: "correct numeric value 10.00 or 10 not quoted" },
+      { mark: "B1", text: "repeating group/list identified" },
+      { mark: "B1", text: "atomic value / 1NF idea stated" },
+      { mark: "B1", text: "problem such as hard to search/update/validate individual numbers" },
+      { mark: "B1", text: "separate related table suggested" },
+      { mark: "B1", text: "one phone number per record and linked to Student/StudentID" },
     ],
     strict: [
-      "Do not accept Price <= 10.00 for 'less than 10.00'.",
-      "Do not require 10.00 rather than 10 if numeric meaning is same.",
-      "Do not award SELECT mark for Title only or BookID only.",
+      "Do not accept only 'use text' as a normalisation solution.",
+      "Do not require the formal term 1NF if atomic-value idea is clear.",
+      "Allow ContactNumber table or Phone table as equivalent.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A student writes SELECT * FROM Loan WHERE Borrower = Leo; for the request: output Title and DaysOverdue for loans borrowed by Leo. Identify and correct two errors.",
-    answer: "The first error is SELECT * because it outputs all fields instead of only Title and DaysOverdue. It should be SELECT Title, DaysOverdue. The second error is Leo is a text value and should be quoted as 'Leo'. A corrected query is SELECT Title, DaysOverdue FROM Loan WHERE Borrower = 'Leo';",
+    marks: "6 marks",
+    prompt: "Evaluate whether normalisation is always beneficial.",
+    answer: "Normalisation is beneficial because it reduces unnecessary redundancy, avoids update, insertion and deletion anomalies, and improves data integrity. For example, storing tutor email once avoids inconsistent repeated copies. However, normalisation may create more tables and make the design more complex, so retrieving data may require combining related tables. It is most justified when repeated related data is causing maintenance or integrity risks.",
     marking: [
-      { mark: "B1", text: "identifies SELECT * outputs all fields / wrong selected fields" },
-      { mark: "B1", text: "corrects to SELECT Title, DaysOverdue" },
-      { mark: "B1", text: "identifies Leo is a string/text value" },
-      { mark: "B1", text: "corrects to Borrower = 'Leo'" },
+      { mark: "B1", text: "benefit: reduced redundancy" },
+      { mark: "B1", text: "benefit: avoids anomalies/improves integrity" },
+      { mark: "B1", text: "benefit explained with repeated fact example" },
+      { mark: "B1", text: "limitation: more tables/increased complexity" },
+      { mark: "B1", text: "limitation explained, e.g. data must be combined from tables" },
+      { mark: "B1", text: "concludes whether further normalisation is worthwhile by weighing anomaly reduction against extra tables and query complexity" },
     ],
     strict: [
-      "Do not award correction mark for only saying 'do not use star' without fields.",
-      "Allow double quotes around Leo if used as string literal.",
-      "Do not penalise missing semicolon.",
+      "Do not accept 'always good' without limitation.",
+      "Do not accept performance claims without clear explanation.",
+      "Allow maintainability as a benefit if linked to reduced repeated data.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";");
+  return value.trim().toLowerCase().replace(/[-_\s/]+/g, " ");
 }
 
 function setupPrint() {
@@ -280,10 +281,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    select: "Correct. It selects the needed field, names the table, and filters unreturned books.",
-    all: "Too broad. SELECT * returns all fields and has no condition for overdue/unreturned.",
-    from: "No. The SELECT clause is missing, so no output field is named.",
-    where: "No. Clause order and FROM are wrong for basic SQL.",
+    update: "Correct. This is an update anomaly risk caused by repeated data.",
+    binary: "No. The storage design is messy, unrelated to binary representation.",
+    faster: "No. Normalisation is mainly about integrity and redundancy, not automatic speed.",
+    format: "No. Font drama is not a database anomaly.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -294,35 +295,25 @@ function setupHook() {
   });
 }
 
-function setupBuilder() {
-  const input = document.querySelector("#builderInput");
-  const result = document.querySelector("#builderResult");
-  const reason = document.querySelector("#builderReason");
-  document.querySelector("#builderBtn").addEventListener("click", () => {
-    const item = builderMap[input.value];
-    result.textContent = item.sql;
+function setupRedundancyDetector() {
+  const input = document.querySelector("#redundancyInput");
+  const result = document.querySelector("#redundancyResult");
+  const reason = document.querySelector("#redundancyReason");
+  document.querySelector("#redundancyBtn").addEventListener("click", () => {
+    const item = redundancyMap[input.value];
+    result.textContent = item.result;
     reason.textContent = item.reason;
   });
 }
 
-function renderResultTable(fields, rows) {
-  if (rows.length === 0) {
-    return "<p>No matching rows.</p>";
-  }
-  const head = `<div class="table-row table-head">${fields.map((field) => `<div>${field}</div>`).join("")}</div>`;
-  const body = rows
-    .map((row) => `<div class="table-row">${fields.map((field) => `<div>${row[field]}</div>`).join("")}</div>`)
-    .join("");
-  return `<div class="mini-result" style="--cols:${fields.length}">${head}${body}</div>`;
-}
-
-function setupQueryRunner() {
-  const input = document.querySelector("#queryInput");
-  const result = document.querySelector("#queryResult");
-  document.querySelector("#queryBtn").addEventListener("click", () => {
-    const query = queryMap[input.value];
-    const rows = loanRows.filter(query.filter);
-    result.innerHTML = renderResultTable(query.fields, rows);
+function setupAnomalyClassifier() {
+  const input = document.querySelector("#anomalyInput");
+  const result = document.querySelector("#anomalyResult");
+  const reason = document.querySelector("#anomalyReason");
+  document.querySelector("#anomalyBtn").addEventListener("click", () => {
+    const item = anomalyMap[input.value];
+    result.textContent = item.result;
+    reason.textContent = item.reason;
   });
 }
 
@@ -346,7 +337,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("returned");
+  renderExample("course");
 }
 
 function renderPractice() {
@@ -394,7 +385,7 @@ function renderMistakes() {
     .map(
       (item, index) => `
         <article>
-          <p class="wrong"><strong>Weak SQL ${index + 1}:</strong> ${item.wrong}</p>
+          <p class="wrong"><strong>Weak wording ${index + 1}:</strong> ${item.wrong}</p>
           <button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button>
           <div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div>
         </article>
@@ -424,7 +415,7 @@ function renderExamQuestions() {
           <p>${question.prompt}</p>
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
-            <p><strong>Answer:</strong> <code>${question.answer}</code></p>
+            <p><strong>Answer:</strong> ${question.answer}</p>
             <h4>Mark scheme</h4>
             ${renderStudentMarkPoints(question)}
           </div>
@@ -445,8 +436,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupBuilder();
-  setupQueryRunner();
+  setupRedundancyDetector();
+  setupAnomalyClassifier();
   setupExamples();
   renderPractice();
   renderMistakes();

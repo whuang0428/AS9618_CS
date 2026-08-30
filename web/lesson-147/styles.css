@@ -20,15 +20,6 @@ body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.55; }
 button, input, select { font: inherit; }
 button { cursor: pointer; }
 code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
-pre {
-  margin: 0;
-  overflow-x: auto;
-  padding: 14px;
-  border-radius: 8px;
-  background: #0f172a;
-  color: #e2e8f0;
-  line-height: 1.45;
-}
 
 .topbar {
   position: sticky;
@@ -168,7 +159,7 @@ pre {
   gap: 14px;
 }
 .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.choice-card, .mistake-grid article, .card-grid article, .practice-card, .exam-card {
+.choice-card, .mistake-grid article, .card-grid article, .practice-card, .exam-card, .case-card {
   border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 8px;
@@ -177,6 +168,7 @@ pre {
 }
 .choice-card { font-weight: 800; overflow-wrap: anywhere; }
 .choice-card.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+.case-card p { margin: 0; font-size: 1.05rem; }
 
 .feedback, .callout, .trace-output, .answer-panel, .ms-panel, .example-output {
   margin-top: 16px;
@@ -218,8 +210,8 @@ input, select {
   overflow: hidden;
 }
 .two-col .table-row { grid-template-columns: 0.8fr 1.5fr; }
-.three-col .table-row { grid-template-columns: 1fr 0.9fr 1.25fr; }
-.four-col .table-row { grid-template-columns: 0.8fr 1fr 1.25fr 1.1fr; }
+.three-col .table-row { grid-template-columns: 1fr 1.3fr 1.2fr; }
+.four-col .table-row { grid-template-columns: 0.8fr 1.1fr 1.2fr 1.1fr; }
 .table-row {
   display: grid;
   border-top: 1px solid var(--line);

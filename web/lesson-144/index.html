@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 144 | Design documentation: algorithms, data dictionaries, and interfaces</title>
+    <title>AS9618 Lesson 144 | Structure charts and the purpose of state-transition diagrams</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
-        <h1>Design documentation: algorithms, data dictionaries, and interfaces</h1>
+        <h1>Structure charts and the purpose of state-transition diagrams</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,14 +29,14 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#purpose">Purpose</a>
-        <a href="#algorithms">Algorithms</a>
-        <a href="#dictionary">Data dictionary</a>
-        <a href="#interfaces">Interfaces</a>
-        <a href="#traceability">Traceability</a>
-        <a href="#lifecycle">Lifecycle use</a>
-        <a href="#chooser">Artefact chooser</a>
-        <a href="#dictionary-tool">Dictionary tool</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#functional">Functional</a>
+        <a href="#non-functional">Non-functional</a>
+        <a href="#success">Success criteria</a>
+        <a href="#acceptance">Acceptance tests</a>
+        <a href="#stakeholders">Stakeholders</a>
+        <a href="#rewriter">Requirement rewriter</a>
+        <a href="#criteria-tool">Criteria checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
@@ -51,13 +51,14 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-        <!-- remediation-v2-optional:start -->
+<!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
           <p>constructing a state-transition diagram. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
           <p><strong>Formal AS prerequisite:</strong> S12.03 only requires understanding the purpose of state-transition diagrams; S12.02 structure-chart construction remains CORE.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
+
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
@@ -79,7 +80,7 @@
         <section class="panel explanation-panel" id="explanation-algorithms" data-explains="algorithms" data-explanation-kind="process" aria-labelledby="explanation-algorithms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
           <h2 class="explanation-sr-only" id="explanation-algorithms-title">Structure charts, derived pseudocode and state transitions</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Structure charts, derived pseudocode and state transitions with a structured visual model." />
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-algorithms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Structure charts, derived pseudocode and state transitions with a structured visual model." />
             <figcaption class="explanation-sr-only">Structure charts, derived pseudocode and state transitions: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
@@ -111,6 +112,10 @@
               <p><strong>4.</strong> Why is a state-transition diagram not a flowchart?</p>
               <details><summary>Show answer</summary><p>Its purpose is to document states and transitions, not every processing step in sequence.</p></details>
             </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> How does a walkthrough differ from a dry run?</p>
+              <details><summary>Show answer</summary><p>A walkthrough is a structured peer review of the algorithm or code; a dry run manually traces values and control flow for selected data.</p></details>
+            </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
@@ -136,288 +141,292 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 144 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
-            <h2>Design documentation is the bridge between “what users need” and “what developers build”.</h2>
+            <h2>“User-friendly” is a wish. A success criterion is something you can test.</h2>
             <p>
-              This lesson focuses on three design artefacts: algorithm designs, data dictionaries and interface designs.
-              Chinese support: design documentation 设计文档, algorithm design 算法设计, data dictionary 数据字典,
-              interface design 界面设计, traceability 可追踪性。
+              Requirements analysis finds out what a system must do and how success will be judged. Strong requirements are
+              clear, measurable and linked to users. Weak requirements sound pleasant but cannot be tested. Chinese support:
+              requirement 需求, stakeholder 利益相关者, success criteria 成功标准, acceptance test 验收测试。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>which design artefact fits a scenario</span></div>
-              <div><strong>Describe</strong><span>algorithm, data dictionary and interface design contents</span></div>
-              <div><strong>Link</strong><span>requirements to implementation, testing and maintenance</span></div>
+              <div><strong>Classify</strong><span>functional and non-functional requirements</span></div>
+              <div><strong>Rewrite</strong><span>vague requests as measurable success criteria</span></div>
+              <div><strong>Link</strong><span>requirements to acceptance tests and later evaluation</span></div>
             </div>
           </div>
-          <div class="design-visual" aria-label="Design documentation visual">
-            <div><strong>Requirement</strong><span>reject double bookings</span><em>what is needed</em></div>
-            <div><strong>Algorithm</strong><span>check existing records</span><em>processing rule</em></div>
-            <div><strong>Data dictionary</strong><span>RoomID : STRING(6)</span><em>data rule</em></div>
-            <div><strong>Interface</strong><span>date, time, room controls</span><em>user interaction</em></div>
+          <div class="req-visual" aria-label="Requirement analysis visual">
+            <div><strong>Vague</strong><span>easy to use</span><em>too slippery to test</em></div>
+            <div><strong>Requirement</strong><span>book a room</span><em>what the system does</em></div>
+            <div><strong>Criterion</strong><span>under 3 clicks</span><em>measurable target</em></div>
+            <div><strong>Acceptance test</strong><span>try sample booking</span><em>evidence</em></div>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Design documentation gives developers, testers and maintainers a shared plan. Without it, the project may look active while quietly drifting away from the requirements.</p>
+            <p>Analysis feeds design, testing and evaluation. If requirements are vague, later stages can look busy while building the wrong thing.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Requirements say what the system must do. Design documentation says how the system will be structured before implementation begins.</p>
+            <p>A requirement says what the system must do. A success criterion says how we decide whether it has done it well enough.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which document says RoomID is a STRING of length 6 and must not be blank?</h2>
-            <p>Scenario: a school room booking system. Pick the most precise artefact.</p>
+            <h2>Which statement is a measurable success criterion?</h2>
+            <p>Scenario: a school room booking system.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="requirements">Requirements specification</button>
-            <button class="choice-card" type="button" data-hook="dictionary">Data dictionary</button>
-            <button class="choice-card" type="button" data-hook="interface">Interface sketch</button>
-            <button class="choice-card" type="button" data-hook="code">Java implementation</button>
+            <button class="choice-card" type="button" data-hook="nice">The system should be nice.</button>
+            <button class="choice-card" type="button" data-hook="fast">A teacher can complete a booking in under 2 minutes.</button>
+            <button class="choice-card" type="button" data-hook="modern">The system should feel modern.</button>
+            <button class="choice-card" type="button" data-hook="good">The system should work well.</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the artefact that defines data item rules.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the statement that can be tested with evidence.</div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+        <section class="panel" id="analysis" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
-            <p class="eyebrow">Design documentation purpose</p>
-            <h2>Design documents translate requirements into a buildable plan</h2>
+            <p class="eyebrow">Requirements analysis</p>
+            <h2>Analysis turns user needs into a requirements specification</h2>
           </div>
           <div class="card-grid">
-            <article><h3>Before coding</h3><p>They decide data structures, processing logic and user interaction before the implementation language takes over.</p></article>
-            <article><h3>For testers</h3><p>They provide expected rules and interface behaviour so tests can check more than “it seems fine”.</p></article>
-            <article><h3>For maintenance</h3><p>They help future developers understand why the system works in a particular way.</p></article>
+            <article><h3>Gather</h3><p>Use interviews, questionnaires, observation or document analysis to find needs.</p></article>
+            <article><h3>Clarify</h3><p>Remove ambiguity by asking about users, tasks, data, constraints and priorities.</p></article>
+            <article><h3>Specify</h3><p>Write requirements that can guide design and later testing.</p></article>
           </div>
-          <div class="callout">A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</div>
         </section>
 
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">Design documents translate requirements into a buildable plan</h2>
+        <!-- stage10-explanation:start analysis -->
+        <section class="panel explanation-panel" id="explanation-analysis" data-explains="analysis" data-explanation-kind="mechanism" aria-labelledby="explanation-analysis-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-analysis-title">Analysis turns user needs into a requirements specification</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design documents translate requirements into a buildable plan with a structured visual model." />
-            <figcaption class="explanation-sr-only">Design documents translate requirements into a buildable plan: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-analysis.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Analysis turns user needs into a requirements specification with a structured visual model." />
+            <figcaption class="explanation-sr-only">Analysis turns user needs into a requirements specification: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Design documentation purpose</li><li><strong>Lesson fact:</strong> Before coding</li><li><strong>Lesson fact:</strong> They decide data structures, processing logic and user interaction before the implementation language takes over.</li><li><strong>Lesson fact:</strong> For testers</li><li><strong>Lesson fact:</strong> They provide expected rules and interface behaviour so tests can check more than “it seems fine”.</li><li><strong>Lesson fact:</strong> For maintenance</li><li><strong>Lesson fact:</strong> They help future developers understand why the system works in a particular way.</li><li><strong>Lesson fact:</strong> A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Requirements analysis</li><li><strong>Lesson fact:</strong> Use interviews, questionnaires, observation or document analysis to find needs.</li><li><strong>Lesson fact:</strong> Remove ambiguity by asking about users, tasks, data, constraints and priorities.</li><li><strong>Lesson fact:</strong> Write requirements that can guide design and later testing.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="algorithms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+        <!-- stage10-explanation:end analysis -->
+        <section class="panel" id="functional" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
-            <p class="eyebrow">Algorithm design documents</p>
-            <h2>Algorithm designs describe the processing steps</h2>
-            <p>They may use Cambridge-style pseudocode, flowcharts or structure diagrams. Java can support learning, but the exam standard remains Cambridge pseudocode.</p>
+            <p class="eyebrow">Functional requirements</p>
+            <h2>Functional requirements describe what the system must do</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Functional requirement examples">
+            <div class="table-row table-head"><div>Vague request</div><div>Functional requirement</div><div>Why stronger</div></div>
+            <div class="table-row"><div>manage bookings</div><div>allow teachers to create, edit and cancel room bookings</div><div>states actions and user</div></div>
+            <div class="table-row"><div>avoid clashes</div><div>reject a booking if the room is already booked for that time</div><div>states exact rule</div></div>
+            <div class="table-row"><div>show information</div><div>display a timetable for a selected room and date</div><div>states output and filter</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start functional -->
+        <section class="panel explanation-panel" id="explanation-functional" data-explains="functional" data-explanation-kind="mechanism" aria-labelledby="explanation-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-functional-title">Functional requirements describe what the system must do</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-functional.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Functional requirements describe what the system must do with a structured visual model." />
+            <figcaption class="explanation-sr-only">Functional requirements describe what the system must do: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Functional requirements</li><li><strong>Lesson fact:</strong> Vague request</li><li><strong>Lesson fact:</strong> Functional requirement</li><li><strong>Lesson fact:</strong> Why stronger</li><li><strong>Lesson fact:</strong> manage bookings</li><li><strong>Lesson fact:</strong> allow teachers to create, edit and cancel room bookings</li><li><strong>Lesson fact:</strong> states actions and user</li><li><strong>Lesson fact:</strong> avoid clashes</li><li><strong>Lesson fact:</strong> reject a booking if the room is already booked for that time</li><li><strong>Lesson fact:</strong> states exact rule</li><li><strong>Lesson fact:</strong> show information</li><li><strong>Lesson fact:</strong> display a timetable for a selected room and date</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end functional -->
+        <section class="panel" id="non-functional" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <div class="section-title">
+            <p class="eyebrow">Non-functional requirements</p>
+            <h2>Non-functional requirements describe qualities or constraints</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Non-functional requirement examples">
+            <div class="table-row table-head"><div>Quality</div><div>Measurable requirement</div><div>Possible evidence</div></div>
+            <div class="table-row"><div>performance</div><div>room search results display within 2 seconds</div><div>timed test</div></div>
+            <div class="table-row"><div>usability</div><div>a new teacher can create a booking in under 2 minutes after one demonstration</div><div>user trial</div></div>
+            <div class="table-row"><div>security</div><div>only staff with valid login credentials can create bookings</div><div>access test</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start non-functional -->
+        <section class="panel explanation-panel" id="explanation-non-functional" data-explains="non-functional" data-explanation-kind="mechanism" aria-labelledby="explanation-non-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-non-functional-title">Non-functional requirements describe qualities or constraints</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-non-functional.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Non-functional requirements describe qualities or constraints with a structured visual model." />
+            <figcaption class="explanation-sr-only">Non-functional requirements describe qualities or constraints: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Non-functional requirements</li><li><strong>Lesson fact:</strong> Measurable requirement</li><li><strong>Lesson fact:</strong> Possible evidence</li><li><strong>Lesson fact:</strong> performance</li><li><strong>Lesson fact:</strong> room search results display within 2 seconds</li><li><strong>Lesson fact:</strong> timed test</li><li><strong>Lesson fact:</strong> usability</li><li><strong>Lesson fact:</strong> a new teacher can create a booking in under 2 minutes after one demonstration</li><li><strong>Lesson fact:</strong> user trial</li><li><strong>Lesson fact:</strong> security</li><li><strong>Lesson fact:</strong> only staff with valid login credentials can create bookings</li><li><strong>Lesson fact:</strong> access test</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end non-functional -->
+        <section class="panel" id="success" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <div class="section-title">
+            <p class="eyebrow">Success criteria</p>
+            <h2>Success criteria make evaluation possible</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style pseudocode design</h3>
-              <pre><code>ClashFound ← FALSE
-FOR Index ← 1 TO NumberOfBookings
-    Current ← BookingList[Index]
-    IF Current.RoomID = NewRoomID AND Current.Date = NewDate THEN
-        IF TimesOverlap(Current, NewBooking) THEN
-            ClashFound ← TRUE
-        ENDIF
-    ENDIF
-NEXT Index</code></pre>
+              <h3>Weak</h3>
+              <p>“The system should be easy to use.”</p>
             </article>
             <article>
-              <h3>Java support only</h3>
-              <pre><code>// Java support example, not exam pseudocode
-boolean clashFound = false;
-for (Booking booking : bookingList) {
-  if (booking.roomId.equals(newRoomId)
-      && booking.date.equals(newDate)
-      && timesOverlap(booking, newBooking)) {
-    clashFound = true;
-  }
-}</code></pre>
+              <h3>Stronger</h3>
+              <p>“At least 8 out of 10 teachers can create a booking without help in under 2 minutes.”</p>
             </article>
           </div>
+          <div class="callout">A success criterion should be specific enough that two people can test it and reach the same conclusion.</div>
         </section>
 
-        <section class="panel" id="dictionary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <div class="section-title">
-            <p class="eyebrow">Data dictionary</p>
-            <h2>A data dictionary defines each data item consistently</h2>
-          </div>
-          <div class="data-table six-col" role="table" aria-label="Data dictionary examples">
-            <div class="table-row table-head"><div>Name</div><div>Type</div><div>Size</div><div>Format</div><div>Validation</div><div>Purpose</div></div>
-            <div class="table-row"><div>RoomID</div><div>STRING</div><div>6</div><div>letter plus digits</div><div>not blank; exists in room file</div><div>identifies the room</div></div>
-            <div class="table-row"><div>BookingDate</div><div>DATE</div><div>fixed</div><div>YYYY-MM-DD</div><div>school day; not in past</div><div>date of booking</div></div>
-            <div class="table-row"><div>StartTime</div><div>TIME</div><div>fixed</div><div>HH:MM</div><div>valid period start time</div><div>booking start</div></div>
-            <div class="table-row"><div>StaffID</div><div>STRING</div><div>8</div><div>staff code</div><div>must match staff record</div><div>person making booking</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start dictionary -->
-        <section class="panel explanation-panel" id="explanation-dictionary" data-explains="dictionary" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <h2 class="explanation-sr-only" id="explanation-dictionary-title">A data dictionary defines each data item consistently</h2>
+        <!-- stage10-explanation:start success -->
+        <section class="panel explanation-panel" id="explanation-success" data-explains="success" data-explanation-kind="mechanism" aria-labelledby="explanation-success-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-success-title">Success criteria make evaluation possible</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A data dictionary defines each data item consistently with a structured visual model." />
-            <figcaption class="explanation-sr-only">A data dictionary defines each data item consistently: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-success.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Success criteria make evaluation possible with a structured visual model." />
+            <figcaption class="explanation-sr-only">Success criteria make evaluation possible: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Data dictionary</li><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> letter plus digits</li><li><strong>Lesson fact:</strong> not blank; exists in room file</li><li><strong>Lesson fact:</strong> identifies the room</li><li><strong>Lesson fact:</strong> BookingDate</li><li><strong>Lesson fact:</strong> YYYY-MM-DD</li><li><strong>Lesson fact:</strong> school day; not in past</li><li><strong>Lesson fact:</strong> date of booking</li><li><strong>Lesson fact:</strong> StartTime</li><li><strong>Lesson fact:</strong> valid period start time</li><li><strong>Lesson fact:</strong> booking start</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Success criteria</li><li><strong>Lesson fact:</strong> “The system should be easy to use.”</li><li><strong>Lesson fact:</strong> Stronger</li><li><strong>Lesson fact:</strong> “At least 8 out of 10 teachers can create a booking without help in under 2 minutes.”</li><li><strong>Lesson fact:</strong> A success criterion should be specific enough that two people can test it and reach the same conclusion.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end dictionary -->
-        <section class="panel" id="interfaces" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+        <!-- stage10-explanation:end success -->
+        <section class="panel" id="acceptance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
-            <p class="eyebrow">Interface designs</p>
-            <h2>Interface designs show how users will enter data and navigate the system</h2>
+            <p class="eyebrow">Acceptance tests</p>
+            <h2>Acceptance tests check whether requirements are met</h2>
           </div>
-          <div class="interface-mock" aria-label="Interface design mock-up">
-            <div class="mock-title">Create room booking</div>
-            <label>Date <span>calendar control</span></label>
-            <label>Period <span>drop-down list</span></label>
-            <label>Room <span>searchable list</span></label>
-            <button type="button">Check availability</button>
-            <p>Error message area: “Room already booked for this time.”</p>
+          <div class="data-table four-col" role="table" aria-label="Acceptance test examples">
+            <div class="table-row table-head"><div>Requirement</div><div>Test data/action</div><div>Expected result</div><div>Evidence</div></div>
+            <div class="table-row"><div>reject double booking</div><div>try to book Room 12 at an occupied time</div><div>booking rejected with message</div><div>test result screenshot/log</div></div>
+            <div class="table-row"><div>search within 2 seconds</div><div>search all rooms for Monday period 3</div><div>results shown within 2 seconds</div><div>timed test</div></div>
+            <div class="table-row"><div>staff-only bookings</div><div>try booking as guest account</div><div>access denied</div><div>security test result</div></div>
           </div>
-          <div class="callout">Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.</div>
         </section>
 
-        <!-- stage10-explanation:start interfaces -->
-        <section class="panel explanation-panel" id="explanation-interfaces" data-explains="interfaces" data-explanation-kind="mechanism" aria-labelledby="explanation-interfaces-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <h2 class="explanation-sr-only" id="explanation-interfaces-title">Interface designs show how users will enter data and navigate the system</h2>
+        <!-- stage10-explanation:start acceptance -->
+        <section class="panel explanation-panel" id="explanation-acceptance" data-explains="acceptance" data-explanation-kind="mechanism" aria-labelledby="explanation-acceptance-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-acceptance-title">Acceptance tests check whether requirements are met</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-interfaces.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interface designs show how users will enter data and navigate the system with a structured visual model." />
-            <figcaption class="explanation-sr-only">Interface designs show how users will enter data and navigate the system: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-acceptance.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Acceptance tests check whether requirements are met with a structured visual model." />
+            <figcaption class="explanation-sr-only">Acceptance tests check whether requirements are met: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interface designs</li><li><strong>Lesson fact:</strong> Create room booking</li><li><strong>Lesson fact:</strong> Date calendar control</li><li><strong>Lesson fact:</strong> Period drop-down list</li><li><strong>Lesson fact:</strong> Room searchable list</li><li><strong>Lesson fact:</strong> Error message area: “Room already booked for this time.”</li><li><strong>Lesson fact:</strong> Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Acceptance tests</li><li><strong>Lesson fact:</strong> Requirement</li><li><strong>Lesson fact:</strong> Test data/action</li><li><strong>Lesson fact:</strong> Expected result</li><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> reject double booking</li><li><strong>Lesson fact:</strong> try to book Room 12 at an occupied time</li><li><strong>Lesson fact:</strong> booking rejected with message</li><li><strong>Lesson fact:</strong> test result screenshot/log</li><li><strong>Lesson fact:</strong> search within 2 seconds</li><li><strong>Lesson fact:</strong> search all rooms for Monday period 3</li><li><strong>Lesson fact:</strong> results shown within 2 seconds</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end interfaces -->
-        <section class="panel" id="traceability" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+        <!-- stage10-explanation:end acceptance -->
+        <section class="panel" id="stakeholders" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
-            <p class="eyebrow">Linking requirements to design</p>
-            <h2>Traceability keeps the design connected to the original need</h2>
-          </div>
-          <div class="data-table four-col" role="table" aria-label="Traceability examples">
-            <div class="table-row table-head"><div>Requirement</div><div>Algorithm design</div><div>Data dictionary</div><div>Interface design</div></div>
-            <div class="table-row"><div>Prevent double booking</div><div>compare requested time with existing bookings</div><div>RoomID, date, start and end times</div><div>availability check button and clash message</div></div>
-            <div class="table-row"><div>Only staff can book</div><div>check user role before saving</div><div>StaffID and Role fields</div><div>login screen and disabled guest action</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start traceability -->
-        <section class="panel explanation-panel" id="explanation-traceability" data-explains="traceability" data-explanation-kind="mechanism" aria-labelledby="explanation-traceability-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <h2 class="explanation-sr-only" id="explanation-traceability-title">Traceability keeps the design connected to the original need</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-traceability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Traceability keeps the design connected to the original need with a structured visual model." />
-            <figcaption class="explanation-sr-only">Traceability keeps the design connected to the original need: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Linking requirements to design</li><li><strong>Lesson fact:</strong> Requirement</li><li><strong>Lesson fact:</strong> Algorithm design</li><li><strong>Lesson fact:</strong> Data dictionary</li><li><strong>Lesson fact:</strong> Interface design</li><li><strong>Lesson fact:</strong> Prevent double booking</li><li><strong>Lesson fact:</strong> compare requested time with existing bookings</li><li><strong>Lesson fact:</strong> RoomID, date, start and end times</li><li><strong>Lesson fact:</strong> availability check button and clash message</li><li><strong>Lesson fact:</strong> Only staff can book</li><li><strong>Lesson fact:</strong> check user role before saving</li><li><strong>Lesson fact:</strong> StaffID and Role fields</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end traceability -->
-        <section class="panel" id="lifecycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <div class="section-title">
-            <p class="eyebrow">Using design docs later</p>
-            <h2>Design documentation supports implementation, testing and maintenance</h2>
+            <p class="eyebrow">Stakeholders</p>
+            <h2>Different users reveal different requirements</h2>
           </div>
           <div class="card-grid">
-            <article><h3>Implementation</h3><p>Developers know which data fields, algorithms and interface behaviours to build.</p></article>
-            <article><h3>Testing</h3><p>Testers compare actual behaviour with the designed rules, validation and expected messages.</p></article>
-            <article><h3>Maintenance</h3><p>Future changes are safer because developers can see existing data rules and processing assumptions.</p></article>
+            <article><h3>Teachers</h3><p>Need quick booking and clear room availability.</p></article>
+            <article><h3>Admin staff</h3><p>Need reports, conflict resolution and permission controls.</p></article>
+            <article><h3>IT support</h3><p>Need backup, user management and maintainable configuration.</p></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start lifecycle -->
-        <section class="panel explanation-panel" id="explanation-lifecycle" data-explains="lifecycle" data-explanation-kind="process" aria-labelledby="explanation-lifecycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <h2 class="explanation-sr-only" id="explanation-lifecycle-title">Design documentation supports implementation, testing and maintenance</h2>
+        <!-- stage10-explanation:start stakeholders -->
+        <section class="panel explanation-panel" id="explanation-stakeholders" data-explains="stakeholders" data-explanation-kind="mechanism" aria-labelledby="explanation-stakeholders-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-stakeholders-title">Different users reveal different requirements</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-lifecycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design documentation supports implementation, testing and maintenance with a structured visual model." />
-            <figcaption class="explanation-sr-only">Design documentation supports implementation, testing and maintenance: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-stakeholders.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Different users reveal different requirements with a structured visual model." />
+            <figcaption class="explanation-sr-only">Different users reveal different requirements: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Using design docs later</li><li><strong>Lesson fact:</strong> Implementation</li><li><strong>Lesson fact:</strong> Developers know which data fields, algorithms and interface behaviours to build.</li><li><strong>Lesson fact:</strong> Testers compare actual behaviour with the designed rules, validation and expected messages.</li><li><strong>Lesson fact:</strong> Maintenance</li><li><strong>Lesson fact:</strong> Future changes are safer because developers can see existing data rules and processing assumptions.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Stakeholders</li><li><strong>Lesson fact:</strong> Teachers</li><li><strong>Lesson fact:</strong> Need quick booking and clear room availability.</li><li><strong>Lesson fact:</strong> Admin staff</li><li><strong>Lesson fact:</strong> Need reports, conflict resolution and permission controls.</li><li><strong>Lesson fact:</strong> IT support</li><li><strong>Lesson fact:</strong> Need backup, user management and maintainable configuration.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end lifecycle -->
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+        <!-- stage10-explanation:end stakeholders -->
+        <section class="panel" id="rewriter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
-            <p class="eyebrow">Interactive artefact chooser</p>
-            <h2>Pick the best document for the job</h2>
+            <p class="eyebrow">Interactive rewriter</p>
+            <h2>Turn vague requests into stronger requirements</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Scenario
-              <select id="artefactSelect">
-                <option value="steps">Show how to detect overlapping bookings</option>
-                <option value="field">Define BookingDate as DATE with a fixed format</option>
-                <option value="screen">Show the controls on the booking form</option>
-                <option value="need">State that staff must be able to cancel bookings</option>
+              Vague request
+              <select id="rewriteSelect">
+                <option value="easy">Make it easy to use</option>
+                <option value="fast">Make it fast</option>
+                <option value="safe">Make it secure</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="artefactBtn">Choose artefact</button>
+            <button class="primary-button" type="button" id="rewriteBtn">Rewrite</button>
           </div>
-          <div id="artefactOutput" class="trace-output" aria-live="polite"></div>
+          <div id="rewriteOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="dictionary-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+        <!-- stage10-explanation:start rewriter -->
+        <section class="panel explanation-panel" id="explanation-rewriter" data-explains="rewriter" data-explanation-kind="mechanism" aria-labelledby="explanation-rewriter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-rewriter-title">Turn vague requests into stronger requirements</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-rewriter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague requests into stronger requirements with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn vague requests into stronger requirements: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive rewriter</li><li><strong>Lesson fact:</strong> Vague request</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rewriter -->
+        <section class="panel" id="criteria-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
-            <p class="eyebrow">Data dictionary checker</p>
-            <h2>Inspect a field definition</h2>
+            <p class="eyebrow">Criteria checker</p>
+            <h2>Is the criterion testable?</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Data item
-              <select id="fieldSelect">
-                <option value="RoomID">RoomID</option>
-                <option value="BookingDate">BookingDate</option>
-                <option value="StartTime">StartTime</option>
-                <option value="StaffID">StaffID</option>
+              Criterion
+              <select id="criteriaSelect">
+                <option value="vague">The system should be reliable.</option>
+                <option value="measurable">The system should process a booking request in under 3 seconds.</option>
+                <option value="opinion">The interface should look beautiful.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="fieldBtn">Show definition</button>
+            <button class="primary-button" type="button" id="criteriaBtn">Check</button>
           </div>
-          <div id="fieldOutput" class="trace-output" aria-live="polite"></div>
+          <div id="criteriaOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start dictionary-tool -->
-        <section class="panel explanation-panel" id="explanation-dictionary-tool" data-explains="dictionary-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
-          <h2 class="explanation-sr-only" id="explanation-dictionary-tool-title">Inspect a field definition</h2>
+        <!-- stage10-explanation:start criteria-tool -->
+        <section class="panel explanation-panel" id="explanation-criteria-tool" data-explains="criteria-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
+          <h2 class="explanation-sr-only" id="explanation-criteria-tool-title">Is the criterion testable?</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Inspect a field definition with a structured visual model." />
-            <figcaption class="explanation-sr-only">Inspect a field definition: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-criteria-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Is the criterion testable? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Is the criterion testable?: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Data dictionary checker</li><li><strong>Lesson fact:</strong> Data item</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Criteria checker</li><li><strong>Lesson fact:</strong> Criterion</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end dictionary-tool -->
+        <!-- stage10-explanation:end criteria-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Three ways design documentation earns marks</h2>
+            <h2>From request to requirement to acceptance test</h2>
           </div>
-          <div class="tab-row" role="tablist" aria-label="Worked examples">
-            <button class="tab-button active" type="button" data-example="algorithm">Algorithm design</button>
-            <button class="tab-button" type="button" data-example="dictionary">Data dictionary</button>
-            <button class="tab-button" type="button" data-example="interface">Interface design</button>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="booking">Booking</button>
+            <button class="tab-button" type="button" data-example="library">Library</button>
+            <button class="tab-button" type="button" data-example="security">Security</button>
           </div>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Answer, check, then reveal the model answer if needed</h2>
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: requirement language</h2>
           </div>
           <div id="practiceList" class="practice-list"></div>
         </section>
@@ -425,7 +434,7 @@ for (Booking booking : bookingList) {
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the answer before the examiner has to</h2>
+            <h2>Fix weak analysis answers</h2>
           </div>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
@@ -433,8 +442,8 @@ for (Booking booking : bookingList) {
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable MS</h2>
-            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+            <h2>Cambridge-style requirements questions with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
           </div>
           <div id="examList" class="exam-list"></div>
         </section>
@@ -445,31 +454,29 @@ for (Booking booking : bookingList) {
             <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Algorithm design</strong><span>processing steps before coding</span></div>
-            <div><strong>Data dictionary</strong><span>names, types, sizes, formats, validation and purpose</span></div>
-            <div><strong>Interface design</strong><span>controls, navigation, feedback and validation messages</span></div>
+            <div><strong>Requirement</strong><span>states what the system must do or what quality it must have</span></div>
+            <div><strong>Criterion</strong><span>states how success will be judged</span></div>
+            <div><strong>Acceptance test</strong><span>provides evidence that a requirement has been met</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Produce a mini design pack for a library loan system</h2>
+            <h2>Make vague requests testable</h2>
           </div>
           <ol class="homework-list">
-            <li>Write one algorithm design for checking whether a book can be loaned.</li>
-            <li>Create a data dictionary with at least five fields, including type, size or format, validation and purpose.</li>
-            <li>Sketch or describe one interface screen, including controls, navigation and one validation message.</li>
-            <li>Write a 6-mark exam answer explaining how your design documents would help implementation and testing.</li>
+            <li>Write three functional and three non-functional requirements for a school booking system.</li>
+            <li>For each non-functional requirement, write one measurable success criterion and one acceptance test.</li>
+            <li>Rewrite the vague request “make it reliable” into two testable criteria.</li>
           </ol>
-          <div class="callout">Marking focus: specific artefacts, clear links to requirements, and no “it makes it better” without explaining how.</div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

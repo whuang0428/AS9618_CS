@@ -2,10 +2,10 @@
 
 ## Scope
 
-- Lesson exam-style questions: 750
+- Lesson exam-style questions: 755
 - Assessment questions: 213
-- Total approved questions: 963
-- Total marking points: 4428 (B1 3692, M1 384, A1 352)
+- Total approved questions: 968
+- Total marking points: 4443 (B1 3707, M1 384, A1 352)
 - Questions with explicit follow-through guidance: 41
 - Questions receiving specialist second review: 295
 
@@ -41,5 +41,5 @@ The second pass focused on terminology and causality: translator and OS roles; s
 - FT is present only for a specified earlier candidate result and a stated subsequent method.
 - Generic phrases such as good answer, clear explanation, balanced judgement and coherent justification are not credit-bearing points.
 - Allow and Do not accept notes define real answer boundaries rather than compulsory filler.
-- All 963 questions are recorded as Approved. Content-hash verification fails if an approved question changes.
+- All 968 questions are recorded as Approved. Content-hash verification fails if an approved question changes.
 - B1/M1/A1 in this report are internal review metadata only; student-facing schemes use Answer, Guidance and Marks.

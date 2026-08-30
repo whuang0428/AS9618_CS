@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "source": "Reviewed topic-aligned CORE placement contract. This file is independent of the generator plan and must change only with an explicit curriculum review.",
+  "schemaVersion": 2,
+  "source": "Independently reviewed 151-lesson first-Core placement after official syllabus-order migration.",
   "lessons": [
     {
       "lesson": 1,
@@ -19,8 +19,7 @@
       "lesson": 3,
       "requirementIds": [
         "S1.02",
-        "S1.03",
-        "S1.06"
+        "S1.03"
       ]
     },
     {
@@ -36,6 +35,14 @@
         "S1.02",
         "S1.03",
         "S1.04"
+      ]
+    },
+    {
+      "lesson": 6,
+      "requirementIds": [
+        "S1.02",
+        "S1.03",
+        "S1.06"
       ]
     },
     {
@@ -59,26 +66,25 @@
     {
       "lesson": 10,
       "requirementIds": [
+        "S1.09"
+      ]
+    },
+    {
+      "lesson": 11,
+      "requirementIds": [
         "S1.10"
       ]
     },
     {
-      "lesson": 12,
+      "lesson": 13,
       "requirementIds": [
-        "S1.09",
         "S1.11"
-      ]
-    },
-    {
-      "lesson": 16,
-      "requirementIds": [
-        "S2.01",
-        "S2.04"
       ]
     },
     {
       "lesson": 17,
       "requirementIds": [
+        "S2.01",
         "S2.02",
         "S2.03"
       ]
@@ -86,138 +92,113 @@
     {
       "lesson": 18,
       "requirementIds": [
-        "S2.05"
+        "S2.04"
       ]
     },
     {
       "lesson": 19,
       "requirementIds": [
-        "S2.11"
+        "S2.05"
       ]
     },
     {
       "lesson": 20,
       "requirementIds": [
-        "S2.15",
-        "S2.16"
-      ]
-    },
-    {
-      "lesson": 22,
-      "requirementIds": [
+        "S2.06",
         "S2.07",
         "S2.08"
       ]
     },
     {
-      "lesson": 23,
+      "lesson": 21,
       "requirementIds": [
         "S2.09",
         "S2.10",
-        "S2.14"
-      ]
-    },
-    {
-      "lesson": 24,
-      "requirementIds": [
-        "S2.06",
-        "S2.13"
-      ]
-    },
-    {
-      "lesson": 25,
-      "requirementIds": [
-        "S2.12"
-      ]
-    },
-    {
-      "lesson": 27,
-      "requirementIds": [
-        "S3.01",
-        "S3.03",
-        "S3.04"
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16"
       ]
     },
     {
       "lesson": 28,
       "requirementIds": [
-        "S3.03"
+        "S3.01"
       ]
     },
     {
       "lesson": 29,
       "requirementIds": [
-        "S3.03",
-        "S3.04"
+        "S3.02"
       ]
     },
     {
       "lesson": 30,
       "requirementIds": [
+        "S3.03"
+      ]
+    },
+    {
+      "lesson": 31,
+      "requirementIds": [
+        "S3.03",
+        "S3.04",
         "S3.05",
         "S3.06",
         "S3.07"
       ]
     },
     {
-      "lesson": 31,
-      "requirementIds": [
-        "S3.03"
-      ]
-    },
-    {
-      "lesson": 33,
-      "requirementIds": [
-        "S3.02"
-      ]
-    },
-    {
-      "lesson": 34,
+      "lesson": 32,
       "requirementIds": [
         "S3.08",
         "S3.09"
       ]
     },
     {
-      "lesson": 35,
+      "lesson": 33,
       "requirementIds": [
         "S3.10"
       ]
     },
     {
-      "lesson": 41,
-      "requirementIds": [
-        "S4.01",
-        "S4.03"
-      ]
-    },
-    {
       "lesson": 42,
       "requirementIds": [
-        "S4.07"
+        "S4.01",
+        "S4.02",
+        "S4.03"
       ]
     },
     {
       "lesson": 43,
       "requirementIds": [
-        "S4.02"
+        "S4.04",
+        "S4.05",
+        "S4.06"
       ]
     },
     {
       "lesson": 44,
       "requirementIds": [
-        "S4.04",
-        "S4.06"
+        "S4.07"
       ]
     },
     {
       "lesson": 45,
       "requirementIds": [
-        "S4.09"
+        "S4.08"
       ]
     },
     {
       "lesson": 46,
+      "requirementIds": [
+        "S4.09"
+      ]
+    },
+    {
+      "lesson": 47,
       "requirementIds": [
         "S4.10",
         "S4.11",
@@ -226,22 +207,16 @@
       ]
     },
     {
-      "lesson": 47,
+      "lesson": 48,
       "requirementIds": [
         "S4.13",
         "S4.14"
       ]
     },
     {
-      "lesson": 48,
-      "requirementIds": [
-        "S4.08"
-      ]
-    },
-    {
       "lesson": 49,
       "requirementIds": [
-        "S4.05"
+        "S4.13"
       ]
     },
     {
@@ -251,22 +226,21 @@
       ]
     },
     {
-      "lesson": 52,
-      "requirementIds": [
-        "S5.01",
-        "S5.02"
-      ]
-    },
-    {
       "lesson": 53,
       "requirementIds": [
         "S5.01"
       ]
     },
     {
-      "lesson": 55,
+      "lesson": 54,
       "requirementIds": [
         "S5.02"
+      ]
+    },
+    {
+      "lesson": 55,
+      "requirementIds": [
+        "S5.03"
       ]
     },
     {
@@ -277,56 +251,43 @@
       ]
     },
     {
-      "lesson": 58,
-      "requirementIds": [
-        "S5.03"
-      ]
-    },
-    {
-      "lesson": 60,
+      "lesson": 57,
       "requirementIds": [
         "S5.06",
         "S5.07"
       ]
     },
     {
-      "lesson": 62,
+      "lesson": 63,
       "requirementIds": [
         "S6.01",
         "S6.02"
       ]
     },
     {
-      "lesson": 63,
+      "lesson": 64,
       "requirementIds": [
         "S6.03",
         "S6.04"
       ]
     },
     {
-      "lesson": 64,
+      "lesson": 65,
       "requirementIds": [
         "S6.04",
         "S6.05"
       ]
     },
     {
-      "lesson": 65,
+      "lesson": 66,
       "requirementIds": [
         "S6.03"
       ]
     },
     {
-      "lesson": 66,
-      "requirementIds": [
-        "S6.05",
-        "S6.06"
-      ]
-    },
-    {
       "lesson": 67,
       "requirementIds": [
-        "S6.03",
+        "S6.05",
         "S6.06"
       ]
     },
@@ -334,18 +295,25 @@
       "lesson": 68,
       "requirementIds": [
         "S6.03",
-        "S6.05"
+        "S6.06"
       ]
     },
     {
       "lesson": 69,
+      "requirementIds": [
+        "S6.03",
+        "S6.05"
+      ]
+    },
+    {
+      "lesson": 70,
       "requirementIds": [
         "S6.07",
         "S6.08"
       ]
     },
     {
-      "lesson": 72,
+      "lesson": 73,
       "requirementIds": [
         "S7.01",
         "S7.02",
@@ -353,26 +321,26 @@
       ]
     },
     {
-      "lesson": 74,
+      "lesson": 75,
       "requirementIds": [
         "S7.04",
         "S7.05"
       ]
     },
     {
-      "lesson": 75,
+      "lesson": 76,
       "requirementIds": [
         "S7.05"
       ]
     },
     {
-      "lesson": 76,
+      "lesson": 77,
       "requirementIds": [
         "S7.06"
       ]
     },
     {
-      "lesson": 77,
+      "lesson": 78,
       "requirementIds": [
         "S7.01",
         "S7.02",
@@ -380,14 +348,6 @@
         "S7.04",
         "S7.05",
         "S7.06"
-      ]
-    },
-    {
-      "lesson": 78,
-      "requirementIds": [
-        "S8.01",
-        "S8.05",
-        "S8.06"
       ]
     },
     {
@@ -405,49 +365,39 @@
     {
       "lesson": 81,
       "requirementIds": [
-        "S8.02"
-      ]
-    },
-    {
-      "lesson": 82,
-      "requirementIds": [
-        "S8.03"
-      ]
-    },
-    {
-      "lesson": 83,
-      "requirementIds": [
-        "S8.04"
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06"
       ]
     },
     {
       "lesson": 84,
       "requirementIds": [
-        "S8.08"
+        "S8.07"
       ]
     },
     {
       "lesson": 85,
       "requirementIds": [
-        "S8.10"
+        "S8.08"
       ]
     },
     {
       "lesson": 86,
       "requirementIds": [
+        "S8.09",
         "S8.10"
       ]
     },
     {
-      "lesson": 87,
+      "lesson": 88,
       "requirementIds": [
-        "S8.07",
-        "S8.09",
         "S8.11"
       ]
     },
     {
-      "lesson": 89,
+      "lesson": 90,
       "requirementIds": [
         "S8.01",
         "S8.02",
@@ -463,14 +413,6 @@
       ]
     },
     {
-      "lesson": 98,
-      "requirementIds": [
-        "S9.03",
-        "S9.04",
-        "S9.05"
-      ]
-    },
-    {
       "lesson": 99,
       "requirementIds": [
         "S9.01",
@@ -480,31 +422,25 @@
     {
       "lesson": 100,
       "requirementIds": [
-        "S9.06",
-        "S9.09"
+        "S9.03",
+        "S9.04",
+        "S9.05"
       ]
     },
     {
       "lesson": 101,
       "requirementIds": [
+        "S9.06"
+      ]
+    },
+    {
+      "lesson": 102,
+      "requirementIds": [
         "S9.07"
       ]
     },
     {
-      "lesson": 104,
-      "requirementIds": [
-        "S10.03",
-        "S10.06"
-      ]
-    },
-    {
-      "lesson": 105,
-      "requirementIds": [
-        "S10.06"
-      ]
-    },
-    {
-      "lesson": 111,
+      "lesson": 103,
       "requirementIds": [
         "S9.02",
         "S9.05",
@@ -512,7 +448,13 @@
       ]
     },
     {
-      "lesson": 112,
+      "lesson": 104,
+      "requirementIds": [
+        "S9.09"
+      ]
+    },
+    {
+      "lesson": 113,
       "requirementIds": [
         "S9.01",
         "S9.02",
@@ -526,7 +468,7 @@
       ]
     },
     {
-      "lesson": 113,
+      "lesson": 114,
       "requirementIds": [
         "S10.01"
       ]
@@ -534,13 +476,19 @@
     {
       "lesson": 115,
       "requirementIds": [
+        "S10.02"
+      ]
+    },
+    {
+      "lesson": 116,
+      "requirementIds": [
         "S10.03",
         "S10.04",
         "S10.05"
       ]
     },
     {
-      "lesson": 116,
+      "lesson": 117,
       "requirementIds": [
         "S10.04",
         "S10.05"
@@ -549,7 +497,14 @@
     {
       "lesson": 118,
       "requirementIds": [
-        "S10.02"
+        "S10.03",
+        "S10.06"
+      ]
+    },
+    {
+      "lesson": 119,
+      "requirementIds": [
+        "S10.06"
       ]
     },
     {
@@ -559,7 +514,7 @@
       ]
     },
     {
-      "lesson": 122,
+      "lesson": 121,
       "requirementIds": [
         "S10.08",
         "S10.09",
@@ -567,42 +522,39 @@
       ]
     },
     {
-      "lesson": 123,
+      "lesson": 122,
       "requirementIds": [
         "S10.09",
         "S10.10"
       ]
     },
     {
-      "lesson": 126,
-      "requirementIds": [
-        "S11.02",
-        "S11.04",
-        "S11.05"
-      ]
-    },
-    {
       "lesson": 127,
       "requirementIds": [
-        "S11.04"
+        "S11.01"
       ]
     },
     {
       "lesson": 128,
       "requirementIds": [
-        "S11.04",
-        "S11.05"
+        "S11.02"
       ]
     },
     {
       "lesson": 129,
+      "requirementIds": [
+        "S11.03"
+      ]
+    },
+    {
+      "lesson": 130,
       "requirementIds": [
         "S11.04",
         "S11.05"
       ]
     },
     {
-      "lesson": 130,
+      "lesson": 131,
       "requirementIds": [
         "S11.06",
         "S11.07",
@@ -610,38 +562,13 @@
       ]
     },
     {
-      "lesson": 133,
-      "requirementIds": [
-        "S11.03"
-      ]
-    },
-    {
-      "lesson": 137,
-      "requirementIds": [
-        "S12.07"
-      ]
-    },
-    {
-      "lesson": 138,
-      "requirementIds": [
-        "S12.04",
-        "S12.09"
-      ]
-    },
-    {
-      "lesson": 139,
+      "lesson": 134,
       "requirementIds": [
         "S11.09"
       ]
     },
     {
-      "lesson": 140,
-      "requirementIds": [
-        "S11.01"
-      ]
-    },
-    {
-      "lesson": 142,
+      "lesson": 143,
       "requirementIds": [
         "S12.01"
       ]
@@ -656,9 +583,17 @@
     {
       "lesson": 145,
       "requirementIds": [
+        "S12.04"
+      ]
+    },
+    {
+      "lesson": 146,
+      "requirementIds": [
         "S12.05",
         "S12.06",
-        "S12.08"
+        "S12.07",
+        "S12.08",
+        "S12.09"
       ]
     }
   ]

@@ -1,74 +1,83 @@
 const scenarios = {
-  barcode: {
-    result: "Input device: barcode reader",
-    method: "A barcode reader captures book IDs quickly and accurately, reducing typing errors at the library desk.",
+  dns: {
+    result: "DNS / addressing",
+    method: "DNS resolves a domain name to an IP address so the browser can contact the correct server. Do not answer with HTTP unless the question asks how the web page is requested after resolution.",
   },
-  weather: {
-    result: "Input device: sensor",
-    method: "A temperature sensor automatically captures data from the environment without a person typing readings.",
+  imap: {
+    result: "IMAP / email protocol",
+    method: "IMAP accesses and synchronises email stored on a mail server across devices. SMTP sends email; POP3 downloads email to a client.",
   },
-  attendance: {
-    result: "Secondary storage",
-    method: "Attendance records must remain after power is off, so they need non-volatile secondary storage such as an SSD or database storage.",
+  fibre: {
+    result: "Transmission media",
+    method: "Fibre-optic cable carries data as light pulses and is suitable for high bandwidth, long distance and low electromagnetic interference.",
   },
-  exam: {
-    result: "Output device: printer",
-    method: "A printer produces a physical copy of candidate timetables that can be handed out or filed.",
+  router: {
+    result: "Network hardware",
+    method: "A router connects different networks and forwards packets using IP addresses and routing information.",
   },
-  driver: {
-    result: "Output device: screen",
-    method: "A screen gives visual feedback such as maps and turn-by-turn directions while the driver is working.",
+  latency: {
+    result: "Network performance",
+    method: "Small data but late response suggests latency, not bandwidth. Explain delay before response and link it to the user symptom.",
   },
-  editing: {
-    result: "Primary memory: RAM",
-    method: "The image data is in current use while editing, so RAM temporarily holds it for fast access by the processor.",
+  mesh: {
+    result: "Topology / resilience",
+    method: "A mesh topology can provide alternative paths, so communication may continue if one link fails.",
+  },
+  cloud: {
+    result: "Cloud services",
+    method: "Cloud storage uses remote servers accessed over a network, supporting access from different locations but creating provider/security/dependence considerations.",
   },
 };
 
 const examples = {
-  attendance: {
-    title: "Example 1: school attendance system",
-    problem: "Choose suitable hardware for recording students entering a school gate.",
-    steps: [
-      "Input: an ID card reader or barcode/QR scanner can capture student IDs quickly and accurately.",
-      "Processing: the processor checks the ID against stored records and updates attendance.",
-      "Storage: non-volatile storage is needed because attendance records must persist after power is off.",
-      "Output: a screen or speaker gives immediate feedback such as accepted or not recognised.",
+  protocol: {
+    title: "Example 1: HTTPS precision",
+    problem: "Explain why HTTPS is used for an online payment page.",
+    answer: "HTTPS encrypts communication between the browser and web server, helping protect sensitive payment details while they are transmitted.",
+    annotations: [
+      "HTTPS named correctly for secure web communication.",
+      "Encrypts communication is the mechanism.",
+      "Browser and web server gives the communication context.",
+      "Payment details in transit links to the scenario and consequence.",
     ],
   },
-  weather: {
-    title: "Example 2: automatic weather station",
-    problem: "A weather station records temperature every minute without a human operator.",
-    steps: [
-      "Input: a temperature sensor captures readings from the environment automatically.",
-      "Processing: the processor compares readings with rules or prepares data for storage/transmission.",
-      "Storage: readings are saved so trends can be analysed later.",
-      "Output: a display or network message can show current conditions or warnings.",
+  hardware: {
+    title: "Example 2: switch vs router precision",
+    problem: "Compare a switch and a router.",
+    answer: "A switch forwards frames inside a LAN using MAC addresses, while a router forwards packets between different networks using IP addresses and routing information.",
+    annotations: [
+      "Switch boundary: inside a LAN.",
+      "Switch mechanism: forwards frames using MAC addresses.",
+      "Router boundary: between networks.",
+      "Router mechanism: forwards packets using IP addresses/routing information.",
     ],
   },
-  library: {
-    title: "Example 3: library checkout desk",
-    problem: "A librarian needs to issue books quickly during a busy lunch break.",
-    steps: [
-      "Input: barcode reader is suitable because it is faster and less error-prone than typing book IDs.",
-      "Memory: current transaction data may be held temporarily while the checkout is processed.",
-      "Storage: the database is updated so the loan record persists.",
-      "Output: a screen or receipt confirms the loan to the librarian and borrower.",
+  performance: {
+    title: "Example 3: congestion precision",
+    problem: "Explain why downloads become slow when many users stream video.",
+    answer: "Many users share the same network capacity, causing congestion. Packets may be queued, delayed or lost, reducing throughput and causing slow downloads or buffering.",
+    annotations: [
+      "Many users share capacity gives the cause.",
+      "Congestion names the concept.",
+      "Queued, delayed or lost packets gives mechanism.",
+      "Reduced throughput and buffering gives consequence.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which category captures data entering a system?", accepted: ["input", "input device"], answer: "Input" },
-  { id: "p2", prompt: "Which category presents results from a system?", accepted: ["output", "output device"], answer: "Output" },
-  { id: "p3", prompt: "Which component executes instructions?", accepted: ["processor", "cpu", "central processing unit"], answer: "Processor / CPU" },
-  { id: "p4", prompt: "Which primary memory is volatile and used for current tasks?", accepted: ["ram"], answer: "RAM" },
-  { id: "p5", prompt: "Which type of storage keeps files after power is off?", accepted: ["secondary storage", "storage", "non volatile storage", "non-volatile storage"], answer: "Secondary storage" },
-  { id: "p6", prompt: "A camera in a ticket scanner is input or output?", accepted: ["input"], answer: "Input" },
-  { id: "p7", prompt: "A monitor showing results is input or output?", accepted: ["output"], answer: "Output" },
-  { id: "p8", prompt: "Does the CPU normally store user files long term? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "Name one characteristic used to justify hardware suitability.", accepted: ["speed", "capacity", "durability", "cost", "accuracy", "portability", "reliability"], answer: "Speed / capacity / durability / cost / accuracy / portability / reliability" },
-  { id: "p10", prompt: "Which memory stores startup instructions and is non-volatile?", accepted: ["rom"], answer: "ROM" },
+  { id: "p1", prompt: "Which device forwards frames inside a LAN using MAC addresses?", accepted: ["switch"], answer: "Switch" },
+  { id: "p2", prompt: "Which protocol sends email?", accepted: ["smtp"], answer: "SMTP" },
+  { id: "p3", prompt: "Which protocol synchronises email across devices?", accepted: ["imap"], answer: "IMAP" },
+  { id: "p4", prompt: "Which service resolves a domain name to an IP address?", accepted: ["dns"], answer: "DNS" },
+  { id: "p5", prompt: "Which term means delay before a response is received?", accepted: ["latency"], answer: "Latency" },
+  { id: "p6", prompt: "Which network gives controlled access to selected external users?", accepted: ["extranet"], answer: "Extranet" },
+  { id: "p7", prompt: "Which transmission medium uses light pulses?", accepted: ["fibre", "fiber", "fibre optic", "fiber optic", "fibre-optic cable", "fiber-optic cable"], answer: "Fibre-optic cable" },
+  { id: "p8", prompt: "Which topology has all devices connected to a central switch or hub?", accepted: ["star", "star topology"], answer: "Star topology" },
+  { id: "p9", prompt: "Which protocol transfers web pages without the secure encryption distinction?", accepted: ["http"], answer: "HTTP" },
+  { id: "p10", prompt: "Which term means actual successful data transfer rate?", accepted: ["throughput"], answer: "Throughput" },
+  { id: "p11", prompt: "Which device connects different networks using IP addresses?", accepted: ["router"], answer: "Router" },
+  { id: "p12", prompt: "Which addressing term identifies a network interface/device on a local network?", accepted: ["mac", "mac address", "mac addresses"], answer: "MAC address" },
 ];
 
 
@@ -80,90 +89,97 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Describe the role of input, processor and output in a computer system.",
-    answer: "Input devices capture data and enter it into the system. The processor executes instructions and processes the data. Output devices present the results to a user or cause an action in the physical world.",
+    marks: "6 marks",
+    prompt: "A student says: 'A switch and a router are the same because they both send data.' Develop this answer.",
+    answer: "A switch and router both forward data, but they work at different network boundaries. A switch connects devices inside a LAN and forwards frames to the correct port using MAC addresses. A router connects different networks, such as a LAN and the internet, and forwards packets using IP addresses and routing information.",
     marking: [
-      { mark: "B1", text: "input devices capture/enter data into the system" },
-      { mark: "B1", text: "processor executes instructions/processes data" },
-      { mark: "B1", text: "output devices present results/give feedback" },
-      { mark: "B1", text: "clear relationship or example showing data moves through the system" },
+      { mark: "B1", text: "states they are not the same / have different roles" },
+      { mark: "B1", text: "switch works within a LAN/local network" },
+      { mark: "B1", text: "switch uses MAC addresses/ports to forward frames/data" },
+      { mark: "B1", text: "router connects different networks / LAN to internet" },
+      { mark: "B1", text: "router uses IP addresses/routing information" },
+      { mark: "B1", text: "clear scenario or boundary comparison" },
     ],
     strict: [
-      "Do not award full credit for only listing device names.",
-      "Do not say the processor stores all files.",
-      "Allow actuator as output if described as causing a physical action.",
+      "Do not award for only saying one is faster or more powerful.",
+      "Allow frame/packet wording variation if address type and boundary are correct.",
+      "Do not require OSI layer names.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A school attendance system scans student ID cards and records entry. Suggest one input device, one storage choice and one output device, justifying each.",
-    answer: "An ID card reader or barcode/QR scanner is suitable as an input device because it captures student IDs quickly and accurately. Non-volatile secondary storage such as an SSD/database is suitable because attendance records must be kept after power is off. A screen or speaker is suitable as output because it gives immediate feedback such as accepted or not recognised.",
+    prompt: "A school wants students to access files from home and school using a cloud service. Discuss benefits and risks.",
+    answer: "A cloud service stores or processes data on remote servers accessed over a network. Benefits include access from different locations/devices and easier collaboration or backup. Risks include dependence on the internet connection/provider, possible downtime, and security or privacy concerns for student data.",
     marking: [
-      { mark: "B1", text: "suitable input device such as card reader/barcode/QR scanner" },
-      { mark: "B1", text: "input justification linked to quick/accurate capture of student ID" },
-      { mark: "B1", text: "suitable secondary/non-volatile storage choice" },
-      { mark: "B1", text: "storage justification linked to persistent attendance records" },
-      { mark: "B1", text: "suitable output device such as screen or speaker" },
-      { mark: "B1", text: "output justification linked to immediate accepted/not-recognised feedback" },
+      { mark: "B1", text: "cloud uses remote servers/resources accessed over a network" },
+      { mark: "B1", text: "benefit: access from home and school/different devices" },
+      { mark: "B1", text: "benefit: collaboration/backup/reduced local maintenance" },
+      { mark: "B1", text: "risk: internet/provider dependence or downtime" },
+      { mark: "B1", text: "risk: security/privacy/compliance concern" },
+      { mark: "B1", text: "links points to school/student-file scenario" },
     ],
     strict: [
-      "Do not award justification marks for vague 'it is better'.",
-      "Do not award storage justification if it says RAM is used for long-term records.",
-      "Allow database as storage context if persistence is clear.",
+      "Do not accept 'stored in the cloud' without remote server/network mechanism.",
+      "Do not accept only generic 'cheap/easy' without explanation.",
+      "Award balanced answers that discuss both benefits and risks.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Compare primary memory and secondary storage.",
-    answer: "Primary memory holds data and instructions currently in use by the processor. RAM is volatile, so contents are lost when power is off. Secondary storage stores files and data long term and is non-volatile, so data remains after power is off.",
+    marks: "6 marks",
+    prompt: "Explain the protocols involved when a user sends an email and then reads it on both a phone and laptop.",
+    answer: "SMTP is used to send the email from the client to a mail server and may be used between mail servers. IMAP is suitable for reading email on both phone and laptop because it accesses and synchronises email stored on the server across devices. POP3 would normally download messages to a client and is less suitable for keeping devices synchronised.",
     marking: [
-      { mark: "B1", text: "primary memory holds data/instructions currently in use" },
-      { mark: "B1", text: "RAM/primary memory can be volatile/lost without power" },
-      { mark: "B1", text: "secondary storage holds files/data long term" },
-      { mark: "B1", text: "secondary storage is non-volatile/persistent" },
+      { mark: "B1", text: "SMTP used to send email from client to mail server" },
+      { mark: "B1", text: "SMTP may be used between mail servers" },
+      { mark: "B1", text: "IMAP used to access/read email on server" },
+      { mark: "B1", text: "IMAP synchronises across multiple devices" },
+      { mark: "B1", text: "POP3 downloads messages to client / contrast with IMAP" },
+      { mark: "B1", text: "clear separation between sending and receiving/accessing email" },
     ],
     strict: [
-      "Do not accept only 'both store data'.",
-      "Do not require detailed cache/virtual memory discussion in this overview lesson.",
-      "Allow examples such as RAM and SSD if roles are clear.",
+      "Do not award SMTP for retrieving or reading email.",
+      "Do not award POP3 for sending email.",
+      "Do not require both POP3 and IMAP in a real system, but contrast earns credit here.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "A librarian could type book IDs manually or use a barcode reader. Explain why a barcode reader may be more suitable.",
-    answer: "A barcode reader is an input device that can capture book IDs automatically. It is faster than typing many IDs manually and reduces human typing errors. This is suitable for a busy library desk where books must be issued quickly and accurately.",
+    marks: "6 marks",
+    prompt: "Explain the format and use of IPv4 and IPv6 addresses, and Compare public/private and static/dynamic addresses.",
+    answer: "IPv4 uses 32-bit addresses and IPv6 uses 128-bit addresses. An IP address is associated with a network interface so packets can be routed. A public address is reachable across the internet, while a private address is used inside a local network. A static address remains fixed; a dynamic address is allocated and may change. Possessing an IP address does not by itself guarantee security.",
     marking: [
-      { mark: "B1", text: "identifies barcode reader as input device" },
-      { mark: "B1", text: "captures book ID/barcode automatically" },
-      { mark: "B1", text: "advantage such as faster or fewer errors" },
-      { mark: "B1", text: "links advantage to library/busy checkout scenario" },
+      { mark: "B1", text: "IPv4 is 32-bit" },
+      { mark: "B1", text: "IPv6 is 128-bit" },
+      { mark: "B1", text: "address associated with a network interface / used for routing" },
+      { mark: "B1", text: "public and private distinction" },
+      { mark: "B1", text: "static and dynamic distinction" },
+      { mark: "B1", text: "IP addressing does not guarantee security" },
     ],
     strict: [
-      "Do not accept only 'barcode reader is easier' without reason.",
-      "Do not award output-device credit for barcode reader.",
-      "Allow QR scanner if scenario is adapted to QR codes.",
+      "Do not credit decimal digit counts as the address bit width.",
+      "Do not claim that a private address alone makes a device secure.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "Complete a trace table for how data flows through a simple weather station that records temperature and shows a warning if it is too hot.",
-    answer: "A temperature sensor captures the temperature as input. The processor compares the reading with a stored threshold or rule. The current reading and rule may be held in memory while being processed. The reading may be saved in secondary storage for later analysis. If the reading is too high, an output device such as a display, speaker or actuator presents a warning or triggers an action.",
+    marks: "6 marks",
+    prompt: "For the URL https://school.example.org/results/index.html, identify the scheme, domain name and path, then explain how DNS helps locate the WWW resource.",
+    answer: "The scheme is https, the domain name is school.example.org and the path is /results/index.html. DNS resolves the domain name to an IP address. The browser can then send packets toward the web server and request the named WWW resource.",
     marking: [
-      { mark: "B1", text: "sensor captures temperature as input" },
-      { mark: "B1", text: "processor compares/processes reading with threshold/rule" },
-      { mark: "B1", text: "memory used for current reading/rule/instructions" },
-      { mark: "B1", text: "secondary storage saves readings for later/persistent use" },
-      { mark: "B1", text: "output device gives warning or actuator action" },
+      { mark: "B1", text: "scheme is https" },
+      { mark: "B1", text: "domain is school.example.org" },
+      { mark: "B1", text: "path is /results/index.html" },
+      { mark: "B1", text: "DNS resolves the domain name" },
+      { mark: "B1", text: "resolution returns/finds an IP address" },
+      { mark: "B1", text: "browser uses the location to request the WWW resource" },
     ],
     strict: [
-      "Do not require detailed control-loop terminology here.",
-      "Do not award storage mark for RAM if answer says long-term records are only in RAM.",
-      "Allow display, buzzer, speaker or actuator as output if role is clear.",
+      "Do not describe DNS as storing the webpage.",
+      "Require the URL components to be matched to the supplied URL.",
     ],
   },
 ];
@@ -179,10 +195,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    camera: "Input: the camera captures data from the QR code so the system can process it.",
-    processor: "Processor: it executes instructions to check the ticket data against a rule or record.",
-    storage: "Storage: the attendance record must persist after the scan, so non-volatile storage is needed.",
-    screen: "Output: the screen presents feedback to the user.",
+    latency: "Topic: network performance. Mark phrase: latency is delay before response/data arrival.",
+    switch: "Topic: network hardware. Mark phrase: a switch forwards frames inside a LAN using MAC addresses/ports.",
+    extranet: "Topic: network services. Mark phrase: controlled access for selected external users.",
+    http: "Topic: application protocols. Mark phrase: HTTP transfers web pages/resources between browser and web server.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -193,10 +209,10 @@ function setupHook() {
   });
 }
 
-function setupChoiceTool() {
+function setupTopicTool() {
   const select = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#componentResult");
-  const method = document.querySelector("#componentMethod");
+  const result = document.querySelector("#topicResult");
+  const method = document.querySelector("#topicMethod");
   function choose() {
     const item = scenarios[select.value];
     result.textContent = item.result;
@@ -212,7 +228,9 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <ol>${example.steps.map((step) => `<li>${step}</li>`).join("")}</ol>
+    <p><strong>Worked answer:</strong> ${example.answer}</p>
+    <h4>Why it earns marks</h4>
+    <ul>${example.annotations.map((item) => `<li>${item}</li>`).join("")}</ul>
   `;
 }
 
@@ -224,7 +242,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("attendance");
+  renderExample("protocol");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -272,7 +290,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For each wrong answer, ask whether the component captures, processes, stores or presents data.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For missed items, write the topic and one mark-scheme phrase before retrying.`;
   });
 }
 
@@ -309,7 +327,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupChoiceTool();
+  setupTopicTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

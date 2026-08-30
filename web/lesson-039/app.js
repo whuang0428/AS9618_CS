@@ -1,75 +1,75 @@
 const scenarios = {
-  weather: {
-    risk: "Outdoor weather station: rain, humidity, heat, cold, dust and limited maintenance access can reduce reliability.",
-    mitigation: "Use weatherproof casing, sealed connectors, temperature-rated sensors, low-power controller, battery or solar power, and wireless communication for remote readings.",
-    rejection: "Reject an ordinary office desktop outdoors: it is not designed for weather exposure, low power use or remote sensor input.",
+  attendance: {
+    recommendation: "Barcode/RFID reader, touchscreen display and networked computer with SSD storage",
+    justification: "Fast automatic input reduces queues at registration. Network access lets records update centrally. SSD storage gives quick access to attendance software and local cached data.",
+    rejection: "Reject manual paper forms as the main method: they are slower, easier to misread and require later data entry.",
   },
-  server: {
-    risk: "School server room: heat, dust and power instability can cause downtime or data loss.",
-    mitigation: "Use air conditioning, dust control, UPS, surge protection, RAID, backup and monitoring for temperature and disk health.",
-    rejection: "Reject relying only on a single disk with no backup: one failure could lose data or interrupt service.",
+  library: {
+    recommendation: "Barcode scanner, receipt printer/display, keyboard and reliable networked workstation",
+    justification: "A barcode scanner captures book IDs faster and more accurately than typing. A small printer or screen gives immediate checkout feedback. Network access updates the catalogue for other users.",
+    rejection: "Reject using only a touchscreen for book IDs: typing long codes by hand is slower and more error-prone.",
   },
   delivery: {
-    risk: "Delivery handheld device: drops, vibration, rain, battery drain and weak mobile signal can interrupt scanning and proof of delivery.",
-    mitigation: "Use rugged casing, flash/SSD storage, long battery life, protective screen, offline cache and mobile data with later sync.",
-    rejection: "Reject a fragile office tablet without protection: it may fail after knocks or wet outdoor use.",
+    recommendation: "Handheld scanner or smartphone with camera, GPS, mobile data and long battery life",
+    justification: "Portable hardware lets the driver scan parcels at the door. GPS supports routing and proof of location. Mobile data uploads delivery status without returning to the depot.",
+    rejection: "Reject a desktop PC: it may be powerful, but it is not portable and cannot easily capture proof at the delivery location.",
   },
-  factory: {
-    risk: "Factory barcode scanner: dust, vibration, grease and repeated use can reduce scanning accuracy or damage connectors.",
-    mitigation: "Use industrial-rated scanner, sealed casing, dust-resistant design, robust cable/wireless connection and regular cleaning.",
-    rejection: "Reject a cheap consumer scanner if the environment is dusty and high-use; it may fail or misread more often.",
+  editor: {
+    recommendation: "Multi-core CPU, suitable GPU, high-capacity SSD and colour-accurate monitor",
+    justification: "Video editing needs fast processing and storage access for large media files. A colour-accurate monitor helps editing decisions match the final output.",
+    rejection: "Reject only using a low-cost HDD as the working drive: it may have capacity but slower access can delay loading, scrubbing and exporting.",
   },
-  clinic: {
-    risk: "Clinic reception system: downtime, power loss and storage failure can delay appointments and access to patient records.",
-    mitigation: "Use UPS, regular backup, reliable network connection, spare input devices and maintenance schedule.",
-    rejection: "Reject no backup strategy: storage failure could prevent staff from recovering appointment or patient data.",
+  weather: {
+    recommendation: "Temperature, humidity and pressure sensors with low-power microcontroller, durable enclosure and wireless communication",
+    justification: "Sensors capture environmental data automatically. Low power use supports long running time. A durable enclosure protects outdoor hardware and wireless communication sends readings remotely.",
+    rejection: "Reject a standard office desktop outdoors: it is not designed for weather exposure, low power operation or remote sensor input.",
   },
 };
 
 const examples = {
-  weather: {
-    title: "Example 1: remote weather station",
-    problem: "Recommend environmental protections for hardware used outside.",
+  attendance: {
+    title: "Example 1: school attendance system",
+    problem: "Choose suitable hardware for a school attendance system and justify two choices.",
     steps: [
-      "Use a weatherproof enclosure because rain and moisture can cause corrosion or short circuits.",
-      "Use low-power components with battery or solar power because mains electricity may not be available.",
-      "Use wireless communication so readings can be collected without frequent physical access.",
-      "Reject ordinary office hardware because it is not designed for outdoor temperature, moisture or dust.",
-    ],
-  },
-  server: {
-    title: "Example 2: school server room",
-    problem: "Explain how reliability can be improved for a server storing shared school files.",
-    steps: [
-      "Use cooling and dust control because heat and blocked airflow can cause shutdowns or hardware damage.",
-      "Use a UPS so short power cuts do not immediately stop the server and files can be closed safely.",
-      "Use RAID and backup so disk failure does not automatically mean permanent data loss.",
-      "Use monitoring to warn staff about temperature, battery or disk problems before failure becomes an outage.",
+      "Use an RFID or barcode reader because it captures student ID quickly and reduces typing errors.",
+      "Use a touchscreen or small monitor to show confirmation, so staff and students know the entry has been recorded.",
+      "Use a networked computer or tablet so attendance data can be sent to the central school database.",
+      "Reject paper registers as the main method because they require later data entry and can delay reporting.",
     ],
   },
   delivery: {
-    title: "Example 3: delivery handheld",
-    problem: "Choose hardware features for a device used by a delivery driver.",
+    title: "Example 2: delivery driver",
+    problem: "Recommend hardware for a driver who scans parcels and records proof of delivery.",
     steps: [
-      "Use rugged casing because the device may be dropped or used in rain.",
-      "Use long battery life because the device must last a full shift away from a charger.",
-      "Use local offline storage or cache because mobile signal may be unavailable in some areas.",
-      "Reject a fragile office tablet unless it has protective casing and suitable battery life.",
+      "Use a handheld scanner or smartphone camera because it can scan barcodes at each delivery location.",
+      "Use GPS and mobile data so the system can update location and delivery status in real time.",
+      "Choose a durable device with long battery life because it will be used outdoors for a full shift.",
+      "Reject a desktop computer because it is not portable and cannot conveniently collect data at the door.",
+    ],
+  },
+  editor: {
+    title: "Example 3: video editor",
+    problem: "Compare suitable storage and display hardware for a video editor.",
+    steps: [
+      "Choose an SSD as the working drive because fast access helps load large video files and preview edits.",
+      "Use a larger HDD or external storage for archive copies because it can offer high capacity at lower cost per GB.",
+      "Use a colour-accurate monitor because visual output must match editing decisions.",
+      "Do not simply say 'best computer'; name the component and link it to the editing task.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which device protects against short power cuts: UPS or barcode scanner?", accepted: ["ups"], answer: "UPS" },
-  { id: "p2", prompt: "Which environmental factor can cause overheating?", accepted: ["temperature", "heat", "high temperature"], answer: "Temperature / heat" },
-  { id: "p3", prompt: "Which protection is suitable for rain or moisture?", accepted: ["waterproof casing", "weatherproof casing", "sealed casing", "sealed enclosure", "waterproof enclosure"], answer: "Weatherproof / sealed enclosure" },
-  { id: "p4", prompt: "What does backup help recover after storage failure?", accepted: ["data", "files"], answer: "Data / files" },
-  { id: "p5", prompt: "Which storage type is more shock-resistant: SSD or HDD?", accepted: ["ssd"], answer: "SSD" },
-  { id: "p6", prompt: "What reliability term means extra hardware can take over after failure?", accepted: ["redundancy", "redundant"], answer: "Redundancy" },
-  { id: "p7", prompt: "What does MTBF stand for?", accepted: ["mean time between failures", "mean time between failure"], answer: "Mean time between failures" },
-  { id: "p8", prompt: "Name one risk for an outdoor sensor.", accepted: ["rain", "moisture", "water", "heat", "cold", "dust", "humidity"], answer: "Rain / moisture / heat / cold / dust / humidity" },
-  { id: "p9", prompt: "Is a UPS a replacement for backup? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Complete the chain: risk -> mitigation -> ____.", accepted: ["consequence"], answer: "Consequence" },
+  { id: "p1", prompt: "Which hardware category captures data?", accepted: ["input"], answer: "Input" },
+  { id: "p2", prompt: "Which hardware category presents information to the user?", accepted: ["output"], answer: "Output" },
+  { id: "p3", prompt: "Which storage device is usually faster: SSD or HDD?", accepted: ["ssd"], answer: "SSD" },
+  { id: "p4", prompt: "Name one input device suitable for scanning library books.", accepted: ["barcode scanner", "barcode reader", "scanner"], answer: "Barcode scanner / barcode reader" },
+  { id: "p5", prompt: "Name one criterion linked to outdoor hardware.", accepted: ["durability", "water resistance", "weather resistance", "reliability", "battery life"], answer: "Durability / weather resistance / battery life" },
+  { id: "p6", prompt: "Which user needs portable hardware: delivery driver or video editor?", accepted: ["delivery driver", "driver"], answer: "Delivery driver" },
+  { id: "p7", prompt: "Complete the chain: feature -> need -> ____.", accepted: ["consequence"], answer: "Consequence" },
+  { id: "p8", prompt: "Name one communication hardware example.", accepted: ["nic", "network interface card", "wifi adapter", "wi fi adapter", "router", "bluetooth module"], answer: "NIC / Wi-Fi adapter / router / Bluetooth module" },
+  { id: "p9", prompt: "Is 'better' enough as a justification? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one output device for a checkout desk.", accepted: ["monitor", "display", "screen", "printer", "receipt printer", "speaker"], answer: "Monitor / display / receipt printer" },
 ];
 
 
@@ -81,89 +81,86 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A remote weather station collects data outdoors. Explain three hardware considerations that improve reliability.",
-    answer: "A weatherproof enclosure protects sensors and electronics from rain and moisture, reducing corrosion or short circuits. Low-power hardware with battery or solar power allows the system to operate where mains power is unavailable. Wireless communication allows readings to be sent remotely, reducing the need for frequent physical access. Temperature-rated sensors can continue to work in hot or cold conditions.",
+    marks: "4 marks",
+    prompt: "A school wants a computer-based attendance system. Suggest two pieces of hardware and justify each choice.",
+    answer: "An RFID/barcode reader can capture student IDs quickly and accurately, reducing queues and typing errors. A networked computer or tablet can send attendance records to the central database so staff can access updated records.",
     marking: [
-      { mark: "B1", text: "weatherproof/sealed enclosure or protection named" },
-      { mark: "B1", text: "linked to rain/moisture/corrosion/short circuit risk" },
-      { mark: "B1", text: "low-power/battery/solar power consideration named" },
-      { mark: "B1", text: "linked to remote operation or lack of mains power" },
-      { mark: "B1", text: "wireless communication or temperature-rated sensor named" },
-      { mark: "B1", text: "linked to remote access or continued operation in environment" },
+      { mark: "B1", text: "suitable input device such as RFID/barcode reader named" },
+      { mark: "B1", text: "justification linked to fast/accurate capture of student ID" },
+      { mark: "B1", text: "suitable processing/storage/network device named" },
+      { mark: "B1", text: "justification linked to storing/updating/accessing attendance records" },
     ],
     strict: [
-      "Do not award both marks for a consideration unless a scenario-specific consequence is explained.",
-      "Do not accept only 'use durable hardware' without naming the environmental risk.",
-      "Allow equivalent outdoor protections such as sealed connectors or dust-resistant casing.",
+      "Do not award justification marks for vague statements such as 'it is better' without a scenario link.",
+      "Award one identification mark and one linked justification mark for each of two suitable choices.",
+      "Allow biometric reader if privacy/security concerns are not being assessed in this question.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Explain how a UPS, backup and RAID can improve reliability for a server.",
-    answer: "A UPS provides temporary power during a short power cut, allowing the server to continue running or shut down safely. Backup stores copies of data so files can be restored after loss or corruption. RAID can use multiple disks so the system may continue operating after a disk failure, depending on the RAID type.",
+    marks: "5 marks",
+    prompt: "Explain why a handheld device is more suitable than a desktop computer for a delivery driver.",
+    answer: "A handheld device is portable, so it can be carried to the delivery location. It can use a camera or scanner to capture parcel barcodes and signatures. Mobile data can upload delivery status immediately. A desktop computer is not suitable because it is not portable and cannot easily collect proof of delivery at the door.",
     marking: [
-      { mark: "B1", text: "UPS identified as temporary power / protection from power loss" },
-      { mark: "B1", text: "UPS linked to continued operation or safe shutdown" },
-      { mark: "B1", text: "backup identified as separate copy of data" },
-      { mark: "B1", text: "backup linked to recovery/restoration after failure" },
-      { mark: "B1", text: "RAID uses multiple disks with redundancy, depending on RAID level" },
-      { mark: "B1", text: "RAID linked to continued operation or data availability after a disk failure" },
+      { mark: "B1", text: "portable/handheld nature identified" },
+      { mark: "B1", text: "linked to use at delivery location" },
+      { mark: "B1", text: "barcode/signature/photo capture identified" },
+      { mark: "B1", text: "wireless/mobile data/GPS benefit explained" },
+      { mark: "B1", text: "desktop rejected with a relevant reason" },
     ],
     strict: [
-      "Do not accept UPS as a data backup.",
-      "Do not accept RAID as a complete replacement for backup.",
-      "Allow 'mirroring' for RAID where disk failure tolerance is clear.",
+      "Do not award rejection mark for saying desktop is 'bad' without explaining portability or data capture issue.",
+      "Allow smartphone, tablet or handheld scanner if role is clear.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "A delivery driver uses a handheld device outdoors. Explain two environmental or reliability features that would be suitable.",
-    answer: "A rugged or shock-resistant casing is suitable because the device may be dropped or exposed to vibration. Long battery life is suitable because the driver may use the device for a full shift away from a charger. Offline storage/cache is useful because mobile signal may be unavailable and delivery data can sync later.",
+    prompt: "Compare SSD and HDD storage for a video editor.",
+    answer: "An SSD has faster access times, so it is suitable as a working drive for loading and editing large video files. An HDD can provide larger capacity at lower cost per GB, so it may be suitable for archive storage. SSDs are also more resistant to shock because they have no moving parts.",
     marking: [
-      { mark: "B1", text: "rugged/shock-resistant/water-resistant feature named" },
-      { mark: "B1", text: "linked to outdoor/mobile/drop/rain/vibration risk" },
-      { mark: "B1", text: "battery/offline cache/mobile data feature named" },
-      { mark: "B1", text: "linked to full-shift use, weak signal or continued data capture" },
+      { mark: "B1", text: "SSD speed/access-time advantage identified" },
+      { mark: "B1", text: "speed linked to video editing task" },
+      { mark: "B1", text: "HDD capacity/cost advantage identified" },
+      { mark: "B1", text: "HDD linked to archive/bulk storage or SSD durability advantage linked to use" },
     ],
     strict: [
-      "Do not accept 'portable' alone unless the environmental reliability issue is explained.",
-      "Allow protective screen or sealed case if linked to field use.",
+      "Do not accept 'SSD is better' without a criterion.",
+      "Allow discussion of reliability/durability if linked to lack of moving parts.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Explain the difference between durability and reliability in a hardware context, and explain how they may be related.",
-    answer: "Durability is the ability of hardware to resist physical damage, such as shock, dust or moisture. Reliability is the ability of the hardware or system to continue working correctly when required. Durable hardware can improve reliability, but reliability can also depend on backup, redundancy, power protection and maintenance.",
+    marks: "5 marks",
+    prompt: "A remote weather station records environmental data. Suggest suitable hardware and justify your choices.",
+    answer: "It should use sensors such as temperature, humidity and pressure sensors to capture environmental data automatically. A low-power microcontroller can process readings while using little energy. A durable weatherproof enclosure protects components outdoors. Wireless communication can transmit readings without collecting the device manually.",
     marking: [
-      { mark: "B1", text: "durability linked to resisting physical/environmental damage" },
-      { mark: "B1", text: "reliability linked to continuing to work correctly when required" },
-      { mark: "B1", text: "recognises durability can contribute to reliability" },
-      { mark: "B1", text: "recognises reliability also depends on factors other than physical durability" },
+      { mark: "B1", text: "suitable environmental sensors named" },
+      { mark: "B1", text: "sensor justification linked to automatic environmental data capture" },
+      { mark: "B1", text: "low-power controller/processor named" },
+      { mark: "B1", text: "durability/weatherproofing/power justification linked to remote outdoor use" },
+      { mark: "B1", text: "communication hardware/method linked to remote data transfer" },
     ],
     strict: [
-      "Do not accept 'durable means reliable' as the full distinction.",
-      "Allow examples instead of definitions if the distinction is clear.",
+      "Do not award sensor mark for generic 'input device' unless environmental measurement is clear.",
+      "Do not require brand names or exact model specifications.",
+      "Allow solar power/battery discussion if linked to remote use.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A factory uses barcode scanners in a dusty environment. Suggest hardware or maintenance measures and justify them.",
-    answer: "An industrial-rated barcode scanner with sealed casing is suitable because dust can interfere with scanning and damage moving or exposed parts. Regular cleaning or dust filters reduce build-up, helping maintain accuracy. A robust cable or reliable wireless connection reduces failure from vibration or repeated handling.",
+    marks: "4 marks",
+    prompt: "Explain why hardware selection should depend on the user and task.",
+    answer: "Different users have different priorities, such as portability for a delivery driver, accuracy for a library scanner or high processing speed for a video editor. Hardware should be selected by matching its features to the user's needs; otherwise the system may be too slow, too expensive, inaccurate or inconvenient.",
     marking: [
-      { mark: "B1", text: "industrial/dust-resistant/sealed scanner named" },
-      { mark: "B1", text: "linked to dust affecting scanner accuracy or hardware" },
-      { mark: "B1", text: "cleaning/filter/maintenance measure named" },
-      { mark: "B1", text: "linked to reducing build-up or maintaining reliability" },
-      { mark: "B1", text: "robust connection/cable/wireless or vibration consideration explained" },
+      { mark: "B1", text: "recognises different users/tasks have different needs" },
+      { mark: "B1", text: "gives a valid user-specific example" },
+      { mark: "B1", text: "links hardware feature to need" },
+      { mark: "B1", text: "explains consequence of poor selection" },
     ],
     strict: [
-      "Do not award full marks for naming a barcode scanner only; the dust environment must be addressed.",
-      "Allow rugged scanner if linked to factory conditions.",
+      "Do not accept only a list of devices with no user/task link.",
+      "Allow any valid user scenario from the syllabus-level hardware context.",
     ],
   },
 ];
@@ -179,10 +176,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    env: "Correct. Outdoor conditions add risks such as moisture, heat, dust and power instability.",
-    speed: "Not quite. Faster processing does not automatically protect against rain, dust or heat.",
-    storage: "Not quite. More capacity does not solve corrosion, overheating or power cuts.",
-    software: "Not quite. Software matters, but hardware can physically fail when the environment is unsuitable.",
+    phone: "Phone camera as input: it captures image data. The same phone may also store/process, but here the camera role is input.",
+    keyboard: "Keyboard as input: it captures text commands. It is not storage just because words appear later in a file.",
+    usb: "USB flash drive as storage: it keeps files when power is removed.",
+    trap: "Not quite. A monitor is output; it displays results but does not store the final data.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -193,19 +190,19 @@ function setupHook() {
   });
 }
 
-function setupRiskTool() {
+function setupSelector() {
   const select = document.querySelector("#scenarioInput");
-  const risk = document.querySelector("#riskSummary");
-  const mitigation = document.querySelector("#mitigationSummary");
-  const rejection = document.querySelector("#rejectSummary");
+  const recommendation = document.querySelector("#recommendation");
+  const justification = document.querySelector("#justification");
+  const rejection = document.querySelector("#rejection");
   function render() {
     const scenario = scenarios[select.value];
-    risk.textContent = scenario.risk;
-    mitigation.innerHTML = `<strong>Mitigation:</strong> ${scenario.mitigation}`;
+    recommendation.textContent = scenario.recommendation;
+    justification.innerHTML = `<strong>Justification:</strong> ${scenario.justification}`;
     rejection.innerHTML = `<strong>Reject:</strong> ${scenario.rejection}`;
   }
   select.addEventListener("change", render);
-  document.querySelector("#evaluateBtn").addEventListener("click", render);
+  document.querySelector("#recommendBtn").addEventListener("click", render);
   render();
 }
 
@@ -226,7 +223,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("weather");
+  renderExample("attendance");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -271,7 +268,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For weak answers, add risk -> mitigation -> consequence.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For weak answers, add feature -> need -> consequence.`;
   });
 }
 
@@ -308,7 +305,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupRiskTool();
+  setupSelector();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

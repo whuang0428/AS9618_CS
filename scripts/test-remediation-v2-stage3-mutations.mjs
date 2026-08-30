@@ -14,13 +14,10 @@ const expectRejected = (label, mutateContract = () => {}, mutateRepairs = () => 
 };
 
 expectRejected("official first-use inversion", (contract) => { contract.requirements.find(({ id }) => id === "S2.04").teachingLessons = [15]; });
+expectRejected("Vector taught after sound", (contract) => { contract.requirements.find(({ id }) => id === "S1.09").teachingLessons = [12]; });
+expectRejected("dedicated Vector CORE lesson removed", () => {}, (repairs) => { repairs.splice(repairs.findIndex(({ lesson }) => lesson === 10), 1); });
 expectRejected("intra-lesson official-row inversion", () => {}, (repairs) => { const repair = repairs.find(({ lesson }) => lesson === 20); [repair.rows[0], repair.rows[1]] = [repair.rows[1], repair.rows[0]]; });
-expectRejected("cross-lesson CORE swap", () => {}, (repairs) => {
-  const bitmap = repairs.find(({ lesson }) => lesson === 9);
-  const vectorCompression = repairs.find(({ lesson }) => lesson === 12);
-  [bitmap.lesson, vectorCompression.lesson] = [vectorCompression.lesson, bitmap.lesson];
-});
-expectRejected("assessment before CORE", () => {}, () => {}, (questions) => { questions.find(({ id }) => id === "L026-Q4").lesson = 15; });
+expectRejected("assessment before CORE", () => {}, () => {}, (questions) => { questions.find(({ id }) => id === "L027-Q4").lesson = 16; });
 expectRejected("first-use review hash loss", (contract) => { contract.requirements.find(({ id }) => id === "S10.01").firstUseReview.contentHash = "0".repeat(64); });
 
 if (failures.length) {
@@ -28,4 +25,4 @@ if (failures.length) {
   for (const failure of failures) console.error(`- ${failure}`);
   process.exit(1);
 }
-console.log("Remediation v2 Stage 3 mutation tests passed: topic swaps, intra-lesson order, assessment-before-CORE and first-use hash mutations were rejected.");
+console.log("Remediation v2 Stage 3 mutation tests passed: official-order, Vector-order/presence, intra-lesson order, assessment-before-CORE and first-use hash mutations were rejected.");

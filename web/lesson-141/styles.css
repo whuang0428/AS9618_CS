@@ -122,7 +122,7 @@ pre {
   margin-bottom: 4px;
 }
 
-.review-visual {
+.syntax-visual {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -133,7 +133,7 @@ pre {
   background: linear-gradient(135deg, #17324d, #2563eb 48%, #047857);
   border-radius: 8px;
 }
-.review-visual > div {
+.syntax-visual > div {
   display: grid;
   gap: 6px;
   min-height: 150px;
@@ -145,9 +145,9 @@ pre {
   padding: 16px;
   font-weight: 850;
 }
-.review-visual strong { font-size: 1.45rem; }
-.review-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; }
-.review-visual em { color: #334155; font-style: normal; font-weight: 700; }
+.syntax-visual strong { font-size: 1.45rem; }
+.syntax-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; overflow-wrap: anywhere; }
+.syntax-visual em { color: #334155; font-style: normal; font-weight: 700; }
 
 .guidance-grid {
   display: grid;
@@ -162,12 +162,13 @@ pre {
 .section-title { margin-bottom: 18px; }
 .section-title p:not(.eyebrow) { color: var(--muted); max-width: 78ch; }
 
-.hook-grid, .mistake-grid, .checklist-grid {
+.hook-grid, .mistake-grid, .card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
-.choice-card, .mistake-grid article, .practice-card, .exam-card, .example-card, .check-item {
+.card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.choice-card, .mistake-grid article, .card-grid article, .practice-card, .exam-card, .example-card {
   border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 8px;
@@ -176,8 +177,6 @@ pre {
 }
 .choice-card { font-weight: 800; overflow-wrap: anywhere; }
 .choice-card.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
-.check-item { display: flex; gap: 10px; align-items: flex-start; font-weight: 650; }
-.check-item input { width: auto; margin-top: 4px; }
 
 .feedback, .callout, .trace-output, .answer-panel, .ms-panel, .example-output {
   margin-top: 16px;
@@ -217,9 +216,8 @@ input, select {
   border-radius: 8px;
   overflow: hidden;
 }
-.two-col .table-row { grid-template-columns: 0.4fr 1.6fr; }
-.three-col .table-row { grid-template-columns: 1fr 1.2fr 1fr; }
-.four-col .table-row { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.three-col .table-row { grid-template-columns: 0.8fr 1.1fr 1.3fr; }
+.four-col .table-row { grid-template-columns: 1fr 0.9fr 1fr 1fr; }
 .table-row { display: grid; }
 .table-row > div {
   padding: 14px;
@@ -280,17 +278,17 @@ input, select {
     position: static;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .hero, .guidance-grid, .objective-grid, .summary-grid, .code-grid, .tool-grid {
+  .hero, .guidance-grid, .objective-grid, .summary-grid, .code-grid, .tool-grid, .card-grid {
     grid-template-columns: 1fr;
   }
-  .review-visual { min-height: auto; }
+  .syntax-visual { min-height: auto; }
 }
 
 @media (max-width: 680px) {
   .topbar { position: static; align-items: flex-start; flex-direction: column; }
-  .lesson-nav, .hook-grid, .mistake-grid, .review-visual, .checklist-grid { grid-template-columns: 1fr; }
+  .lesson-nav, .hook-grid, .mistake-grid, .syntax-visual { grid-template-columns: 1fr; }
   .practice-row { grid-template-columns: 1fr; }
-  .table-row, .two-col .table-row, .three-col .table-row, .four-col .table-row {
+  .table-row, .three-col .table-row, .four-col .table-row {
     grid-template-columns: 1fr;
   }
   .table-row > div {

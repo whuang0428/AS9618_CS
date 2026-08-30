@@ -1,93 +1,182 @@
-const students = [
-  { StudentID: "S01", StudentName: "Amira", TutorGroup: "12A" },
-  { StudentID: "S02", StudentName: "Leo", TutorGroup: "12B" },
-  { StudentID: "S03", StudentName: "Maya", TutorGroup: "12A" },
+const bookRows = [
+  { BookID: "B01", Title: "Networks", Category: "Computing", Price: 12.5, Copies: 4 },
+  { BookID: "B02", Title: "Poems", Category: "Literature", Price: 8.0, Copies: 7 },
+  { BookID: "B03", Title: "Databases", Category: "Computing", Price: 15.0, Copies: 3 },
+  { BookID: "B04", Title: "Drama", Category: "Literature", Price: 9.5, Copies: 2 },
 ];
-
-const loans = [
-  { LoanID: "L01", StudentID: "S01", Returned: false },
-  { LoanID: "L02", StudentID: "S02", Returned: true },
-  { LoanID: "L03", StudentID: "S03", Returned: false },
-  { LoanID: "L04", StudentID: "S01", Returned: true },
-];
-
-const joinedRows = loans.map((loan) => {
-  const student = students.find((item) => item.StudentID === loan.StudentID);
-  return { ...loan, ...student, ReturnedText: loan.Returned ? "TRUE" : "FALSE" };
-});
 
 const builderMap = {
-  studentLoans: {
-    sql: "SELECT Student.StudentName, Loan.LoanID\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID;",
-    reason: "Use the two named tables and put the matching key fields in an explicit INNER JOIN ... ON clause.",
+  priceDesc: {
+    sql: "SELECT Title, Price\nFROM Book\nORDER BY Price DESC;",
+    reason: "The request asks for individual rows sorted highest first, so use ORDER BY Price DESC.",
   },
-  loanTitles: {
-    sql: "SELECT Loan.LoanID, Student.StudentName\nFROM Loan INNER JOIN Student\nON Loan.StudentID = Student.StudentID;",
-    reason: "The table order may be reversed, but the ON condition must still match StudentID to StudentID.",
+  countAll: {
+    sql: "SELECT COUNT(*)\nFROM Book;",
+    reason: "COUNT(*) counts all records in the Book table.",
   },
-  currentBooks: {
-    sql: "SELECT Student.StudentName, Loan.LoanID\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID\nWHERE Loan.Returned = FALSE;",
-    reason: "ON matches related records; WHERE then filters the joined result.",
+  avgPrice: {
+    sql: "SELECT AVG(Price)\nFROM Book;",
+    reason: "AVG calculates the mean of a numeric field.",
   },
-  computingBorrowers: {
-    sql: "SELECT Student.StudentName\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID\nWHERE Student.TutorGroup = '12A';",
-    reason: "This remains a two-table join; the filter uses a field from Student.",
+  countCategory: {
+    sql: "SELECT Category, COUNT(*)\nFROM Book\nGROUP BY Category;",
+    reason: "The words 'in each Category' mean one count per group, so GROUP BY Category is needed.",
   },
-  aliasCurrent: {
-    sql: "SELECT S.StudentName, L.LoanID\nFROM Student AS S INNER JOIN Loan AS L\nON S.StudentID = L.StudentID\nWHERE L.Returned = FALSE;",
-    reason: "Aliases shorten names without changing the explicit two-table INNER JOIN relationship.",
+  sumCopiesCategory: {
+    sql: "SELECT Category, SUM(Copies)\nFROM Book\nGROUP BY Category;",
+    reason: "SUM(Copies) gives a total; GROUP BY Category gives a separate total for each category.",
   },
 };
 
 const queryMap = {
-  q1: { fields: ["StudentName", "LoanID"], rows: joinedRows.map(({ StudentName, LoanID }) => ({ StudentName, LoanID })) },
-  q2: { fields: ["LoanID", "StudentName"], rows: joinedRows.map(({ LoanID, StudentName }) => ({ LoanID, StudentName })) },
-  q3: { fields: ["StudentName", "LoanID"], rows: joinedRows.filter((row) => !row.Returned).map(({ StudentName, LoanID }) => ({ StudentName, LoanID })) },
-  q4: { fields: ["StudentName"], rows: joinedRows.filter((row) => row.TutorGroup === "12A").map(({ StudentName }) => ({ StudentName })) },
-  q5: { fields: ["StudentName", "LoanID", "TutorGroup"], rows: joinedRows.filter((row) => row.Returned).map(({ StudentName, LoanID, TutorGroup }) => ({ StudentName, LoanID, TutorGroup })) },
+  q1: {
+    fields: ["Title", "Price"],
+    rows: [...bookRows]
+      .sort((a, b) => b.Price - a.Price)
+      .map((row) => ({ Title: row.Title, Price: row.Price.toFixed(2) })),
+  },
+  q2: {
+    fields: ["COUNT(*)"],
+    rows: [{ "COUNT(*)": bookRows.length }],
+  },
+  q3: {
+    fields: ["AVG(Price)"],
+    rows: [{ "AVG(Price)": average(bookRows.map((row) => row.Price)).toFixed(2) }],
+  },
+  q4: {
+    fields: ["Category", "COUNT(*)"],
+    rows: groupByCategory((rows) => rows.length, "COUNT(*)"),
+  },
+  q5: {
+    fields: ["Category", "SUM(Copies)"],
+    rows: groupByCategory((rows) => rows.reduce((total, row) => total + row.Copies, 0), "SUM(Copies)"),
+  },
 };
 
 const examples = {
-  twoTable: {
-    title: "Example 1: basic two-table INNER JOIN",
-    problem: "Show StudentName and LoanID for every matched loan.",
-    steps: ["Select the requested fields.", "Name Student INNER JOIN Loan.", "Write ON Student.StudentID = Loan.StudentID.", "The ON clause prevents unrelated row combinations."],
+  sort: {
+    title: "Example 1: Sort by a numeric field",
+    problem: "Show Title and Price sorted from most expensive to least expensive.",
+    steps: [
+      "Fields needed: Title, Price.",
+      "Table: Book.",
+      "Sort field: Price.",
+      "Highest first means descending: ORDER BY Price DESC.",
+      "SQL: SELECT Title, Price FROM Book ORDER BY Price DESC;",
+    ],
   },
-  threeTable: {
-    title: "Example 2: reverse the table order",
-    problem: "Start from Loan and show LoanID with StudentName.",
-    steps: ["Use Loan INNER JOIN Student.", "The same key relationship is required.", "Write ON Loan.StudentID = Student.StudentID.", "Only two tables are used."],
+  count: {
+    title: "Example 2: Count all records",
+    problem: "Find the number of books in the table.",
+    steps: [
+      "The request asks for a count, not a list of rows.",
+      "Use COUNT(*) to count all records.",
+      "No GROUP BY is needed because there is only one overall count.",
+      "SQL: SELECT COUNT(*) FROM Book;",
+    ],
   },
-  filter: {
-    title: "Example 3: INNER JOIN plus WHERE",
-    problem: "Show current loans only.",
-    steps: ["Write the INNER JOIN and ON relationship first.", "Add WHERE Loan.Returned = FALSE.", "ON defines the relationship; WHERE filters the result.", "Keep the query to two tables."],
+  average: {
+    title: "Example 3: Calculate a mean",
+    problem: "Find the average price of all books.",
+    steps: [
+      "The field is numeric, so an aggregate function can be applied.",
+      "AVG(Price) returns one summary value.",
+      "Calculation from the table: (12.50 + 8.00 + 15.00 + 9.50) / 4 = 11.25.",
+      "SQL: SELECT AVG(Price) FROM Book;",
+    ],
   },
-  alias: {
-    title: "Example 4: two-table aliases",
-    problem: "Rewrite the current-loan query using S and L.",
-    steps: ["Declare Student AS S and Loan AS L.", "Use INNER JOIN and ON S.StudentID = L.StudentID.", "Use aliases consistently in SELECT, ON and WHERE.", "Aliases do not replace the relationship condition."],
+  group: {
+    title: "Example 4: Count per category",
+    problem: "Find the number of books in each category.",
+    steps: [
+      "The phrase 'each category' signals grouping.",
+      "Output Category so the result identifies each group.",
+      "Use COUNT(*) to count records in each group.",
+      "SQL: SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+    ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which key uniquely identifies a Student record?", accepted: ["primary key", "primary"], answer: "Primary key" },
-  { id: "p2", prompt: "Which key in Loan references Student?", accepted: ["foreign key", "studentid", "loan.studentid"], answer: "Loan.StudentID is a foreign key." },
-  { id: "p3", prompt: "Write the ON condition linking Student to Loan.", accepted: ["student.studentid = loan.studentid", "loan.studentid = student.studentid"], answer: "Student.StudentID = Loan.StudentID" },
-  { id: "p4", prompt: "Which SQL join keyword is required for this AS core example?", accepted: ["inner join"], answer: "INNER JOIN" },
-  { id: "p5", prompt: "How many tables may the AS core join use?", accepted: ["two", "2", "at most two"], answer: "At most two tables." },
-  { id: "p6", prompt: "How can StudentID be made unambiguous?", accepted: ["table name", "qualify it", "table-qualified field", "student.studentid"], answer: "Qualify it, for example Student.StudentID." },
-  { id: "p7", prompt: "Which clause defines how the two tables match?", accepted: ["on", "on clause"], answer: "The ON clause." },
-  { id: "p8", prompt: "Which clause filters current loans?", accepted: ["where", "where clause"], answer: "WHERE Loan.Returned = FALSE" },
-  { id: "p9", prompt: "In Student AS S, what is S?", accepted: ["alias", "table alias"], answer: "A table alias." },
-  { id: "p10", prompt: "Should SELECT * be used when only two named fields are requested?", accepted: ["no", "n"], answer: "No. Select only the requested fields." },
+  {
+    id: "p1",
+    prompt: "Which SQL clause sorts result rows?",
+    accepted: ["order by"],
+    answer: "ORDER BY",
+  },
+  {
+    id: "p2",
+    prompt: "Which keyword sorts from high to low or Z to A?",
+    accepted: ["desc", "descending"],
+    answer: "DESC",
+  },
+  {
+    id: "p3",
+    prompt: "Which keyword sorts from low to high or A to Z?",
+    accepted: ["asc", "ascending"],
+    answer: "ASC",
+  },
+  {
+    id: "p4",
+    prompt: "Which aggregate function counts records?",
+    accepted: ["count", "count()"],
+    answer: "COUNT",
+  },
+  {
+    id: "p5",
+    prompt: "Which aggregate function totals numeric values?",
+    accepted: ["sum", "sum()"],
+    answer: "SUM",
+  },
+  {
+    id: "p6",
+    prompt: "Which aggregate function calculates the mean?",
+    accepted: ["avg", "avg()", "average"],
+    answer: "AVG",
+  },
+  {
+    id: "p7",
+    prompt: "Which aggregate function finds the smallest value?",
+    accepted: ["min", "min()"],
+    answer: "MIN",
+  },
+  {
+    id: "p8",
+    prompt: "Which aggregate function finds the largest value?",
+    accepted: ["max", "max()"],
+    answer: "MAX",
+  },
+  {
+    id: "p9",
+    prompt: "Which SQL clause groups records for a per-category summary?",
+    accepted: ["group by"],
+    answer: "GROUP BY",
+  },
+  {
+    id: "p10",
+    prompt: "If selecting Category with COUNT(*) per Category, do you need GROUP BY? yes or no.",
+    accepted: ["yes", "y"],
+    answer: "Yes. Use GROUP BY Category.",
+  },
 ];
 
 const mistakes = [
-  { wrong: "SELECT StudentName, LoanID FROM Student, Loan;", fix: "Use explicit INNER JOIN and an ON condition." },
-  { wrong: "ON Student.StudentID = Loan.LoanID", fix: "Match like identifiers: Student.StudentID = Loan.StudentID." },
-  { wrong: "SELECT * FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID;", fix: "The join is valid, but select only the fields requested." },
-  { wrong: "FROM Student AS S INNER JOIN Loan AS L ON Student.StudentID = Loan.StudentID", fix: "Use declared aliases consistently: ON S.StudentID = L.StudentID." },
+  {
+    wrong: "SELECT Title FROM Book WHERE Price DESC;",
+    fix: "WHERE filters rows; it does not sort rows. Use SELECT Title FROM Book ORDER BY Price DESC;",
+  },
+  {
+    wrong: "SELECT Category, COUNT(*) FROM Book;",
+    fix: "This mixes a normal field with an aggregate but does not group. Use SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+  },
+  {
+    wrong: "SELECT COUNT(Price) FROM Book; when the request asks for the total price.",
+    fix: "COUNT(Price) counts non-null Price values. Use SUM(Price) to calculate a total.",
+  },
+  {
+    wrong: "SELECT Title, Price FROM Book ORDER BY Price ASC; when the request asks for highest price first.",
+    fix: "ASC gives low to high. Use ORDER BY Price DESC for highest first.",
+  },
 ];
 
 
@@ -100,95 +189,104 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Write SQL using Student and Loan to output StudentName and LoanID for every matched loan.",
-    answer: "SELECT Student.StudentName, Loan.LoanID FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID;",
+    prompt: "The table Book has fields BookID, Title, Category, Price and Copies. Write an SQL query to output Title and Price for all books, sorted by Price from highest to lowest.",
+    answer: "SELECT Title, Price FROM Book ORDER BY Price DESC;",
     marking: [
-      { mark: "B1", text: "SELECTs the two requested fields" },
-      { mark: "B1", text: "names Student INNER JOIN Loan" },
-      { mark: "M1", text: "uses an ON condition" },
-      { mark: "A1", text: "matches StudentID to StudentID" },
+      { mark: "B1", text: "SELECT Title, Price" },
+      { mark: "B1", text: "FROM Book" },
+      { mark: "M1", text: "ORDER BY Price" },
+      { mark: "A1", text: "DESC used to sort highest to lowest" },
     ],
     strict: [
-      "Require explicit INNER JOIN ... ON.",
-      "Do not accept a comma-style FROM list.",
-      "Do not accept Student.StudentID = Loan.LoanID.",
+      "Do not award the SELECT mark for SELECT * unless Title and Price are explicitly identified as the required output.",
+      "Allow field order Price, Title unless the question specifies output order.",
+      "Do not accept ASC for highest to lowest.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Write a two-table INNER JOIN that outputs StudentName and LoanID for current loans only.",
-    answer: "SELECT Student.StudentName, Loan.LoanID FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE;",
+    marks: "2 marks",
+    prompt: "Write an SQL query to find the number of records in the Book table.",
+    answer: "SELECT COUNT(*) FROM Book;",
     marking: [
-      { mark: "B1", text: "SELECTs StudentName and LoanID" },
-      { mark: "B1", text: "uses Student INNER JOIN Loan" },
-      { mark: "M1", text: "correct ON relationship" },
-      { mark: "M1", text: "filters Returned" },
-      { mark: "A1", text: "complete WHERE Returned = FALSE" },
+      { mark: "B1", text: "SELECT COUNT(*) or equivalent valid COUNT aggregate" },
+      { mark: "B1", text: "FROM Book" },
     ],
     strict: [
-      "Maximum two tables.",
-      "Require INNER JOIN ... ON.",
-      "Do not accept Returned = TRUE.",
+      "Do not accept SELECT * because it outputs records rather than a count.",
+      "Allow COUNT(BookID) if BookID is a required non-null key field.",
+      "Do not require a semicolon.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Explain and correct: SELECT * FROM Student, Loan WHERE Student.StudentID = Loan.LoanID;",
-    answer: "Use only the requested fields, explicit INNER JOIN ... ON, and match Student.StudentID to Loan.StudentID.",
+    marks: "2 marks",
+    prompt: "Write an SQL query to find the average price of books in the Book table.",
+    answer: "SELECT AVG(Price) FROM Book;",
     marking: [
-      { mark: "B1", text: "identifies SELECT * issue" },
-      { mark: "B1", text: "selects named fields" },
-      { mark: "B1", text: "identifies comma join issue" },
-      { mark: "B1", text: "uses INNER JOIN" },
-      { mark: "B1", text: "identifies wrong key match" },
-      { mark: "B1", text: "correct ON condition" },
+      { mark: "B1", text: "SELECT AVG(Price)" },
+      { mark: "B1", text: "FROM Book" },
     ],
     strict: [
-      "All corrections must preserve two-table scope.",
-      "Do not accept a three-table solution.",
+      "Do not accept SUM(Price) because it returns a total, not a mean.",
+      "Do not accept COUNT(Price) because it counts values.",
+      "Allow AVERAGE(Price) only if the question or course notation has explicitly allowed it; otherwise use AVG.",
     ],
   },
   {
     title: "Question 4",
-    marks: "3 marks",
-    prompt: "Using aliases S and L, write the ON condition and explain its purpose.",
-    answer: "ON S.StudentID = L.StudentID; it matches each loan to its related student.",
+    marks: "4 marks",
+    prompt: "Write an SQL query to output each Category and the number of books in that category.",
+    answer: "SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
     marking: [
-      { mark: "A1", text: "correct alias condition" },
-      { mark: "M1", text: "matches related records" },
-      { mark: "A1", text: "explains prevention of unrelated combinations" },
+      { mark: "B1", text: "SELECT Category" },
+      { mark: "B1", text: "COUNT(*) or valid count aggregate included" },
+      { mark: "B1", text: "FROM Book" },
+      { mark: "M1", text: "GROUP BY Category used" },
     ],
     strict: [
-      "Use the declared aliases.",
-      "Allow reversed equality.",
-      "Do not award vague speed claims.",
+      "Do not award the GROUP BY mark for ORDER BY Category because sorting is not grouping.",
+      "Do not accept a query that gives only one overall count.",
+      "Allow COUNT(BookID) if BookID is a required non-null key field.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Write and annotate a complete two-table INNER JOIN ... ON query of your own.",
-    answer: "Example: SELECT S.StudentName, L.LoanID FROM Student AS S INNER JOIN Loan AS L ON S.StudentID = L.StudentID;",
+    marks: "3 marks",
+    prompt: "A student writes SELECT Category, COUNT(*) FROM Book ORDER BY Category; for the request: output the number of books in each category. Identify and correct the main error.",
+    answer: "The query sorts by Category but does not group records by Category. ORDER BY should not replace GROUP BY. A corrected query is SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
     marking: [
-      { mark: "B1", text: "two related tables" },
-      { mark: "B1", text: "requested fields" },
-      { mark: "B1", text: "INNER JOIN" },
-      { mark: "B1", text: "ON clause" },
-      { mark: "B1", text: "matching key fields" },
-      { mark: "B1", text: "accurate annotation" },
+      { mark: "B1", text: "identifies ORDER BY only sorts the result" },
+      { mark: "B1", text: "identifies grouping by Category is required for 'each category'" },
+      { mark: "B1", text: "corrects ORDER BY to GROUP BY Category in a valid query" },
     ],
     strict: [
-      "Maximum two tables.",
-      "Require explicit INNER JOIN ... ON.",
-      "Aliases must be used consistently.",
+      "Do not award the main correction mark for adding WHERE Category because no filtering condition is requested.",
+      "Allow ORDER BY Category after GROUP BY Category if the grouped result is also sorted.",
+      "Do not require a semicolon.",
     ],
   },
 ];
 
+function average(values) {
+  return values.reduce((total, value) => total + value, 0) / values.length;
+}
+
+function groupByCategory(calculate, outputField) {
+  const categories = [...new Set(bookRows.map((row) => row.Category))].sort();
+  return categories.map((category) => {
+    const rows = bookRows.filter((row) => row.Category === category);
+    return { Category: category, [outputField]: calculate(rows) };
+  });
+}
+
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";");
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .replace(/\(\s*\)/g, "()")
+    .replace(/ ;$/, ";");
 }
 
 function setupPrint() {
@@ -198,10 +296,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    studentLoan: "Correct. Both fields store a student identifier, so the Loan row can be matched to the right Student row.",
-    studentBook: "No. StudentID identifies a student; BookID identifies a book. Matching them is not logical.",
-    title: "No. A student name and a book title are different facts, not matching keys.",
-    category: "No. StudentID and Category store different kinds of value.",
+    group: "Correct. COUNT(*) gives the summary; GROUP BY Category makes it one count per category.",
+    order: "Not enough. ORDER BY sorts rows; it does not calculate a count for each category.",
+    where: "No. WHERE filters records before grouping and cannot be used like WHERE COUNT(*).",
+    star: "Too broad. SELECT * outputs records, but the request asks for a grouped summary.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -263,7 +361,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("twoTable");
+  renderExample("sort");
 }
 
 function renderPractice() {

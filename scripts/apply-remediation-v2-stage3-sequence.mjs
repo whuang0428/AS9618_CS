@@ -41,7 +41,7 @@ for (const lesson of stage3OptionalBaseLessons) {
   fs.writeFileSync(markdownPath, markdown);
 }
 
-for (let lesson = 1; lesson <= 150; lesson += 1) {
+for (let lesson = 1; lesson <= 151; lesson += 1) {
   const number = String(lesson).padStart(3, "0");
   const identity = lessonIdentityByNumber[lesson];
   const htmlPath = path.join(root, "web", `lesson-${number}`, "index.html");
@@ -49,10 +49,10 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
   if (markdownNames.length !== 1) throw new Error(`Expected one Markdown lesson for ${number}`);
   const markdownPath = path.join(lessonsRoot, markdownNames[0]);
   let html = fs.readFileSync(htmlPath, "utf8");
-  if ([137, 138].includes(lesson)) {
+  if ([138, 139].includes(lesson)) {
     html = html
       .replace(/Cambridge AS9618 Computer Science \| Paper 2 Section 12\.3/g, "Cambridge AS9618 Computer Science | Paper 2 Section 11 | Optional enrichment preview of Section 12.3")
-      .replace(/Lesson (137|138) \| 45 minutes \| Paper 2 Section 12\.3/g, "Lesson $1 | 45 minutes | Paper 2 Section 11 | Optional enrichment preview of Section 12.3");
+      .replace(/Lesson (138|139) \| 45 minutes \| Paper 2 Section 12\.3/g, "Lesson $1 | 45 minutes | Paper 2 Section 11 | Optional enrichment preview of Section 12.3");
     fs.writeFileSync(htmlPath, html);
   }
   html = html.replace(/<title>([\s\S]*?)<\/title>/, `<title>AS9618 Lesson ${number} | ${escapeHtml(identity.title)}</title>`);
@@ -61,7 +61,7 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
   let markdown = fs.readFileSync(markdownPath, "utf8")
     .replace(/^# Lesson \d{3}: .*$/m, `# Lesson ${number}: ${identity.title}`)
     .replace(/\n{3,}/g, "\n\n");
-  if ([137, 138].includes(lesson)) {
+  if ([138, 139].includes(lesson)) {
     const sequenceReference = "**Syllabus reference:** Course sequence Section 11; Optional enrichment preview of Section 12.3";
     if (/^\*\*Syllabus reference:\*\*.*$/m.test(markdown)) {
       markdown = markdown.replace(/^\*\*Syllabus reference:\*\*.*$/m, sequenceReference);
@@ -72,12 +72,12 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
   fs.writeFileSync(markdownPath, markdown);
 }
 
-// L050's mature HTML already contains the complete S4.15 lesson and labels its
+// L051's mature HTML already contains the complete S4.15 lesson and labels its
 // pipelining extension Optional. The historical teacher Markdown pre-dated that
 // HTML repair, so keep the two maintained surfaces semantically aligned here.
 {
-  const markdownName = fs.readdirSync(lessonsRoot).find((name) => name.startsWith("050-") && name.endsWith(".md"));
-  if (!markdownName) throw new Error("Lesson 050 Markdown is missing");
+  const markdownName = fs.readdirSync(lessonsRoot).find((name) => name.startsWith("051-") && name.endsWith(".md"));
+  if (!markdownName) throw new Error("Lesson 051 Markdown is missing");
   const markdownPath = path.join(lessonsRoot, markdownName);
   const coreStart = "<!-- remediation-v2-stage3-l050-core:start -->";
   const coreEnd = "<!-- remediation-v2-stage3-l050-core:end -->";
@@ -119,8 +119,8 @@ For \`Status = 10110100\`, use an AND mask to test a named status flag, an OR ma
 ${coreEnd}`;
   const current = fs.readFileSync(markdownPath, "utf8");
   const visualBlock = current.match(/<!-- stage10-explanations:start -->[\s\S]*?<!-- stage10-explanations:end -->/)?.[0] ?? "";
-  if (!visualBlock) throw new Error("Lesson 050 maintained visual block is missing");
-  const markdown = `# Lesson 050: Bit manipulation: masks and binary shifts
+  if (!visualBlock) throw new Error("Lesson 051 maintained visual block is missing");
+  const markdown = `# Lesson 051: Bit manipulation: masks and binary shifts
 
 ${core}
 

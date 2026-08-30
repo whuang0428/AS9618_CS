@@ -1,108 +1,108 @@
 const scenarioMap = {
+  math: {
+    result: "Item: library routine.",
+    method: "A library contains reusable routines such as mathematical functions that programs can call.",
+    trap: "Do not describe a library as object code produced by the compiler; it is pre-written reusable code.",
+  },
+  combine: {
+    result: "Tool: linker.",
+    method: "A linker combines object modules and needed library routines or references into executable/linked code.",
+    trap: "Do not call this loading. Loading happens when the executable is placed into memory.",
+  },
   missing: {
-    result: "Most likely: syntax error.",
-    method: "The translator has found invalid grammar or structure, such as a missing bracket or keyword.",
-    trap: "Do not call this a logic error because the program has not successfully run and produced a wrong result.",
+    result: "Likely issue: linker error / unresolved external reference.",
+    method: "The linker cannot resolve a reference to a routine or module that is required by the object code.",
+    trap: "Do not call every build failure a syntax error; this happens after compilation has produced object code.",
   },
-  double: {
-    result: "Most likely: logic error.",
-    method: "The program runs but the algorithm or formula is wrong, so the output is incorrect.",
-    trap: "Do not call this a runtime error if the program completes without crashing.",
+  memory: {
+    result: "Tool: loader.",
+    method: "A loader places the executable program and its data into main memory and prepares it to run.",
+    trap: "Do not say the loader translates source code; translators already handled that earlier.",
   },
-  zero: {
-    result: "Most likely: runtime error.",
-    method: "Division by zero occurs while the program is executing and may cause a crash or exception.",
-    trap: "Do not call it syntax if the expression is grammatically valid but fails for a value at run time.",
+  static: {
+    result: "Method: static linking.",
+    method: "Library code is copied into the executable at link time, making the executable more self-contained but often larger.",
+    trap: "Do not say static linking always produces the smallest file.",
   },
-  file: {
-    result: "Most likely: runtime error.",
-    method: "A missing file is an external condition that causes failure while the program is running.",
-    trap: "Do not assume the translator can always know at translation time whether a file will exist later.",
-  },
-  offbyone: {
-    result: "Most likely: logic error.",
-    method: "An off-by-one loop condition is usually legal code that runs but gives the wrong number of iterations.",
-    trap: "Do not classify every loop problem as runtime; look at whether it crashes or gives the wrong result.",
-  },
-  line: {
-    result: "Diagnostic limitation.",
-    method: "A translator diagnostic may point near the error, not always exactly at the original cause.",
-    trap: "Do not assume the reported line is always the line that must be edited.",
+  dynamic: {
+    result: "Method: dynamic linking.",
+    method: "The program uses a shared library at load time or run time, reducing duplication but requiring the library to be available and compatible.",
+    trap: "Do not say dynamic linking means the library is never needed.",
   },
 };
 
 const examples = {
-  syntax: {
-    title: "Example 1: Syntax error",
-    problem: "IF score > 50 PRINT \"pass\" has a missing THEN in a language that requires THEN.",
+  library: {
+    title: "Example 1: Library routine",
+    problem: "A program needs a square root function and a file input routine.",
     steps: [
-      "The statement does not follow the grammar rules of the language.",
-      "The translator/parser can detect the invalid statement structure.",
-      "The program may not translate or execute successfully until the syntax is corrected.",
-      "A diagnostic might report an expected keyword near the IF statement.",
+      "A library can provide pre-written routines such as SQRT or file input/output functions.",
+      "The programmer can call these routines instead of writing them from scratch.",
+      "This can save development time and use tested code.",
+      "The routine still needs to be linked or available at run time for the program to work.",
     ],
   },
-  logic: {
-    title: "Example 2: Logic error",
-    problem: "A program calculates average = total / 4 even when there are 5 values.",
+  linker: {
+    title: "Example 2: Linker combines modules",
+    problem: "main.o calls functions stored in maths.o and a graphics library.",
     steps: [
-      "The expression is syntactically valid.",
-      "The program can run without crashing.",
-      "The result is wrong because the algorithm uses the wrong divisor.",
-      "Testing with known data or tracing variable values can reveal the fault.",
+      "The compiler has already produced object modules.",
+      "The linker combines object modules and required library routines or references.",
+      "It resolves external references, such as a call in main.o to a function in maths.o.",
+      "If a referenced routine cannot be found, the linker can report an unresolved external reference.",
     ],
   },
-  runtime: {
-    title: "Example 3: Runtime error",
-    problem: "A program calculates total / count and count is 0 for one input set.",
+  loader: {
+    title: "Example 3: Loader prepares execution",
+    problem: "The user opens an executable program.",
     steps: [
-      "The expression may be syntactically valid.",
-      "The fault appears while the program is executing with a particular value.",
-      "Division by zero can cause the program to halt, crash or raise an exception.",
-      "Validation could prevent count from being 0 before division.",
+      "The loader loads the executable code and required data into main memory.",
+      "It may allocate memory and adjust addresses depending on where the program is placed.",
+      "The program is then ready for the processor to execute.",
+      "The loader does not combine object modules or translate source code.",
     ],
   },
-  diagnostic: {
-    title: "Example 4: Translation diagnostic",
-    problem: "A compiler reports: line 12, expected ')' before ';'.",
+  dynamic: {
+    title: "Example 4: Dynamic linking",
+    problem: "Several programs use the same shared graphics library.",
     steps: [
-      "The message gives a location and expected symbol, which helps the programmer search for the fault.",
-      "The real cause may be earlier than the reported line, especially with missing brackets.",
-      "A compiler may report several errors after a translation attempt.",
-      "An interpreter may stop at or near the statement currently being translated and executed.",
+      "Dynamic linking allows a program to use a shared library at load time or run time.",
+      "Several programs can share the same library code instead of each storing its own copy.",
+      "This can reduce duplicated storage and allow library updates to be shared.",
+      "A limitation is that the required shared library must be present and compatible.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which error type breaks the grammar rules of a programming language?", accepted: ["syntax", "syntax error"], answer: "Syntax error" },
-  { id: "p2", prompt: "Which error type allows a program to run but gives the wrong result?", accepted: ["logic", "logic error", "logical"], answer: "Logic error" },
-  { id: "p3", prompt: "Which error type occurs while the program is executing?", accepted: ["runtime", "run time", "runtime error", "run-time"], answer: "Runtime error" },
-  { id: "p4", prompt: "Classify: missing closing bracket.", accepted: ["syntax", "syntax error"], answer: "Syntax error" },
-  { id: "p5", prompt: "Classify: division by zero when a user enters 0.", accepted: ["runtime", "run time", "runtime error", "run-time"], answer: "Runtime error" },
-  { id: "p6", prompt: "Classify: program uses the wrong formula but does not crash.", accepted: ["logic", "logic error"], answer: "Logic error" },
-  { id: "p7", prompt: "What information might a diagnostic message provide?", accepted: ["line", "line number", "error type", "expected", "message", "location", "token"], answer: "Line/location, error type, unexpected token or expected symbol" },
-  { id: "p8", prompt: "Does successful compilation prove a program has no logic errors? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "Which translator may stop at the statement currently being executed?", accepted: ["interpreter"], answer: "Interpreter" },
-  { id: "p10", prompt: "Name one method for finding logic errors.", accepted: ["testing", "trace", "tracing", "dry run", "test data", "debugging"], answer: "Testing with known data, tracing or debugging" },
+  { id: "p1", prompt: "Which tool combines object modules into executable/linked code?", accepted: ["linker"], answer: "Linker" },
+  { id: "p2", prompt: "Which tool loads executable code into main memory?", accepted: ["loader"], answer: "Loader" },
+  { id: "p3", prompt: "What is a library routine?", accepted: ["pre written", "pre-written", "reusable", "routine", "module", "function"], answer: "A pre-written reusable routine/module/function that a program can use" },
+  { id: "p4", prompt: "What does a linker resolve between object modules and libraries?", accepted: ["external references", "references", "addresses", "symbols", "unresolved"], answer: "External references / symbols" },
+  { id: "p5", prompt: "What is the usual input to a linker?", accepted: ["object code", "object modules", "object files", "library"], answer: "Object files/modules and library references or routines" },
+  { id: "p6", prompt: "What is the usual result of loading?", accepted: ["memory", "ram", "main memory", "ready to run", "execute"], answer: "The executable is placed in main memory ready to run" },
+  { id: "p7", prompt: "In static linking, is library code copied into the executable? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p8", prompt: "Name one limitation of dynamic linking.", accepted: ["library missing", "must be available", "compatibility", "version", "shared library"], answer: "The shared library must be available and compatible" },
+  { id: "p9", prompt: "Is a linker the same as a compiler? Answer yes or no.", accepted: ["no"], answer: "No. A compiler translates source code; a linker combines object modules and resolves references" },
+  { id: "p10", prompt: "Give one benefit of using libraries.", accepted: ["saves time", "tested", "reuse", "reusable", "less duplication", "reliability"], answer: "Reusable tested routines can save development time and reduce duplication" },
 ];
 
 const mistakes = [
   {
-    wrong: "A logic error is detected automatically by the compiler because the answer is wrong.",
-    fix: "A compiler can detect grammar and some translation errors, but it usually cannot know the intended algorithm. Logic errors are often found by testing or tracing.",
+    wrong: "A linker loads the program into memory.",
+    fix: "A linker combines object modules and resolves external references. A loader places the executable program into main memory.",
   },
   {
-    wrong: "Division by zero is always a syntax error.",
-    fix: "The expression may be valid grammar. If the failure happens while executing with a zero value, it is a runtime error.",
+    wrong: "A loader translates source code into object code.",
+    fix: "A compiler translates source code into object code. A loader loads executable code into memory and prepares it for execution.",
   },
   {
-    wrong: "A runtime error means the program gives the wrong output.",
-    fix: "A runtime error occurs while the program runs and may halt or crash. Wrong output without crashing is usually a logic error.",
+    wrong: "A library is the final executable file.",
+    fix: "A library is a collection of reusable routines or modules. A linker may include or reference library routines when creating executable code.",
   },
   {
-    wrong: "The diagnostic line number is always exactly where the original fault was typed.",
-    fix: "A diagnostic points to where the translator noticed a problem. The cause may be earlier, such as a missing bracket on a previous line.",
+    wrong: "Dynamic linking means the program does not need the library.",
+    fix: "Dynamic linking means the program uses a shared library at load time or run time, so the correct compatible library must be available.",
   },
 ];
 
@@ -116,90 +116,90 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Describe syntax, logic and runtime errors.",
-    answer: "A syntax error occurs when code breaks the grammar rules of the programming language, such as a missing bracket or invalid statement structure. A logic error occurs when the program runs but the algorithm is wrong, so the output is incorrect. A runtime error occurs while the program is executing, for example division by zero or file not found, and may cause the program to halt or raise an exception.",
+    prompt: "Describe the role of a linker.",
+    answer: "A linker combines object modules produced by compilation or assembly with other object modules and required library routines or references. It resolves external references or symbols, for example a call from one module to a routine in another module. The linker can produce executable code or a linked object file. If a required routine cannot be found, a linker error such as an unresolved external reference may be reported.",
     marking: [
-      { mark: "B1", text: "syntax error linked to grammar/language rule violation" },
-      { mark: "B1", text: "valid syntax example such as missing bracket/keyword or invalid structure" },
-      { mark: "B1", text: "logic error linked to program running but wrong result/algorithm" },
-      { mark: "B1", text: "runtime error linked to failure during execution" },
-      { mark: "B1", text: "valid runtime example or consequence such as crash/exception" },
+      { mark: "B1", text: "combines object modules/object code" },
+      { mark: "B1", text: "includes or connects required library routines/modules" },
+      { mark: "B1", text: "resolves external references/symbols between modules" },
+      { mark: "B1", text: "produces executable/linked object code" },
+      { mark: "B1", text: "unresolved external/reference linker error described" },
     ],
     strict: [
-      "Do not accept 'syntax means spelling mistake' unless grammar of code is clear.",
-      "Do not accept logic error as a crash unless wrong-result behaviour is also described.",
-      "Allow run-time as runtime.",
+      "Do not accept 'translates source code' as a linker role.",
+      "Do not award loader marks for saying only 'puts program in memory'.",
+      "Allow references to addresses/symbols if linked to modules or libraries.",
     ],
   },
   {
     title: "Question 2",
-    marks: "3 marks",
-    prompt: "A program runs without crashing but calculates discounts incorrectly. Explain the most likely error type.",
-    answer: "This is most likely a logic error. The program can be translated and executed, so the syntax is likely valid and it is not failing during execution. The problem is that the algorithm, formula or condition used to calculate the discount is wrong. The error would usually be found by testing with known input and expected output or by tracing the calculation.",
+    marks: "4 marks",
+    prompt: "Describe the role of a loader when a program is run.",
+    answer: "A loader places the executable program code and required data into main memory. It may allocate memory and adjust addresses depending on where the program is loaded. It prepares the program for execution by the processor. It does not translate source code or combine object modules; those are compiler/linker roles.",
     marking: [
-      { mark: "B1", text: "logic error identified" },
-      { mark: "B1", text: "program runs/does not crash or can execute" },
-      { mark: "B1", text: "output/calculation/result is incorrect due to algorithm/formula/condition" },
+      { mark: "B1", text: "loads/places executable program code into main memory/RAM" },
+      { mark: "B1", text: "loads required data or program image, or allocates memory" },
+      { mark: "B1", text: "may relocate/adjust addresses" },
+      { mark: "B1", text: "prepares program for execution or distinguishes from compiler/linker role" },
     ],
     strict: [
-      "Do not award identification mark for runtime error in this scenario.",
-      "Do not accept 'computer mistake' without program logic cause.",
-      "Allow wrong formula as algorithm error.",
+      "Do not accept 'loads the website/app' without memory/execution idea.",
+      "Do not accept source-code translation as loader role.",
+      "Allow RAM for main memory.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "Explain how translation diagnostics help a programmer correct errors.",
-    answer: "Translation diagnostics are messages produced by a compiler or interpreter to describe errors found during translation or execution of statements. They may include the line number, error type, unexpected token or expected symbol. This helps the programmer locate the part of the source code that needs checking. However, the reported location may be near the problem rather than the exact cause, for example after a missing bracket.",
+    prompt: "Explain why programmers use libraries.",
+    answer: "A library contains pre-written reusable routines or modules, such as mathematical, input/output or graphics routines. Programmers use libraries so they do not need to write common routines from scratch. This can save development time and reduce duplication. Library routines may also be tested and reliable, but they must be linked or available when the program runs.",
     marking: [
-      { mark: "B1", text: "diagnostics are messages/reports from compiler/interpreter/translator" },
-      { mark: "B1", text: "include useful detail such as line number/location/error type/token/expected symbol" },
-      { mark: "B1", text: "help programmer locate or correct the source of error" },
-      { mark: "B1", text: "limitation stated, such as location may not be exact or may be near the cause" },
+      { mark: "B1", text: "library contains pre-written/reusable routines/modules" },
+      { mark: "B1", text: "valid example such as maths, I/O, graphics or string routines" },
+      { mark: "B1", text: "saves development time / avoids rewriting common code / reduces duplication" },
+      { mark: "B1", text: "tested/reliable code or need to link/make available at run time" },
     ],
     strict: [
-      "Do not accept 'it fixes the code automatically' as diagnostic purpose.",
-      "Do not require all listed details; one valid diagnostic detail is enough for the detail mark.",
-      "Allow error message for diagnostic message.",
+      "Do not accept 'stores data files' as the main purpose of a program library.",
+      "Do not require a specific named routine if the example type is clear.",
+      "Allow API references only if reusable code/routines are described.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Compare how a compiler and an interpreter may report errors.",
-    answer: "A compiler translates the whole program before execution and may produce a list of errors after attempting compilation. The programmer may need to correct errors before the program can run. An interpreter translates and executes statements as the program runs and may stop at or near the statement where an error is found. This can give immediate feedback during development, but it may only reveal later errors when execution reaches those statements.",
+    prompt: "Compare static linking and dynamic linking.",
+    answer: "In static linking, required library code is copied into the executable at link time. This can make the executable more self-contained, but the file may be larger and duplicate library code across programs. In dynamic linking, the program uses a shared library at load time or run time. This can reduce duplication and allow programs to share library code, but the correct compatible library must be available.",
     marking: [
-      { mark: "B1", text: "compiler translates/checks whole program before execution" },
-      { mark: "B1", text: "compiler may produce a list of errors after compilation attempt" },
-      { mark: "B1", text: "interpreter translates/executes statement by statement" },
-      { mark: "B1", text: "interpreter may stop at/near current statement with immediate error feedback" },
-      { mark: "B1", text: "valid consequence such as later errors found only when reached or development usefulness" },
+      { mark: "B1", text: "static linking copies/includes library code into executable at link time" },
+      { mark: "B1", text: "static advantage or limitation such as self-contained or larger executable" },
+      { mark: "B1", text: "dynamic linking uses shared library at load/run time" },
+      { mark: "B1", text: "dynamic advantage such as reduced duplication/shared updates/smaller executable" },
+      { mark: "B1", text: "dynamic limitation such as missing/incompatible library prevents correct running" },
     ],
     strict: [
-      "Do not accept 'compiler finds all errors' because logic errors may remain.",
-      "Do not accept 'interpreter has no errors' as a comparison.",
-      "Allow line by line for statement by statement.",
+      "Do not accept 'static means not moving' or 'dynamic means faster' without linking context.",
+      "Do not require both load time and run time; either is acceptable for dynamic linking.",
+      "Allow shared object/DLL style examples if explained.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Identify each error and justify it: missing ENDIF; array index outside the valid range while running; using < instead of <= so the final item is skipped.",
-    answer: "A missing ENDIF is a syntax error because the program structure does not follow the grammar rules for the selection statement. An array index outside the valid range while running is a runtime error because the program fails during execution for a particular value or state. Using < instead of <= so the final item is skipped is a logic error because the code may run without crashing, but the algorithm gives the wrong result.",
+    prompt: "A program has been compiled into several object files and uses a graphics library. Explain the steps needed before it can run.",
+    answer: "The object files need to be linked. The linker combines the object modules and resolves references between them, including references to graphics library routines. It produces executable or linked code, or reports an unresolved external reference if a required routine cannot be found. The loader then places the executable code and required data into main memory, may adjust addresses, and prepares the program for execution by the processor.",
     marking: [
-      { mark: "B1", text: "missing ENDIF classified as syntax error" },
-      { mark: "B1", text: "syntax justification linked to grammar/structure/selection statement" },
-      { mark: "B1", text: "array index outside range while running classified as runtime error" },
-      { mark: "B1", text: "runtime justification linked to failure during execution/value at run time" },
-      { mark: "B1", text: "< instead of <= final item skipped classified as logic error" },
-      { mark: "B1", text: "logic justification linked to valid running code but wrong algorithm/result" },
+      { mark: "B1", text: "object files/modules must be linked" },
+      { mark: "B1", text: "linker combines object modules" },
+      { mark: "B1", text: "linker resolves references to graphics library routines/external references" },
+      { mark: "B1", text: "linker produces executable/linked code or reports unresolved reference" },
+      { mark: "B1", text: "loader places executable/program/data into main memory" },
+      { mark: "B1", text: "loader prepares execution / adjusts addresses / CPU can execute" },
     ],
     strict: [
-      "Do not award justification mark for repeating only the category name.",
-      "Do not classify skipped final item as syntax if the expression is valid code.",
-      "Allow out-of-bounds for array index outside valid range.",
-      "Award each classification and justification independently.",
+      "Do not award compiler-stage marks unless linked to existing object files in the scenario.",
+      "Do not merge linker and loader into one vague 'runs it' statement for full marks.",
+      "Allow RAM for main memory.",
     ],
   },
 ];
@@ -215,10 +215,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    logic: "Correct. It runs, but the algorithm or formula is wrong.",
-    syntax: "No. A syntax error would break grammar and usually be caught before successful running.",
-    runtime: "No. A runtime error happens during execution and may halt or crash the program.",
-    linker: "No. Linker errors involve unresolved references after object code, not a wrong bill formula.",
+    linker: "Correct. The linker resolves the reference to the library routine and connects the required code.",
+    loader: "No. The loader places executable code into memory; it does not write or locate missing routines by itself.",
+    syntax: "No. Syntax analysis checks grammar earlier during compilation.",
+    antivirus: "No. Antivirus may scan files, but it does not link external references.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -262,7 +262,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("syntax");
+  renderExample("library");
 }
 
 function renderPractice() {

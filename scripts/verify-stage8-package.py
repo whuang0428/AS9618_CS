@@ -131,10 +131,10 @@ def main() -> None:
         "resource_markdown": sum(name.startswith("resources/") and name.endswith(".md") for name in payload),
     }
     expected_counts = {
-        "lesson_markdown": 150,
-        "lesson_html": 150,
-        "lesson_js": 150,
-        "lesson_css": 150,
+        "lesson_markdown": 151,
+        "lesson_html": 151,
+        "lesson_js": 151,
+        "lesson_css": 151,
         "assessment_markdown": 3,
         "resource_markdown": 4,
     }
@@ -182,7 +182,7 @@ def main() -> None:
 
     print(
         f"Stage 8 package verification passed: {len(payload)} payload files, one manifest, "
-        f"150 lesson triples, complete local references, source parity and sha256 {archive_hash}."
+        f"151 lesson triples, complete local references, source parity and sha256 {archive_hash}."
     )
 
 

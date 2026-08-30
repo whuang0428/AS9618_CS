@@ -75,6 +75,13 @@ table.mark-scheme-table :where(th, td) {
   word-break: break-word;
 }
 
+/* URLs, slash-delimited examples and long lesson titles are authored text,
+   not layout widths. Let them wrap inside the current content column. */
+.lesson-content :where(p, h2, h3, h4, li, td, th, strong, a, summary) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 /* Student pages should size guidance and hero visuals to their actual content. */
 .guidance-grid {
   grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)) !important;

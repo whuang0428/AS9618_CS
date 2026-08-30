@@ -122,7 +122,7 @@ pre {
   margin-bottom: 4px;
 }
 
-.adt-visual {
+.csv-visual {
   display: grid;
   gap: 14px;
   align-content: center;
@@ -132,20 +132,18 @@ pre {
   background: linear-gradient(135deg, #17324d, #2563eb 50%, #047857);
   border-radius: 8px;
 }
-.mini-adt {
-  display: grid;
-  gap: 8px;
+.file-card, .file-caption {
   background: rgba(255, 255, 255, 0.94);
   color: #12304f;
   border-radius: 8px;
   padding: 16px;
   font-weight: 850;
 }
-.mini-adt strong { color: #92400e; font-size: 1.2rem; }
-.mini-adt span { padding: 8px; border: 1px solid #dbeafe; border-radius: 6px; }
-.mini-adt em { color: var(--accent-dark); font-style: normal; }
-.queue-line { grid-auto-flow: column; grid-template-columns: auto repeat(3, minmax(0, 1fr)) auto; align-items: center; }
-.adt-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.file-card { display: grid; gap: 8px; }
+.file-card strong { color: #92400e; font-size: 1.2rem; }
+.file-card span { padding: 8px; border: 1px solid #dbeafe; border-radius: 6px; font-family: "SFMono-Regular", Consolas, monospace; }
+.file-caption { text-align: center; }
+.csv-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
 
 .guidance-grid {
   display: grid;
@@ -160,12 +158,12 @@ pre {
 .section-title { margin-bottom: 18px; }
 .section-title p:not(.eyebrow) { color: var(--muted); max-width: 78ch; }
 
-.hook-grid, .mistake-grid, .sim-grid {
+.hook-grid, .mistake-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
-.choice-card, .mistake-grid article, .sim-grid article {
+.choice-card, .mistake-grid article {
   border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 8px;
@@ -190,7 +188,7 @@ pre {
   border-radius: 8px;
   overflow: hidden;
 }
-.concept-table .table-row, .ops-table .table-row, .impl-table .table-row {
+.concept-table .table-row, .csv-table .table-row, .validate-table .table-row {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .result-table .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
@@ -215,37 +213,22 @@ pre {
   border-radius: 8px;
   padding: 16px;
   background: #ffffff;
-  min-width: 0;
-  max-width: 100%;
 }
-.code-grid h3, .worked-card h3, .sim-grid h3 { margin-top: 0; color: var(--accent-dark); }
+.code-grid h3, .worked-card h3 { margin-top: 0; color: var(--accent-dark); }
 
 .converter-grid {
   display: grid;
-  grid-template-columns: minmax(100px, 1fr) repeat(4, auto);
-  gap: 12px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(150px, 0.7fr) auto;
+  gap: 14px;
   align-items: end;
 }
 .converter-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 700; }
-.converter-grid input, .practice-card input {
+.converter-grid input, .converter-grid select, .practice-card input {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px 12px;
   background: #ffffff;
-}
-.sim-grid { margin-top: 16px; }
-.adt-state {
-  display: grid;
-  gap: 8px;
-  min-height: 96px;
-}
-.adt-state span, .adt-state em {
-  display: block;
-  padding: 9px 11px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #f8fafc;
 }
 
 .trace-actions {
@@ -330,18 +313,15 @@ pre {
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid, .sim-grid { grid-template-columns: 1fr; }
-  .adt-visual { min-height: 320px; }
-  .queue-line { grid-auto-flow: row; grid-template-columns: 1fr; }
+  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid { grid-template-columns: 1fr; }
+  .csv-visual { min-height: 320px; }
 }
 
 @media (max-width: 640px) {
-  .layout { width: 100%; max-width: 100vw; min-width: 0; padding-inline: 10px; }
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
-  .lesson-content, .hero, .panel, .guidance-grid > article { width: 100%; max-width: 100%; min-width: 0; }
   .hook-grid, .mistake-grid, .answer-row { grid-template-columns: 1fr; }
-  .concept-table .table-row, .ops-table .table-row, .impl-table .table-row, .result-table .table-row {
+  .concept-table .table-row, .csv-table .table-row, .validate-table .table-row, .result-table .table-row {
     grid-template-columns: 1fr;
   }
   .table-row > div { border-right: 0; }

@@ -1,86 +1,66 @@
-const routeStates = {
-  normal: {
-    result: "Packets arrive and can be reassembled.",
-    method: "All packets are delivered. The receiver uses sequence numbers to rebuild the original message.",
-    packets: [
-      { id: "1", path: "A-B-D", state: "ok" },
-      { id: "2", path: "A-C-D", state: "ok" },
-      { id: "3", path: "A-B-D", state: "ok" },
-    ],
+const recommendations = {
+  school: {
+    result: "Choose client-server.",
+    method: "The school needs central management of users, permissions, data and backups. Clients request services from managed servers.",
   },
-  congested: {
-    result: "Packets may arrive out of order.",
-    method: "Packet 2 takes a slower route because one path is congested. Sequence numbers allow correct reassembly.",
-    packets: [
-      { id: "1", path: "A-B-D", state: "ok" },
-      { id: "3", path: "A-B-D", state: "ok" },
-      { id: "2", path: "A-C-E-D", state: "slow" },
-    ],
+  home: {
+    result: "Peer-to-peer may be suitable.",
+    method: "A few trusted devices can share files directly without buying or maintaining a dedicated server.",
   },
-  lost: {
-    result: "A missing packet must be requested again.",
-    method: "The receiver detects a missing sequence number and can request retransmission of the missing packet.",
-    packets: [
-      { id: "1", path: "A-B-D", state: "ok" },
-      { id: "2", path: "A-C-D", state: "lost" },
-      { id: "3", path: "A-B-D", state: "ok" },
-    ],
+  web: {
+    result: "Choose client-server.",
+    method: "Many clients request web pages or data from one or more managed servers. Centralised hosting supports control, security and maintenance.",
   },
-  corrupt: {
-    result: "A corrupt packet is detected by an error check.",
-    method: "Checksum or other error-checking data can show that a packet was corrupted, so retransmission can be requested.",
-    packets: [
-      { id: "1", path: "A-B-D", state: "ok" },
-      { id: "2", path: "A-C-D", state: "corrupt" },
-      { id: "3", path: "A-B-D", state: "ok" },
-    ],
+  distributed: {
+    result: "Peer-to-peer may be suitable.",
+    method: "Peers can both request and provide file parts, so sharing is distributed instead of relying on one central source.",
   },
 };
 
 const examples = {
-  structure: {
-    title: "Example 1: packet structure",
-    problem: "A file is split into packets. Name three items each packet may need and explain one purpose.",
+  school: {
+    title: "Example 1: school network",
+    problem: "A school wants controlled logins, shared storage and regular backups.",
     steps: [
-      "Destination address identifies where the packet should be sent.",
-      "Source address identifies where the packet came from or where replies can be sent.",
-      "Sequence number allows the receiver to put packets back in the correct order.",
-      "Checksum/error check can help detect corruption during transmission.",
+      "Students' computers act as clients because they request services.",
+      "The file/authentication server provides storage, login and permission services.",
+      "Client-server is suitable because management is centralised.",
+      "The trade-off is dependence on server availability unless redundancy is used.",
     ],
   },
-  order: {
-    title: "Example 2: out-of-order arrival",
-    problem: "Packets 1, 3 and 2 arrive at a receiver.",
+  home: {
+    title: "Example 2: home file sharing",
+    problem: "Three home computers share photos directly with each other.",
     steps: [
-      "This can happen because packets may take different routes.",
-      "Different routes may have different delays or congestion.",
-      "The receiver uses sequence numbers to reorder the packets.",
-      "The message is reassembled as 1, 2, 3.",
+      "Each computer may request files from another computer.",
+      "Each computer may also provide files to others.",
+      "This is peer-to-peer because devices can act as both client and server.",
+      "It is simple and low cost, but permissions/backups may be inconsistent.",
     ],
   },
-  checksum: {
-    title: "Example 3: checksum and retransmission",
-    problem: "A packet arrives with a checksum that does not match.",
+  failure: {
+    title: "Example 3: failure analysis",
+    problem: "A client-server file server fails during the school day.",
     steps: [
-      "The packet may have been corrupted during transmission.",
-      "The receiver should not silently use corrupt data.",
-      "The receiver can request the packet to be resent.",
-      "A strong answer names the error check and the consequence.",
+      "Clients may still run local software, but cannot access the server service.",
+      "Shared files, logins or printing may fail if those services depend on the server.",
+      "The issue is service availability, not the definition of LAN or WAN.",
+      "A strong answer links the failure to the affected service.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the actual data part of a packet called?", accepted: ["payload"], answer: "Payload" },
-  { id: "p2", prompt: "Which packet part commonly contains source and destination addresses?", accepted: ["header"], answer: "Header" },
-  { id: "p3", prompt: "What number helps reassemble packets in the correct order?", accepted: ["sequence number", "sequence"], answer: "Sequence number" },
-  { id: "p4", prompt: "What can be used to detect whether a packet has been corrupted?", accepted: ["checksum", "error check", "error checking", "check sum"], answer: "Checksum / error checking data" },
-  { id: "p5", prompt: "What device forwards packets between networks?", accepted: ["router"], answer: "Router" },
-  { id: "p6", prompt: "Can packets from one message take different routes? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
-  { id: "p7", prompt: "What should happen if a packet is missing or corrupt?", accepted: ["retransmission", "retransmit", "resent", "resend", "request retransmission"], answer: "Request retransmission / resend the packet" },
-  { id: "p8", prompt: "Destination address tells the network where the packet came from or where it is going?", accepted: ["where it is going", "going", "destination"], answer: "Where it is going" },
-  { id: "p9", prompt: "Packet switching sends one large file as one block or splits it into packets?", accepted: ["splits it into packets", "splits", "packets"], answer: "Splits it into packets" },
-  { id: "p10", prompt: "Name one reason packets may arrive out of order.", accepted: ["different routes", "congestion", "different delays", "routing"], answer: "Different routes / congestion / different delays" },
+  { id: "p1", prompt: "A device that requests a service is called a...", accepted: ["client"], answer: "Client" },
+  { id: "p2", prompt: "A device or software that provides a service is called a...", accepted: ["server"], answer: "Server" },
+  { id: "p3", prompt: "In which model can devices act as both client and server?", accepted: ["peer-to-peer", "p2p", "peer to peer"], answer: "Peer-to-peer" },
+  { id: "p4", prompt: "Which model is usually better for central user account management?", accepted: ["client-server", "client server"], answer: "Client-server" },
+  { id: "p5", prompt: "Which model may avoid buying a dedicated server for a small trusted network?", accepted: ["peer-to-peer", "p2p", "peer to peer"], answer: "Peer-to-peer" },
+  { id: "p6", prompt: "Name one advantage of client-server.", accepted: ["central management", "centralised management", "centralized management", "security", "backup", "backups", "permissions"], answer: "Central management / security / backups / permissions" },
+  { id: "p7", prompt: "Name one disadvantage of client-server.", accepted: ["server failure", "single point of failure", "expensive", "cost", "maintenance", "administrator"], answer: "Server failure can affect many clients / higher cost / maintenance" },
+  { id: "p8", prompt: "Name one disadvantage of peer-to-peer.", accepted: ["harder to manage", "security", "backup", "backups", "inconsistent", "availability", "peers offline"], answer: "Harder management/security/backups; resources depend on peers being online" },
+  { id: "p9", prompt: "Client-server and peer-to-peer are network models or topologies?", accepted: ["models", "network models"], answer: "Network models" },
+  { id: "p10", prompt: "A public website serving many users is usually which model?", accepted: ["client-server", "client server"], answer: "Client-server" },
 ];
 
 
@@ -93,90 +73,89 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A file is split into packets before transmission. Explain why packet switching is used.",
-    answer: "Packet switching splits data into smaller packets. Packets can share network links with packets from other users and may be routed independently. If a packet is lost or corrupt, only that packet needs to be resent rather than the whole file.",
+    prompt: "Describe the roles of a client and a server in a network.",
+    answer: "A client requests a service or resource, such as a web page or file. A server provides a service or resource to clients, such as file storage, authentication or web hosting.",
     marking: [
-      { mark: "B1", text: "data/file is split into smaller packets" },
-      { mark: "B1", text: "packets can share network links / improve use of network capacity" },
-      { mark: "B1", text: "packets can be routed independently / use different routes" },
-      { mark: "B1", text: "only missing/corrupt packets need retransmission" },
+      { mark: "B1", text: "client requests a service/resource" },
+      { mark: "B1", text: "valid example of a client request" },
+      { mark: "B1", text: "server provides a service/resource" },
+      { mark: "B1", text: "valid example of a server service" },
     ],
     strict: [
-      "Do not accept only 'it is faster'.",
-      "Do not require circuit switching comparison.",
-      "Award independent route point only if routing is clearly stated.",
+      "Do not accept only 'client is a computer' or 'server is a big computer'.",
+      "Do not require server to be a separate physical machine.",
+      "Award software role descriptions where clearly correct.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Describe three items of information that may be stored in a packet header and explain why two of them are needed.",
-    answer: "A header may contain the source address, destination address and sequence number. The destination address is needed so routers know where to forward the packet. The sequence number is needed so the receiver can reassemble packets in the correct order.",
+    prompt: "A school network has 600 users, shared storage and managed user accounts. Explain why a client-server model is suitable.",
+    answer: "A client-server model is suitable because the school can centrally manage accounts, permissions and shared files on servers. Backups and updates can also be controlled centrally. This helps maintain security and consistency for many users, although the school must manage server cost and availability.",
     marking: [
-      { mark: "B1", text: "source address" },
-      { mark: "B1", text: "destination address" },
-      { mark: "B1", text: "sequence number / packet number" },
-      { mark: "B1", text: "valid purpose of one named header item" },
-      { mark: "B1", text: "second valid purpose or clear link to routing/reassembly" },
+      { mark: "B1", text: "central management of accounts/permissions" },
+      { mark: "B1", text: "central shared storage/backups/updates" },
+      { mark: "B1", text: "consistent access-control or security policies can be applied centrally" },
+      { mark: "B1", text: "links to many users / school scenario" },
+      { mark: "B1", text: "balanced point such as server cost or server availability" },
     ],
     strict: [
-      "Do not award 'address' twice unless source and destination are distinguished.",
-      "Do not accept payload as a header item.",
-      "Allow protocol/control information if its purpose is clear.",
+      "Do not accept only 'it is faster'.",
+      "Do not award generic security claims unless linked to central control/permissions.",
+      "Allow equivalent wording for centralised/centralized management.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Packets from the same message arrive in the order 1, 4, 2, 3. Explain how this can happen and how the receiver deals with it.",
-    answer: "Packets may take different routes through the network, and those routes may have different delays or congestion. Therefore packets can arrive out of order. The receiver uses sequence numbers to reorder the packets and reassemble the original message.",
+    marks: "5 marks",
+    prompt: "Compare peer-to-peer networking with client-server networking.",
+    answer: "In peer-to-peer networking, devices can act as both clients and servers and share resources directly. This may reduce cost because no dedicated server is needed, but it can be harder to manage security, backups and availability. In client-server networking, clients request services from servers, giving central management but requiring server hardware/maintenance and making server failure significant.",
     marking: [
-      { mark: "B1", text: "packets may take different routes" },
-      { mark: "B1", text: "routes may have different delays/congestion" },
-      { mark: "B1", text: "sequence numbers identify the correct order" },
-      { mark: "B1", text: "receiver reassembles/reorders packets into original message" },
+      { mark: "B1", text: "peer devices can act as both client and server / share directly" },
+      { mark: "B1", text: "peer-to-peer may reduce cost / no dedicated server needed" },
+      { mark: "B1", text: "peer-to-peer harder to manage security/backups/availability" },
+      { mark: "B1", text: "client-server uses clients requesting services from servers / central management" },
+      { mark: "B1", text: "client-server has cost/maintenance/server failure issue" },
     ],
     strict: [
-      "Do not accept only 'internet is busy'.",
-      "Do not say packets must always arrive in order.",
-      "Answer must include receiver action for final mark.",
+      "Do not compare by topology shape.",
+      "Do not say peer-to-peer is always insecure.",
+      "Award points only where linked to the correct model.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "A packet is corrupted during transmission. Explain how this may be detected and what may happen next.",
-    answer: "Error-checking information such as a checksum can be stored with the packet. The receiver calculates/checks the value and compares it with the expected value. If the check fails, the packet is treated as corrupt and retransmission can be requested.",
+    prompt: "A small office of four trusted users shares files directly between laptops. Explain one advantage and one disadvantage of a peer-to-peer model for this office.",
+    answer: "An advantage is that it can be low cost and simple because the office does not need a dedicated server. A disadvantage is that file availability, backups and access control may be inconsistent because each laptop manages its own shared resources and may be offline.",
     marking: [
-      { mark: "B1", text: "checksum/error-checking information is used" },
-      { mark: "B1", text: "receiver checks/calculates/compares the value" },
-      { mark: "B1", text: "failed check indicates corruption/error" },
-      { mark: "B1", text: "packet can be requested again/retransmitted" },
+      { mark: "B1", text: "advantage: no dedicated server / lower cost / simpler setup" },
+      { mark: "B1", text: "links advantage to small office/trusted users" },
+      { mark: "B1", text: "disadvantage: harder backup/security/access control or peer availability" },
+      { mark: "B1", text: "links disadvantage to peers managing resources or being offline" },
     ],
     strict: [
-      "Do not accept only 'the computer knows'.",
-      "Do not require a specific checksum algorithm.",
-      "Allow equivalent error-detection terminology.",
+      "Do not accept only 'cheap' without reason.",
+      "Do not award client-server advantages as peer-to-peer advantages.",
+      "Allow 'files unavailable if host laptop is off' as availability explanation.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "Explain the difference between payload and packet control information.",
-    answer: "The payload is the actual data being transmitted, such as part of a file or message. Control information is metadata used to deliver or check the packet, such as source address, destination address, sequence number or checksum. Control information is needed for routing, reassembly and error detection, but it is not the user's actual message content.",
+    marks: "3 marks",
+    prompt: "A student says peer-to-peer is the same as mesh topology. Explain why this is incorrect.",
+    answer: "Peer-to-peer is a network model describing device roles: peers can request and provide resources. Mesh is a topology describing how devices or nodes are connected with multiple paths. A peer-to-peer network does not have to be physically arranged as a mesh.",
     marking: [
-      { mark: "B1", text: "payload is actual data / part of file or message" },
-      { mark: "B1", text: "control information is metadata about delivery/checking" },
-      { mark: "B1", text: "valid example such as source/destination address" },
-      { mark: "B1", text: "valid example such as sequence number/checksum" },
-      { mark: "B1", text: "purpose such as routing/reassembly/error detection" },
+      { mark: "B1", text: "peer-to-peer describes roles/resource sharing" },
+      { mark: "B1", text: "mesh describes connections/topology/multiple paths" },
+      { mark: "B1", text: "states that model and topology are different concepts" },
     ],
     strict: [
-      "Do not accept only 'payload is important data'.",
-      "Do not treat checksum as payload.",
-      "Award examples only if linked to packet control information.",
+      "Do not accept only 'they are different'.",
+      "Do not require a diagram.",
+      "Award equivalent explanation using logical/physical organisation if clear.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
@@ -196,32 +175,25 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "routes"
-        ? "Correct. Smaller packets can be routed independently, share links and be resent individually if needed."
-        : "No. Packet switching still needs addresses and routes; it does not remove the need for addressing and routing.";
+      feedback.textContent = button.dataset.hook === "client"
+        ? "Correct. The student computer is requesting a file service, so it is acting as a client."
+        : "Not this time. Focus on the role in this transaction: the computer is asking for a service.";
     });
   });
 }
 
-function setupRouteTool() {
-  const select = document.querySelector("#routeInput");
-  const visual = document.querySelector("#routeVisual");
-  const result = document.querySelector("#routeResult");
-  const method = document.querySelector("#routeMethod");
-  function simulate() {
-    const state = routeStates[select.value];
-    visual.innerHTML = state.packets.map((packet) => `
-      <div class="packet-chip ${packet.state}">
-        <strong>Packet ${packet.id}</strong>
-        <span>${packet.path}</span>
-      </div>
-    `).join("");
-    result.textContent = state.result;
-    method.textContent = state.method;
+function setupRecommendationTool() {
+  const select = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#recommendResult");
+  const method = document.querySelector("#recommendMethod");
+  function recommend() {
+    const item = recommendations[select.value];
+    result.textContent = item.result;
+    method.textContent = item.method;
   }
-  select.addEventListener("change", simulate);
-  document.querySelector("#routeBtn").addEventListener("click", simulate);
-  simulate();
+  select.addEventListener("change", recommend);
+  document.querySelector("#recommendBtn").addEventListener("click", recommend);
+  recommend();
 }
 
 function renderExample(key) {
@@ -241,7 +213,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("structure");
+  renderExample("school");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -289,7 +261,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Strong answers name the packet item and what it does.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Strong model answers name roles, management and consequences.`;
   });
 }
 
@@ -326,7 +298,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupRouteTool();
+  setupRecommendationTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

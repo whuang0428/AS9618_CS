@@ -30,7 +30,7 @@ const rows = [...raw.desktop, ...raw.mobile].map((row) => {
   };
 });
 const keyboard = {
-  status: "PassedSystemKeyboard", driver: "macOS Computer Use", browser: "Google Chrome", target: "http://127.0.0.1:8769/",
+  status: "PassedSystemKeyboard", driver: "macOS Computer Use", browser: "Google Chrome", target: "http://127.0.0.1:8766/web/",
   reviewRound: "remediation-v2-stage7-system-keyboard-r1", inAppInjectionFailureRetained: raw.keyboard,
   checks: [
     { id: "skip-link", keys: "Tab, Return", status: "Pass", observed: "Skip to main content became focused first; Return changed the URL fragment to #main-content and focused the main container." },
@@ -44,7 +44,7 @@ const keyboard = {
   ],
 };
 const evidence = {
-  schemaVersion: 1, remediation: "v2", stage: 7, generatedDate: "2026-08-28", reviewRound: "remediation-v2-stage7-browser-r1",
+  schemaVersion: 1, remediation: "v2", stage: 7, generatedDate: "2026-08-29", reviewRound: "remediation-v2-stage7-browser-r1",
   sourceApprovalImported: false, oldApprovedRowsUsedForDecision: false, pageCount: pageDefinitions.length,
   viewportRecordCount: rows.length, failedRecords: rows.filter(({ status }) => status !== "PassedCurrentBrowser").length,
   totals: { solidTextRuns: rows.reduce((sum, row) => sum + row.contrast.solidTextRuns, 0), gradientTextRuns: rows.reduce((sum, row) => sum + row.contrast.gradientTextRuns, 0), contrastFailures: rows.reduce((sum, row) => sum + row.contrast.failures, 0) },
@@ -52,6 +52,6 @@ const evidence = {
   postGenerationRescan: raw.rescannedAfterGeneration ?? null,
   keyboard, records: rows,
 };
-if (evidence.viewportRecordCount !== 306 || evidence.failedRecords !== 0) throw new Error("Current browser scan is incomplete or failed");
+if (evidence.viewportRecordCount !== 308 || evidence.failedRecords !== 0) throw new Error("Current browser scan is incomplete or failed");
 fs.writeFileSync(path.join(root, "audits", "remediation-v2-stage7-browser-evidence.json"), `${JSON.stringify(evidence, null, 2)}\n`);
-console.log(`Recorded Stage 7 current-browser evidence: ${evidence.viewportRecordCount}/306 viewport records and ${keyboard.checks.length}/8 system-keyboard flows passed.`);
+console.log(`Recorded Stage 7 current-browser evidence: ${evidence.viewportRecordCount}/308 viewport records and ${keyboard.checks.length}/8 system-keyboard flows passed.`);

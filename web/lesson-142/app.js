@@ -1,95 +1,97 @@
-const modelAdvice = {
-  stable: {
-    model: "Waterfall / structured lifecycle",
-    reason: "Requirements are stable, so a planned sequence with documentation and sign-off is suitable.",
-    warning: "If requirements change late, earlier stages may need expensive rework.",
+const skeletons = {
+  pass: {
+    title: "Count pass marks in an array",
+    code: "PassCount <- 0\nFOR Index <- 1 TO 10\n    INPUT Marks[Index]\n    IF Marks[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+    checks: ["counter initialised", "loop bounds match 10 marks", "array index consistent", "count updated only for passes", "final output after loop"],
   },
-  uncertain: {
-    model: "Rapid application development (RAD)",
-    reason: "Rapid prototypes, fixed time boxes and frequent user feedback help refine unclear requirements before too much is built.",
-    warning: "RAD still needs control, testing and available informed users.",
+  valid: {
+    title: "Input a valid mark",
+    code: "REPEAT\n    INPUT Mark\n    IF Mark >= 0 AND Mark <= 100 THEN\n        Valid <- TRUE\n    ELSE\n        OUTPUT \"Enter a mark from 0 to 100\"\n        Valid <- FALSE\n    ENDIF\nUNTIL Valid = TRUE",
+    checks: ["input occurs inside loop", "lower and upper bounds checked", "error message is useful", "loop stops when valid"],
   },
-  critical: {
-    model: "Planned lifecycle with strong testing and review",
-    reason: "High-risk systems need evidence, traceability and careful testing before release.",
-    warning: "Rapid change without control can increase risk.",
+  file: {
+    title: "Read and output every file line",
+    code: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
+    checks: ["file opened for read", "EOF used safely", "record read inside loop", "file closed after loop"],
   },
 };
 
-const orderAdvice = {
-  "analysis-design": {
-    first: "Analysis usually comes before design.",
-    reason: "Design should be based on identified requirements, users and constraints.",
-  },
-  "design-code": {
-    first: "Design usually comes before coding.",
-    reason: "Coding (implementation) should follow a planned interface, data and algorithm design.",
-  },
-  "test-maintain": {
-    first: "Testing usually comes before release and maintenance.",
-    reason: "Maintenance happens after use or release, while testing checks the system before or during release.",
-  },
-};
+const checklist = [
+  "Have I initialised counters/totals before using them?",
+  "Do loop bounds match the question exactly?",
+  "Are array indexes consistent?",
+  "Does every IF have a clear condition and ending?",
+  "Are subroutine parameters and return values clear?",
+  "Is file handling opened, processed and closed?",
+  "Is Java syntax removed from the pseudocode answer?",
+  "Can the fragment be traced with a small example?",
+];
 
 const examples = {
-  booking: {
-    title: "Example 1: School booking system",
-    answer: "Analysis should identify who books rooms, what data is stored, booking rules, conflicts and reports. Design then plans screens, validation, data structures and algorithms. Coding implements the design. Testing checks requirements such as rejecting double bookings. Review of the evidence can judge whether user needs are met, and maintenance fixes faults or adapts to new school rules.",
-    points: [
-      "Analysis before design prevents guessing requirements.",
-      "Testing is linked to a measurable requirement.",
-      "Maintenance is not failure; it is controlled change after release.",
+  pass: {
+    title: "Example 1: Pass counter",
+    code: skeletons.pass.code,
+    marks: [
+      ["B1", "PassCount initialised to 0"],
+      ["M1", "FOR loop processes all 10 marks"],
+      ["M1", "IF tests pass condition"],
+      ["A1", "PassCount increments inside correct branch"],
+      ["A1", "outputs final PassCount after loop"],
     ],
   },
-  change: {
-    title: "Example 2: Changing requirements",
-    answer: "If users discover during testing that they need recurring bookings, the project may return to analysis to refine the requirement and then design to change the data model. This shows the lifecycle can be iterative rather than a fixed one-way checklist.",
-    points: [
-      "Feedback can move the project back to earlier stages.",
-      "A clear requirement change affects design and coding (implementation).",
-      "The answer names the trigger: user feedback during testing.",
+  max: {
+    title: "Example 2: Highest mark",
+    code: "Highest <- Marks[1]\nFOR Index <- 2 TO 10\n    IF Marks[Index] > Highest THEN\n        Highest <- Marks[Index]\n    ENDIF\nNEXT Index\nOUTPUT Highest",
+    marks: [
+      ["B1", "Highest initialised to a real array value"],
+      ["M1", "loop starts after initial value"],
+      ["M1", "compares current element with Highest"],
+      ["A1", "updates Highest correctly"],
+      ["A1", "outputs Highest after loop"],
     ],
   },
-  maintenance: {
-    title: "Example 3: Maintenance after release",
-    answer: "Maintenance may correct faults, adapt the system to new requirements, or improve performance/usability. For example, a booking system may need an update when the school adds weekend bookings. The maintenance log records what changed and why.",
-    points: [
-      "Corrective maintenance fixes faults.",
-      "Adaptive maintenance handles changed requirements or environment.",
-      "Perfective maintenance improves usability or performance.",
+  file: {
+    title: "Example 3: File output",
+    code: skeletons.file.code,
+    marks: [
+      ["B1", "OPENFILE uses FOR READ"],
+      ["M1", "WHILE NOT EOF loop used"],
+      ["M1", "READFILE reads into variable"],
+      ["B1", "outputs line read"],
+      ["A1", "CLOSEFILE after loop"],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which lifecycle stage identifies requirements?", accepted: ["analysis"], answer: "Analysis." },
-  { id: "p2", prompt: "Which stage plans interfaces, data and algorithms?", accepted: ["design"], answer: "Design." },
-  { id: "p3", prompt: "Which named syllabus stage turns the design into code/modules?", accepted: ["coding", "implementation"], answer: "Coding (also described as implementation)." },
-  { id: "p4", prompt: "Which stage checks the system against expected results?", accepted: ["testing"], answer: "Testing." },
-  { id: "p5", prompt: "Which review activity judges whether the completed system meets objectives?", accepted: ["evaluation", "review"], answer: "Evaluation or post-implementation review; this is an activity, not one of the five named syllabus stages." },
-  { id: "p6", prompt: "Which stage fixes, adapts or improves the system after release?", accepted: ["maintenance"], answer: "Maintenance." },
-  { id: "p7", prompt: "Which model is most one-way and sequential: waterfall or iterative?", accepted: ["waterfall"], answer: "Waterfall." },
-  { id: "p8", prompt: "Which named model uses rapid prototypes, time boxes and frequent user involvement?", accepted: ["rad", "rapid application development"], answer: "Rapid application development (RAD)." },
-  { id: "p9", prompt: "Name one artefact produced during analysis.", accepted: ["requirements", "specification"], answer: "Requirements specification." },
-  { id: "p10", prompt: "True or false: testing can reveal the need to revisit design.", accepted: ["true"], answer: "True." },
+  { id: "p1", prompt: "Which variable should be initialised before counting pass marks?", accepted: ["passcount", "pass count", "counter"], answer: "PassCount / counter should be initialised before the loop." },
+  { id: "p2", prompt: "For 10 array items using 1-based indexing, write the loop range.", accepted: ["1 to 10"], answer: "FOR Index <- 1 TO 10." },
+  { id: "p3", prompt: "Which construct is used to choose between pass and fail branches?", accepted: ["if", "selection"], answer: "IF / selection." },
+  { id: "p4", prompt: "Which file function prevents reading beyond the end of a file?", accepted: ["eof"], answer: "EOF." },
+  { id: "p5", prompt: "Which command should finish a file handling fragment?", accepted: ["closefile"], answer: "CLOSEFILE." },
+  { id: "p6", prompt: "Which subroutine type returns a value?", accepted: ["function"], answer: "FUNCTION." },
+  { id: "p7", prompt: "Which subroutine type performs actions but does not need to return a value?", accepted: ["procedure"], answer: "PROCEDURE." },
+  { id: "p8", prompt: "Where should an average usually be calculated: inside or after the total loop?", accepted: ["after"], answer: "After the total loop, once the final Total is known." },
+  { id: "p9", prompt: "What should be removed from a Cambridge pseudocode answer: Java braces or algorithm logic?", accepted: ["braces"], answer: "Remove Java braces; keep the algorithm logic." },
+  { id: "p10", prompt: "What quick method checks a fragment's variable values step by step?", accepted: ["trace", "trace table"], answer: "A trace / trace table." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes: 'The lifecycle is analysis, design, code, test, done.'",
-    fix: "Use the five named stages: analysis, design, coding, testing and maintenance; then explain valid feedback loops.",
+    wrong: "A fragment increments PassCount but never initialises it.",
+    fix: "Add PassCount <- 0 before the loop so the counter has a defined starting value.",
   },
   {
-    wrong: "A student says design should happen before requirements are known.",
-    fix: "Analysis should identify requirements first; design is based on those requirements.",
+    wrong: "A fragment reads Marks[Index] after testing Marks[Index] >= 50.",
+    fix: "Input or assign Marks[Index] before using it in a condition.",
   },
   {
-    wrong: "A student claims RAD is simply another name for Agile.",
-    fix: "RAD is the named syllabus model built around rapid prototyping, time-boxing and frequent user involvement; Agile is related extension context, not a replacement.",
+    wrong: "A file loop uses READFILE but never closes the file.",
+    fix: "Add CLOSEFILE after the EOF loop.",
   },
   {
-    wrong: "A student says maintenance only means fixing broken code.",
-    fix: "Maintenance can be corrective, adaptive or perfective: fix faults, adapt to change, or improve the system.",
+    wrong: "A review answer mixes Java braces with Cambridge pseudocode keywords.",
+    fix: "Use Cambridge-style structure consistently: IF...THEN...ENDIF, FOR...NEXT, FUNCTION...ENDFUNCTION.",
   },
 ];
 
@@ -103,95 +105,93 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A school wants a new room booking system. Describe the purpose of the analysis, Develop and testing stages.",
-    answer: "Analysis identifies users, requirements and constraints, such as who can book rooms and how double bookings are prevented. Design plans the solution, including interfaces, data storage, validation and algorithms. Testing checks the implemented system against expected results and requirements, such as rejecting a booking conflict.",
+    prompt: "Write pseudocode to input 10 marks into an array and output how many marks are 50 or above.",
+    answer: "PassCount <- 0\nFOR Index <- 1 TO 10\n    INPUT Marks[Index]\n    IF Marks[Index] >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
     marking: [
-      { mark: "B1", text: "states analysis identifies user needs/requirements/constraints" },
-      { mark: "B1", text: "gives booking-system analysis example" },
-      { mark: "B1", text: "states design plans the solution/interface/data/algorithms" },
-      { mark: "B1", text: "gives booking-system design example" },
-      { mark: "B1", text: "states testing checks the system against expected results/requirements" },
-      { mark: "B1", text: "gives booking-system testing example" },
+      { mark: "B1", text: "initialises PassCount/counter to 0" },
+      { mark: "M1", text: "uses loop to process 10 marks" },
+      { mark: "M1", text: "inputs each mark into an array element or equivalent variable" },
+      { mark: "M1", text: "tests each mark against 50 or above" },
+      { mark: "A1", text: "increments counter only for pass marks" },
+      { mark: "A1", text: "outputs the final counter after the loop" },
     ],
     strict: [
-      "Do not award example marks for generic examples not linked to the booking system.",
-      "Allow 'requirements specification' for analysis artefact.",
-      "Do not accept 'testing finds if it is good' without expected results or requirements.",
+      "Do not award final output mark if output occurs only inside the loop.",
+      "Allow processing without storing in array if the question wording allows, but here array storage is required for full marks.",
+      "Do not accept Java-only syntax as Cambridge pseudocode.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Compare waterfall, iterative and RAD for a project where requirements are likely to change and users can review frequent prototypes.",
-    answer: "Waterfall follows planned stages in sequence, so late requirement changes can cause costly rework. Iterative development uses repeated cycles and feedback to refine requirements. RAD uses rapid prototypes, short time boxes and frequent user involvement. RAD may suit this project when users are available for frequent reviews, while iterative development is suitable when repeated refinement is needed without the same rapid-prototyping emphasis.",
+    marks: "7 marks",
+    prompt: "Write pseudocode to input valid marks from 0 to 100 until a valid mark is entered.",
+    answer: "REPEAT\n    INPUT Mark\n    IF Mark >= 0 AND Mark <= 100 THEN\n        Valid <- TRUE\n    ELSE\n        OUTPUT \"Enter a mark from 0 to 100\"\n        Valid <- FALSE\n    ENDIF\nUNTIL Valid = TRUE",
     marking: [
-      { mark: "B1", text: "states waterfall follows a planned/sequential set of stages" },
-      { mark: "B1", text: "explains late changes can cause costly rework in waterfall" },
-      { mark: "B1", text: "states iterative development uses repeated cycles" },
-      { mark: "B1", text: "explains feedback can refine requirements" },
-      { mark: "B1", text: "states RAD uses rapid prototyping/time-boxing with frequent user involvement" },
-      { mark: "B1", text: "selects RAD or iterative with a reason linked to user availability, prototyping or changing requirements" },
+      { mark: "B1", text: "uses a loop that can repeat after invalid input" },
+      { mark: "B1", text: "inputs Mark inside the loop" },
+      { mark: "M1", text: "checks Mark >= 0 or equivalent lower bound" },
+      { mark: "M1", text: "checks Mark <= 100 or equivalent upper bound" },
+      { mark: "A1", text: "sets a valid flag or exits only when both checks pass" },
+      { mark: "B1", text: "outputs useful error message for invalid data" },
+      { mark: "A1", text: "loop condition correctly repeats until valid" },
     ],
     strict: [
-      "Do not award full marks for saying only that repeated development is better.",
-      "Do not accept Agile as a substitute for the named RAD model.",
-      "Do not accept waterfall as the best choice for changing requirements without strong justification.",
+      "Do not award both bound marks if OR is used incorrectly for the valid condition.",
+      "Allow WHILE structure if it safely repeats until valid.",
+      "Do not accept validation after the mark has already been processed.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain why weak analysis can cause problems later in the software development lifecycle.",
-    answer: "Weak analysis can miss user requirements or constraints. The design may then be based on wrong assumptions, so coding implements the wrong features. Testing or stakeholder review may reveal that the system does not meet user needs, causing rework and extra cost.",
+    marks: "6 marks",
+    prompt: "Write pseudocode to read every line from Scores.txt and output each line.",
+    answer: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
     marking: [
-      { mark: "B1", text: "states analysis identifies requirements/user needs/constraints" },
-      { mark: "B1", text: "states weak analysis may miss or misunderstand requirements" },
-      { mark: "B1", text: "links weak analysis to poor design or wrong coding/implementation" },
-      { mark: "B1", text: "links later testing or stakeholder review to discovering the problem" },
-      { mark: "B1", text: "explains consequence such as rework, delay, cost or unsuitable system" },
+      { mark: "B1", text: "opens Scores.txt using OPENFILE" },
+      { mark: "A1", text: "uses FOR READ mode" },
+      { mark: "M1", text: "uses WHILE NOT EOF or equivalent safe EOF loop" },
+      { mark: "M1", text: "reads each line/record with READFILE" },
+      { mark: "B1", text: "outputs the line/record read" },
+      { mark: "A1", text: "closes the file after the loop" },
     ],
     strict: [
-      "Do not award consequence mark for vague 'bad system' alone.",
-      "Allow client/user needs as equivalent to requirements.",
-      "Do not require a named lifecycle model.",
+      "Do not award READ mode mark for WRITE or APPEND.",
+      "Allow equivalent variable and file names if consistent.",
+      "Do not require Java file classes.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "State three lifecycle artefacts and explain how each is used.",
-    answer: "A requirements specification is produced during analysis and states what the system must do. A design specification is produced during design and guides implementation. A test plan/results document is used during testing to compare actual results with expected results and record faults.",
+    marks: "3 marks",
+    prompt: "A student writes a fragment with Total <- Total + Mark inside a loop but does not initialise Total. Explain the problem and correct it.",
+    answer: "Total has no defined starting value before it is used, so the accumulated result may be wrong. Add Total <- 0 once before the loop.",
     marking: [
-      { mark: "B1", text: "names requirements specification or equivalent" },
-      { mark: "B1", text: "explains it states what the system must do" },
-      { mark: "B1", text: "names design specification or equivalent" },
-      { mark: "B1", text: "explains it guides implementation/design decisions" },
-      { mark: "B1", text: "names test plan/results or equivalent" },
-      { mark: "B1", text: "explains it records tests/results or compares actual with expected" },
+      { mark: "B1", text: "identifies Total is not initialised" },
+      { mark: "B1", text: "explains an undefined/previous value may affect the result" },
+      { mark: "B1", text: "adds Total <- 0 before the loop" },
     ],
     strict: [
-      "Artefact marks require named documents/outputs, not just stage names.",
-      "Allow user documentation or maintenance log with correct use.",
-      "Do not award use mark if it repeats the artefact name only.",
+      "Do not award correction mark if Total is initialised inside the loop each iteration.",
+      "Allow Sum instead of Total if consistent.",
+      "Do not accept 'the program crashes' as the only explanation.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A student says the lifecycle always finishes after testing. Explain why this is incorrect.",
-    answer: "After testing, its evidence can be reviewed against objectives and user requirements. The system may then be released and maintained. Maintenance can fix faults, adapt the system to new requirements or improve usability/performance. Testing or review can also reveal issues that require returning to design or coding.",
+    prompt: "Write a function IsPass(Mark : INTEGER) that returns a BOOLEAN, and show the returned value used in an IF expression. Explain how this differs from a procedure.",
+    answer: "FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN returns Mark >= 50. The caller can use IF IsPass(Score) THEN ... ENDIF because the function call returns a BOOLEAN value in an expression. A procedure performs a named action and is called as a statement rather than supplying a return value to the expression.",
     marking: [
-      { mark: "B1", text: "states test evidence is reviewed after or alongside testing" },
-      { mark: "B1", text: "explains the review checks objectives/user requirements" },
-      { mark: "B1", text: "states maintenance can happen after release/use" },
-      { mark: "B1", text: "gives valid maintenance type/example such as corrective/adaptive/perfective" },
-      { mark: "B1", text: "explains feedback may send project back to earlier stages" },
-      { mark: "B1", text: "links feedback to design/coding/requirements rework" },
+      { mark: "B1", text: "complete function header with INTEGER parameter" },
+      { mark: "B1", text: "declares BOOLEAN return type" },
+      { mark: "B1", text: "returns the pass comparison" },
+      { mark: "M1", text: "uses IsPass(Score) in an IF expression" },
+      { mark: "B1", text: "procedure described as named action/call" },
+      { mark: "B1", text: "distinguishes procedure from function return value" },
     ],
     strict: [
-      "Do not award full marks for listing stages without explaining why testing is not the end.",
-      "Allow evaluation or post-implementation review if it is described as an activity, not an extra named syllabus stage.",
-      "Do not accept maintenance as only 'using the system'.",
+      "Do not credit OUTPUT as the function return.",
+      "Require the returned BOOLEAN to be used in an expression.",
     ],
   },
 ];
@@ -216,10 +216,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    code: { text: "Too early. Coding vague wishes usually creates confident wrongness.", correct: false },
-    ask: { text: "Correct. Analysis turns vague requests into measurable requirements.", correct: true },
-    test: { text: "Testing needs something built and expected results to compare against.", correct: false },
-    maintain: { text: "Maintenance happens after release/use, not before requirements are known.", correct: false },
+    database: { text: "This applies database concepts from Paper 1 rather than program-fragment analysis.", correct: false },
+    array: { text: "Correct. The task needs an array, a loop and an IF condition.", correct: true },
+    file: { text: "File handling is useful elsewhere, but this task does not mention a file.", correct: false },
+    html: { text: "No HTML needed. Stay in Cambridge pseudocode.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -232,35 +232,29 @@ function setupHook() {
   });
 }
 
-function setupModelTool() {
-  const select = document.querySelector("#modelSelect");
-  const output = document.querySelector("#modelOutput");
+function setupBuilder() {
+  const select = document.querySelector("#scenarioSelect");
+  const output = document.querySelector("#builderOutput");
   const render = () => {
-    const item = modelAdvice[select.value];
+    const item = skeletons[select.value];
     output.innerHTML = `
-      <p><strong>Suggested model:</strong> ${escapeHtml(item.model)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Watch out:</strong> ${escapeHtml(item.warning)}</p>
+      <h3>${escapeHtml(item.title)}</h3>
+      <pre><code>${escapeHtml(item.code)}</code></pre>
+      <ul>${item.checks.map((check) => `<li>${escapeHtml(check)}</li>`).join("")}</ul>
     `;
   };
-  document.querySelector("#modelBtn").addEventListener("click", render);
+  document.querySelector("#buildBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupOrderTool() {
-  const select = document.querySelector("#orderSelect");
-  const output = document.querySelector("#orderOutput");
-  const render = () => {
-    const item = orderAdvice[select.value];
-    output.innerHTML = `
-      <p><strong>Usually first:</strong> ${escapeHtml(item.first)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-    `;
-  };
-  document.querySelector("#orderBtn").addEventListener("click", render);
-  select.addEventListener("change", render);
-  render();
+function setupChecklist() {
+  document.querySelector("#checklistOutput").innerHTML = checklist.map((item, index) => `
+    <label class="check-item">
+      <input type="checkbox" />
+      <span><strong>${index + 1}.</strong> ${escapeHtml(item)}</span>
+    </label>
+  `).join("");
 }
 
 function renderExample(key) {
@@ -268,8 +262,11 @@ function renderExample(key) {
   document.querySelector("#exampleOutput").innerHTML = `
     <article class="example-card">
       <h3>${escapeHtml(example.title)}</h3>
-      <p>${escapeHtml(example.answer)}</p>
-      <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
+      <pre><code>${escapeHtml(example.code)}</code></pre>
+      <div class="data-table two-col">
+        <div class="table-row table-head"><div>Mark</div><div>Why it earns credit</div></div>
+        ${example.marks.map((row) => `<div class="table-row"><div>${escapeHtml(row[0])}</div><div>${escapeHtml(row[1])}</div></div>`).join("")}
+      </div>
     </article>
   `;
 }
@@ -282,7 +279,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("booking");
+  renderExample("pass");
 }
 
 function setupPractice() {
@@ -307,7 +304,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const value = normalise(input.value);
       const correct = item.accepted.some((answer) => value.includes(answer));
-      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and tighten the lifecycle term.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and compare the Section 11 logic.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -353,7 +350,7 @@ function setupExam() {
       <button class="ms-toggle" type="button" data-ms="q${index}">Show MS</button>
       <div class="ms-panel hidden" id="q${index}-ms">
         <h4>Answer</h4>
-        <p>${escapeHtml(question.answer)}</p>
+        <pre><code>${escapeHtml(question.answer)}</code></pre>
         <h4>Mark scheme</h4>
         ${renderStudentMarkPoints(question)}
       </div>
@@ -372,8 +369,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupModelTool();
-  setupOrderTool();
+  setupBuilder();
+  setupChecklist();
   setupExamples();
   setupPractice();
   setupMistakes();

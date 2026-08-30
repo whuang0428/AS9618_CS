@@ -1,91 +1,103 @@
-const traces = {
-  a: [40, 65, 50, 80],
-  b: [55, 51, 49, 70],
-  c: [50, 50, 50, 51],
+const caseConcepts = {
+  capacity: {
+    concept: "Functional requirement / testable rule",
+    answer: "The system must prevent reservations above capacity. This can later become a boundary test: capacity 20 accepts the 20th reservation but handles the 21st according to the rule.",
+    trap: "Do not jump straight to interface colours. This is primarily a rule the system must enforce.",
+  },
+  field: {
+    concept: "Data dictionary",
+    answer: "ActivityID should be defined with data type, size, uniqueness and validation. Example: STRING, length 5, not blank, unique.",
+    trap: "Do not list example ActivityID values only; define the data item.",
+  },
+  run: {
+    concept: "Parallel changeover",
+    answer: "The old and new systems run together, allowing outputs to be compared while the old method remains available.",
+    trap: "Do not call it direct changeover; direct would stop the old system immediately.",
+  },
+  judge: {
+    concept: "Evaluation against success criteria",
+    answer: "The result gives evidence to compare with a measurable success criterion, such as sign-up completion time.",
+    trap: "Do not treat this as testing only. It is a judgement about success using evidence.",
+  },
 };
 
-const structures = {
-  temps: {
-    structure: "1D array",
-    reason: "The values are the same type and can be accessed by position, such as day number.",
-    trap: "Do not use a record unless each item needs different named fields.",
+const improvedAnswers = {
+  easy: {
+    weak: "The system should be easy to use.",
+    improved: "At least 90% of trial students should reserve a place without help in under 2 minutes.",
+    why: "The improved version is measurable and can be evaluated using user trial evidence.",
   },
-  student: {
-    structure: "Record",
-    reason: "One student has related fields of different types, such as STRING name, STRING ID and INTEGER mark.",
-    trap: "Do not split related fields into separate arrays unless the question requires it.",
+  test: {
+    weak: "Test it to see if it works.",
+    improved: "Use planned test cases with normal, boundary and abnormal data; record expected and actual results for each activity sign-up rule.",
+    why: "The improved version names test categories and evidence, not just a vague action.",
   },
-  undo: {
-    structure: "Stack",
-    reason: "The most recent action should be removed first, so it is last-in, first-out.",
-    trap: "Do not use a queue for undo; a queue removes the oldest item first.",
-  },
-  printer: {
-    structure: "Queue",
-    reason: "The first print job added should be processed first, so it is first-in, first-out.",
-    trap: "Do not pop the newest job first unless the scenario says priority or undo.",
+  maintain: {
+    weak: "Maintenance makes it better.",
+    improved: "Perfective maintenance could improve the activity search speed after release if evaluation evidence shows users take too long to find activities.",
+    why: "The improved version classifies the maintenance type and links it to evidence and consequence.",
   },
 };
 
 const examples = {
-  trace: {
-    title: "Example 1: Trace table reasoning",
+  requirements: {
+    title: "Example 1: Requirement answer annotation",
     rows: [
-      ["Algorithm rule", "Add Scores[Index] to Total only when score is greater than 50."],
-      ["Scores", "40, 65, 50, 80"],
-      ["Final Total", "145, because 65 and 80 are included; 50 is not greater than 50."],
-      ["Exam point", "A trace table shows method and prevents off-by-one mistakes."],
+      ["Question focus", "Improve the vague request: 'students should sign up easily'."],
+      ["Mark-worthy answer", "Students should reserve a place from an activity list using StudentID and a confirm button; 90% of trial users should complete the task in under 2 minutes."],
+      ["Why it earns marks", "It gives a functional requirement and a measurable success criterion in the scenario."],
+      ["Common loss", "Writing 'make it user-friendly' without measurable evidence."],
     ],
   },
-  structure: {
-    title: "Example 2: Data structure justification",
+  testing: {
+    title: "Example 2: Test case annotation",
     rows: [
-      ["Scenario", "Store undo history for a text editor."],
-      ["Choice", "Stack."],
-      ["Reason", "The last action performed is the first action to be undone."],
-      ["Exam point", "Name plus reason earns more than name alone."],
+      ["Rule", "Activity capacity is 20."],
+      ["Test case", "Enter the 21st reservation when 20 places are already taken."],
+      ["Expected result", "System rejects the reservation or adds the student to the waiting list, depending on the stated rule."],
+      ["Why it earns marks", "It uses boundary data and states expected behaviour."],
     ],
   },
-  test: {
-    title: "Example 3: Test data explanation",
+  evaluation: {
+    title: "Example 3: Evaluation answer annotation",
     rows: [
-      ["Rule", "Valid mark range is 0 to 100."],
-      ["Normal", "75, expected accepted."],
-      ["Boundary", "0 and 100 accepted; minus 1 and 101 rejected."],
-      ["Abnormal", "text such as 'high', expected rejected with an error message."],
+      ["Evidence", "92% of students completed sign-up in under 2 minutes."],
+      ["Criterion", "90% of students should complete sign-up in under 2 minutes."],
+      ["Judgement", "The criterion is met because 92% is above the 90% target."],
+      ["Consequence", "Further perfective maintenance may still improve the remaining difficult cases."],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What table is used to dry run an algorithm?", accepted: ["trace"], answer: "Trace table." },
-  { id: "p2", prompt: "Which pseudocode construct repeats statements?", accepted: ["iteration", "loop"], answer: "Iteration / loop." },
-  { id: "p3", prompt: "Which data structure is last-in, first-out?", accepted: ["stack"], answer: "Stack." },
-  { id: "p4", prompt: "Which data structure is first-in, first-out?", accepted: ["queue"], answer: "Queue." },
-  { id: "p5", prompt: "Which structure is suitable for same-type values accessed by index?", accepted: ["array", "1d array"], answer: "Array / 1D array." },
-  { id: "p6", prompt: "Which structure groups fields of different types for one item?", accepted: ["record"], answer: "Record." },
-  { id: "p7", prompt: "What test data category checks the edge of a valid range?", accepted: ["boundary"], answer: "Boundary data." },
-  { id: "p8", prompt: "What test data category is typical valid data?", accepted: ["normal"], answer: "Normal data." },
-  { id: "p9", prompt: "What test data category uses invalid type or invalid value?", accepted: ["abnormal", "erroneous", "invalid"], answer: "Abnormal / erroneous data." },
-  { id: "p10", prompt: "In Cambridge exams, should final algorithm answers normally use Java syntax? yes or no", accepted: ["no"], answer: "No. Cambridge pseudocode is the exam standard; Java is only support." },
+  { id: "p1", prompt: "Which stage gathers user needs and success criteria?", accepted: ["analysis"], answer: "Analysis / requirements analysis." },
+  { id: "p2", prompt: "Which design artefact defines ActivityID as STRING length 5?", accepted: ["data dictionary", "dictionary"], answer: "Data dictionary." },
+  { id: "p3", prompt: "Which design artefact describes how a waiting list is updated?", accepted: ["algorithm", "pseudocode", "flowchart"], answer: "Algorithm design, such as pseudocode or a flowchart." },
+  { id: "p4", prompt: "What kind of test data is the 21st reservation when capacity is 20?", accepted: ["boundary"], answer: "Boundary invalid data, because it is just outside the limit." },
+  { id: "p5", prompt: "Which changeover method runs old and new systems together?", accepted: ["parallel"], answer: "Parallel changeover / parallel running." },
+  { id: "p6", prompt: "Which maintenance type fixes a crash after release?", accepted: ["corrective"], answer: "Corrective maintenance." },
+  { id: "p7", prompt: "Which maintenance type adapts the system to a new school timetable?", accepted: ["adaptive"], answer: "Adaptive maintenance." },
+  { id: "p8", prompt: "Which maintenance type improves search speed?", accepted: ["perfective"], answer: "Perfective maintenance." },
+  { id: "p9", prompt: "Which stage judges whether success criteria were met?", accepted: ["evaluation"], answer: "Evaluation." },
+  { id: "p10", prompt: "What should an evaluation answer be based on?", accepted: ["evidence", "criteria", "success criteria", "requirements"], answer: "Evidence compared with requirements or success criteria." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student traces only the final output and skips intermediate variable values.",
-    fix: "Correction: use a trace table with one row per relevant step or loop iteration. Intermediate values can earn method marks.",
+    wrong: "A student answers every Section 12 question by listing the lifecycle stages.",
+    fix: "Correction: identify the concept being tested first, then answer that concept in the scenario. A list is not enough for explain or evaluate questions.",
   },
   {
-    wrong: "A student says 'use a stack because it stores data'.",
-    fix: "Correction: explain LIFO. For example, a stack suits undo because the most recent action is removed first.",
+    wrong: "A student writes a test case with data but no expected result.",
+    fix: "Correction: include test data, expected result and preferably actual result or purpose. Without expected result, the test cannot prove behaviour.",
   },
   {
-    wrong: "A student treats a score of 50 as greater than 50.",
-    fix: "Correction: greater than 50 excludes 50. Greater than or equal to 50 would include it.",
+    wrong: "A student says evaluation is just asking users if they like the system.",
+    fix: "Correction: user feedback can be evidence, but evaluation must compare evidence with requirements and success criteria.",
   },
   {
-    wrong: "A student gives test data but no expected result.",
-    fix: "Correction: each test case needs expected output or expected behaviour, such as accepted, rejected or error message displayed.",
+    wrong: "A student classifies all post-release changes as corrective maintenance.",
+    fix: "Correction: corrective fixes faults, adaptive responds to environment changes, and perfective improves performance, usability or features.",
   },
 ];
 
@@ -99,97 +111,94 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Complete a trace table for an algorithm that adds scores greater than 50 from the list 40, 65, 50, 80. State the final value of Total and explain which scores were included.",
-    answer: "Total starts at 0. Score 40 is not greater than 50, so Total remains 0. Score 65 is included, so Total becomes 65. Score 50 is not greater than 50, so Total remains 65. Score 80 is included, so Total becomes 145. Final Total is 145.",
+    prompt: "A school activity sign-up system is being analysed. Write two functional requirements and one measurable success criterion.",
+    answer: "Functional requirements: students can reserve and cancel a place for an activity; staff can create activities and set capacity; the system prevents reservations above capacity or places students on a waiting list. Success criterion: at least 90% of trial students can reserve a place without help in under 2 minutes.",
     marking: [
-      { mark: "M1", text: "initialises or recognises Total starts at 0" },
-      { mark: "M1", text: "correctly excludes 40" },
-      { mark: "M1", text: "correctly includes 65 and updates Total" },
-      { mark: "M1", text: "correctly excludes 50 because condition is greater than 50" },
-      { mark: "M1", text: "correctly includes 80" },
-      { mark: "A1", text: "states final Total as 145" },
+      { mark: "B1", text: "gives a valid functional requirement for students" },
+      { mark: "A1", text: "student requirement is specific to sign-up/reservation/cancellation" },
+      { mark: "B1", text: "gives a second distinct valid functional requirement" },
+      { mark: "A1", text: "second requirement includes staff, capacity or waiting-list rule in context" },
+      { mark: "M1", text: "gives a measurable success criterion with a threshold" },
+      { mark: "A1", text: "criterion is linked to the activity sign-up scenario" },
     ],
     strict: [
-      "Do not award the 50 exclusion mark if candidate treats greater than as greater than or equal to.",
-      "Allow a clear trace table instead of prose.",
-      "Do not require array indexes if score order and updates are clear.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award full marks for vague claims such as 'easy' or 'fast' without measurement.",
+      "Allow alternative valid requirements from the case study.",
+      "Do not accept interface design choices alone as functional requirements.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Suggest suitable data structures for undo history, printer jobs and student records. Justify each choice.",
-    answer: "Undo history should use a stack because the most recent action is undone first. Printer jobs should use a queue because the first job submitted should be printed first. Student records should use records because each student has related fields of different data types, such as name, ID and mark.",
+    prompt: "For an activity with capacity 20, Develop suitable test cases for the reservation rule.",
+    answer: "Normal test: reserve when 12 places are taken, expected accepted. Boundary valid test: reserve the 20th place, expected accepted. Boundary invalid test: attempt the 21st reservation, expected rejected or added to waiting list according to the rule. Abnormal test: enter a non-numeric capacity such as 'many', expected rejected with an error message.",
     marking: [
-      { mark: "B1", text: "chooses stack for undo history" },
-      { mark: "B1", text: "justifies stack using last-in, first-out or most recent first" },
-      { mark: "B1", text: "chooses queue for printer jobs" },
-      { mark: "B1", text: "justifies queue using first-in, first-out" },
-      { mark: "B1", text: "chooses record for student data" },
-      { mark: "B1", text: "justifies record using related fields of different types" },
+      { mark: "B1", text: "selects a normal valid test case" },
+      { mark: "B1", text: "normal case has correct expected result" },
+      { mark: "B1", text: "selects the valid boundary case at capacity 20" },
+      { mark: "B1", text: "valid boundary case has correct expected result" },
+      { mark: "B1", text: "selects an invalid boundary or abnormal case" },
+      { mark: "B1", text: "invalid or abnormal case has correct expected result" },
     ],
     strict: [
-      "Do not award justification marks for 'it stores data' alone.",
-      "Allow LIFO for stack and FIFO for queue.",
-      "Do not accept array for student records unless candidate describes an array of records clearly.",
+      "Test data alone is insufficient for full credit; expected result is required.",
+      "Allow waiting list or rejection for the 21st reservation if the rule is stated consistently.",
+      "Do not accept 10 as boundary data.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A mark must be between 0 and 100 inclusive. Give normal, boundary and abnormal test data with expected results.",
-    answer: "Normal data: 75, expected accepted. Boundary data: 0 and 100, expected accepted; minus 1 and 101, expected rejected. Abnormal data: a text value such as 'high', expected rejected with an error message.",
+    prompt: "Explain how design documentation could help implement and test the waiting-list feature.",
+    answer: "An algorithm design can show the steps for checking whether an activity is full and then adding the student to a waiting list. A data dictionary can define fields such as ActivityID, StudentID, Capacity and WaitingListPosition, including types and validation. Interface design can show the messages displayed when a student is added to the waiting list. These documents guide implementation and provide expected rules for testing.",
     marking: [
-      { mark: "B1", text: "gives valid normal data" },
-      { mark: "B1", text: "normal data has correct expected result" },
-      { mark: "B1", text: "gives valid boundary value such as 0 or 100" },
-      { mark: "B1", text: "boundary valid value has correct expected result" },
-      { mark: "B1", text: "gives invalid boundary or abnormal value such as -1, 101 or text" },
-      { mark: "B1", text: "invalid or abnormal data has correct expected rejection/error result" },
+      { mark: "B1", text: "mentions algorithm design for waiting-list processing" },
+      { mark: "B1", text: "explains algorithm use in implementation or testing" },
+      { mark: "B1", text: "mentions data dictionary or field definitions" },
+      { mark: "B1", text: "explains data definitions/types/validation in context" },
+      { mark: "B1", text: "mentions interface design or user messages" },
+      { mark: "B1", text: "links design documentation to implementation or testing evidence" },
     ],
     strict: [
-      "Do not accept 50 as boundary data.",
-      "Allow equivalent normal values within range.",
-      "Do not award full marks for data values without expected results.",
+      "Do not award explanation marks for naming documents only.",
+      "Allow flowchart or pseudocode as algorithm design.",
+      "Do not accept final Java code alone as design documentation.",
     ],
   },
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "Describe an algorithm to find the largest value in a 1D array of ten integers.",
-    answer: "Set Largest to the first array element. Loop through the remaining elements. For each element, compare it with Largest. If the element is greater than Largest, set Largest to that element. After all elements have been checked, output Largest.",
+    prompt: "After release, the school asks for three changes: fix a cancellation fault, support a new timetable structure, and make activity search faster. Identify each maintenance type and justify your answer.",
+    answer: "Fixing a cancellation fault is corrective maintenance because it fixes an error. Supporting a new timetable structure is adaptive maintenance because the system is changed for a new environment or rule. Making activity search faster is perfective maintenance because it improves performance after release.",
     marking: [
-      { mark: "B1", text: "initialises Largest to a valid array element" },
-      { mark: "B1", text: "loops through array elements" },
-      { mark: "B1", text: "compares current element with Largest" },
-      { mark: "B1", text: "updates Largest when current element is greater" },
-      { mark: "B1", text: "continues until all relevant elements checked" },
-      { mark: "B1", text: "outputs or returns Largest" },
+      { mark: "B1", text: "classifies cancellation fault fix as corrective" },
+      { mark: "B1", text: "justifies corrective as fixing an error/fault" },
+      { mark: "B1", text: "classifies new timetable structure as adaptive" },
+      { mark: "B1", text: "justifies adaptive as responding to changed environment/rules" },
+      { mark: "B1", text: "classifies faster search as perfective" },
+      { mark: "B1", text: "justifies perfective as improving performance/usability/features" },
     ],
     strict: [
-      "Do not award initialisation mark for setting Largest to 0 unless values are known non-negative.",
-      "Allow Cambridge-style pseudocode or clear structured English.",
-      "Do not require exact variable names.",
+      "Classification and justification must match.",
+      "Allow enhancement/improvement wording for perfective.",
+      "Do not accept 'maintenance' alone without type.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Explain why a complete trace table is useful when checking an algorithm.",
-    answer: "A trace table records how variable values change after each relevant step or loop iteration. It helps find logic errors such as incorrect conditions, wrong loop bounds or variables not being updated. It also provides evidence for the final output, so the programmer or examiner can see how the result was obtained.",
+    prompt: "An existing program counts marks of 50 or more. Analyse where to amend the program so it also counts merits of 70 or more, while preserving the existing result.",
+    answer: "Analyse the existing declarations, initialisation, traversal, pass condition and outputs. Add and initialise MeritCount, then amend the existing traversal with a separate test Mark >= 70 and increment MeritCount. Keep the pass test Mark >= 50 unchanged, output both counts, and run boundary and regression tests such as 49, 50, 69 and 70.",
     marking: [
-      { mark: "B1", text: "states trace table records variable values" },
-      { mark: "B1", text: "states values are recorded step by step or per iteration" },
-      { mark: "B1", text: "links trace to finding logic errors" },
-      { mark: "B1", text: "gives valid example such as wrong condition, loop bound or update" },
-      { mark: "B1", text: "links trace table to checking final output" },
-      { mark: "B1", text: "explains evidence/method can be reviewed by programmer or examiner" },
+      { mark: "B1", text: "analyses existing traversal and behaviour to preserve" },
+      { mark: "B1", text: "declares and initialises MeritCount" },
+      { mark: "B1", text: "amends existing loop with Mark >= 70" },
+      { mark: "B1", text: "preserves Mark >= 50 pass behaviour" },
+      { mark: "B1", text: "outputs both counts" },
+      { mark: "B1", text: "uses boundary/regression tests around 50 and 70" },
     ],
     strict: [
-      "Do not award full marks for saying only 'it checks the program'.",
-      "Allow dry run table as equivalent wording.",
-      "Do not accept syntax error checking as the main purpose unless linked to a dry run limitation.",
+      "Do not credit a rewrite that removes or changes the existing pass count.",
     ],
   },
 ];
@@ -223,10 +232,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    guess: { text: "A guess may be lucky, but it does not show method. Trace questions want evidence.", correct: false },
-    trace: { text: "Correct. A trace table matches the command and protects method marks.", correct: true },
-    java: { text: "Java is support only. Do not translate before doing the Cambridge pseudocode task.", correct: false },
-    essay: { text: "That answers a different command word. This stem asks for a trace.", correct: false },
+    testing: { text: "Testing comes later. This stem asks how to improve a vague need before design begins.", correct: false },
+    analysis: { text: "Correct. This is requirements analysis: make the vague need measurable before design.", correct: true },
+    maintenance: { text: "Maintenance is after release. This question is before design.", correct: false },
+    changeover: { text: "Changeover is about introducing a completed system, not clarifying user needs.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -239,42 +248,34 @@ function setupHook() {
   });
 }
 
-function setupTraceTool() {
-  const select = document.querySelector("#traceSelect");
-  const output = document.querySelector("#traceOutput");
+function setupCaseTool() {
+  const select = document.querySelector("#caseSelect");
+  const output = document.querySelector("#caseOutput");
   const render = () => {
-    const scores = traces[select.value];
-    let total = 0;
-    const rows = scores.map((score, index) => {
-      const include = score > 50;
-      if (include) total += score;
-      return [String(index + 1), String(score), include ? "TRUE" : "FALSE", String(total)];
-    });
+    const item = caseConcepts[select.value];
     output.innerHTML = `
-      <div class="data-table four-col">
-        <div class="table-row table-head"><div>Index</div><div>Score</div><div>Score &gt; 50?</div><div>Total after step</div></div>
-        ${rows.map((row) => `<div class="table-row"><div>${row[0]}</div><div>${row[1]}</div><div>${row[2]}</div><div>${row[3]}</div></div>`).join("")}
-      </div>
-      <p><strong>Final Total:</strong> ${total}</p>
+      <p><strong>Concept:</strong> ${escapeHtml(item.concept)}</p>
+      <p><strong>Answer:</strong> ${escapeHtml(item.answer)}</p>
+      <p><strong>Common error:</strong> ${escapeHtml(item.trap)}</p>
     `;
   };
-  document.querySelector("#traceBtn").addEventListener("click", render);
+  document.querySelector("#caseBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupStructureTool() {
-  const select = document.querySelector("#structureSelect");
-  const output = document.querySelector("#structureOutput");
+function setupAnswerTool() {
+  const select = document.querySelector("#answerSelect");
+  const output = document.querySelector("#answerOutput");
   const render = () => {
-    const item = structures[select.value];
+    const item = improvedAnswers[select.value];
     output.innerHTML = `
-      <p><strong>Structure:</strong> ${escapeHtml(item.structure)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Common error:</strong> ${escapeHtml(item.trap)}</p>
+      <p><strong>Weak:</strong> ${escapeHtml(item.weak)}</p>
+      <p><strong>Improved:</strong> ${escapeHtml(item.improved)}</p>
+      <p><strong>Why it earns marks:</strong> ${escapeHtml(item.why)}</p>
     `;
   };
-  document.querySelector("#structureBtn").addEventListener("click", render);
+  document.querySelector("#answerBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -291,7 +292,7 @@ function setupExamples() {
   document.querySelectorAll("[data-example]").forEach((button) => {
     button.addEventListener("click", () => render(button.dataset.example));
   });
-  render("trace");
+  render("requirements");
 }
 
 function setupPractice() {
@@ -317,7 +318,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const response = normalise(input.value);
       const correct = item.accepted.some((accepted) => response.includes(accepted));
-      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the precise algorithm or data structure keyword.";
+      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Identify the Section 12 concept first.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -382,8 +383,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupTraceTool();
-  setupStructureTool();
+  setupCaseTool();
+  setupAnswerTool();
   setupExamples();
   setupPractice();
   setupMistakes();

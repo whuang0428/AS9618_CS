@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 104 | Linear search and binary search</title>
+    <title>AS9618 Lesson 104 | Logic statements define parts of an algorithm</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Linear search and binary search</h1>
+        <h1>Logic statements define parts of an algorithm</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#linear">Linear search</a>
-        <a href="#binary">Binary search</a>
-        <a href="#compare">Comparison</a>
+        <a href="#validation">Validation</a>
+        <a href="#checks">Check types</a>
+        <a href="#defensive">Defensive loops</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#classifier">Search chooser</a>
-        <a href="#linear-tool">Linear trace</a>
-        <a href="#binary-tool">Binary trace</a>
+        <a href="#classifier">Check classifier</a>
+        <a href="#tester">Input tester</a>
+        <a href="#builder">Validation builder</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -54,88 +54,65 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Array-based linear search and bubble sort</h2>
+            <h2>Logic statements define parts of an algorithm</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</p>
-            <p>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</p>
-            <p>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</p>
-            <p>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</p>
-            <p>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</p>
-            <p>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</p>
-            <p>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</p>
+            <p>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, &gt;, &gt;= or &lt;&gt; with AND, OR or NOT when more than one condition is needed.</p>
+            <p>Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark &gt;= 0 AND Mark &lt;= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.</p>
+            <p>Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Declare the search data before tracing it / Two complete array algorithms</h3>
-            <p>DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound. A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p>
+            <h3>Worked example: Define a valid-age condition</h3>
+            <p>For an accepted age from 11 to 18 inclusive, use Age &gt;= 11 AND Age &lt;= 18. At Age = 11 and Age = 18 the statement is TRUE; at Age = 10 or 19 it is FALSE. NOT(Age &gt;= 11 AND Age &lt;= 18) describes the invalid case.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start linear -->
-        <section class="panel explanation-panel" id="explanation-linear" data-explains="linear" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
-          <h2 class="explanation-sr-only" id="explanation-linear-title">Linear search checks each item in order</h2>
+        <!-- stage10-explanation:start equivalence -->
+        <section class="panel explanation-panel" id="explanation-equivalence" data-explains="equivalence" data-explanation-kind="mechanism" aria-labelledby="explanation-equivalence-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="equivalence">
+          <h2 class="explanation-sr-only" id="explanation-equivalence-title">A diamond becomes IF...THEN...ELSE</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model." />
-            <figcaption class="explanation-sr-only">Linear search checks each item in order: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-equivalence.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A diamond becomes IF...THEN...ELSE with a structured visual model." />
+            <figcaption class="explanation-sr-only">A diamond becomes IF...THEN...ELSE: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> How it works</li><li><strong>Lesson fact:</strong> Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li><strong>Lesson fact:</strong> When it is suitable</li><li><strong>Lesson fact:</strong> Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li><strong>Lesson fact:</strong> Worst case: the target is last or absent, so every item may be checked.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A flowchart decision diamond becomes an IF condition in pseudocode.</li><li><strong>Lesson fact:</strong> The labelled Yes and No branches become THEN and ELSE branches.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF after the two branches rejoin.</li><li><strong>Lesson fact:</strong> Input Age before testing whether it is between 11 and 18 inclusive.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end linear -->
+        <!-- stage10-explanation:end equivalence -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Array-based linear search and bubble sort: apply and assess</h2>
+            <h2>Logic statements define parts of an algorithm: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What are the lower and upper bounds of ARRAY[1:4]?</p>
-              <details><summary>Show answer</summary><p>The lower bound is 1 and the upper bound is 4.</p></details>
+              <p><strong>1.</strong> Complete the valid-mark statement for 0 to 100 inclusive.</p>
+              <details><summary>Show answer</summary><p>Mark &gt;= 0 AND Mark &lt;= 100.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What does Names[Index] mean?</p>
-              <details><summary>Show answer</summary><p>The single array element selected by the current value of Index.</p></details>
+              <p><strong>2.</strong> Give the denary value of Found = FALSE OR Index &lt;= UpperBound.</p>
+              <details><summary>Show answer</summary><p>The statement is true when the target has not been found, or the index is still within the upper bound, or both.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why must binary search know the current Low and High indexes?</p>
-              <details><summary>Show answer</summary><p>They delimit the remaining sorted portion of the array that may contain the target.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> When must a linear search stop?</p>
-              <details><summary>Show answer</summary><p>When the target has been found or every populated element within the declared bounds has been checked.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> What comparison is made by an ascending bubble sort?</p>
-              <details><summary>Show answer</summary><p>Compare adjacent elements and swap when the left element is greater than the right element.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What does a no-swap pass prove?</p>
-              <details><summary>Show answer</summary><p>No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.</p></details>
+              <p><strong>3.</strong> Why is Mark &gt;= 0 OR Mark &lt;= 100 incorrect for validation?</p>
+              <details><summary>Show answer</summary><p>Every number satisfies at least one side, so out-of-range values can be accepted.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
-            <p>Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search. Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range</td><td>Do not assume zero-based indexing when the declaration gives different bounds. Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound.</td><td>1</td></tr>
-                  <tr><td>OF STRING</td><td></td><td>1</td></tr>
-                  <tr><td>first valid index matches the declared lower bound</td><td></td><td>1</td></tr>
-                  <tr><td>last valid index matches the declared upper bound</td><td></td><td>1</td></tr>
-                  <tr><td>linear search initialises Found and Index</td><td></td><td>1</td></tr>
-                  <tr><td>linear search loops within indexes 1 to 20 until found or exhausted</td><td></td><td>1</td></tr>
-                  <tr><td>linear search compares Name[Index] with the target and records a match</td><td></td><td>1</td></tr>
-                  <tr><td>bubble sort uses repeated passes</td><td></td><td>1</td></tr>
-                  <tr><td>compares adjacent Score[Index] and Score[Index + 1] within valid bounds</td><td></td><td>1</td></tr>
-                  <tr><td>uses Temp or an equivalent safe three-step swap</td><td></td><td>1</td></tr>
-                  <tr><td>reduces the unsorted range or uses a valid no-swap stopping condition</td><td></td><td>1</td></tr>
-                  <tr><td>all constructs close coherently in Cambridge pseudocode</td><td></td><td>1</td></tr>
+                  <tr><td>uses Temperature &gt;= -20</td><td>Do not accept OR for a two-bound inclusive range or award outputs without a correctly constructed statement.</td><td>1</td></tr>
+                  <tr><td>uses AND Temperature &lt;= 50</td><td></td><td>1</td></tr>
+                  <tr><td>states FALSE for -21</td><td></td><td>1</td></tr>
+                  <tr><td>states TRUE for -20 and 50</td><td></td><td>1</td></tr>
+                  <tr><td>states FALSE for 51</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -146,276 +123,263 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 104 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
-            <h2>Linear search checks politely from the front. Binary search cuts the queue in half.</h2>
+            <h2>Validation is the polite bouncer at the algorithm door.</h2>
             <p>
-              Searching means finding whether a target value is present and often where it is found. Linear search checks
-              items one by one and works on unsorted data. Binary search repeatedly checks the middle item, but only works
-              correctly when the data is sorted.
+              Validation checks whether input is acceptable before it is processed. Defensive input handling repeats
+              input until valid data is supplied, so later calculations do not have to wrestle with nonsense. The aim is
+              not to prove the data is true; it is to check it follows the rules.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Trace</strong><span>linear search and binary search using test data</span></div>
-              <div><strong>Choose</strong><span>the suitable search method from data size and sorted/unsorted status</span></div>
-              <div><strong>Explain</strong><span>why binary search is faster but requires sorted data</span></div>
+              <div><strong>Identify</strong><span>range, presence, length, type/format and check digit validation</span></div>
+              <div><strong>Write</strong><span>Cambridge-style validation loops using WHILE or REPEAT...UNTIL</span></div>
+              <div><strong>Explain</strong><span>why validation reduces errors but does not guarantee data is correct</span></div>
             </div>
           </div>
-          <div class="search-visual" aria-label="Search visual">
-            <div class="array-line">
-              <span>13</span><span>21</span><span>42</span><span>56</span><span>70</span><span>88</span><span>91</span>
-            </div>
-            <div class="search-card">
-              <strong>Linear</strong>
-              <span>13 → 21 → 42 found</span>
-            </div>
-            <div class="search-card">
-              <strong>Binary</strong>
-              <span>middle 56 too high → left half → 21 too low → 42 found</span>
-            </div>
-            <p>Binary search is clever only because the list is sorted. Without order, "discard half" becomes "discard marks".</p>
+          <div class="validation-visual" aria-label="Validation pipeline visual">
+            <div>INPUT Age</div>
+            <span>check rule</span>
+            <div>Age &gt;= 11 AND Age &lt;= 18?</div>
+            <span>if invalid</span>
+            <div>Ask again</div>
+            <span>if valid</span>
+            <div>Process Age</div>
+            <p>Invalid input should be rejected before it sneaks into the calculation wearing a fake moustache.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 may ask students to trace, compare or justify a search method. "Faster" alone is not enough for the mark.</p>
+            <p>Paper 2 often gives a rule such as 0-100 or 8 characters. The marks come from applying the rule precisely.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Binary search does not mean "start somewhere random". It means compare the middle, then discard the impossible half.</p>
+            <p>Validation checks acceptability, not truth. A valid age of 15 might still be typed by someone who is actually 16.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Find the exam paper in a pile</h2>
-            <p>If the papers are unsorted, what is the safest search method?</p>
+            <h2>The school form that accepts age 900</h2>
+            <p>Which validation rule would stop a student entering 900 as their age?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="linear">Check papers one by one.</button>
-            <button class="choice-card" type="button" data-hook="binary">Open the middle and throw away half.</button>
-            <button class="choice-card" type="button" data-hook="sort">Sort the whole pile first, then search.</button>
-            <button class="choice-card" type="button" data-hook="guess">Guess confidently.</button>
+            <button class="choice-card" type="button" data-hook="presence">Presence check</button>
+            <button class="choice-card" type="button" data-hook="range">Range check</button>
+            <button class="choice-card" type="button" data-hook="length">Length check</button>
+            <button class="choice-card" type="button" data-hook="format">Format check</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose a strategy for unsorted data.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the best validation rule.</div>
         </section>
 
-        <section class="panel" id="linear" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+        <section class="panel" id="validation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Linear search checks each item in order</h2>
+            <h2>Validation checks whether input follows a rule</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>How it works</h3>
-              <p>Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</p>
-              <div class="callout">Chinese support: linear search = 线性搜索 / 顺序搜索。</div>
+              <h3>What validation does</h3>
+              <p>Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.</p>
+              <div class="callout">Chinese support: validation = 有效性检查；defensive input = 防御式输入。</div>
             </article>
             <article>
-              <h3>When it is suitable</h3>
-              <p>Use it when data is unsorted, the list is small, or simplicity matters more than speed.</p>
-              <div class="callout">Worst case: the target is last or absent, so every item may be checked.</div>
+              <h3>What validation does not do</h3>
+              <p>Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.</p>
+              <div class="callout">Example: age 15 passes a school-age range check, but it might still be a lie.</div>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="binary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether input follows a rule</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether input follows a rule with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation checks whether input follows a rule: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What validation does</li><li><strong>Lesson fact:</strong> Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.</li><li><strong>Lesson fact:</strong> What validation does not do</li><li><strong>Lesson fact:</strong> Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.</li><li><strong>Lesson fact:</strong> Example: age 15 passes a school-age range check, but it might still be a lie.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
+        <section class="panel" id="checks" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
-            <p class="eyebrow">Knowledge explanation</p>
-            <h2>Binary search repeatedly halves a sorted list</h2>
+            <p class="eyebrow">Validation check types</p>
+            <h2>Match the rule to the risk</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Validation check types">
+            <div class="table-row table-head" role="row"><div>Check</div><div>Purpose</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>Range check</div><div>value is within allowed limits</div><div>Mark &gt;= 0 AND Mark &lt;= 100</div></div>
+            <div class="table-row" role="row"><div>Presence check</div><div>field is not blank</div><div>Name &lt;&gt; ""</div></div>
+            <div class="table-row" role="row"><div>Length check</div><div>input has required number of characters</div><div>LENGTH(Postcode) &lt;= 8</div></div>
+            <div class="table-row" role="row"><div>Type / format check</div><div>input matches expected type or pattern</div><div>Date has form DD/MM/YYYY</div></div>
+            <div class="table-row" role="row"><div>Check digit</div><div>detects many typing errors in a code</div><div>barcode or ISBN-style code</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start checks -->
+        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+          <h2 class="explanation-sr-only" id="explanation-checks-title">Match the rule to the risk</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the rule to the risk with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match the rule to the risk: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> LENGTH(Postcode) &lt;= 8 is a maximum-length check.</li><li><strong>Lesson fact:</strong> The rule accepts no more than eight characters and prevents input that is too long.</li><li><strong>Lesson fact:</strong> It does not require exactly eight characters.</li><li><strong>Lesson fact:</strong> Use equality or bounded limits only when an exact or minimum-and-maximum length is intended.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checks -->
+        <section class="panel" id="defensive" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+          <div class="section-title">
+            <p class="eyebrow">Defensive input handling</p>
+            <h2>Reject bad input, then ask again</h2>
           </div>
           <div class="step-strip">
-            <div><strong>1</strong><span>Set Low to first index and High to last index.</span></div>
-            <div><strong>2</strong><span>Find Mid, the middle index.</span></div>
-            <div><strong>3</strong><span>Compare List[Mid] with Target.</span></div>
-            <div><strong>4</strong><span>If target is smaller, move High left; if larger, move Low right.</span></div>
-            <div><strong>5</strong><span>Stop when found or Low is greater than High.</span></div>
+            <div><strong>1</strong><span>Input the value.</span></div>
+            <div><strong>2</strong><span>Test the validation condition.</span></div>
+            <div><strong>3</strong><span>If invalid, output a helpful message.</span></div>
+            <div><strong>4</strong><span>Repeat input until valid.</span></div>
+            <div><strong>5</strong><span>Process only the accepted value.</span></div>
           </div>
-          <div class="callout">Binary search requires sorted data. 二分搜索必须基于有序数据，否则无法安全排除一半数据。</div>
         </section>
 
-        <!-- stage10-explanation:start binary -->
-        <section class="panel explanation-panel" id="explanation-binary" data-explains="binary" data-explanation-kind="process" aria-labelledby="explanation-binary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <h2 class="explanation-sr-only" id="explanation-binary-title">Binary search repeatedly halves a sorted list</h2>
+        <!-- stage10-explanation:start defensive -->
+        <section class="panel explanation-panel" id="explanation-defensive" data-explains="defensive" data-explanation-kind="mechanism" aria-labelledby="explanation-defensive-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+          <h2 class="explanation-sr-only" id="explanation-defensive-title">Reject bad input, then ask again</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-binary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary search repeatedly halves a sorted list with a structured visual model." />
-            <figcaption class="explanation-sr-only">Binary search repeatedly halves a sorted list: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-defensive.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Reject bad input, then ask again with a structured visual model." />
+            <figcaption class="explanation-sr-only">Reject bad input, then ask again: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Binary search requires sorted data and repeatedly narrows the search interval.</li><li><strong>Lesson fact:</strong> In Cambridge pseudocode, / performs real division and DIV performs integer division.</li><li><strong>Lesson fact:</strong> Mid &lt;- (Low + High) DIV 2
-This produces an integer array index.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Defensive input handling</li><li><strong>Lesson fact:</strong> 1 Input the value.</li><li><strong>Lesson fact:</strong> 2 Test the validation condition.</li><li><strong>Lesson fact:</strong> 3 If invalid, output a helpful message.</li><li><strong>Lesson fact:</strong> 4 Repeat input until valid.</li><li><strong>Lesson fact:</strong> 5 Process only the accepted value.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end binary -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <div class="section-title">
-            <p class="eyebrow">Comparison</p>
-            <h2>Choosing the right search</h2>
-          </div>
-          <div class="data-table concept-table" role="table" aria-label="Linear and binary search comparison">
-            <div class="table-row table-head" role="row"><div>Feature</div><div>Linear search</div><div>Binary search</div></div>
-            <div class="table-row" role="row"><div>Data order</div><div>works on unsorted or sorted data</div><div>requires sorted data</div></div>
-            <div class="table-row" role="row"><div>Method</div><div>checks each item one by one</div><div>checks middle and discards half</div></div>
-            <div class="table-row" role="row"><div>Worst case</div><div>may check every item</div><div>checks far fewer items for large sorted lists</div></div>
-            <div class="table-row" role="row"><div>Exam phrase</div><div>"sequentially compare each item with target"</div><div>"compare middle item and adjust low/high bounds"</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Choosing the right search</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choosing the right search with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choosing the right search: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Comparison</li><li><strong>Lesson fact:</strong> Linear search</li><li><strong>Lesson fact:</strong> Binary search</li><li><strong>Lesson fact:</strong> Data order</li><li><strong>Lesson fact:</strong> works on unsorted or sorted data</li><li><strong>Lesson fact:</strong> requires sorted data</li><li><strong>Lesson fact:</strong> checks each item one by one</li><li><strong>Lesson fact:</strong> checks middle and discards half</li><li><strong>Lesson fact:</strong> Worst case</li><li><strong>Lesson fact:</strong> may check every item</li><li><strong>Lesson fact:</strong> checks far fewer items for large sorted lists</li><li><strong>Lesson fact:</strong> Exam phrase</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
+        <!-- stage10-explanation:end defensive -->
         <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Cambridge pseudocode is the exam format</h2>
+            <h2>Use Cambridge-style validation loops in the exam</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Linear search pseudocode</h3>
-              <pre><code>Found &lt;- FALSE
-Index &lt;- 1
-WHILE Found = FALSE AND Index &lt;= Length
-    IF List[Index] = Target THEN
-        Found &lt;- TRUE
-    ELSE
-        Index &lt;- Index + 1
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>REPEAT
+    INPUT Mark
+    IF Mark &lt; 0 OR Mark &gt; 100 THEN
+        OUTPUT "Invalid mark"
     ENDIF
-ENDWHILE</code></pre>
+UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>boolean found = false;
-int index = 0;
-while (!found &amp;&amp; index &lt; list.length) {
-    if (list[index] == target) {
-        found = true;
-    } else {
-        index++;
+              <pre><code>do {
+    mark = input.nextInt();
+    if (mark &lt; 0 || mark &gt; 100) {
+        System.out.println("Invalid mark");
     }
-}</code></pre>
+} while (mark &lt; 0 || mark &gt; 100);</code></pre>
             </article>
           </div>
-          <div class="callout">Exam reminder: Java array indexing starts at 0; Cambridge pseudocode examples often use index 1. Keep the notation you are using consistent.</div>
+          <div class="callout">Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
         <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam format</h2>
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Use Cambridge-style validation loops in the exam</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam format with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam format: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge-style validation loops in the exam with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use Cambridge-style validation loops in the exam: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise Found to FALSE and Index to the first valid position.</li><li><strong>Lesson fact:</strong> While the target is not found and Index remains valid, compare the current item.</li><li><strong>Lesson fact:</strong> Close the match selection with ENDIF, then increment Index.</li><li><strong>Lesson fact:</strong> ENDWHILE closes the surrounding search loop.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A post-condition validation loop starts with REPEAT and ends with UNTIL.</li><li><strong>Lesson fact:</strong> Input Mark inside the loop so every retry obtains a replacement value.</li><li><strong>Lesson fact:</strong> Close the invalid-mark selection with ENDIF before UNTIL.</li><li><strong>Lesson fact:</strong> A Java do-while support version must begin with do and close its blocks correctly.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
-            <p class="eyebrow">Interactive search chooser</p>
-            <h2>Pick a suitable search method</h2>
+            <p class="eyebrow">Interactive check classifier</p>
+            <h2>Choose the validation type</h2>
           </div>
           <div class="converter-grid">
+            <label>
+              Rule
+              <select id="classifierInput">
+                <option value="range">Mark must be 0 to 100 inclusive.</option>
+                <option value="presence">Surname must not be blank.</option>
+                <option value="length">Password must be at least 8 characters.</option>
+                <option value="format">Date must be entered as DD/MM/YYYY.</option>
+                <option value="digit">Barcode uses final digit to detect typing errors.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a rule to classify it.</div>
+        </section>
+
+        <section class="panel" id="tester" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+          <div class="section-title">
+            <p class="eyebrow">Interactive input tester</p>
+            <h2>Test a mark against 0-100</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mark
+              <input id="markInput" type="number" value="50" />
+            </label>
+            <button class="primary-button" type="button" id="testBtn">Test mark</button>
+          </div>
+          <div class="feedback" id="testResult">Enter a mark and test whether it is valid.</div>
+        </section>
+
+        <!-- stage10-explanation:start tester -->
+        <section class="panel explanation-panel" id="explanation-tester" data-explains="tester" data-explanation-kind="mechanism" aria-labelledby="explanation-tester-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+          <h2 class="explanation-sr-only" id="explanation-tester-title">Test a mark against 0-100</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-tester.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Test a mark against 0-100 with a structured visual model." />
+            <figcaption class="explanation-sr-only">Test a mark against 0-100: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive input tester</li><li><strong>Lesson fact:</strong> Enter a mark and test whether it is valid.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end tester -->
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
+          <div class="section-title">
+            <p class="eyebrow">Interactive validation builder</p>
+            <h2>Generate a Cambridge-style validation loop</h2>
+          </div>
+          <div class="builder-grid">
             <label>
               Scenario
-              <select id="classifierInput">
-                <option value="unsorted">Unsorted list of 12 names</option>
-                <option value="sorted-large">Sorted list of 1000 candidate numbers</option>
-                <option value="small">Small list of 4 scores</option>
-                <option value="unknown">List order is not stated</option>
+              <select id="builderInput">
+                <option value="mark">Mark 0-100</option>
+                <option value="age">Age 11-18</option>
+                <option value="name">Name not blank</option>
+                <option value="password">Password length at least 8</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="classifyBtn">Choose method</button>
+            <button class="primary-button" type="button" id="buildBtn">Build loop</button>
           </div>
-          <div class="feedback" id="classifyResult">Choose a scenario to see a justified method.</div>
+          <div class="answer-frame" id="builderResult">Choose a scenario to generate pseudocode.</div>
         </section>
 
-        <section class="panel" id="linear-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <div class="section-title">
-            <p class="eyebrow">Interactive linear trace</p>
-            <h2>Trace linear search</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Target in [13, 42, 56, 70]
-              <select id="linearInput">
-                <option value="42">42</option>
-                <option value="70">70</option>
-                <option value="99">99</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="linearBtn">Trace</button>
-          </div>
-          <div class="trace-output" id="linearResult">Choose a target to trace comparisons.</div>
-        </section>
-
-        <!-- stage10-explanation:start linear-tool -->
-        <section class="panel explanation-panel" id="explanation-linear-tool" data-explains="linear-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <h2 class="explanation-sr-only" id="explanation-linear-tool-title">Trace linear search</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace linear search with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trace linear search: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive linear trace</li><li><strong>Lesson fact:</strong> Target in [13, 42, 56, 70]</li><li><strong>Lesson fact:</strong> Choose a target to trace comparisons.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end linear-tool -->
-        <section class="panel" id="binary-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <div class="section-title">
-            <p class="eyebrow">Interactive binary trace</p>
-            <h2>Trace binary search on sorted data</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Target in [13, 21, 42, 56, 70, 88, 91]
-              <select id="binaryInput">
-                <option value="42">42</option>
-                <option value="88">88</option>
-                <option value="15">15</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="binaryBtn">Trace</button>
-          </div>
-          <div class="trace-output" id="binaryResult">Choose a target to trace low, mid and high.</div>
-        </section>
-
-        <!-- stage10-explanation:start binary-tool -->
-        <section class="panel explanation-panel" id="explanation-binary-tool" data-explains="binary-tool" data-explanation-kind="process" aria-labelledby="explanation-binary-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
-          <h2 class="explanation-sr-only" id="explanation-binary-tool-title">Trace binary search on sorted data</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-binary-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace binary search on sorted data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trace binary search on sorted data: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive binary trace</li><li><strong>Lesson fact:</strong> Target in [13, 21, 42, 56, 70, 88, 91]</li><li><strong>Lesson fact:</strong> Choose a target to trace low, mid and high.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end binary-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Search traces</h2>
+            <h2>Validation patterns</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="linear-found">Linear found</button>
-            <button class="tab" type="button" data-example="linear-absent">Linear absent</button>
-            <button class="tab" type="button" data-example="binary-found">Binary found</button>
-            <button class="tab" type="button" data-example="binary-absent">Binary absent</button>
+            <button class="tab active" type="button" data-example="range">Range</button>
+            <button class="tab" type="button" data-example="presence">Presence</button>
+            <button class="tab" type="button" data-example="length">Length</button>
+            <button class="tab" type="button" data-example="format">Format</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -423,7 +387,7 @@ while (!found &amp;&amp; index &lt; list.length) {
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Searching accuracy</h2>
+            <h2>Validation precision</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -432,7 +396,7 @@ while (!found &amp;&amp; index &lt; list.length) {
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix search mistakes</h2>
+            <h2>Fix validation mistakes</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -440,8 +404,8 @@ while (!found &amp;&amp; index &lt; list.length) {
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style search questions with expandable MS</h2>
-            <p>These questions target tracing, method choice, sorted-data requirements and strict pseudocode reasoning.</p>
+            <h2>Original Cambridge-style validation questions with expandable MS</h2>
+            <p>These questions target validation rules, defensive loops and precise Boolean conditions. MS uses strict Cambridge-style expectations.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -449,12 +413,12 @@ while (!found &amp;&amp; index &lt; list.length) {
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Search checklist</h2>
+            <h2>Validation checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Linear</strong><span>Compare each item with the target until found or list ends.</span></div>
-            <div><strong>Binary</strong><span>Use only sorted data; compare middle item and adjust low/high.</span></div>
-            <div><strong>Trace</strong><span>Record comparisons, index changes and found/not found outcome clearly.</span></div>
+            <div><strong>Rule</strong><span>State the exact acceptable condition.</span></div>
+            <div><strong>Loop</strong><span>Repeat input while invalid or until valid.</span></div>
+            <div><strong>Limit</strong><span>Validation checks acceptability, not real-world truth.</span></div>
           </div>
         </section>
 
@@ -465,16 +429,16 @@ while (!found &amp;&amp; index &lt; list.length) {
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Linear trace</strong>
-              <span>Trace linear search for 56 and 99 in [13, 42, 56, 70]. State comparisons and final found/not found result.</span>
+              <strong>Task 1: Validation table</strong>
+              <span>For mark, date, password and surname, name the best validation check and write the valid condition.</span>
             </article>
             <article>
-              <strong>Task 2: Binary trace</strong>
-              <span>Trace binary search for 88 in [13, 21, 42, 56, 70, 88, 91]. Show Low, Mid, High for each comparison.</span>
+              <strong>Task 2: Pseudocode loop</strong>
+              <span>Write Cambridge-style pseudocode that repeatedly inputs an age until it is from 11 to 18 inclusive.</span>
             </article>
             <article>
               <strong>Task 3: Explanation</strong>
-              <span>Explain why binary search cannot be safely used on unsorted data unless the data is sorted first.</span>
+              <span>Explain why validation can reject impossible data but cannot prove that a user told the truth.</span>
             </article>
           </div>
         </section>
@@ -482,8 +446,8 @@ while (!found &amp;&amp; index &lt; list.length) {
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

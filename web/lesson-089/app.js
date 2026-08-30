@@ -1,93 +1,65 @@
-const classifierMap = {
-  flat: {
-    topic: "Relational design / normalisation",
-    reason: "Repeated address data suggests duplication. Separate student details from booking records to reduce update errors.",
+const scenarioMap = {
+  age: {
+    label: "Validation: range check",
+    detail: "Age = 216 should be rejected because it is outside the allowed range for a student.",
   },
-  pk: {
-    topic: "Primary key",
-    reason: "The clue 'uniquely identifies a record' points to a primary key.",
+  emailCopy: {
+    label: "Verification: proofreading",
+    detail: "The typed email is compared with the source form to check it was copied accurately.",
   },
-  join: {
-    topic: "SQL join",
-    reason: "StudentName and DueDate are stored in Student and Loan, so the two related tables must be joined using their matching StudentID fields.",
+  rights: {
+    label: "Security: access rights",
+    detail: "Only authorised users can edit the payment field, reducing unauthorised changes.",
   },
-  group: {
-    topic: "Aggregate and GROUP BY",
-    reason: "The phrase 'in each category' asks for one summary per group.",
+  lost: {
+    label: "Backup and recovery",
+    detail: "A backup copy allows the database to be restored after storage failure.",
   },
-  backup: {
-    topic: "Backup and recovery",
-    reason: "Restoring records after failure needs a separate backup copy and a tested restore process.",
-  },
-};
-
-const books = [
-  { BookID: "B01", Title: "Networks", Category: "Computing", Copies: 4 },
-  { BookID: "B02", Title: "Poems", Category: "Literature", Copies: 7 },
-  { BookID: "B03", Title: "Databases", Category: "Computing", Copies: 3 },
-  { BookID: "B04", Title: "Drama", Category: "Literature", Copies: 2 },
-];
-
-const queryMap = {
-  q1: {
-    fields: ["Title"],
-    rows: books.filter((row) => row.Category === "Computing").map((row) => ({ Title: row.Title })),
-  },
-  q2: {
-    fields: ["Title", "Copies"],
-    rows: [...books]
-      .sort((a, b) => b.Copies - a.Copies)
-      .map((row) => ({ Title: row.Title, Copies: row.Copies })),
-  },
-  q3: {
-    fields: ["Category", "COUNT(*)"],
-    rows: groupByCategory((rows) => rows.length, "COUNT(*)"),
-  },
-  q4: {
-    fields: ["Category", "SUM(Copies)"],
-    rows: groupByCategory((rows) => rows.reduce((total, row) => total + row.Copies, 0), "SUM(Copies)"),
+  encrypt: {
+    label: "Security: encryption",
+    detail: "Encryption makes copied database files unreadable without the correct key.",
   },
 };
 
 const examples = {
-  design: {
-    title: "Example 1: Design answer with marks annotated",
-    problem: "A flat file repeats student details for every library loan. Explain one problem and one relational design improvement.",
+  validation: {
+    title: "Example 1: Validation",
+    problem: "The Age field must store a school club member's age.",
     steps: [
-      "Problem mark: repeated student details cause data duplication.",
-      "Consequence mark: if an address changes, every repeated copy must be updated or the data becomes inconsistent.",
-      "Improvement mark: store Student details once in a Student table with StudentID as primary key.",
-      "Relationship mark: store StudentID as a foreign key in Loan to link each loan to the correct student.",
+      "Choose a validation rule that checks the value before it is stored.",
+      "A range check can require Age to be from 11 to 19.",
+      "This rejects values such as 216 or -4.",
+      "Limitation: Age 16 is valid, but it could still be the wrong age for that student.",
     ],
   },
-  sql: {
-    title: "Example 2: SQL topic recognition",
-    problem: "Write a query to show the number of books in each category.",
+  verification: {
+    title: "Example 2: Verification",
+    problem: "A secretary types emergency contact details from a paper form.",
     steps: [
-      "Topic clue: 'number of books' means COUNT; 'each category' means GROUP BY.",
-      "Output the group label and the aggregate: SELECT Category, COUNT(*).",
-      "Use the correct table: FROM Book.",
-      "Complete answer: SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+      "The issue is copying accuracy, so use verification.",
+      "Proofread the typed data against the form, or use double entry for critical fields.",
+      "This reduces transcription errors such as typing 07701 instead of 07710.",
+      "Limitation: verification cannot prove the original paper form was correct.",
     ],
   },
-  protect: {
-    title: "Example 3: Protection vocabulary",
-    problem: "A typed email should be checked against a paper form.",
+  security: {
+    title: "Example 3: Security",
+    problem: "Only office staff should edit payment status in the database.",
     steps: [
-      "This is not validation because the problem is not only format.",
-      "It is verification because typed data is compared with a source.",
-      "Method: proofreading against the form.",
-      "Limitation: this checks copying accuracy, not whether the form itself was correct.",
+      "Use access rights so users have only the permissions they need.",
+      "Require authentication so the system knows who is using the database.",
+      "Log changes so inappropriate edits can be investigated.",
+      "The exam answer should link the control to preventing unauthorised viewing or editing.",
     ],
   },
-  improve: {
-    title: "Example 4: Improve a weak answer",
-    problem: "Weak answer: 'Backups are good because they make the database safe.'",
+  backup: {
+    title: "Example 4: Backup",
+    problem: "The club database is corrupted after a server failure.",
     steps: [
-      "Name the mechanism: a backup is a separate copy of database data.",
-      "Give the consequence: it allows recovery after data loss, corruption or hardware failure.",
-      "Add quality detail: backups should be regular, stored separately and tested.",
-      "Improved answer: regular off-site backups allow the school to restore recent records after failure, reducing data loss.",
+      "A backup is a separate copy of data.",
+      "Backups should be made regularly so recent data can be recovered.",
+      "A copy should be kept separately from the main system.",
+      "The restore process should be tested; a backup that cannot restore is just a hopeful file.",
     ],
   },
 };
@@ -95,82 +67,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "Which key uniquely identifies each record in a table?",
-    accepted: ["primary key", "primary"],
-    answer: "Primary key",
-  },
-  {
-    id: "p2",
-    prompt: "Which key links to a primary key in another table?",
-    accepted: ["foreign key", "foreign"],
-    answer: "Foreign key",
-  },
-  {
-    id: "p3",
-    prompt: "Which design process reduces duplication by separating repeated data into related tables?",
-    accepted: ["normalisation", "normalization"],
-    answer: "Normalisation",
-  },
-  {
-    id: "p4",
-    prompt: "Which SQL clause filters records?",
-    accepted: ["where"],
-    answer: "WHERE",
-  },
-  {
-    id: "p5",
-    prompt: "Which SQL clause sorts result rows?",
-    accepted: ["order by"],
-    answer: "ORDER BY",
-  },
-  {
-    id: "p6",
-    prompt: "Which aggregate function counts records?",
-    accepted: ["count", "count()"],
-    answer: "COUNT",
-  },
-  {
-    id: "p7",
-    prompt: "Which SQL clause is needed for a summary per category?",
-    accepted: ["group by"],
-    answer: "GROUP BY",
-  },
-  {
-    id: "p8",
-    prompt: "Which SQL command changes existing records?",
-    accepted: ["update"],
-    answer: "UPDATE",
-  },
-  {
-    id: "p9",
-    prompt: "Which term checks data follows rules before being accepted?",
+    prompt: "Which term means checking input is sensible before it is accepted?",
     accepted: ["validation"],
     answer: "Validation",
   },
   {
-    id: "p10",
-    prompt: "Which term checks entered data against the original source?",
+    id: "p2",
+    prompt: "Which term means checking entered data matches the source?",
     accepted: ["verification"],
     answer: "Verification",
+  },
+  {
+    id: "p3",
+    prompt: "Which validation check would reject Age = 216?",
+    accepted: ["range check", "range"],
+    answer: "Range check",
+  },
+  {
+    id: "p4",
+    prompt: "Which validation check ensures StudentID is not left blank?",
+    accepted: ["presence check", "presence"],
+    answer: "Presence check",
+  },
+  {
+    id: "p5",
+    prompt: "Which validation check ensures PaymentAmount is numeric?",
+    accepted: ["type check", "type"],
+    answer: "Type check",
+  },
+  {
+    id: "p6",
+    prompt: "Which verification method asks for the same data twice and compares it?",
+    accepted: ["double entry", "double-entry"],
+    answer: "Double entry",
+  },
+  {
+    id: "p7",
+    prompt: "Which security control limits what different users can view or edit?",
+    accepted: ["access rights", "access controls", "permissions", "user permissions"],
+    answer: "Access rights / permissions",
+  },
+  {
+    id: "p8",
+    prompt: "Which security control encodes data so it is unreadable without a key?",
+    accepted: ["encryption", "encrypt"],
+    answer: "Encryption",
+  },
+  {
+    id: "p9",
+    prompt: "What allows a database to be restored after data loss?",
+    accepted: ["backup", "backups", "backup copy"],
+    answer: "Backup",
+  },
+  {
+    id: "p10",
+    prompt: "Can validation prove entered data is true? yes or no.",
+    accepted: ["no", "n"],
+    answer: "No. It only checks whether data follows rules.",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "A student's name is a good primary key because every student has a name.",
-    fix: "A primary key must uniquely and reliably identify a record. Names may be duplicated or change; use a StudentID.",
+    wrong: "Validation checks that the data copied from the paper form is definitely accurate.",
+    fix: "That describes verification. Validation checks whether input obeys rules such as range, type or presence.",
   },
   {
-    wrong: "SELECT * is fine because it shows everything the examiner could want.",
-    fix: "Exam questions usually specify required fields. SELECT only those fields unless all fields are requested.",
+    wrong: "A range check proves the age entered is the student's real age.",
+    fix: "A range check only proves the age is within allowed limits. A plausible value can still be wrong.",
   },
   {
-    wrong: "GROUP BY sorts the output into alphabetical order.",
-    fix: "GROUP BY forms groups for aggregate summaries. ORDER BY sorts output rows.",
+    wrong: "A backup stops unauthorised users from reading the database.",
+    fix: "A backup helps recovery after loss or corruption. Security controls such as access rights or encryption restrict access.",
   },
   {
-    wrong: "Validation proves that data is correct.",
-    fix: "Validation checks data follows rules. It cannot prove that a plausible value is true.",
+    wrong: "Everyone can share the administrator account because it is faster.",
+    fix: "Use individual user accounts and access rights so permissions and accountability are controlled.",
   },
 ];
 
@@ -183,99 +155,90 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "A school stores library loans in one flat file. StudentName, TutorGroup and BookTitle are repeated for every loan. Explain two advantages of using a relational database design instead.",
-    answer: "Student data can be stored once in a Student table and linked to Loan using StudentID, reducing duplication. If a tutor group changes, only one Student record needs updating, reducing inconsistency. Book data can also be stored once in a Book table and linked using BookID, so each loan references the correct book without repeating all book details.",
+    marks: "3 marks",
+    prompt: "A database stores the age of students in a school club. Explain how validation could reduce errors in the Age field.",
+    answer: "A range check could be used so Age must be within a sensible range, for example 11 to 19. This would reject values such as 216 before they are stored. Validation reduces invalid input but does not prove the age belongs to the correct student.",
     marking: [
-      { mark: "B1", text: "identifies reduced data duplication" },
-      { mark: "B1", text: "applies duplication to repeated student/book details" },
-      { mark: "B1", text: "identifies reduced update inconsistency / easier update" },
-      { mark: "B1", text: "explains single update reduces conflicting copies" },
+      { mark: "B1", text: "names a suitable validation check, e.g. range check" },
+      { mark: "B1", text: "states a sensible allowed range or limit for Age" },
+      { mark: "B1", text: "explains invalid values are rejected before storage" },
     ],
     strict: [
-      "Do not award full credit for vague 'more efficient' without cause and consequence.",
-      "Allow reduced storage if linked to less repeated data.",
-      "Do not accept 'primary keys stop duplication' unless table separation or relationship is explained.",
+      "Do not award validation check mark for verification methods such as proofreading.",
+      "Allow any sensible age range for school students.",
+      "Do not accept vague 'checks it is correct' without describing a rule.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "The Book table has fields BookID, Title, Category and Copies. Write an SQL query to output each Category and the total number of Copies in that category.",
-    answer: "SELECT Category, SUM(Copies) FROM Book GROUP BY Category;",
+    prompt: "Describe two methods of verification that could be used when entering contact details from a paper form.",
+    answer: "Proofreading can be used by comparing the entered contact details with the paper form. Double entry can be used by entering the same contact details twice and comparing the two entries.",
     marking: [
-      { mark: "B1", text: "SELECT Category" },
-      { mark: "B1", text: "uses SUM(Copies)" },
-      { mark: "B1", text: "FROM Book" },
-      { mark: "M1", text: "GROUP BY Category" },
+      { mark: "B1", text: "identifies proofreading / visual check against source" },
+      { mark: "B1", text: "explains comparison with the original paper form" },
+      { mark: "B1", text: "identifies double entry" },
+      { mark: "B1", text: "explains two entries are compared for a match" },
     ],
     strict: [
-      "Do not accept COUNT(Copies) for total copies.",
-      "Do not award GROUP BY mark for ORDER BY Category.",
-      "Allow field order SUM(Copies), Category unless output order is specified.",
+      "Do not award marks for validation checks such as range or type check.",
+      "Allow equivalent wording such as checking against source document.",
+      "Do not require both methods if question only asks for one; here two are required.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Student(StudentID, StudentName) and Loan(LoanID, StudentID, DueDate, Returned) are related tables. Write SQL to output StudentName and DueDate for current loans.",
-    answer: "SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE;",
+    marks: "4 marks",
+    prompt: "A school database stores medical details. Explain two security measures that could protect the data.",
+    answer: "Access rights can restrict medical details to authorised staff only, reducing unauthorised viewing or editing. Encryption can make stored or transmitted data unreadable without the correct key if files are copied or intercepted.",
     marking: [
-      { mark: "B1", text: "SELECT includes Student.StudentName" },
-      { mark: "B1", text: "SELECT includes Loan.DueDate" },
-      { mark: "B1", text: "FROM Student" },
-      { mark: "B1", text: "INNER JOIN Loan" },
-      { mark: "M1", text: "ON Student.StudentID = Loan.StudentID" },
-      { mark: "A1", text: "WHERE Loan.Returned = FALSE" },
+      { mark: "B1", text: "names access rights / permissions / user privileges" },
+      { mark: "B1", text: "explains restriction to authorised users or required role" },
+      { mark: "B1", text: "names encryption or authentication as a security measure" },
+      { mark: "B1", text: "explains how the second measure protects confidentiality/access" },
     ],
     strict: [
-      "Do not accept a three-table or comma-style join.",
-      "Require explicit INNER JOIN ... ON between the two named tables.",
-      "Do not require semicolon.",
+      "Do not award full credit for generic 'make it secure' without mechanism.",
+      "Allow strong passwords or multi-factor authentication if linked to authorised access.",
+      "Do not accept backup as a security measure unless linked only to availability/recovery, not confidentiality.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain the purposes of a DBMS developer interface and query processor, and describe how they support a database application.",
-    answer: "The developer interface provides tools or an interface for a developer to define forms, reports, queries or application access to the database. The query processor parses and validates a query, chooses how to execute it and obtains the required data. Together they let application code submit database operations and receive results through controlled DBMS services.",
+    marks: "4 marks",
+    prompt: "Explain why a database backup is needed and give two features of a good backup plan.",
+    answer: "A backup is needed so data can be restored after loss, corruption or hardware failure. A good backup plan makes backups regularly and stores copies separately from the main system. The restore process should also be tested.",
     marking: [
-      { mark: "B1", text: "developer interface provides development tools/access" },
-      { mark: "B1", text: "valid developer task such as forms/reports/queries" },
-      { mark: "B1", text: "query processor parses/validates a query" },
-      { mark: "B1", text: "query processor plans/executes and retrieves results" },
-      { mark: "B1", text: "links both components to application database access" },
+      { mark: "B1", text: "states backup is a separate copy / used for recovery" },
+      { mark: "B1", text: "explains recovery after loss, corruption, deletion or failure" },
+      { mark: "B1", text: "gives suitable feature such as regular frequency" },
+      { mark: "B1", text: "gives second feature such as off-site storage or restore testing" },
     ],
     strict: [
-      "Do not describe the query processor as the human who writes the query.",
+      "Do not accept backup as preventing the original failure.",
+      "Allow cloud or off-site storage if separation from main system is clear.",
+      "Do not require the terms full/incremental unless taught in the local course.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A student writes: SELECT * FROM Book GROUP BY Category; for the request 'output each Category and the number of books in that category'. Identify and correct the errors.",
-    answer: "SELECT * outputs all fields instead of only Category and the count. GROUP BY Category groups the records but an aggregate function is missing. A corrected query is SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+    marks: "5 marks",
+    prompt: "A student says: 'Validation and verification are the same because both check data.' Explain why this is wrong, using one example of each.",
+    answer: "Validation checks whether input follows rules before it is accepted, for example a range check rejecting Age = 216. Verification checks whether entered data matches a source, for example proofreading an email address against a paper form. They are different because validation checks reasonableness or format, while verification checks copying accuracy.",
     marking: [
-      { mark: "B1", text: "identifies SELECT * outputs too many / wrong fields" },
-      { mark: "B1", text: "identifies missing COUNT aggregate" },
-      { mark: "B1", text: "corrects output to Category and COUNT(*) or another valid count aggregate" },
-      { mark: "B1", text: "complete corrected query retains FROM Book and GROUP BY Category" },
+      { mark: "B1", text: "defines validation as checking input against rules / acceptable form" },
+      { mark: "B1", text: "gives valid validation example" },
+      { mark: "B1", text: "defines verification as checking against source or repeated entry" },
+      { mark: "B1", text: "gives valid verification example" },
+      { mark: "B1", text: "explicitly contrasts rule checking with copying/source accuracy" },
     ],
     strict: [
-      "Do not award count mark for SUM(Copies), because the request asks for number of books.",
-      "Allow COUNT(BookID) if BookID is a non-null key field.",
-      "Do not require a semicolon.",
+      "Do not award contrast mark if both examples are validation checks.",
+      "Allow double entry as the verification example.",
+      "Do not accept 'verification is more secure' without explanation.",
     ],
   },
 ];
-
-function groupByCategory(calculate, outputField) {
-  const categories = [...new Set(books.map((row) => row.Category))].sort();
-  return categories.map((category) => {
-    const rows = books.filter((row) => row.Category === category);
-    return { Category: category, [outputField]: calculate(rows) };
-  });
-}
 
 function normalise(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";");
@@ -288,10 +251,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    normalise: "Topic: normalisation / relational design. Repeated data suggests a table design problem.",
-    sql: "Topic: SQL SELECT with WHERE. The clue is a filtered output request.",
-    verify: "Topic: verification. The typed value is compared with a source.",
-    key: "Topic: primary key. The clue is unique identification of a record.",
+    range: "Correct. A range check is a validation rule that rejects values outside sensible limits.",
+    double: "Not first. Double entry verifies copied data; it does not define the allowed age range.",
+    password: "No. A password controls access, but it will not reject Age = 216.",
+    backup: "No. A backup helps recovery later; it does not prevent this bad input.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -303,32 +266,47 @@ function setupHook() {
 }
 
 function setupClassifier() {
-  const input = document.querySelector("#classifierInput");
+  const input = document.querySelector("#scenarioInput");
   const result = document.querySelector("#classifyResult");
   document.querySelector("#classifyBtn").addEventListener("click", () => {
-    const item = classifierMap[input.value];
-    result.innerHTML = `<strong>${item.topic}</strong><br />${item.reason}`;
+    const item = scenarioMap[input.value];
+    result.innerHTML = `<strong>${item.label}</strong><br />${item.detail}`;
+  });
+}
+
+function setupInputChecker() {
+  const result = document.querySelector("#checkResult");
+  document.querySelector("#checkBtn").addEventListener("click", () => {
+    const age = Number(document.querySelector("#ageInput").value);
+    const email = document.querySelector("#emailInput").value.trim();
+    const memberId = document.querySelector("#memberInput").value.trim();
+    const checks = [
+      {
+        check: "Age range check",
+        outcome: Number.isInteger(age) && age >= 11 && age <= 19 ? "Pass" : "Fail",
+        reason: "Age must be a whole number from 11 to 19.",
+      },
+      {
+        check: "Email format check",
+        outcome: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? "Pass" : "Fail",
+        reason: "Email should contain suitable @ and domain structure.",
+      },
+      {
+        check: "MemberID presence check",
+        outcome: memberId.length > 0 ? "Pass" : "Fail",
+        reason: "MemberID must not be blank.",
+      },
+    ];
+    result.innerHTML = renderResultTable(["Check", "Outcome", "Reason"], checks);
   });
 }
 
 function renderResultTable(fields, rows) {
-  if (rows.length === 0) {
-    return "<p>No matching rows.</p>";
-  }
   const head = `<div class="table-row table-head">${fields.map((field) => `<div>${field}</div>`).join("")}</div>`;
   const body = rows
-    .map((row) => `<div class="table-row">${fields.map((field) => `<div>${row[field]}</div>`).join("")}</div>`)
+    .map((row) => `<div class="table-row">${fields.map((field) => `<div>${row[field.toLowerCase()] ?? row[field]}</div>`).join("")}</div>`)
     .join("");
   return `<div class="mini-result" style="--cols:${fields.length}">${head}${body}</div>`;
-}
-
-function setupQueryTracer() {
-  const input = document.querySelector("#queryInput");
-  const result = document.querySelector("#queryResult");
-  document.querySelector("#queryBtn").addEventListener("click", () => {
-    const query = queryMap[input.value];
-    result.innerHTML = renderResultTable(query.fields, query.rows);
-  });
 }
 
 function renderExample(key) {
@@ -351,7 +329,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("design");
+  renderExample("validation");
 }
 
 function renderPractice() {
@@ -451,7 +429,7 @@ function init() {
   setupPrint();
   setupHook();
   setupClassifier();
-  setupQueryTracer();
+  setupInputChecker();
   setupExamples();
   renderPractice();
   renderMistakes();

@@ -49,15 +49,11 @@ for (const id of scopedRequirements) {
 }
 
 const checks = [
-  ["016", ["networking devices", "limited geographical area", "large geographical area", "bus topology", "star topology", "mesh topology", "hybrid topology"]],
-  ["017", ["client-server", "peer-to-peer", "thin client", "thick client"]],
-  ["018", ["between two hosts", "shared backbone", "central switch", "alternative routes", "hybrid"]],
-  ["019", ["carrier sense multiple access", "collision detection", "random backoff"]],
-  ["020", ["ipv4", "ipv6", "subnetting", "uniform resource locator", "world wide web", "dns"]],
-  ["022", ["wired network", "wireless network", "copper cable", "fibre-optic cable", "radio waves", "wifi", "microwave", "satellite"]],
-  ["023", ["nic", "wnic", "wap", "switch", "server", "bridge", "repeater", "router", "routing information", "modem", "pstn"]],
-  ["024", ["public cloud", "private cloud", "world wide web", "internet"]],
-  ["025", ["real-time streaming", "on-demand streaming", "bit rate", "broadband"]],
+  ["017", ["networking devices", "limited geographical area", "large geographical area", "client-server", "peer-to-peer", "thin client", "thick client"]],
+  ["018", ["bus topology", "star topology", "mesh topology", "hybrid topology", "share one backbone", "central switch", "alternative routes"]],
+  ["019", ["between two hosts", "packet", "source", "destination", "topology"]],
+  ["020", ["public cloud", "private cloud", "wired network", "wireless network", "copper cable", "fibre-optic cable", "radio waves", "wifi", "microwave", "satellite"]],
+  ["021", ["nic", "wnic", "wap", "switch", "server", "bridge", "repeater", "router", "routing information", "carrier sense multiple access", "collision detection", "random backoff", "real-time streaming", "on-demand streaming", "bit rate", "broadband", "world wide web", "internet", "modem", "pstn", "ipv4", "ipv6", "subnetting", "uniform resource locator", "dns"]],
 ];
 
 for (const [lesson, terms] of checks) {
@@ -72,16 +68,17 @@ for (const [lesson, terms] of checks) {
 }
 
 const assessmentChecks = [
-  ["AQ020-Q3", ["star topology", "central switch", "failure"]],
-  ["AQ025-Q1", ["modem", "dedicated line", "cell phone network"]],
-  ["AQ025-Q5", ["real-time bit streaming", "on-demand bit streaming"]],
-  ["L020-Q2", ["IPv4", "32-bit", "IPv6", "128-bit", "subnetting"]],
-  ["L023-Q3", ["NIC", "WNIC", "wireless access point", "switch", "server"]],
-  ["L023-Q4", ["modem", "PSTN", "dedicated line", "cell phone network"]],
-  ["L024-Q5", ["public cloud", "private cloud", "regulated"]],
-  ["L025-Q4", ["real-time bit streaming", "on-demand bit streaming", "broadband speed", "stream bit rate"]],
+  ["AQ021-Q3", ["star topology", "central switch", "failure"]],
+  ["AQ026-Q1", ["modem", "dedicated line", "cell phone network"]],
+  ["AQ026-Q5", ["real-time bit streaming", "on-demand bit streaming"]],
+  ["L021-Q2", ["IPv4", "32-bit", "IPv6", "128-bit", "subnetting"]],
+  ["L024-Q3", ["NIC", "WNIC", "wireless access point", "switch", "server"]],
+  ["L024-Q4", ["modem", "PSTN", "dedicated line", "cell phone network"]],
+  ["L025-Q5", ["public cloud", "private cloud", "regulated"]],
+  ["L026-Q4", ["real-time bit streaming", "on-demand bit streaming", "broadband speed", "stream bit rate"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 2 assessment`);
+expect(!/129-bit/i.test(questionText("L021-Q2")), "L021-Q2 must reject the incorrect 129-bit IPv6 address length");
 
 const mutations = [
   ["S2.01", /\bWAN\b/gi],
@@ -112,7 +109,7 @@ for (const [id, pattern] of mutations) {
 }
 
 const assessmentMutation = evaluateRequirement(requirements.get("S2.14"), {
-  questionTransform: (question) => ["L023-Q4", "AQ025-Q1"].includes(question.id)
+  questionTransform: (question) => ["L024-Q4", "AQ026-Q1"].includes(question.id)
     ? {
         ...question,
         prompt: question.prompt.replace(/modem|PSTN|dedicated line|cell phone network/gi, "connection"),

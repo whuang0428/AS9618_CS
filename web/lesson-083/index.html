@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 083 | Normalisation: avoiding duplication and update problems</title>
+    <title>AS9618 Lesson 083 | Entity-relationship modelling</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Normalisation: avoiding duplication and update problems</h1>
+        <h1>Entity-relationship modelling</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,322 +29,281 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#purpose">Purpose</a>
-        <a href="#redundancy">Redundancy</a>
-        <a href="#anomalies">Anomalies</a>
-        <a href="#normal-forms">Normal forms</a>
-        <a href="#detector">Redundancy detector</a>
-        <a href="#classifier">Anomaly classifier</a>
+        <a href="#entities">Entities</a>
+        <a href="#attributes">Attributes</a>
+        <a href="#cardinality">Cardinality</a>
+        <a href="#participation">Participation</a>
+        <a href="#parser">Scenario parser</a>
+        <a href="#checker">Cardinality checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>First, second and third normal form</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</p>
-            <p>Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Order line data</h3>
-            <p>ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start normal-forms -->
-        <section class="panel explanation-panel" id="explanation-normal-forms" data-explains="normal-forms" data-explanation-kind="process" aria-labelledby="explanation-normal-forms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
-          <h2 class="explanation-sr-only" id="explanation-normal-forms-title">How normal forms remove dependency problems</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-normal-forms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How normal forms remove dependency problems through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How normal forms remove dependency problems: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> First Normal Form (1NF) requires atomic values and no repeating groups.</li><li><strong>Reason:</strong> Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.</li><li><strong>Result:</strong> Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.</li><li><strong>Additional fact:</strong> A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies.</li></ol>
-
-            <p><strong>Analogy:</strong> Each dependency belongs in the relation whose key determines it.</p>
-            <p><strong>Boundary:</strong> Check the forms in order; satisfying a later normal form assumes the earlier requirements are already met.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end normal-forms -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>First, second and third normal form: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does 1NF remove?</p>
-              <details><summary>Show answer</summary><p>Repeating groups and non-atomic/multiple values in one field.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What dependency violates 2NF?</p>
-              <details><summary>Show answer</summary><p>A non-key attribute depending on only part of a composite key.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What dependency violates 3NF?</p>
-              <details><summary>Show answer</summary><p>A non-key attribute depending on another non-key attribute.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>CustomerID determines Postcode and Postcode determines Town</td><td>Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.</td><td>1</td></tr>
-                  <tr><td>Town is transitively dependent on CustomerID / depends on non-key Postcode</td><td></td><td>1</td></tr>
-                  <tr><td>CUSTOMER(CustomerID, Postcode)</td><td></td><td>1</td></tr>
-                  <tr><td>POSTCODE(Postcode, Town), with Postcode linked as foreign key</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 083 | 45 minutes | Paper 1 Section 8 | Database design</p>
-            <h2>Normalisation is database tidying with consequences. It stops one changed email from becoming a treasure hunt.</h2>
+            <p class="lesson-meta">Lesson 083 | 45 minutes | Paper 1 Section 8 | ER modelling</p>
+            <h2>An ER model is a map before the database is built. Tables without a map are just furniture in the dark.</h2>
             <p>
-              This lesson explains why database designers normalise data: to reduce unnecessary duplication,
-              avoid update, insertion and deletion anomalies, and keep related data in appropriate tables.
-              We focus on design reasoning, not SQL queries.
+              This lesson turns scenario text into an entity-relationship model. You will identify entities,
+              choose attributes, mark keys, and describe cardinality such as one-to-many and many-to-many.
+              The goal is a clear design model, not SQL statements or normalisation rules.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Detect</strong><span>repeated data and dependency problems in a table</span></div>
-              <div><strong>Explain</strong><span>update, insertion and deletion anomalies</span></div>
-              <div><strong>Improve</strong><span>a weak table design by separating related data</span></div>
+              <div><strong>Identify</strong><span>entities and attributes from a scenario</span></div>
+              <div><strong>Model</strong><span>relationships with cardinality and optional/mandatory participation</span></div>
+              <div><strong>Critique</strong><span>weak ER diagrams using precise database vocabulary</span></div>
             </div>
           </div>
-          <div class="normalise-visual" aria-label="Normalisation visual">
-            <div class="bad-table">One big table<br /><span>Member + Course + Tutor repeated</span></div>
-            <div class="arrow">-></div>
-            <div class="good-tables">
-              <span>Member</span>
-              <span>Course</span>
-              <span>Enrolment</span>
+          <div class="er-visual" aria-label="Entity relationship visual">
+            <div class="entity-box">
+              <strong>Student</strong>
+              <span class="pk">StudentID</span>
+              <span>Name</span>
             </div>
-            <p>Store each fact in the right place, then link it when needed.</p>
+            <div class="cardinality-line">1..1 borrows 0..*</div>
+            <div class="entity-box">
+              <strong>Loan</strong>
+              <span class="pk">LoanID</span>
+              <span>StudentID</span>
+              <span>BookID</span>
+            </div>
+            <p>Chinese support: entity = 实体；attribute = 属性；cardinality = 基数/数量关系。</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style answers need cause and consequence: repeated data causes anomalies; separating tables reduces the risk.</p>
+            <p>ER modelling questions reward careful reading. A small word like "many" or "optional" can change the relationship.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not say normalisation removes every duplicate value. Some key values repeat as links; unnecessary repeated facts are the target.</p>
+            <p>Do not turn every noun into an entity. "Address" is often an attribute unless the scenario stores separate address records.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A tutor's email appears in 38 course rows. The tutor changes email. What can go wrong?</h2>
-            <p>The database now has 38 chances to be wrong. Very generous. Terrible design.</p>
+            <h2>A library stores students, books and loans. Which one is most likely a relationship event?</h2>
+            <p>A loan is the plot twist: a student and a book meet, briefly, with paperwork.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="update">Some rows are updated and others are not</button>
-            <button class="choice-card" type="button" data-hook="binary">The email becomes binary</button>
-            <button class="choice-card" type="button" data-hook="faster">Queries automatically become faster</button>
-            <button class="choice-card" type="button" data-hook="format">The email changes font</button>
+            <button class="choice-card" type="button" data-hook="student">Student</button>
+            <button class="choice-card" type="button" data-hook="book">Book</button>
+            <button class="choice-card" type="button" data-hook="loan">Loan</button>
+            <button class="choice-card" type="button" data-hook="title">BookTitle</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the database design problem.
+            Choose the item that connects two main entities.
           </div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+        <section class="panel" id="entities" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Purpose of normalisation</h2>
-            <p>Normalisation is the process of organising data into well-structured tables to reduce unnecessary redundancy and improve data integrity.</p>
+            <h2>Entities are things the database stores data about</h2>
+            <p>An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</p>
           </div>
           <div class="concept-grid">
-            <article><strong>Reduce redundancy</strong><span>A fact such as TutorEmail is stored once in Tutor, not repeated in every course row.</span></article>
-            <article><strong>Improve integrity</strong><span>Fewer repeated facts means fewer chances for inconsistent versions.</span></article>
-            <article><strong>Prevent anomalies</strong><span>Insertion, update and deletion problems become less likely.</span></article>
-            <article><strong>Clarify dependencies</strong><span>Fields should depend on the key of their own table, not on unrelated fields.</span></article>
+            <article><strong>Person</strong><span>Student, Customer, Doctor, Teacher.</span></article>
+            <article><strong>Object</strong><span>Book, Product, Vehicle, Equipment.</span></article>
+            <article><strong>Event</strong><span>Loan, Appointment, Order, Booking.</span></article>
+            <article><strong>Concept</strong><span>Course, Club, Department, Module.</span></article>
           </div>
-          <div class="callout">Chinese support: normalisation = 规范化；redundancy = 冗余；anomaly = 异常；dependency = 依赖关系。</div>
+          <div class="callout">Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."</div>
         </section>
 
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why normalisation protects consistency</h2>
+        <!-- stage10-explanation:start entities -->
+        <section class="panel explanation-panel" id="explanation-entities" data-explains="entities" data-explanation-kind="mechanism" aria-labelledby="explanation-entities-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+          <h2 class="explanation-sr-only" id="explanation-entities-title">Entities are things the database stores data about</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why normalisation protects consistency through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why normalisation protects consistency: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-entities.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Entities are things the database stores data about with a structured visual model." />
+            <figcaption class="explanation-sr-only">Entities are things the database stores data about: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Each fact is stored in a relation where its determinant is clear.</li><li><strong>Reason:</strong> Other tables reference that fact instead of copying it repeatedly.</li><li><strong>Result:</strong> One update then changes the authoritative value once.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</li><li><strong>Lesson fact:</strong> Person Student, Customer, Doctor, Teacher.</li><li><strong>Lesson fact:</strong> Object Book, Product, Vehicle, Equipment.</li><li><strong>Lesson fact:</strong> Event Loan, Appointment, Order, Booking.</li><li><strong>Lesson fact:</strong> Concept Course, Club, Department, Module.</li><li><strong>Lesson fact:</strong> Exam wording: say why it is an entity. &quot;Student is an entity because the system stores multiple facts about each student.&quot;</li></ol>
 
-            <p><strong>Analogy:</strong> Keep one catalogue record and let many loans point to it.</p>
-            <p><strong>Boundary:</strong> Normalisation improves consistency but joins may make some queries more complex.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="redundancy" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+        <!-- stage10-explanation:end entities -->
+        <section class="panel" id="attributes" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Spot unnecessary repeated facts</h2>
-            <p>A repeated linking value can be correct. Repeating descriptive facts about another entity is usually the warning sign.</p>
+            <h2>Attributes describe an entity</h2>
+            <p>An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</p>
           </div>
-          <div class="bad-data-table" role="table" aria-label="Unnormalised enrolment table">
+          <div class="attribute-table" role="table" aria-label="Entity attribute examples">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">StudentID</div>
-              <div role="columnheader">StudentName</div>
-              <div role="columnheader">CourseID</div>
-              <div role="columnheader">CourseTitle</div>
-              <div role="columnheader">TutorEmail</div>
+              <div role="columnheader">Entity</div>
+              <div role="columnheader">Possible attributes</div>
+              <div role="columnheader">Not usually an attribute here</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">S0234</div><div role="cell">Amira Chen</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
+              <div role="cell">Student</div>
+              <div role="cell">StudentID, Name, DateOfBirth, TutorGroup</div>
+              <div role="cell">BookTitle, LoanDate</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">S0318</div><div role="cell">Leo Singh</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
+              <div role="cell">Book</div>
+              <div role="cell">BookID, ISBN, Title, Author</div>
+              <div role="cell">StudentName, ReturnDate</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">S0440</div><div role="cell">Maya Patel</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
+              <div role="cell">Loan</div>
+              <div role="cell">LoanID, StudentID, BookID, DateBorrowed, DateReturned</div>
+              <div role="cell">StudentDateOfBirth, BookAuthor if already stored in Book</div>
             </div>
-          </div>
-          <div class="answer-frame">
-            <strong>Exam sentence:</strong>
-            <span><code>CourseTitle</code> and <code>TutorEmail</code> depend on <code>CourseID</code>, so repeating them in every enrolment row creates redundancy and possible update anomalies.</span>
           </div>
         </section>
 
-        <!-- stage10-explanation:start redundancy -->
-        <section class="panel explanation-panel" id="explanation-redundancy" data-explains="redundancy" data-explanation-kind="mechanism" aria-labelledby="explanation-redundancy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-redundancy-title">How repeated facts become risky</h2>
+        <!-- stage10-explanation:start attributes -->
+        <section class="panel explanation-panel" id="explanation-attributes" data-explains="attributes" data-explanation-kind="mechanism" aria-labelledby="explanation-attributes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+          <h2 class="explanation-sr-only" id="explanation-attributes-title">Attributes describe an entity</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-redundancy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How repeated facts become risky through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How repeated facts become risky: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-attributes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Attributes describe an entity with a structured visual model." />
+            <figcaption class="explanation-sr-only">Attributes describe an entity: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The same real-world fact appears in several rows.</li><li><strong>Reason:</strong> A later update may change only some copies.</li><li><strong>Result:</strong> Queries then return conflicting versions of one fact.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</li><li><strong>Lesson fact:</strong> Possible attributes</li><li><strong>Lesson fact:</strong> Not usually an attribute here</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, TutorGroup</li><li><strong>Lesson fact:</strong> BookTitle, LoanDate</li><li><strong>Lesson fact:</strong> BookID, ISBN, Title, Author</li><li><strong>Lesson fact:</strong> StudentName, ReturnDate</li><li><strong>Lesson fact:</strong> LoanID, StudentID, BookID, DateBorrowed, DateReturned</li><li><strong>Lesson fact:</strong> StudentDateOfBirth, BookAuthor if already stored in Book</li></ol>
 
-            <p><strong>Analogy:</strong> Several photocopies agree only until someone edits one copy.</p>
-            <p><strong>Boundary:</strong> Repeated transactional events are valid; repeated descriptive facts cause the risk.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end redundancy -->
-        <section class="panel" id="anomalies" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+        <!-- stage10-explanation:end attributes -->
+        <section class="panel" id="cardinality" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Three anomaly types</h2>
+            <h2>Cardinality describes how many records may be linked</h2>
+            <p>Cardinality states how many records in one entity can be associated with records in another entity.</p>
           </div>
-          <div class="anomaly-grid">
-            <article><strong>Update anomaly</strong><span>A repeated fact is updated in some rows but not others, so inconsistent data remains.</span></article>
-            <article><strong>Insertion anomaly</strong><span>A new fact cannot be stored until another unrelated fact exists, such as a new course with no enrolled student.</span></article>
-            <article><strong>Deletion anomaly</strong><span>Deleting a row accidentally removes the only stored copy of a separate fact.</span></article>
+          <div class="cardinality-grid">
+            <article><strong>One-to-one</strong><span>One record in A links to one record in B. Example: one person has one passport in a simplified model.</span></article>
+            <article><strong>One-to-many</strong><span>One record in A links to many records in B. Example: one customer can place many orders.</span></article>
+            <article><strong>Many-to-many</strong><span>Many records in A link to many records in B. Usually resolved by a linking entity.</span></article>
+          </div>
+          <div class="diagram-row">
+            <div class="entity-mini">Student</div>
+            <div class="diagram-line">1 -> many</div>
+            <div class="entity-mini">Loan</div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start anomalies -->
-        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="tradeoff" aria-labelledby="explanation-anomalies-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-anomalies-title">Why one structure causes three anomalies</h2>
+        <!-- stage10-explanation:start cardinality -->
+        <section class="panel explanation-panel" id="explanation-cardinality" data-explains="cardinality" data-explanation-kind="mechanism" aria-labelledby="explanation-cardinality-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+          <h2 class="explanation-sr-only" id="explanation-cardinality-title">Cardinality describes how many records may be linked</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-anomalies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why one structure causes three anomalies through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why one structure causes three anomalies: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-cardinality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cardinality describes how many records may be linked with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cardinality describes how many records may be linked: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Insertion may require an unrelated fact that is not yet known.</li><li><strong>Reason:</strong> Updating requires finding every repeated copy.</li><li><strong>Result:</strong> Deleting one event may accidentally remove the only descriptive fact.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Cardinality states how many records in one entity can be associated with records in another entity.</li><li><strong>Lesson fact:</strong> One-to-one One record in A links to one record in B. Example: one person has one passport in a simplified model.</li><li><strong>Lesson fact:</strong> One-to-many One record in A links to many records in B. Example: one customer can place many orders.</li><li><strong>Lesson fact:</strong> Many-to-many Many records in A link to many records in B. Usually resolved by a linking entity.</li><li><strong>Lesson fact:</strong> 1 -&gt; many</li></ol>
 
-            <p><strong>Analogy:</strong> A form that mixes customers, products and orders ties unrelated lifetimes together.</p>
-            <p><strong>Boundary:</strong> The anomaly comes from dependency structure, not simply from a large table.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end anomalies -->
-        <section class="panel" id="normal-forms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+        <!-- stage10-explanation:end cardinality -->
+        <section class="panel" id="participation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>From 1NF to 3NF</h2>
-            <p>AS-level questions usually expect the purpose and effect of normalisation more than a formal proof. Still, the normal form idea helps explain the method.</p>
+            <h2>Optional and mandatory participation</h2>
+            <p>Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</p>
           </div>
-          <div class="normal-form-grid">
-            <article><strong>1NF</strong><span>Values are atomic; each field stores one value, not a repeating list.</span></article>
-            <article><strong>2NF idea</strong><span>Non-key fields should depend on the whole key, not part of a composite key.</span></article>
-            <article><strong>3NF idea</strong><span>Non-key fields should not depend on other non-key fields.</span></article>
+          <div class="participation-grid">
+            <article><strong>0..*</strong><span>Optional many: a student may have no loans, or many loans.</span></article>
+            <article><strong>1..*</strong><span>Mandatory many: an order must have at least one order line.</span></article>
+            <article><strong>0..1</strong><span>Optional one: a member may have zero or one parking permit.</span></article>
+            <article><strong>1..1</strong><span>Mandatory one: each loan must refer to exactly one student.</span></article>
           </div>
-          <div class="callout">Keep this practical: identify the fact, decide which entity it describes, then move it to that table.</div>
         </section>
 
+        <!-- stage10-explanation:start participation -->
+        <section class="panel explanation-panel" id="explanation-participation" data-explains="participation" data-explanation-kind="mechanism" aria-labelledby="explanation-participation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+          <h2 class="explanation-sr-only" id="explanation-participation-title">Optional and mandatory participation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-participation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optional and mandatory participation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Optional and mandatory participation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</li><li><strong>Lesson fact:</strong> 0..* Optional many: a student may have no loans, or many loans.</li><li><strong>Lesson fact:</strong> 1..* Mandatory many: an order must have at least one order line.</li><li><strong>Lesson fact:</strong> 0..1 Optional one: a member may have zero or one parking permit.</li><li><strong>Lesson fact:</strong> 1..1 Mandatory one: each loan must refer to exactly one student.</li></ol>
 
-        <section class="panel" id="detector" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Interactive redundancy detector</p>
-            <h2>Which fact should be moved?</h2>
           </div>
-          <div class="converter-grid">
-            <label>
-              Repeated fact
-              <select id="redundancyInput">
-                <option value="courseTitle">CourseTitle repeats for every student enrolled on the same CourseID.</option>
-                <option value="studentId">StudentID appears in several enrolment rows because a student takes several courses.</option>
-                <option value="orderId">OrderID appears in several order-line rows for the same order.</option>
-                <option value="tutorEmail">TutorEmail repeats for every course taught by the same tutor.</option>
-                <option value="membershipId">MembershipID is unique in each Membership row.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="redundancyBtn">Detect</button>
-          </div>
-          <div class="result-box" id="redundancyResult">Choose a repeated fact to classify it.</div>
-          <div class="feedback" id="redundancyReason">Not every repeated value is bad; repeated descriptive facts are the bigger warning.</div>
         </section>
-
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+        <!-- stage10-explanation:end participation -->
+        <section class="panel" id="parser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
-            <p class="eyebrow">Interactive anomaly classifier</p>
-            <h2>Classify the problem</h2>
+            <p class="eyebrow">Interactive scenario parser</p>
+            <h2>Identify entities and attributes</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
-              <select id="anomalyInput">
-                <option value="update">TutorEmail is changed in two rows but missed in one row.</option>
-                <option value="insert">A new course cannot be stored until at least one student enrols.</option>
-                <option value="delete">Deleting the last enrolment row for C10 removes the only copy of CourseTitle.</option>
-                <option value="atomic">A PhoneNumbers field stores three phone numbers in one cell.</option>
-                <option value="validLink">CourseID repeats as a foreign key in Enrolment rows.</option>
+              <select id="scenarioInput">
+                <option value="library">A library records students, books and each loan.</option>
+                <option value="clinic">A clinic records patients, doctors and appointments.</option>
+                <option value="shop">A shop records customers, orders and products.</option>
+                <option value="club">A school records students, clubs and club memberships.</option>
+                <option value="parking">A company records employees and optional parking permits.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="anomalyBtn">Classify</button>
+            <button class="primary-button" type="button" id="scenarioBtn">Parse scenario</button>
           </div>
-          <div class="result-box" id="anomalyResult">Choose a scenario to classify the design issue.</div>
-          <div class="feedback" id="anomalyReason">Name the anomaly and explain the mechanism.</div>
+          <div class="result-box" id="scenarioResult">Choose a scenario to identify likely entities.</div>
+          <div class="feedback" id="scenarioReason">The answer will separate entities from attributes and relationship events.</div>
+        </section>
+
+        <!-- stage10-explanation:start parser -->
+        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+          <h2 class="explanation-sr-only" id="explanation-parser-title">Identify entities and attributes</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-parser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify entities and attributes with a structured visual model." />
+            <figcaption class="explanation-sr-only">Identify entities and attributes: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive scenario parser</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to identify likely entities.</li><li><strong>Lesson fact:</strong> The answer will separate entities from attributes and relationship events.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parser -->
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
+          <div class="section-title">
+            <p class="eyebrow">Interactive cardinality checker</p>
+            <h2>Choose the relationship type</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Relationship wording
+              <select id="cardinalityInput">
+                <option value="customerOrders">One customer can place many orders; each order is placed by one customer.</option>
+                <option value="studentsClubs">A student can join many clubs; a club can have many students.</option>
+                <option value="orderLines">Each order must contain at least one order line; each order line belongs to one order.</option>
+                <option value="personPassport">One person has one passport in this simplified system.</option>
+                <option value="studentLoans">A student may have no loans or many loans; each loan has exactly one student.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="cardinalityBtn">Check cardinality</button>
+          </div>
+          <div class="result-box" id="cardinalityResult">Choose wording to classify the cardinality.</div>
+          <div class="feedback" id="cardinalityReason">Look for "one", "many", "must" and "may".</div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>From one bad table to linked tables</h2>
+            <h2>Turn words into an ER model</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="course">Course enrolments</button>
-            <button class="tab" type="button" data-example="order">Order lines</button>
-            <button class="tab" type="button" data-example="phone">1NF issue</button>
-            <button class="tab" type="button" data-example="judge">Judgement answer</button>
+            <button class="tab active" type="button" data-example="library">Library</button>
+            <button class="tab" type="button" data-example="clinic">Clinic</button>
+            <button class="tab" type="button" data-example="club">Many-to-many</button>
+            <button class="tab" type="button" data-example="critique">Critique</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -361,7 +320,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak normalisation explanations</h2>
+            <h2>Repair weak ER modelling decisions</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -370,7 +329,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about anomaly type and cause.</p>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about entities, attributes and cardinality justification.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -378,12 +337,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Normalisation checklist</h2>
+            <h2>ER modelling checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Find repeated facts</strong><span>Ask whether a descriptive fact belongs to another entity.</span></div>
-            <div><strong>Name the anomaly</strong><span>Update, insertion and deletion anomalies explain the risk.</span></div>
-            <div><strong>Split and link</strong><span>Move data into related tables and use keys to preserve links.</span></div>
+            <div><strong>Entities</strong><span>Things the system stores data about; often become tables.</span></div>
+            <div><strong>Attributes</strong><span>Facts stored about each entity; often become fields.</span></div>
+            <div><strong>Relationships</strong><span>Links between entities with cardinality and participation.</span></div>
           </div>
         </section>
 
@@ -394,16 +353,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Identify problems</strong>
-              <span>Given Enrolment(StudentID, StudentName, CourseID, CourseTitle, TutorEmail), list two repeated facts and name one anomaly each could cause.</span>
+              <strong>Task 1: Model a scenario</strong>
+              <span>A music school stores students, teachers, instruments and lesson bookings. Identify four entities, two attributes for each, and two relationships with cardinality.</span>
             </article>
             <article>
-              <strong>Task 2: Decompose</strong>
-              <span>Propose Student, Course and Enrolment tables for the same data. State one primary key and one foreign key for each relevant table.</span>
+              <strong>Task 2: Critique</strong>
+              <span>Explain why making "PhoneNumber" an entity may be poor design if only one phone number is stored for each student.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain why normalisation can improve data integrity in a school course database." Include redundancy and two anomaly types.</span>
+              <span>Answer: "Explain how an ER model helps design a relational database for a library loan system." Include entities, attributes and cardinality.</span>
             </article>
           </div>
         </section>
@@ -411,8 +370,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 040 | Section 3 review: compare, justify, calculate</title>
+    <title>AS9618 Lesson 040 | Environmental and reliability considerations in hardware</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Section 3 review: compare, justify, calculate</h1>
+        <h1>Environmental and reliability considerations in hardware</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,10 +29,10 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#map">Topic map</a>
-        <a href="#skills">Exam skills</a>
-        <a href="#checkpoint">Checkpoint</a>
-        <a href="#tool">Question sorter</a>
+        <a href="#environment">Environment</a>
+        <a href="#reliability">Reliability</a>
+        <a href="#mitigation">Mitigation</a>
+        <a href="#tool">Risk tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -43,230 +43,229 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 040 | 45 minutes | Paper 1 Section 3 | Stage review + monthly checkpoint</p>
-            <h2>Review is not rereading. Review is catching your brain pretending it remembers.</h2>
+            <p class="lesson-meta">Lesson 040 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Environmental conditions and power faults can reduce hardware reliability.</h2>
             <p>
-              This lesson reviews Section 3: hardware, storage, embedded systems,
-              sensors and actuators, logic gates, Boolean expressions, hardware
-              selection, and reliability. You will identify the topic, choose the
-              right method, answer under time pressure, then improve the answer.
+              This lesson focuses on environmental and reliability considerations
+              when selecting hardware. You will identify risks, choose protective
+              measures, and explain how reliability affects a user's task.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Recognise</strong><span>which Section 3 topic a mixed question is testing</span></div>
-              <div><strong>Apply</strong><span>compare, justify and calculate methods accurately</span></div>
-              <div><strong>Correct</strong><span>weak answers using Cambridge-style marking cues</span></div>
+              <div><strong>Identify</strong><span>environmental risks such as heat, moisture, dust and shock</span></div>
+              <div><strong>Explain</strong><span>reliability ideas such as redundancy, backup, maintenance and availability</span></div>
+              <div><strong>Justify</strong><span>hardware protection using risk, mitigation and consequence</span></div>
             </div>
           </div>
-          <div class="review-card" aria-label="Review sequence">
-            <span>recognise -> retrieve -> answer -> correct</span>
-            <p>Identify the relevant syllabus concept before constructing the answer.</p>
+          <div class="hardware-card" aria-label="Risk mitigation formula">
+            <span>risk -> mitigation -> consequence</span>
+            <p>"It is durable" is a start. "It is sealed, so dust cannot damage outdoor sensors" is an answer.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Mixed review exposes false confidence. A student may know logic gates but still answer a sensor question like a hardware-selection question.</p>
+            <p>Cambridge-style questions reward context. The same device can be suitable in an office and unsuitable on a windy roof in winter.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Rereading notes feels productive. Timed retrieval and correction are what actually reveal missing marks.</p>
+            <p>Reliability is not just "good quality". It is the chance the system continues to work correctly when it is needed.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which syllabus concept is required for each mixed question?</h2>
-            <p>Click a question. Your job is not to answer yet; first identify what kind of Section 3 thinking it needs.</p>
+            <h2>A sensor works perfectly on a desk. Then it is placed outside in rain, dust and heat. What changed?</h2>
+            <p>Click the best first explanation. The sensor did not suddenly become lazy; its environment changed.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="logic">Complete Q = A AND NOT B for A=1, B=0</button>
-            <button class="choice-card" type="button" data-hook="sensor">Explain how a greenhouse fan is controlled automatically</button>
-            <button class="choice-card" type="button" data-hook="storage">Compare SSD and HDD for a delivery device</button>
-            <button class="choice-card" type="button" data-hook="reliability">Explain why a UPS is used in a server room</button>
+            <button class="choice-card" type="button" data-hook="env">Environmental conditions can damage or disrupt hardware</button>
+            <button class="choice-card" type="button" data-hook="speed">The CPU must automatically run faster outside</button>
+            <button class="choice-card" type="button" data-hook="storage">More storage always fixes outdoor failure</button>
+            <button class="choice-card" type="button" data-hook="software">Only software matters once hardware is installed</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. The review skill is topic recognition before answer production.
+            Think about heat, water, dust, vibration, power and maintenance access.
           </div>
         </section>
 
-        <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
+        <section class="panel" id="environment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="environment">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Section 3 topic map</h2>
+            <h2>Environmental factors change hardware suitability</h2>
           </div>
-          <div class="topic-table" role="table" aria-label="Section 3 review map">
+          <div class="risk-table" role="table" aria-label="Environmental risks">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Topic</div>
-              <div role="columnheader">Core idea</div>
-              <div role="columnheader">Common question verb</div>
-              <div role="columnheader">Mark-winning habit</div>
+              <div role="columnheader">Factor</div>
+              <div role="columnheader">Possible effect</div>
+              <div role="columnheader">Suitable protection</div>
+              <div role="columnheader">Exam warning</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Primary / secondary storage</div>
-              <div role="cell">RAM, ROM, cache, virtual memory, SSD, HDD, optical, solid-state</div>
-              <div role="cell">compare, describe, justify</div>
-              <div role="cell">Link speed, volatility, capacity, durability or cost to the scenario.</div>
+              <div role="cell">Temperature</div>
+              <div role="cell">Overheating can slow, shut down or damage components.</div>
+              <div role="cell">Cooling, heat sinks, ventilation, temperature-rated hardware</div>
+              <div role="cell">Do not just say "fast"; explain heat tolerance or cooling.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Embedded systems</div>
-              <div role="cell">Dedicated systems built into larger devices</div>
-              <div role="cell">describe, explain</div>
-              <div role="cell">Mention dedicated purpose, limited interface and real-world control.</div>
+              <div role="cell">Moisture / water</div>
+              <div role="cell">Corrosion or short circuits can stop the system working.</div>
+              <div role="cell">Sealed casing, waterproof enclosure, humidity control</div>
+              <div role="cell">Name what water does to reliability.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Sensors and actuators</div>
-              <div role="cell">Input readings, processing, thresholds, output action and feedback</div>
-              <div role="cell">describe, explain</div>
-              <div role="cell">Use the chain sensor -> processor -> actuator -> feedback.</div>
+              <div role="cell">Dust / dirt</div>
+              <div role="cell">Dust can block cooling or interfere with moving parts and sensors.</div>
+              <div role="cell">Dust filters, sealed enclosure, regular cleaning</div>
+              <div role="cell">Dust is not only untidy; it changes cooling and accuracy.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Logic gates and truth tables</div>
-              <div role="cell">NOT, AND, OR, NAND, NOR, XOR; Boolean expressions</div>
-              <div role="cell">complete, trace, calculate</div>
-              <div role="cell">Show intermediate columns and exact 0/1 outputs.</div>
+              <div role="cell">Shock / vibration</div>
+              <div role="cell">Movement can damage drives, connectors or screens.</div>
+              <div role="cell">Rugged casing, SSD, shock mounting</div>
+              <div role="cell">Link mobile use to physical impact.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Hardware selection and reliability</div>
-              <div role="cell">Choosing hardware for user needs and environment</div>
-              <div role="cell">justify, evaluate, compare</div>
-              <div role="cell">Use feature -> need -> consequence or risk -> mitigation -> consequence.</div>
+              <div role="cell">Power instability</div>
+              <div role="cell">Power loss can corrupt data or interrupt service.</div>
+              <div role="cell">UPS, surge protection, battery backup</div>
+              <div role="cell">Explain continuity, not just "more power".</div>
             </div>
           </div>
-          <div class="callout">Chinese support: retrieval = 提取记忆；justify = 论证；compare = 比较；calculate = 计算；correction = 纠错。</div>
+          <div class="callout">Chinese support: environmental factor = 环境因素；corrosion = 腐蚀；surge protection = 浪涌保护；rugged = 加固型。</div>
         </section>
 
-        <!-- stage10-explanation:start map -->
-        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Section 3 topic map</h2>
+        <!-- stage10-explanation:start environment -->
+        <section class="panel explanation-panel" id="explanation-environment" data-explains="environment" data-explanation-kind="tradeoff" aria-labelledby="explanation-environment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="environment">
+          <h2 class="explanation-sr-only" id="explanation-environment-title">Environmental factors change hardware suitability</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 3 topic map with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 3 topic map: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-environment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Environmental factors change hardware suitability with a structured visual model." />
+            <figcaption class="explanation-sr-only">Environmental factors change hardware suitability: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> RAM and ROM are primary memory; SSD, HDD and optical media are secondary storage.</li><li><strong>Lesson fact:</strong> Virtual memory is a memory-management technique that uses secondary storage to supplement RAM.</li><li><strong>Lesson fact:</strong> Do not classify virtual memory as a type of primary memory.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Possible effect</li><li><strong>Lesson fact:</strong> Suitable protection</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Temperature</li><li><strong>Lesson fact:</strong> Overheating can slow, shut down or damage components.</li><li><strong>Lesson fact:</strong> Cooling, heat sinks, ventilation, temperature-rated hardware</li><li><strong>Lesson fact:</strong> Do not just say &quot;fast&quot;; explain heat tolerance or cooling.</li><li><strong>Lesson fact:</strong> Moisture / water</li><li><strong>Lesson fact:</strong> Corrosion or short circuits can stop the system working.</li><li><strong>Lesson fact:</strong> Sealed casing, waterproof enclosure, humidity control</li><li><strong>Lesson fact:</strong> Name what water does to reliability.</li><li><strong>Lesson fact:</strong> Dust / dirt</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end map -->
-        <section class="panel" id="skills" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="skills">
+        <!-- stage10-explanation:end environment -->
+        <section class="panel" id="reliability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reliability">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Three review skills: compare, justify, calculate</h2>
+            <h2>Reliability is about continuing to work correctly</h2>
           </div>
-          <div class="skill-grid">
-            <article><strong>Compare</strong><span>Give both sides and use the same criterion, e.g. SSD is faster than HDD, but HDD may be cheaper per GB.</span></article>
-            <article><strong>Justify</strong><span>Name a choice, name a feature, link it to the user's need, then explain the consequence.</span></article>
-            <article><strong>Calculate / trace</strong><span>Show working: input values, intermediate result, final output.</span></article>
-            <article><strong>Describe</strong><span>Use a sequence, such as sensor reading -> comparison -> output signal -> actuator.</span></article>
-            <article><strong>Explain</strong><span>Include cause and effect, not only a definition.</span></article>
-            <article><strong>Correct</strong><span>Find the missing mark, then rewrite the answer with specific wording.</span></article>
+          <div class="criteria-grid">
+            <article><strong>Availability</strong><span>The system is usable when required, such as a checkout system during opening hours.</span></article>
+            <article><strong>Redundancy</strong><span>Extra hardware can take over if one component fails, such as a spare disk or power supply.</span></article>
+            <article><strong>Backup</strong><span>Copies of data reduce the impact of storage failure or accidental loss.</span></article>
+            <article><strong>MTBF</strong><span>Mean time between failures indicates expected reliability, often used for comparing components.</span></article>
+            <article><strong>Maintenance</strong><span>Cleaning, updates and replacement schedules reduce unexpected failure.</span></article>
+            <article><strong>Monitoring</strong><span>Temperature, battery, disk and network monitoring can warn before failure becomes outage.</span></article>
           </div>
-          <div class="callout">Exam answer frame: "Because [feature], it meets [need], so [practical consequence]."</div>
+          <div class="callout">Reliability answer frame: "If X fails, Y prevents or reduces the impact, so the user can continue Z."</div>
         </section>
 
-        <!-- stage10-explanation:start skills -->
-        <section class="panel explanation-panel" id="explanation-skills" data-explains="skills" data-explanation-kind="synthesis" aria-labelledby="explanation-skills-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="skills">
-          <h2 class="explanation-sr-only" id="explanation-skills-title">Three review skills: compare, justify, calculate</h2>
+        <!-- stage10-explanation:start reliability -->
+        <section class="panel explanation-panel" id="explanation-reliability" data-explains="reliability" data-explanation-kind="mechanism" aria-labelledby="explanation-reliability-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="reliability">
+          <h2 class="explanation-sr-only" id="explanation-reliability-title">Reliability is about continuing to work correctly</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-skills.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three review skills: compare, justify, calculate with a structured visual model." />
-            <figcaption class="explanation-sr-only">Three review skills: compare, justify, calculate: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-reliability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Reliability is about continuing to work correctly with a structured visual model." />
+            <figcaption class="explanation-sr-only">Reliability is about continuing to work correctly: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Compare Give both sides and use the same criterion, e.g. SSD is faster than HDD, but HDD may be cheaper per GB.</li><li><strong>Lesson fact:</strong> Justify Name a choice, name a feature, link it to the user's need, then explain the consequence.</li><li><strong>Lesson fact:</strong> Calculate / trace Show working: input values, intermediate result, final output.</li><li><strong>Lesson fact:</strong> Describe Use a sequence, such as sensor reading -&gt; comparison -&gt; output signal -&gt; actuator.</li><li><strong>Lesson fact:</strong> Explain Include cause and effect, not only a definition.</li><li><strong>Lesson fact:</strong> Correct Find the missing mark, then rewrite the answer with specific wording.</li><li><strong>Lesson fact:</strong> Exam answer frame: &quot;Because [feature], it meets [need], so [practical consequence].&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Redundancy, failover and a UPS can support continuity when a component or power source fails.</li><li><strong>Lesson fact:</strong> Backup and restore support recovery after data loss or failure.</li><li><strong>Lesson fact:</strong> A backup copy reduces data loss and recovery time but does not by itself keep a live service running.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end skills -->
-        <section class="panel" id="checkpoint" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checkpoint">
+        <!-- stage10-explanation:end reliability -->
+        <section class="panel" id="mitigation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mitigation">
           <div class="section-title">
-            <p class="eyebrow">Monthly checkpoint</p>
-            <h2>Short timed review structure</h2>
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Mitigation must match the risk</h2>
           </div>
-          <div class="checkpoint-grid">
-            <article><strong>3 minutes</strong><span>Classify five questions by topic and command word.</span></article>
-            <article><strong>8 minutes</strong><span>Answer one 6-mark scenario question.</span></article>
-            <article><strong>5 minutes</strong><span>Complete one truth table or Boolean trace.</span></article>
-            <article><strong>7 minutes</strong><span>Mark with MS, identify missing marks, rewrite one answer.</span></article>
+          <div class="scenario-grid">
+            <article><strong>Outdoor weather station</strong><span>Weatherproof casing, low-power controller, battery/solar power and wireless communication.</span></article>
+            <article><strong>Hospital workstation</strong><span>Reliable power, backup, regular maintenance and quick replacement to reduce downtime.</span></article>
+            <article><strong>Delivery handheld</strong><span>Rugged case, long battery life, mobile data fallback and SSD/flash storage.</span></article>
+            <article><strong>Data server</strong><span>Cooling, UPS, RAID, backup, monitoring and controlled access.</span></article>
           </div>
-          <div class="callout">The checkpoint is included as lesson practice, not a midterm or final exam.</div>
+          <div class="callout">A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</div>
         </section>
 
-        <!-- stage10-explanation:start checkpoint -->
-        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="synthesis" aria-labelledby="explanation-checkpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="checkpoint">
-          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">Short timed review structure</h2>
+        <!-- stage10-explanation:start mitigation -->
+        <section class="panel explanation-panel" id="explanation-mitigation" data-explains="mitigation" data-explanation-kind="mechanism" aria-labelledby="explanation-mitigation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="mitigation">
+          <h2 class="explanation-sr-only" id="explanation-mitigation-title">Mitigation must match the risk</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Short timed review structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Short timed review structure: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-mitigation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Mitigation must match the risk with a structured visual model." />
+            <figcaption class="explanation-sr-only">Mitigation must match the risk: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> 3 minutes Classify five questions by topic and command word.</li><li><strong>Lesson fact:</strong> 8 minutes Answer one 6-mark scenario question.</li><li><strong>Lesson fact:</strong> 5 minutes Complete one truth table or Boolean trace.</li><li><strong>Lesson fact:</strong> 7 minutes Mark with MS, identify missing marks, rewrite one answer.</li><li><strong>Lesson fact:</strong> The checkpoint is included as lesson practice, not a midterm or final exam.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Outdoor weather station Weatherproof casing, low-power controller, battery/solar power and wireless communication.</li><li><strong>Lesson fact:</strong> Hospital workstation Reliable power, backup, regular maintenance and quick replacement to reduce downtime.</li><li><strong>Lesson fact:</strong> Delivery handheld Rugged case, long battery life, mobile data fallback and SSD/flash storage.</li><li><strong>Lesson fact:</strong> Data server Cooling, UPS, RAID, backup, monitoring and controlled access.</li><li><strong>Lesson fact:</strong> A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end checkpoint -->
+        <!-- stage10-explanation:end mitigation -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Question sorter</h2>
+            <h2>Environmental risk evaluator</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Mixed question
-              <select id="questionInput">
-                <option value="q1">Compare RAM and ROM.</option>
-                <option value="q2">Describe how a greenhouse fan is controlled automatically.</option>
-                <option value="q3">Complete Q = (A OR B) AND NOT C for A=1, B=0, C=0.</option>
-                <option value="q4">Justify hardware for a delivery driver.</option>
-                <option value="q5">Explain how a UPS improves reliability in a server room.</option>
+              Scenario
+              <select id="scenarioInput">
+                <option value="weather">Remote weather station</option>
+                <option value="server">School server room</option>
+                <option value="delivery">Delivery handheld device</option>
+                <option value="factory">Factory barcode scanner</option>
+                <option value="clinic">Clinic reception system</option>
               </select>
             </label>
-            <button type="button" id="sortBtn">Sort question</button>
+            <button type="button" id="evaluateBtn">Evaluate risk</button>
           </div>
-          <div class="result-box" id="sortResult" aria-live="polite"></div>
-          <div class="method-box" id="sortMethod"></div>
-          <div class="reject-box" id="sortTrap"></div>
+          <div class="result-box" id="riskSummary" aria-live="polite"></div>
+          <div class="method-box" id="mitigationSummary"></div>
+          <div class="reject-box" id="rejectSummary"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Annotate what earns marks</h2>
+            <h2>Write reliability answers that earn marks</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="compare">Compare</button>
-            <button class="tab" type="button" data-example="justify">Justify</button>
-            <button class="tab" type="button" data-example="calculate">Calculate</button>
+            <button class="tab active" type="button" data-example="weather">Weather station</button>
+            <button class="tab" type="button" data-example="server">Server room</button>
+            <button class="tab" type="button" data-example="delivery">Delivery device</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
+            <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
           </div>
           <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check quiz</button>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Rewrite weak review answers</h2>
+            <h2>Fix the weak reliability answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"SSD is better than HDD because it is faster and good."</p>
+              <p class="wrong">"Use a UPS because it makes the computer waterproof."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">SSD has faster access times than HDD, so it is more suitable as a working drive for video editing where large files need to load and preview quickly. HDD may still be suitable for cheaper bulk archive storage.</p>
+              <p class="answer" id="mistake1">A UPS protects against short power cuts and allows safe shutdown. Waterproofing needs a sealed or weatherproof enclosure.</p>
             </article>
             <article>
-              <p class="wrong">"The sensor turns on the fan."</p>
+              <p class="wrong">"Reliability means the hardware is expensive and therefore good."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">The temperature sensor inputs a reading. The processor compares it with a threshold. If the reading is too high, an output signal activates the fan motor/actuator.</p>
+              <p class="answer" id="mistake2">Reliability means the hardware continues to work correctly when required. Cost may be one factor, but redundancy, maintenance and environmental protection are more precise evidence.</p>
             </article>
           </div>
         </section>
@@ -274,8 +273,8 @@
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Section 3 mixed questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. The MS highlights whether the question rewards comparison, justification, calculation or sequence.</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on naming the risk, matching a mitigation, and explaining the effect on reliability.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -283,15 +282,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Section 3 review in six exam habits</h2>
+            <h2>Environmental reliability in six exam sentences</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Recognise</strong><span>Identify topic and command word first.</span></div>
-            <div><strong>Retrieve</strong><span>Recall definitions without looking at notes.</span></div>
-            <div><strong>Compare</strong><span>Use the same criterion for both sides.</span></div>
-            <div><strong>Justify</strong><span>Link feature to need and consequence.</span></div>
-            <div><strong>Calculate</strong><span>Show intermediate logic or method.</span></div>
-            <div><strong>Correct</strong><span>Rewrite one weak answer using MS wording.</span></div>
+            <div><strong>Heat</strong><span>Cooling and ventilation reduce overheating and shutdowns.</span></div>
+            <div><strong>Water</strong><span>Sealed enclosures reduce corrosion and short circuits.</span></div>
+            <div><strong>Dust</strong><span>Filters and cleaning protect cooling and sensors.</span></div>
+            <div><strong>Shock</strong><span>Rugged casing and SSDs reduce mobile damage.</span></div>
+            <div><strong>Power</strong><span>UPS and surge protection reduce interruption and data loss.</span></div>
+            <div><strong>Failure</strong><span>Backup, redundancy and maintenance reduce downtime.</span></div>
           </div>
         </section>
 
@@ -301,25 +300,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Complete a one-page Section 3 retrieval grid: storage, embedded systems, sensors, logic gates, hardware selection and reliability.</li>
-            <li>Answer one 6-mark justify question about hardware for a delivery driver using feature -> need -> consequence.</li>
-            <li>Complete a truth table for Q = (A NAND B) OR C and show intermediate columns.</li>
-            <li>Rewrite two weak answers from your notes using the relevant MS wording.</li>
+            <li>Write a 6-mark answer recommending hardware protections for a remote weather station.</li>
+            <li>Explain how a UPS, backup and RAID each improve reliability, using a different sentence for each.</li>
+            <li>Compare an office desktop and a rugged handheld device for a delivery driver using environmental risks.</li>
+            <li>Rewrite this weak sentence: "Use expensive hardware because it is reliable."</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Retrieval grid:</strong> no full sentences at first; use keywords, then close notes and explain aloud.</p>
-            <p><strong>Justify:</strong> handheld scanner/smartphone, GPS, mobile data, battery life, rugged casing.</p>
-            <p><strong>Truth table:</strong> add A AND B, A NAND B, then final OR with C.</p>
-            <p><strong>Rewrite:</strong> remove vague words such as better/easier/good unless a cause and consequence follow.</p>
+            <p><strong>Weather station:</strong> mention weatherproof casing, low power, battery/solar, wireless communication and accurate sensors.</p>
+            <p><strong>UPS:</strong> keeps power briefly and allows safe shutdown. <strong>Backup:</strong> restores data. <strong>RAID:</strong> can keep service running after a disk failure depending on type.</p>
+            <p><strong>Delivery:</strong> rugged, portable, shock-resistant and long battery life are more relevant than desktop processing power.</p>
+            <p><strong>Rewrite:</strong> name a reliability feature such as redundancy, MTBF, protective casing or maintenance schedule.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

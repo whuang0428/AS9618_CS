@@ -122,17 +122,17 @@ pre {
   margin-bottom: 4px;
 }
 
-.scope-visual {
+.pass-visual {
   display: grid;
   gap: 14px;
   align-content: center;
   min-height: 430px;
   padding: 24px;
   color: #ffffff;
-  background: linear-gradient(135deg, #17324d, #2563eb 50%, #047857);
+  background: linear-gradient(135deg, #17324d, #2563eb 48%, #047857);
   border-radius: 8px;
 }
-.scope-visual > div {
+.pass-visual > div {
   display: grid;
   gap: 5px;
   min-height: 92px;
@@ -144,9 +144,9 @@ pre {
   padding: 16px;
   font-weight: 850;
 }
-.scope-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; }
-.scope-visual em { color: #334155; font-style: normal; font-weight: 700; }
-.scope-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.pass-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; }
+.pass-visual em { color: #334155; font-style: normal; font-weight: 700; }
+.pass-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
 
 .guidance-grid {
   display: grid;
@@ -161,12 +161,13 @@ pre {
 .section-title { margin-bottom: 18px; }
 .section-title p:not(.eyebrow) { color: var(--muted); max-width: 78ch; }
 
-.hook-grid, .mistake-grid, .scenario-grid {
+.hook-grid, .mistake-grid, .scenario-grid, .use-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
-.choice-card, .mistake-grid article {
+.use-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.choice-card, .mistake-grid article, .use-grid article {
   border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 8px;
@@ -175,6 +176,7 @@ pre {
 }
 .choice-card { font-weight: 800; overflow-wrap: anywhere; }
 .choice-card.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+.use-grid h3 { color: var(--accent-dark); margin-top: 0; }
 
 .feedback, .callout, .trace-output, .answer-panel, .ms-panel {
   margin-top: 16px;
@@ -194,7 +196,8 @@ pre {
   border-radius: 8px;
   overflow: hidden;
 }
-.compare-table .table-row { grid-template-columns: 0.85fr 1.1fr 1.25fr; }
+.compare-table .table-row { grid-template-columns: 0.8fr 1.1fr 1.25fr; }
+.trace-table .table-row { grid-template-columns: 0.85fr 1fr 1fr 1.35fr; }
 .result-table .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
 .table-row { display: grid; }
 .table-row > div {
@@ -220,21 +223,21 @@ pre {
 }
 .code-grid h3, .worked-card h3 { margin-top: 0; color: var(--accent-dark); }
 
-.trace-list, .timeline { display: grid; gap: 10px; }
-.trace-list div, .timeline div {
+.trace-list { display: grid; gap: 10px; }
+.trace-list div {
   display: grid;
-  grid-template-columns: minmax(130px, 0.55fr) minmax(0, 1fr);
+  grid-template-columns: minmax(110px, 0.55fr) minmax(0, 1fr);
   gap: 10px;
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #f8fafc;
 }
-.trace-list strong, .timeline strong { color: var(--accent-dark); }
+.trace-list strong { color: var(--accent-dark); }
 
 .converter-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(170px, 0.7fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 0.6fr) auto;
   gap: 14px;
   align-items: end;
 }
@@ -305,10 +308,10 @@ pre {
     position: static;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid {
+  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .use-grid {
     grid-template-columns: 1fr;
   }
-  .scope-visual { min-height: auto; }
+  .pass-visual { min-height: auto; }
 }
 
 @media (max-width: 700px) {
@@ -318,14 +321,16 @@ pre {
     flex-direction: column;
   }
   .lesson-nav { grid-template-columns: 1fr; }
-  .hook-grid, .mistake-grid, .scenario-grid, .practice-controls {
+  .hook-grid, .mistake-grid, .scenario-grid, .converter-grid, .practice-controls {
     grid-template-columns: 1fr;
   }
-  .compare-table .table-row, .result-table .table-row {
+  .compare-table .table-row, .trace-table .table-row, .result-table .table-row {
     grid-template-columns: 1fr;
   }
-  .table-row > div { border-right: 0; }
-  .trace-list div, .timeline div {
+  .table-row > div {
+    border-right: 0;
+  }
+  .trace-list div {
     grid-template-columns: 1fr;
   }
   .hero h2 { font-size: 2rem; }

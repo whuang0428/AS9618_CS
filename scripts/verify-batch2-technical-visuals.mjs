@@ -24,11 +24,11 @@ const normalize = (value) => String(value)
   .replace(/\s+/g, " ")
   .trim();
 
-expect(Object.keys(contract).sort().join("|") === "046/assembler|050/shifts", "Batch 2 contract must contain exactly the two approved technical visuals.");
+expect(Object.keys(contract).sort().join("|") === "047/assembler|051/shifts", "Batch 2 contract must contain exactly the two approved technical visuals.");
 expect(remediation.status === "Resolved" && remediation.records.length === 2, "Batch 2 remediation ledger must resolve exactly two visual records.");
 
-const instructionCheck = semanticCalculations.find((item) => item.id === "CALC-073-INSTRUCTION-GROUPS");
-const shiftCheck = semanticCalculations.find((item) => item.id === "CALC-074-BINARY-SHIFTS");
+const instructionCheck = semanticCalculations.find((item) => item.id === "CALC-074-INSTRUCTION-GROUPS");
+const shiftCheck = semanticCalculations.find((item) => item.id === "CALC-075-BINARY-SHIFTS");
 expect(Boolean(instructionCheck) && evaluateSemanticCalculation(instructionCheck), "Official instruction-group calculation contract failed.");
 expect(Boolean(shiftCheck) && evaluateSemanticCalculation(shiftCheck), "Fixed-width shift calculation contract failed.");
 
@@ -51,7 +51,7 @@ if (shiftCheck) {
   expect(!evaluateSemanticCalculation(wrongOverflow), "Mutation test failed: unsigned logical-left overflow=false must be rejected.");
 }
 
-const shiftContract = contract["050/shifts"];
+const shiftContract = contract["051/shifts"];
 expect(shiftContract.width === 8, "Shift visual must declare an eight-bit fixed width.");
 expect(!JSON.stringify(shiftContract).includes("Overflow: No"), "Ambiguous 'Overflow: No' wording must not return.");
 for (const bits of [shiftContract.input, ...shiftContract.examples.map((item) => item.result)]) {
@@ -81,7 +81,7 @@ const temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "as9618-batch2-
 try {
   execFileSync("python3", [
     path.join(root, "scripts", "render-stage10-critical-repairs.py"),
-    "--keys", "046/assembler,050/shifts",
+    "--keys", "047/assembler,051/shifts",
     "--output-dir", temporaryDirectory,
   ], { cwd: root, stdio: "pipe" });
   for (const key of Object.keys(contract)) {

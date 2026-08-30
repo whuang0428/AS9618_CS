@@ -14,7 +14,7 @@ const css = read("web/stage10-explanations.css");
 expect(/@media \(max-width: 640px\)[\s\S]*?\.explanation-panel > \.explanation-infographic\s*\{\s*display: none;/m.test(css), "mobile fallback does not hide every Stage 10 raster");
 expect(/\.explanation-panel > \.explanation-sr-only\s*\{[\s\S]*?position: static !important;[\s\S]*?white-space: normal !important;/m.test(css), "mobile fallback does not expose the complete transcript");
 expect(!/width:\s*720px/.test(css), "obsolete 720 px mobile width remains");
-for (let lesson = 1; lesson <= 150; lesson += 1) {
+for (let lesson = 1; lesson <= 151; lesson += 1) {
   const id = String(lesson).padStart(3, "0");
   const html = read(`web/lesson-${id}/index.html`);
   expect((html.match(/stage10-explanations\.css\?v=9/g) ?? []).length === 1, `L${id}: Stage 10 stylesheet v9 is not linked exactly once`);
@@ -40,14 +40,14 @@ for (const question of questions) {
   if (codes.some((code) => /^A\d+$/.test(code)) && !codes.some((code) => /^M\d+$/.test(code))) aWithoutM += 1;
   if (question.guidance.some((note) => /\bFT\b|follow[- ]through/i.test(note)) && codes.every((code) => /^B\d+$/.test(code))) ftBOnly += 1;
 }
-expect(questions.length === 963, `expected 963 questions, found ${questions.length}`);
+expect(questions.length === 968, `expected 968 questions, found ${questions.length}`);
 expect(aWithoutM === 0, `${aWithoutM} A-without-M questions remain`);
 expect(ftBOnly === 0, `${ftBOnly} FT-with-B-only questions remain`);
 
 const ao = JSON.parse(read("scripts/question-ao-contract.json"));
 const currentById = new Map(questions.map((question) => [question.id, question]));
-expect(ao.questions.length === 963, `expected 963 AO mappings, found ${ao.questions.length}`);
-expect(new Set(ao.questions.map(({ questionId }) => questionId)).size === 963, "AO mapping IDs are not unique");
+expect(ao.questions.length === 968, `expected 968 AO mappings, found ${ao.questions.length}`);
+expect(new Set(ao.questions.map(({ questionId }) => questionId)).size === 968, "AO mapping IDs are not unique");
 for (const row of ao.questions) {
   expect(row.reviewStatus === "Reviewed" && row.assessmentObjectives.length > 0, `${row.questionId}: AO mapping is not complete`);
   expect(currentById.get(row.questionId)?.hash === row.contentHash, `${row.questionId}: AO mapping hash is stale`);
@@ -74,4 +74,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Batch 18 verification passed: global mobile fallback, distinct teaching scaffolds, zero mark-code flags, 963 AO mappings and 30 resolved defects.");
+console.log("Batch 18 verification passed: global mobile fallback, distinct teaching scaffolds, zero mark-code flags, 968 AO mappings and 30 resolved defects.");

@@ -7,14 +7,14 @@ const base = actualCriticalFixture();
 const cases = [];
 const mutate = (name, expectedId, edit) => cases.push({ name, expectedId, edit });
 
-mutate("remove bus width from the performance title", "CRIT-L049-PERFORMANCE-FACTORS", (fixture) => { fixture.performance.title = fixture.performance.title.replace(/bus width/gi, "transfer path"); });
-mutate("substitute word length in the performance visual", "CRIT-L049-PERFORMANCE-FACTORS", (fixture) => { fixture.performance.visual = fixture.performance.visual.replace(/bus width/gi, "word length"); });
-mutate("pass MID STRING directly to UCASE in L107", "CRIT-L107-CHAR-FUNCTION-TYPE", (fixture) => { fixture.l107 += "\nCharacter <- UCASE(MID(Word, Index, 1))"; });
-mutate("remove the SPLIT signature in L121", "CRIT-L121-PROVIDED-FUNCTIONS", (fixture) => { fixture.l121 = fixture.l121.replace(/FUNCTION\s+SPLIT\s*\([^\n<]*?RETURNS\s+ARRAY\s+OF\s+STRING/gi, "SPLIT supplied"); });
-mutate("remove the STRING_TO_INTEGER signature in L121", "CRIT-L121-PROVIDED-FUNCTIONS", (fixture) => { fixture.l121 = fixture.l121.replace(/FUNCTION\s+STRING_TO_INTEGER\s*\([^\n<]*?RETURNS\s+INTEGER/gi, "STRING_TO_INTEGER supplied"); });
-mutate("use LEFT without a supplied signature in L133", "CRIT-L133-PROVIDED-FUNCTION", (fixture) => { fixture.l133 += "\nPart <- LEFT(Word, 3)"; });
-mutate("pass a double-quoted STRING literal to UCASE", "CRIT-L133-CHAR-LITERAL", (fixture) => { fixture.l133 += '\nLetter <- UCASE("y")'; });
-mutate("pass an undeclared Answer value to UCASE", "CRIT-L133-CHAR-FUNCTION-TYPE", (fixture) => { fixture.l133 = fixture.l133.replace(/DECLARE\s+Answer\s*:\s*CHAR/gi, ""); });
+mutate("remove bus width from the performance title", "CRIT-L050-PERFORMANCE-FACTORS", (fixture) => { fixture.performance.title = fixture.performance.title.replace(/bus width/gi, "transfer path"); });
+mutate("substitute word length in the performance visual", "CRIT-L050-PERFORMANCE-FACTORS", (fixture) => { fixture.performance.visual = fixture.performance.visual.replace(/bus width/gi, "word length"); });
+mutate("pass MID STRING directly to UCASE in L108", "CRIT-L108-CHAR-FUNCTION-TYPE", (fixture) => { fixture.l107 += "\nCharacter <- UCASE(MID(Word, Index, 1))"; });
+mutate("remove the SPLIT signature in L122", "CRIT-L122-PROVIDED-FUNCTIONS", (fixture) => { fixture.l121 = fixture.l121.replace(/FUNCTION\s+SPLIT\s*\([^\n<]*?RETURNS\s+ARRAY\s+OF\s+STRING/gi, "SPLIT supplied"); });
+mutate("remove the STRING_TO_INTEGER signature in L122", "CRIT-L122-PROVIDED-FUNCTIONS", (fixture) => { fixture.l121 = fixture.l121.replace(/FUNCTION\s+STRING_TO_INTEGER\s*\([^\n<]*?RETURNS\s+INTEGER/gi, "STRING_TO_INTEGER supplied"); });
+mutate("use LEFT without a supplied signature in L134", "CRIT-L134-PROVIDED-FUNCTION", (fixture) => { fixture.l133 += "\nPart <- LEFT(Word, 3)"; });
+mutate("pass a double-quoted STRING literal to UCASE", "CRIT-L134-CHAR-LITERAL", (fixture) => { fixture.l133 += '\nLetter <- UCASE("y")'; });
+mutate("pass an undeclared Answer value to UCASE", "CRIT-L134-CHAR-FUNCTION-TYPE", (fixture) => { fixture.l133 = fixture.l133.replace(/DECLARE\s+Answer\s*:\s*CHAR/gi, ""); });
 
 const failures = [];
 for (const test of cases) {
@@ -29,7 +29,7 @@ if (normaliseQuestionPrompt("Name one suitable factor.") !== "Identify one suita
 
 {
   const requirement = structuredClone(coverageContract.requirements.find(({ id }) => id === "S1.01"));
-  requirement.visualEvidence = [{ lesson: 11, visualId: "explanation-formula-img-1", sectionId: "explanation-formula", required: true, conceptGroups: [] }];
+  requirement.visualEvidence = [{ lesson: 12, visualId: "explanation-formula-img-1", sectionId: "explanation-formula", required: true, conceptGroups: [] }];
   const messages = evaluateRequirement(requirement).messages;
   if (!messages.some((message) => message.includes("target register is not CORE/TEACH")) || !messages.some((message) => message.includes("actual lesson section is not CORE/TEACH"))) failures.push("Optional visual mutation: register and live DOM mismatch was not rejected");
 }

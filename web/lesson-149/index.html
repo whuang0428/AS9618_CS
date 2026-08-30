@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 149 | Paper 2 timed pseudocode practice</title>
+    <title>AS9618 Lesson 149 | Paper 2 review: programming constructs and file handling</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Sections 9-12</p>
-        <h1>Paper 2 timed pseudocode practice</h1>
+        <h1>Paper 2 review: programming constructs and file handling</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,14 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#timing">Timing</a>
-        <a href="#method">Method</a>
         <a href="#constructs">Constructs</a>
-        <a href="#trace">Trace check</a>
-        <a href="#quality">Quality checklist</a>
-        <a href="#timer-tool">Timer tool</a>
-        <a href="#skeleton-tool">Skeleton builder</a>
+        <a href="#selection">Selection</a>
+        <a href="#iteration">Iteration</a>
+        <a href="#subprograms">Subprograms</a>
+        <a href="#validation">Validation</a>
+        <a href="#files">File handling</a>
+        <a href="#construct-tool">Construct tool</a>
+        <a href="#file-tool">File mode tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
@@ -47,262 +48,326 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 149 | 45 minutes | Paper 2 review | timed practice</p>
-            <h2>Timed pseudocode is not about writing fast. It is about not wasting the first two minutes.</h2>
+            <p class="lesson-meta">Lesson 149 | 45 minutes | Paper 2 review | informal questioning</p>
+            <h2>Programming review is grammar plus logic. Syntax is the spelling; control flow is the story.</h2>
             <p>
-              This lesson trains timed Cambridge-style pseudocode answers: reading the task, planning variables, choosing
-              constructs, writing a clear solution, and checking edge cases. Chinese support: timed practice 限时训练,
-              pseudocode 伪代码, skeleton 骨架, edge case 边界情况, mark allocation 分值分配。
+              This lesson reviews programming constructs and file handling in Cambridge-style pseudocode: sequence,
+              selection, iteration, subprograms, validation, file modes and end-of-file loops. Chinese support:
+              construct 构造, parameter 参数, return value 返回值, file mode 文件模式, validation 验证。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Plan</strong><span>pseudocode answers under time pressure</span></div>
-              <div><strong>Write</strong><span>clear Cambridge-style algorithms using core constructs</span></div>
-              <div><strong>Check</strong><span>logic, boundary cases and mark-scheme evidence</span></div>
+              <div><strong>Recognise</strong><span>constructs from mixed pseudocode snippets</span></div>
+              <div><strong>Apply</strong><span>file read/write/append patterns correctly</span></div>
+              <div><strong>Explain</strong><span>validation and subprogram choices with precise terms</span></div>
             </div>
           </div>
-          <div class="timed-visual" aria-label="Timed practice visual">
-            <div><strong>Read</strong><span>30-60 sec</span><em>inputs, outputs, constraints</em></div>
-            <div><strong>Plan</strong><span>60-90 sec</span><em>variables and loop shape</em></div>
-            <div><strong>Write</strong><span>main time</span><em>clear pseudocode</em></div>
-            <div><strong>Check</strong><span>last 60 sec</span><em>boundaries and outputs</em></div>
+          <div class="review-visual" aria-label="Programming constructs review visual">
+            <div><strong>Selection</strong><span>IF / CASE</span><em>choose a path</em></div>
+            <div><strong>Iteration</strong><span>FOR / WHILE / REPEAT</span><em>repeat safely</em></div>
+            <div><strong>Subprogram</strong><span>PROCEDURE / FUNCTION</span><em>reuse logic</em></div>
+            <div><strong>File</strong><span>READ / WRITE / APPEND</span><em>persist data</em></div>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Timed questions reward readable structure. Markers can award method marks only when the logic is visible enough to follow.</p>
+            <p>Paper 2 answers lose marks when students know the idea but write the wrong construct or file mode. Precision is not decoration here.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not write final answers in Java syntax. Java can support practice, but Cambridge pseudocode remains the exam answer format.</p>
+            <p>Java syntax can help you practise, but Cambridge pseudocode is the exam language. Do not answer file questions with Java libraries unless asked.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>What should happen before writing the first line?</h2>
-            <p>Question stem: “Write an algorithm to count valid marks in a file.”</p>
+            <h2>Which file mode should be used?</h2>
+            <p>Scenario: add one new quiz score to the end of an existing file without deleting old scores.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="code">Start writing lines immediately</button>
-            <button class="choice-card" type="button" data-hook="plan">Identify inputs, outputs, variables and file mode</button>
-            <button class="choice-card" type="button" data-hook="java">Translate the problem into Java first</button>
-            <button class="choice-card" type="button" data-hook="essay">Explain what an algorithm is</button>
+            <button class="choice-card" type="button" data-hook="read">READ</button>
+            <button class="choice-card" type="button" data-hook="write">WRITE</button>
+            <button class="choice-card" type="button" data-hook="append">APPEND</button>
+            <button class="choice-card" type="button" data-hook="close">CLOSEFILE</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the move that saves marks under time pressure.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Pick the mode that preserves existing records and adds a new one.</div>
         </section>
 
-        <section class="panel" id="timing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="timing">
-          <div class="section-title">
-            <p class="eyebrow">Timing strategy</p>
-            <h2>Spend time according to marks</h2>
-          </div>
-          <div class="data-table four-col" role="table" aria-label="Timing strategy">
-            <div class="table-row table-head"><div>Marks</div><div>Read and plan</div><div>Write</div><div>Check</div></div>
-            <div class="table-row"><div>4 marks</div><div>30 seconds</div><div>3 minutes</div><div>30 seconds</div></div>
-            <div class="table-row"><div>6 marks</div><div>60 seconds</div><div>5 minutes</div><div>60 seconds</div></div>
-            <div class="table-row"><div>8 marks</div><div>90 seconds</div><div>7 minutes</div><div>90 seconds</div></div>
-            <div class="table-row"><div>10 marks</div><div>2 minutes</div><div>9 minutes</div><div>2 minutes</div></div>
-          </div>
-          <div class="callout">If planning feels slow, remember that rewriting a confused answer is slower.</div>
-        </section>
-
-        <!-- stage10-explanation:start timing -->
-        <section class="panel explanation-panel" id="explanation-timing" data-explains="timing" data-explanation-kind="synthesis" aria-labelledby="explanation-timing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="timing">
-          <h2 class="explanation-sr-only" id="explanation-timing-title">Spend time according to marks</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-timing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spend time according to marks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Spend time according to marks: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Use one declared mark-to-time rate consistently across timed pseudocode practice.</li><li><strong>Lesson fact:</strong> The example rate is one minute per mark: 2, 3, 5 and 10 marks receive 2, 3, 5 and 10 minutes.</li><li><strong>Lesson fact:</strong> The whole question budget includes reading, planning, writing and checking.</li><li><strong>Lesson fact:</strong> A proportional model always allocates more time to a higher-mark question.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end timing -->
-        <section class="panel" id="method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
-          <div class="section-title">
-            <p class="eyebrow">Timed method</p>
-            <h2>The four-pass approach</h2>
-          </div>
-          <div class="card-grid">
-            <article><h3>1. Decode</h3><p>Underline inputs, outputs, constraints and any required data structure or file.</p></article>
-            <article><h3>2. Skeleton</h3><p>Write the outer shape first: initialisation, loop, selection, output.</p></article>
-            <article><h3>3. Fill</h3><p>Add conditions, assignments, function calls and file statements.</p></article>
-            <article><h3>4. Check</h3><p>Trace one normal and one boundary case; confirm the output happens once in the right place.</p></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="synthesis" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="method">
-          <h2 class="explanation-sr-only" id="explanation-method-title">The four-pass approach</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The four-pass approach with a structured visual model." />
-            <figcaption class="explanation-sr-only">The four-pass approach: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Timed method</li><li><strong>Lesson fact:</strong> 1. Decode</li><li><strong>Lesson fact:</strong> Underline inputs, outputs, constraints and any required data structure or file.</li><li><strong>Lesson fact:</strong> 2. Skeleton</li><li><strong>Lesson fact:</strong> Write the outer shape first: initialisation, loop, selection, output.</li><li><strong>Lesson fact:</strong> Add conditions, assignments, function calls and file statements.</li><li><strong>Lesson fact:</strong> 4. Check</li><li><strong>Lesson fact:</strong> Trace one normal and one boundary case; confirm the output happens once in the right place.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end method -->
         <section class="panel" id="constructs" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constructs">
           <div class="section-title">
-            <p class="eyebrow">Construct bank</p>
-            <h2>Choose the smallest construct that fits the task</h2>
+            <p class="eyebrow">Programming constructs</p>
+            <h2>Constructs control the order in which statements run</h2>
           </div>
-          <div class="data-table four-col" role="table" aria-label="Construct bank">
-            <div class="table-row table-head"><div>Task signal</div><div>Likely construct</div><div>Why</div><div>Check</div></div>
-            <div class="table-row"><div>exactly N items</div><div>FOR</div><div>known repetition count</div><div>bounds include all items</div></div>
-            <div class="table-row"><div>until file ends</div><div>WHILE NOT EOF</div><div>unknown record count</div><div>read inside loop</div></div>
-            <div class="table-row"><div>validate input</div><div>REPEAT UNTIL</div><div>prompt runs at least once</div><div>loop stops when valid</div></div>
-            <div class="table-row"><div>several menu options</div><div>CASE</div><div>clear multi-way branch</div><div>include OTHERWISE</div></div>
+          <div class="data-table four-col" role="table" aria-label="Programming constructs">
+            <div class="table-row table-head"><div>Construct</div><div>Meaning</div><div>Cambridge-style signal</div><div>Common error</div></div>
+            <div class="table-row"><div>Sequence</div><div>statements run in order</div><div>one statement after another</div><div>assuming hidden jumps</div></div>
+            <div class="table-row"><div>Selection</div><div>choose a branch</div><div>IF / ELSE / CASE</div><div>missing ELSE or ENDIF</div></div>
+            <div class="table-row"><div>Iteration</div><div>repeat statements</div><div>FOR / WHILE / REPEAT</div><div>off-by-one loop bounds</div></div>
+            <div class="table-row"><div>Subprogram</div><div>named reusable block</div><div>PROCEDURE / FUNCTION</div><div>confusing return value with output</div></div>
           </div>
         </section>
 
         <!-- stage10-explanation:start constructs -->
         <section class="panel explanation-panel" id="explanation-constructs" data-explains="constructs" data-explanation-kind="synthesis" aria-labelledby="explanation-constructs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="constructs">
-          <h2 class="explanation-sr-only" id="explanation-constructs-title">Choose the smallest construct that fits the task</h2>
+          <h2 class="explanation-sr-only" id="explanation-constructs-title">Constructs control the order in which statements run</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-constructs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the smallest construct that fits the task with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the smallest construct that fits the task: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-constructs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constructs control the order in which statements run with a structured visual model." />
+            <figcaption class="explanation-sr-only">Constructs control the order in which statements run: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Choose a loop from when its stopping condition must be tested, not merely from whether the item count is unknown.</li><li><strong>Lesson fact:</strong> Use WHILE NOT EOF for a text file whose record count is unknown because EOF is checked before each read or process step.</li><li><strong>Lesson fact:</strong> Use REPEAT ... UNTIL only when the body must execute before the condition is checked.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Programming constructs</li><li><strong>Lesson fact:</strong> Construct</li><li><strong>Lesson fact:</strong> Cambridge-style signal</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Sequence</li><li><strong>Lesson fact:</strong> statements run in order</li><li><strong>Lesson fact:</strong> one statement after another</li><li><strong>Lesson fact:</strong> assuming hidden jumps</li><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> choose a branch</li><li><strong>Lesson fact:</strong> IF / ELSE / CASE</li><li><strong>Lesson fact:</strong> missing ELSE or ENDIF</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end constructs -->
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="selection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
           <div class="section-title">
-            <p class="eyebrow">Trace check</p>
-            <h2>Trace a tiny case before trusting a big answer</h2>
+            <p class="eyebrow">Selection review</p>
+            <h2>Use IF for decisions, CASE for clean multi-way choices</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Prompt</h3>
-              <p>Write an algorithm to count values in Scores that are greater than or equal to 50.</p>
-              <pre><code>Count ← 0
-FOR Index ← 1 TO 4
-    IF Scores[Index] &gt;= 50 THEN
-        Count ← Count + 1
-    ENDIF
-NEXT Index
-OUTPUT Count</code></pre>
+              <h3>IF example</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
             </article>
             <article>
-              <h3>Fast check</h3>
-              <p>Use Scores = [49, 50, 72, 20]. Expected Count is 2. If your trace gives 1, your condition probably excluded 50.</p>
-              <div class="callout">Checking one boundary value often catches the most expensive mistake.</div>
+              <h3>CASE example</h3>
+              <pre><code>CASE MenuChoice OF
+    1 : CALL AddScore()
+    2 : CALL DisplayScores()
+    3 : CALL SaveScores()
+    OTHERWISE : OUTPUT "Invalid choice"
+ENDCASE</code></pre>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="quality" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="quality">
-          <div class="section-title">
-            <p class="eyebrow">Quality checklist</p>
-            <h2>Before moving on, ask six questions</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Inputs</strong><span>Where does the data come from: user, array or file?</span></div>
-            <div><strong>Initialisation</strong><span>Are counters, totals and flags set before use?</span></div>
-            <div><strong>Loop</strong><span>Does the loop include the correct items and stop safely?</span></div>
-            <div><strong>Selection</strong><span>Are boundary conditions correct, such as greater than or equal to?</span></div>
-            <div><strong>Output</strong><span>Is the final result output once, after processing?</span></div>
-            <div><strong>File handling</strong><span>Are OPENFILE, READFILE or WRITEFILE and CLOSEFILE used correctly?</span></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start quality -->
-        <section class="panel explanation-panel" id="explanation-quality" data-explains="quality" data-explanation-kind="synthesis" aria-labelledby="explanation-quality-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="quality">
-          <h2 class="explanation-sr-only" id="explanation-quality-title">Before moving on, ask six questions</h2>
+        <!-- stage10-explanation:start selection -->
+        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="synthesis" aria-labelledby="explanation-selection-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="selection">
+          <h2 class="explanation-sr-only" id="explanation-selection-title">Use IF for decisions, CASE for clean multi-way choices</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-quality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Before moving on, ask six questions with a structured visual model." />
-            <figcaption class="explanation-sr-only">Before moving on, ask six questions: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IF for decisions, CASE for clean multi-way choices with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IF for decisions, CASE for clean multi-way choices: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Quality checklist</li><li><strong>Lesson fact:</strong> Inputs Where does the data come from: user, array or file?</li><li><strong>Lesson fact:</strong> Initialisation Are counters, totals and flags set before use?</li><li><strong>Lesson fact:</strong> Loop Does the loop include the correct items and stop safely?</li><li><strong>Lesson fact:</strong> Selection Are boundary conditions correct, such as greater than or equal to?</li><li><strong>Lesson fact:</strong> Output Is the final result output once, after processing?</li><li><strong>Lesson fact:</strong> File handling Are OPENFILE, READFILE or WRITEFILE and CLOSEFILE used correctly?</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Use IF for a condition or range and close it with ENDIF.</li><li><strong>Lesson fact:</strong> Use CASE for discrete MenuChoice values and close it with ENDCASE.</li><li><strong>Lesson fact:</strong> OTHERWISE handles a menu choice not listed explicitly.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end quality -->
-        <section class="panel" id="timer-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="timer-tool">
+        <!-- stage10-explanation:end selection -->
+        <section class="panel" id="iteration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
           <div class="section-title">
-            <p class="eyebrow">Interactive timing tool</p>
-            <h2>Choose a mark value and plan the response</h2>
+            <p class="eyebrow">Iteration review</p>
+            <h2>Choose the loop by what is known before the loop starts</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Loop choice">
+            <div class="table-row table-head"><div>Loop</div><div>Use when</div><div>Example</div></div>
+            <div class="table-row"><div>FOR</div><div>number of repetitions is known</div><div>process 30 scores</div></div>
+            <div class="table-row"><div>WHILE</div><div>condition is checked before each repetition</div><div>read until end of file</div></div>
+            <div class="table-row"><div>REPEAT UNTIL</div><div>body must run at least once</div><div>keep asking until valid input</div></div>
+          </div>
+          <div class="callout">Boundary warning: if a loop says 1 to 5, there are five iterations. The loop counter is not just decorative furniture.</div>
+        </section>
+
+        <!-- stage10-explanation:start iteration -->
+        <section class="panel explanation-panel" id="explanation-iteration" data-explains="iteration" data-explanation-kind="synthesis" aria-labelledby="explanation-iteration-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="iteration">
+          <h2 class="explanation-sr-only" id="explanation-iteration-title">Choose the loop by what is known before the loop starts</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-iteration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the loop by what is known before the loop starts with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the loop by what is known before the loop starts: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Iteration review</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> number of repetitions is known</li><li><strong>Lesson fact:</strong> process 30 scores</li><li><strong>Lesson fact:</strong> condition is checked before each repetition</li><li><strong>Lesson fact:</strong> read until end of file</li><li><strong>Lesson fact:</strong> REPEAT UNTIL</li><li><strong>Lesson fact:</strong> body must run at least once</li><li><strong>Lesson fact:</strong> keep asking until valid input</li><li><strong>Lesson fact:</strong> Boundary warning: if a loop says 1 to 5, there are five iterations. The loop counter is not just decorative furniture.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end iteration -->
+        <section class="panel" id="subprograms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subprograms">
+          <div class="section-title">
+            <p class="eyebrow">Procedures and functions</p>
+            <h2>Subprograms reduce repetition and make code testable</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Procedure</h3>
+              <pre><code>PROCEDURE DisplayMessage(Message : STRING)
+    OUTPUT Message
+ENDPROCEDURE</code></pre>
+              <p>A procedure performs an action and does not have to return a value.</p>
+            </article>
+            <article>
+              <h3>Function</h3>
+              <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        RETURN TRUE
+    ELSE
+        RETURN FALSE
+    ENDIF
+ENDFUNCTION</code></pre>
+              <p>A function returns a value that can be used in an expression.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start subprograms -->
+        <section class="panel explanation-panel" id="explanation-subprograms" data-explains="subprograms" data-explanation-kind="synthesis" aria-labelledby="explanation-subprograms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="subprograms">
+          <h2 class="explanation-sr-only" id="explanation-subprograms-title">Subprograms reduce repetition and make code testable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-subprograms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Subprograms reduce repetition and make code testable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Subprograms reduce repetition and make code testable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> DisplayMessage is a procedure that outputs its parameter and returns no value.</li><li><strong>Lesson fact:</strong> IsValidMark is a function that returns a BOOLEAN.</li><li><strong>Lesson fact:</strong> Close the function's selection with ENDIF before ENDFUNCTION.</li><li><strong>Lesson fact:</strong> Use subprograms to reduce repetition and support separate testing.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end subprograms -->
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <div class="section-title">
+            <p class="eyebrow">Validation review</p>
+            <h2>Validation rejects unsuitable input before it damages the logic</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Validation examples">
+            <div class="table-row table-head"><div>Check</div><div>Rule</div><div>Example</div></div>
+            <div class="table-row"><div>Range check</div><div>value is between limits</div><div>mark from 0 to 100 inclusive</div></div>
+            <div class="table-row"><div>Type check</div><div>value has expected data type</div><div>mark must be integer</div></div>
+            <div class="table-row"><div>Presence check</div><div>value is not blank</div><div>student name required</div></div>
+            <div class="table-row"><div>Length check</div><div>value has correct number of characters</div><div>StudentID length is 8</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="synthesis" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation rejects unsuitable input before it damages the logic</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation rejects unsuitable input before it damages the logic with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation rejects unsuitable input before it damages the logic: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation review</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> value is between limits</li><li><strong>Lesson fact:</strong> mark from 0 to 100 inclusive</li><li><strong>Lesson fact:</strong> Type check</li><li><strong>Lesson fact:</strong> value has expected data type</li><li><strong>Lesson fact:</strong> mark must be integer</li><li><strong>Lesson fact:</strong> Presence check</li><li><strong>Lesson fact:</strong> value is not blank</li><li><strong>Lesson fact:</strong> student name required</li><li><strong>Lesson fact:</strong> Length check</li><li><strong>Lesson fact:</strong> value has correct number of characters</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
+        <section class="panel" id="files" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
+          <div class="section-title">
+            <p class="eyebrow">File handling review</p>
+            <h2>Open the file in the correct mode, process records, then close it</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Read pattern</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Append pattern</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR APPEND
+WRITEFILE "Scores.txt", NewScore
+CLOSEFILE "Scores.txt"</code></pre>
+              <p>APPEND preserves existing records. WRITE is usually for creating or replacing file contents.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start files -->
+        <section class="panel explanation-panel" id="explanation-files" data-explains="files" data-explanation-kind="synthesis" aria-labelledby="explanation-files-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="files">
+          <h2 class="explanation-sr-only" id="explanation-files-title">Open the file in the correct mode, process records, then close it</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-files.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Open the file in the correct mode, process records, then close it with a structured visual model." />
+            <figcaption class="explanation-sr-only">Open the file in the correct mode, process records, then close it: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> File handling review</li><li><strong>Lesson fact:</strong> Read pattern</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> Append pattern</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR APPEND</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Scores.txt&quot;, NewScore</li><li><strong>Lesson fact:</strong> APPEND preserves existing records. WRITE is usually for creating or replacing file contents.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end files -->
+        <section class="panel" id="construct-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="construct-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive construct tool</p>
+            <h2>Identify the construct from the scenario</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Question size
-              <select id="timerSelect">
-                <option value="4">4-mark short algorithm</option>
-                <option value="6">6-mark standard pseudocode</option>
-                <option value="8">8-mark file or array algorithm</option>
-                <option value="10">10-mark extended problem</option>
+              Scenario
+              <select id="constructSelect">
+                <option value="pass">choose pass or resit based on Mark</option>
+                <option value="scores">process exactly 30 scores</option>
+                <option value="menu">choose one action from menu options 1 to 4</option>
+                <option value="valid">keep asking until a valid mark is entered</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="timerBtn">Show plan</button>
+            <button class="primary-button" type="button" id="constructBtn">Identify</button>
           </div>
-          <div id="timerOutput" class="trace-output" aria-live="polite"></div>
+          <div id="constructOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start timer-tool -->
-        <section class="panel explanation-panel" id="explanation-timer-tool" data-explains="timer-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-timer-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="timer-tool">
-          <h2 class="explanation-sr-only" id="explanation-timer-tool-title">Choose a mark value and plan the response</h2>
+        <!-- stage10-explanation:start construct-tool -->
+        <section class="panel explanation-panel" id="explanation-construct-tool" data-explains="construct-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-construct-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="construct-tool">
+          <h2 class="explanation-sr-only" id="explanation-construct-tool-title">Identify the construct from the scenario</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-timer-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a mark value and plan the response with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose a mark value and plan the response: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-construct-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify the construct from the scenario with a structured visual model." />
+            <figcaption class="explanation-sr-only">Identify the construct from the scenario: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive timing tool</li><li><strong>Lesson fact:</strong> Question size</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive construct tool</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end timer-tool -->
-        <section class="panel" id="skeleton-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="skeleton-tool">
+        <!-- stage10-explanation:end construct-tool -->
+        <section class="panel" id="file-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="file-tool">
           <div class="section-title">
-            <p class="eyebrow">Skeleton builder</p>
-            <h2>Build the outer shape before details</h2>
+            <p class="eyebrow">File mode chooser</p>
+            <h2>Choose READ, WRITE or APPEND</h2>
           </div>
           <div class="tool-grid">
             <label>
               Task
-              <select id="skeletonSelect">
-                <option value="count">Count passing marks in an array</option>
-                <option value="file">Read all records from a file</option>
-                <option value="validate">Validate mark input</option>
-                <option value="largest">Find largest value in an array</option>
+              <select id="fileSelect">
+                <option value="read">display all existing scores</option>
+                <option value="append">add one new score to the end</option>
+                <option value="write">create a new report file from scratch</option>
+                <option value="close">finish file processing safely</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="skeletonBtn">Show skeleton</button>
+            <button class="primary-button" type="button" id="fileBtn">Choose mode</button>
           </div>
-          <div id="skeletonOutput" class="trace-output" aria-live="polite"></div>
+          <div id="fileOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start skeleton-tool -->
-        <section class="panel explanation-panel" id="explanation-skeleton-tool" data-explains="skeleton-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-skeleton-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="skeleton-tool">
-          <h2 class="explanation-sr-only" id="explanation-skeleton-tool-title">Build the outer shape before details</h2>
+        <!-- stage10-explanation:start file-tool -->
+        <section class="panel explanation-panel" id="explanation-file-tool" data-explains="file-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-file-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="file-tool">
+          <h2 class="explanation-sr-only" id="explanation-file-tool-title">Choose READ, WRITE or APPEND</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-skeleton-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Build the outer shape before details with a structured visual model." />
-            <figcaption class="explanation-sr-only">Build the outer shape before details: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-149-file-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose READ, WRITE or APPEND with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose READ, WRITE or APPEND: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Skeleton builder</li></ol>
+            <ol><li><strong>Lesson fact:</strong> File mode chooser</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end skeleton-tool -->
+        <!-- stage10-explanation:end file-tool -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Timed answer patterns</h2>
+            <h2>Review patterns that turn into marks</h2>
           </div>
           <div class="tab-row" role="tablist" aria-label="Worked examples">
-            <button class="tab-button active" type="button" data-example="count">Count</button>
-            <button class="tab-button" type="button" data-example="file">File</button>
-            <button class="tab-button" type="button" data-example="validate">Validate</button>
+            <button class="tab-button active" type="button" data-example="loop">Loop choice</button>
+            <button class="tab-button" type="button" data-example="function">Function</button>
+            <button class="tab-button" type="button" data-example="file">File handling</button>
           </div>
           <div id="exampleOutput" class="example-output"></div>
         </section>
@@ -310,7 +375,7 @@ OUTPUT Count</code></pre>
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Fast recall before timed writing</h2>
+            <h2>Short retrieval before exam-style questions</h2>
           </div>
           <div id="practiceList" class="practice-list"></div>
         </section>
@@ -318,7 +383,7 @@ OUTPUT Count</code></pre>
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the timed-answer mistake</h2>
+            <h2>Fix the construct or file-mode error</h2>
           </div>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
@@ -326,7 +391,7 @@ OUTPUT Count</code></pre>
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Timed pseudocode questions with expandable MS</h2>
+            <h2>Programming constructs and file handling questions with expandable MS</h2>
             <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
           </div>
           <div id="examList" class="exam-list"></div>
@@ -335,34 +400,34 @@ OUTPUT Count</code></pre>
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>The timed pseudocode routine</h2>
+            <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Plan</strong><span>inputs, variables, loop, condition, output</span></div>
-            <div><strong>Write</strong><span>Cambridge-style pseudocode with visible method</span></div>
-            <div><strong>Check</strong><span>normal and boundary case before moving on</span></div>
+            <div><strong>Construct</strong><span>selection chooses, iteration repeats, sequence orders</span></div>
+            <div><strong>Subprogram</strong><span>procedure performs; function returns</span></div>
+            <div><strong>File mode</strong><span>READ reads, WRITE creates/replaces, APPEND adds</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Complete two timed pseudocode responses</h2>
+            <h2>Complete a Paper 2 programming constructs review sheet</h2>
           </div>
           <ol class="homework-list">
-            <li>Set a 7-minute timer and write pseudocode to count valid marks in an array.</li>
-            <li>Set an 8-minute timer and write pseudocode to read records from a file and output selected records.</li>
-            <li>For each answer, add a trace check using one normal and one boundary case.</li>
-            <li>Mark your answer using the checklist: input, initialisation, loop, condition, output and file handling.</li>
+            <li>Write one IF, one CASE, one FOR loop and one REPEAT UNTIL loop in Cambridge-style pseudocode.</li>
+            <li>Write a function that validates a mark from 0 to 100 and returns BOOLEAN.</li>
+            <li>Write pseudocode to append one new score to a file without deleting existing scores.</li>
+            <li>Answer one 6-mark question explaining why file mode and CLOSEFILE matter.</li>
           </ol>
-          <div class="callout">Marking focus: visible method, correct loop boundaries, correct file mode and final output in the right place.</div>
+          <div class="callout">Marking focus: correct construct, correct file mode, and clear expected behaviour. Java is support only.</div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

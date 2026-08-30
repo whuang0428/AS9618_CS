@@ -39,7 +39,7 @@ function resolveLocalTarget(htmlPath, reference) {
   return absolute;
 }
 
-expect(pageDefinitions.length === 153, "Stage 6 must inventory 150 lessons and three hub pages");
+expect(pageDefinitions.length === 154, "Stage 6 must inventory 151 lessons and three hub pages");
 
 for (const definition of pageDefinitions) {
   const html = read(definition.html);
@@ -71,7 +71,7 @@ for (const definition of pageDefinitions) {
   }
 
   if (definition.kind === "lesson") {
-    expect(occurrences(html, '<link rel="stylesheet" href="../stage6-qa.css?v=9" />') === 1,
+    expect(occurrences(html, '<link rel="stylesheet" href="../stage6-qa.css?v=10" />') === 1,
       `${definition.page}: Stage 6 responsive stylesheet link count is not one`);
     expect(!html.includes('class="teaching-cue"'), `${definition.page}: teacher-facing cue is visible`);
     expect(!/<p class="eyebrow">(?:Syllabus coverage audit|Coverage audit)<\/p>/.test(html),
@@ -96,7 +96,7 @@ expect(stage6Css.includes(".explanation-sr-only") && stage6Css.includes("word-br
 const scripts = [
   "web/index.js",
   "web/assessments/app.js",
-  ...Array.from({ length: 150 }, (_, index) => `web/lesson-${String(index + 1).padStart(3, "0")}/app.js`),
+  ...Array.from({ length: 151 }, (_, index) => `web/lesson-${String(index + 1).padStart(3, "0")}/app.js`),
 ];
 for (const script of scripts) {
   execFileSync(process.execPath, ["--check", path.join(root, script)], { stdio: "pipe" });
@@ -125,8 +125,8 @@ for (const definition of pageDefinitions) {
 }
 
 const browserEvidence = JSON.parse(read("audits/remediation-v2-stage6-browser-evidence.json"));
-expect(browserEvidence.sourceApprovalImported === false && browserEvidence.pageCount === 153 && browserEvidence.viewportRecordCount === 306 && browserEvidence.failedRecords === 0, "Fresh Stage 6 browser evidence is incomplete");
+expect(browserEvidence.sourceApprovalImported === false && browserEvidence.pageCount === 154 && browserEvidence.viewportRecordCount === 308 && browserEvidence.failedRecords === 0, "Fresh Stage 6 browser evidence is incomplete");
 expect(fs.existsSync(path.join(root, "audits", "remediation-v2-stage6-report.md")), "Current Stage 6 QA report is missing");
 expect(read("README.md").includes("node scripts/verify-stage6-qa.mjs"), "README is missing the Stage 6 verifier command");
 
-console.log("Stage 6 QA verification passed: 153 current-hash pages, 306 fresh viewport records, 152 JavaScript files, complete local links and no inherited approvals.");
+console.log("Stage 6 QA verification passed: 154 current-hash pages, 308 fresh viewport records, 153 JavaScript files, complete local links and no inherited approvals.");

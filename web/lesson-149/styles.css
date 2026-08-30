@@ -110,7 +110,6 @@ pre {
 
 .objective-grid, .summary-grid, .audit-list { display: grid; gap: 12px; margin-top: 24px; }
 .objective-grid, .summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.audit-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .objective-grid div, .summary-grid div, .audit-list div {
   padding: 14px;
   background: #f8fafc;
@@ -123,7 +122,7 @@ pre {
   margin-bottom: 4px;
 }
 
-.timed-visual {
+.review-visual {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -134,7 +133,7 @@ pre {
   background: linear-gradient(135deg, #12304f, #2563eb 48%, #047857);
   border-radius: 8px;
 }
-.timed-visual > div {
+.review-visual > div {
   display: grid;
   gap: 6px;
   min-height: 150px;
@@ -146,9 +145,9 @@ pre {
   padding: 16px;
   font-weight: 850;
 }
-.timed-visual strong { font-size: 1.35rem; }
-.timed-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; overflow-wrap: anywhere; }
-.timed-visual em { color: #334155; font-style: normal; font-weight: 700; }
+.review-visual strong { font-size: 1.35rem; }
+.review-visual span { color: #92400e; font-family: "SFMono-Regular", Consolas, monospace; overflow-wrap: anywhere; }
+.review-visual em { color: #334155; font-style: normal; font-weight: 700; }
 
 .guidance-grid {
   display: grid;
@@ -168,7 +167,7 @@ pre {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
-.choice-card, .mistake-grid article, .card-grid article, .practice-card, .exam-card {
+.choice-card, .mistake-grid article, .practice-card, .exam-card {
   border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 8px;
@@ -218,7 +217,8 @@ input, select {
   overflow: hidden;
 }
 .two-col .table-row { grid-template-columns: 0.8fr 1.5fr; }
-.four-col .table-row { grid-template-columns: 0.8fr 1fr 1.1fr 1.1fr; }
+.three-col .table-row { grid-template-columns: 0.8fr 1.1fr 1.2fr; }
+.four-col .table-row { grid-template-columns: 0.8fr 1.1fr 1.1fr 1.1fr; }
 .table-row {
   display: grid;
   border-top: 1px solid var(--line);
@@ -281,17 +281,17 @@ input, select {
   .layout { grid-template-columns: 1fr; }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: 1fr; }
-  .guidance-grid, .card-grid, .objective-grid, .summary-grid, .audit-list, .code-grid, .tool-grid { grid-template-columns: 1fr; }
-  .timed-visual { min-height: 0; }
-  .four-col .table-row { grid-template-columns: 1fr; }
-  .four-col .table-row > div { border-left: 0; border-top: 1px solid var(--line); }
-  .four-col .table-row > div:first-child { border-top: 0; }
+  .guidance-grid, .objective-grid, .summary-grid, .code-grid, .tool-grid { grid-template-columns: 1fr; }
+  .review-visual { min-height: 0; }
+  .three-col .table-row, .four-col .table-row { grid-template-columns: 1fr; }
+  .three-col .table-row > div, .four-col .table-row > div { border-left: 0; border-top: 1px solid var(--line); }
+  .three-col .table-row > div:first-child, .four-col .table-row > div:first-child { border-top: 0; }
 }
 
 @media (max-width: 640px) {
   .topbar { position: static; align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
-  .hook-grid, .mistake-grid, .timed-visual { grid-template-columns: 1fr; }
+  .hook-grid, .mistake-grid, .review-visual { grid-template-columns: 1fr; }
   .answer-row { grid-template-columns: 1fr; }
   .two-col .table-row { grid-template-columns: 1fr; }
   .two-col .table-row > div { border-left: 0; border-top: 1px solid var(--line); }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "remediation": "v2",
   "stage": 7,
-  "generatedDate": "2026-08-28",
+  "generatedDate": "2026-08-29",
   "scope": "Two consecutive runs of the complete safe mature-repository generation chain; all repository files except .git, dist, __pycache__ and this self-referential result are hashed.",
   "destructiveBootstrapGeneratorExcluded": true,
   "excludedGenerator": "python3 tools/generate_course.py",
@@ -16,6 +16,7 @@
     "node scripts/generate-assessments.mjs",
     "node scripts/normalise-stage5-lesson-ms.mjs",
     "node scripts/apply-cie-wording.mjs",
+    "node scripts/generate-remediation-v2-stage3-question-sequence.mjs",
     "node scripts/generate-cie-wording-register.mjs",
     "node scripts/apply-student-navigation.mjs",
     "node scripts/apply-stage10-explanations.mjs",
@@ -26,6 +27,9 @@
     "node scripts/generate-syllabus-audit.mjs",
     "node scripts/generate-curriculum-sequence-audit.mjs",
     "node scripts/generate-question-ao-contract.mjs",
+    "node scripts/repair-remediation-v2-audit-integrity.mjs",
+    "node scripts/finalise-remediation-v2-audit-integrity-review.mjs",
+    "node scripts/generate-remediation-v2-audit-integrity.mjs",
     "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
     "node scripts/generate-remediation-v2-stage4.mjs",
     "node scripts/generate-stage6-page-review-register.mjs",
@@ -34,7 +38,7 @@
   "pass1CommandOutputs": [
     {
       "command": "node scripts/apply-stage2-repairs.mjs",
-      "outputSha256": "02ef457e1c043e0ca2b87bbd4249e425c5d109041324943c5438badd464c6859"
+      "outputSha256": "de67bcac3b5451726979b518483587ddcb6dccc44fbf277b2c5aa95fa7e56aa6"
     },
     {
       "command": "node scripts/apply-remediation-v2-optional-enrichment.mjs",
@@ -42,7 +46,7 @@
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-sequence.mjs",
-      "outputSha256": "7ab7df61e304fe8509fd9731c3ad637b89f6653323467bf3032753b9ead728cb"
+      "outputSha256": "c11ba3c8c7a0aea9d0554524c2a7d51ff8f4b7eb306e4ea3bd1d86db2780e449"
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-question-repairs.mjs",
@@ -61,8 +65,12 @@
       "outputSha256": "5fb2d65ec5d1a52ce8d7f28aaf9fe50872b6c896bd58cf35ce0ec1a1f0fb67ff"
     },
     {
+      "command": "node scripts/generate-remediation-v2-stage3-question-sequence.mjs",
+      "outputSha256": "0da8a5fac5c781d33076cffadf5452bb222e916e62365be026fe3ffc354a8854"
+    },
+    {
       "command": "node scripts/generate-cie-wording-register.mjs",
-      "outputSha256": "6cb292e12d6e33f99ea55ab5d210b05a3eb2eee61b3ca11e2c1f1336c2aa2302"
+      "outputSha256": "c45cdd091b713ad8e18200e0bd0bbd3dd96bb3b0a4dc39fd4f032404561ec08b"
     },
     {
       "command": "node scripts/apply-student-navigation.mjs",
@@ -70,15 +78,15 @@
     },
     {
       "command": "node scripts/apply-stage10-explanations.mjs",
-      "outputSha256": "05eb42af12ad116ae294e16ecf9dcca66b8ecae437bb84f2d76f230a7cab3d82"
+      "outputSha256": "ffd6f5905dc2c1337b4431c95b781861aaa6b05727ff2330f3165fe2513fb922"
     },
     {
       "command": "node scripts/apply-classroom-delivery.mjs",
-      "outputSha256": "7e93bdb4dbf72cc7d32023fcd374d19b666ef314bbc5fea493f5a96879b37ac6"
+      "outputSha256": "1a02eb9ec3c3bd70301adbf4077fa18c6fd5023f2769509c18027851c1d4261e"
     },
     {
       "command": "node scripts/generate-course-catalog.mjs",
-      "outputSha256": "92ee4a6d5f27149ff7a4dca22be8b595a3b7b6b1e0b097760c41efe8fb35796f"
+      "outputSha256": "2023f775928bc66b63542adbb29afba4b0fa4a8df8f76d07cc6723beb76c1cff"
     },
     {
       "command": "node scripts/generate-resource-hub.mjs",
@@ -86,7 +94,7 @@
     },
     {
       "command": "node scripts/generate-stage10-audits.mjs",
-      "outputSha256": "7331f689f398b083352da1de1a60b4622463df4c5e03c623cdf6b11d1b979632"
+      "outputSha256": "53e75c5c549329a3484cf4216c30f112f0317d468b2f9afd66b78e67043c4668"
     },
     {
       "command": "node scripts/generate-syllabus-audit.mjs",
@@ -98,29 +106,41 @@
     },
     {
       "command": "node scripts/generate-question-ao-contract.mjs",
-      "outputSha256": "deda267605017daff0abd664d0ae068ebe4c51109bc7ffaab3d008c3e9590fb0"
+      "outputSha256": "436f307535b66865a17175603d1c6aa7c516659a89ac57c4b0d9d1e8868ea49f"
+    },
+    {
+      "command": "node scripts/repair-remediation-v2-audit-integrity.mjs",
+      "outputSha256": "dcc05d726c394328851255e346beafed0dd4d86737975df12c0fd1d19735e5c9"
+    },
+    {
+      "command": "node scripts/finalise-remediation-v2-audit-integrity-review.mjs",
+      "outputSha256": "87618d385ab35cf33b5db292a2e654b523726c8e4974214090e969553666917b"
+    },
+    {
+      "command": "node scripts/generate-remediation-v2-audit-integrity.mjs",
+      "outputSha256": "c06f1a221ea0f0f2cbd219d8cb37c3d508f2b8abbfc866abee50a58c5e337efa"
     },
     {
       "command": "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
-      "outputSha256": "65974b2691096cec86357f62795a105786039b4f9bcafcc7afe36754d16c6451"
+      "outputSha256": "d9b8aec7365c1f7e6464f665bb54b9a980254df0d3d1d83b6882186e9bfdc287"
     },
     {
       "command": "node scripts/generate-remediation-v2-stage4.mjs",
-      "outputSha256": "ec5155e27ecb4a4207b71ec4767bab2cedd30cfa4632084f2d279be20861d1ba"
+      "outputSha256": "7de2f6a35392b46be62fb6a7f074f59af1829f2f78136b231fb968ae52ef0d93"
     },
     {
       "command": "node scripts/generate-stage6-page-review-register.mjs",
-      "outputSha256": "b432cccbff4ae4db2a319cc9913dcffc888d6cdc2c3bc88eea4733aa7c586545"
+      "outputSha256": "dd1ef9de66e968205f2026af59243e91082eedfa83d44f4906385683207ebdfd"
     },
     {
       "command": "node scripts/generate-remediation-v2-stage6.mjs",
-      "outputSha256": "6fe741890cbb3426590a0331e9cd0781e59cd9e010eda752d61924b9c0ddc44a"
+      "outputSha256": "400886c2947d988f77e65f408d8deb076b7091c84ee24adf47c31d1782db0ef9"
     }
   ],
   "pass2CommandOutputs": [
     {
       "command": "node scripts/apply-stage2-repairs.mjs",
-      "outputSha256": "02ef457e1c043e0ca2b87bbd4249e425c5d109041324943c5438badd464c6859"
+      "outputSha256": "de67bcac3b5451726979b518483587ddcb6dccc44fbf277b2c5aa95fa7e56aa6"
     },
     {
       "command": "node scripts/apply-remediation-v2-optional-enrichment.mjs",
@@ -128,7 +148,7 @@
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-sequence.mjs",
-      "outputSha256": "7ab7df61e304fe8509fd9731c3ad637b89f6653323467bf3032753b9ead728cb"
+      "outputSha256": "c11ba3c8c7a0aea9d0554524c2a7d51ff8f4b7eb306e4ea3bd1d86db2780e449"
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-question-repairs.mjs",
@@ -147,8 +167,12 @@
       "outputSha256": "5fb2d65ec5d1a52ce8d7f28aaf9fe50872b6c896bd58cf35ce0ec1a1f0fb67ff"
     },
     {
+      "command": "node scripts/generate-remediation-v2-stage3-question-sequence.mjs",
+      "outputSha256": "0da8a5fac5c781d33076cffadf5452bb222e916e62365be026fe3ffc354a8854"
+    },
+    {
       "command": "node scripts/generate-cie-wording-register.mjs",
-      "outputSha256": "6cb292e12d6e33f99ea55ab5d210b05a3eb2eee61b3ca11e2c1f1336c2aa2302"
+      "outputSha256": "c45cdd091b713ad8e18200e0bd0bbd3dd96bb3b0a4dc39fd4f032404561ec08b"
     },
     {
       "command": "node scripts/apply-student-navigation.mjs",
@@ -156,15 +180,15 @@
     },
     {
       "command": "node scripts/apply-stage10-explanations.mjs",
-      "outputSha256": "05eb42af12ad116ae294e16ecf9dcca66b8ecae437bb84f2d76f230a7cab3d82"
+      "outputSha256": "ffd6f5905dc2c1337b4431c95b781861aaa6b05727ff2330f3165fe2513fb922"
     },
     {
       "command": "node scripts/apply-classroom-delivery.mjs",
-      "outputSha256": "7e93bdb4dbf72cc7d32023fcd374d19b666ef314bbc5fea493f5a96879b37ac6"
+      "outputSha256": "1a02eb9ec3c3bd70301adbf4077fa18c6fd5023f2769509c18027851c1d4261e"
     },
     {
       "command": "node scripts/generate-course-catalog.mjs",
-      "outputSha256": "92ee4a6d5f27149ff7a4dca22be8b595a3b7b6b1e0b097760c41efe8fb35796f"
+      "outputSha256": "2023f775928bc66b63542adbb29afba4b0fa4a8df8f76d07cc6723beb76c1cff"
     },
     {
       "command": "node scripts/generate-resource-hub.mjs",
@@ -172,7 +196,7 @@
     },
     {
       "command": "node scripts/generate-stage10-audits.mjs",
-      "outputSha256": "7331f689f398b083352da1de1a60b4622463df4c5e03c623cdf6b11d1b979632"
+      "outputSha256": "53e75c5c549329a3484cf4216c30f112f0317d468b2f9afd66b78e67043c4668"
     },
     {
       "command": "node scripts/generate-syllabus-audit.mjs",
@@ -184,28 +208,40 @@
     },
     {
       "command": "node scripts/generate-question-ao-contract.mjs",
-      "outputSha256": "deda267605017daff0abd664d0ae068ebe4c51109bc7ffaab3d008c3e9590fb0"
+      "outputSha256": "436f307535b66865a17175603d1c6aa7c516659a89ac57c4b0d9d1e8868ea49f"
+    },
+    {
+      "command": "node scripts/repair-remediation-v2-audit-integrity.mjs",
+      "outputSha256": "dcc05d726c394328851255e346beafed0dd4d86737975df12c0fd1d19735e5c9"
+    },
+    {
+      "command": "node scripts/finalise-remediation-v2-audit-integrity-review.mjs",
+      "outputSha256": "87618d385ab35cf33b5db292a2e654b523726c8e4974214090e969553666917b"
+    },
+    {
+      "command": "node scripts/generate-remediation-v2-audit-integrity.mjs",
+      "outputSha256": "c06f1a221ea0f0f2cbd219d8cb37c3d508f2b8abbfc866abee50a58c5e337efa"
     },
     {
       "command": "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
-      "outputSha256": "65974b2691096cec86357f62795a105786039b4f9bcafcc7afe36754d16c6451"
+      "outputSha256": "d9b8aec7365c1f7e6464f665bb54b9a980254df0d3d1d83b6882186e9bfdc287"
     },
     {
       "command": "node scripts/generate-remediation-v2-stage4.mjs",
-      "outputSha256": "ec5155e27ecb4a4207b71ec4767bab2cedd30cfa4632084f2d279be20861d1ba"
+      "outputSha256": "7de2f6a35392b46be62fb6a7f074f59af1829f2f78136b231fb968ae52ef0d93"
     },
     {
       "command": "node scripts/generate-stage6-page-review-register.mjs",
-      "outputSha256": "b432cccbff4ae4db2a319cc9913dcffc888d6cdc2c3bc88eea4733aa7c586545"
+      "outputSha256": "dd1ef9de66e968205f2026af59243e91082eedfa83d44f4906385683207ebdfd"
     },
     {
       "command": "node scripts/generate-remediation-v2-stage6.mjs",
-      "outputSha256": "6fe741890cbb3426590a0331e9cd0781e59cd9e010eda752d61924b9c0ddc44a"
+      "outputSha256": "400886c2947d988f77e65f408d8deb076b7091c84ee24adf47c31d1782db0ef9"
     }
   ],
-  "pass1ManifestSha256": "1273cef93742b945e72045be7394142a4e5b47825194048719bf0794f9bf123c",
-  "pass2ManifestSha256": "1273cef93742b945e72045be7394142a4e5b47825194048719bf0794f9bf123c",
-  "manifestFileCount": 1683,
+  "pass1ManifestSha256": "4d0ab3f37dcf82180ac5ff06e011da7edd1fb9d1f674630112da402b9f77b517",
+  "pass2ManifestSha256": "4d0ab3f37dcf82180ac5ff06e011da7edd1fb9d1f674630112da402b9f77b517",
+  "manifestFileCount": 1701,
   "secondRunChangedFiles": 0,
   "changedFiles": [],
   "gitDiffCommand": "git diff --no-index --exit-code <pass1 SHA-256 manifest> <pass2 SHA-256 manifest>",

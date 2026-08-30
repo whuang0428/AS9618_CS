@@ -1,89 +1,88 @@
-const scenarioMap = {
-  library: {
-    result: "Entities: Student, Book, Loan.",
-    reason: "Student and Book are main things; Loan is an event/entity that records the borrowing relationship with attributes such as LoanID and DateBorrowed.",
+const keyMap = {
+  student: {
+    result: "Best primary key: StudentID.",
+    reason: "StudentID is designed to be unique, not null and stable. Name is not safe because two students can share a name.",
   },
-  clinic: {
-    result: "Entities: Patient, Doctor, Appointment.",
-    reason: "Appointment is an event linking a patient and a doctor, with attributes such as AppointmentID, Date and Time.",
+  book: {
+    result: "Best primary key: ISBN.",
+    reason: "ISBN uniquely identifies a book edition. Title and author are not necessarily unique.",
   },
-  shop: {
-    result: "Entities: Customer, Order, Product, OrderLine.",
-    reason: "OrderLine is useful as a linking entity because an order can contain many products and a product can appear on many orders.",
+  appointment: {
+    result: "Best primary key: AppointmentID.",
+    reason: "AppointmentID uniquely identifies each appointment. PatientID may appear many times for repeat appointments.",
   },
-  club: {
-    result: "Entities: Student, Club, Membership.",
-    reason: "Membership resolves the many-to-many relationship between Student and Club and can store attributes such as JoinDate.",
+  memberWeak: {
+    result: "No strong primary key is shown.",
+    reason: "Name may not be unique, phone/email can change, and values may be missing. A MemberID should be added.",
   },
-  parking: {
-    result: "Entities: Employee, ParkingPermit.",
-    reason: "The relationship may be optional: an employee may have zero or one permit, and each permit belongs to one employee.",
+  product: {
+    result: "Best primary key: ProductCode.",
+    reason: "ProductCode is an identifier for each product. Description and price are not unique or stable enough.",
   },
 };
 
-const cardinalityMap = {
-  customerOrders: {
-    result: "Cardinality: one-to-many.",
-    reason: "One customer can place many orders; each order belongs to one customer.",
-  },
-  studentsClubs: {
-    result: "Cardinality: many-to-many.",
-    reason: "Many students can join many clubs. A linking entity such as Membership is normally used.",
-  },
-  orderLines: {
-    result: "Cardinality: one-to-many, mandatory on the order line side.",
-    reason: "Each order has one or more order lines; each order line belongs to exactly one order.",
+const relationshipMap = {
+  studentLoans: {
+    result: "Relationship: one-to-many.",
+    reason: "One student can have many loan records, but each loan record belongs to one student.",
   },
   personPassport: {
-    result: "Cardinality: one-to-one.",
-    reason: "In this simplified system, each person links to one passport and each passport links to one person.",
+    result: "Relationship: one-to-one.",
+    reason: "In this simplified scenario, one person is linked to one passport record.",
   },
-  studentLoans: {
-    result: "Cardinality: one-to-many with optional participation for Student.",
-    reason: "A student may have zero or many loans; each loan must refer to exactly one student.",
+  studentsClubs: {
+    result: "Relationship: many-to-many.",
+    reason: "Many students can join many clubs. This is commonly resolved using a linking table such as Membership.",
+  },
+  customerOrders: {
+    result: "Relationship: one-to-many.",
+    reason: "One customer can place many orders, but each order is placed by one customer.",
+  },
+  doctorAppointments: {
+    result: "Relationship: one-to-many.",
+    reason: "One doctor can have many appointments, but each appointment is assigned to one doctor in this scenario.",
   },
 };
 
 const examples = {
   library: {
-    title: "Example 1: Library ER model",
-    problem: "A library stores students, books and loans. A student may borrow many books over time.",
+    title: "Example 1: Library loans",
+    problem: "For Student(StudentID, Name) and Loan(LoanID, StudentID, BookID), identify the keys.",
     steps: [
-      "Entities: Student, Book and Loan.",
-      "Student attributes: StudentID, Name, TutorGroup.",
-      "Book attributes: BookID, Title, Author.",
-      "Loan attributes: LoanID, StudentID, BookID, DateBorrowed, DateReturned.",
-      "Cardinality: one Student can have many Loan records; one Book can appear in many Loan records over time.",
+      "StudentID is the primary key in Student because it uniquely identifies each student.",
+      "LoanID is the primary key in Loan because it uniquely identifies each loan record.",
+      "StudentID in Loan is a foreign key because it references StudentID in Student.",
+      "The relationship is one-to-many: one student can have many loan records.",
     ],
   },
-  clinic: {
-    title: "Example 2: Clinic appointments",
-    problem: "A clinic stores patients, doctors and appointments.",
+  orders: {
+    title: "Example 2: Customer orders",
+    problem: "For Customer(CustomerID, Name) and Order(OrderID, CustomerID, Date), explain the link.",
     steps: [
-      "Entities: Patient, Doctor and Appointment.",
-      "Appointment is an event entity because it links a patient to a doctor at a date and time.",
-      "A patient can have many appointments; each appointment has one patient.",
-      "A doctor can have many appointments; each appointment has one doctor.",
+      "CustomerID is the primary key in Customer.",
+      "OrderID is the primary key in Order.",
+      "CustomerID in Order is a foreign key that references Customer.CustomerID.",
+      "This avoids repeating the customer's name and address in every order record.",
     ],
   },
-  club: {
-    title: "Example 3: Many-to-many relationship",
-    problem: "Students can join many clubs and each club can have many students.",
+  clubs: {
+    title: "Example 3: Many-to-many with a linking table",
+    problem: "Students can join many clubs and each club has many students.",
     steps: [
-      "Direct Student-to-Club is many-to-many.",
-      "Create a linking entity: Membership.",
-      "Membership can store StudentID, ClubID and JoinDate.",
-      "This converts the design into two one-to-many relationships: Student to Membership, and Club to Membership.",
+      "This is a many-to-many relationship.",
+      "A linking table such as Membership can store StudentID and ClubID.",
+      "StudentID in Membership is a foreign key referencing Student.",
+      "ClubID in Membership is a foreign key referencing Club.",
     ],
   },
-  critique: {
-    title: "Example 4: Critique weak ER modelling",
-    problem: "A student draws PhoneNumber as a separate entity for a simple Student database.",
+  integrity: {
+    title: "Example 4: Referential integrity error",
+    problem: "A Loan record stores StudentID S9999, but there is no S9999 in Student.",
     steps: [
-      "If each student stores only one phone number, PhoneNumber is likely an attribute of Student.",
-      "Making it an entity adds unnecessary complexity.",
-      "It may become an entity only if the system stores multiple phone numbers, phone types, ownership history or shared contact records.",
-      "Exam wording: justify the decision using the scenario, not personal preference.",
+      "The foreign key value in Loan does not match an existing primary key in Student.",
+      "This breaks referential integrity.",
+      "The DBMS should reject the Loan record or require the Student record to exist first.",
+      "The purpose is to prevent orphan records.",
     ],
   },
 };
@@ -91,82 +90,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "What term means a thing the database stores data about?",
-    accepted: ["entity"],
-    answer: "Entity",
+    prompt: "What key uniquely identifies each record in its own table?",
+    accepted: ["primary key", "pk"],
+    answer: "Primary key",
   },
   {
     id: "p2",
-    prompt: "What term means a property stored about an entity?",
-    accepted: ["attribute", "field"],
-    answer: "Attribute / field",
+    prompt: "What key references a primary key in another table?",
+    accepted: ["foreign key", "fk"],
+    answer: "Foreign key",
   },
   {
     id: "p3",
-    prompt: "What term describes how many records in one entity may link to another?",
-    accepted: ["cardinality"],
-    answer: "Cardinality",
+    prompt: "For Student(StudentID, Name), which field is the likely primary key?",
+    accepted: ["studentid", "student id"],
+    answer: "StudentID",
   },
   {
     id: "p4",
-    prompt: "In a library model, Student, Book and Loan are examples of what?",
-    accepted: ["entities", "entity"],
-    answer: "Entities",
+    prompt: "For Loan(LoanID, StudentID, BookID), which field is the likely primary key?",
+    accepted: ["loanid", "loan id"],
+    answer: "LoanID",
   },
   {
     id: "p5",
-    prompt: "StudentID and Name are likely attributes of which entity?",
-    accepted: ["student"],
-    answer: "Student",
+    prompt: "In Loan(LoanID, StudentID, BookID), which field links to Student?",
+    accepted: ["studentid", "student id"],
+    answer: "StudentID",
   },
   {
     id: "p6",
     prompt: "What relationship exists if one customer can place many orders?",
-    accepted: ["one to many", "one-to-many", "1:m", "1 to many"],
+    accepted: ["one to many", "one-to-many", "1 to many", "1:m", "one many"],
     answer: "One-to-many",
   },
   {
     id: "p7",
-    prompt: "What relationship exists if students can join many clubs and clubs can have many students?",
-    accepted: ["many to many", "many-to-many", "m:n"],
+    prompt: "What relationship exists if many students can join many clubs?",
+    accepted: ["many to many", "many-to-many", "m:n", "m to n"],
     answer: "Many-to-many",
   },
   {
     id: "p8",
-    prompt: "What kind of entity often resolves a many-to-many relationship?",
-    accepted: ["linking entity", "link entity", "associative entity", "junction entity", "linking table"],
-    answer: "Linking entity / associative entity",
+    prompt: "What integrity rule requires a foreign key value to match an existing primary key?",
+    accepted: ["referential integrity", "reference integrity"],
+    answer: "Referential integrity",
   },
   {
     id: "p9",
-    prompt: "In 0..*, does zero mean optional or mandatory?",
-    accepted: ["optional"],
-    answer: "Optional",
+    prompt: "Can Name usually be trusted as a primary key for students? yes or no.",
+    accepted: ["no"],
+    answer: "No",
   },
   {
     id: "p10",
-    prompt: "Is every noun in a scenario automatically an entity? yes or no.",
-    accepted: ["no"],
-    answer: "No",
+    prompt: "A foreign key usually appears in the table on the 'many' side of a one-to-many relationship. yes or no.",
+    accepted: ["yes"],
+    answer: "Yes",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "Every noun in the scenario should be an entity.",
-    fix: "Only model a noun as an entity if the system stores separate records about it. Some nouns are attributes.",
+    wrong: "Name is a good primary key because every student has a name.",
+    fix: "A primary key must uniquely identify each record. Names can be duplicated or changed, so an allocated StudentID is safer.",
   },
   {
-    wrong: "PhoneNumber must be an entity because it is important.",
-    fix: "Importance does not decide entity status. If it is just one value stored for each student, it is usually an attribute.",
+    wrong: "A foreign key must be unique in its own table.",
+    fix: "A foreign key does not usually have to be unique. In a Loan table, many loan records may contain the same StudentID.",
   },
   {
-    wrong: "Many-to-many relationships can be left as one direct relationship in a relational database design.",
-    fix: "They are usually resolved using a linking entity/table, such as Membership between Student and Club.",
+    wrong: "StudentID cannot be both a primary key and a foreign key.",
+    fix: "The same field name can have different roles in different tables: primary key in Student, foreign key in Loan.",
   },
   {
-    wrong: "Cardinality means the data type of an attribute.",
-    fix: "Cardinality describes how many records in one entity can be associated with records in another entity.",
+    wrong: "Referential integrity means all data is accurate.",
+    fix: "Referential integrity only checks that foreign key values reference existing primary key values. It does not prove all data is true.",
   },
 ];
 
@@ -180,92 +179,93 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Define entity and attribute in the context of entity-relationship modelling.",
-    answer: "An entity is a thing about which the database stores data, such as Student or Book. An attribute is a property stored about an entity, such as StudentID or Name for a Student.",
+    prompt: "Define primary key and foreign key.",
+    answer: "A primary key is a field, or combination of fields, that uniquely identifies each record in a table and should not be null. A foreign key is a field in one table that references the primary key in another table, creating a link between the tables.",
     marking: [
-      { mark: "B1", text: "entity described as thing/object/person/event/concept about which data is stored" },
-      { mark: "B1", text: "valid entity example" },
-      { mark: "B1", text: "attribute described as property/field describing an entity" },
-      { mark: "B1", text: "valid attribute example linked to an entity" },
+      { mark: "B1", text: "primary key is a field/fields in a table" },
+      { mark: "B1", text: "primary key uniquely identifies each record / is unique and not null" },
+      { mark: "B1", text: "foreign key is a field in another/related table" },
+      { mark: "B1", text: "foreign key references a primary key / links tables" },
     ],
     strict: [
-      "Do not accept only 'entity is a table' without stored-data idea.",
-      "Do not accept only 'attribute is data' without property/field idea.",
-      "Allow table/field wording if entity/attribute meaning is clear.",
+      "Do not accept only 'a key field' without unique identification for primary key.",
+      "Do not accept foreign key as 'a second primary key' without reference idea.",
+      "Allow 'attribute' for field.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A library stores data about students, books and loans. Identify three entities and give one suitable attribute for each.",
-    answer: "Student is an entity with attributes such as StudentID or Name. Book is an entity with attributes such as BookID, ISBN or Title. Loan is an entity/event with attributes such as LoanID, DateBorrowed, StudentID or BookID.",
+    prompt: "For Student(StudentID, Name, TutorGroup) and Loan(LoanID, StudentID, BookID, DateBorrowed), identify the primary and foreign keys and explain the relationship.",
+    answer: "StudentID is the primary key in Student because it uniquely identifies each student. LoanID is the primary key in Loan because it uniquely identifies each loan record. StudentID in Loan is a foreign key because it references StudentID in Student. The relationship is one-to-many because one student can have many loan records, but each loan record is linked to one student.",
     marking: [
-      { mark: "B1", text: "Student identified as entity" },
-      { mark: "B1", text: "suitable Student attribute" },
-      { mark: "B1", text: "Book identified as entity" },
-      { mark: "B1", text: "suitable Book attribute" },
-      { mark: "B1", text: "Loan identified as entity/event" },
-      { mark: "B1", text: "suitable Loan attribute" },
+      { mark: "B1", text: "StudentID identified as primary key in Student" },
+      { mark: "B1", text: "LoanID identified as primary key in Loan" },
+      { mark: "B1", text: "StudentID in Loan identified as foreign key" },
+      { mark: "B1", text: "foreign key references StudentID in Student / links Loan to Student" },
+      { mark: "B1", text: "one-to-many relationship identified" },
+      { mark: "B1", text: "relationship explained: one student can have many loans; each loan belongs to one student" },
     ],
     strict: [
-      "Do not award attribute mark if it belongs mainly to a different entity.",
-      "Do not require exact attribute names if scenario meaning is clear.",
-      "Allow DateReturned as Loan attribute.",
+      "Do not award StudentID as primary key in Loan unless candidate also explains composite/alternate design; not intended here.",
+      "Do not award foreign key mark if table location is not clear.",
+      "Allow 1:M for one-to-many.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain the cardinality between Customer and Order if one customer can place many orders and each order is placed by one customer.",
-    answer: "The relationship is one-to-many from Customer to Order. One Customer record can be linked to many Order records. Each Order record is linked to exactly one Customer. This means CustomerID would typically be used in Order to identify which customer placed the order.",
+    marks: "5 marks",
+    prompt: "Explain why Name is usually not suitable as a primary key in a Student table.",
+    answer: "Name is not suitable because it may not be unique; two students may have the same name. A name may also change or be entered in different formats. A primary key should uniquely identify each record and should be stable and not null. A StudentID is more suitable because it is allocated to identify one student record.",
     marking: [
-      { mark: "B1", text: "one-to-many relationship identified" },
-      { mark: "B1", text: "one customer can have many orders" },
-      { mark: "B1", text: "each order belongs to one customer" },
-      { mark: "B1", text: "foreign key/linking field such as CustomerID in Order" },
+      { mark: "B1", text: "names may not be unique / duplicate names possible" },
+      { mark: "B1", text: "names may change or be entered inconsistently" },
+      { mark: "B1", text: "primary key must uniquely identify records" },
+      { mark: "B1", text: "primary key should be stable/not null" },
+      { mark: "B1", text: "StudentID or allocated ID suggested as better key with reason" },
     ],
     strict: [
-      "Do not accept many-to-many for this wording.",
-      "Do not award direction mark if the answer is ambiguous about which side is many.",
-      "Allow 1:M notation.",
+      "Do not accept 'Name is text' as a reason by itself.",
+      "Do not require both change and formatting for the second B mark; either is enough.",
+      "Allow candidate number or student number as equivalent allocated ID.",
     ],
   },
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "Students can join many clubs, and each club can have many students. Explain how this relationship can be represented in an ER model.",
-    answer: "Student and Club have a many-to-many relationship. This can be represented using a linking entity such as Membership. Membership would include attributes such as StudentID, ClubID and JoinDate. The model then has a one-to-many relationship from Student to Membership and a one-to-many relationship from Club to Membership.",
+    prompt: "A Club table stores ClubID and ClubName. A Membership table stores MembershipID, StudentID and ClubID. Explain the purpose of ClubID in each table.",
+    answer: "ClubID is the primary key in Club because it uniquely identifies each club record. ClubID in Membership is a foreign key because it references ClubID in Club. It links each membership record to the club the student joined. ClubID may appear many times in Membership because many students can join the same club.",
     marking: [
-      { mark: "B1", text: "many-to-many relationship identified" },
-      { mark: "B1", text: "linking/associative entity named, such as Membership" },
-      { mark: "B1", text: "StudentID included or Student link explained" },
-      { mark: "B1", text: "ClubID included or Club link explained" },
-      { mark: "B1", text: "attribute of linking entity such as JoinDate/MembershipID" },
-      { mark: "B1", text: "explains conversion into two one-to-many relationships" },
+      { mark: "B1", text: "ClubID identified as primary key in Club" },
+      { mark: "B1", text: "primary key uniqueness for club records explained" },
+      { mark: "B1", text: "ClubID identified as foreign key in Membership" },
+      { mark: "B1", text: "foreign key references Club.ClubID / links membership to club" },
+      { mark: "B1", text: "ClubID may repeat in Membership" },
+      { mark: "B1", text: "repeat explained by many students/memberships for one club" },
     ],
     strict: [
-      "Do not accept direct one-to-many only.",
-      "Do not require the term associative entity if linking entity/table is clear.",
-      "Allow Enrolment as a valid linking entity name.",
+      "Do not accept that ClubID must be unique in Membership.",
+      "Do not award foreign key reference mark if only 'it is used to find club' is given without table link.",
+      "Allow 'same ClubID occurs in several membership rows' for repeat mark.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A designer models Address as a separate entity in a simple Student database where each student has one address. Evaluate this modelling choice.",
-    answer: "If the system stores only one address for each student and no separate facts about addresses, Address could be an attribute of Student rather than a separate entity. Making it a separate entity may add unnecessary complexity. However, Address may be a separate entity if several students can share an address, if address history is stored, or if multiple addresses per student are required. The choice depends on the scenario requirements.",
+    prompt: "Explain referential integrity using a library database with Student and Loan tables.",
+    answer: "Referential integrity means that a foreign key value must match an existing primary key value in the referenced table. In a library database, StudentID in Loan should match an existing StudentID in Student. This prevents a loan being stored for a student who does not exist. If a Loan record contains StudentID S9999 but there is no S9999 in Student, the DBMS should reject the record or require the student record first.",
     marking: [
-      { mark: "B1", text: "recognises Address may be an attribute of Student in simple case" },
-      { mark: "B1", text: "reason: one address per student / no separate address records needed" },
-      { mark: "B1", text: "unnecessary complexity identified" },
-      { mark: "B1", text: "condition where Address could be an entity, such as shared/multiple/history" },
-      { mark: "B1", text: "condition explained using stored records or relationships" },
-      { mark: "B1", text: "concludes Address should remain an attribute for one address per student, but could become an entity when addresses are shared, multiple or historically stored" },
+      { mark: "B1", text: "foreign key value must match/reference existing primary key value" },
+      { mark: "B1", text: "referenced table idea included" },
+      { mark: "B1", text: "StudentID in Loan as foreign key example" },
+      { mark: "B1", text: "StudentID in Student as primary key example" },
+      { mark: "B1", text: "prevents orphan/non-existent student loan record" },
+      { mark: "B1", text: "invalid value example or DBMS rejection action" },
     ],
     strict: [
-      "Do not accept 'Address is always an attribute' without considering scenario.",
-      "Do not accept 'Address is important so it is an entity' as a reason.",
-      "Allow contact details or phone number as parallel explanation if linked back to Address.",
+      "Do not accept 'keeps data correct' without reference matching idea.",
+      "Do not require the term orphan record, but accept it if used correctly.",
+      "Allow Book/Loan example if primary and foreign key roles are clear.",
     ],
   },
 ];
@@ -281,10 +281,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    student: "Student is an entity, but it is not the relationship event here.",
-    book: "Book is an entity, but the borrowing event is more useful for the relationship.",
-    loan: "Correct. Loan records the event linking a student and a book.",
-    title: "BookTitle is usually an attribute of Book, not an entity or relationship event.",
+    name: "No. Names can be duplicated or changed.",
+    tutor: "No. Many students share a tutor group.",
+    studentid: "Correct. StudentID is designed to identify one student record uniquely.",
+    phone: "No. Phone numbers can change and may not be available for every student.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -295,23 +295,23 @@ function setupHook() {
   });
 }
 
-function setupScenarioParser() {
-  const input = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#scenarioResult");
-  const reason = document.querySelector("#scenarioReason");
-  document.querySelector("#scenarioBtn").addEventListener("click", () => {
-    const item = scenarioMap[input.value];
+function setupKeyPicker() {
+  const input = document.querySelector("#keyInput");
+  const result = document.querySelector("#keyResult");
+  const reason = document.querySelector("#keyReason");
+  document.querySelector("#keyBtn").addEventListener("click", () => {
+    const item = keyMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
 }
 
-function setupCardinalityChecker() {
-  const input = document.querySelector("#cardinalityInput");
-  const result = document.querySelector("#cardinalityResult");
-  const reason = document.querySelector("#cardinalityReason");
-  document.querySelector("#cardinalityBtn").addEventListener("click", () => {
-    const item = cardinalityMap[input.value];
+function setupRelationshipTool() {
+  const input = document.querySelector("#relationshipInput");
+  const result = document.querySelector("#relationshipResult");
+  const reason = document.querySelector("#relationshipReason");
+  document.querySelector("#relationshipBtn").addEventListener("click", () => {
+    const item = relationshipMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
@@ -436,8 +436,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupScenarioParser();
-  setupCardinalityChecker();
+  setupKeyPicker();
+  setupRelationshipTool();
   setupExamples();
   renderPractice();
   renderMistakes();

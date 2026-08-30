@@ -1,84 +1,88 @@
-const scenarioMap = {
-  singleList: {
-    result: "Best choice: flat-file database.",
-    reason: "The data is small, single-purpose and unlikely to contain repeated related entities, so one table is simple and sufficient.",
+const conceptMap = {
+  rawMark: {
+    result: "Category: data.",
+    reason: "These are raw values. They have not yet been processed into a meaningful conclusion.",
   },
-  club: {
-    result: "Best choice: relational database.",
-    reason: "Members, sessions and fees are related but separate entities. Repeated contact details and regular updates make relational design more suitable.",
+  absenceRate: {
+    result: "Category: information.",
+    reason: "The raw attendance values have been processed into a meaningful percentage for a year group or school.",
   },
-  shop: {
-    result: "Best choice: relational database.",
-    reason: "Customers, orders and products have relationships. Storing customer and product details once reduces redundancy and inconsistency.",
+  libraryTables: {
+    result: "Category: database.",
+    reason: "A database is an organised collection of related data. Student, Book and Loan tables are related by the library context.",
   },
-  survey: {
-    result: "Best choice: flat-file database.",
-    reason: "One row per anonymous respondent may be simple enough if there are no repeated entities or complex updates.",
+  queryProcessor: {
+    result: "Category: DBMS.",
+    reason: "The query processor is a component of the DBMS that interprets and carries out database queries.",
   },
-  clinic: {
-    result: "Best choice: relational database.",
-    reason: "Patients, appointments, staff and prescriptions are related entities with repeated details, many updates and strong consistency requirements.",
+  backupTool: {
+    result: "Category: DBMS.",
+    reason: "Backup and recovery are management functions provided by a DBMS to protect stored data.",
   },
 };
 
-const anomalyMap = {
-  changedEmail: {
-    result: "Problem: update anomaly.",
-    reason: "The same fact is stored in several places. Updating only one copy creates inconsistent contact details.",
+const featureMap = {
+  unknownField: {
+    result: "Feature: data dictionary / metadata.",
+    reason: "The data dictionary stores metadata such as table names, field names, data types and constraints.",
   },
-  newMember: {
-    result: "Problem: insertion anomaly.",
-    reason: "The structure prevents storing a new member unless a related session row also exists.",
+  wrongValue: {
+    result: "Feature: data integrity rules / validation constraints.",
+    reason: "Integrity rules prevent invalid data values or inconsistent relationships from being stored.",
   },
-  deleteLast: {
-    result: "Problem: deletion anomaly.",
-    reason: "Deleting one row removes the only copy of separate member data that should have been stored elsewhere.",
+  privateData: {
+    result: "Feature: access rights / security.",
+    reason: "The DBMS can restrict what individual users or groups are allowed to view or update.",
   },
-  smallList: {
-    result: "No major anomaly in this scenario.",
-    reason: "A small one-off list with no repeated related data may be acceptable as a flat file.",
+  diskFailure: {
+    result: "Feature: backup and recovery.",
+    reason: "Backup and recovery features allow data to be restored after hardware failure or corruption.",
+  },
+  findRows: {
+    result: "Feature: query processor.",
+    reason: "The query processor interprets a query and retrieves records that meet the stated conditions.",
   },
 };
 
 const examples = {
-  club: {
-    title: "Example 1: Club records",
-    problem: "A club stores members, contact details, sessions attended and whether fees are paid.",
+  dataInfo: {
+    title: "Example 1: Data to information",
+    problem: "A library stores LoanDate, DueDate and Returned for every loan. Explain how this can become useful information.",
     steps: [
-      "Flat-file issue: member contact details are repeated for every session row.",
-      "Consequence: if a phone number changes, every repeated row must be updated or the data becomes inconsistent.",
-      "Relational approach: store member details in one Member table and attendance/payment rows in a separate table.",
-      "Judgement: relational is more suitable because the data is related, repeated and updated often.",
+      "Raw data: due dates and returned values are stored for individual records.",
+      "Processing: filter loans where Returned is FALSE and DueDate is earlier than today's date.",
+      "Information: the librarian gets a list of overdue books and the students who need reminders.",
+      "Exam wording: information is processed data that has meaning in a context.",
     ],
   },
-  shop: {
-    title: "Example 2: Online shop",
-    problem: "An online shop stores customers, products and orders.",
+  database: {
+    title: "Example 2: Database definition",
+    problem: "Explain why a set of Student, Book and Loan tables can be described as a database.",
     steps: [
-      "Customers can place many orders and each order may contain multiple products.",
-      "A flat file may repeat customer address and product details across many order rows.",
-      "A relational database can store Customer, Product and Order data in separate linked tables.",
-      "This reduces redundancy and helps keep prices, addresses and product details consistent.",
+      "It stores an organised collection of data, not isolated notes.",
+      "The data is related: loans connect students to books.",
+      "The structure allows records to be retrieved, updated and used to produce information.",
+      "Avoid: saying only 'it is a table' because that misses organisation and relationship.",
     ],
   },
-  survey: {
-    title: "Example 3: Small survey",
-    problem: "A teacher collects anonymous one-time survey answers from 20 students.",
+  dbms: {
+    title: "Example 3: DBMS feature",
+    problem: "A school wants only finance staff to update payment records. Which DBMS role is relevant?",
     steps: [
-      "There may be one row per response and no repeated student details.",
-      "A flat-file structure may be quicker and simpler to create.",
-      "A relational database would add design complexity without much benefit.",
-      "Judgement: flat-file is acceptable if the dataset remains small and simple.",
+      "Feature: access rights / security.",
+      "The DBMS can assign permissions to users or groups.",
+      "Finance staff may be allowed to update payment records while other staff may only view limited data.",
+      "Effect: this reduces unauthorised changes and helps protect sensitive data.",
     ],
   },
-  mistake: {
-    title: "Example 4: Weak comparison repair",
-    problem: "Weak answer: 'Relational is better because it is more organised.'",
+  terms: {
+    title: "Example 4: Relational terms",
+    problem: "In a Student table, identify the table, one field and one record.",
     steps: [
-      "Problem: 'more organised' is too vague.",
-      "Better: relational databases separate related data into linked tables.",
-      "Cause: this reduces repeated storage of the same customer or member details.",
-      "Consequence: updates are more consistent because the shared fact can be changed once.",
+      "Table/entity: Student.",
+      "Field/attribute: StudentID, Name or Form.",
+      "Record/tuple: one complete row such as S0234, Amira Chen, 12A.",
+      "Common error: a field is a column; a record is a row. Do not swap them.",
     ],
   },
 };
@@ -86,82 +90,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "What type of database stores data in a single table?",
-    accepted: ["flat file", "flat-file", "flat file database", "flat-file database"],
-    answer: "Flat-file database",
+    prompt: "What term means raw facts and values before processing?",
+    accepted: ["data"],
+    answer: "Data",
   },
   {
     id: "p2",
-    prompt: "What type of database stores data in multiple linked tables?",
-    accepted: ["relational", "relational database"],
-    answer: "Relational database",
+    prompt: "What term means processed data that has meaning?",
+    accepted: ["information"],
+    answer: "Information",
   },
   {
     id: "p3",
-    prompt: "What term means unnecessary repeated storage of the same data?",
-    accepted: ["redundancy", "data redundancy", "redundant data"],
-    answer: "Redundancy / data redundancy",
+    prompt: "What is the software used to create, manage and control access to a database?",
+    accepted: ["dbms", "database management system"],
+    answer: "DBMS / Database Management System",
   },
   {
     id: "p4",
-    prompt: "What problem occurs when repeated values are changed in some rows but not others?",
-    accepted: ["inconsistency", "data inconsistency", "inconsistent data", "update anomaly"],
-    answer: "Data inconsistency / update anomaly",
+    prompt: "In relational terminology, is one row a field or a record?",
+    accepted: ["record", "tuple", "record tuple"],
+    answer: "Record / tuple",
   },
   {
     id: "p5",
-    prompt: "Which structure is usually simpler for a small one-off list with no repeated related data?",
-    accepted: ["flat file", "flat-file", "flat file database", "flat-file database"],
-    answer: "Flat-file database",
+    prompt: "In relational terminology, is one column a field or a record?",
+    accepted: ["field", "attribute", "field attribute"],
+    answer: "Field / attribute",
   },
   {
     id: "p6",
-    prompt: "Which structure is usually better for customers, orders and products?",
-    accepted: ["relational", "relational database"],
-    answer: "Relational database",
+    prompt: "What DBMS feature stores metadata about tables, fields, data types and constraints?",
+    accepted: ["data dictionary", "dictionary"],
+    answer: "Data dictionary",
   },
   {
     id: "p7",
-    prompt: "What anomaly occurs when deleting a row accidentally removes the only copy of another fact?",
-    accepted: ["deletion anomaly", "delete anomaly"],
-    answer: "Deletion anomaly",
+    prompt: "What DBMS feature controls which users can view or update data?",
+    accepted: ["access rights", "permissions", "user permissions", "security", "access control"],
+    answer: "Access rights / permissions / access control",
   },
   {
     id: "p8",
-    prompt: "What anomaly occurs when a new entity cannot be stored until another related fact exists?",
-    accepted: ["insertion anomaly", "insert anomaly"],
-    answer: "Insertion anomaly",
+    prompt: "What DBMS feature helps restore data after data loss or storage failure?",
+    accepted: ["backup", "recovery", "backup and recovery", "backup recovery"],
+    answer: "Backup and recovery",
   },
   {
     id: "p9",
-    prompt: "Complete: relational design can improve consistency because shared data may be stored ____.",
-    accepted: ["once", "only once", "one time"],
-    answer: "once",
+    prompt: "What DBMS component interprets and carries out a database query?",
+    accepted: ["query processor", "query processing"],
+    answer: "Query processor",
   },
   {
     id: "p10",
-    prompt: "Is a relational database always the best choice for every dataset? yes or no.",
-    accepted: ["no"],
-    answer: "No",
+    prompt: "Complete the distinction: the database is the organised data; the DBMS is the ____ that manages it.",
+    accepted: ["software", "system", "software system"],
+    answer: "software / software system",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "A flat-file database is just a text file, so it is not a real database.",
-    fix: "A flat-file database is a database structure where data is held in a single table. The exam focus is the single-table structure, not the file extension.",
+    wrong: "A database is the program that controls the data.",
+    fix: "A database is the organised collection of related data. The DBMS is the software that controls and manages it.",
   },
   {
-    wrong: "Relational databases remove all duplication.",
-    fix: "Relational design reduces unnecessary redundancy by storing shared facts once, but some repeated linking values may still be used to connect records.",
+    wrong: "Information is just lots of data.",
+    fix: "Information is data that has been processed or organised so that it has meaning in a context.",
   },
   {
-    wrong: "Relational is better because it is more secure.",
-    fix: "Security is mainly a DBMS/access-control issue. For this comparison, explain reduced redundancy, improved consistency, easier updates or relationship handling.",
+    wrong: "A field is one row in a table.",
+    fix: "A field is a column/attribute. A record or tuple is one complete row.",
   },
   {
-    wrong: "A flat file is always bad.",
-    fix: "A flat file can be suitable for a small, simple, single-purpose dataset with little repeated related data and few updates.",
+    wrong: "Security means the database is backed up.",
+    fix: "Security usually refers to controlling access and protecting data from unauthorised use. Backup and recovery protect against data loss.",
   },
 ];
 
@@ -175,92 +179,89 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Describe two differences between a flat-file database and a relational database.",
-    answer: "A flat-file database stores data in one table, while a relational database stores data in multiple linked tables. A flat-file database is more likely to repeat related data, whereas a relational database can reduce redundancy by storing shared data once and linking to it where needed.",
+    prompt: "Compare data and information, using an example from a school attendance system.",
+    answer: "Data is raw facts or values, such as StudentID, date and attendance mark for each lesson. Information is processed data that has meaning, such as the percentage of students absent on Monday or a list of students with repeated absences.",
     marking: [
-      { mark: "B1", text: "flat-file described as one/single table" },
-      { mark: "B1", text: "relational described as multiple linked/related tables" },
-      { mark: "B1", text: "flat-file linked to repeated data/redundancy" },
-      { mark: "B1", text: "relational linked to reduced redundancy or improved consistency" },
+      { mark: "B1", text: "data described as raw facts/values" },
+      { mark: "B1", text: "information described as processed/organised/interpreted data with meaning" },
+      { mark: "B1", text: "school attendance data example, such as student ID/date/attendance mark" },
+      { mark: "B1", text: "processed information example, such as absence rate/list of repeated absences" },
     ],
     strict: [
-      "Do not accept only 'relational is better' without a stated difference.",
-      "Do not award both structure marks if the candidate only says 'different tables' with no link idea.",
-      "Allow 'single file/table' for flat-file if the single-table idea is clear.",
+      "Do not accept 'information is useful data' alone without processed/meaning idea.",
+      "Do not award both example marks if the examples are not linked to attendance.",
+      "Allow equivalent school examples such as late marks or absence totals.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "A club currently stores member, session and payment data in one flat-file table. Explain why a relational database may be more suitable.",
-    answer: "A relational database may be more suitable because member details, session details and payment records are related but separate types of data. In a flat file, member contact details may be repeated for every session attended, causing redundancy. If a contact detail changes, every repeated row must be updated or inconsistent values may remain. Separating data into linked tables means member details can be stored once and referenced by payment or session records, improving consistency and maintainability.",
+    marks: "4 marks",
+    prompt: "Define a database and explain why a library system is a suitable example of one.",
+    answer: "A database is an organised collection of related data that can be stored, retrieved and updated. A library system is suitable because it stores related data about students, books and loans, and the data can be searched or updated when books are borrowed and returned.",
     marking: [
-      { mark: "B1", text: "identifies separate related data/entities such as members/sessions/payments" },
-      { mark: "B1", text: "flat file may repeat member/session/payment details" },
-      { mark: "B1", text: "redundancy explained in club context" },
-      { mark: "B1", text: "risk of inconsistent data or update anomaly" },
-      { mark: "B1", text: "relational linked tables/store shared data once" },
-      { mark: "B1", text: "clear consequence such as easier updates/improved consistency/maintainability" },
+      { mark: "B1", text: "organised collection of data" },
+      { mark: "B1", text: "related data" },
+      { mark: "B1", text: "library entities or data named, such as students/books/loans" },
+      { mark: "B1", text: "retrieval/update use explained in the library context" },
     ],
     strict: [
-      "Do not accept vague 'it is easier' without cause.",
-      "Do not award context mark for generic customer/order examples only.",
-      "Allow contact details, fees or session data as repeated data examples.",
+      "Do not accept only 'a place where data is stored'.",
+      "Do not award related-data mark for a list of unrelated examples.",
+      "Allow search/filter/query wording for retrieval.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Give one advantage and one disadvantage of using a flat-file database for a small school trip list.",
-    answer: "An advantage is that a flat-file database is simple and quick to create for a small one-off list, especially if each student appears only once. A disadvantage is that if the same contact details or medical notes are repeated in several rows, updates may be missed and inconsistent data may result. Therefore it is suitable only if the data stays small, simple and has little repetition.",
+    marks: "6 marks",
+    prompt: "Explain the purposes of a data dictionary, developer interface and query processor in a DBMS.",
+    answer: "A data dictionary stores metadata defining database structures, such as field names, data types, keys and constraints. A developer interface supplies tools for defining structures or building database applications, forms and reports. A query processor interprets and checks SQL statements, plans how to carry them out and retrieves or changes the specified data.",
     marking: [
-      { mark: "B1", text: "advantage such as simple/quick/easy to set up" },
-      { mark: "B1", text: "advantage linked to small one-off school trip context" },
-      { mark: "B1", text: "disadvantage such as repeated data/redundancy/inconsistency" },
-      { mark: "B1", text: "disadvantage linked to contact/medical/student detail updates" },
+      { mark: "B1", text: "data dictionary stores metadata/definitions about database structure" },
+      { mark: "B1", text: "gives a valid metadata example such as field type, key or constraint" },
+      { mark: "B1", text: "developer interface provides tools for defining structures or building database applications/forms/reports" },
+      { mark: "B1", text: "developer-interface purpose is distinguished from executing a query" },
+      { mark: "B1", text: "query processor interprets/checks a SQL query or maintenance statement" },
+      { mark: "B1", text: "plans/carries out the statement and retrieves or changes the specified data" },
     ],
     strict: [
-      "Do not accept 'flat files are cheap' unless linked to simple setup or no complex DBMS need.",
-      "Do not award disadvantage for security unless tied to the database structure.",
-      "Allow repeated emergency contact or parent phone details.",
+      "Do not describe the data dictionary as the ordinary record store.",
+      "Do not merge the developer interface and query processor into one unexplained tool.",
+      "Do not accept vague 'helps developers' without a defined purpose.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Explain three problems that may occur when related data is stored in one flat-file table.",
-    answer: "The table may contain redundancy because the same customer or member details are repeated in many rows. This may cause an update anomaly: if one copy is changed and another is not, the database contains inconsistent values. It may also cause a deletion anomaly: deleting the last row for an order or session could remove the only copy of details about a customer, member or product.",
+    marks: "4 marks",
+    prompt: "A clinic stores patient appointment data. Explain how a DBMS can help maintain security and integrity.",
+    answer: "The DBMS can maintain security by using access rights, so only authorised staff can view or change patient details. It can maintain integrity by enforcing validation or integrity constraints, such as requiring valid appointment dates or existing patient IDs. It can also use backup and recovery so patient data can be restored if it is lost or corrupted.",
     marking: [
-      { mark: "B1", text: "redundancy/repeated data identified" },
-      { mark: "B1", text: "redundancy explained with related data repeated across rows" },
-      { mark: "B1", text: "update anomaly/inconsistency identified" },
-      { mark: "B1", text: "update problem explained as some copies changed and others not" },
-      { mark: "B1", text: "insertion or deletion anomaly identified" },
-      { mark: "B1", text: "insertion/deletion problem explained with loss or inability to store a separate fact" },
+      { mark: "B1", text: "security/access rights/permissions identified" },
+      { mark: "B1", text: "security linked to authorised clinic staff or patient details" },
+      { mark: "B1", text: "integrity/validation/constraint identified" },
+      { mark: "B1", text: "integrity linked to valid appointment/patient data" },
     ],
     strict: [
-      "Do not award three marks for listing three vague 'errors' without explanation.",
-      "Do not accept security or backup as structure problems unless linked to flat-file repetition.",
-      "Allow insertion anomaly instead of deletion anomaly for the third pair.",
+      "Do not award integrity mark for backup alone.",
+      "Do not accept 'secure password' unless linked to access control/authentication.",
+      "Allow examples involving patient ID, appointment date or contact details.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "An online shop stores customer name and address on every order row. Discuss whether it should change to a relational database.",
-    answer: "Changing to a relational database would help because each customer may place many orders, so storing the name and address on every order row repeats data. If an address changes, a flat file may need many rows to be updated and old rows may become inconsistent. A relational database could store customer details once in a Customer table and link orders to that customer. This improves consistency and makes updates easier. However, if the shop is very small with few orders, the relational design may add unnecessary complexity. Overall, relational is more suitable as the number of customers and orders grows.",
+    marks: "5 marks",
+    prompt: "A student says, 'The database searches itself and checks who is allowed to edit it.' Explain why this statement is imprecise.",
+    answer: "The statement is imprecise because the database is the organised collection of stored related data, not the software that performs management tasks. The DBMS provides the query processor that interprets searches or queries. The DBMS also controls access rights or permissions to decide who can view or edit data. A more precise statement is that the DBMS manages access and queries for the database.",
     marking: [
-      { mark: "B1", text: "recognises repeated customer details across order rows" },
-      { mark: "B1", text: "explains redundancy in online shop context" },
-      { mark: "B1", text: "update/inconsistency problem from address changes" },
-      { mark: "B1", text: "relational solution: customer details stored once and linked to orders" },
-      { mark: "B1", text: "possible disadvantage/condition such as added complexity for very small data" },
-      { mark: "B1", text: "recommends whether to adopt the relational design using current data volume, expected growth and repeated customer details" },
+      { mark: "B1", text: "database identified as organised/stored related data" },
+      { mark: "B1", text: "DBMS identified as software that manages/controls database" },
+      { mark: "B1", text: "query/search function attributed to DBMS/query processor" },
+      { mark: "B1", text: "edit permission/access function attributed to DBMS/access rights" },
+      { mark: "B1", text: "correctly attributes querying, access control and other management functions to the DBMS rather than to the stored database" },
     ],
     strict: [
-      "Do not accept 'relational is more professional' as a reason.",
-      "Do not require exact table names if the linked-table idea is clear.",
-      "Allow customer, product or order details as repeated-data examples.",
+      "Do not accept answers that keep saying the database performs the management tasks.",
+      "Do not award query and access marks if they are not attributed to DBMS or DBMS components.",
+      "Allow 'database management system' for DBMS.",
     ],
   },
 ];
@@ -276,10 +277,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    redundancy: "Correct. Repeated data is the structural issue that can lead to inconsistent updates.",
-    password: "No. Weak passwords are a security issue, but not the main flat-file vs relational structure issue.",
-    binary: "No. Representation is a different syllabus area.",
-    processor: "No. CPU cache has wandered into the wrong classroom.",
+    raw: "Not quite. This is raw data: separate values without a processed conclusion.",
+    field: "No. This is a field name or attribute, not processed meaning.",
+    info: "Correct. The raw attendance data has been processed into a meaningful percentage.",
+    dbms: "No. That describes a DBMS component, not attendance information.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -290,23 +291,23 @@ function setupHook() {
   });
 }
 
-function setupScenarioChooser() {
-  const input = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#scenarioResult");
-  const reason = document.querySelector("#scenarioReason");
-  document.querySelector("#scenarioBtn").addEventListener("click", () => {
-    const item = scenarioMap[input.value];
+function setupConceptSorter() {
+  const input = document.querySelector("#sortInput");
+  const result = document.querySelector("#sortResult");
+  const reason = document.querySelector("#sortReason");
+  document.querySelector("#sortBtn").addEventListener("click", () => {
+    const item = conceptMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
 }
 
-function setupAnomalyChecker() {
-  const input = document.querySelector("#anomalyInput");
-  const result = document.querySelector("#anomalyResult");
-  const reason = document.querySelector("#anomalyReason");
-  document.querySelector("#anomalyBtn").addEventListener("click", () => {
-    const item = anomalyMap[input.value];
+function setupFeatureSelector() {
+  const input = document.querySelector("#featureInput");
+  const result = document.querySelector("#featureResult");
+  const reason = document.querySelector("#featureReason");
+  document.querySelector("#featureBtn").addEventListener("click", () => {
+    const item = featureMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
@@ -332,7 +333,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("club");
+  renderExample("dataInfo");
 }
 
 function renderPractice() {
@@ -431,8 +432,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupScenarioChooser();
-  setupAnomalyChecker();
+  setupConceptSorter();
+  setupFeatureSelector();
   setupExamples();
   renderPractice();
   renderMistakes();

@@ -24,7 +24,7 @@ function validGroups(groups) {
 }
 
 function validEvidence(evidence, requireActivity = false) {
-  return Array.isArray(evidence) && evidence.every((item) => Number.isInteger(item.lesson) && item.lesson >= 1 && item.lesson <= 150
+  return Array.isArray(evidence) && evidence.every((item) => Number.isInteger(item.lesson) && item.lesson >= 1 && item.lesson <= 151
     && typeof item.sectionId === "string" && item.sectionId && validGroups(item.conceptGroups)
     && (!requireActivity || typeof item.activity === "string"));
 }
@@ -58,7 +58,7 @@ for (const requirement of coverageContract.requirements) {
     expect(evidenceHash === expectedHash, `${prefix}: official mapping evidence hash does not match its content`);
   }
   expect(["remediation-v2-stage2", "remediation-v2-stage3", "remediation-v2-audit-integrity-r1", "remediation-v2-audit-integrity-r2"].includes(requirement.evidenceReviewRound), `${prefix}: evidence has no recognised remediation review round`);
-  expect(Array.isArray(requirement.teachingLessons) && requirement.teachingLessons.length > 0 && requirement.teachingLessons.every((lesson) => Number.isInteger(lesson) && lesson >= 1 && lesson <= 150), `${prefix}: invalid teachingLessons`);
+  expect(Array.isArray(requirement.teachingLessons) && requirement.teachingLessons.length > 0 && requirement.teachingLessons.every((lesson) => Number.isInteger(lesson) && lesson >= 1 && lesson <= 151), `${prefix}: invalid teachingLessons`);
   expect(requirement.deliveryRole === "CORE", `${prefix}: compulsory requirement is not CORE`);
   expect(["High", "Medium", "Low"].includes(requirement.riskLevel), `${prefix}: invalid or missing riskLevel`);
   expect(["Reviewed", "Pending"].includes(requirement.evidenceReviewStatus), `${prefix}: invalid or missing evidenceReviewStatus`);

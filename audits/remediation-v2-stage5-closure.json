@@ -49,7 +49,7 @@
       "currentStatus": "Resolved",
       "closureEvidence": [
         "S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production",
-        "L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment"
+        "L012, L145 construction practice and L146 production practice are retained only as labelled Optional enrichment"
       ]
     },
     {
@@ -79,7 +79,7 @@
       "currentStatus": "Resolved",
       "closureEvidence": [
         "All 150 stable lesson IDs and URLs are preserved; Markdown titles, HTML h1, course catalogue, paper and section ranges reconcile",
-        "L137 no longer claims Section 12 ownership inside the Section 11 lesson range; L137/L138 legacy bodies are Optional enrichment"
+        "L138 no longer claims Section 12 ownership inside the Section 11 lesson range; L138/L139 legacy bodies are Optional enrichment"
       ]
     },
     {
@@ -89,7 +89,7 @@
       "currentStatus": "Resolved",
       "closureEvidence": [
         "scripts/cie-command-words.mjs fixes the main table to the 27 entries on syllabus pages 41-42 and fail-closes subject-operation exceptions by requirement ID",
-        "963/963 current-hash question records include primary requirement, AO, marks, answer boundary and four passed trial cases"
+        "968/968 current-hash question records include primary requirement, AO, marks, answer boundary and four passed trial cases"
       ]
     },
     {
@@ -108,7 +108,7 @@
       "disposition": "ResolvedByStage5",
       "currentStatus": "Resolved",
       "closureEvidence": [
-        "L049 topic heading, teaching, assessment, maintained transcript and deterministic concept image use processor type and number of cores, bus width, clock speed and cache memory",
+        "L050 topic heading, teaching, assessment, maintained transcript and deterministic concept image use processor type and number of cores, bus width, clock speed and cache memory",
         "The word-length discussion remains visibly labelled Optional enrichment and is excluded from the official performance-factor list"
       ]
     },
@@ -118,7 +118,7 @@
       "disposition": "ResolvedByStage5",
       "currentStatus": "Resolved",
       "closureEvidence": [
-        "L107/L133 keep MID results as STRING and reserve LCASE/UCASE for declared CHAR values with single-quoted literals",
+        "L108/L134 keep MID results as STRING and reserve LCASE/UCASE for declared CHAR values with single-quoted literals",
         "LEFT is identified as guide-external and is not called without a complete question-supplied signature"
       ]
     },
@@ -128,7 +128,7 @@
       "disposition": "ResolvedByStage5",
       "currentStatus": "Resolved",
       "closureEvidence": [
-        "L121 defines SPLIT, STRING_TO_INTEGER, IS_NUMERIC and FIELD_COUNT with complete typed signatures before use",
+        "L122 defines SPLIT, STRING_TO_INTEGER, IS_NUMERIC and FIELD_COUNT with complete typed signatures before use",
         "The supplied SPLIT array starts at index 1; parameter order and return types are explicit in teaching, questions, transcript and pixels"
       ]
     },
@@ -148,7 +148,7 @@
       "disposition": "Resolved",
       "currentStatus": "Resolved",
       "closureEvidence": [
-        "83/83 CORE teaching pages place substantive CORE before Optional content; all 70 unique first-use pages are owned by declared requirements",
+        "95/95 CORE teaching pages place substantive CORE before Optional content; all 72 unique first-use pages are owned by declared requirements",
         "All declared first-teaching concept groups pass, including vector, representations, devices, security, licensing, algorithms and ADT scope"
       ]
     },
@@ -159,7 +159,7 @@
       "currentStatus": "Resolved",
       "closureEvidence": [
         "Required visual evidence now checks the contract mapping, target register and actual DOM section role/activity together; Optional evidence cannot satisfy CORE coverage",
-        "74 unique required visual panels are anchored after reviewed CORE teaching, with 28 source panels relocated so none precedes first use or depends on an Optional-only page"
+        "75 unique required visual panels are anchored after reviewed CORE teaching, with 42 source panels relocated so none precedes first use or depends on an Optional-only page"
       ]
     }
   ]

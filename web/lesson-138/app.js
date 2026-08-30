@@ -1,98 +1,122 @@
-const breakpointAdvice = {
-  condition: {
-    title: "Pause at the decision line",
-    breakpoint: "Line 2: IF Mark > 50 THEN",
-    watch: "Mark and the evaluated condition",
-    reason: "The fault is likely in whether 50 is treated as passing, so inspect the condition before the branch is taken.",
+const scenarios = {
+  mark: {
+    label: "Mark: integer 0 to 100 inclusive",
+    unit: "mark",
+    tests: [
+      ["50", "Normal", "typical valid mark", "Accepted"],
+      ["0", "Extreme/boundary", "lowest valid mark", "Accepted"],
+      ["100", "Extreme/boundary", "highest valid mark", "Accepted"],
+      ["-1", "Abnormal", "just below valid range", "Rejected"],
+      ["101", "Abnormal", "just above valid range", "Rejected"],
+      ['"cat"', "Abnormal", "wrong data type for an integer mark", "Rejected or handled"],
+    ],
   },
-  total: {
-    title: "Pause inside the loop",
-    breakpoint: "The line that updates Total",
-    watch: "Total, current item value and loop counter",
-    reason: "A wrong total is often caused by an update in the wrong place, a reset inside the loop, or a missed item.",
+  password: {
+    label: "Password length: 8 to 20 characters inclusive",
+    unit: "characters",
+    tests: [
+      ["12", "Normal", "typical valid length", "Accepted"],
+      ["8", "Extreme/boundary", "minimum valid length", "Accepted"],
+      ["20", "Extreme/boundary", "maximum valid length", "Accepted"],
+      ["7", "Abnormal", "too short", "Rejected"],
+      ["21", "Abnormal", "too long", "Rejected"],
+      ["blank password", "Abnormal", "missing required data", "Rejected"],
+    ],
   },
-  procedure: {
-    title: "Step into the procedure",
-    breakpoint: "The call to CalculateGrade, then step into it",
-    watch: "Parameter values, return value and any local variables",
-    reason: "If the procedure output is wrong, inspect the data passed in and the decision logic inside the procedure.",
+  age: {
+    label: "Competition age: integer 11 to 18 inclusive",
+    unit: "years",
+    tests: [
+      ["15", "Normal", "typical valid age", "Accepted"],
+      ["11", "Extreme/boundary", "lowest valid age", "Accepted"],
+      ["18", "Extreme/boundary", "highest valid age", "Accepted"],
+      ["10", "Abnormal", "below minimum age", "Rejected"],
+      ["19", "Abnormal", "above maximum age", "Rejected"],
+      ['"sixteen"', "Abnormal", "wrong data type for an integer age", "Rejected or handled"],
+    ],
   },
 };
 
 const examples = {
-  trace: {
-    title: "Example 1: Trace the boundary mark",
-    problem: "The intended rule is 50 or more passes, but the code uses IF Mark > 50. Trace Mark = 50.",
+  classify: {
+    title: "Example 1: Classify test data",
+    problem: "A mark must be an integer from 0 to 100 inclusive. Classify 50, 0, 100, -1 and \"cat\".",
     table: [
-      ["1", "INPUT Mark", "50", "-", "-"],
-      ["2", "IF Mark > 50", "50", "False", "-"],
-      ["3", "ELSE branch", "50", "-", "Resit needed"],
+      ["50", "Normal", "valid and typical"],
+      ["0", "Extreme/boundary", "lowest valid value"],
+      ["100", "Extreme/boundary", "highest valid value"],
+      ["-1", "Abnormal", "outside the valid range"],
+      ['"cat"', "Abnormal", "wrong data type"],
     ],
     points: [
-      "The trace records the actual path through the algorithm.",
-      "For Mark = 50, the actual output is wrong.",
-      "The likely fix is to use greater than or equal to.",
+      "Normal data is valid and ordinary.",
+      "Extreme/boundary data uses a valid value at an accepted limit.",
+      "Abnormal data should be rejected or handled.",
     ],
   },
-  breakpoint: {
-    title: "Example 2: Place a breakpoint",
-    problem: "A program gives the wrong message when Mark is 50. Where should the breakpoint go?",
+  design: {
+    title: "Example 2: Design a test table",
+    problem: "Design tests for password length from 8 to 20 characters inclusive.",
     table: [
-      ["Best line", "IF Mark > 50 THEN", "pause before the decision is applied"],
-      ["Watch", "Mark", "confirm the value is 50"],
-      ["Inspect", "condition result", "shows False when it should allow a pass"],
+      ["12 characters", "Normal", "typical valid length", "Accepted"],
+      ["8 characters", "Extreme/boundary", "minimum valid length", "Accepted"],
+      ["20 characters", "Extreme/boundary", "maximum valid length", "Accepted"],
+      ["7 characters", "Abnormal", "too short", "Rejected"],
+      ["21 characters", "Abnormal", "too long", "Rejected"],
     ],
     points: [
-      "Place breakpoints near the suspected fault.",
-      "Watch the relevant variables, not every variable in the program.",
-      "Use the paused state to compare actual and expected behaviour.",
+      "Include expected results; otherwise the test table is incomplete.",
+      "Use exact edge values, not vague phrases such as 'near 8'.",
+      "Add just-outside values when testing validation.",
     ],
   },
-  step: {
-    title: "Example 3: Step into a subroutine",
-    problem: "The displayed grade is wrong after Grade <- CalculateGrade(Mark). What should be inspected?",
+  explain: {
+    title: "Example 3: Explain why extreme/boundary data is useful",
+    problem: "A condition is written as IF Mark > 0 AND Mark < 100. The intended valid range is 0 to 100 inclusive. Which tests expose the fault?",
     table: [
-      ["Before call", "Mark", "check the parameter value being passed"],
-      ["Step into", "CalculateGrade", "inspect the grade decision logic"],
-      ["After return", "Grade", "compare returned value with expected grade"],
+      ["0", "Extreme/boundary", "should be accepted, but this code rejects it"],
+      ["100", "Extreme/boundary", "should be accepted, but this code rejects it"],
+      ["50", "Normal", "accepted, so it does not reveal this edge error"],
+      ["-1", "Abnormal", "correctly rejected"],
+      ["101", "Abnormal", "correctly rejected"],
     ],
     points: [
-      "Step over if the subroutine is trusted.",
-      "Step into if the subroutine may contain the fault.",
-      "A trace can record parameter and return values.",
+      "Extreme/boundary tests reveal incorrect inclusive/exclusive comparisons.",
+      "Normal data can pass even when edge values fail.",
+      "Expected results make the fault visible.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the process of finding and correcting faults in a program called?", accepted: ["debugging"], answer: "Debugging." },
-  { id: "p2", prompt: "What debugging tool pauses execution at a chosen line?", accepted: ["breakpoint", "break point"], answer: "A breakpoint." },
-  { id: "p3", prompt: "What table records variable values after each important step?", accepted: ["trace", "trace table"], answer: "A trace table." },
-  { id: "p4", prompt: "Which kind of error can make a program run but produce the wrong output?", accepted: ["logic", "logical"], answer: "A logic error." },
-  { id: "p5", prompt: "For IF Mark > 50, what is the condition result when Mark is 50?", accepted: ["false"], answer: "False." },
-  { id: "p6", prompt: "For IF Mark > 50, what output occurs when Mark is 50 in the lesson example?", accepted: ["resit", "resit needed"], answer: "Resit needed." },
-  { id: "p7", prompt: "What should the faulty condition IF Mark > 50 become if 50 should pass?", accepted: [">= 50", "mark >= 50", "greater than or equal"], answer: "IF Mark >= 50 THEN." },
-  { id: "p8", prompt: "Which command action enters a called procedure during debugging: step over or step into?", accepted: ["step into"], answer: "Step into." },
-  { id: "p9", prompt: "Name one variable worth watching when debugging a total-calculation loop.", accepted: ["total", "counter", "index", "item", "price"], answer: "Total, loop counter/index, or the current item value." },
-  { id: "p10", prompt: "Why is a prediction useful before stepping through code?", accepted: ["compare", "expected", "actual", "fault"], answer: "It lets you compare expected behaviour with actual behaviour and spot the fault." },
+  { id: "p1", prompt: "What is the term for valid, typical data inside the allowed range?", accepted: ["normal", "normal data"], answer: "Normal data." },
+  { id: "p2", prompt: "What is the official term for valid data at an accepted limit?", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "Extreme/boundary data." },
+  { id: "p3", prompt: "What is the official syllabus term for invalid data that should be rejected?", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid data"], answer: "Abnormal data. 'Erroneous' may describe an error generally, but abnormal is the official syllabus category." },
+  { id: "p4", prompt: "For a mark range 0 to 100 inclusive, classify 50.", accepted: ["normal", "normal data"], answer: "50 is normal data because it is valid and typical." },
+  { id: "p5", prompt: "For a mark range 0 to 100 inclusive, classify 0.", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "0 is extreme/boundary data because it is the lowest valid value." },
+  { id: "p6", prompt: "For a mark range 0 to 100 inclusive, classify 100.", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "100 is extreme/boundary data because it is the highest valid value." },
+  { id: "p7", prompt: "For a mark range 0 to 100 inclusive, what expected result should -1 have?", accepted: ["rejected", "reject", "not accepted", "invalid"], answer: "-1 should be rejected because it is below the valid range." },
+  { id: "p8", prompt: "For a mark range 0 to 100 inclusive, classify 101.", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid", "rejected"], answer: "101 is abnormal data and should be rejected." },
+  { id: "p9", prompt: "A mark must be an integer. Classify \"abc\".", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid", "wrong type"], answer: "\"abc\" is abnormal data because it is the wrong data type." },
+  { id: "p10", prompt: "Why should a test table include expected results?", accepted: ["compare", "actual", "detect", "fault", "correct"], answer: "Expected results let the tester compare actual output with intended output and detect faults." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student places a breakpoint at the last line only, after the wrong output has already appeared.",
-    fix: "Place the breakpoint before or on the suspected decision or calculation line so the state can be inspected before the fault affects the result.",
+    wrong: "A test table for marks 0 to 100 uses only 40, 50 and 60.",
+    fix: "Those are normal values only. Add extreme/boundary values 0 and 100, plus abnormal values such as -1, 101 and a wrong-type input.",
   },
   {
-    wrong: "A trace table lists the code lines but no variable values.",
-    fix: "A useful trace table records the changing values of relevant variables and any output after each important step.",
+    wrong: "A student calls 101 boundary data for the inclusive range 0 to 100.",
+    fix: "101 is just outside the upper boundary and is abnormal for this rule. The upper valid extreme/boundary value is 100.",
   },
   {
-    wrong: "A student says the code has a syntax error because 50 gets the wrong message.",
-    fix: "The program runs, so this is a logic error. The condition is syntactically valid but does not match the intended rule.",
+    wrong: "The table lists inputs but leaves expected result blank.",
+    fix: "Add an expected result for each test, such as Accepted, Rejected, or a specific output message.",
   },
   {
-    wrong: "A student writes Java debugger screenshots as the whole answer to a Cambridge pseudocode trace question.",
-    fix: "Use screenshots only for practice. In the exam, provide the requested trace table, explanation, or Cambridge-style pseudocode.",
+    wrong: "A student writes a Java JUnit assertion as the whole Cambridge pseudocode answer.",
+    fix: "Java can support checking, but Paper 2 pseudocode answers should use clear Cambridge-style logic and test data descriptions.",
   },
 ];
 
@@ -106,97 +130,94 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "An existing program counts marks of 50 or more in PassCount during one traversal of Marks[1:30]. Analyse where to add a new MeritCount for marks of 70 or more, describe the amendment, and give boundary tests for old and new behaviour.",
-    answer: "The existing traversal already reads each mark, so preserve PassCount and its Mark >= 50 condition. Declare and initialise MeritCount to 0 before the loop, add a separate IF Marks[Index] >= 70 THEN MeritCount <- MeritCount + 1 ENDIF inside the same loop, and output both counts after the loop. Test 49 and 50 for regression of the pass boundary, and 69 and 70 for the new merit boundary.",
+    prompt: "A mark must be an integer from 0 to 100 inclusive. Define normal, abnormal and extreme/boundary test data and give one suitable example of each.",
+    answer: "Normal data is valid and typical, for example 50. Abnormal data is invalid and should be rejected, for example -1, 101 or \"cat\". Extreme/boundary data is valid data at the lower or upper limit, for example 0 or 100.",
     marking: [
-      { mark: "B1", text: "analysis identifies the existing traversal and pass-count behaviour to preserve" },
-      { mark: "B1", text: "declares and initialises MeritCount before the loop" },
-      { mark: "M1", text: "adds a separate >= 70 test inside the existing traversal" },
-      { mark: "A1", text: "increments MeritCount and outputs both counts without changing PassCount" },
-      { mark: "B1", text: "uses 49 and 50 to regression-test the existing boundary" },
-      { mark: "B1", text: "uses 69 and 70 to test the enhancement boundary" },
+      { mark: "B1", text: "defines normal data as valid and typical" },
+      { mark: "B1", text: "gives a suitable normal example such as 50" },
+      { mark: "B1", text: "defines abnormal data as invalid data that should be rejected" },
+      { mark: "B1", text: "gives a suitable abnormal example such as -1, 101 or wrong-type data" },
+      { mark: "B1", text: "defines extreme/boundary data as valid data at an accepted limit" },
+      { mark: "B1", text: "gives a suitable extreme/boundary example such as 0 or 100" },
     ],
     strict: [
-      "Do not accept a rewrite that removes or changes the existing PassCount behaviour.",
-      "The amendment must update declaration, initialisation, processing and output coherently.",
-      "Testing only the new 70 boundary is insufficient; regression of the 50 boundary is required.",
+      "Do not award boundary example mark for 50.",
+      "Allow 0 or 100 as boundary because the range is inclusive.",
+      "Do not accept vague examples such as 'a big number' without a value.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Explain how a breakpoint and watched variables can help debug a program that calculates a total in a loop.",
-    answer: "A breakpoint can pause execution inside the loop at the line where Total is updated. Watched variables such as Total, the current item value and the loop counter can be inspected after each iteration. This helps show whether Total is reset, updated with the wrong value or updated the wrong number of times.",
+    marks: "7 marks",
+    prompt: "Write a test table for a mark validation check where valid marks are integers from 0 to 100 inclusive. Include normal, abnormal and extreme/boundary data.",
+    answer: "A suitable table includes 50 normal accepted, 0 and 100 extreme/boundary accepted, and -1, 101 and \"abc\" abnormal rejected or handled.",
     marking: [
-      { mark: "B1", text: "states that a breakpoint pauses execution at a chosen line" },
-      { mark: "B1", text: "places the breakpoint at or near the Total update inside the loop" },
-      { mark: "B1", text: "names Total as a variable to watch" },
-      { mark: "B1", text: "names another relevant variable such as current item value or loop counter" },
-      { mark: "B1", text: "explains that values can be inspected after each iteration" },
-      { mark: "B1", text: "links inspection to finding a specific fault such as reset, wrong value or missed iteration" },
+      { mark: "M1", text: "provides a clear test table or structured list" },
+      { mark: "B1", text: "includes at least one normal valid value" },
+      { mark: "B1", text: "includes lower extreme/boundary value 0" },
+      { mark: "B1", text: "includes upper extreme/boundary value 100" },
+      { mark: "B1", text: "includes at least one out-of-range abnormal value" },
+      { mark: "B1", text: "includes a wrong-type or otherwise invalid abnormal value" },
+      { mark: "A1", text: "states expected results accurately for the tests" },
     ],
     strict: [
-      "Do not award full marks for saying only 'it finds the bug'.",
-      "Allow 'stop the program' for breakpoint if pause/inspect meaning is clear.",
-      "Do not require a named IDE.",
+      "Do not award expected result mark if outcomes are missing.",
+      "Allow alternative normal values from 1 to 99.",
+      "Do not accept -1 or 101 as valid boundary data for this inclusive range.",
+      "Allow an equivalent stated validation rule if it is used consistently.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Describe the difference between step over and step into when debugging a program that calls a procedure.",
-    answer: "Step over executes the next line without entering the called procedure, so it treats the procedure call as one step. Step into enters the procedure so its internal statements can be inspected. Step into is useful when the fault may be inside the procedure.",
+    marks: "6 marks",
+    prompt: "Explain why testing 0, 100, -1 and 101 is useful for a validation rule that should accept marks from 0 to 100 inclusive.",
+    answer: "0 and 100 test the valid lower and upper boundaries and should be accepted. -1 and 101 are just outside the valid range and should be rejected. These values help reveal incorrect comparison operators, such as using greater than instead of greater than or equal to.",
     marking: [
-      { mark: "B1", text: "states step over executes the call without entering the procedure" },
-      { mark: "B1", text: "explains step over treats the call as one step or returns to the next line" },
-      { mark: "B1", text: "states step into enters the called procedure" },
-      { mark: "B1", text: "explains step into allows internal statements/variables to be inspected" },
-      { mark: "B1", text: "gives a suitable reason for choosing one method in context" },
+      { mark: "B1", text: "identifies 0 as the lower boundary" },
+      { mark: "B1", text: "identifies 100 as the upper boundary" },
+      { mark: "B1", text: "states 0 and 100 should be accepted" },
+      { mark: "B1", text: "identifies -1 and/or 101 as just outside the range" },
+      { mark: "B1", text: "states -1 and 101 should be rejected" },
+      { mark: "B1", text: "explains that boundary testing can reveal incorrect comparison logic" },
     ],
     strict: [
-      "Do not award both definition marks if the two terms are swapped.",
-      "Allow function or subroutine instead of procedure.",
-      "Do not accept vague answers about 'going faster' without reference to entering a call.",
+      "Do not award accepted mark if candidate says 0 or 100 should be rejected.",
+      "Allow equivalent wording for inclusive edge values.",
+      "Do not require code, but credit a correct comparison-operator explanation.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "Develop a trace table for the pseudocode: Count <- 0; FOR Index <- 1 TO 3; Count <- Count + Index; NEXT Index; OUTPUT Count.",
-    answer: "The trace should show Count starts at 0. At Index 1, Count becomes 1. At Index 2, Count becomes 3. At Index 3, Count becomes 6. The final output is 6.",
+    marks: "4 marks",
+    prompt: "A program uses the condition IF Mark >= 0 AND Mark <= 100 THEN OUTPUT \"Accepted\" ELSE OUTPUT \"Rejected\". Give four test values and expected outputs.",
+    answer: "One suitable set is: 50 gives Accepted; 0 gives Accepted; 100 gives Accepted; and -1 gives Rejected.",
     marking: [
-      { mark: "M1", text: "initialises Count to 0 before applying the loop updates" },
-      { mark: "B1", text: "shows Index = 1" },
-      { mark: "A1", text: "shows Count = 1 after first iteration" },
-      { mark: "B1", text: "shows Index = 2" },
-      { mark: "A1", text: "shows Count = 3 after second iteration" },
-      { mark: "A1", text: "shows Count = 6 after third iteration" },
-      { mark: "A1", text: "states final output is 6" },
+      { mark: "B1", text: "gives one normal valid value with expected output Accepted" },
+      { mark: "B1", text: "gives lower boundary 0 with expected output Accepted" },
+      { mark: "B1", text: "gives upper boundary 100 with expected output Accepted" },
+      { mark: "B1", text: "gives one out-of-range value with expected output Rejected" },
     ],
     strict: [
-      "Do not award final output mark for 3 or 7.",
-      "Allow table, structured list or clear sequence of variable values.",
-      "Do not require every unchanged value to be repeated if the trace is unambiguous.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Award a mark only when a test value is paired with the correct expected output.",
+      "Allow any valid normal value from 1 to 99.",
+      "Do not accept 0 as rejected for the given condition.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A candidate says breakpoints are only useful for syntax errors. Explain why this is incorrect and describe one suitable use of a breakpoint.",
-    answer: "Syntax errors are usually found before execution because the program cannot run correctly. Breakpoints are especially useful for logic errors because the program can pause while it is running, allowing values and conditions to be inspected. For example, a breakpoint at an IF statement can show whether a boundary value takes the wrong branch.",
+    marks: "4 marks",
+    prompt: "A candidate tests a mark validation program using only 50, 60 and 75. Identify two weaknesses and improve the test set.",
+    answer: "The set only uses normal valid data and does not test the boundaries or invalid data. Improve it by adding 0 and 100 as boundary values, -1 and 101 as just outside the range, and a wrong-type value such as \"abc\" if input type validation is required.",
     marking: [
-      { mark: "B1", text: "states syntax errors are detected before or when attempting execution" },
-      { mark: "B1", text: "states breakpoints pause a running program" },
-      { mark: "B1", text: "explains that variable values or conditions can be inspected" },
-      { mark: "B1", text: "identifies logic errors as a suitable target for breakpoints" },
-      { mark: "B1", text: "gives a suitable breakpoint location such as an IF statement or calculation" },
-      { mark: "B1", text: "links the breakpoint to finding a wrong branch/value/result" },
+      { mark: "B1", text: "identifies missing boundary data" },
+      { mark: "B1", text: "identifies missing abnormal/invalid data" },
+      { mark: "B1", text: "adds valid boundary examples 0 and/or 100" },
+      { mark: "B1", text: "adds abnormal out-of-range examples such as -1 and/or 101" },
     ],
     strict: [
-      "Do not accept 'breakpoints fix syntax errors automatically'.",
-      "Allow runtime fault examples if pause and inspect are explained.",
-      "Do not award context marks for random breakpoint placement.",
+      "Do not award improvement marks for adding more normal values only.",
+      "Allow equivalent valid range examples if the candidate states a different scenario.",
+      "Do not accept 'test more' without naming values or data types.",
     ],
   },
 ];
@@ -230,10 +251,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    input: { text: "Input is useful, but the suspected fault is the branch condition. Pause closer to the decision.", correct: false },
-    if: { text: "Correct. The IF line is where the wrong branch is chosen.", correct: true },
-    pass: { text: "This is after the decision. It may be too late to inspect why the branch was chosen.", correct: false },
-    end: { text: "ENDIF is after the branch has finished. It is not the best place to inspect the condition.", correct: false },
+    50: { text: "50 is valid and typical, so it is normal data, not boundary data.", correct: false },
+    0: { text: "Correct. 0 is the lower valid boundary for an inclusive 0 to 100 range.", correct: true },
+    101: { text: "101 is just outside the range, so it is abnormal for this rule.", correct: false },
+    cat: { text: "\"cat\" is wrong-type abnormal data when an integer mark is required.", correct: false },
   };
 
   document.querySelectorAll("[data-hook]").forEach((button) => {
@@ -247,58 +268,77 @@ function setupHook() {
   });
 }
 
-function setupTraceSimulator() {
-  const input = document.querySelector("#markInput");
-  const output = document.querySelector("#traceOutput");
+function classifyValue(rawValue) {
+  const trimmed = rawValue.trim();
+  if (trimmed === "") {
+    return {
+      type: "Abnormal",
+      expected: "Rejected",
+      reason: "blank input is missing required integer data",
+    };
+  }
+  if (!/^-?\d+$/.test(trimmed)) {
+    return {
+      type: "Abnormal",
+      expected: "Rejected or handled",
+      reason: "the value is not an integer",
+    };
+  }
+
+  const value = Number.parseInt(trimmed, 10);
+  if (value === 0) {
+    return { type: "Extreme/boundary", expected: "Accepted", reason: "0 is the lower valid boundary" };
+  }
+  if (value === 100) {
+    return { type: "Extreme/boundary", expected: "Accepted", reason: "100 is the upper valid boundary" };
+  }
+  if (value > 0 && value < 100) {
+    return { type: "Normal", expected: "Accepted", reason: `${value} is inside the valid range` };
+  }
+  if (value === -1 || value === 101) {
+    return { type: "Abnormal", expected: "Rejected", reason: `${value} is just outside the boundary` };
+  }
+  return { type: "Abnormal", expected: "Rejected", reason: `${value} is outside the valid range` };
+}
+
+function setupClassifier() {
+  const input = document.querySelector("#testValue");
+  const output = document.querySelector("#classifierOutput");
   const render = () => {
-    const value = Number.parseInt(input.value, 10);
-    if (Number.isNaN(value)) {
-      output.innerHTML = "<p><strong>Input error:</strong> enter an integer mark to trace.</p>";
-      return;
-    }
-    const condition = value > 50;
-    const actualOutput = condition ? "Pass" : "Resit needed";
-    const expectedOutput = value >= 50 ? "Pass" : "Resit needed";
-    const verdict = actualOutput === expectedOutput ? "The faulty condition happens to match the expected output for this value." : "Fault exposed: actual output differs from expected output.";
+    const result = classifyValue(input.value);
     output.innerHTML = `
-      ${tableMarkup(["Step", "Mark", "Condition Mark > 50", "Actual output"], [
-        ["Input", value, "-", "-"],
-        ["IF line", value, condition ? "True" : "False", "-"],
-        ["Branch", value, "-", actualOutput],
-      ])}
-      <p><strong>Expected output:</strong> ${escapeHtml(expectedOutput)}</p>
-      <p><strong>Verdict:</strong> ${escapeHtml(verdict)}</p>
+      <p><strong>Classification:</strong> ${escapeHtml(result.type)}</p>
+      <p><strong>Expected result:</strong> ${escapeHtml(result.expected)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(result.reason)}</p>
     `;
   };
-  document.querySelector("#traceBtn").addEventListener("click", render);
+  document.querySelector("#classifyBtn").addEventListener("click", render);
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") render();
   });
   render();
 }
 
-function setupBreakpointChooser() {
-  const select = document.querySelector("#bugSelect");
-  const output = document.querySelector("#breakpointOutput");
+function setupBuilder() {
+  const select = document.querySelector("#scenarioSelect");
+  const output = document.querySelector("#builderOutput");
   const render = () => {
-    const advice = breakpointAdvice[select.value];
+    const scenario = scenarios[select.value];
     output.innerHTML = `
-      <p><strong>${escapeHtml(advice.title)}</strong></p>
-      <p><strong>Breakpoint:</strong> ${escapeHtml(advice.breakpoint)}</p>
-      <p><strong>Watch:</strong> ${escapeHtml(advice.watch)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(advice.reason)}</p>
+      <h3>${escapeHtml(scenario.label)}</h3>
+      ${tableMarkup(["Test data", "Type", "Reason", "Expected result"], scenario.tests)}
     `;
   };
-  document.querySelector("#chooseBtn").addEventListener("click", render);
+  document.querySelector("#buildBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
 function renderExample(key) {
   const example = examples[key];
-  const headers = example.table[0].length === 5
-    ? ["Line", "Statement", "Variable", "Condition", "Output"]
-    : ["Focus", "Action", "Reason"];
+  const headers = example.table[0].length === 4
+    ? ["Test data", "Type", "Reason", "Expected result"]
+    : ["Test data", "Type", "Reason"];
   document.querySelector("#exampleOutput").innerHTML = `
     <article class="example-card">
       <h3>${escapeHtml(example.title)}</h3>
@@ -317,7 +357,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("trace");
+  renderExample("classify");
 }
 
 function setupPractice() {
@@ -342,7 +382,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const value = normalise(input.value);
       const correct = item.accepted.some((answer) => value.includes(answer));
-      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and compare the exact wording.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Use the answer button, then tighten the wording.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -407,8 +447,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupTraceSimulator();
-  setupBreakpointChooser();
+  setupClassifier();
+  setupBuilder();
   setupExamples();
   setupPractice();
   setupMistakes();

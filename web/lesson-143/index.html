@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 143 | Requirements analysis and success criteria</title>
+    <title>AS9618 Lesson 143 | Lifecycle models, purpose and limitations</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
-        <h1>Requirements analysis and success criteria</h1>
+        <h1>Lifecycle models, purpose and limitations</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,366 +29,482 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#analysis">Analysis</a>
-        <a href="#functional">Functional</a>
-        <a href="#non-functional">Non-functional</a>
-        <a href="#success">Success criteria</a>
-        <a href="#acceptance">Acceptance tests</a>
-        <a href="#stakeholders">Stakeholders</a>
-        <a href="#rewriter">Requirement rewriter</a>
-        <a href="#criteria-tool">Criteria checker</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#stages">Lifecycle stages</a>
+        <a href="#waterfall">Waterfall</a>
+        <a href="#iterative">Iterative</a>
+        <a href="#agile">Agile</a>
+        <a href="#compare">Comparison</a>
+        <a href="#artefacts">Artefacts</a>
+        <a href="#model-tool">Model selector</a>
+        <a href="#order-tool">Order checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Lifecycle models, purpose and limitations</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.</p>
+            <p>Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.</p>
+            <p>A program-development lifecycle gives an organised sequence for analysis, design, implementation, testing and maintenance, with review and documentation linking decisions to evidence.</p>
+            <p>Waterfall supports planned sequential stages and traceability but its limitation is costly late change. Iterative development reviews repeated versions but can need careful scope control. RAD uses rapid prototyping, time-boxing and user involvement; it may be less suitable or unsuitable where exhaustive assurance and stable architecture are required.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose a lifecycle model / Choose a lifecycle model</h3>
+            <p>For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping. RAD suits a small interface whose users can review frequent prototypes. Waterfall may suit stable, safety-critical requirements where formal traceability matters, although late change remains a limitation.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start rad -->
+        <section class="panel explanation-panel" id="explanation-rad" data-explains="rad" data-explanation-kind="process" aria-labelledby="explanation-rad-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rad">
+          <h2 class="explanation-sr-only" id="explanation-rad-title">Rapid application development (RAD)</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-rad.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Rapid application development (RAD) through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Rapid application development (RAD): mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> RAD builds rapid prototypes inside short time boxes.</li><li><strong>Reason:</strong> Users review prototypes frequently and their feedback changes the next version.</li><li><strong>Result:</strong> RAD can respond quickly, but may not suit work requiring exhaustive assurance and stable architecture.</li></ol>
+
+            <p><strong>Analogy:</strong> A working model is reviewed and revised before the whole product is fixed.</p>
+            <p><strong>Boundary:</strong> RAD is a named syllabus model; Agile is related extension context, not a substitute.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end rad -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Lifecycle models, purpose and limitations: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Identify three defining features of RAD.</p>
+              <details><summary>Show answer</summary><p>Rapid prototyping, time-boxing and frequent user involvement/feedback.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which model proceeds through planned sequential stages?</p>
+              <details><summary>Show answer</summary><p>Waterfall.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why might RAD be unsuitable for a safety-critical system?</p>
+              <details><summary>Show answer</summary><p>Rapid cycles may not provide the exhaustive assurance and traceability required.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> State one waterfall limitation.</p>
+              <details><summary>Show answer</summary><p>Late change can require substantial rework.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why might RAD be unsuitable for a safety-critical system?</p>
+              <details><summary>Show answer</summary><p>Rapid cycles may not provide the required exhaustive assurance and traceability.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
+            <p>Compare waterfall, iterative and RAD for a system whose users can review frequent prototypes. Compare waterfall, iterative and RAD, including one limitation of each model.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>waterfall uses planned sequential stages and formal documentation</td><td>Do not substitute Agile for RAD or describe all repeated development as the same model. Do not describe all lifecycle models as the same repeated process.</td><td>1</td></tr>
+                  <tr><td>iterative development reviews repeated versions</td><td></td><td>1</td></tr>
+                  <tr><td>RAD uses rapid prototypes/time-boxing</td><td></td><td>1</td></tr>
+                  <tr><td>RAD uses frequent user involvement and is linked to the scenario</td><td></td><td>1</td></tr>
+                  <tr><td>waterfall and limitation</td><td></td><td>1</td></tr>
+                  <tr><td>iterative and limitation</td><td></td><td>1</td></tr>
+                  <tr><td>RAD features</td><td></td><td>1</td></tr>
+                  <tr><td>RAD limitation/less suitable context</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 143 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
-            <h2>“User-friendly” is a wish. A success criterion is something you can test.</h2>
+            <h2>Lifecycle models organise the activities used to develop and maintain software.</h2>
             <p>
-              Requirements analysis finds out what a system must do and how success will be judged. Strong requirements are
-              clear, measurable and linked to users. Weak requirements sound pleasant but cannot be tested. Chinese support:
-              requirement 需求, stakeholder 利益相关者, success criteria 成功标准, acceptance test 验收测试。
+              The five syllabus stages are analysis, design, coding, testing and maintenance.
+              Implementation is used here only as an explanatory synonym for coding; evaluation is a review activity, not an additional named syllabus stage.
+              The key requirement is to explain why each stage matters and when feedback
+              may send the project back to an earlier stage. Chinese support: lifecycle 生命周期, requirements 需求, maintenance 维护。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>functional and non-functional requirements</span></div>
-              <div><strong>Rewrite</strong><span>vague requests as measurable success criteria</span></div>
-              <div><strong>Link</strong><span>requirements to acceptance tests and later evaluation</span></div>
+              <div><strong>Order</strong><span>analysis, design, coding, testing and maintenance</span></div>
+              <div><strong>Compare</strong><span>waterfall, iterative and rapid application development (RAD)</span></div>
+              <div><strong>Explain</strong><span>how weak requirements or skipped testing affect the final system</span></div>
             </div>
           </div>
-          <div class="req-visual" aria-label="Requirement analysis visual">
-            <div><strong>Vague</strong><span>easy to use</span><em>too slippery to test</em></div>
-            <div><strong>Requirement</strong><span>book a room</span><em>what the system does</em></div>
-            <div><strong>Criterion</strong><span>under 3 clicks</span><em>measurable target</em></div>
-            <div><strong>Acceptance test</strong><span>try sample booking</span><em>evidence</em></div>
+          <div class="lifecycle-visual" aria-label="Lifecycle visual">
+            <div><strong>Analysis</strong><span>requirements</span><em>ask before coding</em></div>
+            <div><strong>Design</strong><span>solution plan</span><em>interfaces, data, algorithms</em></div>
+            <div><strong>Coding</strong><span>implementation</span><em>code the design</em></div>
+            <div><strong>Testing</strong><span>evidence</span><em>find faults, feed back</em></div>
+            <div><strong>Maintenance</strong><span>change</span><em>correct, adapt or improve</em></div>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Analysis feeds design, testing and evaluation. If requirements are vague, later stages can look busy while building the wrong thing.</p>
+            <p>Section 12 answers often need explanation, not code. The marks come from linking lifecycle activity to project risk.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A requirement says what the system must do. A success criterion says how we decide whether it has done it well enough.</p>
+            <p>The lifecycle is not always a one-way checklist. Testing, stakeholder review and maintenance can reveal a need to revisit design or requirements.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which statement is a measurable success criterion?</h2>
-            <p>Scenario: a school room booking system.</p>
+            <h2>A client says: “Make a user-friendly booking system.” What should happen first?</h2>
+            <p>Choose the activity that turns the initial request into measurable requirements.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="nice">The system should be nice.</button>
-            <button class="choice-card" type="button" data-hook="fast">A teacher can complete a booking in under 2 minutes.</button>
-            <button class="choice-card" type="button" data-hook="modern">The system should feel modern.</button>
-            <button class="choice-card" type="button" data-hook="good">The system should work well.</button>
+            <button class="choice-card" type="button" data-hook="code">Start coding screens</button>
+            <button class="choice-card" type="button" data-hook="ask">Analyse requirements with the client</button>
+            <button class="choice-card" type="button" data-hook="test">Run acceptance testing</button>
+            <button class="choice-card" type="button" data-hook="maintain">Begin maintenance</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the statement that can be tested with evidence.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the stage that turns vague wishes into usable requirements.</div>
         </section>
 
-        <section class="panel" id="analysis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="analysis">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
-            <p class="eyebrow">Requirements analysis</p>
-            <h2>Analysis turns user needs into a requirements specification</h2>
+            <p class="eyebrow">Purpose</p>
+            <h2>Lifecycle models give structure to a software project</h2>
           </div>
           <div class="card-grid">
-            <article><h3>Gather</h3><p>Use interviews, questionnaires, observation or document analysis to find needs.</p></article>
-            <article><h3>Clarify</h3><p>Remove ambiguity by asking about users, tasks, data, constraints and priorities.</p></article>
-            <article><h3>Specify</h3><p>Write requirements that can guide design and later testing.</p></article>
+            <article><h3>Plan</h3><p>Identify the problem, users, requirements and constraints before building.</p></article>
+            <article><h3>Control</h3><p>Make progress visible through stages, documents and review points.</p></article>
+            <article><h3>Improve</h3><p>Use testing results and stakeholder review to identify faults or missing requirements.</p></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start analysis -->
-        <section class="panel explanation-panel" id="explanation-analysis" data-explains="analysis" data-explanation-kind="mechanism" aria-labelledby="explanation-analysis-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="analysis">
-          <h2 class="explanation-sr-only" id="explanation-analysis-title">Analysis turns user needs into a requirements specification</h2>
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why a lifecycle reduces uncertainty</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-analysis.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Analysis turns user needs into a requirements specification with a structured visual model." />
-            <figcaption class="explanation-sr-only">Analysis turns user needs into a requirements specification: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a lifecycle reduces uncertainty through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a lifecycle reduces uncertainty: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Requirements analysis</li><li><strong>Lesson fact:</strong> Use interviews, questionnaires, observation or document analysis to find needs.</li><li><strong>Lesson fact:</strong> Remove ambiguity by asking about users, tasks, data, constraints and priorities.</li><li><strong>Lesson fact:</strong> Write requirements that can guide design and later testing.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Each stage asks a different question about need, design or evidence.</li><li><strong>Reason:</strong> Its output makes assumptions visible for review.</li><li><strong>Result:</strong> Later work proceeds with clearer constraints and acceptance criteria.</li></ol>
 
+            <p><strong>Analogy:</strong> Architectural plans turn assumptions into inspectable decisions before construction.</p>
+            <p><strong>Boundary:</strong> Documents help only when they stay accurate and influence decisions.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end analysis -->
-        <section class="panel" id="functional" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="functional">
+        <!-- stage10-explanation:end purpose -->
+        <section class="panel" id="stages" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
-            <p class="eyebrow">Functional requirements</p>
-            <h2>Functional requirements describe what the system must do</h2>
+            <p class="eyebrow">Lifecycle stages</p>
+            <h2>Common stages and what each produces</h2>
           </div>
-          <div class="data-table three-col" role="table" aria-label="Functional requirement examples">
-            <div class="table-row table-head"><div>Vague request</div><div>Functional requirement</div><div>Why stronger</div></div>
-            <div class="table-row"><div>manage bookings</div><div>allow teachers to create, edit and cancel room bookings</div><div>states actions and user</div></div>
-            <div class="table-row"><div>avoid clashes</div><div>reject a booking if the room is already booked for that time</div><div>states exact rule</div></div>
-            <div class="table-row"><div>show information</div><div>display a timetable for a selected room and date</div><div>states output and filter</div></div>
+          <div class="data-table four-col" role="table" aria-label="Lifecycle stages">
+            <div class="table-row table-head"><div>Stage</div><div>Main activity</div><div>Typical artefact</div><div>Risk if weak</div></div>
+            <div class="table-row"><div>Analysis</div><div>find user needs and requirements</div><div>requirements specification</div><div>wrong system is built</div></div>
+            <div class="table-row"><div>Design</div><div>plan data, interface and algorithms</div><div>design specification</div><div>implementation lacks direction</div></div>
+            <div class="table-row"><div>Coding</div><div>implement the design in program code</div><div>program modules</div><div>design not realised correctly</div></div>
+            <div class="table-row"><div>Testing</div><div>find faults and check requirements</div><div>test plan/results</div><div>faults reach users</div></div>
+            <div class="table-row"><div>Maintenance</div><div>fix, adapt or improve after release</div><div>updates/change log</div><div>system becomes unsuitable</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start functional -->
-        <section class="panel explanation-panel" id="explanation-functional" data-explains="functional" data-explanation-kind="mechanism" aria-labelledby="explanation-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="functional">
-          <h2 class="explanation-sr-only" id="explanation-functional-title">Functional requirements describe what the system must do</h2>
+        <!-- stage10-explanation:start stages -->
+        <section class="panel explanation-panel" id="explanation-stages" data-explains="stages" data-explanation-kind="process" aria-labelledby="explanation-stages-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <h2 class="explanation-sr-only" id="explanation-stages-title">How one stage supplies the next</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-functional.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Functional requirements describe what the system must do with a structured visual model." />
-            <figcaption class="explanation-sr-only">Functional requirements describe what the system must do: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-stages.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How one stage supplies the next through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How one stage supplies the next: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Functional requirements</li><li><strong>Lesson fact:</strong> Vague request</li><li><strong>Lesson fact:</strong> Functional requirement</li><li><strong>Lesson fact:</strong> Why stronger</li><li><strong>Lesson fact:</strong> manage bookings</li><li><strong>Lesson fact:</strong> allow teachers to create, edit and cancel room bookings</li><li><strong>Lesson fact:</strong> states actions and user</li><li><strong>Lesson fact:</strong> avoid clashes</li><li><strong>Lesson fact:</strong> reject a booking if the room is already booked for that time</li><li><strong>Lesson fact:</strong> states exact rule</li><li><strong>Lesson fact:</strong> show information</li><li><strong>Lesson fact:</strong> display a timetable for a selected room and date</li></ol>
+            <ol><li><strong>Mechanism:</strong> Analysis defines the problem and required outcomes.</li><li><strong>Reason:</strong> Design translates requirements into components, data and interfaces.</li><li><strong>Result:</strong> Implementation and testing create and check the resulting system.</li></ol>
 
+            <p><strong>Analogy:</strong> A specification becomes a plan, then a build, then evidence of fitness.</p>
+            <p><strong>Boundary:</strong> Feedback may return to an earlier stage when evidence exposes a bad assumption.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end functional -->
-        <section class="panel" id="non-functional" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="non-functional">
+        <!-- stage10-explanation:end stages -->
+        <section class="panel" id="waterfall" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
-            <p class="eyebrow">Non-functional requirements</p>
-            <h2>Non-functional requirements describe qualities or constraints</h2>
-          </div>
-          <div class="data-table three-col" role="table" aria-label="Non-functional requirement examples">
-            <div class="table-row table-head"><div>Quality</div><div>Measurable requirement</div><div>Possible evidence</div></div>
-            <div class="table-row"><div>performance</div><div>room search results display within 2 seconds</div><div>timed test</div></div>
-            <div class="table-row"><div>usability</div><div>a new teacher can create a booking in under 2 minutes after one demonstration</div><div>user trial</div></div>
-            <div class="table-row"><div>security</div><div>only staff with valid login credentials can create bookings</div><div>access test</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start non-functional -->
-        <section class="panel explanation-panel" id="explanation-non-functional" data-explains="non-functional" data-explanation-kind="mechanism" aria-labelledby="explanation-non-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="non-functional">
-          <h2 class="explanation-sr-only" id="explanation-non-functional-title">Non-functional requirements describe qualities or constraints</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-non-functional.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Non-functional requirements describe qualities or constraints with a structured visual model." />
-            <figcaption class="explanation-sr-only">Non-functional requirements describe qualities or constraints: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Non-functional requirements</li><li><strong>Lesson fact:</strong> Measurable requirement</li><li><strong>Lesson fact:</strong> Possible evidence</li><li><strong>Lesson fact:</strong> performance</li><li><strong>Lesson fact:</strong> room search results display within 2 seconds</li><li><strong>Lesson fact:</strong> timed test</li><li><strong>Lesson fact:</strong> usability</li><li><strong>Lesson fact:</strong> a new teacher can create a booking in under 2 minutes after one demonstration</li><li><strong>Lesson fact:</strong> user trial</li><li><strong>Lesson fact:</strong> security</li><li><strong>Lesson fact:</strong> only staff with valid login credentials can create bookings</li><li><strong>Lesson fact:</strong> access test</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end non-functional -->
-        <section class="panel" id="success" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="success">
-          <div class="section-title">
-            <p class="eyebrow">Success criteria</p>
-            <h2>Success criteria make evaluation possible</h2>
+            <p class="eyebrow">Waterfall model</p>
+            <h2>Waterfall moves through stages in a planned sequence</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Weak</h3>
-              <p>“The system should be easy to use.”</p>
+              <h3>Useful when</h3>
+              <p>Requirements are stable, the project is well understood, and documentation/sign-off are important.</p>
             </article>
             <article>
-              <h3>Stronger</h3>
-              <p>“At least 8 out of 10 teachers can create a booking without help in under 2 minutes.”</p>
+              <h3>Risk</h3>
+              <p>Late requirement changes can be costly because earlier stages may need to be revisited.</p>
             </article>
           </div>
-          <div class="callout">A success criterion should be specific enough that two people can test it and reach the same conclusion.</div>
         </section>
 
-        <!-- stage10-explanation:start success -->
-        <section class="panel explanation-panel" id="explanation-success" data-explains="success" data-explanation-kind="mechanism" aria-labelledby="explanation-success-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="success">
-          <h2 class="explanation-sr-only" id="explanation-success-title">Success criteria make evaluation possible</h2>
+        <!-- stage10-explanation:start waterfall -->
+        <section class="panel explanation-panel" id="explanation-waterfall" data-explains="waterfall" data-explanation-kind="tradeoff" aria-labelledby="explanation-waterfall-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <h2 class="explanation-sr-only" id="explanation-waterfall-title">Why sequence helps and resists change</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-success.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Success criteria make evaluation possible with a structured visual model." />
-            <figcaption class="explanation-sr-only">Success criteria make evaluation possible: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-waterfall.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why sequence helps and resists change through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why sequence helps and resists change: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Success criteria</li><li><strong>Lesson fact:</strong> “The system should be easy to use.”</li><li><strong>Lesson fact:</strong> Stronger</li><li><strong>Lesson fact:</strong> “At least 8 out of 10 teachers can create a booking without help in under 2 minutes.”</li><li><strong>Lesson fact:</strong> A success criterion should be specific enough that two people can test it and reach the same conclusion.</li></ol>
+            <ol><li><strong>Mechanism:</strong> A stage is reviewed before the next major stage begins.</li><li><strong>Reason:</strong> Early agreement supports budgets, contracts and traceable approvals.</li><li><strong>Result:</strong> Late change crosses completed boundaries and causes expensive rework.</li></ol>
 
+            <p><strong>Analogy:</strong> Changing foundations after upper floors exist is harder than changing a drawing.</p>
+            <p><strong>Boundary:</strong> Waterfall suits stable requirements; sequence alone does not guarantee quality.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end success -->
-        <section class="panel" id="acceptance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acceptance">
+        <!-- stage10-explanation:end waterfall -->
+        <section class="panel" id="iterative" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
-            <p class="eyebrow">Acceptance tests</p>
-            <h2>Acceptance tests check whether requirements are met</h2>
+            <p class="eyebrow">Iterative development</p>
+            <h2>Iterative models build, review and refine through cycles</h2>
           </div>
-          <div class="data-table four-col" role="table" aria-label="Acceptance test examples">
-            <div class="table-row table-head"><div>Requirement</div><div>Test data/action</div><div>Expected result</div><div>Evidence</div></div>
-            <div class="table-row"><div>reject double booking</div><div>try to book Room 12 at an occupied time</div><div>booking rejected with message</div><div>test result screenshot/log</div></div>
-            <div class="table-row"><div>search within 2 seconds</div><div>search all rooms for Monday period 3</div><div>results shown within 2 seconds</div><div>timed test</div></div>
-            <div class="table-row"><div>staff-only bookings</div><div>try booking as guest account</div><div>access denied</div><div>security test result</div></div>
+          <div class="cycle-strip" aria-label="Iterative cycle">
+            <span>Analyse</span><span>Design</span><span>Build</span><span>Test</span><span>Review</span>
           </div>
+          <div class="callout">Each iteration can improve requirements, design or implementation. The loop is not indecision; it is controlled learning.</div>
         </section>
 
-        <!-- stage10-explanation:start acceptance -->
-        <section class="panel explanation-panel" id="explanation-acceptance" data-explains="acceptance" data-explanation-kind="mechanism" aria-labelledby="explanation-acceptance-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="acceptance">
-          <h2 class="explanation-sr-only" id="explanation-acceptance-title">Acceptance tests check whether requirements are met</h2>
+        <!-- stage10-explanation:start iterative -->
+        <section class="panel explanation-panel" id="explanation-iterative" data-explains="iterative" data-explanation-kind="process" aria-labelledby="explanation-iterative-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <h2 class="explanation-sr-only" id="explanation-iterative-title">Why repeated cycles expose mistakes</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-acceptance.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Acceptance tests check whether requirements are met with a structured visual model." />
-            <figcaption class="explanation-sr-only">Acceptance tests check whether requirements are met: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-iterative.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why repeated cycles expose mistakes through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why repeated cycles expose mistakes: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Acceptance tests</li><li><strong>Lesson fact:</strong> Requirement</li><li><strong>Lesson fact:</strong> Test data/action</li><li><strong>Lesson fact:</strong> Expected result</li><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> reject double booking</li><li><strong>Lesson fact:</strong> try to book Room 12 at an occupied time</li><li><strong>Lesson fact:</strong> booking rejected with message</li><li><strong>Lesson fact:</strong> test result screenshot/log</li><li><strong>Lesson fact:</strong> search within 2 seconds</li><li><strong>Lesson fact:</strong> search all rooms for Monday period 3</li><li><strong>Lesson fact:</strong> results shown within 2 seconds</li></ol>
+            <ol><li><strong>Mechanism:</strong> Build a limited version around a defined goal.</li><li><strong>Reason:</strong> Review evidence from users, tests or prototypes.</li><li><strong>Result:</strong> Feed the findings into the next improved cycle.</li></ol>
 
+            <p><strong>Analogy:</strong> A model is built, inspected and revised before the full structure is fixed.</p>
+            <p><strong>Boundary:</strong> Repeated work without a review goal is rework, not controlled iteration.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end acceptance -->
-        <section class="panel" id="stakeholders" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stakeholders">
+        <!-- stage10-explanation:end iterative -->
+        <section class="panel" id="rad" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
-            <p class="eyebrow">Stakeholders</p>
-            <h2>Different users reveal different requirements</h2>
+            <p class="eyebrow">Rapid application development</p>
+            <h2>RAD uses rapid prototypes, time boxes and frequent user involvement</h2>
           </div>
           <div class="card-grid">
-            <article><h3>Teachers</h3><p>Need quick booking and clear room availability.</p></article>
-            <article><h3>Admin staff</h3><p>Need reports, conflict resolution and permission controls.</p></article>
-            <article><h3>IT support</h3><p>Need backup, user management and maintainable configuration.</p></article>
+            <article><h3>Rapid prototyping</h3><p>Build a working model quickly so requirements and interface decisions become visible.</p></article>
+            <article><h3>Time-boxing</h3><p>Complete a defined set of work inside a short fixed period, then review the result.</p></article>
+            <article><h3>User involvement</h3><p>Users review prototypes frequently and their feedback changes the next version.</p></article>
+          </div>
+          <div class="callout">RAD can respond quickly when informed users are available, but may be unsuitable where exhaustive assurance and stable architecture are more important than speed.</div>
+        </section>
+
+        <section class="panel" id="agile" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <div class="section-title">
+            <p class="eyebrow">Extension: not a replacement for RAD</p>
+            <h2>Agile development emphasises short cycles and user feedback</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Frequent delivery</h3><p>Small working increments are produced and reviewed.</p></article>
+            <article><h3>User feedback</h3><p>Users can comment early, before the wrong system becomes large.</p></article>
+            <article><h3>Change handling</h3><p>Changing requirements can be handled more flexibly than in a rigid sequence.</p></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start stakeholders -->
-        <section class="panel explanation-panel" id="explanation-stakeholders" data-explains="stakeholders" data-explanation-kind="mechanism" aria-labelledby="explanation-stakeholders-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="stakeholders">
-          <h2 class="explanation-sr-only" id="explanation-stakeholders-title">Different users reveal different requirements</h2>
+        <!-- stage10-explanation:start agile -->
+        <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" aria-labelledby="explanation-agile-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <h2 class="explanation-sr-only" id="explanation-agile-title">Why short feedback cycles support change</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-stakeholders.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Different users reveal different requirements with a structured visual model." />
-            <figcaption class="explanation-sr-only">Different users reveal different requirements: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-agile.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why short feedback cycles support change through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why short feedback cycles support change: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Stakeholders</li><li><strong>Lesson fact:</strong> Teachers</li><li><strong>Lesson fact:</strong> Need quick booking and clear room availability.</li><li><strong>Lesson fact:</strong> Admin staff</li><li><strong>Lesson fact:</strong> Need reports, conflict resolution and permission controls.</li><li><strong>Lesson fact:</strong> IT support</li><li><strong>Lesson fact:</strong> Need backup, user management and maintainable configuration.</li></ol>
+            <ol><li><strong>Mechanism:</strong> A small increment makes assumptions visible quickly.</li><li><strong>Reason:</strong> Frequent stakeholder feedback reprioritises the next increment.</li><li><strong>Result:</strong> Less unreviewed work depends on a mistaken requirement.</li></ol>
 
+            <p><strong>Analogy:</strong> Regular design reviews correct direction while only a small section is built.</p>
+            <p><strong>Boundary:</strong> Agile still requires architecture, testing and available informed stakeholders.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end stakeholders -->
-        <section class="panel" id="rewriter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rewriter">
+        <!-- stage10-explanation:end agile -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
-            <p class="eyebrow">Interactive rewriter</p>
-            <h2>Turn vague requests into stronger requirements</h2>
+            <p class="eyebrow">Comparison</p>
+            <h2>Choose a lifecycle model using the project requirements</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Lifecycle model comparison">
+            <div class="table-row table-head"><div>Situation</div><div>Suitable approach</div><div>Reason</div></div>
+            <div class="table-row"><div>stable legal payroll rules</div><div>waterfall or structured model</div><div>clear requirements and documentation matter</div></div>
+            <div class="table-row"><div>new app with uncertain user preferences and available users</div><div>RAD</div><div>rapid prototypes and time-boxed feedback refine requirements</div></div>
+            <div class="table-row"><div>safety-critical control system</div><div>planned lifecycle with strong testing</div><div>risk and evidence need tight control</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">How project conditions choose a model</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How project conditions choose a model through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How project conditions choose a model: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Stable regulated work values traceability and formal approval.</li><li><strong>Reason:</strong> Uncertain user-facing work values short feedback distance.</li><li><strong>Result:</strong> Dependencies, risk and stakeholder availability constrain the viable choice.</li></ol>
+
+            <p><strong>Analogy:</strong> Choose a planning rhythm that matches how often reliable evidence arrives.</p>
+            <p><strong>Boundary:</strong> No lifecycle model is inherently fastest or best for every project.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
+        <section class="panel" id="artefacts" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <div class="section-title">
+            <p class="eyebrow">Artefacts</p>
+            <h2>Exam answers often mention documents or outputs from stages</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Lifecycle artefacts">
+            <div class="table-row table-head"><div>Document/output</div><div>Stage</div><div>Use</div></div>
+            <div class="table-row"><div>requirements specification</div><div>analysis</div><div>states what system must do</div></div>
+            <div class="table-row"><div>design specification</div><div>design</div><div>guides implementation</div></div>
+            <div class="table-row"><div>test plan and results</div><div>testing</div><div>provide evidence against expected results</div></div>
+            <div class="table-row"><div>user documentation</div><div>implementation/release</div><div>helps users operate the system</div></div>
+            <div class="table-row"><div>maintenance log</div><div>maintenance</div><div>records fixes and changes</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start artefacts -->
+        <section class="panel explanation-panel" id="explanation-artefacts" data-explains="artefacts" data-explanation-kind="mechanism" aria-labelledby="explanation-artefacts-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <h2 class="explanation-sr-only" id="explanation-artefacts-title">Why artefacts make decisions traceable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-artefacts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why artefacts make decisions traceable through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why artefacts make decisions traceable: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Requirements define what successful behaviour means.</li><li><strong>Reason:</strong> Designs and tests link implementation choices to those requirements.</li><li><strong>Result:</strong> Traceability exposes every item affected by a later change.</li></ol>
+
+            <p><strong>Analogy:</strong> A linked evidence trail shows which plans and checks depend on one decision.</p>
+            <p><strong>Boundary:</strong> An outdated artefact can mislead more than an absent one.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end artefacts -->
+        <section class="panel" id="model-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+          <div class="section-title">
+            <p class="eyebrow">Interactive model selector</p>
+            <h2>Choose a project situation and compare model suitability</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Vague request
-              <select id="rewriteSelect">
-                <option value="easy">Make it easy to use</option>
-                <option value="fast">Make it fast</option>
-                <option value="safe">Make it secure</option>
+              Situation
+              <select id="modelSelect">
+                <option value="stable">Stable requirements, formal sign-off required</option>
+                <option value="uncertain">Unclear user preferences, early feedback needed</option>
+                <option value="critical">High-risk system, strong evidence and testing needed</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="rewriteBtn">Rewrite</button>
+            <button class="primary-button" type="button" id="modelBtn">Suggest model</button>
           </div>
-          <div id="rewriteOutput" class="trace-output" aria-live="polite"></div>
+          <div id="modelOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start rewriter -->
-        <section class="panel explanation-panel" id="explanation-rewriter" data-explains="rewriter" data-explanation-kind="mechanism" aria-labelledby="explanation-rewriter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="rewriter">
-          <h2 class="explanation-sr-only" id="explanation-rewriter-title">Turn vague requests into stronger requirements</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-rewriter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague requests into stronger requirements with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn vague requests into stronger requirements: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive rewriter</li><li><strong>Lesson fact:</strong> Vague request</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end rewriter -->
-        <section class="panel" id="criteria-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="criteria-tool">
+        <section class="panel" id="order-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
-            <p class="eyebrow">Criteria checker</p>
-            <h2>Is the criterion testable?</h2>
+            <p class="eyebrow">Stage order checker</p>
+            <h2>Spot the stage that should usually happen first</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Criterion
-              <select id="criteriaSelect">
-                <option value="vague">The system should be reliable.</option>
-                <option value="measurable">The system should process a booking request in under 3 seconds.</option>
-                <option value="opinion">The interface should look beautiful.</option>
+              Pair
+              <select id="orderSelect">
+                <option value="analysis-design">Analysis or design?</option>
+                <option value="design-code">Design or coding?</option>
+                <option value="test-maintain">Testing or maintenance?</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="criteriaBtn">Check</button>
+            <button class="primary-button" type="button" id="orderBtn">Check order</button>
           </div>
-          <div id="criteriaOutput" class="trace-output" aria-live="polite"></div>
+          <div id="orderOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start criteria-tool -->
-        <section class="panel explanation-panel" id="explanation-criteria-tool" data-explains="criteria-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="criteria-tool">
-          <h2 class="explanation-sr-only" id="explanation-criteria-tool-title">Is the criterion testable?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-criteria-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Is the criterion testable? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Is the criterion testable?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Criteria checker</li><li><strong>Lesson fact:</strong> Criterion</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end criteria-tool -->
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>From request to requirement to acceptance test</h2>
+            <h2>Apply the lifecycle to realistic project decisions</h2>
           </div>
           <div class="tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab-button active" type="button" data-example="booking">Booking</button>
-            <button class="tab-button" type="button" data-example="library">Library</button>
-            <button class="tab-button" type="button" data-example="security">Security</button>
+            <button class="tab-button active" type="button" data-example="booking">Booking system</button>
+            <button class="tab-button" type="button" data-example="change">Changing requirements</button>
+            <button class="tab-button" type="button" data-example="maintenance">Maintenance</button>
           </div>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
-            <h2>Instant checking: requirement language</h2>
+            <h2>Instant checking: lifecycle terms and consequences</h2>
           </div>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix weak analysis answers</h2>
+            <h2>Fix weak lifecycle explanations</h2>
           </div>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style requirements questions with expandable MS</h2>
+            <h2>Cambridge-style lifecycle questions with expandable MS</h2>
             <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
           </div>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Requirement</strong><span>states what the system must do or what quality it must have</span></div>
-            <div><strong>Criterion</strong><span>states how success will be judged</span></div>
-            <div><strong>Acceptance test</strong><span>provides evidence that a requirement has been met</span></div>
+            <div><strong>Stages</strong><span>analysis, design, coding, testing and maintenance</span></div>
+            <div><strong>Models</strong><span>waterfall is sequential; iterative uses repeated versions; RAD uses rapid prototypes, time boxes and user involvement</span></div>
+            <div><strong>Marks</strong><span>link each stage to an artefact, a user, and a risk if skipped</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Make vague requests testable</h2>
+            <h2>Use the lifecycle, do not just list it</h2>
           </div>
           <ol class="homework-list">
-            <li>Write three functional and three non-functional requirements for a school booking system.</li>
-            <li>For each non-functional requirement, write one measurable success criterion and one acceptance test.</li>
-            <li>Rewrite the vague request “make it reliable” into two testable criteria.</li>
+            <li>For a school booking system, write two measurable requirements and state which lifecycle stage produces them.</li>
+            <li>Compare waterfall and iterative development for a mobile app with uncertain user preferences.</li>
+            <li>Answer a 6-mark question explaining why testing results or stakeholder review may send a project back to design.</li>
           </ol>
         </section>
       </div>
     </main>
 
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="./app.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

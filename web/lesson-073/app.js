@@ -1,122 +1,121 @@
 const scenarioMap = {
-  fitness: {
-    result: "Main issue: over-collection of personal data.",
-    risk: "The app's fitness purpose may justify step count or heart-rate data, but microphone and contacts are not clearly necessary. Extra data increases privacy risk if misused, shared or breached.",
-    safeguard: "Safeguard: use data minimisation and permission choices. Explain each permission and allow the app to work without unnecessary access.",
+  schoolMonitor: {
+    result: "Ethical tension: safeguarding and discipline vs student privacy and trust.",
+    benefit: "Benefit: the school may identify bullying, unsafe websites or exam malpractice more quickly, protecting students and the learning environment.",
+    concern: "Concern: recording all browsing may be disproportionate if students are not told clearly, if data is kept too long, or if monitoring continues outside school use.",
   },
-  school: {
-    result: "Main issue: surveillance scope and transparency.",
-    risk: "Monitoring can support safeguarding, but recording all browsing may include personal activity and reduce trust if students are not told what is recorded.",
-    safeguard: "Safeguard: make monitoring transparent, limit it to school devices/accounts, restrict access to safeguarding staff and set retention limits.",
+  facial: {
+    result: "Ethical tension: crime prevention vs privacy, consent and possible misidentification.",
+    benefit: "Benefit: the shop may deter theft and identify banned individuals, protecting staff and customers.",
+    concern: "Concern: customers may not reasonably expect biometric analysis, and false matches could lead to unfair suspicion.",
   },
-  cctv: {
-    result: "Main issue: public surveillance and identification.",
-    risk: "CCTV analytics may improve safety, but can track people who have done nothing wrong and may cause unfair suspicion if identification is inaccurate.",
-    safeguard: "Safeguard: use clear notices, limited retention, access logs, human review and strict purpose limitation.",
+  aiMarking: {
+    result: "Ethical tension: efficiency and consistency vs fairness, transparency and appeal.",
+    benefit: "Benefit: automated support may reduce marking time and help detect patterns across many scripts.",
+    concern: "Concern: students may be treated unfairly if the system misunderstands unusual but valid answers or if there is no human review.",
   },
-  workplace: {
-    result: "Main issue: intrusive workplace monitoring.",
-    risk: "Keystroke and screenshot tracking may collect sensitive personal information and create pressure, even when workers are doing legitimate tasks.",
-    safeguard: "Safeguard: monitor only necessary work metrics, explain the purpose, avoid private content and provide clear review/appeal routes.",
+  healthApp: {
+    result: "Ethical tension: personalised health advice vs sensitive data collection.",
+    benefit: "Benefit: the app may give useful warnings or advice by analysing sleep, movement and location patterns.",
+    concern: "Concern: health and location data are sensitive; collecting more than necessary or sharing it without clear consent is ethically weak.",
   },
-  shop: {
-    result: "Main issue: biometric data and possible misidentification.",
-    risk: "Facial recognition processes biometric data. False matches may unfairly identify a customer as suspicious.",
-    safeguard: "Safeguard: keep watchlists limited, use human confirmation, display clear notices and delete data when no longer needed.",
+  workTracker: {
+    result: "Ethical tension: productivity management vs worker autonomy and pressure.",
+    benefit: "Benefit: managers may identify bottlenecks and support workload planning.",
+    concern: "Concern: constant tracking may reduce trust, create stress and measure quantity rather than quality of work.",
   },
 };
 
-const policyMap = {
-  forever: {
-    result: "Missing principle: retention limit.",
-    reason: "Keeping logs forever increases risk if data is breached or misused. A defined retention period should match the purpose of collection.",
+const builderText = {
+  benefit: {
+    safety: "improves safety and safeguarding",
+    efficiency: "saves time and reduces manual workload",
+    access: "improves access to a useful service",
   },
-  everyone: {
-    result: "Missing principle: access control / least privilege.",
-    reason: "Not all staff need full records. Access should be restricted to authorised roles, and downloads should be logged or limited.",
+  concern: {
+    privacy: "may collect more personal data than users expect",
+    bias: "may treat some users unfairly if data or rules are biased",
+    pressure: "may create pressure or reduce trust",
   },
-  hidden: {
-    result: "Missing principle: transparency and informed consent.",
-    reason: "Users should be told that location data is collected, why it is needed and how it will be used or shared.",
-  },
-  extra: {
-    result: "Missing principle: data minimisation.",
-    reason: "A single-player fitness challenge does not normally need contacts. Collecting unnecessary data creates avoidable privacy risk.",
+  safeguard: {
+    transparent: "users are told clearly what is collected and why",
+    limited: "data collection is limited to what is necessary",
+    appeal: "there is a human review or appeal process",
   },
 };
 
 const examples = {
-  fitness: {
-    title: "Example 1: Fitness app permissions",
-    problem: "A fitness app asks for location, contacts and microphone access.",
+  monitoring: {
+    title: "Example 1: School monitoring software",
+    problem: "Evaluate whether a school should monitor student laptop activity.",
     steps: [
-      "Data: location may help route tracking, but contacts and microphone may be unnecessary for basic fitness tracking.",
-      "Risk: unnecessary permissions increase the amount of personal data exposed if the app is misused or breached.",
-      "Stakeholder impact: users may lose privacy or be tracked in ways they did not expect.",
-      "Safeguard: explain each permission, collect only necessary data and allow users to opt out of optional features.",
+      "For: monitoring can help protect students from unsafe websites, bullying or misuse of school devices.",
+      "Against: students have privacy interests, especially if monitoring records personal browsing outside school tasks.",
+      "Safeguard: monitoring should be transparent, limited to school devices/accounts and have clear retention rules.",
+      "Judgement: it may be justified for safeguarding if it is proportionate and explained clearly, but blanket secret monitoring is ethically weak.",
     ],
   },
-  school: {
-    title: "Example 2: School monitoring",
-    problem: "A school records website visits on student devices.",
+  facial: {
+    title: "Example 2: Facial recognition in a shop",
+    problem: "A shop wants to use facial recognition to identify known shoplifters.",
     steps: [
-      "Purpose: monitoring may help safeguarding and prevent misuse of school systems.",
-      "Risk: broad monitoring can record personal activity and reduce student trust.",
-      "Stakeholder impact: students, parents and school staff need clear rules about what is collected.",
-      "Safeguard: publish the policy, limit monitoring to school accounts, restrict log access and delete logs after a defined period.",
+      "For: it may protect staff, customers and property by reducing theft or threatening behaviour.",
+      "Against: customers may not consent to biometric processing and false matches could cause unfair treatment.",
+      "Safeguard: clear notices, limited watchlists, human confirmation and data minimisation reduce ethical risk.",
+      "Judgement: the system is more defensible if narrowly targeted and checked by humans, not used for general customer profiling.",
     ],
   },
-  city: {
-    title: "Example 3: Public CCTV analytics",
-    problem: "A city uses computer systems to analyse CCTV footage.",
+  automation: {
+    title: "Example 3: Automated decision support",
+    problem: "An organisation uses an algorithm to rank applicants for interviews.",
     steps: [
-      "Purpose: analytics may support public safety and faster incident response.",
-      "Risk: people may be tracked in public without meaningful choice, including people not suspected of wrongdoing.",
-      "Stakeholder impact: citizens benefit from safety but may object to continuous surveillance.",
-      "Safeguard: use clear notices, limited retention, audit trails and human review before action is taken.",
+      "For: automation can process applications consistently and reduce workload.",
+      "Against: biased training data or poorly chosen criteria may unfairly exclude suitable applicants.",
+      "Safeguard: the organisation should audit outcomes, explain criteria and allow human review.",
+      "Judgement: decision support may be acceptable, but fully automatic rejection without transparency or appeal is hard to justify.",
     ],
   },
-  workplace: {
-    title: "Example 4: Workplace tracking",
-    problem: "An employer records screenshots and keystrokes throughout the day.",
+  data: {
+    title: "Example 4: Health app data collection",
+    problem: "A health app collects location, sleep and activity data.",
     steps: [
-      "Purpose: the employer may want to manage productivity or investigate misuse of systems.",
-      "Risk: constant tracking may capture personal messages or create unreasonable pressure.",
-      "Stakeholder impact: employees may lose trust and feel watched even during legitimate work.",
-      "Safeguard: use proportionate monitoring, explain the policy, avoid private content and allow workers to challenge errors.",
+      "For: detailed data can produce useful advice and detect health patterns.",
+      "Against: location and health data are sensitive and may reveal private habits.",
+      "Safeguard: collect only necessary data, ask for informed consent and state how long data is kept.",
+      "Judgement: collection is more ethical when users understand the purpose and can control or delete their data.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What term means control over how personal information is collected, used and shared?", accepted: ["privacy"], answer: "Privacy" },
-  { id: "p2", prompt: "What type of data can identify a person directly or indirectly?", accepted: ["personal data"], answer: "Personal data" },
-  { id: "p3", prompt: "What term describes collecting only the data needed for a stated purpose?", accepted: ["data minimisation", "data minimization", "minimisation", "minimization"], answer: "Data minimisation" },
-  { id: "p4", prompt: "What term describes telling users what data is collected and why?", accepted: ["transparency", "transparent"], answer: "Transparency" },
-  { id: "p5", prompt: "What term describes using data only for the reason stated?", accepted: ["purpose limitation", "limited purpose"], answer: "Purpose limitation" },
-  { id: "p6", prompt: "What should happen when personal data is no longer needed?", accepted: ["delete", "deleted", "deletion", "erase", "erased", "remove", "removed"], answer: "It should be deleted/erased/removed" },
-  { id: "p7", prompt: "Name one example of sensitive data.", accepted: ["health", "medical", "biometric", "location", "financial", "religion", "ethnicity"], answer: "Health / biometric / location / financial data" },
-  { id: "p8", prompt: "Which safeguard limits who can view personal data?", accepted: ["access control", "access rights", "permissions"], answer: "Access control / access rights" },
-  { id: "p9", prompt: "Is secret monitoring usually easy to justify ethically? yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Name one possible harm from surveillance.", accepted: ["privacy", "loss of privacy", "pressure", "stress", "misidentification", "discrimination", "reduced trust", "tracking"], answer: "Loss of privacy / pressure / misidentification / reduced trust" },
+  { id: "p1", prompt: "What word means a person or group affected by a computing decision?", accepted: ["stakeholder"], answer: "Stakeholder" },
+  { id: "p2", prompt: "What term describes principles about right and wrong behaviour?", accepted: ["ethics"], answer: "Ethics" },
+  { id: "p3", prompt: "What word means that a response should not be more intrusive than needed?", accepted: ["proportionality", "proportionate"], answer: "Proportionality / proportionate" },
+  { id: "p4", prompt: "Name one stakeholder in a school monitoring scenario.", accepted: ["student", "students", "teacher", "teachers", "parents", "school", "staff"], answer: "Students / teachers / parents / school staff" },
+  { id: "p5", prompt: "Should an ethics answer include only one side? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p6", prompt: "What word describes telling users clearly what data is collected and why?", accepted: ["transparency", "transparent"], answer: "Transparency" },
+  { id: "p7", prompt: "Name one safeguard for an automated decision system.", accepted: ["human review", "appeal", "audit", "testing", "transparency", "explanation"], answer: "Human review / appeal / audit / transparency" },
+  { id: "p8", prompt: "What type of answer should finish with a reasoned conclusion?", accepted: ["evaluation", "evaluate", "balanced evaluation"], answer: "Evaluation / balanced evaluation" },
+  { id: "p9", prompt: "Is 'because I dislike it' enough for a Cambridge-style ethics mark? yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one possible ethical concern about collecting location data.", accepted: ["privacy", "surveillance", "tracking", "consent", "misuse", "data sharing"], answer: "Privacy / surveillance / tracking / consent / misuse" },
 ];
 
 const mistakes = [
   {
-    wrong: "The app can collect the data because the user clicked agree.",
-    fix: "Consent should be informed and specific. If the user was not told clearly what is collected and why, the agreement is ethically weak.",
+    wrong: "The system is ethical because it is legal.",
+    fix: "Legal compliance may help, but ethics also considers fairness, harm, consent, transparency and proportionality. A legal action can still raise ethical concerns.",
   },
   {
-    wrong: "Surveillance is always wrong because privacy is important.",
-    fix: "Privacy is important, but surveillance may be justified for safety if it is proportionate, transparent, limited and accountable.",
+    wrong: "It is wrong because privacy is always more important than safety.",
+    fix: "A balanced answer weighs privacy against safety. The judgement should depend on purpose, proportionality, transparency, data limits and safeguards.",
   },
   {
-    wrong: "Data protection means encrypting the database.",
-    fix: "Encryption helps security, but data protection also includes minimisation, purpose limitation, access control, retention limits, accuracy and transparency.",
+    wrong: "The company benefits, so the system should be used.",
+    fix: "Ethics requires more than organisational benefit. Consider users, workers, customers and wider society, including possible harms or unfair treatment.",
   },
   {
-    wrong: "Keeping data forever is useful because it might help later.",
-    fix: "Indefinite retention increases risk. Data should be kept only as long as needed for the stated purpose, unless there is a clear justified reason.",
+    wrong: "AI decisions are fair because computers do not have feelings.",
+    fix: "Automated systems can still be unfair if their data, rules or design reflect bias. Human review, audit and appeal processes may be needed.",
   },
 ];
 
@@ -130,96 +129,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A mobile fitness app collects step count, location and contacts. Discuss privacy issues raised by this data collection.",
-    answer: "Step count and location may help the app provide fitness tracking or route analysis, so some collection can benefit users. However, contacts may not be necessary for the main purpose and may expose information about people who have not used the app. Location data is sensitive because it can reveal routines and places visited. The app should explain what data is collected and why, collect only necessary data, make optional features separate, and allow users to control or delete data.",
+    prompt: "A school wants to monitor activity on student laptops. Discuss ethical issues raised by this decision.",
+    answer: "Monitoring may help the school protect students from unsafe websites, cyberbullying or misuse of school devices, so it can support safeguarding and responsible use. However, students are stakeholders with privacy interests, and recording all activity may be intrusive if it includes personal browsing or happens without clear notice. Parents and teachers may also be affected because they expect safety and trust. The decision is more justified if monitoring is transparent, limited to school accounts or school time, and data is retained only for a clear purpose.",
     marking: [
-      { mark: "B1", text: "valid data item identified, such as step count/location/contacts" },
-      { mark: "B1", text: "purpose or benefit linked to fitness tracking/personalised service" },
-      { mark: "B1", text: "privacy concern such as unnecessary contacts/location sensitivity" },
-      { mark: "B1", text: "concern explained, such as routines revealed or third-party data exposed" },
-      { mark: "B1", text: "safeguard such as transparency/consent/minimisation/user control/deletion" },
-      { mark: "B1", text: "safeguard linked to reducing named privacy risk" },
+      { mark: "B1", text: "valid stakeholder identified, such as students/school/parents/teachers" },
+      { mark: "B1", text: "benefit explained, such as safeguarding/security/preventing misuse" },
+      { mark: "B1", text: "privacy/trust/consent concern identified" },
+      { mark: "B1", text: "concern explained in scenario, such as intrusive monitoring or unclear collection" },
+      { mark: "B1", text: "safeguard/condition such as transparency/limited monitoring/retention rules" },
+      { mark: "B1", text: "judges whether laptop monitoring is proportionate by weighing safeguarding benefit against student privacy/trust and the stated safeguards" },
     ],
     strict: [
-      "Do not accept 'it is private' without explaining what data or harm.",
-      "Do not award minimisation for collecting all requested data without justification.",
-      "Allow opt-in/opt-out controls if linked to optional features.",
+      "Do not accept a one-word answer such as 'privacy' without explanation.",
+      "Do not award both sides for two benefits only; there must be a concern or counterargument.",
+      "Allow safety, safeguarding or preventing cyberbullying as benefits if linked to monitoring.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Explain why data minimisation is important when designing a computer system.",
-    answer: "Data minimisation means collecting only data that is necessary for the stated purpose. It reduces privacy risk because less personal data is exposed if there is a breach or misuse. It also makes it easier to justify collection to users because unnecessary information is not requested. For example, a step counter should not require microphone access unless there is a clear feature that needs it.",
+    prompt: "Explain why stakeholders should be considered when introducing a new computer system.",
+    answer: "Stakeholders are people or groups affected by the system. Considering them helps identify benefits and harms for different groups, such as users, employees, customers or the organisation. It can reveal privacy, fairness, accessibility or workload concerns that designers might miss. This supports more responsible decisions because safeguards can be added before harm occurs.",
     marking: [
-      { mark: "B1", text: "data minimisation defined as collecting only necessary data" },
-      { mark: "B1", text: "linked to stated purpose" },
-      { mark: "B1", text: "reduced risk if data is breached/misused/shared" },
-      { mark: "B1", text: "valid example of unnecessary data avoided" },
-      { mark: "B1", text: "consequence linked to privacy/trust/ethical justification" },
+      { mark: "B1", text: "stakeholder defined as person/group affected by decision/system" },
+      { mark: "B1", text: "example stakeholder given" },
+      { mark: "B1", text: "benefits and harms may differ between stakeholders" },
+      { mark: "B1", text: "ethical issue identified such as privacy/fairness/accessibility/workload" },
+      { mark: "B1", text: "consequence linked to responsible design/safeguards/reduced harm" },
     ],
     strict: [
-      "Do not accept 'collect less data' alone without necessity or purpose.",
-      "Do not award example mark for vague 'personal data' without a context.",
-      "Allow data minimization spelling.",
+      "Do not accept 'people who use it' as the only definition if wider affected groups are ignored in a broad question.",
+      "Do not award issue mark for vague 'problems' without naming a concern.",
+      "Allow indirect stakeholders such as parents, society or regulators.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A school monitors students' use of school devices. Evaluate this decision from a privacy and data protection perspective.",
-    answer: "Monitoring may be justified because it can help the school detect cyberbullying, unsafe websites or misuse of school devices. However, students are stakeholders with privacy interests, and broad monitoring may record personal activity or reduce trust if it is secret or continues outside school use. The school should be transparent about what is recorded, limit monitoring to school devices or accounts, restrict log access to authorised safeguarding staff and delete logs after a defined period. The decision is more defensible if monitoring is proportionate to safeguarding rather than blanket surveillance.",
+    prompt: "A company uses an algorithm to shortlist job applicants. Evaluate this decision.",
+    answer: "The algorithm may make shortlisting faster and more consistent, reducing workload for staff and giving applicants quicker responses. However, applicants may be treated unfairly if the algorithm uses biased data or unsuitable criteria. The company also has a responsibility to make decisions transparent enough that unfair exclusion can be challenged. The system may be acceptable as decision support if outcomes are audited and human review or appeal is available, but fully automatic rejection without explanation is ethically weak.",
     marking: [
-      { mark: "B1", text: "benefit such as safeguarding/preventing misuse/unsafe website detection" },
-      { mark: "B1", text: "benefit linked to school device context" },
-      { mark: "B1", text: "privacy/trust/over-monitoring concern" },
-      { mark: "B1", text: "concern explained using students/personal activity/secret monitoring" },
-      { mark: "B1", text: "data protection safeguard such as transparency/access restriction/retention limit/scope limit" },
-      { mark: "B1", text: "judges whether school monitoring is proportionate using its stated purpose, student privacy impact and limits on collection/access/retention" },
+      { mark: "B1", text: "benefit such as speed/consistency/reduced workload" },
+      { mark: "B1", text: "benefit linked to company/staff/applicants" },
+      { mark: "B1", text: "fairness/bias/transparency concern" },
+      { mark: "B1", text: "concern explained using applicant/job context" },
+      { mark: "B1", text: "safeguard such as audit/human review/appeal/explanation" },
+      { mark: "B1", text: "judges whether algorithmic shortlisting is acceptable using efficiency/consistency evidence and bias/transparency safeguards" },
     ],
     strict: [
-      "Do not award evaluation mark for only saying monitoring is good or bad.",
-      "Do not accept 'ask permission' without explaining what users are told or agreeing to.",
-      "Allow school safety or safeguarding as a benefit if scenario linked.",
+      "Do not accept 'AI is unbiased' as a valid point without evidence.",
+      "Do not award evaluation mark for only listing advantages.",
+      "Allow consistency as a benefit if linked to same criteria being applied.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Describe safeguards that could protect personal data stored by an organisation.",
-    answer: "Access control can restrict personal data to staff who need it for their role. Encryption can protect stored or transmitted data by making it unreadable without the key. Retention limits reduce risk by deleting data when it is no longer needed. Audit trails can record who accessed or changed data, supporting investigation and accountability. The organisation should also tell users what data is collected and why.",
+    prompt: "A health app collects location and activity data to give personalised advice. Describe ethical issues and possible safeguards.",
+    answer: "The app may benefit users by giving more accurate health advice from activity and location patterns. However, health and location data are sensitive because they can reveal private routines, habits or places visited. Users should give informed consent and be told clearly what data is collected, why it is needed and who it may be shared with. Data collection should be limited to what is necessary and users should be able to delete or control their data.",
     marking: [
-      { mark: "B1", text: "access control/permissions described" },
-      { mark: "B1", text: "encryption described" },
-      { mark: "B1", text: "retention/deletion limit described" },
-      { mark: "B1", text: "audit trail/accountability or transparency explained" },
-      { mark: "B1", text: "at least one safeguard linked to reducing misuse/unauthorised access/privacy risk" },
+      { mark: "B1", text: "benefit of personalised/accurate health advice" },
+      { mark: "B1", text: "sensitive/private nature of health or location data identified" },
+      { mark: "B1", text: "harm explained, such as revealing routines/misuse/sharing without expectation" },
+      { mark: "B1", text: "safeguard such as informed consent/transparency/data minimisation/user control" },
+      { mark: "B1", text: "safeguard linked to reducing ethical concern" },
     ],
     strict: [
-      "Do not award multiple marks for repeated wording of 'keep it secure'.",
-      "Do not accept encryption as the only data protection principle if question asks safeguards plural.",
-      "Allow authentication if linked to controlling access.",
+      "Do not accept 'collect less data' unless linked to necessity or privacy.",
+      "Do not award consent mark for vague 'ask users' without what they are agreeing to.",
+      "Allow data retention limits or deletion rights as safeguards.",
     ],
   },
   {
     title: "Question 5",
     marks: "8 marks",
-    prompt: "A city plans to use computer systems to analyse CCTV footage in public spaces. Evaluate privacy and surveillance issues.",
-    answer: "The system may help detect crime, manage emergencies and improve public safety, benefiting citizens, police and local businesses. However, it may also track people who have done nothing wrong, creating a feeling of constant surveillance and reducing privacy in public life. If facial recognition or automated identification is used, false matches could lead to unfair suspicion. The city should be transparent about the purpose, use clear notices, restrict access, keep footage for a defined period, audit use and require human review before action. The system may be justified for specific safety aims, but broad indefinite monitoring without safeguards would not be proportionate.",
+    prompt: "A city plans to use cameras and computer systems to monitor public spaces. Evaluate the ethical implications.",
+    answer: "Monitoring public spaces may improve public safety, help detect crime and support emergency response, benefiting citizens, police and local businesses. However, citizens may feel constantly watched, and the system may collect data about people who have done nothing wrong. There may also be fairness concerns if some groups are monitored more heavily or if automated identification produces false matches. The city should be transparent about the purpose, limit data retention, restrict access, audit use and provide accountability. The system may be justified for clear safety purposes, but broad or secret surveillance without safeguards is not proportionate.",
     marking: [
-      { mark: "B1", text: "benefit such as crime detection/emergency response/public safety" },
+      { mark: "B1", text: "benefit such as public safety/crime detection/emergency response" },
       { mark: "B1", text: "benefit linked to stakeholder such as citizens/police/businesses" },
       { mark: "B1", text: "privacy/surveillance concern" },
-      { mark: "B1", text: "concern explained, such as tracking innocent people/constant monitoring" },
-      { mark: "B1", text: "fairness/false match/misidentification concern if analytics used" },
-      { mark: "B1", text: "safeguard such as notices/transparency/access restriction/retention/audit/human review" },
-      { mark: "B1", text: "safeguard linked to reducing a named risk" },
-      { mark: "B1", text: "judges whether CCTV analysis is proportionate using public-safety purpose, surveillance/fairness risk and operational limits" },
+      { mark: "B1", text: "concern explained, such as constant watching/data about innocent people" },
+      { mark: "B1", text: "fairness/misidentification/discrimination concern" },
+      { mark: "B1", text: "safeguard such as transparency/access restriction/retention limit/audit/accountability" },
+      { mark: "B1", text: "safeguard linked to reducing a named concern" },
+      { mark: "B1", text: "judges whether public-space monitoring is proportionate using safety benefit, privacy/fairness risk and limits on access or retention" },
     ],
     strict: [
-      "Do not accept 'CCTV is legal' as sufficient ethical evaluation.",
-      "Do not award both concern marks for repeated privacy wording only.",
-      "Allow answers without facial recognition if they explain CCTV analytics privacy risks.",
+      "Do not accept 'cameras are good' or 'cameras are bad' without stakeholder impact.",
+      "Do not award both concern marks for repeated wording of privacy only.",
+      "Allow examples involving facial recognition if the monitoring system is computer-based.",
     ],
   },
 ];
@@ -235,10 +234,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    microphone: "Correct. Microphone access is not clearly necessary for ordinary fitness tracking, so it raises data minimisation concerns.",
-    steps: "No. Step count is directly relevant to fitness tracking; the issue is not all data, but unnecessary data.",
-    heart: "No. Heart rate can be sensitive, but it may be relevant to fitness or health features.",
-    contacts: "Contacts are suspicious too, but the explanation given is weak. Social convenience does not automatically justify collecting other people's data.",
+    balanced: "Correct. Ethics usually needs purpose, affected stakeholders, safeguards and proportionality.",
+    can: "No. Capability is not the same as ethical justification.",
+    privacy: "Too absolute. Privacy matters, but the answer should weigh it against safety and purpose.",
+    security: "No. Monitoring has security aspects, but it also raises ethical questions about privacy, trust and consent.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -249,34 +248,35 @@ function setupHook() {
   });
 }
 
-function setupScanner() {
+function setupMapper() {
   const scenario = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#scanResult");
-  const risk = document.querySelector("#scanRisk");
-  const safeguard = document.querySelector("#scanSafeguard");
-  function scan() {
+  const result = document.querySelector("#mapResult");
+  const benefit = document.querySelector("#mapBenefit");
+  const concern = document.querySelector("#mapConcern");
+  function mapScenario() {
     const item = scenarioMap[scenario.value];
     result.textContent = item.result;
-    risk.innerHTML = `<strong>Risk:</strong> ${item.risk}`;
-    safeguard.innerHTML = `<strong>Safeguard:</strong> ${item.safeguard}`;
+    benefit.innerHTML = `<strong>Benefit:</strong> ${item.benefit}`;
+    concern.innerHTML = `<strong>Concern:</strong> ${item.concern}`;
   }
-  scenario.addEventListener("change", scan);
-  document.querySelector("#scanBtn").addEventListener("click", scan);
-  scan();
+  scenario.addEventListener("change", mapScenario);
+  document.querySelector("#mapBtn").addEventListener("click", mapScenario);
+  mapScenario();
 }
 
-function setupPolicyChecker() {
-  const policy = document.querySelector("#policyInput");
-  const result = document.querySelector("#policyResult");
-  const reason = document.querySelector("#policyReason");
-  function check() {
-    const item = policyMap[policy.value];
-    result.textContent = item.result;
-    reason.innerHTML = `<strong>Why:</strong> ${item.reason}`;
+function setupBuilder() {
+  const benefit = document.querySelector("#benefitInput");
+  const concern = document.querySelector("#concernInput");
+  const safeguard = document.querySelector("#safeguardInput");
+  const output = document.querySelector("#judgementResult");
+  function build() {
+    output.textContent = `Although the system ${builderText.benefit[benefit.value]}, it ${builderText.concern[concern.value]}. Therefore, it is more ethically justified if ${builderText.safeguard[safeguard.value]}.`;
   }
-  policy.addEventListener("change", check);
-  document.querySelector("#policyBtn").addEventListener("click", check);
-  check();
+  benefit.addEventListener("change", build);
+  concern.addEventListener("change", build);
+  safeguard.addEventListener("change", build);
+  document.querySelector("#buildBtn").addEventListener("click", build);
+  build();
 }
 
 function renderExample(key) {
@@ -297,7 +297,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("fitness");
+  renderExample("monitoring");
 }
 
 function renderPractice() {
@@ -391,8 +391,8 @@ function renderExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupScanner();
-  setupPolicyChecker();
+  setupMapper();
+  setupBuilder();
   setupExamples();
   renderPractice();
   renderMistakes();

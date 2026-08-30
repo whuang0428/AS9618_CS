@@ -9,7 +9,7 @@ export const pageDefinitions = [
   { page: "index", kind: "hub", html: "web/index.html" },
   { page: "assessments", kind: "hub", html: "web/assessments/index.html" },
   { page: "resources", kind: "hub", html: "web/resources/index.html" },
-  ...Array.from({ length: 150 }, (_, index) => {
+  ...Array.from({ length: 151 }, (_, index) => {
     const lesson = String(index + 1).padStart(3, "0");
     return { page: `lesson-${lesson}`, kind: "lesson", html: `web/lesson-${lesson}/index.html` };
   }),
@@ -45,4 +45,3 @@ export function pageHash(definition) {
   }
   return hash.digest("hex");
 }
-

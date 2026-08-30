@@ -21,7 +21,7 @@ export function evaluateStage3TopicAlignment(repairs = stage3CoreRepairs) {
   const problems = [];
   const expected = new Map(topicAlignmentContract.lessons.map(({ lesson, requirementIds }) => [lesson, requirementIds]));
   const actual = new Map(repairs.map(({ lesson, rows }) => [lesson, rows]));
-  if (topicAlignmentContract.schemaVersion !== 1 || expected.size !== topicAlignmentContract.lessons.length) {
+  if (topicAlignmentContract.schemaVersion !== 2 || expected.size !== topicAlignmentContract.lessons.length) {
     return [{ id: "STAGE3-TOPIC-CONTRACT", detail: "topic-alignment contract is invalid or contains duplicate lessons" }];
   }
   for (const [lesson, requirementIds] of expected) {
@@ -49,10 +49,8 @@ export function evaluateStage3Policy(contract = coverageContract, repairs = stag
     if (evaluation.status !== "Complete") push("STAGE3-COVERAGE", `${requirement.id}: ${evaluation.messages.join("; ")}`);
   }
 
-  // The syllabus numbering is a coverage taxonomy, not a required lesson-by-
-  // lesson teaching order. Actual prerequisite safety is checked below from the
-  // curriculum model and question dependencies; forcing row-number order was
-  // the mechanism that moved CORE blocks onto unrelated lesson identities.
+  // Official syllabus order is a hard first-CORE contract. Requirements may
+  // share a lesson, but their first formal teaching must never move backwards.
   for (const repair of repairs) {
     const rows = repair.rows.filter((id) => sectionNumber(id) === sectionNumber(repair.rows[0]));
     for (let index = 1; index < rows.length; index += 1) if (rowNumber(rows[index - 1]) > rowNumber(rows[index])) push("STAGE3-INTRALESSON-ORDER", `L${repair.lesson} orders ${rows[index - 1]} after ${rows[index]}`);
@@ -128,7 +126,7 @@ export function buildStage3QuestionSequenceRegister(contract = coverageContract,
 export function evaluateStage3Repository() {
   const problems = evaluateStage3Policy();
   const questionRegister = buildStage3QuestionSequenceRegister();
-  if (questionRegister.questionCount !== 963) problems.push({ id: "STAGE3-QUESTION-COUNT", detail: `expected 963 questions, found ${questionRegister.questionCount}` });
+  if (questionRegister.questionCount !== 968) problems.push({ id: "STAGE3-QUESTION-COUNT", detail: `expected 968 questions, found ${questionRegister.questionCount}` });
   for (const entry of questionRegister.entries.filter(({ beforeCoreViolations }) => beforeCoreViolations.length)) problems.push({ id: "STAGE3-QUESTION-BEFORE-CORE", detail: `${entry.questionId}: ${entry.beforeCoreViolations.join(", ")}` });
 
   const catalogSource = fs.readFileSync(path.join(root, "web", "course-catalog.js"), "utf8");
@@ -150,6 +148,6 @@ export function evaluateStage3Repository() {
     if (!catalogSource.includes(`"id": "${number}"`) || !catalogSource.includes(`"title": ${JSON.stringify(canonicalTitle)}`)) problems.push({ id: "STAGE3-CATALOG-IDENTITY", detail: `L${number} is missing or stale in course catalog` });
     if (!html.includes(`Paper ${unit.paper.endsWith("1") ? "1" : "2"}`) || !markdown.includes(`**Paper:** ${unit.paper}`)) problems.push({ id: "STAGE3-PAPER-IDENTITY", detail: `L${number} paper metadata disagrees with course unit` });
   }
-  if (courseUnits.length !== 14 || courseUnits[0].range[0] !== 1 || courseUnits.at(-1).range[1] !== 150) problems.push({ id: "STAGE3-COURSE-MAP", detail: "course-unit ranges do not cover stable lessons 001-150" });
+  if (courseUnits.length !== 14 || courseUnits[0].range[0] !== 1 || courseUnits.at(-1).range[1] !== 151) problems.push({ id: "STAGE3-COURSE-MAP", detail: "course-unit ranges do not cover canonical lessons 001-151" });
   return { problems, questionRegister };
 }

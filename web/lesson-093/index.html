@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 093 | Paper 1 review: ethics and databases</title>
+    <title>AS9618 Lesson 093 | Paper 1 review: system software and security</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 7-8</p>
-        <h1>Paper 1 review: ethics and databases</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 5-6</p>
+        <h1>Paper 1 review: system software and security</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,12 +30,11 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#map">Retrieval map</a>
-        <a href="#ethics">Ethics review</a>
-        <a href="#databases">Database review</a>
-        <a href="#sql">SQL review</a>
+        <a href="#software">System software</a>
+        <a href="#translators">Translators</a>
+        <a href="#security">Security</a>
         <a href="#classifier">Classifier</a>
-        <a href="#builder">Judgement builder</a>
-        <a href="#tracer">SQL tracer</a>
+        <a href="#matcher">Risk matcher</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -47,164 +46,163 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 093 | 45 minutes | Paper 1 Sections 7-8 | informal questioning</p>
-            <h2>Ethics needs judgement. Databases need structure. Both punish waffle politely but firmly.</h2>
+            <p class="lesson-meta">Lesson 093 | 45 minutes | Paper 1 Sections 5-6 | informal questioning</p>
+            <h2>System software runs the show. Security stops the show becoming a crime scene.</h2>
             <p>
-              This review connects Section 7 evaluation answers with Section 8 database design and SQL.
-              You will identify whether a question wants balanced judgement, relational design, SQL, or data
-              protection, then answer with precise terms and scenario consequences.
+              This review joins two explanation-heavy areas: system software and security. You will distinguish
+              OS roles, utility software and translators, then match security threats to controls using precise
+              mechanism-and-consequence language.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>separate ethics/ownership questions from database/SQL questions</span></div>
-              <div><strong>Apply</strong><span>stakeholder judgement, relational design rules and SQL clauses</span></div>
-              <div><strong>Improve</strong><span>turn vague opinion or database wording into mark-worthy answers</span></div>
+              <div><strong>Compare</strong><span>OS roles, utility software and translation approaches</span></div>
+              <div><strong>Match</strong><span>security risks to suitable controls and justifications</span></div>
+              <div><strong>Correct</strong><span>vague answers about malware, encryption, firewalls and backups</span></div>
             </div>
           </div>
-          <div class="sql-visual" aria-label="Ethics and database review visual">
-            <span class="keyword">Evaluate</span><span>stakeholder, benefit, concern, safeguard, judgement</span>
-            <span class="keyword">Design</span><span>table, record, field, primary key, foreign key, normalisation</span>
-            <span class="keyword">Query</span><span>SELECT, WHERE, ORDER BY, GROUP BY, JOIN</span>
-            <p>If the question says "discuss", do not write SQL. If it says "query", do not write a speech about society.</p>
+          <div class="sql-visual" aria-label="System software and security visual">
+            <span class="keyword">OS</span><span>process, memory, file and device management</span>
+            <span class="keyword">Translator</span><span>compiler, interpreter, assembler</span>
+            <span class="keyword">Security</span><span>CIA, authentication, encryption, firewall, backup</span>
+            <p>If the answer says "protects it", the examiner asks: from what, how, and with what consequence?</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 1 review questions often mix command words. Topic recognition prevents a correct fact being used in the wrong answer.</p>
+            <p>These questions are often wordy. Marks reward precise roles and controls, not unsupported security terminology.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Privacy is not a primary key problem. A database can store personal data accurately and still be ethically questionable.</p>
+            <p>Encryption does not prove who a user is. Authentication checks identity; encryption protects data readability.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Identify the relevant syllabus concept</h2>
-            <p>A supermarket loyalty system can trigger both ethics and database questions. The mark scheme depends on the command word.</p>
+            <h2>Which topic is being tested?</h2>
+            <p>Security answers are not action movie scripts. "Hackers bad, firewall good" needs a mechanism before it gets marks.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="privacy">Discuss privacy concerns of tracking customer purchases.</button>
-            <button class="choice-card" type="button" data-hook="key">Choose a field to uniquely identify each customer record.</button>
-            <button class="choice-card" type="button" data-hook="sql">Output customers with more than 1000 points.</button>
-            <button class="choice-card" type="button" data-hook="licence">Explain why copied proprietary software may be illegal.</button>
+            <button class="choice-card" type="button" data-hook="os">The system allocates RAM to running programs.</button>
+            <button class="choice-card" type="button" data-hook="compiler">Source code is translated before execution into object code.</button>
+            <button class="choice-card" type="button" data-hook="phishing">A fake login email asks a user for credentials.</button>
+            <button class="choice-card" type="button" data-hook="hash">A password is stored as a digest rather than plain text.</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose a card to classify the topic and first answer move.
+            Choose a card to identify the topic and first exam phrase.
           </div>
         </section>
 
         <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
           <div class="section-title">
             <p class="eyebrow">Retrieval map</p>
-            <h2>Sections 7-8 knowledge map</h2>
+            <h2>Sections 5-6 knowledge map</h2>
           </div>
           <div class="retrieval-grid">
-            <article><strong>Ethics</strong><span>stakeholders, consent, fairness, responsibility, proportionality and safeguards</span></article>
-            <article><strong>Privacy and data protection</strong><span>personal data, collection purpose, access, retention, monitoring and transparency</span></article>
-            <article><strong>Ownership</strong><span>copyright, patents, licences, open-source/proprietary software and obligations</span></article>
-            <article><strong>Impact</strong><span>environmental impact, e-waste, energy use, automation, digital divide and social consequences</span></article>
-            <article><strong>Database design</strong><span>data/information, DBMS, tables, records, fields, keys, relationships and normalisation</span></article>
-            <article><strong>SQL and protection</strong><span>SELECT, WHERE, ORDER BY, GROUP BY, joins, INSERT/UPDATE/DELETE, validation, verification and backup</span></article>
+            <article><strong>Operating system</strong><span>process, memory, file, device and security/user management</span></article>
+            <article><strong>User interfaces</strong><span>CLI, GUI, menu-driven and natural language interfaces</span></article>
+            <article><strong>Utilities</strong><span>backup, compression, encryption, defragmentation and anti-malware tools</span></article>
+            <article><strong>Translators</strong><span>assembler, compiler, interpreter, linker, loader and libraries</span></article>
+            <article><strong>Security goals</strong><span>confidentiality, integrity, availability, authenticity</span></article>
+            <article><strong>Controls</strong><span>authentication, access rights, encryption, hashing, certificates, firewalls and audit trails</span></article>
           </div>
         </section>
 
         <!-- stage10-explanation:start map -->
         <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Sections 7-8 knowledge map</h2>
+          <h2 class="explanation-sr-only" id="explanation-map-title">Sections 5-6 knowledge map</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sections 7-8 knowledge map with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sections 7-8 knowledge map: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sections 5-6 knowledge map with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sections 5-6 knowledge map: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Ethics stakeholders, consent, fairness, responsibility, proportionality and safeguards</li><li><strong>Lesson fact:</strong> Privacy and data protection personal data, collection purpose, access, retention, monitoring and transparency</li><li><strong>Lesson fact:</strong> Ownership copyright, patents, licences, open-source/proprietary software and obligations</li><li><strong>Lesson fact:</strong> Impact environmental impact, e-waste, energy use, automation, digital divide and social consequences</li><li><strong>Lesson fact:</strong> Database design data/information, DBMS, tables, records, fields, keys, relationships and normalisation</li><li><strong>Lesson fact:</strong> SQL and protection SELECT, WHERE, ORDER BY, GROUP BY, joins, INSERT/UPDATE/DELETE, validation, verification and backup</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Compiler, interpreter and assembler are alternative translator paths rather than one serial pipeline.</li><li><strong>Lesson fact:</strong> High-level source can be compiled to object code and then linked and loaded.</li><li><strong>Lesson fact:</strong> High-level source can instead be interpreted and executed at runtime.</li><li><strong>Lesson fact:</strong> Assembly source is translated by an assembler into machine or object code.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end map -->
-        <section class="panel" id="ethics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ethics">
+        <section class="panel" id="software" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="software">
           <div class="section-title">
-            <p class="eyebrow">Ethics review</p>
-            <h2>Evaluation answers need both sides and a condition</h2>
+            <p class="eyebrow">System software review</p>
+            <h2>OS and utility roles</h2>
           </div>
-          <div class="data-table review-table" role="table" aria-label="Ethics review">
-            <div class="table-row table-head" role="row"><div>Topic</div><div>Question clue</div><div>Mark-worthy phrase</div></div>
-            <div class="table-row" role="row"><div>Privacy</div><div>personal data, tracking, surveillance</div><div>collect only necessary data with consent, clear purpose and controlled access</div></div>
-            <div class="table-row" role="row"><div>Ownership</div><div>copyright, licence, copied software</div><div>a licence gives permission under conditions; copyright still applies</div></div>
-            <div class="table-row" role="row"><div>Environmental impact</div><div>energy use, disposal, replacement</div><div>reduce e-waste through recycling, repair and longer device life</div></div>
-            <div class="table-row" role="row"><div>Social impact</div><div>automation, access, jobs</div><div>benefits must be weighed against exclusion, deskilling or job displacement</div></div>
+          <div class="data-table review-table" role="table" aria-label="System software review">
+            <div class="table-row table-head" role="row"><div>Area</div><div>Role</div><div>Mark-worthy phrase</div></div>
+            <div class="table-row" role="row"><div>OS process management</div><div>schedules processes</div><div>allocates processor time and manages multitasking</div></div>
+            <div class="table-row" role="row"><div>OS memory management</div><div>allocates memory</div><div>keeps programs/data in separate memory areas and manages virtual memory</div></div>
+            <div class="table-row" role="row"><div>File management</div><div>organises files</div><div>stores, names, retrieves and controls access to files</div></div>
+            <div class="table-row" role="row"><div>Utility software</div><div>maintains system</div><div>performs specialist maintenance such as backup, compression or anti-malware scanning</div></div>
           </div>
-          <div class="callout">Chinese support: stakeholder = 利益相关者；consent = 同意；licence = 许可；e-waste = 电子垃圾；judgement = 有依据的判断。</div>
+          <div class="callout">Chinese support: operating system = 操作系统；utility software = 实用程序；translator = 翻译程序；authentication = 身份认证。</div>
         </section>
 
-        <!-- stage10-explanation:start ethics -->
-        <section class="panel explanation-panel" id="explanation-ethics" data-explains="ethics" data-explanation-kind="synthesis" aria-labelledby="explanation-ethics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="ethics">
-          <h2 class="explanation-sr-only" id="explanation-ethics-title">Evaluation answers need both sides and a condition</h2>
+        <!-- stage10-explanation:start software -->
+        <section class="panel explanation-panel" id="explanation-software" data-explains="software" data-explanation-kind="synthesis" aria-labelledby="explanation-software-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="software">
+          <h2 class="explanation-sr-only" id="explanation-software-title">OS and utility roles</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-ethics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Evaluation answers need both sides and a condition with a structured visual model." />
-            <figcaption class="explanation-sr-only">Evaluation answers need both sides and a condition: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-software.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining OS and utility roles with a structured visual model." />
+            <figcaption class="explanation-sr-only">OS and utility roles: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Ethics review</li><li><strong>Lesson fact:</strong> Question clue</li><li><strong>Lesson fact:</strong> Mark-worthy phrase</li><li><strong>Lesson fact:</strong> personal data, tracking, surveillance</li><li><strong>Lesson fact:</strong> collect only necessary data with consent, clear purpose and controlled access</li><li><strong>Lesson fact:</strong> Ownership</li><li><strong>Lesson fact:</strong> copyright, licence, copied software</li><li><strong>Lesson fact:</strong> a licence gives permission under conditions; copyright still applies</li><li><strong>Lesson fact:</strong> Environmental impact</li><li><strong>Lesson fact:</strong> energy use, disposal, replacement</li><li><strong>Lesson fact:</strong> reduce e-waste through recycling, repair and longer device life</li><li><strong>Lesson fact:</strong> Social impact</li></ol>
+            <ol><li><strong>Lesson fact:</strong> System software review</li><li><strong>Lesson fact:</strong> Mark-worthy phrase</li><li><strong>Lesson fact:</strong> OS process management</li><li><strong>Lesson fact:</strong> schedules processes</li><li><strong>Lesson fact:</strong> allocates processor time and manages multitasking</li><li><strong>Lesson fact:</strong> OS memory management</li><li><strong>Lesson fact:</strong> allocates memory</li><li><strong>Lesson fact:</strong> keeps programs/data in separate memory areas and manages virtual memory</li><li><strong>Lesson fact:</strong> File management</li><li><strong>Lesson fact:</strong> organises files</li><li><strong>Lesson fact:</strong> stores, names, retrieves and controls access to files</li><li><strong>Lesson fact:</strong> Utility software</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end ethics -->
-        <section class="panel" id="databases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="databases">
+        <!-- stage10-explanation:end software -->
+        <section class="panel" id="translators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="translators">
           <div class="section-title">
-            <p class="eyebrow">Database review</p>
-            <h2>Relational design: structure before SQL</h2>
+            <p class="eyebrow">Translator review</p>
+            <h2>Compiler, interpreter and assembler</h2>
           </div>
           <div class="clause-grid">
-            <article><strong>Primary key</strong><span>Unique, reliable field that identifies each record in one table.</span></article>
-            <article><strong>Foreign key</strong><span>Field that stores a matching primary key value from another table to create a relationship.</span></article>
-            <article><strong>Normalisation</strong><span>Separates repeated data into related tables to reduce duplication, inconsistency and update errors.</span></article>
+            <article><strong>Compiler</strong><span>Translates whole source program into object code before execution; can report errors after compilation.</span></article>
+            <article><strong>Interpreter</strong><span>Translates and executes code line by line; useful for testing and debugging.</span></article>
+            <article><strong>Assembler</strong><span>Translates assembly language mnemonics into machine code.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start databases -->
-        <section class="panel explanation-panel" id="explanation-databases" data-explains="databases" data-explanation-kind="synthesis" aria-labelledby="explanation-databases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="databases">
-          <h2 class="explanation-sr-only" id="explanation-databases-title">Relational design: structure before SQL</h2>
+        <!-- stage10-explanation:start translators -->
+        <section class="panel explanation-panel" id="explanation-translators" data-explains="translators" data-explanation-kind="synthesis" aria-labelledby="explanation-translators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="translators">
+          <h2 class="explanation-sr-only" id="explanation-translators-title">Compiler, interpreter and assembler</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-databases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relational design: structure before SQL with a structured visual model." />
-            <figcaption class="explanation-sr-only">Relational design: structure before SQL: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-translators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compiler, interpreter and assembler with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compiler, interpreter and assembler: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Normalisation must retain every original attribute and fact so the original information remains reconstructable.</li><li><strong>Lesson fact:</strong> If the original rows contain A and B values, the decomposition must keep each B value with its relevant key.</li><li><strong>Lesson fact:</strong> A relation containing only a foreign key to A loses the represented B facts.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Translator review</li><li><strong>Lesson fact:</strong> Compiler Translates whole source program into object code before execution; can report errors after compilation.</li><li><strong>Lesson fact:</strong> Interpreter Translates and executes code line by line; useful for testing and debugging.</li><li><strong>Lesson fact:</strong> Assembler Translates assembly language mnemonics into machine code.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end databases -->
-        <section class="panel" id="sql" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sql">
+        <!-- stage10-explanation:end translators -->
+        <section class="panel" id="security" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="security">
           <div class="section-title">
-            <p class="eyebrow">SQL review</p>
-            <h2>Clause choice is not decoration</h2>
+            <p class="eyebrow">Security review</p>
+            <h2>Match the control to the threat</h2>
           </div>
-          <div class="data-table sql-table" role="table" aria-label="SQL review">
-            <div class="table-row table-head" role="row"><div>Request</div><div>SQL feature</div><div>Example phrase</div></div>
-            <div class="table-row" role="row"><div>choose output fields</div><div><code>SELECT</code></div><div><code>SELECT Name, Points</code></div></div>
-            <div class="table-row" role="row"><div>filter records</div><div><code>WHERE</code></div><div><code>WHERE Points &gt; 1000</code></div></div>
-            <div class="table-row" role="row"><div>sort records</div><div><code>ORDER BY</code></div><div><code>ORDER BY Points DESC</code></div></div>
-            <div class="table-row" role="row"><div>summary per group</div><div><code>GROUP BY</code></div><div><code>SELECT Category, COUNT(*) ... GROUP BY Category</code></div></div>
-            <div class="table-row" role="row"><div>combine tables</div><div>join condition</div><div><code>Customer.CustomerID = Purchase.CustomerID</code></div></div>
+          <div class="data-table review-table" role="table" aria-label="Security controls">
+            <div class="table-row table-head" role="row"><div>Threat / need</div><div>Control</div><div>Mechanism</div></div>
+            <div class="table-row" role="row"><div>unauthorised login</div><div>authentication / MFA</div><div>checks user identity using factors such as password and token</div></div>
+            <div class="table-row" role="row"><div>intercepted data</div><div>encryption</div><div>encodes data so it is unreadable without the key</div></div>
+            <div class="table-row" role="row"><div>malicious traffic</div><div>firewall</div><div>filters traffic using rules such as IP address, port or protocol</div></div>
+            <div class="table-row" role="row"><div>data loss</div><div>backup</div><div>allows recovery from a separate copy after failure or corruption</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start sql -->
-        <section class="panel explanation-panel" id="explanation-sql" data-explains="sql" data-explanation-kind="synthesis" aria-labelledby="explanation-sql-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="sql">
-          <h2 class="explanation-sr-only" id="explanation-sql-title">Clause choice is not decoration</h2>
+        <!-- stage10-explanation:start security -->
+        <section class="panel explanation-panel" id="explanation-security" data-explains="security" data-explanation-kind="synthesis" aria-labelledby="explanation-security-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="security">
+          <h2 class="explanation-sr-only" id="explanation-security-title">Match the control to the threat</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-sql.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Clause choice is not decoration with a structured visual model." />
-            <figcaption class="explanation-sr-only">Clause choice is not decoration: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-security.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the control to the threat with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match the control to the threat: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> SELECT, WHERE, GROUP BY and ORDER BY are clause choices with different effects, not mandatory consecutive stages.</li><li><strong>Lesson fact:</strong> SELECT controls fields, WHERE filters rows, GROUP BY forms groups and ORDER BY sorts final rows.</li><li><strong>Lesson fact:</strong> When combined in written SQL, GROUP BY appears before ORDER BY.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Security review</li><li><strong>Lesson fact:</strong> Threat / need</li><li><strong>Lesson fact:</strong> Mechanism</li><li><strong>Lesson fact:</strong> unauthorised login</li><li><strong>Lesson fact:</strong> authentication / MFA</li><li><strong>Lesson fact:</strong> checks user identity using factors such as password and token</li><li><strong>Lesson fact:</strong> intercepted data</li><li><strong>Lesson fact:</strong> encryption</li><li><strong>Lesson fact:</strong> encodes data so it is unreadable without the key</li><li><strong>Lesson fact:</strong> malicious traffic</li><li><strong>Lesson fact:</strong> firewall</li><li><strong>Lesson fact:</strong> filters traffic using rules such as IP address, port or protocol</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end sql -->
+        <!-- stage10-explanation:end security -->
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive question classifier</p>
@@ -212,105 +210,64 @@
           </div>
           <div class="converter-grid">
             <label>
-              Mixed clue
+              Mixed question clue
               <select id="classifierInput">
-                <option value="face">A school uses facial recognition at the entrance.</option>
-                <option value="copy">A business installs one purchased software copy on many machines.</option>
-                <option value="repeat">A table repeats customer details for every purchase.</option>
-                <option value="group">A query asks for total sales in each product category.</option>
-                <option value="verify">A clerk checks typed customer data against a paper form.</option>
+                <option value="memory">The OS allocates RAM to a newly opened program.</option>
+                <option value="debug">A developer wants to test code one line at a time.</option>
+                <option value="linker">Several object files and library routines are combined.</option>
+                <option value="malware">A file encrypts user documents and demands payment.</option>
+                <option value="firewall">Network traffic is blocked based on ports and IP addresses.</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="classifyBtn">Classify</button>
           </div>
-          <div class="feedback" id="classifyResult">Choose a clue and classify the answer type.</div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
         </section>
 
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="matcher" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matcher">
           <div class="section-title">
-            <p class="eyebrow">Interactive judgement builder</p>
-            <h2>Build a balanced ethics paragraph</h2>
-          </div>
-          <div class="builder-grid">
-            <label>
-              Benefit
-              <select id="benefitInput">
-                <option value="safety">improves safety by identifying risks quickly</option>
-                <option value="access">improves access or convenience for users</option>
-                <option value="efficiency">reduces cost or manual work for an organisation</option>
-              </select>
-            </label>
-            <label>
-              Concern
-              <select id="concernInput">
-                <option value="privacy">may reduce privacy by collecting personal data</option>
-                <option value="fairness">may treat some groups unfairly if data or algorithms are biased</option>
-                <option value="environment">may increase energy use or e-waste</option>
-              </select>
-            </label>
-            <label>
-              Safeguard
-              <select id="safeguardInput">
-                <option value="consent">clear consent, limited retention and controlled access are used</option>
-                <option value="audit">regular audit and appeal processes are available</option>
-                <option value="recycle">repair, recycling and energy-efficient devices are planned</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="buildBtn">Build paragraph</button>
-          </div>
-          <div class="answer-frame" id="builderResult">Choose options, then build a paragraph.</div>
-        </section>
-
-        <section class="panel" id="tracer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tracer">
-          <div class="section-title">
-            <p class="eyebrow">Interactive SQL tracer</p>
-            <h2>Trace one customer table query</h2>
-          </div>
-          <div class="data-table customer-table" role="table" aria-label="Customer table">
-            <div class="table-row table-head" role="row"><div>CustomerID</div><div>Name</div><div>Region</div><div>Points</div></div>
-            <div class="table-row" role="row"><div>C01</div><div>Ada</div><div>North</div><div>1280</div></div>
-            <div class="table-row" role="row"><div>C02</div><div>Bo</div><div>South</div><div>760</div></div>
-            <div class="table-row" role="row"><div>C03</div><div>Chen</div><div>North</div><div>1540</div></div>
-            <div class="table-row" role="row"><div>C04</div><div>Dia</div><div>South</div><div>1110</div></div>
+            <p class="eyebrow">Interactive risk-control matcher</p>
+            <h2>Choose the best control</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Query
-              <select id="queryInput">
-                <option value="q1">SELECT Name FROM Customer WHERE Points &gt; 1000</option>
-                <option value="q2">SELECT Name, Points FROM Customer ORDER BY Points DESC</option>
-                <option value="q3">SELECT Region, COUNT(*) FROM Customer GROUP BY Region</option>
-                <option value="q4">SELECT Region, SUM(Points) FROM Customer GROUP BY Region</option>
+              Risk
+              <select id="riskInput">
+                <option value="phishing">Users are tricked by fake emails into entering passwords.</option>
+                <option value="lost">Database server storage fails and recent data is lost.</option>
+                <option value="sniffing">Data is intercepted while travelling across a network.</option>
+                <option value="privilege">A student account can edit administrator settings.</option>
+                <option value="tamper">A downloaded installer may have been altered.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="queryBtn">Trace result</button>
+            <button class="primary-button" type="button" id="matchBtn">Match control</button>
           </div>
-          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
+          <div class="result-table" id="matchResult">Choose a risk to see a suitable control and justification.</div>
         </section>
 
-        <!-- stage10-explanation:start tracer -->
-        <section class="panel explanation-panel" id="explanation-tracer" data-explains="tracer" data-explanation-kind="synthesis" aria-labelledby="explanation-tracer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tracer">
-          <h2 class="explanation-sr-only" id="explanation-tracer-title">Trace one customer table query</h2>
+        <!-- stage10-explanation:start matcher -->
+        <section class="panel explanation-panel" id="explanation-matcher" data-explains="matcher" data-explanation-kind="synthesis" aria-labelledby="explanation-matcher-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="matcher">
+          <h2 class="explanation-sr-only" id="explanation-matcher-title">Choose the best control</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-tracer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace one customer table query with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trace one customer table query: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-093-matcher.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best control with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the best control: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive SQL tracer</li><li><strong>Lesson fact:</strong> CustomerID</li><li><strong>Lesson fact:</strong> Choose a query to see the result.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive risk-control matcher</li><li><strong>Lesson fact:</strong> Choose a risk to see a suitable control and justification.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end tracer -->
+        <!-- stage10-explanation:end matcher -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Annotate where the marks are</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="ethics">Ethics</button>
-            <button class="tab" type="button" data-example="licence">Licensing</button>
-            <button class="tab" type="button" data-example="design">Database design</button>
-            <button class="tab" type="button" data-example="sql">SQL</button>
+            <button class="tab active" type="button" data-example="os">OS role</button>
+            <button class="tab" type="button" data-example="translator">Translator</button>
+            <button class="tab" type="button" data-example="security">Security control</button>
+            <button class="tab" type="button" data-example="backup">Backup</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -327,7 +284,7 @@
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak Section 7-8 answers</h2>
+            <h2>Repair weak system software and security answers</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -336,7 +293,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style review with expandable MS</h2>
-            <p>These questions mix ethics, ownership, relational design, SQL and data protection. The MS rewards precise terms and scenario links.</p>
+            <p>These questions mix system software and security. The MS rewards precise roles, threat-control matching and scenario consequence.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -347,9 +304,9 @@
             <h2>Review checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Classify</strong><span>Decide whether the question asks for judgement, design, SQL or protection.</span></div>
-            <div><strong>Use exact terms</strong><span>Stakeholder, consent, licence, primary key, foreign key, validation, verification.</span></div>
-            <div><strong>Link consequence</strong><span>Explain harm, benefit, legal risk, duplication, inconsistency, output or recovery.</span></div>
+            <div><strong>Name</strong><span>Name the OS role, utility, translator, threat or control.</span></div>
+            <div><strong>Mechanism</strong><span>Explain how it works, not just that it helps.</span></div>
+            <div><strong>Consequence</strong><span>Link to reliability, development, confidentiality, integrity or recovery.</span></div>
           </div>
         </section>
 
@@ -360,16 +317,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Balanced evaluation</strong>
-              <span>Write a 6-mark response about facial recognition in school. Include stakeholder, benefit, concern, safeguard and judgement.</span>
+              <strong>Task 1: Comparison answers</strong>
+              <span>Write one compiler-vs-interpreter comparison and one OS-vs-utility comparison. Use two precise differences each.</span>
             </article>
             <article>
-              <strong>Task 2: Database redesign</strong>
-              <span>Take a flat file with repeated CustomerName, Address and ProductName. Propose three related tables and identify primary/foreign keys.</span>
+              <strong>Task 2: Risk-control grid</strong>
+              <span>Create a table with five risks and suitable controls. Include mechanism and limitation for each control.</span>
             </article>
             <article>
-              <strong>Task 3: SQL mini-set</strong>
-              <span>Write three queries for the customer table: filter points over 1000, sort by points descending, and total points by region.</span>
+              <strong>Task 3: Improve weak answer</strong>
+              <span>Rewrite: "Encryption is good because it makes data secure." Include what encryption does and what it does not do.</span>
             </article>
           </div>
         </section>
@@ -377,8 +334,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

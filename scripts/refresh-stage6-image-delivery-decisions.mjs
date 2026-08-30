@@ -51,7 +51,7 @@ const records = explanations.map((item) => {
   };
 });
 
-if (records.length !== 783 || previousByKey.size !== 783) throw new Error("Expected exactly 783 unique reviewed images");
+if (records.length !== 784 || previousByKey.size !== 784) throw new Error("Expected exactly 784 unique reviewed images");
 review.forwardOrder = records.map(({ key }) => key);
 review.reverseOrder = [...review.forwardOrder].reverse();
 review.records = records;

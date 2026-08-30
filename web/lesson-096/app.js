@@ -1,138 +1,126 @@
 const hookResponses = {
-  security: "Structure: three named measures, each with mechanism and scenario consequence. Avoid repeating 'protects data' three times.",
-  compare: "Structure: paired contrasts. Each paragraph should mention both technologies and why the difference matters.",
-  ethics: "Structure: stakeholder, benefit, concern, safeguard and justified judgement. Balance matters more than volume.",
-  database: "Structure: repeated data problem, relational design improvement, keys/relationships and consequence.",
+  one: "Expected depth: one precise sentence. Example: A primary key uniquely identifies each record in a table.",
+  two: "Expected depth: two linked points. Example: Cache stores frequently used data close to the CPU, so repeated access is faster than using RAM.",
+  four: "Expected depth: paired contrasts. Give at least two clear differences, not two separate mini-essays.",
+  six: "Expected depth: short plan, then benefit, concern, safeguard and judgement with context.",
 };
 
-const plannerMap = {
-  security: {
-    plan: "Measure 1 + mechanism + consequence; measure 2 + mechanism + consequence; measure 3 + mechanism + consequence.",
+const planMap = {
+  1: {
+    time: "30-45 seconds",
+    behaviour: "Write one direct term, value or definition. Stop once the mark is earned.",
   },
-  compare: {
-    plan: "Contrast 1, contrast 2, contrast 3. Each contrast must use both items and link to the scenario.",
+  2: {
+    time: "1-2 minutes",
+    behaviour: "Write two distinct points, or one point with mechanism and consequence.",
   },
-  evaluate: {
-    plan: "Stakeholder + benefit; stakeholder + concern; safeguard/condition; final judgement with proportionality.",
+  3: {
+    time: "2-4 minutes",
+    behaviour: "Use three brief bullets. Avoid repeating the same point in different words.",
   },
-  database: {
-    plan: "Problem with flat file; table separation; primary/foreign keys; reduced duplication/inconsistency.",
+  4: {
+    time: "3-5 minutes",
+    behaviour: "Plan the points, then write concise linked explanations or paired comparisons.",
   },
-};
-
-const paragraphFacts = {
-  encryption: {
-    mechanism: "encodes the data so it cannot be read without the correct key",
-    consequence: "reducing the impact if the data is intercepted or stolen",
-  },
-  cache: {
-    mechanism: "stores frequently used data and instructions close to the CPU",
-    consequence: "reducing slower RAM accesses when the same data or instructions are reused",
-  },
-  normalisation: {
-    mechanism: "separates repeated data into related tables linked by keys",
-    consequence: "reducing duplication and update inconsistencies",
-  },
-  mfa: {
-    mechanism: "requires more than one authentication factor before access is granted",
-    consequence: "making a stolen password alone less likely to allow unauthorised access",
+  6: {
+    time: "6-8 minutes",
+    behaviour: "Spend 20 seconds planning, then write distinct points with scenario links.",
   },
 };
 
-const checkerMap = {
-  secure: {
-    missing: "Mechanism and consequence",
-    fix: "Encryption encodes data so it is unreadable without the key, protecting confidentiality if data is intercepted.",
+const triageMap = {
+  known: {
+    action: "Answer now",
+    reason: "Take the mark quickly. Do not expand a 1-mark definition into a paragraph.",
   },
-  compare: {
-    missing: "A paired contrast",
-    fix: "A compiler translates the whole program before execution, whereas an interpreter translates and executes one statement at a time.",
+  calc: {
+    action: "Answer now with working",
+    reason: "A familiar calculation can earn method marks even if the final value goes wrong.",
   },
-  ethics: {
-    missing: "Concern, safeguard and judgement",
-    fix: "Facial recognition may speed attendance, but biometric data creates privacy risk; it is justified only with consent, limited retention and restricted access.",
+  blank: {
+    action: "Flag and return",
+    reason: "After 20 seconds with no topic, protect the rest of the paper and come back later.",
   },
-  database: {
-    missing: "Specific relational mechanism",
-    fix: "A relational design stores customer details once in a Customer table and links purchases using CustomerID, reducing duplication and update errors.",
+  long: {
+    action: "Plan before writing",
+    reason: "A 6-mark answer needs distinct points, not a growing paragraph that repeats itself.",
+  },
+  sql: {
+    action: "Write clause skeleton first",
+    reason: "SELECT ... FROM ... GROUP BY ... prevents losing the structure while thinking about fields.",
   },
 };
 
 const examples = {
-  security: {
-    title: "Example 1: Explain three security measures",
-    problem: "A school stores student records on a network. Explain three measures that can protect the records. [6]",
+  one: {
+    title: "Example 1: 1-mark answer",
+    problem: "State the purpose of a primary key. [1]",
     steps: [
-      "B1: Authentication checks user identity before access.",
-      "A1: MFA means a stolen password alone is less likely to allow access to student records.",
-      "B1: Access rights restrict which staff can view or edit records.",
-      "A1: This reduces unauthorised viewing or accidental changes.",
-      "B1/A1: Encryption encodes stored/transmitted records so intercepted data is unreadable without the key.",
+      "Full-credit answer: A primary key uniquely identifies each record in a table.",
+      "Why it works: it uses the key phrase 'uniquely identifies'.",
+      "Too much: explaining foreign keys, indexes and validation wastes time.",
     ],
   },
-  compare: {
-    title: "Example 2: Paired comparison",
-    problem: "Compare cloud storage and local storage for a small business. [6]",
+  two: {
+    title: "Example 2: 2-mark explanation",
+    problem: "Explain why MFA improves account security. [2]",
     steps: [
-      "Cloud storage can be accessed from different locations, whereas local storage is usually tied to local devices/network.",
-      "Cloud storage depends on internet access, whereas local storage may still be available when the internet connection fails.",
-      "Cloud providers may manage backup and scalability, whereas local storage gives the business more direct control of hardware.",
-      "Each point mentions both sides; that is why it compares rather than lists.",
+      "Point 1: MFA requires more than one authentication factor.",
+      "Point 2: a stolen password alone is less likely to allow access.",
+      "Why it works: mechanism plus consequence in two compact sentences.",
     ],
   },
-  ethics: {
-    title: "Example 3: Evaluation answer",
-    problem: "Evaluate facial recognition for school attendance. [8]",
+  calc: {
+    title: "Example 3: Calculation answer",
+    problem: "Calculate the storage for 10 seconds of mono sound sampled at 8000 Hz with 8-bit resolution. [4]",
     steps: [
-      "Benefit: attendance can be recorded quickly and may improve safeguarding.",
-      "Concern: biometric data is personal and misuse could reduce student privacy.",
-      "Fairness: recognition may be less accurate for some groups, causing unfair treatment.",
-      "Safeguard: consent, limited retention, secure storage, restricted access and an alternative method.",
-      "Judgement: justified only if the safeguarding benefit is proportionate and safeguards are enforced.",
+      "Formula: sample rate x duration x resolution x channels.",
+      "Substitution: 8000 x 10 x 8 x 1 = 640 000 bits.",
+      "Conversion: 640 000 / 8 = 80 000 bytes.",
+      "Exam habit: include unit and method so FT marks are possible.",
     ],
   },
-  database: {
-    title: "Example 4: Relational database explanation",
-    problem: "A club stores member and booking details in one flat file. Explain benefits of relational design. [6]",
+  six: {
+    title: "Example 4: 6-mark answer skeleton",
+    problem: "Evaluate using facial recognition for school attendance. [6]",
     steps: [
-      "Repeated member details cause data duplication.",
-      "If an address changes, every repeated copy must be updated or inconsistency occurs.",
-      "A Member table can store member details once with MemberID as primary key.",
-      "A Booking table can store MemberID as a foreign key, linking each booking to the correct member.",
-      "This reduces duplication and makes updates more reliable.",
+      "Benefit: faster attendance and possible safeguarding benefit.",
+      "Concern: biometric personal data may reduce privacy or be misused.",
+      "Safeguard: consent, limited retention, access control and alternative method.",
+      "Judgement: justified only if benefits are proportionate and safeguards are enforced.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What word describes a conclusion supported by evidence in an evaluate question?", accepted: ["judgement", "judgment"], answer: "Judgement / judgment" },
-  { id: "p2", prompt: "What must a compare answer include between two items?", accepted: ["contrast", "paired contrast", "difference", "paired differences"], answer: "Paired contrast / difference" },
-  { id: "p3", prompt: "What phrase describes the 'how it works' part of an explanation?", accepted: ["mechanism"], answer: "Mechanism" },
-  { id: "p4", prompt: "What term means a person or group affected by a decision?", accepted: ["stakeholder"], answer: "Stakeholder" },
-  { id: "p5", prompt: "Which word means a restriction or weakness of a solution?", accepted: ["limitation"], answer: "Limitation" },
-  { id: "p6", prompt: "Which key links a record to a primary key in another table?", accepted: ["foreign key", "foreign"], answer: "Foreign key" },
-  { id: "p7", prompt: "Which security control encodes data so it is unreadable without a key?", accepted: ["encryption"], answer: "Encryption" },
-  { id: "p8", prompt: "Which command word often needs benefit, concern and judgement?", accepted: ["evaluate", "discuss"], answer: "Evaluate / discuss" },
-  { id: "p9", prompt: "Which term means applying the answer to the scenario?", accepted: ["context", "application", "scenario link"], answer: "Context / application / scenario link" },
-  { id: "p10", prompt: "Which type of mark often rewards method or mechanism?", accepted: ["m", "m mark", "method mark"], answer: "M mark / method mark" },
+  { id: "p1", prompt: "What is the 8-bit unsigned binary range?", accepted: ["0-255", "0 to 255", "0 - 255"], answer: "0-255" },
+  { id: "p2", prompt: "Which protocol transfers web pages securely?", accepted: ["https"], answer: "HTTPS" },
+  { id: "p3", prompt: "Which register stores the address of the next instruction?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
+  { id: "p4", prompt: "Which translator executes code one statement at a time?", accepted: ["interpreter"], answer: "Interpreter" },
+  { id: "p5", prompt: "Which SQL clause filters records?", accepted: ["where"], answer: "WHERE" },
+  { id: "p6", prompt: "Which malware encrypts files and demands payment?", accepted: ["ransomware"], answer: "Ransomware" },
+  { id: "p7", prompt: "Which key links to a primary key in another table?", accepted: ["foreign key", "foreign"], answer: "Foreign key" },
+  { id: "p8", prompt: "Which term means checking entered data against a source document?", accepted: ["verification"], answer: "Verification" },
+  { id: "p9", prompt: "Which logic gate outputs 1 when inputs are different?", accepted: ["xor", "exclusive or", "exclusive-or"], answer: "XOR" },
+  { id: "p10", prompt: "Which command word usually needs a supported judgement?", accepted: ["evaluate", "justify"], answer: "Evaluate / justify" },
 ];
 
 const mistakes = [
   {
-    wrong: "Cloud is better because it is easier, faster and more modern.",
-    fix: "Name specific differences: remote access, dependence on internet, provider-managed backup, scalability or control of local hardware.",
+    wrong: "For a 1-mark definition, I wrote everything I knew about the topic.",
+    fix: "Write the essential property only. A primary key uniquely identifies a record; then move on.",
   },
   {
-    wrong: "Facial recognition is good and bad, so it depends.",
-    fix: "Say what it depends on: purpose, consent, accuracy, retention, access control and proportionality.",
+    wrong: "My calculation answer had the final number but no unit or working.",
+    fix: "Show formula, substitution, conversion and unit. This protects method and FT marks.",
   },
   {
-    wrong: "Encryption, firewall and backup all protect the system because they are secure.",
-    fix: "Develop each separately: encryption protects readability, firewall filters traffic, backup enables recovery after loss.",
+    wrong: "I spent six minutes on a 2-mark question because I wanted it to be perfect.",
+    fix: "Use the mark value as a ceiling. Two marks need two credit-worthy points, then move on.",
   },
   {
-    wrong: "Relational databases are better because they store data in tables.",
-    fix: "Explain the benefit: related tables and keys reduce repeated data, update errors and inconsistency.",
+    wrong: "My short explanation said 'it is secure' but did not say how.",
+    fix: "Add mechanism. For example, encryption encodes data so intercepted data is unreadable without the key.",
   },
 ];
 
@@ -145,105 +133,109 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A school stores student records on a network. Explain three measures that can protect the records.",
-    answer: "Authentication such as MFA can check user identity before access, reducing unauthorised logins. Access rights can restrict student records to authorised staff, limiting unauthorised viewing or editing. Encryption can encode stored or transmitted records so intercepted or stolen data is unreadable without the correct key. Backups can also allow records to be restored after data loss or corruption.",
+    marks: "4 marks",
+    prompt: "A sound file is recorded for 20 seconds at 16 000 samples per second using 8-bit sampling resolution and one channel. Calculate the file size in bytes.",
+    answer: "16 000 x 20 x 8 x 1 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
     marking: [
-      { mark: "B1", text: "names first valid measure such as authentication/MFA/access rights/encryption/backup/firewall" },
-      { mark: "B1", text: "explains mechanism/consequence of first measure in school records context" },
-      { mark: "B1", text: "names second valid measure" },
-      { mark: "B1", text: "explains mechanism/consequence of second measure" },
-      { mark: "B1", text: "names third valid measure" },
-      { mark: "B1", text: "explains mechanism/consequence of third measure" },
+      { mark: "M1", text: "uses sample rate x duration x sampling resolution x channels" },
+      { mark: "M1", text: "substitutes 16 000 x 20 x 8 x 1" },
+      { mark: "A1", text: "obtains 2 560 000 bits" },
+      { mark: "A1", text: "converts to 320 000 bytes with suitable unit" },
     ],
     strict: [
-      "Do not award explanation marks for repeated generic 'keeps data safe'.",
-      "Allow audit trails if linked to tracing unauthorised access/changes.",
-      "Do not count the same measure twice.",
+      "Do not award final A1 without byte/bytes unit unless clearly implied by working.",
+      "Do not multiply by 2 channels because the question says one channel.",
+      "Allow 320 KB only if decimal KB conversion is clearly stated; bytes answer is expected.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Compare using cloud storage and local storage for a small business.",
-    answer: "Cloud storage can be accessed from different locations using the internet, whereas local storage is normally accessed from the business site or local network. Cloud storage depends on an internet connection, whereas local storage may still be available if internet access fails. Cloud providers may manage backup, scaling and hardware maintenance, whereas local storage gives the business more direct control but requires it to manage hardware and backup itself.",
+    marks: "3 marks",
+    prompt: "Describe three pieces of information that may be included in a packet header.",
+    answer: "A packet header may contain the source address, destination address and a sequence number so packets can be routed and reassembled in the correct order.",
     marking: [
-      { mark: "B1", text: "paired contrast about remote access/location" },
-      { mark: "B1", text: "applies access difference to small business use" },
-      { mark: "B1", text: "paired contrast about internet dependence/availability" },
-      { mark: "B1", text: "explains consequence of connection failure or local availability" },
-      { mark: "B1", text: "paired contrast about provider management/scalability/control" },
-      { mark: "B1", text: "applies management/control difference to business responsibility" },
+      { mark: "B1", text: "source address" },
+      { mark: "B1", text: "destination address" },
+      { mark: "B1", text: "sequence number / packet number / order information" },
     ],
     strict: [
-      "Do not award comparison marks for separate descriptions with no contrast.",
-      "Allow cost/subscription vs hardware purchase as a valid paired contrast.",
-      "Do not accept cloud is always safer/faster without conditions.",
+      "Do not award more than one mark for vague 'address' unless source/destination is distinguished.",
+      "Allow checksum/control information as an alternative valid header item.",
+      "Do not accept payload data as header information.",
     ],
   },
   {
     title: "Question 3",
-    marks: "8 marks",
-    prompt: "A school wants to use facial recognition to record attendance. Evaluate this decision.",
-    answer: "Facial recognition may save time and reduce manual attendance work for teachers. It may also help safeguarding by identifying whether students are present. However, facial images are biometric personal data, so students may lose privacy if data is collected without informed consent or retained for too long. The system may also be unfair if it is less accurate for some students. It is justified only if the purpose is clear, data is stored securely, access is restricted, retention is limited and an alternative attendance method is available.",
+    marks: "4 marks",
+    prompt: "A processor repeatedly executes the same instructions in a loop. Explain how cache memory can improve performance in this situation.",
+    answer: "Cache stores frequently used data and instructions close to or inside the CPU. Cache is faster to access than RAM, so repeated data/instructions can be fetched more quickly. This reduces slower main memory accesses and can improve performance when the program reuses data or instructions.",
     marking: [
-      { mark: "B1", text: "identifies benefit such as speed/efficiency" },
-      { mark: "B1", text: "applies benefit to attendance/teachers/school" },
-      { mark: "B1", text: "identifies safeguarding/accuracy benefit or similar second benefit" },
-      { mark: "B1", text: "identifies privacy/biometric data/consent concern" },
-      { mark: "B1", text: "explains consequence such as misuse, monitoring or retention risk" },
-      { mark: "B1", text: "identifies fairness/accuracy concern or similar limitation" },
-      { mark: "B1", text: "gives suitable safeguard such as access control, consent, retention limit or alternative method" },
-      { mark: "B1", text: "judges whether facial-recognition attendance is proportionate using efficiency benefit, biometric privacy/accuracy risk and conditions for use" },
+      { mark: "B1", text: "cache stores frequently used data/instructions" },
+      { mark: "B1", text: "cache is faster/closer to CPU than RAM" },
+      { mark: "B1", text: "reduces need to access slower main memory" },
+      { mark: "B1", text: "links to improved performance for repeated/reused data or instructions" },
     ],
     strict: [
-      "Do not award full credit for one-sided efficiency-only answers.",
-      "Allow data protection wording without naming a law.",
-      "Do not require a specific biometric algorithm.",
+      "Do not accept cache as the same as RAM.",
+      "Allow 'between CPU and RAM' if faster access role is clear.",
+      "Do not award full credit for generic 'makes it faster' without mechanism.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "A club stores MemberName, Address, ActivityName and CoachName in one flat file for every booking. Explain how a relational database design could improve this.",
-    answer: "Member details can be stored once in a Member table with MemberID as the primary key, reducing repeated names and addresses. Activity details can be stored once in an Activity table with ActivityID as the primary key. A Booking table can store MemberID and ActivityID as foreign keys to link each booking to the correct member and activity. This reduces duplication and reduces inconsistency when an address or coach changes because one record can be updated.",
+    marks: "4 marks",
+    prompt: "Compare validation and verification when entering data into a database.",
+    answer: "Validation checks that entered data follows rules such as type, range or format, whereas verification checks that entered data matches the original source. Validation may reject an invalid date format, whereas verification may involve proofreading or double entry against a paper form.",
     marking: [
-      { mark: "B1", text: "identifies separate Member table / stores member details once" },
-      { mark: "B1", text: "identifies separate Activity/Coach/Booking table as appropriate" },
-      { mark: "B1", text: "uses suitable primary key such as MemberID/ActivityID" },
-      { mark: "B1", text: "uses foreign key(s) in Booking to link tables" },
-      { mark: "B1", text: "explains reduced duplication" },
-      { mark: "B1", text: "explains reduced inconsistency/update errors" },
+      { mark: "B1", text: "validation checks data against rules" },
+      { mark: "B1", text: "verification checks against original/source data" },
+      { mark: "B1", text: "valid validation example such as type/range/format/presence" },
+      { mark: "B1", text: "valid verification example such as proofreading/double entry and comparative wording" },
     ],
     strict: [
-      "Do not award relationship marks for simply saying 'use more tables'.",
-      "Allow alternative sensible table names if relationships are clear.",
-      "Do not require full normal forms.",
+      "Do not accept 'validation proves data is correct'.",
+      "Allow spell check only if clearly used as a format/presence rule, not proof of truth.",
+      "Do not accept authentication as verification in this data-entry context.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Explain how increasing cache size and using multiple cores may affect processor performance.",
-    answer: "A larger cache can store more frequently used data and instructions close to the CPU, reducing slower RAM accesses and improving performance when programs reuse data. Multiple cores allow different tasks or threads to be processed in parallel, which can improve performance for software designed to use more than one core. However, performance may not improve much for a single-threaded program or if the required data is not in cache.",
+    prompt: "A school is moving student records to a shared server. Explain three different measures that can protect the records.",
+    answer: "Authentication such as MFA can check user identity before access, reducing unauthorised logins. Access rights can restrict student records to staff who need them, limiting unauthorised viewing or editing. Encryption can encode stored or transmitted records so they are unreadable without the correct key if intercepted or stolen. Backups can also allow records to be restored after loss or corruption.",
     marking: [
-      { mark: "B1", text: "cache stores frequently used data/instructions" },
-      { mark: "B1", text: "larger cache can reduce slower RAM accesses / improve performance when reused" },
-      { mark: "B1", text: "multiple cores allow parallel processing / more than one task/thread" },
-      { mark: "B1", text: "performance improves when software can use multiple cores" },
-      { mark: "B1", text: "valid limitation about single-threaded programs/cache miss/not always faster" },
-      { mark: "B1", text: "answer links performance effect to workload/program behaviour" },
+      { mark: "B1", text: "names valid measure such as authentication/MFA/access rights/encryption/backup" },
+      { mark: "B1", text: "explains mechanism of first measure in context" },
+      { mark: "B1", text: "names second valid measure" },
+      { mark: "B1", text: "explains mechanism of second measure in context" },
+      { mark: "B1", text: "names third valid measure" },
+      { mark: "B1", text: "explains mechanism of third measure in context" },
     ],
     strict: [
-      "Do not accept 'more cores always faster'.",
-      "Do not accept cache as the same as RAM.",
-      "Allow multitasking explanation if parallel processing is clear.",
+      "Do not award explanation marks for generic 'keeps it safe'.",
+      "Allow firewall/anti-malware/audit trails if mechanism is correct and relevant.",
+      "Do not count the same measure twice under different wording.",
     ],
   },
 ];
 
+let timerSeconds = 300;
+let timerInitial = 300;
+let timerId = null;
+
 function normalise(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";");
+}
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60).toString().padStart(2, "0");
+  const secs = (seconds % 60).toString().padStart(2, "0");
+  return `${mins}:${secs}`;
+}
+
+function updateTimerDisplay() {
+  document.querySelector("#timerDisplay").textContent = formatTime(timerSeconds);
 }
 
 function setupPrint() {
@@ -261,30 +253,59 @@ function setupHook() {
   });
 }
 
+function setupTimer() {
+  document.querySelectorAll("[data-time]").forEach((button) => {
+    button.addEventListener("click", () => {
+      timerInitial = Number(button.dataset.time);
+      timerSeconds = timerInitial;
+      updateTimerDisplay();
+    });
+  });
+
+  document.querySelector("#startTimer").addEventListener("click", () => {
+    if (timerId !== null) return;
+    timerId = window.setInterval(() => {
+      timerSeconds = Math.max(0, timerSeconds - 1);
+      updateTimerDisplay();
+      if (timerSeconds === 0) {
+        window.clearInterval(timerId);
+        timerId = null;
+      }
+    }, 1000);
+  });
+
+  document.querySelector("#pauseTimer").addEventListener("click", () => {
+    if (timerId !== null) {
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+  });
+
+  document.querySelector("#resetTimer").addEventListener("click", () => {
+    if (timerId !== null) {
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+    timerSeconds = timerInitial;
+    updateTimerDisplay();
+  });
+}
+
 function setupPlanner() {
-  const input = document.querySelector("#plannerInput");
+  const input = document.querySelector("#markInput");
   const result = document.querySelector("#planResult");
   document.querySelector("#planBtn").addEventListener("click", () => {
-    result.innerHTML = `<strong>Plan:</strong> ${plannerMap[input.value].plan}`;
+    const item = planMap[input.value];
+    result.innerHTML = `<strong>Target time:</strong> ${item.time}<br /><strong>Behaviour:</strong> ${item.behaviour}`;
   });
 }
 
-function setupBuilder() {
-  const point = document.querySelector("#pointInput");
-  const scenario = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#builderResult");
-  document.querySelector("#buildBtn").addEventListener("click", () => {
-    const fact = paragraphFacts[point.value];
-    result.innerHTML = `<strong>Built paragraph:</strong> ${point.options[point.selectedIndex].text} because it ${fact.mechanism}, ${fact.consequence} for the ${scenario.value}.`;
-  });
-}
-
-function setupChecker() {
-  const input = document.querySelector("#checkerInput");
-  const result = document.querySelector("#checkResult");
-  document.querySelector("#checkBtn").addEventListener("click", () => {
-    const item = checkerMap[input.value];
-    result.innerHTML = `<strong>Missing focus:</strong> ${item.missing}<br /><strong>Repair:</strong> ${item.fix}`;
+function setupTriage() {
+  const input = document.querySelector("#triageInput");
+  const result = document.querySelector("#triageResult");
+  document.querySelector("#triageBtn").addEventListener("click", () => {
+    const item = triageMap[input.value];
+    result.innerHTML = `<strong>${item.action}</strong><br />${item.reason}`;
   });
 }
 
@@ -308,7 +329,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("security");
+  renderExample("one");
 }
 
 function renderPractice() {
@@ -407,9 +428,9 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
+  setupTimer();
   setupPlanner();
-  setupBuilder();
-  setupChecker();
+  setupTriage();
   setupExamples();
   renderPractice();
   renderMistakes();

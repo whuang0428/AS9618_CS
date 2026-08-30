@@ -1,178 +1,93 @@
-const originalRows = [
-  { StudentID: "S01", StudentName: "Amira", TutorGroup: "12A", Active: "TRUE" },
-  { StudentID: "S02", StudentName: "Leo", TutorGroup: "12B", Active: "TRUE" },
-  { StudentID: "S03", StudentName: "Maya", TutorGroup: "12A", Active: "FALSE" },
+const students = [
+  { StudentID: "S01", StudentName: "Amira", TutorGroup: "12A" },
+  { StudentID: "S02", StudentName: "Leo", TutorGroup: "12B" },
+  { StudentID: "S03", StudentName: "Maya", TutorGroup: "12A" },
 ];
 
+const loans = [
+  { LoanID: "L01", StudentID: "S01", Returned: false },
+  { LoanID: "L02", StudentID: "S02", Returned: true },
+  { LoanID: "L03", StudentID: "S03", Returned: false },
+  { LoanID: "L04", StudentID: "S01", Returned: true },
+];
+
+const joinedRows = loans.map((loan) => {
+  const student = students.find((item) => item.StudentID === loan.StudentID);
+  return { ...loan, ...student, ReturnedText: loan.Returned ? "TRUE" : "FALSE" };
+});
+
 const builderMap = {
-  insertNina: {
-    sql: "INSERT INTO Student (StudentID, StudentName, TutorGroup, Active)\nVALUES ('S04', 'Nina', '12C', TRUE);",
-    reason: "A new record is required, so use INSERT INTO with fields and matching values.",
+  studentLoans: {
+    sql: "SELECT Student.StudentName, Loan.LoanID\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID;",
+    reason: "Use the two named tables and put the matching key fields in an explicit INNER JOIN ... ON clause.",
   },
-  updateAmira: {
-    sql: "UPDATE Student\nSET TutorGroup = '12C'\nWHERE StudentID = 'S01';",
-    reason: "An existing record is being changed. WHERE restricts the change to S01.",
+  loanTitles: {
+    sql: "SELECT Loan.LoanID, Student.StudentName\nFROM Loan INNER JOIN Student\nON Loan.StudentID = Student.StudentID;",
+    reason: "The table order may be reversed, but the ON condition must still match StudentID to StudentID.",
   },
-  updateInactive: {
-    sql: "UPDATE Student\nSET Active = FALSE\nWHERE StudentID = 'S02';",
-    reason: "The statement changes Leo's Active value without removing the record.",
+  currentBooks: {
+    sql: "SELECT Student.StudentName, Loan.LoanID\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID\nWHERE Loan.Returned = FALSE;",
+    reason: "ON matches related records; WHERE then filters the joined result.",
   },
-  deleteMaya: {
-    sql: "DELETE FROM Student\nWHERE StudentID = 'S03';",
-    reason: "The whole record for S03 is removed, so DELETE FROM is appropriate.",
+  computingBorrowers: {
+    sql: "SELECT Student.StudentName\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID\nWHERE Student.TutorGroup = '12A';",
+    reason: "This remains a two-table join; the filter uses a field from Student.",
   },
-  deleteInactive: {
-    sql: "DELETE FROM Student\nWHERE Active = FALSE;",
-    reason: "This removes all records matching the condition, not just one named student.",
+  aliasCurrent: {
+    sql: "SELECT S.StudentName, L.LoanID\nFROM Student AS S INNER JOIN Loan AS L\nON S.StudentID = L.StudentID\nWHERE L.Returned = FALSE;",
+    reason: "Aliases shorten names without changing the explicit two-table INNER JOIN relationship.",
   },
 };
 
-const simulations = {
-  s1: {
-    note: "INSERT adds one new row. Existing rows are unchanged.",
-    rows: [...originalRows, { StudentID: "S04", StudentName: "Nina", TutorGroup: "12C", Active: "TRUE" }],
-  },
-  s2: {
-    note: "UPDATE with WHERE changes only S01.",
-    rows: originalRows.map((row) => (row.StudentID === "S01" ? { ...row, TutorGroup: "12C" } : row)),
-  },
-  s3: {
-    note: "No WHERE condition: every row is updated. This is usually the disaster version.",
-    rows: originalRows.map((row) => ({ ...row, TutorGroup: "12C" })),
-  },
-  s4: {
-    note: "DELETE with WHERE removes only S03.",
-    rows: originalRows.filter((row) => row.StudentID !== "S03"),
-  },
-  s5: {
-    note: "DELETE without WHERE removes every row from the table.",
-    rows: [],
-  },
+const queryMap = {
+  q1: { fields: ["StudentName", "LoanID"], rows: joinedRows.map(({ StudentName, LoanID }) => ({ StudentName, LoanID })) },
+  q2: { fields: ["LoanID", "StudentName"], rows: joinedRows.map(({ LoanID, StudentName }) => ({ LoanID, StudentName })) },
+  q3: { fields: ["StudentName", "LoanID"], rows: joinedRows.filter((row) => !row.Returned).map(({ StudentName, LoanID }) => ({ StudentName, LoanID })) },
+  q4: { fields: ["StudentName"], rows: joinedRows.filter((row) => row.TutorGroup === "12A").map(({ StudentName }) => ({ StudentName })) },
+  q5: { fields: ["StudentName", "LoanID", "TutorGroup"], rows: joinedRows.filter((row) => row.Returned).map(({ StudentName, LoanID, TutorGroup }) => ({ StudentName, LoanID, TutorGroup })) },
 };
 
 const examples = {
-  insert: {
-    title: "Example 1: INSERT a new record",
-    problem: "Add student S04, Nina, in tutor group 12C.",
-    steps: [
-      "The request adds a new record, so use INSERT INTO.",
-      "List the fields being supplied: StudentID, StudentName, TutorGroup.",
-      "List values in the same order.",
-      "SQL: INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');",
-    ],
+  twoTable: {
+    title: "Example 1: basic two-table INNER JOIN",
+    problem: "Show StudentName and LoanID for every matched loan.",
+    steps: ["Select the requested fields.", "Name Student INNER JOIN Loan.", "Write ON Student.StudentID = Loan.StudentID.", "The ON clause prevents unrelated row combinations."],
   },
-  update: {
-    title: "Example 2: UPDATE one existing record",
-    problem: "Change Amira's tutor group to 12C. Her StudentID is S01.",
-    steps: [
-      "The record already exists, so use UPDATE, not INSERT.",
-      "SET gives the field and new value: SET TutorGroup = '12C'.",
-      "WHERE targets the specific record: WHERE StudentID = 'S01'.",
-      "SQL: UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';",
-    ],
+  threeTable: {
+    title: "Example 2: reverse the table order",
+    problem: "Start from Loan and show LoanID with StudentName.",
+    steps: ["Use Loan INNER JOIN Student.", "The same key relationship is required.", "Write ON Loan.StudentID = Student.StudentID.", "Only two tables are used."],
   },
-  delete: {
-    title: "Example 3: DELETE one record",
-    problem: "Remove the record for student S03.",
-    steps: [
-      "The whole record is being removed, so use DELETE FROM.",
-      "Name the table: Student.",
-      "Use WHERE StudentID = 'S03' so only one record is removed.",
-      "SQL: DELETE FROM Student WHERE StudentID = 'S03';",
-    ],
+  filter: {
+    title: "Example 3: INNER JOIN plus WHERE",
+    problem: "Show current loans only.",
+    steps: ["Write the INNER JOIN and ON relationship first.", "Add WHERE Loan.Returned = FALSE.", "ON defines the relationship; WHERE filters the result.", "Keep the query to two tables."],
   },
-  unsafe: {
-    title: "Example 4: Spot the unsafe statement",
-    problem: "A student writes UPDATE Student SET TutorGroup = '12C';",
-    steps: [
-      "The syntax changes TutorGroup, but there is no WHERE clause.",
-      "Without WHERE, every row in Student is affected.",
-      "If only one student should change, add a condition using a key field.",
-      "Safer: UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';",
-    ],
+  alias: {
+    title: "Example 4: two-table aliases",
+    problem: "Rewrite the current-loan query using S and L.",
+    steps: ["Declare Student AS S and Loan AS L.", "Use INNER JOIN and ON S.StudentID = L.StudentID.", "Use aliases consistently in SELECT, ON and WHERE.", "Aliases do not replace the relationship condition."],
   },
 };
 
 const practice = [
-  {
-    id: "p1",
-    prompt: "Which SQL command adds a new record?",
-    accepted: ["insert", "insert into"],
-    answer: "INSERT / INSERT INTO",
-  },
-  {
-    id: "p2",
-    prompt: "Which SQL command changes existing records?",
-    accepted: ["update"],
-    answer: "UPDATE",
-  },
-  {
-    id: "p3",
-    prompt: "Which SQL command removes records?",
-    accepted: ["delete", "delete from"],
-    answer: "DELETE / DELETE FROM",
-  },
-  {
-    id: "p4",
-    prompt: "Which keyword gives the new value in an UPDATE statement?",
-    accepted: ["set"],
-    answer: "SET",
-  },
-  {
-    id: "p5",
-    prompt: "Which keyword introduces values for an INSERT statement?",
-    accepted: ["values"],
-    answer: "VALUES",
-  },
-  {
-    id: "p6",
-    prompt: "Which clause restricts UPDATE or DELETE to selected records?",
-    accepted: ["where"],
-    answer: "WHERE",
-  },
-  {
-    id: "p7",
-    prompt: "What happens if UPDATE Student SET Active = FALSE has no WHERE?",
-    accepted: ["all records updated", "every record updated", "all rows updated", "every row updated"],
-    answer: "All records / rows are updated.",
-  },
-  {
-    id: "p8",
-    prompt: "Write the condition for targeting student S01 by primary key.",
-    accepted: ["studentid = 's01'", "studentid='s01'", "studentid = \"s01\"", "studentid=\"s01\""],
-    answer: "StudentID = 'S01'",
-  },
-  {
-    id: "p9",
-    prompt: "Should DELETE be used to change TutorGroup from 12A to 12C? yes or no.",
-    accepted: ["no", "n"],
-    answer: "No. Use UPDATE for changing a field value.",
-  },
-  {
-    id: "p10",
-    prompt: "In INSERT, must field order match value order? yes or no.",
-    accepted: ["yes", "y"],
-    answer: "Yes.",
-  },
+  { id: "p1", prompt: "Which key uniquely identifies a Student record?", accepted: ["primary key", "primary"], answer: "Primary key" },
+  { id: "p2", prompt: "Which key in Loan references Student?", accepted: ["foreign key", "studentid", "loan.studentid"], answer: "Loan.StudentID is a foreign key." },
+  { id: "p3", prompt: "Write the ON condition linking Student to Loan.", accepted: ["student.studentid = loan.studentid", "loan.studentid = student.studentid"], answer: "Student.StudentID = Loan.StudentID" },
+  { id: "p4", prompt: "Which SQL join keyword is required for this AS core example?", accepted: ["inner join"], answer: "INNER JOIN" },
+  { id: "p5", prompt: "How many tables may the AS core join use?", accepted: ["two", "2", "at most two"], answer: "At most two tables." },
+  { id: "p6", prompt: "How can StudentID be made unambiguous?", accepted: ["table name", "qualify it", "table-qualified field", "student.studentid"], answer: "Qualify it, for example Student.StudentID." },
+  { id: "p7", prompt: "Which clause defines how the two tables match?", accepted: ["on", "on clause"], answer: "The ON clause." },
+  { id: "p8", prompt: "Which clause filters current loans?", accepted: ["where", "where clause"], answer: "WHERE Loan.Returned = FALSE" },
+  { id: "p9", prompt: "In Student AS S, what is S?", accepted: ["alias", "table alias"], answer: "A table alias." },
+  { id: "p10", prompt: "Should SELECT * be used when only two named fields are requested?", accepted: ["no", "n"], answer: "No. Select only the requested fields." },
 ];
 
 const mistakes = [
-  {
-    wrong: "UPDATE Student TutorGroup = '12C' WHERE StudentID = 'S01';",
-    fix: "The SET keyword is missing. Use UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';",
-  },
-  {
-    wrong: "UPDATE Student SET TutorGroup = '12C'; when only S01 should change.",
-    fix: "The statement has no WHERE clause, so every row is changed. Add WHERE StudentID = 'S01'.",
-  },
-  {
-    wrong: "DELETE TutorGroup FROM Student WHERE StudentID = 'S01';",
-    fix: "DELETE removes records, not individual field values. To change a field, use UPDATE Student SET TutorGroup = ...",
-  },
-  {
-    wrong: "INSERT INTO Student (StudentID, StudentName) VALUES ('S04', 'Nina', '12C');",
-    fix: "The field list has two fields but the VALUES list has three values. The counts and order must match.",
-  },
+  { wrong: "SELECT StudentName, LoanID FROM Student, Loan;", fix: "Use explicit INNER JOIN and an ON condition." },
+  { wrong: "ON Student.StudentID = Loan.LoanID", fix: "Match like identifiers: Student.StudentID = Loan.StudentID." },
+  { wrong: "SELECT * FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID;", fix: "The join is valid, but select only the fields requested." },
+  { wrong: "FROM Student AS S INNER JOIN Loan AS L ON Student.StudentID = Loan.StudentID", fix: "Use declared aliases consistently: ON S.StudentID = L.StudentID." },
 ];
 
 
@@ -185,87 +100,89 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Write an SQL statement to add a new student with StudentID S04, StudentName Nina and TutorGroup 12C to the Student table.",
-    answer: "INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');",
+    prompt: "Write SQL using Student and Loan to output StudentName and LoanID for every matched loan.",
+    answer: "SELECT Student.StudentName, Loan.LoanID FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID;",
     marking: [
-      { mark: "B1", text: "uses INSERT INTO Student" },
-      { mark: "B1", text: "identifies the three fields StudentID, StudentName and TutorGroup" },
-      { mark: "M1", text: "uses VALUES with three corresponding values" },
-      { mark: "A1", text: "values S04, Nina and 12C are in the correct order and text values are shown as strings" },
+      { mark: "B1", text: "SELECTs the two requested fields" },
+      { mark: "B1", text: "names Student INNER JOIN Loan" },
+      { mark: "M1", text: "uses an ON condition" },
+      { mark: "A1", text: "matches StudentID to StudentID" },
     ],
     strict: [
-      "Do not award A1 if the order of values does not match the field list.",
-      "Allow omission of field list only if all table fields are supplied in a plausible table order.",
-      "Do not require a semicolon.",
+      "Require explicit INNER JOIN ... ON.",
+      "Do not accept a comma-style FROM list.",
+      "Do not accept Student.StudentID = Loan.LoanID.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Write an SQL statement to change the TutorGroup of student S01 to 12C.",
-    answer: "UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';",
+    marks: "5 marks",
+    prompt: "Write a two-table INNER JOIN that outputs StudentName and LoanID for current loans only.",
+    answer: "SELECT Student.StudentName, Loan.LoanID FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE;",
     marking: [
-      { mark: "B1", text: "uses UPDATE Student" },
-      { mark: "B1", text: "uses SET TutorGroup = '12C'" },
-      { mark: "M1", text: "uses WHERE to target a record" },
-      { mark: "A1", text: "correct condition StudentID = 'S01'" },
+      { mark: "B1", text: "SELECTs StudentName and LoanID" },
+      { mark: "B1", text: "uses Student INNER JOIN Loan" },
+      { mark: "M1", text: "correct ON relationship" },
+      { mark: "M1", text: "filters Returned" },
+      { mark: "A1", text: "complete WHERE Returned = FALSE" },
     ],
     strict: [
-      "Do not award WHERE mark if no condition is given.",
-      "Do not accept INSERT because the record already exists.",
-      "Allow double quotes for text values if used consistently.",
+      "Maximum two tables.",
+      "Require INNER JOIN ... ON.",
+      "Do not accept Returned = TRUE.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Write an SQL statement to remove the record for student S03 from the Student table.",
-    answer: "DELETE FROM Student WHERE StudentID = 'S03';",
+    marks: "6 marks",
+    prompt: "Explain and correct: SELECT * FROM Student, Loan WHERE Student.StudentID = Loan.LoanID;",
+    answer: "Use only the requested fields, explicit INNER JOIN ... ON, and match Student.StudentID to Loan.StudentID.",
     marking: [
-      { mark: "B1", text: "uses DELETE FROM" },
-      { mark: "B1", text: "identifies Student table" },
-      { mark: "M1", text: "uses WHERE to restrict records removed" },
-      { mark: "A1", text: "correct condition StudentID = 'S03'" },
+      { mark: "B1", text: "identifies SELECT * issue" },
+      { mark: "B1", text: "selects named fields" },
+      { mark: "B1", text: "identifies comma join issue" },
+      { mark: "B1", text: "uses INNER JOIN" },
+      { mark: "B1", text: "identifies wrong key match" },
+      { mark: "B1", text: "correct ON condition" },
     ],
     strict: [
-      "Do not accept UPDATE for removing the whole record.",
-      "Do not award method mark for DELETE FROM Student with no WHERE when a specific student is requested.",
-      "Allow StudentID = S03 only if S03 is clearly treated as a string value in the answer style.",
+      "All corrections must preserve two-table scope.",
+      "Do not accept a three-table solution.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A student writes UPDATE Student SET TutorGroup = '12C'; when only student S01 should be changed. Explain the error and write a corrected statement.",
-    answer: "The statement has no WHERE clause, so every record in Student would have TutorGroup changed to 12C. Corrected: UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';",
+    marks: "3 marks",
+    prompt: "Using aliases S and L, write the ON condition and explain its purpose.",
+    answer: "ON S.StudentID = L.StudentID; it matches each loan to its related student.",
     marking: [
-      { mark: "B1", text: "identifies that the WHERE clause is missing" },
-      { mark: "B1", text: "explains all records / every row would be affected" },
-      { mark: "B1", text: "retains UPDATE Student" },
-      { mark: "B1", text: "retains SET TutorGroup = '12C'" },
-      { mark: "B1", text: "adds correct WHERE StudentID = 'S01'" },
+      { mark: "A1", text: "correct alias condition" },
+      { mark: "M1", text: "matches related records" },
+      { mark: "A1", text: "explains prevention of unrelated combinations" },
     ],
     strict: [
-      "Do not award explanation mark for vague 'it is wrong' without saying every row is affected.",
-      "Allow equivalent primary-key condition if S01 is clearly identified.",
-      "Do not require semicolon.",
+      "Use the declared aliases.",
+      "Allow reversed equality.",
+      "Do not award vague speed claims.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A student writes INSERT INTO Student (StudentID, StudentName) VALUES ('S04', 'Nina', '12C'); Explain the error and write a corrected statement.",
-    answer: "The field list contains two fields but the VALUES list contains three values. The TutorGroup field is missing from the field list. Corrected: INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');",
+    marks: "6 marks",
+    prompt: "Write and annotate a complete two-table INNER JOIN ... ON query of your own.",
+    answer: "Example: SELECT S.StudentName, L.LoanID FROM Student AS S INNER JOIN Loan AS L ON S.StudentID = L.StudentID;",
     marking: [
-      { mark: "B1", text: "identifies the number of fields and values does not match" },
-      { mark: "B1", text: "identifies TutorGroup is missing from field list or extra value has no matching field" },
-      { mark: "B1", text: "adds TutorGroup to the field list" },
-      { mark: "B1", text: "complete corrected statement with matching fields and values" },
+      { mark: "B1", text: "two related tables" },
+      { mark: "B1", text: "requested fields" },
+      { mark: "B1", text: "INNER JOIN" },
+      { mark: "B1", text: "ON clause" },
+      { mark: "B1", text: "matching key fields" },
+      { mark: "B1", text: "accurate annotation" },
     ],
     strict: [
-      "Do not award complete statement mark if field count and value count still differ.",
-      "Allow alternative correction that removes '12C' only if the task did not require TutorGroup; here TutorGroup is required, so prefer adding the field.",
-      "Do not penalise missing semicolon.",
+      "Maximum two tables.",
+      "Require explicit INNER JOIN ... ON.",
+      "Aliases must be used consistently.",
     ],
   },
 ];
@@ -281,10 +198,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    correct: "Correct. UPDATE changes the existing row and WHERE targets S01 only.",
-    all: "Dangerous. Without WHERE, every student's TutorGroup becomes 12C.",
-    insert: "No. INSERT adds a new row; it does not change the existing S01 row.",
-    delete: "No. DELETE removes Amira's record rather than changing her tutor group.",
+    studentLoan: "Correct. Both fields store a student identifier, so the Loan row can be matched to the right Student row.",
+    studentBook: "No. StudentID identifies a student; BookID identifies a book. Matching them is not logical.",
+    title: "No. A student name and a book title are different facts, not matching keys.",
+    category: "No. StudentID and Category store different kinds of value.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -306,10 +223,9 @@ function setupBuilder() {
   });
 }
 
-function renderTable(rows) {
-  const fields = ["StudentID", "StudentName", "TutorGroup", "Active"];
+function renderResultTable(fields, rows) {
   if (rows.length === 0) {
-    return `<div class="empty-table">No rows remain in the table.</div>`;
+    return "<p>No matching rows.</p>";
   }
   const head = `<div class="table-row table-head">${fields.map((field) => `<div>${field}</div>`).join("")}</div>`;
   const body = rows
@@ -318,14 +234,12 @@ function renderTable(rows) {
   return `<div class="mini-result" style="--cols:${fields.length}">${head}${body}</div>`;
 }
 
-function setupSimulator() {
-  const input = document.querySelector("#statementInput");
-  const note = document.querySelector("#simulationNote");
-  const result = document.querySelector("#simulationResult");
-  document.querySelector("#simulateBtn").addEventListener("click", () => {
-    const simulation = simulations[input.value];
-    note.textContent = simulation.note;
-    result.innerHTML = renderTable(simulation.rows);
+function setupQueryRunner() {
+  const input = document.querySelector("#queryInput");
+  const result = document.querySelector("#queryResult");
+  document.querySelector("#queryBtn").addEventListener("click", () => {
+    const query = queryMap[input.value];
+    result.innerHTML = renderResultTable(query.fields, query.rows);
   });
 }
 
@@ -349,7 +263,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("insert");
+  renderExample("twoTable");
 }
 
 function renderPractice() {
@@ -449,7 +363,7 @@ function init() {
   setupPrint();
   setupHook();
   setupBuilder();
-  setupSimulator();
+  setupQueryRunner();
   setupExamples();
   renderPractice();
   renderMistakes();

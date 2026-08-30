@@ -6,7 +6,7 @@ import { pageDefinitions, pageHash, root } from "./stage6-qa-utils.mjs";
 const evidencePath = path.join(root, "audits", "remediation-v2-stage6-browser-evidence.json");
 if (!fs.existsSync(evidencePath)) throw new Error("Fresh remediation-v2 Stage 6 browser evidence is required; this generator cannot create Approved rows without it.");
 const evidence = JSON.parse(fs.readFileSync(evidencePath, "utf8"));
-if (evidence.sourceApprovalImported !== false || evidence.viewportRecordCount !== 306 || evidence.failedRecords !== 0) {
+if (evidence.sourceApprovalImported !== false || evidence.viewportRecordCount !== 308 || evidence.failedRecords !== 0) {
   throw new Error("Fresh Stage 6 browser evidence is incomplete or attempts to inherit old approval state.");
 }
 const byKey = new Map(evidence.records.map((row) => [`${row.page}/${row.viewport}`, row]));

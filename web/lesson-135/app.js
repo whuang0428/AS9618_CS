@@ -1,122 +1,124 @@
 const scenarios = [
   {
-    id: "prompt",
-    text: "Tell the user what value they should type next.",
-    recommendation: "OUTPUT prompt text",
-    reason: "A prompt is displayed text, for example OUTPUT \"Enter mark\".",
+    id: "rows",
+    text: "Find how many complete boxes are needed when each full box contains 12 items.",
+    recommendation: "DIV for full boxes, with MOD to check leftovers",
+    reason: "DIV gives the number of complete groups. MOD tells whether there are items left over.",
   },
   {
-    id: "read",
-    text: "Read the mark typed by the user and store it.",
-    recommendation: "INPUT Mark",
-    reason: "INPUT receives data from the user and stores it in a variable.",
+    id: "even",
+    text: "Check whether a number is even.",
+    recommendation: "Number MOD 2",
+    reason: "If Number MOD 2 = 0, there is no remainder after division by 2, so the number is even.",
   },
   {
-    id: "label",
-    text: "Display a mark with a clear label.",
-    recommendation: "OUTPUT \"Mark: \" & Mark",
-    reason: "A label makes the displayed value meaningful.",
+    id: "average",
+    text: "Calculate a mean that may contain a decimal part.",
+    recommendation: "/",
+    reason: "Real division keeps the fractional part; DIV would discard it.",
   },
   {
-    id: "table",
-    text: "Display many records in a readable list.",
-    recommendation: "formatted OUTPUT lines with headings",
-    reason: "Headings and consistent spacing make repeated values easier to interpret.",
+    id: "minutes",
+    text: "Convert 145 minutes into hours and remaining minutes.",
+    recommendation: "DIV and MOD",
+    reason: "145 DIV 60 gives whole hours; 145 MOD 60 gives the leftover minutes.",
   },
 ];
 
 const examples = {
-  promptInput: {
-    title: "Example 1: Prompt then input",
-    problem: "Ask for a student's mark and store it.",
+  rows: {
+    title: "Example 1: Full rows and leftovers",
+    problem: "17 students sit in rows of 5. Find full rows and leftovers.",
     rows: [
-      ["Line 1", "OUTPUT \"Enter mark 0 to 100\"", "prompt displayed to user"],
-      ["Line 2", "INPUT Mark", "user value is stored in Mark"],
-      ["If user enters", "72", "Mark now stores 72"],
+      ["Real division", "17 / 5 = 3.4", "not a whole number of full rows"],
+      ["Integer division", "17 DIV 5 = 3", "three complete rows"],
+      ["Remainder", "17 MOD 5 = 2", "two students left over"],
+      ["Check", "5 * 3 + 2 = 17", "identity confirms the result"],
     ],
-    code: "OUTPUT \"Enter mark 0 to 100\"\nINPUT Mark",
+    code: "Students <- 17\nSeatsPerRow <- 5\nFullRows <- Students DIV SeatsPerRow\nLeftOver <- Students MOD SeatsPerRow\nOUTPUT FullRows\nOUTPUT LeftOver",
     points: [
-      "OUTPUT alone does not read data.",
-      "INPUT stores the user's value.",
-      "A clear prompt states what is expected.",
+      "DIV returns the whole-number quotient.",
+      "MOD returns the remainder.",
+      "Use both when the scenario needs complete groups and leftovers.",
     ],
   },
-  formatted: {
-    title: "Example 2: Format a result line",
-    problem: "Display a student's name and mark clearly.",
+  even: {
+    title: "Example 2: Even or odd",
+    problem: "Use MOD to test whether a number is even.",
     rows: [
-      ["Name", "Ada", "stored string"],
-      ["Mark", "72", "stored integer"],
-      ["Formatted output", "\"Name: Ada, Mark: 72\"", "labels and punctuation added"],
+      ["Number", "24", "input value"],
+      ["Operation", "24 MOD 2", "divide by 2 and keep the remainder"],
+      ["Result", "0", "no remainder"],
+      ["Conclusion", "even", "remainder 0 means divisible by 2"],
     ],
-    code: "Name <- \"Ada\"\nMark <- 72\nOUTPUT \"Name: \" & Name & \", Mark: \" & Mark",
+    code: "INPUT Number\nIF Number MOD 2 = 0 THEN\n    OUTPUT \"Even\"\nELSE\n    OUTPUT \"Odd\"\nENDIF",
     points: [
-      "Concatenation joins labels and stored values.",
-      "Punctuation and spaces make output easier to read.",
-      "The value is not changed by being displayed.",
+      "MOD 2 is a common parity check.",
+      "A remainder of 0 means exactly divisible.",
+      "A remainder of 1 means odd for positive integers.",
     ],
   },
-  calculation: {
-    title: "Example 3: Output a calculated value",
-    problem: "Input a price, calculate VAT, and display a labelled total.",
+  time: {
+    title: "Example 3: Convert minutes",
+    problem: "Convert 145 minutes into hours and minutes.",
     rows: [
-      ["Input", "Price = 20.00", "numeric value"],
-      ["Calculation", "Total = Price * 1.20", "24.00"],
-      ["Output", "\"Total price: 24\"", "label plus calculated value"],
+      ["Hours", "145 DIV 60 = 2", "two complete hours"],
+      ["Minutes", "145 MOD 60 = 25", "twenty-five minutes left"],
+      ["Output", "2 hours 25 minutes", "combined result"],
     ],
-    code: "OUTPUT \"Enter price\"\nINPUT Price\nTotal <- Price * 1.20\nOUTPUT \"Total price: \" & Total",
+    code: "TotalMinutes <- 145\nHours <- TotalMinutes DIV 60\nMinutes <- TotalMinutes MOD 60\nOUTPUT Hours\nOUTPUT Minutes",
     points: [
-      "Use INPUT before using a value entered by the user.",
-      "Output can include expression results or calculated variables.",
-      "If a paper requires decimal places, state or show the required formatting.",
+      "DIV gives the larger unit.",
+      "MOD gives the leftover smaller unit.",
+      "This pattern also works for seconds, pages and grouped items.",
     ],
   },
-  table: {
-    title: "Example 4: Table-like output",
-    problem: "Display two names and marks in a readable format.",
+  precedence: {
+    title: "Example 4: Operator precedence",
+    problem: "Trace 4 + 18 MOD 5 * 2.",
     rows: [
-      ["Heading", "Name    Mark", "explains columns"],
-      ["Row 1", "Ada     72", "first record"],
-      ["Row 2", "Lin     85", "second record"],
+      ["First", "18 MOD 5 = 3", "MOD evaluated before addition"],
+      ["Second", "3 * 2 = 6", "multiplication before addition"],
+      ["Third", "4 + 6 = 10", "final result"],
     ],
-    code: "OUTPUT \"Name    Mark\"\nOUTPUT \"Ada     72\"\nOUTPUT \"Lin     85\"",
+    code: "Result <- 4 + 18 MOD 5 * 2\nOUTPUT Result",
     points: [
-      "Headings reduce ambiguity.",
-      "Consistent spacing or labels help repeated output.",
-      "In pseudocode, clarity is more important than Java-specific formatting syntax.",
+      "If the intended order is unclear, use brackets.",
+      "Trace one operation at a time.",
+      "Never treat MOD as the same as real division.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which command reads and stores data entered by the user?", accepted: ["input"], answer: "INPUT." },
-  { id: "p2", prompt: "Which command displays text or a value to the user?", accepted: ["output"], answer: "OUTPUT." },
-  { id: "p3", prompt: "Does OUTPUT \"Enter mark\" store the mark? yes or no.", accepted: ["no"], answer: "No. It only displays a prompt." },
-  { id: "p4", prompt: "Complete the missing line: OUTPUT \"Enter name\"; _____ Name", accepted: ["input"], answer: "INPUT Name." },
-  { id: "p5", prompt: "Name <- \"Ada\"; OUTPUT \"Name: \" & Name. What is displayed?", accepted: ["Name: Ada", "name: ada"], answer: "Name: Ada." },
-  { id: "p6", prompt: "Mark <- 72; OUTPUT \"Mark: \" & Mark. What is displayed?", accepted: ["Mark: 72", "mark: 72"], answer: "Mark: 72." },
-  { id: "p7", prompt: "Should a good prompt say what data is expected? yes or no.", accepted: ["yes"], answer: "Yes." },
-  { id: "p8", prompt: "Which is clearer output: 72 or Mark: 72?", accepted: ["Mark: 72", "mark: 72"], answer: "Mark: 72." },
-  { id: "p9", prompt: "In OUTPUT \"Total: \" & Total, what operator joins the label and value?", accepted: ["&", "ampersand"], answer: "&." },
-  { id: "p10", prompt: "Java Scanner syntax should be copied into Cambridge pseudocode. true or false?", accepted: ["false"], answer: "False." },
+  { id: "p1", prompt: "What is 17 DIV 5?", accepted: ["3"], answer: "3." },
+  { id: "p2", prompt: "What is 17 MOD 5?", accepted: ["2"], answer: "2." },
+  { id: "p3", prompt: "What is 17 / 5?", accepted: ["3.4"], answer: "3.4." },
+  { id: "p4", prompt: "What is 23 DIV 6?", accepted: ["3"], answer: "3." },
+  { id: "p5", prompt: "What is 23 MOD 6?", accepted: ["5"], answer: "5." },
+  { id: "p6", prompt: "What is 24 MOD 2?", accepted: ["0"], answer: "0, so 24 is even." },
+  { id: "p7", prompt: "What is 145 DIV 60?", accepted: ["2"], answer: "2." },
+  { id: "p8", prompt: "What is 145 MOD 60?", accepted: ["25"], answer: "25." },
+  { id: "p9", prompt: "Which operator returns a remainder: DIV or MOD?", accepted: ["mod"], answer: "MOD." },
+  { id: "p10", prompt: "Evaluate 2 + 3 * 4.", accepted: ["14"], answer: "14, because multiplication is evaluated before addition." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes OUTPUT \"Enter mark\" and then uses Mark in a calculation without INPUT Mark.",
-    fix: "Add INPUT Mark after the prompt. The prompt displays text; INPUT stores the user's value.",
+    wrong: "A student says 17 DIV 5 is 3.4.",
+    fix: "17 / 5 is 3.4. 17 DIV 5 is the whole-number quotient, so it is 3.",
   },
   {
-    wrong: "A student outputs only 72 when the user needs to know what the value means.",
-    fix: "Use a label such as OUTPUT \"Mark: \" & Mark so the value is meaningful.",
+    wrong: "A student says 17 MOD 5 is 3 because 5 goes into 17 three times.",
+    fix: "That value is the quotient. MOD returns the remainder: 17 - 15 = 2.",
   },
   {
-    wrong: "A student copies Java Scanner and System.out.println syntax into a pseudocode answer.",
-    fix: "Use Cambridge-style INPUT and OUTPUT unless the question specifically asks for Java.",
+    wrong: "A student uses Java % in a Cambridge pseudocode answer.",
+    fix: "Use MOD in Cambridge-style pseudocode. Java % is a support-language equivalent, not the exam operator.",
   },
   {
-    wrong: "A student concatenates values without spaces: OUTPUT \"Name:\" & Name & \"Mark:\" & Mark.",
-    fix: "Include spaces or punctuation, for example OUTPUT \"Name: \" & Name & \", Mark: \" & Mark.",
+    wrong: "A student evaluates 2 + 3 * 4 as 20 without brackets.",
+    fix: "Multiplication is evaluated before addition, so 2 + 12 = 14. Use (2 + 3) * 4 if 20 is intended.",
   },
 ];
 
@@ -129,93 +131,99 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Write Cambridge-style pseudocode that prompts the user to enter a name, inputs the name, and displays Hello followed by the name.",
-    answer: "OUTPUT \"Enter name\"\nINPUT Name\nOUTPUT \"Hello \" & Name",
+    marks: "5 marks",
+    prompt: "Complete a trace table for the values assigned by this pseudocode. Number <- 23\nDivisor <- 6\nQ <- Number DIV Divisor\nR <- Number MOD Divisor\nOUTPUT Q\nOUTPUT R",
+    answer: "23 DIV 6 gives 3 because there are three complete groups of 6. 23 MOD 6 gives 5 because 23 - 18 = 5. The outputs are 3 then 5.",
     marking: [
-      { mark: "B1", text: "outputs a suitable prompt asking for the name" },
-      { mark: "B1", text: "uses INPUT to read/store Name" },
-      { mark: "M1", text: "constructs an output message using fixed text and the variable" },
-      { mark: "A1", text: "outputs Hello followed by the entered name" },
+      { mark: "B1", text: "states Q is 3" },
+      { mark: "B1", text: "states R is 5" },
+      { mark: "M1", text: "explains DIV gives the whole-number quotient" },
+      { mark: "M1", text: "explains MOD gives the remainder" },
+      { mark: "A1", text: "outputs values in the correct order" },
     ],
     strict: [
-      "Do not award input mark for OUTPUT \"Enter name\" alone.",
-      "Allow different prompt wording if it clearly asks for a name.",
-      "Do not accept Scanner-only Java code as Cambridge pseudocode.",
-      "Allow an equivalent variable if it is used consistently.",
+      "Do not award Q mark for 3.833 or other real division result.",
+      "Allow remainder explanation using 23 = 6 * 3 + 5.",
+      "Do not accept MOD as another name for division.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A program stores Name as \"Ada\" and Mark as 72. Write pseudocode to display Name: Ada, Mark: 72 using the stored variables.",
-    answer: "Name <- \"Ada\"\nMark <- 72\nOUTPUT \"Name: \" & Name & \", Mark: \" & Mark",
+    prompt: "Write Cambridge-style pseudocode that inputs TotalMinutes and outputs whole hours and remaining minutes.",
+    answer: "INPUT TotalMinutes\nHours <- TotalMinutes DIV 60\nMinutes <- TotalMinutes MOD 60\nOUTPUT Hours\nOUTPUT Minutes",
     marking: [
-      { mark: "B1", text: "uses or refers to stored Name value" },
-      { mark: "B1", text: "uses or refers to stored Mark value" },
-      { mark: "M1", text: "concatenates fixed labels with variable values" },
-      { mark: "A1", text: "includes a clear Name label" },
-      { mark: "A1", text: "includes a clear Mark label" },
-      { mark: "B1", text: "outputs the completed formatted line" },
+      { mark: "B1", text: "inputs or obtains TotalMinutes" },
+      { mark: "M1", text: "uses DIV 60 to calculate whole hours" },
+      { mark: "A1", text: "assigns the quotient to Hours or equivalent" },
+      { mark: "M1", text: "uses MOD 60 to calculate remaining minutes" },
+      { mark: "A1", text: "assigns the remainder to Minutes or equivalent" },
+      { mark: "B1", text: "outputs both calculated values" },
     ],
     strict: [
-      "Do not require exactly one OUTPUT statement if the displayed information is clear.",
-      "Allow semantically equivalent punctuation or spacing.",
-      "Do not award label marks for outputting only Ada and 72 without context.",
+      "Do not award hours calculation mark for real division only.",
+      "Allow variable names such as WholeHours and RemainingMinutes.",
+      "Do not accept Java % alone as Cambridge pseudocode for MOD.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
   {
     title: "Question 3",
-    marks: "3 marks",
-    prompt: "Identify and correct the error in this fragment. OUTPUT \"Enter price\"\nTotal <- Price * 1.20\nOUTPUT Total",
-    answer: "The error is that Price is used without being input or assigned. OUTPUT only displays the prompt; it does not store a value. Add INPUT Price after the prompt and before the calculation.",
+    marks: "6 marks",
+    prompt: "Explain how MOD can be used to check whether a positive integer is even. Include pseudocode.",
+    answer: "A number is even if it divides exactly by 2. MOD returns the remainder after division, so if Number MOD 2 = 0 then there is no remainder and the number is even.\n\nIF Number MOD 2 = 0 THEN\n    OUTPUT \"Even\"\nELSE\n    OUTPUT \"Odd\"\nENDIF",
     marking: [
-      { mark: "B1", text: "identifies that Price has not been input/assigned before use" },
-      { mark: "B1", text: "explains OUTPUT prompt does not store Price" },
-      { mark: "B1", text: "adds INPUT Price after the prompt" },
+      { mark: "B1", text: "states MOD returns a remainder" },
+      { mark: "M1", text: "explains even numbers have no remainder when divided by 2" },
+      { mark: "A1", text: "uses condition Number MOD 2 = 0 or equivalent" },
+      { mark: "B1", text: "outputs or identifies Even for the true branch" },
+      { mark: "B1", text: "outputs or identifies Odd for the false branch" },
+      { mark: "A1", text: "uses clear IF/ELSE/ENDIF Cambridge-style structure" },
     ],
     strict: [
-      "Do not award correction mark for assigning Price to the string \"Enter price\".",
-      "Allow INPUT Price before the prompt only if the final algorithm clearly reads Price before use, but prompt ordering should be credited cautiously.",
-      "Do not accept only Java Scanner syntax as correction.",
+      "Do not award condition mark for Number DIV 2 = 0.",
+      "Allow TRUE/FALSE assignment instead of output if logic is clear.",
+      "Do not accept testing only the last digit unless the MOD method is also explained.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain two features of clear output formatting for a list of student marks.",
-    answer: "Clear output should include headings or labels so each value has meaning, for example Name and Mark. It should also use consistent order and spacing so repeated records can be compared easily.",
+    marks: "6 marks",
+    prompt: "Complete a trace table for the expression Result <- 4 + 18 MOD 5 * 2. Demonstrate the working.",
+    answer: "18 MOD 5 = 3. Then 3 * 2 = 6. Then 4 + 6 = 10. Result is 10.",
     marking: [
-      { mark: "B1", text: "states headings or labels should be included" },
-      { mark: "B1", text: "explains labels give meaning/context to displayed values" },
-      { mark: "B1", text: "gives a relevant example such as Name and Mark" },
-      { mark: "B1", text: "states consistent order, spacing or alignment should be used" },
-      { mark: "B1", text: "explains this makes repeated records easier to read/compare" },
+      { mark: "M1", text: "evaluates 18 MOD 5" },
+      { mark: "A1", text: "states 18 MOD 5 = 3" },
+      { mark: "M1", text: "multiplies the MOD result by 2 before addition" },
+      { mark: "A1", text: "states 3 * 2 = 6" },
+      { mark: "M1", text: "adds 4 to the intermediate result" },
+      { mark: "A1", text: "states final Result is 10" },
     ],
     strict: [
-      "Do not award full marks for vague claims such as 'make it neat' without explaining how.",
-      "Allow table-style layout, line breaks or punctuation as formatting features if explained.",
-      "Do not accept colour or font features unless the question context supports them.",
+      "Do not award final mark for 12 or 4 if caused by ignoring precedence.",
+      "Allow use of brackets in working if it preserves the original order of operations.",
+      "Do not accept a final answer with no working for full marks.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 5",
     marks: "7 marks",
-    prompt: "Write pseudocode to input Product, Quantity and Price. Calculate Cost as Quantity * Price and output a readable receipt line.",
-    answer: "OUTPUT \"Enter product\"\nINPUT Product\nOUTPUT \"Enter quantity\"\nINPUT Quantity\nOUTPUT \"Enter price\"\nINPUT Price\nCost <- Quantity * Price\nOUTPUT \"Product: \" & Product & \", Quantity: \" & Quantity & \", Cost: \" & Cost",
+    prompt: "A positive integer Number has three digits. Write pseudocode to output the last digit and the first two digits. For example, 384 should output 4 and 38.",
+    answer: "INPUT Number\nLastDigit <- Number MOD 10\nFirstTwo <- Number DIV 10\nOUTPUT LastDigit\nOUTPUT FirstTwo",
     marking: [
-      { mark: "B1", text: "inputs Product" },
-      { mark: "B1", text: "inputs Quantity" },
-      { mark: "B1", text: "inputs Price" },
-      { mark: "M1", text: "calculates Cost using Quantity * Price" },
-      { mark: "A1", text: "assigns the calculation result to Cost or equivalent" },
-      { mark: "M1", text: "outputs a receipt line containing product, quantity and cost" },
-      { mark: "A1", text: "uses clear labels/formatting for the output values" },
+      { mark: "B1", text: "inputs or obtains Number" },
+      { mark: "M1", text: "uses MOD 10 to find the last digit" },
+      { mark: "A1", text: "assigns Number MOD 10 to LastDigit or equivalent" },
+      { mark: "M1", text: "uses DIV 10 to remove the last digit" },
+      { mark: "A1", text: "assigns Number DIV 10 to FirstTwo or equivalent" },
+      { mark: "B1", text: "outputs the last digit" },
+      { mark: "B1", text: "outputs the first two digits" },
     ],
     strict: [
-      "Do not award input marks for prompts alone.",
-      "Allow prompts but do not require them for all input marks if INPUT statements are clear.",
-      "Do not accept adding Quantity and Price for Cost.",
+      "Do not award last digit mark for DIV 10.",
+      "Allow any clear variable names.",
+      "Do not accept string slicing as the intended arithmetic-operator solution unless question allows it.",
     ],
   },
 ];
@@ -230,7 +238,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/^["']|["']$/g, "").replace(/\s+/g, " ").replace(/[^a-z0-9&:, %_.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9.+\-*/:<>=\[\] %_.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -249,10 +257,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    output: "Not quite. This displays a prompt but does not read a value.",
-    input: "Correct. INPUT Name reads user data and stores it in Name.",
-    assign: "This stores the literal text Enter name, not what the user types.",
-    display: "This displays the current value of Name. It does not read a new value.",
+    "3-2": "Correct. 17 DIV 5 = 3 and 17 MOD 5 = 2.",
+    "2-3": "Not quite. Two rows use only 10 seats; there is room for another full row.",
+    "3-5": "A remainder must be smaller than the divisor. Five left over would make another full row.",
+    "3.4": "That is real division. DIV and MOD split the result into full groups and leftover.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -263,25 +271,33 @@ function setupHook() {
   });
 }
 
-function setupFormatter() {
-  const result = document.querySelector("#formatResult");
-  document.querySelector("#formatBtn").addEventListener("click", () => {
-    const name = document.querySelector("#nameInput").value.trim() || "Unnamed";
-    const mark = Number(document.querySelector("#markInput").value);
-    const format = document.querySelector("#formatInput").value;
+function setupCalculator() {
+  const result = document.querySelector("#calcResult");
+  document.querySelector("#calcBtn").addEventListener("click", () => {
+    const number = Number(document.querySelector("#numberInput").value);
+    const divisor = Number(document.querySelector("#divisorInput").value);
+    const operation = document.querySelector("#operationInput").value;
 
-    if (!Number.isInteger(mark) || mark < 0 || mark > 100) {
-      result.textContent = "Enter an integer mark from 0 to 100.";
+    if (!Number.isInteger(number) || !Number.isInteger(divisor) || number < 0 || divisor <= 0) {
+      result.textContent = "Enter a non-negative integer Number and a positive integer Divisor.";
       return;
     }
 
-    const outputs = {
-      plain: `${name}\n${mark}`,
-      labels: `Name: ${name}\nMark: ${mark}`,
-      sentence: `${name} scored ${mark} marks.`,
-      table: `Name    Mark\n${name.padEnd(7, " ")} ${mark}`,
+    const real = number / divisor;
+    const quotient = Math.floor(number / divisor);
+    const remainder = number % divisor;
+    const identity = divisor * quotient + remainder;
+    const rows = {
+      all: [
+        `<p><strong>${number} / ${divisor}</strong> = ${real}</p>`,
+        `<p><strong>${number} DIV ${divisor}</strong> = ${quotient}</p>`,
+        `<p><strong>${number} MOD ${divisor}</strong> = ${remainder}</p>`,
+      ],
+      div: [`<p><strong>${number} DIV ${divisor}</strong> = ${quotient}</p><p>Whole groups only.</p>`],
+      mod: [`<p><strong>${number} MOD ${divisor}</strong> = ${remainder}</p><p>Left over after complete groups.</p>`],
+      identity: [`<p><strong>${number}</strong> = ${divisor} * ${quotient} + ${remainder} = ${identity}</p>`],
     };
-    result.innerHTML = `<pre><code>${escapeHtml(outputs[format])}</code></pre>`;
+    result.innerHTML = rows[operation].join("");
   });
 }
 
@@ -314,7 +330,7 @@ function setupExamples() {
       <article class="worked-card">
         <h3>${escapeHtml(example.title)}</h3>
         <p>${escapeHtml(example.problem)}</p>
-        ${tableMarkup(["Step", "Value / line", "Purpose"], example.rows)}
+        ${tableMarkup(["Step", "Value", "Reason"], example.rows)}
         <pre><code>${escapeHtml(example.code)}</code></pre>
         <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
       </article>
@@ -355,7 +371,7 @@ function setupPractice() {
       const feedback = list.querySelector(`[data-feedback="${item.id}"]`);
       const answer = normalise(input.value);
       const correct = item.accepted.some((accepted) => normalise(accepted) === answer);
-      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the command or displayed text.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the exact operator/result.";
       feedback.classList.toggle("correct", correct);
       feedback.classList.toggle("incorrect", !correct);
     });
@@ -431,7 +447,7 @@ function setupExamQuestions() {
 
 setupPrint();
 setupHook();
-setupFormatter();
+setupCalculator();
 setupScenarioChooser();
 setupExamples();
 setupPractice();

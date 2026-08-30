@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 100 | Sequence, selection, and iteration</title>
+    <title>AS9618 Lesson 100 | Algorithms, IPO solutions and identifier tables</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Sequence, selection, and iteration</h1>
+        <h1>Algorithms, IPO solutions and identifier tables</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,12 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#sequence">Sequence</a>
-        <a href="#selection">Selection</a>
-        <a href="#iteration">Iteration</a>
-        <a href="#combining">Combining</a>
-        <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#classifier">Structure classifier</a>
-        <a href="#builder">Algorithm builder</a>
+        <a href="#decomposition">Decomposition</a>
+        <a href="#abstraction">Abstraction</a>
+        <a href="#pattern">Design pattern</a>
+        <a href="#sorter">Task sorter</a>
+        <a href="#filter">Abstraction filter</a>
+        <a href="#builder">Module builder</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -54,70 +53,80 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Sequence, selection, iteration and logic statements</h2>
+            <h2>Algorithms, IPO solutions and identifier tables</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.</p>
-            <p>A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.</p>
-            <p>Choose the construct from the required behaviour. A known number of repetitions suggests count-controlled iteration; a stopping rule based on data suggests condition-controlled iteration.</p>
-            <p>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, &gt;, &gt;= or &lt;&gt; with AND, OR or NOT when more than one condition is needed.</p>
-            <p>Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark &gt;= 0 AND Mark &lt;= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.</p>
-            <p>Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.</p>
+            <p>An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.</p>
+            <p>Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.</p>
+            <p>Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Count five passing marks / Define a valid-age condition</h3>
-            <p>Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark &gt;= 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount. For an accepted age from 11 to 18 inclusive, use Age &gt;= 11 AND Age &lt;= 18. At Age = 11 and Age = 18 the statement is TRUE; at Age = 10 or 19 it is FALSE. NOT(Age &gt;= 11 AND Age &lt;= 18) describes the invalid case.</p>
+            <h3>Worked example: Define and plan a ticket algorithm</h3>
+            <p>Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost &lt;- TicketCount * TicketPrice; OUTPUT TotalCost. The identifier table records TicketCount: INTEGER, number requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, calculated cost.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start ipoc -->
+        <section class="panel explanation-panel" id="explanation-ipoc" data-explains="ipoc" data-explanation-kind="mechanism" aria-labelledby="explanation-ipoc-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ipoc">
+          <h2 class="explanation-sr-only" id="explanation-ipoc-title">Turn paragraphs into a design table</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-ipoc.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn paragraphs into a design table with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn paragraphs into a design table: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> IPOC reading</li><li><strong>Lesson fact:</strong> Question to ask</li><li><strong>Lesson fact:</strong> Example evidence</li><li><strong>Lesson fact:</strong> Algorithm consequence</li><li><strong>Lesson fact:</strong> What data is provided?</li><li><strong>Lesson fact:</strong> mark, price, password, reading</li><li><strong>Lesson fact:</strong> use INPUT or given array/list item</li><li><strong>Lesson fact:</strong> What must be calculated or checked?</li><li><strong>Lesson fact:</strong> total, maximum, validation, search</li><li><strong>Lesson fact:</strong> choose assignment, IF, loop</li><li><strong>Lesson fact:</strong> What must be displayed or returned?</li><li><strong>Lesson fact:</strong> message, total, average, position</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end ipoc -->
+
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">An algorithm is a solution expressed as defined steps</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-099-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An algorithm is a solution expressed as defined steps with a structured visual model." />
+            <figcaption class="explanation-sr-only">An algorithm is a solution expressed as defined steps: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> An algorithm is a solution to a problem expressed as a sequence of defined steps.</li><li><strong>Lesson fact:</strong> Each step must be unambiguous, ordered where order matters and capable of being carried out.</li><li><strong>Lesson fact:</strong> Identify what data is supplied, state the required transformation and state the exact result.</li><li><strong>Lesson fact:</strong> Record limits, quantity requirements and supported assumptions.</li><li><strong>Lesson fact:</strong> Check that every requirement maps to an input, process, output, constraint or assumption.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Sequence, selection, iteration and logic statements: apply and assess</h2>
+            <h2>Algorithms, IPO solutions and identifier tables: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which construct executes steps once in a fixed order?</p>
-              <details><summary>Show answer</summary><p>Sequence.</p></details>
+              <p><strong>1.</strong> What is an algorithm?</p>
+              <details><summary>Show answer</summary><p>A solution to a problem expressed as a sequence of defined steps.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which construct chooses between Pass and Resit?</p>
-              <details><summary>Show answer</summary><p>Selection.</p></details>
+              <p><strong>2.</strong> State the input, process and output for rectangle area.</p>
+              <details><summary>Show answer</summary><p>Inputs Length and Width; process multiply Length by Width; output Area.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which construct processes ten supplied readings?</p>
-              <details><summary>Show answer</summary><p>Iteration, normally a count-controlled loop because the number is known.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Complete the valid-mark statement for 0 to 100 inclusive.</p>
-              <details><summary>Show answer</summary><p>Mark &gt;= 0 AND Mark &lt;= 100.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Give the denary value of Found = FALSE OR Index &lt;= UpperBound.</p>
-              <details><summary>Show answer</summary><p>The statement is true when the target has not been found, or the index is still within the upper bound, or both.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Why is Mark &gt;= 0 OR Mark &lt;= 100 incorrect for validation?</p>
-              <details><summary>Show answer</summary><p>Every number satisfies at least one side, so out-of-range values can be accepted.</p></details>
+              <p><strong>3.</strong> Develop identifier x for the number of absent students and state its type.</p>
+              <details><summary>Show answer</summary><p>AbsentCount or NumberAbsent, with type INTEGER.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>9 marks</span></div>
-            <p>Develop a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used. Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Complete an identifier table and an input-process-output pseudocode solution that inputs a student's name and three marks, then outputs the calculated mean.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>sequence initialises the pass count</td><td>Do not award a construct name unless the stated algorithm uses it for the correct behaviour. Do not accept OR for a two-bound inclusive range or award outputs without a correctly constructed statement.</td><td>1</td></tr>
-                  <tr><td>iteration processes exactly ten marks</td><td></td><td>1</td></tr>
-                  <tr><td>selection tests each mark against the pass condition</td><td></td><td>1</td></tr>
-                  <tr><td>sequence outputs the final count after the loop</td><td></td><td>1</td></tr>
-                  <tr><td>uses Temperature &gt;= -20</td><td></td><td>1</td></tr>
-                  <tr><td>uses AND Temperature &lt;= 50</td><td></td><td>1</td></tr>
-                  <tr><td>states FALSE for -21</td><td></td><td>1</td></tr>
-                  <tr><td>states TRUE for -20 and 50</td><td></td><td>1</td></tr>
-                  <tr><td>states FALSE for 51</td><td></td><td>1</td></tr>
+                  <tr><td>meaningful STRING identifier and purpose for the student's name</td><td>Do not award an identifier list without types and purposes, or IPO headings without a complete sequence of defined steps.</td><td>1</td></tr>
+                  <tr><td>three clearly identified numeric mark inputs or a clearly bounded mark collection</td><td></td><td>1</td></tr>
+                  <tr><td>meaningful REAL identifier and purpose for the mean</td><td></td><td>1</td></tr>
+                  <tr><td>pseudocode inputs the required values</td><td></td><td>1</td></tr>
+                  <tr><td>processing calculates the total and mean in a defined sequence</td><td></td><td>1</td></tr>
+                  <tr><td>outputs the calculated mean and matches the identifier table</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -128,272 +137,227 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 100 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
-            <h2>Algorithms are built from three moves: do this, choose that, repeat carefully.</h2>
+            <h2>Big problems stop being scary when you give each part a sensible job.</h2>
             <p>
-              Sequence runs steps in order. Selection chooses a path using a condition. Iteration repeats steps while
-              a count or condition says to continue. Most AS algorithms are these three structures combined with clear
-              variables and Cambridge-style pseudocode.
+              Decomposition breaks a problem into smaller sub-problems. Abstraction keeps the important details and
+              ignores details that do not affect the algorithm. Together, they help you plan before writing Cambridge-style
+              implementation. Later lessons introduce control structures and formal notation.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>sequence, selection and iteration in word problems and pseudocode</span></div>
-              <div><strong>Choose</strong><span>the correct control structure for fixed counts, conditions and decisions</span></div>
-              <div><strong>Write</strong><span>short Cambridge-style algorithms that combine the three structures</span></div>
+              <div><strong>Decompose</strong><span>split a problem into input, checking, calculation and output sub-problems</span></div>
+              <div><strong>Abstract</strong><span>keep algorithm-relevant details and ignore decorative or implementation details</span></div>
+              <div><strong>Justify</strong><span>explain why modular design improves readability, testing and correction</span></div>
             </div>
           </div>
-          <div class="control-visual" aria-label="Control structure visual">
-            <div><strong>Sequence</strong><span>INPUT Length<br />Area &lt;- Length * Width<br />OUTPUT Area</span></div>
-            <div><strong>Selection</strong><span>IF Mark &gt;= 50 THEN<br />OUTPUT "Pass"<br />ENDIF</span></div>
-            <div><strong>Iteration</strong><span>FOR Count &lt;- 1 TO 5<br />INPUT Mark<br />NEXT Count</span></div>
-            <p>One line after another, one branch or another, one loop until enough. That is the toolkit.</p>
+          <div class="decomp-visual" aria-label="Decomposition and abstraction visual">
+            <div class="big-problem">School event booking system</div>
+            <div class="arrow">break into</div>
+            <div class="module-grid">
+              <span>Input details</span>
+              <span>Validate age</span>
+              <span>Check places</span>
+              <span>Calculate cost</span>
+              <span>Output result</span>
+            </div>
+            <p>Abstraction asks: does the algorithm need the poster colour? No. Does it need the number of places left? Yes.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam pseudocode marks often depend on selecting the right structure before worrying about syntax.</p>
+            <p>Paper 2 often rewards clear planning. A correct decomposition reveals responsibilities, required data and outputs before implementation starts.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not use a loop because the problem sounds busy. Use a loop only when steps must repeat.</p>
+            <p>Do not call every tiny line a module. A useful sub-problem has a clear purpose and can be tested or explained separately.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Sandwich algorithm, but make it examinable</h2>
-            <p>Classify each instruction. The sandwich is simple; the terminology is where crumbs happen.</p>
+            <h2>Plan a school trip without causing a spreadsheet incident</h2>
+            <p>A teacher asks for a program to manage trip bookings. Which details affect the algorithm, and which details are noise?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="sequence">Put bread on plate, then add cheese.</button>
-            <button class="choice-card" type="button" data-hook="selection">If toasted is required, heat the sandwich.</button>
-            <button class="choice-card" type="button" data-hook="iteration">Repeat for each sandwich order.</button>
-            <button class="choice-card" type="button" data-hook="bad">Use WHILE because sandwiches are important.</button>
+            <button class="choice-card" type="button" data-hook="places">Number of places left</button>
+            <button class="choice-card" type="button" data-hook="font">Poster font used on the noticeboard</button>
+            <button class="choice-card" type="button" data-hook="age">Student age for eligibility</button>
+            <button class="choice-card" type="button" data-hook="weather">Whether the photograph shows relevant input data</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose an instruction to classify the control structure.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a detail to decide whether abstraction should keep it or ignore it.
+          </div>
         </section>
 
-        <section class="panel" id="sequence" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+        <section class="panel" id="decomposition" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Sequence: steps run in a fixed order</h2>
+            <h2>Decomposition: split the problem into sub-problems</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Idea</h3>
-              <p>Sequence is used when every step must happen once, in order, with no branch and no repetition.</p>
-              <div class="callout">Chinese support: sequence = 顺序结构。</div>
-            </article>
-            <article>
-              <h3>Example</h3>
-              <pre><code>INPUT Length
-INPUT Width
-Area &lt;- Length * Width
-OUTPUT Area</code></pre>
-            </article>
+          <div class="data-table concept-table" role="table" aria-label="Decomposition examples">
+            <div class="table-row table-head" role="row"><div>Problem</div><div>Possible sub-problems</div><div>Why this helps</div></div>
+            <div class="table-row" role="row"><div>Calculate class average</div><div>Input marks, validate marks, total marks, calculate average, output average</div><div>Each part has a clear variable and test case</div></div>
+            <div class="table-row" role="row"><div>Login check</div><div>Receive credentials, check required fields, compare stored details, produce access decision</div><div>Each responsibility can be reviewed separately</div></div>
+            <div class="table-row" role="row"><div>Process ticket sales</div><div>Input ticket type, validate type, calculate price, update places, output confirmation</div><div>Business rules are separated from input/output</div></div>
           </div>
+          <div class="callout">Chinese support: decomposition = 分解，把大问题拆成更小、更容易解决的部分；sub-problem = 子问题。</div>
         </section>
 
-        <!-- stage10-explanation:start sequence -->
-        <section class="panel explanation-panel" id="explanation-sequence" data-explains="sequence" data-explanation-kind="mechanism" aria-labelledby="explanation-sequence-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
-          <h2 class="explanation-sr-only" id="explanation-sequence-title">Sequence: steps run in a fixed order</h2>
+        <!-- stage10-explanation:start decomposition -->
+        <section class="panel explanation-panel" id="explanation-decomposition" data-explains="decomposition" data-explanation-kind="mechanism" aria-labelledby="explanation-decomposition-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+          <h2 class="explanation-sr-only" id="explanation-decomposition-title">Decomposition: split the problem into sub-problems</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-sequence.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sequence: steps run in a fixed order with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sequence: steps run in a fixed order: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-decomposition.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Decomposition: split the problem into sub-problems with a structured visual model." />
+            <figcaption class="explanation-sr-only">Decomposition: split the problem into sub-problems: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Sequence is used when every step must happen once, in order, with no branch and no repetition.</li><li><strong>Lesson fact:</strong> INPUT Length</li><li><strong>Lesson fact:</strong> INPUT Width</li><li><strong>Lesson fact:</strong> Area &lt;- Length * Width</li><li><strong>Lesson fact:</strong> OUTPUT Area</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Split the whole task into meaningful sub-problems with distinct responsibilities.</li><li><strong>Lesson fact:</strong> Express the resulting design as program modules with clear inputs, processing and outputs.</li><li><strong>Lesson fact:</strong> A module may become a procedure that performs an action or a function that returns a value.</li><li><strong>Lesson fact:</strong> Confirm that all modules connect into one complete solution.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end sequence -->
-        <section class="panel" id="selection" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+        <!-- stage10-explanation:end decomposition -->
+        <section class="panel" id="abstraction" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Selection: choose a path using a condition</h2>
+            <h2>Abstraction: keep the details that affect the algorithm</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Idea</h3>
-              <p>Selection is used when the algorithm must decide between different actions.</p>
-              <div class="callout">Chinese support: selection = 选择结构；condition = 条件。</div>
-            </article>
-            <article>
-              <h3>Example</h3>
-              <pre><code>INPUT Mark
-IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit"
-ENDIF</code></pre>
-            </article>
+          <div class="clause-grid">
+            <article><strong>Keep</strong><span>inputs, ranges, counts, limits, required outputs and stopping conditions.</span></article>
+            <article><strong>Ignore</strong><span>visual style, real-world decoration and details that do not change the logic.</span></article>
+            <article><strong>Name</strong><span>use meaningful identifiers such as Mark, TotalCost, PlacesLeft and IsValid.</span></article>
+            <article><strong>Model</strong><span>represent the real situation using only the named values and relationships the problem requires.</span></article>
+            <article><strong>Check</strong><span>ask whether removing a detail would change the algorithm's result.</span></article>
+            <article><strong>Explain</strong><span>state why a detail is relevant or irrelevant, not just that it is "important".</span></article>
           </div>
+          <div class="callout">A good abstraction is not vague. It is deliberately selective. 选择性保留关键细节，不是随便省略。</div>
         </section>
 
-        <!-- stage10-explanation:start selection -->
-        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="mechanism" aria-labelledby="explanation-selection-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
-          <h2 class="explanation-sr-only" id="explanation-selection-title">Selection: choose a path using a condition</h2>
+        <!-- stage10-explanation:start abstraction -->
+        <section class="panel explanation-panel" id="explanation-abstraction" data-explains="abstraction" data-explanation-kind="process" aria-labelledby="explanation-abstraction-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+          <h2 class="explanation-sr-only" id="explanation-abstraction-title">Abstraction: keep the details that affect the algorithm</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Selection: choose a path using a condition with a structured visual model." />
-            <figcaption class="explanation-sr-only">Selection: choose a path using a condition: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-abstraction.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Abstraction: keep the details that affect the algorithm with a structured visual model." />
+            <figcaption class="explanation-sr-only">Abstraction: keep the details that affect the algorithm: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Selection is used when the algorithm must decide between different actions.</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Keep details that affect an input, rule, calculation, constraint or output.</li><li><strong>Lesson fact:</strong> Ignore decoration that does not change the required result.</li><li><strong>Lesson fact:</strong> Ask whether removing a detail would change the result.</li><li><strong>Lesson fact:</strong> Explain why a detail is relevant or irrelevant rather than only labelling it.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end selection -->
-        <section class="panel" id="iteration" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+        <!-- stage10-explanation:end abstraction -->
+        <section class="panel" id="pattern" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
-            <p class="eyebrow">Knowledge explanation</p>
-            <h2>Iteration: repeat steps</h2>
-          </div>
-          <div class="data-table concept-table" role="table" aria-label="Iteration types">
-            <div class="table-row table-head" role="row"><div>Type</div><div>Use when</div><div>Cambridge-style pattern</div></div>
-            <div class="table-row" role="row"><div>Count-controlled</div><div>the number of repeats is known</div><div>FOR Count &lt;- 1 TO 10 ... NEXT Count</div></div>
-            <div class="table-row" role="row"><div>Condition-controlled</div><div>repeat until a condition changes</div><div>WHILE Number &lt;&gt; -1 ... ENDWHILE</div></div>
-            <div class="table-row" role="row"><div>Repeat-until style</div><div>the body must run at least once</div><div>REPEAT ... UNTIL Valid = TRUE</div></div>
-          </div>
-          <div class="callout">Iteration = 迭代/循环。Known count? Use count-controlled. Unknown stopping point? Use condition-controlled.</div>
-        </section>
-
-        <!-- stage10-explanation:start iteration -->
-        <section class="panel explanation-panel" id="explanation-iteration" data-explains="iteration" data-explanation-kind="mechanism" aria-labelledby="explanation-iteration-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
-          <h2 class="explanation-sr-only" id="explanation-iteration-title">Iteration: repeat steps</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-iteration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Iteration: repeat steps with a structured visual model." />
-            <figcaption class="explanation-sr-only">Iteration: repeat steps: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Cambridge-style pattern</li><li><strong>Lesson fact:</strong> Count-controlled</li><li><strong>Lesson fact:</strong> the number of repeats is known</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 10 ... NEXT Count</li><li><strong>Lesson fact:</strong> Condition-controlled</li><li><strong>Lesson fact:</strong> repeat until a condition changes</li><li><strong>Lesson fact:</strong> WHILE Number &lt;&gt; -1 ... ENDWHILE</li><li><strong>Lesson fact:</strong> Repeat-until style</li><li><strong>Lesson fact:</strong> the body must run at least once</li><li><strong>Lesson fact:</strong> REPEAT ... UNTIL Valid = TRUE</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end iteration -->
-        <section class="panel" id="combining" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
-          <div class="section-title">
-            <p class="eyebrow">Combining structures</p>
-            <h2>Real algorithms usually combine the three structures</h2>
+            <p class="eyebrow">Design pattern</p>
+            <h2>From scenario to algorithm plan</h2>
           </div>
           <div class="step-strip">
-            <div><strong>1</strong><span>Use sequence to initialise variables and read inputs.</span></div>
-            <div><strong>2</strong><span>Use iteration when the same action happens repeatedly.</span></div>
-            <div><strong>3</strong><span>Use selection inside the loop when each item needs a decision.</span></div>
-            <div><strong>4</strong><span>Use sequence after the loop to calculate or output final results.</span></div>
-            <div><strong>5</strong><span>Indent nested structures so the examiner can see the logic.</span></div>
+            <div><strong>1</strong><span>Read the scenario and underline the required output.</span></div>
+            <div><strong>2</strong><span>List inputs and constraints.</span></div>
+            <div><strong>3</strong><span>Decompose into sub-problems with verb-based names.</span></div>
+            <div><strong>4</strong><span>Abstract away details that do not affect logic.</span></div>
+            <div><strong>5</strong><span>Describe each sub-problem's responsibility, input and output.</span></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start combining -->
-        <section class="panel explanation-panel" id="explanation-combining" data-explains="combining" data-explanation-kind="process" aria-labelledby="explanation-combining-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
-          <h2 class="explanation-sr-only" id="explanation-combining-title">Real algorithms usually combine the three structures</h2>
+        <!-- stage10-explanation:start pattern -->
+        <section class="panel explanation-panel" id="explanation-pattern" data-explains="pattern" data-explanation-kind="process" aria-labelledby="explanation-pattern-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+          <h2 class="explanation-sr-only" id="explanation-pattern-title">Produce an abstract model</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-combining.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Real algorithms usually combine the three structures with a structured visual model." />
-            <figcaption class="explanation-sr-only">Real algorithms usually combine the three structures: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-pattern.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Produce an abstract model with a structured visual model." />
+            <figcaption class="explanation-sr-only">Produce an abstract model: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Combining structures</li><li><strong>Lesson fact:</strong> 1 Use sequence to initialise variables and read inputs.</li><li><strong>Lesson fact:</strong> 2 Use iteration when the same action happens repeatedly.</li><li><strong>Lesson fact:</strong> 3 Use selection inside the loop when each item needs a decision.</li><li><strong>Lesson fact:</strong> 4 Use sequence after the loop to calculate or output final results.</li><li><strong>Lesson fact:</strong> 5 Indent nested structures so the examiner can see the logic.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Underline the required output and keep only details that affect it.</li><li><strong>Lesson fact:</strong> Create verb-based sub-problems with distinct responsibilities.</li><li><strong>Lesson fact:</strong> State each sub-problem's input and output.</li><li><strong>Lesson fact:</strong> Check that the parts collectively meet every requirement without gaps or overlap.</li><li><strong>Lesson fact:</strong> The result is a natural-language responsibility plan ready for a later representation lesson.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end combining -->
-        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+        <!-- stage10-explanation:end pattern -->
+        <section class="panel" id="sorter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
-            <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Cambridge pseudocode is the exam form; Java is support only</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PassCount &lt;- 0
-FOR Count &lt;- 1 TO 5
-    INPUT Mark
-    IF Mark &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
-    ENDIF
-NEXT Count
-OUTPUT PassCount</code></pre>
-            </article>
-            <article>
-              <h3>Java support only</h3>
-              <pre><code>int passCount = 0;
-for (int count = 1; count &lt;= 5; count++) {
-    int mark = input.nextInt();
-    if (mark &gt;= 50) {
-        passCount++;
-    }
-}
-System.out.println(passCount);</code></pre>
-            </article>
-          </div>
-          <div class="callout">Exam reminder: do not answer Paper 2 pseudocode questions with Java braces, semicolons or `System.out.println`.</div>
-        </section>
-
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam form; Java is support only</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam form; Java is support only with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam form; Java is support only: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise PassCount to zero before processing five marks.</li><li><strong>Lesson fact:</strong> Input Mark inside the FOR loop and increment PassCount only when Mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the conditional with ENDIF before NEXT Count.</li><li><strong>Lesson fact:</strong> Output PassCount after the loop.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
-          <div class="section-title">
-            <p class="eyebrow">Interactive structure classifier</p>
-            <h2>Choose the control structure</h2>
+            <p class="eyebrow">Interactive task sorter</p>
+            <h2>Classify the design move</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario clue
-              <select id="classifierInput">
-                <option value="area">Input length and width, calculate area, output area.</option>
-                <option value="pass">Output Pass or Resit depending on mark.</option>
-                <option value="five">Input exactly five marks.</option>
-                <option value="sentinel">Input numbers until -1 is entered.</option>
-                <option value="countpass">Count how many of ten marks are at least 50.</option>
+              Design statement
+              <select id="sorterInput">
+                <option value="split">Split booking into request, checking, payment and confirmation.</option>
+                <option value="ignore">Ignore the colour of the printed ticket.</option>
+                <option value="keep">Keep PlacesLeft because it controls whether booking is possible.</option>
+                <option value="bad">Create a separate module for each single assignment line.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+            <button class="primary-button" type="button" id="sorterBtn">Classify</button>
           </div>
-          <div class="feedback" id="classifyResult">Choose a clue to see the likely structure.</div>
+          <div class="feedback" id="sorterResult">Choose a statement to see whether it demonstrates decomposition, abstraction or an error.</div>
         </section>
 
+        <!-- stage10-explanation:start sorter -->
+        <section class="panel explanation-panel" id="explanation-sorter" data-explains="sorter" data-explanation-kind="process" aria-labelledby="explanation-sorter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+          <h2 class="explanation-sr-only" id="explanation-sorter-title">Classify the design move</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-sorter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify the design move with a structured visual model." />
+            <figcaption class="explanation-sr-only">Classify the design move: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive task sorter</li><li><strong>Lesson fact:</strong> Design statement</li><li><strong>Lesson fact:</strong> Choose a statement to see whether it demonstrates decomposition, abstraction or an error.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sorter -->
+        <section class="panel" id="filter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+          <div class="section-title">
+            <p class="eyebrow">Interactive abstraction filter</p>
+            <h2>Keep or ignore details</h2>
+          </div>
+          <div class="filter-grid" id="filterGrid"></div>
+        </section>
+
+        <!-- stage10-explanation:start filter -->
+        <section class="panel explanation-panel" id="explanation-filter" data-explains="filter" data-explanation-kind="mechanism" aria-labelledby="explanation-filter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
+          <h2 class="explanation-sr-only" id="explanation-filter-title">Keep or ignore details</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-filter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Keep or ignore details with a structured visual model." />
+            <figcaption class="explanation-sr-only">Keep or ignore details: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive abstraction filter</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end filter -->
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
-            <p class="eyebrow">Interactive algorithm builder</p>
-            <h2>Generate a Cambridge-style outline</h2>
+            <p class="eyebrow">Interactive module builder</p>
+            <h2>Generate a decomposition plan</h2>
           </div>
           <div class="builder-grid">
             <label>
-              Problem
-              <select id="builderInput">
-                <option value="area">Area of rectangle</option>
-                <option value="pass">Pass/resit decision</option>
-                <option value="total5">Total of five marks</option>
-                <option value="passcount">Count passes from five marks</option>
+              Scenario
+              <select id="scenarioInput">
+                <option value="average">Class average from marks</option>
+                <option value="booking">Event booking with limited places</option>
+                <option value="login">Login attempt check</option>
+                <option value="shop">Small shop receipt total</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="buildBtn">Build outline</button>
+            <button class="primary-button" type="button" id="buildBtn">Build plan</button>
           </div>
-          <div class="answer-frame" id="builderResult">Choose a problem to generate pseudocode.</div>
+          <div class="answer-frame" id="builderResult">Choose a scenario to generate sub-problems and abstraction choices.</div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Recognise and combine structures</h2>
+            <h2>From messy scenario to clean plan</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="sequence">Sequence</button>
-            <button class="tab" type="button" data-example="selection">Selection</button>
-            <button class="tab" type="button" data-example="iteration">Iteration</button>
-            <button class="tab" type="button" data-example="combined">Combined</button>
+            <button class="tab active" type="button" data-example="average">Class average</button>
+            <button class="tab" type="button" data-example="booking">Booking</button>
+            <button class="tab" type="button" data-example="login">Login</button>
+            <button class="tab" type="button" data-example="receipt">Receipt</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -401,7 +365,7 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Control-structure decisions</h2>
+            <h2>Decomposition and abstraction vocabulary</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -410,7 +374,7 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix weak structure choices</h2>
+            <h2>Fix weak planning decisions</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -418,8 +382,8 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style control-structure questions with expandable MS</h2>
-            <p>These questions target identifying, choosing and writing sequence, selection and iteration. MS uses strict Cambridge-style expectations.</p>
+            <h2>Original Cambridge-style planning questions with expandable MS</h2>
+            <p>These questions target decomposition, abstraction, modular planning and precise explanation. MS uses strict Cambridge-style expectations.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -427,12 +391,12 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-100">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Control-structure checklist</h2>
+            <h2>Planning checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Sequence</strong><span>Use when steps happen once in a fixed order.</span></div>
-            <div><strong>Selection</strong><span>Use when a condition chooses between actions.</span></div>
-            <div><strong>Iteration</strong><span>Use when steps repeat, either a known number of times or until a condition changes.</span></div>
+            <div><strong>Decompose</strong><span>Split the task into meaningful sub-problems with a clear purpose.</span></div>
+            <div><strong>Abstract</strong><span>Keep only details that affect inputs, processing, outputs or constraints.</span></div>
+            <div><strong>Connect</strong><span>Show how the sub-problems combine into one complete algorithm.</span></div>
           </div>
         </section>
 
@@ -443,16 +407,16 @@ System.out.println(passCount);</code></pre>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Structure labels</strong>
-              <span>Write six real-life instructions and label each as sequence, selection or iteration. Explain each label in one sentence.</span>
+              <strong>Task 1: Decomposition plan</strong>
+              <span>Choose a vending machine, quiz scoring system or library loan system. Write five sub-problems using verb-based names.</span>
             </article>
             <article>
-              <strong>Task 2: Pseudocode</strong>
-              <span>Write Cambridge-style pseudocode to input five marks and count how many are at least 50.</span>
+              <strong>Task 2: Abstraction table</strong>
+              <span>List eight scenario details. Mark each as keep or ignore, then give one sentence explaining the algorithmic reason.</span>
             </article>
             <article>
-              <strong>Task 3: Correction</strong>
-              <span>Find one example where a loop is unnecessary. Rewrite it using sequence or selection only.</span>
+              <strong>Task 3: Exam paragraph</strong>
+              <span>Answer: "Explain how decomposition and abstraction help when designing an algorithm." Write 6-8 precise lines with examples.</span>
             </article>
           </div>
         </section>
@@ -460,8 +424,8 @@ System.out.println(passCount);</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

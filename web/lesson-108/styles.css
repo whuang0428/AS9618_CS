@@ -82,23 +82,26 @@ pre {
   display: block; color: var(--accent-dark); margin-bottom: 4px;
 }
 
-.nested-visual {
+.string-visual {
   display: grid; gap: 14px; align-content: center; min-height: 430px; padding: 24px; color: #ffffff;
   background: linear-gradient(135deg, #17324d, #2563eb 48%, #047857);
   border-radius: 8px;
 }
-.grid-demo {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+.string-word {
+  padding: 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.94);
+  color: #12304f; text-align: center; font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(1.6rem, 4vw, 3rem); font-weight: 900;
 }
-.grid-demo span, .loop-cards div {
+.char-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;
+}
+.char-grid div {
   background: rgba(255, 255, 255, 0.94); color: #12304f; border-radius: 8px;
-  padding: 12px; text-align: center; font-weight: 850;
+  padding: 10px; display: grid; gap: 4px; text-align: center; font-weight: 850;
 }
-.loop-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.loop-cards div { display: grid; gap: 4px; text-align: left; }
-.loop-cards strong { color: #92400e; }
-.loop-cards span { overflow-wrap: anywhere; }
-.nested-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.char-grid strong { color: #92400e; font-size: 0.8rem; }
+.char-grid span { font-family: "SFMono-Regular", Consolas, monospace; font-size: 1.35rem; }
+.string-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
 
 .guidance-grid {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
@@ -129,8 +132,8 @@ pre {
 .data-table, .result-table {
   display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
 }
-.pattern-table .table-row { grid-template-columns: 0.95fr 0.95fr 1.2fr 1.25fr; }
-.mini-table .table-row { grid-template-columns: 0.7fr 1.3fr; }
+.pattern-table .table-row { grid-template-columns: 0.85fr 0.9fr 1.45fr 1fr; }
+.mini-table .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .result-table .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
 .table-row { display: grid; }
 .table-row > div { padding: 14px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); overflow-wrap: anywhere; }
@@ -207,8 +210,7 @@ pre {
   .layout { padding-inline: 10px; }
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
-  .grid-demo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .loop-cards { grid-template-columns: 1fr; }
+  .char-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .practice-row, .exam-head { grid-template-columns: 1fr; display: grid; }
 }
 @media print {

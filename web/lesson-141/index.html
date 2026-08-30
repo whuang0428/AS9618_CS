@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 141 | Section 11 review: writing complete program fragments</title>
+    <title>AS9618 Lesson 141 | Converting Java habits into Cambridge pseudocode</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Section 11 review: writing complete program fragments</h1>
+        <h1>Converting Java habits into Cambridge pseudocode</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,20 +29,20 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#review-map">Review map</a>
-        <a href="#fragment">Fragment anatomy</a>
-        <a href="#validation">Validation</a>
-        <a href="#arrays">Arrays and loops</a>
+        <a href="#standard">Exam standard</a>
+        <a href="#assignment">Assignment</a>
+        <a href="#io">Input/output</a>
+        <a href="#selection">Selection</a>
+        <a href="#loops">Loops</a>
+        <a href="#arrays">Arrays</a>
         <a href="#subroutines">Subroutines</a>
-        <a href="#files">Files</a>
-        <a href="#debugging">Debugging</a>
-        <a href="#java">Java support</a>
-        <a href="#builder">Fragment builder</a>
-        <a href="#checklist">Mark checklist</a>
+        <a href="#converter">Converter</a>
+        <a href="#spotter">Java spotter</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
+        <a href="#checkpoint">Checkpoint</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -54,173 +54,224 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 141 | 45 minutes | Paper 2 Section 11 | stage review</p>
-            <h2>A complete fragment is not a pile of keywords. It is a small program with a job.</h2>
+            <p class="lesson-meta">Lesson 141 | 45 minutes | Paper 2 Section 11 | 5-minute quiz and monthly checkpoint</p>
+            <h2>Java can help you practise. It must not hijack your pseudocode answer.</h2>
             <p>
-              This review lesson turns Section 11 skills into complete Cambridge-style pseudocode fragments. A strong answer
-              reads the scenario, chooses the right constructs, uses meaningful identifiers, handles input sensibly and produces
-              the required output. Chinese support: fragment 片段, construct 结构, identifier 标识符, review 复习。
+              Cambridge pseudocode is designed for clear algorithm expression. Java is stricter about syntax, braces,
+              semicolons and library calls. This lesson trains you to translate Java habits into Cambridge-style pseudocode
+              without losing the algorithm. Chinese support: pseudocode 伪代码, assignment 赋值, syntax 语法, library call 库调用。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Select</strong><span>the correct Section 11 tools for a mixed task</span></div>
-              <div><strong>Write</strong><span>complete program fragments in Cambridge-style pseudocode</span></div>
-              <div><strong>Mark</strong><span>answers against strict Cambridge-style points</span></div>
+              <div><strong>Translate</strong><span>common Java syntax into Cambridge-style pseudocode</span></div>
+              <div><strong>Remove</strong><span>Java-only details such as braces, semicolons and class wrappers</span></div>
+              <div><strong>Write</strong><span>clear exam answers using pseudocode conventions</span></div>
             </div>
           </div>
-          <div class="review-visual" aria-label="Program fragment visual">
-            <div><strong>Input</strong><span>read required data</span><em>INPUT / READFILE</em></div>
-            <div><strong>Process</strong><span>select, loop, calculate</span><em>IF / FOR / WHILE</em></div>
-            <div><strong>Structure</strong><span>use arrays and modules</span><em>FUNCTION / PROCEDURE</em></div>
-            <div><strong>Output</strong><span>show or write result</span><em>OUTPUT / WRITEFILE</em></div>
+          <div class="syntax-visual" aria-label="Java to pseudocode visual">
+            <div><strong>Java</strong><span>System.out.println(x);</span><em>language-specific</em></div>
+            <div><strong>Pseudocode</strong><span>OUTPUT x</span><em>exam-friendly</em></div>
+            <div><strong>Java</strong><span>if (...) { }</span><em>braces and condition syntax</em></div>
+            <div><strong>Pseudocode</strong><span>IF ... THEN / ENDIF</span><em>structured keywords</em></div>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 mixed questions reward integrated logic: input, control flow, data structures, subroutines and output working together.</p>
+            <p>Paper 2 marks reward clear pseudocode logic. Java-only syntax can obscure the algorithm and may not match Cambridge conventions.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Students often write isolated lines that do not connect. Marks are earned when variables are initialised, updated, used and output consistently.</p>
+            <p><code>System.out.println()</code>, <code>public static void main</code>, braces and semicolons are Java habits, not Cambridge pseudocode requirements.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which syllabus concept is required first?</h2>
-            <p>Task: “Read 10 marks into an array, count how many are pass marks, then output the count.”</p>
+            <h2>Which answer is Cambridge-style pseudocode?</h2>
+            <p>Question: output the value stored in <code>Total</code>.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="database">SQL SELECT</button>
-            <button class="choice-card" type="button" data-hook="array">Array + loop + selection</button>
-            <button class="choice-card" type="button" data-hook="file">File append only</button>
-            <button class="choice-card" type="button" data-hook="html">HTML form</button>
+            <button class="choice-card" type="button" data-hook="java">System.out.println(Total);</button>
+            <button class="choice-card" type="button" data-hook="pseudo">OUTPUT Total</button>
+            <button class="choice-card" type="button" data-hook="console">console.log(Total)</button>
+            <button class="choice-card" type="button" data-hook="print">print(Total);</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the Section 11 tools needed by the scenario.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the form expected in Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="review-map" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+        <section class="panel" id="standard" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
-            <p class="eyebrow">Review map</p>
-            <h2>Section 11 tools become stronger when combined</h2>
+            <p class="eyebrow">Exam standard</p>
+            <h2>Cambridge pseudocode uses readable algorithm keywords</h2>
+            <p>It is not Java with the class declaration removed. It has its own conventions for assignment, input/output, loops, selection and subroutines.</p>
           </div>
-          <div class="data-table four-col" role="table" aria-label="Section 11 review map">
-            <div class="table-row table-head"><div>Need</div><div>Likely construct</div><div>Evidence in answer</div><div>Common slip</div></div>
-            <div class="table-row"><div>repeat known number of times</div><div><code>FOR</code></div><div>start, end and <code>NEXT</code></div><div>wrong loop bounds</div></div>
-            <div class="table-row"><div>make a decision</div><div><code>IF</code></div><div>condition, branches, <code>ENDIF</code></div><div>missing ELSE when needed</div></div>
-            <div class="table-row"><div>store several values</div><div>array</div><div>index used consistently</div><div>mixing index bases</div></div>
-            <div class="table-row"><div>reuse logic</div><div>function/procedure</div><div>parameters and return/output</div><div>Java method syntax</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start review-map -->
-        <section class="panel explanation-panel" id="explanation-review-map" data-explains="review-map" data-explanation-kind="synthesis" aria-labelledby="explanation-review-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-review-map-title">Section 11 tools become stronger when combined</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-review-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 11 tools become stronger when combined with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 11 tools become stronger when combined: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Review map</li><li><strong>Lesson fact:</strong> Likely construct</li><li><strong>Lesson fact:</strong> Evidence in answer</li><li><strong>Lesson fact:</strong> Common slip</li><li><strong>Lesson fact:</strong> repeat known number of times</li><li><strong>Lesson fact:</strong> start, end and NEXT</li><li><strong>Lesson fact:</strong> wrong loop bounds</li><li><strong>Lesson fact:</strong> make a decision</li><li><strong>Lesson fact:</strong> condition, branches, ENDIF</li><li><strong>Lesson fact:</strong> missing ELSE when needed</li><li><strong>Lesson fact:</strong> store several values</li><li><strong>Lesson fact:</strong> index used consistently</li></ol>
-
+          <div class="data-table three-col" role="table" aria-label="Java and pseudocode comparison">
+            <div class="table-row table-head"><div>Purpose</div><div>Java habit</div><div>Cambridge-style pseudocode</div></div>
+            <div class="table-row"><div>Assignment</div><div><code>total = total + mark;</code></div><div><code>Total &lt;- Total + Mark</code></div></div>
+            <div class="table-row"><div>Output</div><div><code>System.out.println(total);</code></div><div><code>OUTPUT Total</code></div></div>
+            <div class="table-row"><div>Selection</div><div><code>if (...) { ... }</code></div><div><code>IF ... THEN ... ENDIF</code></div></div>
+            <div class="table-row"><div>Loop</div><div><code>for (...) { ... }</code></div><div><code>FOR ... TO ... NEXT</code></div></div>
           </div>
         </section>
-        <!-- stage10-explanation:end review-map -->
-        <section class="panel" id="fragment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+        <section class="panel" id="assignment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
-            <p class="eyebrow">Fragment anatomy</p>
-            <h2>A complete fragment has setup, logic and result</h2>
+            <p class="eyebrow">Assignment</p>
+            <h2>Use the assignment arrow for storing a value</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Pass-count fragment</h3>
-              <pre><code>PassCount &lt;- 0
-FOR Index &lt;- 1 TO 10
-    INPUT Marks[Index]
-    IF Marks[Index] &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
-    ENDIF
-NEXT Index
-OUTPUT PassCount</code></pre>
+              <h3>Java support example only</h3>
+              <pre><code>total = total + mark;</code></pre>
             </article>
             <article>
-              <h3>Why it is complete</h3>
-              <ul>
-                <li>counter is initialised before the loop</li>
-                <li>array element is input before it is tested</li>
-                <li>selection updates the counter only for pass marks</li>
-                <li>final result is output after the loop</li>
-              </ul>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Total &lt;- Total + Mark</code></pre>
+            </article>
+          </div>
+          <div class="callout">A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</div>
+        </section>
+
+        <!-- stage10-explanation:start assignment -->
+        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-assignment-title">Use the assignment arrow for storing a value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-assignment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the assignment arrow for storing a value with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the assignment arrow for storing a value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> total = total + mark;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end assignment -->
+        <section class="panel" id="io" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <div class="section-title">
+            <p class="eyebrow">Input and output</p>
+            <h2>Replace library calls with algorithm keywords</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>Scanner input = new Scanner(System.in);
+mark = input.nextInt();
+System.out.println(mark);</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>INPUT Mark
+OUTPUT Mark</code></pre>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start fragment -->
-        <section class="panel explanation-panel" id="explanation-fragment" data-explains="fragment" data-explanation-kind="synthesis" aria-labelledby="explanation-fragment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-fragment-title">A complete fragment has setup, logic and result</h2>
+        <!-- stage10-explanation:start io -->
+        <section class="panel explanation-panel" id="explanation-io" data-explains="io" data-explanation-kind="process" aria-labelledby="explanation-io-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-io-title">Replace library calls with algorithm keywords</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-fragment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A complete fragment has setup, logic and result with a structured visual model." />
-            <figcaption class="explanation-sr-only">A complete fragment has setup, logic and result: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-io.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Replace library calls with algorithm keywords with a structured visual model." />
+            <figcaption class="explanation-sr-only">Replace library calls with algorithm keywords: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise PassCount before processing ten array positions.</li><li><strong>Lesson fact:</strong> Input the current element before testing it.</li><li><strong>Lesson fact:</strong> Close the passing-mark selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output PassCount once after the loop.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Input and output</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> Scanner input = new Scanner(System.in);</li><li><strong>Lesson fact:</strong> mark = input.nextInt();</li><li><strong>Lesson fact:</strong> System.out.println(mark);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> OUTPUT Mark</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end fragment -->
-        <section class="panel" id="validation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+        <!-- stage10-explanation:end io -->
+        <section class="panel" id="selection" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
-            <p class="eyebrow">Validation</p>
-            <h2>Review fragments often need input checks</h2>
+            <p class="eyebrow">Selection</p>
+            <h2>Use <code>IF</code>, <code>THEN</code>, <code>ELSE</code>, <code>ENDIF</code></h2>
           </div>
-          <pre><code>REPEAT
-    INPUT Mark
-    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
-        Valid &lt;- TRUE
-    ELSE
-        OUTPUT "Enter a mark from 0 to 100"
-        Valid &lt;- FALSE
-    ENDIF
-UNTIL Valid = TRUE</code></pre>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>if (mark &gt;= 50) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Resit needed");
+}</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+          </div>
         </section>
 
-        <!-- stage10-explanation:start validation -->
-        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="synthesis" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-validation-title">Review fragments often need input checks</h2>
+        <!-- stage10-explanation:start selection -->
+        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="mechanism" aria-labelledby="explanation-selection-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-selection-title">Use IF , THEN , ELSE , ENDIF</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Review fragments often need input checks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Review fragments often need input checks: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IF , THEN , ELSE , ENDIF with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IF , THEN , ELSE , ENDIF: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A complete validation fragment prompts for and inputs Mark inside REPEAT.</li><li><strong>Lesson fact:</strong> Set Valid to TRUE when Mark is between 0 and 100 inclusive; otherwise set it to FALSE.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF and repeat until Valid is TRUE.</li><li><strong>Lesson fact:</strong> Every invalid retry must read a replacement Mark.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end validation -->
+        <!-- stage10-explanation:end selection -->
+        <section class="panel" id="loops" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <div class="section-title">
+            <p class="eyebrow">Loops</p>
+            <h2>Choose the loop keyword that matches the logic</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Loop translations">
+            <div class="table-row table-head"><div>Java habit</div><div>Meaning</div><div>Pseudocode form</div><div>Warning</div></div>
+            <div class="table-row"><div><code>for (int i = 1; i &lt;= 5; i++)</code></div><div>known count</div><div><code>FOR I &lt;- 1 TO 5</code></div><div>do not keep Java brackets</div></div>
+            <div class="table-row"><div><code>while (valid == false)</code></div><div>repeat while condition true</div><div><code>WHILE Valid = FALSE</code></div><div>end with <code>ENDWHILE</code></div></div>
+            <div class="table-row"><div><code>do { ... } while (...)</code></div><div>post-condition loop</div><div><code>REPEAT ... UNTIL ...</code></div><div>condition may be inverted</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start loops -->
+        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-loops-title">Choose the loop keyword that matches the logic</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the loop keyword that matches the logic with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the loop keyword that matches the logic: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Use FOR when a counter range determines the number of iterations.</li><li><strong>Lesson fact:</strong> Use WHILE when the condition is checked before each iteration.</li><li><strong>Lesson fact:</strong> Use REPEAT, then the body, then UNTIL Condition for a post-condition loop.</li><li><strong>Lesson fact:</strong> Do not use DO...ENDWHILE as the Cambridge post-condition form.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loops -->
         <section class="panel" id="arrays" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
-            <p class="eyebrow">Arrays and loops</p>
-            <h2>Arrays need consistent indexing and meaningful loop bounds</h2>
+            <p class="eyebrow">Arrays</p>
+            <h2>Use Cambridge array notation consistently</h2>
           </div>
-          <div class="data-table three-col" role="table" aria-label="Array loop checks">
-            <div class="table-row table-head"><div>Question wording</div><div>Good answer feature</div><div>Mark-risk</div></div>
-            <div class="table-row"><div>10 marks</div><div><code>FOR Index &lt;- 1 TO 10</code></div><div>looping 0 to 10 gives 11 iterations</div></div>
-            <div class="table-row"><div>highest score</div><div>initialise <code>Highest</code> before comparing</div><div>uninitialised comparison</div></div>
-            <div class="table-row"><div>total and average</div><div>update <code>Total</code> inside loop, divide after loop</div><div>average inside loop too early</div></div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>scores[0] = 72;
+System.out.println(scores[0]);</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Scores[1] &lt;- 72
+OUTPUT Scores[1]</code></pre>
+            </article>
           </div>
+          <div class="callout">Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</div>
         </section>
 
         <!-- stage10-explanation:start arrays -->
-        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="synthesis" aria-labelledby="explanation-arrays-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-arrays-title">Arrays need consistent indexing and meaningful loop bounds</h2>
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">Use Cambridge array notation consistently</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Arrays need consistent indexing and meaningful loop bounds with a structured visual model." />
-            <figcaption class="explanation-sr-only">Arrays need consistent indexing and meaningful loop bounds: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge array notation consistently with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use Cambridge array notation consistently: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Arrays and loops</li><li><strong>Lesson fact:</strong> Question wording</li><li><strong>Lesson fact:</strong> Good answer feature</li><li><strong>Lesson fact:</strong> Mark-risk</li><li><strong>Lesson fact:</strong> 10 marks</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> looping 0 to 10 gives 11 iterations</li><li><strong>Lesson fact:</strong> highest score</li><li><strong>Lesson fact:</strong> initialise Highest before comparing</li><li><strong>Lesson fact:</strong> uninitialised comparison</li><li><strong>Lesson fact:</strong> total and average</li><li><strong>Lesson fact:</strong> update Total inside loop, divide after loop</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> scores[0] = 72;</li><li><strong>Lesson fact:</strong> System.out.println(scores[0]);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Scores[1] &lt;- 72</li><li><strong>Lesson fact:</strong> OUTPUT Scores[1]</li><li><strong>Lesson fact:</strong> Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</li></ol>
 
           </div>
         </section>
@@ -228,173 +279,100 @@ UNTIL Valid = TRUE</code></pre>
         <section class="panel" id="subroutines" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
             <p class="eyebrow">Subroutines</p>
-            <h2>Use functions for returned values and procedures for actions</h2>
+            <h2>Use <code>PROCEDURE</code> and <code>FUNCTION</code> instead of Java method wrappers</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Function</h3>
-              <pre><code>FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
-    RETURN Mark &gt;= 50
-ENDFUNCTION</code></pre>
+              <h3>Java support example only</h3>
+              <pre><code>static boolean isValidMark(int mark) {
+    return mark &gt;= 0 &amp;&amp; mark &lt;= 100;
+}</code></pre>
             </article>
             <article>
-              <h3>Procedure</h3>
-              <pre><code>PROCEDURE DisplayResult(Name : STRING, Passed : BOOLEAN)
-    OUTPUT Name
-    OUTPUT Passed
-ENDPROCEDURE</code></pre>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark &gt;= 0 AND Mark &lt;= 100
+ENDFUNCTION</code></pre>
             </article>
           </div>
         </section>
 
         <!-- stage10-explanation:start subroutines -->
-        <section class="panel explanation-panel" id="explanation-subroutines" data-explains="subroutines" data-explanation-kind="synthesis" aria-labelledby="explanation-subroutines-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-subroutines-title">Use functions for returned values and procedures for actions</h2>
+        <section class="panel explanation-panel" id="explanation-subroutines" data-explains="subroutines" data-explanation-kind="mechanism" aria-labelledby="explanation-subroutines-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-subroutines-title">Use PROCEDURE and FUNCTION instead of Java method wrappers</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-subroutines.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use functions for returned values and procedures for actions with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use functions for returned values and procedures for actions: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-subroutines.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use PROCEDURE and FUNCTION instead of Java method wrappers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use PROCEDURE and FUNCTION instead of Java method wrappers: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A function returns a value; a procedure performs an action.</li><li><strong>Lesson fact:</strong> IsPass returns a BOOLEAN based on whether Mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the function's IF with ENDIF before ENDFUNCTION.</li><li><strong>Lesson fact:</strong> DisplayResult outputs its parameters and returns no value.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Subroutines</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static boolean isValidMark(int mark) {</li><li><strong>Lesson fact:</strong> return mark &gt;= 0 &amp;&amp; mark &lt;= 100;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end subroutines -->
-        <section class="panel" id="files" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+        <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
-            <p class="eyebrow">Files</p>
-            <h2>File fragments need open, process and close</h2>
-          </div>
-          <pre><code>OPENFILE "Scores.txt" FOR READ
-WHILE NOT EOF("Scores.txt")
-    READFILE "Scores.txt", Line
-    OUTPUT Line
-ENDWHILE
-CLOSEFILE "Scores.txt"</code></pre>
-        </section>
-
-        <!-- stage10-explanation:start files -->
-        <section class="panel explanation-panel" id="explanation-files" data-explains="files" data-explanation-kind="synthesis" aria-labelledby="explanation-files-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-files-title">File fragments need open, process and close</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-files.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining File fragments need open, process and close with a structured visual model." />
-            <figcaption class="explanation-sr-only">File fragments need open, process and close: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end files -->
-        <section class="panel" id="debugging" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <div class="section-title">
-            <p class="eyebrow">Debugging awareness</p>
-            <h2>Review answers should be traceable</h2>
-            <p>A well-written fragment can be traced: values change in clear places, conditions are testable, and outputs are easy to predict.</p>
-          </div>
-          <div class="callout">If you cannot trace your own fragment with a small example, the examiner probably cannot rescue it for you either.</div>
-        </section>
-
-        <!-- stage10-explanation:start debugging -->
-        <section class="panel explanation-panel" id="explanation-debugging" data-explains="debugging" data-explanation-kind="synthesis" aria-labelledby="explanation-debugging-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-debugging-title">Review answers should be traceable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-debugging.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Review answers should be traceable with a structured visual model." />
-            <figcaption class="explanation-sr-only">Review answers should be traceable: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Debugging awareness</li><li><strong>Lesson fact:</strong> A well-written fragment can be traced: values change in clear places, conditions are testable, and outputs are easy to predict.</li><li><strong>Lesson fact:</strong> If you cannot trace your own fragment with a small example, the examiner probably cannot rescue it for you either.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end debugging -->
-        <section class="panel" id="java" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <div class="section-title">
-            <p class="eyebrow">Java support only</p>
-            <h2>Java can support practice; the review answer should be Cambridge pseudocode</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Java support example only</h3>
-              <pre><code>for (int index = 0; index &lt; 10; index++) {
-    if (marks[index] &gt;= 50) {
-        passCount++;
-    }
-}</code></pre>
-            </article>
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>FOR Index &lt;- 1 TO 10
-    IF Marks[Index] &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
-    ENDIF
-NEXT Index</code></pre>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start java -->
-        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="synthesis" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Java can support practice; the review answer should be Cambridge pseudocode</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java can support practice; the review answer should be Cambridge pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Java can support practice; the review answer should be Cambridge pseudocode: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java may support practice but the review answer uses Cambridge pseudocode.</li><li><strong>Lesson fact:</strong> Increment PassCount only when the current mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the pseudocode selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Keep Java and pseudocode indexing conventions explicit.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end java -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <div class="section-title">
-            <p class="eyebrow">Interactive fragment builder</p>
-            <h2>Choose a scenario and inspect the skeleton</h2>
+            <p class="eyebrow">Interactive converter</p>
+            <h2>Choose a Java habit and convert it</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Scenario
-              <select id="scenarioSelect">
-                <option value="pass">Count pass marks in an array</option>
-                <option value="valid">Input a valid mark</option>
-                <option value="file">Read and output every file line</option>
+              Java habit
+              <select id="convertSelect">
+                <option value="output">System.out.println(Total);</option>
+                <option value="assign">total = total + mark;</option>
+                <option value="if">if (mark >= 50) { ... }</option>
+                <option value="for">for (int i = 1; i &lt;= 5; i++)</option>
+                <option value="function">static boolean isValidMark(int mark)</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="buildBtn">Build skeleton</button>
+            <button class="primary-button" type="button" id="convertBtn">Convert</button>
           </div>
-          <div id="builderOutput" class="trace-output" aria-live="polite"></div>
+          <div id="convertOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="checklist" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+        <section class="panel" id="spotter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
-            <p class="eyebrow">Mark checklist</p>
-            <h2>Use a checklist before calling a fragment finished</h2>
+            <p class="eyebrow">Java spotter</p>
+            <h2>Spot the Java-only syntax in an exam answer</h2>
           </div>
-          <div id="checklistOutput" class="checklist-grid"></div>
+          <div class="tool-grid">
+            <label>
+              Suspicious answer fragment
+              <select id="spotSelect">
+                <option value="semicolon">OUTPUT Total;</option>
+                <option value="brace">IF Mark >= 50 {</option>
+                <option value="main">public static void main(String[] args)</option>
+                <option value="scanner">Scanner input = new Scanner(System.in);</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="spotBtn">Explain</button>
+          </div>
+          <div id="spotOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start checklist -->
-        <section class="panel explanation-panel" id="explanation-checklist" data-explains="checklist" data-explanation-kind="synthesis" aria-labelledby="explanation-checklist-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
-          <h2 class="explanation-sr-only" id="explanation-checklist-title">Use a checklist before calling a fragment finished</h2>
+        <!-- stage10-explanation:start spotter -->
+        <section class="panel explanation-panel" id="explanation-spotter" data-explains="spotter" data-explanation-kind="mechanism" aria-labelledby="explanation-spotter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-spotter-title">Spot the Java-only syntax in an exam answer</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-checklist.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a checklist before calling a fragment finished with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use a checklist before calling a fragment finished: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-spotter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spot the Java-only syntax in an exam answer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Spot the Java-only syntax in an exam answer: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mark checklist</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java spotter</li><li><strong>Lesson fact:</strong> Suspicious answer fragment</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end checklist -->
+        <!-- stage10-explanation:end spotter -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Annotate which lines earn marks</h2>
+            <h2>Translate by purpose, not punctuation</h2>
           </div>
           <div class="tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab-button active" type="button" data-example="pass">Pass counter</button>
-            <button class="tab-button" type="button" data-example="max">Highest mark</button>
-            <button class="tab-button" type="button" data-example="file">File output</button>
+            <button class="tab-button active" type="button" data-example="if">IF statement</button>
+            <button class="tab-button" type="button" data-example="loop">FOR loop</button>
+            <button class="tab-button" type="button" data-example="function">Function</button>
           </div>
           <div id="exampleOutput" class="example-output"></div>
         </section>
@@ -402,7 +380,7 @@ NEXT Index</code></pre>
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
-            <h2>Instant checking: review vocabulary and fragment logic</h2>
+            <h2>Instant checking: short conversion answers</h2>
           </div>
           <div id="practiceList" class="practice-list"></div>
         </section>
@@ -410,7 +388,7 @@ NEXT Index</code></pre>
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Turn weak fragments into mark-worthy ones</h2>
+            <h2>Remove Java leakage before it costs marks</h2>
           </div>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
@@ -418,41 +396,66 @@ NEXT Index</code></pre>
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style review questions with expandable MS</h2>
+            <h2>Cambridge-style wording with expandable MS</h2>
             <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
           </div>
           <div id="examList" class="exam-list"></div>
         </section>
 
+        <section class="panel" id="checkpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <div class="section-title">
+            <p class="eyebrow">Monthly checkpoint</p>
+            <h2>5-minute quiz focus</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Conversion</h3><p>Translate one Java selection, one loop and one output statement.</p></article>
+            <article><h3>Explanation</h3><p>Explain why Java syntax is support only, not the Paper 2 answer format.</p></article>
+            <article><h3>Accuracy</h3><p>Check that the algorithm meaning is unchanged after conversion.</p></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start checkpoint -->
+        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
+          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">5-minute quiz focus</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 5-minute quiz focus with a structured visual model." />
+            <figcaption class="explanation-sr-only">5-minute quiz focus: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> Conversion</li><li><strong>Lesson fact:</strong> Translate one Java selection, one loop and one output statement.</li><li><strong>Lesson fact:</strong> Explanation</li><li><strong>Lesson fact:</strong> Explain why Java syntax is support only, not the Paper 2 answer format.</li><li><strong>Lesson fact:</strong> Accuracy</li><li><strong>Lesson fact:</strong> Check that the algorithm meaning is unchanged after conversion.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checkpoint -->
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-141">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Read</strong><span>identify the required input, process and output before coding</span></div>
-            <div><strong>Connect</strong><span>make variables flow consistently through the fragment</span></div>
-            <div><strong>Check</strong><span>trace a small case and compare against the question</span></div>
+            <div><strong>Use keywords</strong><span>INPUT, OUTPUT, IF, FOR, WHILE, PROCEDURE and FUNCTION</span></div>
+            <div><strong>Remove Java noise</strong><span>no class wrapper, braces, semicolons or Java library calls required</span></div>
+            <div><strong>Preserve logic</strong><span>the converted pseudocode must keep the same algorithmic meaning</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Timed Section 11 review</h2>
+            <h2>Translate cleanly</h2>
           </div>
           <ol class="homework-list">
-            <li>Write a complete fragment to input 20 marks, validate each mark, and output the average.</li>
-            <li>Write a complete fragment to read names from a file and count how many names start with "A".</li>
-            <li>Mark your own answer using the checklist, then rewrite the weakest five lines.</li>
+            <li>Convert a Java grade program containing input, selection and output into Cambridge-style pseudocode.</li>
+            <li>Write five “Java habit -> pseudocode convention” flashcards, including assignment, output and subroutine syntax.</li>
+            <li>Answer a 6-mark question explaining why Java support examples must not replace Cambridge pseudocode in Paper 2.</li>
           </ol>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

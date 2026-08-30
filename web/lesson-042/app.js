@@ -1,99 +1,103 @@
-const fetchSteps = {
-  s1: {
-    result: "Step 1: PC -> MAR",
-    method: "The Program Counter holds the address of the next instruction. This address is copied into the Memory Address Register.",
-    trap: "Do not say the PC contains the instruction itself. It contains an address.",
+const componentMap = {
+  alu: {
+    role: "Arithmetic Logic Unit: performs arithmetic calculations and logical operations.",
+    sentence: "The ALU performs operations such as addition, subtraction, comparison and Boolean logic on data being processed.",
+    trap: "Do not say the ALU controls the whole CPU. Control is the job of the CU.",
   },
-  s2: {
-    result: "Step 2: MAR address -> address bus",
-    method: "The address in the MAR is placed on the address bus so the required memory location can be selected.",
-    trap: "Do not say the address bus carries the instruction value.",
+  cu: {
+    role: "Control Unit: coordinates CPU operations and sends control signals.",
+    sentence: "The CU decodes instructions and coordinates the sequence of operations needed to execute them.",
+    trap: "Do not say the CU performs arithmetic calculations. It controls; it does not calculate.",
   },
-  s3: {
-    result: "Step 3: Read signal on control bus",
-    method: "The control unit sends a memory read signal using the control bus.",
-    trap: "Do not describe the control bus as carrying the memory address.",
+  register: {
+    role: "Register: a small, fast storage location inside the CPU.",
+    sentence: "Registers temporarily hold data, instructions, addresses or intermediate results during processing.",
+    trap: "Do not describe registers as large-capacity main memory or secondary storage.",
   },
-  s4: {
-    result: "Step 4: memory instruction -> MDR",
-    method: "The instruction stored at that memory address is transferred on the data bus into the MDR.",
-    trap: "Do not send the instruction directly into the MAR; MAR is for addresses.",
+  dataBus: {
+    role: "Data bus: carries data and instructions between CPU, memory and other components.",
+    sentence: "The data bus transfers the value being read from or written to memory.",
+    trap: "Do not confuse the data bus with the address bus; the address bus identifies location.",
   },
-  s5: {
-    result: "Step 5: MDR -> CIR",
-    method: "The instruction is copied from the MDR to the Current Instruction Register for decoding.",
-    trap: "Do not decode from the MDR in a Cambridge-style trace; use CIR for the current instruction.",
+  addressBus: {
+    role: "Address bus: carries the address of a memory location or I/O location.",
+    sentence: "The address bus carries the location that the CPU wants to read from or write to.",
+    trap: "Do not say the address bus carries the data value itself.",
   },
-  s6: {
-    result: "Step 6: PC incremented",
-    method: "The PC is updated so it points to the next instruction, unless a branch/jump changes the normal sequence.",
-    trap: "Do not assume every instruction simply adds 1 to the PC; branch instructions can load a different address.",
+  controlBus: {
+    role: "Control bus: carries control and timing signals.",
+    sentence: "The control bus carries signals such as read, write and interrupt between the CPU and other components.",
+    trap: "Do not use 'control bus' as a vague name for every bus.",
+  },
+  clock: {
+    role: "Clock: produces regular pulses to synchronise CPU operations.",
+    sentence: "Clock speed describes how many cycles occur per second, but it is not the only factor affecting performance.",
+    trap: "Do not claim that a higher clock speed always guarantees a faster computer in every task.",
   },
 };
 
 const examples = {
-  fetch: {
-    title: "Example 1: fetch trace",
-    problem: "Trace the fetch stage when the PC contains address 120.",
+  identify: {
+    title: "Example 1: identify the component",
+    problem: "A question says: 'This part performs a comparison to decide whether a value is greater than 100.' Name the CPU component.",
     steps: [
-      "The address 120 in the PC is copied to the MAR.",
-      "The address 120 is placed on the address bus.",
-      "A read signal is sent on the control bus.",
-      "The instruction stored at address 120 is transferred from memory on the data bus into the MDR.",
-      "The instruction is copied from the MDR to the CIR.",
-      "The PC is incremented to point to the next instruction, unless the instruction changes the sequence.",
+      "The keyword is comparison. Comparisons are logical operations.",
+      "Logical and arithmetic operations are performed by the ALU.",
+      "Answer: ALU. A full sentence would be: the ALU performs the comparison operation on the data.",
     ],
   },
-  branch: {
-    title: "Example 2: branch instruction",
-    problem: "Explain why a jump instruction can change the normal cycle.",
+  add: {
+    title: "Example 2: a broad ADD instruction explanation",
+    problem: "Explain which CPU parts are involved when adding two values.",
     steps: [
-      "The instruction is still fetched and decoded.",
-      "During execute, the CPU may load a new address into the PC.",
-      "The next fetch then uses this new PC value instead of the next sequential address.",
-      "This is how loops and selection can alter the program flow.",
+      "Registers hold the two values and may hold the intermediate or final result.",
+      "The CU coordinates the operation and sends control signals so the correct operation is performed.",
+      "The ALU performs the addition.",
+      "Buses transfer values, addresses and control signals between CPU and memory when values need to be fetched or stored.",
+      "The clock synchronises these steps so they occur in an organised sequence.",
     ],
   },
-  compare: {
-    title: "Example 3: weak vs strong wording",
-    problem: "Improve: 'The CPU fetches the command and then does it.'",
+  clock: {
+    title: "Example 3: clock speed is not the whole story",
+    problem: "A 4.0 GHz CPU is always faster than a 3.2 GHz CPU. Explain why this statement is too simple.",
     steps: [
-      "Weak: no register names, no memory transfer, no decode role.",
-      "Strong: the address in the PC is copied to the MAR; the instruction is read from memory into the MDR and then copied to the CIR.",
-      "Strong: the CU decodes the instruction in the CIR and the CPU executes it, possibly using the ALU or memory access.",
+      "Clock speed measures cycles per second, so a higher value can allow more CPU cycles per second.",
+      "However, different processors may do different amounts of useful work per cycle.",
+      "Performance also depends on cache, number of cores, instruction type, memory access and system architecture.",
+      "So clock speed is a factor, but not the only factor.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which register holds the address of the next instruction?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
-  { id: "p2", prompt: "Which register holds the memory address being accessed?", accepted: ["mar", "memory address register"], answer: "MAR / Memory Address Register" },
-  { id: "p3", prompt: "Which register holds data or an instruction transferred to or from memory?", accepted: ["mdr", "memory data register"], answer: "MDR / Memory Data Register" },
-  { id: "p4", prompt: "Which register holds the current instruction?", accepted: ["cir", "current instruction register"], answer: "CIR / Current Instruction Register" },
-  { id: "p5", prompt: "Which bus carries the memory address?", accepted: ["address bus"], answer: "Address bus" },
-  { id: "p6", prompt: "Which bus carries the instruction from memory to the CPU?", accepted: ["data bus"], answer: "Data bus" },
-  { id: "p7", prompt: "Which bus carries the read signal?", accepted: ["control bus"], answer: "Control bus" },
-  { id: "p8", prompt: "Which CPU component decodes the instruction?", accepted: ["cu", "control unit"], answer: "Control Unit / CU" },
-  { id: "p9", prompt: "After a normal fetch, what usually happens to the PC?", accepted: ["incremented", "it is incremented", "increased", "updated"], answer: "It is incremented / updated to the next instruction address" },
-  { id: "p10", prompt: "What stage comes after fetch?", accepted: ["decode"], answer: "Decode" },
+  { id: "p1", prompt: "Which CPU component performs arithmetic operations?", accepted: ["alu", "arithmetic logic unit"], answer: "ALU / Arithmetic Logic Unit" },
+  { id: "p2", prompt: "Which CPU component coordinates operations and sends control signals?", accepted: ["cu", "control unit"], answer: "CU / Control Unit" },
+  { id: "p3", prompt: "What is a small, fast storage location inside the CPU called?", accepted: ["register", "registers"], answer: "Register" },
+  { id: "p4", prompt: "Which bus carries data and instructions?", accepted: ["data bus"], answer: "Data bus" },
+  { id: "p5", prompt: "Which bus carries memory addresses?", accepted: ["address bus"], answer: "Address bus" },
+  { id: "p6", prompt: "Which bus carries read/write/control signals?", accepted: ["control bus"], answer: "Control bus" },
+  { id: "p7", prompt: "What produces regular pulses to synchronise CPU operations?", accepted: ["clock", "system clock"], answer: "Clock / system clock" },
+  { id: "p8", prompt: "Is clock speed the only factor affecting CPU performance? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p9", prompt: "Which component performs logical operations such as comparisons?", accepted: ["alu", "arithmetic logic unit"], answer: "ALU" },
+  { id: "p10", prompt: "Are registers inside the CPU or in secondary storage?", accepted: ["inside the cpu", "cpu", "inside cpu"], answer: "Inside the CPU" },
 ];
 
 const mistakes = [
   {
-    wrong: "The PC stores the next instruction.",
-    fix: "The PC stores the address of the next instruction. The instruction itself is fetched from memory and eventually copied into the CIR.",
+    wrong: "The ALU controls the CPU and sends signals to memory.",
+    fix: "The CU controls CPU operations and sends control signals. The ALU performs arithmetic and logical operations.",
   },
   {
-    wrong: "The MAR carries the instruction to the CPU.",
-    fix: "The MAR holds a memory address. The MDR holds the instruction or data transferred to/from memory.",
+    wrong: "The address bus carries the data that the CPU wants to process.",
+    fix: "The address bus carries the address/location. The data bus carries the data or instruction value.",
   },
   {
-    wrong: "The CPU decodes the instruction before fetching it.",
-    fix: "The CPU must fetch the instruction first. Then the instruction in the CIR is decoded by the control unit.",
+    wrong: "Registers are large storage devices used to keep files permanently.",
+    fix: "Registers are small, very fast storage locations inside the CPU used temporarily during processing.",
   },
   {
-    wrong: "Every execute stage uses the ALU to do arithmetic.",
-    fix: "Some execute stages use the ALU, but others access memory or change the PC, such as branch instructions.",
+    wrong: "A higher clock speed always means the whole computer is faster.",
+    fix: "Higher clock speed may allow more cycles per second, but performance also depends on architecture, cache, cores and memory access.",
   },
 ];
 
@@ -106,95 +110,93 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "Use register-transfer notation to describe the fetch stage of the fetch-decode-execute cycle and explain Memory[MAR].",
-    answer: "MAR <- PC; MDR <- Memory[MAR]; CIR <- MDR; PC <- PC + 1 at a coherent point. Memory[MAR] means the contents of the memory location whose address is held in MAR. The fetched instruction in CIR is then decoded by the control unit.",
+    marks: "4 marks",
+    prompt: "Describe the roles of the ALU and the control unit in a CPU.",
+    answer: "The ALU performs arithmetic calculations and logical operations. The control unit decodes instructions, coordinates CPU operations and sends control signals to other components.",
     marking: [
-      { mark: "M1", text: "MAR <- PC" },
-      { mark: "M1", text: "MDR <- Memory[MAR]" },
-      { mark: "M1", text: "CIR <- MDR" },
-      { mark: "M1", text: "PC <- PC + 1 at a coherent point" },
-      { mark: "B1", text: "Memory[MAR] is the contents at the memory address held in MAR" },
-      { mark: "B1", text: "instruction in CIR is decoded by the control unit" },
+      { mark: "B1", text: "ALU performs arithmetic calculations" },
+      { mark: "B1", text: "ALU performs logical operations/comparisons/Boolean operations" },
+      { mark: "B1", text: "CU decodes instructions or controls the sequence of operations" },
+      { mark: "B1", text: "CU sends control signals/coordinates other CPU components" },
     ],
     strict: [
-      "Do not accept PC <- MAR as the first transfer.",
-      "Do not treat <- as equality or as a permanent link between registers.",
-      "Allow PC increment before or after the memory read if MAR already holds the current instruction address.",
+      "Do not award ALU marks for vague 'does processing' without arithmetic or logic.",
+      "Do not award CU control marks if the answer says the CU performs calculations.",
+      "Allow named examples of logical operations such as AND, OR, NOT, comparison.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Explain the roles of the PC, MAR, MDR and CIR during the fetch-decode-execute cycle.",
-    answer: "The PC holds the address of the next instruction. The MAR holds the address of the memory location being accessed. The MDR holds the data or instruction transferred from memory. The CIR holds the current instruction while it is decoded and executed.",
+    prompt: "Explain why registers are used by the CPU during processing.",
+    answer: "Registers are small, fast storage locations inside the CPU. They temporarily hold data, instructions, addresses or intermediate results that are currently being used. Accessing registers is faster than repeatedly accessing main memory, so processing can be carried out more efficiently.",
     marking: [
-      { mark: "B1", text: "PC holds address of next instruction" },
-      { mark: "B1", text: "MAR holds memory address being accessed" },
-      { mark: "B1", text: "MDR holds data/instruction being transferred to/from memory" },
-      { mark: "B1", text: "CIR holds current instruction for decoding/execution" },
+      { mark: "B1", text: "registers are small/fast storage locations" },
+      { mark: "B1", text: "registers are inside the CPU" },
+      { mark: "B1", text: "temporarily hold data/instructions/addresses/intermediate results" },
+      { mark: "B1", text: "faster access than main memory or supports current processing" },
     ],
     strict: [
-      "Do not accept a list of register names without roles.",
-      "Do not accept PC as holding data or instruction without address wording.",
-      "Allow 'memory buffer register' only if the role matches MDR.",
-      "Mark each register independently.",
+      "Do not accept permanent file storage as a register role.",
+      "Do not require a named register for this question.",
+      "Allow RAM comparison if it is clear that registers are faster and inside the CPU.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Describe what happens during the decode and execute stages of the cycle.",
-    answer: "During decode, the control unit interprets the instruction in the CIR, identifies the opcode and works out any operands or addresses needed. During execute, the CPU carries out the instruction. This may involve the ALU performing an arithmetic or logical operation, data being read from or written to memory, or the PC being changed by a branch instruction.",
+    marks: "6 marks",
+    prompt: "Describe the roles of the data bus, address bus and control bus.",
+    answer: "The data bus carries data and instructions between the CPU, memory and other components. The address bus carries the address of the memory or I/O location being accessed. The control bus carries control and timing signals, such as read and write signals, so components know what operation should take place.",
     marking: [
-      { mark: "B1", text: "CU decodes/interprets instruction" },
-      { mark: "B1", text: "instruction is in CIR/current instruction register" },
-      { mark: "B1", text: "opcode/operation and operands/address identified" },
-      { mark: "B1", text: "execute carries out instruction" },
-      { mark: "B1", text: "valid execute example such as ALU operation, memory access or PC change" },
+      { mark: "B1", text: "data bus carries data/instructions" },
+      { mark: "B1", text: "data bus transfer is between CPU, memory or other components" },
+      { mark: "B1", text: "address bus carries memory/I/O address" },
+      { mark: "B1", text: "address identifies location to read from or write to" },
+      { mark: "B1", text: "control bus carries control/timing signals" },
+      { mark: "B1", text: "valid example such as read, write, interrupt, clock/timing signal" },
     ],
     strict: [
-      "Do not require the word opcode if operation is clearly identified.",
-      "Do not accept 'decode means convert binary to denary'.",
-      "Allow branch/jump as execute example when PC update is clear.",
+      "Do not accept 'bus carries information' for all three without distinguishing roles.",
+      "Do not accept address bus carries the data value.",
+      "Allow 'instructions' on data bus because instructions are transferred as data values.",
+      "Award each bus independently; an error in one bus does not prevent marks for the others.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "A CPU is about to fetch an instruction stored at memory address 204. The PC contains 204. Complete a trace table for the fetch stage.",
-    answer: "The value 204 is copied from the PC to the MAR. The address 204 is placed on the address bus. A read signal is sent on the control bus. The instruction stored at address 204 is transferred from memory on the data bus to the MDR. The instruction is copied from the MDR to the CIR. The PC is incremented to point to the next instruction, unless the fetched instruction changes the normal sequence.",
+    marks: "5 marks",
+    prompt: "Explain the stored-program concept in a basic Von Neumann architecture and how the CPU uses the stored instructions.",
+    answer: "Program instructions are stored in binary form in the same immediate access store/main memory as data. The PC supplies an instruction address, the instruction is fetched from memory through the MDR into the CIR, and the control unit decodes it before execution. A program on secondary storage must therefore be loaded into processor-accessible memory before normal execution.",
     marking: [
-      { mark: "M1", text: "204 copied from PC to MAR" },
-      { mark: "B1", text: "address 204 placed on address bus" },
-      { mark: "B1", text: "read signal sent on control bus" },
-      { mark: "B1", text: "instruction at address 204 transferred from memory" },
-      { mark: "B1", text: "instruction placed in MDR then copied to CIR" },
-      { mark: "A1", text: "PC incremented/updated after fetch, with branch exception if stated" },
+      { mark: "B1", text: "program instructions are represented/stored in binary" },
+      { mark: "B1", text: "instructions and data share IAS/main memory in the basic Von Neumann model" },
+      { mark: "B1", text: "PC/address is used to fetch an instruction from memory" },
+      { mark: "B1", text: "fetched instruction passes through MDR to CIR" },
+      { mark: "B1", text: "control unit decodes the instruction before execution" },
     ],
     strict: [
-      "Do not award M1 if 204 is described as the instruction rather than the address.",
-      "Do not require exact next address because instruction length may vary by architecture.",
-      "Allow MDR and CIR as two separate statements or one combined statement.",
+      "Do not accept only 'the computer stores a program' without the shared instruction/data memory relationship.",
+      "Do not state that the instruction is stored in the PC or MAR.",
+      "Allow immediate access store, IAS or main memory for the processor-accessible store.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Explain how a branch instruction can affect the fetch-decode-execute cycle.",
-    answer: "A branch instruction is fetched and placed in the CIR like other instructions. The control unit decodes it and identifies that program flow may change. During execute, if the branch condition is met, a new address is loaded into the PC. The next fetch then uses this new address rather than the following sequential instruction. This allows selection and repetition in programs.",
+    prompt: "A CPU is executing an instruction that adds a value from memory to a value already in the CPU. Explain the roles of CPU components and buses in this process.",
+    answer: "A register holds the value already in the CPU and may hold the result. The address bus carries the memory address of the value that needs to be fetched. The data bus carries the value from memory to the CPU. The control bus carries signals such as read. The CU coordinates the operation and sends control signals. The ALU performs the addition.",
     marking: [
-      { mark: "B1", text: "branch instruction is fetched into CIR" },
-      { mark: "B1", text: "CU decodes branch/condition" },
-      { mark: "B1", text: "condition may be tested or branch target identified" },
-      { mark: "B1", text: "PC loaded/changed to new address if branch taken" },
-      { mark: "B1", text: "next fetch uses new PC address rather than sequential address" },
-      { mark: "B1", text: "program flow changes / supports selection or repetition" },
+      { mark: "B1", text: "register holds existing value/intermediate value/result" },
+      { mark: "B1", text: "address bus carries address of memory location" },
+      { mark: "B1", text: "data bus carries value/data from memory to CPU" },
+      { mark: "B1", text: "control bus carries read/control signal" },
+      { mark: "B1", text: "CU coordinates/controls/decodes or sends signals" },
+      { mark: "B1", text: "ALU performs the addition" },
     ],
     strict: [
-      "Do not accept 'branch stops the cycle' unless program termination is specifically described.",
-      "Do not require assembly-language syntax.",
-      "Allow unconditional jump if the PC change is clear.",
+      "Do not award ALU mark if answer only says CPU adds without naming ALU.",
+      "Do not award address bus mark for carrying the actual value.",
+      "Allow registers in plural without naming ACC/MDR if temporary holding is clear.",
     ],
   },
 ];
@@ -210,10 +212,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    pc: "Correct. The PC holds the address of the next instruction to fetch.",
-    alu: "Not first. The ALU may be used during execute, but fetch starts with the PC address.",
-    cir: "The CIR holds the current instruction after it has been fetched, not the first address source.",
-    ssd: "No. The CPU fetches instructions for execution from main memory, not directly from secondary storage.",
+    alu: "Correct. The ALU performs arithmetic such as addition.",
+    cu: "Close but not the maths part. The CU coordinates and sends control signals; the ALU performs the addition.",
+    register: "Registers may hold the values, but they do not perform the calculation.",
+    bus: "Buses transfer values or signals, but they do not perform the addition.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -224,20 +226,20 @@ function setupHook() {
   });
 }
 
-function setupSequencer() {
-  const select = document.querySelector("#stepInput");
-  const result = document.querySelector("#stepResult");
-  const method = document.querySelector("#stepMethod");
-  const trap = document.querySelector("#stepTrap");
-  function showStep() {
-    const item = fetchSteps[select.value];
-    result.textContent = item.result;
-    method.innerHTML = `<strong>What happens:</strong> ${item.method}`;
+function setupMapper() {
+  const select = document.querySelector("#componentInput");
+  const result = document.querySelector("#mapResult");
+  const sentence = document.querySelector("#mapSentence");
+  const trap = document.querySelector("#mapTrap");
+  function mapComponent() {
+    const item = componentMap[select.value];
+    result.textContent = item.role;
+    sentence.innerHTML = `<strong>Exam-safe sentence:</strong> ${item.sentence}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  select.addEventListener("change", showStep);
-  document.querySelector("#stepBtn").addEventListener("click", showStep);
-  showStep();
+  select.addEventListener("change", mapComponent);
+  document.querySelector("#mapBtn").addEventListener("click", mapComponent);
+  mapComponent();
 }
 
 function renderExample(key) {
@@ -257,7 +259,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("fetch");
+  renderExample("identify");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -339,7 +341,7 @@ function renderExamQuestions() {
 
 setupPrint();
 setupHook();
-setupSequencer();
+setupMapper();
 setupExamples();
 renderPractice();
 renderMistakes();

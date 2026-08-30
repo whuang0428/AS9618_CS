@@ -1,47 +1,47 @@
 const examples = {
-  lossless: {
-    title: "Example 1: choosing lossless compression",
-    problem: "A database backup must be compressed before storage. Choose a compression type.",
+  stereo: {
+    title: "Example 1: stereo calculation",
+    problem: "Calculate the size of a 10-second stereo clip sampled at 8000 Hz with 16-bit sampling resolution.",
     steps: [
-      "A backup must be restored exactly.",
-      "Lossy compression permanently removes data.",
-      "Therefore lossy compression is unsuitable.",
-      "Choose lossless compression because it allows exact reconstruction.",
+      "Stereo has 2 channels.",
+      "Size in bits = 8000 × 16 × 10 × 2.",
+      "This gives 2 560 000 bits.",
+      "Bytes = 2 560 000 ÷ 8 = 320 000 bytes.",
     ],
   },
-  lossy: {
-    title: "Example 2: choosing lossy compression",
-    problem: "A photo is being prepared for a web page where a small quality loss is acceptable.",
+  kib: {
+    title: "Example 2: convert bytes to KiB",
+    problem: "Convert 160 000 bytes to KiB.",
     steps: [
-      "The exact original pixel data is not essential for this use.",
-      "A smaller file will reduce download time and bandwidth use.",
-      "Lossy compression can remove less noticeable detail.",
-      "Choose lossy compression if the quality remains acceptable.",
+      "Use 1 KiB = 1024 bytes.",
+      "160 000 ÷ 1024 = 156.25.",
+      "So 160 000 bytes = 156.25 KiB.",
+      "Do not divide by 1000 when the unit is KiB.",
     ],
   },
-  ratio: {
-    title: "Example 3: compression ratio",
-    problem: "A file is compressed from 1000 KB to 250 KB. Calculate the ratio and percentage saved.",
+  compare: {
+    title: "Example 3: compare mono and stereo",
+    problem: "A mono clip and a stereo clip have the same sampling rate, sampling resolution and duration. Compare their file sizes.",
     steps: [
-      "Compression ratio is original size : compressed size.",
-      "1000:250 simplifies to 4:1.",
-      "Saved size is 1000 - 250 = 750 KB.",
-      "Percentage saved is 750 ÷ 1000 × 100 = 75%.",
+      "Mono has 1 channel.",
+      "Stereo has 2 channels.",
+      "Stereo stores twice as many sample values.",
+      "Therefore the stereo file size is twice the mono file size if all other factors match.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which compression type allows exact reconstruction?", accepted: ["lossless"], answer: "Lossless" },
-  { id: "p2", prompt: "Which compression type permanently removes some data?", accepted: ["lossy"], answer: "Lossy" },
-  { id: "p3", prompt: "Choose compression for a database backup: lossless or lossy?", accepted: ["lossless"], answer: "Lossless" },
-  { id: "p4", prompt: "Choose compression for a website photo where small quality loss is acceptable.", accepted: ["lossy"], answer: "Lossy" },
-  { id: "p5", prompt: "A file reduces from 1000 KB to 250 KB. What is the compression ratio?", accepted: ["4:1", "4 to 1"], answer: "4:1" },
-  { id: "p6", prompt: "A file reduces from 1000 KB to 250 KB. What percentage is saved?", accepted: ["75", "75%", "75 percent"], answer: "75%" },
-  { id: "p7", prompt: "Give one reason to compress a file.", accepted: ["less storage", "save storage", "faster transfer", "less bandwidth", "faster download"], answer: "Less storage or faster transfer." },
-  { id: "p8", prompt: "Is compression guaranteed to reduce every file size?", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "State one precise exam keyword connected to Compression: lossless vs lossy.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
-  { id: "p10", prompt: "What should an exam answer about Compression: lossless vs lossy include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
+  { id: "p1", prompt: "How many channels are used in mono sound?", accepted: ["1", "one", "1 channel"], answer: "1 channel" },
+  { id: "p2", prompt: "How many channels are used in stereo sound?", accepted: ["2", "two", "2 channels"], answer: "2 channels" },
+  { id: "p3", prompt: "Calculate bits for 8000 Hz, 16-bit, 10 seconds, stereo.", accepted: ["2560000", "2560000 bits", "2 560 000 bits"], answer: "2 560 000 bits" },
+  { id: "p4", prompt: "Convert 2 560 000 bits to bytes.", accepted: ["320000", "320000 bytes", "320 000 bytes"], answer: "320 000 bytes" },
+  { id: "p5", prompt: "Convert 160 000 bytes to KiB.", accepted: ["156.25", "156.25 kib"], answer: "156.25 KiB" },
+  { id: "p6", prompt: "What happens to file size if channels double and all other factors stay the same?", accepted: ["doubles", "double", "it doubles"], answer: "It doubles." },
+  { id: "p7", prompt: "What is the full sound file size formula in bits?", accepted: ["sampling rate × sampling resolution × duration × channels", "rate × resolution × duration × channels"], answer: "sampling rate × sampling resolution × duration × channels" },
+  { id: "p8", prompt: "Which unit conversion uses 1024 bytes?", accepted: ["kib", "kibibyte", "bytes to kib"], answer: "Bytes to KiB" },
+  { id: "p9", prompt: "State one precise exam keyword connected to Sound file size calculations.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
+  { id: "p10", prompt: "What should an exam answer about Sound file size calculations include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
 
@@ -54,118 +54,107 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Compare lossless and lossy compression.",
-    answer: "Lossless compression reduces file size while allowing the original data to be reconstructed exactly. Lossy compression reduces file size by permanently removing some data, so the original cannot be reconstructed exactly.",
+    prompt: "Calculate the size in bytes of a 10-second stereo sound clip sampled at 8000 Hz with 16-bit sampling resolution.",
+    answer: "8000 x 16 x 10 x 2 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
     marking: [
-      { mark: "B1", text: "lossless reduces file size" },
-      { mark: "B1", text: "lossless allows exact reconstruction / no data is lost" },
-      { mark: "B1", text: "lossy reduces file size by removing data" },
-      { mark: "B1", text: "lossy does not allow exact reconstruction / some quality or data is lost" },
+      { mark: "M1", text: "uses sampling rate 8000 and duration 10 seconds" },
+      { mark: "M1", text: "multiplies by 16 bits per sample" },
+      { mark: "M1", text: "multiplies by 2 channels for stereo" },
+      { mark: "A1", text: "320 000 bytes" },
     ],
     strict: [
-      "Do not accept only 'lossless is better'.",
-      "Do not accept 'lossy loses the whole file'.",
-      "Exact reconstruction wording is required for full credit.",
-      "Allow equivalent wording if the technical meaning is clear.",
+      "Do not award final A1 for 2 560 000 bytes.",
+      "Allow 2 560 000 bits as working.",
+      "Do not omit the stereo channel factor.",
     ],
   },
   {
     title: "Question 2",
     marks: "3 marks",
-    prompt: "A source code file must be compressed before being sent to another developer. Explain why lossless compression should be used.",
-    answer: "The source code must be recovered exactly. Lossless compression allows exact reconstruction, while lossy compression could remove or alter characters and break the program.",
+    prompt: "Calculate 160 000 bytes in KiB.",
+    answer: "1 KiB = 1024 bytes, so 160 000 / 1024 = 156.25 KiB.",
     marking: [
-      { mark: "B1", text: "source code must be restored exactly / cannot tolerate changes" },
-      { mark: "B1", text: "lossless allows exact reconstruction" },
-      { mark: "B1", text: "lossy could remove or alter data / make the program incorrect" },
+      { mark: "M1", text: "uses 1024 bytes per KiB" },
+      { mark: "M1", text: "divides 160 000 by 1024" },
+      { mark: "A1", text: "156.25 KiB" },
     ],
     strict: [
-      "Do not accept only 'lossless is higher quality'.",
-      "Allow equivalent examples such as syntax errors caused by changed characters.",
-      "The answer must link the choice to source code requirements.",
+      "Do not accept 160 KiB from division by 1000.",
+      "Allow 156.3 KiB only if the question permits rounding.",
+      "Unit must be KiB or clearly equivalent.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "A file is compressed from 2400 KB to 600 KB. Calculate the compression ratio and the percentage saved.",
-    answer: "The compression ratio is 2400:600 = 4:1. The amount saved is 2400 - 600 = 1800 KB, so the percentage saved is 1800 / 2400 x 100 = 75%.",
+    prompt: "Explain why a stereo sound file is larger than a matching mono sound file.",
+    answer: "Stereo has two channels while mono has one. If sampling rate, sampling resolution and duration are the same, stereo stores twice as many sample values, so the file size is doubled.",
     marking: [
-      { mark: "M1", text: "uses original:compressed as 2400:600" },
-      { mark: "A1", text: "simplifies ratio to 4:1" },
-      { mark: "M1", text: "calculates saved amount as 1800 KB or uses (2400 - 600) / 2400 × 100" },
-      { mark: "A1", text: "75%" },
+      { mark: "B1", text: "mono has 1 channel" },
+      { mark: "B1", text: "stereo has 2 channels" },
+      { mark: "B1", text: "same rate / resolution / duration means only channel factor changes" },
+      { mark: "B1", text: "stereo file size is twice mono size / larger because more sample values are stored" },
     ],
     strict: [
-      "Do not accept 1:4 for compression ratio in this wording.",
-      "Unit KB is not needed in the ratio.",
-      "Allow FT for the percentage saved from the candidate's earlier compressed-size value only when the percentage method is otherwise correct.",
-    ],
-  },
-  {
-    title: "Question 4",
-    marks: "3 marks",
-    prompt: "Explain why lossy compression may be suitable for streaming music.",
-    answer: "Streaming benefits from smaller files because less bandwidth is required. Lossy compression can remove less noticeable sound data, reducing file size, while the quality may still be acceptable for listeners.",
-    marking: [
-      { mark: "B1", text: "smaller files require less bandwidth / transfer faster" },
-      { mark: "B1", text: "lossy removes some data / less noticeable sound data" },
-      { mark: "B1", text: "quality loss may be acceptable for the context" },
-    ],
-    strict: [
-      "Do not accept only 'lossy is smaller'.",
-      "Do not claim the original can be exactly restored.",
-      "Answer must be linked to streaming or transfer context.",
+      "Do not accept only 'stereo is better'.",
+      "Do not award full marks unless channels are explicitly discussed.",
+      "Accept left and right channel explanation.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
-    title: "Question 5",
-    marks: "8 marks",
-    prompt: "For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.",
-    answer: "Text can use lossless RLE or dictionary references. A bitmap with repeated adjacent pixels can use lossless RLE; a lossy image method may discard fine detail or colour precision. A vector can store repeated objects/properties once and use references, losslessly. Sound can use lossless pattern coding for exact samples or lossy perceptual coding that removes less-audible information. Lossless reconstructs exactly; lossy does not.",
+    title: "Question 4",
+    marks: "4 marks",
+    prompt: "A 60-second stereo clip is sampled at 44 100 Hz using 16-bit sampling resolution. Calculate the uncompressed size in MiB.",
+    answer: "44 100 x 16 x 60 x 2 = 84 672 000 bits. Divide by 8 to obtain 10 584 000 bytes, then divide by 1 048 576 to obtain approximately 10.09 MiB.",
     marking: [
-      { mark: "B1", text: "text method: RLE repeated characters or dictionary/token references" },
-      { mark: "B1", text: "text method identified as lossless/exact" },
-      { mark: "B1", text: "bitmap method: RLE repeated adjacent pixels or valid lossy detail reduction" },
-      { mark: "B1", text: "bitmap exact/non-exact status matches the stated method" },
-      { mark: "B1", text: "vector method: repeated objects/properties stored once and referenced / redundancy removed" },
-      { mark: "B1", text: "vector method identified as lossless/exact" },
-      { mark: "B1", text: "sound method: lossless pattern coding or perceptual removal of less-audible information" },
-      { mark: "B1", text: "sound exact/non-exact status matches the stated method" },
+      { mark: "M1", text: "uses 44 100 × 16 × 60 × 2" },
+      { mark: "A1", text: "84 672 000 bits / 10 584 000 bytes" },
+      { mark: "M1", text: "converts bytes to MiB using 1024 × 1024" },
+      { mark: "A1", text: "approximately 10.09 MiB" },
     ],
     strict: [
-      "Do not award a method copied unchanged to every media type without explaining how it applies.",
-      "Do not call a lossy method exactly reversible.",
-      "RLE earns credit only when repeated symbols or pixel values are identified.",
+      "Do not divide by 1000 × 1000 for MiB.",
+      "Answer may be rounded sensibly if working is shown.",
+      "Allow FT from the candidate's earlier byte total only when it is subsequently divided by 1 048 576 to obtain MiB.",
+    ],
+  },
+  {
+    title: "Question 5",
+    marks: "4 marks",
+    prompt: "State two changes that would reduce the file size of an uncompressed sound recording and explain one effect of each.",
+    answer: "Reducing sampling rate stores fewer samples per second, reducing file size but may reduce accuracy. Reducing sampling resolution uses fewer bits per sample, reducing file size but may reduce amplitude precision.",
+    marking: [
+      { mark: "B1", text: "valid size-reducing change, e.g. lower sampling rate / lower sampling resolution / shorter duration / fewer channels" },
+      { mark: "B1", text: "valid effect of that change" },
+      { mark: "B1", text: "second valid size-reducing change" },
+      { mark: "B1", text: "valid effect of second change" },
+    ],
+    strict: [
+      "Do not accept compression as the main answer for this uncompressed calculation question.",
+      "Do not accept only 'make quality worse' without naming the parameter.",
+      "Effects may include reduced quality, reduced accuracy, fewer amplitude levels or shorter recording.",
+      "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function gcd(a, b) {
-  let x = Math.abs(a);
-  let y = Math.abs(b);
-  while (y) {
-    [x, y] = [y, x % y];
-  }
-  return x || 1;
-}
-
-function calculateCompression(original, compressed) {
-  const divisor = gcd(original, compressed);
-  const ratioLeft = original / divisor;
-  const ratioRight = compressed / divisor;
-  const saved = original - compressed;
-  const savedPercent = (saved / original) * 100;
-  return { ratioLeft, ratioRight, saved, savedPercent };
+  return value.trim().toLowerCase().replace(/,/g, "").replace(/\s+/g, " ");
 }
 
 function formatNumber(value) {
-  return new Intl.NumberFormat("en-GB", { maximumFractionDigits: 2 }).format(value);
+  return new Intl.NumberFormat("en-GB", { maximumFractionDigits: 4 }).format(value);
+}
+
+function calculateSound(rate, resolution, duration, channels) {
+  const samplesPerChannel = rate * duration;
+  const totalSamples = samplesPerChannel * channels;
+  const bits = totalSamples * resolution;
+  const bytes = bits / 8;
+  const kib = bytes / 1024;
+  const mib = kib / 1024;
+  return { samplesPerChannel, totalSamples, bits, bytes, kib, mib };
 }
 
 function setupPrint() {
@@ -178,38 +167,38 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      if (button.dataset.hook === "backup") {
-        feedback.textContent = "Correct. A backup must be restored exactly, so lossless compression is required.";
-      } else {
-        feedback.textContent = "This may use lossy in some contexts, but the file that must be exact is the database backup.";
-      }
+      feedback.textContent = button.dataset.hook === "double"
+        ? "Correct. Stereo uses two channels, so it doubles the mono size when everything else matches."
+        : "Not quite. If only the channel count changes from mono to stereo, the size doubles.";
     });
   });
 }
 
 function setupCalculator() {
-  const original = document.querySelector("#originalInput");
-  const compressed = document.querySelector("#compressedInput");
-  const unit = document.querySelector("#unitInput");
+  const rate = document.querySelector("#rateInput");
+  const resolution = document.querySelector("#resolutionInput");
+  const duration = document.querySelector("#durationInput");
+  const channels = document.querySelector("#channelInput");
   const result = document.querySelector("#calcResult");
   const method = document.querySelector("#calcMethod");
 
   function calculate() {
-    const o = Number(original.value);
-    const c = Number(compressed.value);
-    if (!Number.isFinite(o) || !Number.isFinite(c) || o <= 0 || c <= 0) {
-      result.textContent = "Enter positive sizes.";
-      method.textContent = "Original and compressed sizes must be greater than 0.";
+    const r = Number(rate.value);
+    const b = Number(resolution.value);
+    const d = Number(duration.value);
+    const c = Number(channels.value);
+    if (!Number.isInteger(r) || !Number.isInteger(d) || r <= 0 || d <= 0) {
+      result.textContent = "Enter positive whole-number sampling rate and duration.";
+      method.textContent = "This calculator assumes uncompressed sound.";
       return;
     }
-    const data = calculateCompression(o, c);
-    const warning = c >= o ? " This is not smaller than the original." : "";
-    result.textContent = `Ratio ${formatNumber(data.ratioLeft)}:${formatNumber(data.ratioRight)}; saved ${formatNumber(data.saved)} ${unit.value}; ${formatNumber(data.savedPercent)}% saved.${warning}`;
-    method.textContent = `Ratio uses ${o}:${c}. Saved size = ${o} - ${c} = ${formatNumber(data.saved)} ${unit.value}. Percentage saved = ${formatNumber(data.saved)} ÷ ${o} × 100 = ${formatNumber(data.savedPercent)}%.`;
+    const size = calculateSound(r, b, d, c);
+    result.textContent = `${formatNumber(size.bits)} bits = ${formatNumber(size.bytes)} bytes = ${formatNumber(size.kib)} KiB = ${formatNumber(size.mib)} MiB`;
+    method.textContent = `${r} × ${b} × ${d} × ${c} = ${formatNumber(size.bits)} bits; ÷8 = ${formatNumber(size.bytes)} bytes; ÷1024 = ${formatNumber(size.kib)} KiB; ÷1024 = ${formatNumber(size.mib)} MiB.`;
   }
 
-  [original, compressed].forEach((control) => control.addEventListener("input", calculate));
-  unit.addEventListener("change", calculate);
+  [rate, duration].forEach((control) => control.addEventListener("input", calculate));
+  [resolution, channels].forEach((control) => control.addEventListener("change", calculate));
   document.querySelector("#calculateBtn").addEventListener("click", calculate);
   calculate();
 }
@@ -231,7 +220,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("lossless");
+  renderExample("stereo");
 }
 
 function renderPractice() {
@@ -275,7 +264,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check exact reconstruction and whether the scenario can accept data loss.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check channels and unit conversions before the final answer.`;
   });
 }
 

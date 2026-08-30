@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 067 | Encryption, hashing, and digital certificates</title>
+    <title>AS9618 Lesson 067 | Access rights and encryption as data-security methods</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Encryption, hashing, and digital certificates</h1>
+        <h1>Access rights and encryption as data-security methods</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,14 +30,12 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#core">Core idea</a>
-        <a href="#encryption">Encryption</a>
-        <a href="#keys">Keys</a>
-        <a href="#hashing">Hashing</a>
-        <a href="#certificates">Certificates</a>
-        <a href="#https">HTTPS flow</a>
-        <a href="#compare">Compare</a>
-        <a href="#tool">Method tool</a>
-        <a href="#hash-demo">Hash demo</a>
+        <a href="#rights">Rights</a>
+        <a href="#users">Users/roles</a>
+        <a href="#matrix">Matrix</a>
+        <a href="#least">Least privilege</a>
+        <a href="#review">Review</a>
+        <a href="#tool">Decision tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -56,57 +54,70 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Digital signatures and encryption</h2>
+            <h2>Access rights and encryption as data-security methods</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.</p>
-            <p>Matching hashes provide evidence of integrity and origin/authenticity; a valid signature does not keep the message confidential. Certificates help bind a public key to an identity.</p>
-            <p>Encryption is a separate security measure: it transforms readable plaintext into ciphertext and requires the correct key for decryption. A message may be signed for integrity/authenticity, encrypted for confidentiality, or both; neither mechanism should be credited for a property it does not provide.</p>
-            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
+            <p>Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.</p>
+            <p>Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.</p>
+            <p>The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Verify and protect a signed update</h3>
-            <p>The publisher signs a hash of the update with its private key. The device uses the publisher's public key, independently hashes the received update and compares the values; a mismatch rejects the update. If the update must also remain confidential in transit, it is separately encrypted for an authorised recipient.</p>
+            <h3>Worked example: Protect a payroll file</h3>
+            <p>The payroll file is encrypted at rest so a stolen storage device does not reveal readable salaries without the key. The payroll application grants read/write rights only to payroll staff and read-only rights to an auditor. A compromised ordinary account cannot open the file through the application, while an attacker who steals only the encrypted file still lacks readable plaintext.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start controls -->
+        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
+          <h2 class="explanation-sr-only" id="explanation-controls-title">One control can support more than one goal, but not every goal</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One control can support more than one goal, but not every goal with a structured visual model." />
+            <figcaption class="explanation-sr-only">One control can support more than one goal, but not every goal: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Encryption makes data unreadable without the correct key and supports confidentiality.</li><li><strong>Lesson fact:</strong> Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.</li><li><strong>Lesson fact:</strong> Backups allow recovery after data loss or corruption and support availability.</li><li><strong>Lesson fact:</strong> Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end controls -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Digital signatures and encryption: apply and assess</h2>
+            <h2>Access rights and encryption as data-security methods: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which key creates a sender's digital signature?</p>
-              <details><summary>Show answer</summary><p>The sender's private key.</p></details>
+              <p><strong>1.</strong> How do access rights protect confidentiality?</p>
+              <details><summary>Show answer</summary><p>They prevent users without read permission from viewing the data.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What does the receiver compare?</p>
-              <details><summary>Show answer</summary><p>The verified signed hash with a newly calculated message hash.</p></details>
+              <p><strong>2.</strong> How do access rights protect integrity?</p>
+              <details><summary>Show answer</summary><p>They prevent users without write/delete permission from altering or removing the data.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Does a digital signature encrypt the whole message for confidentiality?</p>
-              <details><summary>Show answer</summary><p>No. The content requires separate encryption if confidentiality is needed.</p></details>
+              <p><strong>3.</strong> How does encryption protect data?</p>
+              <details><summary>Show answer</summary><p>It converts plaintext to ciphertext that is unreadable without the correct key.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> What property does message encryption provide?</p>
-              <details><summary>Show answer</summary><p>Confidentiality: ciphertext should be unreadable without the correct key.</p></details>
+              <p><strong>4.</strong> Why are both methods useful?</p>
+              <details><summary>Show answer</summary><p>Access rights govern permitted actions in the system; encryption protects the content of an intercepted or stolen copy.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe how a digital signature is created and checked, then explain why separate encryption may also be required.</p>
+            <p>Explain how access rights and encryption protect a payroll file, and state one limitation of each method.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>sender creates a hash of the message</td><td>Do not award confidentiality as the purpose of a signature or integrity/authenticity as an automatic result of encryption alone.</td><td>1</td></tr>
-                  <tr><td>hash is signed/encrypted using sender's private key</td><td></td><td>1</td></tr>
-                  <tr><td>receiver uses sender's public key and hashes received message</td><td></td><td>1</td></tr>
-                  <tr><td>matching hashes provide integrity and sender-authenticity evidence</td><td></td><td>1</td></tr>
-                  <tr><td>separate encryption converts message plaintext to ciphertext</td><td></td><td>1</td></tr>
-                  <tr><td>confidentiality requires the correct decryption key</td><td></td><td>1</td></tr>
+                  <tr><td>access rights restrict viewing to users/roles with read permission</td><td>Do not claim that access rights detect changes, that encryption guarantees integrity, or that either method replaces the other.</td><td>1</td></tr>
+                  <tr><td>access rights restrict modification/deletion to permitted users/roles</td><td></td><td>1</td></tr>
+                  <tr><td>encryption converts plaintext to ciphertext using a key</td><td></td><td>1</td></tr>
+                  <tr><td>without the correct key the stolen/intercepted data is not readable</td><td></td><td>1</td></tr>
+                  <tr><td>access-rights limitation developed</td><td></td><td>1</td></tr>
+                  <tr><td>encryption limitation developed</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -117,325 +128,274 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 067 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Three security tools, three different jobs.</h2>
+            <h2>Logging in proves who you are. Permissions decide what you can touch.</h2>
             <p>
-              Encryption protects confidentiality by making data unreadable without a key.
-              Hashing creates a fixed digest used for checking or password verification, not for recovery.
-              Digital certificates help users trust that a public key belongs to the claimed website.
+              Access rights define what an authenticated user can read, write, delete, execute or administer.
+              Least privilege means users receive only the permissions needed for their role. It is the opposite
+              of giving everyone the digital master key and hoping nobody presses the shiny red button.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Separate</strong><span>encryption, hashing and digital certificates by purpose</span></div>
-              <div><strong>Explain</strong><span>how keys, hashes and certificate authorities support security</span></div>
-              <div><strong>Apply</strong><span>the correct method to password storage, payment data and HTTPS scenarios</span></div>
+              <div><strong>Define</strong><span>access rights, permissions, roles and least privilege</span></div>
+              <div><strong>Apply</strong><span>permission matrices to realistic files, databases and accounts</span></div>
+              <div><strong>Justify</strong><span>how limiting permissions protects confidentiality and integrity</span></div>
             </div>
           </div>
-          <div class="crypto-card" aria-label="Protection method map">
-            <div class="crypto-stack">
-              <span>Encrypt -> hide readable data</span>
-              <span>Decrypt -> recover plaintext with key</span>
-              <span>Hash -> one-way fixed digest</span>
-              <span>Certificate -> trust website public key</span>
+          <div class="access-card" aria-label="Permission flow">
+            <div class="permission-stack">
+              <span>Authenticate -> identify user</span>
+              <span>Authorise -> check permission</span>
+              <span>Allow only needed actions</span>
+              <span>Log and review access</span>
             </div>
-            <p>If you can "decrypt" a hash, congratulations, you have invented the wrong answer.</p>
+            <p>A correct login is not a permission slip for everything.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style answers often reject vague "secure it" wording. Name the method and its mechanism.</p>
+            <p>Good exam answers connect a permission to a protected security goal, not just to the word "secure".</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Passwords are normally stored as salted hashes rather than as plaintext or reversibly encrypted values.</p>
+            <p>Authentication is not the same as authorisation. Being known by the system does not mean being allowed to edit everything.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A website stores a digest of your password, not the password itself. What method is being used?</h2>
-            <p>The website is not trying to remember your secret. It is trying to recognise the fingerprint of your secret.</p>
+            <h2>A student can log into the school system but cannot edit exam grades. What control is this?</h2>
+            <p>The system recognises the student. It just does not hand over the gradebook and a confetti cannon.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="hashing">Hashing, because the stored value is used for comparison and is not meant to be reversed</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption, because all protected data is encrypted</button>
-            <button class="choice-card" type="button" data-hook="certificate">Digital certificate, because login pages need HTTPS</button>
-            <button class="choice-card" type="button" data-hook="backup">Backup, because the password can be restored later</button>
+            <button class="choice-card" type="button" data-hook="permissions">Access rights limit what the authenticated student can do</button>
+            <button class="choice-card" type="button" data-hook="authentication">Authentication, because the student logged in</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption, because marks are hidden from students</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup, because grades can be restored later</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for "digest" and "comparison".
+            Choose one. Focus on the action the user is allowed or denied.
           </div>
         </section>
 
         <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Security methods have different purposes</h2>
+            <h2>Access control decides what authenticated users may do</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Plaintext</strong><span>Readable original data before encryption.</span></article>
-            <article><strong>Ciphertext</strong><span>Unreadable encrypted data produced from plaintext and a key.</span></article>
-            <article><strong>Hash / digest</strong><span>Fixed output created from input data, usually used for comparison or integrity checking.</span></article>
-            <article><strong>Certificate</strong><span>Digital evidence that links an identity, such as a website, to a public key.</span></article>
+            <article><strong>Access right</strong><span>A permission to perform an action on a resource, such as read or write.</span></article>
+            <article><strong>Resource</strong><span>A file, database table, account, device, folder, application or network service.</span></article>
+            <article><strong>Authorisation</strong><span>The decision to allow or deny an action after identity has been checked.</span></article>
+            <article><strong>Policy</strong><span>The rule set that maps users, groups or roles to permitted actions.</span></article>
           </div>
-          <div class="callout">Chinese support: plaintext = 明文；ciphertext = 密文；hash/digest = 哈希值/摘要；digital certificate = 数字证书。</div>
+          <div class="callout">Chinese support: access rights = 访问权限；permission = 权限；least privilege = 最小权限原则；authorisation = 授权。</div>
         </section>
 
         <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="comparison" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Why security methods cannot substitute</h2>
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Access control decides what authenticated users may do</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why security methods cannot substitute through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why security methods cannot substitute: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Access control decides what authenticated users may do with a structured visual model." />
+            <figcaption class="explanation-sr-only">Access control decides what authenticated users may do: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Encryption hides readable content from unauthorised viewers.</li><li><strong>Reason:</strong> Hashing creates a comparison value for integrity checks.</li><li><strong>Result:</strong> Certificates bind an identity to a public key through trust.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Access right A permission to perform an action on a resource, such as read or write.</li><li><strong>Lesson fact:</strong> Resource A file, database table, account, device, folder, application or network service.</li><li><strong>Lesson fact:</strong> Authorisation The decision to allow or deny an action after identity has been checked.</li><li><strong>Lesson fact:</strong> Policy The rule set that maps users, groups or roles to permitted actions.</li></ol>
 
-            <p><strong>Analogy:</strong> A sealed case, an evidence imprint and verified identity solve different problems.</p>
-            <p><strong>Boundary:</strong> Using one mechanism does not automatically provide the other properties.</p>
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-        <section class="panel" id="encryption" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+        <section class="panel" id="rights" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Encryption protects confidentiality</h2>
+            <h2>Common permission types</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Uses an algorithm and key to convert plaintext into ciphertext.</span></article>
-            <article><strong>Decryption</strong><span>Uses the correct key to convert ciphertext back into readable plaintext.</span></article>
-            <article><strong>Use cases</strong><span>Protecting data stored on a device or transmitted across a network.</span></article>
-            <article><strong>Limitation</strong><span>It does not prove data has not been changed unless integrity checks are also used.</span></article>
+            <article><strong>Read</strong><span>View or open data without changing it. Protects confidentiality when restricted.</span></article>
+            <article><strong>Write/modify</strong><span>Create or change data. Protects integrity when restricted.</span></article>
+            <article><strong>Delete</strong><span>Remove data or accounts. Often high risk because loss may affect availability.</span></article>
+            <article><strong>Execute/admin</strong><span>Run programs, install software or manage settings. Usually limited to trusted roles.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start encryption -->
-        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-encryption-title">How encryption protects confidentiality</h2>
+        <!-- stage10-explanation:start rights -->
+        <section class="panel explanation-panel" id="explanation-rights" data-explains="rights" data-explanation-kind="mechanism" aria-labelledby="explanation-rights-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+          <h2 class="explanation-sr-only" id="explanation-rights-title">Common permission types</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-encryption.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How encryption protects confidentiality through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How encryption protects confidentiality: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-rights.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common permission types with a structured visual model." />
+            <figcaption class="explanation-sr-only">Common permission types: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> An algorithm combines plaintext with a key.</li><li><strong>Reason:</strong> The output is ciphertext that lacks readable meaning without the key.</li><li><strong>Result:</strong> An authorised key reverses the transformation for the recipient.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Read View or open data without changing it. Protects confidentiality when restricted.</li><li><strong>Lesson fact:</strong> Write/modify Create or change data. Protects integrity when restricted.</li><li><strong>Lesson fact:</strong> Delete Remove data or accounts. Often high risk because loss may affect availability.</li><li><strong>Lesson fact:</strong> Execute/admin Run programs, install software or manage settings. Usually limited to trusted roles.</li></ol>
 
-            <p><strong>Analogy:</strong> A locked document case hides the contents while it travels.</p>
-            <p><strong>Boundary:</strong> Encryption alone does not prove who sent the message or that it is unchanged.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end encryption -->
-        <section class="panel" id="keys" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+        <!-- stage10-explanation:end rights -->
+        <section class="panel" id="users" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Keys control who can encrypt or decrypt</h2>
+            <h2>Users, groups and roles keep permissions manageable</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Symmetric key</strong><span>The same secret key is used to encrypt and decrypt; key sharing must be protected.</span></article>
-            <article><strong>Public key</strong><span>A key that can be shared openly, often used to support secure communication setup.</span></article>
-            <article><strong>Private key</strong><span>A key kept secret by its owner; if exposed, trust is damaged.</span></article>
-            <article><strong>Common error</strong><span>Encryption strength depends on keeping keys secure, not hiding the algorithm in a drawer.</span></article>
+            <article><strong>User account</strong><span>Individual identity, useful for accountability and audit trails.</span></article>
+            <article><strong>Group</strong><span>A collection of accounts that share permissions, such as "Students" or "Finance".</span></article>
+            <article><strong>Role</strong><span>A job-based permission set, such as teacher, receptionist, technician or administrator.</span></article>
+            <article><strong>Audit log</strong><span>Records access attempts or changes, helping detect misuse and investigate incidents.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start keys -->
-        <section class="panel explanation-panel" id="explanation-keys" data-explains="keys" data-explanation-kind="mechanism" aria-labelledby="explanation-keys-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-keys-title">Why key ownership changes capability</h2>
+        <!-- stage10-explanation:start users -->
+        <section class="panel explanation-panel" id="explanation-users" data-explains="users" data-explanation-kind="mechanism" aria-labelledby="explanation-users-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+          <h2 class="explanation-sr-only" id="explanation-users-title">Users, groups and roles keep permissions manageable</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-keys.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why key ownership changes capability through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why key ownership changes capability: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-users.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Users, groups and roles keep permissions manageable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Users, groups and roles keep permissions manageable: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A symmetric key can both encrypt and decrypt shared data.</li><li><strong>Reason:</strong> An asymmetric key pair separates public and private operations.</li><li><strong>Result:</strong> Protecting the private or shared secret preserves the security boundary.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> User account Individual identity, useful for accountability and audit trails.</li><li><strong>Lesson fact:</strong> Group A collection of accounts that share permissions, such as &quot;Students&quot; or &quot;Finance&quot;.</li><li><strong>Lesson fact:</strong> Role A job-based permission set, such as teacher, receptionist, technician or administrator.</li><li><strong>Lesson fact:</strong> Audit log Records access attempts or changes, helping detect misuse and investigate incidents.</li></ol>
 
-            <p><strong>Analogy:</strong> A public deposit slot can be open while only the owner opens the safe.</p>
-            <p><strong>Boundary:</strong> If a secret key is copied, the algorithm cannot detect the impostor.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end keys -->
-        <section class="panel" id="hashing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+        <!-- stage10-explanation:end users -->
+        <section class="panel" id="matrix" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Hashing is one-way comparison, not secret recovery</h2>
+            <h2>A permission matrix makes access decisions visible</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>One-way</strong><span>A hash is designed so the original input cannot feasibly be found from the digest.</span></article>
-            <article><strong>Fixed length</strong><span>The digest has a standard length even if the input length changes.</span></article>
-            <article><strong>Password storage</strong><span>Store the hash; when a user logs in, hash the entered password and compare.</span></article>
-            <article><strong>Integrity check</strong><span>If data changes, the hash should change, so tampering can be detected.</span></article>
+          <div class="comparison-table" role="table" aria-label="Permission matrix">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Role</div>
+              <div role="columnheader">Student records</div>
+              <div role="columnheader">Exam marks</div>
+              <div role="columnheader">System settings</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Student</div>
+              <div role="cell">Read own record</div>
+              <div role="cell">No access</div>
+              <div role="cell">No access</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Teacher</div>
+              <div role="cell">Read class records</div>
+              <div role="cell">Write marks for own classes</div>
+              <div role="cell">No access</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Exam officer</div>
+              <div role="cell">Read relevant records</div>
+              <div role="cell">Read/write exam data</div>
+              <div role="cell">No access</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Administrator</div>
+              <div role="cell">Manage accounts</div>
+              <div role="cell">Access only if required</div>
+              <div role="cell">Change settings</div>
+            </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start hashing -->
-        <section class="panel explanation-panel" id="explanation-hashing" data-explains="hashing" data-explanation-kind="mechanism" aria-labelledby="explanation-hashing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-hashing-title">Why a hash supports comparison</h2>
+        <!-- stage10-explanation:start matrix -->
+        <section class="panel explanation-panel" id="explanation-matrix" data-explains="matrix" data-explanation-kind="mechanism" aria-labelledby="explanation-matrix-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+          <h2 class="explanation-sr-only" id="explanation-matrix-title">A permission matrix makes access decisions visible</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-hashing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a hash supports comparison through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why a hash supports comparison: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-matrix.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A permission matrix makes access decisions visible with a structured visual model." />
+            <figcaption class="explanation-sr-only">A permission matrix makes access decisions visible: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A hash function maps input data to a fixed-length digest.</li><li><strong>Reason:</strong> A small input change should produce a substantially different digest.</li><li><strong>Result:</strong> Matching digests provide evidence that the checked data is unchanged.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Student records</li><li><strong>Lesson fact:</strong> Exam marks</li><li><strong>Lesson fact:</strong> System settings</li><li><strong>Lesson fact:</strong> Read own record</li><li><strong>Lesson fact:</strong> No access</li><li><strong>Lesson fact:</strong> Read class records</li><li><strong>Lesson fact:</strong> Write marks for own classes</li><li><strong>Lesson fact:</strong> Exam officer</li><li><strong>Lesson fact:</strong> Read relevant records</li><li><strong>Lesson fact:</strong> Read/write exam data</li><li><strong>Lesson fact:</strong> Administrator</li><li><strong>Lesson fact:</strong> Manage accounts</li></ol>
 
-            <p><strong>Analogy:</strong> Compare a tamper-evident imprint instead of storing the original object.</p>
-            <p><strong>Boundary:</strong> Hashing is one-way comparison, not encryption and later decryption.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end hashing -->
-        <section class="panel" id="certificates" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+        <!-- stage10-explanation:end matrix -->
+        <section class="panel" id="least" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Digital certificates help authenticate websites</h2>
+            <h2>Least privilege reduces unnecessary damage</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Contains</strong><span>Owner identity, public key, issuer, expiry date and digital signature information.</span></article>
-            <article><strong>Certificate authority</strong><span>A trusted organisation that issues or signs certificates after checks.</span></article>
-            <article><strong>Purpose</strong><span>Helps the browser trust that a public key belongs to the claimed site.</span></article>
-            <article><strong>Warning</strong><span>Expired, mismatched or untrusted certificates can trigger browser warnings.</span></article>
+            <article><strong>Definition</strong><span>Give users only the minimum permissions needed to perform their role.</span></article>
+            <article><strong>Confidentiality</strong><span>Users cannot view data that is not needed for their work.</span></article>
+            <article><strong>Integrity</strong><span>Users cannot accidentally or deliberately change data outside their responsibility.</span></article>
+            <article><strong>Availability</strong><span>Fewer users can delete files, disable services or change critical settings.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start certificates -->
-        <section class="panel explanation-panel" id="explanation-certificates" data-explains="certificates" data-explanation-kind="mechanism" aria-labelledby="explanation-certificates-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-certificates-title">How a certificate supports trust</h2>
+        <!-- stage10-explanation:start least -->
+        <section class="panel explanation-panel" id="explanation-least" data-explains="least" data-explanation-kind="mechanism" aria-labelledby="explanation-least-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+          <h2 class="explanation-sr-only" id="explanation-least-title">Least privilege reduces unnecessary damage</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-certificates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How a certificate supports trust through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How a certificate supports trust: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-least.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Least privilege reduces unnecessary damage with a structured visual model." />
+            <figcaption class="explanation-sr-only">Least privilege reduces unnecessary damage: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A certificate contains an identity and its public key.</li><li><strong>Reason:</strong> A trusted authority digitally signs that binding.</li><li><strong>Result:</strong> Software verifies the signature before trusting the presented key.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Definition Give users only the minimum permissions needed to perform their role.</li><li><strong>Lesson fact:</strong> Confidentiality Users cannot view data that is not needed for their work.</li><li><strong>Lesson fact:</strong> Integrity Users cannot accidentally or deliberately change data outside their responsibility.</li><li><strong>Lesson fact:</strong> Availability Fewer users can delete files, disable services or change critical settings.</li></ol>
 
-            <p><strong>Analogy:</strong> An independent registrar verifies which key belongs to which identity.</p>
-            <p><strong>Boundary:</strong> A valid certificate does not guarantee that the website itself is honest.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end certificates -->
-        <section class="panel" id="https" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+        <!-- stage10-explanation:end least -->
+        <section class="panel" id="review" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
-            <h2>HTTPS combines identity checking with encrypted communication</h2>
+            <h2>Permissions need review, not just setup day optimism</h2>
           </div>
-          <div class="flow-grid">
-            <article><strong>1. Request</strong><span>Browser asks a website to start a secure connection.</span></article>
-            <article><strong>2. Certificate</strong><span>Website sends its digital certificate containing its public key.</span></article>
-            <article><strong>3. Trust check</strong><span>Browser checks issuer, expiry, domain match and signature chain.</span></article>
-            <article><strong>4. Encryption</strong><span>A secure session is established so transmitted data is unreadable to eavesdroppers.</span></article>
+          <div class="concept-grid">
+            <article><strong>Joiner</strong><span>New user receives permissions based on role, not copied blindly from a friend.</span></article>
+            <article><strong>Mover</strong><span>User changes role; old permissions are removed and new ones are added.</span></article>
+            <article><strong>Leaver</strong><span>Account is disabled or removed when the user leaves.</span></article>
+            <article><strong>Review</strong><span>Regular checks remove excessive, stale or temporary permissions.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start https -->
-        <section class="panel explanation-panel" id="explanation-https" data-explains="https" data-explanation-kind="process" aria-labelledby="explanation-https-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-https-title">How HTTPS combines trust and privacy</h2>
+        <!-- stage10-explanation:start review -->
+        <section class="panel explanation-panel" id="explanation-review" data-explains="review" data-explanation-kind="mechanism" aria-labelledby="explanation-review-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
+          <h2 class="explanation-sr-only" id="explanation-review-title">Permissions need review, not just setup day optimism</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-https.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How HTTPS combines trust and privacy through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How HTTPS combines trust and privacy: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-review.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Permissions need review, not just setup day optimism with a structured visual model." />
+            <figcaption class="explanation-sr-only">Permissions need review, not just setup day optimism: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The server presents its certificate and public-key information.</li><li><strong>Reason:</strong> The browser verifies the trust chain and agreed connection details.</li><li><strong>Result:</strong> Both sides establish session keys for efficient encrypted transport.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Joiner New user receives permissions based on role, not copied blindly from a friend.</li><li><strong>Lesson fact:</strong> Mover User changes role; old permissions are removed and new ones are added.</li><li><strong>Lesson fact:</strong> Leaver Account is disabled or removed when the user leaves.</li><li><strong>Lesson fact:</strong> Review Regular checks remove excessive, stale or temporary permissions.</li></ol>
 
-            <p><strong>Analogy:</strong> Check the recipient's identity before sending a locked stream of parcels.</p>
-            <p><strong>Boundary:</strong> HTTPS protects the connection, not unsafe content downloaded through it.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end https -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Select the method that provides the required security property</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Protection method comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Method</div>
-              <div role="columnheader">Main job</div>
-              <div role="columnheader">Good use</div>
-              <div role="columnheader">Common wrong use</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Encryption</div>
-              <div role="cell">Protect confidentiality by hiding readable data.</div>
-              <div role="cell">Payment data in transit; sensitive files at rest.</div>
-              <div role="cell">Storing passwords so they can be decrypted later.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Hashing</div>
-              <div role="cell">Create a one-way digest for comparison or integrity.</div>
-              <div role="cell">Password verification; checking a file has not changed.</div>
-              <div role="cell">Trying to recover the original message from the hash.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Digital certificate</div>
-              <div role="cell">Link a public key to a trusted identity.</div>
-              <div role="cell">Browser checking a bank website before HTTPS.</div>
-              <div role="cell">Encrypting files directly by itself.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="tradeoff" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">How the required property chooses the method</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How the required property chooses the method through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How the required property chooses the method: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> First identify confidentiality, integrity, authentication or several needs.</li><li><strong>Reason:</strong> Choose the mechanism whose operation creates that property.</li><li><strong>Result:</strong> Combine methods when the communication needs multiple properties.</li></ol>
-
-            <p><strong>Analogy:</strong> Choose a lock, evidence seal or identity check according to the threat.</p>
-            <p><strong>Boundary:</strong> More mechanisms add management cost and do not repair poor key handling.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
+        <!-- stage10-explanation:end review -->
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
-            <p class="eyebrow">Interactive method selector</p>
-            <h2>Which security method fits the scenario?</h2>
-            <p>Select a scenario and compare the method, reason and common wrong answer.</p>
+            <p class="eyebrow">Interactive decision tool</p>
+            <h2>Should the action be allowed?</h2>
+            <p>Select a scenario and compare the decision with the reason and common error.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
+              Access request
               <select id="scenarioInput">
-                <option value="payment">Payment card details are sent from browser to online shop.</option>
-                <option value="password">A site wants to verify passwords without storing plaintext passwords.</option>
-                <option value="download">A user checks whether a downloaded file has changed.</option>
-                <option value="bank">A browser checks that a public key really belongs to the bank website.</option>
-                <option value="lostLaptop">A laptop may be stolen and contains sensitive local files.</option>
+                <option value="studentOwn">Student reads their own timetable.</option>
+                <option value="studentMarks">Student tries to edit exam marks.</option>
+                <option value="teacherClass">Teacher enters marks for their own class.</option>
+                <option value="teacherAll">Teacher tries to view all school medical records.</option>
+                <option value="adminTemp">Temporary technician asks for permanent admin rights.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Choose method</button>
+            <button class="primary-button" type="button" id="simulateBtn">Decide</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="hash-demo" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Interactive hash demo</p>
-            <h2>A tiny demonstration hash, not a real security hash</h2>
-            <p>This toy digest shows the idea that a small input change creates a different digest. Real systems use cryptographic hash algorithms.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Practice input
-              <input type="text" id="hashInput" value="AS9618" autocomplete="off" />
-            </label>
-            <button class="primary-button" type="button" id="hashBtn">Make digest</button>
-          </div>
-          <div class="result-box" id="hashResult" aria-live="polite"></div>
-          <div class="method-box" id="hashAdvice"></div>
-        </section>
-
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with strict method boundaries</h2>
+            <h2>Four model answers using role, action and consequence</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="password">Password hash</button>
-            <button class="tab" type="button" data-example="payment">Payment encryption</button>
-            <button class="tab" type="button" data-example="certificate">Certificate</button>
-            <button class="tab" type="button" data-example="integrity">Integrity check</button>
+            <button class="tab active" type="button" data-example="grades">Exam marks</button>
+            <button class="tab" type="button" data-example="files">Shared files</button>
+            <button class="tab" type="button" data-example="temporary">Temporary admin</button>
+            <button class="tab" type="button" data-example="leaver">Leaver account</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
@@ -443,7 +403,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: choose the exact method</h2>
+            <h2>Short answers: permission, role, reason</h2>
             <p>Type a concise answer. Use the local answer button if you need a model response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -469,12 +429,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Do not swap the three methods</h2>
+            <h2>Permissions are practical security rules</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Encryption</strong><span>Reversible with the correct key; protects confidentiality.</span></div>
-            <div><strong>Hashing</strong><span>One-way digest; supports comparison and integrity checks.</span></div>
-            <div><strong>Certificates</strong><span>Bind public keys to trusted identities for secure communication.</span></div>
+            <div><strong>Access rights</strong><span>Define permitted actions on resources.</span></div>
+            <div><strong>Roles/groups</strong><span>Make permissions consistent and easier to manage.</span></div>
+            <div><strong>Least privilege</strong><span>Limits unnecessary access and reduces damage.</span></div>
           </div>
         </section>
 
@@ -485,16 +445,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Method table</strong>
-              <span>Create a table for encryption, hashing and digital certificates. For each, state purpose, one use case and one common misconception.</span>
+              <strong>Task 1: Permission matrix</strong>
+              <span>Create a 4-role permission matrix for a hospital system: patient, doctor, receptionist and administrator. Use read, write, delete and no access.</span>
             </article>
             <article>
-              <strong>Task 2: Website security paragraph</strong>
-              <span>Explain how an online shop should protect payment data, stored passwords and website identity. Use all three methods correctly.</span>
+              <strong>Task 2: Least privilege explanation</strong>
+              <span>Write two paragraphs explaining how least privilege protects confidentiality and integrity in a school database.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Compare encryption and hashing, and explain why a digital certificate is useful for HTTPS." Use precise security-goal vocabulary.</span>
+              <span>Answer: "A temporary worker needs access for one week. Explain how access rights should be managed and why." Include review/removal.</span>
             </article>
           </div>
         </section>
@@ -502,8 +462,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 022 | Wired and wireless transmission media</title>
+    <title>AS9618 Lesson 022 | HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Wired and wireless transmission media</h1>
+        <h1>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,305 +29,214 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#wired">Wired media</a>
-        <a href="#wireless">Wireless media</a>
-        <a href="#compare">Comparison</a>
-        <a href="#tool">Choice tool</a>
+        <a href="#web">Web protocols</a>
+        <a href="#file">File transfer</a>
+        <a href="#email">Email protocols</a>
+        <a href="#tool">Protocol tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S2.13 WWW versus internet and S2.16 URL/DNS.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
+
+<!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Wired and wireless networks with all required transmission media</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.</p>
-            <p>Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.</p>
-            <p>Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Connect a school campus and a remote weather station</h3>
-            <p>Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Wired and wireless networks with all required transmission media: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Compare wired and wireless networks for fixed desktops and mobile tablets.</p>
-              <details><summary>Show answer</summary><p>Wired provides a stable physical link for fixed devices; wireless radio supports mobility but may suffer interference, obstacles and shared capacity.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Compare copper cable with fibre-optic cable.</p>
-              <details><summary>Show answer</summary><p>Copper uses electrical signals and may be cheaper; fibre uses light, supports higher bandwidth/longer distance and resists electromagnetic interference.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Compare WiFi radio waves, terrestrial microwave and satellite links.</p>
-              <details><summary>Show answer</summary><p>WiFi provides local wireless access; terrestrial microwave is directional and line-of-sight; satellite provides wide/remote coverage but commonly has greater latency.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Suggest a medium for a remote location with no cable infrastructure.</p>
-              <details><summary>Show answer</summary><p>Satellite if wide remote coverage is required; justify the latency/cost/weather drawback.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Suggest transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>copper cable for short fixed links with a valid cost/stability reason</td><td>Do not accept unqualified 'wireless is less secure' or 'fibre is faster'; require a mechanism or scenario consequence.</td><td>1</td></tr>
-                  <tr><td>WiFi/radio waves for mobile devices with an interference/security implication</td><td></td><td>1</td></tr>
-                  <tr><td>fibre-optic cable for the high-bandwidth/longer inter-building link</td><td></td><td>1</td></tr>
-                  <tr><td>satellite for remote coverage without cable infrastructure</td><td></td><td>1</td></tr>
-                  <tr><td>at least one limitation is correctly linked to the chosen medium</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 022 | 45 minutes | Paper 1 Section 2</p>
-            <h2>A network path uses physical transmission media with different characteristics.</h2>
+            <p class="lesson-meta">Lesson 022 | 45 minutes | Informal questioning</p>
+            <h2>Protocols are not alphabet soup if you pair them with jobs.</h2>
             <p>
-              This lesson compares wired and wireless transmission media. A strong answer
-              names the medium, describes how it carries data, then links a feature to
-              the scenario: bandwidth, latency, interference, security, cost, range or mobility.
+              This lesson matches common application protocols to their context:
+              web pages, secure web pages, file transfer, sending email and receiving
+              email. The exam usually rewards the job, not just expanding the acronym.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>copper cable, fibre-optic cable, radio waves, microwaves and satellites</span></div>
-              <div><strong>Compare</strong><span>wired and wireless networks using accurate technical factors</span></div>
-              <div><strong>Choose</strong><span>a suitable medium for a given network scenario and justify it</span></div>
+              <div><strong>Match</strong><span>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP to correct uses</span></div>
+              <div><strong>Compare</strong><span>HTTP vs HTTPS and POP3 vs IMAP in context</span></div>
+              <div><strong>Explain</strong><span>which protocol is used at each step of realistic web and email workflows</span></div>
             </div>
           </div>
-          <div class="signal-card" aria-label="Transmission media concept">
-            <span>copper -> fibre -> radio -> microwave -> satellite</span>
-            <p>Signals need a medium. The exam needs a reason.</p>
+          <div class="protocol-card" aria-label="Protocol matching concept">
+            <span>web | secure web | files | send mail | receive mail</span>
+            <p>The acronym is the label. The use case earns the mark.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge questions often reward comparison. "Wireless is easier" is not enough; explain mobility, interference, range or security.</p>
+            <p>Protocol questions often use short scenarios. Students must identify the context and avoid swapping SMTP with POP3/IMAP.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not call WiFi a protocol answer here. This lesson is about the physical transmission medium: radio waves, cables and satellite links.</p>
+            <p>SMTP sends email. POP3 and IMAP retrieve/access email. A mailbox is not delivered by wishful thinking.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>The school wants a fast link between two server rooms. Which option is least embarrassing?</h2>
+            <h2>A student sends homework by email, then checks the same mailbox on a phone and laptop. Which pair matters most?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="fibre">Fibre-optic cable, because high bandwidth and low interference matter</button>
-            <button class="choice-card" type="button" data-hook="satellite">Satellite, because space sounds advanced</button>
-            <button class="choice-card" type="button" data-hook="wifi">WiFi, because cables are old-fashioned</button>
-            <button class="choice-card" type="button" data-hook="smtp">SMTP, because the servers send messages</button>
+            <button class="choice-card" type="button" data-hook="smtpimap">SMTP to send, IMAP to synchronise mailbox access</button>
+            <button class="choice-card" type="button" data-hook="ftphttp">FTP to send email, HTTP to receive it</button>
+            <button class="choice-card" type="button" data-hook="popsecure">POP3 encrypts every web page</button>
+            <button class="choice-card" type="button" data-hook="dns">DNS stores the email messages</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the answer that uses a transmission medium and links it to the scenario.
+            Pick the pair that separates sending email from synchronised mailbox access.
           </div>
         </section>
 
-        <section class="panel" id="wired" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section class="panel" id="web" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Wired transmission media</h2>
-            <p>Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.</p>
+            <h2>HTTP and HTTPS</h2>
           </div>
-          <div class="media-grid">
-            <article class="medium-card">
-              <h3>Copper cable</h3>
-              <p>Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.</p>
-              <ul>
-                <li><strong>Good for:</strong> short local links, desktop PCs, classroom networks.</li>
-                <li><strong>Limits:</strong> affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.</li>
-                <li><strong>Exam wording:</strong> say "electrical signals", not "data flows like water". The cable is not a tiny plumbing system.</li>
-              </ul>
-            </article>
-            <article class="medium-card">
-              <h3>Fibre-optic cable</h3>
-              <p>Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.</p>
-              <ul>
-                <li><strong>Good for:</strong> high-bandwidth links, long distances, backbone connections.</li>
-                <li><strong>Strengths:</strong> less affected by electromagnetic interference and can support high data rates.</li>
-                <li><strong>Limits:</strong> installation can be more expensive and the cable can be more delicate to handle.</li>
-              </ul>
-            </article>
+          <div class="compare-table" role="table" aria-label="HTTP and HTTPS comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Protocol</div>
+              <div role="columnheader">Use</div>
+              <div role="columnheader">Exam distinction</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">HTTP</div>
+              <div role="cell">Transfers web pages and web resources between browser and web server.</div>
+              <div role="cell">Does not provide the same secure encrypted connection as HTTPS.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">HTTPS</div>
+              <div role="cell">Secure version of HTTP used for encrypted web communication.</div>
+              <div role="cell">Helps protect data such as logins, payments and form submissions in transit.</div>
+            </div>
           </div>
-          <div class="callout">Chinese support: copper cable = 铜缆；fibre-optic cable = 光纤；electrical signal = 电信号；light pulse = 光脉冲。</div>
+          <div class="callout">Chinese support: secure connection = 安全连接；encryption = 加密；web resource = 网页资源。</div>
         </section>
 
-        <!-- stage10-explanation:start wired -->
-        <section class="panel explanation-panel" id="explanation-wired" data-explains="wired" data-explanation-kind="mechanism" aria-labelledby="explanation-wired-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
-          <h2 class="explanation-sr-only" id="explanation-wired-title">Wired transmission media</h2>
+        <!-- stage10-explanation:start web -->
+        <section class="panel explanation-panel" id="explanation-web" data-explains="web" data-explanation-kind="mechanism" aria-labelledby="explanation-web-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
+          <h2 class="explanation-sr-only" id="explanation-web-title">HTTP and HTTPS</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-wired.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wired transmission media with a structured visual model." />
-            <figcaption class="explanation-sr-only">Wired transmission media: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-web.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining HTTP and HTTPS with a structured visual model." />
+            <figcaption class="explanation-sr-only">HTTP and HTTPS: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.</li><li><strong>Lesson fact:</strong> Copper cable</li><li><strong>Lesson fact:</strong> Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.</li><li><strong>Lesson fact:</strong> Good for: short local links, desktop PCs, classroom networks.</li><li><strong>Lesson fact:</strong> Limits: affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.</li><li><strong>Lesson fact:</strong> Exam wording: say &quot;electrical signals&quot;, not &quot;data flows like water&quot;. The cable is not a tiny plumbing system.</li><li><strong>Lesson fact:</strong> Fibre-optic cable</li><li><strong>Lesson fact:</strong> Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.</li><li><strong>Lesson fact:</strong> Good for: high-bandwidth links, long distances, backbone connections.</li><li><strong>Lesson fact:</strong> Strengths: less affected by electromagnetic interference and can support high data rates.</li><li><strong>Lesson fact:</strong> Limits: installation can be more expensive and the cable can be more delicate to handle.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Protocol</li><li><strong>Lesson fact:</strong> Exam distinction</li><li><strong>Lesson fact:</strong> Transfers web pages and web resources between browser and web server.</li><li><strong>Lesson fact:</strong> Does not provide the same secure encrypted connection as HTTPS.</li><li><strong>Lesson fact:</strong> Secure version of HTTP used for encrypted web communication.</li><li><strong>Lesson fact:</strong> Helps protect data such as logins, payments and form submissions in transit.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end wired -->
-        <section class="panel" id="wireless" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <!-- stage10-explanation:end web -->
+        <section class="panel" id="file" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Wireless transmission media</h2>
-            <p>Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.</p>
+            <h2>FTP for file transfer</h2>
           </div>
-          <div class="media-grid three">
-            <article class="medium-card">
-              <h3>Radio waves</h3>
-              <p>Radio waves are used by technologies such as WiFi to transmit data without a physical cable.</p>
-              <ul>
-                <li><strong>Good for:</strong> mobile devices, classrooms, homes, short-range wireless networking.</li>
-                <li><strong>Limits:</strong> shared medium, interference from other devices, weaker security if poorly configured.</li>
-              </ul>
-            </article>
-            <article class="medium-card">
-              <h3>Microwaves</h3>
-              <p>Microwave links can transmit data between fixed points, often using directional antennas.</p>
-              <ul>
-                <li><strong>Good for:</strong> point-to-point links where a line of sight is available.</li>
-                <li><strong>Limits:</strong> obstacles, weather and alignment can affect the link.</li>
-              </ul>
-            </article>
-            <article class="medium-card">
-              <h3>Satellites</h3>
-              <p>Satellite communication uses signals to and from satellites to cover large geographical areas.</p>
-              <ul>
-                <li><strong>Good for:</strong> remote locations, ships, aircraft or areas without cable infrastructure.</li>
-                <li><strong>Limits:</strong> higher latency due to distance, cost, weather effects and limited capacity compared with some wired links.</li>
-              </ul>
-            </article>
+          <div class="file-card">
+            <h3>FTP: File Transfer Protocol</h3>
+            <p>FTP is used to transfer files between a client and a server, such as uploading website files or downloading files from a file server.</p>
+            <p>Do not use FTP as a generic answer for “anything on the internet”. It is specifically about file transfer.</p>
           </div>
-          <div class="callout">Chinese support: radio wave = 无线电波；microwave = 微波；satellite = 卫星；line of sight = 视距。</div>
         </section>
 
-        <!-- stage10-explanation:start wireless -->
-        <section class="panel explanation-panel" id="explanation-wireless" data-explains="wireless" data-explanation-kind="mechanism" aria-labelledby="explanation-wireless-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
-          <h2 class="explanation-sr-only" id="explanation-wireless-title">Wireless transmission media</h2>
+        <!-- stage10-explanation:start file -->
+        <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" aria-labelledby="explanation-file-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
+          <h2 class="explanation-sr-only" id="explanation-file-title">FTP for file transfer</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-wireless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wireless transmission media with a structured visual model." />
-            <figcaption class="explanation-sr-only">Wireless transmission media: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-file.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining FTP for file transfer with a structured visual model." />
+            <figcaption class="explanation-sr-only">FTP for file transfer: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.</li><li><strong>Lesson fact:</strong> Radio waves</li><li><strong>Lesson fact:</strong> Radio waves are used by technologies such as WiFi to transmit data without a physical cable.</li><li><strong>Lesson fact:</strong> Good for: mobile devices, classrooms, homes, short-range wireless networking.</li><li><strong>Lesson fact:</strong> Limits: shared medium, interference from other devices, weaker security if poorly configured.</li><li><strong>Lesson fact:</strong> Microwaves</li><li><strong>Lesson fact:</strong> Microwave links can transmit data between fixed points, often using directional antennas.</li><li><strong>Lesson fact:</strong> Good for: point-to-point links where a line of sight is available.</li><li><strong>Lesson fact:</strong> Limits: obstacles, weather and alignment can affect the link.</li><li><strong>Lesson fact:</strong> Satellites</li><li><strong>Lesson fact:</strong> Satellite communication uses signals to and from satellites to cover large geographical areas.</li><li><strong>Lesson fact:</strong> Good for: remote locations, ships, aircraft or areas without cable infrastructure.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> FTP: File Transfer Protocol</li><li><strong>Lesson fact:</strong> FTP is used to transfer files between a client and a server, such as uploading website files or downloading files from a file server.</li><li><strong>Lesson fact:</strong> Do not use FTP as a generic answer for “anything on the internet”. It is specifically about file transfer.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end wireless -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <!-- stage10-explanation:end file -->
+        <section class="panel" id="email" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Compare by factor, not by vibe</h2>
+            <h2>Email protocols: SMTP, POP3 and IMAP</h2>
           </div>
-          <div class="compare-table" role="table" aria-label="Transmission media comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Factor</div>
-              <div role="columnheader">Wired networks</div>
-              <div role="columnheader">Wireless networks</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Mobility</div>
-              <div role="cell">Poor for moving devices because a cable is required.</div>
-              <div role="cell">Better for mobile devices because no physical cable is needed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Interference</div>
-              <div role="cell">Copper may suffer electromagnetic interference; fibre is less affected.</div>
-              <div role="cell">Can be affected by walls, distance, other devices and weather.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Security</div>
-              <div role="cell">Physical access to the cable is usually needed to intercept traffic.</div>
-              <div role="cell">Signals travel through air, so encryption and access control are important.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Performance</div>
-              <div role="cell">Often stable; fibre can provide high bandwidth over long distances.</div>
-              <div role="cell">Bandwidth and latency can vary with signal quality and congestion.</div>
-            </div>
+          <div class="email-flow">
+            <article>
+              <h3>SMTP</h3>
+              <p>Used to send email from a client to a mail server and between mail servers.</p>
+            </article>
+            <article>
+              <h3>POP3</h3>
+              <p>Used to download email from a mail server to a client, often removing it from the server depending on settings.</p>
+            </article>
+            <article>
+              <h3>IMAP</h3>
+              <p>Used to access and synchronise email stored on a mail server across multiple devices.</p>
+            </article>
+          </div>
+          <div class="trap-card inline">
+            <h3>Common error</h3>
+            <p>IMAP is usually better for multiple devices because messages and folders stay on the server and remain synchronised.</p>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by factor, not by vibe</h2>
+        <!-- stage10-explanation:start email -->
+        <section class="panel explanation-panel" id="explanation-email" data-explains="email" data-explanation-kind="mechanism" aria-labelledby="explanation-email-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
+          <h2 class="explanation-sr-only" id="explanation-email-title">Email protocols: SMTP, POP3 and IMAP</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by factor, not by vibe with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare by factor, not by vibe: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-email.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Email protocols: SMTP, POP3 and IMAP with a structured visual model." />
+            <figcaption class="explanation-sr-only">Email protocols: SMTP, POP3 and IMAP: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Wired networks</li><li><strong>Lesson fact:</strong> Wireless networks</li><li><strong>Lesson fact:</strong> Mobility</li><li><strong>Lesson fact:</strong> Poor for moving devices because a cable is required.</li><li><strong>Lesson fact:</strong> Better for mobile devices because no physical cable is needed.</li><li><strong>Lesson fact:</strong> Interference</li><li><strong>Lesson fact:</strong> Copper may suffer electromagnetic interference; fibre is less affected.</li><li><strong>Lesson fact:</strong> Can be affected by walls, distance, other devices and weather.</li><li><strong>Lesson fact:</strong> Security</li><li><strong>Lesson fact:</strong> Physical access to the cable is usually needed to intercept traffic.</li><li><strong>Lesson fact:</strong> Signals travel through air, so encryption and access control are important.</li><li><strong>Lesson fact:</strong> Performance</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Used to send email from a client to a mail server and between mail servers.</li><li><strong>Lesson fact:</strong> Used to download email from a mail server to a client, often removing it from the server depending on settings.</li><li><strong>Lesson fact:</strong> Used to access and synchronise email stored on a mail server across multiple devices.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> IMAP is usually better for multiple devices because messages and folders stay on the server and remain synchronised.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <!-- stage10-explanation:end email -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Transmission medium choice helper</h2>
+            <h2>Protocol choice helper</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="server">Fast fixed link between server rooms</option>
-                <option value="classroom">Tablets moving around a classroom</option>
-                <option value="remote">Internet access for a remote island office</option>
-                <option value="desktop">Reliable fixed desktop PC connection</option>
-                <option value="buildings">Two buildings with clear line of sight</option>
-                <option value="factory">Factory floor with electrical interference</option>
+              Task
+              <select id="taskInput">
+                <option value="web">View a normal web page</option>
+                <option value="secure">Submit login details on a website</option>
+                <option value="file">Upload files to a server</option>
+                <option value="sendmail">Send an email message</option>
+                <option value="downloadmail">Download email to one computer</option>
+                <option value="syncmail">Keep email folders synchronised on phone and laptop</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Choose medium</button>
+            <button type="button" id="chooseBtn">Choose protocol</button>
           </div>
-          <div class="result-box" id="mediumResult" aria-live="polite"></div>
-          <div class="method-box" id="mediumMethod"></div>
+          <div class="result-box" id="protocolResult" aria-live="polite"></div>
+          <div class="method-box" id="protocolMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="fibre">Fibre link</button>
-            <button class="tab" type="button" data-example="wifi">Wireless classroom</button>
-            <button class="tab" type="button" data-example="satellite">Remote site</button>
+            <button class="tab active" type="button" data-example="web">Secure web</button>
+            <button class="tab" type="button" data-example="email">Email journey</button>
+            <button class="tab" type="button" data-example="files">File transfer</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -337,46 +246,46 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak transmission-media answer</h2>
+            <h2>Fix the weak protocol answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"Wireless is always faster because it is newer."</p>
+              <p class="wrong">“SMTP is used to read email from the server.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Do not judge by age. Wireless performance depends on signal strength, interference, congestion and distance; fibre may provide higher stable bandwidth.</p>
+              <p class="answer" id="mistake1">SMTP is used to send email. POP3 or IMAP is used to retrieve/access email from a mail server.</p>
             </article>
             <article>
-              <p class="wrong">"Fibre-optic cable sends electrical signals very quickly."</p>
+              <p class="wrong">“HTTPS just means the page is faster.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Fibre-optic cable transmits data as pulses of light, not electrical signals. Copper cable uses electrical signals.</p>
+              <p class="answer" id="mistake2">HTTPS is the secure version of HTTP and uses encryption to protect web communication in transit.</p>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on matching the medium to the scenario and explaining a real factor.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on correct protocol and correct context.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Medium, signal, trade-off</h2>
+            <h2>Match the protocol to the job</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Copper</strong><span>Electrical signals; cheap and common; affected by electromagnetic interference.</span></div>
-            <div><strong>Fibre optic</strong><span>Light pulses; high bandwidth; long distance; low electromagnetic interference.</span></div>
-            <div><strong>Radio waves</strong><span>Wireless mobility; used by WiFi; affected by interference and obstacles.</span></div>
-            <div><strong>Microwaves</strong><span>Directional point-to-point links; often need line of sight.</span></div>
-            <div><strong>Satellite</strong><span>Large coverage for remote areas; higher latency and cost.</span></div>
-            <div><strong>Comparison</strong><span>Use factors: mobility, range, interference, security, bandwidth, latency and cost.</span></div>
+            <div><strong>HTTP</strong><span>Web page/resource transfer.</span></div>
+            <div><strong>HTTPS</strong><span>Secure encrypted web communication.</span></div>
+            <div><strong>FTP</strong><span>File transfer between client and server.</span></div>
+            <div><strong>SMTP</strong><span>Sending email.</span></div>
+            <div><strong>POP3</strong><span>Downloading email to a client.</span></div>
+            <div><strong>IMAP</strong><span>Synchronised mailbox access across devices.</span></div>
           </div>
         </section>
 
@@ -386,25 +295,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a comparison table for copper, fibre optic, radio waves, microwaves and satellites. Include one advantage and one limitation for each.</li>
-            <li>Write a 4-mark answer: explain why fibre optic may be chosen for a high-bandwidth link between buildings.</li>
-            <li>Write a 4-mark answer: explain why WiFi may be chosen for tablets in a classroom, and give one limitation.</li>
-            <li>Choose a medium for a remote weather station and justify it using coverage, latency or cost.</li>
+            <li>Create six flashcards: HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. Each card must include one use case.</li>
+            <li>Draw an email journey showing SMTP for sending and POP3/IMAP for receiving/accessing.</li>
+            <li>Explain why IMAP is usually suitable when a user reads email on multiple devices.</li>
+            <li>Write a 5-mark answer comparing HTTP and HTTPS.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Comparison table:</strong> include signal type where relevant: copper uses electrical signals; fibre uses light pulses.</p>
-            <p><strong>Fibre answer:</strong> mention high bandwidth, long distance and low electromagnetic interference.</p>
-            <p><strong>WiFi answer:</strong> mention mobility/no cable, then a limitation such as interference, security or shared bandwidth.</p>
-            <p><strong>Remote station:</strong> satellite may be suitable where cable infrastructure is unavailable, but latency/cost can be disadvantages.</p>
+            <p><strong>Flashcards:</strong> include the job, not only the full name.</p>
+            <p><strong>Email journey:</strong> SMTP sends; POP3 downloads; IMAP synchronises/accesses server mailbox.</p>
+            <p><strong>IMAP:</strong> mention messages/folders remain on server and changes sync across devices.</p>
+            <p><strong>HTTP/HTTPS:</strong> both transfer web pages; HTTPS adds encryption/security for data in transit.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

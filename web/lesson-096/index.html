@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 096 | Paper 1 extended-response practice</title>
+    <title>AS9618 Lesson 096 | Paper 1 timed short-answer practice</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 1-8</p>
-        <h1>Paper 1 extended-response practice</h1>
+        <h1>Paper 1 timed short-answer practice</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#map">Question map</a>
-        <a href="#structure">Structure</a>
-        <a href="#balance">Balance</a>
-        <a href="#marking">Marking focus</a>
-        <a href="#planner">Response planner</a>
-        <a href="#builder">Paragraph builder</a>
-        <a href="#checker">Mark checker</a>
+        <a href="#timing">Timing rules</a>
+        <a href="#quiz">5-minute quiz</a>
+        <a href="#short">Short-answer craft</a>
+        <a href="#marking">Self-marking</a>
+        <a href="#timer">Timer</a>
+        <a href="#planner">Mark planner</a>
+        <a href="#triage">Question triage</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -47,257 +47,274 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 096 | 45 minutes | Paper 1 Sections 1-8 | extended-response practice</p>
-            <h2>Long answers do not need more words. They need more distinct marks.</h2>
+            <p class="lesson-meta">Lesson 096 | 45 minutes | Paper 1 Sections 1-8 | 5-minute quiz</p>
+            <h2>Short answers are not tiny essays. They are marks delivered on time.</h2>
             <p>
-              This lesson practises 6-8 mark Paper 1 responses. You will plan before writing, separate points,
-              apply them to the scenario and add balanced judgement where the command word requires it. The focus
-              is not sounding impressive; it is making every sentence earn its seat.
+              This lesson turns Paper 1 knowledge into timed short-answer performance. You will practise quick
+              recall, decide how much to write for the marks available, and self-mark using Cambridge-style wording.
+              The aim is controlled speed: enough detail for marks, no decorative paragraphs.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Plan</strong><span>split extended-response marks into distinct answer points</span></div>
-              <div><strong>Develop</strong><span>write mechanism, scenario consequence and limitation where needed</span></div>
-              <div><strong>Evaluate</strong><span>balance benefits, risks, safeguards and judgement in discuss/evaluate questions</span></div>
+              <div><strong>Pace</strong><span>allocate time from mark value and avoid over-writing low-mark answers</span></div>
+              <div><strong>Answer</strong><span>write concise definitions, calculations, comparisons and explanations</span></div>
+              <div><strong>Mark</strong><span>use strict wording to identify missing mechanism, unit or context</span></div>
             </div>
           </div>
-          <div class="sql-visual" aria-label="Extended response visual">
-            <span class="keyword">Point</span><span>accurate term or claim</span>
-            <span class="keyword">Develop</span><span>mechanism, cause, contrast or method</span>
-            <span class="keyword">Apply</span><span>link to scenario, stakeholder or data</span>
-            <span class="keyword">Judge</span><span>condition, limitation or conclusion</span>
-            <p>A six-mark answer is not one large sentence wearing a smart jacket.</p>
+          <div class="sql-visual" aria-label="Timed short-answer visual">
+            <span class="keyword">1 mark</span><span>precise term or value</span>
+            <span class="keyword">2 marks</span><span>point + explanation / method + answer</span>
+            <span class="keyword">4-6 marks</span><span>several distinct points with scenario links</span>
+            <p>If a 2-mark question gets a 12-line answer, the clock has already filed a complaint.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Extended questions reward coverage, precision and application. A fluent paragraph can still miss half the marks.</p>
+            <p>Students often know the content but lose marks by spending too long on early questions or writing vague extra words.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Repeating the same idea with new adjectives is not a new point. The examiner has seen that trick before lunch.</p>
+            <p>Fast is not the same as vague. A short answer still needs exact terminology, units, or mechanism.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which answer structure fits?</h2>
-            <p>Before writing, decide whether the question wants explanation, comparison, justification or evaluation.</p>
+            <h2>How much should you write?</h2>
+            <p>The mark value is a hint, not a decorative number. The examiner is not paying rent for your paragraphs.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="security">Explain three security measures for student records. [6]</button>
-            <button class="choice-card" type="button" data-hook="compare">Compare cloud storage and local storage for a business. [6]</button>
-            <button class="choice-card" type="button" data-hook="ethics">Evaluate using facial recognition in school. [8]</button>
-            <button class="choice-card" type="button" data-hook="database">Explain why a relational database is better than one flat file. [6]</button>
+            <button class="choice-card" type="button" data-hook="one">State the purpose of a primary key. [1]</button>
+            <button class="choice-card" type="button" data-hook="two">Explain why cache can improve performance. [2]</button>
+            <button class="choice-card" type="button" data-hook="four">Compare open-source and proprietary software. [4]</button>
+            <button class="choice-card" type="button" data-hook="six">Evaluate facial recognition in school. [6]</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose a card to identify the response structure.
+            Choose a card to see the expected writing depth.
           </div>
         </section>
 
-        <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
+        <section class="panel" id="timing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="timing">
           <div class="section-title">
-            <p class="eyebrow">Question map</p>
-            <h2>Extended-response topics across Paper 1</h2>
+            <p class="eyebrow">Timing rules</p>
+            <h2>A practical mark-per-minute model</h2>
           </div>
-          <div class="retrieval-grid">
-            <article><strong>Representation choice</strong><span>justify storage, compression, image/sound settings and file-size trade-offs</span></article>
-            <article><strong>Communication</strong><span>compare networks, models, protocols, media and cloud services in context</span></article>
-            <article><strong>Hardware/processor</strong><span>explain component roles, FDE cycle, interrupts and performance factors</span></article>
-            <article><strong>System software</strong><span>compare translators, OS roles, utility software and development choices</span></article>
-            <article><strong>Security</strong><span>explain threats, controls, limitations and data integrity consequences</span></article>
-            <article><strong>Ethics/databases</strong><span>evaluate impacts and design relational data/SQL solutions with justification</span></article>
+          <div class="data-table timing-table" role="table" aria-label="Timing guidance">
+            <div class="table-row table-head" role="row"><div>Mark value</div><div>Target time</div><div>Answer behaviour</div></div>
+            <div class="table-row" role="row"><div>1 mark</div><div>30-45 seconds</div><div>give the term/value directly, then stop</div></div>
+            <div class="table-row" role="row"><div>2 marks</div><div>1-2 minutes</div><div>two separate points, or point plus mechanism/consequence</div></div>
+            <div class="table-row" role="row"><div>3-4 marks</div><div>3-5 minutes</div><div>structured bullets, each carrying a mark-worthy idea</div></div>
+            <div class="table-row" role="row"><div>5-6 marks</div><div>6-8 minutes</div><div>plan briefly, then write distinct points with context</div></div>
           </div>
+          <div class="callout">Chinese support: pace = 控制速度；mark value = 分值；concise = 简洁；distinct point = 独立得分点；self-mark = 自我批改。</div>
         </section>
 
-        <!-- stage10-explanation:start map -->
-        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Extended-response topics across Paper 1</h2>
+        <!-- stage10-explanation:start timing -->
+        <section class="panel explanation-panel" id="explanation-timing" data-explains="timing" data-explanation-kind="synthesis" aria-labelledby="explanation-timing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="timing">
+          <h2 class="explanation-sr-only" id="explanation-timing-title">A practical mark-per-minute model</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Extended-response topics across Paper 1 with a structured visual model." />
-            <figcaption class="explanation-sr-only">Extended-response topics across Paper 1: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-timing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A practical mark-per-minute model with a structured visual model." />
+            <figcaption class="explanation-sr-only">A practical mark-per-minute model: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Question map</li><li><strong>Lesson fact:</strong> Representation choice justify storage, compression, image/sound settings and file-size trade-offs</li><li><strong>Lesson fact:</strong> Communication compare networks, models, protocols, media and cloud services in context</li><li><strong>Lesson fact:</strong> Hardware/processor explain component roles, FDE cycle, interrupts and performance factors</li><li><strong>Lesson fact:</strong> System software compare translators, OS roles, utility software and development choices</li><li><strong>Lesson fact:</strong> Security explain threats, controls, limitations and data integrity consequences</li><li><strong>Lesson fact:</strong> Ethics/databases evaluate impacts and design relational data/SQL solutions with justification</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Use one declared mark-to-time rate consistently across the practice set.</li><li><strong>Lesson fact:</strong> The example planning rate is one minute per mark, so equal marks receive equal time.</li><li><strong>Lesson fact:</strong> Reading, planning, writing and checking all fit inside the question's total target time.</li><li><strong>Lesson fact:</strong> Marks guide both the time budget and the required answer depth.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end map -->
-        <section class="panel" id="structure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
+        <!-- stage10-explanation:end timing -->
+        <section class="panel" id="quiz" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="quiz">
           <div class="section-title">
-            <p class="eyebrow">Structure</p>
-            <h2>Three reliable extended-response shapes</h2>
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Quick retrieval across Paper 1</h2>
+            <p>Use the timer below if you want the pressure. The questions here are deliberately short.</p>
           </div>
-          <div class="data-table structure-table" role="table" aria-label="Extended response structures">
-            <div class="table-row table-head" role="row"><div>Question type</div><div>Plan</div><div>Sentence pattern</div></div>
-            <div class="table-row" role="row"><div>Explain three...</div><div>3 x named point + mechanism + consequence</div><div>Control X works by..., so in this scenario...</div></div>
-            <div class="table-row" role="row"><div>Compare...</div><div>3 paired contrasts</div><div>A does..., whereas B does..., which matters because...</div></div>
-            <div class="table-row" role="row"><div>Evaluate/discuss...</div><div>benefit + concern + safeguard + judgement</div><div>Although..., however..., therefore only if...</div></div>
+          <div class="quick-grid">
+            <article><strong>1.</strong><span>What is the 8-bit denary range for unsigned binary?</span></article>
+            <article><strong>2.</strong><span>Name the protocol used to transfer web pages securely.</span></article>
+            <article><strong>3.</strong><span>Which register stores the address of the next instruction?</span></article>
+            <article><strong>4.</strong><span>Which translator executes code one statement at a time?</span></article>
+            <article><strong>5.</strong><span>Which SQL clause filters records?</span></article>
           </div>
-          <div class="callout">Chinese support: extended response = 扩展回答；distinct point = 独立得分点；balanced judgement = 平衡判断；limitation = 局限。</div>
         </section>
 
-        <!-- stage10-explanation:start structure -->
-        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="synthesis" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="structure">
-          <h2 class="explanation-sr-only" id="explanation-structure-title">Three reliable extended-response shapes</h2>
+        <!-- stage10-explanation:start quiz -->
+        <section class="panel explanation-panel" id="explanation-quiz" data-explains="quiz" data-explanation-kind="synthesis" aria-labelledby="explanation-quiz-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="quiz">
+          <h2 class="explanation-sr-only" id="explanation-quiz-title">Quick retrieval across Paper 1</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three reliable extended-response shapes with a structured visual model." />
-            <figcaption class="explanation-sr-only">Three reliable extended-response shapes: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-quiz.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Quick retrieval across Paper 1 with a structured visual model." />
+            <figcaption class="explanation-sr-only">Quick retrieval across Paper 1: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Structure</li><li><strong>Lesson fact:</strong> Question type</li><li><strong>Lesson fact:</strong> Sentence pattern</li><li><strong>Lesson fact:</strong> Explain three...</li><li><strong>Lesson fact:</strong> 3 x named point + mechanism + consequence</li><li><strong>Lesson fact:</strong> Control X works by..., so in this scenario...</li><li><strong>Lesson fact:</strong> Compare...</li><li><strong>Lesson fact:</strong> 3 paired contrasts</li><li><strong>Lesson fact:</strong> A does..., whereas B does..., which matters because...</li><li><strong>Lesson fact:</strong> Evaluate/discuss...</li><li><strong>Lesson fact:</strong> benefit + concern + safeguard + judgement</li><li><strong>Lesson fact:</strong> Although..., however..., therefore only if...</li></ol>
+            <ol><li><strong>Lesson fact:</strong> 5-minute quiz</li><li><strong>Lesson fact:</strong> Use the timer below if you want the pressure. The questions here are deliberately short.</li><li><strong>Lesson fact:</strong> 1. What is the 8-bit denary range for unsigned binary?</li><li><strong>Lesson fact:</strong> 2. Name the protocol used to transfer web pages securely.</li><li><strong>Lesson fact:</strong> 3. Which register stores the address of the next instruction?</li><li><strong>Lesson fact:</strong> 4. Which translator executes code one statement at a time?</li><li><strong>Lesson fact:</strong> 5. Which SQL clause filters records?</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end structure -->
-        <section class="panel" id="balance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="balance">
+        <!-- stage10-explanation:end quiz -->
+        <section class="panel" id="short" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="short">
           <div class="section-title">
-            <p class="eyebrow">Balance</p>
-            <h2>Evaluation is not just "good and bad"</h2>
+            <p class="eyebrow">Short-answer craft</p>
+            <h2>Compress the answer, not the marks</h2>
           </div>
           <div class="clause-grid">
-            <article><strong>Stakeholder</strong><span>Name who is affected: student, staff, customer, business, public, developer.</span></article>
-            <article><strong>Benefit</strong><span>Explain the advantage and who receives it.</span></article>
-            <article><strong>Concern</strong><span>Explain harm, risk, fairness, privacy, legal or environmental issue.</span></article>
-            <article><strong>Safeguard</strong><span>Add condition, limit, policy, access control, transparency or testing.</span></article>
-            <article><strong>Judgement</strong><span>Reach a conclusion using provided that, unless, only if or because.</span></article>
-            <article><strong>Scenario</strong><span>Use the actual organisation, users and data in the question.</span></article>
+            <article><strong>Definition</strong><span>Term + essential property. Example: A primary key uniquely identifies a record.</span></article>
+            <article><strong>Calculation</strong><span>Formula + substitution + conversion + unit. Skip none of these.</span></article>
+            <article><strong>Explain</strong><span>Mechanism + consequence. Use "because" or "so that".</span></article>
+            <article><strong>Compare</strong><span>Paired differences. Use "whereas" to force contrast.</span></article>
+            <article><strong>SQL</strong><span>Required fields, table, condition/group/sort. Avoid SELECT * unless asked.</span></article>
+            <article><strong>Evaluate</strong><span>Benefit, concern, safeguard, judgement. Keep each point short.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start balance -->
-        <section class="panel explanation-panel" id="explanation-balance" data-explains="balance" data-explanation-kind="synthesis" aria-labelledby="explanation-balance-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="balance">
-          <h2 class="explanation-sr-only" id="explanation-balance-title">Evaluation is not just &quot;good and bad&quot;</h2>
+        <!-- stage10-explanation:start short -->
+        <section class="panel explanation-panel" id="explanation-short" data-explains="short" data-explanation-kind="synthesis" aria-labelledby="explanation-short-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="short">
+          <h2 class="explanation-sr-only" id="explanation-short-title">Compress the answer, not the marks</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-balance.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Evaluation is not just &quot;good and bad&quot; with a structured visual model." />
-            <figcaption class="explanation-sr-only">Evaluation is not just &quot;good and bad&quot;: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-short.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compress the answer, not the marks with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compress the answer, not the marks: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Stakeholder Name who is affected: student, staff, customer, business, public, developer.</li><li><strong>Lesson fact:</strong> Benefit Explain the advantage and who receives it.</li><li><strong>Lesson fact:</strong> Concern Explain harm, risk, fairness, privacy, legal or environmental issue.</li><li><strong>Lesson fact:</strong> Safeguard Add condition, limit, policy, access control, transparency or testing.</li><li><strong>Lesson fact:</strong> Judgement Reach a conclusion using provided that, unless, only if or because.</li><li><strong>Lesson fact:</strong> Scenario Use the actual organisation, users and data in the question.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Short-answer craft</li><li><strong>Lesson fact:</strong> Definition Term + essential property. Example: A primary key uniquely identifies a record.</li><li><strong>Lesson fact:</strong> Calculation Formula + substitution + conversion + unit. Skip none of these.</li><li><strong>Lesson fact:</strong> Explain Mechanism + consequence. Use &quot;because&quot; or &quot;so that&quot;.</li><li><strong>Lesson fact:</strong> Compare Paired differences. Use &quot;whereas&quot; to force contrast.</li><li><strong>Lesson fact:</strong> SQL Required fields, table, condition/group/sort. Avoid SELECT * unless asked.</li><li><strong>Lesson fact:</strong> Evaluate Benefit, concern, safeguard, judgement. Keep each point short.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end balance -->
+        <!-- stage10-explanation:end short -->
         <section class="panel" id="marking" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="marking">
           <div class="section-title">
-            <p class="eyebrow">Marking focus</p>
-            <h2>How extended marks usually appear</h2>
+            <p class="eyebrow">Self-marking</p>
+            <h2>Three checks before moving on</h2>
           </div>
-          <div class="data-table structure-table" role="table" aria-label="Marking focus">
-            <div class="table-row table-head" role="row"><div>Mark type</div><div>What earns it</div><div>What loses it</div></div>
-            <div class="table-row" role="row"><div>B mark</div><div>accurate named point or fact</div><div>vague wording such as "secure" or "efficient"</div></div>
-            <div class="table-row" role="row"><div>M mark</div><div>method, mechanism, comparison or logical development</div><div>keyword with no explanation</div></div>
-            <div class="table-row" role="row"><div>A mark</div><div>application, consequence, judgement or correct final result</div><div>generic answer that ignores the scenario</div></div>
+          <div class="data-table timing-table" role="table" aria-label="Self-marking checks">
+            <div class="table-row table-head" role="row"><div>Check</div><div>Question to ask</div><div>Fix if missing</div></div>
+            <div class="table-row" role="row"><div>Precision</div><div>Did I use the exact term or unit?</div><div>add the term, register, SQL clause, protocol or unit</div></div>
+            <div class="table-row" role="row"><div>Mechanism</div><div>Did I say how it works?</div><div>add the process: filters, encrypts, schedules, links, fetches</div></div>
+            <div class="table-row" role="row"><div>Context</div><div>Did I link to the scenario?</div><div>name the user, network, database, school or business from the question</div></div>
           </div>
         </section>
 
         <!-- stage10-explanation:start marking -->
         <section class="panel explanation-panel" id="explanation-marking" data-explains="marking" data-explanation-kind="synthesis" aria-labelledby="explanation-marking-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="marking">
-          <h2 class="explanation-sr-only" id="explanation-marking-title">How extended marks usually appear</h2>
+          <h2 class="explanation-sr-only" id="explanation-marking-title">Three checks before moving on</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-marking.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How extended marks usually appear with a structured visual model." />
-            <figcaption class="explanation-sr-only">How extended marks usually appear: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-marking.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three checks before moving on with a structured visual model." />
+            <figcaption class="explanation-sr-only">Three checks before moving on: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Marking focus</li><li><strong>Lesson fact:</strong> Mark type</li><li><strong>Lesson fact:</strong> What earns it</li><li><strong>Lesson fact:</strong> What loses it</li><li><strong>Lesson fact:</strong> accurate named point or fact</li><li><strong>Lesson fact:</strong> vague wording such as &quot;secure&quot; or &quot;efficient&quot;</li><li><strong>Lesson fact:</strong> method, mechanism, comparison or logical development</li><li><strong>Lesson fact:</strong> keyword with no explanation</li><li><strong>Lesson fact:</strong> application, consequence, judgement or correct final result</li><li><strong>Lesson fact:</strong> generic answer that ignores the scenario</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Self-marking</li><li><strong>Lesson fact:</strong> Question to ask</li><li><strong>Lesson fact:</strong> Fix if missing</li><li><strong>Lesson fact:</strong> Precision</li><li><strong>Lesson fact:</strong> Did I use the exact term or unit?</li><li><strong>Lesson fact:</strong> add the term, register, SQL clause, protocol or unit</li><li><strong>Lesson fact:</strong> Mechanism</li><li><strong>Lesson fact:</strong> Did I say how it works?</li><li><strong>Lesson fact:</strong> add the process: filters, encrypts, schedules, links, fetches</li><li><strong>Lesson fact:</strong> Did I link to the scenario?</li><li><strong>Lesson fact:</strong> name the user, network, database, school or business from the question</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end marking -->
+        <section class="panel" id="timer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="timer">
+          <div class="section-title">
+            <p class="eyebrow">Interactive timer</p>
+            <h2>Run a timed short-answer sprint</h2>
+          </div>
+          <div class="timer-box">
+            <div class="timer-display" id="timerDisplay">05:00</div>
+            <div class="timer-controls">
+              <button class="primary-button" type="button" data-time="300">5 min</button>
+              <button class="primary-button" type="button" data-time="180">3 min</button>
+              <button class="primary-button" type="button" data-time="60">1 min</button>
+              <button class="primary-button" type="button" id="startTimer">Start</button>
+              <button class="answer-toggle" type="button" id="pauseTimer">Pause</button>
+              <button class="answer-toggle" type="button" id="resetTimer">Reset</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start timer -->
+        <section class="panel explanation-panel" id="explanation-timer" data-explains="timer" data-explanation-kind="synthesis" aria-labelledby="explanation-timer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="timer">
+          <h2 class="explanation-sr-only" id="explanation-timer-title">Run a timed short-answer sprint</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-timer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Run a timed short-answer sprint with a structured visual model." />
+            <figcaption class="explanation-sr-only">Run a timed short-answer sprint: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive timer</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end timer -->
         <section class="panel" id="planner" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="planner">
           <div class="section-title">
-            <p class="eyebrow">Interactive response planner</p>
-            <h2>Choose a structure before writing</h2>
+            <p class="eyebrow">Interactive mark planner</p>
+            <h2>Estimate a sensible time budget</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Question type
-              <select id="plannerInput">
-                <option value="security">Explain three security measures. [6]</option>
-                <option value="compare">Compare two technologies. [6]</option>
-                <option value="evaluate">Evaluate an ethical decision. [8]</option>
-                <option value="database">Explain relational database benefits. [6]</option>
+              Marks available
+              <select id="markInput">
+                <option value="1">1 mark</option>
+                <option value="2">2 marks</option>
+                <option value="3">3 marks</option>
+                <option value="4">4 marks</option>
+                <option value="6">6 marks</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="planBtn">Plan response</button>
+            <button class="primary-button" type="button" id="planBtn">Plan time</button>
           </div>
-          <div class="answer-frame" id="planResult">Choose a question type to see a compact plan.</div>
+          <div class="answer-frame" id="planResult">Choose a mark value to see the target writing behaviour.</div>
         </section>
 
         <!-- stage10-explanation:start planner -->
         <section class="panel explanation-panel" id="explanation-planner" data-explains="planner" data-explanation-kind="synthesis" aria-labelledby="explanation-planner-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="planner">
-          <h2 class="explanation-sr-only" id="explanation-planner-title">Choose a structure before writing</h2>
+          <h2 class="explanation-sr-only" id="explanation-planner-title">Estimate a sensible time budget</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-planner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a structure before writing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose a structure before writing: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-planner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Estimate a sensible time budget with a structured visual model." />
+            <figcaption class="explanation-sr-only">Estimate a sensible time budget: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive response planner</li><li><strong>Lesson fact:</strong> Question type</li><li><strong>Lesson fact:</strong> Choose a question type to see a compact plan.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive mark planner</li><li><strong>Lesson fact:</strong> Marks available</li><li><strong>Lesson fact:</strong> Choose a mark value to see the target writing behaviour.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end planner -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="triage" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
           <div class="section-title">
-            <p class="eyebrow">Interactive paragraph builder</p>
-            <h2>Build one developed paragraph</h2>
-          </div>
-          <div class="builder-grid">
-            <label>
-              Point
-              <select id="pointInput">
-                <option value="encryption">Encryption protects data sent over a network</option>
-                <option value="cache">Cache can improve processor performance</option>
-                <option value="normalisation">Normalisation improves database design</option>
-                <option value="mfa">MFA improves authentication</option>
-              </select>
-            </label>
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="school records">school records</option>
-                <option value="student tablets">student tablets</option>
-                <option value="library database">library database</option>
-                <option value="online banking">online banking</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="buildBtn">Build paragraph</button>
-          </div>
-          <div class="answer-frame" id="builderResult">Choose options, then build a paragraph.</div>
-        </section>
-
-        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
-          <div class="section-title">
-            <p class="eyebrow">Interactive mark-focus checker</p>
-            <h2>What is missing from the answer?</h2>
+            <p class="eyebrow">Interactive question triage</p>
+            <h2>Decide: answer now, flag, or return later?</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Weak answer
-              <select id="checkerInput">
-                <option value="secure">"Encryption is useful because it makes data secure."</option>
-                <option value="compare">"A compiler translates code. An interpreter translates code."</option>
-                <option value="ethics">"Facial recognition is good because it is fast."</option>
-                <option value="database">"Relational databases are better because they are organised."</option>
+              Situation
+              <select id="triageInput">
+                <option value="known">You know a 1-mark definition immediately.</option>
+                <option value="calc">A 5-mark calculation is familiar but needs working.</option>
+                <option value="blank">You cannot identify the topic after 20 seconds.</option>
+                <option value="long">A 6-mark evaluation answer could become too long.</option>
+                <option value="sql">A 5-mark SQL query needs GROUP BY and an aggregate.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="checkBtn">Check focus</button>
+            <button class="primary-button" type="button" id="triageBtn">Triage</button>
           </div>
-          <div class="feedback" id="checkResult">Choose a weak answer to identify the missing mark focus.</div>
+          <div class="feedback" id="triageResult">Choose a situation to decide a practical exam move.</div>
         </section>
 
+        <!-- stage10-explanation:start triage -->
+        <section class="panel explanation-panel" id="explanation-triage" data-explains="triage" data-explanation-kind="synthesis" aria-labelledby="explanation-triage-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="triage">
+          <h2 class="explanation-sr-only" id="explanation-triage-title">Decide: answer now, flag, or return later?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-096-triage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Decide: answer now, flag, or return later? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Decide: answer now, flag, or return later?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive question triage</li><li><strong>Lesson fact:</strong> Situation</li><li><strong>Lesson fact:</strong> Choose a situation to decide a practical exam move.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end triage -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Extended responses with marks annotated</h2>
+            <h2>Short answers trimmed to the mark value</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="security">Security</button>
-            <button class="tab" type="button" data-example="compare">Compare</button>
-            <button class="tab" type="button" data-example="ethics">Evaluate</button>
-            <button class="tab" type="button" data-example="database">Database</button>
+            <button class="tab active" type="button" data-example="one">1 mark</button>
+            <button class="tab" type="button" data-example="two">2 marks</button>
+            <button class="tab" type="button" data-example="calc">Calculation</button>
+            <button class="tab" type="button" data-example="six">6 marks</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -305,8 +322,8 @@
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Extended-response planning vocabulary</h2>
-            <p>Type concise planning terms. Use Show answer after committing to a response.</p>
+            <h2>Quick-answer retrieval</h2>
+            <p>Type concise answers. Use Show answer only after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -314,7 +331,7 @@
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak extended answers</h2>
+            <h2>Repair time-wasting or under-marked answers</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -322,8 +339,8 @@
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style extended-response set with expandable MS</h2>
-            <p>These questions are designed for 6-8 mark practice. The MS rewards distinct points, development, scenario links and judgement.</p>
+            <h2>Original Cambridge-style timed short-answer set with expandable MS</h2>
+            <p>Attempt the set in 18-20 minutes, then mark strictly. The MS rewards concise precision, method and context.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -331,12 +348,12 @@
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Extended-response checklist</h2>
+            <h2>Timed short-answer checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Plan marks</strong><span>Break the answer into distinct points before writing.</span></div>
-            <div><strong>Develop</strong><span>Add mechanism, contrast, scenario consequence or limitation.</span></div>
-            <div><strong>Judge</strong><span>For evaluate/discuss, include benefit, concern, safeguard and conclusion.</span></div>
+            <div><strong>Spend by marks</strong><span>Low-mark questions need direct answers; high-mark questions need structure.</span></div>
+            <div><strong>Write for credit</strong><span>Term, method, mechanism, context, consequence, unit.</span></div>
+            <div><strong>Move on</strong><span>If topic recognition fails, flag it and return after securing easier marks.</span></div>
           </div>
         </section>
 
@@ -347,16 +364,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Plan two responses</strong>
-              <span>Choose two 6-mark Paper 1 questions. Write only the plan: point, mechanism and scenario link for each mark pair.</span>
+              <strong>Task 1: 12-minute sprint</strong>
+              <span>Answer six short Paper 1 questions: two 1-mark, two 2-mark, one 4-mark and one 5-mark question. Stop at 12 minutes.</span>
             </article>
             <article>
-              <strong>Task 2: Write one full answer</strong>
-              <span>Answer one 8-mark ethics or security question in 10 minutes. Use benefit, concern, safeguard and judgement if relevant.</span>
+              <strong>Task 2: Strict self-mark</strong>
+              <span>Mark your sprint with a different colour. Label each lost mark as precision, mechanism, context, unit or timing.</span>
             </article>
             <article>
-              <strong>Task 3: Mark and repair</strong>
-              <span>Highlight each distinct mark in your answer. Rewrite any repeated or vague sentence into a developed point.</span>
+              <strong>Task 3: Rewrite</strong>
+              <span>Rewrite the two weakest answers in half the words while keeping all mark-worthy points.</span>
             </article>
           </div>
         </section>
@@ -364,8 +381,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

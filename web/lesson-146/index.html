@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 146 | Section 12 review: software development case study</title>
+    <title>AS9618 Lesson 146 | Testing, maintenance and enhancement</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
-        <h1>Section 12 review: software development case study</h1>
+        <h1>Testing, maintenance and enhancement</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,349 +29,463 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#case">Case study</a>
-        <a href="#lifecycle">Lifecycle map</a>
-        <a href="#analysis">Analysis</a>
-        <a href="#design">Design</a>
+        <a href="#implementation">Implementation</a>
+        <a href="#changeover">Changeover</a>
         <a href="#testing">Testing</a>
+        <a href="#test-data">Test data</a>
+        <a href="#maintenance">Maintenance</a>
         <a href="#evaluation">Evaluation</a>
-        <a href="#commands">Command words</a>
-        <a href="#case-tool">Case tool</a>
-        <a href="#answer-tool">Answer improver</a>
+        <a href="#stage-tool">Stage chooser</a>
+        <a href="#data-tool">Test data tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
+
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>producing a complete test strategy or test plan. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S12.06 requires understanding their need and likely contents; S12.05 testing methods remain CORE.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Testing, maintenance and enhancement</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.</p>
+            <p>Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</p>
+            <p>Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks.</p>
+            <p>Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.</p>
+            <p>Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.</p>
+            <p>Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.</p>
+            <p>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</p>
+            <p>Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.</p>
+            <p>Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.</p>
+            <p>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount</h3>
+            <p>First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive. Adding a wait-list search and making results faster is perfective. Each change is traced to a request and followed by targeted and regression tests. The existing program counts marks at least 50 in PassCount. Analysis shows one traversal already reads every mark, so declare and initialise MeritCount, add IF Marks[Index] &gt;= 70 THEN MeritCount &lt;- MeritCount + 1 ENDIF inside the same loop, and output both counters after the loop. Test 49, 50, 69 and 70 to cover unchanged pass behaviour and the new merit boundary.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start test-data -->
+        <section class="panel explanation-panel" id="explanation-test-data" data-explains="test-data" data-explanation-kind="mechanism" aria-labelledby="explanation-test-data-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="test-data">
+          <h2 class="explanation-sr-only" id="explanation-test-data-title">Good testing uses different categories of data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-test-data.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Good testing uses different categories of data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Good testing uses different categories of data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Test data</li><li><strong>Lesson fact:</strong> Category</li><li><strong>Lesson fact:</strong> Room capacity example</li><li><strong>Lesson fact:</strong> Expected result</li><li><strong>Lesson fact:</strong> valid typical data</li><li><strong>Lesson fact:</strong> 24 students for capacity 30</li><li><strong>Lesson fact:</strong> accepted</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> valid or invalid data at the edge</li><li><strong>Lesson fact:</strong> 30 and 31 for capacity 30</li><li><strong>Lesson fact:</strong> 30 accepted; 31 rejected</li><li><strong>Lesson fact:</strong> Abnormal</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end test-data -->
+
+        <!-- stage10-explanation:start maintenance -->
+        <section class="panel explanation-panel" id="explanation-maintenance" data-explains="maintenance" data-explanation-kind="mechanism" aria-labelledby="explanation-maintenance-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="maintenance">
+          <h2 class="explanation-sr-only" id="explanation-maintenance-title">Maintenance changes a system after it has been delivered</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-maintenance.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Maintenance changes a system after it has been delivered with a structured visual model." />
+            <figcaption class="explanation-sr-only">Maintenance changes a system after it has been delivered: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Maintenance</li><li><strong>Lesson fact:</strong> Corrective</li><li><strong>Lesson fact:</strong> Fixing faults found after release, such as a booking clash that was not rejected.</li><li><strong>Lesson fact:</strong> Adaptive</li><li><strong>Lesson fact:</strong> Changing the system because the environment changes, such as a new timetable structure.</li><li><strong>Lesson fact:</strong> Perfective</li><li><strong>Lesson fact:</strong> Improving performance, usability or features, such as faster room search.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end maintenance -->
+
+        <!-- stage10-explanation:start changeover -->
+        <section class="panel explanation-panel" id="explanation-changeover" data-explains="changeover" data-explanation-kind="mechanism" aria-labelledby="explanation-changeover-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="changeover">
+          <h2 class="explanation-sr-only" id="explanation-changeover-title">Test strategy and test plan are different documents</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Test strategy and test plan are different documents with a structured visual model." />
+            <figcaption class="explanation-sr-only">Test strategy and test plan are different documents: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.</li><li><strong>Lesson fact:</strong> A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.</li><li><strong>Lesson fact:</strong> Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end changeover -->
+
+        <!-- stage10-explanation:start bug -->
+        <section class="panel explanation-panel" id="explanation-bug" data-explains="bug" data-explanation-kind="mechanism" aria-labelledby="explanation-bug-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
+          <h2 class="explanation-sr-only" id="explanation-bug-title">Analyse and amend an existing program</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-bug.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Analyse and amend an existing program with a structured visual model." />
+            <figcaption class="explanation-sr-only">Analyse and amend an existing program: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.</li><li><strong>Lesson fact:</strong> Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.</li><li><strong>Lesson fact:</strong> Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end bug -->
+
+        <!-- stage10-explanation:start boundary -->
+        <section class="panel explanation-panel" id="explanation-boundary" data-explains="boundary" data-explanation-kind="mechanism" aria-labelledby="explanation-boundary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="boundary">
+          <h2 class="explanation-sr-only" id="explanation-boundary-title">Extreme or boundary data uses valid values at accepted limits</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-boundary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Extreme or boundary data uses valid values at accepted limits with a structured visual model." />
+            <figcaption class="explanation-sr-only">Extreme or boundary data uses valid values at accepted limits: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Extreme/boundary data uses valid values at the accepted lower or upper limit.</li><li><strong>Lesson fact:</strong> For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.</li><li><strong>Lesson fact:</strong> Values just outside the limits, such as -1 and 101, are abnormal and should be rejected.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end boundary -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Testing, maintenance and enhancement: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which method derives tests from source-code paths?</p>
+              <details><summary>Show answer</summary><p>White-box testing.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Who normally performs beta testing?</p>
+              <details><summary>Show answer</summary><p>Selected external/end users in realistic use.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What does a stub replace?</p>
+              <details><summary>Show answer</summary><p>A called module/component not yet available.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one normal mark for 0 to 100 inclusive.</p>
+              <details><summary>Show answer</summary><p>Any valid non-boundary value, for example 55.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Give two valid extreme values.</p>
+              <details><summary>Show answer</summary><p>0 and 100.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> Give one abnormal boundary value.</p>
+              <details><summary>Show answer</summary><p>-1 or 101.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> Why does maintenance continue after acceptance?</p>
+              <details><summary>Show answer</summary><p>Faults, environmental changes and requested improvements continue after delivery.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> Which type changes software for a new external rule?</p>
+              <details><summary>Show answer</summary><p>Adaptive maintenance.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> Which type adds useful functionality or improves performance?</p>
+              <details><summary>Show answer</summary><p>Perfective maintenance.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>10.</strong> What should be recorded before changing existing code?</p>
+              <details><summary>Show answer</summary><p>Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>11.</strong> Why rerun old tests after adding a feature?</p>
+              <details><summary>Show answer</summary><p>Regression tests check that the amendment has not broken existing behaviour.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>12.</strong> How is an enhancement different from merely correcting a fault?</p>
+              <details><summary>Show answer</summary><p>An enhancement adds or improves required functionality; a correction restores behaviour that was already required.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>22 marks</span></div>
+            <p>Explain why a login-system project needs both a test strategy and a test plan. State three likely contents of each document. Suggest normal, abnormal and extreme/boundary data for an integer age accepted from 12 to 18 inclusive, and state each expected result. Identify and justify these changes: fix a save crash; support a new operating-system API; add an export feature. For one change, state the impact-analysis and regression evidence required. An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>strategy coordinates the overall approach, levels/methods or responsibilities</td><td>Do not require candidates to produce either document as a syllabus obligation; assess the need and likely contents. Do not credit a value whose classification contradicts the stated inclusive range. Do not classify every post-release change as adaptive or describe perfective maintenance as fault correction only. Do not accept a rewrite that removes the existing pass count, changes its boundary, or tests only the new feature.</td><td>1</td></tr>
+                  <tr><td>strategy content such as methods, sequence, responsibility or resources</td><td></td><td>1</td></tr>
+                  <tr><td>a second distinct strategy content</td><td></td><td>1</td></tr>
+                  <tr><td>plan records individual tests and their evidence</td><td></td><td>1</td></tr>
+                  <tr><td>plan content such as test ID, purpose, data or expected result</td><td></td><td>1</td></tr>
+                  <tr><td>a second distinct plan content such as actual result or pass/fail</td><td></td><td>1</td></tr>
+                  <tr><td>valid normal value</td><td></td><td>1</td></tr>
+                  <tr><td>12 and/or 18 as valid extremes</td><td></td><td>1</td></tr>
+                  <tr><td>11 and/or 19 as abnormal boundary</td><td></td><td>1</td></tr>
+                  <tr><td>coherent expected results</td><td></td><td>1</td></tr>
+                  <tr><td>save-crash fix classified as corrective with fault reason</td><td></td><td>1</td></tr>
+                  <tr><td>new operating-system API classified as adaptive with environment reason</td><td></td><td>1</td></tr>
+                  <tr><td>new export feature classified as perfective with enhancement reason</td><td></td><td>1</td></tr>
+                  <tr><td>identifies affected interfaces/modules or behaviour before amendment</td><td></td><td>1</td></tr>
+                  <tr><td>tests the changed path</td><td></td><td>1</td></tr>
+                  <tr><td>reruns relevant existing tests to detect regression</td><td></td><td>1</td></tr>
+                  <tr><td>analysis identifies the existing traversal and output that must remain</td><td></td><td>1</td></tr>
+                  <tr><td>declares and initialises MeritCount without removing PassCount</td><td></td><td>1</td></tr>
+                  <tr><td>increments MeritCount inside the existing traversal when mark is at least 70</td><td></td><td>1</td></tr>
+                  <tr><td>preserves the existing pass condition at 50 and outputs both results after the loop</td><td></td><td>1</td></tr>
+                  <tr><td>uses 49 and 50 to regression-test the pass boundary</td><td></td><td>1</td></tr>
+                  <tr><td>uses 69 and 70 to test the new merit boundary</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 146 | 45 minutes | Paper 2 Section 12 | stage review</p>
-            <h2>Review is not rereading. Review is choosing the right tool under exam pressure.</h2>
+            <p class="lesson-meta">Lesson 146 | 45 minutes | Paper 2 Section 12 | 5-minute quiz</p>
+            <h2>A system is not finished when it runs once. It is finished when it is tested, delivered, maintained and evaluated.</h2>
             <p>
-              This review lesson uses one case study to connect requirements, design documentation, implementation,
-              testing, maintenance and evaluation. Chinese support: review 复习, case study 案例, evidence 证据,
-              mark scheme 评分标准, consequence 后果。
+              This lesson connects the later software development stages: implementation, testing, maintenance and evaluation.
+              Chinese support: implementation 实施, testing 测试, test data 测试数据, maintenance 维护, evaluation 评价。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Recognise</strong><span>which Section 12 concept a question is testing</span></div>
-              <div><strong>Apply</strong><span>software development vocabulary to one scenario</span></div>
-              <div><strong>Improve</strong><span>weak answers using mark scheme evidence</span></div>
+              <div><strong>Distinguish</strong><span>implementation, testing, maintenance and evaluation</span></div>
+              <div><strong>Classify</strong><span>test data and maintenance types</span></div>
+              <div><strong>Explain</strong><span>how evidence links back to requirements and success criteria</span></div>
             </div>
           </div>
-          <div class="review-visual" aria-label="Section 12 review visual">
-            <div><strong>Analysis</strong><span>what is needed?</span><em>requirements and criteria</em></div>
-            <div><strong>Design</strong><span>how will it work?</span><em>algorithm, data, interface</em></div>
-            <div><strong>Testing</strong><span>does it behave?</span><em>test data and expected results</em></div>
-            <div><strong>Evaluation</strong><span>was it successful?</span><em>evidence against criteria</em></div>
+          <div class="lifecycle-visual" aria-label="Lifecycle visual">
+            <div><strong>Implementation</strong><span>build and install</span><em>from design to working system</em></div>
+            <div><strong>Testing</strong><span>find faults</span><em>normal, abnormal, boundary</em></div>
+            <div><strong>Maintenance</strong><span>change after release</span><em>corrective, adaptive, perfective</em></div>
+            <div><strong>Evaluation</strong><span>judge success</span><em>compare with criteria</em></div>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Mixed Section 12 questions punish generic answers. The same case study can ask for requirements in one part and evaluation in the next.</p>
+            <p>Cambridge answers often need cause and consequence: what is tested, why that test is useful, and how the result affects release or maintenance.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not write the lifecycle as a memorised list. Marks come from selecting the right stage and explaining it in the scenario.</p>
+            <p>Testing checks for faults. Evaluation judges whether the final system meets requirements and success criteria. They overlap, but they are not the same answer.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which syllabus concept is required first?</h2>
-            <p>Question stem: “A teacher says the system should be easy to use. Explain how this should be improved before design begins.”</p>
+            <h2>The booking system runs once. Can we release it?</h2>
+            <p>Pick the best response before the keyboard gets too proud of itself.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="testing">Testing</button>
-            <button class="choice-card" type="button" data-hook="analysis">Requirements analysis</button>
-            <button class="choice-card" type="button" data-hook="maintenance">Maintenance</button>
-            <button class="choice-card" type="button" data-hook="changeover">Changeover</button>
+            <button class="choice-card" type="button" data-hook="ship">Yes, one successful run proves it is correct.</button>
+            <button class="choice-card" type="button" data-hook="test">No, it needs planned testing with normal, abnormal and boundary data.</button>
+            <button class="choice-card" type="button" data-hook="pretty">Yes, if the interface looks modern.</button>
+            <button class="choice-card" type="button" data-hook="wait">No, but only because users always complain.</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Pick the stage that improves vague user needs before design.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the answer that gives evidence-based reasoning.</div>
         </section>
 
-        <section class="panel" id="case" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+        <section class="panel" id="implementation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
-            <p class="eyebrow">Case study</p>
-            <h2>School activity sign-up system</h2>
-          </div>
-          <div class="case-card">
-            <p>
-              A school wants a system for students to sign up for after-school activities. Students can view activities,
-              reserve a place, cancel a reservation and see a waiting list. Staff can create activities, set capacity,
-              view registers and close sign-ups. The school wants the system ready before the new term.
-            </p>
-          </div>
-          <div class="callout">Every review task on this page uses this case. That forces answers to be specific instead of floating around as textbook fog.</div>
-        </section>
-
-        <!-- stage10-explanation:start case -->
-        <section class="panel explanation-panel" id="explanation-case" data-explains="case" data-explanation-kind="synthesis" aria-labelledby="explanation-case-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-case-title">School activity sign-up system</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-case.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining School activity sign-up system with a structured visual model." />
-            <figcaption class="explanation-sr-only">School activity sign-up system: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Case study</li><li><strong>Lesson fact:</strong> A school wants a system for students to sign up for after-school activities. Students can view activities,</li><li><strong>Lesson fact:</strong> reserve a place, cancel a reservation and see a waiting list. Staff can create activities, set capacity,</li><li><strong>Lesson fact:</strong> view registers and close sign-ups. The school wants the system ready before the new term.</li><li><strong>Lesson fact:</strong> Every review task on this page uses this case. That forces answers to be specific instead of floating around as textbook fog.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end case -->
-        <section class="panel" id="lifecycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <div class="section-title">
-            <p class="eyebrow">Lifecycle map</p>
-            <h2>One scenario, many stages</h2>
-          </div>
-          <div class="data-table four-col" role="table" aria-label="Lifecycle map">
-            <div class="table-row table-head"><div>Stage</div><div>Output</div><div>Case study example</div><div>Risk if weak</div></div>
-            <div class="table-row"><div>Analysis</div><div>requirements and success criteria</div><div>reserve a place; prevent overbooking</div><div>wrong problem is solved</div></div>
-            <div class="table-row"><div>Design</div><div>algorithms, data dictionary, interface plans</div><div>waiting-list algorithm and ActivityID field</div><div>developers make inconsistent choices</div></div>
-            <div class="table-row"><div>Implementation</div><div>working configured system</div><div>student portal and staff screens installed</div><div>system cannot be used in school</div></div>
-            <div class="table-row"><div>Testing</div><div>test cases and evidence</div><div>capacity 20 accepts 20, rejects 21</div><div>faults remain hidden</div></div>
-            <div class="table-row"><div>Evaluation</div><div>judgement against criteria</div><div>95% sign-ups complete under target time</div><div>success is guessed, not proven</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start lifecycle -->
-        <section class="panel explanation-panel" id="explanation-lifecycle" data-explains="lifecycle" data-explanation-kind="synthesis" aria-labelledby="explanation-lifecycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-lifecycle-title">One scenario, many stages</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-lifecycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One scenario, many stages with a structured visual model." />
-            <figcaption class="explanation-sr-only">One scenario, many stages: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The syllabus names analysis, design, coding, testing and maintenance as the program development lifecycle stages.</li><li><strong>Lesson fact:</strong> Implementation may be used only as an explanation of coding, not as a replacement stage that removes testing or maintenance.</li><li><strong>Lesson fact:</strong> Operation and evaluation are not substitutes for the five named syllabus stages.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lifecycle -->
-        <section class="panel" id="analysis" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <div class="section-title">
-            <p class="eyebrow">Analysis review</p>
-            <h2>From vague request to measurable criteria</h2>
-          </div>
-          <div class="data-table three-col" role="table" aria-label="Analysis review examples">
-            <div class="table-row table-head"><div>Weak wording</div><div>Stronger requirement</div><div>Success criterion</div></div>
-            <div class="table-row"><div>easy sign-up</div><div>students can reserve a place using activity list, confirm button and student ID</div><div>90% of trial students reserve a place in under 2 minutes</div></div>
-            <div class="table-row"><div>avoid too many students</div><div>system prevents reservations above activity capacity</div><div>all tests at capacity plus one are rejected</div></div>
-            <div class="table-row"><div>staff need reports</div><div>staff can print or export a register for each activity</div><div>register includes all confirmed students and waiting-list status</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start analysis -->
-        <section class="panel explanation-panel" id="explanation-analysis" data-explains="analysis" data-explanation-kind="synthesis" aria-labelledby="explanation-analysis-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-analysis-title">From vague request to measurable criteria</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-analysis.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining From vague request to measurable criteria with a structured visual model." />
-            <figcaption class="explanation-sr-only">From vague request to measurable criteria: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Analysis review</li><li><strong>Lesson fact:</strong> Weak wording</li><li><strong>Lesson fact:</strong> Stronger requirement</li><li><strong>Lesson fact:</strong> Success criterion</li><li><strong>Lesson fact:</strong> easy sign-up</li><li><strong>Lesson fact:</strong> students can reserve a place using activity list, confirm button and student ID</li><li><strong>Lesson fact:</strong> 90% of trial students reserve a place in under 2 minutes</li><li><strong>Lesson fact:</strong> avoid too many students</li><li><strong>Lesson fact:</strong> system prevents reservations above activity capacity</li><li><strong>Lesson fact:</strong> all tests at capacity plus one are rejected</li><li><strong>Lesson fact:</strong> staff need reports</li><li><strong>Lesson fact:</strong> staff can print or export a register for each activity</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end analysis -->
-        <section class="panel" id="design" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <div class="section-title">
-            <p class="eyebrow">Design review</p>
-            <h2>Design answers must name the artefact</h2>
+            <p class="eyebrow">Implementation</p>
+            <h2>Implementation turns the design into a working system</h2>
           </div>
           <div class="card-grid">
-            <article><h3>Algorithm</h3><p>Describe how the system checks capacity and places extra students on a waiting list.</p></article>
-            <article><h3>Data dictionary</h3><p>Define ActivityID, StudentID, Capacity, PlacesTaken and WaitingListPosition.</p></article>
-            <article><h3>Interface</h3><p>Show activity list, reserve/cancel controls, confirmation prompts and validation messages.</p></article>
+            <article><h3>Build</h3><p>Program modules, create files or databases, implement interfaces and connect components.</p></article>
+            <article><h3>Install</h3><p>Put the system into the user environment, configure hardware, accounts, permissions and data.</p></article>
+            <article><h3>Document</h3><p>Prepare user instructions and technical notes so the system can be used and supported.</p></article>
           </div>
-          <div class="callout">Cambridge-style pseudocode is suitable for algorithm design. Java can support implementation practice, but final code is not the whole design document.</div>
+          <div class="callout">Implementation should follow the design documentation. If implementation silently changes the design, testing may no longer match the intended system.</div>
         </section>
 
-        <!-- stage10-explanation:start design -->
-        <section class="panel explanation-panel" id="explanation-design" data-explains="design" data-explanation-kind="synthesis" aria-labelledby="explanation-design-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-design-title">Design answers must name the artefact</h2>
+        <!-- stage10-explanation:start implementation -->
+        <section class="panel explanation-panel" id="explanation-implementation" data-explains="implementation" data-explanation-kind="mechanism" aria-labelledby="explanation-implementation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <h2 class="explanation-sr-only" id="explanation-implementation-title">Implementation turns the design into a working system</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-design.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design answers must name the artefact with a structured visual model." />
-            <figcaption class="explanation-sr-only">Design answers must name the artefact: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-implementation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Implementation turns the design into a working system with a structured visual model." />
+            <figcaption class="explanation-sr-only">Implementation turns the design into a working system: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Design review</li><li><strong>Lesson fact:</strong> Algorithm</li><li><strong>Lesson fact:</strong> Describe how the system checks capacity and places extra students on a waiting list.</li><li><strong>Lesson fact:</strong> Data dictionary</li><li><strong>Lesson fact:</strong> Define ActivityID, StudentID, Capacity, PlacesTaken and WaitingListPosition.</li><li><strong>Lesson fact:</strong> Interface</li><li><strong>Lesson fact:</strong> Show activity list, reserve/cancel controls, confirmation prompts and validation messages.</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode is suitable for algorithm design. Java can support implementation practice, but final code is not the whole design document.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Implementation</li><li><strong>Lesson fact:</strong> Program modules, create files or databases, implement interfaces and connect components.</li><li><strong>Lesson fact:</strong> Put the system into the user environment, configure hardware, accounts, permissions and data.</li><li><strong>Lesson fact:</strong> Document</li><li><strong>Lesson fact:</strong> Prepare user instructions and technical notes so the system can be used and supported.</li><li><strong>Lesson fact:</strong> Implementation should follow the design documentation. If implementation silently changes the design, testing may no longer match the intended system.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end design -->
+        <!-- stage10-explanation:end implementation -->
+        <section class="panel" id="changeover" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <div class="section-title">
+            <p class="eyebrow">Implementation strategies</p>
+            <h2>Changeover methods balance risk, cost and speed</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Changeover methods">
+            <div class="table-row table-head"><div>Method</div><div>Idea</div><div>Advantage</div><div>Risk or cost</div></div>
+            <div class="table-row"><div>Direct</div><div>old system stops; new system starts immediately</div><div>fast and cheaper</div><div>high risk if new system fails</div></div>
+            <div class="table-row"><div>Parallel</div><div>old and new run together for a time</div><div>outputs can be compared</div><div>expensive and more work</div></div>
+            <div class="table-row"><div>Phased</div><div>new system introduced one part at a time</div><div>faults are contained</div><div>takes longer</div></div>
+            <div class="table-row"><div>Pilot</div><div>new system trialled in one department or group</div><div>real feedback with limited risk</div><div>may not reveal every issue</div></div>
+          </div>
+        </section>
+
         <section class="panel" id="testing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
-            <p class="eyebrow">Testing review</p>
-            <h2>Test cases need data, expected result and purpose</h2>
+            <p class="eyebrow">Testing</p>
+            <h2>Testing is planned evidence that the system behaves as expected</h2>
           </div>
-          <div class="data-table four-col" role="table" aria-label="Testing review examples">
-            <div class="table-row table-head"><div>Rule</div><div>Test data</div><div>Expected result</div><div>Data type</div></div>
-            <div class="table-row"><div>activity capacity is 20</div><div>20th reservation</div><div>accepted</div><div>boundary valid</div></div>
-            <div class="table-row"><div>activity capacity is 20</div><div>21st reservation</div><div>added to waiting list or rejected by rule</div><div>boundary invalid</div></div>
-            <div class="table-row"><div>StudentID must be numeric</div><div>AB12</div><div>rejected with message</div><div>abnormal</div></div>
+          <div class="data-table four-col" role="table" aria-label="Testing stages">
+            <div class="table-row table-head"><div>Type</div><div>Focus</div><div>Example</div><div>Evidence</div></div>
+            <div class="table-row"><div>Unit testing</div><div>one module or subroutine</div><div>check clash detection function</div><div>actual output compared with expected output</div></div>
+            <div class="table-row"><div>Integration testing</div><div>modules working together</div><div>booking form sends data to save module</div><div>data passes correctly between parts</div></div>
+            <div class="table-row"><div>System testing</div><div>whole system</div><div>complete booking workflow</div><div>end-to-end results</div></div>
+            <div class="table-row"><div>Acceptance testing</div><div>user needs and success criteria</div><div>teacher completes booking under target time</div><div>user trial records</div></div>
           </div>
         </section>
 
         <!-- stage10-explanation:start testing -->
-        <section class="panel explanation-panel" id="explanation-testing" data-explains="testing" data-explanation-kind="synthesis" aria-labelledby="explanation-testing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-testing-title">Test cases need data, expected result and purpose</h2>
+        <section class="panel explanation-panel" id="explanation-testing" data-explains="testing" data-explanation-kind="mechanism" aria-labelledby="explanation-testing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <h2 class="explanation-sr-only" id="explanation-testing-title">Testing is planned evidence that the system behaves as expected</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-testing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Test cases need data, expected result and purpose with a structured visual model." />
-            <figcaption class="explanation-sr-only">Test cases need data, expected result and purpose: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-testing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Testing is planned evidence that the system behaves as expected with a structured visual model." />
+            <figcaption class="explanation-sr-only">Testing is planned evidence that the system behaves as expected: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Normal data is valid and typical; boundary data is at an accepted limit; abnormal data violates the stated validation rule.</li><li><strong>Lesson fact:</strong> A 21st valid reservation at a capacity boundary requires the defined business outcome, such as waiting list or rejection due to capacity.</li><li><strong>Lesson fact:</strong> Do not call a request invalid unless it violates a stated input-validity rule.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Unit testing</li><li><strong>Lesson fact:</strong> one module or subroutine</li><li><strong>Lesson fact:</strong> check clash detection function</li><li><strong>Lesson fact:</strong> actual output compared with expected output</li><li><strong>Lesson fact:</strong> Integration testing</li><li><strong>Lesson fact:</strong> modules working together</li><li><strong>Lesson fact:</strong> booking form sends data to save module</li><li><strong>Lesson fact:</strong> data passes correctly between parts</li><li><strong>Lesson fact:</strong> System testing</li><li><strong>Lesson fact:</strong> whole system</li><li><strong>Lesson fact:</strong> complete booking workflow</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end testing -->
-        <section class="panel" id="evaluation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+        <section class="panel" id="test-data" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
-            <p class="eyebrow">Maintenance and evaluation review</p>
-            <h2>After release, classify changes and judge success with evidence</h2>
+            <p class="eyebrow">Test data</p>
+            <h2>Good testing uses different categories of data</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Maintenance examples</h3>
-              <ul>
-                <li>Corrective: fix a crash when cancelling a reservation.</li>
-                <li>Adaptive: change the system for a new two-term activity structure.</li>
-                <li>Perfective: make the activity search faster or clearer.</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Evaluation evidence</h3>
-              <ul>
-                <li>Timing logs from sign-up tasks.</li>
-                <li>User survey results linked to success criteria.</li>
-                <li>Test records showing capacity rules were met.</li>
-              </ul>
-            </article>
+          <div class="data-table four-col" role="table" aria-label="Test data categories">
+            <div class="table-row table-head"><div>Category</div><div>Meaning</div><div>Room capacity example</div><div>Expected result</div></div>
+            <div class="table-row"><div>Normal</div><div>valid typical data</div><div>24 students for capacity 30</div><div>accepted</div></div>
+            <div class="table-row"><div>Boundary</div><div>valid or invalid data at the edge</div><div>30 and 31 for capacity 30</div><div>30 accepted; 31 rejected</div></div>
+            <div class="table-row"><div>Abnormal</div><div>invalid data of wrong type or outside rules</div><div>minus 4 or “many”</div><div>rejected with message</div></div>
+            <div class="table-row"><div>Extreme</div><div>largest or smallest valid value</div><div>1 and 30 if valid range is 1 to 30</div><div>accepted</div></div>
           </div>
         </section>
 
+        <section class="panel" id="maintenance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <div class="section-title">
+            <p class="eyebrow">Maintenance</p>
+            <h2>Maintenance changes a system after it has been delivered</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Corrective</h3><p>Fixing faults found after release, such as a booking clash that was not rejected.</p></article>
+            <article><h3>Adaptive</h3><p>Changing the system because the environment changes, such as a new timetable structure.</p></article>
+            <article><h3>Perfective</h3><p>Improving performance, usability or features, such as faster room search.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="evaluation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <div class="section-title">
+            <p class="eyebrow">Evaluation</p>
+            <h2>Evaluation judges the final system against requirements and success criteria</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Evaluation evidence">
+            <div class="table-row table-head"><div>Success criterion</div><div>Evidence</div><div>Evaluation judgement</div></div>
+            <div class="table-row"><div>teachers create booking in under 2 minutes</div><div>8 out of 10 trial users met the target</div><div>criterion met, but training may help remaining users</div></div>
+            <div class="table-row"><div>reject double bookings</div><div>all clash test cases rejected invalid bookings</div><div>criterion met for tested cases</div></div>
+            <div class="table-row"><div>search within 2 seconds</div><div>95 of 100 searches completed within target</div><div>criterion met if target was 95%</div></div>
+          </div>
+          <div class="callout">Evaluation should be evidence-based. “Users liked it” is weak unless it is connected to a measured survey, task result or success criterion.</div>
+        </section>
+
         <!-- stage10-explanation:start evaluation -->
-        <section class="panel explanation-panel" id="explanation-evaluation" data-explains="evaluation" data-explanation-kind="synthesis" aria-labelledby="explanation-evaluation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-evaluation-title">After release, classify changes and judge success with evidence</h2>
+        <section class="panel explanation-panel" id="explanation-evaluation" data-explains="evaluation" data-explanation-kind="mechanism" aria-labelledby="explanation-evaluation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <h2 class="explanation-sr-only" id="explanation-evaluation-title">Evaluation uses requirements and measurable success criteria</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-evaluation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining After release, classify changes and judge success with evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">After release, classify changes and judge success with evidence: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-evaluation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Evaluation uses requirements and measurable success criteria with a structured visual model." />
+            <figcaption class="explanation-sr-only">Evaluation uses requirements and measurable success criteria: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Maintenance and evaluation review</li><li><strong>Lesson fact:</strong> Maintenance examples</li><li><strong>Lesson fact:</strong> Corrective: fix a crash when cancelling a reservation.</li><li><strong>Lesson fact:</strong> Adaptive: change the system for a new two-term activity structure.</li><li><strong>Lesson fact:</strong> Perfective: make the activity search faster or clearer.</li><li><strong>Lesson fact:</strong> Evaluation evidence</li><li><strong>Lesson fact:</strong> Timing logs from sign-up tasks.</li><li><strong>Lesson fact:</strong> User survey results linked to success criteria.</li><li><strong>Lesson fact:</strong> Test records showing capacity rules were met.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A success criterion must state a measurable threshold before evidence can be judged against it.</li><li><strong>Lesson fact:</strong> If 8 of 10 users or 95 of 100 searches is sufficient, state that threshold explicitly.</li><li><strong>Lesson fact:</strong> Without a threshold, do not label partial evidence as an unqualified criterion met.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end evaluation -->
-        <section class="panel" id="commands" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+        <section class="panel" id="stage-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
-            <p class="eyebrow">Command words</p>
-            <h2>Match response depth to the command</h2>
-          </div>
-          <div class="data-table three-col" role="table" aria-label="Command words">
-            <div class="table-row table-head"><div>Command</div><div>What to do</div><div>Weak answer pattern</div></div>
-            <div class="table-row"><div>State</div><div>give a precise term or fact</div><div>writing a paragraph without the keyword</div></div>
-            <div class="table-row"><div>Describe</div><div>say what it is like or how it works</div><div>naming only</div></div>
-            <div class="table-row"><div>Explain</div><div>give cause and consequence in context</div><div>saying “it is better”</div></div>
-            <div class="table-row"><div>Evaluate</div><div>make a judgement using evidence</div><div>listing features with no conclusion</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start commands -->
-        <section class="panel explanation-panel" id="explanation-commands" data-explains="commands" data-explanation-kind="synthesis" aria-labelledby="explanation-commands-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-commands-title">Match response depth to the command</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-commands.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match response depth to the command with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match response depth to the command: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Explain sets out reasons or relationships and says why or how.</li><li><strong>Lesson fact:</strong> Evaluate makes a judgement about quality, importance, amount or value using evidence.</li><li><strong>Lesson fact:</strong> Cause and consequence support an explanation; they do not replace the judgement required by evaluate.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end commands -->
-        <section class="panel" id="case-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <div class="section-title">
-            <p class="eyebrow">Interactive case tool</p>
-            <h2>Identify the Section 12 concept</h2>
+            <p class="eyebrow">Interactive stage chooser</p>
+            <h2>Which lifecycle stage is being described?</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Case detail
-              <select id="caseSelect">
-                <option value="capacity">The system must prevent activity reservations above capacity</option>
-                <option value="field">ActivityID is a STRING of length 5 and must be unique</option>
-                <option value="run">The old paper sign-up sheet and new system are used together for two weeks</option>
-                <option value="judge">Trial data shows 92% of students signed up in under 2 minutes</option>
+              Scenario
+              <select id="stageSelect">
+                <option value="build">Programmers create modules from the design documents</option>
+                <option value="compare">Actual output is compared with expected output</option>
+                <option value="fix">A fault found after release is corrected</option>
+                <option value="judge">The final system is compared with success criteria</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="caseBtn">Identify concept</button>
+            <button class="primary-button" type="button" id="stageBtn">Identify stage</button>
           </div>
-          <div id="caseOutput" class="trace-output" aria-live="polite"></div>
+          <div id="stageOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start case-tool -->
-        <section class="panel explanation-panel" id="explanation-case-tool" data-explains="case-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-case-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-case-tool-title">Identify the Section 12 concept</h2>
+        <!-- stage10-explanation:start stage-tool -->
+        <section class="panel explanation-panel" id="explanation-stage-tool" data-explains="stage-tool" data-explanation-kind="process" aria-labelledby="explanation-stage-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <h2 class="explanation-sr-only" id="explanation-stage-tool-title">Which lifecycle stage is being described?</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-case-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify the Section 12 concept with a structured visual model." />
-            <figcaption class="explanation-sr-only">Identify the Section 12 concept: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-stage-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which lifecycle stage is being described? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Which lifecycle stage is being described?: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive case tool</li><li><strong>Lesson fact:</strong> Case detail</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive stage chooser</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end case-tool -->
-        <section class="panel" id="answer-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+        <!-- stage10-explanation:end stage-tool -->
+        <section class="panel" id="data-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
-            <p class="eyebrow">Answer improver</p>
-            <h2>Turn a weak line into a mark-worthy line</h2>
+            <p class="eyebrow">Test data classifier</p>
+            <h2>Classify input for NumberOfStudents, valid range 1 to 30</h2>
           </div>
           <div class="tool-grid">
             <label>
-              Weak answer
-              <select id="answerSelect">
-                <option value="easy">The system should be easy to use.</option>
-                <option value="test">Test it to see if it works.</option>
-                <option value="maintain">Maintenance makes it better.</option>
+              Test value
+              <select id="dataSelect">
+                <option value="24">24</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="text">many</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="answerBtn">Improve answer</button>
+            <button class="primary-button" type="button" id="dataBtn">Classify data</button>
           </div>
-          <div id="answerOutput" class="trace-output" aria-live="polite"></div>
+          <div id="dataOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <!-- stage10-explanation:start answer-tool -->
-        <section class="panel explanation-panel" id="explanation-answer-tool" data-explains="answer-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-answer-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
-          <h2 class="explanation-sr-only" id="explanation-answer-tool-title">Turn a weak line into a mark-worthy line</h2>
+        <!-- stage10-explanation:start data-tool -->
+        <section class="panel explanation-panel" id="explanation-data-tool" data-explains="data-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-data-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
+          <h2 class="explanation-sr-only" id="explanation-data-tool-title">Classify input for NumberOfStudents, valid range 1 to 30</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-answer-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn a weak line into a mark-worthy line with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn a weak line into a mark-worthy line: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-data-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify input for NumberOfStudents, valid range 1 to 30 with a structured visual model." />
+            <figcaption class="explanation-sr-only">Classify input for NumberOfStudents, valid range 1 to 30: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Answer improver</li><li><strong>Lesson fact:</strong> Weak answer</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Test data classifier</li><li><strong>Lesson fact:</strong> Test value</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end answer-tool -->
+        <!-- stage10-explanation:end data-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Annotate what earns the mark</h2>
+            <h2>From test plan to evaluation judgement</h2>
           </div>
           <div class="tab-row" role="tablist" aria-label="Worked examples">
-            <button class="tab-button active" type="button" data-example="requirements">Requirements</button>
-            <button class="tab-button" type="button" data-example="testing">Testing</button>
+            <button class="tab-button active" type="button" data-example="testcase">Test case</button>
+            <button class="tab-button" type="button" data-example="changeover">Changeover</button>
             <button class="tab-button" type="button" data-example="evaluation">Evaluation</button>
           </div>
           <div id="exampleOutput" class="example-output"></div>
@@ -380,7 +494,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short retrieval before the longer questions</h2>
+            <h2>Answer, check, then reveal the model answer if needed</h2>
           </div>
           <div id="practiceList" class="practice-list"></div>
         </section>
@@ -388,7 +502,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the review answer</h2>
+            <h2>Fix the lifecycle mix-up</h2>
           </div>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
@@ -396,7 +510,7 @@
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Mixed Section 12 questions with expandable MS</h2>
+            <h2>Cambridge-style questions with expandable MS</h2>
             <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
           </div>
           <div id="examList" class="exam-list"></div>
@@ -405,34 +519,34 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-146">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>The review rule</h2>
+            <h2>What to remember</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Name</strong><span>identify the stage or concept first</span></div>
-            <div><strong>Context</strong><span>use the activity sign-up scenario, not generic wording</span></div>
-            <div><strong>Evidence</strong><span>link to test result, criterion, user need or consequence</span></div>
+            <div><strong>Testing</strong><span>planned test data, expected results and actual results</span></div>
+            <div><strong>Maintenance</strong><span>corrective, adaptive and perfective changes after release</span></div>
+            <div><strong>Evaluation</strong><span>judgement against requirements and success criteria using evidence</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Complete one full Section 12 case-study response pack</h2>
+            <h2>Complete a release evidence pack for a booking system</h2>
           </div>
           <ol class="homework-list">
-            <li>Write three requirements and two measurable success criteria for the activity sign-up system.</li>
-            <li>Create one data dictionary entry and one algorithm outline for the waiting-list feature.</li>
-            <li>Write four test cases for capacity, including normal, boundary and abnormal data.</li>
-            <li>Answer one 6-mark evaluation question using evidence and a clear judgement.</li>
+            <li>Write four test cases for NumberOfStudents, including normal, boundary and abnormal data.</li>
+            <li>Choose one changeover method for a school booking system and justify it with one advantage and one risk.</li>
+            <li>Classify three maintenance requests as corrective, adaptive or perfective, with a reason for each.</li>
+            <li>Write a 6-mark evaluation paragraph using at least two success criteria and evidence.</li>
           </ol>
-          <div class="callout">Marking focus: precise Section 12 vocabulary, case-specific examples, and no unsupported “better/easier/faster” claims.</div>
+          <div class="callout">Marking focus: named stage, specific evidence, and a consequence. Avoid “better” unless you say better at what.</div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -47,15 +47,24 @@ for (const id of scopedRequirements) {
   expect(requirement.evidenceReviewStatus === "Reviewed", `${id}: evidence mapping is not independently reviewed`);
 }
 
+const vectorRequirement = requirements.get("S1.09");
+const soundRequirement = requirements.get("S1.10");
+expect(JSON.stringify(vectorRequirement?.teachingLessons) === JSON.stringify([10])
+  && vectorRequirement?.firstTeachingEvidence?.lesson === 10,
+"S1.09 vector teaching must be owned directly by Lesson 010");
+expect(vectorRequirement?.firstTeachingEvidence?.lesson < soundRequirement?.firstTeachingEvidence?.lesson,
+"S1.09 vector first use must precede S1.10 sound first use in official syllabus order");
+
 const checks = [
   ["001", ["kibi", "kilo", "mebi", "mega", "gibi", "giga", "tebi", "tera", "powers of 1024", "powers of 1000"]],
   ["002", ["integer conversion", "binary is base 2", "denary is base 10"]],
-  ["003", ["hexadecimal is base 16", "binary", "denary", "integer", "bcd", "digital clocks", "memory addresses"]],
+  ["003", ["hexadecimal is base 16", "binary", "denary", "integer"]],
   ["004", ["binary addition", "fixed-width overflow", "representable"]],
   ["005", ["one's-complement representation", "two's-complement representation", "binary subtraction", "negative"]],
+  ["006", ["bcd", "digital clocks", "memory addresses"]],
   ["007", ["ascii", "extended ascii", "unicode", "stored internally in binary", "not expected to memorise"]],
   ["009", ["bitmap", "width in pixels", "height in pixels", "colour depth", "divide by 8", "metadata", "file header", "only when"]],
-  ["012", ["vector encoding", "drawing list", "drawing objects", "properties", "given application", "bitmap"]],
+  ["010", ["vector encoding", "drawing list", "drawing objects", "properties", "given application", "bitmap"]],
 ];
 for (const [lesson, terms] of checks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -70,12 +79,12 @@ for (const [lesson, terms] of checks) {
 
 includesAll(questionText("L001-Q2"), ["MB", "MiB", "different prefix systems"], "L001-Q2 prefix assessment");
 includesAll(questionText("L005-Q5"), ["18 - 27", "complement", "11110111", "-9"], "L005-Q5 subtraction assessment");
-includesAll(questionText("AQ010-Q1"), ["BCD", "digital clock", "four-bit"], "Quiz 10 BCD application assessment");
-includesAll(questionText("AQ010-Q2"), ["Unicode", "ASCII", "worldwide messaging"], "Quiz 10 character-set assessment");
-includesAll(questionText("AQ010-Q3"), ["bitmap", "colour depth", "bytes", "file header", "metadata"], "Quiz 10 bitmap pixel-data assessment");
-includesAll(questionText("AQ010-Q4"), ["pixel data", "54-byte header", "20,054 bytes", "metadata"], "Quiz 10 bitmap metadata assessment");
+includesAll(questionText("AQ011-Q1"), ["BCD", "digital clock", "four-bit"], "Quiz 10 BCD application assessment");
+includesAll(questionText("AQ011-Q2"), ["Unicode", "ASCII", "worldwide messaging"], "Quiz 10 character-set assessment");
+includesAll(questionText("AQ011-Q3"), ["bitmap", "colour depth", "bytes", "file header", "metadata"], "Quiz 10 bitmap pixel-data assessment");
+includesAll(questionText("AQ011-Q4"), ["pixel data", "54-byte header", "20,054 bytes", "metadata"], "Quiz 10 bitmap metadata assessment");
 includesAll(questionText("L009-Q5"), ["bitmap", "metadata", "17 KiB"], "L009 bitmap total-size assessment");
-includesAll(questionText("AQ015-Q4"), ["bitmap", "vector", "school logo", "without pixelation"], "Quiz 15 vector application assessment");
+includesAll(questionText("AQ016-Q4"), ["bitmap", "vector", "school logo", "without pixelation"], "Quiz 15 vector application assessment");
 
 const mutations = [
   ["S1.01", /\b(?:tebi|TiB)\b/gi],
@@ -99,7 +108,7 @@ for (const [id, pattern] of mutations) {
 }
 
 const assessmentMutation = evaluateRequirement(requirements.get("S1.06"), {
-  questionTransform: (question) => question.id === "AQ010-Q1"
+  questionTransform: (question) => question.id === "AQ011-Q1"
     ? {
         ...question,
         prompt: question.prompt.replace(/digital clock/gi, "device"),
@@ -108,7 +117,7 @@ const assessmentMutation = evaluateRequirement(requirements.get("S1.06"), {
       }
     : question,
 });
-expect(assessmentMutation.status === "Partial", "mutation escaped: removing the BCD application from AQ010-Q1 must fail S1.06");
+expect(assessmentMutation.status === "Partial", "mutation escaped: removing the BCD application from AQ011-Q1 must fail S1.06");
 
 const ledger = JSON.parse(read("audits/repair-batch-6-section1-foundations.json"));
 expect(ledger.status === "Resolved" && ledger.records.length === 8, "Batch 6 ledger must resolve exactly eight requirement records");

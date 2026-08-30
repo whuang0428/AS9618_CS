@@ -15,8 +15,8 @@ let followThroughCount = 0;
 
 const fail = (message) => failures.push(message);
 
-if (lessonDirectories.length !== 150) {
-  fail(`Expected 150 lesson directories; found ${lessonDirectories.length}`);
+if (lessonDirectories.length !== 151) {
+  fail(`Expected 151 lesson directories; found ${lessonDirectories.length}`);
 }
 
 for (const directory of lessonDirectories) {

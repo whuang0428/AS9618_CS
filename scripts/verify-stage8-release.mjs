@@ -16,7 +16,7 @@ expect(fs.existsSync(metadataPath), "Stage 8 release metadata is missing");
 const metadata = JSON.parse(fs.readFileSync(metadataPath, "utf8"));
 expect(metadata.version === "1.0.0", "Stage 8 release version must be 1.0.0");
 expect(metadata.stage === 8 && metadata.status === "final", "Stage 8 metadata is not final");
-expect(metadata.counts.lessons === 150 && metadata.counts.webPages === 153 && metadata.counts.assessments === 51,
+expect(metadata.counts.lessons === 151 && metadata.counts.webPages === 154 && metadata.counts.assessments === 51,
   "Stage 8 release counts are invalid");
 
 const archivePath = path.join(root, "dist", metadata.archiveName);

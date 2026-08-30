@@ -1,106 +1,114 @@
-const chooserScenarios = [
+const scenarios = [
   {
-    id: "pass",
+    id: "sequence",
+    text: "Input Price, input Quantity, calculate Total, output Total.",
+    construct: "Sequence",
+    reason: "The statements must run in a fixed order so the calculation uses values that already exist.",
+  },
+  {
+    id: "selection",
     text: "Output Pass if Mark is at least 50, otherwise output Resit needed.",
-    construct: "IF...ELSE",
-    reason: "A relational condition, Mark >= 50, creates two possible paths.",
+    construct: "Selection",
+    reason: "A condition decides which path is taken.",
   },
   {
-    id: "menu",
-    text: "A menu has choices 1, 2, 3 and an invalid option.",
-    construct: "CASE",
-    reason: "One expression, Choice, is matched against several discrete values.",
+    id: "forLoop",
+    text: "Output every element from index 1 to index 30.",
+    construct: "Iteration using FOR",
+    reason: "The number of repetitions is known from the index range.",
   },
   {
-    id: "discount",
-    text: "Adults get one discount if they are members and another if they are not.",
-    construct: "Nested IF",
-    reason: "Membership is checked only after the age decision has been made.",
+    id: "whileLoop",
+    text: "Keep asking for a password while the password is not correct.",
+    construct: "Iteration using WHILE",
+    reason: "The number of attempts is not known in advance and the condition is checked before repeating.",
   },
   {
-    id: "grade",
-    text: "Output A for marks 80 or above, B for 70 or above, otherwise C.",
-    construct: "Nested IF or clear IF chain",
-    reason: "Ranges use comparisons rather than simple discrete values.",
+    id: "repeatLoop",
+    text: "Ask for a menu choice at least once and repeat until it is valid.",
+    construct: "Iteration using REPEAT UNTIL",
+    reason: "The prompt must run once before the stopping condition is checked.",
   },
 ];
 
 const examples = {
-  ifPass: {
-    title: "Example 1: IF pass mark",
+  sequence: {
+    title: "Example 1: Sequence",
+    problem: "Calculate and output the total cost from Price and Quantity.",
+    rows: [
+      ["1", "INPUT Price", "value must exist before use"],
+      ["2", "INPUT Quantity", "second input value"],
+      ["3", "Total <- Price * Quantity", "calculation after inputs"],
+      ["4", "OUTPUT Total", "output after calculation"],
+    ],
+    code: "INPUT Price\nINPUT Quantity\nTotal <- Price * Quantity\nOUTPUT Total",
+    points: ["Order matters.", "Assignment stores the result.", "Output should happen after the value is calculated."],
+  },
+  selection: {
+    title: "Example 2: Selection with a boundary",
     problem: "Output Pass when Mark is at least 50.",
     rows: [
-      ["49", "false", "Resit needed"],
-      ["50", "true", "Pass"],
-      ["51", "true", "Pass"],
+      ["Mark = 49", "condition false", "Resit needed"],
+      ["Mark = 50", "condition true", "Pass"],
+      ["Mark = 51", "condition true", "Pass"],
     ],
     code: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
-    points: ["Use >= because 50 is included.", "ELSE handles the false path.", "Boundary testing checks the condition."],
+    points: [">= is needed because 50 is included.", "ELSE handles the false path.", "ENDIF closes the selection."],
   },
-  caseMenu: {
-    title: "Example 2: CASE menu",
-    problem: "Output an action for menu choices 1, 2 or 3.",
+  forLoop: {
+    title: "Example 3: Count-controlled iteration",
+    problem: "Add the numbers 1 to 4.",
     rows: [
-      ["1", "Add record", "matched case"],
-      ["2", "Delete record", "matched case"],
-      ["9", "Invalid choice", "OTHERWISE"],
+      ["Count = 1", "Total = 1", "first iteration"],
+      ["Count = 2", "Total = 3", "second iteration"],
+      ["Count = 3", "Total = 6", "third iteration"],
+      ["Count = 4", "Total = 10", "fourth iteration"],
     ],
-    code: "INPUT Choice\nCASE Choice OF\n    1 : OUTPUT \"Add record\"\n    2 : OUTPUT \"Delete record\"\n    3 : OUTPUT \"Search\"\n    OTHERWISE OUTPUT \"Invalid choice\"\nENDCASE",
-    points: ["CASE compares one expression with clear values.", "OTHERWISE handles invalid or unexpected values.", "ENDCASE closes the structure."],
+    code: "Total <- 0\nFOR Count <- 1 TO 4\n    Total <- Total + Count\nNEXT Count\nOUTPUT Total",
+    points: ["FOR is suitable because the number of repeats is known.", "Total must be initialised before the loop.", "The final output is 10."],
   },
-  nestedDiscount: {
-    title: "Example 3: Nested discount",
-    problem: "Adults get different discounts depending on membership; non-adults get a child discount.",
+  whileLoop: {
+    title: "Example 4: Condition-controlled iteration",
+    problem: "Keep asking while Password is not correct.",
     rows: [
-      ["Age 20, Member TRUE", "outer true, inner true", "0.20"],
-      ["Age 20, Member FALSE", "outer true, inner false", "0.10"],
-      ["Age 17, Member TRUE", "outer false", "0.05"],
+      ["Before loop", "condition checked", "may run zero times"],
+      ["Inside loop", "INPUT Password", "state changes"],
+      ["After input", "condition checked again", "loop may stop"],
     ],
-    code: "IF Age >= 18 THEN\n    IF Member = TRUE THEN\n        Discount <- 0.20\n    ELSE\n        Discount <- 0.10\n    ENDIF\nELSE\n    Discount <- 0.05\nENDIF",
-    points: ["The inner IF only runs for adults.", "Each IF needs its own ENDIF.", "Indentation makes the branch structure readable."],
-  },
-  rangeGrade: {
-    title: "Example 4: Grade ranges",
-    problem: "Assign A for marks >= 80, B for marks >= 70, otherwise C.",
-    rows: [
-      ["85", "first condition true", "A"],
-      ["75", "first false, nested true", "B"],
-      ["62", "both false", "C"],
-    ],
-    code: "IF Mark >= 80 THEN\n    Grade <- \"A\"\nELSE\n    IF Mark >= 70 THEN\n        Grade <- \"B\"\n    ELSE\n        Grade <- \"C\"\n    ENDIF\nENDIF",
-    points: ["Check the highest boundary first.", "A mark of 85 should not fall through to B.", "Nested IF handles range comparisons."],
+    code: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"",
+    points: ["The condition is checked before each iteration.", "The variable in the condition must be updated.", "Missing the second input can cause an infinite loop."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which selection structure is best for menu choices 1, 2, 3 and OTHERWISE?", accepted: ["case"], answer: "CASE is best because one expression has several discrete values." },
-  { id: "p2", prompt: "What keyword closes an IF in Cambridge-style pseudocode?", accepted: ["endif"], answer: "ENDIF." },
-  { id: "p3", prompt: "What keyword handles unmatched CASE values?", accepted: ["otherwise"], answer: "OTHERWISE." },
-  { id: "p4", prompt: "What keyword closes a CASE structure?", accepted: ["endcase"], answer: "ENDCASE." },
-  { id: "p5", prompt: "For a pass mark of 50, should the condition use > 50 or >= 50?", accepted: [">=", ">= 50", "mark >= 50", "greater than or equal"], answer: "Use >= 50 because 50 is included." },
-  { id: "p6", prompt: "A decision inside another decision is called what?", accepted: ["nested", "nested selection", "nested if"], answer: "Nested selection, often a nested IF." },
-  { id: "p7", prompt: "Trace: Choice = 9 in a CASE with 1, 2, 3 and OTHERWISE. Which branch runs?", accepted: ["otherwise"], answer: "OTHERWISE runs." },
-  { id: "p8", prompt: "Trace: Age = 17 in the discount nested IF. What discount is assigned?", accepted: ["0.05", "5%", "0.05 discount"], answer: "0.05, because the outer Age >= 18 condition is false." },
-  { id: "p9", prompt: "Why is CASE less suitable for Mark >= 80, Mark >= 70 ranges? Use one word.", accepted: ["range", "ranges", "comparison", "comparisons"], answer: "Ranges need comparisons; IF is clearer." },
-  { id: "p10", prompt: "Name one test type especially useful for selection conditions.", accepted: ["boundary", "normal", "invalid"], answer: "Boundary, normal or invalid test data. Boundary is especially useful for conditions such as >= 50." },
+  { id: "p1", prompt: "What construct runs statements one after another in order?", accepted: ["sequence"], answer: "Sequence." },
+  { id: "p2", prompt: "What construct chooses between paths using a condition?", accepted: ["selection"], answer: "Selection." },
+  { id: "p3", prompt: "What construct repeats a block of statements?", accepted: ["iteration", "loop"], answer: "Iteration, also called looping." },
+  { id: "p4", prompt: "Which loop is best when the number of repetitions is known?", accepted: ["for", "for loop"], answer: "FOR loop." },
+  { id: "p5", prompt: "Which loop checks the condition before the body may run?", accepted: ["while", "while loop"], answer: "WHILE loop." },
+  { id: "p6", prompt: "Which loop runs at least once before checking the stopping condition?", accepted: ["repeat", "repeat until", "repeat...until"], answer: "REPEAT...UNTIL." },
+  { id: "p7", prompt: "For pass mark 50, should the condition be Mark > 50 or Mark >= 50?", accepted: [">=", "mark >= 50", "greater than or equal"], answer: "Mark >= 50, because 50 is a pass." },
+  { id: "p8", prompt: "Trace: Total <- 0; FOR Count <- 1 TO 3; Total <- Total + Count. Final Total?", accepted: ["6"], answer: "6." },
+  { id: "p9", prompt: "What keyword closes an IF selection in Cambridge-style pseudocode?", accepted: ["endif"], answer: "ENDIF." },
+  { id: "p10", prompt: "What keyword closes a FOR loop in Cambridge-style pseudocode?", accepted: ["next", "next count"], answer: "NEXT, often written as NEXT Count." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes IF Mark > 50 THEN for a pass mark of 50.",
-    fix: "Use IF Mark >= 50 THEN. The boundary value 50 must take the Pass branch.",
+    wrong: "The condition is IF Mark > 50 THEN, but 50 should pass.",
+    fix: "Use IF Mark >= 50 THEN. Boundary values such as 49, 50 and 51 expose this error.",
   },
   {
-    wrong: "A student uses CASE for mark ranges such as >= 80 and >= 70.",
-    fix: "Use IF or nested IF for ranges because each branch needs a relational comparison.",
+    wrong: "The WHILE loop condition uses Password, but Password is never input again inside the loop.",
+    fix: "Update the variable tested by the condition inside the loop, otherwise the loop may never terminate.",
   },
   {
-    wrong: "A nested IF has only one ENDIF.",
-    fix: "Each IF must be closed. A nested IF normally needs one ENDIF for the inner IF and one for the outer IF.",
+    wrong: "The answer uses Java braces and semicolons in a Cambridge pseudocode question.",
+    fix: "Write Cambridge-style pseudocode with THEN, ELSE, ENDIF, NEXT or ENDWHILE. Java is support only.",
   },
   {
-    wrong: "A CASE menu has no OTHERWISE branch.",
-    fix: "Add OTHERWISE to handle invalid or unexpected values, especially in exam scenarios involving menu input.",
+    wrong: "The program calculates Total before inputting Price and Quantity.",
+    fix: "Use sequence correctly: input values first, then calculate, then output.",
   },
 ];
 
@@ -113,96 +121,99 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "7 marks",
-    prompt: "Write Cambridge-style pseudocode to input Mark and output Distinction if Mark is 80 or more, Pass if Mark is 50 or more, otherwise Fail.",
-    answer: "INPUT Mark\nIF Mark >= 80 THEN\n    OUTPUT \"Distinction\"\nELSE\n    IF Mark >= 50 THEN\n        OUTPUT \"Pass\"\n    ELSE\n        OUTPUT \"Fail\"\n    ENDIF\nENDIF",
+    marks: "6 marks",
+    prompt: "Write Cambridge-style pseudocode that inputs Price and Quantity, calculates TotalCost, then outputs TotalCost. Identify the construct mainly used.",
+    answer: "INPUT Price\nINPUT Quantity\nTotalCost <- Price * Quantity\nOUTPUT TotalCost\n\nThe main construct is sequence.",
     marking: [
-      { mark: "B1", text: "inputs Mark" },
-      { mark: "M1", text: "uses selection structure with conditions" },
-      { mark: "A1", text: "tests Mark >= 80 before Mark >= 50" },
-      { mark: "B1", text: "outputs Distinction for Mark >= 80" },
-      { mark: "A1", text: "outputs Pass for 50 <= Mark < 80" },
-      { mark: "A1", text: "outputs Fail for Mark < 50" },
-      { mark: "B1", text: "closes IF structures appropriately" },
+      { mark: "B1", text: "inputs Price" },
+      { mark: "B1", text: "inputs Quantity" },
+      { mark: "M1", text: "calculates TotalCost using Price * Quantity after the inputs" },
+      { mark: "A1", text: "uses correct assignment to store the calculated value" },
+      { mark: "B1", text: "outputs TotalCost" },
+      { mark: "A1", text: "identifies sequence as the main construct" },
     ],
     strict: [
-      "Do not award Pass range accuracy if Mark >= 50 is tested before Mark >= 80 without excluding 80 or more.",
-      "Allow ELSE IF style if logic and closure are clear.",
-      "Do not accept Mark > 50 for the pass boundary.",
-      "Allow an equivalent grade labels if it is used consistently.",
+      "Do not award calculation method mark if TotalCost is calculated before inputs are available.",
+      "Allow different sensible variable names if used consistently.",
+      "Do not accept Java-only syntax as Cambridge pseudocode.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "A menu uses choices 1, 2 and 3 for Add, Delete and Search. Write a CASE statement that also handles invalid choices.",
-    answer: "INPUT Choice\nCASE Choice OF\n    1 : OUTPUT \"Add\"\n    2 : OUTPUT \"Delete\"\n    3 : OUTPUT \"Search\"\n    OTHERWISE OUTPUT \"Invalid choice\"\nENDCASE",
+    marks: "7 marks",
+    prompt: "A pass mark is 50. Write pseudocode to input Mark and output Pass or Resit needed. Explain one boundary test.",
+    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF\n\nBoundary test: Mark = 50 should output Pass because the pass mark is included.",
     marking: [
-      { mark: "B1", text: "inputs or uses Choice as the CASE expression" },
-      { mark: "M1", text: "uses CASE Choice OF or equivalent CASE structure" },
-      { mark: "B1", text: "handles choice 1 as Add" },
-      { mark: "B1", text: "handles choice 2 as Delete" },
-      { mark: "B1", text: "handles choice 3 as Search" },
-      { mark: "A1", text: "uses OTHERWISE/default and closes with ENDCASE" },
+      { mark: "B1", text: "inputs Mark" },
+      { mark: "M1", text: "uses IF selection with a condition" },
+      { mark: "A1", text: "uses Mark >= 50 or equivalent including the boundary value" },
+      { mark: "B1", text: "outputs Pass on the true path" },
+      { mark: "B1", text: "outputs Resit needed on the false/ELSE path" },
+      { mark: "B1", text: "closes the selection appropriately" },
+      { mark: "A1", text: "explains Mark = 50 as a boundary test with expected output Pass" },
     ],
     strict: [
-      "Do not award invalid-choice mark if no OTHERWISE/default branch is present.",
-      "Allow DISPLAY or PRINT instead of OUTPUT.",
-      "Do not accept Java switch syntax alone as Cambridge pseudocode.",
+      "Do not award boundary condition mark for Mark > 50.",
+      "Allow >= PassMark if PassMark is defined as 50.",
+      "Do not accept an unexplained test value as the boundary explanation.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Complete a trace table for the nested selection: IF Age >= 18 THEN IF Member = TRUE THEN Discount <- 0.20 ELSE Discount <- 0.10 ENDIF ELSE Discount <- 0.05 ENDIF. State Discount for Age = 18, Member = FALSE and for Age = 16, Member = TRUE.",
-    answer: "For Age = 18 and Member = FALSE, the outer condition is true and the inner condition is false, so Discount is 0.10. For Age = 16 and Member = TRUE, the outer condition is false, so Discount is 0.05.",
+    prompt: "Complete a trace table for this pseudocode and state the final output: Total <- 0; FOR Count <- 1 TO 4; Total <- Total + Count; NEXT Count; OUTPUT Total.",
+    answer: "The values of Total after each iteration are 1, 3, 6 and 10. The final output is 10.",
     marking: [
-      { mark: "M1", text: "recognises Age = 18 satisfies Age >= 18" },
-      { mark: "M1", text: "uses Member = FALSE to take the inner ELSE branch" },
-      { mark: "A1", text: "states Discount = 0.10 for Age = 18, Member = FALSE" },
-      { mark: "M1", text: "recognises Age = 16 does not satisfy Age >= 18" },
-      { mark: "A1", text: "states inner membership test is not reached for Age = 16" },
-      { mark: "A1", text: "states Discount = 0.05 for Age = 16, Member = TRUE" },
+      { mark: "M1", text: "initialises Total to 0 before tracing" },
+      { mark: "B1", text: "traces Count = 1 and Total = 1" },
+      { mark: "B1", text: "traces Count = 2 and Total = 3" },
+      { mark: "B1", text: "traces Count = 3 and Total = 6" },
+      { mark: "B1", text: "traces Count = 4 and Total = 10" },
+      { mark: "A1", text: "states final output 10" },
     ],
     strict: [
-      "Do not award inner-test mark for the Age = 16 case if the candidate still applies Member.",
-      "Allow percentages 10% and 5% instead of decimals.",
-      "Do not accept 0.20 for Age = 18, Member = FALSE.",
+      "Do not award final output mark for 6 or 15.",
+      "Allow a clear trace table instead of prose.",
+      "Do not accept only 'adds numbers' without values for trace marks.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain when CASE is more suitable than nested IF, and when nested IF is more suitable than CASE.",
-    answer: "CASE is more suitable when one expression has several discrete values, such as a menu choice. Nested IF is more suitable when decisions depend on earlier decisions or when ranges and different conditions must be tested.",
+    marks: "7 marks",
+    prompt: "A program should keep asking for a password while the password is incorrect. Write pseudocode and explain why a WHILE loop is suitable.",
+    answer: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"\n\nA WHILE loop is suitable because the number of attempts is not known and the condition is checked before each repeat.",
     marking: [
-      { mark: "B1", text: "states CASE is based on one expression or variable" },
-      { mark: "B1", text: "states CASE suits discrete values such as menu choices" },
-      { mark: "B1", text: "states nested IF can test different conditions or dependent decisions" },
-      { mark: "B1", text: "states nested IF suits ranges or decisions inside decisions" },
-      { mark: "B1", text: "uses a relevant example for at least one structure" },
+      { mark: "B1", text: "inputs Password before the loop condition" },
+      { mark: "M1", text: "uses a WHILE loop with condition Password <> CorrectPassword or equivalent" },
+      { mark: "A1", text: "re-inputs or updates Password inside the loop" },
+      { mark: "B1", text: "outputs a retry message or equivalent inside the loop" },
+      { mark: "B1", text: "closes the loop using ENDWHILE" },
+      { mark: "A1", text: "explains number of attempts is not known in advance" },
+      { mark: "A1", text: "explains condition is checked before repeating" },
     ],
     strict: [
-      "Do not award comparison marks for simply saying one is easier.",
-      "Allow switch-style description only if CASE idea is clear and pseudocode context is maintained.",
-      "Do not accept that CASE is always better for many branches.",
+      "Do not award update mark if Password cannot change inside the loop.",
+      "Allow UNTIL-style alternative only if the question is interpreted as at-least-once input and the logic is correct.",
+      "Do not accept a FOR loop unless a fixed maximum number of attempts is stated.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A student writes pseudocode for two nested IF statements but uses only one ENDIF. Explain the error and give the correction.",
-    answer: "Each IF statement must be closed. In nested selection, the inner IF needs its own ENDIF and the outer IF also needs an ENDIF, so two ENDIF statements are required unless an equivalent clear structure is used.",
+    marks: "5 marks",
+    prompt: "Compare sequence, selection and iteration. Include one pseudocode keyword or structure for each.",
+    answer: "Sequence executes statements in order. Selection chooses a path using a condition, for example IF...THEN...ELSE...ENDIF. Iteration repeats a block, for example FOR...NEXT or WHILE...ENDWHILE.",
     marking: [
-      { mark: "B1", text: "identifies that there are two IF statements" },
-      { mark: "M1", text: "explains the inner IF must be closed" },
-      { mark: "M1", text: "explains the outer IF must be closed" },
-      { mark: "A1", text: "states two ENDIF statements are required" },
+      { mark: "B1", text: "defines sequence as statements executed in order" },
+      { mark: "B1", text: "defines selection as choosing a path using a condition" },
+      { mark: "B1", text: "gives IF/THEN/ELSE/ENDIF or CASE as selection evidence" },
+      { mark: "B1", text: "defines iteration as repetition of a block" },
+      { mark: "B1", text: "gives FOR/NEXT, WHILE/ENDWHILE or REPEAT/UNTIL as iteration evidence" },
     ],
     strict: [
-      "Do not award full correction for 'add ENDIF' without identifying inner and outer IF closure.",
-      "Allow a corrected pseudocode fragment if it clearly closes both IF blocks.",
-      "Do not accept Java braces as the correction in a Cambridge pseudocode answer.",
+      "Do not award iteration definition mark for a single repeated word without a loop idea.",
+      "Allow control structure instead of construct.",
+      "Do not accept Java braces alone as pseudocode evidence.",
     ],
   },
 ];
@@ -217,7 +228,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>=\[\] %_.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>=\[\] _,.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -236,10 +247,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    pass: "Correct. Mark = 50 satisfies Mark >= 50, so the true branch outputs Pass.",
-    resit: "Not this time. The ELSE branch would run only when Mark < 50.",
-    both: "Only one branch runs in a normal IF...ELSE selection.",
-    none: "One branch must run because IF...ELSE covers both true and false outcomes.",
+    input: "The input line is fine. The bug appears when the boundary value 50 is tested.",
+    condition: "Correct. It should be Mark >= 50, because 50 is included in 'at least 50'.",
+    output: "The output is fine; the wrong path is caused by the condition.",
+    endif: "ENDIF is needed to close the selection. The boundary bug is earlier.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -250,43 +261,32 @@ function setupHook() {
   });
 }
 
-function setupPathTracer() {
+function setupTraceTool() {
   const result = document.querySelector("#traceResult");
   document.querySelector("#traceBtn").addEventListener("click", () => {
-    const age = Number(document.querySelector("#ageInput").value);
-    const member = document.querySelector("#memberSelect").value === "true";
-    let path = "";
-    let discount = 0;
-
-    if (age >= 18) {
-      if (member) {
-        path = "outer IF true, inner IF true";
-        discount = 0.2;
-      } else {
-        path = "outer IF true, inner IF false";
-        discount = 0.1;
-      }
-    } else {
-      path = "outer IF false; inner IF is not reached";
-      discount = 0.05;
+    const limit = Number(document.querySelector("#loopLimit").value);
+    let total = 0;
+    const rows = [];
+    for (let count = 1; count <= limit; count += 1) {
+      total += count;
+      rows.push([String(count), String(total)]);
     }
-
     result.innerHTML = `
-      <p><strong>Path:</strong> ${escapeHtml(path)}</p>
-      <p><strong>Discount:</strong> ${discount.toFixed(2)}</p>
-      <p><strong>Trace note:</strong> ${age >= 18 ? "Age meets the adult condition." : "Age fails the adult condition, so membership is irrelevant."}</p>
+      <p><strong>Pseudocode:</strong> Total &lt;- 0; FOR Count &lt;- 1 TO ${limit}; Total &lt;- Total + Count</p>
+      ${tableMarkup(["Count", "Total after update"], rows)}
+      <p><strong>Final output:</strong> ${total}</p>
     `;
   });
 }
 
-function setupChooser() {
-  const select = document.querySelector("#scenarioSelect");
-  const result = document.querySelector("#chooseResult");
-  select.innerHTML = chooserScenarios.map((item) => `<option value="${item.id}">${escapeHtml(item.text)}</option>`).join("");
-  document.querySelector("#chooseBtn").addEventListener("click", () => {
-    const item = chooserScenarios.find((entry) => entry.id === select.value);
+function setupClassifier() {
+  const select = document.querySelector("#constructSelect");
+  const result = document.querySelector("#classifyResult");
+  select.innerHTML = scenarios.map((item) => `<option value="${item.id}">${escapeHtml(item.text)}</option>`).join("");
+  document.querySelector("#classifyBtn").addEventListener("click", () => {
+    const item = scenarios.find((entry) => entry.id === select.value);
     result.innerHTML = `
-      <p><strong>Recommended structure:</strong> ${escapeHtml(item.construct)}</p>
+      <p><strong>Construct:</strong> ${escapeHtml(item.construct)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
     `;
   });
@@ -298,7 +298,7 @@ function renderExample(key) {
     <article class="worked-card">
       <h3>${escapeHtml(example.title)}</h3>
       <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-      ${tableMarkup(["Input", "Path", "Output / value"], example.rows)}
+      ${tableMarkup(["Step", "Value / action", "Reason"], example.rows)}
       <p><strong>Cambridge-style pseudocode:</strong></p>
       <pre><code>${escapeHtml(example.code)}</code></pre>
       <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
@@ -307,7 +307,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("ifPass");
+  renderExample("sequence");
   document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -341,7 +341,7 @@ function renderPractice() {
       const mark = document.querySelector(`#${item.id}-mark`);
       const response = normalise(input.value);
       const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. The selection concept is precise." : "Not quite. Check whether the question is about IF, CASE, boundary or nested structure.";
+      mark.textContent = correct ? "Correct. The construct or trace result is accurate." : "Not quite. Check the control structure and any boundary value.";
       mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -407,8 +407,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupPathTracer();
-setupChooser();
+setupTraceTool();
+setupClassifier();
 setupExamples();
 renderPractice();
 renderMistakes();

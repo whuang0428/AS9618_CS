@@ -1,124 +1,175 @@
 const scenarios = [
   {
-    id: "length",
-    text: "Check whether a password has at least 8 characters.",
-    recommendation: "LENGTH(Password)",
-    reason: "LENGTH returns the number of characters, so it can be compared with 8.",
+    id: "temp",
+    text: "A temporary value used only while calculating a bonus inside one procedure.",
+    recommendation: "Local variable",
+    reason: "It is needed only inside the procedure, so limiting its scope avoids unnecessary access elsewhere.",
   },
   {
-    id: "initials",
-    text: "Create a code from the first three letters of a surname.",
-    recommendation: "MID(Surname, 1, 3)",
-    reason: "MID starts at position 1 and returns three characters as a STRING.",
+    id: "count",
+    text: "A running total used by several procedures throughout the program.",
+    recommendation: "Global variable, if carefully managed",
+    reason: "Several parts of the program need the same value, but updates must be traced carefully.",
   },
   {
-    id: "extension",
-    text: "Check whether a filename ends in .txt.",
-    recommendation: "RIGHT(FileName, 4)",
-    reason: "RIGHT extracts characters from the end of the string.",
+    id: "loop",
+    text: "A loop counter used only inside a procedure that prints 10 lines.",
+    recommendation: "Local variable",
+    reason: "The counter has no useful purpose outside that procedure call.",
   },
   {
-    id: "case",
-    text: "Accept y or Y as the same menu response.",
-    recommendation: "DECLARE Response : CHAR; UCASE(Response)",
-    reason: "UCASE accepts and returns one CHAR, so the menu response must be declared as CHAR.",
+    id: "config",
+    text: "A constant maximum mark used by many validation routines.",
+    recommendation: "Global constant",
+    reason: "A shared constant is clearer than repeated literal values, and it should not be changed accidentally.",
   },
 ];
 
 const examples = {
-  length: {
-    title: "Example 1: Validate string length",
-    problem: "Check whether a password is long enough.",
+  local: {
+    title: "Example 1: Local variable lifetime",
+    problem: "Trace whether Bonus can be used after the procedure call.",
     rows: [
-      ["Input", "Password = \"secure7\"", "7 characters"],
-      ["Function", "LENGTH(Password)", "returns 7"],
-      ["Comparison", "7 >= 8", "FALSE"],
-      ["Output", "\"Too short\"", "validation fails"],
+      ["Procedure starts", "Mark = 78", "parameter is available inside the call"],
+      ["Inside procedure", "Bonus = 7", "Bonus is local"],
+      ["Procedure ends", "Bonus unavailable", "local variable lifetime ends"],
+      ["Main program", "cannot OUTPUT Bonus directly", "Bonus is outside scope"],
     ],
-    code: "INPUT Password\nIF LENGTH(Password) >= 8 THEN\n    OUTPUT \"Accepted\"\nELSE\n    OUTPUT \"Too short\"\nENDIF",
+    code: "PROCEDURE ShowBonus(Mark : INTEGER)\n    Bonus <- Mark DIV 10\n    OUTPUT Bonus\nENDPROCEDURE\n\nCALL ShowBonus(78)",
     points: [
-      "LENGTH returns an integer.",
-      "The returned value is used in a comparison.",
-      "Spaces count as characters unless the algorithm removes them first.",
+      "Bonus is declared inside the procedure.",
+      "Its scope is limited to the procedure.",
+      "Its lifetime ends when the procedure call finishes.",
     ],
   },
-  mid: {
-    title: "Example 2: Extract a substring",
-    problem: "Trace MID(\"COMPUTER\", 4, 3).",
+  global: {
+    title: "Example 2: Global variable update",
+    problem: "Trace a global total that is updated by a procedure.",
     rows: [
-      ["Positions", "1:C 2:O 3:M 4:P 5:U 6:T 7:E 8:R", "1-based pseudocode positions"],
-      ["Start", "4", "start at P"],
-      ["Count", "3", "take P, U, T"],
-      ["Returned value", "\"PUT\"", "substring result"],
+      ["Before call", "Total = 10", "Total is declared outside subroutines"],
+      ["Call", "CALL AddScore(5)", "Score is local parameter"],
+      ["Inside procedure", "Total = 15", "global Total is updated"],
+      ["After call", "Total = 15", "global value remains changed"],
     ],
-    code: "Word <- \"COMPUTER\"\nPart <- MID(Word, 4, 3)\nOUTPUT Part",
+    code: "Total <- 10\n\nPROCEDURE AddScore(Score : INTEGER)\n    Total <- Total + Score\nENDPROCEDURE\n\nCALL AddScore(5)\nOUTPUT Total",
     points: [
-      "Write positions before extracting.",
-      "The third argument is the number of characters in this lesson's convention.",
-      "Do not use Java's 0-based indexing here.",
+      "Total is global because it is declared outside the procedure.",
+      "Score is local to the procedure call.",
+      "The final output is 15.",
     ],
   },
-  case: {
-    title: "Example 3: Convert case before comparison",
-    problem: "Accept user input y or Y as yes.",
+  shadow: {
+    title: "Example 3: Same name, different scope",
+    problem: "Trace a local Score that hides a global Score.",
     rows: [
-      ["Input", "Response = 'y'", "CHAR input"],
-      ["Function", "UCASE(Response)", "returns 'Y'"],
-      ["Comparison", "'Y' = 'Y'", "TRUE"],
+      ["Global declaration", "Score = 50", "main program variable"],
+      ["Inside procedure", "Score = 80", "local variable with same name"],
+      ["Procedure output", "80", "local value"],
+      ["Main output", "50", "global value unchanged"],
     ],
-    code: "DECLARE Response : CHAR\nINPUT Response\nResponse <- UCASE(Response)\nIF Response = 'Y' THEN\n    OUTPUT \"Continue\"\nENDIF",
+    code: "Score <- 50\n\nPROCEDURE ChangeScore()\n    Score <- 80\n    OUTPUT Score\nENDPROCEDURE\n\nCALL ChangeScore()\nOUTPUT Score",
     points: [
-      "UCASE accepts CHAR and returns CHAR.",
-      "Assign the returned value if the converted version is needed later.",
-      "Case conversion does not validate meaning by itself.",
+      "The same identifier can refer to different variables in different scopes.",
+      "State which scope each output uses.",
+      "Do not assume the global value changed unless the code clearly updates it.",
     ],
   },
-  nested: {
-    title: "Example 4: Extract then concatenate",
-    problem: "Trace MID(\"NETWORK\", 1, 3) & \"29\".",
+  design: {
+    title: "Example 4: Prefer local variables for temporary work",
+    problem: "Explain why Temp should be local in a calculation procedure.",
     rows: [
-      ["Function call", "MID(\"NETWORK\", 1, 3)", "returns \"NET\""],
-      ["Returned type", "STRING", "can be concatenated"],
-      ["Concatenate", "\"NET\" & \"29\"", "returns \"NET29\""],
+      ["Variable", "Temp", "temporary calculation result"],
+      ["Best scope", "local", "used only inside one procedure"],
+      ["Benefit", "reduced accidental changes", "other code cannot depend on it"],
     ],
-    code: "Code <- MID(\"NETWORK\", 1, 3) & \"29\"\nOUTPUT Code",
+    code: "PROCEDURE PrintAverage(A : INTEGER, B : INTEGER)\n    Temp <- (A + B) / 2\n    OUTPUT Temp\nENDPROCEDURE",
     points: [
-      "Evaluate MID before concatenation.",
-      "MID returns STRING, which can be used in a STRING expression.",
-      "Keep numeric-looking text in quotes if it is being joined as a string.",
+      "Temporary calculation variables should usually be local.",
+      "This improves readability and reduces unexpected side effects.",
+      "The variable name can be reused safely in another subroutine.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is LENGTH(\"DATA\")?", accepted: ["4"], answer: "4." },
-  { id: "p2", prompt: "What does UCASE('e') return?", accepted: ["E"], answer: "The CHAR 'E'." },
-  { id: "p3", prompt: "What does LCASE('C') return?", accepted: ["c"], answer: "The CHAR 'c'." },
-  { id: "p4", prompt: "What does MID(\"NETWORK\", 1, 3) return?", accepted: ["NET"], answer: "NET." },
-  { id: "p5", prompt: "What does RIGHT(\"NETWORK\", 4) return?", accepted: ["WORK"], answer: "WORK." },
-  { id: "p6", prompt: "Using 1-based positions, what does MID(\"COMPUTER\", 4, 3) return?", accepted: ["PUT"], answer: "PUT." },
-  { id: "p7", prompt: "What operator is used in this course to concatenate strings: & or DIV?", accepted: ["&", "ampersand"], answer: "&." },
-  { id: "p8", prompt: "What does MID(\"ada\", 1, 2) return?", accepted: ["ad"], answer: "ad." },
-  { id: "p9", prompt: "Java strings use zero-based indexes. Cambridge-style examples here use positions starting at what number?", accepted: ["1", "one"], answer: "1." },
-  { id: "p10", prompt: "What does MID(\"NETWORK\", 1, 3) & \"29\" return?", accepted: ["NET29"], answer: "NET29." },
+  {
+    id: "p1",
+    prompt: "What term means where a variable can be accessed?",
+    accepted: ["scope"],
+    answer: "Scope.",
+  },
+  {
+    id: "p2",
+    prompt: "What term means how long a variable exists during program execution?",
+    accepted: ["lifetime", "life time"],
+    answer: "Lifetime.",
+  },
+  {
+    id: "p3",
+    prompt: "A variable declared inside a procedure is normally local or global?",
+    accepted: ["local", "local variable"],
+    answer: "Local variable.",
+  },
+  {
+    id: "p4",
+    prompt: "A variable declared outside all subroutines and used by several subroutines is normally local or global?",
+    accepted: ["global", "global variable"],
+    answer: "Global variable.",
+  },
+  {
+    id: "p5",
+    prompt: "If X is local to a procedure, can the main program directly access X after the procedure ends? yes or no.",
+    accepted: ["no"],
+    answer: "No. X is outside scope after the procedure ends.",
+  },
+  {
+    id: "p6",
+    prompt: "Global Count starts at 10. Procedure creates local Count <- 3. Final global Count?",
+    accepted: ["10"],
+    answer: "10. The local Count does not change the global Count.",
+  },
+  {
+    id: "p7",
+    prompt: "Global Total starts at 10. A procedure updates the global Total <- Total + 5. Final Total?",
+    accepted: ["15"],
+    answer: "15. The global variable has been changed.",
+  },
+  {
+    id: "p8",
+    prompt: "A loop counter used only inside one procedure should usually be local or global?",
+    accepted: ["local", "local variable"],
+    answer: "Local variable.",
+  },
+  {
+    id: "p9",
+    prompt: "Same variable name in two scopes always means the same storage location. true or false?",
+    accepted: ["false"],
+    answer: "False. The same name may refer to different variables in different scopes.",
+  },
+  {
+    id: "p10",
+    prompt: "Which kind of variable can make debugging harder because many subroutines may change it?",
+    accepted: ["global", "global variable"],
+    answer: "Global variable.",
+  },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes Java code name.substring(0, 3) as the Cambridge pseudocode answer.",
-    fix: "Use the guide function MID(Name, 1, 3), or follow a different complete function definition supplied by the question.",
+    wrong: "A student says a local variable can always be output by the main program after the procedure ends.",
+    fix: "Local variables are only accessible within their scope. After the procedure ends, the main program cannot directly use that local variable.",
   },
   {
-    wrong: "A student treats LENGTH(\"A B\") as 2 because there are two letters.",
-    fix: "The space is also a character, so LENGTH(\"A B\") is 3 unless the algorithm removes spaces first.",
+    wrong: "A student sees Score used in two places and assumes it must be the same variable.",
+    fix: "Check declarations and scope. A local Score can hide a global Score, so the same name may refer to different storage locations.",
   },
   {
-    wrong: "A student traces MID(\"MONITOR\", 2, 3) as \"NIT\" by starting from Java index 2.",
-    fix: "Use the stated convention. With 1-based positions and count 3, start at O and return \"ONI\".",
+    wrong: "A student makes every variable global because it is 'easier'.",
+    fix: "Use local variables when the data is only needed inside one subroutine. Too many globals increase accidental changes and make tracing harder.",
   },
   {
-    wrong: "A student passes the STRING Answer to UCASE.",
-    fix: "UCASE accepts CHAR. Declare Answer as CHAR for a one-character response, assign the returned CHAR, and compare it with a CHAR literal such as 'Y'.",
+    wrong: "A student describes lifetime as 'where the variable can be used'.",
+    fix: "That is scope. Lifetime is how long the variable exists during execution.",
   },
 ];
 
@@ -132,94 +183,90 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "3 marks",
-    prompt: "Complete a trace table for the output. Word <- \"NETWORK\"\nPart <- MID(Word, 1, 3)\nCode <- Part & \"29\"\nOUTPUT Code",
-    answer: "MID(\"NETWORK\", 1, 3) returns \"NET\". Concatenating \"29\" returns \"NET29\". The output is NET29.",
+    prompt: "Define scope and lifetime of a variable. Explain the difference between them.",
+    answer: "Scope is the part of a program where a variable or identifier can be accessed. Lifetime is the period during execution for which the variable exists. Scope is about where the variable can be used; lifetime is about when or how long it exists.",
     marking: [
-      { mark: "B1", text: "identifies MID(Word, 1, 3) returns NET" },
-      { mark: "M1", text: "concatenates NET with the STRING 29" },
-      { mark: "A1", text: "states final output is NET29" },
+      { mark: "B1", text: "defines scope as where an identifier/variable can be accessed or used" },
+      { mark: "B1", text: "defines lifetime as how long a variable exists during program execution" },
+      { mark: "B1", text: "distinguishes where/access from when/duration" },
     ],
     strict: [
-      "Do not award final output mark for NET without the concatenated 29.",
-      "Allow quotation marks around returned strings.",
-      "Do not accept Java method syntax alone.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award lifetime definition for merely repeating 'scope'.",
+      "Allow 'visibility' for scope if access/use is clear.",
+      "Do not accept 'global variables are better' as an example without mechanism.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "The question states that LENGTH(Text) returns the number of characters in Text. A password must contain at least 8 characters. Write Cambridge-style pseudocode that inputs Password and outputs Accepted or Too short.",
-    answer: "INPUT Password\nIF LENGTH(Password) >= 8 THEN\n    OUTPUT \"Accepted\"\nELSE\n    OUTPUT \"Too short\"\nENDIF",
+    marks: "5 marks",
+    prompt: "Complete a trace table for the output from this pseudocode, assuming the Count inside the procedure is local. Count <- 10 PROCEDURE ShowCount() Count <- 3 OUTPUT Count\nENDPROCEDURE CALL ShowCount()\nOUTPUT Count",
+    answer: "The first output is 3 from the local Count inside ShowCount. The second output is 10 from the global Count in the main program.",
     marking: [
-      { mark: "B1", text: "inputs or otherwise obtains Password" },
-      { mark: "M1", text: "uses LENGTH(Password) or equivalent string length function" },
-      { mark: "A1", text: "compares length with 8 using >= or equivalent at-least logic" },
-      { mark: "B1", text: "outputs Accepted when the length requirement is met" },
-      { mark: "B1", text: "outputs Too short or equivalent when the requirement is not met" },
-      { mark: "A1", text: "uses correct IF/ELSE/ENDIF structure" },
+      { mark: "B1", text: "states first output is 3" },
+      { mark: "B1", text: "states second output is 10" },
+      { mark: "M1", text: "identifies Count inside ShowCount as local" },
+      { mark: "M1", text: "explains local Count does not change the global Count" },
+      { mark: "A1", text: "identifies the final Count as the global/main-program variable" },
     ],
     strict: [
-      "Do not award comparison mark for > 8 because exactly 8 should be accepted.",
-      "Allow variable names other than Password if clear.",
-      "Do not accept counting only alphabetic letters unless stated in the question.",
+      "Do not award both output marks for 3 then 3.",
+      "Allow 'main Count remains unchanged' for the global explanation.",
+      "Do not accept 'because procedure returns 3'; no return value is shown.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Using positions starting at 1, Complete a trace table for this pseudocode. Code <- \"COMPUTER\"\nOUTPUT MID(Code, 4, 3)\nOUTPUT RIGHT(Code, 2)",
-    answer: "MID(\"COMPUTER\", 4, 3) starts at position 4, P, and returns three characters: PUT. RIGHT(\"COMPUTER\", 2) returns ER.",
+    marks: "4 marks",
+    prompt: "Explain two reasons why unnecessary global variables can make a program harder to debug.",
+    answer: "A global variable can be changed by several parts of the program, so it may be difficult to find which subroutine caused an incorrect value. A global variable also increases coupling between subroutines because they depend on shared state, so changing one part of the program can affect another unexpectedly.",
     marking: [
-      { mark: "B1", text: "uses positions starting at 1" },
-      { mark: "M1", text: "identifies position 4 in COMPUTER as P" },
-      { mark: "A1", text: "states MID result is PUT" },
-      { mark: "M1", text: "identifies RIGHT(Code, 2) extracts the last two characters" },
-      { mark: "A1", text: "states RIGHT result is ER" },
-      { mark: "B1", text: "presents outputs in the correct order" },
+      { mark: "B1", text: "states global variables can be accessed/changed by multiple program parts" },
+      { mark: "B1", text: "explains this makes the source of an incorrect value harder to find" },
+      { mark: "B1", text: "states global variables create shared state/dependence between subroutines" },
+      { mark: "B1", text: "explains changes in one part may affect another unexpectedly" },
     ],
     strict: [
-      "Do not award MID result mark for M in Java index 4 style.",
-      "Allow characters shown with or without quotation marks.",
-      "Do not accept a single combined output unless both parts are clearly shown.",
+      "Do not award marks for vague statements such as 'globals are bad' without cause and consequence.",
+      "Allow 'side effects' if explained as unexpected changes to shared data.",
+      "Do not accept security or speed claims unless linked to the scenario.",
     ],
   },
   {
     title: "Question 4",
     marks: "7 marks",
-    prompt: "Write pseudocode to input the STRING values Surname and YearGroup, then create UserID from the first three letters of Surname followed by YearGroup. Output UserID.",
-    answer: "INPUT Surname\nINPUT YearGroup\nSurnamePart <- MID(Surname, 1, 3)\nUserID <- SurnamePart & YearGroup\nOUTPUT UserID",
+    prompt: "Write Cambridge-style pseudocode for a procedure PrintAverage that takes A and B as INTEGER parameters, stores the average in a local variable Average, and outputs it. Explain why Average should be local.",
+    answer: "PROCEDURE PrintAverage(A : INTEGER, B : INTEGER)\n    Average <- (A + B) / 2\n    OUTPUT Average\nENDPROCEDURE\n\nAverage should be local because it is only needed inside the procedure. Limiting its scope prevents other parts of the program from accessing or changing a temporary calculation value.",
     marking: [
-      { mark: "B1", text: "inputs or obtains Surname" },
-      { mark: "B1", text: "inputs or obtains YearGroup" },
-      { mark: "M1", text: "uses MID(Surname, 1, 3) or equivalent guide-supported extraction" },
-      { mark: "A1", text: "uses start position 1 and count 3 to obtain the first three letters" },
-      { mark: "M1", text: "concatenates surname part with YearGroup" },
-      { mark: "A1", text: "assigns the result to UserID or equivalent" },
-      { mark: "B1", text: "outputs UserID" },
+      { mark: "B1", text: "uses PROCEDURE PrintAverage or equivalent procedure header" },
+      { mark: "B1", text: "declares A and B as INTEGER parameters or equivalent" },
+      { mark: "M1", text: "calculates the average using A and B" },
+      { mark: "A1", text: "stores the result in a variable named Average or equivalent" },
+      { mark: "B1", text: "outputs Average" },
+      { mark: "M1", text: "explains Average is only needed inside the procedure" },
+      { mark: "A1", text: "explains limited scope reduces accidental access/change or improves traceability" },
     ],
     strict: [
-      "Do not award extraction mark for RIGHT(Surname, 3).",
-      "Do not require case conversion because the question does not request it.",
-      "Do not accept Java String method calls alone as Cambridge pseudocode.",
+      "Do not require DECLARE syntax if the pseudocode clearly uses a local variable.",
+      "Allow DIV or / if the calculation method is consistent with the expected data type.",
+      "Do not accept a Java method alone as Cambridge-style pseudocode.",
+      "Allow an equivalent temporary variable if it is used consistently.",
     ],
   },
   {
     title: "Question 5",
     marks: "4 marks",
-    prompt: "A candidate writes Part <- Word.substring(0, 3) in a Cambridge pseudocode answer. Explain the problem and give a corrected Cambridge-style expression.",
-    answer: "The problem is that substring(0, 3) is Java-style method syntax and uses zero-based indexes. The Cambridge guide expression Part <- MID(Word, 1, 3) uses start position 1 and returns three characters.",
+    prompt: "A student writes OUTPUT Temp in the main program after calling a procedure where Temp was created inside the procedure. Identify the error and correct the design.",
+    answer: "The error is that Temp is a local variable, so it is outside scope in the main program after the procedure call. The design should either output Temp inside the procedure, return the value from a function, or pass a variable by reference if the caller must receive an updated value.",
     marking: [
-      { mark: "B1", text: "identifies substring(0, 3) as Java-style syntax / not Cambridge-style pseudocode" },
-      { mark: "M1", text: "explains Java indexes start at 0 or differ from the course pseudocode position convention" },
-      { mark: "M1", text: "states the intended result is the first three characters" },
-      { mark: "A1", text: "gives corrected expression MID(Word, 1, 3) or follows a complete function definition supplied in the question" },
+      { mark: "B1", text: "identifies Temp as local to the procedure" },
+      { mark: "B1", text: "explains Temp is outside scope in the main program" },
+      { mark: "B1", text: "gives one valid correction: output inside the procedure, return from a function, or update a caller variable BYREF" },
+      { mark: "B1", text: "explains how the correction makes the value available at the required point" },
     ],
     strict: [
-      "Do not award correction mark for another Java expression.",
-      "Allow MID(Word, 1, 3) as an equivalent Cambridge-style correction.",
-      "Do not accept only 'syntax error' without explaining the pseudocode/Java difference.",
-      "Allow an equivalent variable if it is used consistently.",
+      "Award either correction mark for a valid design correction; both are not required unless two corrections are given.",
+      "Allow BYREF as an alternative correction only if the caller variable must be updated.",
+      "Do not accept 'make every variable global' as a good correction.",
     ],
   },
 ];
@@ -234,7 +281,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/^["']|["']$/g, "").replace(/\s+/g, " ").replace(/[^a-z0-9&:<>=\[\] %_.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>=\[\] %_.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -253,10 +300,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    mon: "Not quite. Starting at position 2 means start at O, not M.",
-    oni: "Correct. Position 2 is O, then take three characters: O, N, I.",
-    oni0: "Close start, wrong count. The third argument is 3 characters here, so return ONI.",
-    nit: "That looks like a Java-index habit. This pseudocode trace uses positions starting at 1.",
+    "3-3": "Not under the stated assumption. The local Count is 3 inside the procedure, but the global Count remains 10.",
+    "3-10": "Correct. The procedure outputs its local Count, then the main program outputs the unchanged global Count.",
+    "10-3": "The order is reversed. The first output happens inside the procedure.",
+    error: "Not always. The warm-up explicitly assumes the procedure Count is local, so the trace can be completed.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -267,53 +314,30 @@ function setupHook() {
   });
 }
 
-function runStringFunction(text, func, start, count) {
-  if (func === "length") return String(text.length);
-  if (func === "right") return count <= text.length ? text.slice(text.length - count) : text;
-  if (func === "mid") return text.slice(start - 1, start - 1 + count);
-  if (func === "ucase") return text.toUpperCase();
-  if (func === "lcase") return text.toLowerCase();
-  return "";
-}
+function setupTraceSimulator() {
+  const result = document.querySelector("#traceResult");
+  document.querySelector("#traceBtn").addEventListener("click", () => {
+    const globalBefore = Number(document.querySelector("#globalInput").value);
+    const procedureValue = Number(document.querySelector("#localInput").value);
+    const mode = document.querySelector("#scopeMode").value;
 
-function setupStringLab() {
-  const result = document.querySelector("#labResult");
-  document.querySelector("#runBtn").addEventListener("click", () => {
-    const text = document.querySelector("#textInput").value;
-    const func = document.querySelector("#functionInput").value;
-    const start = Number(document.querySelector("#startInput").value);
-    const count = Number(document.querySelector("#countInput").value);
-
-    if (text.length === 0) {
-      result.textContent = "Enter a non-empty string.";
-      return;
-    }
-    if ((func === "ucase" || func === "lcase") && text.length !== 1) {
-      result.textContent = "UCASE and LCASE require exactly one CHAR. Enter one character.";
-      return;
-    }
-    if (!Number.isInteger(start) || !Number.isInteger(count) || start < 1 || count < 1) {
-      result.textContent = "Start and n must be positive integers.";
-      return;
-    }
-    if (func === "mid" && start > text.length) {
-      result.textContent = "For this lab, the MID start position must be within the string.";
+    if (!Number.isInteger(globalBefore) || !Number.isInteger(procedureValue)) {
+      result.textContent = "Enter integer values for both fields.";
       return;
     }
 
-    const value = runStringFunction(text, func, start, count);
-    const call = {
-      length: `LENGTH("${text}")`,
-      right: `RIGHT("${text}", ${count})`,
-      mid: `MID("${text}", ${start}, ${count})`,
-      ucase: `UCASE('${text}')`,
-      lcase: `LCASE('${text}')`,
-    }[func];
+    const globalAfter = mode === "global" ? procedureValue : globalBefore;
+    const insideOutput = procedureValue;
+    const reason =
+      mode === "global"
+        ? "The procedure updates the global Count, so the global value changes."
+        : "The procedure uses a local Count, so the global Count remains unchanged.";
 
     result.innerHTML = `
-      <p><strong>Function call:</strong> ${escapeHtml(call)}</p>
-      <p><strong>Returned value:</strong> ${escapeHtml(value)}</p>
-      <p><strong>Note:</strong> A built-in function returns a value, so assign it or use it in an expression.</p>
+      <p><strong>Before call:</strong> global Count = ${globalBefore}</p>
+      <p><strong>Inside procedure:</strong> Count = ${insideOutput}</p>
+      <p><strong>After call:</strong> global Count = ${globalAfter}</p>
+      <p>${escapeHtml(reason)}</p>
     `;
   });
 }
@@ -347,7 +371,7 @@ function setupExamples() {
       <article class="worked-card">
         <h3>${escapeHtml(example.title)}</h3>
         <p>${escapeHtml(example.problem)}</p>
-        ${tableMarkup(["Step", "Value / result", "Reason"], example.rows)}
+        ${tableMarkup(["Step", "Value / state", "Reason"], example.rows)}
         <pre><code>${escapeHtml(example.code)}</code></pre>
         <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
       </article>
@@ -388,7 +412,7 @@ function setupPractice() {
       const feedback = list.querySelector(`[data-feedback="${item.id}"]`);
       const answer = normalise(input.value);
       const correct = item.accepted.some((accepted) => normalise(accepted) === answer);
-      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the returned value exactly.";
+      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the exact term or final value.";
       feedback.classList.toggle("correct", correct);
       feedback.classList.toggle("incorrect", !correct);
     });
@@ -464,7 +488,7 @@ function setupExamQuestions() {
 
 setupPrint();
 setupHook();
-setupStringLab();
+setupTraceSimulator();
 setupScenarioChooser();
 setupExamples();
 setupPractice();

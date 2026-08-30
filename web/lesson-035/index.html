@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 035 | Logic gates: NOT, AND, OR, NAND, NOR, XOR</title>
+    <title>AS9618 Lesson 035 | Sensors, actuators and control systems</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -18,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Logic gates: NOT, AND, OR, NAND, NOR, XOR</h1>
+        <h1>Sensors, actuators and control systems</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,355 +29,258 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#signals">Binary signals</a>
-        <a href="#gates">Logic gates</a>
-        <a href="#symbols">Symbols</a>
-        <a href="#gate-visual">Gate map</a>
-        <a href="#tool">Truth-table tool</a>
+        <a href="#sensors">Sensors</a>
+        <a href="#actuators">Actuators</a>
+        <a href="#control">Control systems</a>
+        <a href="#tool">Control tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Logic-gate symbols, functions and representation conversions</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.</p>
-            <p>You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.</p>
-            <p>Use the standard symbol for each logic gate as well as its function, Boolean expression, circuit and truth table.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Convert one rule among four representations</h3>
-            <p>Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start gate-visual -->
-        <section class="panel explanation-panel" id="explanation-gate-visual" data-explains="gate-visual" data-explanation-kind="mechanism" aria-labelledby="explanation-gate-visual-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gate-visual">
-          <h2 class="explanation-sr-only" id="explanation-gate-visual-title">Six symbols, six exact output rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Six symbols, six exact output rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Six symbols, six exact output rules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</li><li><strong>Lesson fact:</strong> NOT One input; output is the opposite value.</li><li><strong>Lesson fact:</strong> AND / NAND AND tests whether both are 1; NAND inverts that result.</li><li><strong>Lesson fact:</strong> OR / NOR OR tests whether at least one is 1; NOR inverts that result.</li><li><strong>Lesson fact:</strong> XOR Output is 1 only when the two inputs are different.</li><li><strong>Lesson fact:</strong> Check the diagram: what two visual clues separate NOR from XOR?</li><li><strong>Lesson fact:</strong> NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end gate-visual -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Logic-gate symbols, functions and representation conversions: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What distinguishes the XOR symbol from the OR symbol?</p>
-              <details><summary>Show answer</summary><p>XOR has an additional curved line on the input side.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How many inputs does NOT have, and how many do the other specified gates have in this syllabus?</p>
-              <details><summary>Show answer</summary><p>NOT has one input; AND, OR, NAND, NOR and XOR each have two inputs.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Identify the three possible sources from which a logic circuit may be constructed.</p>
-              <details><summary>Show answer</summary><p>A problem statement, a logic expression or a truth table.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> How do intermediate columns help convert a circuit into a truth table?</p>
-              <details><summary>Show answer</summary><p>Each intermediate column records one gate output, allowing the final result to be calculated and checked row by row.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A truth table gives output 1 only when input A is 1 and input B is 0. Construct a logic expression and describe the corresponding circuit.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>identifies that B must be inverted</td><td>Do not accept XOR: XOR is also 1 for A=0, B=1, which contradicts the given truth table.</td><td>1</td></tr>
-                  <tr><td>constructs expression Q = A AND NOT B</td><td></td><td>1</td></tr>
-                  <tr><td>B is connected to a NOT gate</td><td></td><td>1</td></tr>
-                  <tr><td>A and the NOT-gate output are connected to an AND gate whose output is Q</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 035 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Logic gates are tiny decision machines: no mood, no maybe, just 0 or 1.</h2>
+            <h2>Control systems are where data stops being a spreadsheet and starts moving the world.</h2>
             <p>
-              This lesson introduces the six AS-level logic gates: NOT, AND, OR,
-              NAND, NOR and XOR. You will read gate rules, complete truth tables,
-              and translate ordinary conditions into Boolean logic.
+              This lesson focuses on sensors, actuators and control systems. You will
+              practise describing how physical measurements become input data, how a
+              processor applies a rule, and how actuators create output action.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>the purpose of each named logic gate</span></div>
-              <div><strong>Complete</strong><span>truth tables for one-input and two-input gates</span></div>
-              <div><strong>Compare</strong><span>OR and XOR without using everyday language</span></div>
+              <div><strong>Identify</strong><span>common sensors and the quantities they detect</span></div>
+              <div><strong>Explain</strong><span>how actuators produce physical output</span></div>
+              <div><strong>Trace</strong><span>control loops using thresholds and repeated readings</span></div>
             </div>
           </div>
-          <div class="gate-card" aria-label="Logic gate expression">
-            <span>Q = (A AND B) OR NOT C</span>
-            <p>If this looks like a sentence with wires, that is exactly the point.</p>
+          <div class="system-card" aria-label="Control system chain">
+            <span>sense -> compare -> act -> sense again</span>
+            <p>The sensor is the messenger. The actuator does the heavy lifting. Mixing them up is how exam marks quietly leave the room.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge questions often combine gates. Students lose marks when they know gate names but cannot apply the exact output rule.</p>
+            <p>Cambridge-style answers reward sequence. Listing "temperature sensor, fan" is weaker than explaining the rule that connects them.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>OR means at least one input is 1. XOR means exactly one input is 1. They are not the same gate wearing different shoes.</p>
+            <p>A closed-loop system uses feedback from sensors. An open-loop system acts without checking the result.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>The classroom door opens if the teacher has a key AND today is not an exam.</h2>
-            <p>Click the condition that would make the output 1. The door is strict; it does not accept emotional arguments.</p>
+            <h2>A greenhouse gets too hot. Does the temperature sensor cool the greenhouse, or does it just report the bad news?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="open">Key = 1, Exam = 0</button>
-            <button class="choice-card" type="button" data-hook="locked1">Key = 0, Exam = 0</button>
-            <button class="choice-card" type="button" data-hook="locked2">Key = 1, Exam = 1</button>
-            <button class="choice-card" type="button" data-hook="locked3">Key = 0, Exam = 1</button>
+            <button class="choice-card" type="button" data-hook="sensor">Sensor detects temperature</button>
+            <button class="choice-card" type="button" data-hook="compare">Processor compares with threshold</button>
+            <button class="choice-card" type="button" data-hook="actuator">Actuator starts fan or opens vent</button>
+            <button class="choice-card" type="button" data-hook="feedback">New readings check whether action worked</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Rule: Output = Key AND NOT Exam. Try one row first, then trust the table.
+            Click one part. Identify the input, processing decision and resulting output action.
           </div>
         </section>
 
-        <section class="panel" id="signals" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
+        <section class="panel" id="sensors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Logic gates use binary signals</h2>
+            <h2>Sensors capture physical data</h2>
           </div>
-          <div class="binary-grid">
-            <article>
-              <strong>0</strong>
-              <span>False, off, no signal, condition not met</span>
-            </article>
-            <article>
-              <strong>1</strong>
-              <span>True, on, signal present, condition met</span>
-            </article>
-            <article>
-              <strong>Input</strong>
-              <span>A value entering the gate, usually labelled A, B or C.</span>
-            </article>
-            <article>
-              <strong>Output</strong>
-              <span>The result produced by the gate, often labelled Q or X.</span>
-            </article>
+          <div class="device-table wide" role="table" aria-label="Sensors and measurements">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Sensor</div>
+              <div role="columnheader">Detects</div>
+              <div role="columnheader">Example system</div>
+              <div role="columnheader">Exam warning</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Temperature</div>
+              <div role="cell">Heat / temperature value</div>
+              <div role="cell">Greenhouse fan, thermostat, freezer alarm</div>
+              <div role="cell">It detects temperature; it does not cool the room.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Light</div>
+              <div role="cell">Light intensity</div>
+              <div role="cell">Street lights, phone brightness</div>
+              <div role="cell">The output may be a lamp, not the sensor.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Pressure</div>
+              <div role="cell">Force/pressure level</div>
+              <div role="cell">Burglar mat, weighing scale, tyre pressure</div>
+              <div role="cell">Name what pressure means in context.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Motion / proximity</div>
+              <div role="cell">Movement or nearby object/person</div>
+              <div role="cell">Automatic doors, security lights, parking sensors</div>
+              <div role="cell">Do not say it identifies intent; it detects presence/distance.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Humidity / moisture</div>
+              <div role="cell">Water content in air/soil</div>
+              <div role="cell">Irrigation system, greenhouse monitoring</div>
+              <div role="cell">The actuator might be pump/valve, not the sensor.</div>
+            </div>
           </div>
-          <div class="callout">Chinese support: logic gate = 逻辑门；Boolean = 布尔；truth table = 真值表；output = 输出。</div>
+          <div class="callout">Chinese support: sensor = 传感器；physical quantity = 物理量；threshold = 阈值；reading = 读数。</div>
         </section>
-
-        <!-- stage10-explanation:start signals -->
-        <section class="panel explanation-panel" id="explanation-signals" data-explains="signals" data-explanation-kind="mechanism" aria-labelledby="explanation-signals-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
-          <h2 class="explanation-sr-only" id="explanation-signals-title">Logic gates use binary signals</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-signals.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Logic gates use binary signals with a structured visual model." />
-            <figcaption class="explanation-sr-only">Logic gates use binary signals: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Logic 0 means false, off or a valid low logic level.</li><li><strong>Lesson fact:</strong> Logic 1 means true, on or a valid high logic level.</li><li><strong>Lesson fact:</strong> An absent, floating or undriven signal is not automatically a valid logic 0.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end signals -->
-        <section class="panel" id="gates" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
+        <section class="panel" id="actuators" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>The six gate rules</h2>
+            <h2>Actuators turn output signals into physical action</h2>
           </div>
-          <div class="gate-table" role="table" aria-label="Logic gate rules">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Gate</div>
-              <div role="columnheader">Expression</div>
-              <div role="columnheader">Output is 1 when...</div>
-              <div role="columnheader">Common exam wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">NOT</div>
-              <div role="cell">Q = NOT A</div>
-              <div role="cell">A is 0.</div>
-              <div role="cell">Inverts the input.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">AND</div>
-              <div role="cell">Q = A AND B</div>
-              <div role="cell">A and B are both 1.</div>
-              <div role="cell">All conditions must be true.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">OR</div>
-              <div role="cell">Q = A OR B</div>
-              <div role="cell">At least one input is 1.</div>
-              <div role="cell">One or both conditions are true.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">NAND</div>
-              <div role="cell">Q = NOT (A AND B)</div>
-              <div role="cell">Not both inputs are 1.</div>
-              <div role="cell">Inverse of AND.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">NOR</div>
-              <div role="cell">Q = NOT (A OR B)</div>
-              <div role="cell">Both inputs are 0.</div>
-              <div role="cell">Inverse of OR.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">XOR</div>
-              <div role="cell">Q = A XOR B</div>
-              <div role="cell">Exactly one input is 1.</div>
-              <div role="cell">Inputs are different.</div>
-            </div>
+          <div class="criteria-grid">
+            <article><strong>Motor</strong><span>Creates movement, such as opening a door or spinning a fan.</span></article>
+            <article><strong>Valve</strong><span>Controls flow of water, gas or air.</span></article>
+            <article><strong>Heater</strong><span>Changes temperature by producing heat.</span></article>
+            <article><strong>Light</strong><span>Turns visual warning or illumination on/off.</span></article>
+            <article><strong>Lock / brake</strong><span>Controls physical safety or movement.</span></article>
           </div>
+          <div class="callout">An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</div>
         </section>
 
-        <!-- stage10-explanation:start gates -->
-        <section class="panel explanation-panel" id="explanation-gates" data-explains="gates" data-explanation-kind="mechanism" aria-labelledby="explanation-gates-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
-          <h2 class="explanation-sr-only" id="explanation-gates-title">The six gate rules</h2>
+        <!-- stage10-explanation:start actuators -->
+        <section class="panel explanation-panel" id="explanation-actuators" data-explains="actuators" data-explanation-kind="mechanism" aria-labelledby="explanation-actuators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
+          <h2 class="explanation-sr-only" id="explanation-actuators-title">Actuators turn output signals into physical action</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-gates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The six gate rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">The six gate rules: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-actuators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Actuators turn output signals into physical action with a structured visual model." />
+            <figcaption class="explanation-sr-only">Actuators turn output signals into physical action: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The six gates are NOT, AND, OR, NAND, NOR and XOR.</li><li><strong>Lesson fact:</strong> NAND is the negation of AND and NOR is the negation of OR.</li><li><strong>Lesson fact:</strong> XOR outputs 1 when exactly one of its two inputs is 1.</li><li><strong>Lesson fact:</strong> Ordinary OR also outputs 1 when both inputs are 1, so OR and XOR are different.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Motor Creates movement, such as opening a door or spinning a fan.</li><li><strong>Lesson fact:</strong> Valve Controls flow of water, gas or air.</li><li><strong>Lesson fact:</strong> Heater Changes temperature by producing heat.</li><li><strong>Lesson fact:</strong> Light Turns visual warning or illumination on/off.</li><li><strong>Lesson fact:</strong> Lock / brake Controls physical safety or movement.</li><li><strong>Lesson fact:</strong> An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end gates -->
-        <section class="panel" id="symbols" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
+        <!-- stage10-explanation:end actuators -->
+        <section class="panel" id="control" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Recognise gate symbols and the inversion bubble</h2>
+            <h2>Control systems use rules and feedback</h2>
           </div>
-          <div class="symbol-grid" aria-label="Gate symbols">
-            <article><span class="symbol">NOT</span><strong>Triangle + bubble</strong><p>One input. Bubble means inversion.</p></article>
-            <article><span class="symbol">AND</span><strong>Flat left, curved right</strong><p>Output 1 only when all inputs are 1.</p></article>
-            <article><span class="symbol">OR</span><strong>Curved input side</strong><p>Output 1 when at least one input is 1.</p></article>
-            <article><span class="symbol">NAND</span><strong>AND + bubble</strong><p>Complete AND first, then invert.</p></article>
-            <article><span class="symbol">NOR</span><strong>OR + bubble</strong><p>Complete OR first, then invert.</p></article>
-            <article><span class="symbol">XOR</span><strong>OR with extra curved line</strong><p>Output 1 when inputs differ.</p></article>
-          </div>
-          <div class="callout">Exam habit: if a symbol has a small bubble at the output, say "then invert the result" before writing the final column.</div>
-        </section>
-
-        <!-- stage10-explanation:start symbols -->
-        <section class="panel explanation-panel" id="explanation-symbols" data-explains="symbols" data-explanation-kind="mechanism" aria-labelledby="explanation-symbols-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
-          <h2 class="explanation-sr-only" id="explanation-symbols-title">Recognise gate symbols and the inversion bubble</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-symbols.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Recognise gate symbols and the inversion bubble with a structured visual model." />
-            <figcaption class="explanation-sr-only">Recognise gate symbols and the inversion bubble: source-grounded visual explanation.</figcaption>
+          <figure class="control-visual">
+            <div class="control-scene">
+              <img
+                src="../assets/diagrams/lesson-035-greenhouse-control.jpg"
+                width="1672"
+                height="941"
+                loading="lazy"
+                decoding="async"
+                alt="A greenhouse containing a temperature sensor, a controller box, and a ventilation fan with an open roof vent."
+              />
+              <svg viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
+                <defs>
+                  <marker id="controlArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto">
+                    <path d="M 0 0 L 18 9 L 0 18 z" fill="#2563eb"></path>
+                  </marker>
+                  <marker id="feedbackArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto">
+                    <path d="M 0 0 L 18 9 L 0 18 z" fill="#0f766e"></path>
+                  </marker>
+                </defs>
+                <path class="control-link" d="M 315 470 C 500 430 630 430 760 470"></path>
+                <path class="control-link" d="M 930 470 C 1075 430 1190 430 1320 450"></path>
+                <path class="feedback-link" d="M 1360 330 C 1160 80 560 80 285 355"></path>
+              </svg>
+              <span class="control-label sensor-label">1 Sensor reads</span>
+              <span class="control-label processor-label">2 Processor compares</span>
+              <span class="control-label actuator-label">3 Fan and vent act</span>
+            </div>
+            <figcaption>The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.</figcaption>
           </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> NOT Triangle + bubble One input. Bubble means inversion.</li><li><strong>Lesson fact:</strong> AND Flat left, curved right Output 1 only when all inputs are 1.</li><li><strong>Lesson fact:</strong> OR Curved input side Output 1 when at least one input is 1.</li><li><strong>Lesson fact:</strong> NAND AND + bubble Complete AND first, then invert.</li><li><strong>Lesson fact:</strong> NOR OR + bubble Complete OR first, then invert.</li><li><strong>Lesson fact:</strong> XOR OR with extra curved line Output 1 when inputs differ.</li><li><strong>Lesson fact:</strong> Exam habit: if a symbol has a small bubble at the output, say &quot;then invert the result&quot; before writing the final column.</li></ol>
 
+          <ol class="control-sequence">
+            <li><strong>Sense:</strong> the temperature sensor produces a reading.</li>
+            <li><strong>Compare:</strong> the controller compares the reading with its threshold.</li>
+            <li><strong>Act:</strong> an output signal switches or adjusts the fan and vent.</li>
+            <li><strong>Repeat:</strong> a new reading checks whether further action is needed.</li>
+          </ol>
+          <div class="loop-grid" aria-label="Closed-loop control">
+            <div><strong>Input</strong><span>Sensor reads the physical condition.</span></div>
+            <div><strong>Decision</strong><span>Processor compares the reading with a threshold or rule.</span></div>
+            <div><strong>Output</strong><span>Signal is sent to an actuator.</span></div>
+            <div><strong>Feedback</strong><span>New sensor readings check the result.</span></div>
           </div>
-        </section>
-        <!-- stage10-explanation:end symbols -->
-        <section class="panel visual-explainer" id="gate-visual" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Six symbols, six exact output rules</h2>
-            <p>Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</p>
+          <div class="device-table" role="table" aria-label="Open and closed loop comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Type</div>
+              <div role="columnheader">How it behaves</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Open-loop</div>
+              <div role="cell">Carries out action without checking the output/result.</div>
+              <div role="cell">Basic timer turns sprinkler on for 5 minutes.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Closed-loop</div>
+              <div role="cell">Uses sensor feedback to adjust action.</div>
+              <div role="cell">Soil moisture sensor controls irrigation pump.</div>
+            </div>
           </div>
-          <figure class="concept-figure">
-            <svg class="concept-svg" viewBox="0 0 960 520" role="img" aria-labelledby="gateMapTitle gateMapDesc">
-              <title id="gateMapTitle">Standard symbols and output rules for six logic gates</title>
-              <desc id="gateMapDesc">NOT is a triangle with an output bubble. AND has a flat input side and curved output side. OR has curved sides. NAND and NOR add an output bubble to AND and OR. XOR adds a second curved line on the input side of OR.</desc>
-              <g fill="#fff" stroke="#8da2bd" stroke-width="2">
-                <rect x="20" y="20" width="286" height="220" rx="18" /><rect x="337" y="20" width="286" height="220" rx="18" /><rect x="654" y="20" width="286" height="220" rx="18" />
-                <rect x="20" y="280" width="286" height="220" rx="18" /><rect x="337" y="280" width="286" height="220" rx="18" /><rect x="654" y="280" width="286" height="220" rx="18" />
-              </g>
-              <g fill="none" stroke="#172033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M74 126 H110 M110 82 L110 170 L196 126 Z M210 126 H256" /><circle cx="204" cy="126" r="8" fill="#fff" />
-                <path d="M383 95 H424 M383 157 H424 M424 76 H464 A50 50 0 0 1 464 176 H424 Z M514 126 H573" />
-                <path d="M697 95 H735 M697 157 H735 M726 76 Q770 126 726 176 Q814 176 846 126 Q814 76 726 76 Z M846 126 H890" />
-                <path d="M66 355 H107 M66 417 H107 M107 336 H147 A50 50 0 0 1 147 436 H107 Z M205 386 H256" /><circle cx="197" cy="386" r="8" fill="#fff" />
-                <path d="M380 355 H418 M380 417 H418 M409 336 Q453 386 409 436 Q497 436 529 386 Q497 336 409 336 Z M545 386 H573" /><circle cx="537" cy="386" r="8" fill="#fff" />
-                <path d="M697 355 H735 M697 417 H735 M716 336 Q760 386 716 436 M726 336 Q770 386 726 436 Q814 436 846 386 Q814 336 726 336 Z M846 386 H890" />
-              </g>
-              <g class="svg-node-label">
-                <text x="163" y="58">NOT</text><text x="480" y="58">AND</text><text x="797" y="58">OR</text>
-                <text x="163" y="318">NAND</text><text x="480" y="318">NOR</text><text x="797" y="318">XOR</text>
-              </g>
-              <g class="svg-node-detail">
-                <text x="163" y="211">Q = NOT A</text><text x="480" y="211">1 only when both are 1</text><text x="797" y="211">1 when at least one is 1</text>
-                <text x="163" y="471">NOT (A AND B)</text><text x="480" y="471">NOT (A OR B)</text><text x="797" y="471">1 when inputs differ</text>
-              </g>
-            </svg>
-            <ol class="visual-steps">
-              <li><strong>NOT</strong><span>One input; output is the opposite value.</span></li>
-              <li><strong>AND / NAND</strong><span>AND tests whether both are 1; NAND inverts that result.</span></li>
-              <li><strong>OR / NOR</strong><span>OR tests whether at least one is 1; NOR inverts that result.</span></li>
-              <li><strong>XOR</strong><span>Output is 1 only when the two inputs are different.</span></li>
-            </ol>
-          </figure>
           <details class="diagram-check">
-            <summary>Check the diagram: what two visual clues separate NOR from XOR?</summary>
-            <p>NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</p>
+            <summary>Check your reading: why does the sensor not cool the greenhouse?</summary>
+            <p>The sensor only measures temperature and sends a reading. The controller makes the decision, while the fan or vent is the actuator that changes the physical condition.</p>
           </details>
         </section>
 
+        <!-- stage10-explanation:start control -->
+        <section class="panel explanation-panel" id="explanation-control" data-explains="control" data-explanation-kind="mechanism" aria-labelledby="explanation-control-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
+          <h2 class="explanation-sr-only" id="explanation-control-title">Control systems use rules and feedback</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-control.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Control systems use rules and feedback with a structured visual model." />
+            <figcaption class="explanation-sr-only">Control systems use rules and feedback: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1 Sensor reads</li><li><strong>Lesson fact:</strong> 2 Processor compares</li><li><strong>Lesson fact:</strong> 3 Fan and vent act</li><li><strong>Lesson fact:</strong> The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.</li><li><strong>Lesson fact:</strong> Sense: the temperature sensor produces a reading.</li><li><strong>Lesson fact:</strong> Compare: the controller compares the reading with its threshold.</li><li><strong>Lesson fact:</strong> Act: an output signal switches or adjusts the fan and vent.</li><li><strong>Lesson fact:</strong> Repeat: a new reading checks whether further action is needed.</li><li><strong>Lesson fact:</strong> Input Sensor reads the physical condition.</li><li><strong>Lesson fact:</strong> Decision Processor compares the reading with a threshold or rule.</li><li><strong>Lesson fact:</strong> Output Signal is sent to an actuator.</li><li><strong>Lesson fact:</strong> Feedback New sensor readings check the result.</li></ol>
 
+          </div>
+        </section>
+        <!-- stage10-explanation:end control -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Generate a truth table</h2>
+            <h2>Match the sensor and actuator</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Gate
-              <select id="gateInput">
-                <option value="NOT">NOT</option>
-                <option value="AND">AND</option>
-                <option value="OR">OR</option>
-                <option value="NAND">NAND</option>
-                <option value="NOR">NOR</option>
-                <option value="XOR">XOR</option>
+              Scenario
+              <select id="scenarioInput">
+                <option value="greenhouse">Greenhouse cools itself when too hot</option>
+                <option value="irrigation">Irrigation starts when soil is too dry</option>
+                <option value="street">Street light turns on when it is dark</option>
+                <option value="parking">Car warns when obstacle is close</option>
+                <option value="freezer">Freezer alarm sounds if temperature rises</option>
+                <option value="door">Automatic door opens when a person approaches</option>
               </select>
             </label>
-            <button type="button" id="truthBtn">Build table</button>
+            <button type="button" id="chooseBtn">Explain system</button>
           </div>
-          <div class="result-box" id="gateRule" aria-live="polite"></div>
-          <div class="truth-table-wrap" id="truthTable"></div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>From condition to table</h2>
+            <h2>Writing full control explanations</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="compound">Compound expression</button>
-            <button class="tab" type="button" data-example="xor">XOR vs OR</button>
-            <button class="tab" type="button" data-example="nand">NAND from AND</button>
+            <button class="tab active" type="button" data-example="greenhouse">Greenhouse</button>
+            <button class="tab" type="button" data-example="irrigation">Irrigation</button>
+            <button class="tab" type="button" data-example="parking">Parking sensor</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -396,18 +298,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak logic answer</h2>
+            <h2>Fix the weak control answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"OR is true only when one input is true."</p>
+              <p class="wrong">"The light sensor turns on the street lamp."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">OR is true when at least one input is 1, so 01, 10 and 11 all produce 1. The phrase "only one" describes XOR, not OR.</p>
+              <p class="answer" id="mistake1">The light sensor detects light intensity. The controller compares it with a threshold. The lamp is switched on by an output signal/actuator if it is dark enough.</p>
             </article>
             <article>
-              <p class="wrong">"NAND means A and B, so it is true only when both are 1."</p>
+              <p class="wrong">"Closed-loop means the system repeats the same action forever."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">NAND is NOT AND. First find A AND B, then invert it. NAND is 0 only when both inputs are 1.</p>
+              <p class="answer" id="mistake2">Closed-loop means the system uses feedback from sensors to adjust the action. It may stop, start or change output depending on new readings.</p>
             </article>
           </div>
         </section>
@@ -416,7 +318,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on exact gate behaviour and correct truth-table rows.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on naming the sensor, rule, actuator and feedback accurately.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -424,15 +326,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-035">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Six gate rules in exam language</h2>
+            <h2>Control systems in six exam sentences</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>NOT</strong><span>Inverts a single input.</span></div>
-            <div><strong>AND</strong><span>1 only when all inputs are 1.</span></div>
-            <div><strong>OR</strong><span>1 when at least one input is 1.</span></div>
-            <div><strong>NAND</strong><span>Inverse of AND.</span></div>
-            <div><strong>NOR</strong><span>Inverse of OR.</span></div>
-            <div><strong>XOR</strong><span>1 when exactly one input is 1.</span></div>
+            <div><strong>Sensor</strong><span>Input device that detects a physical quantity.</span></div>
+            <div><strong>Processor</strong><span>Compares readings with rules or thresholds.</span></div>
+            <div><strong>Actuator</strong><span>Output device that causes physical action.</span></div>
+            <div><strong>Threshold</strong><span>Boundary value used to decide an action.</span></div>
+            <div><strong>Open-loop</strong><span>Acts without checking the result.</span></div>
+            <div><strong>Closed-loop</strong><span>Uses feedback readings to adjust action.</span></div>
           </div>
         </section>
 
@@ -442,25 +344,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Write the truth table for each gate: NOT, AND, OR, NAND, NOR and XOR.</li>
-            <li>Complete the full truth table for Q = (A AND B) OR NOT C, including intermediate columns.</li>
-            <li>Write a 4-mark comparison of OR and XOR using exact input combinations.</li>
-            <li>Create one real-life rule that uses AND and one that uses OR, then translate both into Boolean expressions.</li>
+            <li>Create a table of five sensors: what each detects and one system that uses it.</li>
+            <li>Write a 5-mark explanation for a street light controlled by a light sensor.</li>
+            <li>Compare open-loop and closed-loop control using irrigation as the example.</li>
+            <li>Rewrite this weak sentence: "The sensor starts the pump."</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Gate tables:</strong> NOT has two rows; the two-input gates have four rows: 00, 01, 10, 11.</p>
-            <p><strong>Compound expression:</strong> include columns for A AND B, NOT C, then final OR.</p>
-            <p><strong>OR vs XOR:</strong> OR gives 1 for 01, 10, 11; XOR gives 1 only for 01 and 10.</p>
-            <p><strong>Expressions:</strong> keep variables short, such as Key, Exam, Rain, Sensor.</p>
+            <p><strong>Sensor table:</strong> include temperature, light, pressure, motion/proximity and moisture/humidity.</p>
+            <p><strong>Street light:</strong> light sensor reads intensity; controller compares with threshold; lamp output turns on/off; readings repeat.</p>
+            <p><strong>Irrigation:</strong> open-loop timer waters for fixed time; closed-loop uses moisture feedback to decide when to pump.</p>
+            <p><strong>Correction:</strong> the sensor detects dryness; the controller decides; the pump/valve actuator starts.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

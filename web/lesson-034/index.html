@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 034 | Sensors, actuators and control systems</title>
+    <title>AS9618 Lesson 034 | Embedded systems and microcontrollers</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Sensors, actuators and control systems</h1>
+        <h1>Embedded systems and microcontrollers</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,325 +29,162 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#sensors">Sensors</a>
-        <a href="#actuators">Actuators</a>
-        <a href="#control">Control systems</a>
-        <a href="#tool">Control tool</a>
+        <a href="#embedded">Embedded system</a>
+        <a href="#microcontroller">Microcontroller</a>
+        <a href="#tool">Design tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Monitoring, control, feedback and required sensors</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.</p>
-            <p>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.</p>
-            <p>Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.</p>
-            <p>A control system sends output signals to actuators and uses sensor feedback to determine the next control action.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Greenhouse monitoring and control</h3>
-            <p>A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start sensors -->
-        <section class="panel explanation-panel" id="explanation-sensors" data-explains="sensors" data-explanation-kind="mechanism" aria-labelledby="explanation-sensors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sensors">
-          <h2 class="explanation-sr-only" id="explanation-sensors-title">Required sensor types and applications</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Required sensor types and applications with a structured visual model." />
-            <figcaption class="explanation-sr-only">Required sensor types and applications: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li><strong>Lesson fact:</strong> An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li><strong>Lesson fact:</strong> A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li><strong>Lesson fact:</strong> A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li><strong>Lesson fact:</strong> Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end sensors -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Monitoring, control, feedback and required sensors: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Compare monitoring from control.</p>
-              <details><summary>Show answer</summary><p>Monitoring records, displays or reports sensor data; control uses data to change an actuator or system state.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What is feedback in a closed-loop control system?</p>
-              <details><summary>Show answer</summary><p>A new sensor reading after the action, used to adjust or stop the output.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which named sensor detects radiation used by a remote control?</p>
-              <details><summary>Show answer</summary><p>An infra-red sensor.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Which named sensor is suitable for a classroom noise monitor?</p>
-              <details><summary>Show answer</summary><p>A sound sensor.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why is a sensor not an actuator?</p>
-              <details><summary>Show answer</summary><p>A sensor supplies input about a physical quantity; an actuator produces a physical output action.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A greenhouse system records temperature and automatically opens a vent when necessary. Compare its monitoring and control functions and explain the feedback cycle.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>monitoring records/displays temperature readings</td><td>Do not state that monitoring necessarily changes an actuator, or that a sensor performs the control decision.</td><td>1</td></tr>
-                  <tr><td>control compares a reading with a rule/threshold</td><td></td><td>1</td></tr>
-                  <tr><td>controller sends output to a vent motor or other actuator</td><td></td><td>1</td></tr>
-                  <tr><td>new sensor readings provide feedback after the action</td><td></td><td>1</td></tr>
-                  <tr><td>feedback is used to adjust or stop the actuator</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 034 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Control systems are where data stops being a spreadsheet and starts moving the world.</h2>
+            <h2>An embedded system is a computer that quietly does one job very seriously.</h2>
             <p>
-              This lesson focuses on sensors, actuators and control systems. You will
-              practise describing how physical measurements become input data, how a
-              processor applies a rule, and how actuators create output action.
+              This lesson explains why embedded systems are built for dedicated tasks and
+              how a microcontroller can integrate processing, memory and input/output on one
+              chip. Control-system components and feedback are introduced in Lesson 035.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>common sensors and the quantities they detect</span></div>
-              <div><strong>Explain</strong><span>how actuators produce physical output</span></div>
-              <div><strong>Trace</strong><span>control loops using thresholds and repeated readings</span></div>
+              <div><strong>Define</strong><span>embedded systems and microcontrollers accurately</span></div>
+              <div><strong>Compare</strong><span>microcontrollers with general-purpose computers</span></div>
+              <div><strong>Explain</strong><span>why embedded systems are designed for specific tasks</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Control system chain">
-            <span>sense -> compare -> act -> sense again</span>
-            <p>The sensor is the messenger. The actuator does the heavy lifting. Mixing them up is how exam marks quietly leave the room.</p>
+          <div class="system-card" aria-label="Embedded system focus">
+            <span>dedicated task -> integrated hardware -> predictable operation</span>
+            <p>A washing machine contains an embedded computer designed around the appliance rather than around many unrelated user programs.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style answers reward sequence. Listing "temperature sensor, fan" is weaker than explaining the rule that connects them.</p>
+            <p>Embedded-system answers need more than “a small computer”: identify its dedicated purpose and its place inside a larger device.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A closed-loop system uses feedback from sensors. An open-loop system acts without checking the result.</p>
+            <p>A microcontroller is not just "a tiny CPU". It often integrates CPU, memory and input/output interfaces on one chip.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A greenhouse gets too hot. Does the temperature sensor cool the greenhouse, or does it just report the bad news?</h2>
+            <h2>Why does a washing machine use an embedded computer instead of a general-purpose laptop?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="sensor">Sensor detects temperature</button>
-            <button class="choice-card" type="button" data-hook="compare">Processor compares with threshold</button>
-            <button class="choice-card" type="button" data-hook="actuator">Actuator starts fan or opens vent</button>
-            <button class="choice-card" type="button" data-hook="feedback">New readings check whether action worked</button>
+            <button class="choice-card" type="button" data-hook="purpose">It performs a dedicated set of tasks</button>
+            <button class="choice-card" type="button" data-hook="integrated">Its hardware can be integrated on one chip</button>
+            <button class="choice-card" type="button" data-hook="interface">It needs only a limited user interface</button>
+            <button class="choice-card" type="button" data-hook="reliability">It must operate predictably for repeated cycles</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one part. Identify the input, processing decision and resulting output action.
+            Click one design reason, then connect it to the appliance's dedicated purpose.
           </div>
         </section>
 
-        <section class="panel" id="sensors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
+        <section class="panel" id="embedded" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Sensors capture physical data</h2>
-          </div>
-          <div class="device-table wide" role="table" aria-label="Sensors and measurements">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Sensor</div>
-              <div role="columnheader">Detects</div>
-              <div role="columnheader">Example system</div>
-              <div role="columnheader">Exam warning</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Temperature</div>
-              <div role="cell">Heat / temperature value</div>
-              <div role="cell">Greenhouse fan, thermostat, freezer alarm</div>
-              <div role="cell">It detects temperature; it does not cool the room.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Light</div>
-              <div role="cell">Light intensity</div>
-              <div role="cell">Street lights, phone brightness</div>
-              <div role="cell">The output may be a lamp, not the sensor.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Pressure</div>
-              <div role="cell">Force/pressure level</div>
-              <div role="cell">Burglar mat, weighing scale, tyre pressure</div>
-              <div role="cell">Name what pressure means in context.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Motion / proximity</div>
-              <div role="cell">Movement or nearby object/person</div>
-              <div role="cell">Automatic doors, security lights, parking sensors</div>
-              <div role="cell">Do not say it identifies intent; it detects presence/distance.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Humidity / moisture</div>
-              <div role="cell">Water content in air/soil</div>
-              <div role="cell">Irrigation system, greenhouse monitoring</div>
-              <div role="cell">The actuator might be pump/valve, not the sensor.</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: sensor = 传感器；physical quantity = 物理量；threshold = 阈值；reading = 读数。</div>
-        </section>
-
-        <section class="panel" id="actuators" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Actuators turn output signals into physical action</h2>
+            <h2>What is an embedded system?</h2>
           </div>
           <div class="criteria-grid">
-            <article><strong>Motor</strong><span>Creates movement, such as opening a door or spinning a fan.</span></article>
-            <article><strong>Valve</strong><span>Controls flow of water, gas or air.</span></article>
-            <article><strong>Heater</strong><span>Changes temperature by producing heat.</span></article>
-            <article><strong>Light</strong><span>Turns visual warning or illumination on/off.</span></article>
-            <article><strong>Lock / brake</strong><span>Controls physical safety or movement.</span></article>
+            <article><strong>Dedicated purpose</strong><span>Designed to perform a specific task or set of tasks.</span></article>
+            <article><strong>Built into device</strong><span>Part of a larger product, such as a washing machine or traffic light.</span></article>
+            <article><strong>Limited interface</strong><span>Often has few controls or displays compared with a general-purpose computer.</span></article>
+            <article><strong>Limited resources</strong><span>Hardware is selected for the required task rather than maximum general performance.</span></article>
+            <article><strong>Reliability focus</strong><span>Usually expected to run repeatedly and predictably.</span></article>
           </div>
-          <div class="callout">An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</div>
+          <div class="callout">Chinese support: embedded system = 嵌入式系统；microcontroller = 微控制器；dedicated purpose = 专用功能；general-purpose computer = 通用计算机。</div>
         </section>
 
-        <!-- stage10-explanation:start actuators -->
-        <section class="panel explanation-panel" id="explanation-actuators" data-explains="actuators" data-explanation-kind="mechanism" aria-labelledby="explanation-actuators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
-          <h2 class="explanation-sr-only" id="explanation-actuators-title">Actuators turn output signals into physical action</h2>
+        <!-- stage10-explanation:start embedded -->
+        <section class="panel explanation-panel" id="explanation-embedded" data-explains="embedded" data-explanation-kind="mechanism" aria-labelledby="explanation-embedded-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
+          <h2 class="explanation-sr-only" id="explanation-embedded-title">What is an embedded system?</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-actuators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Actuators turn output signals into physical action with a structured visual model." />
-            <figcaption class="explanation-sr-only">Actuators turn output signals into physical action: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-embedded.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is an embedded system? with a structured visual model." />
+            <figcaption class="explanation-sr-only">What is an embedded system?: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Motor Creates movement, such as opening a door or spinning a fan.</li><li><strong>Lesson fact:</strong> Valve Controls flow of water, gas or air.</li><li><strong>Lesson fact:</strong> Heater Changes temperature by producing heat.</li><li><strong>Lesson fact:</strong> Light Turns visual warning or illumination on/off.</li><li><strong>Lesson fact:</strong> Lock / brake Controls physical safety or movement.</li><li><strong>Lesson fact:</strong> An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> An embedded system is designed to perform a specific task or closely related set of tasks.</li><li><strong>Lesson fact:</strong> It forms part of a larger product, such as a washing machine, microwave oven or router.</li><li><strong>Lesson fact:</strong> It often uses a limited interface and task-specific resources.</li><li><strong>Lesson fact:</strong> Low cost, low power and reliable repeated operation may be relevant design priorities.</li><li><strong>Lesson fact:</strong> Define an embedded system by purpose and context, not only by physical size.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end actuators -->
-        <section class="panel" id="control" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
+        <!-- stage10-explanation:end embedded -->
+        <section class="panel" id="microcontroller" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Control systems use rules and feedback</h2>
+            <h2>Microcontroller vs general-purpose computer</h2>
           </div>
-          <figure class="control-visual">
-            <div class="control-scene">
-              <img
-                src="../assets/diagrams/lesson-034-greenhouse-control.jpg"
-                width="1672"
-                height="941"
-                loading="lazy"
-                decoding="async"
-                alt="A greenhouse containing a temperature sensor, a controller box, and a ventilation fan with an open roof vent."
-              />
-              <svg viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
-                <defs>
-                  <marker id="controlArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto">
-                    <path d="M 0 0 L 18 9 L 0 18 z" fill="#2563eb"></path>
-                  </marker>
-                  <marker id="feedbackArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto">
-                    <path d="M 0 0 L 18 9 L 0 18 z" fill="#0f766e"></path>
-                  </marker>
-                </defs>
-                <path class="control-link" d="M 315 470 C 500 430 630 430 760 470"></path>
-                <path class="control-link" d="M 930 470 C 1075 430 1190 430 1320 450"></path>
-                <path class="feedback-link" d="M 1360 330 C 1160 80 560 80 285 355"></path>
-              </svg>
-              <span class="control-label sensor-label">1 Sensor reads</span>
-              <span class="control-label processor-label">2 Processor compares</span>
-              <span class="control-label actuator-label">3 Fan and vent act</span>
-            </div>
-            <figcaption>The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.</figcaption>
-          </figure>
-
-          <ol class="control-sequence">
-            <li><strong>Sense:</strong> the temperature sensor produces a reading.</li>
-            <li><strong>Compare:</strong> the controller compares the reading with its threshold.</li>
-            <li><strong>Act:</strong> an output signal switches or adjusts the fan and vent.</li>
-            <li><strong>Repeat:</strong> a new reading checks whether further action is needed.</li>
-          </ol>
-          <div class="loop-grid" aria-label="Closed-loop control">
-            <div><strong>Input</strong><span>Sensor reads the physical condition.</span></div>
-            <div><strong>Decision</strong><span>Processor compares the reading with a threshold or rule.</span></div>
-            <div><strong>Output</strong><span>Signal is sent to an actuator.</span></div>
-            <div><strong>Feedback</strong><span>New sensor readings check the result.</span></div>
-          </div>
-          <div class="device-table" role="table" aria-label="Open and closed loop comparison">
+          <div class="device-table" role="table" aria-label="Microcontroller comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Type</div>
-              <div role="columnheader">How it behaves</div>
-              <div role="columnheader">Example</div>
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Microcontroller / embedded system</div>
+              <div role="columnheader">General-purpose computer</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Open-loop</div>
-              <div role="cell">Carries out action without checking the output/result.</div>
-              <div role="cell">Basic timer turns sprinkler on for 5 minutes.</div>
+              <div role="cell">Purpose</div>
+              <div role="cell">Designed for a specific control task.</div>
+              <div role="cell">Designed to run many different programs.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Closed-loop</div>
-              <div role="cell">Uses sensor feedback to adjust action.</div>
-              <div role="cell">Soil moisture sensor controls irrigation pump.</div>
+              <div role="cell">Hardware</div>
+              <div role="cell">Often integrates CPU, memory and I/O on one chip.</div>
+              <div role="cell">Separate high-performance components are common.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Interface</div>
+              <div role="cell">May have simple buttons, LEDs or no screen.</div>
+              <div role="cell">Usually has richer input/output and user interface.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Design priorities</div>
+              <div role="cell">Low cost, low power, reliability, real-time response.</div>
+              <div role="cell">Flexibility, performance and user interaction.</div>
             </div>
           </div>
-          <details class="diagram-check">
-            <summary>Check your reading: why does the sensor not cool the greenhouse?</summary>
-            <p>The sensor only measures temperature and sends a reading. The controller makes the decision, while the fan or vent is the actuator that changes the physical condition.</p>
-          </details>
         </section>
 
-        <!-- stage10-explanation:start control -->
-        <section class="panel explanation-panel" id="explanation-control" data-explains="control" data-explanation-kind="mechanism" aria-labelledby="explanation-control-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
-          <h2 class="explanation-sr-only" id="explanation-control-title">Control systems use rules and feedback</h2>
+        <!-- stage10-explanation:start microcontroller -->
+        <section class="panel explanation-panel" id="explanation-microcontroller" data-explains="microcontroller" data-explanation-kind="comparison" aria-labelledby="explanation-microcontroller-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
+          <h2 class="explanation-sr-only" id="explanation-microcontroller-title">Microcontroller vs general-purpose computer</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-control.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Control systems use rules and feedback with a structured visual model." />
-            <figcaption class="explanation-sr-only">Control systems use rules and feedback: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-microcontroller.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Microcontroller vs general-purpose computer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Microcontroller vs general-purpose computer: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1 Sensor reads</li><li><strong>Lesson fact:</strong> 2 Processor compares</li><li><strong>Lesson fact:</strong> 3 Fan and vent act</li><li><strong>Lesson fact:</strong> The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.</li><li><strong>Lesson fact:</strong> Sense: the temperature sensor produces a reading.</li><li><strong>Lesson fact:</strong> Compare: the controller compares the reading with its threshold.</li><li><strong>Lesson fact:</strong> Act: an output signal switches or adjusts the fan and vent.</li><li><strong>Lesson fact:</strong> Repeat: a new reading checks whether further action is needed.</li><li><strong>Lesson fact:</strong> Input Sensor reads the physical condition.</li><li><strong>Lesson fact:</strong> Decision Processor compares the reading with a threshold or rule.</li><li><strong>Lesson fact:</strong> Output Signal is sent to an actuator.</li><li><strong>Lesson fact:</strong> Feedback New sensor readings check the result.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Microcontroller / embedded system</li><li><strong>Lesson fact:</strong> General-purpose computer</li><li><strong>Lesson fact:</strong> Designed for a specific control task.</li><li><strong>Lesson fact:</strong> Designed to run many different programs.</li><li><strong>Lesson fact:</strong> Hardware</li><li><strong>Lesson fact:</strong> Often integrates CPU, memory and I/O on one chip.</li><li><strong>Lesson fact:</strong> Separate high-performance components are common.</li><li><strong>Lesson fact:</strong> Interface</li><li><strong>Lesson fact:</strong> May have simple buttons, LEDs or no screen.</li><li><strong>Lesson fact:</strong> Usually has richer input/output and user interface.</li><li><strong>Lesson fact:</strong> Design priorities</li><li><strong>Lesson fact:</strong> Low cost, low power, reliability, real-time response.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end control -->
+        <!-- stage10-explanation:end microcontroller -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Match the sensor and actuator</h2>
+            <h2>Match a device to its embedded-system design</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="greenhouse">Greenhouse cools itself when too hot</option>
-                <option value="irrigation">Irrigation starts when soil is too dry</option>
-                <option value="street">Street light turns on when it is dark</option>
-                <option value="parking">Car warns when obstacle is close</option>
-                <option value="freezer">Freezer alarm sounds if temperature rises</option>
-                <option value="door">Automatic door opens when a person approaches</option>
+                <option value="greenhouse">Microwave oven</option>
+                <option value="door">Network printer</option>
+                <option value="traffic">Home router</option>
+                <option value="washer">Washing machine</option>
+                <option value="car">Smartwatch</option>
+                <option value="heater">Laptop computer</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Explain system</button>
+            <button type="button" id="chooseBtn">Explain design</button>
           </div>
           <div class="result-box" id="componentResult" aria-live="polite"></div>
           <div class="method-box" id="componentMethod"></div>
@@ -356,12 +193,12 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Writing full control explanations</h2>
+            <h2>Embedded-system design explanations</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="greenhouse">Greenhouse</button>
-            <button class="tab" type="button" data-example="irrigation">Irrigation</button>
-            <button class="tab" type="button" data-example="parking">Parking sensor</button>
+            <button class="tab active" type="button" data-example="greenhouse">Microwave</button>
+            <button class="tab" type="button" data-example="door">Router</button>
+            <button class="tab" type="button" data-example="washing">Washing machine</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -379,18 +216,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak control answer</h2>
+            <h2>Fix the weak embedded-system answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"The light sensor turns on the street lamp."</p>
+              <p class="wrong">"An embedded system is any small computer."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">The light sensor detects light intensity. The controller compares it with a threshold. The lamp is switched on by an output signal/actuator if it is dark enough.</p>
+              <p class="answer" id="mistake1">Size alone is not the definition. An embedded system is built into a larger device and performs a specific task or set of tasks.</p>
             </article>
             <article>
-              <p class="wrong">"Closed-loop means the system repeats the same action forever."</p>
+              <p class="wrong">"An embedded system is just a normal computer inside a machine."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Closed-loop means the system uses feedback from sensors to adjust the action. It may stop, start or change output depending on new readings.</p>
+              <p class="answer" id="mistake2">An embedded system is built into a larger device and designed for a specific task, often with limited interface, low power use and predictable control behaviour.</p>
             </article>
           </div>
         </section>
@@ -399,7 +236,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on naming the sensor, rule, actuator and feedback accurately.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on purpose, integration, interface and design priorities.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -407,15 +244,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Control systems in six exam sentences</h2>
+            <h2>Embedded systems in six exam points</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Sensor</strong><span>Input device that detects a physical quantity.</span></div>
-            <div><strong>Processor</strong><span>Compares readings with rules or thresholds.</span></div>
-            <div><strong>Actuator</strong><span>Output device that causes physical action.</span></div>
-            <div><strong>Threshold</strong><span>Boundary value used to decide an action.</span></div>
-            <div><strong>Open-loop</strong><span>Acts without checking the result.</span></div>
-            <div><strong>Closed-loop</strong><span>Uses feedback readings to adjust action.</span></div>
+            <div><strong>Embedded system</strong><span>Computer system built into a larger device for a specific task.</span></div>
+            <div><strong>Microcontroller</strong><span>Often integrates CPU, memory and I/O for control tasks.</span></div>
+            <div><strong>Integration</strong><span>CPU, memory and input/output interfaces may share one chip.</span></div>
+            <div><strong>Interface</strong><span>Usually limited to the controls and displays needed for the task.</span></div>
+            <div><strong>Resources</strong><span>Selected for cost, power and required performance.</span></div>
+            <div><strong>Reliability</strong><span>Designed for predictable repeated operation.</span></div>
           </div>
         </section>
 
@@ -425,25 +262,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a table of five sensors: what each detects and one system that uses it.</li>
-            <li>Write a 5-mark explanation for a street light controlled by a light sensor.</li>
-            <li>Compare open-loop and closed-loop control using irrigation as the example.</li>
-            <li>Rewrite this weak sentence: "The sensor starts the pump."</li>
+            <li>Explain why a microwave oven is an embedded system using purpose, integration and interface.</li>
+            <li>Write a 5-mark comparison between a microcontroller and a general-purpose computer.</li>
+            <li>Compare an embedded system with a general-purpose computer using purpose, interface and hardware.</li>
+            <li>Rewrite this weak sentence: "An embedded system is just a small computer."</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Sensor table:</strong> include temperature, light, pressure, motion/proximity and moisture/humidity.</p>
-            <p><strong>Street light:</strong> light sensor reads intensity; controller compares with threshold; lamp output turns on/off; readings repeat.</p>
-            <p><strong>Irrigation:</strong> open-loop timer waters for fixed time; closed-loop uses moisture feedback to decide when to pump.</p>
-            <p><strong>Correction:</strong> the sensor detects dryness; the controller decides; the pump/valve actuator starts.</p>
+            <p><strong>Microwave:</strong> it is built into the appliance, performs a dedicated set of cooking and timing tasks, and needs only a limited interface.</p>
+            <p><strong>Microcontroller:</strong> it can integrate CPU, memory and input/output interfaces on one chip, supporting low cost and low power use.</p>
+            <p><strong>Comparison:</strong> embedded system has a dedicated purpose and limited interface; general-purpose computer runs many programs.</p>
+            <p><strong>Correction:</strong> an embedded system is defined by its dedicated role inside a larger device, not merely by physical size.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

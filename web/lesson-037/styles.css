@@ -103,52 +103,41 @@ button { cursor: pointer; }
 .section-title { margin-bottom: 18px; }
 .section-title p:not(.eyebrow) { color: var(--muted); max-width: 78ch; }
 
-.hook-grid, .mistake-grid {
+.hook-grid, .concept-grid, .priority-grid, .mistake-grid {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
 }
-.choice-card, .mistake-grid article {
+.concept-grid, .priority-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.choice-card, .concept-grid article, .priority-grid article, .mistake-grid article {
   border: 1px solid var(--line); background: #ffffff; border-radius: 8px; padding: 16px; text-align: left;
 }
 .choice-card { font-weight: 800; }
 .choice-card.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-dark); }
+.concept-grid strong, .priority-grid strong {
+  display: block; margin: 0 0 6px; color: var(--accent-dark);
+}
 
-.feedback, .result-box, .method-box, .sequence-box, .callout {
+.feedback, .result-box, .callout {
   margin-top: 16px; padding: 14px 16px; background: #f8fafc;
   border: 1px solid var(--line); border-radius: 8px;
 }
-.result-box { font-family: "SFMono-Regular", Consolas, monospace; font-weight: 850; }
-.sequence-box ol { margin: 8px 0 0; }
-
-.phrase-table {
-  display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
-}
-.table-row { display: grid; grid-template-columns: 1.15fr 1.15fr 0.85fr 1.35fr; }
-.table-row > div { padding: 14px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
-.table-row > div:last-child { border-right: 0; }
-.table-row:last-child > div { border-bottom: 0; }
-.table-head { background: var(--accent-soft); color: var(--accent-dark); font-weight: 850; }
+.result-box { font-family: "SFMono-Regular", Consolas, monospace; font-weight: 800; }
 
 .method-list {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px;
 }
 .method-list div {
   padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: #ffffff;
 }
 .method-list strong { display: block; color: var(--accent-dark); margin-bottom: 6px; }
 
-.circuit-flow {
-  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px;
+.mini-table {
+  display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
 }
-.circuit-flow div {
-  min-height: 120px; padding: 16px; border-radius: 8px; color: #ffffff;
-  display: grid; align-content: center; gap: 6px; position: relative;
-}
-.circuit-flow div:nth-child(1), .circuit-flow div:nth-child(2), .circuit-flow div:nth-child(4) { background: #1d4ed8; }
-.circuit-flow div:nth-child(3) { background: #047857; }
-.circuit-flow div:nth-child(5) { background: #a15c00; }
-.circuit-flow div:nth-child(6) { background: #475467; }
-.circuit-flow strong { font-size: 1.05rem; }
-.circuit-flow span { color: #eef6ff; }
+.table-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.table-row > div { padding: 12px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); text-align: center; }
+.table-row > div:last-child { border-right: 0; }
+.table-row:last-child > div { border-bottom: 0; }
+.table-head { background: var(--accent-soft); color: var(--accent-dark); font-weight: 850; }
 
 .converter-grid {
   display: grid; grid-template-columns: minmax(220px, 1fr) auto; gap: 12px; align-items: end;
@@ -196,19 +185,15 @@ button { cursor: pointer; }
 .homework-list { display: grid; gap: 10px; }
 
 @media (max-width: 1120px) {
-  .method-list, .summary-grid, .circuit-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .table-row { grid-template-columns: 1fr 1fr; }
-  .table-row > div:nth-child(2n) { border-right: 0; }
+  .concept-grid, .priority-grid, .method-list, .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 980px) {
-  .layout, .hero, .guidance-grid, .objective-grid, .hook-grid,
-  .method-list, .mistake-grid, .converter-grid, .summary-grid, .circuit-flow {
+  .layout, .hero, .guidance-grid, .objective-grid, .hook-grid, .concept-grid,
+  .priority-grid, .method-list, .mistake-grid, .converter-grid, .summary-grid {
     grid-template-columns: 1fr;
   }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .topbar { position: static; }
-  .table-row { grid-template-columns: 1fr; }
-  .table-row > div { border-right: 0; }
 }
 @media (max-width: 560px) {
   .layout { padding-inline: 10px; }
@@ -216,6 +201,7 @@ button { cursor: pointer; }
   .lesson-nav { grid-template-columns: 1fr; }
   .gate-card { min-height: 190px; }
   .practice-row, .exam-head { grid-template-columns: 1fr; display: grid; }
+  .table-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media print {
   .topbar, .lesson-nav, button { position: static; }

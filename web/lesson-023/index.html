@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 023 | Network hardware: switches, routers, access points and gateways</title>
+    <title>AS9618 Lesson 023 | Wired and wireless transmission media</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Network hardware: switches, routers, access points and gateways</h1>
+        <h1>Wired and wireless transmission media</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,311 +29,203 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#lan">Switches</a>
-        <a href="#routing">Routers</a>
-        <a href="#wireless">Access points</a>
-        <a href="#gateway">Gateways</a>
+        <a href="#wired">Wired media</a>
+        <a href="#wireless">Wireless media</a>
         <a href="#compare">Comparison</a>
-        <a href="#tool">Hardware tool</a>
+        <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Required LAN and internet connection hardware</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A NIC/WNIC provides wired/wireless network access; a WAP connects wireless devices to a LAN; a switch forwards frames within a LAN; a bridge joins LAN segments; a repeater regenerates a weakened signal; a server provides shared services; cables carry wired signals.</p>
-            <p>A router connects different networks and forwards packets using destination IP addresses and routing information; for example, it connects a LAN to the internet. A router is not simply a device that 'provides WiFi', although one physical home unit may combine router and WAP functions.</p>
-            <p>A modem converts between the data representation used by a computer/network and the signalling required by an access link. Internet-supporting connections include the PSTN (Public Switched Telephone Network), a dedicated line that provides a permanent link, and a cell phone network (cellular phone network) that supplies radio access through mobile infrastructure.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Branch office connection</h3>
-            <p>Each desktop uses a NIC and cable to the switch; phones use a WNIC through the WAP. A server supplies shared files or authentication, a bridge may join LAN segments and a repeater is added only where a weakened signal needs regeneration. The router forwards packets to the ISP through a suitable modem and either the PSTN, a dedicated line or a cell phone network.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required LAN and internet connection hardware: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which device regenerates a weakened signal?</p>
-              <details><summary>Show answer</summary><p>Repeater.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which component gives a laptop wireless network connectivity?</p>
-              <details><summary>Show answer</summary><p>WNIC; it connects through a WAP.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What distinct jobs do a bridge and a switch perform?</p>
-              <details><summary>Show answer</summary><p>A bridge joins LAN segments; a switch connects LAN devices and forwards frames to the appropriate port.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why might a business choose a dedicated line instead of the PSTN?</p>
-              <details><summary>Show answer</summary><p>It offers a permanent, predictable connection suited to continuous business traffic.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> When may a cell phone network support internet access?</p>
-              <details><summary>Show answer</summary><p>When a device or site uses cellular radio infrastructure instead of a fixed access line.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Describe the hardware path used when a wireless laptop accesses an internet server through a dedicated line.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>WNIC provides the laptop's wireless network interface</td><td>Do not merge NIC/WNIC, WAP, switch, router and modem roles; a combined physical box does not make the logical functions identical.</td><td>1</td></tr>
-                  <tr><td>WAP connects the laptop to the LAN and switch forwards the local frame</td><td></td><td>1</td></tr>
-                  <tr><td>router forwards packets between the LAN and internet/other networks</td><td></td><td>1</td></tr>
-                  <tr><td>modem/interface converts data for the access-link signalling</td><td></td><td>1</td></tr>
-                  <tr><td>dedicated line provides the permanent external connection</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 023 | 45 minutes | Paper 1 Section 2</p>
-            <h2>Packets do not wander politely. Hardware tells them where to go.</h2>
+            <h2>A network path uses physical transmission media with different characteristics.</h2>
             <p>
-              This lesson separates common network devices by job: switching inside a
-              LAN, routing between networks, joining wireless devices to a network, and
-              connecting networks that use different protocols or formats.
+              This lesson compares wired and wireless transmission media. A strong answer
+              names the medium, describes how it carries data, then links a feature to
+              the scenario: bandwidth, latency, interference, security, cost, range or mobility.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>switch, router, wireless access point and gateway from a scenario</span></div>
-              <div><strong>Explain</strong><span>how MAC addresses, IP addresses and protocol conversion fit the hardware role</span></div>
-              <div><strong>Justify</strong><span>which device is needed when a network path fails or expands</span></div>
+              <div><strong>Describe</strong><span>copper cable, fibre-optic cable, radio waves, microwaves and satellites</span></div>
+              <div><strong>Compare</strong><span>wired and wireless networks using accurate technical factors</span></div>
+              <div><strong>Choose</strong><span>a suitable medium for a given network scenario and justify it</span></div>
             </div>
           </div>
-          <div class="network-card" aria-label="Network hardware path">
-            <span>device -> switch -> router -> gateway</span>
-            <p>Same network, different network, different rules.</p>
+          <div class="signal-card" aria-label="Transmission media concept">
+            <span>copper -> fibre -> radio -> microwave -> satellite</span>
+            <p>Signals need a medium. The exam needs a reason.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Hardware questions often hide in network diagrams. Students must link the device to the boundary it handles.</p>
+            <p>Cambridge questions often reward comparison. "Wireless is easier" is not enough; explain mobility, interference, range or security.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A wireless access point is not automatically a router. It lets wireless devices join a network; routing is a different job.</p>
+            <p>Do not call WiFi a protocol answer here. This lesson is about the physical transmission medium: radio waves, cables and satellite links.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A tablet joins the school WiFi, then opens a website outside school. Which devices are likely involved?</h2>
+            <h2>The school wants a fast link between two server rooms. Which option is least embarrassing?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="aprouter">Access point for wireless access, router for another network</button>
-            <button class="choice-card" type="button" data-hook="switchonly">Only a switch, because all traffic is local</button>
-            <button class="choice-card" type="button" data-hook="gatewayonly">Only a gateway, because the word sounds official</button>
-            <button class="choice-card" type="button" data-hook="ftp">FTP, because the website contains files</button>
+            <button class="choice-card" type="button" data-hook="fibre">Fibre-optic cable, because high bandwidth and low interference matter</button>
+            <button class="choice-card" type="button" data-hook="satellite">Satellite, because space sounds advanced</button>
+            <button class="choice-card" type="button" data-hook="wifi">WiFi, because cables are old-fashioned</button>
+            <button class="choice-card" type="button" data-hook="smtp">SMTP, because the servers send messages</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the answer that separates wireless access from routing to another network.
+            Pick the answer that uses a transmission medium and links it to the scenario.
           </div>
         </section>
 
-        <section class="panel" id="lan" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
+        <section class="panel" id="wired" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Switches: forwarding inside a LAN</h2>
+            <h2>Wired transmission media</h2>
+            <p>Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.</p>
           </div>
-          <div class="device-grid">
-            <article class="device-card">
-              <h3>Switch</h3>
-              <p>A switch connects devices on a local area network and forwards frames to the correct device.</p>
+          <div class="media-grid">
+            <article class="medium-card">
+              <h3>Copper cable</h3>
+              <p>Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.</p>
               <ul>
-                <li><strong>Uses:</strong> MAC addresses to decide which port should receive the frame.</li>
-                <li><strong>Why useful:</strong> reduces unnecessary traffic compared with sending every frame everywhere.</li>
-                <li><strong>Exam wording:</strong> say "within a LAN" and "MAC address" when the scenario is local device-to-device traffic.</li>
+                <li><strong>Good for:</strong> short local links, desktop PCs, classroom networks.</li>
+                <li><strong>Limits:</strong> affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.</li>
+                <li><strong>Exam wording:</strong> say "electrical signals", not "data flows like water". The cable is not a tiny plumbing system.</li>
               </ul>
             </article>
-            <article class="device-card diagram-card">
-              <h3>LAN idea</h3>
-              <p><code>PC A</code> -> <code>switch</code> -> <code>PC B</code></p>
-              <p>The switch is the traffic desk inside the local network. It does not decide the route across the wider internet.</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: switch = 交换机；frame = 帧；port = 端口；MAC address = MAC 地址。</div>
-        </section>
-
-        <!-- stage10-explanation:start lan -->
-        <section class="panel explanation-panel" id="explanation-lan" data-explains="lan" data-explanation-kind="mechanism" aria-labelledby="explanation-lan-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
-          <h2 class="explanation-sr-only" id="explanation-lan-title">Switches: forwarding inside a LAN</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-lan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Switches: forwarding inside a LAN with a structured visual model." />
-            <figcaption class="explanation-sr-only">Switches: forwarding inside a LAN: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A switch connects devices on a local area network and forwards frames to the correct device.</li><li><strong>Lesson fact:</strong> Uses: MAC addresses to decide which port should receive the frame.</li><li><strong>Lesson fact:</strong> Why useful: reduces unnecessary traffic compared with sending every frame everywhere.</li><li><strong>Lesson fact:</strong> Exam wording: say &quot;within a LAN&quot; and &quot;MAC address&quot; when the scenario is local device-to-device traffic.</li><li><strong>Lesson fact:</strong> LAN idea</li><li><strong>Lesson fact:</strong> PC A -&gt; switch -&gt; PC B</li><li><strong>Lesson fact:</strong> The switch is the traffic desk inside the local network. It does not decide the route across the wider internet.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lan -->
-        <section class="panel" id="routing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Routers: forwarding between networks</h2>
-          </div>
-          <div class="device-grid">
-            <article class="device-card">
-              <h3>Router</h3>
-              <p>A router connects different networks and forwards packets towards their destination.</p>
+            <article class="medium-card">
+              <h3>Fibre-optic cable</h3>
+              <p>Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.</p>
               <ul>
-                <li><strong>Uses:</strong> IP addresses and routing information to choose a path.</li>
-                <li><strong>Common role:</strong> connects a LAN to the internet or to another network.</li>
-                <li><strong>Careful wording:</strong> a router does not simply "make WiFi". Some home boxes combine router and access point functions, but the jobs are distinct.</li>
+                <li><strong>Good for:</strong> high-bandwidth links, long distances, backbone connections.</li>
+                <li><strong>Strengths:</strong> less affected by electromagnetic interference and can support high data rates.</li>
+                <li><strong>Limits:</strong> installation can be more expensive and the cable can be more delicate to handle.</li>
               </ul>
             </article>
-            <article class="device-card diagram-card">
-              <h3>Between networks</h3>
-              <p><code>LAN</code> -> <code>router</code> -> <code>internet / WAN</code></p>
-              <p>Inside the LAN, MAC-address forwarding matters. Between networks, IP-address routing matters.</p>
-            </article>
           </div>
+          <div class="callout">Chinese support: copper cable = 铜缆；fibre-optic cable = 光纤；electrical signal = 电信号；light pulse = 光脉冲。</div>
         </section>
 
-        <!-- stage10-explanation:start routing -->
-        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
-          <h2 class="explanation-sr-only" id="explanation-routing-title">Routers: forwarding between networks</h2>
+        <!-- stage10-explanation:start wired -->
+        <section class="panel explanation-panel" id="explanation-wired" data-explains="wired" data-explanation-kind="mechanism" aria-labelledby="explanation-wired-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
+          <h2 class="explanation-sr-only" id="explanation-wired-title">Wired transmission media</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-routing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Routers: forwarding between networks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Routers: forwarding between networks: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-wired.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wired transmission media with a structured visual model." />
+            <figcaption class="explanation-sr-only">Wired transmission media: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A router connects different networks and forwards packets towards their destination.</li><li><strong>Lesson fact:</strong> Uses: IP addresses and routing information to choose a path.</li><li><strong>Lesson fact:</strong> Common role: connects a LAN to the internet or to another network.</li><li><strong>Lesson fact:</strong> Careful wording: a router does not simply &quot;make WiFi&quot;. Some home boxes combine router and access point functions, but the jobs are distinct.</li><li><strong>Lesson fact:</strong> Between networks</li><li><strong>Lesson fact:</strong> LAN -&gt; router -&gt; internet / WAN</li><li><strong>Lesson fact:</strong> Inside the LAN, MAC-address forwarding matters. Between networks, IP-address routing matters.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.</li><li><strong>Lesson fact:</strong> Copper cable</li><li><strong>Lesson fact:</strong> Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.</li><li><strong>Lesson fact:</strong> Good for: short local links, desktop PCs, classroom networks.</li><li><strong>Lesson fact:</strong> Limits: affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.</li><li><strong>Lesson fact:</strong> Exam wording: say &quot;electrical signals&quot;, not &quot;data flows like water&quot;. The cable is not a tiny plumbing system.</li><li><strong>Lesson fact:</strong> Fibre-optic cable</li><li><strong>Lesson fact:</strong> Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.</li><li><strong>Lesson fact:</strong> Good for: high-bandwidth links, long distances, backbone connections.</li><li><strong>Lesson fact:</strong> Strengths: less affected by electromagnetic interference and can support high data rates.</li><li><strong>Lesson fact:</strong> Limits: installation can be more expensive and the cable can be more delicate to handle.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end routing -->
+        <!-- stage10-explanation:end wired -->
         <section class="panel" id="wireless" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Wireless access points: joining wireless devices</h2>
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Wireless transmission media</h2>
+            <p>Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.</p>
           </div>
-          <div class="device-card">
-            <h3>Wireless access point</h3>
-            <p>A wireless access point allows wireless devices to connect to a network using radio waves, often linking them to a wired LAN.</p>
-            <ul>
-              <li><strong>Good exam phrase:</strong> provides wireless access to a network.</li>
-              <li><strong>Not enough:</strong> "it gives internet". Internet access may also require a router and wider network connection.</li>
-              <li><strong>Security link:</strong> access points can use authentication and encryption, but this lesson focuses on their network role.</li>
-            </ul>
+          <div class="media-grid three">
+            <article class="medium-card">
+              <h3>Radio waves</h3>
+              <p>Radio waves are used by technologies such as WiFi to transmit data without a physical cable.</p>
+              <ul>
+                <li><strong>Good for:</strong> mobile devices, classrooms, homes, short-range wireless networking.</li>
+                <li><strong>Limits:</strong> shared medium, interference from other devices, weaker security if poorly configured.</li>
+              </ul>
+            </article>
+            <article class="medium-card">
+              <h3>Microwaves</h3>
+              <p>Microwave links can transmit data between fixed points, often using directional antennas.</p>
+              <ul>
+                <li><strong>Good for:</strong> point-to-point links where a line of sight is available.</li>
+                <li><strong>Limits:</strong> obstacles, weather and alignment can affect the link.</li>
+              </ul>
+            </article>
+            <article class="medium-card">
+              <h3>Satellites</h3>
+              <p>Satellite communication uses signals to and from satellites to cover large geographical areas.</p>
+              <ul>
+                <li><strong>Good for:</strong> remote locations, ships, aircraft or areas without cable infrastructure.</li>
+                <li><strong>Limits:</strong> higher latency due to distance, cost, weather effects and limited capacity compared with some wired links.</li>
+              </ul>
+            </article>
           </div>
-          <div class="callout">Chinese support: wireless access point = 无线接入点；authentication = 身份验证；radio waves = 无线电波。</div>
+          <div class="callout">Chinese support: radio wave = 无线电波；microwave = 微波；satellite = 卫星；line of sight = 视距。</div>
         </section>
 
         <!-- stage10-explanation:start wireless -->
         <section class="panel explanation-panel" id="explanation-wireless" data-explains="wireless" data-explanation-kind="mechanism" aria-labelledby="explanation-wireless-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
-          <h2 class="explanation-sr-only" id="explanation-wireless-title">Wireless access points: joining wireless devices</h2>
+          <h2 class="explanation-sr-only" id="explanation-wireless-title">Wireless transmission media</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wireless access points: joining wireless devices with a structured visual model." />
-            <figcaption class="explanation-sr-only">Wireless access points: joining wireless devices: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wireless transmission media with a structured visual model." />
+            <figcaption class="explanation-sr-only">Wireless transmission media: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Wireless access point</li><li><strong>Lesson fact:</strong> A wireless access point allows wireless devices to connect to a network using radio waves, often linking them to a wired LAN.</li><li><strong>Lesson fact:</strong> Good exam phrase: provides wireless access to a network.</li><li><strong>Lesson fact:</strong> Not enough: &quot;it gives internet&quot;. Internet access may also require a router and wider network connection.</li><li><strong>Lesson fact:</strong> Security link: access points can use authentication and encryption, but this lesson focuses on their network role.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.</li><li><strong>Lesson fact:</strong> Radio waves</li><li><strong>Lesson fact:</strong> Radio waves are used by technologies such as WiFi to transmit data without a physical cable.</li><li><strong>Lesson fact:</strong> Good for: mobile devices, classrooms, homes, short-range wireless networking.</li><li><strong>Lesson fact:</strong> Limits: shared medium, interference from other devices, weaker security if poorly configured.</li><li><strong>Lesson fact:</strong> Microwaves</li><li><strong>Lesson fact:</strong> Microwave links can transmit data between fixed points, often using directional antennas.</li><li><strong>Lesson fact:</strong> Good for: point-to-point links where a line of sight is available.</li><li><strong>Lesson fact:</strong> Limits: obstacles, weather and alignment can affect the link.</li><li><strong>Lesson fact:</strong> Satellites</li><li><strong>Lesson fact:</strong> Satellite communication uses signals to and from satellites to cover large geographical areas.</li><li><strong>Lesson fact:</strong> Good for: remote locations, ships, aircraft or areas without cable infrastructure.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end wireless -->
-        <section class="panel" id="gateway" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Gateways: connecting different network rules</h2>
-          </div>
-          <div class="device-card">
-            <h3>Gateway</h3>
-            <p>A gateway connects networks that may use different protocols, data formats or communication standards, translating where needed.</p>
-            <ul>
-              <li><strong>Useful when:</strong> two systems need to communicate but do not use the same rules.</li>
-              <li><strong>Default gateway note:</strong> in many LANs, the default gateway is the device used to send traffic outside the local network, often a router.</li>
-              <li><strong>Common error:</strong> do not use "gateway" as a general term for every network device.</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start gateway -->
-        <section class="panel explanation-panel" id="explanation-gateway" data-explains="gateway" data-explanation-kind="mechanism" aria-labelledby="explanation-gateway-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
-          <h2 class="explanation-sr-only" id="explanation-gateway-title">Gateways: connecting different network rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-gateway.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Gateways: connecting different network rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Gateways: connecting different network rules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A gateway connects networks that may use different protocols, data formats or communication standards, translating where needed.</li><li><strong>Lesson fact:</strong> Useful when: two systems need to communicate but do not use the same rules.</li><li><strong>Lesson fact:</strong> Default gateway note: in many LANs, the default gateway is the device used to send traffic outside the local network, often a router.</li><li><strong>Lesson fact:</strong> Common error: do not use &quot;gateway&quot; as a general term for every network device.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end gateway -->
         <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Compare by job and boundary</h2>
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Compare by factor, not by vibe</h2>
           </div>
-          <div class="compare-table" role="table" aria-label="Network hardware comparison">
+          <div class="compare-table" role="table" aria-label="Transmission media comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Device</div>
-              <div role="columnheader">Main job</div>
-              <div role="columnheader">Address / rule focus</div>
+              <div role="columnheader">Factor</div>
+              <div role="columnheader">Wired networks</div>
+              <div role="columnheader">Wireless networks</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Switch</div>
-              <div role="cell">Connects devices and forwards frames inside a LAN.</div>
-              <div role="cell">Uses MAC addresses / ports.</div>
+              <div role="cell">Mobility</div>
+              <div role="cell">Poor for moving devices because a cable is required.</div>
+              <div role="cell">Better for mobile devices because no physical cable is needed.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Router</div>
-              <div role="cell">Connects different networks and forwards packets between them.</div>
-              <div role="cell">Uses IP addresses / routing table.</div>
+              <div role="cell">Interference</div>
+              <div role="cell">Copper may suffer electromagnetic interference; fibre is less affected.</div>
+              <div role="cell">Can be affected by walls, distance, other devices and weather.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Access point</div>
-              <div role="cell">Allows wireless devices to connect to a network.</div>
-              <div role="cell">Uses radio waves / WiFi access.</div>
+              <div role="cell">Security</div>
+              <div role="cell">Physical access to the cable is usually needed to intercept traffic.</div>
+              <div role="cell">Signals travel through air, so encryption and access control are important.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Gateway</div>
-              <div role="cell">Connects networks using different protocols or formats.</div>
-              <div role="cell">Performs protocol/format translation where needed.</div>
+              <div role="cell">Performance</div>
+              <div role="cell">Often stable; fibre can provide high bandwidth over long distances.</div>
+              <div role="cell">Bandwidth and latency can vary with signal quality and congestion.</div>
             </div>
           </div>
         </section>
 
         <!-- stage10-explanation:start compare -->
         <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by job and boundary</h2>
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by factor, not by vibe</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by job and boundary with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare by job and boundary: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by factor, not by vibe with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare by factor, not by vibe: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A switch forwards frames inside a LAN using MAC addresses.</li><li><strong>Lesson fact:</strong> A router forwards packets between networks using IP addresses and a routing table.</li><li><strong>Lesson fact:</strong> A wireless access point connects wireless devices to a network.</li><li><strong>Lesson fact:</strong> A gateway connects systems or networks that use different protocols or formats and may perform translation.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Wired networks</li><li><strong>Lesson fact:</strong> Wireless networks</li><li><strong>Lesson fact:</strong> Mobility</li><li><strong>Lesson fact:</strong> Poor for moving devices because a cable is required.</li><li><strong>Lesson fact:</strong> Better for mobile devices because no physical cable is needed.</li><li><strong>Lesson fact:</strong> Interference</li><li><strong>Lesson fact:</strong> Copper may suffer electromagnetic interference; fibre is less affected.</li><li><strong>Lesson fact:</strong> Can be affected by walls, distance, other devices and weather.</li><li><strong>Lesson fact:</strong> Security</li><li><strong>Lesson fact:</strong> Physical access to the cable is usually needed to intercept traffic.</li><li><strong>Lesson fact:</strong> Signals travel through air, so encryption and access control are important.</li><li><strong>Lesson fact:</strong> Performance</li></ol>
 
           </div>
         </section>
@@ -341,24 +233,24 @@
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Network hardware choice helper</h2>
+            <h2>Transmission medium choice helper</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="lan">Forward traffic from one PC to another in the same LAN</option>
-                <option value="internet">Connect the school LAN to the internet</option>
-                <option value="wifi">Allow tablets to join the network wirelessly</option>
-                <option value="different">Connect two networks that use different protocols</option>
-                <option value="mac">Forward a frame using a MAC address table</option>
-                <option value="default">Send traffic outside the local subnet</option>
+                <option value="server">Fast fixed link between server rooms</option>
+                <option value="classroom">Tablets moving around a classroom</option>
+                <option value="remote">Internet access for a remote island office</option>
+                <option value="desktop">Reliable fixed desktop PC connection</option>
+                <option value="buildings">Two buildings with clear line of sight</option>
+                <option value="factory">Factory floor with electrical interference</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Choose hardware</button>
+            <button type="button" id="chooseBtn">Choose medium</button>
           </div>
-          <div class="result-box" id="hardwareResult" aria-live="polite"></div>
-          <div class="method-box" id="hardwareMethod"></div>
+          <div class="result-box" id="mediumResult" aria-live="polite"></div>
+          <div class="method-box" id="mediumMethod"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
@@ -367,9 +259,9 @@
             <h2>Worked examples</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="school">School internet path</button>
-            <button class="tab" type="button" data-example="wifi">Adding WiFi</button>
-            <button class="tab" type="button" data-example="gateway">Protocol mismatch</button>
+            <button class="tab active" type="button" data-example="fibre">Fibre link</button>
+            <button class="tab" type="button" data-example="wifi">Wireless classroom</button>
+            <button class="tab" type="button" data-example="satellite">Remote site</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -387,18 +279,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak hardware answer</h2>
+            <h2>Fix the weak transmission-media answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"A switch sends packets across the internet using IP addresses."</p>
+              <p class="wrong">"Wireless is always faster because it is newer."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">A switch forwards frames inside a LAN, usually using MAC addresses. A router forwards packets between networks using IP addresses.</p>
+              <p class="answer" id="mistake1">Do not judge by age. Wireless performance depends on signal strength, interference, congestion and distance; fibre may provide higher stable bandwidth.</p>
             </article>
             <article>
-              <p class="wrong">"An access point and a router are the same thing."</p>
+              <p class="wrong">"Fibre-optic cable sends electrical signals very quickly."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">An access point provides wireless access to a network. A router connects different networks and chooses paths for packets.</p>
+              <p class="answer" id="mistake2">Fibre-optic cable transmits data as pulses of light, not electrical signals. Copper cable uses electrical signals.</p>
             </article>
           </div>
         </section>
@@ -407,7 +299,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Marks usually come from the role plus the correct boundary: LAN, between networks, wireless access or protocol translation.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on matching the medium to the scenario and explaining a real factor.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -415,15 +307,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Name the device, then name the job</h2>
+            <h2>Medium, signal, trade-off</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Switch</strong><span>Forwards frames inside a LAN using MAC addresses/ports.</span></div>
-            <div><strong>Router</strong><span>Forwards packets between networks using IP addresses/routing information.</span></div>
-            <div><strong>Access point</strong><span>Allows wireless devices to connect to a network.</span></div>
-            <div><strong>Gateway</strong><span>Connects networks with different protocols or formats and may translate.</span></div>
-            <div><strong>Common error</strong><span>Combined home devices can perform several roles; exam answers should separate the roles.</span></div>
-            <div><strong>Best answer</strong><span>Device + job + address/rule + scenario.</span></div>
+            <div><strong>Copper</strong><span>Electrical signals; cheap and common; affected by electromagnetic interference.</span></div>
+            <div><strong>Fibre optic</strong><span>Light pulses; high bandwidth; long distance; low electromagnetic interference.</span></div>
+            <div><strong>Radio waves</strong><span>Wireless mobility; used by WiFi; affected by interference and obstacles.</span></div>
+            <div><strong>Microwaves</strong><span>Directional point-to-point links; often need line of sight.</span></div>
+            <div><strong>Satellite</strong><span>Large coverage for remote areas; higher latency and cost.</span></div>
+            <div><strong>Comparison</strong><span>Use factors: mobility, range, interference, security, bandwidth, latency and cost.</span></div>
           </div>
         </section>
 
@@ -433,25 +325,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a four-row table for switch, router, wireless access point and gateway. Include job, address/rule focus and one scenario.</li>
-            <li>Draw a path from a wireless tablet to a website outside school. Label where the access point, switch and router may appear.</li>
-            <li>Write a 4-mark answer explaining why a router is needed to connect a LAN to the internet.</li>
-            <li>Write a 4-mark answer explaining why a gateway may be needed when two networks use different protocols.</li>
+            <li>Create a comparison table for copper, fibre optic, radio waves, microwaves and satellites. Include one advantage and one limitation for each.</li>
+            <li>Write a 4-mark answer: explain why fibre optic may be chosen for a high-bandwidth link between buildings.</li>
+            <li>Write a 4-mark answer: explain why WiFi may be chosen for tablets in a classroom, and give one limitation.</li>
+            <li>Choose a medium for a remote weather station and justify it using coverage, latency or cost.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Table:</strong> switch = MAC/LAN; router = IP/between networks; access point = wireless access; gateway = translation/different rules.</p>
-            <p><strong>Tablet path:</strong> tablet -> access point -> switch/LAN -> router -> outside network/internet.</p>
-            <p><strong>Router answer:</strong> include different networks, IP addresses and forwarding/routing packets.</p>
-            <p><strong>Gateway answer:</strong> include different protocols/formats and translation, not just "connects things".</p>
+            <p><strong>Comparison table:</strong> include signal type where relevant: copper uses electrical signals; fibre uses light pulses.</p>
+            <p><strong>Fibre answer:</strong> mention high bandwidth, long distance and low electromagnetic interference.</p>
+            <p><strong>WiFi answer:</strong> mention mobility/no cable, then a limitation such as interference, security or shared bandwidth.</p>
+            <p><strong>Remote station:</strong> satellite may be suitable where cable infrastructure is unavailable, but latency/cost can be disadvantages.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

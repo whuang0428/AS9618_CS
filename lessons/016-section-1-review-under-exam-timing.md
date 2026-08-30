@@ -1,0 +1,125 @@
+# Lesson 016: Section 1 review under exam timing
+
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 1
+**Duration:** 45 minutes
+**Assessment rhythm:** 5-minute quiz, stage review
+## Learning Objectives
+By the end of the lesson, students should be able to:
+1. Select the relevant concepts and command words for **Section 1 review: representation calculations under exam timing**.
+2. Complete a timed response using the required calculation, notation or explanation structure.
+3. Use a mark scheme to identify omissions and produce an improved answer.
+
+## Key Vocabulary
+English first, Chinese support:
+
+- binary 二进制, denary 十进制, hexadecimal 十六进制, overflow 溢出, compression 压缩
+
+## Warm-Up Hook
+Put three mixed questions on the board and ask students to identify the relevant syllabus topic, command word and required response form before answering.
+
+Focus question: Which feature distinguishes **Section 1 review: representation calculations under exam timing** from the most closely related syllabus concept?
+
+## Guided Explanation
+Use Section 1 review: representation calculations under exam timing to connect ideas across sections. Start with retrieval, then compare two similar concepts, then answer one timed question. Finish with correction: students rewrite a weak answer into a mark-worthy one.
+
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
+
+Suggested timing:
+- 0-5 min: warm-up and prediction.
+- 5-18 min: teacher modelling with one visible worked example.
+- 18-30 min: guided pair task.
+- 30-38 min: exam-style question and correction.
+- 38-45 min: mini-quiz and exit ticket.
+
+## Board Plan / Teacher Talk Track
+Left: retrieval grid. Middle: mixed exam question. Right: mark scheme phrases and correction targets.
+
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
+
+## Worked Example
+**Problem:** Answer a mixed Cambridge-style question, then annotate which words in the answer earn marks.
+
+**Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
+
+## Student Task
+Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
+
+## Mini-Quiz
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
+
+## Exit Ticket
+Complete this sentence in English:
+"One important point from this lesson is ... . One common error is ... because ... ."
+
+## Homework
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Section 1 review: representation calculations under exam timing**. Follow its command word and apply each point to the stated context.
+
+## Marking Notes
+Award credit for:
+- Accurate terminology from Syllabus Section 1.
+- A method, diagram, trace or example that matches the topic.
+- Clear explanation of why the answer matters in the scenario.
+Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
+
+## Common Misconception and Correction Prompt
+Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Section 1 method bank
+
+- **Explains:** `methods`
+- **Explanation type:** synthesis
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-methods.jpg`
+
+1. Storage units
+2. 1 KiB = 1024 bytes. 1 MiB = 1024 KiB. Decimal prefixes use 1000, binary prefixes use 1024.
+3. Binary to denary
+4. Add active place values. For 8-bit unsigned, range is 0 to 255.
+5. File size
+6. Image bits = width x height x colour depth. Sound bits = sample rate x sampling resolution x duration x channels.
+7. Compression choice
+8. Lossless allows exact reconstruction. Lossy removes data permanently but can reduce file size more.
+
+### Six-minute review sprint
+
+- **Explains:** `sprint`
+- **Explanation type:** synthesis
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-sprint.jpg`
+
+1. Timed section
+2. Use the timer for a short retrieval round. The goal is not panic; the goal is clean method under a clock.
+3. Convert 10101100 to denary.
+4. Calculate the size in bits of a 100 x 50 bitmap image with 8-bit colour depth.
+5. State why Unicode is suitable for a multilingual app.
+6. Choose lossless or lossy compression for a legal document archive and justify the choice.
+7. 1: 172, because 128 + 32 + 8 + 4 = 172.
+8. 2: 100 x 50 x 8 = 40 000 bits.
+9. 3: Unicode supports a wider range of characters, so it can represent many languages.
+10. 4: Lossless, because the document must be reconstructed exactly.
+
+### Question triage: choose the toolbox first
+
+- **Explains:** `triage`
+- **Explanation type:** synthesis
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-triage.jpg`
+
+1. Number bases
+2. Look for binary, denary, hexadecimal, place values, carries, overflow or two's complement.
+3. Text representation
+4. Look for ASCII, Unicode, character set, character code, multilingual text or symbols.
+5. Images and sound
+6. Look for resolution, colour depth, sampling rate, sampling resolution, duration and file size.
+7. Compression
+8. Look for lossless, lossy, exact reconstruction, reduced quality, RLE or repeated data.
+<!-- stage10-explanations:end -->

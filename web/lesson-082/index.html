@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 082 | Entity-relationship modelling</title>
+    <title>AS9618 Lesson 082 | Primary keys, foreign keys and relationships</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Entity-relationship modelling</h1>
+        <h1>Primary keys, foreign keys and relationships</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,342 +29,285 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#entities">Entities</a>
-        <a href="#attributes">Attributes</a>
-        <a href="#cardinality">Cardinality</a>
-        <a href="#participation">Participation</a>
-        <a href="#parser">Scenario parser</a>
-        <a href="#checker">Cardinality checker</a>
+        <a href="#primary">Primary keys</a>
+        <a href="#foreign">Foreign keys</a>
+        <a href="#relationships">Relationships</a>
+        <a href="#referential">Referential integrity</a>
+        <a href="#key-picker">Key picker</a>
+        <a href="#relationship-tool">Relationship tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Document a design with an E-R diagram</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.</p>
-            <p>To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Model students joining clubs</h3>
-            <p>Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Document a design with an E-R diagram: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What four kinds of information should an E-R diagram communicate here?</p>
-              <details><summary>Show answer</summary><p>Entities, relevant attributes/keys, relationships and cardinality.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What relationship exists between one Customer and many Orders?</p>
-              <details><summary>Show answer</summary><p>One-to-many from Customer to Order.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why add Membership between Student and Club?</p>
-              <details><summary>Show answer</summary><p>It resolves the many-to-many relationship into two one-to-many relationships.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is matching field spelling not enough to draw a relationship?</p>
-              <details><summary>Show answer</summary><p>The scenario/business rule must state or imply that the records are associated.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>A clinic stores Patients, Doctors and Appointments. Write an E-R design in words or a labelled diagram and state the two relationship cardinalities.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>identifies Patient, Doctor and Appointment as entities</td><td>Do not award a collection of unconnected entity boxes as a complete E-R design.</td><td>1</td></tr>
-                  <tr><td>gives a suitable identifier/key for each entity</td><td></td><td>1</td></tr>
-                  <tr><td>Patient has a one-to-many relationship with Appointment</td><td></td><td>1</td></tr>
-                  <tr><td>Doctor has a one-to-many relationship with Appointment</td><td></td><td>1</td></tr>
-                  <tr><td>Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history</td><td></td><td>1</td></tr>
-                  <tr><td>attributes and relationship directions are consistent with the scenario</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 082 | 45 minutes | Paper 1 Section 8 | ER modelling</p>
-            <h2>An ER model is a map before the database is built. Tables without a map are just furniture in the dark.</h2>
+            <p class="lesson-meta">Lesson 082 | 45 minutes | Paper 1 Section 8 | Database relationships</p>
+            <h2>A key is not decoration. It is how a database points at the right row without squinting.</h2>
             <p>
-              This lesson turns scenario text into an entity-relationship model. You will identify entities,
-              choose attributes, mark keys, and describe cardinality such as one-to-many and many-to-many.
-              The goal is a clear design model, not SQL statements or normalisation rules.
+              This lesson explains how primary keys uniquely identify records, how foreign keys link tables,
+              and how relationships connect data without repeating everything. The focus is precise Cambridge
+              vocabulary: unique, non-null, reference, related table and integrity.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>entities and attributes from a scenario</span></div>
-              <div><strong>Model</strong><span>relationships with cardinality and optional/mandatory participation</span></div>
-              <div><strong>Critique</strong><span>weak ER diagrams using precise database vocabulary</span></div>
+              <div><strong>Identify</strong><span>suitable primary keys for records in a table</span></div>
+              <div><strong>Link</strong><span>foreign keys to matching primary keys in another table</span></div>
+              <div><strong>Explain</strong><span>one-to-many relationships and referential integrity</span></div>
             </div>
           </div>
-          <div class="er-visual" aria-label="Entity relationship visual">
-            <div class="entity-box">
+          <div class="key-visual" aria-label="Key relationship visual">
+            <div class="key-table">
               <strong>Student</strong>
-              <span class="pk">StudentID</span>
+              <span class="pk">PK StudentID</span>
               <span>Name</span>
             </div>
-            <div class="cardinality-line">1..1 borrows 0..*</div>
-            <div class="entity-box">
+            <div class="link-line">1 -> many</div>
+            <div class="key-table">
               <strong>Loan</strong>
-              <span class="pk">LoanID</span>
-              <span>StudentID</span>
+              <span class="pk">PK LoanID</span>
+              <span class="fk">FK StudentID</span>
               <span>BookID</span>
             </div>
-            <p>Chinese support: entity = 实体；attribute = 属性；cardinality = 基数/数量关系。</p>
+            <p>Foreign key values must match existing primary key values.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>ER modelling questions reward careful reading. A small word like "many" or "optional" can change the relationship.</p>
+            <p>Key questions are often mark-scheme strict: name the field, say which table it belongs to, and explain the link.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not turn every noun into an entity. "Address" is often an attribute unless the scenario stores separate address records.</p>
+            <p>Do not choose a name as a primary key. Two students can share a name, and names can change. Databases dislike identity drama.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A library stores students, books and loans. Which one is most likely a relationship event?</h2>
-            <p>A loan is the plot twist: a student and a book meet, briefly, with paperwork.</p>
+            <h2>Two students are called Alex Chen. Which field should identify each student?</h2>
+            <p>Identifiers must be based on suitable keys rather than informal characteristics.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="student">Student</button>
-            <button class="choice-card" type="button" data-hook="book">Book</button>
-            <button class="choice-card" type="button" data-hook="loan">Loan</button>
-            <button class="choice-card" type="button" data-hook="title">BookTitle</button>
+            <button class="choice-card" type="button" data-hook="name">Name</button>
+            <button class="choice-card" type="button" data-hook="tutor">TutorGroup</button>
+            <button class="choice-card" type="button" data-hook="studentid">StudentID</button>
+            <button class="choice-card" type="button" data-hook="phone">PhoneNumber</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the item that connects two main entities.
+            Choose the field most suitable as a primary key.
           </div>
         </section>
 
-        <section class="panel" id="entities" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+        <section class="panel" id="primary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Entities are things the database stores data about</h2>
-            <p>An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</p>
+            <h2>Primary keys uniquely identify records</h2>
+            <p>A primary key is a field, or combination of fields, that uniquely identifies each record in a table. It should be unique and not null.</p>
           </div>
-          <div class="concept-grid">
-            <article><strong>Person</strong><span>Student, Customer, Doctor, Teacher.</span></article>
-            <article><strong>Object</strong><span>Book, Product, Vehicle, Equipment.</span></article>
-            <article><strong>Event</strong><span>Loan, Appointment, Order, Booking.</span></article>
-            <article><strong>Concept</strong><span>Course, Club, Department, Module.</span></article>
+          <div class="criteria-grid">
+            <article><strong>Unique</strong><span>No two records in the table have the same key value.</span></article>
+            <article><strong>Not null</strong><span>Every record must have a key value; blank identity is not identity.</span></article>
+            <article><strong>Stable</strong><span>A good key is unlikely to change, such as an allocated ID.</span></article>
+            <article><strong>Minimal</strong><span>Do not use extra fields when one suitable field is enough.</span></article>
           </div>
-          <div class="callout">Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."</div>
+          <div class="student-table" role="table" aria-label="Student table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">StudentID</div>
+              <div role="columnheader">Name</div>
+              <div role="columnheader">TutorGroup</div>
+              <div role="columnheader">PhoneNumber</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell" class="key-cell">S0234</div><div role="cell">Alex Chen</div><div role="cell">12A</div><div role="cell">02071234567</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell" class="key-cell">S0318</div><div role="cell">Alex Chen</div><div role="cell">12B</div><div role="cell">02079876543</div>
+            </div>
+          </div>
         </section>
 
-        <!-- stage10-explanation:start entities -->
-        <section class="panel explanation-panel" id="explanation-entities" data-explains="entities" data-explanation-kind="mechanism" aria-labelledby="explanation-entities-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
-          <h2 class="explanation-sr-only" id="explanation-entities-title">Entities are things the database stores data about</h2>
+        <!-- stage10-explanation:start primary -->
+        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" aria-labelledby="explanation-primary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+          <h2 class="explanation-sr-only" id="explanation-primary-title">Primary keys uniquely identify records</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-entities.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Entities are things the database stores data about with a structured visual model." />
-            <figcaption class="explanation-sr-only">Entities are things the database stores data about: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-primary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Primary keys uniquely identify records with a structured visual model." />
+            <figcaption class="explanation-sr-only">Primary keys uniquely identify records: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</li><li><strong>Lesson fact:</strong> Person Student, Customer, Doctor, Teacher.</li><li><strong>Lesson fact:</strong> Object Book, Product, Vehicle, Equipment.</li><li><strong>Lesson fact:</strong> Event Loan, Appointment, Order, Booking.</li><li><strong>Lesson fact:</strong> Concept Course, Club, Department, Module.</li><li><strong>Lesson fact:</strong> Exam wording: say why it is an entity. &quot;Student is an entity because the system stores multiple facts about each student.&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A primary key uniquely identifies each row and cannot be null.</li><li><strong>Lesson fact:</strong> Candidate keys are minimal sets of attributes that can uniquely identify a row.</li><li><strong>Lesson fact:</strong> Stability is a desirable design property when choosing a primary key, not a formal defining constraint of every primary key.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end entities -->
-        <section class="panel" id="attributes" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+        <!-- stage10-explanation:end primary -->
+        <section class="panel" id="foreign" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Attributes describe an entity</h2>
-            <p>An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</p>
+            <h2>Foreign keys link tables</h2>
+            <p>A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.</p>
           </div>
-          <div class="attribute-table" role="table" aria-label="Entity attribute examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Entity</div>
-              <div role="columnheader">Possible attributes</div>
-              <div role="columnheader">Not usually an attribute here</div>
+          <div class="relational-preview">
+            <div class="mini-table">
+              <h3>Student</h3>
+              <p><strong>StudentID</strong> | Name</p>
+              <p>S0234 | Alex Chen</p>
+              <p>S0318 | Maya Patel</p>
             </div>
-            <div class="table-row" role="row">
-              <div role="cell">Student</div>
-              <div role="cell">StudentID, Name, DateOfBirth, TutorGroup</div>
-              <div role="cell">BookTitle, LoanDate</div>
+            <div class="relation-arrow">StudentID links tables</div>
+            <div class="mini-table">
+              <h3>Loan</h3>
+              <p><strong>LoanID</strong> | StudentID | BookID</p>
+              <p>L9001 | S0234 | B144</p>
+              <p>L9002 | S0234 | B102</p>
             </div>
-            <div class="table-row" role="row">
-              <div role="cell">Book</div>
-              <div role="cell">BookID, ISBN, Title, Author</div>
-              <div role="cell">StudentName, ReturnDate</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Loan</div>
-              <div role="cell">LoanID, StudentID, BookID, DateBorrowed, DateReturned</div>
-              <div role="cell">StudentDateOfBirth, BookAuthor if already stored in Book</div>
-            </div>
+          </div>
+          <div class="answer-frame">
+            <strong>Exam sentence:</strong>
+            <span><code>StudentID</code> is a primary key in <code>Student</code> and a foreign key in <code>Loan</code>, linking each loan to the student who borrowed the book.</span>
           </div>
         </section>
 
-        <!-- stage10-explanation:start attributes -->
-        <section class="panel explanation-panel" id="explanation-attributes" data-explains="attributes" data-explanation-kind="mechanism" aria-labelledby="explanation-attributes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
-          <h2 class="explanation-sr-only" id="explanation-attributes-title">Attributes describe an entity</h2>
+        <!-- stage10-explanation:start foreign -->
+        <section class="panel explanation-panel" id="explanation-foreign" data-explains="foreign" data-explanation-kind="mechanism" aria-labelledby="explanation-foreign-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+          <h2 class="explanation-sr-only" id="explanation-foreign-title">Foreign keys link tables</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-attributes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Attributes describe an entity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Attributes describe an entity: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-foreign.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Foreign keys link tables with a structured visual model." />
+            <figcaption class="explanation-sr-only">Foreign keys link tables: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</li><li><strong>Lesson fact:</strong> Possible attributes</li><li><strong>Lesson fact:</strong> Not usually an attribute here</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, TutorGroup</li><li><strong>Lesson fact:</strong> BookTitle, LoanDate</li><li><strong>Lesson fact:</strong> BookID, ISBN, Title, Author</li><li><strong>Lesson fact:</strong> StudentName, ReturnDate</li><li><strong>Lesson fact:</strong> LoanID, StudentID, BookID, DateBorrowed, DateReturned</li><li><strong>Lesson fact:</strong> StudentDateOfBirth, BookAuthor if already stored in Book</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.</li><li><strong>Lesson fact:</strong> StudentID | Name</li><li><strong>Lesson fact:</strong> S0234 | Alex Chen</li><li><strong>Lesson fact:</strong> S0318 | Maya Patel</li><li><strong>Lesson fact:</strong> StudentID links tables</li><li><strong>Lesson fact:</strong> LoanID | StudentID | BookID</li><li><strong>Lesson fact:</strong> L9001 | S0234 | B144</li><li><strong>Lesson fact:</strong> L9002 | S0234 | B102</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> StudentID is a primary key in Student and a foreign key in Loan , linking each loan to the student who borrowed the book.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end attributes -->
-        <section class="panel" id="cardinality" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+        <!-- stage10-explanation:end foreign -->
+        <section class="panel" id="relationships" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Cardinality describes how many records may be linked</h2>
-            <p>Cardinality states how many records in one entity can be associated with records in another entity.</p>
+            <h2>Relationships describe how records connect</h2>
+            <p>A relationship describes how records in one table are associated with records in another table.</p>
           </div>
-          <div class="cardinality-grid">
-            <article><strong>One-to-one</strong><span>One record in A links to one record in B. Example: one person has one passport in a simplified model.</span></article>
-            <article><strong>One-to-many</strong><span>One record in A links to many records in B. Example: one customer can place many orders.</span></article>
-            <article><strong>Many-to-many</strong><span>Many records in A link to many records in B. Usually resolved by a linking entity.</span></article>
+          <div class="relationship-grid">
+            <article><strong>One-to-one</strong><span>One record in A relates to one record in B. Example: person and passport in a simplified system.</span></article>
+            <article><strong>One-to-many</strong><span>One record in A relates to many records in B. Example: one student can have many loans.</span></article>
+            <article><strong>Many-to-many</strong><span>Many records in A relate to many in B. Often resolved using a linking table. Example: students and clubs.</span></article>
           </div>
-          <div class="diagram-row">
-            <div class="entity-mini">Student</div>
-            <div class="diagram-line">1 -> many</div>
-            <div class="entity-mini">Loan</div>
-          </div>
+          <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；relationship = 关系；one-to-many = 一对多。</div>
         </section>
 
-        <!-- stage10-explanation:start cardinality -->
-        <section class="panel explanation-panel" id="explanation-cardinality" data-explains="cardinality" data-explanation-kind="mechanism" aria-labelledby="explanation-cardinality-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
-          <h2 class="explanation-sr-only" id="explanation-cardinality-title">Cardinality describes how many records may be linked</h2>
+        <!-- stage10-explanation:start relationships -->
+        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+          <h2 class="explanation-sr-only" id="explanation-relationships-title">Relationships describe how records connect</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-cardinality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cardinality describes how many records may be linked with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cardinality describes how many records may be linked: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-relationships.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relationships describe how records connect with a structured visual model." />
+            <figcaption class="explanation-sr-only">Relationships describe how records connect: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cardinality states how many records in one entity can be associated with records in another entity.</li><li><strong>Lesson fact:</strong> One-to-one One record in A links to one record in B. Example: one person has one passport in a simplified model.</li><li><strong>Lesson fact:</strong> One-to-many One record in A links to many records in B. Example: one customer can place many orders.</li><li><strong>Lesson fact:</strong> Many-to-many Many records in A link to many records in B. Usually resolved by a linking entity.</li><li><strong>Lesson fact:</strong> 1 -&gt; many</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A relationship describes how records in one table are associated with records in another table.</li><li><strong>Lesson fact:</strong> One-to-one One record in A relates to one record in B. Example: person and passport in a simplified system.</li><li><strong>Lesson fact:</strong> One-to-many One record in A relates to many records in B. Example: one student can have many loans.</li><li><strong>Lesson fact:</strong> Many-to-many Many records in A relate to many in B. Often resolved using a linking table. Example: students and clubs.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end cardinality -->
-        <section class="panel" id="participation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+        <!-- stage10-explanation:end relationships -->
+        <section class="panel" id="referential" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Optional and mandatory participation</h2>
-            <p>Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</p>
+            <h2>Referential integrity</h2>
+            <p>Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</p>
           </div>
-          <div class="participation-grid">
-            <article><strong>0..*</strong><span>Optional many: a student may have no loans, or many loans.</span></article>
-            <article><strong>1..*</strong><span>Mandatory many: an order must have at least one order line.</span></article>
-            <article><strong>0..1</strong><span>Optional one: a member may have zero or one parking permit.</span></article>
-            <article><strong>1..1</strong><span>Mandatory one: each loan must refer to exactly one student.</span></article>
+          <div class="integrity-grid">
+            <article><strong>Valid</strong><span><code>Loan.StudentID = S0234</code> is valid if <code>Student.StudentID = S0234</code> exists.</span></article>
+            <article><strong>Invalid</strong><span><code>Loan.StudentID = S9999</code> is invalid if no student with that ID exists.</span></article>
+            <article><strong>Why</strong><span>It prevents orphan records, such as a loan assigned to a non-existent student.</span></article>
           </div>
         </section>
+        <section class="panel" id="key-picker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+          <div class="section-title">
+            <p class="eyebrow">Interactive key picker</p>
+            <h2>Choose the best primary key</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Table
+              <select id="keyInput">
+                <option value="student">Student(StudentID, Name, DateOfBirth, TutorGroup)</option>
+                <option value="book">Book(ISBN, Title, Author, Price)</option>
+                <option value="appointment">Appointment(AppointmentID, PatientID, Date, Time)</option>
+                <option value="memberWeak">Member(Name, PhoneNumber, Email)</option>
+                <option value="product">Product(ProductCode, Description, UnitPrice)</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="keyBtn">Pick key</button>
+          </div>
+          <div class="result-box" id="keyResult">Choose a table to identify the strongest primary key.</div>
+          <div class="feedback" id="keyReason">A good primary key is unique, not null and stable.</div>
+        </section>
 
-        <!-- stage10-explanation:start participation -->
-        <section class="panel explanation-panel" id="explanation-participation" data-explains="participation" data-explanation-kind="mechanism" aria-labelledby="explanation-participation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
-          <h2 class="explanation-sr-only" id="explanation-participation-title">Optional and mandatory participation</h2>
+        <!-- stage10-explanation:start key-picker -->
+        <section class="panel explanation-panel" id="explanation-key-picker" data-explains="key-picker" data-explanation-kind="mechanism" aria-labelledby="explanation-key-picker-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+          <h2 class="explanation-sr-only" id="explanation-key-picker-title">Choose the best primary key</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-participation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optional and mandatory participation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Optional and mandatory participation: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-key-picker.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best primary key with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the best primary key: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</li><li><strong>Lesson fact:</strong> 0..* Optional many: a student may have no loans, or many loans.</li><li><strong>Lesson fact:</strong> 1..* Mandatory many: an order must have at least one order line.</li><li><strong>Lesson fact:</strong> 0..1 Optional one: a member may have zero or one parking permit.</li><li><strong>Lesson fact:</strong> 1..1 Mandatory one: each loan must refer to exactly one student.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive key picker</li><li><strong>Lesson fact:</strong> Choose a table to identify the strongest primary key.</li><li><strong>Lesson fact:</strong> A good primary key is unique, not null and stable.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end participation -->
-        <section class="panel" id="parser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+        <!-- stage10-explanation:end key-picker -->
+        <section class="panel" id="relationship-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
-            <p class="eyebrow">Interactive scenario parser</p>
-            <h2>Identify entities and attributes</h2>
+            <p class="eyebrow">Interactive relationship classifier</p>
+            <h2>Classify the relationship</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
-              <select id="scenarioInput">
-                <option value="library">A library records students, books and each loan.</option>
-                <option value="clinic">A clinic records patients, doctors and appointments.</option>
-                <option value="shop">A shop records customers, orders and products.</option>
-                <option value="club">A school records students, clubs and club memberships.</option>
-                <option value="parking">A company records employees and optional parking permits.</option>
+              <select id="relationshipInput">
+                <option value="studentLoans">One student can borrow many books through many loan records.</option>
+                <option value="personPassport">One person has one passport in a simplified passport database.</option>
+                <option value="studentsClubs">A student can join many clubs; a club has many students.</option>
+                <option value="customerOrders">One customer can place many orders.</option>
+                <option value="doctorAppointments">One doctor can have many appointments.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="scenarioBtn">Parse scenario</button>
+            <button class="primary-button" type="button" id="relationshipBtn">Classify</button>
           </div>
-          <div class="result-box" id="scenarioResult">Choose a scenario to identify likely entities.</div>
-          <div class="feedback" id="scenarioReason">The answer will separate entities from attributes and relationship events.</div>
+          <div class="result-box" id="relationshipResult">Choose a scenario to classify the relationship.</div>
+          <div class="feedback" id="relationshipReason">Use one-to-one, one-to-many or many-to-many with a scenario reason.</div>
         </section>
 
-        <!-- stage10-explanation:start parser -->
-        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
-          <h2 class="explanation-sr-only" id="explanation-parser-title">Identify entities and attributes</h2>
+        <!-- stage10-explanation:start relationship-tool -->
+        <section class="panel explanation-panel" id="explanation-relationship-tool" data-explains="relationship-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-relationship-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
+          <h2 class="explanation-sr-only" id="explanation-relationship-tool-title">Classify the relationship</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-parser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify entities and attributes with a structured visual model." />
-            <figcaption class="explanation-sr-only">Identify entities and attributes: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-relationship-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify the relationship with a structured visual model." />
+            <figcaption class="explanation-sr-only">Classify the relationship: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive scenario parser</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to identify likely entities.</li><li><strong>Lesson fact:</strong> The answer will separate entities from attributes and relationship events.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive relationship classifier</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to classify the relationship.</li><li><strong>Lesson fact:</strong> Use one-to-one, one-to-many or many-to-many with a scenario reason.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end parser -->
-        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
-          <div class="section-title">
-            <p class="eyebrow">Interactive cardinality checker</p>
-            <h2>Choose the relationship type</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Relationship wording
-              <select id="cardinalityInput">
-                <option value="customerOrders">One customer can place many orders; each order is placed by one customer.</option>
-                <option value="studentsClubs">A student can join many clubs; a club can have many students.</option>
-                <option value="orderLines">Each order must contain at least one order line; each order line belongs to one order.</option>
-                <option value="personPassport">One person has one passport in this simplified system.</option>
-                <option value="studentLoans">A student may have no loans or many loans; each loan has exactly one student.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="cardinalityBtn">Check cardinality</button>
-          </div>
-          <div class="result-box" id="cardinalityResult">Choose wording to classify the cardinality.</div>
-          <div class="feedback" id="cardinalityReason">Look for "one", "many", "must" and "may".</div>
-        </section>
-
+        <!-- stage10-explanation:end relationship-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Turn words into an ER model</h2>
+            <h2>Identify keys and explain links</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="library">Library</button>
-            <button class="tab" type="button" data-example="clinic">Clinic</button>
-            <button class="tab" type="button" data-example="club">Many-to-many</button>
-            <button class="tab" type="button" data-example="critique">Critique</button>
+            <button class="tab active" type="button" data-example="library">Library loans</button>
+            <button class="tab" type="button" data-example="orders">Orders</button>
+            <button class="tab" type="button" data-example="clubs">Linking table</button>
+            <button class="tab" type="button" data-example="integrity">Integrity error</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -381,7 +324,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak ER modelling decisions</h2>
+            <h2>Repair common key and relationship errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -390,7 +333,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about entities, attributes and cardinality justification.</p>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about table names and key roles.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -398,12 +341,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>ER modelling checklist</h2>
+            <h2>Keep the roles separate</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Entities</strong><span>Things the system stores data about; often become tables.</span></div>
-            <div><strong>Attributes</strong><span>Facts stored about each entity; often become fields.</span></div>
-            <div><strong>Relationships</strong><span>Links between entities with cardinality and participation.</span></div>
+            <div><strong>Primary key</strong><span>Uniquely identifies each record in its own table.</span></div>
+            <div><strong>Foreign key</strong><span>References a primary key in another table to create a link.</span></div>
+            <div><strong>Relationship</strong><span>Describes how records in two tables are associated.</span></div>
           </div>
         </section>
 
@@ -414,16 +357,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Model a scenario</strong>
-              <span>A music school stores students, teachers, instruments and lesson bookings. Identify four entities, two attributes for each, and two relationships with cardinality.</span>
+              <strong>Task 1: Label keys</strong>
+              <span>For Student(StudentID, Name), Book(BookID, Title) and Loan(LoanID, StudentID, BookID, DateBorrowed), label all primary keys and foreign keys.</span>
             </article>
             <article>
-              <strong>Task 2: Critique</strong>
-              <span>Explain why making "PhoneNumber" an entity may be poor design if only one phone number is stored for each student.</span>
+              <strong>Task 2: Explain one relationship</strong>
+              <span>Write a paragraph explaining the relationship between Student and Loan, including one-to-many and the foreign key field.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how an ER model helps design a relational database for a library loan system." Include entities, attributes and cardinality.</span>
+              <span>Answer: "Explain how primary keys and foreign keys help maintain links between tables in a relational database." Use a library loan example.</span>
             </article>
           </div>
         </section>
@@ -431,8 +374,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

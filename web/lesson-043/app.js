@@ -1,99 +1,99 @@
-const registerMap = {
-  pc: {
-    role: "PC / Program Counter: holds the address of the next instruction to be fetched.",
-    method: "Used at the start of fetch. Its contents are copied to the MAR, then the PC is normally incremented or updated.",
-    trap: "Do not say the PC holds the current instruction. That is the CIR.",
+const fetchSteps = {
+  s1: {
+    result: "Step 1: PC -> MAR",
+    method: "The Program Counter holds the address of the next instruction. This address is copied into the Memory Address Register.",
+    trap: "Do not say the PC contains the instruction itself. It contains an address.",
   },
-  cir: {
-    role: "CIR / Current Instruction Register: holds the instruction currently being decoded or executed.",
-    method: "After an instruction is fetched from memory through the MDR, it is copied to the CIR for decoding by the control unit.",
-    trap: "Do not use CIR for the address of the next instruction. That is the PC.",
+  s2: {
+    result: "Step 2: MAR address -> address bus",
+    method: "The address in the MAR is placed on the address bus so the required memory location can be selected.",
+    trap: "Do not say the address bus carries the instruction value.",
   },
-  mar: {
-    role: "MAR / Memory Address Register: holds the address of the memory location being accessed.",
-    method: "The address in the MAR is placed on the address bus during memory read or write operations.",
-    trap: "Do not say the MAR holds the data or instruction value. That is the MDR.",
+  s3: {
+    result: "Step 3: Read signal on control bus",
+    method: "The control unit sends a memory read signal using the control bus.",
+    trap: "Do not describe the control bus as carrying the memory address.",
   },
-  mdr: {
-    role: "MDR / Memory Data Register: holds data or an instruction being transferred to or from memory.",
-    method: "During fetch, the instruction read from memory is transferred into the MDR before being copied to the CIR.",
-    trap: "Do not say the MDR holds the memory address. That is the MAR.",
+  s4: {
+    result: "Step 4: memory instruction -> MDR",
+    method: "The instruction stored at that memory address is transferred on the data bus into the MDR.",
+    trap: "Do not send the instruction directly into the MAR; MAR is for addresses.",
   },
-  acc: {
-    role: "ACC / Accumulator: holds intermediate or final results from ALU operations.",
-    method: "After an arithmetic or logical operation, the ALU result may be stored in the accumulator for further use.",
-    trap: "Do not describe the ACC as storing every instruction. It is mainly associated with ALU results.",
+  s5: {
+    result: "Step 5: MDR -> CIR",
+    method: "The instruction is copied from the MDR to the Current Instruction Register for decoding.",
+    trap: "Do not decode from the MDR in a Cambridge-style trace; use CIR for the current instruction.",
   },
-  sr: {
-    role: "Status register: holds flags about the result of an operation or CPU state.",
-    method: "Flags such as zero, carry, overflow or negative can be set after an ALU operation and then used by later instructions.",
-    trap: "Do not say the status register stores the actual calculation result. It stores flags about the result.",
+  s6: {
+    result: "Step 6: PC incremented",
+    method: "The PC is updated so it points to the next instruction, unless a branch/jump changes the normal sequence.",
+    trap: "Do not assume every instruction simply adds 1 to the PC; branch instructions can load a different address.",
   },
 };
 
 const examples = {
   fetch: {
-    title: "Example 1: fetch roles",
-    problem: "A fetch trace says: PC = 300. Explain which registers are used.",
+    title: "Example 1: fetch trace",
+    problem: "Trace the fetch stage when the PC contains address 120.",
     steps: [
-      "The PC holds address 300, the address of the next instruction.",
-      "The address 300 is copied into the MAR because MAR holds the memory address being accessed.",
-      "The instruction read from memory is placed into the MDR because MDR holds the transferred instruction/data.",
-      "The instruction is copied into the CIR because CIR holds the current instruction for decoding.",
-      "The PC is normally incremented or updated to point to the next instruction.",
+      "The address 120 in the PC is copied to the MAR.",
+      "The address 120 is placed on the address bus.",
+      "A read signal is sent on the control bus.",
+      "The instruction stored at address 120 is transferred from memory on the data bus into the MDR.",
+      "The instruction is copied from the MDR to the CIR.",
+      "The PC is incremented to point to the next instruction, unless the instruction changes the sequence.",
     ],
   },
-  addition: {
-    title: "Example 2: ACC and flags",
-    problem: "An ADD instruction produces result 0. Which registers might show this?",
+  branch: {
+    title: "Example 2: branch instruction",
+    problem: "Explain why a jump instruction can change the normal cycle.",
     steps: [
-      "The ALU performs the addition.",
-      "The result may be stored in the ACC as an intermediate or final result.",
-      "The zero flag in the status register may be set because the result is 0.",
-      "The status register stores flags about the result, not the result value itself.",
+      "The instruction is still fetched and decoded.",
+      "During execute, the CPU may load a new address into the PC.",
+      "The next fetch then uses this new PC value instead of the next sequential address.",
+      "This is how loops and selection can alter the program flow.",
     ],
   },
   compare: {
-    title: "Example 3: compare MAR and MDR",
-    problem: "Explain the difference between MAR and MDR.",
+    title: "Example 3: weak vs strong wording",
+    problem: "Improve: 'The CPU fetches the command and then does it.'",
     steps: [
-      "MAR holds a memory address, such as address 120.",
-      "MDR holds the data or instruction transferred to or from that address.",
-      "Memory address goes on the address bus; transferred data/instruction goes on the data bus.",
-      "Exam sentence: MAR identifies where; MDR temporarily holds what is transferred.",
+      "Weak: no register names, no memory transfer, no decode role.",
+      "Strong: the address in the PC is copied to the MAR; the instruction is read from memory into the MDR and then copied to the CIR.",
+      "Strong: the CU decodes the instruction in the CIR and the CPU executes it, possibly using the ALU or memory access.",
     ],
   },
 };
 
 const practice = [
   { id: "p1", prompt: "Which register holds the address of the next instruction?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
-  { id: "p2", prompt: "Which register holds the current instruction?", accepted: ["cir", "current instruction register"], answer: "CIR / Current Instruction Register" },
-  { id: "p3", prompt: "Which register holds the memory address being accessed?", accepted: ["mar", "memory address register"], answer: "MAR / Memory Address Register" },
-  { id: "p4", prompt: "Which register holds data or an instruction transferred to/from memory?", accepted: ["mdr", "memory data register"], answer: "MDR / Memory Data Register" },
-  { id: "p5", prompt: "Which register holds intermediate ALU results?", accepted: ["acc", "accumulator"], answer: "ACC / Accumulator" },
-  { id: "p6", prompt: "Which register holds flags such as zero, carry or overflow?", accepted: ["status register", "sr", "flag register", "flags register"], answer: "Status register" },
-  { id: "p7", prompt: "Which register is copied to the MAR at the start of fetch?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
-  { id: "p8", prompt: "Which register receives the fetched instruction before it is copied to the CIR?", accepted: ["mdr", "memory data register"], answer: "MDR / Memory Data Register" },
-  { id: "p9", prompt: "Which register is normally incremented after fetching an instruction?", accepted: ["pc", "program counter"], answer: "PC / Program Counter" },
-  { id: "p10", prompt: "Which register stores flags about a comparison result?", accepted: ["status register", "sr", "flag register", "flags register"], answer: "Status register" },
+  { id: "p2", prompt: "Which register holds the memory address being accessed?", accepted: ["mar", "memory address register"], answer: "MAR / Memory Address Register" },
+  { id: "p3", prompt: "Which register holds data or an instruction transferred to or from memory?", accepted: ["mdr", "memory data register"], answer: "MDR / Memory Data Register" },
+  { id: "p4", prompt: "Which register holds the current instruction?", accepted: ["cir", "current instruction register"], answer: "CIR / Current Instruction Register" },
+  { id: "p5", prompt: "Which bus carries the memory address?", accepted: ["address bus"], answer: "Address bus" },
+  { id: "p6", prompt: "Which bus carries the instruction from memory to the CPU?", accepted: ["data bus"], answer: "Data bus" },
+  { id: "p7", prompt: "Which bus carries the read signal?", accepted: ["control bus"], answer: "Control bus" },
+  { id: "p8", prompt: "Which CPU component decodes the instruction?", accepted: ["cu", "control unit"], answer: "Control Unit / CU" },
+  { id: "p9", prompt: "After a normal fetch, what usually happens to the PC?", accepted: ["incremented", "it is incremented", "increased", "updated"], answer: "It is incremented / updated to the next instruction address" },
+  { id: "p10", prompt: "What stage comes after fetch?", accepted: ["decode"], answer: "Decode" },
 ];
 
 const mistakes = [
   {
-    wrong: "The PC stores the current instruction while it is decoded.",
-    fix: "The PC stores the address of the next instruction. The CIR stores the current instruction while it is decoded.",
+    wrong: "The PC stores the next instruction.",
+    fix: "The PC stores the address of the next instruction. The instruction itself is fetched from memory and eventually copied into the CIR.",
   },
   {
-    wrong: "The MAR stores the instruction copied from memory.",
-    fix: "The MAR stores the memory address. The MDR stores the instruction or data transferred from memory.",
+    wrong: "The MAR carries the instruction to the CPU.",
+    fix: "The MAR holds a memory address. The MDR holds the instruction or data transferred to/from memory.",
   },
   {
-    wrong: "The accumulator stores flags such as carry and overflow.",
-    fix: "The accumulator stores intermediate or final ALU results. The status register stores flags such as carry and overflow.",
+    wrong: "The CPU decodes the instruction before fetching it.",
+    fix: "The CPU must fetch the instruction first. Then the instruction in the CIR is decoded by the control unit.",
   },
   {
-    wrong: "The status register stores the answer to an addition.",
-    fix: "The status register stores flags about the result. The actual result may be stored in the ACC or another register.",
+    wrong: "Every execute stage uses the ALU to do arithmetic.",
+    fix: "Some execute stages use the ALU, but others access memory or change the PC, such as branch instructions.",
   },
 ];
 
@@ -107,93 +107,94 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Describe the roles of the PC, MAR and MDR during the fetch stage.",
-    answer: "The PC holds the address of the next instruction to be fetched. This address is copied to the MAR, which holds the memory address being accessed. The address in the MAR is used to read from memory. The instruction returned from memory is held in the MDR because the MDR holds data or instructions being transferred to or from memory. The PC is normally incremented or updated after the fetch.",
+    prompt: "Use register-transfer notation to describe the fetch stage of the fetch-decode-execute cycle and explain Memory[MAR].",
+    answer: "MAR <- PC; MDR <- Memory[MAR]; CIR <- MDR; PC <- PC + 1 at a coherent point. Memory[MAR] means the contents of the memory location whose address is held in MAR. The fetched instruction in CIR is then decoded by the control unit.",
     marking: [
-      { mark: "B1", text: "PC holds address of next instruction" },
-      { mark: "B1", text: "address copied from PC to MAR" },
-      { mark: "B1", text: "MAR holds memory address being accessed" },
-      { mark: "B1", text: "memory is read using address in MAR" },
-      { mark: "B1", text: "MDR holds instruction/data transferred from memory" },
-      { mark: "B1", text: "PC incremented/updated after fetch" },
+      { mark: "M1", text: "MAR <- PC" },
+      { mark: "M1", text: "MDR <- Memory[MAR]" },
+      { mark: "M1", text: "CIR <- MDR" },
+      { mark: "M1", text: "PC <- PC + 1 at a coherent point" },
+      { mark: "B1", text: "Memory[MAR] is the contents at the memory address held in MAR" },
+      { mark: "B1", text: "instruction in CIR is decoded by the control unit" },
     ],
     strict: [
-      "Do not accept PC holds the instruction.",
-      "Do not accept MAR holds the instruction value.",
-      "Allow data/instruction wording for MDR because instructions are transferred as data values.",
-      "Award each register role independently if other parts of the sequence are weak.",
+      "Do not accept PC <- MAR as the first transfer.",
+      "Do not treat <- as equality or as a permanent link between registers.",
+      "Allow PC increment before or after the memory read if MAR already holds the current instruction address.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Explain the difference between the CIR and the PC.",
-    answer: "The PC holds the address of the next instruction to be fetched, while the CIR holds the instruction currently being decoded or executed. The PC is used to locate the next instruction in memory, whereas the CIR is used by the control unit to interpret the current instruction.",
+    prompt: "Explain the roles of the PC, MAR, MDR and CIR during the fetch-decode-execute cycle.",
+    answer: "The PC holds the address of the next instruction. The MAR holds the address of the memory location being accessed. The MDR holds the data or instruction transferred from memory. The CIR holds the current instruction while it is decoded and executed.",
     marking: [
       { mark: "B1", text: "PC holds address of next instruction" },
-      { mark: "B1", text: "CIR holds current instruction" },
-      { mark: "B1", text: "PC used to locate/fetch next instruction" },
-      { mark: "B1", text: "CIR used for decoding/executing current instruction" },
+      { mark: "B1", text: "MAR holds memory address being accessed" },
+      { mark: "B1", text: "MDR holds data/instruction being transferred to/from memory" },
+      { mark: "B1", text: "CIR holds current instruction for decoding/execution" },
     ],
     strict: [
-      "Do not award marks for simply expanding the abbreviations without roles.",
-      "Do not accept PC holds the current instruction.",
-      "Allow 'instruction being decoded' or 'instruction being executed' for CIR.",
+      "Do not accept a list of register names without roles.",
+      "Do not accept PC as holding data or instruction without address wording.",
+      "Allow 'memory buffer register' only if the role matches MDR.",
+      "Mark each register independently.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "Describe the purpose of the accumulator and the status register.",
-    answer: "The accumulator is a register that stores intermediate or final results from ALU operations. For example, after an addition, the result may be placed in the accumulator. The status register stores flags that describe the result or CPU state, such as zero, carry, overflow or negative flags. These flags can be used by later instructions, for example conditional branch instructions.",
+    prompt: "Describe what happens during the decode and execute stages of the cycle.",
+    answer: "During decode, the control unit interprets the instruction in the CIR, identifies the opcode and works out any operands or addresses needed. During execute, the CPU carries out the instruction. This may involve the ALU performing an arithmetic or logical operation, data being read from or written to memory, or the PC being changed by a branch instruction.",
     marking: [
-      { mark: "B1", text: "ACC/accumulator stores intermediate or final results" },
-      { mark: "B1", text: "result is from ALU/arithmetic/logical operation" },
-      { mark: "B1", text: "status register stores flags" },
-      { mark: "B1", text: "valid flag example such as zero, carry, overflow, negative" },
-      { mark: "B1", text: "flags can affect later/conditional instructions or indicate CPU/result state" },
+      { mark: "B1", text: "CU decodes/interprets instruction" },
+      { mark: "B1", text: "instruction is in CIR/current instruction register" },
+      { mark: "B1", text: "opcode/operation and operands/address identified" },
+      { mark: "B1", text: "execute carries out instruction" },
+      { mark: "B1", text: "valid execute example such as ALU operation, memory access or PC change" },
     ],
     strict: [
-      "Do not accept status register stores the actual arithmetic result.",
-      "Do not require all listed flag examples.",
-      "Allow 'flag register' if role matches status register.",
+      "Do not require the word opcode if operation is clearly identified.",
+      "Do not accept 'decode means convert binary to denary'.",
+      "Allow branch/jump as execute example when PC update is clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A CPU executes an instruction that adds two values and produces zero. Explain the possible roles of ACC and the status register.",
-    answer: "The ALU performs the addition. The accumulator may store the result of the addition as an intermediate or final value. Since the result is zero, the zero flag in the status register may be set. Other flags may also be updated depending on the operation and architecture. The status register records conditions about the result, which can be used by later instructions such as a conditional branch.",
+    marks: "6 marks",
+    prompt: "A CPU is about to fetch an instruction stored at memory address 204. The PC contains 204. Complete a trace table for the fetch stage.",
+    answer: "The value 204 is copied from the PC to the MAR. The address 204 is placed on the address bus. A read signal is sent on the control bus. The instruction stored at address 204 is transferred from memory on the data bus to the MDR. The instruction is copied from the MDR to the CIR. The PC is incremented to point to the next instruction, unless the fetched instruction changes the normal sequence.",
     marking: [
-      { mark: "B1", text: "ALU performs the addition" },
-      { mark: "B1", text: "ACC stores result/intermediate result" },
-      { mark: "B1", text: "zero flag/status flag set or updated" },
-      { mark: "B1", text: "status register stores flags/conditions about result" },
-      { mark: "B1", text: "flags may be used by later/conditional instructions" },
+      { mark: "M1", text: "204 copied from PC to MAR" },
+      { mark: "B1", text: "address 204 placed on address bus" },
+      { mark: "B1", text: "read signal sent on control bus" },
+      { mark: "B1", text: "instruction at address 204 transferred from memory" },
+      { mark: "B1", text: "instruction placed in MDR then copied to CIR" },
+      { mark: "A1", text: "PC incremented/updated after fetch, with branch exception if stated" },
     ],
     strict: [
-      "Do not award zero flag mark if candidate says ACC is the zero flag.",
-      "Do not require exact binary values.",
-      "Allow 'may be set' because flag behaviour depends on architecture.",
+      "Do not award M1 if 204 is described as the instruction rather than the address.",
+      "Do not require exact next address because instruction length may vary by architecture.",
+      "Allow MDR and CIR as two separate statements or one combined statement.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Compare general-purpose from special-purpose registers, then state the roles of ACC, PC, MAR, MDR and IX.",
-    answer: "A general-purpose register can hold values for varied operations, whereas a special-purpose register has a defined processor role. ACC holds intermediate or final ALU results. PC holds the address of the next instruction. MAR holds the address currently accessed. MDR holds data or an instruction transferred to or from memory. IX holds an offset used to form an indexed effective address.",
+    prompt: "Explain how a branch instruction can affect the fetch-decode-execute cycle.",
+    answer: "A branch instruction is fetched and placed in the CIR like other instructions. The control unit decodes it and identifies that program flow may change. During execute, if the branch condition is met, a new address is loaded into the PC. The next fetch then uses this new address rather than the following sequential instruction. This allows selection and repetition in programs.",
     marking: [
-      { mark: "B1", text: "general-purpose register can hold values for varied operations; special-purpose register has a defined role" },
-      { mark: "B1", text: "ACC holds intermediate/final ALU results" },
-      { mark: "B1", text: "PC holds the address of the next instruction" },
-      { mark: "B1", text: "MAR holds the address being accessed and MDR holds transferred data/instruction" },
-      { mark: "B1", text: "IX holds an offset/index used in effective-address calculation" },
-      { mark: "B1", text: "Cambridge assembly questions assume ACC as the available general-purpose working register" },
+      { mark: "B1", text: "branch instruction is fetched into CIR" },
+      { mark: "B1", text: "CU decodes branch/condition" },
+      { mark: "B1", text: "condition may be tested or branch target identified" },
+      { mark: "B1", text: "PC loaded/changed to new address if branch taken" },
+      { mark: "B1", text: "next fetch uses new PC address rather than sequential address" },
+      { mark: "B1", text: "program flow changes / supports selection or repetition" },
     ],
     strict: [
-      "Do not swap MAR with MDR or state that IX stores an array element by definition.",
-      "Do not accept only the expanded register names without roles.",
-      "Allow equivalent wording that distinguishes flexible temporary use from a defined processor role.",
+      "Do not accept 'branch stops the cycle' unless program termination is specifically described.",
+      "Do not require assembly-language syntax.",
+      "Allow unconditional jump if the PC change is clear.",
     ],
   },
 ];
@@ -209,10 +210,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    "mar-mdr": "Correct. MAR holds the memory address; MDR holds the data or instruction being transferred.",
-    "mdr-mar": "Swapped. MDR is for data/instruction transfer; MAR is for memory address.",
-    "pc-cir": "Swapped. PC holds the next instruction address; CIR holds the current instruction.",
-    "acc-status": "Swapped. ACC holds an ALU result; the status register holds flags.",
+    pc: "Correct. The PC holds the address of the next instruction to fetch.",
+    alu: "Not first. The ALU may be used during execute, but fetch starts with the PC address.",
+    cir: "The CIR holds the current instruction after it has been fetched, not the first address source.",
+    ssd: "No. The CPU fetches instructions for execution from main memory, not directly from secondary storage.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -223,20 +224,20 @@ function setupHook() {
   });
 }
 
-function setupMapper() {
-  const select = document.querySelector("#registerInput");
-  const result = document.querySelector("#mapResult");
-  const method = document.querySelector("#mapMethod");
-  const trap = document.querySelector("#mapTrap");
-  function mapRegister() {
-    const item = registerMap[select.value];
-    result.textContent = item.role;
-    method.innerHTML = `<strong>When used:</strong> ${item.method}`;
+function setupSequencer() {
+  const select = document.querySelector("#stepInput");
+  const result = document.querySelector("#stepResult");
+  const method = document.querySelector("#stepMethod");
+  const trap = document.querySelector("#stepTrap");
+  function showStep() {
+    const item = fetchSteps[select.value];
+    result.textContent = item.result;
+    method.innerHTML = `<strong>What happens:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  select.addEventListener("change", mapRegister);
-  document.querySelector("#mapBtn").addEventListener("click", mapRegister);
-  mapRegister();
+  select.addEventListener("change", showStep);
+  document.querySelector("#stepBtn").addEventListener("click", showStep);
+  showStep();
 }
 
 function renderExample(key) {
@@ -338,7 +339,7 @@ function renderExamQuestions() {
 
 setupPrint();
 setupHook();
-setupMapper();
+setupSequencer();
 setupExamples();
 renderPractice();
 renderMistakes();

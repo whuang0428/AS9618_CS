@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 028 | Input devices and data capture</title>
+    <title>AS9618 Lesson 028 | Why computer systems need input, output and storage</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Input devices and data capture</h1>
+        <h1>Why computer systems need input, output and storage</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,9 +29,9 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#capture">Data capture</a>
-        <a href="#devices">Input devices</a>
-        <a href="#automatic">Automatic input</a>
+        <a href="#flow">System flow</a>
+        <a href="#components">Components</a>
+        <a href="#memory-storage">Memory vs storage</a>
         <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -50,50 +50,54 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Microphone, touchscreen and VR headset operation</h2>
+            <h2>Why computer systems need input, output and storage</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
-            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
-            <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
+            <p>Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.</p>
+            <p>Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Turn head in VR</h3>
-            <p>Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.</p>
+            <h3>Worked example: Field survey tablet</h3>
+            <p>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Microphone, touchscreen and VR headset operation: apply and assess</h2>
+            <h2>Why computer systems need input, output and storage: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What converts a microphone's analogue signal into digital samples?</p>
-              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
+              <p><strong>1.</strong> Why does a computer system need input?</p>
+              <details><summary>Show answer</summary><p>To receive data and instructions for processing.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What does a capacitive touchscreen detect?</p>
-              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
+              <p><strong>2.</strong> Why does a computer system need output?</p>
+              <details><summary>Show answer</summary><p>To communicate processed information or cause an action.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why does a VR headset track head movement?</p>
-              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
+              <p><strong>3.</strong> Compare the need for primary memory from the need for secondary storage.</p>
+              <details><summary>Show answer</summary><p>Primary memory holds instructions/data currently in use; secondary storage retains programs/data long term without power.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one purpose of removable storage.</p>
+              <details><summary>Show answer</summary><p>To transfer data between systems or keep a detachable/offline backup copy.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Describe how a microphone captures sound for storage in a computer.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A portable medical system receives patient measurements, processes them and stores the records. Explain why it needs input, output, primary memory, secondary storage and removable storage.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>sound waves vibrate a diaphragm</td><td>Do not accept that the microphone directly records binary without an analogue signal and conversion stage.</td><td>1</td></tr>
-                  <tr><td>transducer converts vibration to an analogue electrical signal</td><td></td><td>1</td></tr>
-                  <tr><td>ADC samples/measures the signal</td><td></td><td>1</td></tr>
-                  <tr><td>sample values are encoded/stored as binary</td><td></td><td>1</td></tr>
+                  <tr><td>input receives patient measurements/data</td><td>Do not treat primary memory, secondary storage and removable storage as interchangeable terms.</td><td>1</td></tr>
+                  <tr><td>output communicates results or warnings</td><td></td><td>1</td></tr>
+                  <tr><td>primary memory holds current program instructions and working data</td><td></td><td>1</td></tr>
+                  <tr><td>secondary storage retains patient records long term without power</td><td></td><td>1</td></tr>
+                  <tr><td>removable storage supports transfer or an offline/detachable backup</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -104,195 +108,188 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 028 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Input is where the computer first meets the messy real world.</h2>
+            <h2>A computer system contains components with distinct functions.</h2>
             <p>
-              This lesson focuses on input devices and data capture. The exam skill is not
-              simply naming a device. You must explain how it captures data and why it is
-              suitable for the situation.
+              This lesson introduces the main parts of a computer system: input, processor,
+              memory, storage and output. The aim is to classify hardware by purpose and
+              explain how data moves through a system in a real scenario.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>the purpose of common input devices</span></div>
-              <div><strong>Compare</strong><span>manual and automatic data capture methods</span></div>
-              <div><strong>Justify</strong><span>input device choices using accuracy, speed, cost and suitability</span></div>
+              <div><strong>Classify</strong><span>input, output, processor, memory and storage components</span></div>
+              <div><strong>Trace</strong><span>data flow through a simple computer system</span></div>
+              <div><strong>Justify</strong><span>suitable hardware choices using speed, capacity, durability, accuracy and cost</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Input data capture chain">
-            <span>real world -> sensor/scanner/user -> digital data</span>
-            <p>A barcode reader is not "clever". It is just very good at not mistyping 13 digits before lunch.</p>
+          <div class="system-card" aria-label="Computer system data flow">
+            <span>input -> process -> memory/storage -> output</span>
+            <p>Data enters. Instructions run. Results leave. Files do not live inside the CPU.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style hardware questions reward suitability. "Keyboard" may be true; "keyboard because staff must type short codes occasionally" earns the mark.</p>
+            <p>Hardware questions often award marks for suitability. Naming a device starts the answer; matching its feature to the scenario earns it.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not call every scanner a barcode reader. OCR, OMR, barcode and QR capture different patterns for different jobs.</p>
+            <p>RAM and secondary storage both hold data, but not in the same way. RAM forgets when power is off; storage is the more dependable librarian.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A supermarket checkout scans an item, weighs fruit, accepts a typed discount code and reads a loyalty card. Which inputs are being captured?</h2>
+            <h2>A phone scans a QR code, checks the ticket, saves the record and shows "Entry allowed". Which part does each job?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="barcode">Barcode reader captures product ID</button>
-            <button class="choice-card" type="button" data-hook="scale">Sensor captures mass/weight</button>
-            <button class="choice-card" type="button" data-hook="keyboard">Keyboard captures typed code</button>
-            <button class="choice-card" type="button" data-hook="rfid">RFID/card reader captures customer ID</button>
+            <button class="choice-card" type="button" data-hook="camera">Camera captures the QR code as input</button>
+            <button class="choice-card" type="button" data-hook="processor">Processor checks the ticket data</button>
+            <button class="choice-card" type="button" data-hook="storage">Storage keeps the attendance record</button>
+            <button class="choice-card" type="button" data-hook="screen">Screen displays output feedback</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one input. The useful exam habit is naming what data is captured, not just naming the hardware.
+            Click any job. The useful exam habit is matching component -> role -> reason.
           </div>
         </section>
 
-        <section class="panel" id="capture" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
+        <section class="panel" id="flow" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>What input devices do</h2>
+            <h2>The basic system flow</h2>
           </div>
           <div class="flow-grid">
-            <article><strong>1. Capture</strong><span>The device captures data from a user, document, object or environment.</span></article>
-            <article><strong>2. Convert</strong><span>The data is converted into a digital form the computer can process.</span></article>
-            <article><strong>3. Validate later</strong><span>Input is not automatically correct. Validation and verification may still be needed.</span></article>
+            <article><strong>1. Input</strong><span>Data is captured by an input device, such as a keyboard, sensor, scanner, camera or microphone.</span></article>
+            <article><strong>2. Processing</strong><span>The processor executes instructions and performs operations on data.</span></article>
+            <article><strong>3. Memory</strong><span>Data and instructions in current use are held temporarily in primary memory such as RAM.</span></article>
+            <article><strong>4. Storage</strong><span>Files and data that must persist are saved in secondary storage such as SSD, HDD or optical media.</span></article>
+            <article><strong>5. Output</strong><span>Results are presented through output devices such as screens, speakers, printers or actuators.</span></article>
           </div>
-          <div class="callout">Chinese support: input device = 输入设备；data capture = 数据采集；automatic input = 自动输入；manual input = 手动输入。</div>
+          <div class="callout">Chinese support: input = 输入；output = 输出；processor = 处理器；memory = 内存/主存；storage = 存储/辅存。</div>
         </section>
 
-        <!-- stage10-explanation:start capture -->
-        <section class="panel explanation-panel" id="explanation-capture" data-explains="capture" data-explanation-kind="mechanism" aria-labelledby="explanation-capture-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <h2 class="explanation-sr-only" id="explanation-capture-title">What input devices do</h2>
+        <!-- stage10-explanation:start flow -->
+        <section class="panel explanation-panel" id="explanation-flow" data-explains="flow" data-explanation-kind="mechanism" aria-labelledby="explanation-flow-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
+          <h2 class="explanation-sr-only" id="explanation-flow-title">The basic system flow</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-capture.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What input devices do with a structured visual model." />
-            <figcaption class="explanation-sr-only">What input devices do: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-flow.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The basic system flow with a structured visual model." />
+            <figcaption class="explanation-sr-only">The basic system flow: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Capture The device captures data from a user, document, object or environment.</li><li><strong>Lesson fact:</strong> 2. Convert The data is converted into a digital form the computer can process.</li><li><strong>Lesson fact:</strong> 3. Validate later Input is not automatically correct. Validation and verification may still be needed.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Input devices capture data for processing.</li><li><strong>Lesson fact:</strong> The processor works with instructions and data held in primary memory.</li><li><strong>Lesson fact:</strong> Processed results can go directly to output devices.</li><li><strong>Lesson fact:</strong> Secondary storage is a separate bidirectional persistence path and is not a compulsory stage before output.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end capture -->
-        <section class="panel" id="devices" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
+        <!-- stage10-explanation:end flow -->
+        <section class="panel" id="components" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Common input devices and what they capture</h2>
+            <h2>Component roles and examples</h2>
           </div>
-          <div class="device-table" role="table" aria-label="Input devices comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Device</div>
-              <div role="columnheader">Captures</div>
-              <div role="columnheader">Good use</div>
-              <div role="columnheader">Exam warning</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Keyboard</div>
-              <div role="cell">Typed text/numbers</div>
-              <div role="cell">Short manual entries, corrections, commands</div>
-              <div role="cell">Slow and error-prone for long repeated codes</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Barcode / QR reader</div>
-              <div role="cell">Encoded product, ticket or ID data</div>
-              <div role="cell">Fast repeated identification</div>
-              <div role="cell">Needs a readable code; does not capture handwriting</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">RFID / NFC reader</div>
-              <div role="cell">Data from a tag/card without contact</div>
-              <div role="cell">Access cards, library books, stock tracking</div>
-              <div role="cell">Range/security/cost must match scenario</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">OCR / OMR</div>
-              <div role="cell">Printed characters / shaded marks</div>
-              <div role="cell">Forms, exam answer sheets, printed documents</div>
-              <div role="cell">OCR reads characters; OMR detects marks</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Sensor</div>
-              <div role="cell">Physical measurements</div>
-              <div role="cell">Temperature, light, pressure, motion systems</div>
-              <div role="cell">Usually automatic; often needs calibration</div>
-            </div>
+          <div class="component-grid">
+            <article>
+              <h3>Input devices</h3>
+              <p>Allow data to enter the system.</p>
+              <p><strong>Examples:</strong> keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</p>
+            </article>
+            <article>
+              <h3>Output devices</h3>
+              <p>Present data or results from the system.</p>
+              <p><strong>Examples:</strong> monitor, speaker, printer, projector, actuator.</p>
+            </article>
+            <article>
+              <h3>Processor</h3>
+              <p>Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</p>
+            </article>
+            <article>
+              <h3>Primary memory</h3>
+              <p>Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.</p>
+            </article>
+            <article>
+              <h3>Secondary storage</h3>
+              <p>Stores data and files long term, even when power is off.</p>
+              <p><strong>Examples:</strong> SSD, HDD, optical disc, flash storage.</p>
+            </article>
+            <article>
+              <h3>Interfaces</h3>
+              <p>Hardware and software work together. A useful answer explains how the chosen device fits the user task.</p>
+            </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start devices -->
-        <section class="panel explanation-panel" id="explanation-devices" data-explains="devices" data-explanation-kind="mechanism" aria-labelledby="explanation-devices-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <h2 class="explanation-sr-only" id="explanation-devices-title">Common input devices and what they capture</h2>
+        <!-- stage10-explanation:start components -->
+        <section class="panel explanation-panel" id="explanation-components" data-explains="components" data-explanation-kind="mechanism" aria-labelledby="explanation-components-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
+          <h2 class="explanation-sr-only" id="explanation-components-title">Component roles and examples</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-devices.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common input devices and what they capture with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common input devices and what they capture: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Component roles and examples with a structured visual model." />
+            <figcaption class="explanation-sr-only">Component roles and examples: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Captures</li><li><strong>Lesson fact:</strong> Good use</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Keyboard</li><li><strong>Lesson fact:</strong> Typed text/numbers</li><li><strong>Lesson fact:</strong> Short manual entries, corrections, commands</li><li><strong>Lesson fact:</strong> Slow and error-prone for long repeated codes</li><li><strong>Lesson fact:</strong> Barcode / QR reader</li><li><strong>Lesson fact:</strong> Encoded product, ticket or ID data</li><li><strong>Lesson fact:</strong> Fast repeated identification</li><li><strong>Lesson fact:</strong> Needs a readable code; does not capture handwriting</li><li><strong>Lesson fact:</strong> RFID / NFC reader</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Input devices</li><li><strong>Lesson fact:</strong> Allow data to enter the system.</li><li><strong>Lesson fact:</strong> Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</li><li><strong>Lesson fact:</strong> Output devices</li><li><strong>Lesson fact:</strong> Present data or results from the system.</li><li><strong>Lesson fact:</strong> Examples: monitor, speaker, printer, projector, actuator.</li><li><strong>Lesson fact:</strong> Processor</li><li><strong>Lesson fact:</strong> Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</li><li><strong>Lesson fact:</strong> Primary memory</li><li><strong>Lesson fact:</strong> Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.</li><li><strong>Lesson fact:</strong> Secondary storage</li><li><strong>Lesson fact:</strong> Stores data and files long term, even when power is off.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end devices -->
-        <section class="panel" id="automatic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
+        <!-- stage10-explanation:end components -->
+        <section class="panel" id="memory-storage" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Manual input vs automatic data capture</h2>
+            <h2>Memory is not the same as storage</h2>
           </div>
-          <div class="compare-table" role="table" aria-label="Manual and automatic input comparison">
+          <div class="compare-table" role="table" aria-label="Memory and storage comparison">
             <div class="table-row table-head" role="row">
               <div role="columnheader">Feature</div>
-              <div role="columnheader">Manual input</div>
-              <div role="columnheader">Automatic data capture</div>
+              <div role="columnheader">Primary memory</div>
+              <div role="columnheader">Secondary storage</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Method</div>
-              <div role="cell">A person enters data, such as typing into a form.</div>
-              <div role="cell">A device captures data directly, such as scanning or sensing.</div>
+              <div role="cell">Purpose</div>
+              <div role="cell">Holds data/instructions currently being used.</div>
+              <div role="cell">Holds files and data long term.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Advantages</div>
-              <div role="cell">Flexible, cheap for occasional input, useful for unusual data.</div>
-              <div role="cell">Fast, consistent, reduces transcription errors, suitable for high volume.</div>
+              <div role="cell">Volatility</div>
+              <div role="cell">RAM is volatile; contents are lost without power.</div>
+              <div role="cell">Non-volatile; data remains when power is off.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Limitations</div>
-              <div role="cell">Typing mistakes, slower, depends on user attention.</div>
-              <div role="cell">May need codes/tags/sensors; can fail if labels are damaged or conditions are poor.</div>
+              <div role="cell">Speed and capacity</div>
+              <div role="cell">Usually faster but smaller and more expensive per unit.</div>
+              <div role="cell">Usually larger and cheaper per unit but slower than RAM.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start automatic -->
-        <section class="panel explanation-panel" id="explanation-automatic" data-explains="automatic" data-explanation-kind="comparison" aria-labelledby="explanation-automatic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <h2 class="explanation-sr-only" id="explanation-automatic-title">Manual input vs automatic data capture</h2>
+        <!-- stage10-explanation:start memory-storage -->
+        <section class="panel explanation-panel" id="explanation-memory-storage" data-explains="memory-storage" data-explanation-kind="mechanism" aria-labelledby="explanation-memory-storage-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
+          <h2 class="explanation-sr-only" id="explanation-memory-storage-title">Memory is not the same as storage</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-automatic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Manual input vs automatic data capture with a structured visual model." />
-            <figcaption class="explanation-sr-only">Manual input vs automatic data capture: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-memory-storage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Memory is not the same as storage with a structured visual model." />
+            <figcaption class="explanation-sr-only">Memory is not the same as storage: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Manual input</li><li><strong>Lesson fact:</strong> Automatic data capture</li><li><strong>Lesson fact:</strong> A person enters data, such as typing into a form.</li><li><strong>Lesson fact:</strong> A device captures data directly, such as scanning or sensing.</li><li><strong>Lesson fact:</strong> Advantages</li><li><strong>Lesson fact:</strong> Flexible, cheap for occasional input, useful for unusual data.</li><li><strong>Lesson fact:</strong> Fast, consistent, reduces transcription errors, suitable for high volume.</li><li><strong>Lesson fact:</strong> Limitations</li><li><strong>Lesson fact:</strong> Typing mistakes, slower, depends on user attention.</li><li><strong>Lesson fact:</strong> May need codes/tags/sensors; can fail if labels are damaged or conditions are poor.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Primary memory</li><li><strong>Lesson fact:</strong> Secondary storage</li><li><strong>Lesson fact:</strong> Holds data/instructions currently being used.</li><li><strong>Lesson fact:</strong> Holds files and data long term.</li><li><strong>Lesson fact:</strong> Volatility</li><li><strong>Lesson fact:</strong> RAM is volatile; contents are lost without power.</li><li><strong>Lesson fact:</strong> Non-volatile; data remains when power is off.</li><li><strong>Lesson fact:</strong> Speed and capacity</li><li><strong>Lesson fact:</strong> Usually faster but smaller and more expensive per unit.</li><li><strong>Lesson fact:</strong> Usually larger and cheaper per unit but slower than RAM.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end automatic -->
+        <!-- stage10-explanation:end memory-storage -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Choose the input device</h2>
+            <h2>Component choice helper</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="checkout">A shop needs to identify products quickly at checkout</option>
-                <option value="exam">An exam board marks multiple-choice answer sheets</option>
-                <option value="passport">A border system reads printed passport text</option>
-                <option value="greenhouse">A greenhouse records temperature every minute</option>
-                <option value="warehouse">A warehouse tracks stock in sealed boxes</option>
-                <option value="podcast">A student records spoken audio for a podcast</option>
+                <option value="barcode">A librarian scans book IDs quickly at a desk</option>
+                <option value="weather">A weather station measures temperature automatically</option>
+                <option value="attendance">A school stores attendance records after scanning ID cards</option>
+                <option value="exam">An exam office prints candidate timetables</option>
+                <option value="driver">A delivery driver needs turn-by-turn visual feedback</option>
+                <option value="editing">A laptop temporarily holds a large image while editing</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Recommend device</button>
+            <button type="button" id="chooseBtn">Choose component</button>
           </div>
           <div class="result-box" id="componentResult" aria-live="polite"></div>
           <div class="method-box" id="componentMethod"></div>
@@ -301,12 +298,12 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>From device name to exam-worthy justification</h2>
+            <h2>Hardware choices with reasons</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="checkout">Checkout</button>
-            <button class="tab" type="button" data-example="exam">OMR sheets</button>
-            <button class="tab" type="button" data-example="greenhouse">Greenhouse sensor</button>
+            <button class="tab active" type="button" data-example="attendance">Attendance system</button>
+            <button class="tab" type="button" data-example="weather">Weather station</button>
+            <button class="tab" type="button" data-example="library">Library desk</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -324,18 +321,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak input answer</h2>
+            <h2>Fix the weak hardware answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"Use a keyboard because it is easy."</p>
+              <p class="wrong">"The CPU stores all the files."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">This is too vague. A stronger answer links feature to scenario: use a barcode reader because it captures product codes faster than typing and reduces transcription errors at a busy checkout.</p>
+              <p class="answer" id="mistake1">The CPU processes instructions and data. Files are stored in secondary storage; data in current use may be held in memory.</p>
             </article>
             <article>
-              <p class="wrong">"OMR reads printed words from a form."</p>
+              <p class="wrong">"RAM and storage are the same because both hold data."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">OMR detects shaded marks or tick boxes. OCR recognises printed characters. The letter R is not enough; the middle letter matters.</p>
+              <p class="answer" id="mistake2">RAM is primary memory used for current tasks and is volatile. Secondary storage is non-volatile and keeps files long term.</p>
             </article>
           </div>
         </section>
@@ -344,7 +341,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on accurate device role plus a scenario-linked reason.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on classifying the component and linking its feature to the scenario.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -352,15 +349,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Input device answers need a mechanism</h2>
+            <h2>System overview in one chain</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Input device</strong><span>Captures data from a user, object, document or environment.</span></div>
-            <div><strong>Automatic capture</strong><span>Reduces manual typing and is useful for repeated or high-volume data.</span></div>
-            <div><strong>OCR vs OMR</strong><span>OCR recognises characters; OMR detects marks.</span></div>
-            <div><strong>Barcode / QR</strong><span>Reads encoded data quickly if the code is present and readable.</span></div>
-            <div><strong>Sensor</strong><span>Captures physical measurements, often automatically.</span></div>
-            <div><strong>Suitability</strong><span>Name the feature and link it to the scenario consequence.</span></div>
+            <div><strong>Input</strong><span>Captures data from the user or environment.</span></div>
+            <div><strong>Processor</strong><span>Executes instructions and processes data.</span></div>
+            <div><strong>Memory</strong><span>Holds data/instructions currently in use; RAM is volatile.</span></div>
+            <div><strong>Storage</strong><span>Holds files and data long term; non-volatile.</span></div>
+            <div><strong>Output</strong><span>Presents results or controls a physical action.</span></div>
+            <div><strong>Suitability</strong><span>Match device characteristics to the exact user need.</span></div>
           </div>
         </section>
 
@@ -370,25 +367,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a two-column table: five input devices and the exact data each captures.</li>
-            <li>Write a 4-mark answer comparing barcode reader and keyboard for supermarket checkout input.</li>
-            <li>Choose a suitable input method for a school library, a greenhouse and an exam marking system. Give one reason for each.</li>
-            <li>Write one sentence explaining the difference between OCR and OMR.</li>
+            <li>Draw a data-flow diagram for a self-checkout system: input, processing, memory/storage and output.</li>
+            <li>Create a table comparing primary memory and secondary storage using purpose, volatility, speed and capacity.</li>
+            <li>Choose hardware for a school attendance system: one input, one storage, one output. Justify each choice.</li>
+            <li>Write a 4-mark answer explaining why listing hardware is not enough for a suitability question.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Device table:</strong> include examples such as keyboard -> typed text; barcode reader -> encoded product ID; sensor -> physical measurement.</p>
-            <p><strong>Checkout answer:</strong> barcode reader is faster and reduces transcription errors; keyboard remains useful for exceptions or manual correction.</p>
-            <p><strong>Scenario choices:</strong> library can use barcode/RFID; greenhouse can use temperature/humidity sensors; exam system can use OMR for shaded multiple-choice sheets.</p>
-            <p><strong>OCR/OMR:</strong> OCR recognises printed characters; OMR detects the position of shaded marks.</p>
+            <p><strong>Data-flow diagram:</strong> barcode/touch input -> processor checks price -> memory holds current basket -> storage saves transaction -> screen/receipt output.</p>
+            <p><strong>Memory/storage:</strong> include volatile vs non-volatile and current use vs long-term files.</p>
+            <p><strong>Attendance:</strong> ID reader for accurate fast input; SSD/database storage for persistent records; screen/speaker for immediate feedback.</p>
+            <p><strong>Suitability:</strong> every device needs a reason linked to the scenario.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "remediation": "v2",
   "decisionAuthority": "audits/remediation-v2-current-decision.json",
-  "currentReleaseDecision": "BLOCKED",
+  "currentReleaseDecision": "RELEASE_CANDIDATE",
   "decisionDate": "2026-08-28",
   "currentStage": {
-    "number": 6,
-    "name": "Full image and browser acceptance",
+    "number": 7,
+    "name": "Independent final acceptance and release gate",
     "implementationStatus": "Complete",
-    "approvalStatus": "AwaitingUserApproval"
+    "approvalStatus": "AwaitingReleaseApproval"
   },
   "decisionInputs": [
     "audits/remediation-v2-defects.json",
-    "audits/remediation-v2-stage6-gate-result.json"
+    "audits/remediation-v2-stage7-gate-result.json"
   ],
   "historicalDecisions": [
     {

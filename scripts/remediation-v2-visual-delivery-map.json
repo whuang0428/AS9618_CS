@@ -1,8 +1,170 @@
 {
-  "044/width": { "lesson": "049", "targetId": "width" },
-  "091/processor": { "lesson": "042", "targetId": "processor" },
-  "114/pseudocode": { "lesson": "126", "targetId": "pseudocode" },
-  "059/logic": { "lesson": "138", "targetId": "logic" },
-  "062/controls": { "lesson": "066", "targetId": "controls" },
-  "131/compare": { "lesson": "130", "targetId": "byref-compare" }
+  "005/systems": {
+    "lesson": "002",
+    "targetId": "systems"
+  },
+  "035/sensors": {
+    "lesson": "032",
+    "targetId": "sensors"
+  },
+  "036/gate-visual": {
+    "lesson": "033",
+    "targetId": "gate-visual"
+  },
+  "044/acc-status": {
+    "lesson": "042",
+    "targetId": "acc-status"
+  },
+  "045/width": {
+    "lesson": "043",
+    "targetId": "width"
+  },
+  "092/processor": {
+    "lesson": "044",
+    "targetId": "processor"
+  },
+  "048/effective": {
+    "lesson": "047",
+    "targetId": "effective"
+  },
+  "051/shifts": {
+    "lesson": "050",
+    "targetId": "shifts"
+  },
+  "056/compare": {
+    "lesson": "054",
+    "targetId": "compare"
+  },
+  "059/libraries": {
+    "lesson": "055",
+    "targetId": "libraries"
+  },
+  "063/controls": {
+    "lesson": "067",
+    "targetId": "controls"
+  },
+  "080/compare": {
+    "lesson": "079",
+    "targetId": "compare"
+  },
+  "082/referential": {
+    "lesson": "080",
+    "targetId": "referential"
+  },
+  "084/normal-forms": {
+    "lesson": "081",
+    "targetId": "normal-forms"
+  },
+  "079/dbms": {
+    "lesson": "081",
+    "targetId": "dbms"
+  },
+  "088/dml": {
+    "lesson": "084",
+    "targetId": "dml"
+  },
+  "087/join": {
+    "lesson": "086",
+    "targetId": "join"
+  },
+  "099/concept": {
+    "lesson": "100",
+    "targetId": "concept"
+  },
+  "112/ipoc": {
+    "lesson": "100",
+    "targetId": "ipoc"
+  },
+  "112/analyser": {
+    "lesson": "103",
+    "targetId": "analyser"
+  },
+  "102/equivalence": {
+    "lesson": "104",
+    "targetId": "equivalence"
+  },
+  "119/declare": {
+    "lesson": "115",
+    "targetId": "declare-119"
+  },
+  "117/model": {
+    "lesson": "116",
+    "targetId": "model-117"
+  },
+  "117/pseudocode": {
+    "lesson": "116",
+    "targetId": "pseudocode-117"
+  },
+  "105/linear": {
+    "lesson": "118",
+    "targetId": "linear"
+  },
+  "106/bubble": {
+    "lesson": "118",
+    "targetId": "bubble"
+  },
+  "121/pseudocode": {
+    "lesson": "120",
+    "targetId": "pseudocode-121"
+  },
+  "123/concept": {
+    "lesson": "121",
+    "targetId": "concept-123"
+  },
+  "123/stack": {
+    "lesson": "121",
+    "targetId": "stack"
+  },
+  "123/queue": {
+    "lesson": "121",
+    "targetId": "queue"
+  },
+  "123/implementation": {
+    "lesson": "121",
+    "targetId": "implementation"
+  },
+  "141/standard": {
+    "lesson": "127",
+    "targetId": "standard"
+  },
+  "115/pseudocode": {
+    "lesson": "128",
+    "targetId": "pseudocode"
+  },
+  "134/substring": {
+    "lesson": "129",
+    "targetId": "substring"
+  },
+  "128/case": {
+    "lesson": "130",
+    "targetId": "case"
+  },
+  "129/for": {
+    "lesson": "130",
+    "targetId": "for"
+  },
+  "132/compare": {
+    "lesson": "131",
+    "targetId": "byref-compare"
+  },
+  "140/java": {
+    "lesson": "134",
+    "targetId": "java-140"
+  },
+  "145/algorithms": {
+    "lesson": "144",
+    "targetId": "algorithms"
+  },
+  "060/logic": {
+    "lesson": "145",
+    "targetId": "logic"
+  },
+  "138/boundary": {
+    "lesson": "146",
+    "targetId": "boundary"
+  },
+  "139/bug": {
+    "lesson": "146",
+    "targetId": "bug"
+  }
 }

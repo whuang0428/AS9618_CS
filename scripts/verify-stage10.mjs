@@ -91,7 +91,7 @@ function directSectionIds(source) {
 }
 
 expect(explanations.length > 0, "Stage 10 explanation data must not be empty");
-expect(new Set(explanations.map((item) => item.lesson)).size === 150, "Stage 10 rollout must cover all 150 lessons");
+expect(new Set(explanations.map((item) => item.lesson)).size === 151, "Stage 10 rollout must cover all 151 lessons");
 expect(new Set(explanations.map((item) => `${item.lesson}/${item.targetId}`)).size === explanations.length, "Duplicate explanation target keys found");
 
 const prose = new Set();
@@ -129,7 +129,7 @@ for (const item of explanations) {
 }
 expect(explanations.filter((item) => item.visual).length === explanations.length, "Every explanation must use one academic infographic");
 
-for (let number = 1; number <= 150; number += 1) {
+for (let number = 1; number <= 151; number += 1) {
   const lesson = String(number).padStart(3, "0");
   const html = read(`web/lesson-${lesson}/index.html`);
   expect(count(html, 'href="../stage10-explanations.css?v=9"') === 1, `Lesson ${lesson}: Stage 10 stylesheet must appear once at v9`);
@@ -165,20 +165,20 @@ for (let number = 1; number <= 150; number += 1) {
   }
 }
 
-const lesson016 = read("web/lesson-016/index.html");
+const lesson016 = read("web/lesson-017/index.html");
 const topologySection = lesson016.match(/<section class="panel" id="topologies"[\s\S]*?<\/section>/)?.[0] ?? "";
-expect(count(topologySection, '<svg class="topology-svg"') === 4, "Lesson 016: expected four accessible topology SVGs");
-expect(count(topologySection, "<title id=") === 4 && count(topologySection, "<desc id=") === 4, "Lesson 016: every topology SVG needs title and description");
-expect(topologySection.includes("Full mesh topology example") && count(topologySection.match(/topology-mesh-title[\s\S]*?<\/svg>/)?.[0] ?? "", '<line class="topology-link"') === 6, "Lesson 016: full mesh must show six links among four nodes");
-expect(topologySection.includes("Two star segments are connected together") && topologySection.includes("<h3>Hybrid</h3>"), "Lesson 016: hybrid topology is missing");
-expect(!topologySection.includes("<h3>Ring</h3>"), "Lesson 016: ring remains in the core topology set");
-expect(lesson016.includes("bus, star, mesh and hybrid topology choices") && lesson016.includes("bus, star, mesh and hybrid topology"), "Lesson 016: objective or homework still uses the wrong topology set");
+expect(count(topologySection, '<svg class="topology-svg"') === 4, "Lesson 017: expected four accessible topology SVGs");
+expect(count(topologySection, "<title id=") === 4 && count(topologySection, "<desc id=") === 4, "Lesson 017: every topology SVG needs title and description");
+expect(topologySection.includes("Full mesh topology example") && count(topologySection.match(/topology-mesh-title[\s\S]*?<\/svg>/)?.[0] ?? "", '<line class="topology-link"') === 6, "Lesson 017: full mesh must show six links among four nodes");
+expect(topologySection.includes("Two star segments are connected together") && topologySection.includes("<h3>Hybrid</h3>"), "Lesson 017: hybrid topology is missing");
+expect(!topologySection.includes("<h3>Ring</h3>"), "Lesson 017: ring remains in the core topology set");
+expect(lesson016.includes("bus, star, mesh and hybrid topology choices") && lesson016.includes("bus, star, mesh and hybrid topology"), "Lesson 017: objective or homework still uses the wrong topology set");
 
 const targetRows = parseCsv(read("audits/stage10-explanation-target-register.csv"));
 const targetHeader = targetRows.shift();
 const targetLessonIndex = targetHeader.indexOf("lesson");
 const targetStatusIndex = targetHeader.indexOf("status");
-expect(new Set(targetRows.map((row) => row[targetLessonIndex])).size === 150, "Stage 10 target register must cover all 150 lessons");
+expect(new Set(targetRows.map((row) => row[targetLessonIndex])).size === 151, "Stage 10 target register must cover all 151 lessons");
 const implementedTargetRows = targetRows.filter((row) => row[targetStatusIndex] === "Implemented");
 expect(implementedTargetRows.length === explanations.length, "Stage 10 target register implemented count mismatch");
 const implementedTargetKeys = new Set(implementedTargetRows.map((row) => `${row[targetLessonIndex]}/${row[targetHeader.indexOf("target_id")]}`));
@@ -189,10 +189,12 @@ const visualHeader = visualRows.shift();
 const visualLessonIndex = visualHeader.indexOf("lesson");
 const visualStatusIndex = visualHeader.indexOf("status");
 expect(visualRows.length >= 25, "Stage 10 visual register is unexpectedly small");
-expect(visualRows.some((row) => row[visualLessonIndex] === "016" && row[visualStatusIndex] === "PilotReview"), "Lesson 016 corrected topology visuals are not registered for pilot review");
+const topologyVisualRows = visualRows.filter((row) => row[visualLessonIndex] === "017" && row[visualHeader.indexOf("section_id")] === "topologies" && row[visualHeader.indexOf("method")] === "Inline SVG");
+expect(topologyVisualRows.length === 4, `Lesson 017 corrected topology inventory must contain four Inline SVG records; found ${topologyVisualRows.length}`);
+expect(topologyVisualRows.every((row) => row[visualStatusIndex] === "NeedsFactReview" && row[visualHeader.indexOf("required_facts")].length > 20), "Lesson 017 topology inventory must preserve explicit fact-review requirements before the separate semantic approval gate");
 
 const report = read("audits/stage10-concept-explanation-report.md");
-expect(report.includes("complete across all 150 lessons") && report.includes("Human semantic review status comes from"), "Stage 10 report does not describe the completed rollout and human semantic-review gate");
+expect(report.includes("complete across all 151 lessons") && report.includes("Human semantic review status comes from"), "Stage 10 report does not describe the completed rollout and human semantic-review gate");
 
 const semanticRows = parseCsv(read("audits/stage10-semantic-review-register.csv"));
 const semanticHeader = semanticRows.shift();
@@ -201,15 +203,26 @@ const requiredSemanticColumns = ["lesson", "target_id", "asset", "sha256", "pass
 for (const column of requiredSemanticColumns) expect(Number.isInteger(semanticIndex[column]), `Semantic review register is missing ${column}`);
 expect(semanticRows.length === explanations.length, `Expected ${explanations.length} semantic review rows; found ${semanticRows.length}`);
 expect(new Set(semanticRows.map((row) => `${row[semanticIndex.lesson]}/${row[semanticIndex.target_id]}`)).size === explanations.length, "Semantic review register contains duplicate or missing keys");
-expect(new Set(semanticRows.map((row) => row[semanticIndex.asset])).size === explanations.length, "Semantic review register contains duplicate or missing assets");
+const explanationAssets = new Set(explanations.map((item) => path.basename(item.visual.src)));
 const currentAssets = fs.readdirSync(path.join(root, "web", "assets", "diagrams", "stage10-infographics")).filter((name) => name.endsWith(".jpg"));
-expect(currentAssets.length === explanations.length, `Expected exactly ${explanations.length} current Stage 10 JPG assets; found ${currentAssets.length}`);
-expect(new Set(currentAssets).size === explanations.length, "Current Stage 10 asset directory contains duplicate filenames");
+expect(currentAssets.length === explanationAssets.size, `Expected exactly ${explanationAssets.size} current Stage 10 JPG assets; found ${currentAssets.length}`);
+expect(new Set(currentAssets).size === explanationAssets.size, "Current Stage 10 asset directory contains duplicate filenames");
 const registeredAssets = new Set(semanticRows.map((row) => row[semanticIndex.asset]));
 for (const asset of currentAssets) expect(registeredAssets.has(asset), `${asset}: current Stage 10 asset is missing from the semantic register`);
 
 const semanticByKey = new Map();
-const explanationBySemanticKey = new Map(explanations.map((item) => [`${item.sourceLesson ?? item.lesson}/${item.sourceTargetId ?? item.targetId}`, item]));
+const explanationBySemanticKey = new Map(explanations.map((item) => [`${item.lesson}/${item.targetId}`, item]));
+const explanationBySourceKey = new Map(explanations.map((item) => [`${item.sourceLesson ?? item.lesson}/${item.sourceTargetId ?? item.targetId}`, item]));
+const explanationByLegacySourceKey = new Map(explanations
+  .filter((item) => Number(item.sourceLesson ?? item.lesson) >= 11)
+  .map((item) => {
+    const sourceLesson = Number(item.sourceLesson ?? item.lesson) - 1;
+    return [`${String(sourceLesson).padStart(3, "0")}/${item.sourceTargetId ?? item.targetId}`, item];
+  }));
+const semanticKeyForReference = (key) => {
+  const item = explanationBySemanticKey.get(key) ?? explanationBySourceKey.get(key) ?? explanationByLegacySourceKey.get(key);
+  return item ? `${item.lesson}/${item.targetId}` : key;
+};
 for (const row of semanticRows) {
   const key = `${row[semanticIndex.lesson]}/${row[semanticIndex.target_id]}`;
   semanticByKey.set(key, row);
@@ -234,7 +247,8 @@ const defectIds = new Set(defectRows.map((row) => row[defectIndex.defect_id]));
 expect(defectIds.size === defectRows.length, "Semantic defect register contains duplicate IDs");
 for (const row of defectRows) {
   const key = `${row[defectIndex.lesson]}/${row[defectIndex.target_id]}`;
-  expect(semanticByKey.has(key), `${row[defectIndex.defect_id]}: defect key ${key} has no semantic review row`);
+  const semanticKey = semanticKeyForReference(key);
+  expect(semanticByKey.has(semanticKey), `${row[defectIndex.defect_id]}: defect key ${key} does not resolve to a current semantic review row`);
   if (["Critical", "Major"].includes(row[defectIndex.severity]) && row[defectIndex.resolved] !== "true") {
     expect(row[defectIndex.blocks_release] === "true", `${row[defectIndex.defect_id]}: unresolved ${row[defectIndex.severity]} defect must block release`);
   }
@@ -247,8 +261,9 @@ const calculationIds = new Set();
 for (const check of semanticCalculations) {
   expect(!calculationIds.has(check.id), `${check.id}: duplicate automated semantic-calculation ID`);
   calculationIds.add(check.id);
-  const row = semanticByKey.get(check.key);
-  expect(Boolean(row), `${check.id}: calculation key ${check.key} has no semantic review row`);
+  const semanticKey = semanticKeyForReference(check.key);
+  const row = semanticByKey.get(semanticKey);
+  expect(Boolean(row), `${check.id}: calculation key ${check.key} does not resolve to a current semantic review row`);
   const passed = evaluateSemanticCalculation(check);
   const linkedDefects = check.defectIds ?? [];
   if (!passed) {
@@ -257,13 +272,13 @@ for (const check of semanticCalculations) {
   }
   if (row) {
     const registeredChecks = row[semanticIndex.automated_checks].split(";").filter(Boolean);
-    expect(registeredChecks.includes(check.id), `${check.id}: calculation is missing from ${check.key} register row`);
+    expect(registeredChecks.includes(check.id), `${check.id}: calculation is missing from ${semanticKey} register row`);
     const expectedStatus = passed ? "Passed" : "KnownDefect";
     expect(row[semanticIndex.automated_check_status] === expectedStatus, `${check.key}: automated check status should be ${expectedStatus}`);
   }
 }
 
-const systemsRow = semanticByKey.get("005/systems");
+const systemsRow = semanticByKey.get(semanticKeyForReference("005/systems"));
 expect(Boolean(systemsRow), "Lesson 005 systems semantic seed is missing");
 if (systemsRow) {
   const systemsDefects = defectRows.filter((row) => row[defectIndex.lesson] === "005" && row[defectIndex.target_id] === "systems");
@@ -271,7 +286,7 @@ if (systemsRow) {
   expect(systemsDefects.every((row) => row[defectIndex.resolved] === "true"), "Lesson 005 systems seed defects must be resolved after the deterministic repair");
   expect(systemsRow[semanticIndex.status] === "Approved", "Repaired Lesson 005 systems asset must pass semantic review");
 }
-expect(semanticByKey.get("004/overflow")?.[semanticIndex.status] === "Approved", "Corrected Lesson 004 overflow asset must pass semantic review");
+expect(semanticByKey.get(semanticKeyForReference("004/overflow"))?.[semanticIndex.status] === "Approved", "Corrected Lesson 004 overflow asset must pass semantic review");
 
 const blockers = semanticRows.filter((row) => ["DefectCritical", "DefectMajor"].includes(row[semanticIndex.status]));
 if (!auditOnly) expect(blockers.length === 0, `Stage 10 release blocked by ${blockers.length} asset(s) with unresolved Critical or Major semantic defects`);

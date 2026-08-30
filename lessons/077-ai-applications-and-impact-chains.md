@@ -1,0 +1,198 @@
+# Lesson 077: AI applications and impact chains
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** AI applications and impact chains
+
+### Direct explanation
+
+- AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
+- Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.
+- To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
+
+### Worked example
+
+**Medical triage model:** The model prioritises scans, reducing waiting time, but biased training data may miss a patient group. Human review, representative validation data and monitoring can reduce rather than eliminate the risk.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Give one economic benefit of predictive maintenance.
+   **Answer:** Reduced downtime or repair cost by predicting failure.
+2. Give one environmental cost of training a large model.
+   **Answer:** Electricity use and associated emissions/resource demand.
+3. Why can biased training data create social harm?
+   **Answer:** The model may produce systematically poorer decisions for under-represented groups.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Evaluate the use of AI to select applicants for jobs.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| valid benefit such as speed/consistent initial processing | Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences. | 1 |
+| valid risk such as bias, opacity, privacy or exclusion |  | 1 |
+| explains a stakeholder consequence |  | 1 |
+| balanced judgement or mitigation linked to the context |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
+
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 7
+**Duration:** 45 minutes
+**Assessment rhythm:** informal questioning
+## Learning Objectives
+By the end of the lesson, students should be able to:
+1. Identify the stakeholders and issues involved in **Environmental and social impacts of computing**.
+2. Explain consequences using evidence from the stated scenario.
+3. Evaluate competing considerations and reach a supported conclusion.
+
+## Key Vocabulary
+English first, Chinese support:
+
+- ethics 伦理, privacy 隐私, copyright 版权, license 许可
+
+## Warm-Up Hook
+Ask: Just because a system can collect the data, should it? If the first answer is 'depends', good: now we have an ethics lesson instead of a slogan contest.
+
+Focus question: Which feature distinguishes **Environmental and social impacts of computing** from the most closely related syllabus concept?
+
+## Guided Explanation
+Frame Environmental and social impacts of computing as a conflict between stakeholders. Identify benefits, harms, rights and responsibilities. Teach students to write balanced answers: one side, the other side, then a justified judgement.
+
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
+
+Suggested timing:
+- 0-5 min: warm-up and prediction.
+- 5-18 min: teacher modelling with one visible worked example.
+- 18-30 min: guided pair task.
+- 30-38 min: exam-style question and correction.
+- 38-45 min: mini-quiz and exit ticket.
+
+## Board Plan / Teacher Talk Track
+Left: stakeholder map. Middle: benefit/risk evidence. Right: balanced evaluation paragraph.
+
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
+
+## Worked Example
+**Problem:** Evaluate replacing a school's working computers with more energy-efficient models. Consider operational energy, manufacturing, electronic waste, accessibility and cost.
+
+**Worked answer / marking focus:** Credit both sides: newer devices may reduce electricity use or improve access, but manufacture and premature disposal consume resources and create e-waste. The judgement must depend on measured savings, device condition, reuse or recycling and user needs.
+
+## Student Task
+Students build a balanced impact table for a computing decision, separating environmental effects from social effects and supporting a conditional conclusion.
+
+## Mini-Quiz
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
+
+## Exit Ticket
+Complete this sentence in English:
+"One important point from this lesson is ... . One common error is ... because ... ."
+
+## Homework
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Environmental and social impacts of computing**. Follow its command word and apply each point to the stated context.
+
+## Marking Notes
+Award credit for:
+- Accurate terminology from Syllabus Section 7.
+- A method, diagram, trace or example that matches the topic.
+- Clear explanation of why the answer matters in the scenario.
+Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
+
+## Common Misconception and Correction Prompt
+Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Classify the impact and choose a mitigation
+
+- **Explains:** `analyser`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-analyser.jpg`
+
+1. Interactive impact analyser
+2. Select a scenario and compare the positive impact, negative impact and mitigation.
+3. Scenario
+
+### The digital divide is about access, skills and inclusion
+
+- **Explains:** `digital-divide`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-digital-divide.jpg`
+
+1. Device access Some users cannot afford suitable hardware.
+2. Connectivity Reliable high-speed internet is not equally available.
+3. Digital skills Users may lack confidence or training to use online systems.
+4. Accessibility Systems should support users with disabilities or different needs.
+
+### Environmental impacts include energy use and resource consumption
+
+- **Explains:** `environment`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-environment.jpg`
+
+1. Energy use Devices, networks and data centres consume electricity during operation.
+2. Carbon emissions Emissions depend on electricity source, device manufacture and transport.
+3. Resource extraction Manufacturing hardware requires metals, rare materials, water and energy.
+4. Lifespan Short upgrade cycles increase manufacturing and disposal impact.
+
+### E-waste is an ethical issue, not just a rubbish-bin issue
+
+- **Explains:** `ewaste`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-ewaste.jpg`
+
+1. E-waste Discarded electronic devices and components.
+2. Toxic materials Some components contain harmful substances that can pollute soil or water if mishandled.
+3. Recycling Responsible recycling can recover materials and reduce landfill, but must be managed safely.
+4. Reuse and repair Extending device life reduces demand for new manufacturing.
+
+### Use a balanced impact structure
+
+- **Explains:** `method`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-method.jpg`
+
+1. 1. Change Name the computing change, such as automation or online services.
+2. 2. Benefit Explain a positive impact for a named stakeholder.
+3. 3. Harm Explain a negative impact with a realistic consequence.
+4. 4. Mitigation Suggest a practical way to reduce harm.
+5. Answer frame:
+6. [Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].
+
+### Social impacts affect work, communication and daily life
+
+- **Explains:** `social`
+- **Explanation type:** mechanism
+- **Delivery:** OPTIONAL / EXTEND
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-social.jpg`
+
+1. Computing change
+2. Possible benefit
+3. Possible harm
+4. Remote work
+5. Less commuting, flexible work, access to wider jobs.
+6. Isolation, blurred work-life boundaries, unequal home access.
+7. Automation
+8. Efficiency, safer handling of dangerous or repetitive tasks.
+9. Job displacement, need for retraining, deskilling.
+10. Online services
+11. Access to education, banking, healthcare and communication.
+12. Excludes users without devices, internet, skills or accessible design.
+<!-- stage10-explanations:end -->

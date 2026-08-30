@@ -32,13 +32,13 @@ for (const [key, expectedHash] of Object.entries(officialHashes)) {
 expect(sha256(manifestText) === baseline.manifest.sha256, "Manifest SHA-256 does not match the frozen baseline");
 
 const expectedCounts = {
-  lessons: 150,
-  pages: 153,
-  pageViewsPlanned: 306,
-  questions: 963,
+  lessons: 151,
+  pages: 154,
+  pageViewsPlanned: 308,
+  questions: 968,
   assessmentSets: 51,
-  stage10Images: 783,
-  visualObjects: 969,
+  stage10Images: 784,
+  visualObjects: 971,
   syllabusRequirements: 121,
 };
 for (const [key, value] of Object.entries(expectedCounts)) {

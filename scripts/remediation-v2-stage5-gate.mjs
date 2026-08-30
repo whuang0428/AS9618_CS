@@ -7,14 +7,14 @@ import { actualCriticalFixture, evaluateCriticalSemanticControls } from "./remed
 import { normaliseQuestionPrompt } from "./cie-command-words.mjs";
 
 export const stage5VisualKeys = Object.freeze([
-  "049/concept",
-  "107/pseudocode",
-  "121/parse",
-  "121/pseudocode",
-  "121/types",
-  "133/case",
-  "133/concat",
-  "133/java",
+  "050/concept",
+  "108/pseudocode",
+  "122/parse",
+  "122/pseudocode",
+  "122/types",
+  "134/case",
+  "134/concat",
+  "134/java",
 ]);
 
 const root = path.resolve(import.meta.dirname, "..");

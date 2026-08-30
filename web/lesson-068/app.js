@@ -1,122 +1,103 @@
 const scenarioMap = {
-  https: {
-    result: "Allow: normal outbound HTTPS.",
-    method: "The rule can permit internal users to access secure websites using TCP port 443.",
-    trap: "Do not assume allowed traffic is automatically safe; other controls may still inspect or log it.",
+  payment: {
+    result: "Best fit: encryption.",
+    method: "Payment data needs confidentiality while transmitted, so it should be converted into ciphertext that eavesdroppers cannot read.",
+    trap: "Do not use hashing if the shop must read the payment details at the other end.",
   },
-  sshExternal: {
-    result: "Block and log: unsolicited admin access attempt.",
-    method: "Unknown external SSH traffic to a school server should normally be denied because it targets a sensitive admin service.",
-    trap: "Do not leave admin ports open to the whole internet for convenience.",
+  password: {
+    result: "Best fit: hashing.",
+    method: "The stored value should be a digest. During login, the entered password is hashed and compared with the stored hash.",
+    trap: "Do not store decryptable passwords if only verification is needed.",
   },
-  mailServer: {
-    result: "Allow: approved mail server SMTP.",
-    method: "The mail server needs port 25 to send mail, so a specific rule can allow it.",
-    trap: "Do not allow every device to send SMTP just because the mail server needs it.",
+  download: {
+    result: "Best fit: hashing.",
+    method: "A hash of the downloaded file can be compared with the expected hash to detect whether the file has changed.",
+    trap: "A hash does not hide the file contents; it helps detect change.",
   },
-  studentSmtp: {
-    result: "Block or log: student laptop SMTP.",
-    method: "A student laptop normally should not send direct SMTP traffic; blocking can reduce spam or malware misuse.",
-    trap: "Do not block the entire network's email service when only unauthorised sources should be denied.",
+  bank: {
+    result: "Best fit: digital certificate.",
+    method: "The certificate links the bank's identity to its public key and is checked by the browser.",
+    trap: "The certificate supports trust and authentication; it is not the same thing as the encrypted payment data.",
   },
-  adminSubnet: {
-    result: "Allow if authenticated and from approved subnet.",
-    method: "Admin access can be restricted to a management subnet so only expected sources reach the admin panel.",
-    trap: "A firewall source rule is not a substitute for strong authentication and permissions.",
-  },
-};
-
-const eventMap = {
-  category: {
-    result: "Most relevant: proxy filtering.",
-    reason: "A proxy can inspect web requests and block categories or URLs according to policy.",
-  },
-  cache: {
-    result: "Most relevant: proxy caching.",
-    reason: "A proxy can store a copy of a frequently requested resource to reduce bandwidth and improve response time.",
-  },
-  spike: {
-    result: "Most relevant: network monitoring.",
-    reason: "Monitoring observes traffic volume and can alert staff when it crosses a threshold or pattern.",
-  },
-  logs: {
-    result: "Most relevant: proxy or firewall logs.",
-    reason: "Logs can show user, time, source, destination and whether a request was allowed or blocked.",
+  lostLaptop: {
+    result: "Best fit: encryption.",
+    method: "Local file or disk encryption can keep files unreadable to someone without the key or login credentials.",
+    trap: "A digital certificate does not protect local files by itself.",
   },
 };
 
 const examples = {
-  firewall: {
-    title: "Example 1: Firewall blocking inbound access",
-    problem: "A school server receives connection attempts from unknown external IP addresses.",
+  password: {
+    title: "Example 1: Password verification using a hash",
+    problem: "A website needs to check passwords without storing the actual passwords.",
     steps: [
-      "A firewall can inspect source address, destination address, protocol and port.",
-      "Rules can block unsolicited inbound traffic that is not needed for the service.",
-      "Denied attempts can be logged for investigation.",
-      "Limitation: allowed traffic can still carry attacks, so patching and monitoring are still needed.",
+      "When the account is created, the password is processed by a hash algorithm.",
+      "The resulting digest is stored instead of the plaintext password.",
+      "At login, the entered password is hashed again.",
+      "If the new hash matches the stored hash, the password is accepted.",
     ],
   },
-  proxy: {
-    title: "Example 2: Proxy enforcing web policy",
-    problem: "Students should not access gaming sites during lessons, but should still use approved learning sites.",
+  payment: {
+    title: "Example 2: Encrypting payment data in transit",
+    problem: "A customer sends card details to an online shop.",
     steps: [
-      "Client web requests are sent through the proxy.",
-      "The proxy checks the URL or category against a policy.",
-      "Blocked requests can be denied and logged; allowed pages are forwarded.",
-      "The proxy may also cache frequently used learning resources.",
+      "The data must remain confidential while travelling across the network.",
+      "Encryption converts the readable card details into ciphertext.",
+      "Only the intended recipient with the correct key should be able to recover the plaintext.",
+      "This does not remove the need for correct access rights and secure storage.",
     ],
   },
-  monitoring: {
-    title: "Example 3: Monitoring suspicious traffic",
-    problem: "The network shows a sudden spike in outgoing traffic at night.",
+  certificate: {
+    title: "Example 3: Browser checks a certificate",
+    problem: "A user visits an online banking site over HTTPS.",
     steps: [
-      "Monitoring tools can record traffic volume, source devices and destinations.",
-      "An alert can be generated when traffic exceeds a threshold or matches a pattern.",
-      "Logs help staff identify the device or account involved.",
-      "Monitoring supports detection and response; it does not automatically remove the cause.",
+      "The site sends a digital certificate to the browser.",
+      "The certificate contains the site's public key and identity information.",
+      "The browser checks the issuer, expiry date, domain name and trust chain.",
+      "If trusted, the public key can be used as part of establishing secure communication.",
     ],
   },
-  layered: {
-    title: "Example 4: Layering controls",
-    problem: "A company wants to reduce risk from malware calling out to command servers.",
+  integrity: {
+    title: "Example 4: File integrity using a hash",
+    problem: "A software download page publishes a hash for an installer file.",
     steps: [
-      "A firewall can block known unwanted ports or destinations.",
-      "A proxy can filter suspicious web requests and log user activity.",
-      "Monitoring can alert staff to unusual outbound traffic.",
-      "Anti-malware, patching and user training are still needed because one control is not enough.",
+      "The user calculates the hash of the downloaded file.",
+      "The calculated hash is compared with the published hash.",
+      "If the hashes match, the file is likely unchanged from the published version.",
+      "If they differ, the file may be corrupted or tampered with.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which control filters network traffic using rules?", accepted: ["firewall", "firewalls"], answer: "Firewall" },
-  { id: "p2", prompt: "Name one property a firewall rule may inspect.", accepted: ["ip address", "source ip", "destination ip", "port", "port number", "protocol", "state"], answer: "Source/destination IP address, port number, protocol or connection state" },
-  { id: "p3", prompt: "Which control acts as an intermediary between client and destination?", accepted: ["proxy", "proxy server"], answer: "Proxy / proxy server" },
-  { id: "p4", prompt: "Which proxy feature stores frequently requested resources?", accepted: ["cache", "caching"], answer: "Caching" },
-  { id: "p5", prompt: "Which process observes traffic and events to detect suspicious behaviour?", accepted: ["network monitoring", "monitoring"], answer: "Network monitoring" },
-  { id: "p6", prompt: "What record can show allowed and blocked traffic events?", accepted: ["log", "logs", "audit log", "firewall log", "proxy log"], answer: "Log / firewall log / proxy log" },
-  { id: "p7", prompt: "What should monitoring generate when suspicious thresholds are met?", accepted: ["alert", "alerts", "warning"], answer: "Alert / warning" },
-  { id: "p8", prompt: "Does a firewall guarantee that all allowed traffic is safe? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "Name one benefit of using a proxy server.", accepted: ["filtering", "filter", "caching", "cache", "logging", "anonymity", "policy enforcement", "block sites"], answer: "Filtering, caching, logging or policy enforcement" },
-  { id: "p10", prompt: "Name one limitation of network monitoring.", accepted: ["false positives", "needs response", "needs review", "too many alerts", "does not prevent", "privacy"], answer: "False positives, needs human/automated response, too many alerts, privacy concerns or detection without prevention" },
+  { id: "p1", prompt: "Which method converts plaintext into ciphertext?", accepted: ["encryption", "encrypt"], answer: "Encryption" },
+  { id: "p2", prompt: "Which method converts ciphertext back into readable plaintext?", accepted: ["decryption", "decrypt"], answer: "Decryption" },
+  { id: "p3", prompt: "Which method creates a one-way fixed digest?", accepted: ["hashing", "hash"], answer: "Hashing" },
+  { id: "p4", prompt: "Which security goal is mainly protected by encrypting data?", accepted: ["confidentiality"], answer: "Confidentiality" },
+  { id: "p5", prompt: "Should stored passwords normally be encrypted or hashed for verification?", accepted: ["hashed", "hashing", "hash"], answer: "Hashed" },
+  { id: "p6", prompt: "What document links a website identity to a public key?", accepted: ["digital certificate", "certificate", "ssl certificate", "tls certificate"], answer: "Digital certificate" },
+  { id: "p7", prompt: "What trusted organisation issues or signs digital certificates?", accepted: ["certificate authority", "ca", "certification authority"], answer: "Certificate authority" },
+  { id: "p8", prompt: "What key must be kept secret by its owner?", accepted: ["private key"], answer: "Private key" },
+  { id: "p9", prompt: "Can a hash normally be decrypted to recover the original password? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one certificate problem that can trigger a browser warning.", accepted: ["expired", "wrong domain", "mismatched domain", "untrusted", "revoked", "invalid signature", "not trusted"], answer: "Expired, wrong domain, untrusted issuer, revoked or invalid signature" },
 ];
 
 const mistakes = [
   {
-    wrong: "A firewall stops every attack.",
-    fix: "A firewall filters traffic based on rules. Allowed traffic can still contain attacks, and incorrect rules can create gaps.",
+    wrong: "Passwords should be encrypted so the website can decrypt them during login.",
+    fix: "For password verification, store a hash. At login, hash the entered password and compare the digests; the original password should not need to be recovered.",
   },
   {
-    wrong: "A proxy and a firewall are exactly the same.",
-    fix: "A firewall allows or blocks traffic using rules. A proxy acts as an intermediary that forwards, filters, caches or logs requests.",
+    wrong: "Hashing protects confidentiality because it hides the file contents.",
+    fix: "Hashing is mainly used for comparison or integrity checking. It does not encrypt the file contents for later reading.",
   },
   {
-    wrong: "Network monitoring prevents attacks automatically.",
-    fix: "Monitoring detects and records suspicious activity. Prevention requires a response, such as blocking traffic, isolating a device or changing rules.",
+    wrong: "A digital certificate encrypts all the data on a website by itself.",
+    fix: "A certificate helps authenticate the website and bind its identity to a public key. Encryption is then used for the secure communication.",
   },
   {
-    wrong: "Logs are useful only after an attack is over.",
-    fix: "Logs support investigation after events, but they can also feed real-time alerts and help detect suspicious patterns early.",
+    wrong: "Encryption proves that data has not changed.",
+    fix: "Encryption protects confidentiality. Integrity needs a suitable check, such as a hash or other integrity mechanism.",
   },
 ];
 
@@ -129,94 +110,92 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Describe how a firewall can reduce security risks on a school network.",
-    answer: "A firewall filters traffic entering or leaving the network using rules. The rules may inspect source or destination IP address, port number, protocol or connection state. Unwanted traffic, such as unsolicited inbound connections to admin services, can be blocked or logged. This reduces the risk of unauthorised access attempts and provides evidence for investigation, but allowed traffic may still need other controls.",
+    marks: "5 marks",
+    prompt: "Explain the difference between encryption and hashing.",
+    answer: "Encryption converts plaintext into ciphertext using an algorithm and key so that the data is unreadable without the correct key. It is reversible by decryption if the correct key is available. Hashing creates a fixed digest from data and is designed to be one-way. It is used for comparison, such as password verification or checking whether data has changed, not for recovering the original data.",
     marking: [
-      { mark: "B1", text: "firewall filters/controls network traffic" },
-      { mark: "B1", text: "rules inspect valid property such as IP/port/protocol/state" },
-      { mark: "B1", text: "traffic can be allowed/blocked/rejected/logged" },
-      { mark: "B1", text: "risk reduced linked to unauthorised access/unwanted traffic" },
+      { mark: "B1", text: "encryption converts plaintext/readable data into ciphertext/unreadable data" },
+      { mark: "B1", text: "encryption uses key/algorithm and can be decrypted with correct key" },
+      { mark: "B1", text: "hashing creates a digest/hash value from input data" },
+      { mark: "B1", text: "hashing is one-way/not intended to recover original data" },
+      { mark: "B1", text: "valid use comparison, e.g. encryption for confidentiality; hashing for password verification/integrity" },
     ],
     strict: [
-      "Do not accept 'makes the network secure' without mechanism.",
-      "Do not award rule mark for only saying 'checks data' without property.",
-      "Allow host-based or network firewall if filtering role is clear.",
+      "Do not accept 'hashing is encryption' as a distinction.",
+      "Do not award hash reversibility; hashes are not normally decrypted.",
+      "Allow ciphertext described as scrambled/unreadable form.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Explain two functions of a proxy server.",
-    answer: "A proxy server acts as an intermediary between a client and a destination server. It can filter web requests by checking URLs, categories or content against a policy and blocking unsuitable requests. It can cache frequently requested resources so later requests can be served faster and use less bandwidth. It can also log requests for audit and investigation.",
+    prompt: "Describe how hashing can be used to verify a password without storing the plaintext password.",
+    answer: "When a password is first set, a hash algorithm is applied to the password and the resulting hash is stored. At login, the password entered by the user is hashed using the same process. The new hash is compared with the stored hash. If they match, the password is accepted. This avoids storing the plaintext password and reduces the damage if the password file is accessed.",
     marking: [
-      { mark: "B1", text: "proxy described as intermediary between client and destination/server" },
-      { mark: "B1", text: "filtering function described with URL/category/content/policy" },
-      { mark: "B1", text: "filtering consequence such as blocking unsuitable sites/policy enforcement" },
-      { mark: "B1", text: "caching or logging function described" },
-      { mark: "B1", text: "valid consequence of caching/logging such as bandwidth reduction/audit/investigation" },
+      { mark: "B1", text: "password is processed by hash algorithm when set/registered" },
+      { mark: "B1", text: "hash/digest rather than plaintext password is stored" },
+      { mark: "B1", text: "entered password is hashed at login" },
+      { mark: "B1", text: "new hash compared with stored hash" },
+      { mark: "B1", text: "security benefit linked to not storing plaintext/reduced exposure" },
     ],
     strict: [
-      "Do not accept proxy as only 'a firewall' without intermediary idea.",
-      "Do not award caching mark for backing up files.",
-      "Allow anonymity/masking internal addresses as an additional valid proxy function.",
+      "Do not accept decrypting the stored hash to check the password.",
+      "Do not award storage mark for storing the actual password.",
+      "Allow digest/checksum wording if one-way comparison is clear.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A company uses network monitoring. Explain what may be monitored and how the information can be used.",
-    answer: "Network monitoring can observe traffic volumes, source and destination addresses, connection attempts, failed logins, blocked requests or unusual patterns. The information can be logged and compared with thresholds or signatures. Alerts can notify staff of possible attacks, misconfiguration or malware activity. Logs can then be used to investigate the time, source and nature of suspicious activity.",
+    prompt: "Explain the role of a digital certificate when a browser connects to a banking website.",
+    answer: "A digital certificate links the website identity to a public key. It contains information such as the domain/owner, public key, issuer and expiry date. The browser checks that the certificate is issued by a trusted certificate authority, matches the domain and is valid. This helps authenticate the website and supports setting up encrypted HTTPS communication.",
     marking: [
-      { mark: "B1", text: "valid monitored item such as traffic volume/source/destination/connections/failed attempts" },
-      { mark: "B1", text: "second distinct monitored item" },
-      { mark: "B1", text: "comparison with thresholds/patterns/signatures or unusual behaviour" },
-      { mark: "B1", text: "alerts or notifications generated for staff/response" },
-      { mark: "B1", text: "logs used for investigation/evidence/source/time identification" },
+      { mark: "B1", text: "certificate links website/domain identity to public key" },
+      { mark: "B1", text: "valid certificate content, e.g. public key/domain/owner/issuer/expiry/signature" },
+      { mark: "B1", text: "browser checks trusted issuer/certificate authority" },
+      { mark: "B1", text: "browser checks validity such as domain match/expiry/signature" },
+      { mark: "B1", text: "consequence: authenticates site and/or supports encrypted HTTPS communication" },
     ],
     strict: [
-      "Do not accept only 'watch the network' without what is monitored.",
-      "Do not say monitoring automatically fixes the attack unless response is described.",
-      "Allow bandwidth usage, failed login attempts or denied connections as monitored items.",
+      "Do not accept certificate as simply 'a password for a website'.",
+      "Do not say the certificate alone encrypts all data.",
+      "Allow CA for certificate authority.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Compare firewalls and proxies as network security controls.",
-    answer: "A firewall filters traffic based on rules, such as source or destination address, port number or protocol. It can allow, block or log traffic at a network boundary or host. A proxy acts as an intermediary between a client and destination server. It can forward requests, filter web access, cache resources and log user requests. Both can reduce risk and provide logs, but neither guarantees safety because misconfiguration or allowed traffic can still cause problems.",
+    marks: "4 marks",
+    prompt: "An online shop stores passwords and sends payment data over the internet. State which security method should be used for each and justify your choices.",
+    answer: "Stored passwords should be hashed because the shop only needs to verify an entered password by comparing hashes and should not need to recover the plaintext password. Payment data sent over the internet should be encrypted because the data must remain confidential while in transit and must be recoverable by the intended recipient.",
     marking: [
-      { mark: "B1", text: "firewall filters traffic using rules" },
-      { mark: "B1", text: "valid firewall rule property or decision, e.g. IP/port/protocol/allow/block/log" },
-      { mark: "B1", text: "proxy is intermediary between client and destination" },
-      { mark: "B1", text: "valid proxy function such as forward/filter/cache/log" },
-      { mark: "B1", text: "valid similarity such as both reduce risk/control access/log traffic" },
-      { mark: "B1", text: "valid limitation such as misconfiguration/allowed traffic/need for layered controls" },
+      { mark: "B1", text: "stored passwords use hashing" },
+      { mark: "B1", text: "justification linked to one-way comparison/no plaintext recovery needed" },
+      { mark: "B1", text: "payment data in transit uses encryption" },
+      { mark: "B1", text: "justification linked to confidentiality and intended recipient can decrypt/read" },
     ],
     strict: [
-      "Do not make proxy and firewall identical for all marks.",
-      "Do not award firewall property for proxy-only web category filtering unless firewall role is stated.",
-      "Allow content filtering firewall as extra detail, but proxy intermediary mark must be separate.",
+      "Do not award password mark for encrypting passwords unless hashing is also clearly stated as the storage method.",
+      "Do not award payment mark for hashing payment data if the recipient must read the details.",
+      "Allow SSL/TLS certificate as digital certificate.",
+      "Award each method independently.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A school wants to block unsuitable websites, reduce repeated downloads and detect unusual traffic spikes. Suggest suitable controls.",
-    answer: "A proxy server can block unsuitable websites by checking requested URLs or categories against the school's policy. The proxy can also cache frequently downloaded resources so repeated downloads use less bandwidth and load faster. Network monitoring can detect unusual traffic spikes by observing traffic volume and comparing it with normal behaviour or thresholds. Alerts and logs can help staff investigate the source and take action.",
+    marks: "5 marks",
+    prompt: "A download website publishes a hash value for a software installer. Explain how this helps users detect tampering.",
+    answer: "The user can calculate the hash of the downloaded installer and compare it with the published hash value. If the values match, the file is likely unchanged from the published version. If they differ, the file may have been altered, corrupted or tampered with. This works because a change to the file should produce a different hash value.",
     marking: [
-      { mark: "B1", text: "proxy recommended for blocking unsuitable websites" },
-      { mark: "B1", text: "proxy filtering mechanism linked to URL/category/policy" },
-      { mark: "B1", text: "proxy caching recommended for repeated downloads" },
-      { mark: "B1", text: "caching consequence linked to bandwidth/speed/reduced repeated external requests" },
-      { mark: "B1", text: "network monitoring recommended for unusual traffic spikes" },
-      { mark: "B1", text: "monitoring mechanism linked to thresholds/alerts/logs/investigation" },
+      { mark: "B1", text: "user calculates hash of downloaded file" },
+      { mark: "B1", text: "calculated hash compared with published/expected hash" },
+      { mark: "B1", text: "matching hashes indicate file likely unchanged" },
+      { mark: "B1", text: "different hashes indicate changed/corrupted/tampered file" },
+      { mark: "B1", text: "reason linked to changed input producing different hash value" },
     ],
     strict: [
-      "Do not award caching marks for backup or file storage unrelated to repeated requests.",
-      "Do not award monitoring mark for validation of user input.",
-      "Allow firewall as additional control, but proxy and monitoring are required by the scenario.",
-      "Award each scenario requirement independently.",
+      "Do not accept hash as hiding the installer contents.",
+      "Do not award comparison mark for only saying 'look at the file size'.",
+      "Allow digest/checksum if the comparison idea is clear.",
     ],
   },
 ];
@@ -232,10 +211,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    firewall: "Correct. The rule filters traffic by source and port.",
-    proxy: "No. A proxy is an intermediary for requests; the clue is port/source filtering.",
-    hashing: "No. Hashing creates a digest for comparison; it does not block network ports.",
-    validation: "No. Validation checks input data; this is a network traffic rule.",
+    hashing: "Correct. A digest is stored and later compared; it is not meant to be reversed.",
+    encryption: "No. Encryption is reversible with a key. Password storage normally uses hashing for verification.",
+    certificate: "No. A certificate helps prove website identity and public key trust, not store a password digest.",
+    backup: "No. Backup is recovery; a hash is for verification/comparison.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -262,18 +241,27 @@ function setupSimulator() {
   simulate();
 }
 
-function setupEventTool() {
-  const select = document.querySelector("#eventInput");
-  const result = document.querySelector("#eventResult");
-  const reason = document.querySelector("#eventReason");
-  function classify() {
-    const item = eventMap[select.value];
-    result.textContent = item.result;
-    reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
+function toyDigest(value) {
+  let total = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    total ^= value.charCodeAt(index);
+    total = Math.imul(total, 16777619) >>> 0;
   }
-  select.addEventListener("change", classify);
-  document.querySelector("#eventBtn").addEventListener("click", classify);
-  classify();
+  return total.toString(16).padStart(8, "0");
+}
+
+function setupHashDemo() {
+  const input = document.querySelector("#hashInput");
+  const result = document.querySelector("#hashResult");
+  const advice = document.querySelector("#hashAdvice");
+  function update() {
+    const digest = toyDigest(input.value);
+    result.textContent = `Toy digest: ${digest}`;
+    advice.innerHTML = "<strong>Exam point:</strong> a real cryptographic hash is designed for one-way comparison; this classroom digest is only a visual model.";
+  }
+  input.addEventListener("input", update);
+  document.querySelector("#hashBtn").addEventListener("click", update);
+  update();
 }
 
 function renderExample(key) {
@@ -293,7 +281,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("firewall");
+  renderExample("password");
 }
 
 function renderPractice() {
@@ -380,7 +368,7 @@ function renderExam() {
 setupPrint();
 setupHook();
 setupSimulator();
-setupEventTool();
+setupHashDemo();
 setupExamples();
 renderPractice();
 renderMistakes();

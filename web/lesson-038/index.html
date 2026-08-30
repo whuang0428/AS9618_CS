@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 038 | Hardware selection for different users</title>
+    <title>AS9618 Lesson 038 | Building logic circuits from requirements</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Hardware selection for different users</h1>
+        <h1>Building logic circuits from requirements</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,10 +29,10 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#categories">Categories</a>
-        <a href="#criteria">Criteria</a>
-        <a href="#users">User needs</a>
-        <a href="#tool">Selector</a>
+        <a href="#parse">Parse requirements</a>
+        <a href="#design">Design method</a>
+        <a href="#diagram">Circuit structure</a>
+        <a href="#tool">Circuit builder</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -41,207 +41,206 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 038 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Good hardware is not the fanciest box. It is the box that fits the job.</h2>
+            <h2>Requirements are English. Circuits are English after it has been through the gym.</h2>
             <p>
-              This lesson focuses on selecting suitable hardware for different
-              users and scenarios. You will classify hardware, compare alternatives,
-              and justify choices using features, user needs and consequences.
+              This lesson trains the full design route: read a scenario, define
+              input variables, write a Boolean expression, build the gate sequence,
+              and verify the circuit with a truth table row.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>hardware as input, output, storage, processing or communication</span></div>
-              <div><strong>Compare</strong><span>alternatives using speed, capacity, cost and reliability</span></div>
-              <div><strong>Justify</strong><span>hardware choices for specific user needs</span></div>
+              <div><strong>Identify</strong><span>input conditions and output action from a requirement</span></div>
+              <div><strong>Construct</strong><span>Boolean expressions and matching gate sequences</span></div>
+              <div><strong>Verify</strong><span>the circuit using a truth-table row</span></div>
             </div>
           </div>
-          <div class="hardware-card" aria-label="Hardware selection formula">
-            <span>feature -> need -> consequence</span>
-            <p>"It is better" earns very little. "It is portable, so the delivery driver can scan parcels at the door" earns marks.</p>
+          <div class="gate-card" aria-label="Circuit expression">
+            <span>Alarm = Armed AND (Door OR Window)</span>
+            <p>Start with the rule. The circuit should simply obey it, without inventing new drama.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style hardware questions reward suitability. A named device without scenario-specific justification is usually only half an answer.</p>
+            <p>Cambridge questions often give worded requirements. Marks depend on turning words such as only if, either, and not into the right gates.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not recommend the most powerful hardware by default. A librarian does not need a gaming GPU to scan barcodes, even if the GPU looks lonely.</p>
+            <p>Do not draw gates before defining variables. A circuit with mystery inputs is not clever; it is just hard to mark.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Phone, keyboard, USB drive: which captures data, which stores data, and which just makes humans feel in control?</h2>
-            <p>Click a classification. The correct answer depends on the role in the system, not the object's personality.</p>
+            <h2>A school door unlocks only if the card is valid and the emergency stop is not active.</h2>
+            <p>Click the correct expression. The door is allergic to vague English.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="phone">Phone camera captures image data</button>
-            <button class="choice-card" type="button" data-hook="keyboard">Keyboard enters text commands</button>
-            <button class="choice-card" type="button" data-hook="usb">USB flash drive stores files</button>
-            <button class="choice-card" type="button" data-hook="trap">A monitor stores the final result</button>
+            <button class="choice-card" type="button" data-hook="wrong1">Unlock = Card OR NOT Emergency</button>
+            <button class="choice-card" type="button" data-hook="correct">Unlock = Card AND NOT Emergency</button>
+            <button class="choice-card" type="button" data-hook="wrong2">Unlock = NOT Card AND Emergency</button>
+            <button class="choice-card" type="button" data-hook="wrong3">Unlock = Card XOR Emergency</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Start by classifying the device's job: input, output, storage, processing or communication.
+            Look for "only if" and "not active". Those two phrases usually decide the gate choices.
           </div>
         </section>
 
-        <section class="panel" id="categories" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="categories">
+        <section class="panel" id="parse" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Classify the hardware before choosing it</h2>
+            <h2>Parse requirement wording into logic</h2>
           </div>
-          <div class="device-table" role="table" aria-label="Hardware categories">
+          <div class="phrase-table" role="table" aria-label="Requirement phrases and logic">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Category</div>
-              <div role="columnheader">Purpose</div>
-              <div role="columnheader">Examples</div>
-              <div role="columnheader">Selection question</div>
+              <div role="columnheader">Requirement phrase</div>
+              <div role="columnheader">Logic meaning</div>
+              <div role="columnheader">Gate / expression</div>
+              <div role="columnheader">Exam warning</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Input</div>
-              <div role="cell">Captures data or commands.</div>
-              <div role="cell">Keyboard, barcode reader, camera, touchscreen, sensor</div>
-              <div role="cell">How fast and accurate must data entry be?</div>
+              <div role="cell">both / all / only if X and Y</div>
+              <div role="cell">Every listed condition must be 1.</div>
+              <div role="cell">X AND Y</div>
+              <div role="cell">Do not replace AND with OR because one condition sounds important.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Output</div>
-              <div role="cell">Presents information or produces an action.</div>
-              <div role="cell">Monitor, printer, speaker, projector, actuator</div>
-              <div role="cell">Does the user need visual, printed, audio or physical output?</div>
+              <div role="cell">either / at least one</div>
+              <div role="cell">One or more conditions may be 1.</div>
+              <div role="cell">X OR Y</div>
+              <div role="cell">OR includes the row where both inputs are 1.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Storage</div>
-              <div role="cell">Stores programs and data.</div>
-              <div role="cell">SSD, HDD, optical disc, flash storage</div>
-              <div role="cell">Is speed, capacity, portability or durability most important?</div>
+              <div role="cell">not / unless / inactive</div>
+              <div role="cell">Invert the condition.</div>
+              <div role="cell">NOT X</div>
+              <div role="cell">Check which variable is being inverted.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Processing</div>
-              <div role="cell">Carries out instructions and calculations.</div>
-              <div role="cell">CPU, GPU, microcontroller</div>
-              <div role="cell">How complex or time-critical is the processing task?</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Communication</div>
-              <div role="cell">Connects devices or networks.</div>
-              <div role="cell">NIC, Wi-Fi adapter, Bluetooth module, router</div>
-              <div role="cell">Does the user need mobility, range, speed or reliability?</div>
+              <div role="cell">exactly one</div>
+              <div role="cell">Inputs must be different.</div>
+              <div role="cell">X XOR Y</div>
+              <div role="cell">Do not use OR if both being 1 should produce 0.</div>
             </div>
           </div>
-          <div class="callout">Chinese support: suitability = 适用性；reliability = 可靠性；durability = 耐用性；portability = 便携性。</div>
+          <div class="callout">Chinese support: requirement = 需求；variable = 变量；logic circuit = 逻辑电路；gate sequence = 逻辑门顺序。</div>
         </section>
 
-        <!-- stage10-explanation:start categories -->
-        <section class="panel explanation-panel" id="explanation-categories" data-explains="categories" data-explanation-kind="mechanism" aria-labelledby="explanation-categories-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="categories">
-          <h2 class="explanation-sr-only" id="explanation-categories-title">Classify the hardware before choosing it</h2>
+        <!-- stage10-explanation:start parse -->
+        <section class="panel explanation-panel" id="explanation-parse" data-explains="parse" data-explanation-kind="mechanism" aria-labelledby="explanation-parse-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
+          <h2 class="explanation-sr-only" id="explanation-parse-title">Parse requirement wording into logic</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-categories.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify the hardware before choosing it with a structured visual model." />
-            <figcaption class="explanation-sr-only">Classify the hardware before choosing it: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-parse.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Parse requirement wording into logic with a structured visual model." />
+            <figcaption class="explanation-sr-only">Parse requirement wording into logic: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The touch-sensing layer of a touchscreen is an input device.</li><li><strong>Lesson fact:</strong> The display layer of a touchscreen is an output device.</li><li><strong>Lesson fact:</strong> A touchscreen is therefore a combined input/output device.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> AND means every listed condition must be true; OR means at least one condition is true.</li><li><strong>Lesson fact:</strong> NOT directly inverts a condition.</li><li><strong>Lesson fact:</strong> P unless Q means P when NOT Q; the full sentence determines which condition is negated.</li><li><strong>Lesson fact:</strong> Do not treat the word unless as a universal unary NOT operator.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end categories -->
-        <section class="panel" id="criteria" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="criteria">
+        <!-- stage10-explanation:end parse -->
+        <section class="panel" id="design" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Choose hardware using stated criteria</h2>
+            <h2>A circuit design method that examiners can follow</h2>
           </div>
-          <div class="criteria-grid">
-            <article><strong>Speed</strong><span>Needed for real-time input, rapid searches, video editing or low-delay output.</span></article>
-            <article><strong>Capacity</strong><span>Needed for large files, media archives, backups or databases.</span></article>
-            <article><strong>Cost</strong><span>Matters when many devices must be purchased or the user has a fixed budget.</span></article>
-            <article><strong>Durability</strong><span>Important for mobile, outdoor or high-use environments.</span></article>
-            <article><strong>Accuracy</strong><span>Important for barcode scanning, sensors, medical data and attendance records.</span></article>
-            <article><strong>Compatibility</strong><span>Hardware must connect to existing software, ports, networks and operating systems.</span></article>
+          <div class="method-list">
+            <div><strong>1. Name the output</strong><span>Use a clear output such as Alarm, Unlock, Fan or Light.</span></div>
+            <div><strong>2. Define variables</strong><span>Write what each input means, for example A = system armed.</span></div>
+            <div><strong>3. Write expression</strong><span>Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</span></div>
+            <div><strong>4. Draw in stages</strong><span>Draw inner gates first, then connect them to the final output gate.</span></div>
           </div>
-          <div class="callout">Exam sentence frame: "I would choose X because it has Y, which matters for Z, so the user can..."</div>
+          <div class="callout">A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</div>
         </section>
 
-        <!-- stage10-explanation:start criteria -->
-        <section class="panel explanation-panel" id="explanation-criteria" data-explains="criteria" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="criteria">
-          <h2 class="explanation-sr-only" id="explanation-criteria-title">Choose hardware using stated criteria</h2>
+        <!-- stage10-explanation:start design -->
+        <section class="panel explanation-panel" id="explanation-design" data-explains="design" data-explanation-kind="mechanism" aria-labelledby="explanation-design-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
+          <h2 class="explanation-sr-only" id="explanation-design-title">A circuit design method that examiners can follow</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-criteria.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose hardware using stated criteria with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose hardware using stated criteria: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-design.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A circuit design method that examiners can follow with a structured visual model." />
+            <figcaption class="explanation-sr-only">A circuit design method that examiners can follow: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Speed Needed for real-time input, rapid searches, video editing or low-delay output.</li><li><strong>Lesson fact:</strong> Capacity Needed for large files, media archives, backups or databases.</li><li><strong>Lesson fact:</strong> Cost Matters when many devices must be purchased or the user has a fixed budget.</li><li><strong>Lesson fact:</strong> Durability Important for mobile, outdoor or high-use environments.</li><li><strong>Lesson fact:</strong> Accuracy Important for barcode scanning, sensors, medical data and attendance records.</li><li><strong>Lesson fact:</strong> Compatibility Hardware must connect to existing software, ports, networks and operating systems.</li><li><strong>Lesson fact:</strong> Exam sentence frame: &quot;I would choose X because it has Y, which matters for Z, so the user can...&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> 1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.</li><li><strong>Lesson fact:</strong> 2. Define variables Write what each input means, for example A = system armed.</li><li><strong>Lesson fact:</strong> 3. Write expression Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</li><li><strong>Lesson fact:</strong> 4. Draw in stages Draw inner gates first, then connect them to the final output gate.</li><li><strong>Lesson fact:</strong> A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end criteria -->
-        <section class="panel" id="users" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="users">
+        <!-- stage10-explanation:end design -->
+        <section class="panel" id="diagram" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Different users value different trade-offs</h2>
+            <h2>Gate sequence creates the circuit structure</h2>
           </div>
-          <div class="user-grid">
-            <article><strong>Librarian</strong><span>Needs fast, accurate item input and reliable local/network database access.</span></article>
-            <article><strong>Delivery driver</strong><span>Needs portable, durable, wireless hardware and quick barcode/QR capture.</span></article>
-            <article><strong>Video editor</strong><span>Needs high-speed storage, strong CPU/GPU performance and colour-accurate display.</span></article>
-            <article><strong>Weather station</strong><span>Needs accurate sensors, durable enclosure, low power use and stable communication.</span></article>
+          <div class="circuit-flow" aria-label="Circuit build sequence">
+            <div><strong>Door</strong><span>Input D</span></div>
+            <div><strong>Window</strong><span>Input W</span></div>
+            <div><strong>OR</strong><span>D OR W</span></div>
+            <div><strong>Armed</strong><span>Input A</span></div>
+            <div><strong>AND</strong><span>A AND (D OR W)</span></div>
+            <div><strong>Alarm</strong><span>Final output Q</span></div>
           </div>
-          <div class="callout">A strong answer rejects one tempting unsuitable option. This proves the choice was evaluated, not guessed.</div>
+          <div class="callout">Draw the OR branch first, then feed it into AND with Armed. If the drawing order is unclear, label intermediate outputs.</div>
         </section>
 
-        <!-- stage10-explanation:start users -->
-        <section class="panel explanation-panel" id="explanation-users" data-explains="users" data-explanation-kind="mechanism" aria-labelledby="explanation-users-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="users">
-          <h2 class="explanation-sr-only" id="explanation-users-title">Different users value different trade-offs</h2>
+        <!-- stage10-explanation:start diagram -->
+        <section class="panel explanation-panel" id="explanation-diagram" data-explains="diagram" data-explanation-kind="mechanism" aria-labelledby="explanation-diagram-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
+          <h2 class="explanation-sr-only" id="explanation-diagram-title">Gate sequence creates the circuit structure</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-users.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Different users value different trade-offs with a structured visual model." />
-            <figcaption class="explanation-sr-only">Different users value different trade-offs: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-diagram.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Gate sequence creates the circuit structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Gate sequence creates the circuit structure: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Librarian Needs fast, accurate item input and reliable local/network database access.</li><li><strong>Lesson fact:</strong> Delivery driver Needs portable, durable, wireless hardware and quick barcode/QR capture.</li><li><strong>Lesson fact:</strong> Video editor Needs high-speed storage, strong CPU/GPU performance and colour-accurate display.</li><li><strong>Lesson fact:</strong> Weather station Needs accurate sensors, durable enclosure, low power use and stable communication.</li><li><strong>Lesson fact:</strong> A strong answer rejects one tempting unsuitable option. This proves the choice was evaluated, not guessed.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Door Input D</li><li><strong>Lesson fact:</strong> Window Input W</li><li><strong>Lesson fact:</strong> OR D OR W</li><li><strong>Lesson fact:</strong> Armed Input A</li><li><strong>Lesson fact:</strong> AND A AND (D OR W)</li><li><strong>Lesson fact:</strong> Alarm Final output Q</li><li><strong>Lesson fact:</strong> Draw the OR branch first, then feed it into AND with Armed. If the drawing order is unclear, label intermediate outputs.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end users -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <!-- stage10-explanation:end diagram -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Hardware selector</h2>
+            <h2>Build the circuit from a requirement</h2>
           </div>
           <div class="converter-grid">
             <label>
-              User scenario
+              Scenario
               <select id="scenarioInput">
-                <option value="attendance">School attendance system</option>
-                <option value="library">Library checkout desk</option>
-                <option value="delivery">Delivery driver</option>
-                <option value="editor">Video editor</option>
-                <option value="weather">Remote weather station</option>
+                <option value="alarm">Alarm if armed and either door or window is open</option>
+                <option value="unlock">Unlock if card is valid and emergency stop is not active</option>
+                <option value="fan">Fan if room is hot and override is not active</option>
+                <option value="light">Light if motion is detected or test mode is active</option>
+                <option value="selector">Select output if exactly one button is pressed</option>
               </select>
             </label>
-            <button type="button" id="recommendBtn">Recommend hardware</button>
+            <button type="button" id="buildBtn">Build circuit</button>
           </div>
-          <div class="result-box" id="recommendation" aria-live="polite"></div>
-          <div class="method-box" id="justification"></div>
-          <div class="reject-box" id="rejection"></div>
+          <div class="result-box" id="scenarioExpression" aria-live="polite"></div>
+          <div class="method-box" id="scenarioVariables"></div>
+          <div class="sequence-box" id="scenarioSequence"></div>
+          <div class="truth-table-wrap" id="truthTable"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Write recommendations that earn marks</h2>
+            <h2>From words to gates</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="attendance">Attendance</button>
-            <button class="tab" type="button" data-example="delivery">Delivery</button>
-            <button class="tab" type="button" data-example="editor">Video editor</button>
+            <button class="tab active" type="button" data-example="alarm">Alarm circuit</button>
+            <button class="tab" type="button" data-example="unlock">Unlock circuit</button>
+            <button class="tab" type="button" data-example="xor">Exactly one condition</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -251,46 +250,46 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak hardware recommendation</h2>
+            <h2>Fix the weak circuit design</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"Use an SSD because it is better."</p>
+              <p class="wrong">"The alarm sounds if door OR window is open. The system armed condition can be drawn somewhere at the end."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Use an SSD because it has faster access times than an HDD, which helps a video editor load large project files and preview footage with less delay.</p>
+              <p class="answer" id="mistake1">If the requirement says the system must be armed, Armed must be part of the expression: Alarm = Armed AND (Door OR Window). The final AND is essential.</p>
             </article>
             <article>
-              <p class="wrong">"A delivery driver should use a desktop computer because it is powerful."</p>
+              <p class="wrong">"Emergency stop is not active, so I write NOT Card AND Emergency."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">A handheld scanner or smartphone is more suitable because it is portable, can connect wirelessly and can scan parcels at the delivery location.</p>
+              <p class="answer" id="mistake2">The NOT applies to Emergency, not Card. The correct expression is Unlock = Card AND NOT Emergency.</p>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on matching a feature to a user need and explaining the consequence.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on clear variables, correct gate choice, and a circuit sequence matching the requirement.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Hardware selection in six exam sentences</h2>
+            <h2>Circuit design in six exam sentences</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Classify</strong><span>Know whether the device inputs, outputs, stores, processes or communicates.</span></div>
-            <div><strong>Compare</strong><span>Use criteria such as speed, capacity, durability and cost.</span></div>
-            <div><strong>Context</strong><span>Different users have different priorities.</span></div>
-            <div><strong>Justify</strong><span>Link feature to need and consequence.</span></div>
-            <div><strong>Reject</strong><span>Explain why a tempting alternative is unsuitable.</span></div>
-            <div><strong>Precision</strong><span>Avoid vague words like better unless you explain why.</span></div>
+            <div><strong>Variables</strong><span>Define every input before using it.</span></div>
+            <div><strong>Output</strong><span>Name the final action clearly.</span></div>
+            <div><strong>AND</strong><span>Use when all conditions are required.</span></div>
+            <div><strong>OR</strong><span>Use when at least one condition is enough.</span></div>
+            <div><strong>NOT</strong><span>Invert only the condition described as not/inactive.</span></div>
+            <div><strong>Verify</strong><span>Test one truth-table row against the original wording.</span></div>
           </div>
         </section>
 
@@ -300,25 +299,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Design a hardware setup for a library checkout desk. Include two input devices, one output device and one storage/processing choice.</li>
-            <li>Write a 6-mark answer recommending hardware for a delivery driver who scans parcels and collects signatures.</li>
-            <li>Compare SSD and HDD for a video editor using speed, capacity, cost and reliability.</li>
-            <li>Rewrite this weak sentence: "Use a touchscreen because it is easier."</li>
+            <li>For "A warning sounds if the system is armed and either a door or window is open", define variables, write the expression and describe the gate sequence.</li>
+            <li>For "A fan starts if the room is hot and manual override is not active", define variables and draw the gate structure in words.</li>
+            <li>Create one requirement that needs XOR and explain why OR would be wrong.</li>
+            <li>Verify one of your circuits with two truth-table rows: one where output is 1 and one where output is 0.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Library:</strong> barcode scanner, keyboard/touchscreen, receipt printer/display, networked computer with reliable storage.</p>
-            <p><strong>Delivery:</strong> handheld scanner or smartphone, GPS, mobile data, durable case and battery life.</p>
-            <p><strong>SSD vs HDD:</strong> SSD is faster and more shock-resistant; HDD may be cheaper per GB for bulk archive storage.</p>
-            <p><strong>Rewrite:</strong> specify the feature, such as direct selection reducing training time for non-specialist users.</p>
+            <p><strong>Alarm:</strong> let A = armed, D = door open, W = window open. Alarm = A AND (D OR W).</p>
+            <p><strong>Fan:</strong> let H = hot, O = override active. Fan = H AND NOT O.</p>
+            <p><strong>XOR:</strong> use "exactly one" wording, such as exactly one button pressed.</p>
+            <p><strong>Verification:</strong> write input values, intermediate gate result and final output.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

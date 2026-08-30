@@ -1,88 +1,84 @@
-const typeMap = {
-  phone: {
-    result: "Best data type: text/string.",
-    reason: "A phone number is an identifier/contact value, not a value for arithmetic. Leading zeroes and symbols may matter.",
+const scenarioMap = {
+  singleList: {
+    result: "Best choice: flat-file database.",
+    reason: "The data is small, single-purpose and unlikely to contain repeated related entities, so one table is simple and sufficient.",
   },
-  paid: {
-    result: "Best data type: Boolean.",
-    reason: "The field has only two logical states: TRUE or FALSE.",
+  club: {
+    result: "Best choice: relational database.",
+    reason: "Members, sessions and fees are related but separate entities. Repeated contact details and regular updates make relational design more suitable.",
   },
-  height: {
-    result: "Best data type: real/decimal.",
-    reason: "The value may contain a fractional part, so Integer would be too restrictive.",
+  shop: {
+    result: "Best choice: relational database.",
+    reason: "Customers, orders and products have relationships. Storing customer and product details once reduces redundancy and inconsistency.",
   },
-  quantity: {
-    result: "Best data type: Integer.",
-    reason: "Stock quantity is a whole number that may be used in calculations.",
+  survey: {
+    result: "Best choice: flat-file database.",
+    reason: "One row per anonymous respondent may be simple enough if there are no repeated entities or complex updates.",
   },
-  appointment: {
-    result: "Best data type: date/time.",
-    reason: "The value should support date ordering, comparison and validation.",
+  clinic: {
+    result: "Best choice: relational database.",
+    reason: "Patients, appointments, staff and prescriptions are related entities with repeated details, many updates and strong consistency requirements.",
   },
 };
 
-const constraintMap = {
-  blankName: {
-    result: "Check: presence check.",
-    reason: "The rule rejects a blank value where the field must be completed.",
+const anomalyMap = {
+  changedEmail: {
+    result: "Problem: update anomaly.",
+    reason: "The same fact is stored in several places. Updating only one copy creates inconsistent contact details.",
   },
-  badMark: {
-    result: "Check: range check.",
-    reason: "Exam marks should fall within a permitted range such as 0 to 100.",
+  newMember: {
+    result: "Problem: insertion anomaly.",
+    reason: "The structure prevents storing a new member unless a related session row also exists.",
   },
-  badId: {
-    result: "Check: length check.",
-    reason: "The rule rejects values that are too long or too short for the required field size.",
+  deleteLast: {
+    result: "Problem: deletion anomaly.",
+    reason: "Deleting one row removes the only copy of separate member data that should have been stored elsewhere.",
   },
-  badGrade: {
-    result: "Check: lookup check.",
-    reason: "The value must be one of the allowed values in a defined list.",
-  },
-  badQuantity: {
-    result: "Check: type check.",
-    reason: "The field should accept an integer, not text such as 'ten'.",
+  smallList: {
+    result: "No major anomaly in this scenario.",
+    reason: "A small one-off list with no repeated related data may be acceptable as a flat file.",
   },
 };
 
 const examples = {
-  student: {
-    title: "Example 1: Student table design",
-    problem: "Choose suitable field details for a Student table.",
+  club: {
+    title: "Example 1: Club records",
+    problem: "A club stores members, contact details, sessions attended and whether fees are paid.",
     steps: [
-      "StudentID: Text, length 5 or fixed school format. It may include a letter and is not used for arithmetic.",
-      "Name: Text, suitable field size such as 40 characters, presence check so it cannot be blank.",
-      "DateOfBirth: Date/time, with a reasonableness or range check if needed.",
-      "FeePaid: Boolean because the value is TRUE or FALSE.",
+      "Flat-file issue: member contact details are repeated for every session row.",
+      "Consequence: if a phone number changes, every repeated row must be updated or the data becomes inconsistent.",
+      "Relational approach: store member details in one Member table and attendance/payment rows in a separate table.",
+      "Judgement: relational is more suitable because the data is related, repeated and updated often.",
     ],
   },
-  booking: {
-    title: "Example 2: Booking table design",
-    problem: "A sports centre stores court bookings.",
+  shop: {
+    title: "Example 2: Online shop",
+    problem: "An online shop stores customers, products and orders.",
     steps: [
-      "BookingDate should use date/time so bookings can be sorted and compared by date.",
-      "NumberOfPlayers should use Integer because it counts whole people.",
-      "CourtNumber may use Integer if only numeric courts exist, with a range check such as 1 to 8.",
-      "BookingEmail should use Text with a format check if the system checks an email pattern.",
+      "Customers can place many orders and each order may contain multiple products.",
+      "A flat file may repeat customer address and product details across many order rows.",
+      "A relational database can store Customer, Product and Order data in separate linked tables.",
+      "This reduces redundancy and helps keep prices, addresses and product details consistent.",
     ],
   },
-  phone: {
-    title: "Example 3: Phone-number data type error",
-    problem: "A designer chooses Integer for PhoneNumber.",
+  survey: {
+    title: "Example 3: Small survey",
+    problem: "A teacher collects anonymous one-time survey answers from 20 students.",
     steps: [
-      "This is weak because phone numbers are not normally used for arithmetic.",
-      "Leading zeroes may be removed if stored as a number.",
-      "Phone values may include spaces, +, brackets or extension symbols.",
-      "Use Text/string, with a length or format check if the required pattern is known.",
+      "There may be one row per response and no repeated student details.",
+      "A flat-file structure may be quicker and simpler to create.",
+      "A relational database would add design complexity without much benefit.",
+      "Judgement: flat-file is acceptable if the dataset remains small and simple.",
     ],
   },
-  constraint: {
-    title: "Example 4: Constraint answer",
-    problem: "Explain why ExamMark should have a range check.",
+  mistake: {
+    title: "Example 4: Weak comparison repair",
+    problem: "Weak answer: 'Relational is better because it is more organised.'",
     steps: [
-      "ExamMark should be an Integer or Real depending on whether fractional marks are allowed.",
-      "A range check such as 0 to 100 rejects marks outside the permitted range.",
-      "This improves data integrity because impossible marks such as 128 cannot be stored.",
-      "Do not claim validation proves the mark is correct; 78 could still be mistyped as 87.",
+      "Problem: 'more organised' is too vague.",
+      "Better: relational databases separate related data into linked tables.",
+      "Cause: this reduces repeated storage of the same customer or member details.",
+      "Consequence: updates are more consistent because the shared fact can be changed once.",
     ],
   },
 };
@@ -90,61 +86,61 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "What term means one complete row in a database table?",
-    accepted: ["record", "tuple", "record tuple"],
-    answer: "Record / tuple",
+    prompt: "What type of database stores data in a single table?",
+    accepted: ["flat file", "flat-file", "flat file database", "flat-file database"],
+    answer: "Flat-file database",
   },
   {
     id: "p2",
-    prompt: "What term means one column or attribute in a database table?",
-    accepted: ["field", "attribute", "field attribute"],
-    answer: "Field / attribute",
+    prompt: "What type of database stores data in multiple linked tables?",
+    accepted: ["relational", "relational database"],
+    answer: "Relational database",
   },
   {
     id: "p3",
-    prompt: "What data type is best for TRUE/FALSE values?",
-    accepted: ["boolean", "bool"],
-    answer: "Boolean",
+    prompt: "What term means unnecessary repeated storage of the same data?",
+    accepted: ["redundancy", "data redundancy", "redundant data"],
+    answer: "Redundancy / data redundancy",
   },
   {
     id: "p4",
-    prompt: "What data type is best for a whole-number count such as QuantityInStock?",
-    accepted: ["integer", "int"],
-    answer: "Integer",
+    prompt: "What problem occurs when repeated values are changed in some rows but not others?",
+    accepted: ["inconsistency", "data inconsistency", "inconsistent data", "update anomaly"],
+    answer: "Data inconsistency / update anomaly",
   },
   {
     id: "p5",
-    prompt: "What data type is best for a value such as 12.75?",
-    accepted: ["real", "decimal", "float", "floating point"],
-    answer: "Real / decimal",
+    prompt: "Which structure is usually simpler for a small one-off list with no repeated related data?",
+    accepted: ["flat file", "flat-file", "flat file database", "flat-file database"],
+    answer: "Flat-file database",
   },
   {
     id: "p6",
-    prompt: "What data type is usually best for a phone number?",
-    accepted: ["text", "string", "alphanumeric"],
-    answer: "Text / string",
+    prompt: "Which structure is usually better for customers, orders and products?",
+    accepted: ["relational", "relational database"],
+    answer: "Relational database",
   },
   {
     id: "p7",
-    prompt: "What check rejects a blank required field?",
-    accepted: ["presence check", "required", "required check"],
-    answer: "Presence check",
+    prompt: "What anomaly occurs when deleting a row accidentally removes the only copy of another fact?",
+    accepted: ["deletion anomaly", "delete anomaly"],
+    answer: "Deletion anomaly",
   },
   {
     id: "p8",
-    prompt: "What check rejects an ExamMark of 128 when marks must be 0 to 100?",
-    accepted: ["range check", "range"],
-    answer: "Range check",
+    prompt: "What anomaly occurs when a new entity cannot be stored until another related fact exists?",
+    accepted: ["insertion anomaly", "insert anomaly"],
+    answer: "Insertion anomaly",
   },
   {
     id: "p9",
-    prompt: "What check rejects StudentID S1234567 when exactly 5 characters are required?",
-    accepted: ["length check", "length"],
-    answer: "Length check",
+    prompt: "Complete: relational design can improve consistency because shared data may be stored ____.",
+    accepted: ["once", "only once", "one time"],
+    answer: "once",
   },
   {
     id: "p10",
-    prompt: "Do validation constraints prove that accepted data is definitely correct? yes or no.",
+    prompt: "Is a relational database always the best choice for every dataset? yes or no.",
     accepted: ["no"],
     answer: "No",
   },
@@ -152,20 +148,20 @@ const practice = [
 
 const mistakes = [
   {
-    wrong: "A field is one row in a table.",
-    fix: "A field is a column or attribute. A record/tuple is one complete row.",
+    wrong: "A flat-file database is just a text file, so it is not a real database.",
+    fix: "A flat-file database is a database structure where data is held in a single table. The exam focus is the single-table structure, not the file extension.",
   },
   {
-    wrong: "PhoneNumber should be Integer because it contains digits.",
-    fix: "PhoneNumber should usually be Text/string because it is not used for arithmetic and may need leading zeroes or symbols.",
+    wrong: "Relational databases remove all duplication.",
+    fix: "Relational design reduces unnecessary redundancy by storing shared facts once, but some repeated linking values may still be used to connect records.",
   },
   {
-    wrong: "A range check makes the exam mark correct.",
-    fix: "A range check rejects values outside the permitted range. It does not prove that an accepted value was typed correctly.",
+    wrong: "Relational is better because it is more secure.",
+    fix: "Security is mainly a DBMS/access-control issue. For this comparison, explain reduced redundancy, improved consistency, easier updates or relationship handling.",
   },
   {
-    wrong: "Boolean is for any field with two words, such as first name and last name.",
-    fix: "Boolean is for two logical states such as TRUE/FALSE, Yes/No or Paid/Not paid.",
+    wrong: "A flat file is always bad.",
+    fix: "A flat file can be suitable for a small, simple, single-purpose dataset with little repeated related data and few updates.",
   },
 ];
 
@@ -179,92 +175,92 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Compare a field and a record in a database table. Use an example.",
-    answer: "A field is a column or attribute that stores one type of data for each record, such as DateOfBirth. A record is one complete row in a table, such as all the stored details for one student.",
+    prompt: "Describe two differences between a flat-file database and a relational database.",
+    answer: "A flat-file database stores data in one table, while a relational database stores data in multiple linked tables. A flat-file database is more likely to repeat related data, whereas a relational database can reduce redundancy by storing shared data once and linking to it where needed.",
     marking: [
-      { mark: "B1", text: "field described as column/attribute" },
-      { mark: "B1", text: "field example such as DateOfBirth/Name/FeePaid" },
-      { mark: "B1", text: "record described as row/tuple/complete set of details for one entity" },
-      { mark: "B1", text: "record example linked to one student/member/item" },
+      { mark: "B1", text: "flat-file described as one/single table" },
+      { mark: "B1", text: "relational described as multiple linked/related tables" },
+      { mark: "B1", text: "flat-file linked to repeated data/redundancy" },
+      { mark: "B1", text: "relational linked to reduced redundancy or improved consistency" },
     ],
     strict: [
-      "Do not accept answers that swap field and record.",
-      "Do not award example marks for examples that are not database table values.",
-      "Allow tuple for record and attribute for field.",
+      "Do not accept only 'relational is better' without a stated difference.",
+      "Do not award both structure marks if the candidate only says 'different tables' with no link idea.",
+      "Allow 'single file/table' for flat-file if the single-table idea is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A school database stores StudentID, Name, PhoneNumber, DateOfBirth and FeePaid. Suggest suitable data types for three of these fields and justify each choice.",
-    answer: "StudentID should be Text because it may contain letters and is an identifier rather than a value for arithmetic. PhoneNumber should be Text because leading zeroes and symbols may need to be preserved. DateOfBirth should be Date/time because dates need to be validated, sorted or compared. FeePaid should be Boolean because it has two states, TRUE or FALSE.",
+    prompt: "A club currently stores member, session and payment data in one flat-file table. Explain why a relational database may be more suitable.",
+    answer: "A relational database may be more suitable because member details, session details and payment records are related but separate types of data. In a flat file, member contact details may be repeated for every session attended, causing redundancy. If a contact detail changes, every repeated row must be updated or inconsistent values may remain. Separating data into linked tables means member details can be stored once and referenced by payment or session records, improving consistency and maintainability.",
     marking: [
-      { mark: "B1", text: "suitable data type for first field" },
-      { mark: "B1", text: "justification for first data type linked to field use" },
-      { mark: "B1", text: "suitable data type for second field" },
-      { mark: "B1", text: "justification for second data type linked to field use" },
-      { mark: "B1", text: "suitable data type for third field" },
-      { mark: "B1", text: "justification for third data type linked to field use" },
+      { mark: "B1", text: "identifies separate related data/entities such as members/sessions/payments" },
+      { mark: "B1", text: "flat file may repeat member/session/payment details" },
+      { mark: "B1", text: "redundancy explained in club context" },
+      { mark: "B1", text: "risk of inconsistent data or update anomaly" },
+      { mark: "B1", text: "relational linked tables/store shared data once" },
+      { mark: "B1", text: "clear consequence such as easier updates/improved consistency/maintainability" },
     ],
     strict: [
-      "Do not accept Integer for PhoneNumber unless a clear preservation issue is ignored by the mark scheme.",
-      "Do not award justification for only repeating the data type name.",
-      "Allow string for text and Boolean for FeePaid.",
+      "Do not accept vague 'it is easier' without cause.",
+      "Do not award context mark for generic customer/order examples only.",
+      "Allow contact details, fees or session data as repeated data examples.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Explain three validation checks or constraints that could be used in a database table.",
-    answer: "A presence check can ensure that a required field such as Name is not left blank. A range check can ensure that a value such as ExamMark is between 0 and 100. A length check can ensure that a StudentID contains the required number of characters. These checks improve data integrity by rejecting invalid entries.",
+    marks: "4 marks",
+    prompt: "Give one advantage and one disadvantage of using a flat-file database for a small school trip list.",
+    answer: "An advantage is that a flat-file database is simple and quick to create for a small one-off list, especially if each student appears only once. A disadvantage is that if the same contact details or medical notes are repeated in several rows, updates may be missed and inconsistent data may result. Therefore it is suitable only if the data stays small, simple and has little repetition.",
     marking: [
-      { mark: "B1", text: "valid check named, such as presence/range/length/type/format/lookup" },
-      { mark: "B1", text: "explanation or example of first check" },
-      { mark: "B1", text: "second distinct valid check named" },
-      { mark: "B1", text: "explanation or example of second check" },
-      { mark: "B1", text: "third distinct valid check named" },
-      { mark: "B1", text: "explanation or example of third check" },
+      { mark: "B1", text: "advantage such as simple/quick/easy to set up" },
+      { mark: "B1", text: "advantage linked to small one-off school trip context" },
+      { mark: "B1", text: "disadvantage such as repeated data/redundancy/inconsistency" },
+      { mark: "B1", text: "disadvantage linked to contact/medical/student detail updates" },
     ],
     strict: [
-      "Do not award separate B marks for repeated versions of the same check.",
-      "Do not accept vague 'checks it is correct' without a rule or example.",
-      "Allow constraint wording instead of validation check.",
+      "Do not accept 'flat files are cheap' unless linked to simple setup or no complex DBMS need.",
+      "Do not award disadvantage for security unless tied to the database structure.",
+      "Allow repeated emergency contact or parent phone details.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "A database designer adds a range check of 0 to 100 to an ExamMark field. Explain what this check does and one limitation.",
-    answer: "The range check rejects values less than 0 or greater than 100, so impossible marks such as 128 cannot be stored. This helps maintain data integrity because invalid values are prevented. A limitation is that the check does not prove the value is the correct mark; a valid value such as 78 could still be entered when the real mark was 87.",
+    marks: "6 marks",
+    prompt: "Explain three problems that may occur when related data is stored in one flat-file table.",
+    answer: "The table may contain redundancy because the same customer or member details are repeated in many rows. This may cause an update anomaly: if one copy is changed and another is not, the database contains inconsistent values. It may also cause a deletion anomaly: deleting the last row for an order or session could remove the only copy of details about a customer, member or product.",
     marking: [
-      { mark: "B1", text: "range check described as value within lower and upper limits" },
-      { mark: "B1", text: "rejects/prevents invalid out-of-range data" },
-      { mark: "B1", text: "data integrity consequence" },
-      { mark: "B1", text: "limitation that accepted data may still be inaccurate/mistyped" },
+      { mark: "B1", text: "redundancy/repeated data identified" },
+      { mark: "B1", text: "redundancy explained with related data repeated across rows" },
+      { mark: "B1", text: "update anomaly/inconsistency identified" },
+      { mark: "B1", text: "update problem explained as some copies changed and others not" },
+      { mark: "B1", text: "insertion or deletion anomaly identified" },
+      { mark: "B1", text: "insertion/deletion problem explained with loss or inability to store a separate fact" },
     ],
     strict: [
-      "Do not accept 'it makes the mark correct' as a limitation-free explanation.",
-      "Do not award range marks if no upper/lower limit idea is given.",
-      "Allow alternative valid impossible mark examples outside 0 to 100.",
+      "Do not award three marks for listing three vague 'errors' without explanation.",
+      "Do not accept security or backup as structure problems unless linked to flat-file repetition.",
+      "Allow insertion anomaly instead of deletion anomaly for the third pair.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For a sports booking table, suggest suitable field design choices for BookingDate, CourtNumber and MemberEmail.",
-    answer: "BookingDate should use a Date/time data type so bookings can be sorted, compared and checked against valid dates. CourtNumber should use Integer if courts are numbered, with a range check such as 1 to 8 to reject non-existent courts. MemberEmail should use Text/string because it contains letters and symbols, with a format check to reject values that do not match an email pattern.",
+    prompt: "An online shop stores customer name and address on every order row. Discuss whether it should change to a relational database.",
+    answer: "Changing to a relational database would help because each customer may place many orders, so storing the name and address on every order row repeats data. If an address changes, a flat file may need many rows to be updated and old rows may become inconsistent. A relational database could store customer details once in a Customer table and link orders to that customer. This improves consistency and makes updates easier. However, if the shop is very small with few orders, the relational design may add unnecessary complexity. Overall, relational is more suitable as the number of customers and orders grows.",
     marking: [
-      { mark: "B1", text: "BookingDate data type date/time" },
-      { mark: "B1", text: "date/time justification such as sort/compare/validate dates" },
-      { mark: "B1", text: "CourtNumber integer or suitable numeric type" },
-      { mark: "B1", text: "range check or numbered-court justification" },
-      { mark: "B1", text: "MemberEmail text/string" },
-      { mark: "B1", text: "format check or symbols/letters justification for email" },
+      { mark: "B1", text: "recognises repeated customer details across order rows" },
+      { mark: "B1", text: "explains redundancy in online shop context" },
+      { mark: "B1", text: "update/inconsistency problem from address changes" },
+      { mark: "B1", text: "relational solution: customer details stored once and linked to orders" },
+      { mark: "B1", text: "possible disadvantage/condition such as added complexity for very small data" },
+      { mark: "B1", text: "recommends whether to adopt the relational design using current data volume, expected growth and repeated customer details" },
     ],
     strict: [
-      "Do not accept Real for CourtNumber unless fractional court numbers are justified by the scenario.",
-      "Do not require exact range 1 to 8; allow any scenario-consistent court range.",
-      "Allow character/string/text for MemberEmail.",
+      "Do not accept 'relational is more professional' as a reason.",
+      "Do not require exact table names if the linked-table idea is clear.",
+      "Allow customer, product or order details as repeated-data examples.",
     ],
   },
 ];
@@ -280,10 +276,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    zero: "Correct. Phone numbers are usually stored as text so leading zeroes and symbols are preserved.",
-    sum: "No. Adding two phone numbers is how databases ask for a career change.",
-    date: "No. A phone number is not a date/time value.",
-    image: "No. That would need a different storage approach; it is not the issue here.",
+    redundancy: "Correct. Repeated data is the structural issue that can lead to inconsistent updates.",
+    password: "No. Weak passwords are a security issue, but not the main flat-file vs relational structure issue.",
+    binary: "No. Representation is a different syllabus area.",
+    processor: "No. CPU cache has wandered into the wrong classroom.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -294,23 +290,23 @@ function setupHook() {
   });
 }
 
-function setupTypeChooser() {
-  const input = document.querySelector("#typeInput");
-  const result = document.querySelector("#typeResult");
-  const reason = document.querySelector("#typeReason");
-  document.querySelector("#typeBtn").addEventListener("click", () => {
-    const item = typeMap[input.value];
+function setupScenarioChooser() {
+  const input = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#scenarioResult");
+  const reason = document.querySelector("#scenarioReason");
+  document.querySelector("#scenarioBtn").addEventListener("click", () => {
+    const item = scenarioMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
 }
 
-function setupConstraintChecker() {
-  const input = document.querySelector("#constraintInput");
-  const result = document.querySelector("#constraintResult");
-  const reason = document.querySelector("#constraintReason");
-  document.querySelector("#constraintBtn").addEventListener("click", () => {
-    const item = constraintMap[input.value];
+function setupAnomalyChecker() {
+  const input = document.querySelector("#anomalyInput");
+  const result = document.querySelector("#anomalyResult");
+  const reason = document.querySelector("#anomalyReason");
+  document.querySelector("#anomalyBtn").addEventListener("click", () => {
+    const item = anomalyMap[input.value];
     result.textContent = item.result;
     reason.textContent = item.reason;
   });
@@ -336,7 +332,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("student");
+  renderExample("club");
 }
 
 function renderPractice() {
@@ -435,8 +431,8 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupTypeChooser();
-  setupConstraintChecker();
+  setupScenarioChooser();
+  setupAnomalyChecker();
   setupExamples();
   renderPractice();
   renderMistakes();

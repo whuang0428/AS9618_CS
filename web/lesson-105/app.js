@@ -1,114 +1,93 @@
-const listMap = {
-  "5142": [5, 1, 4, 2],
-  "3124": [3, 1, 2, 4],
-  "4312": [4, 3, 1, 2],
+const linearList = [13, 42, 56, 70];
+const binaryList = [13, 21, 42, 56, 70, 88, 91];
+
+const classifierMap = {
+  unsorted: { title: "Linear search", detail: "The data is unsorted, so binary search cannot safely discard half the list." },
+  "sorted-large": { title: "Binary search", detail: "The data is sorted and large, so binary search is efficient." },
+  small: { title: "Linear search is acceptable", detail: "With only four values, checking sequentially is simple and low cost." },
+  unknown: { title: "Linear search unless sorted is confirmed", detail: "Binary search requires sorted data; if order is not stated, do not assume it." },
 };
 
-const chooserMap = {
-  bubble: { title: "Bubble sort", detail: "Bubble sort compares adjacent items and swaps when they are in the wrong order." },
-  insert: { title: "Insertion sort", detail: "Insertion sort takes the next item and inserts it into the sorted left section." },
-  "bubble-end": { title: "Bubble sort", detail: "After each full pass, the largest remaining item has moved to the right end." },
-  "insert-left": { title: "Insertion sort", detail: "Insertion sort grows a sorted left-hand section one item at a time." },
-};
-
-function formatList(values) {
-  return `[${values.join(", ")}]`;
-}
-
-function bubblePass(values) {
-  const list = [...values];
+function linearTrace(target) {
   const rows = [];
-  for (let index = 0; index < list.length - 1; index += 1) {
-    const left = list[index];
-    const right = list[index + 1];
-    let action = "no swap";
-    if (left > right) {
-      list[index] = right;
-      list[index + 1] = left;
-      action = "swap";
-    }
-    rows.push([String(index + 1), `${left} and ${right}`, action, formatList(list)]);
+  let found = false;
+  for (let index = 0; index < linearList.length; index += 1) {
+    const value = linearList[index];
+    found = value === target;
+    rows.push([String(index + 1), String(value), value === target ? "match" : "no match", found ? "TRUE" : "FALSE"]);
+    if (found) break;
   }
-  return { headers: ["Step", "Compare", "Action", "List after step"], rows, note: `After one pass: ${formatList(list)}.` };
+  return { headers: ["Index", "Value", "Comparison", "Found"], rows, note: found ? `Target ${target} found.` : `Target ${target} not found after checking all items.` };
 }
 
-function bubbleFull(values) {
-  const list = [...values];
+function binaryTrace(target) {
   const rows = [];
-  for (let pass = 1; pass < list.length; pass += 1) {
-    for (let index = 0; index < list.length - pass; index += 1) {
-      if (list[index] > list[index + 1]) {
-        const temp = list[index];
-        list[index] = list[index + 1];
-        list[index + 1] = temp;
-      }
+  let low = 1;
+  let high = binaryList.length;
+  let found = false;
+  while (low <= high && !found) {
+    const mid = Math.floor((low + high) / 2);
+    const value = binaryList[mid - 1];
+    let action = "found";
+    if (value === target) {
+      found = true;
+    } else if (target < value) {
+      action = "target smaller: High <- Mid - 1";
+      high = mid - 1;
+    } else {
+      action = "target larger: Low <- Mid + 1";
+      low = mid + 1;
     }
-    rows.push([String(pass), formatList(list)]);
+    rows.push([String(low), String(mid), String(high), String(value), action]);
   }
-  return { headers: ["Pass", "List after pass"], rows, note: `Final sorted list: ${formatList(list)}.` };
-}
-
-function insertionTrace(values) {
-  const list = [...values];
-  const rows = [["start", "first item treated as sorted", formatList(list)]];
-  for (let index = 1; index < list.length; index += 1) {
-    const key = list[index];
-    let position = index - 1;
-    while (position >= 0 && list[position] > key) {
-      list[position + 1] = list[position];
-      position -= 1;
-    }
-    list[position + 1] = key;
-    rows.push([String(index + 1), `insert ${key}`, formatList(list)]);
-  }
-  return { headers: ["Item position", "Action", "List after insertion"], rows, note: `Final sorted list: ${formatList(list)}.` };
+  return { headers: ["Low", "Mid", "High", "List[Mid]", "Action"], rows, note: found ? `Target ${target} found.` : `Target ${target} not found when Low > High.` };
 }
 
 const examples = {
-  "bubble-pass": {
-    title: "Example 1: Bubble first pass",
-    problem: "Show the first pass of bubble sort on [5, 1, 4, 2].",
-    trace: bubblePass([5, 1, 4, 2]),
-    points: ["Compare adjacent pairs only.", "Swap when the left item is larger.", "The largest value 5 reaches the right end."],
+  "linear-found": {
+    title: "Example 1: Linear search found",
+    problem: "Find 42 in [13, 42, 56, 70].",
+    trace: linearTrace(42),
+    points: ["Check 13 first.", "42 is the second item, so stop when found.", "Two comparisons are made."],
   },
-  "bubble-full": {
-    title: "Example 2: Bubble full trace",
-    problem: "Show bubble sort passes on [5, 1, 4, 2].",
-    trace: bubbleFull([5, 1, 4, 2]),
-    points: ["Each pass has fewer comparisons.", "Do not jump straight to the final list.", "Intermediate states are the evidence."],
+  "linear-absent": {
+    title: "Example 2: Linear search absent",
+    problem: "Find 99 in [13, 42, 56, 70].",
+    trace: linearTrace(99),
+    points: ["Every item must be checked.", "Found remains FALSE.", "The final result is not found."],
   },
-  "insert-first": {
-    title: "Example 3: Insertion first movement",
-    problem: "Show the first insertion movement on [5, 1, 4, 2].",
-    trace: { headers: ["Action", "List"], rows: [["take 1", "[5, 1, 4, 2]"], ["insert before 5", "[1, 5, 4, 2]"]], note: "The sorted left section becomes [1, 5]." },
-    points: ["Treat 5 as the sorted left section.", "1 is inserted before 5.", "This is not an adjacent pass across the whole list."],
+  "binary-found": {
+    title: "Example 3: Binary search found",
+    problem: "Find 42 in sorted list [13, 21, 42, 56, 70, 88, 91].",
+    trace: binaryTrace(42),
+    points: ["Start at the middle.", "Discard the half that cannot contain the target.", "The data must be sorted for this to be valid."],
   },
-  "insert-full": {
-    title: "Example 4: Insertion full trace",
-    problem: "Trace insertion sort on [5, 1, 4, 2].",
-    trace: insertionTrace([5, 1, 4, 2]),
-    points: ["The sorted left section grows after each insertion.", "Larger items are shifted right.", "The key is inserted into the gap."],
+  "binary-absent": {
+    title: "Example 4: Binary search absent",
+    problem: "Find 15 in sorted list [13, 21, 42, 56, 70, 88, 91].",
+    trace: binaryTrace(15),
+    points: ["Check middle values and update bounds.", "Stop when Low > High.", "Result is not found."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which sort compares adjacent items and swaps them?", accepted: ["bubble", "bubble sort"], answer: "Bubble sort" },
-  { id: "p2", prompt: "Which sort inserts the next item into the sorted left section?", accepted: ["insertion", "insertion sort"], answer: "Insertion sort" },
-  { id: "p3", prompt: "After first bubble comparison in [5,1,4,2], what is the list?", accepted: ["[1,5,4,2]", "1,5,4,2", "1 5 4 2"], answer: "[1, 5, 4, 2]" },
-  { id: "p4", prompt: "After one full bubble pass on [5,1,4,2], what is the list?", accepted: ["[1,4,2,5]", "1,4,2,5", "1 4 2 5"], answer: "[1, 4, 2, 5]" },
-  { id: "p5", prompt: "After inserting 1 in insertion sort on [5,1,4,2], what is the list?", accepted: ["[1,5,4,2]", "1,5,4,2", "1 5 4 2"], answer: "[1, 5, 4, 2]" },
-  { id: "p6", prompt: "In bubble sort ascending order, swap when left item is greater or smaller?", accepted: ["greater", "greater than", "left greater"], answer: "Greater than" },
-  { id: "p7", prompt: "In insertion sort, which part of the list is kept sorted?", accepted: ["left", "left section", "sorted left section", "left hand section"], answer: "The left-hand section" },
-  { id: "p8", prompt: "Does bubble sort search for a target value? yes or no.", accepted: ["no"], answer: "No. It sorts the whole list." },
-  { id: "p9", prompt: "What temporary variable name is commonly used during a swap?", accepted: ["temp", "temporary"], answer: "Temp" },
+  { id: "p1", prompt: "Which search checks each item one by one?", accepted: ["linear", "linear search"], answer: "Linear search" },
+  { id: "p2", prompt: "Which search requires sorted data?", accepted: ["binary", "binary search"], answer: "Binary search" },
+  { id: "p3", prompt: "Linear search for 42 in [13, 42, 56, 70]: how many comparisons?", accepted: ["2", "two"], answer: "2 comparisons" },
+  { id: "p4", prompt: "Linear search for 99 in [13, 42, 56, 70]: final result?", accepted: ["not found", "false", "found false"], answer: "Not found / Found = FALSE" },
+  { id: "p5", prompt: "Binary search first checks which position in a sorted list of 7 items?", accepted: ["4", "position 4", "index 4", "middle", "mid"], answer: "Position/index 4, the middle item" },
+  { id: "p6", prompt: "If target is smaller than List[Mid], which bound changes: Low or High?", accepted: ["high"], answer: "High changes to Mid - 1" },
+  { id: "p7", prompt: "If target is larger than List[Mid], which bound changes: Low or High?", accepted: ["low"], answer: "Low changes to Mid + 1" },
+  { id: "p8", prompt: "When does unsuccessful binary search stop?", accepted: ["low > high", "low greater than high", "low is greater than high"], answer: "When Low > High" },
+  { id: "p9", prompt: "Can binary search safely be used on unsorted data? yes or no.", accepted: ["no"], answer: "No" },
   { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
-  { wrong: "I jumped directly from [5, 1, 4, 2] to [1, 2, 4, 5].", fix: "Show the intermediate states. Sorting trace marks depend on comparisons, swaps or insertions." },
-  { wrong: "I used binary search steps to sort the list.", fix: "Searching and sorting are different. Bubble and insertion sort rearrange data; binary search finds a target in sorted data." },
-  { wrong: "In bubble sort I swapped items that were not adjacent.", fix: "Bubble sort compares adjacent pairs only." },
-  { wrong: "In insertion sort I ignored the sorted left section.", fix: "Insertion sort inserts each next item into the correct position in the already sorted left part." },
+  { wrong: "I used binary search on an unsorted list because it is faster.", fix: "Binary search is only valid on sorted data. Speed does not help if the method is logically invalid." },
+  { wrong: "My linear search continued after the target was found.", fix: "Once the target is found, set Found to TRUE and stop or ensure the loop condition stops further checking." },
+  { wrong: "When the target was smaller than the middle value, I increased Low.", fix: "If target is smaller, discard the right half by setting High <- Mid - 1." },
+  { wrong: "I said binary search sorts the list.", fix: "Binary search does not sort. It requires the list to already be sorted." },
 ];
 
 
@@ -121,97 +100,98 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Demonstrate the first pass of bubble sort in ascending order on [5, 1, 4, 2].",
-    answer: "Compare 5 and 1, swap -> [1, 5, 4, 2]. Compare 5 and 4, swap -> [1, 4, 5, 2]. Compare 5 and 2, swap -> [1, 4, 2, 5].",
+    prompt: "Complete a trace table for a linear search for 42 in [13, 42, 56, 70]. State the comparisons and final result.",
+    answer: "Compare 42 with 13: no match. Compare 42 with 42: match. Found becomes TRUE and the search stops. The target is found at position 2.",
     marking: [
-      { mark: "B1", text: "compares first adjacent pair 5 and 1" },
-      { mark: "B1", text: "correct list after first swap [1, 5, 4, 2]" },
-      { mark: "B1", text: "correct list after second swap [1, 4, 5, 2]" },
-      { mark: "B1", text: "correct list after third swap [1, 4, 2, 5]" },
-      { mark: "B1", text: "shows this is one full pass / largest item at end" },
+      { mark: "M1", text: "first comparison with 13 shown as no match and search advances" },
+      { mark: "B1", text: "second comparison with 42 shown as match" },
+      { mark: "B1", text: "sets/states Found becomes TRUE" },
+      { mark: "B1", text: "states search stops when found" },
+      { mark: "A1", text: "states correct position/index 2 using 1-based pseudocode indexing" },
     ],
     strict: [
-      "Do not award full marks for final sorted list only.",
-      "Allow equivalent row/table format.",
-      "Do not accept swapping non-adjacent 5 and 2 directly.",
+      "Do not require a formal trace table if comparisons are ordered clearly.",
+      "Allow index 1 if candidate explicitly uses Java-style 0-based indexing.",
+      "Do not award comparisons after 42 if candidate claims the algorithm stops when found.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Complete a trace table for insertion sort on [5, 1, 4, 2] by showing the list after each insertion.",
-    answer: "Treat [5] as sorted. Insert 1 before 5 -> [1, 5, 4, 2]. Insert 4 between 1 and 5 -> [1, 4, 5, 2]. Insert 2 between 1 and 4 -> [1, 2, 4, 5].",
+    prompt: "Explain why binary search requires sorted data and why linear search can be used on unsorted data.",
+    answer: "Binary search compares the target with the middle item and then discards one half of the list. This is only valid if the data is sorted, because order tells the algorithm which half cannot contain the target. Linear search can be used on unsorted data because it checks each item one by one and does not rely on order.",
     marking: [
-      { mark: "B1", text: "states first item / left section is initially sorted" },
-      { mark: "A1", text: "correct state after inserting 1" },
-      { mark: "A1", text: "correct state after inserting 4" },
-      { mark: "A1", text: "correct state after inserting 2" },
-      { mark: "M1", text: "explains larger items are shifted/moved right" },
+      { mark: "B1", text: "states binary search checks middle item" },
+      { mark: "B1", text: "states binary search discards half / adjusts search bounds" },
+      { mark: "B1", text: "explains discarding half depends on sorted order" },
+      { mark: "B1", text: "states linear search checks items sequentially" },
+      { mark: "B1", text: "explains linear search does not rely on order" },
     ],
     strict: [
-      "Do not award insertion method marks for a bubble-sort pass trace.",
-      "Allow final state if all intermediate insertion states are shown.",
-      "Do not require exact wording 'key'.",
+      "Do not accept 'binary is faster' as the reason sorted data is required.",
+      "Allow ascending or descending order if the bound updates match the order.",
+      "Do not say linear search requires sorted data.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Compare bubble sort and insertion sort. Refer to how items are moved and what should be shown in a trace.",
-    answer: "Bubble sort compares adjacent items and swaps them if they are in the wrong order, so a trace should show adjacent comparisons and swaps in each pass. Insertion sort takes the next item and inserts it into the correct position in the sorted left section, so a trace should show the item being inserted and the list after each insertion.",
+    marks: "6 marks",
+    prompt: "Complete a trace table for binary search for 88 in sorted list [13, 21, 42, 56, 70, 88, 91] using 1-based indexing.",
+    answer: "Low = 1, High = 7, Mid = 4, List[4] = 56. Target 88 is larger, so Low becomes 5. Low = 5, High = 7, Mid = 6, List[6] = 88. Target found at position 6.",
     marking: [
-      { mark: "B1", text: "states bubble sort compares adjacent items" },
-      { mark: "B1", text: "states bubble sort swaps when needed" },
-      { mark: "B1", text: "states insertion sort inserts next item" },
-      { mark: "B1", text: "states insertion sort uses sorted left section" },
-      { mark: "B1", text: "explains different trace evidence for the two methods" },
+      { mark: "B1", text: "initial Low 1 and High 7" },
+      { mark: "B1", text: "first Mid calculated as 4" },
+      { mark: "M1", text: "compares target with List[4] = 56" },
+      { mark: "A1", text: "updates Low to 5 because target is larger" },
+      { mark: "B1", text: "second Mid calculated as 6" },
+      { mark: "A1", text: "identifies 88 found at position 6" },
     ],
     strict: [
-      "Do not accept only 'both sort lists' for comparison.",
-      "Allow 'sorted portion' for sorted left section.",
-      "Do not require efficiency discussion.",
+      "Do not accept discarding the right half after comparing with 56.",
+      "Allow equivalent trace if candidate uses 0-based indexing consistently.",
+      "Do not require formula for Mid if values are correct.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Write Cambridge-style pseudocode statements to swap List[Index] and List[Index + 1] using Temp.",
-    answer: "Temp <- List[Index]\nList[Index] <- List[Index + 1]\nList[Index + 1] <- Temp",
+    prompt: "Write Cambridge-style pseudocode outline for linear search using variables Found, Index, Target and List.",
+    answer: "Found <- FALSE\nIndex <- 1\nWHILE Found = FALSE AND Index <= Length\n    IF List[Index] = Target THEN\n        Found <- TRUE\n    ELSE\n        Index <- Index + 1\n    ENDIF\nENDWHILE",
     marking: [
-      { mark: "B1", text: "stores List[Index] in Temp first" },
-      { mark: "M1", text: "copies List[Index + 1] into List[Index]" },
-      { mark: "A1", text: "copies Temp into List[Index + 1]" },
-      { mark: "B1", text: "uses assignment notation consistently" },
-      { mark: "A1", text: "swap preserves both original values correctly" },
+      { mark: "B1", text: "initialises Found to FALSE" },
+      { mark: "B1", text: "initialises Index/start position" },
+      { mark: "M1", text: "loop continues while not found and items remain" },
+      { mark: "M1", text: "compares List[Index] with Target" },
+      { mark: "A1", text: "sets Found TRUE when target matches" },
     ],
     strict: [
-      "Do not accept overwriting one value without using Temp or equivalent.",
-      "Allow Swap(List[Index], List[Index + 1]) only if question permits a built-in swap operation.",
-      "Do not award Java-only syntax for Cambridge notation mark.",
+      "Do not require exact variable name Length if list bound is clear.",
+      "Allow loop with RETURN position if logic is equivalent.",
+      "Do not award full credit if Index is never changed when no match occurs.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "Write Cambridge-style pseudocode for an ascending bubble sort of List[1:Length].",
-    answer: "FOR Pass <- 1 TO Length - 1\n    FOR Index <- 1 TO Length - Pass\n        IF List[Index] > List[Index + 1] THEN\n            Temp <- List[Index]\n            List[Index] <- List[Index + 1]\n            List[Index + 1] <- Temp\n        ENDIF\n    NEXT Index\nNEXT Pass",
+    prompt: "A student says: 'Binary search is always better than linear search because it is faster.' Evaluate this statement.",
+    answer: "Binary search is usually faster for large sorted lists because it repeatedly halves the search area. However, it is not always better because it requires sorted data. If the data is unsorted, linear search can be used immediately, while binary search would need the data to be sorted first. For small lists, linear search may also be simple enough.",
     marking: [
-      { mark: "B1", text: "uses repeated passes over the array" },
-      { mark: "M1", text: "inner loop compares adjacent valid positions without accessing beyond Length" },
-      { mark: "B1", text: "tests List[Index] > List[Index + 1] for ascending order" },
-      { mark: "M1", text: "uses Temp or an equivalent safe swap that preserves both values" },
-      { mark: "A1", text: "closes IF and both loops coherently in Cambridge pseudocode" },
+      { mark: "B1", text: "states binary search can be faster / halves search area" },
+      { mark: "B1", text: "states binary search requires sorted data" },
+      { mark: "B1", text: "explains unsorted data may make linear search more suitable" },
+      { mark: "B1", text: "mentions small data sets or simplicity as a valid factor" },
+      { mark: "B1", text: "clear conclusion that 'always better' is incorrect" },
     ],
     strict: [
-      "Do not award a trace in place of the requested algorithm.",
-      "Allow a valid no-swap flag optimisation, but it is not required.",
-      "Do not allow Index + 1 to exceed the declared upper bound.",
+      "Do not award full marks for 'binary is faster' only.",
+      "Allow discussion of cost of sorting before binary search.",
+      "Do not require Big O notation at AS level.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9,\\[\\] -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9> -]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -230,10 +210,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    swap: "Correct. Bubble sort starts by comparing adjacent items 5 and 1, then swapping because 5 > 1.",
-    insert: "That is insertion sort language, not bubble sort's first comparison.",
-    middle: "That sounds like binary search, not sorting.",
-    search: "Sorting rearranges the whole list; it does not find a single target first.",
+    linear: "Correct. If the pile is unsorted, checking one by one is safe.",
+    binary: "Not safe. Binary search only works when order lets you discard half.",
+    sort: "Possible, but this is a sorting step first. If you need one quick search, linear may be simpler.",
+    guess: "Tempting during revision week, but not an algorithm.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -244,29 +224,29 @@ function setupHook() {
   });
 }
 
-function setupChooser() {
-  const input = document.querySelector("#chooserInput");
-  const result = document.querySelector("#chooserResult");
-  document.querySelector("#chooserBtn").addEventListener("click", () => {
-    const item = chooserMap[input.value];
+function setupClassifier() {
+  const input = document.querySelector("#classifierInput");
+  const result = document.querySelector("#classifyResult");
+  document.querySelector("#classifyBtn").addEventListener("click", () => {
+    const item = classifierMap[input.value];
     result.innerHTML = `<strong>${item.title}</strong><span>${item.detail}</span>`;
   });
 }
 
-function setupBubbleTool() {
-  const input = document.querySelector("#bubbleInput");
-  const result = document.querySelector("#bubbleResult");
-  document.querySelector("#bubbleBtn").addEventListener("click", () => {
-    const trace = bubblePass(listMap[input.value]);
+function setupLinearTool() {
+  const input = document.querySelector("#linearInput");
+  const result = document.querySelector("#linearResult");
+  document.querySelector("#linearBtn").addEventListener("click", () => {
+    const trace = linearTrace(Number(input.value));
     result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
   });
 }
 
-function setupInsertionTool() {
-  const input = document.querySelector("#insertInput");
-  const result = document.querySelector("#insertResult");
-  document.querySelector("#insertBtn").addEventListener("click", () => {
-    const trace = insertionTrace(listMap[input.value]);
+function setupBinaryTool() {
+  const input = document.querySelector("#binaryInput");
+  const result = document.querySelector("#binaryResult");
+  document.querySelector("#binaryBtn").addEventListener("click", () => {
+    const trace = binaryTrace(Number(input.value));
     result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
   });
 }
@@ -290,7 +270,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("bubble-pass");
+  renderExample("linear-found");
 }
 
 function setupPractice() {
@@ -378,9 +358,9 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupChooser();
-setupBubbleTool();
-setupInsertionTool();
+setupClassifier();
+setupLinearTool();
+setupBinaryTool();
 setupExamples();
 setupPractice();
 setupMistakes();

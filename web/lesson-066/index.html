@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 066 | Access rights, permissions, and least privilege</title>
+    <title>AS9618 Lesson 066 | User accounts, passwords and biometric authentication</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Access rights, permissions, and least privilege</h1>
+        <h1>User accounts, passwords and biometric authentication</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,15 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#core">Core idea</a>
-        <a href="#rights">Rights</a>
-        <a href="#users">Users/roles</a>
-        <a href="#matrix">Matrix</a>
-        <a href="#least">Least privilege</a>
-        <a href="#review">Review</a>
-        <a href="#tool">Decision tool</a>
+        <a href="#core">Authentication</a>
+        <a href="#factors">Factors</a>
+        <a href="#passwords">Passwords</a>
+        <a href="#biometrics">Biometrics</a>
+        <a href="#tokens">Tokens</a>
+        <a href="#mfa">MFA</a>
+        <a href="#compare">Compare</a>
+        <a href="#tool">Auth tool</a>
+        <a href="#password-tool">Password tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -54,70 +56,57 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Access rights and encryption as data-security methods</h2>
+            <h2>User accounts, passwords and biometric authentication</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.</p>
-            <p>Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.</p>
-            <p>The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.</p>
+            <p>A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.</p>
+            <p>Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.</p>
+            <p>False rejection denies a valid enrolled user by mistake; false acceptance authenticates an impostor by mistake. Biometrics can be convenient and cannot be casually shared like a password, but require sensors/templates, may raise privacy concerns and cannot normally be replaced as easily as a compromised password.</p>
+            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Protect a payroll file</h3>
-            <p>The payroll file is encrypted at rest so a stolen storage device does not reveal readable salaries without the key. The payroll application grants read/write rights only to payroll staff and read-only rights to an auditor. A compromised ordinary account cannot open the file through the application, while an attacker who steals only the encrypted file still lacks readable plaintext.</p>
+            <h3>Worked example: Account login with fingerprint</h3>
+            <p>A named staff account first supplies a password, then a fingerprint sensor captures a feature and compares its template with the enrolled template. A match authenticates the claimed identity. The access-rights system then separately decides whether that account may read payroll data; the biometric match itself does not grant every permission.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">One control can support more than one goal, but not every goal</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One control can support more than one goal, but not every goal with a structured visual model." />
-            <figcaption class="explanation-sr-only">One control can support more than one goal, but not every goal: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Encryption makes data unreadable without the correct key and supports confidentiality.</li><li><strong>Lesson fact:</strong> Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.</li><li><strong>Lesson fact:</strong> Backups allow recovery after data loss or corruption and support availability.</li><li><strong>Lesson fact:</strong> Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end controls -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Access rights and encryption as data-security methods: apply and assess</h2>
+            <h2>User accounts, passwords and biometric authentication: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> How do access rights protect confidentiality?</p>
-              <details><summary>Show answer</summary><p>They prevent users without read permission from viewing the data.</p></details>
+              <p><strong>1.</strong> What is the purpose of a user account?</p>
+              <details><summary>Show answer</summary><p>It provides a distinct identity for authentication, access control and accountability.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> How do access rights protect integrity?</p>
-              <details><summary>Show answer</summary><p>They prevent users without write/delete permission from altering or removing the data.</p></details>
+              <p><strong>2.</strong> What does a biometric match establish?</p>
+              <details><summary>Show answer</summary><p>It provides evidence that the presented feature matches the enrolled identity template; it authenticates the identity claim.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> How does encryption protect data?</p>
-              <details><summary>Show answer</summary><p>It converts plaintext to ciphertext that is unreadable without the correct key.</p></details>
+              <p><strong>3.</strong> Does successful authentication decide every permitted action?</p>
+              <details><summary>Show answer</summary><p>No. Authorisation/access rights separately decide what the authenticated user may access or do.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why are both methods useful?</p>
-              <details><summary>Show answer</summary><p>Access rights govern permitted actions in the system; encryption protects the content of an intercepted or stolen copy.</p></details>
+              <p><strong>4.</strong> Compare false accept from false reject.</p>
+              <details><summary>Show answer</summary><p>False accept authenticates an impostor; false reject denies a valid enrolled user.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how access rights and encryption protect a payroll file, and state one limitation of each method.</p>
+            <p>Describe how user accounts, passwords and biometrics can protect a computer system, including one limitation of each authentication method.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>access rights restrict viewing to users/roles with read permission</td><td>Do not claim that access rights detect changes, that encryption guarantees integrity, or that either method replaces the other.</td><td>1</td></tr>
-                  <tr><td>access rights restrict modification/deletion to permitted users/roles</td><td></td><td>1</td></tr>
-                  <tr><td>encryption converts plaintext to ciphertext using a key</td><td></td><td>1</td></tr>
-                  <tr><td>without the correct key the stolen/intercepted data is not readable</td><td></td><td>1</td></tr>
-                  <tr><td>access-rights limitation developed</td><td></td><td>1</td></tr>
-                  <tr><td>encryption limitation developed</td><td></td><td>1</td></tr>
+                  <tr><td>account supplies a distinct identity/accountability record</td><td>Do not describe a biometric match as permission to access every resource or claim that biometrics cannot produce errors.</td><td>1</td></tr>
+                  <tr><td>password is secret knowledge checked during authentication</td><td></td><td>1</td></tr>
+                  <tr><td>password limitation such as guessing/phishing/reuse/sharing</td><td></td><td>1</td></tr>
+                  <tr><td>biometric feature is captured and compared with an enrolled template</td><td></td><td>1</td></tr>
+                  <tr><td>biometric limitation such as false accept/reject, sensor/template or privacy risk</td><td></td><td>1</td></tr>
+                  <tr><td>authentication is distinguished from later authorisation/access rights</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -128,274 +117,325 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 066 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Logging in proves who you are. Permissions decide what you can touch.</h2>
+            <h2>Authentication asks: are you really who you claim to be?</h2>
             <p>
-              Access rights define what an authenticated user can read, write, delete, execute or administer.
-              Least privilege means users receive only the permissions needed for their role. It is the opposite
-              of giving everyone the digital master key and hoping nobody presses the shiny red button.
+              Authentication verifies identity before access is granted. Passwords, biometrics and tokens
+              each prove identity in a different way. Multi-factor authentication combines different factor
+              types so one stolen secret is not enough.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>access rights, permissions, roles and least privilege</span></div>
-              <div><strong>Apply</strong><span>permission matrices to realistic files, databases and accounts</span></div>
-              <div><strong>Justify</strong><span>how limiting permissions protects confidentiality and integrity</span></div>
+              <div><strong>Distinguish</strong><span>authentication from authorisation and access rights</span></div>
+              <div><strong>Compare</strong><span>passwords, biometrics, tokens and MFA using precise advantages and risks</span></div>
+              <div><strong>Recommend</strong><span>authentication choices for realistic security scenarios</span></div>
             </div>
           </div>
-          <div class="access-card" aria-label="Permission flow">
-            <div class="permission-stack">
-              <span>Authenticate -> identify user</span>
-              <span>Authorise -> check permission</span>
-              <span>Allow only needed actions</span>
-              <span>Log and review access</span>
+          <div class="auth-card" aria-label="Authentication factors">
+            <div class="factor-stack">
+              <span>Know: password / PIN</span>
+              <span>Have: token / card / phone</span>
+              <span>Are: fingerprint / face / iris</span>
+              <span>MFA: combine different factor types</span>
             </div>
-            <p>A correct login is not a permission slip for everything.</p>
+            <p>Two passwords are two secrets, not two factors. The exam will notice.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Good exam answers connect a permission to a protected security goal, not just to the word "secure".</p>
+            <p>Many answers list "passwords are secure" without saying why, how they fail, or why MFA changes the risk.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Authentication is not the same as authorisation. Being known by the system does not mean being allowed to edit everything.</p>
+            <p>A biometric characteristic cannot be changed as easily as a password if its stored representation is compromised.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A student can log into the school system but cannot edit exam grades. What control is this?</h2>
-            <p>The system recognises the student. It just does not hand over the gradebook and a confetti cannon.</p>
+            <h2>A website asks for a password and then a code from your phone. What is the security idea?</h2>
+            <p>The site is not being needy; it is checking two different kinds of evidence.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="permissions">Access rights limit what the authenticated student can do</button>
-            <button class="choice-card" type="button" data-hook="authentication">Authentication, because the student logged in</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption, because marks are hidden from students</button>
-            <button class="choice-card" type="button" data-hook="backup">Backup, because grades can be restored later</button>
+            <button class="choice-card" type="button" data-hook="mfa">MFA, because it combines something you know and something you have</button>
+            <button class="choice-card" type="button" data-hook="two-passwords">Two passwords, because any two checks are two factors</button>
+            <button class="choice-card" type="button" data-hook="authorisation">Authorisation, because it decides file permissions</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption, because a phone code hides data</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Focus on the action the user is allowed or denied.
+            Choose one. Look for different factor types.
           </div>
         </section>
 
         <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Access control decides what authenticated users may do</h2>
+            <h2>Authentication is identity checking</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Access right</strong><span>A permission to perform an action on a resource, such as read or write.</span></article>
-            <article><strong>Resource</strong><span>A file, database table, account, device, folder, application or network service.</span></article>
-            <article><strong>Authorisation</strong><span>The decision to allow or deny an action after identity has been checked.</span></article>
-            <article><strong>Policy</strong><span>The rule set that maps users, groups or roles to permitted actions.</span></article>
+            <article><strong>Authentication</strong><span>Verifies that a user, device or process is who it claims to be.</span></article>
+            <article><strong>Claim</strong><span>The identity presented, such as a username, account or device ID.</span></article>
+            <article><strong>Credential</strong><span>Evidence used to prove the claim, such as a password, biometric or token.</span></article>
+            <article><strong>Authorisation</strong><span>Decides what an authenticated user is allowed to access or change.</span></article>
           </div>
-          <div class="callout">Chinese support: access rights = 访问权限；permission = 权限；least privilege = 最小权限原则；authorisation = 授权。</div>
+          <div class="callout">Chinese support: authentication = 认证身份；authorisation = 授权权限；credential = 凭据/身份证明。</div>
         </section>
 
         <!-- stage10-explanation:start core -->
         <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Access control decides what authenticated users may do</h2>
+          <h2 class="explanation-sr-only" id="explanation-core-title">Authentication is identity checking</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Access control decides what authenticated users may do with a structured visual model." />
-            <figcaption class="explanation-sr-only">Access control decides what authenticated users may do: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication is identity checking with a structured visual model." />
+            <figcaption class="explanation-sr-only">Authentication is identity checking: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Access right A permission to perform an action on a resource, such as read or write.</li><li><strong>Lesson fact:</strong> Resource A file, database table, account, device, folder, application or network service.</li><li><strong>Lesson fact:</strong> Authorisation The decision to allow or deny an action after identity has been checked.</li><li><strong>Lesson fact:</strong> Policy The rule set that maps users, groups or roles to permitted actions.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Authentication Verifies that a user, device or process is who it claims to be.</li><li><strong>Lesson fact:</strong> Claim The identity presented, such as a username, account or device ID.</li><li><strong>Lesson fact:</strong> Credential Evidence used to prove the claim, such as a password, biometric or token.</li><li><strong>Lesson fact:</strong> Authorisation Decides what an authenticated user is allowed to access or change.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-        <section class="panel" id="rights" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+        <section class="panel" id="factors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Common permission types</h2>
+            <h2>Authentication factors: know, have, are</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Read</strong><span>View or open data without changing it. Protects confidentiality when restricted.</span></article>
-            <article><strong>Write/modify</strong><span>Create or change data. Protects integrity when restricted.</span></article>
-            <article><strong>Delete</strong><span>Remove data or accounts. Often high risk because loss may affect availability.</span></article>
-            <article><strong>Execute/admin</strong><span>Run programs, install software or manage settings. Usually limited to trusted roles.</span></article>
+            <article><strong>Something you know</strong><span>Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</span></article>
+            <article><strong>Something you have</strong><span>Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</span></article>
+            <article><strong>Something you are</strong><span>Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</span></article>
+            <article><strong>Factor type</strong><span>Two checks only become MFA when they come from different factor categories.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start rights -->
-        <section class="panel explanation-panel" id="explanation-rights" data-explains="rights" data-explanation-kind="mechanism" aria-labelledby="explanation-rights-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-rights-title">Common permission types</h2>
+        <!-- stage10-explanation:start factors -->
+        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="mechanism" aria-labelledby="explanation-factors-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <h2 class="explanation-sr-only" id="explanation-factors-title">Authentication factors: know, have, are</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-rights.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common permission types with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common permission types: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-factors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication factors: know, have, are with a structured visual model." />
+            <figcaption class="explanation-sr-only">Authentication factors: know, have, are: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Read View or open data without changing it. Protects confidentiality when restricted.</li><li><strong>Lesson fact:</strong> Write/modify Create or change data. Protects integrity when restricted.</li><li><strong>Lesson fact:</strong> Delete Remove data or accounts. Often high risk because loss may affect availability.</li><li><strong>Lesson fact:</strong> Execute/admin Run programs, install software or manage settings. Usually limited to trusted roles.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Something you know Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</li><li><strong>Lesson fact:</strong> Something you have Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</li><li><strong>Lesson fact:</strong> Something you are Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</li><li><strong>Lesson fact:</strong> Factor type Two checks only become MFA when they come from different factor categories.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end rights -->
-        <section class="panel" id="users" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+        <!-- stage10-explanation:end factors -->
+        <section class="panel" id="passwords" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Users, groups and roles keep permissions manageable</h2>
+            <h2>Passwords: cheap, familiar and often ruined by humans</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>User account</strong><span>Individual identity, useful for accountability and audit trails.</span></article>
-            <article><strong>Group</strong><span>A collection of accounts that share permissions, such as "Students" or "Finance".</span></article>
-            <article><strong>Role</strong><span>A job-based permission set, such as teacher, receptionist, technician or administrator.</span></article>
-            <article><strong>Audit log</strong><span>Records access attempts or changes, helping detect misuse and investigate incidents.</span></article>
+            <article><strong>Strength</strong><span>Longer passwords or passphrases with less predictable structure are harder to guess.</span></article>
+            <article><strong>Weakness</strong><span>Users may reuse, share, write down or choose predictable passwords.</span></article>
+            <article><strong>Storage</strong><span>Systems should not store plaintext passwords; hashes are commonly used for verification.</span></article>
+            <article><strong>Control</strong><span>Password policy, lockout/rate limiting, user education and MFA reduce risk.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start users -->
-        <section class="panel explanation-panel" id="explanation-users" data-explains="users" data-explanation-kind="mechanism" aria-labelledby="explanation-users-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-users-title">Users, groups and roles keep permissions manageable</h2>
+        <!-- stage10-explanation:start passwords -->
+        <section class="panel explanation-panel" id="explanation-passwords" data-explains="passwords" data-explanation-kind="mechanism" aria-labelledby="explanation-passwords-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <h2 class="explanation-sr-only" id="explanation-passwords-title">Passwords: cheap, familiar and often ruined by humans</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-users.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Users, groups and roles keep permissions manageable with a structured visual model." />
-            <figcaption class="explanation-sr-only">Users, groups and roles keep permissions manageable: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-passwords.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Passwords: cheap, familiar and often ruined by humans with a structured visual model." />
+            <figcaption class="explanation-sr-only">Passwords: cheap, familiar and often ruined by humans: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> User account Individual identity, useful for accountability and audit trails.</li><li><strong>Lesson fact:</strong> Group A collection of accounts that share permissions, such as &quot;Students&quot; or &quot;Finance&quot;.</li><li><strong>Lesson fact:</strong> Role A job-based permission set, such as teacher, receptionist, technician or administrator.</li><li><strong>Lesson fact:</strong> Audit log Records access attempts or changes, helping detect misuse and investigate incidents.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Strength Longer passwords or passphrases with less predictable structure are harder to guess.</li><li><strong>Lesson fact:</strong> Weakness Users may reuse, share, write down or choose predictable passwords.</li><li><strong>Lesson fact:</strong> Storage Systems should not store plaintext passwords; hashes are commonly used for verification.</li><li><strong>Lesson fact:</strong> Control Password policy, lockout/rate limiting, user education and MFA reduce risk.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end users -->
-        <section class="panel" id="matrix" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+        <!-- stage10-explanation:end passwords -->
+        <section class="panel" id="biometrics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>A permission matrix makes access decisions visible</h2>
+            <h2>Biometrics: convenient identity evidence from physical or behavioural features</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Permission matrix">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Role</div>
-              <div role="columnheader">Student records</div>
-              <div role="columnheader">Exam marks</div>
-              <div role="columnheader">System settings</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Student</div>
-              <div role="cell">Read own record</div>
-              <div role="cell">No access</div>
-              <div role="cell">No access</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Teacher</div>
-              <div role="cell">Read class records</div>
-              <div role="cell">Write marks for own classes</div>
-              <div role="cell">No access</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Exam officer</div>
-              <div role="cell">Read relevant records</div>
-              <div role="cell">Read/write exam data</div>
-              <div role="cell">No access</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Administrator</div>
-              <div role="cell">Manage accounts</div>
-              <div role="cell">Access only if required</div>
-              <div role="cell">Change settings</div>
-            </div>
+          <div class="concept-grid">
+            <article><strong>Examples</strong><span>Fingerprint, face, iris, retina, voice or typing pattern.</span></article>
+            <article><strong>Advantage</strong><span>Difficult to forget, lose or share casually; quick for users.</span></article>
+            <article><strong>Limitation</strong><span>Requires sensors and stored biometric templates; may raise privacy concerns.</span></article>
+            <article><strong>Error types</strong><span>False reject blocks a valid user; false accept allows an unauthorised user.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start matrix -->
-        <section class="panel explanation-panel" id="explanation-matrix" data-explains="matrix" data-explanation-kind="mechanism" aria-labelledby="explanation-matrix-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-matrix-title">A permission matrix makes access decisions visible</h2>
+        <!-- stage10-explanation:start biometrics -->
+        <section class="panel explanation-panel" id="explanation-biometrics" data-explains="biometrics" data-explanation-kind="mechanism" aria-labelledby="explanation-biometrics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <h2 class="explanation-sr-only" id="explanation-biometrics-title">Biometrics: convenient identity evidence from physical or behavioural features</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-matrix.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A permission matrix makes access decisions visible with a structured visual model." />
-            <figcaption class="explanation-sr-only">A permission matrix makes access decisions visible: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-biometrics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Biometrics: convenient identity evidence from physical or behavioural features with a structured visual model." />
+            <figcaption class="explanation-sr-only">Biometrics: convenient identity evidence from physical or behavioural features: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Student records</li><li><strong>Lesson fact:</strong> Exam marks</li><li><strong>Lesson fact:</strong> System settings</li><li><strong>Lesson fact:</strong> Read own record</li><li><strong>Lesson fact:</strong> No access</li><li><strong>Lesson fact:</strong> Read class records</li><li><strong>Lesson fact:</strong> Write marks for own classes</li><li><strong>Lesson fact:</strong> Exam officer</li><li><strong>Lesson fact:</strong> Read relevant records</li><li><strong>Lesson fact:</strong> Read/write exam data</li><li><strong>Lesson fact:</strong> Administrator</li><li><strong>Lesson fact:</strong> Manage accounts</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A biometric sensor captures a physical or behavioural feature and the system compares its template with a stored enrolled template.</li><li><strong>Lesson fact:</strong> A match authenticates the identity claim; authorisation is a separate process that decides what an authenticated user may access or do.</li><li><strong>Lesson fact:</strong> A false reject denies a valid enrolled user by mistake; a false accept authenticates an impostor by mistake.</li><li><strong>Lesson fact:</strong> Biometrics require sensors and stored templates and may create privacy, false-accept and false-reject risks.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end matrix -->
-        <section class="panel" id="least" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+        <!-- stage10-explanation:end biometrics -->
+        <section class="panel" id="tokens" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Least privilege reduces unnecessary damage</h2>
+            <h2>Tokens: proof that the user has a specific device or object</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Definition</strong><span>Give users only the minimum permissions needed to perform their role.</span></article>
-            <article><strong>Confidentiality</strong><span>Users cannot view data that is not needed for their work.</span></article>
-            <article><strong>Integrity</strong><span>Users cannot accidentally or deliberately change data outside their responsibility.</span></article>
-            <article><strong>Availability</strong><span>Fewer users can delete files, disable services or change critical settings.</span></article>
+            <article><strong>Hardware token</strong><span>A physical device, card or key used during login.</span></article>
+            <article><strong>Software token</strong><span>An app or service that generates a one-time code.</span></article>
+            <article><strong>One-time code</strong><span>A code valid for a short time or single login attempt.</span></article>
+            <article><strong>Limitation</strong><span>Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start least -->
-        <section class="panel explanation-panel" id="explanation-least" data-explains="least" data-explanation-kind="mechanism" aria-labelledby="explanation-least-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-least-title">Least privilege reduces unnecessary damage</h2>
+        <!-- stage10-explanation:start tokens -->
+        <section class="panel explanation-panel" id="explanation-tokens" data-explains="tokens" data-explanation-kind="mechanism" aria-labelledby="explanation-tokens-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <h2 class="explanation-sr-only" id="explanation-tokens-title">Tokens: proof that the user has a specific device or object</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-least.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Least privilege reduces unnecessary damage with a structured visual model." />
-            <figcaption class="explanation-sr-only">Least privilege reduces unnecessary damage: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-tokens.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tokens: proof that the user has a specific device or object with a structured visual model." />
+            <figcaption class="explanation-sr-only">Tokens: proof that the user has a specific device or object: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition Give users only the minimum permissions needed to perform their role.</li><li><strong>Lesson fact:</strong> Confidentiality Users cannot view data that is not needed for their work.</li><li><strong>Lesson fact:</strong> Integrity Users cannot accidentally or deliberately change data outside their responsibility.</li><li><strong>Lesson fact:</strong> Availability Fewer users can delete files, disable services or change critical settings.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Hardware token A physical device, card or key used during login.</li><li><strong>Lesson fact:</strong> Software token An app or service that generates a one-time code.</li><li><strong>Lesson fact:</strong> One-time code A code valid for a short time or single login attempt.</li><li><strong>Lesson fact:</strong> Limitation Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end least -->
-        <section class="panel" id="review" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+        <!-- stage10-explanation:end tokens -->
+        <section class="panel" id="mfa" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
-            <h2>Permissions need review, not just setup day optimism</h2>
+            <h2>MFA combines different factor types</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Joiner</strong><span>New user receives permissions based on role, not copied blindly from a friend.</span></article>
-            <article><strong>Mover</strong><span>User changes role; old permissions are removed and new ones are added.</span></article>
-            <article><strong>Leaver</strong><span>Account is disabled or removed when the user leaves.</span></article>
-            <article><strong>Review</strong><span>Regular checks remove excessive, stale or temporary permissions.</span></article>
+            <article><strong>Definition</strong><span>Multi-factor authentication requires evidence from two or more different factor categories.</span></article>
+            <article><strong>Example</strong><span>Password plus phone app code: something you know plus something you have.</span></article>
+            <article><strong>Benefit</strong><span>If a password is stolen, the attacker still needs the second factor.</span></article>
+            <article><strong>Cost</strong><span>More setup, recovery problems and user friction if a device is unavailable.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start review -->
-        <section class="panel explanation-panel" id="explanation-review" data-explains="review" data-explanation-kind="mechanism" aria-labelledby="explanation-review-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-review-title">Permissions need review, not just setup day optimism</h2>
+        <!-- stage10-explanation:start mfa -->
+        <section class="panel explanation-panel" id="explanation-mfa" data-explains="mfa" data-explanation-kind="mechanism" aria-labelledby="explanation-mfa-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <h2 class="explanation-sr-only" id="explanation-mfa-title">MFA combines different factor types</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-review.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Permissions need review, not just setup day optimism with a structured visual model." />
-            <figcaption class="explanation-sr-only">Permissions need review, not just setup day optimism: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-mfa.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining MFA combines different factor types with a structured visual model." />
+            <figcaption class="explanation-sr-only">MFA combines different factor types: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Joiner New user receives permissions based on role, not copied blindly from a friend.</li><li><strong>Lesson fact:</strong> Mover User changes role; old permissions are removed and new ones are added.</li><li><strong>Lesson fact:</strong> Leaver Account is disabled or removed when the user leaves.</li><li><strong>Lesson fact:</strong> Review Regular checks remove excessive, stale or temporary permissions.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Definition Multi-factor authentication requires evidence from two or more different factor categories.</li><li><strong>Lesson fact:</strong> Example Password plus phone app code: something you know plus something you have.</li><li><strong>Lesson fact:</strong> Benefit If a password is stolen, the attacker still needs the second factor.</li><li><strong>Lesson fact:</strong> Cost More setup, recovery problems and user friction if a device is unavailable.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end review -->
+        <!-- stage10-explanation:end mfa -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Compare methods by evidence, risk and context</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Authentication comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Method</div>
+              <div role="columnheader">Evidence</div>
+              <div role="columnheader">Strengths and limitations</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Password/PIN</div>
+              <div role="cell">Something the user knows.</div>
+              <div role="cell">Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Biometric</div>
+              <div role="cell">Something the user is.</div>
+              <div role="cell">Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Token</div>
+              <div role="cell">Something the user has.</div>
+              <div role="cell">Useful second factor; can be lost, stolen, damaged or unavailable.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">MFA</div>
+              <div role="cell">Two or more different factor categories.</div>
+              <div role="cell">Reduces account takeover risk; increases setup, support and recovery complexity.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare methods by evidence, risk and context</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare methods by evidence, risk and context with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare methods by evidence, risk and context: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Strengths and limitations</li><li><strong>Lesson fact:</strong> Password/PIN</li><li><strong>Lesson fact:</strong> Something the user knows.</li><li><strong>Lesson fact:</strong> Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</li><li><strong>Lesson fact:</strong> Biometric</li><li><strong>Lesson fact:</strong> Something the user is.</li><li><strong>Lesson fact:</strong> Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</li><li><strong>Lesson fact:</strong> Something the user has.</li><li><strong>Lesson fact:</strong> Useful second factor; can be lost, stolen, damaged or unavailable.</li><li><strong>Lesson fact:</strong> Two or more different factor categories.</li><li><strong>Lesson fact:</strong> Reduces account takeover risk; increases setup, support and recovery complexity.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
-            <p class="eyebrow">Interactive decision tool</p>
-            <h2>Should the action be allowed?</h2>
-            <p>Select a scenario and compare the decision with the reason and common error.</p>
+            <p class="eyebrow">Interactive selector</p>
+            <h2>Choose the authentication approach for the scenario</h2>
+            <p>Select a scenario and compare suitable evidence, benefit and limitation.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Access request
+              Scenario
               <select id="scenarioInput">
-                <option value="studentOwn">Student reads their own timetable.</option>
-                <option value="studentMarks">Student tries to edit exam marks.</option>
-                <option value="teacherClass">Teacher enters marks for their own class.</option>
-                <option value="teacherAll">Teacher tries to view all school medical records.</option>
-                <option value="adminTemp">Temporary technician asks for permanent admin rights.</option>
+                <option value="student">School portal for normal homework access.</option>
+                <option value="bank">Online banking login from a new device.</option>
+                <option value="lab">Secure laboratory door used by authorised staff.</option>
+                <option value="shared">Shared classroom computer used by many students.</option>
+                <option value="remote">Remote staff accessing company systems from home.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Decide</button>
+            <button class="primary-button" type="button" id="simulateBtn">Recommend</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
+        <section class="panel" id="password-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <div class="section-title">
+            <p class="eyebrow">Interactive password check</p>
+            <h2>Estimate password quality without collecting real passwords</h2>
+            <p>Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Practice password
+              <input type="text" id="passwordInput" placeholder="Try: CorrectHorseBatteryStaple27" autocomplete="off" />
+            </label>
+            <button class="primary-button" type="button" id="passwordBtn">Check</button>
+          </div>
+          <div class="result-box" id="passwordResult" aria-live="polite"></div>
+          <div class="method-box" id="passwordAdvice"></div>
+        </section>
+
+        <!-- stage10-explanation:start password-tool -->
+        <section class="panel explanation-panel" id="explanation-password-tool" data-explains="password-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-password-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
+          <h2 class="explanation-sr-only" id="explanation-password-tool-title">Estimate password quality without collecting real passwords</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-password-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Estimate password quality without collecting real passwords with a structured visual model." />
+            <figcaption class="explanation-sr-only">Estimate password quality without collecting real passwords: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive password check</li><li><strong>Lesson fact:</strong> Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</li><li><strong>Lesson fact:</strong> Practice password</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end password-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers using role, action and consequence</h2>
+            <h2>Four model answers with method and trade-off</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="grades">Exam marks</button>
-            <button class="tab" type="button" data-example="files">Shared files</button>
-            <button class="tab" type="button" data-example="temporary">Temporary admin</button>
-            <button class="tab" type="button" data-example="leaver">Leaver account</button>
+            <button class="tab active" type="button" data-example="password">Password</button>
+            <button class="tab" type="button" data-example="biometric">Biometric</button>
+            <button class="tab" type="button" data-example="token">Token</button>
+            <button class="tab" type="button" data-example="mfa">MFA</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
@@ -403,7 +443,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: permission, role, reason</h2>
+            <h2>Short answers: classify the method and factor</h2>
             <p>Type a concise answer. Use the local answer button if you need a model response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -429,12 +469,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Permissions are practical security rules</h2>
+            <h2>Authentication is about identity evidence</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Access rights</strong><span>Define permitted actions on resources.</span></div>
-            <div><strong>Roles/groups</strong><span>Make permissions consistent and easier to manage.</span></div>
-            <div><strong>Least privilege</strong><span>Limits unnecessary access and reduces damage.</span></div>
+            <div><strong>Authentication</strong><span>Verifies identity; authorisation controls allowed actions.</span></div>
+            <div><strong>Factors</strong><span>Know, have and are are different categories of evidence.</span></div>
+            <div><strong>MFA</strong><span>Combines different factor types to reduce single-credential failure.</span></div>
           </div>
         </section>
 
@@ -445,16 +485,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Permission matrix</strong>
-              <span>Create a 4-role permission matrix for a hospital system: patient, doctor, receptionist and administrator. Use read, write, delete and no access.</span>
+              <strong>Task 1: Factor table</strong>
+              <span>Create a table for password, fingerprint, phone code and security token. For each, state the factor category, one advantage and one limitation.</span>
             </article>
             <article>
-              <strong>Task 2: Least privilege explanation</strong>
-              <span>Write two paragraphs explaining how least privilege protects confidentiality and integrity in a school database.</span>
+              <strong>Task 2: Scenario recommendation</strong>
+              <span>Recommend an authentication method for online banking, a school library account and a secure lab door. Give one reason and one trade-off for each.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "A temporary worker needs access for one week. Explain how access rights should be managed and why." Include review/removal.</span>
+              <span>Answer: "Explain why MFA can reduce the risk of unauthorised access, and describe two possible limitations." Use precise factor vocabulary.</span>
             </article>
           </div>
         </section>
@@ -462,8 +502,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

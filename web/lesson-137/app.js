@@ -1,122 +1,126 @@
-const scenarios = {
-  mark: {
-    label: "Mark: integer 0 to 100 inclusive",
-    unit: "mark",
-    tests: [
-      ["50", "Normal", "typical valid mark", "Accepted"],
-      ["0", "Extreme/boundary", "lowest valid mark", "Accepted"],
-      ["100", "Extreme/boundary", "highest valid mark", "Accepted"],
-      ["-1", "Abnormal", "just below valid range", "Rejected"],
-      ["101", "Abnormal", "just above valid range", "Rejected"],
-      ['"cat"', "Abnormal", "wrong data type for an integer mark", "Rejected or handled"],
-    ],
+const scenarios = [
+  {
+    id: "display",
+    text: "Display every line already stored in Scores.txt.",
+    recommendation: "FOR READ",
+    reason: "The program needs existing records, so it should open the file for reading.",
   },
-  password: {
-    label: "Password length: 8 to 20 characters inclusive",
-    unit: "characters",
-    tests: [
-      ["12", "Normal", "typical valid length", "Accepted"],
-      ["8", "Extreme/boundary", "minimum valid length", "Accepted"],
-      ["20", "Extreme/boundary", "maximum valid length", "Accepted"],
-      ["7", "Abnormal", "too short", "Rejected"],
-      ["21", "Abnormal", "too long", "Rejected"],
-      ["blank password", "Abnormal", "missing required data", "Rejected"],
-    ],
+  {
+    id: "new",
+    text: "Create a new Report.txt with a fresh heading and two rows.",
+    recommendation: "FOR WRITE",
+    reason: "The program is writing new contents. Existing contents are not intended to be preserved.",
   },
-  age: {
-    label: "Competition age: integer 11 to 18 inclusive",
-    unit: "years",
-    tests: [
-      ["15", "Normal", "typical valid age", "Accepted"],
-      ["11", "Extreme/boundary", "lowest valid age", "Accepted"],
-      ["18", "Extreme/boundary", "highest valid age", "Accepted"],
-      ["10", "Abnormal", "below minimum age", "Rejected"],
-      ["19", "Abnormal", "above maximum age", "Rejected"],
-      ['"sixteen"', "Abnormal", "wrong data type for an integer age", "Rejected or handled"],
-    ],
+  {
+    id: "add",
+    text: "Add one new score to the end of an existing Scores.txt file.",
+    recommendation: "FOR APPEND",
+    reason: "APPEND preserves previous records and adds the new record at the end.",
   },
-};
+  {
+    id: "count",
+    text: "Count how many records are in Orders.txt.",
+    recommendation: "FOR READ with WHILE NOT EOF",
+    reason: "The file must be read line by line until the end of file is reached.",
+  },
+];
 
 const examples = {
-  classify: {
-    title: "Example 1: Classify test data",
-    problem: "A mark must be an integer from 0 to 100 inclusive. Classify 50, 0, 100, -1 and \"cat\".",
-    table: [
-      ["50", "Normal", "valid and typical"],
-      ["0", "Extreme/boundary", "lowest valid value"],
-      ["100", "Extreme/boundary", "highest valid value"],
-      ["-1", "Abnormal", "outside the valid range"],
-      ['"cat"', "Abnormal", "wrong data type"],
+  read: {
+    title: "Example 1: Read and output every line",
+    problem: "Open Scores.txt, read each line, output it, then close the file.",
+    rows: [
+      ["Open", "OPENFILE \"Scores.txt\" FOR READ", "prepare existing file for reading"],
+      ["Loop", "WHILE NOT EOF(\"Scores.txt\")", "continue while records remain"],
+      ["Read", "READFILE \"Scores.txt\", Line", "store the current line in Line"],
+      ["Close", "CLOSEFILE \"Scores.txt\"", "finish the file operation"],
     ],
+    code: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
     points: [
-      "Normal data is valid and ordinary.",
-      "Extreme/boundary data uses a valid value at an accepted limit.",
-      "Abnormal data should be rejected or handled.",
+      "Use FOR READ for existing data.",
+      "Use EOF to stop at the end of the file.",
+      "Close the file after the loop.",
     ],
   },
-  design: {
-    title: "Example 2: Design a test table",
-    problem: "Design tests for password length from 8 to 20 characters inclusive.",
-    table: [
-      ["12 characters", "Normal", "typical valid length", "Accepted"],
-      ["8 characters", "Extreme/boundary", "minimum valid length", "Accepted"],
-      ["20 characters", "Extreme/boundary", "maximum valid length", "Accepted"],
-      ["7 characters", "Abnormal", "too short", "Rejected"],
-      ["21 characters", "Abnormal", "too long", "Rejected"],
+  count: {
+    title: "Example 2: Count records",
+    problem: "Orders.txt has three lines. Trace the final value of Count.",
+    rows: [
+      ["Start", "Count = 0", "before reading"],
+      ["Line 1", "Count = 1", "one record read"],
+      ["Line 2", "Count = 2", "second record read"],
+      ["Line 3", "Count = 3", "third record read"],
+      ["EOF", "loop stops", "final Count is 3"],
     ],
+    code: "Count <- 0\nOPENFILE \"Orders.txt\" FOR READ\nWHILE NOT EOF(\"Orders.txt\")\n    READFILE \"Orders.txt\", OrderLine\n    Count <- Count + 1\nENDWHILE\nCLOSEFILE \"Orders.txt\"\nOUTPUT Count",
     points: [
-      "Include expected results; otherwise the test table is incomplete.",
-      "Use exact edge values, not vague phrases such as 'near 8'.",
-      "Add just-outside values when testing validation.",
+      "Increment Count after each successful READFILE.",
+      "The loop runs once per line.",
+      "Do not read after EOF is reached.",
     ],
   },
-  explain: {
-    title: "Example 3: Explain why extreme/boundary data is useful",
-    problem: "A condition is written as IF Mark > 0 AND Mark < 100. The intended valid range is 0 to 100 inclusive. Which tests expose the fault?",
-    table: [
-      ["0", "Extreme/boundary", "should be accepted, but this code rejects it"],
-      ["100", "Extreme/boundary", "should be accepted, but this code rejects it"],
-      ["50", "Normal", "accepted, so it does not reveal this edge error"],
-      ["-1", "Abnormal", "correctly rejected"],
-      ["101", "Abnormal", "correctly rejected"],
+  write: {
+    title: "Example 3: Write new file contents",
+    problem: "Create a new report file with a heading and one row.",
+    rows: [
+      ["Open", "FOR WRITE", "new or replacement contents"],
+      ["Write 1", "\"Name,Mark\"", "heading row"],
+      ["Write 2", "\"Ada,72\"", "record row"],
+      ["Close", "CLOSEFILE", "complete the operation"],
     ],
+    code: "OPENFILE \"Report.txt\" FOR WRITE\nWRITEFILE \"Report.txt\", \"Name,Mark\"\nWRITEFILE \"Report.txt\", \"Ada,72\"\nCLOSEFILE \"Report.txt\"",
     points: [
-      "Extreme/boundary tests reveal incorrect inclusive/exclusive comparisons.",
-      "Normal data can pass even when edge values fail.",
-      "Expected results make the fault visible.",
+      "WRITE is suitable when existing content does not need to be kept.",
+      "Each WRITEFILE writes data to the file.",
+      "Clear record formatting matters.",
+    ],
+  },
+  append: {
+    title: "Example 4: Append a new record",
+    problem: "Add Lin,85 to an existing score file without deleting old records.",
+    rows: [
+      ["Open", "FOR APPEND", "preserve existing records"],
+      ["Write", "\"Lin,85\"", "new record added at end"],
+      ["Close", "CLOSEFILE", "finish safely"],
+    ],
+    code: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Lin,85\"\nCLOSEFILE \"Scores.txt\"",
+    points: [
+      "APPEND is the key mode when old data must remain.",
+      "WRITEFILE is still used to add the new record.",
+      "The new line goes after existing records.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the term for valid, typical data inside the allowed range?", accepted: ["normal", "normal data"], answer: "Normal data." },
-  { id: "p2", prompt: "What is the official term for valid data at an accepted limit?", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "Extreme/boundary data." },
-  { id: "p3", prompt: "What is the official syllabus term for invalid data that should be rejected?", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid data"], answer: "Abnormal data. 'Erroneous' may describe an error generally, but abnormal is the official syllabus category." },
-  { id: "p4", prompt: "For a mark range 0 to 100 inclusive, classify 50.", accepted: ["normal", "normal data"], answer: "50 is normal data because it is valid and typical." },
-  { id: "p5", prompt: "For a mark range 0 to 100 inclusive, classify 0.", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "0 is extreme/boundary data because it is the lowest valid value." },
-  { id: "p6", prompt: "For a mark range 0 to 100 inclusive, classify 100.", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "100 is extreme/boundary data because it is the highest valid value." },
-  { id: "p7", prompt: "For a mark range 0 to 100 inclusive, what expected result should -1 have?", accepted: ["rejected", "reject", "not accepted", "invalid"], answer: "-1 should be rejected because it is below the valid range." },
-  { id: "p8", prompt: "For a mark range 0 to 100 inclusive, classify 101.", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid", "rejected"], answer: "101 is abnormal data and should be rejected." },
-  { id: "p9", prompt: "A mark must be an integer. Classify \"abc\".", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid", "wrong type"], answer: "\"abc\" is abnormal data because it is the wrong data type." },
-  { id: "p10", prompt: "Why should a test table include expected results?", accepted: ["compare", "actual", "detect", "fault", "correct"], answer: "Expected results let the tester compare actual output with intended output and detect faults." },
+  { id: "p1", prompt: "Which command opens Scores.txt for reading?", accepted: ["openfile"], answer: "OPENFILE \"Scores.txt\" FOR READ." },
+  { id: "p2", prompt: "Which mode is used to read existing file contents: READ, WRITE or APPEND?", accepted: ["read"], answer: "READ." },
+  { id: "p3", prompt: "Which mode adds new data to the end without deleting old records?", accepted: ["append"], answer: "APPEND." },
+  { id: "p4", prompt: "Which mode may overwrite existing file contents?", accepted: ["write"], answer: "WRITE." },
+  { id: "p5", prompt: "Which command reads one line/record from an open file?", accepted: ["readfile"], answer: "READFILE." },
+  { id: "p6", prompt: "Which command writes one line/record to an open file?", accepted: ["writefile"], answer: "WRITEFILE." },
+  { id: "p7", prompt: "Which function/test is used to stop reading at the end of a file?", accepted: ["eof"], answer: "EOF." },
+  { id: "p8", prompt: "Which command should finish a file handling sequence?", accepted: ["closefile"], answer: "CLOSEFILE." },
+  { id: "p9", prompt: "Orders.txt has 3 lines. Count starts at 0 and increments after each READFILE. Final Count?", accepted: ["3"], answer: "3." },
+  { id: "p10", prompt: "Java Scanner syntax should replace Cambridge pseudocode in Paper 2. true or false?", accepted: ["false"], answer: "False." },
 ];
 
 const mistakes = [
   {
-    wrong: "A test table for marks 0 to 100 uses only 40, 50 and 60.",
-    fix: "Those are normal values only. Add extreme/boundary values 0 and 100, plus abnormal values such as -1, 101 and a wrong-type input.",
+    wrong: "A student opens Scores.txt FOR WRITE to add one new score to the existing file.",
+    fix: "Use FOR APPEND if existing scores must remain. FOR WRITE may overwrite the file contents.",
   },
   {
-    wrong: "A student calls 101 boundary data for the inclusive range 0 to 100.",
-    fix: "101 is just outside the upper boundary and is abnormal for this rule. The upper valid extreme/boundary value is 100.",
+    wrong: "A student writes a READFILE loop without checking EOF.",
+    fix: "Use WHILE NOT EOF(\"FileName\") before READFILE when reading all records.",
   },
   {
-    wrong: "The table lists inputs but leaves expected result blank.",
-    fix: "Add an expected result for each test, such as Accepted, Rejected, or a specific output message.",
+    wrong: "A student forgets CLOSEFILE after reading and writing.",
+    fix: "Add CLOSEFILE \"FileName\" after the loop or after the write sequence to complete the file operation.",
   },
   {
-    wrong: "A student writes a Java JUnit assertion as the whole Cambridge pseudocode answer.",
-    fix: "Java can support checking, but Paper 2 pseudocode answers should use clear Cambridge-style logic and test data descriptions.",
+    wrong: "A student writes Java try-with-resources code as the Cambridge pseudocode answer.",
+    fix: "Use OPENFILE, READFILE or WRITEFILE, EOF and CLOSEFILE in Cambridge-style pseudocode. Java is support only.",
   },
 ];
 
@@ -130,94 +134,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A mark must be an integer from 0 to 100 inclusive. Define normal, abnormal and extreme/boundary test data and give one suitable example of each.",
-    answer: "Normal data is valid and typical, for example 50. Abnormal data is invalid and should be rejected, for example -1, 101 or \"cat\". Extreme/boundary data is valid data at the lower or upper limit, for example 0 or 100.",
+    prompt: "Write Cambridge-style pseudocode to open Scores.txt, read every line and output each line.",
+    answer: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
     marking: [
-      { mark: "B1", text: "defines normal data as valid and typical" },
-      { mark: "B1", text: "gives a suitable normal example such as 50" },
-      { mark: "B1", text: "defines abnormal data as invalid data that should be rejected" },
-      { mark: "B1", text: "gives a suitable abnormal example such as -1, 101 or wrong-type data" },
-      { mark: "B1", text: "defines extreme/boundary data as valid data at an accepted limit" },
-      { mark: "B1", text: "gives a suitable extreme/boundary example such as 0 or 100" },
+      { mark: "B1", text: "opens Scores.txt using OPENFILE" },
+      { mark: "A1", text: "uses FOR READ mode" },
+      { mark: "M1", text: "uses WHILE NOT EOF or equivalent end-of-file loop" },
+      { mark: "M1", text: "uses READFILE to read a line/record into a variable" },
+      { mark: "B1", text: "outputs the line/record read" },
+      { mark: "A1", text: "closes the file with CLOSEFILE after reading" },
     ],
     strict: [
-      "Do not award boundary example mark for 50.",
-      "Allow 0 or 100 as boundary because the range is inclusive.",
-      "Do not accept vague examples such as 'a big number' without a value.",
+      "Do not award READ mode mark for WRITE or APPEND.",
+      "Allow equivalent file and variable names if consistent.",
+      "Do not accept Java Scanner code alone as Cambridge pseudocode.",
     ],
   },
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Write a test table for a mark validation check where valid marks are integers from 0 to 100 inclusive. Include normal, abnormal and extreme/boundary data.",
-    answer: "A suitable table includes 50 normal accepted, 0 and 100 extreme/boundary accepted, and -1, 101 and \"abc\" abnormal rejected or handled.",
+    prompt: "Write pseudocode to count the number of records in Orders.txt and output the count.",
+    answer: "Count <- 0\nOPENFILE \"Orders.txt\" FOR READ\nWHILE NOT EOF(\"Orders.txt\")\n    READFILE \"Orders.txt\", OrderLine\n    Count <- Count + 1\nENDWHILE\nCLOSEFILE \"Orders.txt\"\nOUTPUT Count",
     marking: [
-      { mark: "M1", text: "provides a clear test table or structured list" },
-      { mark: "B1", text: "includes at least one normal valid value" },
-      { mark: "B1", text: "includes lower extreme/boundary value 0" },
-      { mark: "B1", text: "includes upper extreme/boundary value 100" },
-      { mark: "B1", text: "includes at least one out-of-range abnormal value" },
-      { mark: "B1", text: "includes a wrong-type or otherwise invalid abnormal value" },
-      { mark: "A1", text: "states expected results accurately for the tests" },
+      { mark: "B1", text: "initialises Count to 0" },
+      { mark: "B1", text: "opens Orders.txt FOR READ" },
+      { mark: "M1", text: "uses WHILE NOT EOF or equivalent file-reading loop" },
+      { mark: "M1", text: "reads each record/line with READFILE" },
+      { mark: "A1", text: "increments Count once per record read" },
+      { mark: "B1", text: "closes the file after the loop" },
+      { mark: "A1", text: "outputs Count" },
     ],
     strict: [
-      "Do not award expected result mark if outcomes are missing.",
-      "Allow alternative normal values from 1 to 99.",
-      "Do not accept -1 or 101 as valid boundary data for this inclusive range.",
-      "Allow an equivalent stated validation rule if it is used consistently.",
+      "Do not award increment mark if Count is incremented outside the loop only once.",
+      "Allow REPEAT/UNTIL only if the EOF logic is safe and clear.",
+      "Do not accept counting characters as records unless the question states character records.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Explain why testing 0, 100, -1 and 101 is useful for a validation rule that should accept marks from 0 to 100 inclusive.",
-    answer: "0 and 100 test the valid lower and upper boundaries and should be accepted. -1 and 101 are just outside the valid range and should be rejected. These values help reveal incorrect comparison operators, such as using greater than instead of greater than or equal to.",
+    marks: "5 marks",
+    prompt: "A program must add the record \"Lin,85\" to the end of Scores.txt without deleting existing scores. Write the pseudocode.",
+    answer: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Lin,85\"\nCLOSEFILE \"Scores.txt\"",
     marking: [
-      { mark: "B1", text: "identifies 0 as the lower boundary" },
-      { mark: "B1", text: "identifies 100 as the upper boundary" },
-      { mark: "B1", text: "states 0 and 100 should be accepted" },
-      { mark: "B1", text: "identifies -1 and/or 101 as just outside the range" },
-      { mark: "B1", text: "states -1 and 101 should be rejected" },
-      { mark: "B1", text: "explains that boundary testing can reveal incorrect comparison logic" },
+      { mark: "B1", text: "opens Scores.txt using OPENFILE" },
+      { mark: "A1", text: "uses FOR APPEND mode" },
+      { mark: "M1", text: "uses WRITEFILE to write a record" },
+      { mark: "A1", text: "writes Lin,85 or equivalent required record" },
+      { mark: "B1", text: "closes the file with CLOSEFILE" },
     ],
     strict: [
-      "Do not award accepted mark if candidate says 0 or 100 should be rejected.",
-      "Allow equivalent wording for inclusive edge values.",
-      "Do not require code, but credit a correct comparison-operator explanation.",
+      "Do not award APPEND mark for FOR WRITE.",
+      "Allow variable-based record construction if it clearly writes Lin and 85.",
+      "Do not require EOF for a single append operation.",
+      "Allow an equivalent file if it is used consistently.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "A program uses the condition IF Mark >= 0 AND Mark <= 100 THEN OUTPUT \"Accepted\" ELSE OUTPUT \"Rejected\". Give four test values and expected outputs.",
-    answer: "One suitable set is: 50 gives Accepted; 0 gives Accepted; 100 gives Accepted; and -1 gives Rejected.",
+    marks: "6 marks",
+    prompt: "Explain the difference between opening a file FOR WRITE and opening it FOR APPEND. Give one suitable use of each.",
+    answer: "FOR WRITE is used when writing new file contents and may replace existing contents, for example creating a new report file. FOR APPEND is used to add new data to the end of an existing file while keeping old records, for example adding a new score to Scores.txt.",
     marking: [
-      { mark: "B1", text: "gives one normal valid value with expected output Accepted" },
-      { mark: "B1", text: "gives lower boundary 0 with expected output Accepted" },
-      { mark: "B1", text: "gives upper boundary 100 with expected output Accepted" },
-      { mark: "B1", text: "gives one out-of-range value with expected output Rejected" },
+      { mark: "B1", text: "states FOR WRITE is used to write new/replacement contents" },
+      { mark: "M1", text: "explains WRITE may overwrite or not preserve existing contents" },
+      { mark: "A1", text: "gives suitable WRITE example" },
+      { mark: "B1", text: "states FOR APPEND adds data to the end of a file" },
+      { mark: "M1", text: "explains APPEND preserves existing contents" },
+      { mark: "A1", text: "gives suitable APPEND example" },
     ],
     strict: [
-      "Award a mark only when a test value is paired with the correct expected output.",
-      "Allow any valid normal value from 1 to 99.",
-      "Do not accept 0 as rejected for the given condition.",
+      "Do not award full marks for saying only 'both write'.",
+      "Allow 'adds to existing file' for append if preservation is clear.",
+      "Do not accept READ as either write-mode example.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A candidate tests a mark validation program using only 50, 60 and 75. Identify two weaknesses and improve the test set.",
-    answer: "The set only uses normal valid data and does not test the boundaries or invalid data. Improve it by adding 0 and 100 as boundary values, -1 and 101 as just outside the range, and a wrong-type value such as \"abc\" if input type validation is required.",
+    marks: "5 marks",
+    prompt: "A candidate writes Java Scanner code for a file-reading question that asks for pseudocode. Explain the problem and name the Cambridge-style commands that should be used.",
+    answer: "The problem is that Java Scanner syntax is language-specific and is not Cambridge-style pseudocode. The answer should use OPENFILE for READ, WHILE NOT EOF, READFILE to read each line/record, and CLOSEFILE when finished.",
     marking: [
-      { mark: "B1", text: "identifies missing boundary data" },
-      { mark: "B1", text: "identifies missing abnormal/invalid data" },
-      { mark: "B1", text: "adds valid boundary examples 0 and/or 100" },
-      { mark: "B1", text: "adds abnormal out-of-range examples such as -1 and/or 101" },
+      { mark: "B1", text: "identifies Scanner as Java/language-specific syntax" },
+      { mark: "B1", text: "names OPENFILE with FOR READ" },
+      { mark: "B1", text: "names EOF / WHILE NOT EOF for loop control" },
+      { mark: "B1", text: "names READFILE for reading records" },
+      { mark: "B1", text: "names CLOSEFILE for finishing the file operation" },
     ],
     strict: [
-      "Do not award improvement marks for adding more normal values only.",
-      "Allow equivalent valid range examples if the candidate states a different scenario.",
-      "Do not accept 'test more' without naming values or data types.",
+      "Do not award command marks for Java hasNextLine or nextLine alone.",
+      "Allow equivalent explanation of language-specific syntax.",
+      "Do not require WRITEFILE because this is a file-reading scenario.",
     ],
   },
 ];
@@ -232,7 +238,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>=\[\] %_.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -251,208 +257,189 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    50: { text: "50 is valid and typical, so it is normal data, not boundary data.", correct: false },
-    0: { text: "Correct. 0 is the lower valid boundary for an inclusive 0 to 100 range.", correct: true },
-    101: { text: "101 is just outside the range, so it is abnormal for this rule.", correct: false },
-    cat: { text: "\"cat\" is wrong-type abnormal data when an integer mark is required.", correct: false },
+    read: "READ is for existing data. It will not add a new line.",
+    write: "WRITE may replace file contents. That is risky when old scores must remain.",
+    append: "Correct. APPEND adds the new score to the end while keeping old records.",
+    close: "CLOSEFILE finishes a file operation. It does not choose how new data is added.",
   };
-
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      const result = messages[button.dataset.hook];
-      feedback.textContent = result.text;
-      feedback.className = `feedback ${result.correct ? "correct" : "incorrect"}`;
+      feedback.textContent = messages[button.dataset.hook];
     });
   });
 }
 
-function classifyValue(rawValue) {
-  const trimmed = rawValue.trim();
-  if (trimmed === "") {
-    return {
-      type: "Abnormal",
-      expected: "Rejected",
-      reason: "blank input is missing required integer data",
-    };
-  }
-  if (!/^-?\d+$/.test(trimmed)) {
-    return {
-      type: "Abnormal",
-      expected: "Rejected or handled",
-      reason: "the value is not an integer",
-    };
-  }
-
-  const value = Number.parseInt(trimmed, 10);
-  if (value === 0) {
-    return { type: "Extreme/boundary", expected: "Accepted", reason: "0 is the lower valid boundary" };
-  }
-  if (value === 100) {
-    return { type: "Extreme/boundary", expected: "Accepted", reason: "100 is the upper valid boundary" };
-  }
-  if (value > 0 && value < 100) {
-    return { type: "Normal", expected: "Accepted", reason: `${value} is inside the valid range` };
-  }
-  if (value === -1 || value === 101) {
-    return { type: "Abnormal", expected: "Rejected", reason: `${value} is just outside the boundary` };
-  }
-  return { type: "Abnormal", expected: "Rejected", reason: `${value} is outside the valid range` };
-}
-
-function setupClassifier() {
-  const input = document.querySelector("#testValue");
-  const output = document.querySelector("#classifierOutput");
-  const render = () => {
-    const result = classifyValue(input.value);
-    output.innerHTML = `
-      <p><strong>Classification:</strong> ${escapeHtml(result.type)}</p>
-      <p><strong>Expected result:</strong> ${escapeHtml(result.expected)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(result.reason)}</p>
-    `;
-  };
-  document.querySelector("#classifyBtn").addEventListener("click", render);
-  input.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") render();
-  });
-  render();
+function cleanFileName(name) {
+  const trimmed = name.trim();
+  return trimmed.length > 0 ? trimmed : "Data.txt";
 }
 
 function setupBuilder() {
-  const select = document.querySelector("#scenarioSelect");
-  const output = document.querySelector("#builderOutput");
-  const render = () => {
-    const scenario = scenarios[select.value];
-    output.innerHTML = `
-      <h3>${escapeHtml(scenario.label)}</h3>
-      ${tableMarkup(["Test data", "Type", "Reason", "Expected result"], scenario.tests)}
-    `;
-  };
-  document.querySelector("#buildBtn").addEventListener("click", render);
-  select.addEventListener("change", render);
-  render();
+  const result = document.querySelector("#builderResult");
+  document.querySelector("#buildBtn").addEventListener("click", () => {
+    const file = cleanFileName(document.querySelector("#fileInput").value);
+    const task = document.querySelector("#taskInput").value;
+    const patterns = {
+      read: `OPENFILE "${file}" FOR READ\nWHILE NOT EOF("${file}")\n    READFILE "${file}", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE "${file}"`,
+      count: `Count <- 0\nOPENFILE "${file}" FOR READ\nWHILE NOT EOF("${file}")\n    READFILE "${file}", Line\n    Count <- Count + 1\nENDWHILE\nCLOSEFILE "${file}"\nOUTPUT Count`,
+      write: `OPENFILE "${file}" FOR WRITE\nWRITEFILE "${file}", "Heading"\nWRITEFILE "${file}", "First record"\nCLOSEFILE "${file}"`,
+      append: `OPENFILE "${file}" FOR APPEND\nWRITEFILE "${file}", "New record"\nCLOSEFILE "${file}"`,
+    };
+    result.innerHTML = `<pre><code>${escapeHtml(patterns[task])}</code></pre>`;
+  });
 }
 
-function renderExample(key) {
-  const example = examples[key];
-  const headers = example.table[0].length === 4
-    ? ["Test data", "Type", "Reason", "Expected result"]
-    : ["Test data", "Type", "Reason"];
-  document.querySelector("#exampleOutput").innerHTML = `
-    <article class="example-card">
-      <h3>${escapeHtml(example.title)}</h3>
-      <p>${escapeHtml(example.problem)}</p>
-      ${tableMarkup(headers, example.table)}
-      <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
-    </article>
-  `;
+function setupScenarioChooser() {
+  const grid = document.querySelector("#scenarioGrid");
+  const feedback = document.querySelector("#scenarioFeedback");
+  grid.innerHTML = scenarios
+    .map((scenario) => `<button class="choice-card" type="button" data-scenario="${scenario.id}">${escapeHtml(scenario.text)}</button>`)
+    .join("");
+
+  grid.querySelectorAll("[data-scenario]").forEach((button) => {
+    button.addEventListener("click", () => {
+      grid.querySelectorAll("[data-scenario]").forEach((item) => item.classList.remove("selected"));
+      button.classList.add("selected");
+      const scenario = scenarios.find((item) => item.id === button.dataset.scenario);
+      feedback.innerHTML = `<strong>${escapeHtml(scenario.recommendation)}</strong>: ${escapeHtml(scenario.reason)}`;
+    });
+  });
 }
 
 function setupExamples() {
-  document.querySelectorAll("[data-example]").forEach((button) => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-      renderExample(button.dataset.example);
-    });
-  });
-  renderExample("classify");
+  const tabs = document.querySelector("#exampleTabs");
+  const output = document.querySelector("#exampleOutput");
+  const keys = Object.keys(examples);
+
+  function render(key) {
+    const example = examples[key];
+    tabs.querySelectorAll(".tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.example === key));
+    output.innerHTML = `
+      <article class="worked-card">
+        <h3>${escapeHtml(example.title)}</h3>
+        <p>${escapeHtml(example.problem)}</p>
+        ${tableMarkup(["Step", "Command / value", "Purpose"], example.rows)}
+        <pre><code>${escapeHtml(example.code)}</code></pre>
+        <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
+      </article>
+    `;
+  }
+
+  tabs.innerHTML = keys
+    .map((key, index) => `<button class="tab${index === 0 ? " active" : ""}" type="button" data-example="${key}">${escapeHtml(examples[key].title)}</button>`)
+    .join("");
+  tabs.querySelectorAll("[data-example]").forEach((tab) => tab.addEventListener("click", () => render(tab.dataset.example)));
+  render(keys[0]);
 }
 
 function setupPractice() {
-  const container = document.querySelector("#practiceList");
-  container.innerHTML = practice.map((item, index) => `
-    <article class="practice-card">
-      <label for="${item.id}"><strong>${index + 1}.</strong> ${escapeHtml(item.prompt)}</label>
-      <div class="practice-row">
-        <input id="${item.id}" type="text" autocomplete="off" />
-        <button class="check-btn" type="button" data-check="${item.id}">Check</button>
-        <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
-      </div>
-      <div class="feedback" id="${item.id}-feedback" aria-live="polite"></div>
-      <div class="answer-panel hidden" id="${item.id}-answer">${escapeHtml(item.answer)}</div>
-    </article>
-  `).join("");
+  const list = document.querySelector("#practiceList");
+  list.innerHTML = practice
+    .map(
+      (item, index) => `
+        <article class="practice-card">
+          <h3>Practice ${index + 1}</h3>
+          <p>${escapeHtml(item.prompt)}</p>
+          <div class="practice-controls">
+            <input type="text" aria-label="Answer for practice ${index + 1}" data-practice-input="${item.id}" />
+            <button class="check-btn" type="button" data-check="${item.id}">Check</button>
+          </div>
+          <div class="feedback" data-feedback="${item.id}">Type your answer, then check.</div>
+          <button class="answer-toggle" type="button" data-answer-toggle="${item.id}">Show answer</button>
+          <div class="answer-panel" data-answer="${item.id}" hidden>${escapeHtml(item.answer)}</div>
+        </article>
+      `,
+    )
+    .join("");
 
-  document.querySelectorAll("[data-check]").forEach((button) => {
+  list.querySelectorAll("[data-check]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = practice.find((entry) => entry.id === button.dataset.check);
-      const input = document.querySelector(`#${item.id}`);
-      const feedback = document.querySelector(`#${item.id}-feedback`);
-      const value = normalise(input.value);
-      const correct = item.accepted.some((answer) => value.includes(answer));
-      feedback.textContent = correct ? "Correct." : "Not quite. Use the answer button, then tighten the wording.";
-      feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
+      const input = list.querySelector(`[data-practice-input="${item.id}"]`);
+      const feedback = list.querySelector(`[data-feedback="${item.id}"]`);
+      const answer = normalise(input.value);
+      const correct = item.accepted.some((accepted) => normalise(accepted) === answer);
+      feedback.textContent = correct ? "Correct." : "Not quite. Use Show answer and compare the exact file command or mode.";
+      feedback.classList.toggle("correct", correct);
+      feedback.classList.toggle("incorrect", !correct);
     });
   });
 
-  document.querySelectorAll("[data-answer]").forEach((button) => {
+  list.querySelectorAll("[data-answer-toggle]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.answer}-answer`);
-      const hidden = panel.classList.toggle("hidden");
-      button.textContent = hidden ? "Show answer" : "Hide answer";
+      const panel = list.querySelector(`[data-answer="${button.dataset.answerToggle}"]`);
+      const isHidden = panel.hidden;
+      panel.hidden = !isHidden;
+      button.textContent = isHidden ? "Hide answer" : "Show answer";
     });
   });
 }
 
 function setupMistakes() {
-  const container = document.querySelector("#mistakeList");
-  container.innerHTML = mistakes.map((item, index) => `
-    <article>
-      <h3>Mistake ${index + 1}</h3>
-      <p>${escapeHtml(item.wrong)}</p>
-      <button class="answer-toggle" type="button" data-fix="m${index}">Show correction</button>
-      <div class="answer-panel hidden" id="m${index}-fix">${escapeHtml(item.fix)}</div>
-    </article>
-  `).join("");
+  const grid = document.querySelector("#mistakeGrid");
+  grid.innerHTML = mistakes
+    .map(
+      (item, index) => `
+        <article>
+          <h3>Mistake ${index + 1}</h3>
+          <p>${escapeHtml(item.wrong)}</p>
+          <button class="answer-toggle" type="button" data-correction-toggle="${index}">Show correction</button>
+          <div class="answer-panel" data-correction="${index}" hidden>${escapeHtml(item.fix)}</div>
+        </article>
+      `,
+    )
+    .join("");
 
-  document.querySelectorAll("[data-fix]").forEach((button) => {
+  grid.querySelectorAll("[data-correction-toggle]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.fix}-fix`);
-      const hidden = panel.classList.toggle("hidden");
-      button.textContent = hidden ? "Show correction" : "Hide correction";
+      const panel = grid.querySelector(`[data-correction="${button.dataset.correctionToggle}"]`);
+      const isHidden = panel.hidden;
+      panel.hidden = !isHidden;
+      button.textContent = isHidden ? "Hide correction" : "Show correction";
     });
   });
 }
 
-function setupExam() {
-  const container = document.querySelector("#examList");
-  container.innerHTML = examQuestions.map((question, index) => `
-    <article class="exam-card">
-      <div class="exam-head">
-        <h3>${escapeHtml(question.title)}</h3>
-        <span>${escapeHtml(question.marks)}</span>
-      </div>
-      <p>${escapeHtml(question.prompt)}</p>
-      <button class="ms-toggle" type="button" data-ms="q${index}">Show MS</button>
-      <div class="ms-panel hidden" id="q${index}-ms">
-        <h4>Answer</h4>
-        <p>${escapeHtml(question.answer)}</p>
-        <h4>Mark scheme</h4>
-        ${renderStudentMarkPoints(question)}
-      </div>
-    </article>
-  `).join("");
+function setupExamQuestions() {
+  const list = document.querySelector("#examList");
+  list.innerHTML = examQuestions
+    .map(
+      (question, index) => `
+        <article class="exam-card">
+          <div class="exam-head">
+            <h3>${escapeHtml(question.title)}</h3>
+            <span>${escapeHtml(question.marks)}</span>
+          </div>
+          <pre><code>${escapeHtml(question.prompt)}</code></pre>
+          <button class="ms-toggle" type="button" data-ms-toggle="${index}">Show MS</button>
+          <div class="ms-panel" data-ms="${index}" hidden>
+            <h4>Indicative answer</h4>
+            <pre><code>${escapeHtml(question.answer)}</code></pre>
+            <h4>Mark scheme</h4>
+            ${renderStudentMarkPoints(question)}
+          </div>
+        </article>
+      `,
+    )
+    .join("");
 
-  document.querySelectorAll("[data-ms]").forEach((button) => {
+  list.querySelectorAll("[data-ms-toggle]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#${button.dataset.ms}-ms`);
-      const hidden = panel.classList.toggle("hidden");
-      button.textContent = hidden ? "Show MS" : "Hide MS";
+      const panel = list.querySelector(`[data-ms="${button.dataset.msToggle}"]`);
+      const isHidden = panel.hidden;
+      panel.hidden = !isHidden;
+      button.textContent = isHidden ? "Hide MS" : "Show MS";
     });
   });
 }
 
-function init() {
-  setupPrint();
-  setupHook();
-  setupClassifier();
-  setupBuilder();
-  setupExamples();
-  setupPractice();
-  setupMistakes();
-  setupExam();
-}
-
-init();
+setupPrint();
+setupHook();
+setupBuilder();
+setupScenarioChooser();
+setupExamples();
+setupPractice();
+setupMistakes();
+setupExamQuestions();

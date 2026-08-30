@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 032 | Storage characteristics: capacity, speed, durability, portability and cost</title>
+    <title>AS9618 Lesson 032 | Monitoring, control, feedback and required sensors</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Storage characteristics: capacity, speed, durability, portability and cost</h1>
+        <h1>Monitoring, control, feedback and required sensors</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,220 +29,377 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#criteria">Criteria</a>
-        <a href="#tradeoffs">Trade-offs</a>
-        <a href="#answer">Answer pattern</a>
+        <a href="#purpose">Storage purpose</a>
+        <a href="#media">Media types</a>
+        <a href="#storage-visual">Visual guide</a>
+        <a href="#compare">Comparison</a>
         <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Monitoring, control, feedback and required sensors</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.</p>
+            <p>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.</p>
+            <p>Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.</p>
+            <p>Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Greenhouse monitoring and control</h3>
+            <p>A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start sensors -->
+        <section class="panel explanation-panel" id="explanation-sensors" data-explains="sensors" data-explanation-kind="mechanism" aria-labelledby="explanation-sensors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sensors">
+          <h2 class="explanation-sr-only" id="explanation-sensors-title">Required sensor types and applications</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Required sensor types and applications with a structured visual model." />
+            <figcaption class="explanation-sr-only">Required sensor types and applications: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li><strong>Lesson fact:</strong> An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li><strong>Lesson fact:</strong> A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li><strong>Lesson fact:</strong> A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li><strong>Lesson fact:</strong> Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sensors -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Monitoring, control, feedback and required sensors: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Compare monitoring from control.</p>
+              <details><summary>Show answer</summary><p>Monitoring records, displays or reports sensor data; control uses data to change an actuator or system state.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is feedback in a closed-loop control system?</p>
+              <details><summary>Show answer</summary><p>A new sensor reading after the action, used to adjust or stop the output.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which named sensor detects radiation used by a remote control?</p>
+              <details><summary>Show answer</summary><p>An infra-red sensor.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Which named sensor is suitable for a classroom noise monitor?</p>
+              <details><summary>Show answer</summary><p>A sound sensor.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why is a sensor not an actuator?</p>
+              <details><summary>Show answer</summary><p>A sensor supplies input about a physical quantity; an actuator produces a physical output action.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A greenhouse system records temperature and automatically opens a vent when necessary. Compare its monitoring and control functions and explain the feedback cycle.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>monitoring records/displays temperature readings</td><td>Do not state that monitoring necessarily changes an actuator, or that a sensor performs the control decision.</td><td>1</td></tr>
+                  <tr><td>control compares a reading with a rule/threshold</td><td></td><td>1</td></tr>
+                  <tr><td>controller sends output to a vent motor or other actuator</td><td></td><td>1</td></tr>
+                  <tr><td>new sensor readings provide feedback after the action</td><td></td><td>1</td></tr>
+                  <tr><td>feedback is used to adjust or stop the actuator</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 032 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Storage choice is a trade-off, not a popularity contest.</h2>
+            <h2>Secondary storage is where data survives the power switch.</h2>
             <p>
-              This lesson trains the comparison language needed for storage questions:
-              capacity, speed, durability, portability and cost. The goal is to justify
-              a choice for a specific user, not to declare one storage type "best".
+              This lesson compares magnetic, optical and solid-state storage. The exam
+              skill is choosing a suitable medium for a scenario and justifying it with
+              capacity, speed, portability, durability and cost.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>five key storage characteristics accurately</span></div>
-              <div><strong>Compare</strong><span>storage devices using scenario-linked trade-offs</span></div>
-              <div><strong>Write</strong><span>Cambridge-style justifications with cause and consequence</span></div>
+              <div><strong>Classify</strong><span>magnetic, optical and solid-state storage media</span></div>
+              <div><strong>Compare</strong><span>capacity, speed, durability, portability and cost</span></div>
+              <div><strong>Justify</strong><span>storage choices for backups, software distribution and portable devices</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Storage trade-off">
-            <span>capacity + speed + durability + portability + cost</span>
-            <p>"Best storage" without a scenario is like "best shoe" without saying hiking, running or wedding.</p>
+          <div class="system-card" aria-label="Secondary storage examples">
+            <span>HDD | optical disc | SSD | flash drive</span>
+            <p>Storage is not just "big memory". It is the long-term cupboard, and some cupboards survive being dropped better than others.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>CIE marking is strict with vague claims. "Efficient" or "better" usually needs a named characteristic and a scenario consequence.</p>
+            <p>Exam marks usually come from matching a characteristic to the scenario. "SSD is fast" is a start; "SSD is fast and shock-resistant for a laptop" is stronger.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Students often compare only speed. Capacity, durability, portability and cost can be the real deciding factors.</p>
+            <p>Secondary storage is non-volatile, but that does not mean every device is equally reliable, fast or suitable.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Choose storage for a travel photographer: huge photo library, rough travel bag, limited budget and quick editing. Which feature matters most?</h2>
+            <h2>A student stores videos on an external HDD, installs apps on an SSD, shares photos with a flash drive and finds an old DVD. Why are these not all the same?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="capacity">Capacity: enough space for many large files</button>
-            <button class="choice-card" type="button" data-hook="durability">Durability: survives movement and knocks</button>
-            <button class="choice-card" type="button" data-hook="speed">Speed: loads and saves large files quickly</button>
-            <button class="choice-card" type="button" data-hook="cost">Cost: affordable per GB</button>
+            <button class="choice-card" type="button" data-hook="hdd">HDD: high capacity and low cost per GB</button>
+            <button class="choice-card" type="button" data-hook="ssd">SSD: fast and shock-resistant</button>
+            <button class="choice-card" type="button" data-hook="flash">Flash drive: portable removable storage</button>
+            <button class="choice-card" type="button" data-hook="disc">Optical disc: cheap distribution or archive</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one feature. Good answers often combine two features, then explain the trade-off.
+            Click one storage type. The useful exam habit is linking medium -> property -> scenario.
           </div>
         </section>
 
-        <section class="panel" id="criteria" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="criteria">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>The five core characteristics</h2>
+            <h2>What secondary storage does</h2>
           </div>
-          <div class="criteria-grid">
-            <article><strong>Capacity</strong><span>How much data can be stored, usually measured in GB or TB.</span></article>
-            <article><strong>Speed</strong><span>How quickly data can be read or written; affects startup, loading and transfer.</span></article>
-            <article><strong>Durability</strong><span>How well the device resists damage, wear, shock, scratches or environmental conditions.</span></article>
-            <article><strong>Portability</strong><span>How easy it is to carry, remove, connect and use between devices.</span></article>
-            <article><strong>Cost</strong><span>Price of the device and cost per unit of storage; not always the same thing.</span></article>
+          <div class="flow-grid">
+            <article><strong>Non-volatile</strong><span>Data remains when power is switched off.</span></article>
+            <article><strong>Long-term</strong><span>Stores files, programs, backups and operating system data.</span></article>
+            <article><strong>Usually slower</strong><span>Secondary storage is usually slower than RAM for direct access.</span></article>
+            <article><strong>Scenario-based</strong><span>The best medium depends on speed, capacity, durability, portability and cost.</span></article>
           </div>
-          <div class="callout">Chinese support: capacity = 容量；speed = 速度；durability = 耐用性；portability = 便携性；cost per GB = 每 GB 成本。</div>
+          <div class="callout">Chinese support: secondary storage = 辅助存储/外存；magnetic = 磁存储；optical = 光存储；solid-state = 固态存储；non-volatile = 非易失性。</div>
         </section>
 
-        <!-- stage10-explanation:start criteria -->
-        <section class="panel explanation-panel" id="explanation-criteria" data-explains="criteria" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="criteria">
-          <h2 class="explanation-sr-only" id="explanation-criteria-title">The five core characteristics</h2>
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">What secondary storage does</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-criteria.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The five core characteristics with a structured visual model." />
-            <figcaption class="explanation-sr-only">The five core characteristics: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What secondary storage does with a structured visual model." />
+            <figcaption class="explanation-sr-only">What secondary storage does: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Capacity How much data can be stored, usually measured in GB or TB.</li><li><strong>Lesson fact:</strong> Speed How quickly data can be read or written; affects startup, loading and transfer.</li><li><strong>Lesson fact:</strong> Durability How well the device resists damage, wear, shock, scratches or environmental conditions.</li><li><strong>Lesson fact:</strong> Portability How easy it is to carry, remove, connect and use between devices.</li><li><strong>Lesson fact:</strong> Cost Price of the device and cost per unit of storage; not always the same thing.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Non-volatile Data remains when power is switched off.</li><li><strong>Lesson fact:</strong> Long-term Stores files, programs, backups and operating system data.</li><li><strong>Lesson fact:</strong> Usually slower Secondary storage is usually slower than RAM for direct access.</li><li><strong>Lesson fact:</strong> Scenario-based The best medium depends on speed, capacity, durability, portability and cost.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end criteria -->
-        <section class="panel" id="tradeoffs" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tradeoffs">
+        <!-- stage10-explanation:end purpose -->
+        <section class="panel" id="media" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Trade-offs by common storage device</h2>
+            <h2>Three main storage media</h2>
           </div>
-          <div class="device-table" role="table" aria-label="Storage characteristics comparison">
+          <div class="media-grid">
+            <article>
+              <h3>Magnetic storage</h3>
+              <p>Stores data using magnetised areas on a medium.</p>
+              <p><strong>Examples:</strong> hard disk drive (HDD), magnetic tape.</p>
+              <p><strong>Typical strengths:</strong> high capacity, relatively low cost per GB; tape is useful for large backups.</p>
+              <p><strong>Limitations:</strong> moving parts in HDDs, slower than SSDs, vulnerable to shock and magnetic fields.</p>
+            </article>
+            <article>
+              <h3>Optical storage</h3>
+              <p>Uses laser light to read marks/pits on a disc surface.</p>
+              <p><strong>Examples:</strong> CD, DVD, Blu-ray.</p>
+              <p><strong>Typical strengths:</strong> cheap, portable, useful for distributing or archiving data that changes rarely.</p>
+              <p><strong>Limitations:</strong> lower capacity and slower access than HDD/SSD; discs can scratch.</p>
+            </article>
+            <article>
+              <h3>Solid-state storage</h3>
+              <p>Stores data electronically in flash memory with no moving parts.</p>
+              <p><strong>Examples:</strong> SSD, USB flash drive, memory card.</p>
+              <p><strong>Typical strengths:</strong> fast access, durable in portable devices, quiet and low power.</p>
+              <p><strong>Limitations:</strong> often higher cost per GB than HDD; finite write cycles.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start media -->
+        <section class="panel explanation-panel" id="explanation-media" data-explains="media" data-explanation-kind="mechanism" aria-labelledby="explanation-media-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+          <h2 class="explanation-sr-only" id="explanation-media-title">Three main storage media</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-media.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three main storage media with a structured visual model." />
+            <figcaption class="explanation-sr-only">Three main storage media: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Magnetic storage uses magnetised areas; examples include HDD and tape.</li><li><strong>Lesson fact:</strong> Optical storage uses laser light to read marks on a disc.</li><li><strong>Lesson fact:</strong> Solid-state secondary storage uses non-volatile flash memory with no moving parts; an SSD or NAND flash chip is the correct illustration.</li><li><strong>Lesson fact:</strong> A volatile RAM DIMM is primary memory and is not an SSD.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end media -->
+        <section class="panel" id="storage-visual" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Look at the storage mechanism before comparing performance</h2>
+            <p>The physical mechanism helps explain speed, durability and suitable uses.</p>
+          </div>
+
+          <figure class="storage-visual">
+            <img
+              src="../assets/diagrams/lesson-032-storage-media.jpg"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+              alt="An opened magnetic hard disk with platter and actuator arm, an optical disc and drive, and a solid-state drive circuit board with flash-memory chips."
+            />
+            <div class="storage-label-strip" aria-hidden="true">
+              <span>Magnetic</span>
+              <span>Optical</span>
+              <span>Solid-state</span>
+            </div>
+            <figcaption>Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.</figcaption>
+          </figure>
+
+          <div class="mechanism-grid">
+            <article>
+              <h3>Magnetic HDD</h3>
+              <p>Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.</p>
+              <strong>Consequence:</strong><span> high capacity and low cost per GB, but mechanical parts are vulnerable to shock.</span>
+            </article>
+            <article>
+              <h3>Optical disc</h3>
+              <p>A laser reads changes such as pits and lands on the disc surface.</p>
+              <strong>Consequence:</strong><span> portable and cheap to distribute, but generally slower and lower-capacity.</span>
+            </article>
+            <article>
+              <h3>Solid-state drive</h3>
+              <p>Electronic flash-memory cells store data with no moving parts.</p>
+              <strong>Consequence:</strong><span> fast and shock-resistant, but often costs more per GB than HDD storage.</span>
+            </article>
+          </div>
+
+          <details class="diagram-check">
+            <summary>Check your reading: why is an SSD often suitable for a laptop?</summary>
+            <p>It has no moving parts, so it is more resistant to knocks and vibration, and it normally provides faster access than an HDD. This does not mean an SSD can never fail.</p>
+          </details>
+        </section>
+
+        <!-- stage10-explanation:start storage-visual -->
+        <section class="panel explanation-panel" id="explanation-storage-visual" data-explains="storage-visual" data-explanation-kind="tradeoff" aria-labelledby="explanation-storage-visual-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+          <h2 class="explanation-sr-only" id="explanation-storage-visual-title">Look at the storage mechanism before comparing performance</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-storage-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Look at the storage mechanism before comparing performance with a structured visual model." />
+            <figcaption class="explanation-sr-only">Look at the storage mechanism before comparing performance: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> The physical mechanism helps explain speed, durability and suitable uses.</li><li><strong>Lesson fact:</strong> Magnetic</li><li><strong>Lesson fact:</strong> Solid-state</li><li><strong>Lesson fact:</strong> Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.</li><li><strong>Lesson fact:</strong> Magnetic HDD</li><li><strong>Lesson fact:</strong> Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.</li><li><strong>Lesson fact:</strong> Consequence: high capacity and low cost per GB, but mechanical parts are vulnerable to shock.</li><li><strong>Lesson fact:</strong> Optical disc</li><li><strong>Lesson fact:</strong> A laser reads changes such as pits and lands on the disc surface.</li><li><strong>Lesson fact:</strong> Consequence: portable and cheap to distribute, but generally slower and lower-capacity.</li><li><strong>Lesson fact:</strong> Solid-state drive</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end storage-visual -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Compare by scenario, not by favourite brand</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Secondary storage comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Device</div>
-              <div role="columnheader">Strengths</div>
-              <div role="columnheader">Weaknesses</div>
-              <div role="columnheader">Suitable when...</div>
+              <div role="columnheader">Medium</div>
+              <div role="columnheader">Speed</div>
+              <div role="columnheader">Capacity/cost</div>
+              <div role="columnheader">Good scenario</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">HDD</div>
-              <div role="cell">High capacity; low cost per GB.</div>
-              <div role="cell">Moving parts; slower; less shock-resistant than SSD.</div>
-              <div role="cell">Large storage is needed cheaply and portability is less critical.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">SSD</div>
-              <div role="cell">Fast; durable; no moving parts; low power.</div>
-              <div role="cell">Often higher cost per GB than HDD.</div>
-              <div role="cell">Speed and durability matter, especially in laptops.</div>
+              <div role="cell">Magnetic HDD</div>
+              <div role="cell">Slower than SSD; mechanical parts.</div>
+              <div role="cell">High capacity and low cost per GB.</div>
+              <div role="cell">Desktop storage, large file libraries, cost-sensitive backups.</div>
             </div>
             <div class="table-row" role="row">
               <div role="cell">Magnetic tape</div>
-              <div role="cell">Very high capacity; low cost for archives.</div>
-              <div role="cell">Slow sequential access; not convenient for frequent random access.</div>
-              <div role="cell">Huge backups are rarely accessed.</div>
+              <div role="cell">Slow sequential access.</div>
+              <div role="cell">Very high capacity and low cost for backups.</div>
+              <div role="cell">Archiving and large organisation backups.</div>
             </div>
             <div class="table-row" role="row">
               <div role="cell">Optical disc</div>
-              <div role="cell">Cheap removable media; useful for fixed offline copies.</div>
-              <div role="cell">Lower capacity; slower; can scratch.</div>
-              <div role="cell">Data rarely changes and low-cost distribution matters.</div>
+              <div role="cell">Generally slower access.</div>
+              <div role="cell">Lower capacity; cheap to produce.</div>
+              <div role="cell">Distributing fixed content or offline archive copies.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Solid-state SSD</div>
+              <div role="cell">Fast access, no moving parts.</div>
+              <div role="cell">Often higher cost per GB than HDD.</div>
+              <div role="cell">Laptops, operating system drive, fast application loading.</div>
             </div>
             <div class="table-row" role="row">
               <div role="cell">USB flash / memory card</div>
-              <div role="cell">Very portable and removable; no moving parts.</div>
-              <div role="cell">Small devices can be lost; speed and quality vary.</div>
-              <div role="cell">Files need to be moved between devices or used in cameras/phones.</div>
+              <div role="cell">Fast enough for portable transfer; varies by device.</div>
+              <div role="cell">Portable, small, removable; capacity varies.</div>
+              <div role="cell">Moving files between devices, cameras, phones, embedded devices.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start tradeoffs -->
-        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tradeoffs">
-          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Trade-offs by common storage device</h2>
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by scenario, not by favourite brand</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trade-offs by common storage device with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trade-offs by common storage device: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by scenario, not by favourite brand with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare by scenario, not by favourite brand: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Strengths</li><li><strong>Lesson fact:</strong> Weaknesses</li><li><strong>Lesson fact:</strong> Suitable when...</li><li><strong>Lesson fact:</strong> High capacity; low cost per GB.</li><li><strong>Lesson fact:</strong> Moving parts; slower; less shock-resistant than SSD.</li><li><strong>Lesson fact:</strong> Large storage is needed cheaply and portability is less critical.</li><li><strong>Lesson fact:</strong> Fast; durable; no moving parts; low power.</li><li><strong>Lesson fact:</strong> Often higher cost per GB than HDD.</li><li><strong>Lesson fact:</strong> Speed and durability matter, especially in laptops.</li><li><strong>Lesson fact:</strong> Magnetic tape</li><li><strong>Lesson fact:</strong> Very high capacity; low cost for archives.</li><li><strong>Lesson fact:</strong> Slow sequential access; not convenient for frequent random access.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> An HDD provides high capacity at relatively low cost and suits large file libraries or cost-sensitive backups.</li><li><strong>Lesson fact:</strong> Magnetic tape provides high capacity with sequential access and suits archival backups.</li><li><strong>Lesson fact:</strong> Optical media suits distributing read-only content or archiving data that changes rarely.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end tradeoffs -->
-        <section class="panel" id="answer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="answer">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>The answer pattern: choice -> characteristic -> context -> consequence</h2>
-          </div>
-          <div class="answer-pattern">
-            <div><strong>Choice</strong><span>Use an SSD</span></div>
-            <div><strong>Characteristic</strong><span>because it has fast access and no moving parts</span></div>
-            <div><strong>Context</strong><span>for a laptop carried to school each day</span></div>
-            <div><strong>Consequence</strong><span>so programs load quickly and it is less likely to be damaged by knocks</span></div>
-          </div>
-          <div class="callout">Weak: "SSD is better." Strong: "SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop."</div>
-        </section>
-
-        <!-- stage10-explanation:start answer -->
-        <section class="panel explanation-panel" id="explanation-answer" data-explains="answer" data-explanation-kind="mechanism" aria-labelledby="explanation-answer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="answer">
-          <h2 class="explanation-sr-only" id="explanation-answer-title">The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-answer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence with a structured visual model." />
-            <figcaption class="explanation-sr-only">The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Choice Use an SSD</li><li><strong>Lesson fact:</strong> Characteristic because it has fast access and no moving parts</li><li><strong>Lesson fact:</strong> Context for a laptop carried to school each day</li><li><strong>Lesson fact:</strong> Consequence so programs load quickly and it is less likely to be damaged by knocks</li><li><strong>Lesson fact:</strong> Weak: &quot;SSD is better.&quot; Strong: &quot;SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop.&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end answer -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <!-- stage10-explanation:end compare -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Choose by priority</h2>
+            <h2>Choose the storage medium</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="budget">Store 10 TB of video as cheaply as possible</option>
-                <option value="mobile">Run applications on a laptop carried every day</option>
-                <option value="archive">Keep huge backups for years, rarely accessed</option>
-                <option value="transfer">Move small files between school computers</option>
-                <option value="distribution">Distribute fixed read-only content cheaply</option>
-                <option value="camera">Store photos on a small removable device inside a camera</option>
+                <option value="laptop">A laptop needs fast startup and resistance to knocks</option>
+                <option value="backup">A company needs low-cost long-term backup of huge data sets</option>
+                <option value="archive">A photographer wants offline copies of finished albums that rarely change</option>
+                <option value="desktop">A desktop PC needs cheap high-capacity storage for videos</option>
+                <option value="camera">A camera needs small removable storage</option>
+                <option value="software">A publisher distributes fixed read-only media to many users</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Recommend</button>
+            <button type="button" id="chooseBtn">Recommend storage</button>
           </div>
           <div class="result-box" id="componentResult" aria-live="polite"></div>
           <div class="method-box" id="componentMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trade-off answers in exam style</h2>
+            <h2>Choosing storage with reasons</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="laptop">Laptop</button>
-            <button class="tab" type="button" data-example="backup">Backup</button>
-            <button class="tab" type="button" data-example="video">Video editor</button>
+            <button class="tab active" type="button" data-example="laptop">Laptop SSD</button>
+            <button class="tab" type="button" data-example="backup">Tape backup</button>
+            <button class="tab" type="button" data-example="optical">Optical archive</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -252,46 +409,46 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the vague comparison</h2>
+            <h2>Fix the weak storage answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"SSD is more efficient than HDD."</p>
+              <p class="wrong">"Use RAM for backups because it is fast."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Say what "efficient" means. For example: SSD has faster access and no moving parts, so applications load faster and the laptop is less likely to be damaged by knocks.</p>
+              <p class="answer" id="mistake1">Backups need non-volatile secondary storage. RAM is volatile, so backup data would be lost when power is off.</p>
             </article>
             <article>
-              <p class="wrong">"Tape is bad because it is slow."</p>
+              <p class="wrong">"SSD is always best because it is fastest."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Tape can be suitable for huge backups because it has high capacity and low cost. Slow sequential access is acceptable if data is rarely restored.</p>
+              <p class="answer" id="mistake2">SSD is fast and durable, but it may cost more per GB than HDD or tape. For huge low-cost archives, magnetic storage may be more suitable.</p>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on explicit characteristics and scenario-linked consequences.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on naming the storage type and linking its characteristics to the scenario.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Characteristics decide suitability</h2>
+            <h2>Secondary storage in six exam sentences</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Capacity</strong><span>Enough space for current and future data.</span></div>
-            <div><strong>Speed</strong><span>Read/write access affects loading, saving and transfer.</span></div>
-            <div><strong>Durability</strong><span>Resistance to shock, scratches, wear or damage.</span></div>
-            <div><strong>Portability</strong><span>Ease of carrying, removing and using between devices.</span></div>
-            <div><strong>Cost</strong><span>Device price and cost per GB.</span></div>
-            <div><strong>Exam rule</strong><span>Characteristic plus context plus consequence earns stronger credit.</span></div>
+            <div><strong>Secondary storage</strong><span>Non-volatile long-term storage for files, programs and backups.</span></div>
+            <div><strong>Magnetic HDD</strong><span>High capacity and low cost per GB, but mechanical and slower than SSD.</span></div>
+            <div><strong>Magnetic tape</strong><span>Good for huge sequential backups and archives.</span></div>
+            <div><strong>Optical disc</strong><span>Cheap removable media for fixed content or archive copies.</span></div>
+            <div><strong>Solid-state</strong><span>Fast, durable, no moving parts, often higher cost per GB.</span></div>
+            <div><strong>Suitability</strong><span>Always connect the medium to capacity, speed, durability, portability and cost.</span></div>
           </div>
         </section>
 
@@ -301,25 +458,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a ranking table for HDD, SSD, tape, optical disc and USB flash using the five characteristics.</li>
-            <li>Write a 5-mark answer recommending storage for a school video archive and an active editing workstation.</li>
-            <li>Rewrite three vague phrases: "better", "more efficient", "more reliable" into precise storage explanations.</li>
-            <li>Write one trade-off sentence using "however" about SSD and HDD.</li>
+            <li>Create a comparison table for magnetic, optical and solid-state storage with examples and two characteristics each.</li>
+            <li>Write a 4-mark answer recommending storage for a laptop used by a travelling student.</li>
+            <li>Write a 4-mark answer recommending storage for a company archive that stores huge backups for years.</li>
+            <li>Explain why "SSD is always best" is not a full exam answer.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Ranking:</strong> use relative words such as high/medium/low and include a reason, not just ticks.</p>
-            <p><strong>Archive/editing:</strong> HDD or tape may suit large low-cost archive storage; SSD suits active editing because speed matters.</p>
-            <p><strong>Vague phrases:</strong> replace with named characteristics such as read/write speed, shock resistance or cost per GB.</p>
-            <p><strong>Trade-off:</strong> SSD is faster and more durable; however, HDD may offer more capacity for the same cost.</p>
+            <p><strong>Comparison:</strong> magnetic HDD/tape; optical CD/DVD/Blu-ray; solid-state SSD/USB/memory card.</p>
+            <p><strong>Laptop:</strong> SSD is suitable because it is fast, has no moving parts and is less vulnerable to knocks.</p>
+            <p><strong>Archive:</strong> magnetic tape may be suitable because it offers very high capacity and low cost for long-term sequential backups.</p>
+            <p><strong>Evaluation:</strong> fastest is not always most suitable; cost, capacity, write patterns and durability also matter.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

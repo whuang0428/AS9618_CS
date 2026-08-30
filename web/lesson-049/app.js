@@ -1,107 +1,92 @@
-const scenarioMap = {
-  single: {
-    result: "Most relevant: clock speed and CPU architecture; extra cores may not help much.",
-    method: "A single-threaded program mainly runs on one core. A higher clock speed may allow that core to perform more cycles per second, but memory access and architecture still affect real performance.",
-    trap: "Do not say four cores make a single-threaded task four times faster.",
+const interruptMap = {
+  keyboard: {
+    result: "Keyboard interrupt: a key press is waiting to be handled.",
+    method: "The CPU completes the current instruction, detects the keyboard interrupt, saves PC/register/status information, runs the keyboard ISR to read the key code, restores the saved state and resumes the interrupted program.",
+    trap: "Do not say the CPU must constantly ask the keyboard whether a key has been pressed. That describes polling, not interrupt-driven input.",
   },
-  multi: {
-    result: "Most relevant: number of cores, if the software can split the work.",
-    method: "A video export can often be divided into independent chunks or threads. Multiple cores can process different parts at the same time, reducing total time.",
-    trap: "Do not award cores as helpful unless the task can be parallelised.",
+  timer: {
+    result: "Timer interrupt: the operating system can regain control.",
+    method: "A timer signal interrupts the running process. The CPU state is saved, the timer ISR runs, and the operating system can update timing information or decide whether another process should run.",
+    trap: "Do not turn this into a full scheduling-algorithm answer. At AS Section 4 depth, focus on the interrupt sequence and the purpose of the timer signal.",
   },
-  loop: {
-    result: "Most relevant: cache, if the same data/instructions are reused.",
-    method: "Repeatedly used data may remain in cache. A cache hit lets the CPU access it faster than fetching it from main memory each time.",
-    trap: "Do not confuse cache with ordinary storage capacity.",
+  printer: {
+    result: "Printer interrupt: the printer reports that it is ready for more data.",
+    method: "The CPU saves the current state, runs the printer ISR, sends or prepares the next data item, acknowledges the device and then returns to the interrupted program.",
+    trap: "Do not write that a printer interrupt means the printer has failed. Ready and completed events can also generate interrupts.",
   },
-  large: {
-    result: "Most relevant: bus width, when moving large amounts of data between components is the bottleneck.",
-    method: "A wider data bus can transfer more bits in one transfer, although the memory system and workload must be able to use the extra width.",
-    trap: "Do not claim a wider bus makes every program faster.",
-  },
-  memory: {
-    result: "Most relevant: cache and memory bottleneck.",
-    method: "If the CPU often waits for data from main memory, a larger or more effective cache can reduce waiting time when requested data is found in cache.",
-    trap: "Do not focus only on clock speed when the CPU is waiting for memory.",
+  fault: {
+    result: "Critical hardware fault: a high-priority interrupt needs urgent handling.",
+    method: "A serious fault may use a non-maskable or high-priority interrupt. The CPU saves what it can, runs the appropriate handler, and may shut down, log the event or take protective action.",
+    trap: "Do not claim every interrupt is non-maskable. Many routine I/O interrupts can be masked or delayed.",
   },
 };
 
 const examples = {
-  clock: {
-    title: "Example 1: clock speed",
-    problem: "Explain why increasing clock speed can improve performance, and why it may not double performance.",
+  keyboard: {
+    title: "Example 1: keyboard interrupt",
+    problem: "A program is calculating while the user presses a key. Trace how the CPU handles the input.",
     steps: [
-      "Clock speed is the number of clock cycles per second.",
-      "A higher clock speed can allow more instruction-cycle steps to be performed per second.",
-      "However, different CPUs may do different amounts of work per cycle.",
-      "The CPU may also wait for memory, cache misses or I/O.",
-      "Therefore a higher clock speed can improve performance, but does not guarantee proportional improvement.",
+      "The keyboard controller sends an interrupt signal.",
+      "The CPU finishes the current instruction before accepting the interrupt.",
+      "The processor state is saved, including the program counter and relevant registers.",
+      "The keyboard ISR runs and reads the key code from the device/buffer.",
+      "The interrupt is acknowledged or cleared.",
+      "The saved state is restored and the original program resumes.",
     ],
   },
-  cores: {
-    title: "Example 2: cores",
-    problem: "A CPU changes from 2 cores to 8 cores. Explain when this helps.",
+  timer: {
+    title: "Example 2: timer interrupt",
+    problem: "A timer interrupt occurs while a process is running. Explain why this is useful.",
     steps: [
-      "More cores allow more instructions or threads to be processed at the same time.",
-      "This helps when the workload can be divided into independent tasks.",
-      "It also helps when several programs run at once.",
-      "A single-threaded program may not use the extra cores fully.",
-      "A strong answer links cores to parallel processing, not just 'more is faster'.",
+      "A timer produces an interrupt at a regular interval.",
+      "The CPU saves the current process state.",
+      "The timer ISR runs and updates operating system timing information.",
+      "The operating system can decide whether the current process continues or another process should be given CPU time.",
+      "The key exam point is that the CPU does not need the running process to voluntarily stop.",
     ],
   },
-  cache: {
-    title: "Example 3: cache",
-    problem: "A loop repeatedly reads the same table. Explain how cache may help.",
+  polling: {
+    title: "Example 3: interrupt versus polling",
+    problem: "Compare checking a keyboard every millisecond with using a keyboard interrupt.",
     steps: [
-      "Cache stores frequently or recently used data/instructions close to the CPU.",
-      "If the table data is in cache, the CPU can access it faster than main memory.",
-      "This reduces waiting time for memory access.",
-      "If the needed data is not in cache, a cache miss occurs and main memory must be used.",
-      "The benefit depends on cache hit rate and the program's access pattern.",
-    ],
-  },
-  word: {
-    title: "Example 4: bus width",
-    problem: "Explain how a wider data bus may affect performance.",
-    steps: [
-      "Bus width is the number of bits that can be transferred together on that bus.",
-      "A wider data bus can transfer more bits per transfer.",
-      "This may reduce the number of transfers needed for suitable data movement.",
-      "The memory system and workload can still limit the benefit.",
-      "The data type, architecture and software must benefit from the larger word.",
+      "Polling means the CPU repeatedly checks keyboard status, even when no key has been pressed.",
+      "An interrupt lets the keyboard signal only when an event needs attention.",
+      "Interrupts can reduce wasted CPU time for unpredictable input.",
+      "Polling may be simpler, but frequent checks can be inefficient.",
+      "A strong answer states the device action, the CPU behaviour and the consequence.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What factor is measured in Hz or GHz?", accepted: ["clock speed", "clock frequency"], answer: "Clock speed / clock frequency" },
-  { id: "p2", prompt: "What is the small fast memory close to the CPU called?", accepted: ["cache", "cache memory"], answer: "Cache / cache memory" },
-  { id: "p3", prompt: "What is the term for processing units that can execute instructions independently?", accepted: ["cores", "cpu cores", "processor cores", "core"], answer: "Cores" },
-  { id: "p4", prompt: "What factor states how many bits a bus can transfer together?", accepted: ["bus width", "data bus width"], answer: "Bus width" },
-  { id: "p5", prompt: "What is the name for finding requested data in cache?", accepted: ["cache hit", "hit"], answer: "Cache hit" },
-  { id: "p6", prompt: "What is the name for not finding requested data in cache?", accepted: ["cache miss", "miss"], answer: "Cache miss" },
-  { id: "p7", prompt: "More cores mainly help when work can be split into what kind of tasks?", accepted: ["parallel", "parallel tasks", "parallelisable", "parallelizable", "independent tasks", "threads"], answer: "Parallel / independent tasks or threads" },
-  { id: "p8", prompt: "A higher clock speed means more clock cycles per what?", accepted: ["second", "seconds"], answer: "Second" },
-  { id: "p9", prompt: "A CPU waiting for slow memory access is an example of what?", accepted: ["bottleneck", "memory bottleneck"], answer: "A bottleneck / memory bottleneck" },
-  { id: "p10", prompt: "Does one processor performance factor guarantee that every program is faster? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p1", prompt: "What is the name for a signal that causes the processor to pause normal execution?", accepted: ["interrupt", "an interrupt"], answer: "Interrupt" },
+  { id: "p2", prompt: "What does ISR stand for?", accepted: ["interrupt service routine", "an interrupt service routine"], answer: "Interrupt service routine" },
+  { id: "p3", prompt: "Before running an ISR, what must the CPU save so it can resume later?", accepted: ["state", "processor state", "cpu state", "program state", "context", "pc registers and flags", "program counter registers and status flags"], answer: "The processor state, such as PC, registers and status flags" },
+  { id: "p4", prompt: "Which register must be saved because it holds the address of the next instruction?", accepted: ["pc", "program counter", "the program counter"], answer: "Program counter / PC" },
+  { id: "p5", prompt: "What routine handles a specific interrupt?", accepted: ["isr", "interrupt service routine"], answer: "ISR / interrupt service routine" },
+  { id: "p6", prompt: "What is the term for repeatedly checking a device status instead of waiting for a signal?", accepted: ["polling"], answer: "Polling" },
+  { id: "p7", prompt: "After the ISR finishes, what happens to the saved state?", accepted: ["restored", "it is restored", "state is restored", "processor state is restored", "cpu state is restored"], answer: "It is restored" },
+  { id: "p8", prompt: "A timer interrupt can help an OS share CPU time between what?", accepted: ["processes", "tasks", "programs", "processes or tasks", "tasks or processes"], answer: "Processes / tasks" },
+  { id: "p9", prompt: "Can all interrupts be ignored or disabled? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "What type of interrupt cannot normally be ignored: maskable or non-maskable?", accepted: ["non maskable", "non-maskable", "nonmaskable", "non maskable interrupt", "non-maskable interrupt"], answer: "Non-maskable interrupt" },
 ];
 
 const mistakes = [
   {
-    wrong: "A CPU with twice the clock speed always runs every program twice as fast.",
-    fix: "Higher clock speed can increase cycles per second, but performance also depends on architecture, memory access, cache, cores and the workload.",
+    wrong: "An interrupt means the processor has crashed.",
+    fix: "An interrupt is a signal requesting attention. It may be caused by normal I/O, a timer, software or a fault; it does not automatically mean a crash.",
   },
   {
-    wrong: "More cores always make a single program faster.",
-    fix: "More cores help only if the program or workload can be divided into parallel tasks or threads.",
+    wrong: "The CPU starts the ISR immediately in the middle of the current instruction.",
+    fix: "For most maskable interrupts, the CPU finishes the current instruction, then checks and accepts the interrupt.",
   },
   {
-    wrong: "Cache is just a bigger version of RAM.",
-    fix: "Cache is smaller and faster than RAM. It stores frequently or recently used data/instructions to reduce slow main-memory access.",
+    wrong: "The ISR replaces the interrupted program.",
+    fix: "The ISR temporarily handles the event. The saved state is restored so the interrupted program can continue, unless the handler decides otherwise.",
   },
   {
-    wrong: "Word length is the number of words typed by the programmer.",
-    fix: "Word length is the number of bits the CPU can process as a unit, such as the size of a register word.",
+    wrong: "Polling and interrupts are the same because both involve devices.",
+    fix: "Polling means the CPU repeatedly checks the device. Interrupts let the device signal the CPU when attention is needed.",
   },
 ];
 
@@ -115,90 +100,90 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Explain how clock speed can affect processor performance and why it does not guarantee that one computer is faster than another.",
-    answer: "Clock speed is the number of clock cycles per second. A higher clock speed can allow more instruction-cycle steps to be performed per second, which may improve performance. However, CPUs may have different architectures and may do different amounts of work per cycle. Performance may also be limited by memory access, cache misses, cores or the type of workload, so clock speed alone does not guarantee a faster computer.",
+    prompt: "Describe the sequence of events when a processor accepts an interrupt.",
+    answer: "The processor completes the current instruction, checks or recognises that an interrupt is pending, saves the current processor state such as the program counter, registers and status flags, locates and runs the appropriate interrupt service routine, then restores the saved state and returns to the interrupted program.",
     marking: [
-      { mark: "B1", text: "clock speed is cycles per second / frequency of the processor clock" },
-      { mark: "B1", text: "higher clock speed can allow more instruction-cycle steps/instructions to be processed per second" },
-      { mark: "B1", text: "identifies architecture/work per cycle as another factor" },
-      { mark: "B1", text: "identifies a valid bottleneck such as memory/cache/I/O/workload" },
-      { mark: "B1", text: "concludes that clock speed alone does not guarantee overall faster performance" },
+      { mark: "B1", text: "current instruction is completed before the interrupt is serviced" },
+      { mark: "B1", text: "interrupt is checked/recognised/accepted by the processor" },
+      { mark: "B1", text: "processor state is saved, including valid examples such as PC/registers/status flags" },
+      { mark: "B1", text: "appropriate ISR/interrupt handler is located and executed" },
+      { mark: "B1", text: "saved state is restored and the original program resumes/returns" },
     ],
     strict: [
-      "Do not accept 'clock speed is how fast the computer is' as a definition.",
-      "Do not award full marks for vague 'other things matter' without naming a factor.",
-      "Allow Hz/GHz as evidence of cycles per second.",
+      "Do not award full sequence credit if state saving is omitted.",
+      "Do not accept 'the CPU stops forever' as resume/return.",
+      "Allow context save/context restore as equivalent to processor state saving/restoring.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Explain why increasing the number of cores may improve performance for some tasks but not for others.",
-    answer: "More cores provide more independent processing units, so different tasks or threads can be executed in parallel. This can improve performance when software can divide the work, such as video export or several programs running at once. It may not improve a single-threaded program much because that program cannot make full use of the extra cores.",
+    prompt: "Explain why a processor must save its state before running an interrupt service routine.",
+    answer: "The processor state contains the information needed to continue the interrupted program, such as the program counter, registers and status flags. Saving this state before running the ISR prevents the ISR from overwriting important values. After the ISR finishes, the saved state can be restored so the original program can continue from the correct point with the correct data.",
     marking: [
-      { mark: "B1", text: "cores are independent processing units / can execute instructions independently" },
-      { mark: "B1", text: "more cores can allow parallel execution of tasks/threads" },
-      { mark: "B1", text: "valid scenario where parallelism helps" },
-      { mark: "B1", text: "explains limitation for single-threaded or non-parallelisable software" },
+      { mark: "B1", text: "state contains information needed to continue the interrupted program" },
+      { mark: "B1", text: "valid examples of state such as PC, registers or status flags" },
+      { mark: "B1", text: "prevents loss/overwriting of current program information" },
+      { mark: "B1", text: "allows execution to resume from the correct point after the ISR" },
     ],
     strict: [
-      "Do not accept 'more cores always means faster' for the limitation mark.",
-      "Do not require the word thread if independent tasks are clearly described.",
-      "Allow multitasking as a valid scenario.",
+      "Do not accept vague 'so it remembers things' without linking to continuation/resume.",
+      "Do not require stack terminology, but allow stack as where state may be saved.",
+      "Allow 'context' for state if clearly processor/program context.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A program repeatedly accesses the same instructions and data. Explain how cache memory may improve performance.",
-    answer: "Cache is small, fast memory close to the CPU. It stores frequently or recently used instructions and data. If the program requests data that is already in cache, a cache hit occurs and the CPU can access it faster than main memory. This reduces waiting time for memory access. If the data is not in cache, a cache miss occurs and the CPU must access slower main memory.",
+    prompt: "Compare interrupt-driven input with polling for handling keyboard input.",
+    answer: "With interrupt-driven input, the keyboard sends an interrupt when a key is pressed, so the CPU can continue other work until attention is required. The CPU then saves state, runs the keyboard ISR and resumes. With polling, the CPU repeatedly checks the keyboard status to see whether a key has been pressed. Polling can waste processor time if no input is available, while interrupts are usually more efficient for unpredictable input.",
     marking: [
-      { mark: "B1", text: "cache is small fast memory close to/inside the CPU" },
-      { mark: "B1", text: "stores frequently/recently used data or instructions" },
-      { mark: "B1", text: "cache hit means requested item is found in cache" },
-      { mark: "B1", text: "access from cache is faster than from main memory / reduces waiting time" },
-      { mark: "B1", text: "cache miss requires access to slower main memory" },
+      { mark: "B1", text: "interrupt-driven input lets the device signal the CPU when an event occurs" },
+      { mark: "B1", text: "CPU can do other work until the interrupt occurs" },
+      { mark: "B1", text: "interrupt handling involves ISR/state save/resume or equivalent" },
+      { mark: "B1", text: "polling means CPU repeatedly checks device/status flag" },
+      { mark: "B1", text: "polling may waste CPU time or interrupts can be more efficient for unpredictable events" },
     ],
     strict: [
-      "Do not accept cache as permanent backing storage.",
-      "Do not accept 'cache increases RAM size' as a benefit.",
-      "Allow 'locality' only if linked to repeated/frequent access.",
+      "Do not accept 'polling is asking people questions' without device/status context.",
+      "Do not award efficiency mark unless CPU time/work is referenced.",
+      "Allow a balanced answer that notes polling is simpler for some systems.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain how bus width may affect processor performance.",
-    answer: "Bus width is the number of bits that can be transferred together on a bus. A wider data bus can transfer more bits per transfer, which may reduce the number of transfers needed for suitable data movement. This can contribute to performance when bus transfer is a bottleneck. The memory system, processor and workload may still limit the benefit, so a wider bus does not guarantee a faster computer.",
+    prompt: "A printer sends an interrupt to a processor. Explain the role of the interrupt service routine.",
+    answer: "The printer interrupt service routine is the handler that deals with the printer event. It may check the printer status, send or prepare the next data item, acknowledge or clear the interrupt and return control to the interrupted program after the processor state is restored.",
     marking: [
-      { mark: "B1", text: "bus width is the number of bits transferred together on the bus" },
-      { mark: "B1", text: "a wider data bus transfers more bits per transfer" },
-      { mark: "B1", text: "links this to fewer transfers or reduced transfer bottleneck for suitable data" },
-      { mark: "B1", text: "recognises that memory, processor or workload may still limit performance" },
+      { mark: "B1", text: "ISR is a routine/program/handler for a specific interrupt" },
+      { mark: "B1", text: "checks/responds to printer status or printer event" },
+      { mark: "B1", text: "performs an appropriate action such as sending/preparing data or clearing/acknowledging interrupt" },
+      { mark: "B1", text: "returns control/allows return to interrupted program after handling" },
     ],
     strict: [
-      "Do not treat bus width as clock speed or number of cores.",
-      "Do not award the limitation point if the answer says a wider bus is always faster.",
-      "Allow another accurate transfer-rate consequence if linked to bus width.",
+      "Do not accept 'the ISR is the interrupt signal' because ISR is a routine, not the signal.",
+      "Do not require exact printer-buffer terminology.",
+      "Allow 'driver routine' only if the interrupt-handling role is clear.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A student says: 'Computer A has a higher clock speed, so it must perform better than Computer B.' Discuss this statement using processor type, cores, bus width, clock speed and cache.",
-    answer: "A higher clock speed can improve performance because the CPU can perform more clock cycles per second. However, this alone is not enough to prove Computer A is faster. Processor type includes architecture, instruction-set and execution design, so processors may perform different amounts of useful work for the workload. Computer B may have more cores for parallel tasks, a wider data bus that transfers more bits per transfer, or a larger or more effective cache reducing main-memory access time. Actual performance depends on the program and bottlenecks, so no single factor guarantees the result.",
+    prompt: "Explain interrupt priority and Compare maskable and non-maskable interrupts.",
+    answer: "Interrupt priority is used when more than one interrupt needs attention, so the processor can handle the most urgent one first. A lower-priority interrupt may wait until a higher-priority interrupt has been serviced. A maskable interrupt can be disabled or delayed by the processor, often because it is less urgent. A non-maskable interrupt cannot normally be ignored and is used for critical events such as serious hardware faults.",
     marking: [
-      { mark: "B1", text: "higher clock speed can improve performance through more cycles per second" },
-      { mark: "B1", text: "states that clock speed alone is insufficient for judging performance" },
-      { mark: "B1", text: "explains processor type as architecture/instruction-set/execution design linked to workload" },
-      { mark: "B1", text: "explains relevance of cores for parallel work and/or bus width for bits transferred per transfer" },
-      { mark: "B1", text: "explains relevance of cache reducing memory access time" },
-      { mark: "B1", text: "reasoned conclusion that actual performance depends on task and bottlenecks" },
+      { mark: "B1", text: "priority ranks interrupts by urgency/importance" },
+      { mark: "B1", text: "higher-priority interrupt may be serviced before lower-priority interrupt" },
+      { mark: "B1", text: "lower-priority interrupt may wait/be delayed" },
+      { mark: "B1", text: "maskable interrupt can be disabled/ignored/delayed" },
+      { mark: "B1", text: "non-maskable interrupt cannot normally be ignored/disabled" },
+      { mark: "B1", text: "valid critical event example for non-maskable interrupt" },
     ],
     strict: [
-      "Do not accept a list of factors without linking at least one to performance.",
-      "Do not award conclusion if it only repeats 'A is faster'.",
-      "Do not accept processor type as only a brand name; allow another accurate bus-width consequence if linked to the scenario.",
+      "Do not accept 'priority means faster CPU clock speed'.",
+      "Do not accept 'maskable means hidden from the user' unless disabling/delaying is also stated.",
+      "Allow NMI abbreviation if expanded or clearly explained.",
     ],
   },
 ];
@@ -214,10 +199,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    depends: "Correct. More cores help only when the software/workload can use parallel processing.",
-    yes: "Not always. A single-threaded task may use only one core heavily.",
-    cache: "No. Cache usually helps by reducing slower memory access; removing it is not the secret sauce.",
-    bus: "No. Removing the data bus would prevent the required transfers; it is not a performance improvement.",
+    save: "Correct. The processor handles the event without losing the current program's place.",
+    delete: "No. Interrupts should not destroy the current program. State saving exists for a reason.",
+    ignore: "No. Interrupts are used because devices may need attention before the current program naturally finishes.",
+    random: "No. The ISR address is found in a controlled way, not by a lucky dip through memory.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -229,14 +214,14 @@ function setupHook() {
 }
 
 function setupSimulator() {
-  const select = document.querySelector("#scenarioInput");
+  const select = document.querySelector("#interruptInput");
   const result = document.querySelector("#simulateResult");
   const method = document.querySelector("#simulateMethod");
   const trap = document.querySelector("#simulateTrap");
   function simulate() {
-    const item = scenarioMap[select.value];
+    const item = interruptMap[select.value];
     result.textContent = item.result;
-    method.innerHTML = `<strong>Reasoning:</strong> ${item.method}`;
+    method.innerHTML = `<strong>Trace:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
   select.addEventListener("change", simulate);
@@ -261,7 +246,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("clock");
+  renderExample("keyboard");
 }
 
 function setupAnswerToggles(scope = document) {

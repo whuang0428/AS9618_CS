@@ -33,8 +33,8 @@ if (!progressed) {
   expect(semanticGate.problems.some(({ id }) => id === "GATE-FIRST-USE-EVIDENCE"), "missing exact first-use evidence did not block the gate");
 }
 for (const id of [
-  "CRIT-S1.03-ONES-COMPLEMENT", "CRIT-L049-PERFORMANCE-FACTORS", "CRIT-L107-CHAR-FUNCTION-TYPE",
-  "CRIT-L121-PROVIDED-FUNCTIONS", "CRIT-L133-CHAR-FUNCTION-TYPE", "CRIT-L133-PROVIDED-FUNCTION",
+  "CRIT-S1.03-ONES-COMPLEMENT", "CRIT-L050-PERFORMANCE-FACTORS", "CRIT-L108-CHAR-FUNCTION-TYPE",
+  "CRIT-L122-PROVIDED-FUNCTIONS", "CRIT-L134-CHAR-FUNCTION-TYPE", "CRIT-L134-PROVIDED-FUNCTION",
 ]) if (!progressed || id !== "CRIT-S1.03-ONES-COMPLEMENT") expect(semanticGate.problems.some((problem) => problem.id === id), `${id}: current error escaped the semantic gate`);
 
 const resolved = new Set(defects.issues.filter(({ status }) => status === "Resolved").map(({ id }) => id));

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 119 | Arrays of records</title>
+    <title>AS9618 Lesson 119 | Write linear-search and bubble-sort algorithms</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Arrays of records</h1>
+        <h1>Write linear-search and bubble-sort algorithms</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -31,394 +31,438 @@
         <a href="#hook">Warm-up</a>
         <a href="#concept">Concept</a>
         <a href="#declare">Declare</a>
-        <a href="#access">Access pattern</a>
-        <a href="#traversal">Traversal</a>
-        <a href="#operations">Operations</a>
+        <a href="#access">Access/update</a>
+        <a href="#array-vs-record">Array vs record</a>
+        <a href="#trace">Trace</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#explorer">Record explorer</a>
-        <a href="#trace">Loop trace</a>
+        <a href="#lookup">Field lookup</a>
+        <a href="#builder">Type builder</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Write linear-search and bubble-sort algorithms</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</p>
+            <p>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</p>
+            <p>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</p>
+            <p>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Two complete array algorithms</h3>
+            <p>A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Write linear-search and bubble-sort algorithms: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> When must a linear search stop?</p>
+              <details><summary>Show answer</summary><p>When the target has been found or every populated element within the declared bounds has been checked.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What comparison is made by an ascending bubble sort?</p>
+              <details><summary>Show answer</summary><p>Compare adjacent elements and swap when the left element is greater than the right element.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What does a no-swap pass prove?</p>
+              <details><summary>Show answer</summary><p>No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
+            <p>Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>linear search initialises Found and Index</td><td>Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound.</td><td>1</td></tr>
+                  <tr><td>linear search loops within indexes 1 to 20 until found or exhausted</td><td></td><td>1</td></tr>
+                  <tr><td>linear search compares Name[Index] with the target and records a match</td><td></td><td>1</td></tr>
+                  <tr><td>bubble sort uses repeated passes</td><td></td><td>1</td></tr>
+                  <tr><td>compares adjacent Score[Index] and Score[Index + 1] within valid bounds</td><td></td><td>1</td></tr>
+                  <tr><td>uses Temp or an equivalent safe three-step swap</td><td></td><td>1</td></tr>
+                  <tr><td>reduces the unsorted range or uses a valid no-swap stopping condition</td><td></td><td>1</td></tr>
+                  <tr><td>all constructs close coherently in Cambridge pseudocode</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 119 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
-            <h2>An array of records stores many entities that share the same record structure.</h2>
+            <h2>A record keeps related facts together without pretending they are the same type.</h2>
             <p>
-              A single record stores one student's fields. An array of records stores many students, where each array
-              element is a complete record. The access pattern combines both ideas: index first, then field name.
+              Arrays are excellent when many values share one type and are accessed by index. A record is different:
+              it groups related fields that may have different data types. A student record can store a name, date of
+              birth, exam mark and enrolment status in one composite value.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Declare</strong><span>an array whose elements are records</span></div>
-              <div><strong>Access</strong><span>one field using index plus dot notation</span></div>
-              <div><strong>Process</strong><span>traverse, search, count and update record fields</span></div>
+              <div><strong>Define</strong><span>record, field and composite data using accurate vocabulary</span></div>
+              <div><strong>Declare</strong><span>record types and variables in Cambridge-style pseudocode</span></div>
+              <div><strong>Access</strong><span>read and update fields using dot notation</span></div>
             </div>
           </div>
-          <div class="record-visual" aria-label="Array of records visual">
-            <div class="array-card">
-              <strong>Students[1:3]</strong>
-              <span>[1] Name, Mark, Enrolled</span>
-              <span>[2] Name, Mark, Enrolled</span>
-              <span>[3] Name, Mark, Enrolled</span>
+          <div class="record-visual" aria-label="Record visual">
+            <div class="record-card">
+              <strong>TStudent</strong>
+              <span>Name : STRING</span>
+              <span>DateOfBirth : DATE</span>
+              <span>Mark : INTEGER</span>
+              <span>Enrolled : BOOLEAN</span>
             </div>
-            <div class="record-caption">Students[2].Mark &lt;- 84</div>
-            <p>Index chooses the record. Field name chooses the value inside it.</p>
+            <div class="record-caption">Student1.Mark &lt;- 72</div>
+            <p>One record. Several named fields. Different types allowed.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 algorithms often store many related items, then loop through them to find, count or update fields.</p>
+            <p>Paper 2 can ask students to define a record type, declare a record variable, and access fields correctly.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p><code>Students.Mark[2]</code> is the wrong order for this lesson. Use <code>Students[2].Mark</code>.</p>
+            <p>A record is not an array. Use field names such as <code>Student1.Name</code>, not indexes such as <code>Student1[1]</code>.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>How should we store a class register?</h2>
-            <p>A class has 30 students. Each student has a name, mark and enrolment status. Which structure fits best?</p>
+            <h2>What should hold one student's details?</h2>
+            <p>A student has a name, date of birth, mark and enrolment status. Which structure is most suitable for one student?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="separate">30 separate variables</button>
-            <button class="choice-card" type="button" data-hook="arrayOfString">ARRAY[1:90] OF STRING</button>
-            <button class="choice-card" type="button" data-hook="arrayRecords">ARRAY[1:30] OF TStudent</button>
-            <button class="choice-card" type="button" data-hook="single">One TStudent record only</button>
+            <button class="choice-card" type="button" data-hook="array">ARRAY[1:4] OF STRING</button>
+            <button class="choice-card" type="button" data-hook="record">RECORD / user-defined type</button>
+            <button class="choice-card" type="button" data-hook="integer">INTEGER</button>
+            <button class="choice-card" type="button" data-hook="constant">CONSTANT Student = 1</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that stores many students while keeping named fields for each one.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that can group different fields with different types.</div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
-            <h2>One array, many records, same record shape</h2>
-            <p>Chinese support: array of records 是“记录数组”；每个 array element 本身是一条 record。</p>
+            <h2>Composite data groups fields into one type</h2>
+            <p>Chinese support: record 是“记录”；field 是“字段”；composite data 是“由多个部分组合成的数据”。</p>
           </div>
-          <div class="data-table concept-table" role="table" aria-label="Array of records concepts">
+          <div class="data-table concept-table" role="table" aria-label="Record concepts">
             <div class="table-row table-head" role="row"><div>Term</div><div>Meaning</div><div>Example</div></div>
-            <div class="table-row" role="row"><div>Array of records</div><div>array where each element is a record</div><div><code>Students[1:30]</code></div></div>
-            <div class="table-row" role="row"><div>Index</div><div>selects one record from the array</div><div><code>Students[5]</code></div></div>
-            <div class="table-row" role="row"><div>Field</div><div>selects one named value inside that record</div><div><code>.Mark</code></div></div>
-            <div class="table-row" role="row"><div>Combined access</div><div>index first, field second</div><div><code>Students[5].Mark</code></div></div>
+            <div class="table-row" role="row"><div>Record</div><div>a composite structure containing named fields</div><div><code>TStudent</code></div></div>
+            <div class="table-row" role="row"><div>Field</div><div>one named item inside a record</div><div><code>Name</code>, <code>Mark</code></div></div>
+            <div class="table-row" role="row"><div>Composite data</div><div>data made from several components</div><div>student details grouped together</div></div>
+            <div class="table-row" role="row"><div>Dot notation</div><div>access to one field of a record variable</div><div><code>Student1.Mark</code></div></div>
           </div>
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="concept">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">One array, many records, same record shape</h2>
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Composite data groups fields into one type</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One array, many records, same record shape with a structured visual model." />
-            <figcaption class="explanation-sr-only">One array, many records, same record shape: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Composite data groups fields into one type with a structured visual model." />
+            <figcaption class="explanation-sr-only">Composite data groups fields into one type: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Students[5] selects the complete record at array position 5.</li><li><strong>Lesson fact:</strong> Students[5].Mark selects the Mark field in that record.</li><li><strong>Lesson fact:</strong> Array indexing and record field selection are separate operations.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> a composite structure containing named fields</li><li><strong>Lesson fact:</strong> TStudent</li><li><strong>Lesson fact:</strong> one named item inside a record</li><li><strong>Lesson fact:</strong> Name , Mark</li><li><strong>Lesson fact:</strong> Composite data</li><li><strong>Lesson fact:</strong> data made from several components</li><li><strong>Lesson fact:</strong> student details grouped together</li><li><strong>Lesson fact:</strong> Dot notation</li><li><strong>Lesson fact:</strong> access to one field of a record variable</li><li><strong>Lesson fact:</strong> Student1.Mark</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
-            <p class="eyebrow">Declare</p>
-            <h2>Define the record type, then declare the array</h2>
+            <p class="eyebrow">Declare records</p>
+            <h2>Define the type, then declare variables that use it</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Record type</h3>
               <pre><code>TYPE TStudent
     DECLARE Name : STRING
+    DECLARE DateOfBirth : DATE
     DECLARE Mark : INTEGER
     DECLARE Enrolled : BOOLEAN
 ENDTYPE</code></pre>
             </article>
             <article>
-              <h3>Array of records</h3>
-              <pre><code>DECLARE Students : ARRAY[1:30] OF TStudent
+              <h3>Record variable</h3>
+              <pre><code>DECLARE Student1 : TStudent
 
-Students[1].Name &lt;- "Ali"
-Students[1].Mark &lt;- 72</code></pre>
+Student1.Name &lt;- "Ali"
+Student1.Mark &lt;- 72</code></pre>
             </article>
           </div>
-          <div class="callout">The record type describes one element. The array declaration creates many elements of that type.</div>
         </section>
 
-        <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="declare">
-          <h2 class="explanation-sr-only" id="explanation-declare-title">Define the record type, then declare the array</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define the record type, then declare the array with a structured visual model." />
-            <figcaption class="explanation-sr-only">Define the record type, then declare the array: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent
-This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> The record type and the array declaration are separate declarations.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end declare -->
-        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
-            <p class="eyebrow">Access pattern</p>
-            <h2>Index first, then field name</h2>
+            <p class="eyebrow">Access and update</p>
+            <h2>Use the field name, not a numeric index</h2>
           </div>
-          <div class="data-table access-table" role="table" aria-label="Array of records access">
-            <div class="table-row table-head" role="row"><div>Task</div><div>Pseudocode</div><div>Meaning</div></div>
-            <div class="table-row" role="row"><div>Read one field</div><div><code>OUTPUT Students[3].Name</code></div><div>name field of record 3</div></div>
-            <div class="table-row" role="row"><div>Update one field</div><div><code>Students[3].Mark &lt;- 80</code></div><div>mark field of record 3</div></div>
-            <div class="table-row" role="row"><div>Test one field</div><div><code>IF Students[Index].Enrolled = TRUE THEN</code></div><div>Boolean field in current record</div></div>
+          <div class="data-table access-table" role="table" aria-label="Record field access">
+            <div class="table-row table-head" role="row"><div>Task</div><div>Pseudocode</div><div>Effect</div></div>
+            <div class="table-row" role="row"><div>Read field</div><div><code>OUTPUT Student1.Name</code></div><div>outputs the Name field</div></div>
+            <div class="table-row" role="row"><div>Update field</div><div><code>Student1.Mark &lt;- 80</code></div><div>changes only the Mark field</div></div>
+            <div class="table-row" role="row"><div>Test field</div><div><code>IF Student1.Enrolled = TRUE THEN</code></div><div>uses Boolean field in selection</div></div>
           </div>
         </section>
 
         <!-- stage10-explanation:start access -->
-        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="access">
-          <h2 class="explanation-sr-only" id="explanation-access-title">Index first, then field name</h2>
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
+          <h2 class="explanation-sr-only" id="explanation-access-title">Use the field name, not a numeric index</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Index first, then field name with a structured visual model." />
-            <figcaption class="explanation-sr-only">Index first, then field name: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the field name, not a numeric index with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the field name, not a numeric index: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Access pattern</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Read one field</li><li><strong>Lesson fact:</strong> OUTPUT Students[3].Name</li><li><strong>Lesson fact:</strong> name field of record 3</li><li><strong>Lesson fact:</strong> Update one field</li><li><strong>Lesson fact:</strong> Students[3].Mark &lt;- 80</li><li><strong>Lesson fact:</strong> mark field of record 3</li><li><strong>Lesson fact:</strong> Test one field</li><li><strong>Lesson fact:</strong> IF Students[Index].Enrolled = TRUE THEN</li><li><strong>Lesson fact:</strong> Boolean field in current record</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Access and update</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Read field</li><li><strong>Lesson fact:</strong> OUTPUT Student1.Name</li><li><strong>Lesson fact:</strong> outputs the Name field</li><li><strong>Lesson fact:</strong> Update field</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 80</li><li><strong>Lesson fact:</strong> changes only the Mark field</li><li><strong>Lesson fact:</strong> Test field</li><li><strong>Lesson fact:</strong> IF Student1.Enrolled = TRUE THEN</li><li><strong>Lesson fact:</strong> uses Boolean field in selection</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end access -->
-        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <section class="panel" id="array-vs-record" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
-            <p class="eyebrow">Traversal</p>
-            <h2>A loop visits each record; field access uses the loop index</h2>
+            <p class="eyebrow">Array vs record</p>
+            <h2>Same type and index, or mixed fields and names?</h2>
           </div>
-          <pre><code>FOR Index &lt;- 1 TO 30
-    IF Students[Index].Mark &gt;= 70 THEN
-        OUTPUT Students[Index].Name
-    ENDIF
-NEXT Index</code></pre>
-          <div class="callout">The loop variable chooses the current record. The field name chooses which value to inspect.</div>
+          <div class="data-table compare-table" role="table" aria-label="Array versus record">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Array</div><div>Record</div></div>
+            <div class="table-row" role="row"><div>Elements / fields</div><div>usually same type</div><div>can be different types</div></div>
+            <div class="table-row" role="row"><div>Access</div><div>index: <code>Scores[3]</code></div><div>field name: <code>Student1.Mark</code></div></div>
+            <div class="table-row" role="row"><div>Best for</div><div>many similar values</div><div>several facts about one entity</div></div>
+          </div>
         </section>
 
-        <!-- stage10-explanation:start traversal -->
-        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="traversal">
-          <h2 class="explanation-sr-only" id="explanation-traversal-title">A loop visits each record; field access uses the loop index</h2>
+        <!-- stage10-explanation:start array-vs-record -->
+        <section class="panel explanation-panel" id="explanation-array-vs-record" data-explains="array-vs-record" data-explanation-kind="comparison" aria-labelledby="explanation-array-vs-record-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
+          <h2 class="explanation-sr-only" id="explanation-array-vs-record-title">Same type and index, or mixed fields and names?</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A loop visits each record; field access uses the loop index with a structured visual model." />
-            <figcaption class="explanation-sr-only">A loop visits each record; field access uses the loop index: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-array-vs-record.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same type and index, or mixed fields and names? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same type and index, or mixed fields and names?: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Use Index to select each Students record in turn.</li><li><strong>Lesson fact:</strong> Test the Mark field of the current record.</li><li><strong>Lesson fact:</strong> Output the Name field only when Mark is at least 70.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF before NEXT Index.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Array vs record</li><li><strong>Lesson fact:</strong> Elements / fields</li><li><strong>Lesson fact:</strong> usually same type</li><li><strong>Lesson fact:</strong> can be different types</li><li><strong>Lesson fact:</strong> index: Scores[3]</li><li><strong>Lesson fact:</strong> field name: Student1.Mark</li><li><strong>Lesson fact:</strong> Best for</li><li><strong>Lesson fact:</strong> many similar values</li><li><strong>Lesson fact:</strong> several facts about one entity</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end traversal -->
-        <section class="panel" id="operations" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
+        <!-- stage10-explanation:end array-vs-record -->
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
-            <p class="eyebrow">Common operations</p>
-            <h2>Search, count and update fields</h2>
+            <p class="eyebrow">Trace</p>
+            <h2>Trace the field that changes</h2>
           </div>
-          <div class="data-table operations-table" role="table" aria-label="Array of records operations">
-            <div class="table-row table-head" role="row"><div>Operation</div><div>Typical condition</div><div>Typical action</div></div>
-            <div class="table-row" role="row"><div>Search</div><div><code>Students[Index].Name = TargetName</code></div><div>output index or record details</div></div>
-            <div class="table-row" role="row"><div>Count</div><div><code>Students[Index].Enrolled = TRUE</code></div><div><code>Count &lt;- Count + 1</code></div></div>
-            <div class="table-row" role="row"><div>Update</div><div><code>Students[Index].Mark &lt; 40</code></div><div>change a status or mark field</div></div>
+          <div class="data-table trace-table" role="table" aria-label="Record trace">
+            <div class="table-row table-head" role="row"><div>Statement</div><div>Name</div><div>Mark</div><div>Enrolled</div></div>
+            <div class="table-row" role="row"><div>Student1.Name &lt;- "Ali"</div><div>Ali</div><div>-</div><div>-</div></div>
+            <div class="table-row" role="row"><div>Student1.Mark &lt;- 72</div><div>Ali</div><div>72</div><div>-</div></div>
+            <div class="table-row" role="row"><div>Student1.Enrolled &lt;- TRUE</div><div>Ali</div><div>72</div><div>TRUE</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start operations -->
-        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="process" aria-labelledby="explanation-operations-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="operations">
-          <h2 class="explanation-sr-only" id="explanation-operations-title">Search, count and update fields</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-operations.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Search, count and update fields with a structured visual model." />
-            <figcaption class="explanation-sr-only">Search, count and update fields: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Search, count and update are alternative record operations, not mandatory consecutive stages.</li><li><strong>Lesson fact:</strong> A search condition locates a matching record and outputs its position or details.</li><li><strong>Lesson fact:</strong> A count condition increments a counter for qualifying records.</li><li><strong>Lesson fact:</strong> An update condition changes the required field of qualifying records.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end operations -->
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Same structure, different syntax</h2>
+            <h2>Same modelling idea, different syntax</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>DECLARE Students : ARRAY[1:30] OF TStudent
+              <pre><code>TYPE TBook
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+    DECLARE Available : BOOLEAN
+ENDTYPE
 
-FOR Index &lt;- 1 TO 30
-    OUTPUT Students[Index].Name
-NEXT Index</code></pre>
+DECLARE Book1 : TBook
+Book1.Available &lt;- TRUE</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>Student[] students = new Student[30];
+              <pre><code>class Book {
+    String title;
+    int pages;
+    boolean available;
+}
 
-for (int index = 0; index &lt; 30; index++) {
-    System.out.println(students[index].name);
-}</code></pre>
+Book book1 = new Book();
+book1.available = true;</code></pre>
             </article>
           </div>
-          <div class="callout">Paper 2 reminder: Java arrays are often zero-based. Cambridge pseudocode ranges follow the declaration shown in the question.</div>
+          <div class="callout">Paper 2 reminder: Java class syntax is support only. Cambridge pseudocode should use clear TYPE/ENDTYPE-style record notation when required.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same structure, different syntax</h2>
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same modelling idea, different syntax</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same structure, different syntax with a structured visual model." />
-            <figcaption class="explanation-sr-only">Same structure, different syntax: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same modelling idea, different syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same modelling idea, different syntax: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 30</li><li><strong>Lesson fact:</strong> OUTPUT Students[Index].Name</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Student[] students = new Student[30];</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 30; index++) {</li><li><strong>Lesson fact:</strong> System.out.println(students[index].name);</li><li><strong>Lesson fact:</strong> Paper 2 reminder: Java arrays are often zero-based. Cambridge pseudocode ranges follow the declaration shown in the question.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TBook
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> Book fields are declared inside the TYPE block.</li><li><strong>Lesson fact:</strong> DECLARE Book1 : TBook
+This declaration belongs after ENDTYPE.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="explorer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="explorer">
+        <section class="panel" id="lookup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
-            <p class="eyebrow">Interactive record explorer</p>
-            <h2>Read a field from a selected record</h2>
+            <p class="eyebrow">Interactive field lookup</p>
+            <h2>Read one field from a record</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Record index
-              <select id="recordIndex">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </label>
-            <label>
               Field
-              <select id="recordField">
+              <select id="fieldInput">
                 <option value="Name">Name</option>
+                <option value="DateOfBirth">DateOfBirth</option>
                 <option value="Mark">Mark</option>
                 <option value="Enrolled">Enrolled</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="readFieldBtn">Read Students[Index].Field</button>
+            <button class="primary-button" type="button" id="fieldBtn">Read Student1.Field</button>
           </div>
-          <div class="trace-output" id="fieldResult">Choose an index and a field to read from the array of records.</div>
+          <div class="trace-output" id="fieldResult">Student1 has Name, DateOfBirth, Mark and Enrolled fields.</div>
         </section>
 
-        <!-- stage10-explanation:start explorer -->
-        <section class="panel explanation-panel" id="explanation-explorer" data-explains="explorer" data-explanation-kind="mechanism" aria-labelledby="explanation-explorer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="explorer">
-          <h2 class="explanation-sr-only" id="explanation-explorer-title">Read a field from a selected record</h2>
+        <!-- stage10-explanation:start lookup -->
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
+          <h2 class="explanation-sr-only" id="explanation-lookup-title">Read one field from a record</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-explorer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read a field from a selected record with a structured visual model." />
-            <figcaption class="explanation-sr-only">Read a field from a selected record: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read one field from a record with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read one field from a record: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive record explorer</li><li><strong>Lesson fact:</strong> Record index</li><li><strong>Lesson fact:</strong> Choose an index and a field to read from the array of records.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive field lookup</li><li><strong>Lesson fact:</strong> Student1 has Name, DateOfBirth, Mark and Enrolled fields.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end explorer -->
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <!-- stage10-explanation:end lookup -->
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
-            <p class="eyebrow">Interactive loop trace</p>
-            <h2>Count students with marks of 70 or above</h2>
+            <p class="eyebrow">Interactive type builder</p>
+            <h2>Generate a record declaration</h2>
           </div>
-          <div class="trace-actions">
-            <button class="primary-button" type="button" id="stepBtn">Step loop</button>
-            <button class="answer-toggle" type="button" id="resetTraceBtn">Reset</button>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="builderInput">
+                <option value="student">student details</option>
+                <option value="book">library book</option>
+                <option value="booking">booking details</option>
+                <option value="product">product stock item</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build type</button>
           </div>
-          <div class="trace-output" id="loopTrace">Ready: Count = 0, Index has not started.</div>
+          <div class="trace-output" id="builderResult">Choose a scenario to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Array-of-record algorithms</h2>
+            <h2>Record modelling patterns</h2>
           </div>
-          <div class="tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="declare">Declare</button>
-            <button class="tab" type="button" data-example="search">Search</button>
-            <button class="tab" type="button" data-example="count">Count</button>
-            <button class="tab" type="button" data-example="update">Update</button>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="student">Student record</button>
+            <button class="tab" type="button" data-example="book">Book record</button>
+            <button class="tab" type="button" data-example="update">Field update</button>
+            <button class="tab" type="button" data-example="compare">Array vs record</button>
           </div>
-          <div class="example-output" id="exampleOutput"></div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Ten quick arrays-of-records checks</h2>
-            <p>Type a concise answer, then check. Each question also has its own answer button.</p>
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick record checks</h2>
+            <p>Answer briefly, then use Show answer to compare with strict wording.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix common array-of-record errors</h2>
+            <h2>Fix common record errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>These questions focus on declaration, indexed field access, traversal and clear marking-language answers.</p>
+            <h2>Original Cambridge-style record questions with expandable MS</h2>
+            <p>These questions focus on record declaration, field types, dot notation, and array-vs-record reasoning.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Array of records checklist</h2>
+            <h2>Record checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Shape</strong><span>one record type describes each element.</span></div>
-            <div><strong>Access</strong><span>use array index, then field name.</span></div>
-            <div><strong>Loop</strong><span>traverse each record with the correct bounds.</span></div>
+            <div><strong>Group</strong><span>use a record for several related fields about one entity.</span></div>
+            <div><strong>Name</strong><span>access a field by name using dot notation.</span></div>
+            <div><strong>Type</strong><span>each field has its own suitable data type.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Produce precise pseudocode, not just a description</h2>
+            <h2>Clear consolidation tasks</h2>
           </div>
-          <ol class="homework-list">
-            <li>
-              <strong>Task 1: Model a club list</strong>
-              <span>Define <code>TMember</code> with <code>Name</code>, <code>Age</code> and <code>Paid</code>. Declare <code>Members</code> as an array of 50 records.</span>
-            </li>
-            <li>
-              <strong>Task 2: Count</strong>
-              <span>Write pseudocode to count how many members have <code>Paid = TRUE</code>.</span>
-            </li>
-            <li>
-              <strong>Task 3: Search and explain</strong>
-              <span>Write a 5-mark answer explaining why <code>Members[Index].Name</code> is correct and <code>Members.Name[Index]</code> is not.</span>
-            </li>
-          </ol>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Define a record</strong>
+              <span>Create a record type called TMember with fields MemberID, Name, DateJoined and HasOverdueBook. Choose suitable types.</span>
+            </article>
+            <article>
+              <strong>Task 2: Field access</strong>
+              <span>Declare Member1 as TMember, assign values to all fields, then output Member1.Name and Member1.HasOverdueBook.</span>
+            </article>
+            <article>
+              <strong>Task 3: Explain</strong>
+              <span>Write a 4-mark explanation of why a record is more suitable than an array for one member's mixed-type details.</span>
+            </article>
+          </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -71,7 +71,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 010: Codes, graphics and sound
+## Quiz after Lesson 011: Codes, graphics and sound
 
 **Syllabus:** Sections 1.1, 1.2
 
@@ -89,7 +89,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Explain one reason Unicode is used instead of ASCII for a worldwide messaging system. **[2]**
 3. A 100 x 50 bitmap uses 8-bit colour depth. Calculate its pixel data in bytes and state whether a bitmap file header is included. **[2]**
 4. A bitmap has 20,000 bytes of pixel data and a supplied 54-byte header. Calculate the total uncompressed size and state what the header stores. **[2]**
-5. Compare sampling rate from sampling resolution. **[2]**
+5. State how a vector graphic is stored and why it can be enlarged without pixelation. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -125,18 +125,18 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| sampling rate is samples taken per second | Do not reverse time frequency and amplitude precision. | 1 |
-| sampling resolution is bits/levels used for each sample amplitude |  | 1 |
+| it is stored as a drawing list of objects and their properties/instructions | Do not award a file-size claim without the drawing-list and redraw mechanism. | 1 |
+| the software recalculates/redraws the geometry at the new size rather than enlarging fixed pixels |  | 1 |
 
 ---
 
-## Quiz after Lesson 015: Multimedia size and compression
+## Quiz after Lesson 016: Multimedia size and compression
 
 **Syllabus:** Sections 1.2, 1.3
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 011-015
+**Coverage:** Lessons 011-016
 
 **Time:** 8-10 minutes
 
@@ -189,13 +189,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 020: Networks, packets and addressing
+## Quiz after Lesson 021: Networks, packets and addressing
 
 **Syllabus:** Sections 2.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 016-020
+**Coverage:** Lessons 017-021
 
 **Time:** 8-10 minutes
 
@@ -248,13 +248,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 025: Protocols, media and internet services
+## Quiz after Lesson 026: Protocols, media and internet services
 
 **Syllabus:** Sections 2.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 021-025
+**Coverage:** Lessons 022-026
 
 **Time:** 8-10 minutes
 
@@ -307,13 +307,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 030: Computer components and primary memory
+## Quiz after Lesson 031: Computer components and primary memory
 
 **Syllabus:** Sections 3.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 026-030
+**Coverage:** Lessons 027-031
 
 **Time:** 8-10 minutes
 
@@ -366,13 +366,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 035: Storage, embedded systems and logic
+## Quiz after Lesson 036: Storage, embedded systems and logic
 
 **Syllabus:** Sections 3.1, 3.2
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 031-035
+**Coverage:** Lessons 032-036
 
 **Time:** 8-10 minutes
 
@@ -425,13 +425,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 040: Logic circuits and hardware decisions
+## Quiz after Lesson 041: Logic circuits and hardware decisions
 
 **Syllabus:** Sections 3.1, 3.2
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 036-040
+**Coverage:** Lessons 037-041
 
 **Time:** 8-10 minutes
 
@@ -484,13 +484,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 045: CPU architecture and instruction processing
+## Quiz after Lesson 046: CPU architecture and instruction processing
 
 **Syllabus:** Sections 4.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 041-045
+**Coverage:** Lessons 042-046
 
 **Time:** 8-10 minutes
 
@@ -543,13 +543,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 050: Assembly, interrupts and bit manipulation
+## Quiz after Lesson 051: Assembly, interrupts and bit manipulation
 
 **Syllabus:** Sections 4.2, 4.3
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 046-050
+**Coverage:** Lessons 047-051
 
 **Time:** 8-10 minutes
 
@@ -602,13 +602,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 055: Operating systems and utilities
+## Quiz after Lesson 056: Operating systems and utilities
 
 **Syllabus:** Sections 5.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 051-055
+**Coverage:** Lessons 052-056
 
 **Time:** 8-10 minutes
 
@@ -661,13 +661,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 060: Translators, libraries and development tools
+## Quiz after Lesson 061: Translators, libraries and development tools
 
 **Syllabus:** Sections 5.2
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 056-060
+**Coverage:** Lessons 057-061
 
 **Time:** 8-10 minutes
 
@@ -720,13 +720,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 065: Security threats and authentication
+## Quiz after Lesson 066: Security threats and authentication
 
 **Syllabus:** Sections 6.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 061-065
+**Coverage:** Lessons 062-066
 
 **Time:** 8-10 minutes
 
@@ -779,13 +779,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 070: Security controls and data integrity
+## Quiz after Lesson 071: Security controls and data integrity
 
 **Syllabus:** Sections 6.1, 6.2
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 066-070
+**Coverage:** Lessons 067-071
 
 **Time:** 8-10 minutes
 
@@ -838,13 +838,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 075: Ethics, privacy and software ownership
+## Quiz after Lesson 076: Ethics, privacy and software ownership
 
 **Syllabus:** Sections 7.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 071-075
+**Coverage:** Lessons 072-076
 
 **Time:** 8-10 minutes
 
@@ -897,13 +897,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 080: AI impacts and database foundations
+## Quiz after Lesson 081: AI impacts and database foundations
 
 **Syllabus:** Sections 7.1, 8.1
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 076-080
+**Coverage:** Lessons 077-081
 
 **Time:** 8-10 minutes
 
@@ -956,13 +956,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 085: Relational design and SQL
+## Quiz after Lesson 086: Relational design and SQL
 
 **Syllabus:** Sections 8.1, 8.2, 8.3
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 081-085
+**Coverage:** Lessons 082-086
 
 **Time:** 8-10 minutes
 
@@ -1015,13 +1015,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 090: Database operations and Paper 1 integration
+## Quiz after Lesson 091: Database operations and Paper 1 integration
 
 **Syllabus:** Sections 1-8
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 086-090
+**Coverage:** Lessons 087-091
 
 **Time:** 8-10 minutes
 
@@ -1074,13 +1074,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 095: Paper 1 mixed retrieval
+## Quiz after Lesson 096: Paper 1 mixed retrieval
 
 **Syllabus:** Sections 3-8
 
 **Assessment objectives:** AO1, AO2
 
-**Coverage:** Lessons 091-095
+**Coverage:** Lessons 092-096
 
 **Time:** 8-10 minutes
 
@@ -1133,13 +1133,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 100: Paper 1 response skills and algorithm foundations
+## Quiz after Lesson 101: Paper 1 response skills and algorithm foundations
 
 **Syllabus:** Sections 1-9
 
 **Assessment objectives:** AO1, AO2, AO3
 
-**Coverage:** Lessons 096-100
+**Coverage:** Lessons 097-101
 
 **Time:** 8-10 minutes
 
@@ -1192,13 +1192,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 105: Tracing, control and standard algorithms
+## Quiz after Lesson 106: Tracing, control and standard algorithms
 
 **Syllabus:** Sections 9.1, 9.2
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 101-105
+**Coverage:** Lessons 102-106
 
 **Time:** 8-10 minutes
 
@@ -1251,13 +1251,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 110: Algorithm patterns and pseudocode quality
+## Quiz after Lesson 111: Algorithm patterns and pseudocode quality
 
 **Syllabus:** Sections 9.2
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 106-110
+**Coverage:** Lessons 107-111
 
 **Time:** 8-10 minutes
 
@@ -1310,13 +1310,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 115: Refinement, data types and arrays
+## Quiz after Lesson 116: Refinement, data types and arrays
 
 **Syllabus:** Sections 9, 10.1, 10.2
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 111-115
+**Coverage:** Lessons 112-116
 
 **Time:** 8-10 minutes
 
@@ -1369,13 +1369,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 120: Arrays, records and files
+## Quiz after Lesson 121: Arrays, records and files
 
 **Syllabus:** Sections 10.2, 10.3
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 116-120
+**Coverage:** Lessons 117-121
 
 **Time:** 8-10 minutes
 
@@ -1428,13 +1428,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 125: Structured files and abstract data types
+## Quiz after Lesson 126: Structured files and abstract data types
 
 **Syllabus:** Sections 10.3, 10.4
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 121-125
+**Coverage:** Lessons 122-126
 
 **Time:** 8-10 minutes
 
@@ -1487,13 +1487,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 130: Programming constructs and subroutines
+## Quiz after Lesson 131: Programming constructs and subroutines
 
 **Syllabus:** Sections 11.1, 11.2
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 126-130
+**Coverage:** Lessons 127-131
 
 **Time:** 8-10 minutes
 
@@ -1546,13 +1546,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 135: Parameters, scope and expressions
+## Quiz after Lesson 136: Parameters, scope and expressions
 
 **Syllabus:** Sections 11.2, 11.3
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 131-135
+**Coverage:** Lessons 132-136
 
 **Time:** 8-10 minutes
 
@@ -1605,13 +1605,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 140: Files, testing and robust programs
+## Quiz after Lesson 141: Files, testing and robust programs
 
 **Syllabus:** Sections 11.1, 11.2, 11.3
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 136-140
+**Coverage:** Lessons 137-141
 
 **Time:** 8-10 minutes
 
@@ -1664,13 +1664,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 145: Software development and testing
+## Quiz after Lesson 146: Software development and testing
 
 **Syllabus:** Sections 11, 12
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 141-145
+**Coverage:** Lessons 142-146
 
 **Time:** 8-10 minutes
 
@@ -1723,13 +1723,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Quiz after Lesson 150: Paper 2 integrated review
+## Quiz after Lesson 151: Paper 2 integrated review
 
 **Syllabus:** Sections 9, 10, 11, 12
 
 **Assessment objectives:** AO2, AO3
 
-**Coverage:** Lessons 146-150
+**Coverage:** Lessons 147-151
 
 **Time:** 8-10 minutes
 

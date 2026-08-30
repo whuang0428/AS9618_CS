@@ -1,66 +1,86 @@
-const diagnostics = {
-  format: {
-    result: "Likely issue: data format rule mismatch.",
-    method: "A protocol must define how data is structured or encoded. If sender and receiver disagree, the receiver may not interpret the message correctly.",
+const routeStates = {
+  normal: {
+    result: "Packets arrive and can be reassembled.",
+    method: "All packets are delivered. The receiver uses sequence numbers to rebuild the original message.",
+    packets: [
+      { id: "1", path: "A-B-D", state: "ok" },
+      { id: "2", path: "A-C-D", state: "ok" },
+      { id: "3", path: "A-B-D", state: "ok" },
+    ],
   },
-  timeout: {
-    result: "Likely issue: timing or acknowledgement rule.",
-    method: "Protocols can define how long to wait, when to acknowledge receipt and when to retry transmission.",
+  congested: {
+    result: "Packets may arrive out of order.",
+    method: "Packet 2 takes a slower route because one path is congested. Sequence numbers allow correct reassembly.",
+    packets: [
+      { id: "1", path: "A-B-D", state: "ok" },
+      { id: "3", path: "A-B-D", state: "ok" },
+      { id: "2", path: "A-C-E-D", state: "slow" },
+    ],
+  },
+  lost: {
+    result: "A missing packet must be requested again.",
+    method: "The receiver detects a missing sequence number and can request retransmission of the missing packet.",
+    packets: [
+      { id: "1", path: "A-B-D", state: "ok" },
+      { id: "2", path: "A-C-D", state: "lost" },
+      { id: "3", path: "A-B-D", state: "ok" },
+    ],
   },
   corrupt: {
-    result: "Likely issue: missing error-control rule.",
-    method: "Protocols can specify checksums, error detection, acknowledgements and retransmission so corrupt data is not silently accepted.",
-  },
-  layer: {
-    result: "Layering is doing its job.",
-    method: "If hardware changes but applications still work, lower-layer details are hidden behind defined interfaces, reducing impact on other layers.",
+    result: "A corrupt packet is detected by an error check.",
+    method: "Checksum or other error-checking data can show that a packet was corrupted, so retransmission can be requested.",
+    packets: [
+      { id: "1", path: "A-B-D", state: "ok" },
+      { id: "2", path: "A-C-D", state: "corrupt" },
+      { id: "3", path: "A-B-D", state: "ok" },
+    ],
   },
 };
 
 const examples = {
-  protocol: {
-    title: "Example 1: protocol rule",
-    problem: "Two devices exchange data, but one device cannot interpret the message.",
+  structure: {
+    title: "Example 1: packet structure",
+    problem: "A file is split into packets. Name three items each packet may need and explain one purpose.",
     steps: [
-      "A protocol defines the agreed rules for communication.",
-      "One rule may specify the data format or encoding.",
-      "If the sender and receiver use different formats, the receiver may misinterpret the data.",
-      "A strong answer names the rule and its effect.",
+      "Destination address identifies where the packet should be sent.",
+      "Source address identifies where the packet came from or where replies can be sent.",
+      "Sequence number allows the receiver to put packets back in the correct order.",
+      "Checksum/error check can help detect corruption during transmission.",
     ],
   },
-  layers: {
-    title: "Example 2: benefit of layers",
-    problem: "A network adapter is replaced, but the web browser does not need to be rewritten.",
+  order: {
+    title: "Example 2: out-of-order arrival",
+    problem: "Packets 1, 3 and 2 arrive at a receiver.",
     steps: [
-      "Layering separates network responsibilities.",
-      "The application layer does not need to know the physical hardware details.",
-      "Only the lower layer or driver may need to change.",
-      "This reduces complexity and supports independent development.",
+      "This can happen because packets may take different routes.",
+      "Different routes may have different delays or congestion.",
+      "The receiver uses sequence numbers to reorder the packets.",
+      "The message is reassembled as 1, 2, 3.",
     ],
   },
-  encapsulation: {
-    title: "Example 3: encapsulation",
-    problem: "A web request is sent across a network.",
+  checksum: {
+    title: "Example 3: checksum and retransmission",
+    problem: "A packet arrives with a checksum that does not match.",
     steps: [
-      "As data moves down the layers, each layer may add its own header/control information.",
-      "This added information supports tasks such as delivery, routing or checking.",
-      "At the receiver, each layer removes and interprets the relevant control information.",
-      "The original application data is delivered to the correct application.",
+      "The packet may have been corrupted during transmission.",
+      "The receiver should not silently use corrupt data.",
+      "The receiver can request the packet to be resent.",
+      "A strong answer names the error check and the consequence.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "A protocol is a set of...", accepted: ["rules"], answer: "Rules" },
-  { id: "p2", prompt: "Name one rule type a protocol may specify.", accepted: ["format", "data format", "timing", "addressing", "error control", "flow control", "acknowledgement", "acknowledgment"], answer: "Format / timing / addressing / error control / flow control" },
-  { id: "p3", prompt: "Which rule type helps identify sender and receiver?", accepted: ["addressing", "addresses", "address"], answer: "Addressing" },
-  { id: "p4", prompt: "Which rule type helps detect or recover from corrupt data?", accepted: ["error control", "error checking", "checksum", "error detection"], answer: "Error control / error checking" },
-  { id: "p5", prompt: "What is the term for adding headers/control information as data moves down layers?", accepted: ["encapsulation"], answer: "Encapsulation" },
-  { id: "p6", prompt: "What is the term for removing and interpreting headers at the receiver?", accepted: ["de-encapsulation", "deencapsulation", "decapsulation"], answer: "De-encapsulation" },
-  { id: "p7", prompt: "Layering reduces complexity by separating network...", accepted: ["responsibilities", "tasks", "functions"], answer: "Responsibilities / tasks / functions" },
-  { id: "p8", prompt: "Do protocols describe rules or physical cable layout?", accepted: ["rules"], answer: "Rules" },
-  { id: "p9", prompt: "What type of rule stops a sender overwhelming a receiver?", accepted: ["flow control"], answer: "Flow control" },
-  { id: "p10", prompt: "What can confirm that data was received?", accepted: ["acknowledgement", "acknowledgment", "ack"], answer: "Acknowledgement" },
+  { id: "p1", prompt: "What is the actual data part of a packet called?", accepted: ["payload"], answer: "Payload" },
+  { id: "p2", prompt: "Which packet part commonly contains source and destination addresses?", accepted: ["header"], answer: "Header" },
+  { id: "p3", prompt: "What number helps reassemble packets in the correct order?", accepted: ["sequence number", "sequence"], answer: "Sequence number" },
+  { id: "p4", prompt: "What can be used to detect whether a packet has been corrupted?", accepted: ["checksum", "error check", "error checking", "check sum"], answer: "Checksum / error checking data" },
+  { id: "p5", prompt: "What device forwards packets between networks?", accepted: ["router"], answer: "Router" },
+  { id: "p6", prompt: "Can packets from one message take different routes? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p7", prompt: "What should happen if a packet is missing or corrupt?", accepted: ["retransmission", "retransmit", "resent", "resend", "request retransmission"], answer: "Request retransmission / resend the packet" },
+  { id: "p8", prompt: "Destination address tells the network where the packet came from or where it is going?", accepted: ["where it is going", "going", "destination"], answer: "Where it is going" },
+  { id: "p9", prompt: "Packet switching sends one large file as one block or splits it into packets?", accepted: ["splits it into packets", "splits", "packets"], answer: "Splits it into packets" },
+  { id: "p10", prompt: "Name one reason packets may arrive out of order.", accepted: ["different routes", "congestion", "different delays", "routing"], answer: "Different routes / congestion / different delays" },
 ];
 
 
@@ -73,90 +93,90 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Define protocol and explain why protocols are needed in network communication.",
-    answer: "A protocol is a set of rules that governs communication between devices. Protocols are needed so that sender and receiver agree on how data is formatted, addressed, transmitted, checked and interpreted. This allows different devices/software to communicate correctly.",
+    prompt: "A file is split into packets before transmission. Explain why packet switching is used.",
+    answer: "Packet switching splits data into smaller packets. Packets can share network links with packets from other users and may be routed independently. If a packet is lost or corrupt, only that packet needs to be resent rather than the whole file.",
     marking: [
-      { mark: "B1", text: "protocol is a set of rules" },
-      { mark: "B1", text: "rules govern communication/data transmission between devices" },
-      { mark: "B1", text: "valid rule example such as format/addressing/timing/error control" },
-      { mark: "B1", text: "explains common agreement/interoperability/correct interpretation" },
+      { mark: "B1", text: "data/file is split into smaller packets" },
+      { mark: "B1", text: "packets can share network links / improve use of network capacity" },
+      { mark: "B1", text: "packets can be routed independently / use different routes" },
+      { mark: "B1", text: "only missing/corrupt packets need retransmission" },
     ],
     strict: [
-      "Do not accept only 'a protocol connects devices'.",
-      "Do not accept a protocol as a physical device.",
-      "Examples alone do not replace a definition.",
+      "Do not accept only 'it is faster'.",
+      "Do not require circuit switching comparison.",
+      "Award independent route point only if routing is clearly stated.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Describe three types of rules that may be specified by a communication protocol.",
-    answer: "A protocol may specify data format, so the receiver knows how to interpret the data. It may specify addressing, so sender and receiver can be identified. It may specify error control, such as checksums and retransmission rules, so corrupted or missing data can be handled.",
+    prompt: "Describe three items of information that may be stored in a packet header and explain why two of them are needed.",
+    answer: "A header may contain the source address, destination address and sequence number. The destination address is needed so routers know where to forward the packet. The sequence number is needed so the receiver can reassemble packets in the correct order.",
     marking: [
-      { mark: "B1", text: "data format/structure/encoding rule" },
-      { mark: "B1", text: "purpose of data format rule" },
-      { mark: "B1", text: "addressing rule" },
-      { mark: "B1", text: "error control/checking/retransmission rule" },
-      { mark: "B1", text: "purpose of addressing or error control rule" },
+      { mark: "B1", text: "source address" },
+      { mark: "B1", text: "destination address" },
+      { mark: "B1", text: "sequence number / packet number" },
+      { mark: "B1", text: "valid purpose of one named header item" },
+      { mark: "B1", text: "second valid purpose or clear link to routing/reassembly" },
     ],
     strict: [
-      "Do not award the same rule type twice.",
-      "Allow timing, acknowledgement or flow control as valid alternatives.",
-      "Do not accept vague 'security' unless a rule is clearly described.",
+      "Do not award 'address' twice unless source and destination are distinguished.",
+      "Do not accept payload as a header item.",
+      "Allow protocol/control information if its purpose is clear.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "Explain two benefits of using a layered model for network communication.",
-    answer: "Layering reduces complexity by separating communication into smaller responsibilities. Each layer can be developed or changed independently if it keeps the same interface with adjacent layers. Layering also helps troubleshooting because faults can be associated with a particular layer.",
+    prompt: "Packets from the same message arrive in the order 1, 4, 2, 3. Explain how this can happen and how the receiver deals with it.",
+    answer: "Packets may take different routes through the network, and those routes may have different delays or congestion. Therefore packets can arrive out of order. The receiver uses sequence numbers to reorder the packets and reassemble the original message.",
     marking: [
-      { mark: "B1", text: "separates communication into smaller tasks/responsibilities" },
-      { mark: "B1", text: "reduces complexity / makes design easier" },
-      { mark: "B1", text: "layers can be developed/replaced independently using interfaces" },
-      { mark: "B1", text: "helps troubleshooting/standardisation/interoperability" },
+      { mark: "B1", text: "packets may take different routes" },
+      { mark: "B1", text: "routes may have different delays/congestion" },
+      { mark: "B1", text: "sequence numbers identify the correct order" },
+      { mark: "B1", text: "receiver reassembles/reorders packets into original message" },
     ],
     strict: [
-      "Do not accept only 'it is organised'.",
-      "Do not require naming OSI or TCP/IP layers.",
-      "Benefit must be explained, not only listed.",
+      "Do not accept only 'internet is busy'.",
+      "Do not say packets must always arrive in order.",
+      "Answer must include receiver action for final mark.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain encapsulation and de-encapsulation in layered communication.",
-    answer: "Encapsulation occurs as data moves down the layers at the sender. Each layer may add its own header or control information needed for that layer's function, such as addressing, routing or error checking. De-encapsulation occurs at the receiver as layers remove and interpret the relevant control information in reverse order, leaving the original data for the application.",
+    marks: "4 marks",
+    prompt: "A packet is corrupted during transmission. Explain how this may be detected and what may happen next.",
+    answer: "Error-checking information such as a checksum can be stored with the packet. The receiver calculates/checks the value and compares it with the expected value. If the check fails, the packet is treated as corrupt and retransmission can be requested.",
     marking: [
-      { mark: "B1", text: "encapsulation occurs as data moves down layers at sender" },
-      { mark: "B1", text: "each layer adds header/control information" },
-      { mark: "B1", text: "valid purpose/example such as addressing/routing/error checking" },
-      { mark: "B1", text: "de-encapsulation occurs at receiver / reverse process" },
-      { mark: "B1", text: "headers/control information are removed/interpreted to recover original data" },
+      { mark: "B1", text: "checksum/error-checking information is used" },
+      { mark: "B1", text: "receiver checks/calculates/compares the value" },
+      { mark: "B1", text: "failed check indicates corruption/error" },
+      { mark: "B1", text: "packet can be requested again/retransmitted" },
     ],
     strict: [
-      "Do not accept only 'data is wrapped' without layer/control detail.",
-      "Do not say encryption unless clearly separated from encapsulation.",
-      "Allow 'trailer' as control information where appropriate.",
+      "Do not accept only 'the computer knows'.",
+      "Do not require a specific checksum algorithm.",
+      "Allow equivalent error-detection terminology.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A student says a protocol is the same as a topology. Explain why this is incorrect.",
-    answer: "A protocol is a set of rules for communication, such as how data is formatted, addressed or checked. A topology describes how devices or nodes are arranged or connected. They are different concepts: a star network can still use many different protocols.",
+    marks: "5 marks",
+    prompt: "Explain the difference between payload and packet control information.",
+    answer: "The payload is the actual data being transmitted, such as part of a file or message. Control information is metadata used to deliver or check the packet, such as source address, destination address, sequence number or checksum. Control information is needed for routing, reassembly and error detection, but it is not the user's actual message content.",
     marking: [
-      { mark: "B1", text: "protocol is a set of communication rules" },
-      { mark: "B1", text: "valid protocol rule example" },
-      { mark: "B1", text: "topology is arrangement/connection of devices/nodes" },
-      { mark: "B1", text: "clear distinction or scenario showing both can coexist" },
+      { mark: "B1", text: "payload is actual data / part of file or message" },
+      { mark: "B1", text: "control information is metadata about delivery/checking" },
+      { mark: "B1", text: "valid example such as source/destination address" },
+      { mark: "B1", text: "valid example such as sequence number/checksum" },
+      { mark: "B1", text: "purpose such as routing/reassembly/error detection" },
     ],
     strict: [
-      "Do not accept only 'they are different'.",
-      "Do not require named topologies.",
-      "Award distinction even if the example differs, provided it is technically valid.",
+      "Do not accept only 'payload is important data'.",
+      "Do not treat checksum as payload.",
+      "Award examples only if linked to packet control information.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
@@ -176,25 +196,32 @@ function setupHook() {
     button.addEventListener("click", () => {
       document.querySelectorAll("[data-hook]").forEach((item) => item.classList.remove("selected"));
       button.classList.add("selected");
-      feedback.textContent = button.dataset.hook === "protocol"
-        ? "Correct. A protocol defines the shared rules, including data format."
-        : "Not the core issue. The devices first need agreed communication rules.";
+      feedback.textContent = button.dataset.hook === "routes"
+        ? "Correct. Smaller packets can be routed independently, share links and be resent individually if needed."
+        : "No. Packet switching still needs addresses and routes; it does not remove the need for addressing and routing.";
     });
   });
 }
 
-function setupDiagnosticTool() {
-  const select = document.querySelector("#symptomInput");
-  const result = document.querySelector("#diagnoseResult");
-  const method = document.querySelector("#diagnoseMethod");
-  function diagnose() {
-    const item = diagnostics[select.value];
-    result.textContent = item.result;
-    method.textContent = item.method;
+function setupRouteTool() {
+  const select = document.querySelector("#routeInput");
+  const visual = document.querySelector("#routeVisual");
+  const result = document.querySelector("#routeResult");
+  const method = document.querySelector("#routeMethod");
+  function simulate() {
+    const state = routeStates[select.value];
+    visual.innerHTML = state.packets.map((packet) => `
+      <div class="packet-chip ${packet.state}">
+        <strong>Packet ${packet.id}</strong>
+        <span>${packet.path}</span>
+      </div>
+    `).join("");
+    result.textContent = state.result;
+    method.textContent = state.method;
   }
-  select.addEventListener("change", diagnose);
-  document.querySelector("#diagnoseBtn").addEventListener("click", diagnose);
-  diagnose();
+  select.addEventListener("change", simulate);
+  document.querySelector("#routeBtn").addEventListener("click", simulate);
+  simulate();
 }
 
 function renderExample(key) {
@@ -214,7 +241,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("protocol");
+  renderExample("structure");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -262,7 +289,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Add a rule and a reason for full explanation marks.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Strong answers name the packet item and what it does.`;
   });
 }
 
@@ -299,7 +326,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupDiagnosticTool();
+  setupRouteTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

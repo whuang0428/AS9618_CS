@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 117 | Array algorithms: traversal, update, search and count</title>
+    <title>AS9618 Lesson 117 | Select and write two-dimensional arrays</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Array algorithms: traversal, update, search and count</h1>
+        <h1>Select and write two-dimensional arrays</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,384 +29,434 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#patterns">Pattern map</a>
-        <a href="#traversal">Traversal</a>
-        <a href="#update">Update</a>
-        <a href="#search">Search</a>
-        <a href="#count">Count</a>
+        <a href="#model">2D model</a>
+        <a href="#declare">Declare</a>
+        <a href="#access">Access/update</a>
+        <a href="#nested">Nested loops</a>
         <a href="#trace">Trace</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#selector">Pattern selector</a>
-        <a href="#runner">Trace runner</a>
+        <a href="#lookup">Cell lookup</a>
+        <a href="#builder">Loop builder</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Select and write two-dimensional arrays</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.</p>
+            <p>Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.</p>
+            <p>Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Input a student-by-test table</h3>
+            <p>DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER. Use FOR Student &lt;- 1 TO 30 and inside it FOR Test &lt;- 1 TO 4; INPUT Marks[Student, Test]; NEXT Test; NEXT Student. Every one of the 120 cells is visited exactly once.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Select and write two-dimensional arrays: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why is a seating grid normally 2D?</p>
+              <details><summary>Show answer</summary><p>Each seat is identified by two independent positions: row and column.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How many cells are in ARRAY[1:3, 1:4]?</p>
+              <details><summary>Show answer</summary><p>12 cells because 3 row indexes are paired with 4 column indexes.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is wrong with Marks[Row] for a 2D array?</p>
+              <details><summary>Show answer</summary><p>It supplies only one index and therefore does not identify a column or one complete cell.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write Cambridge pseudocode to declare a 5 by 7 REAL temperature table and calculate the total of every cell.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>declares ARRAY[1:5, 1:7] OF REAL or equivalent explicit five-by-seven bounds</td><td>Do not reverse the declared bounds in the traversal or access a 2D cell with only one index.</td><td>1</td></tr>
+                  <tr><td>initialises Total</td><td></td><td>1</td></tr>
+                  <tr><td>outer loop covers all five rows</td><td></td><td>1</td></tr>
+                  <tr><td>inner loop covers all seven columns</td><td></td><td>1</td></tr>
+                  <tr><td>adds Temperature[Row, Column] inside the inner loop</td><td></td><td>1</td></tr>
+                  <tr><td>closes both loops and outputs Total after traversal</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 117 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
-            <h2>Arrays become useful when loops do the repetitive work.</h2>
+            <h2>A two-dimensional array is a spreadsheet with rules.</h2>
             <p>
-              Declaring an array is only the start. Most Paper 2 array questions ask you to visit elements, update
-              selected elements, search for a target, or count elements that match a condition. The secret is simple:
-              one loop visits one valid index at a time, and the statement inside the loop does the job.
+              A two-dimensional array stores values of the same type using two indexes: usually row and column.
+              If a one-dimensional array is a row of lockers, a two-dimensional array is the whole locker wall.
+              Accessing one value means naming both its row and its column.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Recognise</strong><span>traversal, update, search and count array algorithm patterns</span></div>
-              <div><strong>Write</strong><span>Cambridge-style pseudocode using correct indexes and loop bounds</span></div>
-              <div><strong>Trace</strong><span>running totals, counters, flags and updated elements accurately</span></div>
+              <div><strong>Declare</strong><span>two-dimensional arrays with row and column bounds</span></div>
+              <div><strong>Access</strong><span>read and update one cell using two indexes</span></div>
+              <div><strong>Traverse</strong><span>use nested loops to process rows and columns</span></div>
             </div>
           </div>
-          <div class="algorithm-visual" aria-label="Array algorithm visual">
-            <div class="array-row">
-              <span>Index</span><strong>1</strong><strong>2</strong><strong>3</strong><strong>4</strong><strong>5</strong>
-              <span>Score</span><strong>42</strong><strong>67</strong><strong>55</strong><strong>81</strong><strong>49</strong>
+          <div class="matrix-visual" aria-label="Two-dimensional array visual">
+            <div class="matrix-grid">
+              <span></span><span>C1</span><span>C2</span><span>C3</span>
+              <span>R1</span><strong>12</strong><strong>15</strong><strong>11</strong>
+              <span>R2</span><strong>18</strong><strong>16</strong><strong>14</strong>
+              <span>R3</span><strong>20</strong><strong>17</strong><strong>19</strong>
             </div>
-            <div class="algorithm-card">IF Scores[Index] &gt;= 50 THEN Count &lt;- Count + 1</div>
-            <p>The index moves. The pattern stays calm.</p>
+            <div class="array-caption">Marks[2, 3] is 14</div>
+            <p>Two indexes: first choose the row, then choose the column.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Mark schemes reward matching bounds, indexed access, correct initialisation and placing updates inside the loop.</p>
+            <p>Paper 2 can ask for array declaration, cell access, nested loop traversal and row/column trace values.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not update the counter, total or flag outside the loop if it depends on each element.</p>
+            <p>Do not write <code>Marks[Index]</code> when the array is two-dimensional. One cell needs two indexes.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>What is the algorithm really doing?</h2>
-            <p>A program checks every score and counts how many are at least 50. Which pattern is this?</p>
+            <h2>Which seat is it?</h2>
+            <p>A theatre seat is in row 4, column 7. Which style matches that idea?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="traversal">Traversal only</button>
-            <button class="choice-card" type="button" data-hook="update">Update every element</button>
-            <button class="choice-card" type="button" data-hook="search">Search for first match</button>
-            <button class="choice-card" type="button" data-hook="count">Conditional count</button>
+            <button class="choice-card" type="button" data-hook="single">Seat[7]</button>
+            <button class="choice-card" type="button" data-hook="two">Seat[4, 7]</button>
+            <button class="choice-card" type="button" data-hook="string">"Row 4 Column 7"</button>
+            <button class="choice-card" type="button" data-hook="constant">CONSTANT Seat = 47</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the pattern that increments a counter only when a condition is true.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the representation that keeps row and column separate.</div>
         </section>
 
-        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+        <section class="panel" id="model" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
-            <p class="eyebrow">Pattern map</p>
-            <h2>Four array algorithm patterns</h2>
-            <p>Chinese support: 先判断题目是“遍历、修改、查找、计数”哪一种，再写循环。</p>
+            <p class="eyebrow">2D model</p>
+            <h2>Rows and columns create coordinates</h2>
           </div>
-          <div class="data-table pattern-table" role="table" aria-label="Array algorithm patterns">
-            <div class="table-row table-head" role="row"><div>Pattern</div><div>Question wording</div><div>Core idea</div><div>Key variable</div></div>
-            <div class="table-row" role="row"><div>Traversal</div><div>output all, process each</div><div>visit every valid index</div><div><code>Index</code></div></div>
-            <div class="table-row" role="row"><div>Update</div><div>increase, replace, apply discount</div><div>assign a new value to selected elements</div><div><code>Scores[Index]</code></div></div>
-            <div class="table-row" role="row"><div>Search</div><div>find, present, target</div><div>compare each element with target</div><div><code>Found</code></div></div>
-            <div class="table-row" role="row"><div>Count</div><div>how many, number of, at least</div><div>increment a counter when condition is true</div><div><code>Count</code></div></div>
+          <div class="triage-grid">
+            <article>
+              <h3>Same identifier</h3>
+              <p>The whole grid has one array name.</p>
+              <pre><code>Marks</code></pre>
+            </article>
+            <article>
+              <h3>Two indexes</h3>
+              <p>The first index usually selects the row; the second index selects the column.</p>
+              <pre><code>Marks[Row, Column]</code></pre>
+            </article>
+            <article>
+              <h3>Same type</h3>
+              <p>Each cell stores the same data type.</p>
+              <pre><code>ARRAY[1:3, 1:4] OF INTEGER</code></pre>
+            </article>
+          </div>
+          <div class="callout">Chinese support: row = 行，column = 列，cell = 某一行某一列交叉处的一个值。</div>
+        </section>
+
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
+          <div class="section-title">
+            <p class="eyebrow">Declare 2D arrays</p>
+            <h2>Two dimensions need two ranges</h2>
+          </div>
+          <div class="data-table syntax-table" role="table" aria-label="Two-dimensional array declarations">
+            <div class="table-row table-head" role="row"><div>Purpose</div><div>Cambridge-style pseudocode</div><div>Valid cells</div></div>
+            <div class="table-row" role="row"><div>3 by 4 mark table</div><div><code>DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER</code></div><div>3 rows, 4 columns, 12 cells</div></div>
+            <div class="table-row" role="row"><div>5 by 7 temperatures</div><div><code>DECLARE Temp : ARRAY[1:5, 1:7] OF REAL</code></div><div>5 rows, 7 columns, 35 cells</div></div>
+            <div class="table-row" role="row"><div>10 by 10 grid</div><div><code>DECLARE Grid : ARRAY[1:10, 1:10] OF BOOLEAN</code></div><div>100 Boolean cells</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start patterns -->
-        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="process" aria-labelledby="explanation-patterns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="patterns">
-          <h2 class="explanation-sr-only" id="explanation-patterns-title">Four array algorithm patterns</h2>
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Two dimensions need two ranges</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four array algorithm patterns with a structured visual model." />
-            <figcaption class="explanation-sr-only">Four array algorithm patterns: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two dimensions need two ranges with a structured visual model." />
+            <figcaption class="explanation-sr-only">Two dimensions need two ranges: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pattern map</li><li><strong>Lesson fact:</strong> Question wording</li><li><strong>Lesson fact:</strong> Core idea</li><li><strong>Lesson fact:</strong> Key variable</li><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> output all, process each</li><li><strong>Lesson fact:</strong> visit every valid index</li><li><strong>Lesson fact:</strong> increase, replace, apply discount</li><li><strong>Lesson fact:</strong> assign a new value to selected elements</li><li><strong>Lesson fact:</strong> Scores[Index]</li><li><strong>Lesson fact:</strong> find, present, target</li><li><strong>Lesson fact:</strong> compare each element with target</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Declare 2D arrays</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Valid cells</li><li><strong>Lesson fact:</strong> 3 by 4 mark table</li><li><strong>Lesson fact:</strong> DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER</li><li><strong>Lesson fact:</strong> 3 rows, 4 columns, 12 cells</li><li><strong>Lesson fact:</strong> 5 by 7 temperatures</li><li><strong>Lesson fact:</strong> DECLARE Temp : ARRAY[1:5, 1:7] OF REAL</li><li><strong>Lesson fact:</strong> 5 rows, 7 columns, 35 cells</li><li><strong>Lesson fact:</strong> 10 by 10 grid</li><li><strong>Lesson fact:</strong> DECLARE Grid : ARRAY[1:10, 1:10] OF BOOLEAN</li><li><strong>Lesson fact:</strong> 100 Boolean cells</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end patterns -->
-        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <!-- stage10-explanation:end declare -->
+        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
-            <p class="eyebrow">Traversal</p>
-            <h2>Visit every element once</h2>
-          </div>
-          <pre><code>FOR Index &lt;- 1 TO 5
-    OUTPUT Scores[Index]
-NEXT Index</code></pre>
-          <div class="callout">Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</div>
-        </section>
-
-        <!-- stage10-explanation:start traversal -->
-        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="traversal">
-          <h2 class="explanation-sr-only" id="explanation-traversal-title">Visit every element once</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Visit every element once with a structured visual model." />
-            <figcaption class="explanation-sr-only">Visit every element once: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> OUTPUT Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end traversal -->
-        <section class="panel" id="update" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
-          <div class="section-title">
-            <p class="eyebrow">Update</p>
-            <h2>Change selected elements</h2>
+            <p class="eyebrow">Access and update</p>
+            <h2>A cell needs row and column</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Update every element</h3>
-              <pre><code>FOR Index &lt;- 1 TO 5
-    Scores[Index] &lt;- Scores[Index] + 2
-NEXT Index</code></pre>
+              <h3>Read one cell</h3>
+              <pre><code>OUTPUT Marks[2, 3]</code></pre>
+              <p>Outputs the value in row 2, column 3.</p>
             </article>
             <article>
-              <h3>Update only when condition is true</h3>
-              <pre><code>FOR Index &lt;- 1 TO 5
-    IF Scores[Index] &lt; 50 THEN
-        Scores[Index] &lt;- Scores[Index] + 5
-    ENDIF
-NEXT Index</code></pre>
+              <h3>Update one cell</h3>
+              <pre><code>Marks[2, 3] &lt;- Marks[2, 3] + 1</code></pre>
+              <p>Only that cell changes; other rows and columns are untouched.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start update -->
-        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="update">
-          <h2 class="explanation-sr-only" id="explanation-update-title">Change selected elements</h2>
+        <!-- stage10-explanation:start access -->
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
+          <h2 class="explanation-sr-only" id="explanation-access-title">A cell needs row and column</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-update.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Change selected elements with a structured visual model." />
-            <figcaption class="explanation-sr-only">Change selected elements: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A cell needs row and column with a structured visual model." />
+            <figcaption class="explanation-sr-only">A cell needs row and column: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traverse the array with a FOR loop so Index is defined for every access.</li><li><strong>Lesson fact:</strong> Place the conditional update inside the traversal.</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10
-    IF Scores[Index] &lt; 50 THEN
-        Scores[Index] &lt;- Scores[Index] + 5
-    ENDIF
-NEXT Index</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Access and update</li><li><strong>Lesson fact:</strong> Read one cell</li><li><strong>Lesson fact:</strong> OUTPUT Marks[2, 3]</li><li><strong>Lesson fact:</strong> Outputs the value in row 2, column 3.</li><li><strong>Lesson fact:</strong> Update one cell</li><li><strong>Lesson fact:</strong> Marks[2, 3] &lt;- Marks[2, 3] + 1</li><li><strong>Lesson fact:</strong> Only that cell changes; other rows and columns are untouched.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end update -->
-        <section class="panel" id="search" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
+        <!-- stage10-explanation:end access -->
+        <section class="panel" id="nested" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
-            <p class="eyebrow">Search</p>
-            <h2>Use a flag to remember whether the target appeared</h2>
+            <p class="eyebrow">Nested loops</p>
+            <h2>Outer row loop, inner column loop</h2>
           </div>
-          <pre><code>Found &lt;- FALSE
-FOR Index &lt;- 1 TO 5
-    IF Names[Index] = TargetName THEN
-        Found &lt;- TRUE
-    ENDIF
-NEXT Index
-OUTPUT Found</code></pre>
+          <div class="code-grid">
+            <article>
+              <h3>Input every cell</h3>
+              <pre><code>FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        INPUT Marks[Row, Column]
+    NEXT Column
+NEXT Row</code></pre>
+            </article>
+            <article>
+              <h3>Total every cell</h3>
+              <pre><code>Total &lt;- 0
+FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        Total &lt;- Total + Marks[Row, Column]
+    NEXT Column
+NEXT Row
+OUTPUT Total</code></pre>
+            </article>
+          </div>
+          <div class="callout">For a 3 by 4 array, the inner statement runs 3 * 4 = 12 times.</div>
         </section>
 
-        <!-- stage10-explanation:start search -->
-        <section class="panel explanation-panel" id="explanation-search" data-explains="search" data-explanation-kind="mechanism" aria-labelledby="explanation-search-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="search">
-          <h2 class="explanation-sr-only" id="explanation-search-title">Use a flag to remember whether the target appeared</h2>
+        <!-- stage10-explanation:start nested -->
+        <section class="panel explanation-panel" id="explanation-nested" data-explains="nested" data-explanation-kind="mechanism" aria-labelledby="explanation-nested-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
+          <h2 class="explanation-sr-only" id="explanation-nested-title">Outer row loop, inner column loop</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-search.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a flag to remember whether the target appeared with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use a flag to remember whether the target appeared: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-nested.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Outer row loop, inner column loop with a structured visual model." />
+            <figcaption class="explanation-sr-only">Outer row loop, inner column loop: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise Found to FALSE before traversing the names.</li><li><strong>Lesson fact:</strong> Set Found to TRUE only when the current name equals TargetName.</li><li><strong>Lesson fact:</strong> Close the match selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output Found after the traversal.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Nested loops</li><li><strong>Lesson fact:</strong> Input every cell</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> INPUT Marks[Row, Column]</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> Total every cell</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Marks[Row, Column]</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> For a 3 by 4 array, the inner statement runs 3 * 4 = 12 times.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end search -->
-        <section class="panel" id="count" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="count">
-          <div class="section-title">
-            <p class="eyebrow">Count</p>
-            <h2>Increment only when a condition is true</h2>
-          </div>
-          <pre><code>PassCount &lt;- 0
-FOR Index &lt;- 1 TO 5
-    IF Scores[Index] &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
-    ENDIF
-NEXT Index
-OUTPUT PassCount</code></pre>
-        </section>
-
-        <!-- stage10-explanation:start count -->
-        <section class="panel explanation-panel" id="explanation-count" data-explains="count" data-explanation-kind="mechanism" aria-labelledby="explanation-count-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="count">
-          <h2 class="explanation-sr-only" id="explanation-count-title">Increment only when a condition is true</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-count.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Increment only when a condition is true with a structured visual model." />
-            <figcaption class="explanation-sr-only">Increment only when a condition is true: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise PassCount to zero before traversing five scores.</li><li><strong>Lesson fact:</strong> Increment PassCount only when the current score is at least 50.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output PassCount after the loop.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end count -->
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <!-- stage10-explanation:end nested -->
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
-            <h2>Trace the index, condition and running variable</h2>
+            <h2>Trace row and column together</h2>
           </div>
-          <div class="data-table trace-table" role="table" aria-label="Pass count trace">
-            <div class="table-row table-head" role="row"><div>Index</div><div>Scores[Index]</div><div>Condition &gt;= 50</div><div>PassCount</div></div>
-            <div class="table-row" role="row"><div>start</div><div>-</div><div>-</div><div>0</div></div>
-            <div class="table-row" role="row"><div>1</div><div>42</div><div>FALSE</div><div>0</div></div>
-            <div class="table-row" role="row"><div>2</div><div>67</div><div>TRUE</div><div>1</div></div>
-            <div class="table-row" role="row"><div>3</div><div>55</div><div>TRUE</div><div>2</div></div>
-            <div class="table-row" role="row"><div>4</div><div>81</div><div>TRUE</div><div>3</div></div>
-            <div class="table-row" role="row"><div>5</div><div>49</div><div>FALSE</div><div>3</div></div>
+          <div class="code-grid">
+            <article>
+              <h3>Example array</h3>
+              <div class="data-table matrix-table" role="table" aria-label="2D array values">
+                <div class="table-row table-head" role="row"><div></div><div>Col 1</div><div>Col 2</div><div>Col 3</div></div>
+                <div class="table-row" role="row"><div>Row 1</div><div>2</div><div>4</div><div>6</div></div>
+                <div class="table-row" role="row"><div>Row 2</div><div>1</div><div>3</div><div>5</div></div>
+              </div>
+            </article>
+            <article>
+              <h3>Traversal order</h3>
+              <div class="data-table mini-table" role="table" aria-label="Nested loop trace">
+                <div class="table-row table-head" role="row"><div>Step</div><div>Row</div><div>Column</div><div>Value</div></div>
+                <div class="table-row" role="row"><div>1</div><div>1</div><div>1</div><div>2</div></div>
+                <div class="table-row" role="row"><div>2</div><div>1</div><div>2</div><div>4</div></div>
+                <div class="table-row" role="row"><div>3</div><div>1</div><div>3</div><div>6</div></div>
+                <div class="table-row" role="row"><div>4</div><div>2</div><div>1</div><div>1</div></div>
+                <div class="table-row" role="row"><div>5</div><div>2</div><div>2</div><div>3</div></div>
+                <div class="table-row" role="row"><div>6</div><div>2</div><div>3</div><div>5</div></div>
+              </div>
+            </article>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Same algorithm, different array syntax</h2>
+            <h2>Do not import Java indexing into Cambridge answers</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PassCount &lt;- 0
-FOR Index &lt;- 1 TO 5
-    IF Scores[Index] &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
-    ENDIF
-NEXT Index</code></pre>
+              <pre><code>DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER
+
+FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        OUTPUT Marks[Row, Column]
+    NEXT Column
+NEXT Row</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>int passCount = 0;
-for (int index = 0; index &lt; 5; index++) {
-    if (scores[index] &gt;= 50) {
-        passCount++;
+              <pre><code>int[][] marks = new int[3][4];
+
+for (int row = 0; row &lt; 3; row++) {
+    for (int column = 0; column &lt; 4; column++) {
+        System.out.println(marks[row][column]);
     }
 }</code></pre>
             </article>
           </div>
-          <div class="callout">Paper 2 reminder: follow the bounds in the pseudocode question. Java examples support understanding, not exam syntax.</div>
+          <div class="callout">Paper 2 reminder: if the question states <code>ARRAY[1:3, 1:4]</code>, valid row indexes are 1 to 3 and valid column indexes are 1 to 4.</div>
         </section>
 
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="process" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same algorithm, different array syntax</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same algorithm, different array syntax with a structured visual model." />
-            <figcaption class="explanation-sr-only">Same algorithm, different array syntax: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Both pseudocode and Java versions visit five score positions.</li><li><strong>Lesson fact:</strong> Increment the pass counter only when the current score is at least 50.</li><li><strong>Lesson fact:</strong> Close the conditional before advancing the loop.</li><li><strong>Lesson fact:</strong> Both complete versions output the final pass count after the loop.</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="selector" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selector">
+        <section class="panel" id="lookup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
-            <p class="eyebrow">Interactive pattern selector</p>
-            <h2>Choose a scenario and inspect the matching template</h2>
+            <p class="eyebrow">Interactive cell lookup</p>
+            <h2>Read Marks[Row, Column]</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
-              <select id="patternInput">
-                <option value="output">Output every score</option>
-                <option value="bonus">Add 5 to scores below 50</option>
-                <option value="find">Check whether TargetName is present</option>
-                <option value="count">Count scores at least 50</option>
-                <option value="total">Calculate total score</option>
+              Row
+              <select id="rowInput">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="patternBtn">Select pattern</button>
+            <label>
+              Column
+              <select id="columnInput">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="lookupBtn">Read cell</button>
           </div>
-          <div class="trace-output" id="patternResult">Choose a scenario to see the algorithm pattern.</div>
+          <div class="trace-output" id="lookupResult">Array: Marks[1:3, 1:4]. Choose a row and column.</div>
         </section>
 
-        <!-- stage10-explanation:start selector -->
-        <section class="panel explanation-panel" id="explanation-selector" data-explains="selector" data-explanation-kind="mechanism" aria-labelledby="explanation-selector-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="selector">
-          <h2 class="explanation-sr-only" id="explanation-selector-title">Choose a scenario and inspect the matching template</h2>
+        <!-- stage10-explanation:start lookup -->
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
+          <h2 class="explanation-sr-only" id="explanation-lookup-title">Read Marks[Row, Column]</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-selector.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a scenario and inspect the matching template with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose a scenario and inspect the matching template: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read Marks[Row, Column] with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read Marks[Row, Column]: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive pattern selector</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to see the algorithm pattern.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive cell lookup</li><li><strong>Lesson fact:</strong> Array: Marks[1:3, 1:4]. Choose a row and column.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end selector -->
-        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="runner">
+        <!-- stage10-explanation:end lookup -->
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
-            <p class="eyebrow">Interactive trace runner</p>
-            <h2>Run a count algorithm on the sample scores</h2>
+            <p class="eyebrow">Interactive loop builder</p>
+            <h2>Generate a common 2D array pattern</h2>
           </div>
-          <div class="converter-grid">
+          <div class="converter-grid builder-grid">
             <label>
-              Threshold
-              <select id="thresholdInput">
-                <option value="50">50</option>
-                <option value="60">60</option>
-                <option value="80">80</option>
+              Task
+              <select id="builderInput">
+                <option value="declare">declare a 3 by 4 mark table</option>
+                <option value="input">input every cell</option>
+                <option value="output">output every cell</option>
+                <option value="rowTotal">calculate one row total</option>
+                <option value="allTotal">calculate whole table total</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="traceBtn">Run count</button>
+            <button class="primary-button" type="button" id="builderBtn">Build</button>
           </div>
-          <div class="trace-output" id="traceResult">Scores are 42, 67, 55, 81, 49.</div>
+          <div class="trace-output" id="builderResult">Choose a task to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Reusable array algorithms</h2>
+            <h2>2D array patterns you can reuse</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="traversal">Traversal</button>
-            <button class="tab" type="button" data-example="update">Update</button>
-            <button class="tab" type="button" data-example="search">Search</button>
-            <button class="tab" type="button" data-example="count">Count</button>
+            <button class="tab active" type="button" data-example="declare">Declare/input</button>
+            <button class="tab" type="button" data-example="lookup">Cell lookup</button>
+            <button class="tab" type="button" data-example="total">Whole total</button>
+            <button class="tab" type="button" data-example="rowTotal">Row total</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Ten quick algorithm checks</h2>
+            <h2>Ten quick 2D array checks</h2>
             <p>Answer briefly, then use Show answer to compare with strict wording.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix common array algorithm errors</h2>
+            <h2>Fix common 2D array errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style array algorithm questions with expandable MS</h2>
-            <p>These questions focus on indexed access, traversal, update, search, count and trace precision.</p>
+            <h2>Original Cambridge-style 2D array questions with expandable MS</h2>
+            <p>These questions focus on declaration, two-index access, nested loops, row totals and trace values.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Array algorithm checklist</h2>
+            <h2>Two-dimensional array checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Initialise</strong><span>set totals, counters and flags before the loop.</span></div>
-            <div><strong>Index</strong><span>use <code>Array[Index]</code> with loop bounds matching the declaration.</span></div>
-            <div><strong>Update</strong><span>place condition checks and updates inside the loop when they depend on each element.</span></div>
+            <div><strong>Declare</strong><span>state row bounds, column bounds and element type.</span></div>
+            <div><strong>Access</strong><span>use two indexes, usually <code>[Row, Column]</code>, to access one cell.</span></div>
+            <div><strong>Traverse</strong><span>use nested loops so every valid row/column pair is visited.</span></div>
           </div>
         </section>
 
@@ -417,16 +467,16 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Search</strong>
-              <span>Write pseudocode to search Codes[1:20] for TargetCode and output whether it is found.</span>
+              <strong>Task 1: Declaration and input</strong>
+              <span>Declare a two-dimensional array called Rainfall that stores REAL values for 7 days and 4 weeks, then input every cell.</span>
             </article>
             <article>
-              <strong>Task 2: Count</strong>
-              <span>Write pseudocode to count how many Temperatures[1:7] are greater than 30.</span>
+              <strong>Task 2: Total</strong>
+              <span>Write pseudocode to calculate the total of all cells in Rainfall[1:7, 1:4].</span>
             </article>
             <article>
-              <strong>Task 3: Update and trace</strong>
-              <span>For Scores[1:5] = 42, 67, 55, 81, 49, trace the result after adding 5 to every score below 50.</span>
+              <strong>Task 3: Bounds explanation</strong>
+              <span>Explain why Rainfall[8, 1] and Rainfall[2, 5] are invalid if the array is declared as ARRAY[1:7, 1:4] OF REAL.</span>
             </article>
           </div>
         </section>
@@ -434,8 +484,8 @@ for (int index = 0; index &lt; 5; index++) {
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

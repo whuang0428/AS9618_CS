@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 056 | Compilers, interpreters and assemblers</title>
+    <title>AS9618 Lesson 056 | Assembler, compiler and interpreter choices</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Compilers, interpreters and assemblers</h1>
+        <h1>Assembler, compiler and interpreter choices</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,11 +30,13 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#concept">Core idea</a>
-        <a href="#compiler">Compiler</a>
-        <a href="#interpreter">Interpreter</a>
-        <a href="#assembler">Assembler</a>
+        <a href="#backup">Backup</a>
+        <a href="#compression">Compression</a>
+        <a href="#encryption">Encryption</a>
+        <a href="#defrag">Defragmentation</a>
+        <a href="#antivirus">Antivirus</a>
         <a href="#compare">Comparison</a>
-        <a href="#tool">Translator tool</a>
+        <a href="#tool">Utility tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -117,226 +119,274 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 056 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>Source code is written for humans. Machine code is what the processor runs.</h2>
+            <h2>Utility software is the toolkit that keeps a system usable, recoverable and safer.</h2>
             <p>
-              Translator software converts programs from one language level to another.
-              Compilers, interpreters and assemblers all translate, but they do it at different levels and with different trade-offs.
-              The exam rewards accurate comparison, not "compiler makes code work".
+              Utility programs perform maintenance, protection and management tasks.
+              They are system software, but they are not the operating system itself.
+              The exam expects the exact purpose of each utility, plus a scenario where it is appropriate.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>compiler, interpreter and assembler using precise vocabulary</span></div>
-              <div><strong>Compare</strong><span>translation timing, output and error reporting</span></div>
-              <div><strong>Choose</strong><span>a suitable translator for development, deployment or assembly code</span></div>
+              <div><strong>Describe</strong><span>backup, compression, encryption, defragmentation and antivirus utilities</span></div>
+              <div><strong>Apply</strong><span>the correct utility to a user or organisation scenario</span></div>
+              <div><strong>Explain</strong><span>benefits, limitations and common common errors precisely</span></div>
             </div>
           </div>
-          <div class="translator-card" aria-label="Translator pathway sketch">
-            <div class="code-stack">
-              <span>High-level source code</span>
-              <span class="arrow">translator software</span>
-              <span>Object / executable / machine code</span>
+          <div class="utility-card" aria-label="Utility software sketch">
+            <div class="utility-stack">
+              <span>Backup: recover data</span>
+              <span>Compression: reduce file size</span>
+              <span>Encryption: protect confidentiality</span>
+              <span>Defrag: rearrange fragmented files</span>
+              <span>Antivirus: detect and remove malware</span>
             </div>
-            <p>Translation is not decoration. CPUs do not politely guess Python.</p>
+            <p>Name the specific task performed by the utility software.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Scenario questions often contrast development with distribution. The best answer links translator behaviour to the scenario.</p>
+            <p>Cambridge questions often give a scenario. Marks come from matching the utility to the exact problem.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not call an interpreter a weak compiler. They are different translation approaches with different uses.</p>
+            <p>Do not write "secure" or "efficient" alone. Explain what is protected, reduced, recovered or detected.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A processor receives <code>PRINT("Hello")</code>. Will it run that directly?</h2>
-            <p>Click the best answer. Processors require instructions to be translated into an executable form.</p>
+            <h2>A student deletes their coursework folder five minutes before the deadline. Which utility matters most?</h2>
+            <p>Click the best answer. At this point, "I was going to save it later" is not a recovery strategy.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="machine">No, it must be translated into machine code.</button>
-            <button class="choice-card" type="button" data-hook="english">Yes, because PRINT is readable English.</button>
-            <button class="choice-card" type="button" data-hook="assembler">Only if an assembler reads the high-level code.</button>
-            <button class="choice-card" type="button" data-hook="os">Yes, because the operating system understands all programs.</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup utility</button>
+            <button class="choice-card" type="button" data-hook="compression">Compression utility</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption utility</button>
+            <button class="choice-card" type="button" data-hook="defrag">Defragmentation utility</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The processor executes machine code instructions.
+            Choose one. The best utility depends on the problem being solved.
           </div>
         </section>
 
         <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Translator software converts program code into another form</h2>
+            <h2>Utility software performs maintenance and support tasks</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Source code</strong><span>The program as written by the programmer, usually in a high-level or assembly language.</span></article>
-            <article><strong>Object code</strong><span>Translated code produced by a compiler or assembler, often close to machine code.</span></article>
-            <article><strong>Machine code</strong><span>Binary instructions that can be executed directly by the processor.</span></article>
-            <article><strong>Translator</strong><span>System software that converts code from one language level to another.</span></article>
+            <article><strong>System software</strong><span>Software that supports the operation and management of the computer system.</span></article>
+            <article><strong>Utility software</strong><span>System software designed for a specific maintenance, protection or management task.</span></article>
+            <article><strong>Not application software</strong><span>It supports the system rather than directly producing user documents, games or media.</span></article>
+            <article><strong>Scenario link</strong><span>The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</span></article>
           </div>
-          <div class="callout">Chinese support: compiler = 编译器；interpreter = 解释器；assembler = 汇编器；source code = 源代码；object code = 目标代码；machine code = 机器码。</div>
+          <div class="callout">Chinese support: utility software = 实用程序；backup = 备份；compression = 压缩；encryption = 加密；defragmentation = 磁盘碎片整理；antivirus = 防病毒软件。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
         <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Translator software converts program code into another form</h2>
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Utility software performs maintenance and support tasks</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translator software converts program code into another form with a structured visual model." />
-            <figcaption class="explanation-sr-only">Translator software converts program code into another form: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software performs maintenance and support tasks with a structured visual model." />
+            <figcaption class="explanation-sr-only">Utility software performs maintenance and support tasks: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A compiler translates high-level source into target machine or object code.</li><li><strong>Lesson fact:</strong> An assembler translates assembly mnemonics into target machine or object code.</li><li><strong>Lesson fact:</strong> A linker combines object modules and resolves references to form an executable.</li><li><strong>Lesson fact:</strong> A loader places executable code and data into memory; it is not a generic object-to-machine translation stage.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> System software Software that supports the operation and management of the computer system.</li><li><strong>Lesson fact:</strong> Utility software System software designed for a specific maintenance, protection or management task.</li><li><strong>Lesson fact:</strong> Not application software It supports the system rather than directly producing user documents, games or media.</li><li><strong>Lesson fact:</strong> Scenario link The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="compiler" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+        <section class="panel" id="backup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>A compiler translates the whole high-level program before execution</h2>
+            <h2>Backup utilities create copies so data can be restored</h2>
           </div>
-          <div class="translator-grid">
-            <article><strong>Input</strong><span>High-level language source code.</span></article>
-            <article><strong>Output</strong><span>Object code or executable code after translation.</span></article>
-            <article><strong>Advantages</strong><span>Executable can run without source code; repeated execution may be faster after compilation.</span></article>
-            <article><strong>Limitations</strong><span>Errors are often reported after compilation, so debugging may involve checking a list of errors.</span></article>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Create copies of files or systems in another location or storage medium.</span></article>
+            <article><strong>Benefit</strong><span>Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</span></article>
+            <article><strong>Good practice</strong><span>Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</span></article>
+            <article><strong>Limitation</strong><span>A backup is only useful if it is recent, complete and can actually be restored.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compiler -->
-        <section class="panel explanation-panel" id="explanation-compiler" data-explains="compiler" data-explanation-kind="mechanism" aria-labelledby="explanation-compiler-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-compiler-title">A compiler translates the whole high-level program before execution</h2>
+        <!-- stage10-explanation:start backup -->
+        <section class="panel explanation-panel" id="explanation-backup" data-explains="backup" data-explanation-kind="mechanism" aria-labelledby="explanation-backup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+          <h2 class="explanation-sr-only" id="explanation-backup-title">Backup utilities create copies so data can be restored</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compiler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A compiler translates the whole high-level program before execution with a structured visual model." />
-            <figcaption class="explanation-sr-only">A compiler translates the whole high-level program before execution: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-backup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backup utilities create copies so data can be restored with a structured visual model." />
+            <figcaption class="explanation-sr-only">Backup utilities create copies so data can be restored: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input High-level language source code.</li><li><strong>Lesson fact:</strong> Output Object code or executable code after translation.</li><li><strong>Lesson fact:</strong> Advantages Executable can run without source code; repeated execution may be faster after compilation.</li><li><strong>Lesson fact:</strong> Limitations Errors are often reported after compilation, so debugging may involve checking a list of errors.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Purpose Create copies of files or systems in another location or storage medium.</li><li><strong>Lesson fact:</strong> Benefit Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</li><li><strong>Lesson fact:</strong> Good practice Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</li><li><strong>Lesson fact:</strong> Limitation A backup is only useful if it is recent, complete and can actually be restored.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compiler -->
-        <section class="panel" id="interpreter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+        <!-- stage10-explanation:end backup -->
+        <section class="panel" id="compression" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>An interpreter translates and executes statements as the program runs</h2>
+            <h2>Compression utilities reduce file size</h2>
           </div>
-          <div class="translator-grid">
-            <article><strong>Input</strong><span>High-level language source code.</span></article>
-            <article><strong>Output</strong><span>No separate permanent object code is normally produced.</span></article>
-            <article><strong>Advantages</strong><span>Useful during development because errors can be found statement by statement.</span></article>
-            <article><strong>Limitations</strong><span>Program may run more slowly because translation happens during execution; source code is needed.</span></article>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Encode data so it takes up fewer bits than the original file.</span></article>
+            <article><strong>Uses</strong><span>Save storage space, reduce upload/download time and fit within attachment limits.</span></article>
+            <article><strong>Lossless</strong><span>Original data can be reconstructed exactly, suitable for text, programs and archives.</span></article>
+            <article><strong>Lossy</strong><span>Some detail is discarded, often suitable for media where small quality loss is acceptable.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start interpreter -->
-        <section class="panel explanation-panel" id="explanation-interpreter" data-explains="interpreter" data-explanation-kind="mechanism" aria-labelledby="explanation-interpreter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-interpreter-title">An interpreter translates and executes statements as the program runs</h2>
+        <!-- stage10-explanation:start compression -->
+        <section class="panel explanation-panel" id="explanation-compression" data-explains="compression" data-explanation-kind="mechanism" aria-labelledby="explanation-compression-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+          <h2 class="explanation-sr-only" id="explanation-compression-title">Compression utilities reduce file size</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-interpreter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An interpreter translates and executes statements as the program runs with a structured visual model." />
-            <figcaption class="explanation-sr-only">An interpreter translates and executes statements as the program runs: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compression.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression utilities reduce file size with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compression utilities reduce file size: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input High-level language source code.</li><li><strong>Lesson fact:</strong> Output No separate permanent object code is normally produced.</li><li><strong>Lesson fact:</strong> Advantages Useful during development because errors can be found statement by statement.</li><li><strong>Lesson fact:</strong> Limitations Program may run more slowly because translation happens during execution; source code is needed.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Purpose Encode data so it takes up fewer bits than the original file.</li><li><strong>Lesson fact:</strong> Uses Save storage space, reduce upload/download time and fit within attachment limits.</li><li><strong>Lesson fact:</strong> Lossless Original data can be reconstructed exactly, suitable for text, programs and archives.</li><li><strong>Lesson fact:</strong> Lossy Some detail is discarded, often suitable for media where small quality loss is acceptable.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end interpreter -->
-        <section class="panel" id="assembler" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+        <!-- stage10-explanation:end compression -->
+        <section class="panel" id="encryption" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>An assembler translates assembly language into machine code</h2>
+            <h2>Encryption utilities protect confidentiality</h2>
           </div>
-          <div class="translator-grid">
-            <article><strong>Input</strong><span>Assembly language mnemonics such as <code>LDA</code>, <code>ADD</code> or <code>STA</code>.</span></article>
-            <article><strong>Output</strong><span>Machine code/object code that the processor can execute.</span></article>
-            <article><strong>Purpose</strong><span>Allows low-level programming using mnemonic instructions instead of raw binary.</span></article>
-            <article><strong>Boundary</strong><span>It does not translate high-level languages such as Python, Java or pseudocode.</span></article>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Scramble plaintext into ciphertext using an algorithm and a key.</span></article>
+            <article><strong>Benefit</strong><span>Unauthorised users cannot read the data without the correct key.</span></article>
+            <article><strong>Examples</strong><span>Encrypting a laptop drive, a backup archive or files sent over a network.</span></article>
+            <article><strong>Limitation</strong><span>Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start assembler -->
-        <section class="panel explanation-panel" id="explanation-assembler" data-explains="assembler" data-explanation-kind="mechanism" aria-labelledby="explanation-assembler-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-assembler-title">An assembler translates assembly language into machine code</h2>
+        <!-- stage10-explanation:start encryption -->
+        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+          <h2 class="explanation-sr-only" id="explanation-encryption-title">Encryption utilities protect confidentiality</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-assembler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An assembler translates assembly language into machine code with a structured visual model." />
-            <figcaption class="explanation-sr-only">An assembler translates assembly language into machine code: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-encryption.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Encryption utilities protect confidentiality with a structured visual model." />
+            <figcaption class="explanation-sr-only">Encryption utilities protect confidentiality: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An assembler translates assembly-language mnemonics into machine code or an object-code module.</li><li><strong>Lesson fact:</strong> Machine code uses the instruction set and binary encodings of the target processor.</li><li><strong>Lesson fact:</strong> An object module may still need a linker to combine modules and resolve external library references before an executable can be produced.</li><li><strong>Lesson fact:</strong> An assembler does not translate high-level languages such as Java or Cambridge pseudocode.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Purpose Scramble plaintext into ciphertext using an algorithm and a key.</li><li><strong>Lesson fact:</strong> Benefit Unauthorised users cannot read the data without the correct key.</li><li><strong>Lesson fact:</strong> Examples Encrypting a laptop drive, a backup archive or files sent over a network.</li><li><strong>Lesson fact:</strong> Limitation Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end assembler -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+        <!-- stage10-explanation:end encryption -->
+        <section class="panel" id="defrag" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Comparison: same goal, different route</h2>
+            <h2>Defragmentation rearranges fragmented files on magnetic disks</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Translator comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Translator</div>
-              <div role="columnheader">Input</div>
-              <div role="columnheader">Output / execution behaviour</div>
-              <div role="columnheader">Typical use</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Compiler</div>
-              <div role="cell">High-level source code</div>
-              <div role="cell">Produces object/executable code before the program is run.</div>
-              <div role="cell">Distribution, repeated execution, protecting source code.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Interpreter</div>
-              <div role="cell">High-level source code</div>
-              <div role="cell">Translates and executes statement by statement; normally no separate object code.</div>
-              <div role="cell">Development, testing, learning and rapid debugging.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Assembler</div>
-              <div role="cell">Assembly language</div>
-              <div role="cell">Converts mnemonics into machine code/object code.</div>
-              <div role="cell">Low-level code for specific processor instructions.</div>
-            </div>
+          <div class="utility-grid">
+            <article><strong>Fragmentation</strong><span>Parts of a file are stored in non-contiguous blocks across a disk.</span></article>
+            <article><strong>Purpose</strong><span>Rearrange file blocks so related parts are stored closer together.</span></article>
+            <article><strong>Benefit</strong><span>Can reduce mechanical disk head movement and improve hard disk access time.</span></article>
+            <article><strong>Boundary</strong><span>Do not apply the same benefit to SSDs; they have no moving disk head.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Comparison: same goal, different route</h2>
+        <!-- stage10-explanation:start defrag -->
+        <section class="panel explanation-panel" id="explanation-defrag" data-explains="defrag" data-explanation-kind="mechanism" aria-labelledby="explanation-defrag-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+          <h2 class="explanation-sr-only" id="explanation-defrag-title">Defragmentation rearranges fragmented files on magnetic disks</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Comparison: same goal, different route with a structured visual model." />
-            <figcaption class="explanation-sr-only">Comparison: same goal, different route: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-defrag.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Defragmentation rearranges fragmented files on magnetic disks with a structured visual model." />
+            <figcaption class="explanation-sr-only">Defragmentation rearranges fragmented files on magnetic disks: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A compiler translates a whole high-level program before execution and produces target or object code; a linked executable can run repeatedly without the source.</li><li><strong>Lesson fact:</strong> An interpreter translates and executes high-level statements during execution and normally produces no separate permanent object-code file.</li><li><strong>Lesson fact:</strong> An assembler translates assembly-language mnemonics into target machine code or an object module for a specific processor instruction set.</li><li><strong>Lesson fact:</strong> If an assembler or compiler produces object modules, a linker may still be required before there is an executable program.</li><li><strong>Lesson fact:</strong> Choose the translator from the input language and the development or deployment need; do not claim that every assembler output is immediately executable.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Fragmentation Parts of a file are stored in non-contiguous blocks across a disk.</li><li><strong>Lesson fact:</strong> Purpose Rearrange file blocks so related parts are stored closer together.</li><li><strong>Lesson fact:</strong> Benefit Can reduce mechanical disk head movement and improve hard disk access time.</li><li><strong>Lesson fact:</strong> Boundary Do not apply the same benefit to SSDs; they have no moving disk head.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
+        <!-- stage10-explanation:end defrag -->
+        <section class="panel" id="antivirus" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Antivirus utilities detect, quarantine and remove malware</h2>
+          </div>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Scan files, memory or downloads for malware signatures or suspicious behaviour.</span></article>
+            <article><strong>Actions</strong><span>Warn the user, quarantine infected files, delete malware or block malicious activity.</span></article>
+            <article><strong>Updates</strong><span>Definitions and detection rules should be updated to recognise newer threats.</span></article>
+            <article><strong>Limitation</strong><span>Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start antivirus -->
+        <section class="panel explanation-panel" id="explanation-antivirus" data-explains="antivirus" data-explanation-kind="mechanism" aria-labelledby="explanation-antivirus-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+          <h2 class="explanation-sr-only" id="explanation-antivirus-title">Antivirus utilities detect, quarantine and remove malware</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-antivirus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Antivirus utilities detect, quarantine and remove malware with a structured visual model." />
+            <figcaption class="explanation-sr-only">Antivirus utilities detect, quarantine and remove malware: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Purpose Scan files, memory or downloads for malware signatures or suspicious behaviour.</li><li><strong>Lesson fact:</strong> Actions Warn the user, quarantine infected files, delete malware or block malicious activity.</li><li><strong>Lesson fact:</strong> Updates Definitions and detection rules should be updated to recognise newer threats.</li><li><strong>Lesson fact:</strong> Limitation Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end antivirus -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Choose the utility by diagnosing the problem</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Utility software comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Problem</div>
+              <div role="columnheader">Most relevant utility</div>
+              <div role="columnheader">Exam-quality reason</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Deleted work needs recovery</div>
+              <div role="cell">Backup</div>
+              <div role="cell">A previous copy can be restored if it was made before the loss.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">File is too large to email</div>
+              <div role="cell">Compression</div>
+              <div role="cell">Reduces file size, saving transmission time and storage space.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Sensitive file may be stolen</div>
+              <div role="cell">Encryption</div>
+              <div role="cell">Turns readable data into ciphertext that needs a key to read.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Old HDD opens files slowly</div>
+              <div role="cell">Defragmentation</div>
+              <div role="cell">Rearranges scattered file blocks to reduce disk head movement.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Downloaded file may contain malware</div>
+              <div role="cell">Antivirus</div>
+              <div role="cell">Scans, quarantines or removes malicious code.</div>
+            </div>
+          </div>
+        </section>
+
+
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Translator selector</h2>
-            <p>Select a scenario and classify the most suitable translator.</p>
+            <h2>Utility selector</h2>
+            <p>Select a problem and identify the most suitable utility.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
+              Problem scenario
               <select id="scenarioInput">
-                <option value="deploy">Distribute a finished program without source code</option>
-                <option value="debug">Find errors while writing a program line by line</option>
-                <option value="assembly">Convert assembly mnemonics for a processor</option>
-                <option value="repeat">Run the same program many times after translation</option>
-                <option value="student">Beginner testing each statement interactively</option>
-                <option value="wrongasm">Translate Java source code with an assembler</option>
+                <option value="deleted">Coursework folder was deleted</option>
+                <option value="email">Video file is too large to upload</option>
+                <option value="stolen">A laptop with customer data may be stolen</option>
+                <option value="slowhdd">An old magnetic hard disk opens files slowly</option>
+                <option value="malware">A suspicious attachment may contain malware</option>
+                <option value="ssd">A laptop with SSD storage feels slow</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Choose</button>
+            <button class="primary-button" type="button" id="simulateBtn">Diagnose</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
@@ -346,13 +396,14 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Choose the translator, then justify the trade-off</h2>
+            <h2>From scenario to utility choice</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="compiler">Compiler</button>
-            <button class="tab" type="button" data-example="interpreter">Interpreter</button>
-            <button class="tab" type="button" data-example="assembler">Assembler</button>
-            <button class="tab" type="button" data-example="compare">Compare</button>
+            <button class="tab active" type="button" data-example="backup">Backup</button>
+            <button class="tab" type="button" data-example="compression">Compression</button>
+            <button class="tab" type="button" data-example="encryption">Encryption</button>
+            <button class="tab" type="button" data-example="defrag">Defrag</button>
+            <button class="tab" type="button" data-example="antivirus">Antivirus</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
@@ -361,7 +412,7 @@
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+            <p>Type a short answer, then check. Use the answer button if you need the expected wording.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -378,7 +429,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
+            <p>These are original Cambridge-style questions. The mark schemes use strict wording notes to train exam precision.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -386,15 +437,15 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Translator memory map</h2>
+            <h2>The one-line memory map</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Compiler</strong><span>Whole high-level program before execution, produces object/executable code.</span></div>
-            <div><strong>Interpreter</strong><span>Translates and executes high-level code statement by statement.</span></div>
-            <div><strong>Assembler</strong><span>Assembly language mnemonics into machine code.</span></div>
-            <div><strong>Development</strong><span>Interpreter can help with line-by-line testing.</span></div>
-            <div><strong>Deployment</strong><span>Compiler can distribute executable code without source code.</span></div>
-            <div><strong>Exam rule</strong><span>Always name input, output and scenario consequence.</span></div>
+            <div><strong>Backup</strong><span>Recover data from a copy.</span></div>
+            <div><strong>Compression</strong><span>Reduce file size.</span></div>
+            <div><strong>Encryption</strong><span>Protect confidentiality with ciphertext and a key.</span></div>
+            <div><strong>Defrag</strong><span>Rearrange file blocks on magnetic disks.</span></div>
+            <div><strong>Antivirus</strong><span>Detect, quarantine and remove malware.</span></div>
+            <div><strong>Exam rule</strong><span>Utility + mechanism + scenario consequence.</span></div>
           </div>
         </section>
 
@@ -405,24 +456,24 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Three translator flashcards</strong>
-              <span>For compiler, interpreter and assembler, write input, output, one advantage and one limitation.</span>
+              <strong>Task 1: Five utility flashcards</strong>
+              <span>Create one flashcard for each utility. Front: utility name. Back: purpose, one scenario, one limitation.</span>
             </article>
             <article>
-              <strong>Task 2: Scenario answer</strong>
-              <span>Write a 6-mark answer comparing an interpreter during development with a compiler for distributing a finished program.</span>
+              <strong>Task 2: Scenario paragraph</strong>
+              <span>Write a 6-mark answer recommending two utilities for a small business that stores customer data and has suffered malware before.</span>
             </article>
             <article>
-              <strong>Task 3: Precision check</strong>
-              <span>Underline the exact words source code, object code, machine code, statement by statement and assembly language where relevant.</span>
+              <strong>Task 3: Marking check</strong>
+              <span>Underline each mechanism word in your answer: restore, reduce, encrypt, rearrange, scan, quarantine or remove.</span>
             </article>
           </div>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 106 | Maximum, minimum, count and total</title>
+    <title>AS9618 Lesson 106 | Bubble sort and insertion sort</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Maximum, minimum, count and total</h1>
+        <h1>Bubble sort and insertion sort</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#patterns">Core patterns</a>
-        <a href="#initialise">Initialisation</a>
-        <a href="#fixed">Fixed count</a>
-        <a href="#sentinel">Sentinel input</a>
+        <a href="#bubble">Bubble sort</a>
+        <a href="#insertion">Insertion sort</a>
+        <a href="#compare">Comparison</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#chooser">Algorithm chooser</a>
-        <a href="#trace-tool">Trace simulator</a>
+        <a href="#chooser">Sort chooser</a>
+        <a href="#bubble-tool">Bubble pass</a>
+        <a href="#insert-tool">Insertion step</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -45,280 +45,214 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 106 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
-            <h2>Algorithms remember things. Sadly, only if you initialise the memory first.</h2>
+            <p class="lesson-meta">Lesson 106 | 45 minutes | Paper 2 Section 9 | 5-minute quiz</p>
+            <h2>Sorting algorithms apply a defined sequence of comparisons and movements.</h2>
             <p>
-              Many AS Paper 2 algorithms process a list of values and keep a running result: a total, a count, a
-              maximum or a minimum. The idea is simple, but exam marks are strict: initialise the variable, update it
-              inside the correct loop, and show a trace that proves every value was processed.
+              Bubble sort repeatedly compares adjacent items and swaps them if they are in the wrong order. Insertion
+              sort takes the next item and inserts it into the correct place in the already sorted left section. You will
+              trace both methods step by step using Cambridge-style algorithm reasoning.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Initialise</strong><span>running variables correctly before processing values</span></div>
-              <div><strong>Update</strong><span>total, count, maximum and minimum inside loops</span></div>
-              <div><strong>Trace</strong><span>variable changes using Cambridge-style evidence</span></div>
+              <div><strong>Trace</strong><span>bubble sort passes and insertion sort movements accurately</span></div>
+              <div><strong>Compare</strong><span>how adjacent swaps differ from inserting into a sorted section</span></div>
+              <div><strong>Explain</strong><span>common trace errors, stopping points and algorithm behaviour</span></div>
             </div>
           </div>
-          <div class="accumulator-visual" aria-label="Accumulator visual">
-            <div class="number-stream">
-              <span>72</span><span>55</span><span>91</span><span>64</span>
+          <div class="sort-visual" aria-label="Sorting visual">
+            <div class="array-line">
+              <span>5</span><span>1</span><span>4</span><span>2</span>
             </div>
-            <div class="metric-grid">
-              <div><strong>Total</strong><span>282</span></div>
-              <div><strong>Count</strong><span>4</span></div>
-              <div><strong>Maximum</strong><span>91</span></div>
-              <div><strong>Minimum</strong><span>55</span></div>
+            <div class="sort-card">
+              <strong>Bubble sort first pass</strong>
+              <span>[1, 4, 2, 5]</span>
             </div>
-            <p>One loop can collect several facts, but each variable needs a clear starting value and update rule.</p>
+            <div class="sort-card">
+              <strong>Insertion sort first movement</strong>
+              <span>take 1, insert before 5 → [1, 5, 4, 2]</span>
+            </div>
+            <p>Bubble sort pushes large values right. Insertion sort builds a sorted left-hand section.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Cambridge-style mark schemes often credit initialisation, loop control, condition tests and update statements separately.</p>
+            <p>Paper 2 sorting questions usually mark the intermediate states. The final sorted list alone is not enough.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Using `Maximum &lt;- 0` fails if all data values can be negative. Use the first input value when the range is not guaranteed.</p>
+            <p>Do not sort by intuition. Use the named algorithm's exact movement rule, or the trace stops matching the method.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>The class scoreboard is not psychic</h2>
-            <p>You read scores one at a time: 72, 55, 91, 64. Which variable update counts how many scores have been read?</p>
+            <h2>Four cards, two legal ways to tidy them</h2>
+            <p>Starting from [5, 1, 4, 2], which statement describes bubble sort's first comparison?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="count">Count &lt;- Count + 1</button>
-            <button class="choice-card" type="button" data-hook="total">Total &lt;- Total + Score</button>
-            <button class="choice-card" type="button" data-hook="max">IF Score &gt; Maximum THEN Maximum &lt;- Score</button>
-            <button class="choice-card" type="button" data-hook="output">OUTPUT Count before the loop starts</button>
+            <button class="choice-card" type="button" data-hook="swap">Compare 5 and 1, then swap them.</button>
+            <button class="choice-card" type="button" data-hook="insert">Take 1 and insert it into the left section.</button>
+            <button class="choice-card" type="button" data-hook="middle">Start from the middle value.</button>
+            <button class="choice-card" type="button" data-hook="search">Find the target value first.</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the update that increases the number of processed scores.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the bubble sort first action.</div>
         </section>
 
-        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+        <section class="panel" id="bubble" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Four running-value patterns</h2>
-            <p>Start with a concrete list, then name the algorithm pattern.</p>
-          </div>
-          <div class="data-table pattern-table" role="table" aria-label="Accumulator patterns">
-            <div class="table-row table-head" role="row"><div>Goal</div><div>Variable</div><div>Update rule</div><div>Meaning</div></div>
-            <div class="table-row" role="row"><div>Total</div><div>`Total`</div><div>`Total &lt;- Total + Value`</div><div>running sum of values</div></div>
-            <div class="table-row" role="row"><div>Count</div><div>`Count`</div><div>`Count &lt;- Count + 1` when a value is processed or meets a condition</div><div>number of items</div></div>
-            <div class="table-row" role="row"><div>Maximum</div><div>`Maximum`</div><div>replace when `Value &gt; Maximum`</div><div>largest value seen so far</div></div>
-            <div class="table-row" role="row"><div>Minimum</div><div>`Minimum`</div><div>replace when `Value &lt; Minimum`</div><div>smallest value seen so far</div></div>
-          </div>
-          <div class="callout">Chinese support: running total = 累加总和；count = 计数；maximum/minimum = 最大值/最小值；initialise = 初始化。</div>
-        </section>
-
-        <!-- stage10-explanation:start patterns -->
-        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="mechanism" aria-labelledby="explanation-patterns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="patterns">
-          <h2 class="explanation-sr-only" id="explanation-patterns-title">Four running-value patterns</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four running-value patterns with a structured visual model." />
-            <figcaption class="explanation-sr-only">Four running-value patterns: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Start with a concrete list, then name the algorithm pattern.</li><li><strong>Lesson fact:</strong> Variable</li><li><strong>Lesson fact:</strong> Update rule</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Value</li><li><strong>Lesson fact:</strong> running sum of values</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1 when a value is processed or meets a condition</li><li><strong>Lesson fact:</strong> number of items</li><li><strong>Lesson fact:</strong> Maximum</li><li><strong>Lesson fact:</strong> replace when Value &gt; Maximum</li><li><strong>Lesson fact:</strong> largest value seen so far</li><li><strong>Lesson fact:</strong> Minimum</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end patterns -->
-        <section class="panel" id="initialise" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="initialise">
-          <div class="section-title">
-            <p class="eyebrow">Initialisation</p>
-            <h2>The starting value decides whether the algorithm is honest</h2>
+            <h2>Bubble sort: compare adjacent items and swap if needed</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Total and count</h3>
-              <pre><code>Total &lt;- 0
-Count &lt;- 0
-
-FOR Index &lt;- 1 TO 4
-    INPUT Score
-    Total &lt;- Total + Score
-    Count &lt;- Count + 1
-NEXT Index</code></pre>
-              <p>Zero is safe because nothing has been added or counted yet.</p>
+              <h3>Core rule</h3>
+              <p>Compare neighbouring items from left to right. If the left item is larger than the right item, swap them. After one full pass, the largest item has moved to the end.</p>
+              <div class="callout">Chinese support: bubble sort = 冒泡排序；adjacent = 相邻的；swap = 交换。</div>
             </article>
             <article>
-              <h3>Maximum and minimum</h3>
-              <pre><code>INPUT Value
-Maximum &lt;- Value
-Minimum &lt;- Value
-
-FOR Index &lt;- 2 TO 4
-    INPUT Value
-    IF Value &gt; Maximum THEN
-        Maximum &lt;- Value
-    ENDIF
-    IF Value &lt; Minimum THEN
-        Minimum &lt;- Value
-    ENDIF
-NEXT Index</code></pre>
-              <p>The first real value is safer than guessing a starting maximum or minimum.</p>
+              <h3>First pass on [5, 1, 4, 2]</h3>
+              <pre><code>[5, 1, 4, 2]
+compare 5 and 1 -> swap: [1, 5, 4, 2]
+compare 5 and 4 -> swap: [1, 4, 5, 2]
+compare 5 and 2 -> swap: [1, 4, 2, 5]</code></pre>
             </article>
           </div>
         </section>
-
-        <!-- stage10-explanation:start initialise -->
-        <section class="panel explanation-panel" id="explanation-initialise" data-explains="initialise" data-explanation-kind="process" aria-labelledby="explanation-initialise-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="initialise">
-          <h2 class="explanation-sr-only" id="explanation-initialise-title">The starting value decides whether the algorithm is honest</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-initialise.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The starting value decides whether the algorithm is honest with a structured visual model." />
-            <figcaption class="explanation-sr-only">The starting value decides whether the algorithm is honest: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise totals and counters to zero before processing values.</li><li><strong>Lesson fact:</strong> Initialise Maximum and Minimum from the first real input value or from proven safe bounds.</li><li><strong>Lesson fact:</strong> Compare each remaining value with Maximum and Minimum.</li><li><strong>Lesson fact:</strong> Replace Maximum only when a larger value is found and Minimum only when a smaller value is found.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end initialise -->
-        <section class="panel" id="fixed" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fixed">
+        <section class="panel" id="insertion" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
-            <p class="eyebrow">Fixed-count input</p>
-            <h2>When the number of values is known, use a count-controlled loop</h2>
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Insertion sort: insert the next item into the sorted left section</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Example: total and average of 4 scores</h3>
-              <pre><code>Total &lt;- 0
-FOR Index &lt;- 1 TO 4
-    INPUT Score
-    Total &lt;- Total + Score
-NEXT Index
-Average &lt;- Total / 4
-OUTPUT Average</code></pre>
+              <h3>Core rule</h3>
+              <p>Treat the first item as sorted. Take the next item, move larger items in the sorted section right, then insert the item into its correct position.</p>
+              <div class="callout">Chinese support: insertion sort = 插入排序；sorted section = 已排序部分。</div>
             </article>
             <article>
-              <h3>Trace focus</h3>
-              <p>For scores 72, 55, 91, 64, the total becomes 72, 127, 218, 282. The average is 70.5.</p>
-              <div class="callout">Do not output the average inside the loop unless the question asks for a running average.</div>
+              <h3>First movements on [5, 1, 4, 2]</h3>
+              <pre><code>sorted left: [5]
+take 1 -> insert before 5: [1, 5, 4, 2]
+take 4 -> insert between 1 and 5: [1, 4, 5, 2]
+take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start fixed -->
-        <section class="panel explanation-panel" id="explanation-fixed" data-explains="fixed" data-explanation-kind="mechanism" aria-labelledby="explanation-fixed-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="fixed">
-          <h2 class="explanation-sr-only" id="explanation-fixed-title">When the number of values is known, use a count-controlled loop</h2>
+        <!-- stage10-explanation:start insertion -->
+        <section class="panel explanation-panel" id="explanation-insertion" data-explains="insertion" data-explanation-kind="process" aria-labelledby="explanation-insertion-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
+          <h2 class="explanation-sr-only" id="explanation-insertion-title">How insertion sort grows a sorted region</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-fixed.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When the number of values is known, use a count-controlled loop with a structured visual model." />
-            <figcaption class="explanation-sr-only">When the number of values is known, use a count-controlled loop: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-insertion.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How insertion sort grows a sorted region through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How insertion sort grows a sorted region: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Fixed-count input</li><li><strong>Lesson fact:</strong> Example: total and average of 4 scores</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> INPUT Score</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Score</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Average &lt;- Total / 4</li><li><strong>Lesson fact:</strong> OUTPUT Average</li><li><strong>Lesson fact:</strong> Trace focus</li><li><strong>Lesson fact:</strong> For scores 72, 55, 91, 64, the total becomes 72, 127, 218, 282. The average is 70.5.</li><li><strong>Lesson fact:</strong> Do not output the average inside the loop unless the question asks for a running average.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Treat the first item as an already sorted region.</li><li><strong>Reason:</strong> Remove the next key and shift larger sorted items right.</li><li><strong>Result:</strong> Insert the key into the gap, expanding the sorted region.</li></ol>
 
+            <p><strong>Analogy:</strong> Insert each new card into the correct place in an ordered hand.</p>
+            <p><strong>Boundary:</strong> The left region is sorted, but the unprocessed right region is not.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end fixed -->
-        <section class="panel" id="sentinel" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sentinel">
+        <!-- stage10-explanation:end insertion -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
-            <p class="eyebrow">Sentinel input</p>
-            <h2>When input stops on a special value, do not process the sentinel</h2>
+            <p class="eyebrow">Comparison</p>
+            <h2>Same final list, different route</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Example: enter numbers until -1</h3>
-              <pre><code>Total &lt;- 0
-Count &lt;- 0
-INPUT Number
-WHILE Number &lt;&gt; -1
-    Total &lt;- Total + Number
-    Count &lt;- Count + 1
-    INPUT Number
-ENDWHILE
-OUTPUT Total
-OUTPUT Count</code></pre>
-            </article>
-            <article>
-              <h3>Exam wording</h3>
-              <p>The sentinel is a control signal, not data. If the inputs are 4, 6, 2, -1, the total is 12 and the count is 3.</p>
-              <div class="callout">Chinese support: sentinel value = 哨兵值 / 结束标记。</div>
-            </article>
+          <div class="data-table concept-table" role="table" aria-label="Bubble and insertion comparison">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Bubble sort</div><div>Insertion sort</div></div>
+            <div class="table-row" role="row"><div>Main action</div><div>compare adjacent items and swap</div><div>take next item and insert into sorted left section</div></div>
+            <div class="table-row" role="row"><div>After early work</div><div>large items move towards the right end</div><div>left side becomes sorted</div></div>
+            <div class="table-row" role="row"><div>Trace evidence</div><div>show comparisons and swaps in a pass</div><div>show key item movements and insertion point</div></div>
+            <div class="table-row" role="row"><div>Common error</div><div>jumping straight to sorted list</div><div>moving the wrong direction through sorted section</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start sentinel -->
-        <section class="panel explanation-panel" id="explanation-sentinel" data-explains="sentinel" data-explanation-kind="process" aria-labelledby="explanation-sentinel-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="sentinel">
-          <h2 class="explanation-sr-only" id="explanation-sentinel-title">When input stops on a special value, do not process the sentinel</h2>
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Why the sorts move data differently</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-sentinel.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When input stops on a special value, do not process the sentinel with a structured visual model." />
-            <figcaption class="explanation-sr-only">When input stops on a special value, do not process the sentinel: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why the sorts move data differently through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why the sorts move data differently: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise Total and Count, then input the first Number.</li><li><strong>Lesson fact:</strong> While Number is not -1, add it to Total and increment Count.</li><li><strong>Lesson fact:</strong> Input the next Number at the end of the WHILE body before ENDWHILE.</li><li><strong>Lesson fact:</strong> The sentinel -1 stops the loop and is not added or counted.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Bubble sort repairs local inversions through repeated neighbouring swaps.</li><li><strong>Reason:</strong> Insertion sort moves one key through an existing sorted region.</li><li><strong>Result:</strong> Their movement patterns produce different trace states and operation counts.</li></ol>
 
+            <p><strong>Analogy:</strong> One method swaps neighbours; the other opens a gap for one selected card.</p>
+            <p><strong>Boundary:</strong> Both remain quadratic in the typical worst-case school-level analysis.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end sentinel -->
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <!-- stage10-explanation:end compare -->
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Use Cambridge assignment and loop keywords in exam answers</h2>
+            <h2>Trace Cambridge-style algorithms, not Java syntax habits</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>Total &lt;- 0
-PassCount &lt;- 0
-FOR Index &lt;- 1 TO 5
-    INPUT Mark
-    Total &lt;- Total + Mark
-    IF Mark &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
-    ENDIF
-NEXT Index
-OUTPUT Total
-OUTPUT PassCount</code></pre>
+              <h3>Bubble sort outline</h3>
+              <pre><code>FOR Pass &lt;- 1 TO Length - 1
+    FOR Index &lt;- 1 TO Length - Pass
+        IF List[Index] &gt; List[Index + 1] THEN
+            Temp &lt;- List[Index]
+            List[Index] &lt;- List[Index + 1]
+            List[Index + 1] &lt;- Temp
+        ENDIF
+    NEXT Index
+NEXT Pass</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>int total = 0;
-int passCount = 0;
-for (int index = 0; index &lt; 5; index++) {
-    int mark = input.nextInt();
-    total = total + mark;
-    if (mark &gt;= 50) {
-        passCount = passCount + 1;
+              <pre><code>for (int pass = 0; pass &lt; list.length - 1; pass++) {
+    for (int index = 0; index &lt; list.length - pass - 1; index++) {
+        if (list[index] &gt; list[index + 1]) {
+            int temp = list[index];
+            list[index] = list[index + 1];
+            list[index + 1] = temp;
+        }
     }
 }</code></pre>
             </article>
           </div>
-          <div class="callout">Exam reminder: Java helps implementation practice, but Paper 2 expects clear Cambridge-style pseudocode unless Java is explicitly requested.</div>
+          <div class="callout">Exam reminder: Java uses 0-based array indexes and braces; Cambridge pseudocode examples often use 1-based indexing and keywords such as FOR, IF, ENDIF and NEXT.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Use Cambridge assignment and loop keywords in exam answers</h2>
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Why a trace follows state</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge assignment and loop keywords in exam answers with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use Cambridge assignment and loop keywords in exam answers: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a trace follows state through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a trace follows state: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise Total and PassCount to zero before processing five marks.</li><li><strong>Lesson fact:</strong> Every input mark is added to Total.</li><li><strong>Lesson fact:</strong> Increment PassCount only when Mark is at least 50 and close that selection with ENDIF.</li><li><strong>Lesson fact:</strong> Output Total and PassCount after NEXT Index.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Record the variables and list at the agreed trace point.</li><li><strong>Reason:</strong> Apply exactly one comparison, swap, shift or insertion step.</li><li><strong>Result:</strong> Write the new state before advancing the loop.</li></ol>
 
+            <p><strong>Analogy:</strong> A laboratory log records each changed state, not the punctuation of instructions.</p>
+            <p><strong>Boundary:</strong> A trace must use the algorithm's actual update order.</p>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
-            <p class="eyebrow">Interactive algorithm chooser</p>
-            <h2>Match the task to the running-value pattern</h2>
+            <p class="eyebrow">Interactive sort chooser</p>
+            <h2>Identify the method from the movement</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Task clue
+              Movement clue
               <select id="chooserInput">
-                <option value="total">Find the combined score of all players.</option>
-                <option value="count">Find how many readings are above 30.</option>
-                <option value="maximum">Find the highest temperature recorded.</option>
-                <option value="minimum">Find the lowest lap time.</option>
+                <option value="bubble">Compare 5 and 1, then swap adjacent items.</option>
+                <option value="insert">Take 4 and insert it between 1 and 5.</option>
+                <option value="bubble-end">After a pass, the largest item is at the right end.</option>
+                <option value="insert-left">The left-hand section is kept sorted.</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="chooserBtn">Identify</button>
@@ -326,97 +260,93 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="feedback" id="chooserResult">Choose a clue to classify it.</div>
         </section>
 
-        <section class="panel" id="trace-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace-tool">
+        <section class="panel" id="bubble-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
-            <p class="eyebrow">Interactive trace simulator</p>
-            <h2>Watch running variables change</h2>
+            <p class="eyebrow">Interactive bubble pass</p>
+            <h2>Trace one full bubble pass</h2>
           </div>
-          <div class="converter-grid three-col">
+          <div class="converter-grid">
             <label>
-              Data set
-              <select id="dataInput">
-                <option value="scores">Scores: 72, 55, 91, 64</option>
-                <option value="temps">Temperatures: -3, -8, 2, -1</option>
-                <option value="sales">Sales: 12, 0, 7, 5</option>
+              Starting list
+              <select id="bubbleInput">
+                <option value="5142">[5, 1, 4, 2]</option>
+                <option value="3124">[3, 1, 2, 4]</option>
+                <option value="4312">[4, 3, 1, 2]</option>
               </select>
             </label>
+            <button class="primary-button" type="button" id="bubbleBtn">Show pass</button>
+          </div>
+          <div class="trace-output" id="bubbleResult">Choose a list to trace a pass.</div>
+        </section>
+
+        <section class="panel" id="insert-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
+          <div class="section-title">
+            <p class="eyebrow">Interactive insertion step</p>
+            <h2>Trace insertion sort movements</h2>
+          </div>
+          <div class="converter-grid">
             <label>
-              Goal
-              <select id="goalInput">
-                <option value="total">Total</option>
-                <option value="countPositive">Count values greater than 0</option>
-                <option value="maximum">Maximum</option>
-                <option value="minimum">Minimum</option>
-                <option value="all">All four variables</option>
+              Starting list
+              <select id="insertInput">
+                <option value="5142">[5, 1, 4, 2]</option>
+                <option value="3124">[3, 1, 2, 4]</option>
+                <option value="4312">[4, 3, 1, 2]</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+            <button class="primary-button" type="button" id="insertBtn">Show movements</button>
           </div>
-          <div class="trace-output" id="traceResult">Choose a data set and goal, then trace the algorithm.</div>
+          <div class="trace-output" id="insertResult">Choose a list to trace insertion movements.</div>
         </section>
 
-        <!-- stage10-explanation:start trace-tool -->
-        <section class="panel explanation-panel" id="explanation-trace-tool" data-explains="trace-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-trace-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="trace-tool">
-          <h2 class="explanation-sr-only" id="explanation-trace-tool-title">Watch running variables change</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-trace-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Watch running variables change with a structured visual model." />
-            <figcaption class="explanation-sr-only">Watch running variables change: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive trace simulator</li><li><strong>Lesson fact:</strong> Data set</li><li><strong>Lesson fact:</strong> Choose a data set and goal, then trace the algorithm.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end trace-tool -->
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Accumulator traces</h2>
+            <h2>Sorting traces</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="total-average">Total and average</button>
-            <button class="tab" type="button" data-example="count-pass">Conditional count</button>
-            <button class="tab" type="button" data-example="max-min">Maximum and minimum</button>
-            <button class="tab" type="button" data-example="sentinel">Sentinel input</button>
+            <button class="tab active" type="button" data-example="bubble-pass">Bubble first pass</button>
+            <button class="tab" type="button" data-example="bubble-full">Bubble full trace</button>
+            <button class="tab" type="button" data-example="insert-first">Insertion first movement</button>
+            <button class="tab" type="button" data-example="insert-full">Insertion full trace</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Running-value precision</h2>
+            <h2>Sorting trace accuracy</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix accumulator mistakes</h2>
+            <h2>Fix sorting mistakes</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style accumulator questions with expandable MS</h2>
-            <p>These questions target initialisation, loop control, updates, trace tables and strict pseudocode wording.</p>
+            <h2>Original Cambridge-style sorting questions with expandable MS</h2>
+            <p>These questions target sorting traces, comparison of methods and strict algorithm wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-106">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Accumulator checklist</h2>
+            <h2>Sorting checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Start</strong><span>Initialise total/count to 0; initialise maximum/minimum from a real input value when range is uncertain.</span></div>
-            <div><strong>Loop</strong><span>Process each value exactly once unless the question states otherwise.</span></div>
-            <div><strong>Update</strong><span>Use assignment after addition, comparison or condition test; show changed variables in traces.</span></div>
+            <div><strong>Bubble</strong><span>Compare adjacent items; swap if left is greater; largest item moves right each pass.</span></div>
+            <div><strong>Insertion</strong><span>Take next item; insert it into the correct position in the sorted left section.</span></div>
+            <div><strong>Trace</strong><span>Show intermediate states. The final sorted list alone is not enough.</span></div>
           </div>
         </section>
 
@@ -427,16 +357,16 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Trace table</strong>
-              <span>For values 9, 4, 12, 7, trace `Total`, `Count`, `Maximum` and `Minimum` after each value is processed.</span>
+              <strong>Task 1: Bubble trace</strong>
+              <span>Show two passes of bubble sort on [6, 2, 5, 1]. Record every comparison and swap.</span>
             </article>
             <article>
-              <strong>Task 2: Pseudocode</strong>
-              <span>Write Cambridge-style pseudocode to input 6 marks, output the total, and count how many marks are at least 50.</span>
+              <strong>Task 2: Insertion trace</strong>
+              <span>Trace insertion sort on [6, 2, 5, 1]. Show the sorted left section after each insertion.</span>
             </article>
             <article>
-              <strong>Task 3: Sentinel correction</strong>
-              <span>Explain why the sentinel value `-1` must not be added to the total in an input-until--1 algorithm.</span>
+              <strong>Task 3: Comparison paragraph</strong>
+              <span>Explain the difference between bubble sort and insertion sort using the words adjacent, swap, insert and sorted section.</span>
             </article>
           </div>
         </section>
@@ -444,8 +374,8 @@ for (int index = 0; index &lt; 5; index++) {
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

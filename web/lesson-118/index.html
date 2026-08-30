@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 118 | Records and composite data</title>
+    <title>AS9618 Lesson 118 | Array model required by search algorithms</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Records and composite data</h1>
+        <h1>Array model required by search algorithms</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,14 +29,15 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#concept">Concept</a>
-        <a href="#declare">Declare</a>
-        <a href="#access">Access/update</a>
-        <a href="#array-vs-record">Array vs record</a>
+        <a href="#patterns">Pattern map</a>
+        <a href="#traversal">Traversal</a>
+        <a href="#update">Update</a>
+        <a href="#search">Search</a>
+        <a href="#count">Count</a>
         <a href="#trace">Trace</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#lookup">Field lookup</a>
-        <a href="#builder">Type builder</a>
+        <a href="#selector">Pattern selector</a>
+        <a href="#runner">Trace runner</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -55,66 +56,81 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Define, read and save record data</h2>
+            <h2>Array model required by search algorithms</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.</p>
-            <p>Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.</p>
-            <p>Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark &lt;- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark &lt;- 75. Reading or saving one field does not replace unrelated fields.</p>
+            <p>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</p>
+            <p>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</p>
+            <p>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</p>
+            <p>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Define and use one student record</h3>
-            <p>TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark &lt;- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.</p>
+            <h3>Worked example: Declare the search data before tracing it</h3>
+            <p>DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
-          <h2 class="explanation-sr-only" id="explanation-declare-title">Define a record, then save and read named fields</h2>
+        <!-- stage10-explanation:start linear -->
+        <section class="panel explanation-panel" id="explanation-linear" data-explains="linear" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
+          <h2 class="explanation-sr-only" id="explanation-linear-title">Linear search checks each item in order</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define a record, then save and read named fields with a structured visual model." />
-            <figcaption class="explanation-sr-only">Define a record, then save and read named fields: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-linear.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linear search checks each item in order: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A record groups related named fields of different data types under one identifier.</li><li><strong>Lesson fact:</strong> Define the record between TYPE and ENDTYPE, then declare a variable of that record type.</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 75 saves a field value; OUTPUT Student1.Mark reads that named field.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> How it works</li><li><strong>Lesson fact:</strong> Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li><strong>Lesson fact:</strong> When it is suitable</li><li><strong>Lesson fact:</strong> Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li><strong>Lesson fact:</strong> Worst case: the target is last or absent, so every item may be checked.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end declare -->
+        <!-- stage10-explanation:end linear -->
+
+        <!-- stage10-explanation:start bubble -->
+        <section class="panel explanation-panel" id="explanation-bubble" data-explains="bubble" data-explanation-kind="process" aria-labelledby="explanation-bubble-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
+          <h2 class="explanation-sr-only" id="explanation-bubble-title">Why bubble sort repeats adjacent comparisons</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-bubble.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why bubble sort repeats adjacent comparisons through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why bubble sort repeats adjacent comparisons: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Bubble sort compares adjacent items and swaps an inverted pair.</li><li><strong>Reason:</strong> For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.</li><li><strong>Result:</strong> The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.</li></ol>
+
+            <p><strong>Analogy:</strong> Repeatedly exchange adjacent books until the largest reaches the shelf end.</p>
+            <p><strong>Boundary:</strong> One pass does not generally sort the entire list.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end bubble -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Define, read and save record data: apply and assess</h2>
+            <h2>Array model required by search algorithms: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Why can a record contain both STRING and DATE fields?</p>
-              <details><summary>Show answer</summary><p>Record fields may have different data types but belong to one entity under one identifier.</p></details>
+              <p><strong>1.</strong> What are the lower and upper bounds of ARRAY[1:4]?</p>
+              <details><summary>Show answer</summary><p>The lower bound is 1 and the upper bound is 4.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which statement saves a mark of 80?</p>
-              <details><summary>Show answer</summary><p>Student1.Mark &lt;- 80.</p></details>
+              <p><strong>2.</strong> What does Names[Index] mean?</p>
+              <details><summary>Show answer</summary><p>The single array element selected by the current value of Index.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which expression reads the stored name?</p>
-              <details><summary>Show answer</summary><p>Student1.Name, for example OUTPUT Student1.Name.</p></details>
+              <p><strong>3.</strong> Why must binary search know the current Low and High indexes?</p>
+              <details><summary>Show answer</summary><p>They delimit the remaining sorted portion of the array that may contain the target.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Define TProduct with Code, Description, Price and InStock fields, Write declarations for Product1, save values to Price and InStock, then read both fields.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>opens TYPE TProduct and declares suitable named fields</td><td>Do not use numeric array indexing for record fields or omit ENDTYPE from the type definition.</td><td>1</td></tr>
-                  <tr><td>uses suitable STRING, REAL and BOOLEAN field types</td><td></td><td>1</td></tr>
-                  <tr><td>closes the definition with ENDTYPE</td><td></td><td>1</td></tr>
-                  <tr><td>declares Product1 : TProduct after ENDTYPE</td><td></td><td>1</td></tr>
-                  <tr><td>assigns/saves values through Product1.Price and Product1.InStock</td><td></td><td>1</td></tr>
-                  <tr><td>reads/outputs the two named fields without replacing other data</td><td></td><td>1</td></tr>
+                  <tr><td>DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range</td><td>Do not assume zero-based indexing when the declaration gives different bounds.</td><td>1</td></tr>
+                  <tr><td>OF STRING</td><td></td><td>1</td></tr>
+                  <tr><td>first valid index matches the declared lower bound</td><td></td><td>1</td></tr>
+                  <tr><td>last valid index matches the declared upper bound</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -125,287 +141,320 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 118 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
-            <h2>A record keeps related facts together without pretending they are the same type.</h2>
+            <h2>Arrays become useful when loops do the repetitive work.</h2>
             <p>
-              Arrays are excellent when many values share one type and are accessed by index. A record is different:
-              it groups related fields that may have different data types. A student record can store a name, date of
-              birth, exam mark and enrolment status in one composite value.
+              Declaring an array is only the start. Most Paper 2 array questions ask you to visit elements, update
+              selected elements, search for a target, or count elements that match a condition. The secret is simple:
+              one loop visits one valid index at a time, and the statement inside the loop does the job.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>record, field and composite data using accurate vocabulary</span></div>
-              <div><strong>Declare</strong><span>record types and variables in Cambridge-style pseudocode</span></div>
-              <div><strong>Access</strong><span>read and update fields using dot notation</span></div>
+              <div><strong>Recognise</strong><span>traversal, update, search and count array algorithm patterns</span></div>
+              <div><strong>Write</strong><span>Cambridge-style pseudocode using correct indexes and loop bounds</span></div>
+              <div><strong>Trace</strong><span>running totals, counters, flags and updated elements accurately</span></div>
             </div>
           </div>
-          <div class="record-visual" aria-label="Record visual">
-            <div class="record-card">
-              <strong>TStudent</strong>
-              <span>Name : STRING</span>
-              <span>DateOfBirth : DATE</span>
-              <span>Mark : INTEGER</span>
-              <span>Enrolled : BOOLEAN</span>
+          <div class="algorithm-visual" aria-label="Array algorithm visual">
+            <div class="array-row">
+              <span>Index</span><strong>1</strong><strong>2</strong><strong>3</strong><strong>4</strong><strong>5</strong>
+              <span>Score</span><strong>42</strong><strong>67</strong><strong>55</strong><strong>81</strong><strong>49</strong>
             </div>
-            <div class="record-caption">Student1.Mark &lt;- 72</div>
-            <p>One record. Several named fields. Different types allowed.</p>
+            <div class="algorithm-card">IF Scores[Index] &gt;= 50 THEN Count &lt;- Count + 1</div>
+            <p>The index moves. The pattern stays calm.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 can ask students to define a record type, declare a record variable, and access fields correctly.</p>
+            <p>Mark schemes reward matching bounds, indexed access, correct initialisation and placing updates inside the loop.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A record is not an array. Use field names such as <code>Student1.Name</code>, not indexes such as <code>Student1[1]</code>.</p>
+            <p>Do not update the counter, total or flag outside the loop if it depends on each element.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>What should hold one student's details?</h2>
-            <p>A student has a name, date of birth, mark and enrolment status. Which structure is most suitable for one student?</p>
+            <h2>What is the algorithm really doing?</h2>
+            <p>A program checks every score and counts how many are at least 50. Which pattern is this?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="array">ARRAY[1:4] OF STRING</button>
-            <button class="choice-card" type="button" data-hook="record">RECORD / user-defined type</button>
-            <button class="choice-card" type="button" data-hook="integer">INTEGER</button>
-            <button class="choice-card" type="button" data-hook="constant">CONSTANT Student = 1</button>
+            <button class="choice-card" type="button" data-hook="traversal">Traversal only</button>
+            <button class="choice-card" type="button" data-hook="update">Update every element</button>
+            <button class="choice-card" type="button" data-hook="search">Search for first match</button>
+            <button class="choice-card" type="button" data-hook="count">Conditional count</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that can group different fields with different types.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the pattern that increments a counter only when a condition is true.</div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+        <section class="panel" id="patterns" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
-            <p class="eyebrow">Concept</p>
-            <h2>Composite data groups fields into one type</h2>
-            <p>Chinese support: record 是“记录”；field 是“字段”；composite data 是“由多个部分组合成的数据”。</p>
+            <p class="eyebrow">Pattern map</p>
+            <h2>Four array algorithm patterns</h2>
+            <p>Chinese support: 先判断题目是“遍历、修改、查找、计数”哪一种，再写循环。</p>
           </div>
-          <div class="data-table concept-table" role="table" aria-label="Record concepts">
-            <div class="table-row table-head" role="row"><div>Term</div><div>Meaning</div><div>Example</div></div>
-            <div class="table-row" role="row"><div>Record</div><div>a composite structure containing named fields</div><div><code>TStudent</code></div></div>
-            <div class="table-row" role="row"><div>Field</div><div>one named item inside a record</div><div><code>Name</code>, <code>Mark</code></div></div>
-            <div class="table-row" role="row"><div>Composite data</div><div>data made from several components</div><div>student details grouped together</div></div>
-            <div class="table-row" role="row"><div>Dot notation</div><div>access to one field of a record variable</div><div><code>Student1.Mark</code></div></div>
+          <div class="data-table pattern-table" role="table" aria-label="Array algorithm patterns">
+            <div class="table-row table-head" role="row"><div>Pattern</div><div>Question wording</div><div>Core idea</div><div>Key variable</div></div>
+            <div class="table-row" role="row"><div>Traversal</div><div>output all, process each</div><div>visit every valid index</div><div><code>Index</code></div></div>
+            <div class="table-row" role="row"><div>Update</div><div>increase, replace, apply discount</div><div>assign a new value to selected elements</div><div><code>Scores[Index]</code></div></div>
+            <div class="table-row" role="row"><div>Search</div><div>find, present, target</div><div>compare each element with target</div><div><code>Found</code></div></div>
+            <div class="table-row" role="row"><div>Count</div><div>how many, number of, at least</div><div>increment a counter when condition is true</div><div><code>Count</code></div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Composite data groups fields into one type</h2>
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="process" aria-labelledby="explanation-patterns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">Four array algorithm patterns</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Composite data groups fields into one type with a structured visual model." />
-            <figcaption class="explanation-sr-only">Composite data groups fields into one type: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four array algorithm patterns with a structured visual model." />
+            <figcaption class="explanation-sr-only">Four array algorithm patterns: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> a composite structure containing named fields</li><li><strong>Lesson fact:</strong> TStudent</li><li><strong>Lesson fact:</strong> one named item inside a record</li><li><strong>Lesson fact:</strong> Name , Mark</li><li><strong>Lesson fact:</strong> Composite data</li><li><strong>Lesson fact:</strong> data made from several components</li><li><strong>Lesson fact:</strong> student details grouped together</li><li><strong>Lesson fact:</strong> Dot notation</li><li><strong>Lesson fact:</strong> access to one field of a record variable</li><li><strong>Lesson fact:</strong> Student1.Mark</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Pattern map</li><li><strong>Lesson fact:</strong> Question wording</li><li><strong>Lesson fact:</strong> Core idea</li><li><strong>Lesson fact:</strong> Key variable</li><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> output all, process each</li><li><strong>Lesson fact:</strong> visit every valid index</li><li><strong>Lesson fact:</strong> increase, replace, apply discount</li><li><strong>Lesson fact:</strong> assign a new value to selected elements</li><li><strong>Lesson fact:</strong> Scores[Index]</li><li><strong>Lesson fact:</strong> find, present, target</li><li><strong>Lesson fact:</strong> compare each element with target</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+        <!-- stage10-explanation:end patterns -->
+        <section class="panel" id="traversal" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
-            <p class="eyebrow">Declare records</p>
-            <h2>Define the type, then declare variables that use it</h2>
+            <p class="eyebrow">Traversal</p>
+            <h2>Visit every element once</h2>
+          </div>
+          <pre><code>FOR Index &lt;- 1 TO 5
+    OUTPUT Scores[Index]
+NEXT Index</code></pre>
+          <div class="callout">Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</div>
+        </section>
+
+        <!-- stage10-explanation:start traversal -->
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <h2 class="explanation-sr-only" id="explanation-traversal-title">Visit every element once</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Visit every element once with a structured visual model." />
+            <figcaption class="explanation-sr-only">Visit every element once: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> OUTPUT Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end traversal -->
+        <section class="panel" id="update" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <div class="section-title">
+            <p class="eyebrow">Update</p>
+            <h2>Change selected elements</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Record type</h3>
-              <pre><code>TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE DateOfBirth : DATE
-    DECLARE Mark : INTEGER
-    DECLARE Enrolled : BOOLEAN
-ENDTYPE</code></pre>
+              <h3>Update every element</h3>
+              <pre><code>FOR Index &lt;- 1 TO 5
+    Scores[Index] &lt;- Scores[Index] + 2
+NEXT Index</code></pre>
             </article>
             <article>
-              <h3>Record variable</h3>
-              <pre><code>DECLARE Student1 : TStudent
-
-Student1.Name &lt;- "Ali"
-Student1.Mark &lt;- 72</code></pre>
+              <h3>Update only when condition is true</h3>
+              <pre><code>FOR Index &lt;- 1 TO 5
+    IF Scores[Index] &lt; 50 THEN
+        Scores[Index] &lt;- Scores[Index] + 5
+    ENDIF
+NEXT Index</code></pre>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
-          <div class="section-title">
-            <p class="eyebrow">Access and update</p>
-            <h2>Use the field name, not a numeric index</h2>
-          </div>
-          <div class="data-table access-table" role="table" aria-label="Record field access">
-            <div class="table-row table-head" role="row"><div>Task</div><div>Pseudocode</div><div>Effect</div></div>
-            <div class="table-row" role="row"><div>Read field</div><div><code>OUTPUT Student1.Name</code></div><div>outputs the Name field</div></div>
-            <div class="table-row" role="row"><div>Update field</div><div><code>Student1.Mark &lt;- 80</code></div><div>changes only the Mark field</div></div>
-            <div class="table-row" role="row"><div>Test field</div><div><code>IF Student1.Enrolled = TRUE THEN</code></div><div>uses Boolean field in selection</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start access -->
-        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
-          <h2 class="explanation-sr-only" id="explanation-access-title">Use the field name, not a numeric index</h2>
+        <!-- stage10-explanation:start update -->
+        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <h2 class="explanation-sr-only" id="explanation-update-title">Change selected elements</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the field name, not a numeric index with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the field name, not a numeric index: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-update.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Change selected elements with a structured visual model." />
+            <figcaption class="explanation-sr-only">Change selected elements: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Access and update</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Read field</li><li><strong>Lesson fact:</strong> OUTPUT Student1.Name</li><li><strong>Lesson fact:</strong> outputs the Name field</li><li><strong>Lesson fact:</strong> Update field</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 80</li><li><strong>Lesson fact:</strong> changes only the Mark field</li><li><strong>Lesson fact:</strong> Test field</li><li><strong>Lesson fact:</strong> IF Student1.Enrolled = TRUE THEN</li><li><strong>Lesson fact:</strong> uses Boolean field in selection</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Traverse the array with a FOR loop so Index is defined for every access.</li><li><strong>Lesson fact:</strong> Place the conditional update inside the traversal.</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10
+    IF Scores[Index] &lt; 50 THEN
+        Scores[Index] &lt;- Scores[Index] + 5
+    ENDIF
+NEXT Index</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end access -->
-        <section class="panel" id="array-vs-record" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+        <!-- stage10-explanation:end update -->
+        <section class="panel" id="search" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
-            <p class="eyebrow">Array vs record</p>
-            <h2>Same type and index, or mixed fields and names?</h2>
+            <p class="eyebrow">Search</p>
+            <h2>Use a flag to remember whether the target appeared</h2>
           </div>
-          <div class="data-table compare-table" role="table" aria-label="Array versus record">
-            <div class="table-row table-head" role="row"><div>Feature</div><div>Array</div><div>Record</div></div>
-            <div class="table-row" role="row"><div>Elements / fields</div><div>usually same type</div><div>can be different types</div></div>
-            <div class="table-row" role="row"><div>Access</div><div>index: <code>Scores[3]</code></div><div>field name: <code>Student1.Mark</code></div></div>
-            <div class="table-row" role="row"><div>Best for</div><div>many similar values</div><div>several facts about one entity</div></div>
-          </div>
+          <pre><code>Found &lt;- FALSE
+FOR Index &lt;- 1 TO 5
+    IF Names[Index] = TargetName THEN
+        Found &lt;- TRUE
+    ENDIF
+NEXT Index
+OUTPUT Found</code></pre>
         </section>
 
-        <!-- stage10-explanation:start array-vs-record -->
-        <section class="panel explanation-panel" id="explanation-array-vs-record" data-explains="array-vs-record" data-explanation-kind="comparison" aria-labelledby="explanation-array-vs-record-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
-          <h2 class="explanation-sr-only" id="explanation-array-vs-record-title">Same type and index, or mixed fields and names?</h2>
+        <!-- stage10-explanation:start search -->
+        <section class="panel explanation-panel" id="explanation-search" data-explains="search" data-explanation-kind="mechanism" aria-labelledby="explanation-search-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <h2 class="explanation-sr-only" id="explanation-search-title">Use a flag to remember whether the target appeared</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-array-vs-record.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same type and index, or mixed fields and names? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Same type and index, or mixed fields and names?: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-search.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a flag to remember whether the target appeared with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use a flag to remember whether the target appeared: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Array vs record</li><li><strong>Lesson fact:</strong> Elements / fields</li><li><strong>Lesson fact:</strong> usually same type</li><li><strong>Lesson fact:</strong> can be different types</li><li><strong>Lesson fact:</strong> index: Scores[3]</li><li><strong>Lesson fact:</strong> field name: Student1.Mark</li><li><strong>Lesson fact:</strong> Best for</li><li><strong>Lesson fact:</strong> many similar values</li><li><strong>Lesson fact:</strong> several facts about one entity</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Found to FALSE before traversing the names.</li><li><strong>Lesson fact:</strong> Set Found to TRUE only when the current name equals TargetName.</li><li><strong>Lesson fact:</strong> Close the match selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output Found after the traversal.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end array-vs-record -->
+        <!-- stage10-explanation:end search -->
+        <section class="panel" id="count" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <div class="section-title">
+            <p class="eyebrow">Count</p>
+            <h2>Increment only when a condition is true</h2>
+          </div>
+          <pre><code>PassCount &lt;- 0
+FOR Index &lt;- 1 TO 5
+    IF Scores[Index] &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index
+OUTPUT PassCount</code></pre>
+        </section>
+
+        <!-- stage10-explanation:start count -->
+        <section class="panel explanation-panel" id="explanation-count" data-explains="count" data-explanation-kind="mechanism" aria-labelledby="explanation-count-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <h2 class="explanation-sr-only" id="explanation-count-title">Increment only when a condition is true</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-count.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Increment only when a condition is true with a structured visual model." />
+            <figcaption class="explanation-sr-only">Increment only when a condition is true: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Initialise PassCount to zero before traversing five scores.</li><li><strong>Lesson fact:</strong> Increment PassCount only when the current score is at least 50.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output PassCount after the loop.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end count -->
         <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
-            <h2>Trace the field that changes</h2>
+            <h2>Trace the index, condition and running variable</h2>
           </div>
-          <div class="data-table trace-table" role="table" aria-label="Record trace">
-            <div class="table-row table-head" role="row"><div>Statement</div><div>Name</div><div>Mark</div><div>Enrolled</div></div>
-            <div class="table-row" role="row"><div>Student1.Name &lt;- "Ali"</div><div>Ali</div><div>-</div><div>-</div></div>
-            <div class="table-row" role="row"><div>Student1.Mark &lt;- 72</div><div>Ali</div><div>72</div><div>-</div></div>
-            <div class="table-row" role="row"><div>Student1.Enrolled &lt;- TRUE</div><div>Ali</div><div>72</div><div>TRUE</div></div>
+          <div class="data-table trace-table" role="table" aria-label="Pass count trace">
+            <div class="table-row table-head" role="row"><div>Index</div><div>Scores[Index]</div><div>Condition &gt;= 50</div><div>PassCount</div></div>
+            <div class="table-row" role="row"><div>start</div><div>-</div><div>-</div><div>0</div></div>
+            <div class="table-row" role="row"><div>1</div><div>42</div><div>FALSE</div><div>0</div></div>
+            <div class="table-row" role="row"><div>2</div><div>67</div><div>TRUE</div><div>1</div></div>
+            <div class="table-row" role="row"><div>3</div><div>55</div><div>TRUE</div><div>2</div></div>
+            <div class="table-row" role="row"><div>4</div><div>81</div><div>TRUE</div><div>3</div></div>
+            <div class="table-row" role="row"><div>5</div><div>49</div><div>FALSE</div><div>3</div></div>
           </div>
         </section>
 
         <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Same modelling idea, different syntax</h2>
+            <h2>Same algorithm, different array syntax</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>TYPE TBook
-    DECLARE Title : STRING
-    DECLARE Pages : INTEGER
-    DECLARE Available : BOOLEAN
-ENDTYPE
-
-DECLARE Book1 : TBook
-Book1.Available &lt;- TRUE</code></pre>
+              <pre><code>PassCount &lt;- 0
+FOR Index &lt;- 1 TO 5
+    IF Scores[Index] &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>class Book {
-    String title;
-    int pages;
-    boolean available;
-}
-
-Book book1 = new Book();
-book1.available = true;</code></pre>
+              <pre><code>int passCount = 0;
+for (int index = 0; index &lt; 5; index++) {
+    if (scores[index] &gt;= 50) {
+        passCount++;
+    }
+}</code></pre>
             </article>
           </div>
-          <div class="callout">Paper 2 reminder: Java class syntax is support only. Cambridge pseudocode should use clear TYPE/ENDTYPE-style record notation when required.</div>
+          <div class="callout">Paper 2 reminder: follow the bounds in the pseudocode question. Java examples support understanding, not exam syntax.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same modelling idea, different syntax</h2>
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="process" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same algorithm, different array syntax</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same modelling idea, different syntax with a structured visual model." />
-            <figcaption class="explanation-sr-only">Same modelling idea, different syntax: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same algorithm, different array syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same algorithm, different array syntax: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> TYPE TBook
-    DECLARE Title : STRING
-    DECLARE Pages : INTEGER
-ENDTYPE</li><li><strong>Lesson fact:</strong> Book fields are declared inside the TYPE block.</li><li><strong>Lesson fact:</strong> DECLARE Book1 : TBook
-This declaration belongs after ENDTYPE.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Both pseudocode and Java versions visit five score positions.</li><li><strong>Lesson fact:</strong> Increment the pass counter only when the current score is at least 50.</li><li><strong>Lesson fact:</strong> Close the conditional before advancing the loop.</li><li><strong>Lesson fact:</strong> Both complete versions output the final pass count after the loop.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="lookup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+        <section class="panel" id="selector" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
-            <p class="eyebrow">Interactive field lookup</p>
-            <h2>Read one field from a record</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Field
-              <select id="fieldInput">
-                <option value="Name">Name</option>
-                <option value="DateOfBirth">DateOfBirth</option>
-                <option value="Mark">Mark</option>
-                <option value="Enrolled">Enrolled</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="fieldBtn">Read Student1.Field</button>
-          </div>
-          <div class="trace-output" id="fieldResult">Student1 has Name, DateOfBirth, Mark and Enrolled fields.</div>
-        </section>
-
-        <!-- stage10-explanation:start lookup -->
-        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
-          <h2 class="explanation-sr-only" id="explanation-lookup-title">Read one field from a record</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read one field from a record with a structured visual model." />
-            <figcaption class="explanation-sr-only">Read one field from a record: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive field lookup</li><li><strong>Lesson fact:</strong> Student1 has Name, DateOfBirth, Mark and Enrolled fields.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lookup -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
-          <div class="section-title">
-            <p class="eyebrow">Interactive type builder</p>
-            <h2>Generate a record declaration</h2>
+            <p class="eyebrow">Interactive pattern selector</p>
+            <h2>Choose a scenario and inspect the matching template</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
-              <select id="builderInput">
-                <option value="student">student details</option>
-                <option value="book">library book</option>
-                <option value="booking">booking details</option>
-                <option value="product">product stock item</option>
+              <select id="patternInput">
+                <option value="output">Output every score</option>
+                <option value="bonus">Add 5 to scores below 50</option>
+                <option value="find">Check whether TargetName is present</option>
+                <option value="count">Count scores at least 50</option>
+                <option value="total">Calculate total score</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="builderBtn">Build type</button>
+            <button class="primary-button" type="button" id="patternBtn">Select pattern</button>
           </div>
-          <div class="trace-output" id="builderResult">Choose a scenario to generate Cambridge-style pseudocode.</div>
+          <div class="trace-output" id="patternResult">Choose a scenario to see the algorithm pattern.</div>
+        </section>
+
+        <!-- stage10-explanation:start selector -->
+        <section class="panel explanation-panel" id="explanation-selector" data-explains="selector" data-explanation-kind="mechanism" aria-labelledby="explanation-selector-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <h2 class="explanation-sr-only" id="explanation-selector-title">Choose a scenario and inspect the matching template</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-selector.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a scenario and inspect the matching template with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose a scenario and inspect the matching template: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive pattern selector</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to see the algorithm pattern.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end selector -->
+        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace runner</p>
+            <h2>Run a count algorithm on the sample scores</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Threshold
+              <select id="thresholdInput">
+                <option value="50">50</option>
+                <option value="60">60</option>
+                <option value="80">80</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Run count</button>
+          </div>
+          <div class="trace-output" id="traceResult">Scores are 42, 67, 55, 81, 49.</div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Record modelling patterns</h2>
+            <h2>Reusable array algorithms</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="student">Student record</button>
-            <button class="tab" type="button" data-example="book">Book record</button>
-            <button class="tab" type="button" data-example="update">Field update</button>
-            <button class="tab" type="button" data-example="compare">Array vs record</button>
+            <button class="tab active" type="button" data-example="traversal">Traversal</button>
+            <button class="tab" type="button" data-example="update">Update</button>
+            <button class="tab" type="button" data-example="search">Search</button>
+            <button class="tab" type="button" data-example="count">Count</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -413,7 +462,7 @@ This declaration belongs after ENDTYPE.</li></ol>
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Ten quick record checks</h2>
+            <h2>Ten quick algorithm checks</h2>
             <p>Answer briefly, then use Show answer to compare with strict wording.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -422,7 +471,7 @@ This declaration belongs after ENDTYPE.</li></ol>
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix common record errors</h2>
+            <h2>Fix common array algorithm errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -430,8 +479,8 @@ This declaration belongs after ENDTYPE.</li></ol>
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style record questions with expandable MS</h2>
-            <p>These questions focus on record declaration, field types, dot notation, and array-vs-record reasoning.</p>
+            <h2>Original Cambridge-style array algorithm questions with expandable MS</h2>
+            <p>These questions focus on indexed access, traversal, update, search, count and trace precision.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -439,12 +488,12 @@ This declaration belongs after ENDTYPE.</li></ol>
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Record checklist</h2>
+            <h2>Array algorithm checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Group</strong><span>use a record for several related fields about one entity.</span></div>
-            <div><strong>Name</strong><span>access a field by name using dot notation.</span></div>
-            <div><strong>Type</strong><span>each field has its own suitable data type.</span></div>
+            <div><strong>Initialise</strong><span>set totals, counters and flags before the loop.</span></div>
+            <div><strong>Index</strong><span>use <code>Array[Index]</code> with loop bounds matching the declaration.</span></div>
+            <div><strong>Update</strong><span>place condition checks and updates inside the loop when they depend on each element.</span></div>
           </div>
         </section>
 
@@ -455,16 +504,16 @@ This declaration belongs after ENDTYPE.</li></ol>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Define a record</strong>
-              <span>Create a record type called TMember with fields MemberID, Name, DateJoined and HasOverdueBook. Choose suitable types.</span>
+              <strong>Task 1: Search</strong>
+              <span>Write pseudocode to search Codes[1:20] for TargetCode and output whether it is found.</span>
             </article>
             <article>
-              <strong>Task 2: Field access</strong>
-              <span>Declare Member1 as TMember, assign values to all fields, then output Member1.Name and Member1.HasOverdueBook.</span>
+              <strong>Task 2: Count</strong>
+              <span>Write pseudocode to count how many Temperatures[1:7] are greater than 30.</span>
             </article>
             <article>
-              <strong>Task 3: Explain</strong>
-              <span>Write a 4-mark explanation of why a record is more suitable than an array for one member's mixed-type details.</span>
+              <strong>Task 3: Update and trace</strong>
+              <span>For Scores[1:5] = 42, 67, 55, 81, 49, trace the result after adding 5 to every score below 50.</span>
             </article>
           </div>
         </section>
@@ -472,8 +521,8 @@ This declaration belongs after ENDTYPE.</li></ol>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

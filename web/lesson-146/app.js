@@ -1,103 +1,108 @@
-const caseConcepts = {
-  capacity: {
-    concept: "Functional requirement / testable rule",
-    answer: "The system must prevent reservations above capacity. This can later become a boundary test: capacity 20 accepts the 20th reservation but handles the 21st according to the rule.",
-    trap: "Do not jump straight to interface colours. This is primarily a rule the system must enforce.",
+const stageScenarios = {
+  build: {
+    stage: "Implementation",
+    reason: "The design is being turned into program modules, files, interfaces and configuration.",
+    examTip: "Mention implementation only when the answer is about building, installing or configuring the system.",
   },
-  field: {
-    concept: "Data dictionary",
-    answer: "ActivityID should be defined with data type, size, uniqueness and validation. Example: STRING, length 5, not blank, unique.",
-    trap: "Do not list example ActivityID values only; define the data item.",
+  compare: {
+    stage: "Testing",
+    reason: "The key evidence is actual output compared with expected output for planned test data.",
+    examTip: "A strong testing answer names test data, expected result and actual result.",
   },
-  run: {
-    concept: "Parallel changeover",
-    answer: "The old and new systems run together, allowing outputs to be compared while the old method remains available.",
-    trap: "Do not call it direct changeover; direct would stop the old system immediately.",
+  fix: {
+    stage: "Maintenance",
+    reason: "The system has already been released, and a change is being made after delivery.",
+    examTip: "Classify the change if possible: corrective, adaptive or perfective.",
   },
   judge: {
-    concept: "Evaluation against success criteria",
-    answer: "The result gives evidence to compare with a measurable success criterion, such as sign-up completion time.",
-    trap: "Do not treat this as testing only. It is a judgement about success using evidence.",
+    stage: "Evaluation",
+    reason: "The final system is being judged against requirements and measurable success criteria.",
+    examTip: "Evaluation needs evidence, not just opinions.",
   },
 };
 
-const improvedAnswers = {
-  easy: {
-    weak: "The system should be easy to use.",
-    improved: "At least 90% of trial students should reserve a place without help in under 2 minutes.",
-    why: "The improved version is measurable and can be evaluated using user trial evidence.",
+const testValues = {
+  24: {
+    category: "Normal data",
+    expected: "Accepted",
+    reason: "24 is a typical valid value within the range 1 to 30.",
   },
-  test: {
-    weak: "Test it to see if it works.",
-    improved: "Use planned test cases with normal, boundary and abnormal data; record expected and actual results for each activity sign-up rule.",
-    why: "The improved version names test categories and evidence, not just a vague action.",
+  30: {
+    category: "Boundary / extreme valid data",
+    expected: "Accepted",
+    reason: "30 is the upper valid limit, so it checks the edge of the rule.",
   },
-  maintain: {
-    weak: "Maintenance makes it better.",
-    improved: "Perfective maintenance could improve the activity search speed after release if evaluation evidence shows users take too long to find activities.",
-    why: "The improved version classifies the maintenance type and links it to evidence and consequence.",
+  31: {
+    category: "Boundary invalid data",
+    expected: "Rejected",
+    reason: "31 is just outside the valid range, so it should trigger validation.",
+  },
+  text: {
+    category: "Abnormal data",
+    expected: "Rejected",
+    reason: "The value 'many' is the wrong data type for a numeric field.",
   },
 };
 
 const examples = {
-  requirements: {
-    title: "Example 1: Requirement answer annotation",
+  testcase: {
+    title: "Example 1: Test case with expected result",
     rows: [
-      ["Question focus", "Improve the vague request: 'students should sign up easily'."],
-      ["Mark-worthy answer", "Students should reserve a place from an activity list using StudentID and a confirm button; 90% of trial users should complete the task in under 2 minutes."],
-      ["Why it earns marks", "It gives a functional requirement and a measurable success criterion in the scenario."],
-      ["Common loss", "Writing 'make it user-friendly' without measurable evidence."],
+      ["Requirement", "NumberOfStudents must be between 1 and the room capacity."],
+      ["Test data", "31 when room capacity is 30"],
+      ["Expected result", "Reject value and display an error message."],
+      ["Exam point", "A test case needs expected result; test data alone is not enough."],
     ],
   },
-  testing: {
-    title: "Example 2: Test case annotation",
+  changeover: {
+    title: "Example 2: Choosing a changeover method",
     rows: [
-      ["Rule", "Activity capacity is 20."],
-      ["Test case", "Enter the 21st reservation when 20 places are already taken."],
-      ["Expected result", "System rejects the reservation or adds the student to the waiting list, depending on the stated rule."],
-      ["Why it earns marks", "It uses boundary data and states expected behaviour."],
+      ["Scenario", "A school cannot risk losing room bookings during term time."],
+      ["Choice", "Parallel running."],
+      ["Justification", "The old system remains available while outputs from the new system are checked."],
+      ["Trade-off", "It costs more time and staff effort because both systems are used together."],
     ],
   },
   evaluation: {
-    title: "Example 3: Evaluation answer annotation",
+    title: "Example 3: Evaluation against success criteria",
     rows: [
-      ["Evidence", "92% of students completed sign-up in under 2 minutes."],
-      ["Criterion", "90% of students should complete sign-up in under 2 minutes."],
-      ["Judgement", "The criterion is met because 92% is above the 90% target."],
-      ["Consequence", "Further perfective maintenance may still improve the remaining difficult cases."],
+      ["Success criterion", "A teacher can create a booking in under 2 minutes."],
+      ["Evidence", "8 out of 10 teachers met the target in user trials."],
+      ["Judgement", "Criterion mostly met; training or interface changes may help the remaining users."],
+      ["Exam point", "Evaluation earns marks when evidence is linked to a criterion."],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which stage gathers user needs and success criteria?", accepted: ["analysis"], answer: "Analysis / requirements analysis." },
-  { id: "p2", prompt: "Which design artefact defines ActivityID as STRING length 5?", accepted: ["data dictionary", "dictionary"], answer: "Data dictionary." },
-  { id: "p3", prompt: "Which design artefact describes how a waiting list is updated?", accepted: ["algorithm", "pseudocode", "flowchart"], answer: "Algorithm design, such as pseudocode or a flowchart." },
-  { id: "p4", prompt: "What kind of test data is the 21st reservation when capacity is 20?", accepted: ["boundary"], answer: "Boundary invalid data, because it is just outside the limit." },
-  { id: "p5", prompt: "Which changeover method runs old and new systems together?", accepted: ["parallel"], answer: "Parallel changeover / parallel running." },
-  { id: "p6", prompt: "Which maintenance type fixes a crash after release?", accepted: ["corrective"], answer: "Corrective maintenance." },
-  { id: "p7", prompt: "Which maintenance type adapts the system to a new school timetable?", accepted: ["adaptive"], answer: "Adaptive maintenance." },
-  { id: "p8", prompt: "Which maintenance type improves search speed?", accepted: ["perfective"], answer: "Perfective maintenance." },
-  { id: "p9", prompt: "Which stage judges whether success criteria were met?", accepted: ["evaluation"], answer: "Evaluation." },
-  { id: "p10", prompt: "What should an evaluation answer be based on?", accepted: ["evidence", "criteria", "success criteria", "requirements"], answer: "Evidence compared with requirements or success criteria." },
+  { id: "p1", prompt: "Which stage turns the design into a working system?", accepted: ["implementation"], answer: "Implementation." },
+  { id: "p2", prompt: "Which stage compares actual output with expected output?", accepted: ["testing", "test"], answer: "Testing." },
+  { id: "p3", prompt: "Which stage judges the final system against requirements and success criteria?", accepted: ["evaluation"], answer: "Evaluation." },
+  { id: "p4", prompt: "What test data category is a typical valid value?", accepted: ["normal"], answer: "Normal data." },
+  { id: "p5", prompt: "What test data category is just at or just outside the valid limit?", accepted: ["boundary"], answer: "Boundary data." },
+  { id: "p6", prompt: "What test data category uses an invalid type or invalid value?", accepted: ["abnormal", "erroneous", "invalid"], answer: "Abnormal / erroneous data." },
+  { id: "p7", prompt: "What maintenance type fixes faults after release?", accepted: ["corrective"], answer: "Corrective maintenance." },
+  { id: "p8", prompt: "What maintenance type changes the system for a new environment or rule?", accepted: ["adaptive"], answer: "Adaptive maintenance." },
+  { id: "p9", prompt: "What maintenance type improves performance or usability?", accepted: ["perfective"], answer: "Perfective maintenance." },
+  { id: "p10", prompt: "Which changeover method runs old and new systems together?", accepted: ["parallel"], answer: "Parallel running / parallel changeover." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student answers every Section 12 question by listing the lifecycle stages.",
-    fix: "Correction: identify the concept being tested first, then answer that concept in the scenario. A list is not enough for explain or evaluate questions.",
+    wrong: "A student says one successful run is enough testing.",
+    fix: "Correction: testing should be planned with test data, expected results and actual results. One successful run may miss boundary, abnormal and integration faults.",
   },
   {
-    wrong: "A student writes a test case with data but no expected result.",
-    fix: "Correction: include test data, expected result and preferably actual result or purpose. Without expected result, the test cannot prove behaviour.",
+    wrong: "A student writes 'evaluation means testing the program'.",
+    fix: "Correction: testing finds faults by comparing expected and actual results. Evaluation judges whether the finished system meets requirements and success criteria, using evidence.",
   },
   {
-    wrong: "A student says evaluation is just asking users if they like the system.",
-    fix: "Correction: user feedback can be evidence, but evaluation must compare evidence with requirements and success criteria.",
+    wrong: "A student classifies a new timetable rule after release as corrective maintenance.",
+    fix: "Correction: this is adaptive maintenance because the system changes to fit a changed environment or requirement, not just to fix a fault.",
   },
   {
-    wrong: "A student classifies all post-release changes as corrective maintenance.",
-    fix: "Correction: corrective fixes faults, adaptive responds to environment changes, and perfective improves performance, usability or features.",
+    wrong: "A student recommends direct changeover because it is always best.",
+    fix: "Correction: direct changeover is fast and cheaper, but high risk. The best method depends on the scenario, risk tolerance and cost.",
   },
 ];
 
@@ -111,94 +116,95 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A school activity sign-up system is being analysed. Write two functional requirements and one measurable success criterion.",
-    answer: "Functional requirements: students can reserve and cancel a place for an activity; staff can create activities and set capacity; the system prevents reservations above capacity or places students on a waiting list. Success criterion: at least 90% of trial students can reserve a place without help in under 2 minutes.",
+    prompt: "For a login system, explain how dry run, walkthrough, white-box, black-box, integration testing and a stub expose different faults.",
+    answer: "A dry run manually traces values and paths, while a walkthrough is a structured peer review of the design or code. White-box tests are selected from internal paths and conditions; black-box tests are selected from the specification without relying on source structure. Integration testing checks combined modules, and a stub simulates a called module that is not yet available so the caller can be tested.",
     marking: [
-      { mark: "B1", text: "gives a valid functional requirement for students" },
-      { mark: "A1", text: "student requirement is specific to sign-up/reservation/cancellation" },
-      { mark: "B1", text: "gives a second distinct valid functional requirement" },
-      { mark: "A1", text: "second requirement includes staff, capacity or waiting-list rule in context" },
-      { mark: "M1", text: "gives a measurable success criterion with a threshold" },
-      { mark: "A1", text: "criterion is linked to the activity sign-up scenario" },
+      { mark: "B1", text: "dry run described as manual tracing of values/control flow" },
+      { mark: "B1", text: "walkthrough described as structured peer review" },
+      { mark: "B1", text: "white-box testing linked to internal code paths/conditions" },
+      { mark: "B1", text: "black-box testing linked to requirements/specification and observable results" },
+      { mark: "B1", text: "integration testing linked to combined modules/interfaces" },
+      { mark: "B1", text: "stub described as simulation of an unavailable called module" },
     ],
     strict: [
-      "Do not award full marks for vague claims such as 'easy' or 'fast' without measurement.",
-      "Allow alternative valid requirements from the case study.",
-      "Do not accept interface design choices alone as functional requirements.",
+      "Do not accept walkthrough as automatic program execution.",
+      "Do not reverse white-box and black-box testing.",
+      "A stub replaces an unavailable called module, not test data or the completed caller.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "For an activity with capacity 20, Develop suitable test cases for the reservation rule.",
-    answer: "Normal test: reserve when 12 places are taken, expected accepted. Boundary valid test: reserve the 20th place, expected accepted. Boundary invalid test: attempt the 21st reservation, expected rejected or added to waiting list according to the rule. Abnormal test: enter a non-numeric capacity such as 'many', expected rejected with an error message.",
+    prompt: "Write a test strategy for NumberOfStudents, valid from 1 to 30, then give one complete test-plan row.",
+    answer: "The strategy states that black-box tests will check the range requirement, white-box tests will cover both accepted and rejected paths, integration tests will check the form with the booking module, and the tester is responsible before user acceptance. Example plan row: T03; purpose upper accepted limit; data 30; expected accepted; actual accepted; Pass.",
     marking: [
-      { mark: "B1", text: "selects a normal valid test case" },
-      { mark: "B1", text: "normal case has correct expected result" },
-      { mark: "B1", text: "selects the valid boundary case at capacity 20" },
-      { mark: "B1", text: "valid boundary case has correct expected result" },
-      { mark: "B1", text: "selects an invalid boundary or abnormal case" },
-      { mark: "B1", text: "invalid or abnormal case has correct expected result" },
+      { mark: "B1", text: "strategy names suitable methods/levels such as black-box, white-box and integration" },
+      { mark: "B1", text: "strategy states suitable responsibility or sequence" },
+      { mark: "B1", text: "test-plan row has an identifier and purpose" },
+      { mark: "B1", text: "row gives suitable test data and expected result" },
+      { mark: "B1", text: "row records an actual result" },
+      { mark: "B1", text: "row records a coherent pass/fail outcome" },
     ],
     strict: [
-      "Test data alone is insufficient for full credit; expected result is required.",
-      "Allow waiting list or rejection for the 21st reservation if the rule is stated consistently.",
-      "Do not accept 10 as boundary data.",
+      "A list of data values alone is not a test strategy.",
+      "Expected result must be stated before comparing it with the actual result.",
+      "The pass/fail outcome must agree with the expected and actual results.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Explain how design documentation could help implement and test the waiting-list feature.",
-    answer: "An algorithm design can show the steps for checking whether an activity is full and then adding the student to a waiting list. A data dictionary can define fields such as ActivityID, StudentID, Capacity and WaitingListPosition, including types and validation. Interface design can show the messages displayed when a student is added to the waiting list. These documents guide implementation and provide expected rules for testing.",
+    prompt: "Explain the difference between testing and evaluation in the software development lifecycle.",
+    answer: "Testing is used to find faults by running the system or module with planned test data and comparing actual results with expected results. Evaluation is carried out to judge whether the finished system meets the original requirements and success criteria. Testing may provide evidence for evaluation, but evaluation also considers user feedback, performance against criteria and whether the system is fit for purpose.",
     marking: [
-      { mark: "B1", text: "mentions algorithm design for waiting-list processing" },
-      { mark: "B1", text: "explains algorithm use in implementation or testing" },
-      { mark: "B1", text: "mentions data dictionary or field definitions" },
-      { mark: "B1", text: "explains data definitions/types/validation in context" },
-      { mark: "B1", text: "mentions interface design or user messages" },
-      { mark: "B1", text: "links design documentation to implementation or testing evidence" },
+      { mark: "B1", text: "states testing uses planned test data or test cases" },
+      { mark: "B1", text: "explains testing compares actual and expected results or finds faults" },
+      { mark: "B1", text: "states evaluation judges the finished system" },
+      { mark: "B1", text: "links evaluation to requirements, objectives or success criteria" },
+      { mark: "B1", text: "explains that test evidence can support evaluation" },
+      { mark: "B1", text: "gives a valid extra evaluation evidence source such as user feedback or performance data" },
     ],
     strict: [
-      "Do not award explanation marks for naming documents only.",
-      "Allow flowchart or pseudocode as algorithm design.",
-      "Do not accept final Java code alone as design documentation.",
+      "Do not award full marks for treating testing and evaluation as identical.",
+      "Allow acceptance testing as a bridge if explained clearly.",
+      "Do not accept 'evaluation is checking for errors' alone.",
     ],
   },
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "After release, the school asks for three changes: fix a cancellation fault, support a new timetable structure, and make activity search faster. Identify each maintenance type and justify your answer.",
-    answer: "Fixing a cancellation fault is corrective maintenance because it fixes an error. Supporting a new timetable structure is adaptive maintenance because the system is changed for a new environment or rule. Making activity search faster is perfective maintenance because it improves performance after release.",
+    prompt: "Identify each maintenance request as corrective, adaptive or perfective: fixing a crash when saving; changing term dates for a new timetable; making search results display faster.",
+    answer: "Fixing a crash when saving is corrective maintenance because it fixes a fault. Changing term dates for a new timetable is adaptive maintenance because the system is being changed for a new environment or rule. Making search results display faster is perfective maintenance because it improves performance rather than fixing a fault.",
     marking: [
-      { mark: "B1", text: "classifies cancellation fault fix as corrective" },
-      { mark: "B1", text: "justifies corrective as fixing an error/fault" },
-      { mark: "B1", text: "classifies new timetable structure as adaptive" },
-      { mark: "B1", text: "justifies adaptive as responding to changed environment/rules" },
+      { mark: "B1", text: "classifies crash fix as corrective" },
+      { mark: "B1", text: "reason links corrective maintenance to fixing a fault" },
+      { mark: "B1", text: "classifies new timetable dates as adaptive" },
+      { mark: "B1", text: "reason links adaptive maintenance to changed environment/rules" },
       { mark: "B1", text: "classifies faster search as perfective" },
-      { mark: "B1", text: "justifies perfective as improving performance/usability/features" },
+      { mark: "B1", text: "reason links perfective maintenance to improvement" },
     ],
     strict: [
-      "Classification and justification must match.",
-      "Allow enhancement/improvement wording for perfective.",
-      "Do not accept 'maintenance' alone without type.",
+      "Award reason marks only when the explanation matches the classification.",
+      "Allow enhancement for perfective if improvement is clear.",
+      "Do not accept adaptive for every post-release change.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "An existing program counts marks of 50 or more. Analyse where to amend the program so it also counts merits of 70 or more, while preserving the existing result.",
-    answer: "Analyse the existing declarations, initialisation, traversal, pass condition and outputs. Add and initialise MeritCount, then amend the existing traversal with a separate test Mark >= 70 and increment MeritCount. Keep the pass test Mark >= 50 unchanged, output both counts, and run boundary and regression tests such as 49, 50, 69 and 70.",
+    marks: "5 marks",
+    prompt: "A success criterion says: '95% of room searches should return results within 2 seconds.' Explain how this could be evaluated after implementation.",
+    answer: "A representative set of room searches should be run after implementation, such as searches for different days, rooms and periods. The response time for each search should be recorded and compared with the 2-second target. The percentage meeting the target should be calculated and compared with the 95% success criterion. If fewer than 95% meet the target, the system does not fully meet this criterion and maintenance or optimisation may be needed.",
     marking: [
-      { mark: "B1", text: "analyses existing traversal and behaviour to preserve" },
-      { mark: "B1", text: "declares and initialises MeritCount" },
-      { mark: "B1", text: "amends existing loop with Mark >= 70" },
-      { mark: "B1", text: "preserves Mark >= 50 pass behaviour" },
-      { mark: "B1", text: "outputs both counts" },
-      { mark: "B1", text: "uses boundary/regression tests around 50 and 70" },
+      { mark: "B1", text: "uses representative searches or suitable test/user tasks" },
+      { mark: "B1", text: "records response time or measurable evidence" },
+      { mark: "B1", text: "compares results with the 2-second target" },
+      { mark: "B1", text: "calculates or judges percentage against 95% criterion" },
+      { mark: "B1", text: "states a valid conclusion about whether the criterion is met" },
     ],
     strict: [
-      "Do not credit a rewrite that removes or changes the existing pass count.",
+      "Do not award full marks for saying 'ask users if it is fast' without measurement.",
+      "Allow automated timing logs or manual timed tests.",
+      "Do not require exactly 100 searches if percentage can be judged from sufficient evidence.",
     ],
   },
 ];
@@ -232,10 +238,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    testing: { text: "Testing comes later. This stem asks how to improve a vague need before design begins.", correct: false },
-    analysis: { text: "Correct. This is requirements analysis: make the vague need measurable before design.", correct: true },
-    maintenance: { text: "Maintenance is after release. This question is before design.", correct: false },
-    changeover: { text: "Changeover is about introducing a completed system, not clarifying user needs.", correct: false },
+    ship: { text: "One successful run is not enough. It may miss boundary, abnormal and integration faults.", correct: false },
+    test: { text: "Correct. Planned testing gives evidence across valid and invalid cases.", correct: true },
+    pretty: { text: "A modern interface can still save wrong data. Appearance is not proof of correctness.", correct: false },
+    wait: { text: "User feedback matters, but the answer needs planned testing and evidence.", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -248,34 +254,34 @@ function setupHook() {
   });
 }
 
-function setupCaseTool() {
-  const select = document.querySelector("#caseSelect");
-  const output = document.querySelector("#caseOutput");
+function setupStageChooser() {
+  const select = document.querySelector("#stageSelect");
+  const output = document.querySelector("#stageOutput");
   const render = () => {
-    const item = caseConcepts[select.value];
+    const item = stageScenarios[select.value];
     output.innerHTML = `
-      <p><strong>Concept:</strong> ${escapeHtml(item.concept)}</p>
-      <p><strong>Answer:</strong> ${escapeHtml(item.answer)}</p>
-      <p><strong>Common error:</strong> ${escapeHtml(item.trap)}</p>
+      <p><strong>Stage:</strong> ${escapeHtml(item.stage)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+      <p><strong>Exam tip:</strong> ${escapeHtml(item.examTip)}</p>
     `;
   };
-  document.querySelector("#caseBtn").addEventListener("click", render);
+  document.querySelector("#stageBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupAnswerTool() {
-  const select = document.querySelector("#answerSelect");
-  const output = document.querySelector("#answerOutput");
+function setupDataClassifier() {
+  const select = document.querySelector("#dataSelect");
+  const output = document.querySelector("#dataOutput");
   const render = () => {
-    const item = improvedAnswers[select.value];
+    const item = testValues[select.value];
     output.innerHTML = `
-      <p><strong>Weak:</strong> ${escapeHtml(item.weak)}</p>
-      <p><strong>Improved:</strong> ${escapeHtml(item.improved)}</p>
-      <p><strong>Why it earns marks:</strong> ${escapeHtml(item.why)}</p>
+      <p><strong>Category:</strong> ${escapeHtml(item.category)}</p>
+      <p><strong>Expected result:</strong> ${escapeHtml(item.expected)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
     `;
   };
-  document.querySelector("#answerBtn").addEventListener("click", render);
+  document.querySelector("#dataBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
@@ -292,7 +298,7 @@ function setupExamples() {
   document.querySelectorAll("[data-example]").forEach((button) => {
     button.addEventListener("click", () => render(button.dataset.example));
   });
-  render("requirements");
+  render("testcase");
 }
 
 function setupPractice() {
@@ -318,7 +324,7 @@ function setupPractice() {
       const feedback = document.querySelector(`#${item.id}-feedback`);
       const response = normalise(input.value);
       const correct = item.accepted.some((accepted) => response.includes(accepted));
-      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Identify the Section 12 concept first.";
+      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Use the precise lifecycle or testing keyword.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -383,8 +389,8 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupCaseTool();
-  setupAnswerTool();
+  setupStageChooser();
+  setupDataClassifier();
   setupExamples();
   setupPractice();
   setupMistakes();

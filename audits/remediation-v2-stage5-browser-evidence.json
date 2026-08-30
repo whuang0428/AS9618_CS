@@ -31,14 +31,14 @@
     "naturalDimensions": "1536x1024",
     "failures": 0,
     "assets": [
-      "stage10-lesson-049-concept.jpg",
-      "stage10-lesson-107-pseudocode.jpg",
-      "stage10-lesson-121-parse.jpg",
-      "stage10-lesson-121-pseudocode.jpg",
-      "stage10-lesson-121-types.jpg",
-      "stage10-lesson-133-case.jpg",
-      "stage10-lesson-133-concat.jpg",
-      "stage10-lesson-133-java.jpg"
+      "stage10-lesson-050-concept.jpg",
+      "stage10-lesson-108-pseudocode.jpg",
+      "stage10-lesson-122-parse.jpg",
+      "stage10-lesson-122-pseudocode.jpg",
+      "stage10-lesson-122-types.jpg",
+      "stage10-lesson-134-case.jpg",
+      "stage10-lesson-134-concat.jpg",
+      "stage10-lesson-134-java.jpg"
     ]
   },
   "interactions": {

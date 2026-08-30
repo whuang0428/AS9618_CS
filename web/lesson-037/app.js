@@ -1,97 +1,102 @@
-const scenarios = {
-  alarm: {
-    expression: "Alarm = A AND (D OR W)",
-    variables: ["A = system armed", "D = door open", "W = window open"],
-    sequence: ["Create D OR W", "Feed that result into AND with A", "Output is Alarm"],
-    headers: ["A", "D", "W", "D OR W", "Alarm"],
-    calculate: (a, d, w) => {
-      const doorOrWindow = d || w ? 1 : 0;
-      const alarm = a && doorOrWindow ? 1 : 0;
-      return [a, d, w, doorOrWindow, alarm];
+const expressions = {
+  expr1: {
+    label: "Q = (A AND B) OR NOT C",
+    headers: ["A", "B", "C", "A AND B", "NOT C", "Q"],
+    calculate: (a, b, c) => {
+      const andAB = a && b ? 1 : 0;
+      const notC = c ? 0 : 1;
+      const q = andAB || notC ? 1 : 0;
+      return [a, b, c, andAB, notC, q];
     },
+    note: "Column plan: calculate A AND B, calculate NOT C, then OR those two intermediate columns.",
   },
-  unlock: {
-    expression: "Unlock = C AND NOT E",
-    variables: ["C = card valid", "E = emergency stop active"],
-    sequence: ["Invert E using NOT", "Feed C and NOT E into AND", "Output is Unlock"],
-    headers: ["C", "E", "NOT E", "Unlock"],
-    calculate: (c, e) => {
-      const notE = e ? 0 : 1;
-      const unlock = c && notE ? 1 : 0;
-      return [c, e, notE, unlock];
+  expr2: {
+    label: "Q = (A OR B) AND C",
+    headers: ["A", "B", "C", "A OR B", "Q"],
+    calculate: (a, b, c) => {
+      const orAB = a || b ? 1 : 0;
+      const q = orAB && c ? 1 : 0;
+      return [a, b, c, orAB, q];
     },
+    note: "Column plan: complete the bracket A OR B before applying AND with C.",
   },
-  fan: {
-    expression: "Fan = H AND NOT O",
-    variables: ["H = room is hot", "O = override active"],
-    sequence: ["Invert O using NOT", "Feed H and NOT O into AND", "Output is Fan"],
-    headers: ["H", "O", "NOT O", "Fan"],
-    calculate: (h, o) => {
-      const notO = o ? 0 : 1;
-      const fan = h && notO ? 1 : 0;
-      return [h, o, notO, fan];
+  expr3: {
+    label: "Q = (A XOR B) AND NOT C",
+    headers: ["A", "B", "C", "A XOR B", "NOT C", "Q"],
+    calculate: (a, b, c) => {
+      const xorAB = a !== b ? 1 : 0;
+      const notC = c ? 0 : 1;
+      const q = xorAB && notC ? 1 : 0;
+      return [a, b, c, xorAB, notC, q];
     },
+    note: "Column plan: XOR is 1 when A and B differ, then combine with NOT C.",
   },
-  light: {
-    expression: "Light = M OR T",
-    variables: ["M = motion detected", "T = test mode active"],
-    sequence: ["Feed M and T into OR", "Output is Light"],
-    headers: ["M", "T", "Light"],
-    calculate: (m, t) => [m, t, m || t ? 1 : 0],
+  expr4: {
+    label: "Q = NOT (A OR B)",
+    headers: ["A", "B", "A OR B", "Q"],
+    calculate: (a, b) => {
+      const orAB = a || b ? 1 : 0;
+      const q = orAB ? 0 : 1;
+      return [a, b, orAB, q];
+    },
+    note: "Column plan: complete OR first, then invert the result. This is NOR.",
   },
-  selector: {
-    expression: "Select = B1 XOR B2",
-    variables: ["B1 = first button pressed", "B2 = second button pressed"],
-    sequence: ["Feed B1 and B2 into XOR", "Output is Select"],
-    headers: ["B1", "B2", "Select"],
-    calculate: (b1, b2) => [b1, b2, b1 !== b2 ? 1 : 0],
+  expr5: {
+    label: "Q = (A NAND B) OR C",
+    headers: ["A", "B", "C", "A AND B", "A NAND B", "Q"],
+    calculate: (a, b, c) => {
+      const andAB = a && b ? 1 : 0;
+      const nandAB = andAB ? 0 : 1;
+      const q = nandAB || c ? 1 : 0;
+      return [a, b, c, andAB, nandAB, q];
+    },
+    note: "Column plan: calculate AND, invert it for NAND, then OR the NAND result with C.",
   },
 };
 
 const examples = {
-  alarm: {
-    title: "Example 1: alarm circuit",
-    problem: "A warning alarm sounds if the system is armed and either a door or a window is open.",
+  three: {
+    title: "Example 1: Q = (A AND B) OR NOT C",
+    problem: "Find Q for A = 1, B = 0 and C = 0.",
     steps: [
-      "Define variables: A = armed, D = door open, W = window open.",
-      "Translate 'either door or window' as D OR W.",
-      "Translate 'system is armed and ...' as A AND (D OR W).",
-      "Circuit sequence: OR gate for D and W; its output feeds an AND gate with A.",
+      "A AND B = 1 AND 0 = 0.",
+      "NOT C = NOT 0 = 1.",
+      "Q = 0 OR 1 = 1.",
+      "The final answer is 1 because the NOT C column is enough to make the OR true.",
     ],
   },
-  unlock: {
-    title: "Example 2: unlock circuit",
-    problem: "A door unlocks only if a card is valid and the emergency stop is not active.",
+  brackets: {
+    title: "Example 2: Q = (A OR B) AND C",
+    problem: "Find Q for A = 1, B = 0 and C = 0.",
     steps: [
-      "Define C = card valid and E = emergency stop active.",
-      "The phrase 'not active' applies to E, so create NOT E.",
-      "The phrase 'only if ... and ...' gives AND.",
-      "Expression: Unlock = C AND NOT E.",
+      "Complete the bracket first: A OR B = 1 OR 0 = 1.",
+      "Now combine with C: 1 AND 0 = 0.",
+      "Final output Q = 0. A true bracket cannot survive an AND with 0.",
     ],
   },
-  xor: {
-    title: "Example 3: exactly one condition",
-    problem: "A selector turns on if exactly one of two buttons is pressed.",
+  derive: {
+    title: "Example 3: derive an expression from a rule",
+    problem: "A fan turns on if the room is hot and the override is not active.",
     steps: [
-      "Define B1 = first button pressed and B2 = second button pressed.",
-      "The phrase 'exactly one' is the key phrase for XOR.",
-      "Expression: Select = B1 XOR B2.",
-      "OR would be wrong because OR outputs 1 when both buttons are pressed.",
+      "Define H = room is hot and O = override is active.",
+      "The phrase 'and' gives an AND gate.",
+      "The phrase 'override is not active' gives NOT O.",
+      "Expression: Fan = H AND NOT O.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which gate matches the word 'both'?", accepted: ["and"], answer: "AND" },
-  { id: "p2", prompt: "Which gate matches 'at least one'?", accepted: ["or"], answer: "OR" },
-  { id: "p3", prompt: "Which gate matches 'exactly one'?", accepted: ["xor", "exclusive or"], answer: "XOR" },
-  { id: "p4", prompt: "In Unlock = C AND NOT E, which variable is inverted?", accepted: ["e", "emergency", "emergency stop"], answer: "E / emergency stop" },
-  { id: "p5", prompt: "Write the expression for Alarm if armed A and door D are both required.", accepted: ["a and d", "alarm = a and d"], answer: "Alarm = A AND D" },
-  { id: "p6", prompt: "Write the inner expression for 'door or window'.", accepted: ["d or w", "door or window"], answer: "D OR W" },
-  { id: "p7", prompt: "For Alarm = A AND (D OR W), find Alarm when A=1, D=0, W=1.", accepted: ["1", "true"], answer: "1" },
-  { id: "p8", prompt: "For Fan = H AND NOT O, find Fan when H=1, O=1.", accepted: ["0", "false"], answer: "0" },
-  { id: "p9", prompt: "Should variables be defined before or after drawing the circuit?", accepted: ["before"], answer: "Before" },
-  { id: "p10", prompt: "What should be used to check a circuit row-by-row?", accepted: ["truth table", "truth tables"], answer: "Truth table" },
+  { id: "p1", prompt: "How many rows are needed for a truth table with 3 inputs?", accepted: ["8", "eight"], answer: "8" },
+  { id: "p2", prompt: "How many rows are needed for a truth table with 2 inputs?", accepted: ["4", "four"], answer: "4" },
+  { id: "p3", prompt: "For Q = A AND NOT B, find Q when A = 1 and B = 0.", accepted: ["1", "true"], answer: "1" },
+  { id: "p4", prompt: "For Q = (A OR B) AND C, find Q when A = 1, B = 0, C = 0.", accepted: ["0", "false"], answer: "0" },
+  { id: "p5", prompt: "For Q = A XOR B, find Q when A = 1 and B = 1.", accepted: ["0", "false"], answer: "0" },
+  { id: "p6", prompt: "What column should be added before Q for Q = NOT (A OR B)?", accepted: ["a or b", "or", "aorb"], answer: "A OR B" },
+  { id: "p7", prompt: "Which operator means invert the value?", accepted: ["not"], answer: "NOT" },
+  { id: "p8", prompt: "For Q = (A AND B) OR C, find Q when A = 0, B = 1, C = 1.", accepted: ["1", "true"], answer: "1" },
+  { id: "p9", prompt: "For Q = (A NAND B), find Q when A = 1 and B = 1.", accepted: ["0", "false"], answer: "0" },
+  { id: "p10", prompt: "What final output label is used throughout the truth tables?", accepted: ["q"], answer: "Q" },
 ];
 
 
@@ -103,93 +108,92 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "A warning alarm sounds if the system is armed and either a door or window is open. Define variables and write a Boolean expression.",
-    answer: "Let A = system armed, D = door open and W = window open. Alarm = A AND (D OR W).",
+    marks: "4 marks",
+    prompt: "Complete the truth table for Q = A AND NOT B.",
+    answer: "Rows: A B NOT B Q. 00 1 0; 01 0 0; 10 1 1; 11 0 0.",
     marking: [
-      { mark: "B1", text: "defines variable for system armed" },
-      { mark: "B1", text: "defines variable for door open" },
-      { mark: "B1", text: "defines variable for window open" },
-      { mark: "M1", text: "uses OR for door or window" },
-      { mark: "A1", text: "correct expression such as Alarm = A AND (D OR W)" },
+      { mark: "B1", text: "includes all four input combinations for A and B" },
+      { mark: "M1", text: "includes a NOT B intermediate column" },
+      { mark: "A1", text: "NOT B values are 1,0,1,0 for B values 0,1,0,1" },
+      { mark: "A1", text: "final Q values are 0,0,1,0 in matching row order, with follow-through from the intermediate column" },
     ],
     strict: [
-      "Do not award expression mark if armed is omitted from the expression.",
-      "Do not accept A AND D OR W without brackets unless the intended order is made clear.",
-      "Allow alternative variable letters if clearly defined.",
+      "Do not award the final output mark if row order is unclear and Q values cannot be matched to inputs.",
+      "Allow True/False if consistently mapped to 1/0.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Describe the gate sequence needed for Alarm = A AND (D OR W).",
-    answer: "Inputs D and W are connected to an OR gate. The output of the OR gate is connected to an AND gate with input A. The output of the AND gate is Alarm.",
+    marks: "4 marks",
+    prompt: "Complete the truth table for Q = (A OR B) AND C.",
+    answer: "Using rows 000,001,010,011,100,101,110,111: A OR B values are 0,0,1,1,1,1,1,1 and Q values are 0,0,0,1,0,1,0,1.",
     marking: [
-      { mark: "B1", text: "identifies D and W as inputs to OR" },
-      { mark: "B1", text: "OR gate output represents D OR W" },
-      { mark: "B1", text: "A is used as another input to AND" },
-      { mark: "B1", text: "OR output feeds into AND gate" },
-      { mark: "B1", text: "final AND output is Alarm" },
+      { mark: "B1", text: "all eight input rows for A, B and C are present" },
+      { mark: "M1", text: "A OR B intermediate column is present and follows the stated OR operation" },
+      { mark: "A1", text: "final Q values are correct for at least four matching rows, allowing follow-through from the intermediate column" },
+      { mark: "A1", text: "all eight final Q values are correct and matched to rows, allowing follow-through from the intermediate column" },
     ],
     strict: [
-      "Do not award full credit for listing gates without showing how they connect.",
-      "Do not accept a final OR gate for this expression.",
-      "Allow labelled intermediate output if the sequence is clear.",
+      "Do not accept six rows for a three-input table.",
+      "Do not award both output marks if fewer than four Q values are correct.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "A fan starts if the room is hot and manual override is not active. Define variables and write the expression.",
-    answer: "Let H = room is hot and O = manual override active. Fan = H AND NOT O.",
+    marks: "4 marks",
+    prompt: "Explain why intermediate columns are useful when completing a truth table.",
+    answer: "Intermediate columns show the result of each gate or bracketed part of the Boolean expression. They make the working systematic, reduce mistakes, and provide evidence for method marks even if a later final output is wrong.",
     marking: [
-      { mark: "B1", text: "defines variable for room hot" },
-      { mark: "B1", text: "defines variable for override active" },
-      { mark: "M1", text: "uses NOT on override condition" },
-      { mark: "M1", text: "uses AND to require hot condition and not override" },
-      { mark: "A1", text: "correct expression such as Fan = H AND NOT O" },
+      { mark: "B1", text: "intermediate columns represent gate outputs or bracketed parts" },
+      { mark: "B1", text: "they support systematic row-by-row working" },
+      { mark: "B1", text: "they reduce errors or make checking easier" },
+      { mark: "B1", text: "they can gain method credit / show evidence for the final output" },
     ],
     strict: [
-      "Do not award expression mark if NOT is applied to the hot condition.",
-      "Allow 'override inactive' as a variable only if the expression remains logically clear.",
+      "Do not accept only 'it is easier' without explaining why.",
+      "Allow examples such as A AND B or NOT C as intermediate columns.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Explain why XOR is more appropriate than OR for a selector that turns on when exactly one of two buttons is pressed.",
-    answer: "XOR outputs 1 only when the two inputs are different, so it is 1 for 01 and 10 but 0 for 11. OR would also output 1 when both buttons are pressed, which does not match 'exactly one'.",
+    marks: "3 marks",
+    prompt: "For Q = (A XOR B) AND NOT C, find Q when A = 0, B = 1 and C = 0. Demonstrate working.",
+    answer: "A XOR B = 1 because the inputs differ. NOT C = 1. Q = 1 AND 1 = 1.",
     marking: [
-      { mark: "B1", text: "XOR identified as true when exactly one input is 1 / inputs differ" },
-      { mark: "B1", text: "XOR gives 0 when both inputs are 1" },
-      { mark: "B1", text: "OR gives 1 when both inputs are 1" },
-      { mark: "B1", text: "links the distinction to the phrase 'exactly one'" },
+      { mark: "M1", text: "A XOR B = 1" },
+      { mark: "B1", text: "NOT C = 1" },
+      { mark: "A1", text: "final Q = 1, with follow-through from the candidate's intermediate values" },
     ],
     strict: [
-      "Do not accept 'XOR is better' without a logical reason.",
-      "Allow truth-table row examples instead of prose.",
+      "Do not award XOR answer mark if answer treats XOR as OR without considering exactly-one behaviour.",
+      "Allow 'inputs are different' for the XOR explanation.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "For Unlock = C AND NOT E, verify the output when C = 1 and E = 1, and explain what this means in the original scenario.",
-    answer: "E = 1, so NOT E = 0. C AND NOT E = 1 AND 0 = 0. Unlock is 0, meaning the door remains locked because the emergency stop is active even though the card is valid.",
+    marks: "6 marks",
+    prompt: "A warning light turns on if a sensor is active and either the alarm is armed or the test mode is active. Define variables and write a Boolean expression.",
+    answer: "Let S = sensor active, A = alarm armed and T = test mode active. Warning = S AND (A OR T). The output is 1 only when S is 1 and at least one of A or T is 1.",
     marking: [
-      { mark: "B1", text: "NOT E = 0" },
-      { mark: "B1", text: "applies AND between C and NOT E" },
-      { mark: "B1", text: "final Unlock output is 0" },
-      { mark: "B1", text: "explains the door remains locked because the emergency stop is active" },
+      { mark: "B1", text: "defines variable for sensor active" },
+      { mark: "B1", text: "defines variable for alarm armed" },
+      { mark: "B1", text: "defines variable for test mode active" },
+      { mark: "M1", text: "uses OR for alarm armed or test mode active" },
+      { mark: "M1", text: "uses AND with the sensor condition" },
+      { mark: "A1", text: "correct expression such as Warning = S AND (A OR T)" },
     ],
     strict: [
-      "Do not award final output mark if NOT is ignored.",
-      "Allow 'false' for 0 if notation is consistent.",
+      "Do not award expression mark if brackets are omitted and meaning becomes ambiguous.",
+      "Allow alternative variable letters if clearly defined.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/[-_=()\s]+/g, " ");
+  return value.trim().toLowerCase().replace(/[-_\s]+/g, " ");
 }
 
 function inputRows(inputCount) {
@@ -207,10 +211,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    wrong1: "Not quite. OR would unlock when Card = 0 and Emergency = 0, which breaks the 'card is valid' requirement.",
-    correct: "Correct. Card must be 1, and Emergency must be inverted because it must not be active.",
-    wrong2: "Not quite. This denies the card and requires the emergency stop, the exact opposite of a calm door.",
-    wrong3: "Not quite. XOR means exactly one condition is true. That is not what this requirement says.",
+    open: "Correct. PIN OR Override = 1, then Card AND 1 = 1.",
+    closed1: "Closed. The bracket is true, but Card = 0, so the final AND outputs 0.",
+    closed2: "Closed. Card = 1, but PIN OR Override = 0, so the final AND outputs 0.",
+    open2: "Correct. PIN is enough to make the bracket true, then Card AND 1 = 1.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -221,20 +225,15 @@ function setupHook() {
   });
 }
 
-function renderScenario() {
-  const key = document.querySelector("#scenarioInput").value;
-  const scenario = scenarios[key];
-  const inputCount = scenario.headers.filter((header) => !header.includes(" ") && header !== scenario.headers.at(-1)).length;
-  const rows = inputRows(inputCount).map((row) => scenario.calculate(...row));
-  document.querySelector("#scenarioExpression").textContent = scenario.expression;
-  document.querySelector("#scenarioVariables").innerHTML = `<strong>Variables:</strong> ${scenario.variables.join("; ")}`;
-  document.querySelector("#scenarioSequence").innerHTML = `
-    <strong>Gate sequence:</strong>
-    <ol>${scenario.sequence.map((step) => `<li>${step}</li>`).join("")}</ol>
-  `;
+function renderTruthTable() {
+  const key = document.querySelector("#expressionInput").value;
+  const expression = expressions[key];
+  const inputCount = expression.headers.includes("C") ? 3 : 2;
+  const rows = inputRows(inputCount).map((row) => expression.calculate(...row));
+  document.querySelector("#expressionRule").textContent = `${expression.label}. ${expression.note}`;
   document.querySelector("#truthTable").innerHTML = `
     <table class="truth-table">
-      <thead><tr>${scenario.headers.map((header) => `<th>${header}</th>`).join("")}</tr></thead>
+      <thead><tr>${expression.headers.map((header) => `<th>${header}</th>`).join("")}</tr></thead>
       <tbody>
         ${rows.map((row) => `<tr>${row.map((value) => `<td>${value}</td>`).join("")}</tr>`).join("")}
       </tbody>
@@ -242,10 +241,10 @@ function renderScenario() {
   `;
 }
 
-function setupScenarioTool() {
-  document.querySelector("#scenarioInput").addEventListener("change", renderScenario);
-  document.querySelector("#buildBtn").addEventListener("click", renderScenario);
-  renderScenario();
+function setupTruthTool() {
+  document.querySelector("#expressionInput").addEventListener("change", renderTruthTable);
+  document.querySelector("#buildBtn").addEventListener("click", renderTruthTable);
+  renderTruthTable();
 }
 
 function renderExample(key) {
@@ -265,7 +264,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("alarm");
+  renderExample("three");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -305,12 +304,12 @@ function setupPractice() {
       const input = container.querySelector("input");
       const mark = container.querySelector(".mark");
       const response = normalise(input.value);
-      const isCorrect = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
+      const isCorrect = item.accepted.some((answer) => response === normalise(answer));
       mark.textContent = isCorrect ? "Correct" : "Try again";
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, go back to variables -> expression -> gates.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Wrong rows usually mean a missing intermediate column.`;
   });
 }
 
@@ -347,7 +346,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupScenarioTool();
+  setupTruthTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

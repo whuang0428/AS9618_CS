@@ -1,135 +1,114 @@
-const dataSets = {
-  scores: [72, 55, 91, 64],
-  temps: [-3, -8, 2, -1],
-  sales: [12, 0, 7, 5],
+const listMap = {
+  "5142": [5, 1, 4, 2],
+  "3124": [3, 1, 2, 4],
+  "4312": [4, 3, 1, 2],
 };
 
 const chooserMap = {
-  total: { title: "Running total", detail: "Use Total <- Total + Value for every value that must be included." },
-  count: { title: "Conditional count", detail: "Use Count <- Count + 1 only when the value meets the condition." },
-  maximum: { title: "Finding maximum", detail: "Keep the largest value seen so far and replace it when a larger value appears." },
-  minimum: { title: "Finding minimum", detail: "Keep the smallest value seen so far and replace it when a smaller value appears." },
+  bubble: { title: "Bubble sort", detail: "Bubble sort compares adjacent items and swaps when they are in the wrong order." },
+  insert: { title: "Insertion sort", detail: "Insertion sort takes the next item and inserts it into the sorted left section." },
+  "bubble-end": { title: "Bubble sort", detail: "After each full pass, the largest remaining item has moved to the right end." },
+  "insert-left": { title: "Insertion sort", detail: "Insertion sort grows a sorted left-hand section one item at a time." },
 };
 
 function formatList(values) {
-  return values.join(", ");
+  return `[${values.join(", ")}]`;
 }
 
-function traceValues(values, goal) {
-  let total = 0;
-  let count = 0;
-  let maximum = values[0];
-  let minimum = values[0];
+function bubblePass(values) {
+  const list = [...values];
   const rows = [];
-
-  values.forEach((value, index) => {
-    const notes = [];
-    if (goal === "total" || goal === "all") {
-      total += value;
-      notes.push(`Total updated to ${total}`);
+  for (let index = 0; index < list.length - 1; index += 1) {
+    const left = list[index];
+    const right = list[index + 1];
+    let action = "no swap";
+    if (left > right) {
+      list[index] = right;
+      list[index + 1] = left;
+      action = "swap";
     }
-    if (goal === "countPositive" || goal === "all") {
-      if (goal === "all" || value > 0) {
-        if (goal === "all") {
-          count += 1;
-          notes.push(`Count updated to ${count}`);
-        } else if (value > 0) {
-          count += 1;
-          notes.push(`Value > 0, Count updated to ${count}`);
-        }
-      } else {
-        notes.push("Value is not > 0, Count unchanged");
+    rows.push([String(index + 1), `${left} and ${right}`, action, formatList(list)]);
+  }
+  return { headers: ["Step", "Compare", "Action", "List after step"], rows, note: `After one pass: ${formatList(list)}.` };
+}
+
+function bubbleFull(values) {
+  const list = [...values];
+  const rows = [];
+  for (let pass = 1; pass < list.length; pass += 1) {
+    for (let index = 0; index < list.length - pass; index += 1) {
+      if (list[index] > list[index + 1]) {
+        const temp = list[index];
+        list[index] = list[index + 1];
+        list[index + 1] = temp;
       }
     }
-    if ((goal === "maximum" || goal === "all") && index > 0 && value > maximum) {
-      maximum = value;
-      notes.push(`New maximum ${maximum}`);
-    } else if ((goal === "maximum" || goal === "all") && index === 0) {
-      notes.push(`Maximum initialised to ${maximum}`);
-    }
-    if ((goal === "minimum" || goal === "all") && index > 0 && value < minimum) {
-      minimum = value;
-      notes.push(`New minimum ${minimum}`);
-    } else if ((goal === "minimum" || goal === "all") && index === 0) {
-      notes.push(`Minimum initialised to ${minimum}`);
-    }
+    rows.push([String(pass), formatList(list)]);
+  }
+  return { headers: ["Pass", "List after pass"], rows, note: `Final sorted list: ${formatList(list)}.` };
+}
 
-    rows.push([
-      String(index + 1),
-      String(value),
-      goal === "total" || goal === "all" ? String(total) : "-",
-      goal === "countPositive" || goal === "all" ? String(count) : "-",
-      goal === "maximum" || goal === "all" ? String(maximum) : "-",
-      goal === "minimum" || goal === "all" ? String(minimum) : "-",
-      notes.join("; "),
-    ]);
-  });
-
-  const label = goal === "countPositive" ? "count of values greater than 0" : goal;
-  return {
-    headers: ["Step", "Value", "Total", "Count", "Maximum", "Minimum", "Note"],
-    rows,
-    note: `Final ${label}: ${goal === "total" ? total : goal === "countPositive" ? count : goal === "maximum" ? maximum : goal === "minimum" ? minimum : `Total ${total}, Count ${count}, Maximum ${maximum}, Minimum ${minimum}`}.`,
-  };
+function insertionTrace(values) {
+  const list = [...values];
+  const rows = [["start", "first item treated as sorted", formatList(list)]];
+  for (let index = 1; index < list.length; index += 1) {
+    const key = list[index];
+    let position = index - 1;
+    while (position >= 0 && list[position] > key) {
+      list[position + 1] = list[position];
+      position -= 1;
+    }
+    list[position + 1] = key;
+    rows.push([String(index + 1), `insert ${key}`, formatList(list)]);
+  }
+  return { headers: ["Item position", "Action", "List after insertion"], rows, note: `Final sorted list: ${formatList(list)}.` };
 }
 
 const examples = {
-  "total-average": {
-    title: "Example 1: Total and average",
-    problem: "Four scores are 72, 55, 91 and 64. Find the total and average.",
-    trace: {
-      headers: ["Score", "Total after update"],
-      rows: [["72", "72"], ["55", "127"], ["91", "218"], ["64", "282"]],
-      note: "Average <- 282 / 4 = 70.5.",
-    },
-    points: ["Initialise Total to 0.", "Add each score exactly once.", "Calculate the average after the loop."],
+  "bubble-pass": {
+    title: "Example 1: Bubble first pass",
+    problem: "Show the first pass of bubble sort on [5, 1, 4, 2].",
+    trace: bubblePass([5, 1, 4, 2]),
+    points: ["Compare adjacent pairs only.", "Swap when the left item is larger.", "The largest value 5 reaches the right end."],
   },
-  "count-pass": {
-    title: "Example 2: Conditional count",
-    problem: "Count how many of 72, 55, 91 and 64 are at least 60.",
-    trace: {
-      headers: ["Score", "Condition", "PassCount"],
-      rows: [["72", "true", "1"], ["55", "false", "1"], ["91", "true", "2"], ["64", "true", "3"]],
-      note: "Three scores are at least 60.",
-    },
-    points: ["Initialise Count to 0.", "Only increment when the condition is true.", "Do not add the score to Count."],
+  "bubble-full": {
+    title: "Example 2: Bubble full trace",
+    problem: "Show bubble sort passes on [5, 1, 4, 2].",
+    trace: bubbleFull([5, 1, 4, 2]),
+    points: ["Each pass has fewer comparisons.", "Do not jump straight to the final list.", "Intermediate states are the evidence."],
   },
-  "max-min": {
-    title: "Example 3: Maximum and minimum",
-    problem: "Find the maximum and minimum of -3, -8, 2 and -1.",
-    trace: traceValues([-3, -8, 2, -1], "all"),
-    points: ["Use the first value to initialise Maximum and Minimum.", "Update Maximum when a larger value appears.", "Update Minimum when a smaller value appears."],
+  "insert-first": {
+    title: "Example 3: Insertion first movement",
+    problem: "Show the first insertion movement on [5, 1, 4, 2].",
+    trace: { headers: ["Action", "List"], rows: [["take 1", "[5, 1, 4, 2]"], ["insert before 5", "[1, 5, 4, 2]"]], note: "The sorted left section becomes [1, 5]." },
+    points: ["Treat 5 as the sorted left section.", "1 is inserted before 5.", "This is not an adjacent pass across the whole list."],
   },
-  sentinel: {
-    title: "Example 4: Sentinel input",
-    problem: "Numbers are entered until -1: 4, 6, 2, -1. Find the total and count of valid numbers.",
-    trace: {
-      headers: ["Input", "Action", "Total", "Count"],
-      rows: [["4", "process", "4", "1"], ["6", "process", "10", "2"], ["2", "process", "12", "3"], ["-1", "stop, do not process", "12", "3"]],
-      note: "The sentinel -1 stops the loop and is not included in the total.",
-    },
-    points: ["Input once before the WHILE test.", "Process only while Number <> -1.", "Read the next number at the end of the loop."],
+  "insert-full": {
+    title: "Example 4: Insertion full trace",
+    problem: "Trace insertion sort on [5, 1, 4, 2].",
+    trace: insertionTrace([5, 1, 4, 2]),
+    points: ["The sorted left section grows after each insertion.", "Larger items are shifted right.", "The key is inserted into the gap."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What value should Total usually be initialised to before adding values?", accepted: ["0", "zero"], answer: "0" },
-  { id: "p2", prompt: "What value should Count usually be initialised to before counting items?", accepted: ["0", "zero"], answer: "0" },
-  { id: "p3", prompt: "For unknown numeric ranges, what should Maximum usually be initialised from?", accepted: ["first value", "first input", "the first value", "first item", "first data value"], answer: "The first input / first data value" },
-  { id: "p4", prompt: "After processing 5, 8, 2 with Total <- Total + Value, what is Total?", accepted: ["15"], answer: "15" },
-  { id: "p5", prompt: "How many values in 5, 8, 2 are greater than 4?", accepted: ["2", "two"], answer: "2" },
-  { id: "p6", prompt: "What is the maximum of -3, -8, 2, -1?", accepted: ["2"], answer: "2" },
-  { id: "p7", prompt: "What is the minimum of -3, -8, 2, -1?", accepted: ["-8"], answer: "-8" },
-  { id: "p8", prompt: "In inputs 4, 6, 2, -1 with -1 as sentinel, should -1 be added to Total? yes or no.", accepted: ["no"], answer: "No. The sentinel is not data." },
-  { id: "p9", prompt: "Which loop is most suitable when exactly 6 values must be processed?", accepted: ["for", "for loop", "count controlled", "count-controlled", "count controlled loop"], answer: "A FOR / count-controlled loop" },
+  { id: "p1", prompt: "Which sort compares adjacent items and swaps them?", accepted: ["bubble", "bubble sort"], answer: "Bubble sort" },
+  { id: "p2", prompt: "Which sort inserts the next item into the sorted left section?", accepted: ["insertion", "insertion sort"], answer: "Insertion sort" },
+  { id: "p3", prompt: "After first bubble comparison in [5,1,4,2], what is the list?", accepted: ["[1,5,4,2]", "1,5,4,2", "1 5 4 2"], answer: "[1, 5, 4, 2]" },
+  { id: "p4", prompt: "After one full bubble pass on [5,1,4,2], what is the list?", accepted: ["[1,4,2,5]", "1,4,2,5", "1 4 2 5"], answer: "[1, 4, 2, 5]" },
+  { id: "p5", prompt: "After inserting 1 in insertion sort on [5,1,4,2], what is the list?", accepted: ["[1,5,4,2]", "1,5,4,2", "1 5 4 2"], answer: "[1, 5, 4, 2]" },
+  { id: "p6", prompt: "In bubble sort ascending order, swap when left item is greater or smaller?", accepted: ["greater", "greater than", "left greater"], answer: "Greater than" },
+  { id: "p7", prompt: "In insertion sort, which part of the list is kept sorted?", accepted: ["left", "left section", "sorted left section", "left hand section"], answer: "The left-hand section" },
+  { id: "p8", prompt: "Does bubble sort search for a target value? yes or no.", accepted: ["no"], answer: "No. It sorts the whole list." },
+  { id: "p9", prompt: "What temporary variable name is commonly used during a swap?", accepted: ["temp", "temporary"], answer: "Temp" },
   { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
-  { wrong: "Maximum <- 0, then the data values are -3, -8, -1.", fix: "Maximum would wrongly stay 0 even though 0 is not in the data. Initialise Maximum from the first input value." },
-  { wrong: "Count <- Count + Value when counting how many values are positive.", fix: "A count increases by 1 for each matching item. Use Count <- Count + 1 inside the condition." },
-  { wrong: "The sentinel -1 is added to the total before stopping.", fix: "Test the sentinel before processing it, or input before the loop and process only while Number <> -1." },
-  { wrong: "Average is output after every input when the question asks for one final average.", fix: "Calculate and output the average after the loop has processed all required values." },
+  { wrong: "I jumped directly from [5, 1, 4, 2] to [1, 2, 4, 5].", fix: "Show the intermediate states. Sorting trace marks depend on comparisons, swaps or insertions." },
+  { wrong: "I used binary search steps to sort the list.", fix: "Searching and sorting are different. Bubble and insertion sort rearrange data; binary search finds a target in sorted data." },
+  { wrong: "In bubble sort I swapped items that were not adjacent.", fix: "Bubble sort compares adjacent pairs only." },
+  { wrong: "In insertion sort I ignored the sorted left section.", fix: "Insertion sort inserts each next item into the correct position in the already sorted left part." },
 ];
 
 
@@ -141,105 +120,98 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "8 marks",
-    prompt: "Complete a trace table showing the values of Total, Count, Maximum and Minimum after each value in the list 6, 3, 8, 2 is processed.",
-    answer: "After 6: Total 6, Count 1, Maximum 6, Minimum 6.\nAfter 3: Total 9, Count 2, Maximum 6, Minimum 3.\nAfter 8: Total 17, Count 3, Maximum 8, Minimum 3.\nAfter 2: Total 19, Count 4, Maximum 8, Minimum 2.",
+    marks: "5 marks",
+    prompt: "Demonstrate the first pass of bubble sort in ascending order on [5, 1, 4, 2].",
+    answer: "Compare 5 and 1, swap -> [1, 5, 4, 2]. Compare 5 and 4, swap -> [1, 4, 5, 2]. Compare 5 and 2, swap -> [1, 4, 2, 5].",
     marking: [
-      { mark: "B1", text: "initialises / shows first row correctly for all variables" },
-      { mark: "M1", text: "updates Total by adding each value" },
-      { mark: "A1", text: "final Total is 19" },
-      { mark: "M1", text: "updates Count once per processed value" },
-      { mark: "A1", text: "final Count is 4" },
-      { mark: "M1", text: "updates Maximum only when a larger value is found" },
-      { mark: "M1", text: "updates Minimum only when a smaller value is found" },
-      { mark: "A1", text: "final Maximum 8 and Minimum 2" },
+      { mark: "B1", text: "compares first adjacent pair 5 and 1" },
+      { mark: "B1", text: "correct list after first swap [1, 5, 4, 2]" },
+      { mark: "B1", text: "correct list after second swap [1, 4, 5, 2]" },
+      { mark: "B1", text: "correct list after third swap [1, 4, 2, 5]" },
+      { mark: "B1", text: "shows this is one full pass / largest item at end" },
     ],
     strict: [
-      "Do not award full marks for final values only if trace rows are required.",
-      "Allow equivalent table format.",
-      "Do not accept Count as sum of the values.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award full marks for final sorted list only.",
+      "Allow equivalent row/table format.",
+      "Do not accept swapping non-adjacent 5 and 2 directly.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input 5 marks, output the total, and count how many marks are at least 50.",
-    answer: "Total <- 0\nPassCount <- 0\nFOR Index <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\n    IF Mark >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT Total\nOUTPUT PassCount",
+    marks: "5 marks",
+    prompt: "Complete a trace table for insertion sort on [5, 1, 4, 2] by showing the list after each insertion.",
+    answer: "Treat [5] as sorted. Insert 1 before 5 -> [1, 5, 4, 2]. Insert 4 between 1 and 5 -> [1, 4, 5, 2]. Insert 2 between 1 and 4 -> [1, 2, 4, 5].",
     marking: [
-      { mark: "B1", text: "initialises Total to 0" },
-      { mark: "B1", text: "initialises PassCount / Count to 0" },
-      { mark: "M1", text: "uses a loop to process exactly 5 marks" },
-      { mark: "M1", text: "inputs Mark inside the loop" },
-      { mark: "A1", text: "updates Total with Total <- Total + Mark" },
-      { mark: "A1", text: "uses IF Mark >= 50 THEN Count <- Count + 1 and outputs both results" },
+      { mark: "B1", text: "states first item / left section is initially sorted" },
+      { mark: "A1", text: "correct state after inserting 1" },
+      { mark: "A1", text: "correct state after inserting 4" },
+      { mark: "A1", text: "correct state after inserting 2" },
+      { mark: "M1", text: "explains larger items are shifted/moved right" },
     ],
     strict: [
-      "Do not accept Count <- Count + Mark for counting passes.",
-      "Allow WHILE with a correctly controlled counter for five marks.",
-      "Do not award Cambridge notation mark for Java-only braces and semicolons.",
+      "Do not award insertion method marks for a bubble-sort pass trace.",
+      "Allow final state if all intermediate insertion states are shown.",
+      "Do not require exact wording 'key'.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Write an algorithm to input 4 temperatures and output the highest and lowest temperature.",
-    answer: "INPUT Temperature\nHighest <- Temperature\nLowest <- Temperature\nFOR Index <- 2 TO 4\n    INPUT Temperature\n    IF Temperature > Highest THEN\n        Highest <- Temperature\n    ENDIF\n    IF Temperature < Lowest THEN\n        Lowest <- Temperature\n    ENDIF\nNEXT Index\nOUTPUT Highest\nOUTPUT Lowest",
+    marks: "5 marks",
+    prompt: "Compare bubble sort and insertion sort. Refer to how items are moved and what should be shown in a trace.",
+    answer: "Bubble sort compares adjacent items and swaps them if they are in the wrong order, so a trace should show adjacent comparisons and swaps in each pass. Insertion sort takes the next item and inserts it into the correct position in the sorted left section, so a trace should show the item being inserted and the list after each insertion.",
     marking: [
-      { mark: "B1", text: "inputs first temperature before main comparison loop" },
-      { mark: "B1", text: "initialises Highest from first input value" },
-      { mark: "B1", text: "initialises Lowest from first input value" },
-      { mark: "M1", text: "processes the remaining three temperatures using a loop" },
-      { mark: "A1", text: "correct greater-than comparison and update for Highest" },
-      { mark: "A1", text: "correct less-than comparison and update for Lowest" },
+      { mark: "B1", text: "states bubble sort compares adjacent items" },
+      { mark: "B1", text: "states bubble sort swaps when needed" },
+      { mark: "B1", text: "states insertion sort inserts next item" },
+      { mark: "B1", text: "states insertion sort uses sorted left section" },
+      { mark: "B1", text: "explains different trace evidence for the two methods" },
     ],
     strict: [
-      "Do not require variable names Highest/Lowest if meanings are clear.",
-      "Do not accept initialising Highest to 0 where temperatures may be negative.",
-      "Allow loop from 1 to 4 if the first iteration has a valid special case.",
+      "Do not accept only 'both sort lists' for comparison.",
+      "Allow 'sorted portion' for sorted left section.",
+      "Do not require efficiency discussion.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A program reads numbers until -1 is entered and should output the total of entered numbers. Explain why this pseudocode is wrong: INPUT Number; WHILE Number <> -1; Total <- Total + Number; ENDWHILE.",
-    answer: "Total is not initialised, so the first addition may use an undefined value. There is no new INPUT Number inside the loop, so if the first number is not -1 the loop may never stop. The sentinel -1 must be tested before it is processed, and the next number must be read before the next test.",
+    prompt: "Write Cambridge-style pseudocode statements to swap List[Index] and List[Index + 1] using Temp.",
+    answer: "Temp <- List[Index]\nList[Index] <- List[Index + 1]\nList[Index + 1] <- Temp",
     marking: [
-      { mark: "B1", text: "identifies Total is not initialised" },
-      { mark: "B1", text: "explains undefined/unknown starting total consequence" },
-      { mark: "B1", text: "identifies missing input inside loop" },
-      { mark: "B1", text: "explains loop may not terminate / same Number repeatedly tested" },
-      { mark: "B1", text: "states sentinel should not be processed and next input is needed before retesting" },
+      { mark: "B1", text: "stores List[Index] in Temp first" },
+      { mark: "M1", text: "copies List[Index + 1] into List[Index]" },
+      { mark: "A1", text: "copies Temp into List[Index + 1]" },
+      { mark: "B1", text: "uses assignment notation consistently" },
+      { mark: "A1", text: "swap preserves both original values correctly" },
     ],
     strict: [
-      "Do not award both mechanism marks for only saying 'it will not work'.",
-      "Allow 'infinite loop' for non-termination.",
-      "Do not require rewritten pseudocode, but a valid correction can earn explanation marks.",
+      "Do not accept overwriting one value without using Temp or equivalent.",
+      "Allow Swap(List[Index], List[Index + 1]) only if question permits a built-in swap operation.",
+      "Do not award Java-only syntax for Cambridge notation mark.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Compare finding a total, a count and a maximum. Refer to initialisation and update conditions.",
-    answer: "A total is usually initialised to 0 and updated by adding each value. A count is usually initialised to 0 and updated by adding 1 for each processed or matching item. A maximum should be initialised from a real data value when the possible range is unknown, then updated only when a larger value is found. The total and count usually update every relevant iteration, while maximum updates only when the comparison is true.",
+    marks: "5 marks",
+    prompt: "Write Cambridge-style pseudocode for an ascending bubble sort of List[1:Length].",
+    answer: "FOR Pass <- 1 TO Length - 1\n    FOR Index <- 1 TO Length - Pass\n        IF List[Index] > List[Index + 1] THEN\n            Temp <- List[Index]\n            List[Index] <- List[Index + 1]\n            List[Index + 1] <- Temp\n        ENDIF\n    NEXT Index\nNEXT Pass",
     marking: [
-      { mark: "B1", text: "states total initialised to 0" },
-      { mark: "B1", text: "states total updated by adding value" },
-      { mark: "B1", text: "states count initialised to 0" },
-      { mark: "B1", text: "states count updated by adding 1" },
-      { mark: "B1", text: "states maximum should be initialised from a real value when range is unknown" },
-      { mark: "B1", text: "states maximum is updated only when the current value is greater than Maximum" },
+      { mark: "B1", text: "uses repeated passes over the array" },
+      { mark: "M1", text: "inner loop compares adjacent valid positions without accessing beyond Length" },
+      { mark: "B1", text: "tests List[Index] > List[Index + 1] for ascending order" },
+      { mark: "M1", text: "uses Temp or an equivalent safe swap that preserves both values" },
+      { mark: "A1", text: "closes IF and both loops coherently in Cambridge pseudocode" },
     ],
     strict: [
-      "Do not accept vague 'they store numbers' for comparison marks.",
-      "Allow minimum discussion as an extension, but question requires maximum.",
-      "Do not require Big O notation.",
+      "Do not award a trace in place of the requested algorithm.",
+      "Allow a valid no-swap flag optimisation, but it is not required.",
+      "Do not allow Index + 1 to exceed the declared upper bound.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9,\\[\\] <>+=.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9,\\[\\] -]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -258,10 +230,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    count: "Correct. Count <- Count + 1 records that one more score has been processed.",
-    total: "That updates the running total, not the number of values.",
-    max: "That updates the maximum only when a new high score appears.",
-    output: "Output before the loop would show an initial or old value, not the processed count.",
+    swap: "Correct. Bubble sort starts by comparing adjacent items 5 and 1, then swapping because 5 > 1.",
+    insert: "That is insertion sort language, not bubble sort's first comparison.",
+    middle: "That sounds like binary search, not sorting.",
+    search: "Sorting rearranges the whole list; it does not find a single target first.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -281,14 +253,21 @@ function setupChooser() {
   });
 }
 
-function setupTraceTool() {
-  const dataInput = document.querySelector("#dataInput");
-  const goalInput = document.querySelector("#goalInput");
-  const result = document.querySelector("#traceResult");
-  document.querySelector("#traceBtn").addEventListener("click", () => {
-    const values = dataSets[dataInput.value];
-    const trace = traceValues(values, goalInput.value);
-    result.innerHTML = `<p><strong>Data:</strong> ${formatList(values)}</p>${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
+function setupBubbleTool() {
+  const input = document.querySelector("#bubbleInput");
+  const result = document.querySelector("#bubbleResult");
+  document.querySelector("#bubbleBtn").addEventListener("click", () => {
+    const trace = bubblePass(listMap[input.value]);
+    result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
+  });
+}
+
+function setupInsertionTool() {
+  const input = document.querySelector("#insertInput");
+  const result = document.querySelector("#insertResult");
+  document.querySelector("#insertBtn").addEventListener("click", () => {
+    const trace = insertionTrace(listMap[input.value]);
+    result.innerHTML = `${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
   });
 }
 
@@ -311,7 +290,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("total-average");
+  renderExample("bubble-pass");
 }
 
 function setupPractice() {
@@ -400,7 +379,8 @@ function setupExam() {
 setupPrint();
 setupHook();
 setupChooser();
-setupTraceTool();
+setupBubbleTool();
+setupInsertionTool();
 setupExamples();
 setupPractice();
 setupMistakes();

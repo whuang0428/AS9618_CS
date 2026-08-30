@@ -1,153 +1,135 @@
-const chooserMap = {
-  count: { title: "Count pattern", detail: "Use Count <- Count + 1 when the current character matches the target." },
-  search: { title: "Search pattern", detail: "Use a Found flag or store the position when the target character is found." },
-  validate: { title: "Validation pattern", detail: "Start with Valid <- TRUE and set it to FALSE if any character breaks the rule." },
-  build: { title: "Build pattern", detail: "Start with NewString <- \"\" and append selected characters one at a time." },
+const dataSets = {
+  scores: [72, 55, 91, 64],
+  temps: [-3, -8, 2, -1],
+  sales: [12, 0, 7, 5],
 };
 
-function charAtOneBased(text, position) {
-  return text[position - 1];
+const chooserMap = {
+  total: { title: "Running total", detail: "Use Total <- Total + Value for every value that must be included." },
+  count: { title: "Conditional count", detail: "Use Count <- Count + 1 only when the value meets the condition." },
+  maximum: { title: "Finding maximum", detail: "Keep the largest value seen so far and replace it when a larger value appears." },
+  minimum: { title: "Finding minimum", detail: "Keep the smallest value seen so far and replace it when a smaller value appears." },
+};
+
+function formatList(values) {
+  return values.join(", ");
 }
 
-function isVowel(character) {
-  return ["A", "E", "I", "O", "U"].includes(character.toUpperCase());
-}
-
-function traceString(text, operation) {
+function traceValues(values, goal) {
+  let total = 0;
   let count = 0;
-  let found = false;
-  let foundPosition = "-";
-  let newString = "";
+  let maximum = values[0];
+  let minimum = values[0];
   const rows = [];
 
-  for (let index = 1; index <= text.length; index += 1) {
-    const character = charAtOneBased(text, index);
-    let action = "";
-
-    if (operation === "countA") {
-      if (character.toUpperCase() === "A") {
-        count += 1;
-        action = `A found, Count becomes ${count}`;
+  values.forEach((value, index) => {
+    const notes = [];
+    if (goal === "total" || goal === "all") {
+      total += value;
+      notes.push(`Total updated to ${total}`);
+    }
+    if (goal === "countPositive" || goal === "all") {
+      if (goal === "all" || value > 0) {
+        if (goal === "all") {
+          count += 1;
+          notes.push(`Count updated to ${count}`);
+        } else if (value > 0) {
+          count += 1;
+          notes.push(`Value > 0, Count updated to ${count}`);
+        }
       } else {
-        action = "not A, Count unchanged";
+        notes.push("Value is not > 0, Count unchanged");
       }
     }
-
-    if (operation === "findE") {
-      if (!found && character.toUpperCase() === "E") {
-        found = true;
-        foundPosition = String(index);
-        action = `first E found at position ${index}`;
-      } else if (found) {
-        action = "already found, flag remains TRUE";
-      } else {
-        action = "not E, keep searching";
-      }
+    if ((goal === "maximum" || goal === "all") && index > 0 && value > maximum) {
+      maximum = value;
+      notes.push(`New maximum ${maximum}`);
+    } else if ((goal === "maximum" || goal === "all") && index === 0) {
+      notes.push(`Maximum initialised to ${maximum}`);
     }
-
-    if (operation === "removeSpaces") {
-      if (character !== " ") {
-        newString += character;
-        action = `append character, NewString = "${newString}"`;
-      } else {
-        action = "space skipped";
-      }
-    }
-
-    if (operation === "countVowels") {
-      if (isVowel(character)) {
-        count += 1;
-        action = `vowel found, Count becomes ${count}`;
-      } else {
-        action = "not a vowel, Count unchanged";
-      }
+    if ((goal === "minimum" || goal === "all") && index > 0 && value < minimum) {
+      minimum = value;
+      notes.push(`New minimum ${minimum}`);
+    } else if ((goal === "minimum" || goal === "all") && index === 0) {
+      notes.push(`Minimum initialised to ${minimum}`);
     }
 
     rows.push([
-      String(index),
-      character === " " ? "(space)" : character,
-      operation === "countA" || operation === "countVowels" ? String(count) : "-",
-      operation === "findE" ? String(found).toUpperCase() : "-",
-      operation === "findE" ? foundPosition : "-",
-      operation === "removeSpaces" ? `"${newString}"` : "-",
-      action,
+      String(index + 1),
+      String(value),
+      goal === "total" || goal === "all" ? String(total) : "-",
+      goal === "countPositive" || goal === "all" ? String(count) : "-",
+      goal === "maximum" || goal === "all" ? String(maximum) : "-",
+      goal === "minimum" || goal === "all" ? String(minimum) : "-",
+      notes.join("; "),
     ]);
-  }
+  });
 
-  const final =
-    operation === "countA" ? `Final count of A: ${count}.` :
-    operation === "countVowels" ? `Final vowel count: ${count}.` :
-    operation === "findE" ? `Found E: ${String(found).toUpperCase()}, position: ${foundPosition}.` :
-    `Final string without spaces: "${newString}".`;
-
+  const label = goal === "countPositive" ? "count of values greater than 0" : goal;
   return {
-    headers: ["Index", "Character", "Count", "Found", "Position", "NewString", "Action"],
+    headers: ["Step", "Value", "Total", "Count", "Maximum", "Minimum", "Note"],
     rows,
-    note: final,
-  };
-}
-
-function validateDigitsTrace(text) {
-  let valid = true;
-  const rows = [];
-  for (let index = 1; index <= text.length; index += 1) {
-    const character = charAtOneBased(text, index);
-    const isDigit = character >= "0" && character <= "9";
-    if (!isDigit) valid = false;
-    rows.push([String(index), character, isDigit ? "digit" : "not digit", String(valid).toUpperCase()]);
-  }
-  return {
-    headers: ["Index", "Character", "Test", "Valid"],
-    rows,
-    note: valid ? "The string contains only digits." : "The string is invalid because at least one character is not a digit.",
+    note: `Final ${label}: ${goal === "total" ? total : goal === "countPositive" ? count : goal === "maximum" ? maximum : goal === "minimum" ? minimum : `Total ${total}, Count ${count}, Maximum ${maximum}, Minimum ${minimum}`}.`,
   };
 }
 
 const examples = {
-  "count-a": {
-    title: "Example 1: Count A in DATA",
-    problem: "Trace an algorithm that counts the letter A in DATA.",
-    trace: traceString("DATA", "countA"),
-    points: ["Initialise Count to 0.", "Inspect each character.", "Increment Count only when the character is A."],
+  "total-average": {
+    title: "Example 1: Total and average",
+    problem: "Four scores are 72, 55, 91 and 64. Find the total and average.",
+    trace: {
+      headers: ["Score", "Total after update"],
+      rows: [["72", "72"], ["55", "127"], ["91", "218"], ["64", "282"]],
+      note: "Average <- 282 / 4 = 70.5.",
+    },
+    points: ["Initialise Total to 0.", "Add each score exactly once.", "Calculate the average after the loop."],
   },
-  "find-e": {
-    title: "Example 2: Find first E in COMPUTER",
-    problem: "Trace an algorithm that finds the first E in COMPUTER.",
-    trace: traceString("COMPUTER", "findE"),
-    points: ["Start with Found <- FALSE.", "Set Found to TRUE when E is found.", "Store the position if the question asks for it."],
+  "count-pass": {
+    title: "Example 2: Conditional count",
+    problem: "Count how many of 72, 55, 91 and 64 are at least 60.",
+    trace: {
+      headers: ["Score", "Condition", "PassCount"],
+      rows: [["72", "true", "1"], ["55", "false", "1"], ["91", "true", "2"], ["64", "true", "3"]],
+      note: "Three scores are at least 60.",
+    },
+    points: ["Initialise Count to 0.", "Only increment when the condition is true.", "Do not add the score to Count."],
   },
-  "remove-spaces": {
-    title: "Example 3: Build string without spaces",
-    problem: "Trace an algorithm that removes spaces from A S LEVEL.",
-    trace: traceString("A S LEVEL", "removeSpaces"),
-    points: ["Initialise NewString to an empty string.", "Append non-space characters.", "Do not append the skipped space characters."],
+  "max-min": {
+    title: "Example 3: Maximum and minimum",
+    problem: "Find the maximum and minimum of -3, -8, 2 and -1.",
+    trace: traceValues([-3, -8, 2, -1], "all"),
+    points: ["Use the first value to initialise Maximum and Minimum.", "Update Maximum when a larger value appears.", "Update Minimum when a smaller value appears."],
   },
-  "validate-digits": {
-    title: "Example 4: Validate a digit-only string",
-    problem: "Trace validation for the string 12A4.",
-    trace: validateDigitsTrace("12A4"),
-    points: ["Start with Valid <- TRUE.", "Set Valid <- FALSE if any character is not a digit.", "One invalid character is enough to make the whole string invalid."],
+  sentinel: {
+    title: "Example 4: Sentinel input",
+    problem: "Numbers are entered until -1: 4, 6, 2, -1. Find the total and count of valid numbers.",
+    trace: {
+      headers: ["Input", "Action", "Total", "Count"],
+      rows: [["4", "process", "4", "1"], ["6", "process", "10", "2"], ["2", "process", "12", "3"], ["-1", "stop, do not process", "12", "3"]],
+      note: "The sentinel -1 stops the loop and is not included in the total.",
+    },
+    points: ["Input once before the WHILE test.", "Process only while Number <> -1.", "Read the next number at the end of the loop."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the first character of DATA using 1-based pseudocode positions?", accepted: ["d"], answer: "D" },
-  { id: "p2", prompt: "What is LENGTH(\"DATA\")?", accepted: ["4", "four"], answer: "4" },
-  { id: "p3", prompt: "How many A characters are in DATA?", accepted: ["2", "two"], answer: "2" },
-  { id: "p4", prompt: "In COMPUTER, what is the position of the first E using 1-based positions?", accepted: ["7"], answer: "7" },
-  { id: "p5", prompt: "What should Count be initialised to before counting matching characters?", accepted: ["0", "zero"], answer: "0" },
-  { id: "p6", prompt: "What should Found usually be initialised to before searching? TRUE or FALSE.", accepted: ["false"], answer: "FALSE" },
-  { id: "p7", prompt: "After removing spaces from A S, what string remains?", accepted: ["as", "a s without space", "a s -> as"], answer: "AS" },
-  { id: "p8", prompt: "If a validation algorithm finds one invalid character, should Valid become TRUE or FALSE?", accepted: ["false"], answer: "FALSE" },
-  { id: "p9", prompt: "Which variable is used to build a new string in this lesson?", accepted: ["newstring", "new string"], answer: "NewString" },
-  { id: "p10", prompt: "Is Java charAt(0) the same notation as Cambridge-style position 1? yes or no.", accepted: ["no"], answer: "No. Java is 0-based; the pseudocode trace here is 1-based." },
+  { id: "p1", prompt: "What value should Total usually be initialised to before adding values?", accepted: ["0", "zero"], answer: "0" },
+  { id: "p2", prompt: "What value should Count usually be initialised to before counting items?", accepted: ["0", "zero"], answer: "0" },
+  { id: "p3", prompt: "For unknown numeric ranges, what should Maximum usually be initialised from?", accepted: ["first value", "first input", "the first value", "first item", "first data value"], answer: "The first input / first data value" },
+  { id: "p4", prompt: "After processing 5, 8, 2 with Total <- Total + Value, what is Total?", accepted: ["15"], answer: "15" },
+  { id: "p5", prompt: "How many values in 5, 8, 2 are greater than 4?", accepted: ["2", "two"], answer: "2" },
+  { id: "p6", prompt: "What is the maximum of -3, -8, 2, -1?", accepted: ["2"], answer: "2" },
+  { id: "p7", prompt: "What is the minimum of -3, -8, 2, -1?", accepted: ["-8"], answer: "-8" },
+  { id: "p8", prompt: "In inputs 4, 6, 2, -1 with -1 as sentinel, should -1 be added to Total? yes or no.", accepted: ["no"], answer: "No. The sentinel is not data." },
+  { id: "p9", prompt: "Which loop is most suitable when exactly 6 values must be processed?", accepted: ["for", "for loop", "count controlled", "count-controlled", "count controlled loop"], answer: "A FOR / count-controlled loop" },
+  { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
-  { wrong: "I started the Cambridge-style loop at 0 and inspected DATA position 0.", fix: "For this lesson's pseudocode trace, use positions 1 to LENGTH(String). Keep Java 0-based indexing separate." },
-  { wrong: "I increased Count for every character when asked to count only A.", fix: "Use Count <- Count + 1 only inside the IF that tests Character = \"A\"." },
-  { wrong: "I reset Found to FALSE after the target had already been found.", fix: "Once Found is TRUE, leave it TRUE. Do not undo the search result on later characters." },
-  { wrong: "I wrote NewString <- Character inside the loop when removing spaces.", fix: "That overwrites earlier characters. Use NewString <- NewString & Character to append." },
+  { wrong: "Maximum <- 0, then the data values are -3, -8, -1.", fix: "Maximum would wrongly stay 0 even though 0 is not in the data. Initialise Maximum from the first input value." },
+  { wrong: "Count <- Count + Value when counting how many values are positive.", fix: "A count increases by 1 for each matching item. Use Count <- Count + 1 inside the condition." },
+  { wrong: "The sentinel -1 is added to the total before stopping.", fix: "Test the sentinel before processing it, or input before the loop and process only while Number <> -1." },
+  { wrong: "Average is output after every input when the question asks for one final average.", fix: "Calculate and output the average after the loop has processed all required values." },
 ];
 
 
@@ -159,102 +141,105 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "Complete a trace table for an algorithm that counts the letter A in the string DATA. Demonstrate Index, Character and Count after each character is processed.",
-    answer: "Index 1 Character D Count 0\nIndex 2 Character A Count 1\nIndex 3 Character T Count 1\nIndex 4 Character A Count 2",
+    marks: "8 marks",
+    prompt: "Complete a trace table showing the values of Total, Count, Maximum and Minimum after each value in the list 6, 3, 8, 2 is processed.",
+    answer: "After 6: Total 6, Count 1, Maximum 6, Minimum 6.\nAfter 3: Total 9, Count 2, Maximum 6, Minimum 3.\nAfter 8: Total 17, Count 3, Maximum 8, Minimum 3.\nAfter 2: Total 19, Count 4, Maximum 8, Minimum 2.",
     marking: [
-      { mark: "B1", text: "uses positions 1 to 4 / processes each character in DATA" },
-      { mark: "B1", text: "shows D with Count unchanged at 0" },
-      { mark: "M1", text: "increments Count when first A is processed" },
-      { mark: "B1", text: "shows T with Count unchanged" },
-      { mark: "M1", text: "increments Count when second A is processed" },
-      { mark: "A1", text: "final Count is 2" },
+      { mark: "B1", text: "initialises / shows first row correctly for all variables" },
+      { mark: "M1", text: "updates Total by adding each value" },
+      { mark: "A1", text: "final Total is 19" },
+      { mark: "M1", text: "updates Count once per processed value" },
+      { mark: "A1", text: "final Count is 4" },
+      { mark: "M1", text: "updates Maximum only when a larger value is found" },
+      { mark: "M1", text: "updates Minimum only when a smaller value is found" },
+      { mark: "A1", text: "final Maximum 8 and Minimum 2" },
     ],
     strict: [
-      "Do not award full marks for final count only when trace is required.",
-      "Allow equivalent table layout.",
-      "Do not accept counting lowercase/uppercase differently unless question specifies case sensitivity.",
+      "Do not award full marks for final values only if trace rows are required.",
+      "Allow equivalent table format.",
+      "Do not accept Count as sum of the values.",
       "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input a string Word and output how many vowels A, E, I, O or U it contains. Assume uppercase input.",
-    answer: "VowelCount <- 0\nFOR Index <- 1 TO LENGTH(Word)\n    Character <- MID(Word, Index, 1)\n    IF Character = \"A\" OR Character = \"E\" OR Character = \"I\" OR Character = \"O\" OR Character = \"U\" THEN\n        VowelCount <- VowelCount + 1\n    ENDIF\nNEXT Index\nOUTPUT VowelCount",
+    prompt: "Write Cambridge-style pseudocode to input 5 marks, output the total, and count how many marks are at least 50.",
+    answer: "Total <- 0\nPassCount <- 0\nFOR Index <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\n    IF Mark >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT Total\nOUTPUT PassCount",
     marking: [
-      { mark: "B1", text: "initialises VowelCount / Count to 0" },
-      { mark: "M1", text: "loops through every character of Word" },
-      { mark: "M1", text: "extracts or clearly refers to the current character" },
-      { mark: "M1", text: "tests current character against vowels" },
-      { mark: "A1", text: "increments count only when vowel condition is true" },
-      { mark: "B1", text: "outputs final count after the loop" },
+      { mark: "B1", text: "initialises Total to 0" },
+      { mark: "B1", text: "initialises PassCount / Count to 0" },
+      { mark: "M1", text: "uses a loop to process exactly 5 marks" },
+      { mark: "M1", text: "inputs Mark inside the loop" },
+      { mark: "A1", text: "updates Total with Total <- Total + Mark" },
+      { mark: "A1", text: "uses IF Mark >= 50 THEN Count <- Count + 1 and outputs both results" },
     ],
     strict: [
-      "Do not accept adding the character value to the count.",
-      "Allow separate IF statements for each vowel if the count is correct.",
-      "Do not penalise for omitting lowercase handling because uppercase input is stated.",
+      "Do not accept Count <- Count + Mark for counting passes.",
+      "Allow WHILE with a correctly controlled counter for five marks.",
+      "Do not award Cambridge notation mark for Java-only braces and semicolons.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "An algorithm should output whether a password contains the character #. Describe a suitable algorithm using a flag.",
-    answer: "Set Found <- FALSE. Loop through each character in the password. If the current character is #, set Found <- TRUE. After the loop, output Found or output a suitable message based on Found.",
+    prompt: "Write an algorithm to input 4 temperatures and output the highest and lowest temperature.",
+    answer: "INPUT Temperature\nHighest <- Temperature\nLowest <- Temperature\nFOR Index <- 2 TO 4\n    INPUT Temperature\n    IF Temperature > Highest THEN\n        Highest <- Temperature\n    ENDIF\n    IF Temperature < Lowest THEN\n        Lowest <- Temperature\n    ENDIF\nNEXT Index\nOUTPUT Highest\nOUTPUT Lowest",
     marking: [
-      { mark: "B1", text: "initialises Found to FALSE" },
-      { mark: "B1", text: "loops through each character of the password" },
-      { mark: "B1", text: "compares current character with #" },
-      { mark: "B1", text: "sets Found to TRUE when # is found" },
-      { mark: "B1", text: "does not reset Found to FALSE after it has become TRUE" },
-      { mark: "B1", text: "outputs result after processing / based on Found" },
+      { mark: "B1", text: "inputs first temperature before main comparison loop" },
+      { mark: "B1", text: "initialises Highest from first input value" },
+      { mark: "B1", text: "initialises Lowest from first input value" },
+      { mark: "M1", text: "processes the remaining three temperatures using a loop" },
+      { mark: "A1", text: "correct greater-than comparison and update for Highest" },
+      { mark: "A1", text: "correct less-than comparison and update for Lowest" },
     ],
     strict: [
-      "Do not require early termination, but allow it if logically correct.",
-      "Allow stores position instead of Boolean flag if presence is still determined.",
-      "Do not award comparison mark for checking the whole string equals #.",
+      "Do not require variable names Highest/Lowest if meanings are clear.",
+      "Do not accept initialising Highest to 0 where temperatures may be negative.",
+      "Allow loop from 1 to 4 if the first iteration has a valid special case.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
-    prompt: "Write pseudocode to create a new string from Text with all spaces removed.",
-    answer: "NewString <- \"\"\nFOR Index <- 1 TO LENGTH(Text)\n    Character <- MID(Text, Index, 1)\n    IF Character <> \" \" THEN\n        NewString <- NewString & Character\n    ENDIF\nNEXT Index\nOUTPUT NewString",
+    marks: "5 marks",
+    prompt: "A program reads numbers until -1 is entered and should output the total of entered numbers. Explain why this pseudocode is wrong: INPUT Number; WHILE Number <> -1; Total <- Total + Number; ENDWHILE.",
+    answer: "Total is not initialised, so the first addition may use an undefined value. There is no new INPUT Number inside the loop, so if the first number is not -1 the loop may never stop. The sentinel -1 must be tested before it is processed, and the next number must be read before the next test.",
     marking: [
-      { mark: "B1", text: "initialises NewString to empty string" },
-      { mark: "M1", text: "loops through each character of Text" },
-      { mark: "M1", text: "extracts or tests the current character" },
-      { mark: "A1", text: "checks current character is not a space" },
-      { mark: "A1", text: "appends non-space character to NewString without overwriting previous characters" },
-      { mark: "B1", text: "outputs NewString after the loop" },
+      { mark: "B1", text: "identifies Total is not initialised" },
+      { mark: "B1", text: "explains undefined/unknown starting total consequence" },
+      { mark: "B1", text: "identifies missing input inside loop" },
+      { mark: "B1", text: "explains loop may not terminate / same Number repeatedly tested" },
+      { mark: "B1", text: "states sentinel should not be processed and next input is needed before retesting" },
     ],
     strict: [
-      "Do not award append mark for NewString <- Character because it overwrites previous output.",
-      "Allow other clear concatenation notation if used consistently.",
-      "Do not require handling tabs or punctuation unless stated.",
+      "Do not award both mechanism marks for only saying 'it will not work'.",
+      "Allow 'infinite loop' for non-termination.",
+      "Do not require rewritten pseudocode, but a valid correction can earn explanation marks.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "Explain two common errors when translating a string algorithm from Java into Cambridge-style pseudocode.",
-    answer: "One common error is copying Java 0-based indexing directly into a pseudocode trace that uses positions 1 to LENGTH(String), causing the first or last character to be missed. Another error is copying Java syntax such as braces, semicolons, charAt or ++ instead of using clear Cambridge-style assignment, loop and IF statements. These errors can make the algorithm harder to mark even if the idea is close.",
+    marks: "6 marks",
+    prompt: "Compare finding a total, a count and a maximum. Refer to initialisation and update conditions.",
+    answer: "A total is usually initialised to 0 and updated by adding each value. A count is usually initialised to 0 and updated by adding 1 for each processed or matching item. A maximum should be initialised from a real data value when the possible range is unknown, then updated only when a larger value is found. The total and count usually update every relevant iteration, while maximum updates only when the comparison is true.",
     marking: [
-      { mark: "B1", text: "identifies Java 0-based indexing issue" },
-      { mark: "B1", text: "explains it can miss or shift characters in the trace" },
-      { mark: "B1", text: "identifies Java-only syntax issue" },
-      { mark: "B1", text: "explains Cambridge-style pseudocode should use clear keywords / assignment" },
+      { mark: "B1", text: "states total initialised to 0" },
+      { mark: "B1", text: "states total updated by adding value" },
+      { mark: "B1", text: "states count initialised to 0" },
+      { mark: "B1", text: "states count updated by adding 1" },
+      { mark: "B1", text: "states maximum should be initialised from a real value when range is unknown" },
+      { mark: "B1", text: "states maximum is updated only when the current value is greater than Maximum" },
     ],
     strict: [
-      "Do not require exact phrase 'Cambridge-style' if the distinction is clear.",
-      "Allow examples such as charAt(0), braces, semicolons or ++.",
-      "Do not award both errors for two examples of the same syntax issue.",
+      "Do not accept vague 'they store numbers' for comparison marks.",
+      "Allow minimum discussion as an extension, but question requires maximum.",
+      "Do not require Big O notation.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9#@\\[\\] <>+=.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9,\\[\\] <>+=.-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -273,10 +258,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    d: "Correct. In this 1-based pseudocode trace, position 1 of DATA is D.",
-    a: "A appears at positions 2 and 4. The first character is D.",
-    zero: "That is Java-style thinking. This pseudocode trace starts at position 1.",
-    all: "String-processing algorithms usually inspect one character at a time when tracing.",
+    count: "Correct. Count <- Count + 1 records that one more score has been processed.",
+    total: "That updates the running total, not the number of values.",
+    max: "That updates the maximum only when a new high score appears.",
+    output: "Output before the loop would show an initial or old value, not the processed count.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -296,13 +281,14 @@ function setupChooser() {
   });
 }
 
-function setupScanner() {
-  const textInput = document.querySelector("#textInput");
-  const operationInput = document.querySelector("#operationInput");
-  const result = document.querySelector("#scanResult");
-  document.querySelector("#scanBtn").addEventListener("click", () => {
-    const trace = traceString(textInput.value, operationInput.value);
-    result.innerHTML = `<p><strong>Text:</strong> "${textInput.value}"</p>${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
+function setupTraceTool() {
+  const dataInput = document.querySelector("#dataInput");
+  const goalInput = document.querySelector("#goalInput");
+  const result = document.querySelector("#traceResult");
+  document.querySelector("#traceBtn").addEventListener("click", () => {
+    const values = dataSets[dataInput.value];
+    const trace = traceValues(values, goalInput.value);
+    result.innerHTML = `<p><strong>Data:</strong> ${formatList(values)}</p>${tableMarkup(trace.headers, trace.rows)}<p>${trace.note}</p>`;
   });
 }
 
@@ -325,7 +311,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("count-a");
+  renderExample("total-average");
 }
 
 function setupPractice() {
@@ -414,7 +400,7 @@ function setupExam() {
 setupPrint();
 setupHook();
 setupChooser();
-setupScanner();
+setupTraceTool();
 setupExamples();
 setupPractice();
 setupMistakes();

@@ -1,104 +1,73 @@
-const componentMap = {
-  alu: {
-    role: "Arithmetic Logic Unit: performs arithmetic calculations and logical operations.",
-    sentence: "The ALU performs operations such as addition, subtraction, comparison and Boolean logic on data being processed.",
-    trap: "Do not say the ALU controls the whole CPU. Control is the job of the CU.",
+const sortQuestions = {
+  q1: {
+    topic: "Storage fundamentals",
+    method: "Compare using matched criteria: volatility, purpose, read/write behaviour and persistence.",
+    trap: "Do not say only 'RAM is temporary and ROM is permanent' if the question asks for a comparison. Add purpose and use.",
   },
-  cu: {
-    role: "Control Unit: coordinates CPU operations and sends control signals.",
-    sentence: "The CU decodes instructions and coordinates the sequence of operations needed to execute them.",
-    trap: "Do not say the CU performs arithmetic calculations. It controls; it does not calculate.",
+  q2: {
+    topic: "Sensors, actuators and control systems",
+    method: "Describe the sequence: sensor reading -> processor compares with threshold -> output signal -> actuator -> feedback.",
+    trap: "Do not say the sensor itself cools the greenhouse.",
   },
-  register: {
-    role: "Register: a small, fast storage location inside the CPU.",
-    sentence: "Registers temporarily hold data, instructions, addresses or intermediate results during processing.",
-    trap: "Do not describe registers as large-capacity main memory or secondary storage.",
+  q3: {
+    topic: "Logic gates and Boolean expressions",
+    method: "Calculate intermediate columns: A OR B = 1; NOT C = 1; Q = 1 AND 1 = 1.",
+    trap: "Do not skip NOT C. Missing intermediate work loses method marks.",
   },
-  dataBus: {
-    role: "Data bus: carries data and instructions between CPU, memory and other components.",
-    sentence: "The data bus transfers the value being read from or written to memory.",
-    trap: "Do not confuse the data bus with the address bus; the address bus identifies location.",
+  q4: {
+    topic: "Hardware selection for users",
+    method: "Justify with feature -> need -> consequence, such as portable scanner -> scan at door -> update delivery proof.",
+    trap: "Do not recommend a desktop computer just because it is powerful.",
   },
-  addressBus: {
-    role: "Address bus: carries the address of a memory location or I/O location.",
-    sentence: "The address bus carries the location that the CPU wants to read from or write to.",
-    trap: "Do not say the address bus carries the data value itself.",
-  },
-  controlBus: {
-    role: "Control bus: carries control and timing signals.",
-    sentence: "The control bus carries signals such as read, write and interrupt between the CPU and other components.",
-    trap: "Do not use 'control bus' as a vague name for every bus.",
-  },
-  clock: {
-    role: "Clock: produces regular pulses to synchronise CPU operations.",
-    sentence: "Clock speed describes how many cycles occur per second, but it is not the only factor affecting performance.",
-    trap: "Do not claim that a higher clock speed always guarantees a faster computer in every task.",
+  q5: {
+    topic: "Environmental and reliability considerations",
+    method: "Explain UPS as temporary power that allows continued operation or safe shutdown during short power cuts.",
+    trap: "Do not describe UPS as a data backup.",
   },
 };
 
 const examples = {
-  identify: {
-    title: "Example 1: identify the component",
-    problem: "A question says: 'This part performs a comparison to decide whether a value is greater than 100.' Name the CPU component.",
+  compare: {
+    title: "Example 1: compare",
+    problem: "Compare SSD and HDD for a video editor.",
     steps: [
-      "The keyword is comparison. Comparisons are logical operations.",
-      "Logical and arithmetic operations are performed by the ALU.",
-      "Answer: ALU. A full sentence would be: the ALU performs the comparison operation on the data.",
+      "Criterion 1: speed. SSD has faster access times, so large media files load and preview with less delay.",
+      "Criterion 2: cost/capacity. HDD may provide more capacity for lower cost per GB, so it can suit archive storage.",
+      "Balanced conclusion: SSD is better as a working drive; HDD may still be suitable for backups or archives.",
     ],
   },
-  add: {
-    title: "Example 2: a broad ADD instruction explanation",
-    problem: "Explain which CPU parts are involved when adding two values.",
+  justify: {
+    title: "Example 2: justify",
+    problem: "Justify hardware for a delivery driver.",
     steps: [
-      "Registers hold the two values and may hold the intermediate or final result.",
-      "The CU coordinates the operation and sends control signals so the correct operation is performed.",
-      "The ALU performs the addition.",
-      "Buses transfer values, addresses and control signals between CPU and memory when values need to be fetched or stored.",
-      "The clock synchronises these steps so they occur in an organised sequence.",
+      "Choose a handheld scanner or smartphone because it is portable.",
+      "Portability matters because the driver must scan parcels at the delivery location.",
+      "Therefore the driver can collect proof of delivery immediately instead of returning to a depot computer.",
     ],
   },
-  clock: {
-    title: "Example 3: clock speed is not the whole story",
-    problem: "A 4.0 GHz CPU is always faster than a 3.2 GHz CPU. Explain why this statement is too simple.",
+  calculate: {
+    title: "Example 3: calculate",
+    problem: "Find Q for Q = (A OR B) AND NOT C when A=1, B=0, C=0.",
     steps: [
-      "Clock speed measures cycles per second, so a higher value can allow more CPU cycles per second.",
-      "However, different processors may do different amounts of useful work per cycle.",
-      "Performance also depends on cache, number of cores, instruction type, memory access and system architecture.",
-      "So clock speed is a factor, but not the only factor.",
+      "A OR B = 1 OR 0 = 1.",
+      "NOT C = NOT 0 = 1.",
+      "Q = 1 AND 1 = 1.",
+      "The final output is 1, and the intermediate values show the method.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which CPU component performs arithmetic operations?", accepted: ["alu", "arithmetic logic unit"], answer: "ALU / Arithmetic Logic Unit" },
-  { id: "p2", prompt: "Which CPU component coordinates operations and sends control signals?", accepted: ["cu", "control unit"], answer: "CU / Control Unit" },
-  { id: "p3", prompt: "What is a small, fast storage location inside the CPU called?", accepted: ["register", "registers"], answer: "Register" },
-  { id: "p4", prompt: "Which bus carries data and instructions?", accepted: ["data bus"], answer: "Data bus" },
-  { id: "p5", prompt: "Which bus carries memory addresses?", accepted: ["address bus"], answer: "Address bus" },
-  { id: "p6", prompt: "Which bus carries read/write/control signals?", accepted: ["control bus"], answer: "Control bus" },
-  { id: "p7", prompt: "What produces regular pulses to synchronise CPU operations?", accepted: ["clock", "system clock"], answer: "Clock / system clock" },
-  { id: "p8", prompt: "Is clock speed the only factor affecting CPU performance? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "Which component performs logical operations such as comparisons?", accepted: ["alu", "arithmetic logic unit"], answer: "ALU" },
-  { id: "p10", prompt: "Are registers inside the CPU or in secondary storage?", accepted: ["inside the cpu", "cpu", "inside cpu"], answer: "Inside the CPU" },
-];
-
-const mistakes = [
-  {
-    wrong: "The ALU controls the CPU and sends signals to memory.",
-    fix: "The CU controls CPU operations and sends control signals. The ALU performs arithmetic and logical operations.",
-  },
-  {
-    wrong: "The address bus carries the data that the CPU wants to process.",
-    fix: "The address bus carries the address/location. The data bus carries the data or instruction value.",
-  },
-  {
-    wrong: "Registers are large storage devices used to keep files permanently.",
-    fix: "Registers are small, very fast storage locations inside the CPU used temporarily during processing.",
-  },
-  {
-    wrong: "A higher clock speed always means the whole computer is faster.",
-    fix: "Higher clock speed may allow more cycles per second, but performance also depends on architecture, cache, cores and memory access.",
-  },
+  { id: "p1", prompt: "Which device detects physical quantities: sensor or actuator?", accepted: ["sensor"], answer: "Sensor" },
+  { id: "p2", prompt: "Which device causes physical action: sensor or actuator?", accepted: ["actuator"], answer: "Actuator" },
+  { id: "p3", prompt: "For Q = A AND NOT B, find Q when A=1 and B=0.", accepted: ["1", "true"], answer: "1" },
+  { id: "p4", prompt: "Which storage type is volatile: RAM or ROM?", accepted: ["ram"], answer: "RAM" },
+  { id: "p5", prompt: "Which gate outputs 1 when exactly one input is 1?", accepted: ["xor", "exclusive or"], answer: "XOR" },
+  { id: "p6", prompt: "Name one reliability measure for power cuts.", accepted: ["ups", "battery backup", "surge protection"], answer: "UPS / battery backup" },
+  { id: "p7", prompt: "Complete the chain: feature -> need -> ____.", accepted: ["consequence"], answer: "Consequence" },
+  { id: "p8", prompt: "How many rows are needed for a truth table with 3 inputs?", accepted: ["8", "eight"], answer: "8" },
+  { id: "p9", prompt: "Which system type uses feedback: open-loop or closed-loop?", accepted: ["closed loop", "closed-loop"], answer: "Closed-loop" },
+  { id: "p10", prompt: "What should you identify before answering a mixed review question?", accepted: ["topic", "command word", "topic and command word"], answer: "Topic and command word" },
 ];
 
 
@@ -110,93 +79,90 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Describe the roles of the ALU and the control unit in a CPU.",
-    answer: "The ALU performs arithmetic calculations and logical operations. The control unit decodes instructions, coordinates CPU operations and sends control signals to other components.",
+    marks: "6 marks",
+    prompt: "Compare SSD and HDD storage for a video editor who works with large video files.",
+    answer: "An SSD has faster access times than an HDD, so it is suitable as a working drive for loading and previewing large video files. An HDD may have a lower cost per GB and high capacity, so it can be suitable for archived footage or backups. SSDs are also more resistant to shock because they have no moving parts.",
     marking: [
-      { mark: "B1", text: "ALU performs arithmetic calculations" },
-      { mark: "B1", text: "ALU performs logical operations/comparisons/Boolean operations" },
-      { mark: "B1", text: "CU decodes instructions or controls the sequence of operations" },
-      { mark: "B1", text: "CU sends control signals/coordinates other CPU components" },
+      { mark: "B1", text: "SSD speed/access-time advantage identified" },
+      { mark: "B1", text: "speed linked to loading/previewing/editing large video files" },
+      { mark: "B1", text: "HDD capacity/cost-per-GB advantage identified" },
+      { mark: "B1", text: "HDD linked to archive/backup/bulk storage" },
+      { mark: "B1", text: "SSD shock resistance/no moving parts identified" },
+      { mark: "B1", text: "comparison is balanced rather than one-sided" },
     ],
     strict: [
-      "Do not award ALU marks for vague 'does processing' without arithmetic or logic.",
-      "Do not award CU control marks if the answer says the CU performs calculations.",
-      "Allow named examples of logical operations such as AND, OR, NOT, comparison.",
+      "Do not accept 'SSD is better' without a criterion and scenario link.",
+      "Allow external HDD as archive storage if role is clear.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "Explain why registers are used by the CPU during processing.",
-    answer: "Registers are small, fast storage locations inside the CPU. They temporarily hold data, instructions, addresses or intermediate results that are currently being used. Accessing registers is faster than repeatedly accessing main memory, so processing can be carried out more efficiently.",
+    marks: "5 marks",
+    prompt: "Describe how a greenhouse cooling system can use a sensor and actuator.",
+    answer: "A temperature sensor inputs the greenhouse temperature. The processor/controller compares the reading with a stored threshold. If the temperature is too high, an output signal activates a fan motor or opens a vent actuator. The system continues to take readings so the output can be changed or stopped when the temperature falls.",
     marking: [
-      { mark: "B1", text: "registers are small/fast storage locations" },
-      { mark: "B1", text: "registers are inside the CPU" },
-      { mark: "B1", text: "temporarily hold data/instructions/addresses/intermediate results" },
-      { mark: "B1", text: "faster access than main memory or supports current processing" },
+      { mark: "B1", text: "temperature sensor inputs/captures temperature reading" },
+      { mark: "B1", text: "processor/controller compares reading with threshold" },
+      { mark: "B1", text: "decision made when temperature is too high" },
+      { mark: "B1", text: "output signal activates actuator such as fan/vent motor" },
+      { mark: "B1", text: "feedback/repeated readings used to adjust or stop output" },
     ],
     strict: [
-      "Do not accept permanent file storage as a register role.",
-      "Do not require a named register for this question.",
-      "Allow RAM comparison if it is clear that registers are faster and inside the CPU.",
+      "Do not award actuator mark if the answer says the sensor cools the greenhouse.",
+      "Do not require exact numeric threshold.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Describe the roles of the data bus, address bus and control bus.",
-    answer: "The data bus carries data and instructions between the CPU, memory and other components. The address bus carries the address of the memory or I/O location being accessed. The control bus carries control and timing signals, such as read and write signals, so components know what operation should take place.",
+    marks: "3 marks",
+    prompt: "For Q = (A NAND B) OR C, find Q when A=1, B=1 and C=0. Demonstrate working.",
+    answer: "A AND B = 1. A NAND B = 0 because NAND is the inverse of AND. Q = 0 OR 0 = 0.",
     marking: [
-      { mark: "B1", text: "data bus carries data/instructions" },
-      { mark: "B1", text: "data bus transfer is between CPU, memory or other components" },
-      { mark: "B1", text: "address bus carries memory/I/O address" },
-      { mark: "B1", text: "address identifies location to read from or write to" },
-      { mark: "B1", text: "control bus carries control/timing signals" },
-      { mark: "B1", text: "valid example such as read, write, interrupt, clock/timing signal" },
+      { mark: "B1", text: "A AND B = 1" },
+      { mark: "M1", text: "derives A NAND B = 0 by inverting the AND result" },
+      { mark: "A1", text: "final Q = 0, with follow-through from the candidate's NAND result" },
     ],
     strict: [
-      "Do not accept 'bus carries information' for all three without distinguishing roles.",
-      "Do not accept address bus carries the data value.",
-      "Allow 'instructions' on data bus because instructions are transferred as data values.",
-      "Award each bus independently; an error in one bus does not prevent marks for the others.",
+      "Do not accept NAND as the same as AND.",
+      "Allow direct statement that NAND is 0 only when both inputs are 1.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain the stored-program concept in a basic Von Neumann architecture and how the CPU uses the stored instructions.",
-    answer: "Program instructions are stored in binary form in the same immediate access store/main memory as data. The PC supplies an instruction address, the instruction is fetched from memory through the MDR into the CIR, and the control unit decodes it before execution. A program on secondary storage must therefore be loaded into processor-accessible memory before normal execution.",
+    marks: "6 marks",
+    prompt: "Compare RAM and ROM, including volatility, purpose and whether their contents normally change while a computer is in use.",
+    answer: "RAM is volatile read/write memory used for programs and data currently in use, so its contents are lost without power and change during operation. ROM is non-volatile memory that stores instructions or data such as start-up firmware that normally remain available without power and are not routinely changed by the running program.",
     marking: [
-      { mark: "B1", text: "program instructions are represented/stored in binary" },
-      { mark: "B1", text: "instructions and data share IAS/main memory in the basic Von Neumann model" },
-      { mark: "B1", text: "PC/address is used to fetch an instruction from memory" },
-      { mark: "B1", text: "fetched instruction passes through MDR to CIR" },
-      { mark: "B1", text: "control unit decodes the instruction before execution" },
+      { mark: "B1", text: "RAM is volatile" },
+      { mark: "B1", text: "RAM stores current programs/data" },
+      { mark: "B1", text: "RAM is read/write and changes during use" },
+      { mark: "B1", text: "ROM is non-volatile" },
+      { mark: "B1", text: "ROM stores firmware/start-up instructions" },
+      { mark: "B1", text: "ROM contents are not routinely changed during normal use" },
     ],
     strict: [
-      "Do not accept only 'the computer stores a program' without the shared instruction/data memory relationship.",
-      "Do not state that the instruction is stored in the PC or MAR.",
-      "Allow immediate access store, IAS or main memory for the processor-accessible store.",
+      "Do not define RAM only as faster than ROM.",
+      "Do not claim that all ROM can never be reprogrammed.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A CPU is executing an instruction that adds a value from memory to a value already in the CPU. Explain the roles of CPU components and buses in this process.",
-    answer: "A register holds the value already in the CPU and may hold the result. The address bus carries the memory address of the value that needs to be fetched. The data bus carries the value from memory to the CPU. The control bus carries signals such as read. The CU coordinates the operation and sends control signals. The ALU performs the addition.",
+    marks: "8 marks",
+    prompt: "Compare PROM, EPROM and EEPROM, including how each is programmed or erased and one suitable use consequence.",
+    answer: "PROM is programmed once after manufacture and cannot normally be erased. EPROM can be erased with ultraviolet light and then reprogrammed, usually after removal from the circuit. EEPROM is erased and reprogrammed electrically, often in circuit. Their different update methods affect convenience, equipment and update frequency.",
     marking: [
-      { mark: "B1", text: "register holds existing value/intermediate value/result" },
-      { mark: "B1", text: "address bus carries address of memory location" },
-      { mark: "B1", text: "data bus carries value/data from memory to CPU" },
-      { mark: "B1", text: "control bus carries read/control signal" },
-      { mark: "B1", text: "CU coordinates/controls/decodes or sends signals" },
-      { mark: "B1", text: "ALU performs the addition" },
+      { mark: "B1", text: "PROM identified as programmable once" },
+      { mark: "B1", text: "PROM cannot normally be erased" },
+      { mark: "B1", text: "EPROM erased using ultraviolet light" },
+      { mark: "B1", text: "EPROM can then be reprogrammed" },
+      { mark: "B1", text: "EEPROM erased electrically" },
+      { mark: "B1", text: "EEPROM reprogrammed electrically/in circuit" },
+      { mark: "B1", text: "valid comparison of update convenience/equipment" },
+      { mark: "B1", text: "suitable use consequence linked to update frequency" },
     ],
     strict: [
-      "Do not award ALU mark if answer only says CPU adds without naming ALU.",
-      "Do not award address bus mark for carrying the actual value.",
-      "Allow registers in plural without naming ACC/MDR if temporary holding is clear.",
+      "Do not confuse EPROM ultraviolet erasure with EEPROM electrical erasure.",
     ],
   },
 ];
@@ -212,10 +178,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    alu: "Correct. The ALU performs arithmetic such as addition.",
-    cu: "Close but not the maths part. The CU coordinates and sends control signals; the ALU performs the addition.",
-    register: "Registers may hold the values, but they do not perform the calculation.",
-    bus: "Buses transfer values or signals, but they do not perform the addition.",
+    logic: "Logic gates / calculate. Use intermediate steps: NOT B, then AND.",
+    sensor: "Control systems / describe. Use sensor -> processor -> actuator -> feedback.",
+    storage: "Storage and hardware selection / compare. Use speed, durability, cost and scenario suitability.",
+    reliability: "Reliability / explain. UPS gives temporary power; it is not a backup.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -226,20 +192,20 @@ function setupHook() {
   });
 }
 
-function setupMapper() {
-  const select = document.querySelector("#componentInput");
-  const result = document.querySelector("#mapResult");
-  const sentence = document.querySelector("#mapSentence");
-  const trap = document.querySelector("#mapTrap");
-  function mapComponent() {
-    const item = componentMap[select.value];
-    result.textContent = item.role;
-    sentence.innerHTML = `<strong>Exam-safe sentence:</strong> ${item.sentence}`;
+function setupSorter() {
+  const select = document.querySelector("#questionInput");
+  const result = document.querySelector("#sortResult");
+  const method = document.querySelector("#sortMethod");
+  const trap = document.querySelector("#sortTrap");
+  function sort() {
+    const item = sortQuestions[select.value];
+    result.textContent = item.topic;
+    method.innerHTML = `<strong>Method:</strong> ${item.method}`;
     trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  select.addEventListener("change", mapComponent);
-  document.querySelector("#mapBtn").addEventListener("click", mapComponent);
-  mapComponent();
+  select.addEventListener("change", sort);
+  document.querySelector("#sortBtn").addEventListener("click", sort);
+  sort();
 }
 
 function renderExample(key) {
@@ -259,7 +225,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("identify");
+  renderExample("compare");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -288,61 +254,65 @@ function renderPractice() {
     </div>
   `).join("");
 
-  list.querySelectorAll(".practice-item").forEach((item) => {
-    const data = practice.find((entry) => entry.id === item.id);
-    const input = item.querySelector("input");
-    const mark = item.querySelector(".mark");
-    input.addEventListener("input", () => {
-      const value = normalise(input.value);
-      if (!value) {
-        mark.textContent = "";
-        mark.className = "mark";
-        return;
-      }
-      const correct = data.accepted.some((answer) => value === normalise(answer));
-      mark.textContent = correct ? "Correct" : "Try again";
-      mark.className = correct ? "mark correct" : "mark incorrect";
-    });
-  });
   setupAnswerToggles(list);
 }
 
-function renderMistakes() {
-  const list = document.querySelector("#mistakeList");
-  list.innerHTML = mistakes.map((item, index) => `
-    <article>
-      <p><strong class="wrong">Wrong:</strong> ${item.wrong}</p>
-      <button type="button" class="answer-toggle" data-answer="mistake-${index}">Show correction</button>
-      <div class="answer-panel" id="mistake-${index}">${item.fix}</div>
-    </article>
-  `).join("");
-  setupAnswerToggles(list);
+function setupPractice() {
+  document.querySelector("#checkPractice").addEventListener("click", () => {
+    let correct = 0;
+    practice.forEach((item) => {
+      const container = document.querySelector(`#${item.id}`);
+      const input = container.querySelector("input");
+      const mark = container.querySelector(".mark");
+      const response = normalise(input.value);
+      const isCorrect = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
+      mark.textContent = isCorrect ? "Correct" : "Try again";
+      mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
+      if (isCorrect) correct += 1;
+    });
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Now rewrite one wrong answer using exact Section 3 wording.`;
+  });
 }
 
 function renderExamQuestions() {
   const list = document.querySelector("#examList");
-  list.innerHTML = examQuestions.map((question, index) => `
-    <article class="exam-card">
-      <div class="exam-head">
-        <h3>${question.title}</h3>
-        <span>${question.marks}</span>
-      </div>
-      <p>${question.prompt}</p>
-      <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
-      <div class="ms-panel" id="ms-${index}">
-        <p><strong>Answer:</strong> ${question.answer}</p>
-        <h4>Mark scheme</h4>
-        ${renderStudentMarkPoints(question)}
-      </div>
-    </article>
-  `).join("");
-  setupAnswerToggles(list);
+  list.innerHTML = examQuestions.map((question, index) => {
+    const msId = `ms-${index}`;
+    return `
+      <article class="exam-card">
+        <div class="exam-head">
+          <h3>${question.title}</h3>
+          <span>${question.marks}</span>
+        </div>
+        <p>${question.prompt}</p>
+        <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
+        <div class="ms-panel" id="${msId}">
+          <h4>Mark scheme</h4>
+          <p><strong>Answer:</strong> ${question.answer}</p>
+          ${renderStudentMarkPoints(question)}
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  document.querySelectorAll(".ms-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = document.querySelector(`#${button.dataset.ms}`);
+      target.classList.toggle("visible");
+      button.textContent = target.classList.contains("visible") ? "Hide MS" : "Show MS";
+    });
+  });
 }
 
-setupPrint();
-setupHook();
-setupMapper();
-setupExamples();
-renderPractice();
-renderMistakes();
-renderExamQuestions();
+function init() {
+  setupPrint();
+  setupHook();
+  setupSorter();
+  setupExamples();
+  setupAnswerToggles();
+  renderPractice();
+  setupPractice();
+  renderExamQuestions();
+}
+
+init();

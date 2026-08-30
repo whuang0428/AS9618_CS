@@ -1,144 +1,87 @@
-const scenarios = [
-  {
-    id: "records",
-    text: "A school stores 120 students. Each student has an ID, name and mark.",
-    topic: "Array of records",
-    reason: "There are many students, and each student has several fields that should stay together.",
-    cue: "Look for: many items + different fields per item.",
-  },
-  {
-    id: "stack",
-    text: "A drawing app must undo the most recent action first.",
-    topic: "Stack",
-    reason: "The most recently added action is the first one removed, so the access rule is LIFO.",
-    cue: "Look for: most recent first, undo, backtracking.",
-  },
-  {
-    id: "queue",
-    text: "Print jobs must be processed in the order they arrive.",
-    topic: "Queue",
-    reason: "The first job added should be the first job removed, so the access rule is FIFO.",
-    cue: "Look for: arrival order, waiting line, service order.",
-  },
-  {
-    id: "csv",
-    text: "A program reads product data from Products.csv, one line at a time.",
-    topic: "Text file / CSV file",
-    reason: "The data is stored outside the program and each line must be read, split into fields and converted if needed.",
-    cue: "Look for: .csv, line-based data, fields separated by commas.",
-  },
-  {
-    id: "array",
-    text: "A program stores 30 integer marks and loops through them to find the highest.",
-    topic: "Array",
-    reason: "The same type of value is stored repeatedly, and indexes allow iteration through all elements.",
-    cue: "Look for: fixed collection of same-type values.",
-  },
-];
-
-const weakAnswers = [
-  {
-    weak: "Use a record because it is better.",
-    improved: "Use a record because all fields for one student, such as ID, name and mark, are stored together as one logical item.",
-    why: "The improved answer names the structure, links it to the scenario and states the consequence.",
-  },
-  {
-    weak: "Use a queue because it is ordered.",
-    improved: "Use a queue because jobs are removed in the same order they arrive; this follows FIFO.",
-    why: "The improved answer gives the exact removal rule and connects it to arrival order.",
-  },
-  {
-    weak: "Use a file to save it.",
-    improved: "Use a text file so the data remains available after the program stops running and can be read again later.",
-    why: "The improved answer explains persistence instead of using a vague word.",
-  },
-  {
-    weak: "Use Java: int[] mark = new int[30];",
-    improved: "Use Cambridge-style pseudocode: DECLARE Mark : ARRAY[1:30] OF INTEGER.",
-    why: "The improved answer uses the expected Paper 2 declaration style.",
-  },
-];
+const conversions = {
+  "int count;": "DECLARE Count : INTEGER",
+  "double price;": "DECLARE Price : REAL",
+  "String name;": "DECLARE Name : STRING",
+  "boolean enrolled;": "DECLARE Enrolled : BOOLEAN",
+  "int[] scores = new int[30];": "DECLARE Scores : ARRAY[1:30] OF INTEGER",
+};
 
 const examples = {
-  records: {
-    title: "Example 1: Choose an array of records",
-    problem: "A school stores 120 students. Each student has StudentID, Name and Mark.",
-    decision: "Use an array of records.",
+  variable: {
+    title: "Example 1: Variable declaration",
+    problem: "Declare and initialise an integer counter.",
     rows: [
-      ["Clue", "many students", "array"],
-      ["Clue", "each student has several fields", "record"],
-      ["Combined model", "many records", "array of records"],
+      ["Declare", "DECLARE Count : INTEGER", "states identifier and type"],
+      ["Assign", "Count <- 0", "stores the initial value"],
+      ["Java support", "int count = 0;", "same idea, different syntax"],
     ],
-    code: "TYPE TStudent\n    DECLARE StudentID : STRING\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\nENDTYPE\n\nDECLARE Students : ARRAY[1:120] OF TStudent",
-    points: ["The array handles many students.", "The record keeps one student's fields together.", "This is more suitable than several unrelated parallel arrays."],
+    code: "DECLARE Count : INTEGER\nCount <- 0",
+    points: ["Pseudocode uses DECLARE.", "The type appears after the colon.", "Assignment uses <-."],
   },
-  csv: {
-    title: "Example 2: Read and process CSV data",
-    problem: "A line from Scores.csv is S017,Ava,82. Extract the mark and add it to Total.",
-    decision: "Read the line, split it into fields, convert the mark, then process it.",
+  constant: {
+    title: "Example 2: Constant declaration",
+    problem: "Declare a maximum class size that should not change.",
     rows: [
-      ["Read", "READFILE", "gets one line from the file"],
-      ["Split", "SPLIT(Line, \",\")", "separates comma-delimited fields"],
-      ["Convert", "STRING_TO_INTEGER", "allows arithmetic on the mark"],
+      ["Pseudocode", "CONSTANT MaxClassSize = 30", "named fixed value"],
+      ["Use", "IF Count = MaxClassSize THEN", "readable condition"],
+      ["Java support", "final int MAX_CLASS_SIZE = 30;", "supporting comparison only"],
     ],
-    code: "READFILE \"Scores.csv\", Line\nFields <- SPLIT(Line, \",\")\nMark <- STRING_TO_INTEGER(Fields[3])\nTotal <- Total + Mark",
-    points: ["CSV fields are initially text.", "Numeric fields need conversion before arithmetic.", "Close the file after processing."],
+    code: "CONSTANT MaxClassSize = 30\nIF Count = MaxClassSize THEN\n    OUTPUT \"Full\"\nENDIF",
+    points: ["A constant should not be assigned a new value later.", "Use a meaningful identifier.", "Java final is not the pseudocode keyword."],
   },
-  stack: {
-    title: "Example 3: Identify stack behaviour",
-    problem: "An editor stores actions so the newest action is undone first.",
-    decision: "Use a stack.",
+  array: {
+    title: "Example 3: Array declaration",
+    problem: "Declare 30 integer scores.",
     rows: [
-      ["Add action", "PUSH(Action)", "places the newest action on top"],
-      ["Undo", "POP()", "removes the top item"],
-      ["Rule", "LIFO", "last in, first out"],
+      ["Pseudocode", "ARRAY[1:30] OF INTEGER", "explicit bounds and element type"],
+      ["Access", "Scores[1]", "first element because lower bound is 1"],
+      ["Java support", "new int[30]", "indexes are 0 to 29 in Java"],
     ],
-    code: "PUSH(ActionStack, NewAction)\nLastAction <- POP(ActionStack)\nUndo(LastAction)",
-    points: ["The newest item is removed first.", "That is LIFO behaviour.", "A queue would remove the oldest action first, which is wrong for undo."],
+    code: "DECLARE Scores : ARRAY[1:30] OF INTEGER\nScores[1] <- 72",
+    points: ["Bounds are part of the pseudocode declaration.", "Do not import Java's zero-based indexing automatically.", "Element type comes after OF."],
   },
-  queue: {
-    title: "Example 4: Identify queue behaviour",
-    problem: "A printer processes jobs in the order they arrive.",
-    decision: "Use a queue.",
+  record: {
+    title: "Example 4: Record declaration",
+    problem: "Declare a record type for a student.",
     rows: [
-      ["Add job", "ENQUEUE(Job)", "adds to the rear"],
-      ["Process job", "DEQUEUE()", "removes from the front"],
-      ["Rule", "FIFO", "first in, first out"],
+      ["Start", "TYPE TStudent", "record type name"],
+      ["Fields", "DECLARE Name : STRING", "field declaration"],
+      ["End", "ENDTYPE", "closes the record type"],
     ],
-    code: "ENQUEUE(PrintQueue, NewJob)\nNextJob <- DEQUEUE(PrintQueue)\nPrint(NextJob)",
-    points: ["The oldest waiting job is processed first.", "That is FIFO behaviour.", "A stack would unfairly process the newest job first."],
+    code: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\nENDTYPE\n\nDECLARE Student1 : TStudent",
+    points: ["Use TYPE and ENDTYPE in pseudocode.", "Fields use DECLARE.", "A variable of that type must still be declared."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which data structure is best for 40 INTEGER marks of the same type?", accepted: ["array"], answer: "Array. It stores many values of the same type and can be processed using indexes." },
-  { id: "p2", prompt: "Which structure keeps Name, ID and Mark together for one student?", accepted: ["record"], answer: "Record. It stores related fields for one logical item." },
-  { id: "p3", prompt: "What combined model stores many students, each with several fields?", accepted: ["array of records", "array record", "records array"], answer: "Array of records." },
-  { id: "p4", prompt: "Which ADT uses LIFO?", accepted: ["stack"], answer: "Stack. LIFO means Last In, First Out." },
-  { id: "p5", prompt: "Which ADT uses FIFO?", accepted: ["queue"], answer: "Queue. FIFO means First In, First Out." },
-  { id: "p6", prompt: "Name the operation that adds an item to a stack.", accepted: ["push"], answer: "PUSH." },
-  { id: "p7", prompt: "Name the operation that removes an item from a queue.", accepted: ["dequeue"], answer: "DEQUEUE." },
-  { id: "p8", prompt: "Why is a text file useful for stored program data? Use one keyword.", accepted: ["persistent", "persistence", "permanent", "after program", "stored"], answer: "It provides persistent storage, so data remains after the program stops." },
-  { id: "p9", prompt: "In a CSV line, what usually separates fields?", accepted: ["comma", ","], answer: "A comma separates fields." },
-  { id: "p10", prompt: "Write the Cambridge-style declaration for Scores as ARRAY[1:30] OF INTEGER.", accepted: ["declare scores : array[1:30] of integer", "declare scores array[1:30] of integer", "array[1:30] of integer"], answer: "DECLARE Scores : ARRAY[1:30] OF INTEGER." },
+  { id: "p1", prompt: "Write Cambridge-style pseudocode to declare an INTEGER variable Count.", accepted: ["declare count integer", "declare count : integer"], answer: "DECLARE Count : INTEGER." },
+  { id: "p2", prompt: "What pseudocode type matches Java int?", accepted: ["integer"], answer: "INTEGER." },
+  { id: "p3", prompt: "What pseudocode type matches Java double for decimal values?", accepted: ["real"], answer: "REAL." },
+  { id: "p4", prompt: "Which symbol assigns a value in Cambridge-style pseudocode?", accepted: ["<-", "left arrow", "arrow"], answer: "<-." },
+  { id: "p5", prompt: "Write pseudocode to assign 0 to Count.", accepted: ["count <- 0", "count 0"], answer: "Count <- 0." },
+  { id: "p6", prompt: "Write pseudocode to declare Scores as an array of 30 INTEGER values, indexed 1 to 30.", accepted: ["declare scores array[1:30] of integer", "array[1:30] of integer"], answer: "DECLARE Scores : ARRAY[1:30] OF INTEGER." },
+  { id: "p7", prompt: "Which pseudocode keyword starts a record type definition?", accepted: ["type"], answer: "TYPE." },
+  { id: "p8", prompt: "Which pseudocode keyword ends a record type definition?", accepted: ["endtype"], answer: "ENDTYPE." },
+  { id: "p9", prompt: "Is int count; the expected Paper 2 pseudocode declaration? yes or no.", accepted: ["no"], answer: "No. It is Java-style." },
+  { id: "p10", prompt: "What pseudocode keyword declares a fixed value such as MaxSize = 100?", accepted: ["constant"], answer: "CONSTANT." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student chooses a stack for print jobs because both stacks and queues are ordered.",
-    fix: "Use a queue. Print jobs should be removed in arrival order, which is FIFO. A stack would process the newest job first.",
+    wrong: "I wrote int count; in a Cambridge pseudocode answer.",
+    fix: "Use DECLARE Count : INTEGER. Java type-first declarations are support only unless the question asks for Java.",
   },
   {
-    wrong: "A student says a record is useful because it is 'efficient'.",
-    fix: "State the scenario consequence: a record keeps related fields for one item together, such as ID, name and mark for one student.",
+    wrong: "I wrote Count = 0 to assign a value.",
+    fix: "Use Count <- 0 for assignment. Use = mainly for equality checks in conditions.",
   },
   {
-    wrong: "A student reads Mark from a CSV file and adds it to Total without conversion.",
-    fix: "CSV data is read as text. Convert Mark to INTEGER before arithmetic, for example Mark <- STRING_TO_INTEGER(Fields[3]).",
+    wrong: "I declared int[] Scores = new int[30]; and then used Scores[0] in pseudocode.",
+    fix: "Use DECLARE Scores : ARRAY[1:30] OF INTEGER and follow the declared pseudocode bounds.",
   },
   {
-    wrong: "A student writes Java declarations in a Cambridge pseudocode answer.",
-    fix: "Use Cambridge-style pseudocode unless the question asks for Java. For example: DECLARE Scores : ARRAY[1:30] OF INTEGER.",
+    wrong: "I used class Student { ... } as the Paper 2 record definition.",
+    fix: "Use TYPE TStudent ... ENDTYPE for Cambridge-style record declarations. Java class syntax is support only.",
   },
 ];
 
@@ -151,96 +94,97 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "A school stores data for 200 students. Each student has StudentID, Name and Mark. State a suitable data model and justify your choice.",
-    answer: "Use an array of records. The array stores many students, and each record keeps the fields StudentID, Name and Mark together for one student.",
+    marks: "6 marks",
+    prompt: "Write Cambridge-style pseudocode declarations for the variables Count, Name and Enrolled. Count is an integer, Name is text, and Enrolled is TRUE/FALSE.",
+    answer: "DECLARE Count : INTEGER\nDECLARE Name : STRING\nDECLARE Enrolled : BOOLEAN",
     marking: [
-      { mark: "B1", text: "identifies a record as suitable for one student's fields" },
-      { mark: "B1", text: "identifies an array or equivalent collection for many students" },
-      { mark: "B1", text: "combines the ideas as an array of records" },
-      { mark: "B1", text: "explains that fields for one student are kept together" },
+      { mark: "M1", text: "declares Count using Cambridge declaration syntax" },
+      { mark: "A1", text: "uses INTEGER for Count" },
+      { mark: "M1", text: "declares Name using Cambridge declaration syntax" },
+      { mark: "A1", text: "uses STRING for Name" },
+      { mark: "M1", text: "declares Enrolled using Cambridge declaration syntax" },
+      { mark: "A1", text: "uses BOOLEAN for Enrolled" },
     ],
     strict: [
-      "Do not award full marks for 'array' alone unless the need for fields is addressed.",
-      "Allow table or list of records if the meaning is clearly equivalent.",
-      "Do not accept vague claims such as 'more efficient' without a cause and consequence.",
+      "Do not award pseudocode style mark for Java-only declarations such as int Count;.",
+      "Allow equivalent variable capitalisation if identifiers are clear.",
+      "Do not accept CHAR for Name unless only one character is required.",
     ],
   },
   {
     title: "Question 2",
-    marks: "8 marks",
-    prompt: "Write Cambridge-style pseudocode to define a record type TProduct with ProductID, Name, Price and InStock fields, then declare Products as an array of 50 TProduct records.",
-    answer: "TYPE TProduct\n    DECLARE ProductID : STRING\n    DECLARE Name : STRING\n    DECLARE Price : REAL\n    DECLARE InStock : BOOLEAN\nENDTYPE\n\nDECLARE Products : ARRAY[1:50] OF TProduct",
+    marks: "6 marks",
+    prompt: "A Java-support example is int[] scores = new int[30]; Write the equivalent Cambridge-style pseudocode declaration using indexes 1 to 30. Then assign 72 to the first element.",
+    answer: "DECLARE Scores : ARRAY[1:30] OF INTEGER\nScores[1] <- 72",
     marking: [
-      { mark: "B1", text: "starts record type using TYPE TProduct or equivalent" },
-      { mark: "B1", text: "declares ProductID using a suitable text type" },
-      { mark: "B1", text: "declares Name using STRING" },
-      { mark: "B1", text: "declares Price using REAL or suitable numeric type" },
-      { mark: "B1", text: "declares InStock using BOOLEAN" },
-      { mark: "A1", text: "closes the record using ENDTYPE" },
-      { mark: "M1", text: "declares Products as an array with 50 elements" },
-      { mark: "A1", text: "uses TProduct as the element type" },
+      { mark: "B1", text: "uses DECLARE with array identifier Scores" },
+      { mark: "M1", text: "uses ARRAY with explicit bounds 1:30" },
+      { mark: "A1", text: "uses INTEGER as element type" },
+      { mark: "B1", text: "assigns a value to an array element" },
+      { mark: "A1", text: "uses Scores[1] as first element for bounds 1:30" },
+      { mark: "A1", text: "uses <- for assignment" },
     ],
     strict: [
-      "Do not award pseudocode syntax marks for Java class syntax alone.",
-      "Allow INTEGER for Price only if prices are whole-number values in the candidate's answer.",
-      "Do not accept CHAR for Name or ProductID unless only one character is stated.",
+      "Do not award first-element mark for Scores[0] when bounds are 1:30.",
+      "Allow another clear array name if consistent.",
+      "Do not accept Java new int[30] as the pseudocode declaration.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A program reads a line from Sales.csv in the form ItemCode,Quantity,Price. Explain the processing needed before calculating Quantity * Price.",
-    answer: "Read one line from the file, split the line using commas into fields, keep ItemCode as text, convert Quantity to INTEGER and Price to REAL, then calculate Quantity * Price using the converted numeric values.",
+    prompt: "Define a Cambridge-style record type TBook with fields ISBN, Title and Pages. Suggest suitable data types and declare Book1 as TBook.",
+    answer: "TYPE TBook\n    DECLARE ISBN : STRING\n    DECLARE Title : STRING\n    DECLARE Pages : INTEGER\nENDTYPE\n\nDECLARE Book1 : TBook",
     marking: [
-      { mark: "B1", text: "reads a line/record from the CSV file" },
-      { mark: "B1", text: "splits or separates the line into fields using commas" },
-      { mark: "B1", text: "identifies ItemCode as text/string data" },
-      { mark: "B1", text: "converts Quantity to INTEGER or numeric form" },
-      { mark: "B1", text: "converts Price to REAL or numeric form" },
-      { mark: "B1", text: "uses the converted numeric fields in the calculation" },
+      { mark: "B1", text: "starts record type using TYPE TBook or equivalent" },
+      { mark: "B1", text: "declares ISBN as STRING" },
+      { mark: "B1", text: "declares Title as STRING" },
+      { mark: "B1", text: "declares Pages as INTEGER" },
+      { mark: "B1", text: "closes record using ENDTYPE" },
+      { mark: "B1", text: "declares Book1 as TBook" },
     ],
     strict: [
-      "Do not award conversion marks for merely saying 'process the data'.",
-      "Allow parse, cast or convert if the numeric conversion is clear.",
-      "Do not accept arithmetic directly on CSV text fields without conversion.",
+      "Do not award record syntax marks for Java class syntax alone.",
+      "Allow BookID instead of ISBN only if field meaning remains clear.",
+      "Do not accept INTEGER for ISBN if explanation depends on preserving leading zeroes or hyphens.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A browser keeps a history of pages so the Back button returns to the most recently visited previous page. Identify a suitable ADT and explain the operations used.",
-    answer: "Use a stack. When a page is visited, push it onto the stack. When Back is selected, pop the most recent page. This works because a stack is LIFO.",
+    marks: "4 marks",
+    prompt: "A student writes the pseudocode statement Total = Total + Score to update Total. Explain the weakness and give a corrected statement.",
+    answer: "The weakness is that = is normally used for equality checks in pseudocode conditions, so the assignment is unclear. The corrected assignment statement is Total <- Total + Score.",
     marking: [
-      { mark: "B1", text: "identifies stack as the suitable ADT" },
-      { mark: "B1", text: "states LIFO or Last In, First Out" },
-      { mark: "B1", text: "uses PUSH/add operation for visited pages" },
-      { mark: "B1", text: "uses POP/remove operation for the Back button" },
-      { mark: "B1", text: "explains that the most recent page is returned first" },
+      { mark: "B1", text: "identifies the statement is intended as assignment/update" },
+      { mark: "M1", text: "explains = can be confused with equality testing in pseudocode" },
+      { mark: "A1", text: "uses <- as assignment operator" },
+      { mark: "A1", text: "gives corrected Total <- Total + Score" },
     ],
     strict: [
-      "Do not award ADT mark for queue in this scenario.",
-      "Allow top/remove top if POP terminology is not used but stack behaviour is clear.",
-      "Do not accept 'ordered list' without LIFO behaviour.",
+      "Do not award correction mark for Java-style Total += Score;.",
+      "Allow explanation that <- stores the new value in Total.",
+      "Do not accept only 'syntax is wrong' without stating the assignment issue.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Compare a stack and a queue using an example for each. Your answer must include the removal rule for each ADT.",
-    answer: "A stack uses LIFO, so the last item added is the first removed; an undo feature is an example. A queue uses FIFO, so the first item added is the first removed; print jobs or customer calls are examples.",
+    marks: "7 marks",
+    prompt: "Write the following declarations in Cambridge-style pseudocode: final int MAX_SIZE = 100; double price; boolean found; String[] names = new String[20];",
+    answer: "CONSTANT MaxSize = 100\nDECLARE Price : REAL\nDECLARE Found : BOOLEAN\nDECLARE Names : ARRAY[1:20] OF STRING",
     marking: [
-      { mark: "B1", text: "states stack uses LIFO" },
-      { mark: "B1", text: "explains last item added is first removed" },
-      { mark: "B1", text: "gives a suitable stack example such as undo/backtracking" },
-      { mark: "B1", text: "states queue uses FIFO" },
-      { mark: "B1", text: "explains first item added is first removed" },
-      { mark: "B1", text: "gives a suitable queue example such as print jobs or calls" },
+      { mark: "B1", text: "declares MAX_SIZE as a constant with value 100" },
+      { mark: "A1", text: "uses suitable pseudocode constant syntax" },
+      { mark: "B1", text: "declares Price as REAL" },
+      { mark: "B1", text: "declares Found as BOOLEAN" },
+      { mark: "M1", text: "declares Names as an array" },
+      { mark: "A1", text: "uses suitable bounds for 20 elements" },
+      { mark: "A1", text: "uses STRING as the array element type" },
     ],
     strict: [
-      "Examples must match the stated removal rule.",
-      "Allow push/pop and enqueue/dequeue descriptions as evidence of the rules.",
-      "Do not accept 'both store data' as a comparison mark.",
+      "Do not require exact identifier capitalisation if meaning is clear.",
+      "Allow ARRAY[0:19] only if candidate explicitly chooses zero-based pseudocode bounds consistently.",
+      "Do not accept final, double, boolean or String[] as pseudocode type syntax without conversion.",
     ],
   },
 ];
@@ -255,7 +199,7 @@ function escapeHtml(value) {
 }
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>\[\] _,.-]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9:<>\[\] _-]/g, "");
 }
 
 function tableMarkup(headers, rows) {
@@ -274,10 +218,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    array: "Likely array: same-type values, indexed and processed in a loop.",
-    record: "Likely record: several fields belong to one logical item.",
-    queue: "Likely queue: jobs leave in the same order they arrive, so FIFO.",
-    file: "Likely file/CSV handling: line-based persistent data must be read and processed.",
+    java: "Java-style. Useful for implementation, but not the expected Paper 2 pseudocode declaration.",
+    pseudo: "Correct. This is Cambridge-style pseudocode: DECLARE identifier : type.",
+    mixed: "This is a mixed style. Cambridge pseudocode expects DECLARE and a colon before the type.",
+    assign: "This is not a declaration. It looks like an assignment with a type name in the value position.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -288,30 +232,24 @@ function setupHook() {
   });
 }
 
-function setupClassifier() {
-  const select = document.querySelector("#scenarioSelect");
-  const result = document.querySelector("#classifyResult");
-  select.innerHTML = scenarios.map((item) => `<option value="${item.id}">${escapeHtml(item.text)}</option>`).join("");
-  document.querySelector("#classifyBtn").addEventListener("click", () => {
-    const item = scenarios.find((entry) => entry.id === select.value);
-    result.innerHTML = `
-      <p><strong>Likely topic:</strong> ${escapeHtml(item.topic)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Exam cue:</strong> ${escapeHtml(item.cue)}</p>
-    `;
+function setupConverter() {
+  const select = document.querySelector("#declarationSelect");
+  const result = document.querySelector("#convertResult");
+  document.querySelector("#convertBtn").addEventListener("click", () => {
+    result.innerHTML = `<p><strong>Pseudocode:</strong> <code>${escapeHtml(conversions[select.value])}</code></p>`;
   });
 }
 
-function setupImprover() {
-  const select = document.querySelector("#weakSelect");
-  const result = document.querySelector("#improveResult");
-  select.innerHTML = weakAnswers.map((item, index) => `<option value="${index}">${escapeHtml(item.weak)}</option>`).join("");
-  document.querySelector("#improveBtn").addEventListener("click", () => {
-    const item = weakAnswers[Number(select.value)];
-    result.innerHTML = `
-      <p><strong>Improved answer:</strong> ${escapeHtml(item.improved)}</p>
-      <p><strong>Why it is stronger:</strong> ${escapeHtml(item.why)}</p>
-    `;
+function setupSorter() {
+  const feedback = document.querySelector("#sortFeedback");
+  document.querySelectorAll("[data-sort]").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-sort]").forEach((item) => item.classList.remove("selected"));
+      button.classList.add("selected");
+      feedback.textContent = button.dataset.sort === "pseudo"
+        ? "Pseudocode style: suitable for Paper 2 unless the question asks for Java."
+        : "Java-style support: useful for implementation, but not the pseudocode declaration style.";
+    });
   });
 }
 
@@ -321,8 +259,7 @@ function renderExample(key) {
     <article class="worked-card">
       <h3>${escapeHtml(example.title)}</h3>
       <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-      <p><strong>Decision:</strong> ${escapeHtml(example.decision)}</p>
-      ${tableMarkup(["Step", "Evidence", "Decision"], example.rows)}
+      ${tableMarkup(["Step", "Syntax", "Reason"], example.rows)}
       <p><strong>Cambridge-style pseudocode:</strong></p>
       <pre><code>${escapeHtml(example.code)}</code></pre>
       <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
@@ -331,7 +268,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("records");
+  renderExample("variable");
   document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -363,9 +300,9 @@ function renderPractice() {
       const item = practice.find((entry) => entry.id === button.dataset.practice);
       const input = document.querySelector(`#${item.id}`);
       const mark = document.querySelector(`#${item.id}-mark`);
-      const response = normalise(input.value);
+      const response = normalise(input.value).replace(/\s+/g, " ");
       const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. That is the right Section 10 idea." : "Not quite. Identify the topic clue, then answer with the precise term.";
+      mark.textContent = correct ? "Correct. The declaration style is exam-safe." : "Not quite. Check whether this should be pseudocode or Java-style syntax.";
       mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -431,8 +368,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupClassifier();
-setupImprover();
+setupConverter();
+setupSorter();
 setupExamples();
 renderPractice();
 renderMistakes();

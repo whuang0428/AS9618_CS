@@ -29,7 +29,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
 }
-.topbar h1 { margin: 4px 0 0; font-size: clamp(1.2rem, 2.1vw, 2rem); letter-spacing: 0; }
+.topbar h1 { margin: 4px 0 0; font-size: clamp(1.25rem, 2.2vw, 2rem); letter-spacing: 0; }
 .eyebrow {
   margin: 0; color: var(--accent-dark); text-transform: uppercase;
   letter-spacing: 0.08em; font-size: 0.75rem; font-weight: 750;
@@ -78,16 +78,16 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
   display: block; color: var(--accent-dark); margin-bottom: 4px;
 }
 
-.error-card {
+.link-card {
   display: grid; align-content: center; gap: 16px;
   min-height: 340px; padding: 24px; color: #ffffff;
   background: linear-gradient(135deg, #12304f, #2563eb 52%, #047857);
   border-radius: 8px;
 }
-.error-card p { margin: 0; color: #e0f2fe; text-align: center; font-weight: 750; }
-.error-stack { display: grid; gap: 10px; }
-.error-stack span {
-  display: block; padding: 12px; border-radius: 8px;
+.link-card p { margin: 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.link-stack { display: grid; gap: 9px; }
+.link-stack span {
+  display: block; padding: 11px; border-radius: 8px;
   background: rgba(255, 255, 255, 0.94); color: #12304f;
   font-family: "SFMono-Regular", Consolas, monospace; font-weight: 900; text-align: center;
 }
@@ -126,7 +126,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 .comparison-table {
   display: grid; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
 }
-.comparison-table .table-row { grid-template-columns: 0.75fr 1.05fr 1.35fr 1.4fr; }
+.comparison-table .table-row { grid-template-columns: 0.75fr 1.35fr 1.15fr 1.35fr; }
 .table-row { display: grid; }
 .table-row > div { padding: 14px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
 .table-row > div:last-child { border-right: 0; }
@@ -192,7 +192,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
   .layout { padding-inline: 10px; }
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
-  .error-card { min-height: 260px; }
+  .link-card { min-height: 260px; }
   .practice-row, .exam-head { grid-template-columns: 1fr; display: grid; }
 }
 @media print {

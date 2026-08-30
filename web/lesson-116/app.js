@@ -1,115 +1,112 @@
-const marks = [
-  [12, 15, 11, 10],
-  [18, 16, 14, 13],
-  [20, 17, 19, 15],
-];
+const scores = [42, 67, 55, 81, 49];
 
 const builderMap = {
   declare: {
-    title: "Declare a 3 by 4 mark table",
-    code: "DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER",
-    reason: "The first range is rows, the second range is columns, and each cell stores an INTEGER.",
+    title: "Declare five integer scores",
+    code: "DECLARE Scores : ARRAY[1:5] OF INTEGER",
+    reason: "The identifier is Scores, valid indexes are 1 to 5, and each element stores an INTEGER.",
   },
   input: {
-    title: "Input every cell",
-    code: "FOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        INPUT Marks[Row, Column]\n    NEXT Column\nNEXT Row",
-    reason: "The inner loop runs once for every column in each row.",
+    title: "Input all scores",
+    code: "FOR Index <- 1 TO 5\n    INPUT Scores[Index]\nNEXT Index",
+    reason: "The loop visits each valid index exactly once.",
   },
   output: {
-    title: "Output every cell",
-    code: "FOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        OUTPUT Marks[Row, Column]\n    NEXT Column\nNEXT Row",
-    reason: "Marks[Row, Column] accesses one cell at a time.",
+    title: "Output all scores",
+    code: "FOR Index <- 1 TO 5\n    OUTPUT Scores[Index]\nNEXT Index",
+    reason: "Scores[Index] accesses one element at a time.",
   },
-  rowTotal: {
-    title: "Calculate one row total",
-    code: "RowTotal <- 0\nFOR Column <- 1 TO 4\n    RowTotal <- RowTotal + Marks[2, Column]\nNEXT Column\nOUTPUT RowTotal",
-    reason: "The row is fixed at 2 while the column changes.",
+  total: {
+    title: "Calculate total",
+    code: "Total <- 0\nFOR Index <- 1 TO 5\n    Total <- Total + Scores[Index]\nNEXT Index\nOUTPUT Total",
+    reason: "A running total is updated using each array element.",
   },
-  allTotal: {
-    title: "Calculate whole table total",
-    code: "Total <- 0\nFOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        Total <- Total + Marks[Row, Column]\n    NEXT Column\nNEXT Row\nOUTPUT Total",
-    reason: "Both row and column change, so every cell is included.",
+  search: {
+    title: "Linear search for a target",
+    code: "Found <- FALSE\nFOR Index <- 1 TO 5\n    IF Scores[Index] = Target THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nOUTPUT Found",
+    reason: "Each element is compared with Target using its index.",
   },
 };
 
 const examples = {
   declare: {
     title: "Example 1: Declare and input",
-    problem: "Store marks for 3 students across 4 tests.",
+    problem: "Store five integer scores in a one-dimensional array.",
     rows: [
-      ["Declaration", "DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER", "3 rows and 4 columns"],
-      ["Outer loop", "FOR Row <- 1 TO 3", "selects each student"],
-      ["Inner loop", "FOR Column <- 1 TO 4", "selects each test"],
-      ["Input", "INPUT Marks[Row, Column]", "stores one cell"],
+      ["Declaration", "DECLARE Scores : ARRAY[1:5] OF INTEGER", "sets identifier, bounds and type"],
+      ["First valid index", "1", "lower bound"],
+      ["Last valid index", "5", "upper bound"],
+      ["Input loop", "FOR Index <- 1 TO 5", "matches declared bounds"],
     ],
-    code: "DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER\n\nFOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        INPUT Marks[Row, Column]\n    NEXT Column\nNEXT Row",
-    points: ["Two ranges are needed.", "Two indexes access one cell.", "The nested loops match the declared bounds."],
-  },
-  lookup: {
-    title: "Example 2: Cell lookup",
-    problem: "For Marks[1:3, 1:4], find the value at row 2, column 3 when the row is 18, 16, 14, 13.",
-    rows: [
-      ["Row", "2", "second row"],
-      ["Column", "3", "third column"],
-      ["Cell", "Marks[2, 3]", "value is 14"],
-    ],
-    code: "OUTPUT Marks[2, 3]",
-    points: ["Row is chosen first.", "Column is chosen second.", "A single index is not enough for a 2D array."],
+    code: "DECLARE Scores : ARRAY[1:5] OF INTEGER\n\nFOR Index <- 1 TO 5\n    INPUT Scores[Index]\nNEXT Index",
+    points: ["The whole array is Scores.", "Each element is Scores[Index].", "The loop must not visit index 0 or 6."],
   },
   total: {
-    title: "Example 3: Whole table total",
-    problem: "Calculate the total of all 12 marks.",
+    title: "Example 2: Total and average",
+    problem: "Calculate total and average for five scores.",
     rows: [
-      ["Initialise", "Total <- 0", "before both loops"],
-      ["Rows", "1 to 3", "outer loop"],
-      ["Columns", "1 to 4", "inner loop"],
-      ["Update", "Total <- Total + Marks[Row, Column]", "every cell once"],
+      ["Initialise", "Total <- 0", "before loop"],
+      ["Traverse", "Index 1 to 5", "each score is included once"],
+      ["Update", "Total <- Total + Scores[Index]", "running total"],
+      ["Average", "Average <- Total / 5", "after loop"],
     ],
-    code: "Total <- 0\nFOR Row <- 1 TO 3\n    FOR Column <- 1 TO 4\n        Total <- Total + Marks[Row, Column]\n    NEXT Column\nNEXT Row\nOUTPUT Total",
-    points: ["3 * 4 = 12 updates.", "The update belongs inside the inner loop.", "Output the final total after both loops."],
+    code: "Total <- 0\nFOR Index <- 1 TO 5\n    Total <- Total + Scores[Index]\nNEXT Index\nAverage <- Total / 5\nOUTPUT Average",
+    points: ["Average is calculated after all values are included.", "The divisor matches the number of elements.", "Do not output final average inside the loop unless asked for running averages."],
   },
-  rowTotal: {
-    title: "Example 4: Row total",
-    problem: "Calculate the total for row 2 only.",
+  search: {
+    title: "Example 3: Linear search",
+    problem: "Check whether Target appears in Scores[1:5].",
     rows: [
-      ["Fixed row", "2", "do not loop over rows"],
-      ["Changing column", "1 to 4", "visit all columns"],
-      ["Values", "18 + 16 + 14 + 13", "row total is 61"],
+      ["Flag", "Found <- FALSE", "assume target not found yet"],
+      ["Compare", "Scores[Index] = Target", "test one element"],
+      ["Update", "Found <- TRUE", "target has appeared"],
+      ["Output", "OUTPUT Found", "after traversal"],
     ],
-    code: "RowTotal <- 0\nFOR Column <- 1 TO 4\n    RowTotal <- RowTotal + Marks[2, Column]\nNEXT Column\nOUTPUT RowTotal",
-    points: ["The row index is fixed.", "The column index changes.", "This is not the whole table total."],
+    code: "Found <- FALSE\nFOR Index <- 1 TO 5\n    IF Scores[Index] = Target THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nOUTPUT Found",
+    points: ["This is a linear search.", "Use the index to access each element.", "The flag records whether the target was found."],
+  },
+  update: {
+    title: "Example 4: Update one element",
+    problem: "Add 5 bonus marks to the third score.",
+    rows: [
+      ["Old value", "Scores[3] = 55", "element at index 3"],
+      ["Assignment", "Scores[3] <- Scores[3] + 5", "update one element"],
+      ["New value", "Scores[3] = 60", "other elements unchanged"],
+    ],
+    code: "Scores[3] <- Scores[3] + 5",
+    points: ["Only index 3 changes.", "The array identifier remains Scores.", "The old element value is used on the right side."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "How many indexes are needed to access one cell in a two-dimensional array?", accepted: ["2", "two"], answer: "Two indexes: row and column." },
-  { id: "p2", prompt: "In Marks[2, 3], which index is usually the row?", accepted: ["2", "first", "first index"], answer: "2, the first index." },
-  { id: "p3", prompt: "In Marks[2, 3], which index is usually the column?", accepted: ["3", "second", "second index"], answer: "3, the second index." },
-  { id: "p4", prompt: "How many cells are in ARRAY[1:3, 1:4]?", accepted: ["12"], answer: "12 cells." },
-  { id: "p5", prompt: "For ARRAY[1:3, 1:4], is Marks[4, 1] valid? yes or no.", accepted: ["no"], answer: "No. Row 4 is outside 1 to 3." },
-  { id: "p6", prompt: "For ARRAY[1:3, 1:4], is Marks[3, 4] valid? yes or no.", accepted: ["yes"], answer: "Yes. Row 3 and column 4 are both within bounds." },
-  { id: "p7", prompt: "What kind of loop structure is used to traverse every cell?", accepted: ["nested", "nested loop", "nested loops"], answer: "Nested loops." },
-  { id: "p8", prompt: "If the outer loop runs 3 times and inner loop runs 4 times each outer pass, how many inner actions run?", accepted: ["12"], answer: "12 inner actions." },
-  { id: "p9", prompt: "For a row total of row 2, should Row change or stay fixed?", accepted: ["fixed", "stay fixed", "stay the same"], answer: "Row stays fixed; Column changes." },
-  { id: "p10", prompt: "Is Java's row 0 automatically correct for Cambridge ARRAY[1:3, 1:4]? yes or no.", accepted: ["no"], answer: "No. Follow the bounds given in the Cambridge pseudocode question." },
+  { id: "p1", prompt: "What structure stores multiple same-type values under one identifier?", accepted: ["array", "one dimensional array", "1d array"], answer: "Array / one-dimensional array." },
+  { id: "p2", prompt: "In Scores[3], what is 3 called?", accepted: ["index", "subscript"], answer: "Index / subscript." },
+  { id: "p3", prompt: "For DECLARE Scores : ARRAY[1:5] OF INTEGER, is index 0 valid? yes or no.", accepted: ["no"], answer: "No. Valid indexes are 1 to 5." },
+  { id: "p4", prompt: "For ARRAY[1:5], how many elements are stored?", accepted: ["5"], answer: "5 elements." },
+  { id: "p5", prompt: "Write the first valid index for ARRAY[1:10].", accepted: ["1"], answer: "1." },
+  { id: "p6", prompt: "Write the last valid index for ARRAY[1:10].", accepted: ["10"], answer: "10." },
+  { id: "p7", prompt: "Which loop keyword is commonly used to traverse a known-size array?", accepted: ["for", "for loop"], answer: "FOR loop." },
+  { id: "p8", prompt: "If Scores = 42,67,55,81,49 using indexes 1 to 5, what is Scores[4]?", accepted: ["81"], answer: "81." },
+  { id: "p9", prompt: "Does Scores name the whole array or one element?", accepted: ["whole array", "array", "the whole array"], answer: "The whole array." },
+  { id: "p10", prompt: "Is Java's index 0 automatically correct for Cambridge pseudocode ARRAY[1:5]? yes or no.", accepted: ["no"], answer: "No. Use the bounds stated in the Cambridge pseudocode question." },
 ];
 
 const mistakes = [
   {
-    wrong: "I wrote Marks[Index] for a two-dimensional array.",
-    fix: "Use two indexes for one cell, for example Marks[Row, Column].",
+    wrong: "I wrote OUTPUT Scores when I needed one score.",
+    fix: "Use an index to access one element, for example OUTPUT Scores[Index] or OUTPUT Scores[3].",
   },
   {
-    wrong: "I looped Row from 1 to 4 and Column from 1 to 3 for ARRAY[1:3, 1:4].",
-    fix: "Match the declaration: Row is 1 to 3 and Column is 1 to 4.",
+    wrong: "I looped from 0 to 5 for an array declared ARRAY[1:5].",
+    fix: "Match the declared bounds: FOR Index <- 1 TO 5. Index 0 is out of range and index 5 is already included.",
   },
   {
-    wrong: "I put the total update after the inner loop when I needed every cell.",
-    fix: "The update using Marks[Row, Column] must be inside the inner loop so every column in every row is included.",
+    wrong: "I declared Scores as INTEGER instead of an array.",
+    fix: "Use ARRAY bounds and element type: DECLARE Scores : ARRAY[1:5] OF INTEGER.",
   },
   {
     wrong: "I copied Java zero-based indexing into Cambridge pseudocode.",
-    fix: "Java support may use row 0 and column 0, but Cambridge pseudocode should follow the declared bounds.",
+    fix: "Java support examples often use 0 to length - 1, but Paper 2 pseudocode should follow the array bounds given in the question.",
   },
 ];
 
@@ -123,98 +120,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Write declarations for a two-dimensional array called Marks to store integer marks for 5 students and 4 tests. Then write pseudocode to input every mark.",
-    answer: "DECLARE Marks : ARRAY[1:5, 1:4] OF INTEGER\n\nFOR Student <- 1 TO 5\n    FOR Test <- 1 TO 4\n        INPUT Marks[Student, Test]\n    NEXT Test\nNEXT Student",
+    prompt: "Write declarations for a one-dimensional array called Scores to store 20 integer marks. Then write pseudocode to input all the marks.",
+    answer: "DECLARE Scores : ARRAY[1:20] OF INTEGER\n\nFOR Index <- 1 TO 20\n    INPUT Scores[Index]\nNEXT Index",
     marking: [
-      { mark: "B1", text: "uses identifier Marks" },
-      { mark: "B1", text: "declares a two-dimensional ARRAY" },
-      { mark: "B1", text: "uses suitable row/student bounds for 5 students" },
-      { mark: "B1", text: "uses suitable column/test bounds for 4 tests and INTEGER type" },
-      { mark: "M1", text: "uses nested loops matching the array bounds" },
-      { mark: "A1", text: "inputs into Marks[Student, Test] or equivalent two-index cell" },
+      { mark: "B1", text: "uses identifier Scores" },
+      { mark: "B1", text: "declares Scores as an ARRAY" },
+      { mark: "B1", text: "uses suitable bounds for 20 elements, e.g. 1:20" },
+      { mark: "B1", text: "uses INTEGER as element type" },
+      { mark: "M1", text: "uses a loop that covers all valid indexes" },
+      { mark: "A1", text: "inputs into Scores[Index] or equivalent indexed element" },
     ],
     strict: [
-      "Do not award 2D declaration marks for five separate one-dimensional arrays.",
-      "Allow ARRAY[0:4, 0:3] only if loops and explanation are consistent.",
-      "Do not award input mark for INPUT Marks without two indexes.",
+      "Do not award array declaration marks for 20 separate variables.",
+      "Allow ARRAY[0:19] only if loop bounds and explanation are consistent.",
+      "Do not award input mark for INPUT Scores without indexed access.",
     ],
   },
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "A 2 by 3 array Values stores row 1 as 2, 4, 6 and row 2 as 1, 3, 5. Complete a trace table for the total when nested loops add every cell.",
-    answer: "Total starts at 0. Row 1 column 1 adds 2 so Total = 2. Row 1 column 2 adds 4 so Total = 6. Row 1 column 3 adds 6 so Total = 12. Row 2 column 1 adds 1 so Total = 13. Row 2 column 2 adds 3 so Total = 16. Row 2 column 3 adds 5 so final Total = 21.",
+    prompt: "An array Scores[1:5] stores 42, 67, 55, 81, 49. Complete a trace table for the total produced by a loop from Index <- 1 TO 5 that adds Scores[Index] to Total.",
+    answer: "Total starts at 0. Index 1 adds 42 so Total = 42. Index 2 adds 67 so Total = 109. Index 3 adds 55 so Total = 164. Index 4 adds 81 so Total = 245. Index 5 adds 49 so Total = 294.",
     marking: [
-      { mark: "B1", text: "states Total starts at 0" },
-      { mark: "M1", text: "uses row 1 values in column order" },
-      { mark: "A1", text: "Total = 2 after first cell" },
-      { mark: "A1", text: "Total = 6 after second cell" },
-      { mark: "A1", text: "Total = 12 after row 1" },
-      { mark: "A1", text: "Total = 16 after row 2 column 2" },
-      { mark: "A1", text: "final Total = 21" },
+      { mark: "B1", text: "initialises or states Total starts at 0" },
+      { mark: "M1", text: "uses Scores[1] = 42 correctly" },
+      { mark: "A1", text: "Total = 42 after first iteration" },
+      { mark: "A1", text: "Total = 109 after second iteration" },
+      { mark: "A1", text: "Total = 164 after third iteration" },
+      { mark: "A1", text: "Total = 245 after fourth iteration" },
+      { mark: "A1", text: "final Total = 294" },
     ],
     strict: [
-      "Award trace marks for values in nested-loop order.",
-      "Allow a table format.",
-      "Do not award final mark if row/column order skips a cell.",
+      "Award trace marks for values in correct iteration order.",
+      "Allow table format.",
+      "Do not award final mark if an out-of-range element is included.",
       "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain why Grid[4, 2] is invalid if Grid is declared as ARRAY[1:3, 1:5] OF BOOLEAN.",
-    answer: "The declaration gives valid row indexes from 1 to 3 and valid column indexes from 1 to 5. Grid[4, 2] uses row index 4, which is outside the row bounds. Therefore it does not refer to a valid cell even though column 2 is valid.",
+    marks: "4 marks",
+    prompt: "Explain why Scores[0] is invalid if Scores is declared as ARRAY[1:10] OF INTEGER.",
+    answer: "The declaration gives valid indexes from 1 to 10 inclusive. Scores[0] tries to access an element outside these bounds. It is therefore an out-of-range index and does not refer to a valid element of the array.",
     marking: [
-      { mark: "B1", text: "states valid row bounds are 1 to 3" },
-      { mark: "B1", text: "states valid column bounds are 1 to 5" },
-      { mark: "B1", text: "identifies row 4 is outside the declared bounds" },
-      { mark: "B1", text: "states Grid[4, 2] does not refer to a valid cell" },
-      { mark: "B1", text: "recognises column 2 itself is valid" },
+      { mark: "B1", text: "states valid lower bound is 1" },
+      { mark: "B1", text: "states valid upper bound is 10" },
+      { mark: "B1", text: "identifies 0 is outside the declared bounds" },
+      { mark: "B1", text: "states Scores[0] does not refer to a valid element" },
     ],
     strict: [
-      "Do not accept only 'out of range' without naming which dimension is out of range.",
+      "Do not accept only 'Java starts at 0' because this question gives Cambridge bounds.",
       "Allow 'subscript' for index.",
-      "Do not award valid-cell mark if candidate claims row 4 is allowed.",
+      "Do not award valid-element mark if candidate claims Scores[0] is the first element.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
-    prompt: "Write pseudocode to calculate and output the total of row 2 only in Sales[1:3, 1:4].",
-    answer: "RowTotal <- 0\nFOR Column <- 1 TO 4\n    RowTotal <- RowTotal + Sales[2, Column]\nNEXT Column\nOUTPUT RowTotal",
+    marks: "8 marks",
+    prompt: "Write pseudocode to search Names[1:30] for TargetName and output 'Found' if it is present, otherwise output 'Not found'.",
+    answer: "Found <- FALSE\nFOR Index <- 1 TO 30\n    IF Names[Index] = TargetName THEN\n        Found <- TRUE\n    ENDIF\nNEXT Index\nIF Found = TRUE THEN\n    OUTPUT \"Found\"\nELSE\n    OUTPUT \"Not found\"\nENDIF",
     marking: [
-      { mark: "B1", text: "initialises RowTotal to 0" },
-      { mark: "M1", text: "uses loop over Column 1 to 4" },
-      { mark: "B1", text: "keeps row index fixed at 2" },
-      { mark: "M1", text: "accesses Sales[2, Column] or equivalent" },
-      { mark: "A1", text: "adds each selected cell to RowTotal" },
-      { mark: "B1", text: "does not loop over all rows" },
-      { mark: "A1", text: "outputs RowTotal after the loop" },
+      { mark: "B1", text: "initialises Found to FALSE" },
+      { mark: "M1", text: "loops through valid indexes 1 to 30" },
+      { mark: "M1", text: "accesses Names[Index] or equivalent indexed element" },
+      { mark: "A1", text: "compares each element with TargetName" },
+      { mark: "A1", text: "sets Found to TRUE when a match is found" },
+      { mark: "B1", text: "outputs Found message when Found is TRUE" },
+      { mark: "B1", text: "outputs Not found message when Found is FALSE" },
+      { mark: "B1", text: "uses clear Cambridge-style block structure" },
     ],
     strict: [
-      "Do not award fixed-row mark if Row is looped from 1 to 3.",
-      "Allow a named constant for selected row 2.",
-      "Do not award output mark if only partial totals are output inside the loop.",
+      "Do not award comparison mark for comparing Names without an index.",
+      "Allow early exit if logic remains correct.",
+      "Do not require exact output wording if meaning is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A student writes Total <- Total + Marks[Row] inside nested loops for Marks[1:3, 1:4]. Explain the error and correct it.",
-    answer: "Marks is a two-dimensional array, so one cell needs two indexes. Marks[Row] gives only one index and does not identify a column. The correction is Total <- Total + Marks[Row, Column] inside the inner loop, so each row-column cell is added.",
+    marks: "4 marks",
+    prompt: "A student writes FOR Index <- 1 TO 6 for an array declared Readings : ARRAY[1:5] OF REAL. Explain the error and correct it.",
+    answer: "The array has valid indexes 1 to 5. The loop tries to access index 6, which is outside the declared bounds and does not exist. The correction is FOR Index <- 1 TO 5 so every valid element is processed once without out-of-range access.",
     marking: [
-      { mark: "B1", text: "states Marks is two-dimensional" },
-      { mark: "B1", text: "identifies one index is insufficient" },
-      { mark: "B1", text: "explains the column is missing / cell not identified" },
-      { mark: "B1", text: "gives corrected access Marks[Row, Column]" },
-      { mark: "B1", text: "places correction inside the inner loop / every cell processed" },
-      { mark: "B1", text: "explains corrected statement adds each cell to Total" },
+      { mark: "B1", text: "states valid indexes are 1 to 5" },
+      { mark: "B1", text: "identifies index 6 is outside the bounds" },
+      { mark: "B1", text: "gives corrected loop FOR Index <- 1 TO 5" },
+      { mark: "B1", text: "explains the corrected loop processes all valid elements without out-of-range access" },
     ],
     strict: [
-      "Do not award correction for Marks[Column] because row is then missing.",
-      "Allow equivalent row/column variable names.",
-      "Do not accept 'syntax is wrong' without explaining missing dimension.",
+      "Do not award correction for FOR Index <- 0 TO 4 unless declaration is also changed and justified.",
+      "Allow wording 'subscript out of range'.",
+      "Do not accept only 'loop is too long' without linking to bounds.",
     ],
   },
 ];
@@ -248,10 +243,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    single: "One index gives a position in a line, not a row-and-column seat.",
-    two: "Correct. Row and column are kept as two separate indexes.",
-    string: "Text can describe the seat, but it is not ideal for numeric indexed access.",
-    constant: "A constant cannot represent many seats in a grid.",
+    many: "It works only until the task changes. Thirty separate variables are awkward to loop over.",
+    array: "Correct. One array plus an index scales cleanly.",
+    string: "A long string would make numeric access and calculation unnecessarily messy.",
+    constant: "A constant cannot store 30 different scores.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -265,13 +260,12 @@ function setupHook() {
 function setupLookup() {
   const result = document.querySelector("#lookupResult");
   document.querySelector("#lookupBtn").addEventListener("click", () => {
-    const row = Number(document.querySelector("#rowInput").value);
-    const column = Number(document.querySelector("#columnInput").value);
-    if (row < 1 || row > marks.length || column < 1 || column > marks[0].length) {
-      result.innerHTML = `<p><strong>Out of range.</strong> Marks is ARRAY[1:3, 1:4], so row ${row} and column ${column} must both be within bounds.</p>`;
+    const index = Number(document.querySelector("#indexInput").value);
+    if (index < 1 || index > scores.length) {
+      result.innerHTML = `<p><strong>Out of range.</strong> Scores is declared as ARRAY[1:5], so index ${index} is not valid.</p>`;
       return;
     }
-    result.innerHTML = `<p>Marks[${row}, ${column}] = <strong>${marks[row - 1][column - 1]}</strong>.</p>`;
+    result.innerHTML = `<p>Scores[${index}] = <strong>${scores[index - 1]}</strong>.</p>`;
   });
 }
 
@@ -332,7 +326,7 @@ function renderPractice() {
       const value = normalise(document.querySelector(`#${item.id}`).value);
       const correct = item.accepted.some((answer) => value === normalise(answer));
       const mark = document.querySelector(`#${item.id}Mark`);
-      mark.textContent = correct ? "Correct. The row/column reasoning is precise." : "Not quite. Check row, column, bounds or nested loop count.";
+      mark.textContent = correct ? "Correct. The array wording is precise." : "Not quite. Check the identifier, index or bounds.";
       mark.className = correct ? "mark correct" : "mark incorrect";
     });
   });

@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 019 | Protocols and layered communication</title>
+    <title>AS9618 Lesson 019 | Packet transmission between two hosts in each required topology</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../student-visuals.css?v=1" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +18,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Protocols and layered communication</h1>
+        <h1>Packet transmission between two hosts in each required topology</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,10 +30,11 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#protocols">Protocols</a>
-        <a href="#rules">Protocol rules</a>
-        <a href="#layers">Layers</a>
-        <a href="#tool">Diagnostic tool</a>
+        <a href="#switching">Packet switching</a>
+        <a href="#structure">Packet structure</a>
+        <a href="#routing">Routing</a>
+        <a href="#packet-journey">Packet journey</a>
+        <a href="#tool">Route tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
@@ -48,57 +50,63 @@
         <!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
-          <p>general protocol rules and layered communication. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S2.11 Ethernet and CSMA/CD.</p>
+          <p>general packet switching, routing and packet structure beyond packet paths for the named topologies. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S2.04 bus, star, mesh and hybrid topologies.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Ethernet collisions and CSMA/CD</h2>
+            <h2>Packet transmission between two hosts in each required topology</h2>
           </div>
           <div class="stage2-explanation">
-            <p>CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.</p>
-            <p>After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.</p>
+            <p>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</p>
+            <p>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</p>
+            <p>To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Two stations sense an idle cable</h3>
-            <p>Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries.</p>
+            <h3>Worked example: Send a patient record across a hybrid hospital network</h3>
+            <p>The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Ethernet collisions and CSMA/CD: apply and assess</h2>
+            <h2>Packet transmission between two hosts in each required topology: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What is sensed before Ethernet transmission?</p>
-              <details><summary>Show answer</summary><p>Whether the shared carrier/medium is idle.</p></details>
+              <p><strong>1.</strong> How is a transmission carried between two hosts in a bus topology?</p>
+              <details><summary>Show answer</summary><p>The signal travels along the shared backbone and the attached hosts inspect it.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What happens immediately after a collision is detected?</p>
-              <details><summary>Show answer</summary><p>Transmission stops and a retry is scheduled after a random backoff.</p></details>
+              <p><strong>2.</strong> Where does a frame pass in a star network?</p>
+              <details><summary>Show answer</summary><p>Through the central switch.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why must the delay be random?</p>
-              <details><summary>Show answer</summary><p>Different delays reduce repeated simultaneous retransmission.</p></details>
+              <p><strong>3.</strong> Why can a mesh continue after one link fails?</p>
+              <details><summary>Show answer</summary><p>Packets may use an alternative link or route.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Describe one possible packet path through a hybrid made from two stars.</p>
+              <details><summary>Show answer</summary><p>Source to its switch, across the link between star segments, then through the destination switch to the receiving host.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Describe how CSMA/CD handles two devices attempting to transmit on a shared Ethernet medium.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>each device listens/senses the carrier before transmitting</td><td>Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun.</td><td>1</td></tr>
-                  <tr><td>transmits when the medium is idle</td><td></td><td>1</td></tr>
-                  <tr><td>detects a collision and stops transmission</td><td></td><td>1</td></tr>
-                  <tr><td>waits a random/backoff time before retrying</td><td></td><td>1</td></tr>
+                  <tr><td>star packet/frame passes through a central switch</td><td>Do not accept 'mesh is better' without a packet-path or failure consequence.</td><td>1</td></tr>
+                  <tr><td>mesh provides multiple interconnected paths / possible routes</td><td></td><td>1</td></tr>
+                  <tr><td>star switch is a single point of failure</td><td></td><td>1</td></tr>
+                  <tr><td>mesh can use an alternative route when a link fails</td><td></td><td>1</td></tr>
+                  <tr><td>choice is justified from the stated fault-sensitivity and a path consequence</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -109,167 +117,245 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 019 | 45 minutes | Paper 1 Section 2</p>
-            <h2>Communication works because everyone agrees on the rules.</h2>
+            <h2>The internet does not send your file as one heroic lump.</h2>
             <p>
-              A protocol is a set of rules for communication. Layered communication
-              separates a network task into levels, so each layer handles a specific
-              job and passes data to the next layer.
+              Data is split into packets. Each packet carries control information and
+              payload, may travel by different routes, and is reassembled at the
+              destination using sequence information and error checks.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>protocol and explain why agreed rules are needed</span></div>
-              <div><strong>Identify</strong><span>common protocol rules: format, timing, error control and addressing</span></div>
-              <div><strong>Explain</strong><span>why layered communication simplifies network design</span></div>
+              <div><strong>Explain</strong><span>why packet switching splits data into packets</span></div>
+              <div><strong>Identify</strong><span>source address, destination address, sequence number, checksum and payload</span></div>
+              <div><strong>Trace</strong><span>routing, out-of-order arrival and retransmission in scenarios</span></div>
             </div>
           </div>
-          <div class="protocol-card" aria-label="Protocol concept">
-            <span>rules -> layers -> communication</span>
-            <p>Without protocols, the network is just devices shouting politely incompatible nonsense.</p>
+          <div class="packet-card" aria-label="Packet concept">
+            <span>header | payload | trailer</span>
+            <p>The payload contains the transmitted data; the header contains information needed to deliver and reassemble it.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam answers need functions of protocols and benefits of layers, not just names of protocols.</p>
+            <p>Network explanation marks often come from naming the metadata and explaining exactly what it is used for.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A protocol is not a device, a cable or a topology. It is a rule set used by communicating systems.</p>
+            <p>Packets do not have to follow the same path or arrive in order. That is why sequence numbers matter.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Two devices try to send data. One expects bytes in groups of 8; the other sends random-length chunks. What is missing?</h2>
+            <h2>A 30 MB video is sent across a network. Why split it into packets?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="protocol">An agreed protocol</button>
-            <button class="choice-card" type="button" data-hook="bigger">A bigger monitor</button>
-            <button class="choice-card" type="button" data-hook="topology">A star topology</button>
-            <button class="choice-card" type="button" data-hook="storage">More secondary storage</button>
+            <button class="choice-card" type="button" data-hook="routes">Packets can be routed and handled separately</button>
+            <button class="choice-card" type="button" data-hook="hide">So the file becomes invisible</button>
+            <button class="choice-card" type="button" data-hook="one">So it must use one fixed path</button>
+            <button class="choice-card" type="button" data-hook="noaddress">So addresses are not needed</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the answer about shared rules. The devices need agreement before they need confidence.
+            Pick the answer that helps networks share capacity and recover from problems.
           </div>
         </section>
 
-        <section class="panel" id="protocols" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+        <section class="panel" id="switching" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>What a protocol is</h2>
+            <h2>Packet switching</h2>
           </div>
           <div class="concept-grid">
             <article>
-              <h3>Definition</h3>
-              <p>A protocol is a set of rules that governs how data is transmitted and received.</p>
+              <h3>Split</h3>
+              <p>A message or file is divided into smaller packets before transmission.</p>
             </article>
             <article>
-              <h3>Shared meaning</h3>
-              <p>Both sender and receiver follow the same rules, so messages can be interpreted correctly.</p>
+              <h3>Share</h3>
+              <p>Packets from many users can share network links instead of one message reserving a whole route.</p>
             </article>
             <article>
-              <h3>Interoperability</h3>
-              <p>Different devices and software can communicate if they implement the same protocol.</p>
+              <h3>Route</h3>
+              <p>Each packet can be routed independently through available paths.</p>
             </article>
             <article>
-              <h3>Reliability</h3>
-              <p>Protocols can specify error checking, acknowledgements and retransmission rules.</p>
+              <h3>Reassemble</h3>
+              <p>The destination uses sequence numbers to put packets back in the correct order.</p>
             </article>
           </div>
-          <div class="callout">Chinese support: protocol = 协议/规则集合；interoperability = 互操作性；acknowledgement = 确认信息。</div>
+          <div class="callout">Chinese support: packet = 数据包；payload = 有效载荷/实际数据；routing = 路由；reassemble = 重新组装。</div>
         </section>
 
-        <!-- stage10-explanation:start protocols -->
-        <section class="panel explanation-panel" id="explanation-protocols" data-explains="protocols" data-explanation-kind="mechanism" aria-labelledby="explanation-protocols-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <h2 class="explanation-sr-only" id="explanation-protocols-title">What a protocol is</h2>
+        <!-- stage10-explanation:start switching -->
+        <section class="panel explanation-panel" id="explanation-switching" data-explains="switching" data-explanation-kind="mechanism" aria-labelledby="explanation-switching-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+          <h2 class="explanation-sr-only" id="explanation-switching-title">Packet switching</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-protocols.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a protocol is with a structured visual model." />
-            <figcaption class="explanation-sr-only">What a protocol is: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-switching.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet switching with a structured visual model." />
+            <figcaption class="explanation-sr-only">Packet switching: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> A protocol is a set of rules that governs how data is transmitted and received.</li><li><strong>Lesson fact:</strong> Shared meaning</li><li><strong>Lesson fact:</strong> Both sender and receiver follow the same rules, so messages can be interpreted correctly.</li><li><strong>Lesson fact:</strong> Interoperability</li><li><strong>Lesson fact:</strong> Different devices and software can communicate if they implement the same protocol.</li><li><strong>Lesson fact:</strong> Reliability</li><li><strong>Lesson fact:</strong> Protocols can specify error checking, acknowledgements and retransmission rules.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A message or file is divided into smaller packets before transmission.</li><li><strong>Lesson fact:</strong> Packets from many users can share network links instead of one message reserving a whole route.</li><li><strong>Lesson fact:</strong> Each packet can be routed independently through available paths.</li><li><strong>Lesson fact:</strong> Reassemble</li><li><strong>Lesson fact:</strong> The destination uses sequence numbers to put packets back in the correct order.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end protocols -->
-        <section class="panel" id="rules" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+        <!-- stage10-explanation:end switching -->
+        <section class="panel" id="structure" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>What protocol rules can specify</h2>
+            <h2>Packet structure</h2>
           </div>
-          <div class="rule-grid">
-            <article><strong>Data format</strong><span>How data is structured, encoded or framed.</span></article>
-            <article><strong>Addressing</strong><span>How sender and receiver are identified.</span></article>
-            <article><strong>Timing</strong><span>When data can be sent and how long to wait for responses.</span></article>
-            <article><strong>Error control</strong><span>How errors are detected and how retransmission is handled.</span></article>
-            <article><strong>Flow control</strong><span>How to stop a fast sender overwhelming a slow receiver.</span></article>
-            <article><strong>Connection rules</strong><span>How communication starts, continues and ends.</span></article>
+          <div class="packet-diagram" aria-label="Packet structure diagram">
+            <div class="packet-part header">
+              <h3>Header</h3>
+              <p>Source address, destination address, sequence number, protocol/control data.</p>
+            </div>
+            <div class="packet-part payload">
+              <h3>Payload</h3>
+              <p>The actual data being sent, such as part of a file or message.</p>
+            </div>
+            <div class="packet-part trailer">
+              <h3>Trailer</h3>
+              <p>Error-checking information such as checksum, depending on the protocol.</p>
+            </div>
+          </div>
+          <div class="trap-card inline">
+            <h3>Common error</h3>
+            <p>Do not describe the header as “extra information” only. Name what is inside it and what each item does.</p>
           </div>
         </section>
 
-        <!-- stage10-explanation:start rules -->
-        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <h2 class="explanation-sr-only" id="explanation-rules-title">What protocol rules can specify</h2>
+        <!-- stage10-explanation:start structure -->
+        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+          <h2 class="explanation-sr-only" id="explanation-structure-title">Packet structure</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What protocol rules can specify with a structured visual model." />
-            <figcaption class="explanation-sr-only">What protocol rules can specify: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Packet structure: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Protocols define rules for data format, addressing, timing, error handling, flow control and connection management.</li><li><strong>Lesson fact:</strong> A protocol may provide reliability and ordered delivery, but these are not guaranteed by every protocol.</li><li><strong>Lesson fact:</strong> TCP provides reliable ordered delivery; UDP does not guarantee reliability or ordering.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Source address, destination address, sequence number, protocol/control data.</li><li><strong>Lesson fact:</strong> The actual data being sent, such as part of a file or message.</li><li><strong>Lesson fact:</strong> Error-checking information such as checksum, depending on the protocol.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Do not describe the header as “extra information” only. Name what is inside it and what each item does.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end rules -->
-        <section class="panel" id="layers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+        <!-- stage10-explanation:end structure -->
+        <section class="panel" id="routing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Layered communication</h2>
+            <h2>Routing and arrival</h2>
           </div>
-          <div class="layer-stack" aria-label="Layered communication stack">
-            <div><strong>Application layer idea</strong><span>What the user or application wants to do, such as send a web request.</span></div>
-            <div><strong>Transport layer idea</strong><span>Breaks data into segments, manages reliability or delivery style.</span></div>
-            <div><strong>Network layer idea</strong><span>Adds logical addressing and routing between networks.</span></div>
-            <div><strong>Link/physical layer idea</strong><span>Moves frames or bits across the local medium.</span></div>
-          </div>
-          <div class="encapsulation-box">
-            <h3>Encapsulation and de-encapsulation</h3>
-            <p>As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.</p>
+          <div class="route-grid">
+            <article><strong>Router decision</strong><span>Routers forward packets based on destination address and routing information.</span></article>
+            <article><strong>Different paths</strong><span>Packets from the same message may take different routes through the network.</span></article>
+            <article><strong>Out of order</strong><span>Packets may arrive in a different order because routes have different delays.</span></article>
+            <article><strong>Error handling</strong><span>Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start layers -->
-        <section class="panel explanation-panel" id="explanation-layers" data-explains="layers" data-explanation-kind="mechanism" aria-labelledby="explanation-layers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <h2 class="explanation-sr-only" id="explanation-layers-title">Layered communication</h2>
+        <!-- stage10-explanation:start routing -->
+        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+          <h2 class="explanation-sr-only" id="explanation-routing-title">Routing and arrival</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-layers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Layered communication with a structured visual model." />
-            <figcaption class="explanation-sr-only">Layered communication: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-routing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Routing and arrival with a structured visual model." />
+            <figcaption class="explanation-sr-only">Routing and arrival: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Application layer idea What the user or application wants to do, such as send a web request.</li><li><strong>Lesson fact:</strong> Transport layer idea Breaks data into segments, manages reliability or delivery style.</li><li><strong>Lesson fact:</strong> Network layer idea Adds logical addressing and routing between networks.</li><li><strong>Lesson fact:</strong> Link/physical layer idea Moves frames or bits across the local medium.</li><li><strong>Lesson fact:</strong> Encapsulation and de-encapsulation</li><li><strong>Lesson fact:</strong> As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Router decision Routers forward packets based on destination address and routing information.</li><li><strong>Lesson fact:</strong> Different paths Packets from the same message may take different routes through the network.</li><li><strong>Lesson fact:</strong> Out of order Packets may arrive in a different order because routes have different delays.</li><li><strong>Lesson fact:</strong> Error handling Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end layers -->
+        <!-- stage10-explanation:end routing -->
+        <section class="panel visual-explainer" id="packet-journey" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>One message, several routes, one reassembled result</h2>
+            <p>Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</p>
+          </div>
+          <figure class="concept-figure">
+            <svg class="concept-svg" viewBox="0 0 960 500" role="img" aria-labelledby="packetJourneyTitle packetJourneyDesc">
+              <title id="packetJourneyTitle">Packet switching journey across alternative routes</title>
+              <desc id="packetJourneyDesc">A sender splits a message into three numbered packets. Routers send packets one and three on the upper route and packet two on the lower route. The receiver reorders the packets to recreate the message.</desc>
+              <defs>
+                <marker id="packetArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
+              </defs>
+              <rect class="svg-node svg-node--accent" x="24" y="170" width="170" height="150" rx="18" />
+              <text class="svg-node-label" x="109" y="205">Sender</text>
+              <text class="svg-node-detail" x="109" y="234">Message split into</text>
+              <g aria-hidden="true">
+                <rect class="svg-badge" x="53" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="70" y="272">1</text>
+                <rect class="svg-badge" x="92" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="109" y="272">2</text>
+                <rect class="svg-badge" x="131" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="148" y="272">3</text>
+              </g>
+              <rect class="svg-node svg-node--ink" x="270" y="188" width="130" height="114" rx="18" />
+              <text class="svg-node-label svg-on-dark" x="335" y="232">Router A</text>
+              <text class="svg-node-detail svg-on-dark" x="335" y="258">chooses next hop</text>
+              <rect class="svg-node svg-node--accent" x="500" y="68" width="130" height="90" rx="18" />
+              <text class="svg-node-label" x="565" y="108">Router B</text>
+              <text class="svg-node-detail" x="565" y="133">upper route</text>
+              <rect class="svg-node svg-node--warm" x="500" y="342" width="130" height="90" rx="18" />
+              <text class="svg-node-label" x="565" y="382">Router C</text>
+              <text class="svg-node-detail" x="565" y="407">lower route</text>
+              <rect class="svg-node svg-node--green" x="750" y="170" width="186" height="150" rx="18" />
+              <text class="svg-node-label" x="843" y="205">Receiver</text>
+              <text class="svg-node-detail" x="843" y="234">reorders by sequence</text>
+              <text class="svg-node-label" x="843" y="278">1 · 2 · 3</text>
+              <path class="svg-line" d="M194 245 H270" marker-end="url(#packetArrow)" />
+              <path class="svg-line" d="M400 218 C445 218 445 113 500 113" marker-end="url(#packetArrow)" />
+              <path class="svg-line svg-line--warm" d="M400 272 C445 272 445 387 500 387" marker-end="url(#packetArrow)" />
+              <path class="svg-line" d="M630 113 C690 113 690 215 750 215" marker-end="url(#packetArrow)" />
+              <path class="svg-line svg-line--warm" d="M630 387 C690 387 690 275 750 275" marker-end="url(#packetArrow)" />
+              <g aria-hidden="true">
+                <circle class="svg-badge" cx="438" cy="153" r="19" /><text class="svg-badge-text" x="438" y="153">1</text>
+                <circle class="svg-badge" cx="694" cy="158" r="19" /><text class="svg-badge-text" x="694" y="158">3</text>
+                <circle cx="438" cy="342" r="19" fill="#c26710" stroke="#fff" stroke-width="3" /><text class="svg-badge-text" x="438" y="342">2</text>
+              </g>
+            </svg>
+            <ol class="visual-steps">
+              <li><strong>1. Split and label</strong><span>Each packet carries payload plus control data such as addresses and a sequence number.</span></li>
+              <li><strong>2. Choose next hop</strong><span>Each router uses the destination address and routing information.</span></li>
+              <li><strong>3. Travel independently</strong><span>Different routes can produce different arrival times.</span></li>
+              <li><strong>4. Reassemble</strong><span>The receiver uses sequence numbers to restore the original order.</span></li>
+            </ol>
+          </figure>
+          <details class="diagram-check">
+            <summary>Check the diagram: why can packet 2 arrive after packet 3?</summary>
+            <p>Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</p>
+          </details>
+        </section>
+
+        <!-- stage10-explanation:start packet-journey -->
+        <section class="panel explanation-panel" id="explanation-packet-journey" data-explains="packet-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-packet-journey-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
+          <h2 class="explanation-sr-only" id="explanation-packet-journey-title">One message, several routes, one reassembled result</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-packet-journey.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One message, several routes, one reassembled result with a structured visual model." />
+            <figcaption class="explanation-sr-only">One message, several routes, one reassembled result: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</li><li><strong>Lesson fact:</strong> 1. Split and label Each packet carries payload plus control data such as addresses and a sequence number.</li><li><strong>Lesson fact:</strong> 2. Choose next hop Each router uses the destination address and routing information.</li><li><strong>Lesson fact:</strong> 3. Travel independently Different routes can produce different arrival times.</li><li><strong>Lesson fact:</strong> 4. Reassemble The receiver uses sequence numbers to restore the original order.</li><li><strong>Lesson fact:</strong> Check the diagram: why can packet 2 arrive after packet 3?</li><li><strong>Lesson fact:</strong> Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end packet-journey -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Communication diagnostic helper</h2>
+            <h2>Packet route simulator</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Symptom
-              <select id="symptomInput">
-                <option value="format">Receiver cannot interpret message format</option>
-                <option value="timeout">Sender waits forever for a reply</option>
-                <option value="corrupt">Corrupt data is accepted as if correct</option>
-                <option value="layer">A network card changes but apps still work</option>
+              Network condition
+              <select id="routeInput">
+                <option value="normal">Normal route</option>
+                <option value="congested">One route is congested</option>
+                <option value="lost">One packet is lost</option>
+                <option value="corrupt">One packet is corrupt</option>
               </select>
             </label>
-            <button type="button" id="diagnoseBtn">Diagnose</button>
+            <button type="button" id="routeBtn">Simulate</button>
           </div>
-          <div class="result-box" id="diagnoseResult" aria-live="polite"></div>
-          <div class="method-box" id="diagnoseMethod"></div>
+          <div class="route-visual" id="routeVisual" aria-live="polite"></div>
+          <div class="result-box" id="routeResult"></div>
+          <div class="method-box" id="routeMethod"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
@@ -278,9 +364,9 @@
             <h2>Worked examples</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="protocol">Protocol rule</button>
-            <button class="tab" type="button" data-example="layers">Layer benefit</button>
-            <button class="tab" type="button" data-example="encapsulation">Encapsulation</button>
+            <button class="tab active" type="button" data-example="structure">Packet structure</button>
+            <button class="tab" type="button" data-example="order">Out-of-order arrival</button>
+            <button class="tab" type="button" data-example="checksum">Checksum</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -298,18 +384,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak protocol answer</h2>
+            <h2>Fix the weak packet answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">“A protocol is a program that makes the internet faster.”</p>
+              <p class="wrong">“Packets arrive in order because the internet sends them one by one.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">A protocol is a set of rules for communication, such as how data is formatted, addressed, checked and acknowledged.</p>
+              <p class="answer" id="mistake1">Packets may take different routes and arrive out of order. Sequence numbers allow the destination to reassemble them correctly.</p>
             </article>
             <article>
-              <p class="wrong">“Layering is useful because it adds more steps.”</p>
+              <p class="wrong">“A packet only contains data.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Layering is useful because each layer handles a specific responsibility, so layers can be developed, replaced or troubleshot more independently.</p>
+              <p class="answer" id="mistake2">A packet contains payload plus control information such as source address, destination address, sequence number and error-checking data.</p>
             </article>
           </div>
         </section>
@@ -318,7 +404,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Strong answers name the rule and explain its communication purpose.</p>
+            <p>Attempt first, then expand the mark scheme. Cambridge-style answers must name the packet item and its purpose.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -326,13 +412,13 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Protocols are rules; layers divide responsibility</h2>
+            <h2>Packets need labels, order and checks</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>1</strong><span>A protocol is a set of agreed communication rules.</span></div>
-            <div><strong>2</strong><span>Rules may cover format, timing, addressing, error control and flow control.</span></div>
-            <div><strong>3</strong><span>Layering separates complex communication into manageable responsibilities.</span></div>
-            <div><strong>4</strong><span>Encapsulation adds control information; de-encapsulation removes and interprets it.</span></div>
+            <div><strong>1</strong><span>Packet switching splits data into smaller packets for transmission.</span></div>
+            <div><strong>2</strong><span>Headers carry metadata such as source, destination and sequence number.</span></div>
+            <div><strong>3</strong><span>Packets may take different routes and arrive out of order.</span></div>
+            <div><strong>4</strong><span>Checksums/error checks help detect corruption; missing packets may be resent.</span></div>
           </div>
         </section>
 
@@ -342,25 +428,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Write a precise definition of protocol and give three types of rule a protocol may specify.</li>
-            <li>Explain two benefits of using layers in network communication.</li>
-            <li>Draw a four-layer communication stack and write one responsibility for each layer.</li>
-            <li>Write a 5-mark answer explaining encapsulation and de-encapsulation.</li>
+            <li>Draw a packet and label header, payload and trailer. Add one example item inside each where appropriate.</li>
+            <li>Explain why sequence numbers are needed if packets may arrive out of order.</li>
+            <li>Write a 4-mark answer explaining two advantages of packet switching.</li>
+            <li>Write a 5-mark answer explaining how a receiver can detect and respond to missing or corrupt packets.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Protocol:</strong> include “rules” and “communication”, then examples such as format, timing and error checking.</p>
-            <p><strong>Layer benefits:</strong> mention reduced complexity, standard interfaces and easier replacement/troubleshooting.</p>
-            <p><strong>Stack:</strong> do not memorise only names; attach a responsibility to each layer.</p>
-            <p><strong>Encapsulation:</strong> describe adding control data at sender and removing it at receiver.</p>
+            <p><strong>Packet drawing:</strong> include named metadata, not only "extra information".</p>
+            <p><strong>Sequence numbers:</strong> link them to reassembly in correct order.</p>
+            <p><strong>Advantages:</strong> mention sharing links, alternative routes and avoiding one large transmission failure.</p>
+            <p><strong>Error response:</strong> mention checksum/error check and retransmission request.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 027 | Computer system overview: input, output, storage, processor and memory</title>
+    <title>AS9618 Lesson 027 | Section 2 review: explaining communication with precision</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Computer system overview: input, output, storage, processor and memory</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Section 2 review: explaining communication with precision</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,348 +29,180 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#flow">System flow</a>
-        <a href="#components">Components</a>
-        <a href="#memory-storage">Memory vs storage</a>
-        <a href="#tool">Choice tool</a>
+        <a href="#map">Section map</a>
+        <a href="#precision">Precision rules</a>
+        <a href="#tool">Topic identifier</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Computer-system input, output and storage overview</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.</p>
-            <p>Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.</p>
-            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
-            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
-            <p>A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.</p>
-            <p>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</p>
-            <p>A buffer temporarily holds data when producer and consumer operate at different speeds, reducing loss or interruption caused by the rate difference.</p>
-            <p>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</p>
-            <p>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</p>
-            <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Field survey tablet / Turn head in VR / Print a page / Read an HDD block</h3>
-            <p>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site. Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth. The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Computer-system input, output and storage overview: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why does a computer system need input?</p>
-              <details><summary>Show answer</summary><p>To receive data and instructions for processing.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why does a computer system need output?</p>
-              <details><summary>Show answer</summary><p>To communicate processed information or cause an action.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Compare the need for primary memory from the need for secondary storage.</p>
-              <details><summary>Show answer</summary><p>Primary memory holds instructions/data currently in use; secondary storage retains programs/data long term without power.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one purpose of removable storage.</p>
-              <details><summary>Show answer</summary><p>To transfer data between systems or keep a detachable/offline backup copy.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> What converts a microphone's analogue signal into digital samples?</p>
-              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What does a capacitive touchscreen detect?</p>
-              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> Why does a VR headset track head movement?</p>
-              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> What permanently bonds toner to laser-printer paper?</p>
-              <details><summary>Show answer</summary><p>Heat and pressure in the fuser.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> How does a 3D printer build an object?</p>
-              <details><summary>Show answer</summary><p>It deposits/solidifies successive layers.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> How does a speaker produce sound from digital output?</p>
-              <details><summary>Show answer</summary><p>A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>11.</strong> Why is a print buffer needed?</p>
-              <details><summary>Show answer</summary><p>It handles the speed difference and lets the producer continue while the printer consumes data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>12.</strong> Why is flash storage resistant to mechanical shock?</p>
-              <details><summary>Show answer</summary><p>It has no moving read/write head or spinning platter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>13.</strong> What physical property stores HDD data?</p>
-              <details><summary>Show answer</summary><p>Magnetic orientation/patterns on a platter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>14.</strong> How does an optical reader Compare stored data?</p>
-              <details><summary>Show answer</summary><p>It detects differences in reflected laser light.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>17 marks</span></div>
-            <p>A portable medical system receives patient measurements, processes them and stores the records. Explain why it needs input, output, primary memory, secondary storage and removable storage. Describe how a microphone captures sound for storage in a computer. Explain why a buffer is used when a computer sends a large document to a laser printer. Describe how data is read from a magnetic hard disk drive.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>input receives patient measurements/data</td><td>Do not treat primary memory, secondary storage and removable storage as interchangeable terms. Do not accept that the microphone directly records binary without an analogue signal and conversion stage. Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences. Do not accept a laser-based explanation for an HDD; lasers apply to optical media.</td><td>1</td></tr>
-                  <tr><td>output communicates results or warnings</td><td></td><td>1</td></tr>
-                  <tr><td>primary memory holds current program instructions and working data</td><td></td><td>1</td></tr>
-                  <tr><td>secondary storage retains patient records long term without power</td><td></td><td>1</td></tr>
-                  <tr><td>removable storage supports transfer or an offline/detachable backup</td><td></td><td>1</td></tr>
-                  <tr><td>sound waves vibrate a diaphragm</td><td></td><td>1</td></tr>
-                  <tr><td>transducer converts vibration to an analogue electrical signal</td><td></td><td>1</td></tr>
-                  <tr><td>ADC samples/measures the signal</td><td></td><td>1</td></tr>
-                  <tr><td>sample values are encoded/stored as binary</td><td></td><td>1</td></tr>
-                  <tr><td>processor/computer and printer operate at different speeds</td><td></td><td>1</td></tr>
-                  <tr><td>buffer temporarily stores print data</td><td></td><td>1</td></tr>
-                  <tr><td>printer reads data at its own rate</td><td></td><td>1</td></tr>
-                  <tr><td>computer/processor can continue other processing without waiting for the full print</td><td></td><td>1</td></tr>
-                  <tr><td>platters rotate</td><td></td><td>1</td></tr>
-                  <tr><td>actuator positions read/write head over the required track</td><td></td><td>1</td></tr>
-                  <tr><td>required sector passes beneath the head</td><td></td><td>1</td></tr>
-                  <tr><td>head senses magnetic patterns which are decoded as data</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 027 | 45 minutes | Paper 1 Section 3</p>
-            <h2>A computer system contains components with distinct functions.</h2>
+            <p class="lesson-meta">Lesson 027 | 45 minutes | Section 2 stage review</p>
+            <h2>A complete answer states the relevant mechanism precisely.</h2>
             <p>
-              This lesson introduces the main parts of a computer system: input, processor,
-              memory, storage and output. The aim is to classify hardware by purpose and
-              explain how data moves through a system in a real scenario.
+              This review connects the Section 2 communication topics: network types,
+              models, packets, protocols, addressing, application protocols, transmission
+              media, hardware, network services and performance. The goal is not rereading;
+              the goal is retrieval, diagnosis, correction and mark-worthy phrasing.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>input, output, processor, memory and storage components</span></div>
-              <div><strong>Trace</strong><span>data flow through a simple computer system</span></div>
-              <div><strong>Justify</strong><span>suitable hardware choices using speed, capacity, durability, accuracy and cost</span></div>
+              <div><strong>Identify</strong><span>which Section 2 topic a mixed question is testing</span></div>
+              <div><strong>Explain</strong><span>with precise mechanism + scenario consequence</span></div>
+              <div><strong>Correct</strong><span>vague answers into Cambridge-style mark-worthy responses</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Computer system data flow">
-            <span>input -> process -> memory/storage -> output</span>
-            <p>Data enters. Instructions run. Results leave. Files do not live inside the CPU.</p>
+          <div class="review-card" aria-label="Section 2 review concept">
+            <span>keyword -> mechanism -> context -> consequence</span>
+            <p>The keyword opens the door. The explanation walks through it.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Hardware questions often award marks for suitability. Naming a device starts the answer; matching its feature to the scenario earns it.</p>
+            <p>Many Section 2 mistakes are not knowledge gaps. They are wrong-toolbox mistakes: using DNS language for routing, or bandwidth language for latency.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>RAM and secondary storage both hold data, but not in the same way. RAM forgets when power is off; storage is the more dependable librarian.</p>
+            <p>Do not write "it is faster/easier/secure" and leave. Name what changes and why the user or network benefits.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A phone scans a QR code, checks the ticket, saves the record and shows "Entry allowed". Which part does each job?</h2>
+            <h2>Three short clues. Which topic is each one testing?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="camera">Camera captures the QR code as input</button>
-            <button class="choice-card" type="button" data-hook="processor">Processor checks the ticket data</button>
-            <button class="choice-card" type="button" data-hook="storage">Storage keeps the attendance record</button>
-            <button class="choice-card" type="button" data-hook="screen">Screen displays output feedback</button>
+            <button class="choice-card" type="button" data-hook="latency">"The video is clear but replies arrive late."</button>
+            <button class="choice-card" type="button" data-hook="switch">"Frames are sent to the correct device inside a LAN."</button>
+            <button class="choice-card" type="button" data-hook="extranet">"A supplier can access selected private stock data."</button>
+            <button class="choice-card" type="button" data-hook="http">"A browser requests a web page from a server."</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click any job. The useful exam habit is matching component -> role -> reason.
+            Click a clue to see the topic and the phrase that earns marks.
           </div>
         </section>
 
-        <section class="panel" id="flow" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>The basic system flow</h2>
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Section 2 in one page</h2>
           </div>
-          <div class="flow-grid">
-            <article><strong>1. Input</strong><span>Data is captured by an input device, such as a keyboard, sensor, scanner, camera or microphone.</span></article>
-            <article><strong>2. Processing</strong><span>The processor executes instructions and performs operations on data.</span></article>
-            <article><strong>3. Memory</strong><span>Data and instructions in current use are held temporarily in primary memory such as RAM.</span></article>
-            <article><strong>4. Storage</strong><span>Files and data that must persist are saved in secondary storage such as SSD, HDD or optical media.</span></article>
-            <article><strong>5. Output</strong><span>Results are presented through output devices such as screens, speakers, printers or actuators.</span></article>
+          <div class="map-grid">
+            <article><strong>Networks and topologies</strong><span>LAN/WAN, star, bus, mesh, client-server, peer-to-peer.</span></article>
+            <article><strong>Packets and routing</strong><span>Packet switching, packet contents, routing decisions, reassembly.</span></article>
+            <article><strong>Protocols and layers</strong><span>Rules for communication, layered model, encapsulation.</span></article>
+            <article><strong>Addressing and naming</strong><span>IP address, MAC address, DNS, URL parts.</span></article>
+            <article><strong>Application protocols</strong><span>HTTP, HTTPS, FTP, SMTP, POP3, IMAP.</span></article>
+            <article><strong>Media and hardware</strong><span>Copper, fibre, radio, microwave, satellite; switch, router, access point, gateway.</span></article>
+            <article><strong>Network services</strong><span>Internet, intranet, extranet, cloud services.</span></article>
+            <article><strong>Performance</strong><span>Bandwidth, latency, congestion, throughput, packet loss.</span></article>
           </div>
-          <div class="callout">Chinese support: input = 输入；output = 输出；processor = 处理器；memory = 内存/主存；storage = 存储/辅存。</div>
+          <div class="callout">Chinese support: retrieval = 主动回忆；mechanism = 机制；consequence = 后果/影响；scenario = 情境。</div>
         </section>
 
-        <!-- stage10-explanation:start flow -->
-        <section class="panel explanation-panel" id="explanation-flow" data-explains="flow" data-explanation-kind="mechanism" aria-labelledby="explanation-flow-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
-          <h2 class="explanation-sr-only" id="explanation-flow-title">The basic system flow</h2>
+        <!-- stage10-explanation:start map -->
+        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
+          <h2 class="explanation-sr-only" id="explanation-map-title">Section 2 in one page</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-027-flow.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The basic system flow with a structured visual model." />
-            <figcaption class="explanation-sr-only">The basic system flow: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-027-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 2 in one page with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 2 in one page: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input devices capture data for processing.</li><li><strong>Lesson fact:</strong> The processor works with instructions and data held in primary memory.</li><li><strong>Lesson fact:</strong> Processed results can go directly to output devices.</li><li><strong>Lesson fact:</strong> Secondary storage is a separate bidirectional persistence path and is not a compulsory stage before output.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Packets in a packet-switched network are routed independently.</li><li><strong>Lesson fact:</strong> A response is sent back to the source but may take the same or a different route.</li><li><strong>Lesson fact:</strong> Routing decisions depend on the available network paths at each stage.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end flow -->
-        <section class="panel" id="components" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <!-- stage10-explanation:end map -->
+        <section class="panel" id="precision" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precision">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Component roles and examples</h2>
+            <p class="eyebrow">Answer craft</p>
+            <h2>Precision rules for Section 2 answers</h2>
           </div>
-          <div class="component-grid">
+          <div class="precision-grid">
             <article>
-              <h3>Input devices</h3>
-              <p>Allow data to enter the system.</p>
-              <p><strong>Examples:</strong> keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</p>
+              <h3>1. Define with a boundary</h3>
+              <p>Switch: inside a LAN. Router: between networks. Extranet: selected external users. These boundary phrases often carry marks.</p>
             </article>
             <article>
-              <h3>Output devices</h3>
-              <p>Present data or results from the system.</p>
-              <p><strong>Examples:</strong> monitor, speaker, printer, projector, actuator.</p>
+              <h3>2. Name the mechanism</h3>
+              <p>DNS resolves names to IP addresses. Fibre uses light pulses. HTTPS encrypts communication. Congestion causes queues.</p>
             </article>
             <article>
-              <h3>Processor</h3>
-              <p>Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</p>
+              <h3>3. Link to the scenario</h3>
+              <p>If the question says online banking, mention sensitive data in transit. If it says tablets, mention mobility and wireless access.</p>
             </article>
             <article>
-              <h3>Primary memory</h3>
-              <p>Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.</p>
-            </article>
-            <article>
-              <h3>Secondary storage</h3>
-              <p>Stores data and files long term, even when power is off.</p>
-              <p><strong>Examples:</strong> SSD, HDD, optical disc, flash storage.</p>
-            </article>
-            <article>
-              <h3>Interfaces</h3>
-              <p>Hardware and software work together. A useful answer explains how the chosen device fits the user task.</p>
+              <h3>4. Avoid empty adjectives</h3>
+              <p>"Better", "faster", "secure" and "efficient" need a cause and consequence. The adjective is not the mark.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start components -->
-        <section class="panel explanation-panel" id="explanation-components" data-explains="components" data-explanation-kind="mechanism" aria-labelledby="explanation-components-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
-          <h2 class="explanation-sr-only" id="explanation-components-title">Component roles and examples</h2>
+        <!-- stage10-explanation:start precision -->
+        <section class="panel explanation-panel" id="explanation-precision" data-explains="precision" data-explanation-kind="synthesis" aria-labelledby="explanation-precision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="precision">
+          <h2 class="explanation-sr-only" id="explanation-precision-title">Precision rules for Section 2 answers</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-027-components.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Component roles and examples with a structured visual model." />
-            <figcaption class="explanation-sr-only">Component roles and examples: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-027-precision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Precision rules for Section 2 answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Precision rules for Section 2 answers: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input devices</li><li><strong>Lesson fact:</strong> Allow data to enter the system.</li><li><strong>Lesson fact:</strong> Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</li><li><strong>Lesson fact:</strong> Output devices</li><li><strong>Lesson fact:</strong> Present data or results from the system.</li><li><strong>Lesson fact:</strong> Examples: monitor, speaker, printer, projector, actuator.</li><li><strong>Lesson fact:</strong> Processor</li><li><strong>Lesson fact:</strong> Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</li><li><strong>Lesson fact:</strong> Primary memory</li><li><strong>Lesson fact:</strong> Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.</li><li><strong>Lesson fact:</strong> Secondary storage</li><li><strong>Lesson fact:</strong> Stores data and files long term, even when power is off.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Answer craft</li><li><strong>Lesson fact:</strong> 1. Define with a boundary</li><li><strong>Lesson fact:</strong> Switch: inside a LAN. Router: between networks. Extranet: selected external users. These boundary phrases often carry marks.</li><li><strong>Lesson fact:</strong> 2. Name the mechanism</li><li><strong>Lesson fact:</strong> DNS resolves names to IP addresses. Fibre uses light pulses. HTTPS encrypts communication. Congestion causes queues.</li><li><strong>Lesson fact:</strong> 3. Link to the scenario</li><li><strong>Lesson fact:</strong> If the question says online banking, mention sensitive data in transit. If it says tablets, mention mobility and wireless access.</li><li><strong>Lesson fact:</strong> 4. Avoid empty adjectives</li><li><strong>Lesson fact:</strong> &quot;Better&quot;, &quot;faster&quot;, &quot;secure&quot; and &quot;efficient&quot; need a cause and consequence. The adjective is not the mark.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end components -->
-        <section class="panel" id="memory-storage" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Memory is not the same as storage</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="Memory and storage comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Primary memory</div>
-              <div role="columnheader">Secondary storage</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Purpose</div>
-              <div role="cell">Holds data/instructions currently being used.</div>
-              <div role="cell">Holds files and data long term.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Volatility</div>
-              <div role="cell">RAM is volatile; contents are lost without power.</div>
-              <div role="cell">Non-volatile; data remains when power is off.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Speed and capacity</div>
-              <div role="cell">Usually faster but smaller and more expensive per unit.</div>
-              <div role="cell">Usually larger and cheaper per unit but slower than RAM.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start memory-storage -->
-        <section class="panel explanation-panel" id="explanation-memory-storage" data-explains="memory-storage" data-explanation-kind="mechanism" aria-labelledby="explanation-memory-storage-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
-          <h2 class="explanation-sr-only" id="explanation-memory-storage-title">Memory is not the same as storage</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-027-memory-storage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Memory is not the same as storage with a structured visual model." />
-            <figcaption class="explanation-sr-only">Memory is not the same as storage: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Primary memory</li><li><strong>Lesson fact:</strong> Secondary storage</li><li><strong>Lesson fact:</strong> Holds data/instructions currently being used.</li><li><strong>Lesson fact:</strong> Holds files and data long term.</li><li><strong>Lesson fact:</strong> Volatility</li><li><strong>Lesson fact:</strong> RAM is volatile; contents are lost without power.</li><li><strong>Lesson fact:</strong> Non-volatile; data remains when power is off.</li><li><strong>Lesson fact:</strong> Speed and capacity</li><li><strong>Lesson fact:</strong> Usually faster but smaller and more expensive per unit.</li><li><strong>Lesson fact:</strong> Usually larger and cheaper per unit but slower than RAM.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end memory-storage -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <!-- stage10-explanation:end precision -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Component choice helper</h2>
+            <h2>Topic identifier</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
+              Scenario clue
               <select id="scenarioInput">
-                <option value="barcode">A librarian scans book IDs quickly at a desk</option>
-                <option value="weather">A weather station measures temperature automatically</option>
-                <option value="attendance">A school stores attendance records after scanning ID cards</option>
-                <option value="exam">An exam office prints candidate timetables</option>
-                <option value="driver">A delivery driver needs turn-by-turn visual feedback</option>
-                <option value="editing">A laptop temporarily holds a large image while editing</option>
+                <option value="dns">A user types cambridgeinternational.org but the browser needs an IP address</option>
+                <option value="imap">A phone and laptop show the same email folders and read/unread state</option>
+                <option value="fibre">A school needs a high-bandwidth fixed link between buildings</option>
+                <option value="router">A LAN sends packets to a different network</option>
+                <option value="latency">A game uses little data but actions respond late</option>
+                <option value="mesh">A hospital needs alternative paths if one link fails</option>
+                <option value="cloud">Students open the same files at home and school from remote servers</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Choose component</button>
+            <button type="button" id="chooseBtn">Identify topic</button>
           </div>
-          <div class="result-box" id="componentResult" aria-live="polite"></div>
-          <div class="method-box" id="componentMethod"></div>
+          <div class="result-box" id="topicResult" aria-live="polite"></div>
+          <div class="method-box" id="topicMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Hardware choices with reasons</h2>
+            <h2>Annotate what earns marks</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="attendance">Attendance system</button>
-            <button class="tab" type="button" data-example="weather">Weather station</button>
-            <button class="tab" type="button" data-example="library">Library desk</button>
+            <button class="tab active" type="button" data-example="protocol">Protocol answer</button>
+            <button class="tab" type="button" data-example="hardware">Hardware answer</button>
+            <button class="tab" type="button" data-example="performance">Performance answer</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
-            <p class="eyebrow">Your turn</p>
+            <p class="eyebrow">Retrieval quiz</p>
             <h2>Practice with instant checking</h2>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -378,74 +210,79 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak hardware answer</h2>
+            <h2>Rewrite vague answers into mark-worthy answers</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"The CPU stores all the files."</p>
+              <p class="wrong">"A router is better because it sends data faster."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">The CPU processes instructions and data. Files are stored in secondary storage; data in current use may be held in memory.</p>
+              <p class="answer" id="mistake1">A router connects different networks and forwards packets using IP addresses/routing information, for example from a LAN to the internet.</p>
             </article>
             <article>
-              <p class="wrong">"RAM and storage are the same because both hold data."</p>
+              <p class="wrong">"HTTPS is used because it is secure."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">RAM is primary memory used for current tasks and is volatile. Secondary storage is non-volatile and keeps files long term.</p>
+              <p class="answer" id="mistake2">HTTPS encrypts communication between browser and web server, helping protect sensitive data such as login or payment details in transit.</p>
+            </article>
+            <article>
+              <p class="wrong">"Cloud is good because it is online."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake3">Show correction</button>
+              <p class="answer" id="mistake3">Cloud services use remote servers accessed over a network; benefits may include remote access, collaboration or scalability, but risks include provider dependence and privacy/security concerns.</p>
             </article>
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on classifying the component and linking its feature to the scenario.</p>
+            <h2>Mixed Section 2 questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. These are mixed-topic review questions: identify the topic before answering.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-027">
+        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>System overview in one chain</h2>
+            <h2>The Section 2 answer pattern</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Input</strong><span>Captures data from the user or environment.</span></div>
-            <div><strong>Processor</strong><span>Executes instructions and processes data.</span></div>
-            <div><strong>Memory</strong><span>Holds data/instructions currently in use; RAM is volatile.</span></div>
-            <div><strong>Storage</strong><span>Holds files and data long term; non-volatile.</span></div>
-            <div><strong>Output</strong><span>Presents results or controls a physical action.</span></div>
-            <div><strong>Suitability</strong><span>Match device characteristics to the exact user need.</span></div>
+            <div><strong>Identify</strong><span>Spot the topic before writing: device, protocol, address, medium, service or performance.</span></div>
+            <div><strong>Mechanism</strong><span>Name what actually happens: resolve, route, forward, encrypt, translate, queue.</span></div>
+            <div><strong>Boundary</strong><span>State where it applies: within LAN, between networks, public, internal, selected external users.</span></div>
+            <div><strong>Scenario</strong><span>Use the nouns from the question: bank login, tablets, supplier, school network, remote file.</span></div>
+            <div><strong>Consequence</strong><span>Explain the result: lower delay, protected data, fewer collisions, reduced throughput, remote access.</span></div>
+            <div><strong>Correction</strong><span>Rewrite vague adjectives into cause-and-effect statements.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
+            <h2>Section 2 correction pack</h2>
           </div>
           <ol class="homework-list">
-            <li>Draw a data-flow diagram for a self-checkout system: input, processing, memory/storage and output.</li>
-            <li>Create a table comparing primary memory and secondary storage using purpose, volatility, speed and capacity.</li>
-            <li>Choose hardware for a school attendance system: one input, one storage, one output. Justify each choice.</li>
-            <li>Write a 4-mark answer explaining why listing hardware is not enough for a suitability question.</li>
+            <li>Create a one-page Section 2 map with eight boxes matching the retrieval map above.</li>
+            <li>Write five "not enough for full marks" phrases and improve each one into a precise sentence.</li>
+            <li>Answer one 6-mark mixed question from this page without looking at the MS, then self-mark in a different colour.</li>
+            <li>Complete a 10-minute retrieval sprint: list 20 Section 2 terms and write one scenario for each.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Data-flow diagram:</strong> barcode/touch input -> processor checks price -> memory holds current basket -> storage saves transaction -> screen/receipt output.</p>
-            <p><strong>Memory/storage:</strong> include volatile vs non-volatile and current use vs long-term files.</p>
-            <p><strong>Attendance:</strong> ID reader for accurate fast input; SSD/database storage for persistent records; screen/speaker for immediate feedback.</p>
-            <p><strong>Suitability:</strong> every device needs a reason linked to the scenario.</p>
+            <p><strong>Good map:</strong> includes definitions plus one common common error per box.</p>
+            <p><strong>Improvement pattern:</strong> vague phrase -> precise mechanism -> scenario consequence.</p>
+            <p><strong>Self-marking:</strong> underline words that match B1/M1/A1 points; rewrite missing points.</p>
+            <p><strong>Retrieval sprint:</strong> no notes for the first attempt; notes only for correction.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

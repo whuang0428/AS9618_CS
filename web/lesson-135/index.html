@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 135 | Input and output formatting</title>
+    <title>AS9618 Lesson 135 | Arithmetic operators, integer division, and MOD</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Input and output formatting</h1>
+        <h1>Arithmetic operators, integer division, and MOD</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,15 +29,15 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#input">INPUT</a>
-        <a href="#output">OUTPUT</a>
-        <a href="#prompts">Prompts</a>
-        <a href="#formatting">Formatting</a>
-        <a href="#types">Types</a>
-        <a href="#tables">Tables</a>
+        <a href="#operators">Operators</a>
+        <a href="#division">Division</a>
+        <a href="#mod">MOD</a>
+        <a href="#relationship">Relationship</a>
+        <a href="#precedence">Precedence</a>
+        <a href="#patterns">Patterns</a>
         <a href="#java">Java support</a>
-        <a href="#formatter">Formatter</a>
-        <a href="#chooser">Command chooser</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#chooser">Operator chooser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -49,344 +49,322 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 135 | 45 minutes | Paper 2 Section 11 | 5-minute quiz</p>
-            <h2>Good input gets data in. Good output lets humans understand it.</h2>
+            <p class="lesson-meta">Lesson 135 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2><code>DIV</code> keeps the quotient. <code>MOD</code> keeps the leftovers.</h2>
             <p>
-              <code>INPUT</code> stores data entered by the user. <code>OUTPUT</code> displays data to the user.
-              Formatting controls how information is presented: labels, spacing, order, decimal places and line breaks.
-              Algorithms do not get extra marks for being mysterious. If the output reads like a printer having an
-              existential crisis, fix the format.
+              Arithmetic operators let algorithms calculate values. Most are familiar: addition, subtraction,
+              multiplication and division. The common error is usually <code>DIV</code> and <code>MOD</code>. If
+              <code>17 DIV 5</code> is <code>3</code>, then <code>17 MOD 5</code> is <code>2</code>. The remainder is
+              not a rounding error; it is the bit of the pizza that did not fit evenly into boxes.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Use</strong><span><code>INPUT</code> and <code>OUTPUT</code> precisely in Cambridge-style pseudocode</span></div>
-              <div><strong>Format</strong><span>labels, concatenated strings, numeric values and table-like output</span></div>
-              <div><strong>Avoid</strong><span>confusing prompts, output text and stored input values</span></div>
+              <div><strong>Calculate</strong><span>results for <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>DIV</code> and <code>MOD</code></span></div>
+              <div><strong>Trace</strong><span>expressions using quotient, remainder and precedence</span></div>
+              <div><strong>Apply</strong><span><code>DIV</code> and <code>MOD</code> in validation, digit extraction and time conversion</span></div>
             </div>
           </div>
-          <div class="io-visual" aria-label="Input output visual">
-            <div><strong>INPUT Mark</strong><span>read and store</span><em>data enters the algorithm</em></div>
-            <div><strong>OUTPUT Mark</strong><span>display value</span><em>data leaves to screen</em></div>
-            <div><strong>OUTPUT "Mark: " &amp; Mark</strong><span>formatted message</span><em>clear for humans</em></div>
-            <p>Prompting tells the user what to enter. INPUT actually receives it.</p>
+          <div class="arithmetic-visual" aria-label="DIV and MOD visual">
+            <div><strong>17 DIV 5</strong><span>3</span><em>whole groups</em></div>
+            <div><strong>17 MOD 5</strong><span>2</span><em>remainder</em></div>
+            <div><strong>17 = 5 * 3 + 2</strong><span>identity</span><em>check your trace</em></div>
+            <p>When the answer looks suspicious, rebuild the original number from divisor, quotient and remainder.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 answers often lose marks when candidates output a prompt but never input the value, or calculate correctly but display unclearly.</p>
+            <p>Paper 2 trace questions use <code>DIV</code> and <code>MOD</code> for parity checks, digit extraction, time conversion and array grouping.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p><code>OUTPUT "Enter mark"</code> is only a prompt. It does not store the user's mark. Use <code>INPUT Mark</code>.</p>
+            <p><code>17 / 5</code>, <code>17 DIV 5</code> and <code>17 MOD 5</code> are three different operations.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which line actually stores the user's name?</h2>
-            <p>A prompt can be very polite and still store absolutely nothing.</p>
+            <h2>Seventeen students. Five seats per row.</h2>
+            <p>How many full rows, and how many students are left in the not-quite-full row?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="output">OUTPUT "Enter name"</button>
-            <button class="choice-card" type="button" data-hook="input">INPUT Name</button>
-            <button class="choice-card" type="button" data-hook="assign">Name &lt;- "Enter name"</button>
-            <button class="choice-card" type="button" data-hook="display">OUTPUT Name</button>
+            <button class="choice-card" type="button" data-hook="3-2">3 full rows, 2 left over</button>
+            <button class="choice-card" type="button" data-hook="2-3">2 full rows, 3 left over</button>
+            <button class="choice-card" type="button" data-hook="3-5">3 full rows, 5 left over</button>
+            <button class="choice-card" type="button" data-hook="3.4">3.4 full rows, 0 left over</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line that reads and stores user data.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the quotient and remainder.</div>
         </section>
 
-        <section class="panel" id="input" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="input">
+        <section class="panel" id="operators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operators">
           <div class="section-title">
-            <p class="eyebrow">INPUT</p>
-            <h2><code>INPUT</code> reads data and stores it in a variable</h2>
-            <p>Chinese support: input 输入, store 存储, variable 变量, prompt 提示信息。</p>
+            <p class="eyebrow">Arithmetic operators</p>
+            <h2>Operators combine values to calculate a result</h2>
+            <p>Chinese support: operator 运算符, quotient 商, remainder 余数, integer division 整数除法。</p>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Arithmetic operators">
+            <div class="table-row table-head"><div>Operator</div><div>Meaning</div><div>Example</div></div>
+            <div class="table-row"><div><code>+</code></div><div>addition</div><div><code>7 + 3 = 10</code></div></div>
+            <div class="table-row"><div><code>-</code></div><div>subtraction</div><div><code>7 - 3 = 4</code></div></div>
+            <div class="table-row"><div><code>*</code></div><div>multiplication</div><div><code>7 * 3 = 21</code></div></div>
+            <div class="table-row"><div><code>/</code></div><div>real division</div><div><code>7 / 2 = 3.5</code></div></div>
+            <div class="table-row"><div><code>DIV</code></div><div>integer quotient</div><div><code>7 DIV 2 = 3</code></div></div>
+            <div class="table-row"><div><code>MOD</code></div><div>remainder after integer division</div><div><code>7 MOD 2 = 1</code></div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start operators -->
+        <section class="panel explanation-panel" id="explanation-operators" data-explains="operators" data-explanation-kind="mechanism" aria-labelledby="explanation-operators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="operators">
+          <h2 class="explanation-sr-only" id="explanation-operators-title">Operators combine values to calculate a result</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-operators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Operators combine values to calculate a result with a structured visual model." />
+            <figcaption class="explanation-sr-only">Operators combine values to calculate a result: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Arithmetic operators</li><li><strong>Lesson fact:</strong> Operator</li><li><strong>Lesson fact:</strong> addition</li><li><strong>Lesson fact:</strong> 7 + 3 = 10</li><li><strong>Lesson fact:</strong> subtraction</li><li><strong>Lesson fact:</strong> 7 - 3 = 4</li><li><strong>Lesson fact:</strong> multiplication</li><li><strong>Lesson fact:</strong> 7 * 3 = 21</li><li><strong>Lesson fact:</strong> real division</li><li><strong>Lesson fact:</strong> 7 / 2 = 3.5</li><li><strong>Lesson fact:</strong> integer quotient</li><li><strong>Lesson fact:</strong> 7 DIV 2 = 3</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end operators -->
+        <section class="panel" id="division" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="division">
+          <div class="section-title">
+            <p class="eyebrow">Integer division</p>
+            <h2><code>DIV</code> returns the whole-number quotient</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>OUTPUT "Enter mark"
-INPUT Mark</code></pre>
+              <pre><code>Students &lt;- 17
+SeatsPerRow &lt;- 5
+FullRows &lt;- Students DIV SeatsPerRow
+OUTPUT FullRows</code></pre>
             </article>
             <article>
               <h3>Trace</h3>
               <div class="trace-list">
-                <div><strong>Prompt</strong><span>screen shows <code>Enter mark</code></span></div>
-                <div><strong>Input</strong><span>user enters a value such as <code>72</code></span></div>
-                <div><strong>Storage</strong><span><code>Mark</code> now stores <code>72</code></span></div>
+                <div><strong><code>17 / 5</code></strong><span>3.4</span></div>
+                <div><strong><code>17 DIV 5</code></strong><span>3</span></div>
+                <div><strong>Meaning</strong><span>three complete groups of five</span></div>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start input -->
-        <section class="panel explanation-panel" id="explanation-input" data-explains="input" data-explanation-kind="mechanism" aria-labelledby="explanation-input-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="input">
-          <h2 class="explanation-sr-only" id="explanation-input-title">INPUT reads data and stores it in a variable</h2>
+        <!-- stage10-explanation:start division -->
+        <section class="panel explanation-panel" id="explanation-division" data-explains="division" data-explanation-kind="mechanism" aria-labelledby="explanation-division-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="division">
+          <h2 class="explanation-sr-only" id="explanation-division-title">DIV returns the whole-number quotient</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-input.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INPUT reads data and stores it in a variable with a structured visual model." />
-            <figcaption class="explanation-sr-only">INPUT reads data and stores it in a variable: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-division.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining DIV returns the whole-number quotient with a structured visual model." />
+            <figcaption class="explanation-sr-only">DIV returns the whole-number quotient: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark&quot;</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Prompt screen shows Enter mark</li><li><strong>Lesson fact:</strong> Input user enters a value such as 72</li><li><strong>Lesson fact:</strong> Storage Mark now stores 72</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Integer division</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Students &lt;- 17</li><li><strong>Lesson fact:</strong> SeatsPerRow &lt;- 5</li><li><strong>Lesson fact:</strong> FullRows &lt;- Students DIV SeatsPerRow</li><li><strong>Lesson fact:</strong> OUTPUT FullRows</li><li><strong>Lesson fact:</strong> 17 / 5 3.4</li><li><strong>Lesson fact:</strong> 17 DIV 5 3</li><li><strong>Lesson fact:</strong> Meaning three complete groups of five</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end input -->
-        <section class="panel" id="output" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="output">
+        <!-- stage10-explanation:end division -->
+        <section class="panel" id="mod" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mod">
           <div class="section-title">
-            <p class="eyebrow">OUTPUT</p>
-            <h2><code>OUTPUT</code> displays text, values or expressions</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Display text and values</h3>
-              <pre><code>Name &lt;- "Ada"
-Mark &lt;- 72
-OUTPUT "Student: " &amp; Name
-OUTPUT "Mark: " &amp; Mark</code></pre>
-            </article>
-            <article>
-              <h3>Displayed output</h3>
-              <div class="screen-box">
-                <p>Student: Ada</p>
-                <p>Mark: 72</p>
-              </div>
-              <p>Labels make the output meaningful. A lonely <code>72</code> on a screen is not a user interface; it is a small mystery.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start output -->
-        <section class="panel explanation-panel" id="explanation-output" data-explains="output" data-explanation-kind="mechanism" aria-labelledby="explanation-output-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="output">
-          <h2 class="explanation-sr-only" id="explanation-output-title">OUTPUT displays text, values or expressions</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-output.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining OUTPUT displays text, values or expressions with a structured visual model." />
-            <figcaption class="explanation-sr-only">OUTPUT displays text, values or expressions: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Display text and values</li><li><strong>Lesson fact:</strong> Name &lt;- &quot;Ada&quot;</li><li><strong>Lesson fact:</strong> Mark &lt;- 72</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Student: &quot; &amp; Name</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Mark: &quot; &amp; Mark</li><li><strong>Lesson fact:</strong> Displayed output</li><li><strong>Lesson fact:</strong> Student: Ada</li><li><strong>Lesson fact:</strong> Mark: 72</li><li><strong>Lesson fact:</strong> Labels make the output meaningful. A lonely 72 on a screen is not a user interface; it is a small mystery.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end output -->
-        <section class="panel" id="prompts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="prompts">
-          <div class="section-title">
-            <p class="eyebrow">Prompts</p>
-            <h2>A good prompt tells the user what to enter and the expected format</h2>
-          </div>
-          <div class="data-table compare-table" role="table" aria-label="Prompt comparison">
-            <div class="table-row table-head"><div>Prompt</div><div>Quality</div><div>Reason</div></div>
-            <div class="table-row"><div><code>OUTPUT "Input"</code></div><div>weak</div><div>does not say what value is needed</div></div>
-            <div class="table-row"><div><code>OUTPUT "Enter mark"</code></div><div>better</div><div>states the required data item</div></div>
-            <div class="table-row"><div><code>OUTPUT "Enter mark 0 to 100"</code></div><div>best</div><div>states expected range and reduces invalid input</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start prompts -->
-        <section class="panel explanation-panel" id="explanation-prompts" data-explains="prompts" data-explanation-kind="mechanism" aria-labelledby="explanation-prompts-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="prompts">
-          <h2 class="explanation-sr-only" id="explanation-prompts-title">A good prompt tells the user what to enter and the expected format</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-prompts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A good prompt tells the user what to enter and the expected format with a structured visual model." />
-            <figcaption class="explanation-sr-only">A good prompt tells the user what to enter and the expected format: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> OUTPUT &quot;Input&quot;</li><li><strong>Lesson fact:</strong> does not say what value is needed</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark&quot;</li><li><strong>Lesson fact:</strong> states the required data item</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark 0 to 100&quot;</li><li><strong>Lesson fact:</strong> states expected range and reduces invalid input</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end prompts -->
-        <section class="panel" id="formatting" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formatting">
-          <div class="section-title">
-            <p class="eyebrow">Formatting output</p>
-            <h2>Formatting means controlling how values are shown</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Unformatted</h3>
-              <pre><code>OUTPUT Name
-OUTPUT Mark
-OUTPUT Grade</code></pre>
-              <div class="screen-box compact"><p>Ada</p><p>72</p><p>B</p></div>
-            </article>
-            <article>
-              <h3>Formatted</h3>
-              <pre><code>OUTPUT "Name: " &amp; Name
-OUTPUT "Mark: " &amp; Mark
-OUTPUT "Grade: " &amp; Grade</code></pre>
-              <div class="screen-box compact"><p>Name: Ada</p><p>Mark: 72</p><p>Grade: B</p></div>
-            </article>
-          </div>
-          <div class="callout">In Cambridge-style pseudocode, clear labels and logical order often matter more than language-specific formatting syntax.</div>
-        </section>
-
-        <!-- stage10-explanation:start formatting -->
-        <section class="panel explanation-panel" id="explanation-formatting" data-explains="formatting" data-explanation-kind="mechanism" aria-labelledby="explanation-formatting-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="formatting">
-          <h2 class="explanation-sr-only" id="explanation-formatting-title">Formatting means controlling how values are shown</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-formatting.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Formatting means controlling how values are shown with a structured visual model." />
-            <figcaption class="explanation-sr-only">Formatting means controlling how values are shown: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Formatting output</li><li><strong>Lesson fact:</strong> Unformatted</li><li><strong>Lesson fact:</strong> OUTPUT Name</li><li><strong>Lesson fact:</strong> OUTPUT Mark</li><li><strong>Lesson fact:</strong> OUTPUT Grade</li><li><strong>Lesson fact:</strong> Formatted</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Name: &quot; &amp; Name</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Mark: &quot; &amp; Mark</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Grade: &quot; &amp; Grade</li><li><strong>Lesson fact:</strong> Name: Ada</li><li><strong>Lesson fact:</strong> Mark: 72</li><li><strong>Lesson fact:</strong> Grade: B</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end formatting -->
-        <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
-          <div class="section-title">
-            <p class="eyebrow">Input type handling</p>
-            <h2>Input data must be used with the correct data type</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Numeric calculation</h3>
-              <pre><code>OUTPUT "Enter price"
-INPUT Price
-Total &lt;- Price * 1.20
-OUTPUT "Total: " &amp; Total</code></pre>
-            </article>
-            <article>
-              <h3>Reasoning</h3>
-              <p><code>Price</code> must be treated as numeric for multiplication. If a language reads all input as text, conversion may be needed.</p>
-              <div class="callout">Cambridge pseudocode usually focuses on the algorithm. If the question demands conversion, show it clearly.</div>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start types -->
-        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="types">
-          <h2 class="explanation-sr-only" id="explanation-types-title">Input data must be used with the correct data type</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Input data must be used with the correct data type with a structured visual model." />
-            <figcaption class="explanation-sr-only">Input data must be used with the correct data type: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input type handling</li><li><strong>Lesson fact:</strong> Numeric calculation</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter price&quot;</li><li><strong>Lesson fact:</strong> INPUT Price</li><li><strong>Lesson fact:</strong> Total &lt;- Price * 1.20</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Total: &quot; &amp; Total</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Price must be treated as numeric for multiplication. If a language reads all input as text, conversion may be needed.</li><li><strong>Lesson fact:</strong> Cambridge pseudocode usually focuses on the algorithm. If the question demands conversion, show it clearly.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end types -->
-        <section class="panel" id="tables" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tables">
-          <div class="section-title">
-            <p class="eyebrow">Table-like output</p>
-            <h2>Formatted output can make repeated records readable</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Pseudocode idea</h3>
-              <pre><code>OUTPUT "Name    Mark"
-OUTPUT "Ada     72"
-OUTPUT "Lin     85"</code></pre>
-            </article>
-            <article>
-              <h3>Displayed output</h3>
-              <div class="screen-box mono">
-                <p>Name    Mark</p>
-                <p>Ada     72</p>
-                <p>Lin     85</p>
-              </div>
-              <p>Headings, spacing and row order make the values interpretable.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start tables -->
-        <section class="panel explanation-panel" id="explanation-tables" data-explains="tables" data-explanation-kind="mechanism" aria-labelledby="explanation-tables-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tables">
-          <h2 class="explanation-sr-only" id="explanation-tables-title">Formatted output can make repeated records readable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-tables.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Formatted output can make repeated records readable with a structured visual model." />
-            <figcaption class="explanation-sr-only">Formatted output can make repeated records readable: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Table-like output</li><li><strong>Lesson fact:</strong> Pseudocode idea</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Name Mark&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Ada 72&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Lin 85&quot;</li><li><strong>Lesson fact:</strong> Displayed output</li><li><strong>Lesson fact:</strong> Name Mark</li><li><strong>Lesson fact:</strong> Headings, spacing and row order make the values interpretable.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tables -->
-        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
-          <div class="section-title">
-            <p class="eyebrow">Java support only</p>
-            <h2>Java I/O syntax is not Cambridge pseudocode</h2>
+            <p class="eyebrow">MOD</p>
+            <h2><code>MOD</code> returns the remainder</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>OUTPUT "Enter mark"
-INPUT Mark
-OUTPUT "Mark: " &amp; Mark</code></pre>
+              <pre><code>Students &lt;- 17
+SeatsPerRow &lt;- 5
+LeftOver &lt;- Students MOD SeatsPerRow
+OUTPUT LeftOver</code></pre>
+            </article>
+            <article>
+              <h3>Trace</h3>
+              <div class="trace-list">
+                <div><strong><code>17 DIV 5</code></strong><span>3 full groups</span></div>
+                <div><strong><code>3 * 5</code></strong><span>15 used</span></div>
+                <div><strong><code>17 MOD 5</code></strong><span>2 left over</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start mod -->
+        <section class="panel explanation-panel" id="explanation-mod" data-explains="mod" data-explanation-kind="mechanism" aria-labelledby="explanation-mod-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="mod">
+          <h2 class="explanation-sr-only" id="explanation-mod-title">MOD returns the remainder</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-mod.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining MOD returns the remainder with a structured visual model." />
+            <figcaption class="explanation-sr-only">MOD returns the remainder: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Students &lt;- 17</li><li><strong>Lesson fact:</strong> SeatsPerRow &lt;- 5</li><li><strong>Lesson fact:</strong> LeftOver &lt;- Students MOD SeatsPerRow</li><li><strong>Lesson fact:</strong> OUTPUT LeftOver</li><li><strong>Lesson fact:</strong> 17 DIV 5 3 full groups</li><li><strong>Lesson fact:</strong> 3 * 5 15 used</li><li><strong>Lesson fact:</strong> 17 MOD 5 2 left over</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end mod -->
+        <section class="panel" id="relationship" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationship">
+          <div class="section-title">
+            <p class="eyebrow">Quotient and remainder relationship</p>
+            <h2>Use the identity to check your answer</h2>
+          </div>
+          <div class="formula-card">
+            <strong>Number = Divisor * (Number DIV Divisor) + (Number MOD Divisor)</strong>
+            <span>Example: <code>17 = 5 * (17 DIV 5) + (17 MOD 5) = 5 * 3 + 2</code></span>
+          </div>
+          <div class="callout">For positive integers, the remainder is smaller than the divisor. If <code>17 MOD 5</code> becomes <code>5</code>, the remainder has become too enthusiastic.</div>
+        </section>
+
+        <!-- stage10-explanation:start relationship -->
+        <section class="panel explanation-panel" id="explanation-relationship" data-explains="relationship" data-explanation-kind="mechanism" aria-labelledby="explanation-relationship-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="relationship">
+          <h2 class="explanation-sr-only" id="explanation-relationship-title">Use the identity to check your answer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-relationship.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the identity to check your answer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the identity to check your answer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Quotient and remainder relationship</li><li><strong>Lesson fact:</strong> Number = Divisor * (Number DIV Divisor) + (Number MOD Divisor)</li><li><strong>Lesson fact:</strong> Example: 17 = 5 * (17 DIV 5) + (17 MOD 5) = 5 * 3 + 2</li><li><strong>Lesson fact:</strong> For positive integers, the remainder is smaller than the divisor. If 17 MOD 5 becomes 5 , the remainder has become too enthusiastic.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end relationship -->
+        <section class="panel" id="precedence" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precedence">
+          <div class="section-title">
+            <p class="eyebrow">Precedence</p>
+            <h2>Use brackets when the intended order matters</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Without brackets</h3>
+              <pre><code>Result &lt;- 2 + 3 * 4
+OUTPUT Result</code></pre>
+              <p>Multiplication is evaluated before addition, so the result is <code>14</code>.</p>
+            </article>
+            <article>
+              <h3>With brackets</h3>
+              <pre><code>Result &lt;- (2 + 3) * 4
+OUTPUT Result</code></pre>
+              <p>Brackets force the addition first, so the result is <code>20</code>.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start precedence -->
+        <section class="panel explanation-panel" id="explanation-precedence" data-explains="precedence" data-explanation-kind="mechanism" aria-labelledby="explanation-precedence-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="precedence">
+          <h2 class="explanation-sr-only" id="explanation-precedence-title">Use brackets when the intended order matters</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-precedence.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use brackets when the intended order matters with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use brackets when the intended order matters: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Precedence</li><li><strong>Lesson fact:</strong> Without brackets</li><li><strong>Lesson fact:</strong> Result &lt;- 2 + 3 * 4</li><li><strong>Lesson fact:</strong> OUTPUT Result</li><li><strong>Lesson fact:</strong> Multiplication is evaluated before addition, so the result is 14 .</li><li><strong>Lesson fact:</strong> With brackets</li><li><strong>Lesson fact:</strong> Result &lt;- (2 + 3) * 4</li><li><strong>Lesson fact:</strong> Brackets force the addition first, so the result is 20 .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end precedence -->
+        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+          <div class="section-title">
+            <p class="eyebrow">Common patterns</p>
+            <h2><code>DIV</code> and <code>MOD</code> often appear in practical algorithm tasks</h2>
+          </div>
+          <div class="pattern-grid">
+            <article><strong>Even / odd</strong><span><code>Number MOD 2 = 0</code> means even.</span></article>
+            <article><strong>Digit extraction</strong><span><code>Number MOD 10</code> gives the last digit of a positive integer.</span></article>
+            <article><strong>Time conversion</strong><span><code>Minutes DIV 60</code> gives hours; <code>Minutes MOD 60</code> gives remaining minutes.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="process" aria-labelledby="explanation-patterns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="patterns">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">DIV and MOD often appear in practical algorithm tasks</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining DIV and MOD often appear in practical algorithm tasks with a structured visual model." />
+            <figcaption class="explanation-sr-only">DIV and MOD often appear in practical algorithm tasks: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Common patterns</li><li><strong>Lesson fact:</strong> Even / odd Number MOD 2 = 0 means even.</li><li><strong>Lesson fact:</strong> Digit extraction Number MOD 10 gives the last digit of a positive integer.</li><li><strong>Lesson fact:</strong> Time conversion Minutes DIV 60 gives hours; Minutes MOD 60 gives remaining minutes.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end patterns -->
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java can support the idea, but Cambridge pseudocode remains the answer format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Quotient &lt;- Number DIV Divisor
+Remainder &lt;- Number MOD Divisor</code></pre>
             </article>
             <article>
               <h3>Java support example only</h3>
-              <pre><code>Scanner input = new Scanner(System.in);
-System.out.print("Enter mark: ");
-int mark = input.nextInt();
-System.out.println("Mark: " + mark);</code></pre>
-              <p>Do not copy <code>Scanner</code>, semicolons or Java method calls into Paper 2 pseudocode unless Java is explicitly requested.</p>
+              <pre><code>int quotient = number / divisor;
+int remainder = number % divisor;</code></pre>
+              <p>Do not write Java <code>%</code> as the exam pseudocode operator when the question expects <code>MOD</code>.</p>
             </article>
           </div>
         </section>
 
         <!-- stage10-explanation:start java -->
         <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="java">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Java I/O syntax is not Cambridge pseudocode</h2>
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java can support the idea, but Cambridge pseudocode remains the answer format</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java I/O syntax is not Cambridge pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Java I/O syntax is not Cambridge pseudocode: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java can support the idea, but Cambridge pseudocode remains the answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java can support the idea, but Cambridge pseudocode remains the answer format: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark&quot;</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Mark: &quot; &amp; Mark</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> Scanner input = new Scanner(System.in);</li><li><strong>Lesson fact:</strong> System.out.print(&quot;Enter mark: &quot;);</li><li><strong>Lesson fact:</strong> int mark = input.nextInt();</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Mark: &quot; + mark);</li><li><strong>Lesson fact:</strong> Do not copy Scanner , semicolons or Java method calls into Paper 2 pseudocode unless Java is explicitly requested.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Quotient &lt;- Number DIV Divisor</li><li><strong>Lesson fact:</strong> Remainder &lt;- Number MOD Divisor</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> int quotient = number / divisor;</li><li><strong>Lesson fact:</strong> int remainder = number % divisor;</li><li><strong>Lesson fact:</strong> Do not write Java % as the exam pseudocode operator when the question expects MOD .</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-        <section class="panel" id="formatter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formatter">
+        <section class="panel" id="calculator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calculator">
           <div class="section-title">
-            <p class="eyebrow">Interactive output formatter</p>
-            <h2>Build a readable result line</h2>
-            <p>Enter values and choose a format. The goal is not decoration; it is clarity.</p>
+            <p class="eyebrow">Interactive arithmetic calculator</p>
+            <h2>Compare <code>/</code>, <code>DIV</code> and <code>MOD</code></h2>
+            <p>Use positive integers for this lesson's calculator.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Name
-              <input id="nameInput" type="text" value="Ada" maxlength="20" />
+              Number
+              <input id="numberInput" type="number" min="0" step="1" value="17" />
             </label>
             <label>
-              Mark
-              <input id="markInput" type="number" min="0" max="100" step="1" value="72" />
+              Divisor
+              <input id="divisorInput" type="number" min="1" step="1" value="5" />
             </label>
             <label>
-              Format
-              <select id="formatInput">
-                <option value="plain">plain values</option>
-                <option value="labels">with labels</option>
-                <option value="sentence">sentence</option>
-                <option value="table">table row</option>
+              Operation
+              <select id="operationInput">
+                <option value="all">show /, DIV and MOD</option>
+                <option value="div">DIV only</option>
+                <option value="mod">MOD only</option>
+                <option value="identity">identity check</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="formatBtn">Format</button>
+            <button class="primary-button" type="button" id="calcBtn">Calculate</button>
           </div>
-          <div class="trace-output" id="formatResult" aria-live="polite">Choose values and format the output.</div>
+          <div class="trace-output" id="calcResult" aria-live="polite">Enter values and calculate.</div>
         </section>
 
-        <!-- stage10-explanation:start formatter -->
-        <section class="panel explanation-panel" id="explanation-formatter" data-explains="formatter" data-explanation-kind="mechanism" aria-labelledby="explanation-formatter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="formatter">
-          <h2 class="explanation-sr-only" id="explanation-formatter-title">Build a readable result line</h2>
+        <!-- stage10-explanation:start calculator -->
+        <section class="panel explanation-panel" id="explanation-calculator" data-explains="calculator" data-explanation-kind="comparison" aria-labelledby="explanation-calculator-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="calculator">
+          <h2 class="explanation-sr-only" id="explanation-calculator-title">Compare / , DIV and MOD</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-formatter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Build a readable result line with a structured visual model." />
-            <figcaption class="explanation-sr-only">Build a readable result line: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-135-calculator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare / , DIV and MOD with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare / , DIV and MOD: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive output formatter</li><li><strong>Lesson fact:</strong> Enter values and choose a format. The goal is not decoration; it is clarity.</li><li><strong>Lesson fact:</strong> Choose values and format the output.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive arithmetic calculator</li><li><strong>Lesson fact:</strong> Use positive integers for this lesson's calculator.</li><li><strong>Lesson fact:</strong> Operation</li><li><strong>Lesson fact:</strong> Enter values and calculate.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end formatter -->
+        <!-- stage10-explanation:end calculator -->
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
-            <p class="eyebrow">Command chooser</p>
-            <h2>Is this input, output, or formatting?</h2>
-            <p>Select a scenario to see the command and exam reasoning.</p>
+            <p class="eyebrow">Operator chooser</p>
+            <h2>Which arithmetic operator fits the task?</h2>
+            <p>Select a scenario to see the operator and exam reasoning.</p>
           </div>
           <div class="scenario-grid" id="scenarioGrid"></div>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
@@ -395,7 +373,7 @@ System.out.println("Mark: " + mark);</code></pre>
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trace what is stored and what is displayed</h2>
+            <h2>Trace quotient, remainder and final value</h2>
           </div>
           <div class="tabs" id="exampleTabs" role="tablist"></div>
           <div class="example-output" id="exampleOutput"></div>
@@ -404,8 +382,8 @@ System.out.println("Mark: " + mark);</code></pre>
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers, precise commands</h2>
-            <p>Type the command keyword, displayed output, or missing line.</p>
+            <h2>Short calculations, exact values</h2>
+            <p>Type the numeric result or the requested operator keyword.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -413,7 +391,7 @@ System.out.println("Mark: " + mark);</code></pre>
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the I/O error</h2>
+            <h2>Find the exact arithmetic error</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -422,7 +400,7 @@ System.out.println("Mark: " + mark);</code></pre>
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
-            <p>Questions are original Cambridge-style practice. MS notes are strict about storing input, displaying output and readable formatting.</p>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about quotient, remainder and operator wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -433,31 +411,31 @@ System.out.println("Mark: " + mark);</code></pre>
             <h2>Three rules to keep</h2>
           </div>
           <div class="summary-grid">
-            <div><strong><code>INPUT</code></strong><span>reads data and stores it in a variable.</span></div>
-            <div><strong><code>OUTPUT</code></strong><span>displays text, values or expression results.</span></div>
-            <div><strong>Formatting</strong><span>uses labels, order and spacing so output is meaningful.</span></div>
+            <div><strong><code>/</code></strong><span>real division, such as <code>17 / 5 = 3.4</code>.</span></div>
+            <div><strong><code>DIV</code></strong><span>integer quotient, such as <code>17 DIV 5 = 3</code>.</span></div>
+            <div><strong><code>MOD</code></strong><span>remainder, such as <code>17 MOD 5 = 2</code>.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Prompt, input, display</h2>
+            <h2>Calculate, trace, apply</h2>
           </div>
           <ol class="homework-list">
-            <li>Write pseudocode that prompts for a name and mark, inputs both values, and outputs <code>Name: Ada, Mark: 72</code>-style text.</li>
-            <li>Rewrite three unclear outputs from today's lesson using labels and sensible ordering.</li>
-            <li>Write a small table-like output for three products and their prices using headings.</li>
-            <li>Answer a 4-mark question explaining why <code>OUTPUT "Enter mark"</code> alone is not enough to read a mark.</li>
+            <li>Complete a table for <code>23 / 6</code>, <code>23 DIV 6</code> and <code>23 MOD 6</code>. Show the identity check.</li>
+            <li>Write pseudocode that inputs <code>TotalMinutes</code> and outputs whole hours and remaining minutes.</li>
+            <li>Trace <code>Result &lt;- 4 + 18 MOD 5 * 2</code>, then rewrite it with brackets to make the intended order obvious.</li>
+            <li>Answer a 4-mark question explaining why <code>MOD</code> is useful for checking whether an integer is even.</li>
           </ol>
-          <div class="callout">Marking focus: include both prompt and input where needed, then output values with clear labels.</div>
+          <div class="callout">Marking focus: name the operator, calculate the value, and explain what the value represents in the scenario.</div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

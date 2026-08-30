@@ -18,18 +18,18 @@ const rows = register.map((line) => {
 expect(new Set(rows.map(([lesson]) => lesson)).size === rows.length, "Visual register contains duplicate lesson rows");
 expect(rows.filter((row) => row[2] === "High").length >= 15, "Visual register must identify at least 15 high-priority lessons");
 
-for (const lesson of ["017", "031", "034"]) {
+for (const lesson of ["018", "032", "035"]) {
   const pilot = rows.find(([candidate]) => candidate === lesson);
   expect(pilot, `Lesson ${lesson} is missing from the visual register`);
   expect(pilot[3].includes("ImageGen") && ["Pilot", "Approved"].includes(pilot[6]), `Lesson ${lesson} pilot metadata is invalid`);
 }
 
 const codeNativeVisuals = [
-  { lesson: "018", id: "packet-journey", nav: "Packet journey", check: "why can packet 2 arrive after packet 3?" },
-  { lesson: "020", id: "address-journey", nav: "Address journey", check: "does DNS turn the whole URL into a MAC address?" },
-  { lesson: "035", id: "gate-visual", nav: "Gate map", check: "what two visual clues separate NOR from XOR?" },
-  { lesson: "041", id: "cpu-map", nav: "CPU map", check: "is main memory a register inside the CPU?" },
-  { lesson: "042", id: "cycle-visual", nav: "Cycle trace", check: "why is the instruction copied to the CIR before decoding?" },
+  { lesson: "019", id: "packet-journey", nav: "Packet journey", check: "why can packet 2 arrive after packet 3?" },
+  { lesson: "021", id: "address-journey", nav: "Address journey", check: "does DNS turn the whole URL into a MAC address?" },
+  { lesson: "036", id: "gate-visual", nav: "Gate map", check: "what two visual clues separate NOR from XOR?" },
+  { lesson: "042", id: "cpu-map", nav: "CPU map", check: "is main memory a register inside the CPU?" },
+  { lesson: "043", id: "cycle-visual", nav: "Cycle trace", check: "why is the instruction copied to the CIR before decoding?" },
 ];
 
 for (const visual of codeNativeVisuals) {
@@ -53,36 +53,36 @@ for (const marker of [".visual-explainer", "scroll-margin-top: 112px", ".concept
   expect(sharedVisualCss.includes(marker), `Shared student visual CSS marker is missing: ${marker}`);
 }
 
-const html = read("web/lesson-017/index.html");
-const css = read("web/lesson-017/styles.css");
-const imageReference = "../assets/diagrams/lesson-017-peer-devices.jpg";
-expect(html.includes(`src="${imageReference}"`), "Lesson 017 image reference is missing");
+const html = read("web/lesson-018/index.html");
+const css = read("web/lesson-018/styles.css");
+const imageReference = "../assets/diagrams/lesson-018-peer-devices.jpg";
+expect(html.includes(`src="${imageReference}"`), "Lesson 018 image reference is missing");
 expect(/<img\s+(?=[^>]*loading="lazy")(?=[^>]*decoding="async")(?=[^>]*width="1672")(?=[^>]*height="941")(?=[^>]*alt="[^"]+")[^>]*>/m.test(html),
-  "Lesson 017 visual must reserve dimensions and provide meaningful alternative text");
-expect(html.includes('id="model-visual"'), "Lesson 017 visual explanation section is missing");
+  "Lesson 018 visual must reserve dimensions and provide meaningful alternative text");
+expect(html.includes('id="model-visual"'), "Lesson 018 visual explanation section is missing");
 expect(html.includes('class="client-server-diagram"') && html.includes('role="img"'), "Deterministic client-server diagram is missing");
-expect(html.includes("why is peer-to-peer not the same as mesh?"), "Lesson 017 diagram reading check is missing");
+expect(html.includes("why is peer-to-peer not the same as mesh?"), "Lesson 018 diagram reading check is missing");
 
 for (const marker of [".network-visual-grid", ".peer-visual", ".client-server-diagram", "aspect-ratio: 1672 / 941"]) {
-  expect(css.includes(marker), `Lesson 017 visual CSS marker is missing: ${marker}`);
+  expect(css.includes(marker), `Lesson 018 visual CSS marker is missing: ${marker}`);
 }
 
-const asset = path.join(root, "web/assets/diagrams/lesson-017-peer-devices.jpg");
-expect(fs.existsSync(asset), "Lesson 017 generated image asset is missing");
-expect(fs.statSync(asset).size <= 350 * 1024, "Lesson 017 generated image exceeds the 350 KB page budget");
+const asset = path.join(root, "web/assets/diagrams/lesson-018-peer-devices.jpg");
+expect(fs.existsSync(asset), "Lesson 018 generated image asset is missing");
+expect(fs.statSync(asset).size <= 350 * 1024, "Lesson 018 generated image exceeds the 350 KB page budget");
 
 for (const pilot of [
   {
-    lesson: "031",
-    asset: "web/assets/diagrams/lesson-031-storage-media.jpg",
-    reference: "../assets/diagrams/lesson-031-storage-media.jpg",
+    lesson: "032",
+    asset: "web/assets/diagrams/lesson-032-storage-media.jpg",
+    reference: "../assets/diagrams/lesson-032-storage-media.jpg",
     htmlMarkers: ['id="storage-visual"', 'class="storage-label-strip"', "why is an SSD often suitable for a laptop?"],
     cssMarkers: [".storage-visual", ".mechanism-grid", "aspect-ratio: 1672 / 941"],
   },
   {
-    lesson: "034",
-    asset: "web/assets/diagrams/lesson-034-greenhouse-control.jpg",
-    reference: "../assets/diagrams/lesson-034-greenhouse-control.jpg",
+    lesson: "035",
+    asset: "web/assets/diagrams/lesson-035-greenhouse-control.jpg",
+    reference: "../assets/diagrams/lesson-035-greenhouse-control.jpg",
     htmlMarkers: ['class="control-visual"', 'class="feedback-link"', "why does the sensor not cool the greenhouse?"],
     cssMarkers: [".control-scene", ".control-sequence", "aspect-ratio: 1672 / 941"],
   },
@@ -105,7 +105,11 @@ expect(
   "Stage 10 comprehensive visual register header is invalid",
 );
 expect(comprehensiveRegister.length >= rows.length, "Stage 10 visual register must not be smaller than the original priority register");
-expect(comprehensiveRegister.some((line) => line.startsWith("016,") && line.includes(",PilotReview,")), "Lesson 016 corrected topology SVGs are missing from Stage 10 visual review");
+const topologyInventoryRows = comprehensiveRegister.filter((line) => line.startsWith("017,") && line.includes(",topologies,Inline SVG,"));
+expect(topologyInventoryRows.length === 4, `Lesson 017 visual inventory must contain four corrected topology SVGs; found ${topologyInventoryRows.length}`);
+expect(topologyInventoryRows.every((line) => line.includes(",NeedsFactReview,")), "Lesson 017 topology inventory must retain its pre-review fact-check state");
+const topologySemanticRow = read("audits/stage10-semantic-review-register.csv").split("\n").find((line) => line.startsWith("017,topologies,"));
+expect(topologySemanticRow?.includes(",Reviewed,Reviewed,Approved,"), "Lesson 017 topology infographic is missing its separate two-pass semantic approval");
 expect(!comprehensiveRegister.some((line) => /,,(?:[^,]*,){3}$/.test(line)), "Stage 10 visual register contains an incomplete record");
 
 console.log(`Educational visual verification passed: ${rows.length} prioritised concepts, ${comprehensiveRegister.length} comprehensive visual records, three ImageGen pilots and five code-native diagrams are present.`);

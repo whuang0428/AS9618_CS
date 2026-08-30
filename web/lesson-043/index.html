@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 043 | Registers: PC, CIR, MAR, MDR, ACC, IX and status register</title>
+    <title>AS9618 Lesson 043 | System buses, ports and processor performance</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../student-visuals.css?v=1" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +18,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Registers: PC, CIR, MAR, MDR, ACC, IX and status register</h1>
+        <h1>System buses, ports and processor performance</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,10 +30,12 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#purpose">Register purpose</a>
-        <a href="#main-registers">Main registers</a>
-        <a href="#acc-status">ACC and status</a>
-        <a href="#tool">Role mapper</a>
+        <a href="#cycle">Cycle overview</a>
+        <a href="#cycle-visual">Cycle trace</a>
+        <a href="#fetch">Fetch stage</a>
+        <a href="#decode">Decode and execute</a>
+        <a href="#registers">Register roles</a>
+        <a href="#tool">Step sequencer</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -51,74 +54,99 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>General-purpose and special-purpose registers</h2>
+            <h2>System buses, ports and processor performance</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</p>
-            <p>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</p>
-            <p>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</p>
+            <p>The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.</p>
+            <p>A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.</p>
+            <p>USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.</p>
+            <p>Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.</p>
+            <p>More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.</p>
+            <p>No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Follow registers through fetch and indexed execute</h3>
-            <p>PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p>
+            <h3>Worked example: Read memory, then connect a display / Compare two processors for two workloads</h3>
+            <p>To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA. Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start acc-status -->
-        <section class="panel explanation-panel" id="explanation-acc-status" data-explains="acc-status" data-explanation-kind="process" aria-labelledby="explanation-acc-status-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
-          <h2 class="explanation-sr-only" id="explanation-acc-status-title">ACC and status register: execute-stage evidence</h2>
+        <!-- stage10-explanation:start width -->
+        <section class="panel explanation-panel" id="explanation-width" data-explains="width" data-explanation-kind="mechanism" aria-labelledby="explanation-width-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="width">
+          <h2 class="explanation-sr-only" id="explanation-width-title">Bus width and addressable locations</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-acc-status.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ACC and status register: execute-stage evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">ACC and status register: execute-stage evidence: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-width.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bus width and addressable locations with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bus width and addressable locations: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Accumulator (ACC)</li><li><strong>Lesson fact:</strong> The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</li><li><strong>Lesson fact:</strong> Status register</li><li><strong>Lesson fact:</strong> The status register holds flags that describe the outcome of an operation or the processor state.</li><li><strong>Lesson fact:</strong> Zero flag</li><li><strong>Lesson fact:</strong> Can be set when an operation result is zero. Useful after comparisons or subtraction.</li><li><strong>Lesson fact:</strong> Carry / overflow flags</li><li><strong>Lesson fact:</strong> Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> The status register does not store the calculation result itself. It stores flags about the result.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Address bus width</li><li><strong>Lesson fact:</strong> If the address bus has n lines, it can represent 2^n different addresses.</li><li><strong>Lesson fact:</strong> A 16-bit address bus can address 2^16 = 65,536 memory locations.</li><li><strong>Lesson fact:</strong> Data bus width</li><li><strong>Lesson fact:</strong> A wider data bus can transfer more bits at once, which can affect throughput.</li><li><strong>Lesson fact:</strong> Precision</li><li><strong>Lesson fact:</strong> Address bus width affects address range; data bus width affects transfer size.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end acc-status -->
+        <!-- stage10-explanation:end width -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>General-purpose and special-purpose registers: apply and assess</h2>
+            <h2>System buses, ports and processor performance: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Compare a general-purpose register from a special-purpose register.</p>
-              <details><summary>Show answer</summary><p>A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.</p></details>
+              <p><strong>1.</strong> Which bus carries an address, which carries a value, and which carries read/write signals?</p>
+              <details><summary>Show answer</summary><p>Address bus; data bus; control bus.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> State the roles of PC, MAR, MDR and CIR.</p>
-              <details><summary>Show answer</summary><p>PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.</p></details>
+              <p><strong>2.</strong> Complete a trace table for a memory read using the three buses.</p>
+              <details><summary>Show answer</summary><p>Address on address bus, read signal on control bus, requested data/instruction from memory on data bus.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> State the roles of ACC, IX and the status register.</p>
-              <details><summary>Show answer</summary><p>ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p></details>
+              <p><strong>3.</strong> Which port commonly carries both digital video and audio?</p>
+              <details><summary>Show answer</summary><p>HDMI.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Which general-purpose working register is assumed in Cambridge assembly questions?</p>
-              <details><summary>Show answer</summary><p>The accumulator, ACC.</p></details>
+              <p><strong>4.</strong> Which named port carries analogue video?</p>
+              <details><summary>Show answer</summary><p>VGA.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>5.</strong> Base 120 plus IX 7 gives which indexed effective address?</p>
-              <details><summary>Show answer</summary><p>127.</p></details>
+              <p><strong>5.</strong> Give one USB use or facility.</p>
+              <details><summary>Show answer</summary><p>A digital peripheral connection such as keyboard/storage, often also supplying electrical power.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> What does processor type mean as a performance factor?</p>
+              <details><summary>Show answer</summary><p>The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> Why do more cores not always improve one program?</p>
+              <details><summary>Show answer</summary><p>The program must contain independent threads or tasks that can run in parallel.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> How can bus width affect performance?</p>
+              <details><summary>Show answer</summary><p>A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> Why can cache improve performance?</p>
+              <details><summary>Show answer</summary><p>A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Compare general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
+            <p>Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection. Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>general-purpose register can hold values for varied operations; special-purpose register has a defined role</td><td>Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.</td><td>1</td></tr>
-                  <tr><td>PC next-instruction address and CIR current instruction</td><td></td><td>1</td></tr>
-                  <tr><td>MAR accessed address and MDR transferred data/instruction</td><td></td><td>1</td></tr>
-                  <tr><td>ACC intermediate/final ALU result</td><td></td><td>1</td></tr>
-                  <tr><td>IX offset used in indexed addressing</td><td></td><td>1</td></tr>
-                  <tr><td>status register stores flags about a result or processor state</td><td></td><td>1</td></tr>
+                  <tr><td>address bus carries the required memory/I/O address</td><td>Do not swap the address and data buses or claim that VGA normally carries digital audio. Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.</td><td>1</td></tr>
+                  <tr><td>control bus carries the read signal</td><td></td><td>1</td></tr>
+                  <tr><td>data bus returns the requested data/instruction</td><td></td><td>1</td></tr>
+                  <tr><td>USB matched to a suitable digital peripheral/data/power use</td><td></td><td>1</td></tr>
+                  <tr><td>HDMI matched to digital video and audio</td><td></td><td>1</td></tr>
+                  <tr><td>VGA matched to analogue video without standard audio</td><td></td><td>1</td></tr>
+                  <tr><td>processor type linked to architecture/instruction-set/execution design and workload</td><td></td><td>1</td></tr>
+                  <tr><td>cores linked to available parallel threads/tasks</td><td></td><td>1</td></tr>
+                  <tr><td>bus width linked accurately to bits transferred or address space</td><td></td><td>1</td></tr>
+                  <tr><td>clock speed linked to cycles per second</td><td></td><td>1</td></tr>
+                  <tr><td>cache linked to reducing slower main-memory access</td><td></td><td>1</td></tr>
+                  <tr><td>conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -129,226 +157,327 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 043 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>Registers are tiny, fast, and annoyingly specific.</h2>
+            <h2>The CPU follows a routine. It is not improvising jazz with your instructions.</h2>
             <p>
-              Registers are small storage locations inside the CPU. Cambridge questions
-              rarely reward "it stores data" by itself. They want the exact register,
-              the exact temporary value, and the reason it matters during processing.
+              The fetch-decode-execute cycle is the repeated process used by a CPU to
+              obtain an instruction from memory, interpret it, and carry it out.
+              Cambridge questions often test the exact register sequence, not just the
+              three headline words.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>the roles of PC, CIR, MAR, MDR, ACC and status register</span></div>
-              <div><strong>Apply</strong><span>register roles to fetch and execute scenarios</span></div>
-              <div><strong>Correct</strong><span>common PC/MAR/MDR/CIR and flag misconceptions</span></div>
+              <div><strong>Trace</strong><span>the fetch stage using PC, MAR, MDR and CIR</span></div>
+              <div><strong>Explain</strong><span>what decode and execute do in the cycle</span></div>
+              <div><strong>Correct</strong><span>common sequence and register-role errors</span></div>
             </div>
           </div>
-          <div class="register-card" aria-label="Register sketch">
-            <div class="register-stack">
-              <span>PC -> address of next instruction</span>
-              <span>MAR -> address being accessed</span>
-              <span>MDR -> data/instruction transfer</span>
-              <span>CIR -> current instruction</span>
-              <span>ACC -> intermediate ALU result</span>
-              <span>SR -> flags</span>
+          <div class="fde-card" aria-label="Fetch decode execute cycle">
+            <div class="cycle-ring">
+              <span>FETCH</span>
+              <span>DECODE</span>
+              <span>EXECUTE</span>
             </div>
-            <p>Small storage, strict jobs. That is the whole exam mood.</p>
+            <p>Repeat until the program stops, an interrupt is handled, or something has gone very exam-question-shaped.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Register questions are usually definition marks plus application marks. A vague answer loses both.</p>
+            <p>Marks are often awarded for the correct register and the correct action. A correct name with the wrong job is not enough.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>MAR and MDR are not twins. MAR is for addresses; MDR is for the data or instruction being transferred.</p>
+            <p>Students write "PC stores the instruction". It does not. The PC stores the address of the next instruction.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which register is holding the address, and which is holding the actual thing?</h2>
-            <p>Click the pair that keeps the exam marker calm. The CPU is organised; our answers should be too.</p>
+            <h2>A CPU wants the next instruction. Where does it look first?</h2>
+            <p>Click the best answer. The PC stores the address of the next instruction to be fetched.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="mar-mdr">MAR = address, MDR = data/instruction</button>
-            <button class="choice-card" type="button" data-hook="mdr-mar">MDR = address, MAR = data/instruction</button>
-            <button class="choice-card" type="button" data-hook="pc-cir">PC = current instruction, CIR = next address</button>
-            <button class="choice-card" type="button" data-hook="acc-status">ACC = flags, status register = result</button>
+            <button class="choice-card" type="button" data-hook="pc">Program Counter</button>
+            <button class="choice-card" type="button" data-hook="alu">ALU</button>
+            <button class="choice-card" type="button" data-hook="cir">CIR</button>
+            <button class="choice-card" type="button" data-hook="ssd">Secondary storage</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. The warm-up is really a MAR/MDR identity check.
+            Click one. The first fetch question is usually about where the address comes from.
           </div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+        <section class="panel" id="cycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Why registers exist</h2>
+            <h2>The cycle in one clean sentence</h2>
           </div>
-          <div class="concept-grid">
+          <div class="cycle-grid">
             <article>
-              <strong>Inside the CPU</strong>
-              <span>Registers are located inside the processor, so they can be accessed very quickly.</span>
+              <strong>Fetch</strong>
+              <span>The CPU gets the next instruction from main memory using the address stored in the PC.</span>
             </article>
             <article>
-              <strong>Small capacity</strong>
-              <span>They hold only a small amount of data, usually one value, address, instruction or set of flags.</span>
+              <strong>Decode</strong>
+              <span>The CU interprets the instruction in the CIR and identifies the operation and any operands needed.</span>
             </article>
             <article>
-              <strong>Temporary role</strong>
-              <span>They hold values needed immediately during fetch, decode or execute.</span>
-            </article>
-            <article>
-              <strong>Specific jobs</strong>
-              <span>Different registers are designed for different temporary values.</span>
+              <strong>Execute</strong>
+              <span>The CPU carries out the instruction, for example using the ALU, accessing memory, or changing the PC.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: register = 寄存器；temporary = 临时的；address = 地址；flag = 标志位；intermediate result = 中间结果。</div>
+          <div class="callout">Chinese support: fetch = 取指；decode = 译码；execute = 执行；operand = 操作数；instruction = 指令。</div>
         </section>
 
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why registers exist</h2>
+        <!-- stage10-explanation:start cycle -->
+        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+          <h2 class="explanation-sr-only" id="explanation-cycle-title">The cycle in one clean sentence</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why registers exist with a structured visual model." />
-            <figcaption class="explanation-sr-only">Why registers exist: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The cycle in one clean sentence with a structured visual model." />
+            <figcaption class="explanation-sr-only">The cycle in one clean sentence: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Inside the CPU</li><li><strong>Lesson fact:</strong> Registers are located inside the processor, so they can be accessed very quickly.</li><li><strong>Lesson fact:</strong> Small capacity</li><li><strong>Lesson fact:</strong> They hold only a small amount of data, usually one value, address, instruction or set of flags.</li><li><strong>Lesson fact:</strong> Temporary role</li><li><strong>Lesson fact:</strong> They hold values needed immediately during fetch, decode or execute.</li><li><strong>Lesson fact:</strong> Specific jobs</li><li><strong>Lesson fact:</strong> Different registers are designed for different temporary values.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> The CPU gets the next instruction from main memory using the address stored in the PC.</li><li><strong>Lesson fact:</strong> The CU interprets the instruction in the CIR and identifies the operation and any operands needed.</li><li><strong>Lesson fact:</strong> The CPU carries out the instruction, for example using the ALU, accessing memory, or changing the PC.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="main-registers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+        <!-- stage10-explanation:end cycle -->
+        <section class="panel visual-explainer" id="cycle-visual" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Trace one instruction through the fetch stage</h2>
+            <p>Read left to right. The labels name what is held or transferred, so the register names are tied to a job rather than memorised as a list.</p>
+          </div>
+          <figure class="concept-figure">
+            <svg class="concept-svg" viewBox="0 0 960 510" role="img" aria-labelledby="cycleTraceTitle cycleTraceDesc">
+              <title id="cycleTraceTitle">Fetch, decode and execute register sequence</title>
+              <desc id="cycleTraceDesc">The Program Counter address is copied to the Memory Address Register. Memory is read and returns the instruction to the Memory Data Register. The instruction is copied to the Current Instruction Register, the Program Counter is incremented, the Control Unit decodes the instruction, and the CPU executes it before repeating the cycle.</desc>
+              <defs><marker id="cycleArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb" /></marker></defs>
+              <g>
+                <rect class="svg-node svg-node--accent" x="20" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--warm" x="180" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--ink" x="340" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--green" x="500" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--accent" x="660" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--warm" x="820" y="100" width="120" height="108" rx="17" />
+                <text class="svg-node-label" x="85" y="140">PC</text><text class="svg-node-detail" x="85" y="168">next address</text><text class="svg-node-detail" x="85" y="190">then increment</text>
+                <text class="svg-node-label" x="245" y="140">MAR</text><text class="svg-node-detail" x="245" y="168">address being</text><text class="svg-node-detail" x="245" y="190">accessed</text>
+                <text class="svg-node-label svg-on-dark" x="405" y="140">Memory</text><text class="svg-node-detail svg-on-dark" x="405" y="168">read instruction</text>
+                <text class="svg-node-label" x="565" y="140">MDR</text><text class="svg-node-detail" x="565" y="168">transferred</text><text class="svg-node-detail" x="565" y="190">instruction</text>
+                <text class="svg-node-label" x="725" y="140">CIR</text><text class="svg-node-detail" x="725" y="168">current</text><text class="svg-node-detail" x="725" y="190">instruction</text>
+                <text class="svg-node-label" x="880" y="140">CU</text><text class="svg-node-detail" x="880" y="168">decode</text>
+              </g>
+              <g class="svg-line" marker-end="url(#cycleArrow)">
+                <path d="M150 154 H180" /><path d="M310 154 H340" /><path d="M470 154 H500" /><path d="M630 154 H660" /><path d="M790 154 H820" />
+              </g>
+              <g aria-hidden="true">
+                <circle class="svg-badge" cx="165" cy="118" r="17" /><text class="svg-badge-text" x="165" y="118">1</text>
+                <circle class="svg-badge" cx="325" cy="118" r="17" /><text class="svg-badge-text" x="325" y="118">2</text>
+                <circle class="svg-badge" cx="485" cy="118" r="17" /><text class="svg-badge-text" x="485" y="118">3</text>
+                <circle class="svg-badge" cx="645" cy="118" r="17" /><text class="svg-badge-text" x="645" y="118">4</text>
+                <circle class="svg-badge" cx="805" cy="118" r="17" /><text class="svg-badge-text" x="805" y="118">5</text>
+              </g>
+              <rect class="svg-node svg-node--green" x="298" y="320" width="364" height="104" rx="20" />
+              <text class="svg-node-label" x="480" y="357">Execute</text>
+              <text class="svg-node-detail" x="480" y="385">ALU operation · memory access · data movement · branch</text>
+              <path class="svg-line svg-line--green" d="M880 208 C880 282 660 282 660 320" marker-end="url(#cycleArrow)" />
+              <path class="svg-line svg-line--dashed" d="M298 372 C168 372 85 316 85 208" marker-end="url(#cycleArrow)" />
+              <text class="svg-node-detail" x="178" y="350">repeat for the next instruction</text>
+            </svg>
+            <ol class="visual-steps">
+              <li><strong>1. PC → MAR</strong><span>Copy the address of the next instruction into the MAR.</span></li>
+              <li><strong>2. Memory read</strong><span>Send the address and a read signal; return the instruction to the MDR.</span></li>
+              <li><strong>3. MDR → CIR</strong><span>Move the fetched instruction into the CIR and increment the PC.</span></li>
+              <li><strong>4. Decode, execute, repeat</strong><span>The CU decodes; the CPU performs the instruction; the cycle starts again.</span></li>
+            </ol>
+          </figure>
+          <details class="diagram-check">
+            <summary>Check the diagram: why is the instruction copied to the CIR before decoding?</summary>
+            <p>The CIR holds the current instruction so the control unit can decode its opcode and identify any operands or addresses needed for execution.</p>
+          </details>
+        </section>
+
+        <!-- stage10-explanation:start cycle-visual -->
+        <section class="panel explanation-panel" id="explanation-cycle-visual" data-explains="cycle-visual" data-explanation-kind="process" aria-labelledby="explanation-cycle-visual-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+          <h2 class="explanation-sr-only" id="explanation-cycle-visual-title">Trace one instruction through the fetch stage</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-cycle-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace one instruction through the fetch stage with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace one instruction through the fetch stage: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Copy the next-instruction address from PC to MAR and read the instruction from memory into MDR.</li><li><strong>Lesson fact:</strong> Move the fetched instruction from MDR to CIR.</li><li><strong>Lesson fact:</strong> Increment PC independently so that PC points to the next instruction.</li><li><strong>Lesson fact:</strong> PC does not feed CIR; only the instruction held in MDR is transferred to CIR.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cycle-visual -->
+        <section class="panel" id="fetch" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>The six register roles</h2>
+            <h2>Fetch stage: the register sequence</h2>
+            <p>This is the part students must be able to trace precisely.</p>
           </div>
-          <div class="register-table" role="table" aria-label="Register roles">
+          <div class="sequence-table" role="table" aria-label="Fetch stage sequence">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Register</div>
-              <div role="columnheader">Full name</div>
-              <div role="columnheader">What it holds</div>
-              <div role="columnheader">Exam-safe sentence</div>
+              <div role="columnheader">Step</div>
+              <div role="columnheader">Action</div>
+              <div role="columnheader">Register / bus focus</div>
+              <div role="columnheader">Exam-safe wording</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">PC</div>
-              <div role="cell">Program Counter</div>
-              <div role="cell">Address of the next instruction to be fetched.</div>
-              <div role="cell">The PC is updated so the CPU knows where to fetch the next instruction.</div>
+              <div role="cell">1</div>
+              <div role="cell">Address copied from PC to MAR.</div>
+              <div role="cell">PC -> MAR</div>
+              <div role="cell">The PC contains the address of the next instruction; this address is copied to the MAR.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">CIR</div>
-              <div role="cell">Current Instruction Register</div>
-              <div role="cell">Instruction currently being decoded/executed.</div>
-              <div role="cell">The CIR holds the fetched instruction while the CU decodes it.</div>
+              <div role="cell">2</div>
+              <div role="cell">Address sent to memory.</div>
+              <div role="cell">Address bus</div>
+              <div role="cell">The address in the MAR is placed on the address bus.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">MAR</div>
-              <div role="cell">Memory Address Register</div>
-              <div role="cell">Address of a memory location being accessed.</div>
-              <div role="cell">The MAR holds the memory address that is placed on the address bus.</div>
+              <div role="cell">3</div>
+              <div role="cell">Memory read signal is sent.</div>
+              <div role="cell">Control bus</div>
+              <div role="cell">The CU sends a read signal on the control bus.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">MDR</div>
-              <div role="cell">Memory Data Register</div>
-              <div role="cell">Data or instruction being transferred to/from memory.</div>
-              <div role="cell">The MDR temporarily holds the value read from memory or being written to memory.</div>
+              <div role="cell">4</div>
+              <div role="cell">Instruction is returned to CPU.</div>
+              <div role="cell">Data bus -> MDR</div>
+              <div role="cell">The instruction from memory is transferred on the data bus to the MDR.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">ACC</div>
-              <div role="cell">Accumulator</div>
-              <div role="cell">Intermediate or final result of ALU operations.</div>
-              <div role="cell">The ACC stores the result produced by the ALU during processing.</div>
+              <div role="cell">5</div>
+              <div role="cell">Instruction copied into CIR.</div>
+              <div role="cell">MDR -> CIR</div>
+              <div role="cell">The instruction is copied from the MDR to the CIR for decoding.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">SR</div>
-              <div role="cell">Status register</div>
-              <div role="cell">Flags showing information about the result or CPU state.</div>
-              <div role="cell">The status register stores flags such as zero, carry, overflow or negative.</div>
+              <div role="cell">6</div>
+              <div role="cell">PC updated.</div>
+              <div role="cell">PC increment</div>
+              <div role="cell">The PC is incremented so it points to the next instruction, unless the instruction changes the sequence.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start main-registers -->
-        <section class="panel explanation-panel" id="explanation-main-registers" data-explains="main-registers" data-explanation-kind="mechanism" aria-labelledby="explanation-main-registers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
-          <h2 class="explanation-sr-only" id="explanation-main-registers-title">The seven named register roles</h2>
+        <!-- stage10-explanation:start fetch -->
+        <section class="panel explanation-panel" id="explanation-fetch" data-explains="fetch" data-explanation-kind="process" aria-labelledby="explanation-fetch-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+          <h2 class="explanation-sr-only" id="explanation-fetch-title">Fetch stage: the register sequence</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The seven named register roles with a structured visual model." />
-            <figcaption class="explanation-sr-only">The seven named register roles: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-fetch.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Fetch stage: the register sequence with a structured visual model." />
+            <figcaption class="explanation-sr-only">Fetch stage: the register sequence: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> PC holds the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> CIR holds the instruction currently being decoded or executed.</li><li><strong>Lesson fact:</strong> MAR holds the address of the memory location being accessed.</li><li><strong>Lesson fact:</strong> MDR holds data or an instruction being transferred to or from memory.</li><li><strong>Lesson fact:</strong> ACC holds an intermediate or final ALU result.</li><li><strong>Lesson fact:</strong> IX holds an offset used in indexed addressing.</li><li><strong>Lesson fact:</strong> The status register holds flags about a result or processor state.</li><li><strong>Lesson fact:</strong> A general-purpose register can hold varied working values; a special-purpose register has a defined processor role.</li><li><strong>Lesson fact:</strong> Cambridge assembly questions assume ACC is the available general-purpose working register.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> This is the part students must be able to trace precisely.</li><li><strong>Lesson fact:</strong> Register / bus focus</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Address copied from PC to MAR.</li><li><strong>Lesson fact:</strong> PC -&gt; MAR</li><li><strong>Lesson fact:</strong> The PC contains the address of the next instruction; this address is copied to the MAR.</li><li><strong>Lesson fact:</strong> Address sent to memory.</li><li><strong>Lesson fact:</strong> Address bus</li><li><strong>Lesson fact:</strong> The address in the MAR is placed on the address bus.</li><li><strong>Lesson fact:</strong> Memory read signal is sent.</li><li><strong>Lesson fact:</strong> Control bus</li><li><strong>Lesson fact:</strong> The CU sends a read signal on the control bus.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end main-registers -->
-        <section class="panel" id="acc-status" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+        <!-- stage10-explanation:end fetch -->
+        <section class="panel" id="decode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>ACC and status register: execute-stage evidence</h2>
+            <h2>Decode and execute are not filler words</h2>
           </div>
           <div class="component-grid">
             <article>
-              <h3>Accumulator (ACC)</h3>
-              <p>The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</p>
+              <h3>Decode</h3>
+              <p>The control unit interprets the instruction in the CIR. It identifies the opcode, decides what operation is required, and identifies any operands or addresses needed.</p>
             </article>
             <article>
-              <h3>Status register</h3>
-              <p>The status register holds flags that describe the outcome of an operation or the processor state.</p>
+              <h3>Execute: arithmetic or logic</h3>
+              <p>If the instruction is arithmetic or logical, the ALU performs the operation and a result may be stored in a register.</p>
             </article>
             <article>
-              <h3>Zero flag</h3>
-              <p>Can be set when an operation result is zero. Useful after comparisons or subtraction.</p>
+              <h3>Execute: memory access</h3>
+              <p>If the instruction needs data from memory, the CPU uses buses and registers to read from or write to the required memory address.</p>
             </article>
             <article>
-              <h3>Carry / overflow flags</h3>
-              <p>Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.</p>
+              <h3>Execute: branch</h3>
+              <p>If the instruction is a branch/jump, the PC may be changed to a different address rather than just continuing with the next instruction.</p>
             </article>
           </div>
           <div class="trap-card inline-card">
             <h3>Common error</h3>
-            <p>The status register does not store the calculation result itself. It stores flags about the result.</p>
+            <p>"Execute" does not always mean "ALU does maths". Some instructions move data, access memory or change the PC.</p>
           </div>
         </section>
 
+        <!-- stage10-explanation:start decode -->
+        <section class="panel explanation-panel" id="explanation-decode" data-explains="decode" data-explanation-kind="mechanism" aria-labelledby="explanation-decode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+          <h2 class="explanation-sr-only" id="explanation-decode-title">Decode and execute are not filler words</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-decode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Decode and execute are not filler words with a structured visual model." />
+            <figcaption class="explanation-sr-only">Decode and execute are not filler words: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The control unit interprets the instruction in the CIR. It identifies the opcode, decides what operation is required, and identifies any operands or addresses needed.</li><li><strong>Lesson fact:</strong> Execute: arithmetic or logic</li><li><strong>Lesson fact:</strong> If the instruction is arithmetic or logical, the ALU performs the operation and a result may be stored in a register.</li><li><strong>Lesson fact:</strong> Execute: memory access</li><li><strong>Lesson fact:</strong> If the instruction needs data from memory, the CPU uses buses and registers to read from or write to the required memory address.</li><li><strong>Lesson fact:</strong> Execute: branch</li><li><strong>Lesson fact:</strong> If the instruction is a branch/jump, the PC may be changed to a different address rather than just continuing with the next instruction.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> &quot;Execute&quot; does not always mean &quot;ALU does maths&quot;. Some instructions move data, access memory or change the PC.</li></ol>
 
+          </div>
+        </section>
+        <!-- stage10-explanation:end decode -->
+        <section class="panel" id="registers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+          <div class="section-title">
+            <p class="eyebrow">Register roles</p>
+            <h2>The four fetch-stage names you cannot blur together</h2>
+          </div>
+          <div class="register-grid">
+            <article><strong>PC</strong><span>Program Counter: stores the address of the next instruction to be fetched.</span></article>
+            <article><strong>MAR</strong><span>Memory Address Register: stores the address of the memory location being accessed.</span></article>
+            <article><strong>MDR</strong><span>Memory Data Register: stores data or an instruction being transferred to or from memory.</span></article>
+            <article><strong>CIR</strong><span>Current Instruction Register: stores the instruction currently being decoded/executed.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start registers -->
+        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="process" aria-labelledby="explanation-registers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
+          <h2 class="explanation-sr-only" id="explanation-registers-title">The four fetch-stage names you cannot blur together</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The four fetch-stage names you cannot blur together with a structured visual model." />
+            <figcaption class="explanation-sr-only">The four fetch-stage names you cannot blur together: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Register roles</li><li><strong>Lesson fact:</strong> PC Program Counter: stores the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> MAR Memory Address Register: stores the address of the memory location being accessed.</li><li><strong>Lesson fact:</strong> MDR Memory Data Register: stores data or an instruction being transferred to or from memory.</li><li><strong>Lesson fact:</strong> CIR Current Instruction Register: stores the instruction currently being decoded/executed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end registers -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Register role mapper</h2>
-            <p>Select a register to check what it holds, when it is used and the common wording error.</p>
+            <h2>Fetch stage sequencer</h2>
+            <p>Select a step and check what moves, where it moves, and which register or bus matters.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Register
-              <select id="registerInput">
-                <option value="pc">PC</option>
-                <option value="cir">CIR</option>
-                <option value="mar">MAR</option>
-                <option value="mdr">MDR</option>
-                <option value="acc">ACC</option>
-                <option value="sr">Status register</option>
+              Fetch step
+              <select id="stepInput">
+                <option value="s1">1. PC to MAR</option>
+                <option value="s2">2. Address to memory</option>
+                <option value="s3">3. Read signal</option>
+                <option value="s4">4. Instruction to MDR</option>
+                <option value="s5">5. MDR to CIR</option>
+                <option value="s6">6. Increment PC</option>
               </select>
             </label>
-            <button type="button" id="mapBtn">Map role</button>
+            <button type="button" id="stepBtn">Show step</button>
           </div>
-          <div class="result-box" id="mapResult" aria-live="polite"></div>
-          <div class="method-box" id="mapMethod"></div>
-          <div class="reject-box" id="mapTrap"></div>
+          <div class="result-box" id="stepResult" aria-live="polite"></div>
+          <div class="method-box" id="stepMethod"></div>
+          <div class="reject-box" id="stepTrap"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Use the register when it does work</h2>
+            <h2>Trace the mechanism, not just the slogan</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="fetch">Fetch roles</button>
-            <button class="tab" type="button" data-example="addition">ACC and flags</button>
-            <button class="tab" type="button" data-example="compare">Compare registers</button>
+            <button class="tab active" type="button" data-example="fetch">Fetch trace</button>
+            <button class="tab" type="button" data-example="branch">Branch instruction</button>
+            <button class="tab" type="button" data-example="compare">Weak vs strong</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -357,7 +486,7 @@
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
-            <p>Answer with the register name or full name. The page will not accept "the little CPU box thing", even though that has emotional honesty.</p>
+            <p>Short answers are fine; vague answers are not. A register name without a role is just alphabet soup.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -365,7 +494,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair the register role</h2>
+            <h2>Fix the sequence</h2>
           </div>
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
@@ -374,7 +503,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS wording separates definition marks from role-in-context marks.</p>
+            <p>These are original Cambridge-style questions. MS wording is strict about register roles and sequence.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -382,36 +511,36 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>One line per register</h2>
+            <h2>Fetch, decode, execute, repeat</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>PC</strong><span>Address of next instruction.</span></div>
-            <div><strong>CIR</strong><span>Current instruction being decoded/executed.</span></div>
-            <div><strong>MAR</strong><span>Memory address being accessed.</span></div>
-            <div><strong>MDR</strong><span>Data/instruction transferred to or from memory.</span></div>
-            <div><strong>ACC</strong><span>Intermediate or final ALU result.</span></div>
-            <div><strong>Status register</strong><span>Flags about result or CPU state.</span></div>
+            <div><strong>Fetch</strong><span>Use PC address to get the instruction from memory into the CIR.</span></div>
+            <div><strong>Decode</strong><span>The CU interprets the instruction and identifies operation/operands.</span></div>
+            <div><strong>Execute</strong><span>The CPU carries out the operation, possibly using ALU, memory or PC changes.</span></div>
+            <div><strong>PC</strong><span>Holds the address of the next instruction.</span></div>
+            <div><strong>MAR/MDR</strong><span>MAR holds address; MDR holds transferred data or instruction.</span></div>
+            <div><strong>CIR</strong><span>Holds the current instruction for decoding/execution.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Make each register answer-ready</h2>
+            <h2>Make the cycle sequence exam-ready</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a six-row table for PC, CIR, MAR, MDR, ACC and status register. Include full name, what it holds and one exam-safe sentence.</li>
-            <li>Answer a 6-mark question: "Describe the roles of three registers used during the fetch-decode-execute cycle."</li>
-            <li>Write a short trace of an addition instruction that uses ACC and status register flags.</li>
-            <li>Correct these pairs: "PC holds current instruction"; "MDR holds the memory address"; "status register holds the result".</li>
-            <li>Make five flashcards that include English term first and Chinese support second.</li>
+            <li>Write the fetch stage as six numbered steps using PC, MAR, MDR, CIR, address bus, data bus and control bus.</li>
+            <li>Answer a 5-mark question: "Describe the fetch stage of the fetch-decode-execute cycle."</li>
+            <li>Create a two-column table comparing PC, MAR, MDR and CIR. One column must state what each register holds.</li>
+            <li>Write two execute-stage examples: one ALU instruction and one branch instruction.</li>
+            <li>Correct this sentence: "The PC stores the instruction and sends it to the CIR."</li>
           </ol>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

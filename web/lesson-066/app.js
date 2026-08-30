@@ -1,103 +1,103 @@
 const scenarioMap = {
-  studentOwn: {
-    result: "Allow: read own timetable.",
-    method: "The student needs this information for normal school work, and read-only access does not let them alter data.",
-    trap: "Do not grant wider access to all student records just because the user is authenticated.",
+  student: {
+    result: "Suitable: username and password, with recovery controls.",
+    method: "For low to medium risk school portal access, passwords are familiar and cheap to manage. A sensible policy and reset process matter.",
+    trap: "Do not demand biometrics for every low-risk system; proportionality is part of good security.",
   },
-  studentMarks: {
-    result: "Deny: no write permission for exam marks.",
-    method: "Editing marks is not required for the student role and would threaten data integrity.",
-    trap: "Do not confuse viewing a result with being allowed to modify the official record.",
+  bank: {
+    result: "Suitable: MFA, such as password plus app/token code.",
+    method: "Banking is high risk. A password proves something the user knows, while a token/app code proves something the user has.",
+    trap: "Do not call two passwords MFA. MFA needs different factor categories.",
   },
-  teacherClass: {
-    result: "Allow: write marks for own class only.",
-    method: "The teacher role needs write access for assigned classes, but should not have unnecessary access to unrelated classes.",
-    trap: "Do not give all teachers global admin access; least privilege still applies.",
+  lab: {
+    result: "Suitable: biometric plus card/token, depending on policy.",
+    method: "A secure door can use a biometric to verify the person and a token/card to prove possession of an issued credential.",
+    trap: "Do not ignore false reject and backup access procedures; authorised staff still need a way in when sensors fail.",
   },
-  teacherAll: {
-    result: "Deny: excessive confidential access.",
-    method: "Viewing all medical records is not needed for ordinary teaching and would risk confidentiality.",
-    trap: "Do not solve this with encryption alone; permission rules still decide who may view the data.",
+  shared: {
+    result: "Suitable: individual login, not a shared password.",
+    method: "Each user should authenticate separately so activity can be linked to an account and passwords are not shared.",
+    trap: "Detailed permissions are Lesson 067 territory; here the key point is identifying the user before access.",
   },
-  adminTemp: {
-    result: "Deny permanent admin; allow time-limited specific rights if justified.",
-    method: "Temporary work should receive only the permissions needed for the task and then be removed.",
-    trap: "Do not leave temporary privileges active after the job is complete.",
+  remote: {
+    result: "Suitable: MFA for remote access.",
+    method: "Remote access has higher exposure, so a stolen password alone should not be enough to log in.",
+    trap: "Do not say MFA prevents all attacks; it reduces account takeover risk and still needs user education and recovery planning.",
   },
 };
 
 const examples = {
-  grades: {
-    title: "Example 1: Exam marks in a school database",
-    problem: "Students can view final published results but cannot change marks.",
+  password: {
+    title: "Example 1: Password login for a school account",
+    problem: "A student logs into a homework portal using a username and password.",
     steps: [
-      "Students may receive read access to their own published result.",
-      "They must not receive write access to marks because that would threaten integrity.",
-      "Teachers may write marks only for their own classes.",
-      "Audit logs can record who changed a mark and when.",
+      "The username identifies the claimed account.",
+      "The password is a credential: something the user knows.",
+      "The system compares the entered password with stored verification data, often a hash rather than plaintext.",
+      "Weaknesses include guessing, reuse, sharing, phishing and forgotten passwords.",
     ],
   },
-  files: {
-    title: "Example 2: Shared project files",
-    problem: "A project team shares files with managers, editors and viewers.",
+  biometric: {
+    title: "Example 2: Fingerprint access to a secure room",
+    problem: "Staff place a finger on a scanner before entering a restricted room.",
     steps: [
-      "Viewers receive read permission so they can see the file but not edit it.",
-      "Editors receive write permission because changing the file is part of their role.",
-      "Only selected managers may delete archived files.",
-      "This limits accidental deletion and protects availability.",
+      "The fingerprint is a biometric: something the user is.",
+      "It is quick and cannot be forgotten like a password.",
+      "It needs hardware sensors and stored biometric templates.",
+      "False reject may block a valid user; false accept may allow an unauthorised user.",
     ],
   },
-  temporary: {
-    title: "Example 3: Temporary technician",
-    problem: "A technician needs to install software on ten computers for one afternoon.",
+  token: {
+    title: "Example 3: One-time code from an authenticator app",
+    problem: "A user enters a changing six-digit code during login.",
     steps: [
-      "Grant the minimum admin rights needed for that task.",
-      "Limit the permission by time, device or task where possible.",
-      "Remove the permission after the installation is complete.",
-      "Leaving admin rights active increases the damage if the account is misused.",
+      "The code is evidence that the user has the token/app device.",
+      "A one-time or time-limited code is harder to reuse later.",
+      "It can reduce risk if a password has been stolen.",
+      "Limitations include lost devices, dead batteries, clock issues and recovery support.",
     ],
   },
-  leaver: {
-    title: "Example 4: Employee leaves the company",
-    problem: "A staff member leaves but their account still has access to customer records.",
+  mfa: {
+    title: "Example 4: Password plus phone approval for remote access",
+    problem: "A remote worker enters a password and approves a login request on a registered phone.",
     steps: [
-      "The account should be disabled or removed when the user leaves.",
-      "Any shared credentials should be changed or revoked.",
-      "This prevents later unauthorised viewing or changing of customer data.",
-      "A leaver process supports confidentiality, integrity and accountability.",
+      "This is MFA because it combines something known with something possessed.",
+      "A stolen password alone is not enough for access.",
+      "It reduces the risk of unauthorised access from phishing or password reuse.",
+      "It can increase friction and needs fallback procedures if the phone is lost.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the term for a permission to perform an action on a resource?", accepted: ["access right", "access rights", "permission"], answer: "Access right / permission" },
-  { id: "p2", prompt: "Which permission allows a user to view data but not change it?", accepted: ["read", "read access", "read permission"], answer: "Read permission" },
-  { id: "p3", prompt: "Which permission allows a user to change data?", accepted: ["write", "modify", "write access", "write permission", "modify permission"], answer: "Write / modify permission" },
-  { id: "p4", prompt: "What principle means users should receive only the permissions needed for their role?", accepted: ["least privilege", "principle of least privilege", "minimum privilege"], answer: "Principle of least privilege" },
-  { id: "p5", prompt: "Does successful authentication automatically mean full access? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p6", prompt: "Name one security goal protected by restricting read access.", accepted: ["confidentiality"], answer: "Confidentiality" },
-  { id: "p7", prompt: "Name one security goal protected by restricting write access.", accepted: ["integrity"], answer: "Integrity" },
-  { id: "p8", prompt: "What is a job-based permission set called?", accepted: ["role", "role based access", "role-based access", "rbac"], answer: "Role / role-based access" },
-  { id: "p9", prompt: "What record can show who accessed or changed data?", accepted: ["audit log", "log", "access log", "audit trail"], answer: "Audit log / access log / audit trail" },
-  { id: "p10", prompt: "Name one action needed when a user leaves an organisation.", accepted: ["disable account", "remove account", "revoke access", "remove permissions", "delete account", "change password"], answer: "Disable/remove account, revoke permissions or change shared credentials" },
+  { id: "p1", prompt: "What is the term for verifying that a user is who they claim to be?", accepted: ["authentication"], answer: "Authentication" },
+  { id: "p2", prompt: "What is the term for deciding what an authenticated user is allowed to access?", accepted: ["authorisation", "authorization"], answer: "Authorisation / authorization" },
+  { id: "p3", prompt: "A password is which factor type: know, have or are?", accepted: ["know", "something you know"], answer: "Something you know" },
+  { id: "p4", prompt: "A security token is which factor type: know, have or are?", accepted: ["have", "something you have"], answer: "Something you have" },
+  { id: "p5", prompt: "A fingerprint is which factor type: know, have or are?", accepted: ["are", "something you are"], answer: "Something you are" },
+  { id: "p6", prompt: "What does MFA stand for?", accepted: ["multi factor authentication", "multi-factor authentication", "multifactor authentication"], answer: "Multi-factor authentication" },
+  { id: "p7", prompt: "Does password plus PIN necessarily count as MFA? Answer yes or no.", accepted: ["no"], answer: "No. Both are usually something you know." },
+  { id: "p8", prompt: "Name one biometric example.", accepted: ["fingerprint", "face", "facial recognition", "iris", "retina", "voice", "typing pattern"], answer: "Fingerprint, face, iris, retina, voice or typing pattern" },
+  { id: "p9", prompt: "Name one limitation of biometrics.", accepted: ["false accept", "false reject", "privacy", "sensor", "cost", "cannot be changed", "template"], answer: "False accept/reject, privacy concerns, sensor cost/failure, stored template risk or cannot easily be changed" },
+  { id: "p10", prompt: "Name one limitation of tokens.", accepted: ["lost", "stolen", "damaged", "battery", "unavailable", "forgotten", "network"], answer: "Lost, stolen, damaged, unavailable, dead battery, forgotten device or network/app issue" },
 ];
 
 const mistakes = [
   {
-    wrong: "If a user has logged in, they should be able to access all data.",
-    fix: "Logging in authenticates identity. Access rights still limit what the user is authorised to view or change.",
+    wrong: "Authentication and authorisation mean the same thing.",
+    fix: "Authentication verifies identity. Authorisation decides what an authenticated identity is allowed to access or do.",
   },
   {
-    wrong: "Least privilege means no one should have administrator rights.",
-    fix: "Least privilege means users get only the permissions needed for their role. Some administrators need admin rights, but not everyone and not permanently.",
+    wrong: "A password plus a PIN is always multi-factor authentication.",
+    fix: "Usually both are something the user knows. MFA requires different factor categories, such as password plus token.",
   },
   {
-    wrong: "Read and write permissions protect the same thing.",
-    fix: "Restricting read access mainly protects confidentiality. Restricting write or delete access mainly protects integrity and availability.",
+    wrong: "Biometrics are always more secure because they cannot be forgotten.",
+    fix: "Biometrics are convenient, but they need sensors, can have false accepts/rejects and cannot be changed easily if compromised.",
   },
   {
-    wrong: "Temporary permissions can be left active in case they are useful later.",
-    fix: "Temporary permissions should be removed when no longer needed; stale privileges increase risk if the account is misused.",
+    wrong: "MFA makes unauthorised access impossible.",
+    fix: "MFA reduces risk because one stolen credential is not enough, but recovery weaknesses, phishing and lost tokens can still cause problems.",
   },
 ];
 
@@ -111,93 +111,93 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Explain the difference between authentication and access rights.",
-    answer: "Authentication verifies a user's identity, for example by checking a password or token. Access rights define what that authenticated user is allowed to do, such as read, write or delete a file. A user may log in successfully but still be denied permission to edit exam marks. This separation helps protect data by limiting actions to those required for the user's role.",
+    prompt: "Explain the role of a user account, then Compare authentication from authorisation.",
+    answer: "A user account provides a distinct system identity and supports accountability for access and actions. Authentication verifies the account user's identity claim, for example by checking a password, biometric or token. Authorisation happens after identity is established and determines what the authenticated account is allowed to access or do. A student account may authenticate successfully but still lack permission to edit examination results.",
     marking: [
-      { mark: "B1", text: "authentication verifies identity/claim of user" },
-      { mark: "B1", text: "access rights define allowed actions/resources" },
-      { mark: "B1", text: "valid permission example such as read/write/delete/execute" },
-      { mark: "B1", text: "logged-in user may still be denied an action" },
-      { mark: "B1", text: "security consequence linked to limiting role-based actions" },
+      { mark: "B1", text: "user account provides a distinct system identity and/or accountability" },
+      { mark: "B1", text: "authentication verifies the identity claim of the account/user" },
+      { mark: "B1", text: "valid authentication credential example, e.g. password/biometric/token" },
+      { mark: "B1", text: "authorisation controls permitted access/actions/resources" },
+      { mark: "B1", text: "authorisation follows authentication / successful login does not grant every permission" },
     ],
     strict: [
-      "Do not accept definitions that make authentication and access rights identical.",
-      "Do not award permission example for only 'secure'.",
-      "Allow authorisation as the process of checking access rights.",
+      "Do not accept definitions that make both terms identical.",
+      "Do not award authorisation mark for only 'logging in'.",
+      "Allow authorization spelling.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A school database stores student records and exam marks. Describe how access rights should be used for students, teachers and administrators.",
-    answer: "Students should have read access only to their own permitted information and no write access to exam marks. Teachers should have access to records and marks needed for their own classes, with write access only where entering or updating marks is part of their role. Administrators should manage accounts and system settings but should not automatically have unlimited access to all sensitive data unless required. This applies least privilege and protects confidentiality and integrity.",
+    prompt: "Compare passwords and biometrics as authentication methods.",
+    answer: "A password is something a user knows, while a biometric is something a user is, such as a fingerprint or iris pattern. Passwords are cheap and familiar but can be guessed, reused, shared, phished or forgotten. Biometrics are convenient and cannot be forgotten in the same way, but require sensors and stored templates. Biometrics may also falsely reject valid users or falsely accept unauthorised users, and cannot easily be changed if compromised.",
     marking: [
-      { mark: "B1", text: "students limited to own/read-only relevant information" },
-      { mark: "B1", text: "students denied write access to marks or sensitive records" },
-      { mark: "B1", text: "teachers given class/role-related access" },
-      { mark: "B1", text: "teacher write access limited to relevant marks/data" },
-      { mark: "B1", text: "administrator permissions described without assuming unlimited data access" },
-      { mark: "B1", text: "least privilege/security goal linked to confidentiality/integrity" },
+      { mark: "B1", text: "password classified as something user knows" },
+      { mark: "B1", text: "biometric classified as something user is with valid example" },
+      { mark: "B1", text: "password advantage such as cheap/familiar/easy to implement/change" },
+      { mark: "B1", text: "password limitation such as guessed/reused/shared/phished/forgotten" },
+      { mark: "B1", text: "biometric advantage such as convenient/not forgotten/hard to share casually" },
+      { mark: "B1", text: "biometric limitation such as sensor/templates/privacy/false accept/false reject/cannot change" },
     ],
     strict: [
-      "Do not award full marks for saying 'give each user a password' only.",
-      "Do not accept unlimited administrator access without role justification.",
-      "Allow groups or roles as a way to manage the access rights.",
-      "Award each role independently.",
+      "Do not accept 'biometrics are perfect' as an advantage.",
+      "Do not award password limitation for vague 'not safe' without mechanism.",
+      "Allow face/fingerprint/iris/voice as biometric examples.",
     ],
   },
   {
     title: "Question 3",
-    marks: "3 marks",
-    prompt: "Explain the principle of least privilege and give two benefits.",
-    answer: "The principle of least privilege means giving users only the minimum permissions needed to perform their role or task. It reduces confidentiality risk because users cannot view unnecessary sensitive data. It reduces integrity risk because users cannot change data outside their responsibility. It can also reduce damage from compromised accounts because the attacker receives only the permissions of that account.",
+    marks: "4 marks",
+    prompt: "Explain why multi-factor authentication can reduce the risk of unauthorised access.",
+    answer: "Multi-factor authentication requires evidence from two or more different factor categories, such as a password and a token code. If an attacker steals or guesses the password, they still need the second factor. This reduces the risk of account takeover from password reuse or phishing. However, it does not remove all risk because tokens can be lost, stolen or users may still be tricked.",
     marking: [
-      { mark: "B1", text: "least privilege means minimum permissions needed for role/task" },
-      { mark: "B1", text: "benefit linked to confidentiality/read restriction" },
-      { mark: "B1", text: "benefit linked to integrity/write/change restriction" },
+      { mark: "B1", text: "MFA uses two or more different factor categories" },
+      { mark: "B1", text: "valid example with different categories, e.g. password plus token/biometric" },
+      { mark: "B1", text: "stolen/guessed password alone is insufficient" },
+      { mark: "B1", text: "risk of unauthorised access/account takeover is reduced" },
     ],
     strict: [
-      "Do not accept 'no access for everyone' as least privilege.",
-      "Do not award benefits for vague 'more secure' without mechanism.",
-      "Allow availability benefit if delete/admin rights are restricted.",
+      "Do not accept two passwords as MFA unless a different factor is also present.",
+      "Do not accept 'makes it impossible to hack' as the risk explanation.",
+      "Allow 2FA as a form of MFA when two different factor categories are used.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A temporary worker needs access to a folder for one week. Describe how the permissions should be managed.",
-    answer: "The worker should be given only the permissions needed for the task, such as read or write access to the specific folder rather than wider system access. The permissions should be time-limited or reviewed at the end of the week. They should be removed when the task ends. Audit logs can record access or changes. This reduces the risk of later unauthorised access or accidental changes.",
+    prompt: "A company issues hardware tokens for remote login. Describe how tokens support authentication and give two limitations.",
+    answer: "A hardware token supports authentication by proving the user has a specific issued device or object. It may generate a one-time code or be inserted/tapped during login. This can be combined with a password as a second factor. Limitations include tokens being lost, stolen, damaged, out of battery or unavailable, and the company needing support procedures for replacement and recovery.",
     marking: [
-      { mark: "B1", text: "permissions limited to required task/folder" },
-      { mark: "B1", text: "specific access type stated, e.g. read/write rather than admin/all access" },
-      { mark: "B1", text: "time-limited or reviewed after one week" },
-      { mark: "B1", text: "permissions removed/revoked when no longer needed" },
-      { mark: "B1", text: "risk reduction linked to unauthorised access/changes or audit logging" },
+      { mark: "B1", text: "token classified as something user has/possession factor" },
+      { mark: "B1", text: "token use described, e.g. one-time code/insert/tap/registered device" },
+      { mark: "B1", text: "can be combined with password as second factor/MFA" },
+      { mark: "B1", text: "first valid limitation such as lost/stolen/damaged/battery/unavailable" },
+      { mark: "B1", text: "second distinct limitation or support/recovery issue" },
     ],
     strict: [
-      "Do not accept permanent admin rights without justification.",
-      "Do not award removal mark for only 'check it' without revoking/reducing access.",
-      "Allow temporary group membership if removal is clear.",
+      "Do not accept token as 'something you know'.",
+      "Do not award both limitation marks for repeating 'lost' twice.",
+      "Allow software token/app if scenario wording is adapted, but hardware token must remain possession-based.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each permission, state what it allows and one security risk if given too widely: read; write; delete.",
-    answer: "Read permission allows a user to view or open data; if given too widely it can break confidentiality by exposing sensitive information. Write permission allows a user to create or change data; if given too widely it can damage integrity through unauthorised or accidental changes. Delete permission allows a user to remove data; if given too widely it can affect availability or integrity because important records may be removed.",
+    prompt: "For each login method, state the authentication factor and one risk: password; fingerprint scan; app-generated one-time code.",
+    answer: "A password is something the user knows; a risk is that it may be guessed, reused, shared, phished or forgotten. A fingerprint scan is something the user is; a risk is false rejection, false acceptance, sensor failure, privacy concern or difficulty changing the biometric if compromised. An app-generated one-time code is something the user has because it is produced by a registered device or app; a risk is that the device may be lost, stolen, unavailable or out of battery.",
     marking: [
-      { mark: "B1", text: "read permission allows viewing/opening data" },
-      { mark: "B1", text: "read risk linked to confidentiality/exposure" },
-      { mark: "B1", text: "write permission allows creating/changing/modifying data" },
-      { mark: "B1", text: "write risk linked to integrity/unauthorised changes" },
-      { mark: "B1", text: "delete permission allows removing data" },
-      { mark: "B1", text: "delete risk linked to availability/integrity/loss of records" },
+      { mark: "B1", text: "password factor identified as something known" },
+      { mark: "B1", text: "valid password risk" },
+      { mark: "B1", text: "fingerprint factor identified as something user is/biometric" },
+      { mark: "B1", text: "valid biometric risk" },
+      { mark: "B1", text: "one-time app code factor identified as something user has/possession" },
+      { mark: "B1", text: "valid token/app code risk" },
     ],
     strict: [
-      "Do not award risk marks for repeating only 'it is dangerous'.",
-      "Do not confuse read with write; viewing is not changing.",
-      "Allow execute/admin only as extra detail, not a substitute for the three requested permissions.",
-      "Award each permission independently.",
+      "Do not award risk marks for repeating only 'not secure'.",
+      "Do not classify app code as something known just because the digits are typed; the code is evidence of possession.",
+      "Allow 'fingerprint is biometric' for something user is.",
+      "Award each method independently.",
     ],
   },
 ];
@@ -213,10 +213,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    permissions: "Correct. The student is authenticated, but access rights deny write access to exam grades.",
-    authentication: "Not enough. Login proves identity; this question asks why the edit action is denied.",
-    encryption: "No. Encryption may protect stored or transmitted data, but it is not the permission decision.",
-    backup: "No. Backup helps recovery; it does not decide whether a student may edit marks.",
+    mfa: "Correct. Password is something known; phone code is evidence of something possessed.",
+    "two-passwords": "No. Two checks are not automatically two factors. Two passwords are usually the same factor category.",
+    authorisation: "No. Authorisation controls permissions after identity is established.",
+    encryption: "No. Encryption protects data by encoding it; this scenario verifies identity.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -243,6 +243,58 @@ function setupSimulator() {
   simulate();
 }
 
+function passwordScore(value) {
+  let score = 0;
+  const notes = [];
+  if (value.length >= 12) {
+    score += 2;
+    notes.push("Good length.");
+  } else if (value.length >= 8) {
+    score += 1;
+    notes.push("Acceptable length, but longer is better.");
+  } else {
+    notes.push("Too short for a strong password.");
+  }
+  if (/[A-Z]/.test(value) && /[a-z]/.test(value)) {
+    score += 1;
+    notes.push("Uses upper and lower case.");
+  }
+  if (/\d/.test(value)) {
+    score += 1;
+    notes.push("Includes a digit.");
+  }
+  if (/[^A-Za-z0-9]/.test(value)) {
+    score += 1;
+    notes.push("Includes a symbol.");
+  }
+  if (/password|qwerty|1234|admin|letmein/i.test(value)) {
+    score -= 2;
+    notes.push("Contains a predictable pattern.");
+  }
+  return { score: Math.max(0, score), notes };
+}
+
+function setupPasswordTool() {
+  const input = document.querySelector("#passwordInput");
+  const result = document.querySelector("#passwordResult");
+  const advice = document.querySelector("#passwordAdvice");
+  function check() {
+    const value = input.value;
+    if (!value) {
+      result.textContent = "Enter a practice password.";
+      advice.textContent = "Use a fake example only; never type a real password here.";
+      return;
+    }
+    const { score, notes } = passwordScore(value);
+    const label = score >= 5 ? "Stronger" : score >= 3 ? "Moderate" : "Weak";
+    result.textContent = `${label} practice password`;
+    advice.innerHTML = `<strong>Evidence:</strong> ${notes.join(" ") || "No strong features detected."}`;
+  }
+  input.addEventListener("input", check);
+  document.querySelector("#passwordBtn").addEventListener("click", check);
+  check();
+}
+
 function renderExample(key) {
   const example = examples[key];
   document.querySelector("#exampleBox").innerHTML = `
@@ -260,7 +312,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("grades");
+  renderExample("password");
 }
 
 function renderPractice() {
@@ -347,6 +399,7 @@ function renderExam() {
 setupPrint();
 setupHook();
 setupSimulator();
+setupPasswordTool();
 setupExamples();
 renderPractice();
 renderMistakes();

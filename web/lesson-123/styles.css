@@ -122,7 +122,7 @@ pre {
   margin-bottom: 4px;
 }
 
-.decision-visual {
+.adt-visual {
   display: grid;
   gap: 14px;
   align-content: center;
@@ -132,18 +132,20 @@ pre {
   background: linear-gradient(135deg, #17324d, #2563eb 50%, #047857);
   border-radius: 8px;
 }
-.decision-card, .decision-caption {
+.mini-adt {
+  display: grid;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.94);
   color: #12304f;
   border-radius: 8px;
   padding: 16px;
   font-weight: 850;
 }
-.decision-card { display: grid; gap: 8px; }
-.decision-card strong { color: #92400e; font-size: 1.2rem; }
-.decision-card span { padding: 8px; border: 1px solid #dbeafe; border-radius: 6px; }
-.decision-caption { text-align: center; }
-.decision-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.mini-adt strong { color: #92400e; font-size: 1.2rem; }
+.mini-adt span { padding: 8px; border: 1px solid #dbeafe; border-radius: 6px; }
+.mini-adt em { color: var(--accent-dark); font-style: normal; }
+.queue-line { grid-auto-flow: column; grid-template-columns: auto repeat(3, minmax(0, 1fr)) auto; align-items: center; }
+.adt-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
 
 .guidance-grid {
   display: grid;
@@ -158,12 +160,12 @@ pre {
 .section-title { margin-bottom: 18px; }
 .section-title p:not(.eyebrow) { color: var(--muted); max-width: 78ch; }
 
-.hook-grid, .mistake-grid {
+.hook-grid, .mistake-grid, .sim-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
-.choice-card, .mistake-grid article {
+.choice-card, .mistake-grid article, .sim-grid article {
   border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 8px;
@@ -188,7 +190,7 @@ pre {
   border-radius: 8px;
   overflow: hidden;
 }
-.criteria-table .table-row, .adt-table .table-row, .decision-table .table-row {
+.concept-table .table-row, .ops-table .table-row, .impl-table .table-row {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .result-table .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
@@ -213,22 +215,43 @@ pre {
   border-radius: 8px;
   padding: 16px;
   background: #ffffff;
+  min-width: 0;
+  max-width: 100%;
 }
-.code-grid h3, .worked-card h3 { margin-top: 0; color: var(--accent-dark); }
+.code-grid h3, .worked-card h3, .sim-grid h3 { margin-top: 0; color: var(--accent-dark); }
 
 .converter-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr) auto;
-  gap: 14px;
+  grid-template-columns: minmax(100px, 1fr) repeat(4, auto);
+  gap: 12px;
   align-items: end;
 }
 .converter-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 700; }
-.converter-grid select, .practice-card input {
+.converter-grid input, .practice-card input {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px 12px;
   background: #ffffff;
+}
+.sim-grid { margin-top: 16px; }
+.adt-state {
+  display: grid;
+  gap: 8px;
+  min-height: 96px;
+}
+.adt-state span, .adt-state em {
+  display: block;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.trace-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .tabs {
@@ -307,15 +330,18 @@ pre {
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid { grid-template-columns: 1fr; }
-  .decision-visual { min-height: 320px; }
+  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid, .sim-grid { grid-template-columns: 1fr; }
+  .adt-visual { min-height: 320px; }
+  .queue-line { grid-auto-flow: row; grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
+  .layout { width: 100%; max-width: 100vw; min-width: 0; padding-inline: 10px; }
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
+  .lesson-content, .hero, .panel, .guidance-grid > article { width: 100%; max-width: 100%; min-width: 0; }
   .hook-grid, .mistake-grid, .answer-row { grid-template-columns: 1fr; }
-  .criteria-table .table-row, .adt-table .table-row, .decision-table .table-row, .result-table .table-row {
+  .concept-table .table-row, .ops-table .table-row, .impl-table .table-row, .result-table .table-row {
     grid-template-columns: 1fr;
   }
   .table-row > div { border-right: 0; }
@@ -329,16 +355,3 @@ pre {
   .hero, .panel, .guidance-grid > article { box-shadow: none; break-inside: avoid; }
   body { background: #ffffff; }
 }
-
-/* Stage 2 syllabus completion:start */
-.stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
-.stage2-practice-block { border-top: 2px solid var(--accent, #176b5b); }
-.stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
-.stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
-.stage2-question + .stage2-question { margin-top: 10px; }
-.stage2-completion details { margin-top: 10px; }
-.stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
-.stage2-completion .mark-scheme-table { width: 100%; border-collapse: collapse; }
-.stage2-completion .mark-scheme-table :where(th, td) { border: 1px solid var(--line, #d7ddd9); padding: 8px; text-align: left; vertical-align: top; }
-.stage2-completion .mark-scheme-table :where(th, td):last-child { width: 5rem; text-align: center; }
-/* Stage 2 syllabus completion:end */

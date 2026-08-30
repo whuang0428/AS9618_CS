@@ -1,74 +1,74 @@
 const scenarios = {
-  receipt: {
-    result: "Printer",
-    method: "A printer produces a hard copy receipt that the customer can keep as a permanent transaction record.",
-  },
-  driver: {
-    result: "Screen plus speaker",
-    method: "A screen shows visual route information, while a speaker gives spoken directions without requiring the driver to keep looking away from the road.",
-  },
-  alarm: {
-    result: "Speaker / buzzer plus warning light",
-    method: "Audio output attracts attention quickly, while a visual warning can show location or remain visible after the sound starts.",
-  },
-  classroom: {
-    result: "Projector or large display",
-    method: "A large visual display is suitable because many students need to see the same diagram at once.",
-  },
-  greenhouse: {
-    result: "Actuator",
-    method: "An actuator converts the output signal into physical action, such as opening a vent when temperature is too high.",
+  checkout: {
+    result: "Barcode reader or QR scanner",
+    method: "It captures encoded product IDs quickly and reduces errors compared with typing long product numbers repeatedly.",
   },
   exam: {
-    result: "Monitor / display screen",
-    method: "A display can show seat numbers and updates clearly without printing new lists each time a detail changes.",
+    result: "OMR scanner",
+    method: "It detects the positions of shaded marks on multiple-choice answer sheets, so many scripts can be processed quickly.",
+  },
+  passport: {
+    result: "OCR scanner",
+    method: "It recognises printed characters from the passport text, reducing the need for manual typing.",
+  },
+  greenhouse: {
+    result: "Temperature or humidity sensor",
+    method: "A sensor captures physical measurements automatically at regular intervals without a person entering readings.",
+  },
+  warehouse: {
+    result: "RFID reader",
+    method: "RFID can read tag data without direct line of sight, which is useful when stock is boxed or moving through a gate.",
+  },
+  podcast: {
+    result: "Microphone",
+    method: "A microphone captures sound waves as input so they can be digitised and stored or edited.",
   },
 };
 
 const examples = {
-  receipt: {
-    title: "Example 1: receipt at a checkout",
-    problem: "Recommend an output device for giving a customer proof of purchase.",
+  checkout: {
+    title: "Example 1: supermarket checkout",
+    problem: "Recommend an input method for entering product IDs at a busy checkout.",
     steps: [
-      "Weak answer: use a printer because it is useful.",
-      "Better answer: use a printer because it produces hard copy.",
-      "Exam-ready answer: use a printer because it produces a permanent hard copy receipt that the customer can keep as evidence of the transaction.",
-      "Boundary: a screen can show the total, but it does not give the customer a physical record.",
+      "Weak answer: use a barcode reader because it is easy.",
+      "Better answer: use a barcode reader because it captures the product code directly from the label.",
+      "Exam-ready answer: use a barcode reader because it captures product IDs faster than typing and reduces transcription errors during repeated checkout scanning.",
+      "Boundary: a keyboard may still be needed for exceptions, but it is not the best main method for high-volume product IDs.",
     ],
   },
-  alarm: {
-    title: "Example 2: factory warning system",
-    problem: "A worker must notice an urgent machine fault immediately.",
+  exam: {
+    title: "Example 2: multiple-choice exam sheets",
+    problem: "An exam board must process thousands of shaded answer sheets.",
     steps: [
-      "A speaker or buzzer is suitable because audio output can attract attention without the worker looking at a screen.",
-      "A warning light or display can show which machine has the fault.",
-      "Using both can improve feedback because one handles urgency and the other gives detail.",
-      "Do not claim a printer is best for urgent warnings; printed output is too slow for immediate reaction.",
+      "OMR is suitable because it detects the position of shaded marks on a prepared form.",
+      "It is faster than manual marking and can reduce human data-entry errors.",
+      "The form must be designed for OMR, and badly marked boxes may still need checking.",
+      "Do not confuse OMR with OCR: printed candidate names would need OCR or manual entry, not OMR.",
     ],
   },
   greenhouse: {
-    title: "Example 3: automatic greenhouse vent",
-    problem: "A computer system must open a vent when temperature is too high.",
+    title: "Example 3: greenhouse monitoring",
+    problem: "A greenhouse must record temperature and humidity every minute.",
     steps: [
-      "A sensor captures temperature as input, but it does not open the vent.",
-      "The processor decides whether the vent should open.",
-      "An actuator is the output device because it causes the physical movement.",
-      "The suitability reason is control: it changes the environment automatically without manual action.",
+      "A temperature sensor and humidity sensor capture measurements automatically.",
+      "This is suitable because readings are needed frequently and at regular intervals.",
+      "Automatic capture reduces the need for a person to repeatedly type readings.",
+      "The sensor may need calibration so the captured data is reliable.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which output device produces hard copy?", accepted: ["printer"], answer: "Printer" },
-  { id: "p2", prompt: "Which output device produces audio warnings?", accepted: ["speaker", "buzzer"], answer: "Speaker / buzzer" },
-  { id: "p3", prompt: "Which output device causes physical movement or action?", accepted: ["actuator"], answer: "Actuator" },
-  { id: "p4", prompt: "Which output device is suitable for showing a live dashboard?", accepted: ["monitor", "screen", "display"], answer: "Monitor / screen" },
-  { id: "p5", prompt: "A projector is most suitable for one user or a large audience?", accepted: ["large audience", "audience", "many users", "class"], answer: "Large audience" },
-  { id: "p6", prompt: "Is a sensor normally input or output?", accepted: ["input"], answer: "Input" },
-  { id: "p7", prompt: "Name one reason audio output may be suitable.", accepted: ["warning", "urgent", "does not need looking", "no need to look", "accessibility", "attention"], answer: "Warning / urgent / no need to look" },
-  { id: "p8", prompt: "Name one limitation of printed output.", accepted: ["slow", "uses paper", "uses ink", "not live", "not suitable for changing data", "cost"], answer: "Slow / uses consumables / not live" },
-  { id: "p9", prompt: "What term means output shown on a screen rather than printed?", accepted: ["soft copy", "softcopy"], answer: "Soft copy" },
-  { id: "p10", prompt: "In an exam answer, should an output choice be linked to the scenario?", accepted: ["yes", "linked", "justify", "justified"], answer: "Yes" },
+  { id: "p1", prompt: "Which device is best for capturing product codes at a checkout?", accepted: ["barcode reader", "barcode scanner", "qr scanner", "qr reader"], answer: "Barcode reader / QR scanner" },
+  { id: "p2", prompt: "Which input device detects shaded marks on a form?", accepted: ["omr", "omr scanner", "optical mark recognition"], answer: "OMR scanner" },
+  { id: "p3", prompt: "Which input method recognises printed characters?", accepted: ["ocr", "ocr scanner", "optical character recognition"], answer: "OCR" },
+  { id: "p4", prompt: "Which input device captures physical measurements such as temperature?", accepted: ["sensor", "temperature sensor"], answer: "Sensor" },
+  { id: "p5", prompt: "Manual keyboard entry is usually faster or slower than scanning repeated product codes?", accepted: ["slower"], answer: "Slower" },
+  { id: "p6", prompt: "RFID usually needs direct line of sight. Answer true or false.", accepted: ["false", "no"], answer: "False" },
+  { id: "p7", prompt: "Name one advantage of automatic data capture.", accepted: ["faster", "speed", "fewer errors", "less error", "reduces errors", "accuracy", "consistent"], answer: "Faster / fewer errors / more consistent" },
+  { id: "p8", prompt: "Which device captures spoken audio?", accepted: ["microphone", "mic"], answer: "Microphone" },
+  { id: "p9", prompt: "Which device captures an image or video scene?", accepted: ["camera", "digital camera", "webcam"], answer: "Camera / webcam" },
+  { id: "p10", prompt: "In an exam answer, should you only name the device, or also justify it?", accepted: ["justify", "also justify it", "justify it", "give a reason"], answer: "Also justify it" },
 ];
 
 
@@ -81,88 +81,89 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Explain why a buffer is used when a computer sends data to a laser printer.",
-    answer: "The computer can produce print data faster or in different-sized bursts than the printer can consume it. A buffer temporarily stores pending print data, allowing the printer to read it at its own rate while the processor continues other work. The buffer coordinates transfer rates; it does not make the printer mechanism faster or provide permanent backup storage.",
+    prompt: "A supermarket currently uses keyboard entry for product codes. Explain why a barcode reader may be more suitable.",
+    answer: "A barcode reader captures the product code directly from the barcode. It is faster than typing codes manually and reduces transcription errors. This is suitable at a checkout because many products are scanned repeatedly and customers should be served quickly.",
     marking: [
-      { mark: "B1", text: "computer/processor and printer operate at different rates" },
-      { mark: "B1", text: "buffer temporarily stores pending print data" },
-      { mark: "B1", text: "printer reads buffered data at its own rate" },
-      { mark: "B1", text: "processor/computer can continue other processing instead of waiting for the full print" },
+      { mark: "B1", text: "identifies barcode reader as an input device / captures barcode data" },
+      { mark: "B1", text: "states speed advantage over manual keyboard entry" },
+      { mark: "B1", text: "states reduced typing/transcription errors" },
+      { mark: "B1", text: "links advantage to checkout/high-volume/repeated product entry context" },
     ],
     strict: [
-      "Do not accept that the buffer is permanent storage or a backup.",
-      "Do not accept that the buffer increases the printer's mechanical speed.",
-      "A rate difference and temporary storage must both be clear for full credit.",
+      "Do not award a mark for vague 'it is easier' unless a cause is given.",
+      "Do not accept that the barcode reader stores the product data by itself.",
+      "Allow QR scanner if the answer describes encoded product data and the scenario supports QR codes.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Describe the principal operation of a laser printer, a 3D printer and a speaker.",
-    answer: "A laser printer charges a drum, uses a laser to discharge the required image areas, attracts toner, transfers it to paper and fuses it using heat and pressure. A 3D printer deposits or solidifies material layer by layer from a digital model. A speaker uses a DAC and amplifier to drive a coil and cone; the cone vibrates the air to produce sound waves.",
+    marks: "5 marks",
+    prompt: "Compare OCR and OMR as input methods.",
+    answer: "OCR recognises printed or handwritten characters from a document and converts them into editable digital text. OMR detects the position of shaded marks or ticks on a prepared form. OCR is suitable for printed documents such as passports or forms. OMR is suitable for multiple-choice answer sheets where the possible mark positions are known.",
     marking: [
-      { mark: "B1", text: "laser printer forms an electrostatic image on a charged drum using a laser" },
-      { mark: "B1", text: "toner transfers to paper and is fused by heat/pressure" },
-      { mark: "B1", text: "3D printer uses a digital model divided into layers" },
-      { mark: "B1", text: "material is deposited or solidified layer by layer" },
-      { mark: "B1", text: "speaker uses a DAC/amplifier to drive a coil and cone" },
-      { mark: "B1", text: "cone vibration produces pressure/sound waves in the air" },
+      { mark: "B1", text: "OCR recognises characters/text" },
+      { mark: "B1", text: "OMR detects shaded marks/ticks/positions" },
+      { mark: "B1", text: "OCR example linked to printed document/form/passport" },
+      { mark: "B1", text: "OMR example linked to prepared form/multiple-choice sheet" },
+      { mark: "B1", text: "contrasts OCR output as recognised character data with OMR output as detected predefined mark positions" },
     ],
     strict: [
-      "Do not confuse laser-printer toner with liquid ink.",
-      "Do not describe 3D printing as producing the whole object in one pass.",
-      "Do not accept that a speaker records or samples sound; it converts output data into sound waves.",
+      "Do not accept 'OCR scans pictures' without character recognition.",
+      "Do not accept 'OMR reads words' because OMR detects marks.",
+      "Allow handwritten text for OCR only if recognition of characters is clearly stated.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "Explain the difference between a sensor and an actuator in a control system.",
-    answer: "A sensor is an input device because it captures data from the environment, such as temperature. An actuator is an output device because it converts the computer's output signal into physical action, such as opening a vent or starting a motor.",
+    prompt: "A greenhouse records temperature every minute. Suggest an input device and justify your choice.",
+    answer: "A temperature sensor is suitable because it automatically captures temperature readings from the environment. This avoids a person manually reading and typing the value every minute. It provides regular data for monitoring or control, although the sensor may need calibration for reliability.",
     marking: [
-      { mark: "B1", text: "sensor identified as input device" },
-      { mark: "B1", text: "sensor captures environmental/physical data" },
-      { mark: "B1", text: "actuator identified as output device" },
-      { mark: "B1", text: "actuator causes physical movement/action/control" },
+      { mark: "B1", text: "names temperature sensor or suitable environmental sensor" },
+      { mark: "B1", text: "captures temperature/physical measurement from environment" },
+      { mark: "B1", text: "automatic/frequent/regular capture advantage" },
+      { mark: "B1", text: "links reason to greenhouse monitoring/control context" },
     ],
     strict: [
-      "Do not accept 'sensor outputs temperature' unless input role is clear.",
-      "Do not accept 'actuator displays data' as the main role.",
-      "Allow examples such as motor, valve, heater, brake if linked to physical action.",
+      "Do not award full credit for only naming 'sensor'.",
+      "Do not accept keyboard as the best device unless justified for manual occasional readings.",
+      "Allow humidity sensor if the response adapts the measured data to greenhouse monitoring.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Compare using a screen and a printer for outputting travel directions.",
-    answer: "A screen is suitable for live travel directions because it can update as the route changes and can show maps. A printer produces a hard copy that can be kept, but it is less suitable for live navigation because the printed route may become out of date if conditions change.",
+    prompt: "Explain two advantages of automatic data capture compared with manual keyboard entry.",
+    answer: "Automatic data capture can be faster because a device scans or senses the data directly. It can reduce transcription errors because a person does not have to retype long codes or repeated readings. It is also suitable for high-volume or continuous data collection.",
     marking: [
-      { mark: "B1", text: "screen provides visual soft copy/live display" },
-      { mark: "B1", text: "screen advantage linked to updates/maps/changing route" },
-      { mark: "B1", text: "printer provides hard copy/permanent output" },
-      { mark: "B1", text: "printer limitation linked to route changes/out-of-date output" },
+      { mark: "B1", text: "advantage: faster data entry/capture" },
+      { mark: "B1", text: "explanation linked to scanning/sensing/direct capture" },
+      { mark: "B1", text: "advantage: fewer transcription/typing errors" },
+      { mark: "B1", text: "explanation linked to reduced manual re-entry/repeated input" },
     ],
     strict: [
-      "Do not accept 'screen is easier' without explanation.",
-      "Do not award both marks for printer if answer only says it uses paper.",
-      "Allow audio as an additional method, but the comparison must still address screen and printer.",
+      "Do not accept two advantages with no explanation if the command word is explain.",
+      "Do not accept 'more accurate' twice as separate points unless different causes are given.",
+      "Allow reliability/consistency for one advantage if linked to a valid cause.",
     ],
   },
   {
     title: "Question 5",
-    marks: "4 marks",
-    prompt: "A school hall presentation must be seen and heard by 200 people. Suggest suitable output devices and explain your choices.",
-    answer: "A projector or large display is suitable because it shows visual output large enough for the audience to see. Speakers are suitable because they output sound at enough volume for the hall. The choices fit the large audience and presentation context better than a small monitor or headphones.",
+    marks: "6 marks",
+    prompt: "Describe the principal operation of a microphone, a capacitive touchscreen and a virtual reality headset.",
+    answer: "A microphone uses a diaphragm and transducer to convert sound vibrations into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in capacitance or electric field and calculates touch coordinates. A VR headset presents separate images to the two eyes and uses motion/orientation sensors so the processor can update the displayed viewpoint when the user's head moves.",
     marking: [
-      { mark: "B1", text: "suitable visual output such as projector/large display" },
-      { mark: "B1", text: "visual justification linked to large audience/visibility" },
-      { mark: "B1", text: "suitable audio output such as speakers" },
-      { mark: "B1", text: "audio justification linked to volume/hearing across hall" },
+      { mark: "B1", text: "microphone diaphragm/transducer converts sound vibration to an analogue electrical signal" },
+      { mark: "B1", text: "ADC samples/converts the microphone signal into digital values" },
+      { mark: "B1", text: "capacitive touchscreen detects a change in capacitance/electric field" },
+      { mark: "B1", text: "touch position/coordinates are calculated" },
+      { mark: "B1", text: "VR headset presents separate views to the two eyes" },
+      { mark: "B1", text: "motion/orientation sensors cause the displayed viewpoint to be updated" },
     ],
     strict: [
-      "Do not award headphones as a suitable main output for the whole hall unless individually issued and justified.",
-      "Do not accept monitor alone unless large display visibility is clear.",
-      "Allow interactive whiteboard if described as a large shared visual display.",
+      "Do not accept that a microphone directly produces stored binary without analogue-to-digital conversion.",
+      "Do not award a generic pressure-only explanation for a capacitive touchscreen.",
+      "Do not describe VR as only a screen; head tracking and viewpoint update are required.",
     ],
   },
 ];
@@ -178,10 +179,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    speaker: "Speaker: audio output is useful because the driver can hear a warning without reading text.",
-    screen: "Display: visual output can show detail such as distance, icons or warning messages.",
-    haptic: "Haptic motor: physical feedback can warn the driver through vibration.",
-    actuator: "Actuator: output becomes action when the system applies brakes or moves a mechanism.",
+    barcode: "Barcode reader: captures the encoded product ID so the system can look up price and stock data.",
+    scale: "Sensor: captures mass/weight as input. The computer can then calculate a price for loose items.",
+    keyboard: "Keyboard: captures typed data such as a discount code or exception entry. Useful, but not ideal for every product code.",
+    rfid: "RFID/card reader: captures customer or tag data from a card/tag, often without direct contact.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -223,7 +224,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("receipt");
+  renderExample("checkout");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -271,7 +272,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, ask: what output is produced, who receives it, and why is it suitable?`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, ask: what data is captured, and why is this device suitable?`;
   });
 }
 

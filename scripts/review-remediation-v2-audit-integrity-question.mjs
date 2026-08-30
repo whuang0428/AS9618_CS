@@ -4,16 +4,16 @@ import path from "node:path";
 import { loadAllQuestions, secondReviewDomain } from "./ms-review-utils.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const question = loadAllQuestions().find(({ id }) => id === "L069-Q1");
-if (!question) throw new Error("L069-Q1 is missing");
-if (question.marks !== 5 || question.points.length !== 5) throw new Error("L069-Q1 no longer preserves its stable five-mark total");
-if (!/validation and verification.*data integrity/i.test(question.prompt)) throw new Error("L069-Q1 does not directly assess the restored official integrity requirement");
-if (!question.points.some(([, point]) => /protect data integrity/i.test(point))) throw new Error("L069-Q1 has no independent integrity mark point");
+const question = loadAllQuestions().find(({ id }) => id === "L070-Q1");
+if (!question) throw new Error("L070-Q1 is missing");
+if (question.marks !== 5 || question.points.length !== 5) throw new Error("L070-Q1 no longer preserves its stable five-mark total");
+if (!/validation and verification.*data integrity/i.test(question.prompt)) throw new Error("L070-Q1 does not directly assess the restored official integrity requirement");
+if (!question.points.some(([, point]) => /protect data integrity/i.test(point))) throw new Error("L070-Q1 has no independent integrity mark point");
 
 const reviewPath = path.join(root, "audits", "remediation-v2-stage4-question-review.json");
 const review = JSON.parse(fs.readFileSync(reviewPath, "utf8"));
 const entry = review.entries.find(({ questionId }) => questionId === question.id);
-if (!entry) throw new Error("L069-Q1 Stage 4 review record is missing");
+if (!entry) throw new Error("L070-Q1 Stage 4 review record is missing");
 entry.prompt = question.prompt;
 entry.contentHash = question.hash;
 entry.primaryRequirement = "S6.07";

@@ -1,63 +1,132 @@
-const classifierMap = {
-  range: { title: "Range check", detail: "The value must be between a lower and upper limit." },
-  presence: { title: "Presence check", detail: "The field must not be blank." },
-  length: { title: "Length check", detail: "The input must have a required number of characters." },
-  format: { title: "Format check", detail: "The input must match a required pattern such as DD/MM/YYYY." },
-  digit: { title: "Check digit", detail: "A calculated digit helps detect many transcription errors." },
+const predictSets = {
+  a: { values: [4, 7, 9], output: 20 },
+  b: { values: [10, 0, 5], output: 15 },
+  c: { values: [-2, 8, 6], output: 12 },
+  d: { values: [3, 3, 3], output: 9 },
 };
 
-const builderMap = {
-  mark: "REPEAT\n    INPUT Mark\n    IF Mark < 0 OR Mark > 100 THEN\n        OUTPUT \"Invalid mark\"\n    ENDIF\nUNTIL Mark >= 0 AND Mark <= 100",
-  age: "REPEAT\n    INPUT Age\n    IF Age < 11 OR Age > 18 THEN\n        OUTPUT \"Invalid age\"\n    ENDIF\nUNTIL Age >= 11 AND Age <= 18",
-  name: "REPEAT\n    INPUT Name\n    IF Name = \"\" THEN\n        OUTPUT \"Name required\"\n    ENDIF\nUNTIL Name <> \"\"",
-  password: "REPEAT\n    INPUT Password\n    IF LENGTH(Password) < 8 THEN\n        OUTPUT \"Password too short\"\n    ENDIF\nUNTIL LENGTH(Password) >= 8",
+const traceScenarios = {
+  total: {
+    title: "Running total for 4, 7, 9",
+    headers: ["Count", "Number", "Total", "Output"],
+    rows: [
+      ["1", "4", "4", "-"],
+      ["2", "7", "11", "-"],
+      ["3", "9", "20", "20"],
+    ],
+    note: "Total is updated after each input. OUTPUT happens after the loop.",
+  },
+  max: {
+    title: "Maximum of 6, 11, 8",
+    headers: ["Step", "Value", "Highest", "Output"],
+    rows: [
+      ["initial", "6", "6", "-"],
+      ["compare", "11", "11", "-"],
+      ["compare", "8", "11", "11"],
+    ],
+    note: "Highest changes only when the new value is greater than the current Highest.",
+  },
+  sentinel: {
+    title: "Sentinel total for 5, 2, -1",
+    headers: ["Input", "Condition", "Total", "Output"],
+    rows: [
+      ["5", "5 <> -1 is TRUE", "5", "-"],
+      ["2", "2 <> -1 is TRUE", "7", "-"],
+      ["-1", "-1 <> -1 is FALSE", "7", "7"],
+    ],
+    note: "The sentinel -1 stops the loop and is not added to Total.",
+  },
+  valid: {
+    title: "Validate ages 10 then 15",
+    headers: ["Age", "Condition", "Output"],
+    rows: [
+      ["10", "Age >= 11 AND Age <= 18 is FALSE", "Invalid"],
+      ["15", "Age >= 11 AND Age <= 18 is TRUE", "Valid"],
+    ],
+    note: "Boundary checks depend on both lower and upper limits.",
+  },
+};
+
+const checkerMap = {
+  "wrong-total": {
+    verdict: "Incorrect trace",
+    detail: "Those are the input values, not the running total. Total should be 4, then 11, then 20.",
+  },
+  "wrong-sentinel": {
+    verdict: "Incorrect trace",
+    detail: "The sentinel is a stopping value. It should not be added to Total unless the question explicitly says otherwise.",
+  },
+  "wrong-output": {
+    verdict: "Incorrect trace",
+    detail: "Record output only when an OUTPUT statement executes. If OUTPUT is after the loop, the output appears after the final iteration.",
+  },
+  correct: {
+    verdict: "Correct trace",
+    detail: "4, 11, 20 are the running totals after each input value is processed.",
+  },
 };
 
 const examples = {
-  range: {
-    title: "Example 1: Range check",
-    problem: "A mark must be from 0 to 100 inclusive.",
-    rule: "Valid when Mark >= 0 AND Mark <= 100.",
-    code: builderMap.mark,
+  total: {
+    title: "Example 1: Running total",
+    problem: "Trace Total <- 0; input 4, 7, 9; add each value to Total; output Total.",
+    headers: ["Count", "Number", "Total", "Output"],
+    rows: [["1", "4", "4", "-"], ["2", "7", "11", "-"], ["3", "9", "20", "20"]],
+    notes: ["Initialise Total before the loop.", "Record Total after the assignment.", "The output appears once, after the loop."],
   },
-  presence: {
-    title: "Example 2: Presence check",
-    problem: "A name field must not be blank.",
-    rule: "Valid when Name <> \"\".",
-    code: builderMap.name,
+  max: {
+    title: "Example 2: Maximum value",
+    problem: "Trace values 6, 11, 8 and output the highest.",
+    headers: ["Step", "Value", "Highest", "Output"],
+    rows: [["initial", "6", "6", "-"], ["compare", "11", "11", "-"], ["compare", "8", "11", "11"]],
+    notes: ["The first value can initialise Highest.", "11 replaces 6 because it is larger.", "8 does not replace 11."],
   },
-  length: {
-    title: "Example 3: Length check",
-    problem: "A password must be at least 8 characters.",
-    rule: "Valid when LENGTH(Password) >= 8.",
-    code: builderMap.password,
+  sentinel: {
+    title: "Example 3: Sentinel loop",
+    problem: "Trace input values 5, 2, -1. Add values until -1 is entered.",
+    headers: ["Input", "Condition", "Total", "Output"],
+    rows: [["5", "TRUE", "5", "-"], ["2", "TRUE", "7", "-"], ["-1", "FALSE", "7", "7"]],
+    notes: ["Check the condition before adding.", "-1 is not processed.", "Output Total after the loop stops."],
   },
-  format: {
-    title: "Example 4: Format check",
-    problem: "A date must use the pattern DD/MM/YYYY.",
-    rule: "Valid when the string matches two digits, slash, two digits, slash, four digits.",
-    code: "INPUT DateString\nIF DateString matches \"DD/MM/YYYY\" THEN\n    OUTPUT \"Valid format\"\nELSE\n    OUTPUT \"Invalid format\"\nENDIF",
+  selection: {
+    title: "Example 4: Selection trace",
+    problem: "Input Mark and output Pass if Mark >= 50, otherwise Resit.",
+    headers: ["Mark", "Condition", "Output"],
+    rows: [["49", "FALSE", "Resit"], ["50", "TRUE", "Pass"], ["72", "TRUE", "Pass"]],
+    notes: ["49 and 50 are useful boundary values.", "50 is included in Pass because the condition is >= 50."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which validation check tests whether Mark is between 0 and 100?", accepted: ["range", "range check"], answer: "Range check" },
-  { id: "p2", prompt: "Which validation check tests that Name is not blank?", accepted: ["presence", "presence check"], answer: "Presence check" },
-  { id: "p3", prompt: "Which validation check tests that Password has at least 8 characters?", accepted: ["length", "length check"], answer: "Length check" },
-  { id: "p4", prompt: "Which validation check tests a pattern such as DD/MM/YYYY?", accepted: ["format", "format check"], answer: "Format check" },
-  { id: "p5", prompt: "Write the valid condition for Mark from 0 to 100 inclusive.", accepted: ["mark >= 0 and mark <= 100", "mark<=100 and mark>=0", "mark >=0 and mark <=100"], answer: "Mark >= 0 AND Mark <= 100" },
-  { id: "p6", prompt: "For invalid Mark outside 0-100, should the condition use AND or OR: Mark < 0 ___ Mark > 100?", accepted: ["or"], answer: "OR" },
-  { id: "p7", prompt: "Can validation prove that data is true? yes or no.", accepted: ["no"], answer: "No. It checks acceptability, not truth." },
-  { id: "p8", prompt: "Which Cambridge loop can run at least once and stop when valid?", accepted: ["repeat until", "repeat", "repeat...until"], answer: "REPEAT...UNTIL" },
-  { id: "p9", prompt: "Which keyword displays an invalid input message in Cambridge pseudocode?", accepted: ["output"], answer: "OUTPUT" },
-  { id: "p10", prompt: "Is Java syntax the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
+  { id: "p1", prompt: "What is the purpose of a trace table?", accepted: ["record variable values", "record variables", "track variables", "trace variables", "record changes"], answer: "To record variable values and outputs as an algorithm is executed." },
+  { id: "p2", prompt: "What does dry run mean?", accepted: ["execute by hand", "manual execution", "run by hand", "trace by hand"], answer: "Executing the algorithm manually using test data." },
+  { id: "p3", prompt: "For inputs 4, 7, 9 with Total initially 0, what final Total is output?", accepted: ["20"], answer: "20" },
+  { id: "p4", prompt: "For running totals after 4, 7, 9, write the three Total values separated by commas.", accepted: ["4,11,20", "4 11 20", "4, 11, 20"], answer: "4, 11, 20" },
+  { id: "p5", prompt: "In a WHILE loop using -1 as a sentinel, should -1 be added to Total? yes or no.", accepted: ["no"], answer: "No. The sentinel stops the loop and is not processed." },
+  { id: "p6", prompt: "Which column should record displayed values?", accepted: ["output", "output column"], answer: "Output / output column" },
+  { id: "p7", prompt: "Values are 6, 11, 8. What final Highest is output?", accepted: ["11"], answer: "11" },
+  { id: "p8", prompt: "If OUTPUT is after a FOR loop, does output happen every iteration or after the loop?", accepted: ["after the loop", "after loop"], answer: "After the loop." },
+  { id: "p9", prompt: "Which value is the boundary for Pass when condition is Mark >= 50?", accepted: ["50"], answer: "50" },
+  { id: "p10", prompt: "Is Java syntax the expected trace notation for Paper 2 pseudocode questions? yes or no.", accepted: ["no"], answer: "No. Trace Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
-  { wrong: "I used Mark >= 0 OR Mark <= 100 as the valid condition.", fix: "Use AND. The mark must satisfy both limits: Mark >= 0 AND Mark <= 100." },
-  { wrong: "I accepted a blank name because the program did not crash.", fix: "Use a presence check. Acceptable input is not the same as no runtime error." },
-  { wrong: "I wrote the invalid condition as Mark < 0 AND Mark > 100.", fix: "No value can be below 0 and above 100 at the same time. Use OR for invalid outside-range checks." },
-  { wrong: "I validated age 11-18 and claimed it proves the user is 15.", fix: "Validation only checks the value follows the rule. It cannot prove the real-world truth of the data." },
+  {
+    wrong: "I wrote the input values in the Total column: 4, 7, 9.",
+    fix: "Total is a running value. After each update it should be 4, 11, 20.",
+  },
+  {
+    wrong: "I added -1 to Total in a sentinel loop.",
+    fix: "Check the sentinel before processing it. The sentinel stops the loop and should not be included in Total.",
+  },
+  {
+    wrong: "I wrote output on every row even though OUTPUT is after the loop.",
+    fix: "Only write output when the OUTPUT statement executes. If OUTPUT is after the loop, it appears once at the end.",
+  },
+  {
+    wrong: "I changed Highest even when the new value was smaller.",
+    fix: "Update Highest only when the condition Value > Highest is true.",
+  },
 ];
 
 
@@ -70,97 +139,101 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "A program inputs a Mark. The mark must be from 0 to 100 inclusive. Identify the validation check and write a valid condition.",
-    answer: "Use a range check. The valid condition is Mark >= 0 AND Mark <= 100.",
+    prompt: "The following pseudocode is traced with input values 4, 7, 9. Complete the trace for Total and state the output. Total <- 0\nFOR Count <- 1 TO 3 INPUT Number Total <- Total + Number\nNEXT Count\nOUTPUT Total",
+    answer: "Count 1: Number 4, Total 4. Count 2: Number 7, Total 11. Count 3: Number 9, Total 20. Output is 20.",
     marking: [
-      { mark: "B1", text: "identifies range check" },
-      { mark: "B1", text: "uses lower limit 0" },
-      { mark: "B1", text: "uses upper limit 100" },
-      { mark: "M1", text: "combines valid limits using AND" },
-      { mark: "A1", text: "condition is inclusive and logically correct" },
+      { mark: "M1", text: "records Total as 4 after applying the first update" },
+      { mark: "B1", text: "records Total as 11 after second input" },
+      { mark: "B1", text: "records Total as 20 after third input" },
+      { mark: "B1", text: "states output occurs after the loop" },
+      { mark: "A1", text: "states final output 20" },
     ],
     strict: [
-      "Do not accept OR for the valid condition.",
-      "Allow equivalent comparisons such as Mark > -1 AND Mark < 101 if integer marks are clear.",
-      "Do not require full pseudocode.",
+      "Do not accept 4, 7, 9 as Total values.",
+      "Allow Sum instead of Total if meaning is clear.",
+      "Do not require a perfectly formatted table if values are ordered clearly.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to repeatedly input Age until it is from 11 to 18 inclusive. Output an error message when the age is invalid.",
-    answer: "REPEAT\n    INPUT Age\n    IF Age < 11 OR Age > 18 THEN\n        OUTPUT \"Invalid age\"\n    ENDIF\nUNTIL Age >= 11 AND Age <= 18",
+    prompt: "A maximum algorithm inputs 6, 11, 8. Highest is set to the first value. Each next value is compared with Highest and replaces it only if larger. Complete the trace and output.",
+    answer: "Initial Highest is 6. Compare 11: 11 > 6, so Highest becomes 11. Compare 8: 8 > 11 is false, so Highest remains 11. Output is 11.",
     marking: [
-      { mark: "B1", text: "uses repeated input loop" },
-      { mark: "B1", text: "inputs Age inside the loop" },
-      { mark: "M1", text: "tests invalid lower/upper range or equivalent valid range" },
-      { mark: "A1", text: "outputs error message when invalid" },
-      { mark: "M1", text: "loop terminates only when Age is valid" },
-      { mark: "B1", text: "uses Cambridge-style keywords rather than Java-only syntax" },
+      { mark: "B1", text: "initialises Highest to first value 6" },
+      { mark: "M1", text: "compares 11 with 6" },
+      { mark: "A1", text: "updates Highest to 11" },
+      { mark: "M1", text: "compares 8 with 11" },
+      { mark: "A1", text: "keeps Highest as 11" },
+      { mark: "A1", text: "states output 11" },
     ],
     strict: [
-      "Do not award termination mark if invalid ages are accepted.",
-      "Allow WHILE version if it correctly repeats input until valid.",
-      "Do not require exact wording of error message.",
+      "Do not award update mark if Highest changes to 8 at the end.",
+      "Allow equivalent explanation without a table.",
+      "Do not require array notation.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain the difference between validation and proving that data is true. Use an age example.",
-    answer: "Validation checks whether data follows a rule or is acceptable for processing. It does not prove the data is true. For example, an age of 15 passes a range check for 11-18, but the user might not really be 15.",
+    marks: "6 marks",
+    prompt: "A loop inputs numbers until -1 is entered. It should output the total of values before -1. Complete a trace table for inputs 5, 2, -1 and explain why -1 is not included.",
+    answer: "Total starts at 0. Input 5 is not -1, so Total becomes 5. Input 2 is not -1, so Total becomes 7. Input -1 makes the loop condition false, so it is not added. The output is 7.",
     marking: [
-      { mark: "B1", text: "states validation checks data against a rule" },
-      { mark: "B1", text: "states validation does not prove truth/accuracy" },
-      { mark: "B1", text: "gives valid age range example" },
-      { mark: "B1", text: "explains the example clearly in context" },
+      { mark: "B1", text: "initialises or implies Total starts at 0" },
+      { mark: "B1", text: "updates Total to 5 after input 5" },
+      { mark: "B1", text: "updates Total to 7 after input 2" },
+      { mark: "M1", text: "identifies -1 as sentinel/stopping value" },
+      { mark: "A1", text: "explains -1 is not added/processed" },
+      { mark: "A1", text: "states output 7" },
     ],
     strict: [
-      "Do not accept 'validation makes data correct'.",
-      "Allow other realistic examples if acceptability vs truth is clear.",
-      "Do not require discussion of verification.",
+      "Do not accept output 6 if -1 has been included.",
+      "Allow 'terminating value' for sentinel.",
+      "Do not require full WHILE syntax.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "For each input, Identify a suitable validation check: surname must not be blank; password at least 8 characters; date in DD/MM/YYYY; barcode final digit detects errors; score 1 to 5.",
-    answer: "Surname: presence check. Password: length check. Date: format check. Barcode final digit: check digit. Score 1 to 5: range check.",
+    marks: "4 marks",
+    prompt: "Explain how a trace table can help find a logic error in an algorithm. Refer to variables, expected output and one example error.",
+    answer: "A trace table records variable values after each step, so the programmer can compare the actual values with expected values. If an output is wrong, the table can show where a variable first became incorrect. For example, Total may be initialised inside a loop or a sentinel value may be added when it should stop the loop.",
     marking: [
-      { mark: "B1", text: "surname identified as presence check" },
-      { mark: "B1", text: "password identified as length check" },
-      { mark: "B1", text: "date identified as format check" },
-      { mark: "B1", text: "barcode identified as check digit" },
-      { mark: "B1", text: "score identified as range check" },
+      { mark: "B1", text: "states trace table records variable values during execution" },
+      { mark: "B1", text: "links trace to checking expected output" },
+      { mark: "B1", text: "explains locating the first incorrect variable/value" },
+      { mark: "B1", text: "gives a valid logic-error example" },
     ],
     strict: [
-      "Do not accept type check for DD/MM/YYYY unless format/pattern is also clear.",
-      "Allow size check for length check if meaning is clear.",
-      "Do not award check digit for simply checking a digit exists.",
+      "Do not accept only 'it makes it easier' without explanation.",
+      "Allow examples such as wrong initialisation, missing update, off-by-one loop or sentinel included.",
+      "Do not require code.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student writes Mark < 0 AND Mark > 100 to detect an invalid mark. Explain the error and correct it.",
-    answer: "The condition can never be true because a mark cannot be less than 0 and greater than 100 at the same time. To detect an invalid mark outside the range, use Mark < 0 OR Mark > 100. The valid condition would be Mark >= 0 AND Mark <= 100.",
+    prompt: "A student traces a FOR loop but writes output on every row. The OUTPUT statement is after NEXT Count. Explain the mistake and state how the output column should be completed.",
+    answer: "The mistake is recording output before the OUTPUT statement executes. In a FOR loop where OUTPUT is after NEXT Count, the loop must finish before output is displayed. The output column should be blank or dashed during the loop iterations and should contain the final output only on the final row after the loop.",
     marking: [
-      { mark: "B1", text: "identifies AND condition can never be true" },
-      { mark: "B1", text: "explains value cannot be below lower limit and above upper limit simultaneously" },
-      { mark: "B1", text: "correct invalid condition uses OR" },
-      { mark: "B1", text: "gives correct valid condition using AND" },
-      { mark: "B1", text: "uses inclusive limits correctly" },
+      { mark: "B1", text: "identifies output has been recorded too early" },
+      { mark: "B1", text: "recognises OUTPUT is after the loop/NEXT Count" },
+      { mark: "B1", text: "explains loop iterations must finish before output" },
+      { mark: "B1", text: "blank/dash output during loop rows" },
+      { mark: "B1", text: "final output recorded once after loop" },
     ],
     strict: [
-      "Do not accept Mark < 0 OR Mark < 100 as corrected invalid condition.",
-      "Allow equivalent integer comparisons if limits remain 0 and 100 inclusive.",
-      "Do not require full loop pseudocode.",
+      "Do not accept output every iteration unless OUTPUT is inside the loop.",
+      "Allow 'no output until after loop' for blank/dash rows.",
+      "Do not require a specific final numeric output if none is given.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9<>=, -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9, -]/g, "");
 }
 
 function setupPrint() {
@@ -170,10 +243,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    presence: "Not enough. Presence checks that something was entered, but 900 is still present.",
-    range: "Correct. A range check can reject values outside a sensible age interval.",
-    length: "Not the best rule. 900 has a length, but the value is the problem.",
-    format: "Not the best rule. 900 is numeric-looking, but the accepted range is the issue.",
+    a: "Not quite. Those are the inputs, not the running totals.",
+    b: "Correct. Total becomes 3, then 8, then 10.",
+    c: "Close, but this misses the final update after adding 2.",
+    d: "No. Trace values follow execution order, not numerical countdown order.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -184,34 +257,39 @@ function setupHook() {
   });
 }
 
-function setupClassifier() {
-  const input = document.querySelector("#classifierInput");
-  const result = document.querySelector("#classifyResult");
-  document.querySelector("#classifyBtn").addEventListener("click", () => {
-    const item = classifierMap[input.value];
-    result.innerHTML = `<strong>${item.title}</strong><span>${item.detail}</span>`;
+function setupPredictor() {
+  const input = document.querySelector("#predictInput");
+  const result = document.querySelector("#predictResult");
+  document.querySelector("#predictBtn").addEventListener("click", () => {
+    const item = predictSets[input.value];
+    result.innerHTML = `<strong>Output: ${item.output}</strong><span>${item.values.join(" + ")} = ${item.output}</span>`;
   });
 }
 
-function setupTester() {
-  const input = document.querySelector("#markInput");
-  const result = document.querySelector("#testResult");
-  document.querySelector("#testBtn").addEventListener("click", () => {
-    const mark = Number(input.value);
-    if (Number.isNaN(mark)) {
-      result.innerHTML = "<strong>Invalid</strong><span>Input must be numeric for this test.</span>";
-      return;
-    }
-    const valid = mark >= 0 && mark <= 100;
-    result.innerHTML = `<strong>${valid ? "Valid" : "Invalid"}</strong><span>${mark} ${valid ? "is within" : "is outside"} the inclusive range 0-100.</span>`;
+function tableMarkup(headers, rows) {
+  return `
+    <div class="result-table" style="--cols: ${headers.length}">
+      <div class="table-row table-head">${headers.map((head) => `<div>${head}</div>`).join("")}</div>
+      ${rows.map((row) => `<div class="table-row">${row.map((cell) => `<div>${cell}</div>`).join("")}</div>`).join("")}
+    </div>
+  `;
+}
+
+function setupTraceBuilder() {
+  const input = document.querySelector("#traceInput");
+  const result = document.querySelector("#traceResult");
+  document.querySelector("#traceBtn").addEventListener("click", () => {
+    const item = traceScenarios[input.value];
+    result.innerHTML = `<h3>${item.title}</h3>${tableMarkup(item.headers, item.rows)}<p>${item.note}</p>`;
   });
 }
 
-function setupBuilder() {
-  const input = document.querySelector("#builderInput");
-  const result = document.querySelector("#builderResult");
-  document.querySelector("#buildBtn").addEventListener("click", () => {
-    result.innerHTML = `<pre><code>${builderMap[input.value]}</code></pre>`;
+function setupChecker() {
+  const input = document.querySelector("#checkerInput");
+  const result = document.querySelector("#checkerResult");
+  document.querySelector("#checkerBtn").addEventListener("click", () => {
+    const item = checkerMap[input.value];
+    result.innerHTML = `<strong>${item.verdict}</strong><span>${item.detail}</span>`;
   });
 }
 
@@ -220,8 +298,8 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <p><strong>Rule:</strong> ${example.rule}</p>
-    <pre><code>${example.code}</code></pre>
+    ${tableMarkup(example.headers, example.rows)}
+    <ul>${example.notes.map((note) => `<li>${note}</li>`).join("")}</ul>
   `;
 }
 
@@ -233,7 +311,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("range");
+  renderExample("total");
 }
 
 function setupPractice() {
@@ -321,9 +399,9 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupClassifier();
-setupTester();
-setupBuilder();
+setupPredictor();
+setupTraceBuilder();
+setupChecker();
 setupExamples();
 setupPractice();
 setupMistakes();

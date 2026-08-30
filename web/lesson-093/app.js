@@ -1,133 +1,171 @@
 const classifierMap = {
-  face: {
-    topic: "Ethics / privacy / surveillance",
-    reason: "Discuss stakeholders, consent, privacy loss, safety benefit, safeguards and a justified judgement.",
+  memory: {
+    topic: "Operating system: memory management",
+    reason: "The OS allocates and manages RAM for programs and may use virtual memory when needed.",
   },
-  copy: {
-    topic: "Copyright and licensing",
-    reason: "A licence sets permitted use. Installing beyond the licence terms may infringe copyright.",
+  debug: {
+    topic: "Interpreter",
+    reason: "An interpreter translates and executes code line by line, which can help testing and debugging.",
   },
-  repeat: {
-    topic: "Relational design / normalisation",
-    reason: "Repeated customer details suggest duplication. Separate customer and purchase data into related tables.",
+  linker: {
+    topic: "Linker",
+    reason: "A linker combines object files and required library routines into an executable program.",
   },
-  group: {
-    topic: "SQL aggregate with GROUP BY",
-    reason: "The phrase 'in each product category' asks for a grouped summary, such as SUM or COUNT with GROUP BY.",
+  malware: {
+    topic: "Ransomware",
+    reason: "Ransomware encrypts or blocks access to data and demands payment.",
   },
-  verify: {
-    topic: "Verification",
-    reason: "Checking typed data against a source document is verification, not validation.",
+  firewall: {
+    topic: "Firewall",
+    reason: "A firewall filters network traffic using rules such as IP address, port and protocol.",
   },
 };
 
-const customers = [
-  { CustomerID: "C01", Name: "Ada", Region: "North", Points: 1280 },
-  { CustomerID: "C02", Name: "Bo", Region: "South", Points: 760 },
-  { CustomerID: "C03", Name: "Chen", Region: "North", Points: 1540 },
-  { CustomerID: "C04", Name: "Dia", Region: "South", Points: 1110 },
-];
-
-function groupByRegion(aggregate, label) {
-  const groups = customers.reduce((acc, row) => {
-    acc[row.Region] = acc[row.Region] || [];
-    acc[row.Region].push(row);
-    return acc;
-  }, {});
-  return Object.entries(groups).map(([Region, rows]) => ({ Region, [label]: aggregate(rows) }));
-}
-
-const queryMap = {
-  q1: {
-    fields: ["Name"],
-    rows: customers.filter((row) => row.Points > 1000).map((row) => ({ Name: row.Name })),
+const riskMap = {
+  phishing: {
+    control: "User education plus MFA",
+    detail: "Training helps users recognise fake emails; MFA reduces damage if a password is disclosed.",
   },
-  q2: {
-    fields: ["Name", "Points"],
-    rows: [...customers].sort((a, b) => b.Points - a.Points).map((row) => ({ Name: row.Name, Points: row.Points })),
+  lost: {
+    control: "Regular tested backups",
+    detail: "Backups allow data to be restored from a separate copy after hardware failure or corruption.",
   },
-  q3: {
-    fields: ["Region", "COUNT(*)"],
-    rows: groupByRegion((rows) => rows.length, "COUNT(*)"),
+  sniffing: {
+    control: "Encryption / HTTPS",
+    detail: "Data is encoded during transmission so intercepted data cannot be read without the key.",
   },
-  q4: {
-    fields: ["Region", "SUM(Points)"],
-    rows: groupByRegion((rows) => rows.reduce((total, row) => total + row.Points, 0), "SUM(Points)"),
+  privilege: {
+    control: "Access rights / least privilege",
+    detail: "Users are given only the permissions needed for their role, limiting unauthorised changes.",
+  },
+  tamper: {
+    control: "Hashing / digital signature",
+    detail: "A digest or signature can be checked to detect whether a file has been altered.",
   },
 };
 
 const examples = {
-  ethics: {
-    title: "Example 1: Balanced ethics answer",
-    problem: "A school wants to use facial recognition to record attendance. Discuss this decision.",
+  os: {
+    title: "Example 1: OS role answer",
+    problem: "Explain one role of the operating system when several programs are running.",
     steps: [
-      "Benefit mark: attendance can be recorded quickly and may improve safeguarding.",
-      "Concern mark: biometric data is personal data and misuse could reduce student privacy.",
-      "Safeguard mark: use clear consent, limited retention, secure storage and restricted access.",
-      "Judgement mark: the system is justified only if the safety benefit is proportionate and safeguards are enforced.",
+      "Name the role: process management.",
+      "Mechanism: the OS schedules processes and allocates processor time.",
+      "Consequence: this allows multitasking while sharing CPU resources.",
+      "Scenario link: several programs can appear to run at the same time without one program permanently taking the CPU.",
     ],
   },
-  licence: {
-    title: "Example 2: Licensing answer",
-    problem: "A company copies proprietary software to extra computers without permission.",
+  translator: {
+    title: "Example 2: Compiler vs interpreter",
+    problem: "Compare a compiler and an interpreter.",
     steps: [
-      "Copyright protects the software owner's work.",
-      "A licence grants permission under stated conditions, such as number of installations.",
-      "Installing beyond those terms may breach the licence and infringe copyright.",
-      "Open-source software may allow copying, but only under its own licence terms.",
+      "Compiler translates the whole source program into object code before execution.",
+      "Interpreter translates and executes code line by line.",
+      "Compiler can produce an executable that runs without translating each time.",
+      "Interpreter is useful during development because errors can be found line by line.",
     ],
   },
-  design: {
-    title: "Example 3: Relational design answer",
-    problem: "A flat file repeats customer names and addresses for every purchase.",
+  security: {
+    title: "Example 3: Security control",
+    problem: "A company wants to protect data sent over a public network.",
     steps: [
-      "Problem: repeated customer details cause duplication.",
-      "Consequence: if an address changes, copies may become inconsistent.",
-      "Improvement: store customer details once in Customer with CustomerID as primary key.",
-      "Relationship: store CustomerID as a foreign key in Purchase.",
+      "Threat: data could be intercepted.",
+      "Control: encryption.",
+      "Mechanism: data is encoded and can only be read with the correct key.",
+      "Limitation: encryption does not authenticate the user by itself.",
     ],
   },
-  sql: {
-    title: "Example 4: SQL answer",
-    problem: "Output the total points for each region.",
+  backup: {
+    title: "Example 4: Backup answer",
+    problem: "Explain why backup strategy matters after a ransomware attack.",
     steps: [
-      "Output the group label: SELECT Region.",
-      "Use an aggregate: SUM(Points).",
-      "Choose the table: FROM Customer.",
-      "Group rows by region: GROUP BY Region.",
+      "Ransomware may encrypt files and prevent access.",
+      "A recent backup allows data to be restored without paying the attacker.",
+      "Backups should be stored separately so malware cannot encrypt the backup too.",
+      "Restore testing checks that the backup can actually be used.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which term means a person or group affected by a computing decision?", accepted: ["stakeholder"], answer: "Stakeholder" },
-  { id: "p2", prompt: "Which term means permission under conditions to use software?", accepted: ["licence", "license"], answer: "Licence / license" },
-  { id: "p3", prompt: "Which right protects original software or creative work from unauthorised copying?", accepted: ["copyright"], answer: "Copyright" },
-  { id: "p4", prompt: "Which term describes discarded electronic devices?", accepted: ["e-waste", "ewaste", "electronic waste"], answer: "E-waste / electronic waste" },
-  { id: "p5", prompt: "Which key uniquely identifies each record in a table?", accepted: ["primary key", "primary"], answer: "Primary key" },
-  { id: "p6", prompt: "Which key creates a relationship by matching a primary key in another table?", accepted: ["foreign key", "foreign"], answer: "Foreign key" },
-  { id: "p7", prompt: "Which database design process reduces duplication by separating repeated data?", accepted: ["normalisation", "normalization"], answer: "Normalisation" },
-  { id: "p8", prompt: "Which SQL clause filters records?", accepted: ["where"], answer: "WHERE" },
-  { id: "p9", prompt: "Which SQL clause forms groups for aggregate summaries?", accepted: ["group by"], answer: "GROUP BY" },
-  { id: "p10", prompt: "Which term checks entered data against an original source?", accepted: ["verification"], answer: "Verification" },
+  {
+    id: "p1",
+    prompt: "Which system software manages hardware resources and provides services for programs?",
+    accepted: ["operating system", "os"],
+    answer: "Operating system / OS",
+  },
+  {
+    id: "p2",
+    prompt: "Which OS role allocates RAM to programs?",
+    accepted: ["memory management", "memory"],
+    answer: "Memory management",
+  },
+  {
+    id: "p3",
+    prompt: "Which OS role schedules processes and allocates CPU time?",
+    accepted: ["process management", "processor management", "scheduling"],
+    answer: "Process management",
+  },
+  {
+    id: "p4",
+    prompt: "Which translator converts assembly language into machine code?",
+    accepted: ["assembler"],
+    answer: "Assembler",
+  },
+  {
+    id: "p5",
+    prompt: "Which translator translates and executes code line by line?",
+    accepted: ["interpreter"],
+    answer: "Interpreter",
+  },
+  {
+    id: "p6",
+    prompt: "Which software combines object files and library routines?",
+    accepted: ["linker"],
+    answer: "Linker",
+  },
+  {
+    id: "p7",
+    prompt: "What does the C in CIA stand for?",
+    accepted: ["confidentiality"],
+    answer: "Confidentiality",
+  },
+  {
+    id: "p8",
+    prompt: "Which control checks a user's identity?",
+    accepted: ["authentication", "authenticating"],
+    answer: "Authentication",
+  },
+  {
+    id: "p9",
+    prompt: "Which control filters network traffic using rules?",
+    accepted: ["firewall"],
+    answer: "Firewall",
+  },
+  {
+    id: "p10",
+    prompt: "Which malware encrypts files and demands payment?",
+    accepted: ["ransomware"],
+    answer: "Ransomware",
+  },
 ];
 
 const mistakes = [
   {
-    wrong: "Facial recognition is ethical because it is efficient.",
-    fix: "Efficiency is only one benefit. A balanced answer must discuss stakeholders, privacy risk, consent, safeguards and whether the benefit is proportionate.",
+    wrong: "A compiler runs a program one line at a time.",
+    fix: "An interpreter translates and executes line by line. A compiler translates the whole program before execution.",
   },
   {
-    wrong: "Open-source software has no copyright, so anyone can do anything with it.",
-    fix: "Open-source software still has copyright. The licence grants permissions and may impose conditions such as attribution or sharing modifications.",
+    wrong: "Encryption proves that the user is allowed to access the system.",
+    fix: "Authentication checks user identity and access rights control permissions. Encryption protects data readability.",
   },
   {
-    wrong: "A customer name is a good primary key because every customer has a name.",
-    fix: "Names may be duplicated or changed. A primary key must be unique and reliable, so CustomerID is better.",
+    wrong: "A firewall removes all malware from a computer.",
+    fix: "A firewall filters network traffic. Anti-malware software detects, quarantines or removes malware on a system.",
   },
   {
-    wrong: "GROUP BY sorts the output alphabetically.",
-    fix: "GROUP BY creates groups for aggregate calculations. ORDER BY sorts the result rows.",
+    wrong: "Backups prevent all data loss.",
+    fix: "Backups allow recovery after loss or corruption. The amount recovered depends on backup frequency and whether restore works.",
   },
 ];
 
@@ -140,93 +178,90 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
-    prompt: "A school plans to use facial recognition to record attendance. Discuss ethical issues involved.",
-    answer: "Facial recognition may improve safety and reduce time spent taking attendance, which benefits staff and students. However, facial images are personal/biometric data, so students may lose privacy if data is collected without informed consent or retained for too long. The system may also be unfair if recognition is less accurate for some groups. It is only justified if the school has a clear purpose, gains consent where appropriate, restricts access, stores the data securely, sets a retention limit and offers an alternative method.",
+    marks: "4 marks",
+    prompt: "Describe two roles of an operating system when several applications are running.",
+    answer: "The operating system performs process management by scheduling processes and allocating processor time so applications can share the CPU. It performs memory management by allocating RAM to programs and keeping program data separate so applications can run without overwriting each other.",
     marking: [
-      { mark: "B1", text: "identifies a relevant benefit such as safety/efficiency/attendance accuracy" },
-      { mark: "B1", text: "applies benefit to school/staff/students" },
-      { mark: "B1", text: "identifies privacy/biometric data/consent concern" },
-      { mark: "B1", text: "explains consequence such as misuse, monitoring or unfair treatment" },
-      { mark: "B1", text: "gives suitable safeguard such as consent, access control, retention limit or alternative method" },
-      { mark: "B1", text: "judges whether facial-recognition attendance is proportionate using attendance benefit, biometric privacy/fairness risk and safeguards" },
+      { mark: "B1", text: "names process/processor management or scheduling" },
+      { mark: "B1", text: "explains allocating CPU time / managing multitasking" },
+      { mark: "B1", text: "names memory management" },
+      { mark: "B1", text: "explains allocating/protecting memory for programs" },
     ],
     strict: [
-      "Do not award full credit for one-sided 'good because safe' answers.",
-      "Allow surveillance or data protection wording if personal data issue is clear.",
-      "Do not require reference to a specific law.",
+      "Do not award role marks for vague 'runs the computer' without a named role.",
+      "Allow file or device management as an alternative named OS role if explained.",
+      "Do not count utility software as an OS role unless clearly part of OS service in context.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Explain why copying proprietary software to more computers than allowed by its licence may be a problem.",
-    answer: "Copyright protects the software owner's work from unauthorised copying. A proprietary licence gives permission to use the software only under stated conditions, such as a limited number of installations. Copying it to extra computers may breach the licence and infringe copyright, which can lead to legal or financial consequences for the organisation.",
+    marks: "4 marks",
+    prompt: "A developer is choosing a translator during testing. Compare the use of a compiler and an interpreter in this context.",
+    answer: "A compiler translates the whole source program into object code before execution, while an interpreter translates and executes one statement at a time. A compiled program can be run without retranslation, while interpreted code normally needs the interpreter each time. Interpreters can help debugging because errors are found as lines are executed.",
     marking: [
-      { mark: "B1", text: "copyright protects software/owner's work from unauthorised copying" },
-      { mark: "B1", text: "licence grants permission under conditions" },
-      { mark: "B1", text: "condition applied to number of installations/users/computers" },
-      { mark: "B1", text: "explains breach/infringement when copied beyond permission" },
-      { mark: "B1", text: "valid consequence such as legal action, fines or reputational damage" },
+      { mark: "B1", text: "compiler translates whole program/source before execution" },
+      { mark: "B1", text: "interpreter translates/executes line by line" },
+      { mark: "B1", text: "compiled program produces object/executable code" },
+      { mark: "B1", text: "interpreted code needs interpreter at run time / useful for debugging" },
     ],
     strict: [
-      "Do not accept 'it is illegal' alone without licence/copyright mechanism.",
-      "Allow license spelling.",
-      "Do not say open source means no restrictions.",
+      "Do not accept assembler as either compiler or interpreter.",
+      "Allow statement-by-statement for line-by-line.",
+      "Do not award comparison mark if no explicit contrast is made.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "A loyalty system stores CustomerName, Address, ProductName and Price in one purchase table, repeated for every purchase. Explain how a relational design could improve this.",
-    answer: "Customer details can be stored once in a Customer table with CustomerID as the primary key. Purchase records can store CustomerID as a foreign key, linking each purchase to the correct customer. Product details can be stored once in a Product table with ProductID as the primary key, and Purchase can store ProductID as a foreign key. This reduces duplicated customer/product data and reduces update inconsistencies if an address or price changes.",
+    marks: "4 marks",
+    prompt: "A school stores student records on a network. Explain two security controls that could protect confidentiality.",
+    answer: "Access rights can restrict student records to authorised staff only, reducing unauthorised viewing. Encryption can encode stored or transmitted records so intercepted or stolen data is unreadable without the correct key. Authentication such as MFA could also check user identity before access.",
     marking: [
-      { mark: "B1", text: "identifies Customer table / stores customer details once" },
-      { mark: "B1", text: "identifies Product table / stores product details once" },
-      { mark: "B1", text: "uses suitable primary key such as CustomerID/ProductID" },
-      { mark: "B1", text: "uses foreign keys in Purchase to link related tables" },
-      { mark: "B1", text: "explains reduced duplication" },
-      { mark: "B1", text: "explains reduced inconsistency/update errors" },
+      { mark: "B1", text: "names access rights / permissions / least privilege" },
+      { mark: "B1", text: "links permissions to authorised staff / reducing unauthorised viewing" },
+      { mark: "B1", text: "names encryption or authentication/MFA" },
+      { mark: "B1", text: "explains mechanism of second control" },
     ],
     strict: [
-      "Do not award relationship marks for merely saying 'make more tables' without keys.",
-      "Allow Order/Sale table instead of Purchase if relationships are clear.",
-      "Do not require a full ER diagram.",
+      "Do not award full credit for generic 'use security'.",
+      "Do not treat backup as protecting confidentiality unless the answer clearly discusses availability instead.",
+      "Allow strong passwords if linked to authentication.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "The Customer table has fields CustomerID, Name, Region and Points. Write an SQL query to output Region and total Points for each Region.",
-    answer: "SELECT Region, SUM(Points) FROM Customer GROUP BY Region;",
+    marks: "5 marks",
+    prompt: "Explain how a firewall can help protect a network, and give one limitation.",
+    answer: "A firewall monitors incoming and outgoing network traffic and filters it using rules such as IP address, port or protocol. This can block unauthorised or suspicious traffic from reaching the network. A limitation is that it cannot stop a user from giving away a password in a phishing attack or remove malware already installed on a device.",
     marking: [
-      { mark: "B1", text: "SELECT Region" },
-      { mark: "B1", text: "uses SUM(Points)" },
-      { mark: "B1", text: "FROM Customer" },
-      { mark: "M1", text: "GROUP BY Region" },
+      { mark: "B1", text: "monitors/filters incoming and outgoing traffic" },
+      { mark: "B1", text: "uses rules such as IP address/port/protocol" },
+      { mark: "B1", text: "blocks unauthorised/suspicious traffic" },
+      { mark: "B1", text: "applies to protecting a network" },
+      { mark: "B1", text: "valid limitation such as phishing/user action/malware already installed" },
     ],
     strict: [
-      "Do not accept COUNT(Points) for total points.",
-      "Do not award GROUP BY mark for ORDER BY Region.",
-      "Allow field order SUM(Points), Region unless output order is specified.",
+      "Do not accept firewall as anti-malware removal software.",
+      "Allow packet filtering/application filtering if rule-based filtering is clear.",
+      "Do not award limitation for merely saying 'it is not perfect'.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A clerk enters customer details from paper forms into a database. Explain validation and verification, using this scenario.",
-    answer: "Validation checks that entered data follows rules before it is accepted, for example checking that CustomerID is present or that Points is numeric and within a valid range. Verification checks that entered data matches the original source, for example proofreading the typed address against the paper form or using double entry. Validation can reject impossible formats, but it cannot prove a plausible address is true; verification helps detect copying errors from the source document.",
+    marks: "6 marks",
+    prompt: "A student says: 'Hashing and encryption are the same because both hide data.' Explain why this is weak.",
+    answer: "Encryption is reversible with the correct key, so encrypted data can be decrypted and read by an authorised user. Hashing is one-way and produces a digest, commonly used to check passwords or file integrity without storing the original value. The statement is weak because encryption protects confidentiality, while hashing is mainly used for verification/integrity and cannot normally be reversed to recover the original data.",
     marking: [
-      { mark: "B1", text: "defines validation as checking data against rules" },
-      { mark: "B1", text: "valid scenario example such as presence/type/range check" },
-      { mark: "B1", text: "defines verification as checking against source/original data" },
-      { mark: "B1", text: "valid scenario example such as proofreading/double entry against form" },
-      { mark: "B1", text: "contrasts validation cannot prove truth with verification checking copying accuracy" },
+      { mark: "B1", text: "explains encryption is reversible/decryptable with key" },
+      { mark: "B1", text: "links encryption to confidentiality/readability protection" },
+      { mark: "B1", text: "explains hashing is one-way / produces digest" },
+      { mark: "B1", text: "gives valid hashing use such as password checking or file integrity" },
+      { mark: "B1", text: "explicitly contrasts reversible encryption with one-way hashing" },
+      { mark: "B1", text: "explains why the original statement is vague/incorrect" },
     ],
     strict: [
-      "Do not accept 'validation makes data correct'.",
-      "Allow format check for email/postcode if linked to rules.",
-      "Do not accept verification as checking password identity in this database-entry context.",
+      "Do not accept hashing as encryption.",
+      "Allow message digest/checksum wording if one-way/integrity is clear.",
+      "Do not require a specific hashing algorithm.",
     ],
   },
 ];
@@ -242,10 +277,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    privacy: "Topic: ethics/privacy. First move: identify stakeholders, benefit, concern, safeguard and judgement.",
-    key: "Topic: database design. First move: choose a unique and reliable primary key such as CustomerID.",
-    sql: "Topic: SQL retrieval. First move: SELECT required fields, FROM table, WHERE Points > 1000.",
-    licence: "Topic: copyright/licensing. First move: explain permission under licence conditions.",
+    os: "Topic: OS memory management. First phrase: allocates and manages memory for running programs.",
+    compiler: "Topic: compiler. First phrase: translates the whole source program before execution.",
+    phishing: "Topic: social engineering / phishing. First phrase: tricks user into revealing credentials.",
+    hash: "Topic: hashing. First phrase: one-way digest used for password checking or integrity.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -265,33 +300,12 @@ function setupClassifier() {
   });
 }
 
-function setupBuilder() {
-  const benefit = document.querySelector("#benefitInput");
-  const concern = document.querySelector("#concernInput");
-  const safeguard = document.querySelector("#safeguardInput");
-  const result = document.querySelector("#builderResult");
-  document.querySelector("#buildBtn").addEventListener("click", () => {
-    result.innerHTML = `<strong>Built paragraph:</strong> Although the system ${benefit.value}, it ${concern.value}. Therefore, it is justified only if ${safeguard.value}.`;
-  });
-}
-
-function renderQueryTable(query) {
-  const table = queryMap[query];
-  const columns = table.fields;
-  const rows = table.rows;
-  return `
-    <div class="mini-result" style="--cols: ${columns.length}">
-      <div class="table-row table-head">${columns.map((field) => `<div>${field}</div>`).join("")}</div>
-      ${rows.map((row) => `<div class="table-row">${columns.map((field) => `<div>${row[field]}</div>`).join("")}</div>`).join("")}
-    </div>
-  `;
-}
-
-function setupQueryTracer() {
-  const input = document.querySelector("#queryInput");
-  const result = document.querySelector("#queryResult");
-  document.querySelector("#queryBtn").addEventListener("click", () => {
-    result.innerHTML = renderQueryTable(input.value);
+function setupMatcher() {
+  const input = document.querySelector("#riskInput");
+  const result = document.querySelector("#matchResult");
+  document.querySelector("#matchBtn").addEventListener("click", () => {
+    const item = riskMap[input.value];
+    result.innerHTML = `<div class="calc-card"><strong>${item.control}</strong><br />${item.detail}</div>`;
   });
 }
 
@@ -315,7 +329,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("ethics");
+  renderExample("os");
 }
 
 function renderPractice() {
@@ -415,8 +429,7 @@ function init() {
   setupPrint();
   setupHook();
   setupClassifier();
-  setupBuilder();
-  setupQueryTracer();
+  setupMatcher();
   setupExamples();
   renderPractice();
   renderMistakes();

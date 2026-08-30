@@ -66,17 +66,20 @@ const visualRows = parseCsv(read("audits/stage10-concept-visual-register.csv"));
 const pageRows = parseCsv(read("audits/stage6-page-review-register.csv"));
 const accessibilityRows = parseCsv(read("audits/stage7-accessibility-register.csv"));
 const accessibilityByPage = new Map(accessibilityRows.map((row) => [row.page, row]));
+const expectedAssessmentEvidenceCount = coverageContract.requirements.reduce((sum, requirement) => sum + requirement.assessmentEvidence.length, 0);
 
 expect(requirementResults.length === 121 && requirementResults.every(({ requirement, result }) => result.status === "Complete" && requirement.evidenceReviewStatus === "Reviewed"), "121 syllabus requirements are not all Complete and Reviewed");
 expect(sequence.status === "Ready" && sequence.problems.length === 0, "curriculum sequence model still contains a backward dependency");
-expect(sequence.assessmentEvidenceCount >= 242, "curriculum sequence model lacks direct assessment first-use evidence");
-expect(questions.length === 963 && new Set(questions.map(({ id }) => id)).size === 963, "question inventory is not 963 unique IDs");
-expect(msRows.length === 963 && msRows.every((row) => row.status === "Approved" && questionMap.get(row.id)?.hash === row.content_hash), "Stage 5 approval ledger is incomplete or stale");
-expect(aoContract.questions.length === 963 && aoContract.questions.every((row) => row.reviewStatus === "Reviewed" && questionMap.get(row.questionId)?.hash === row.contentHash && row.assessmentObjectives.length), "question AO contract is incomplete or stale");
-expect(semanticRows.length === 783 && semanticRows.every((row) => row.pass1 === "Reviewed" && row.pass2 === "Reviewed" && row.status === "Approved"), "Stage 10 two-pass semantic review is incomplete");
-expect(visualRows.length === 969 && new Set(visualRows.map((row) => `${row.lesson}/${row.visual_id}`)).size === 969, "visual inventory is not 969 unique objects");
-expect(pageRows.length === 153 && pageRows.every((row) => row.desktop_1440 === "Pass" && row.mobile_390 === "Pass" && row.console === "Pass" && row.status === "Approved"), "Stage 6 page QA is incomplete");
-expect(accessibilityRows.length === 153 && accessibilityRows.every((row) => row.status === "Approved"), "Stage 7 accessibility QA is incomplete");
+expect(expectedAssessmentEvidenceCount >= coverageContract.requirements.length
+  && sequence.assessmentEvidenceCount === expectedAssessmentEvidenceCount,
+"curriculum sequence model does not reconcile every direct assessment first-use mapping");
+expect(questions.length === 968 && new Set(questions.map(({ id }) => id)).size === 968, "question inventory is not 968 unique IDs");
+expect(msRows.length === 968 && msRows.every((row) => row.status === "Approved" && questionMap.get(row.id)?.hash === row.content_hash), "Stage 5 approval ledger is incomplete or stale");
+expect(aoContract.questions.length === 968 && aoContract.questions.every((row) => row.reviewStatus === "Reviewed" && questionMap.get(row.questionId)?.hash === row.contentHash && row.assessmentObjectives.length), "question AO contract is incomplete or stale");
+expect(semanticRows.length === 784 && semanticRows.every((row) => row.pass1 === "Reviewed" && row.pass2 === "Reviewed" && row.status === "Approved"), "Stage 10 two-pass semantic review is incomplete");
+expect(visualRows.length === 971 && new Set(visualRows.map((row) => `${row.lesson}/${row.visual_id}`)).size === 971, "visual inventory is not 971 unique objects");
+expect(pageRows.length === 154 && pageRows.every((row) => row.desktop_1440 === "Pass" && row.mobile_390 === "Pass" && row.console === "Pass" && row.status === "ApprovedCurrentBrowser"), "Stage 6 page QA is incomplete");
+expect(accessibilityRows.length === 154 && accessibilityRows.every((row) => row.status === "ReviewedCurrentBrowser"), "Stage 7 accessibility QA is incomplete");
 expect(read("web/stage10-explanations.css").includes(".explanation-panel > .explanation-infographic") && read("web/stage10-explanations.css").includes("display: none"), "global mobile Stage 10 fallback is missing");
 
 const duplicateGroups = [[27, 28, 29, 31, 32, 38, 39], [8, 9], [52, 58]];
@@ -156,10 +159,10 @@ const report = `# AS9618 full scientific audit — final closure report\n\n` +
 `## Passed\n\n` +
 `- Syllabus: 121/121 requirements are Complete and independently Reviewed, with visible CORE teaching, worked/practice evidence, direct assessment and visual evidence where required.\n` +
 `- Sequence: ${sequence.nodeCount} requirement nodes, ${sequence.edgeCount} prerequisite edges and ${sequence.assessmentEvidenceCount} assessment first-use checks are Ready with no backward dependency.\n` +
-`- Lessons: 150/150 Markdown and student HTML identities are current; all repair batches and semantic checks are closed.\n` +
-`- Assessment: 963/963 questions are Approved by current content hash; 963/963 carry reviewed question-level AO mappings; A-without-M and FT-with-B-only flags are zero.\n` +
-`- Visuals: 969/969 objects pass inventory/display checks; 783/783 Stage 10 images have two Reviewed semantic passes and Approved status. Mobile Stage 10 panels use the full transcript instead of a 720 px overflow container.\n` +
-`- Browser/accessibility: 153 pages / 306 viewport rows are Approved in the Stage 6 and Stage 7 ledgers.\n` +
+`- Lessons: 151/151 Markdown and student HTML identities are current; all repair batches and semantic checks are closed.\n` +
+`- Assessment: 968/968 questions are Approved by current content hash; 968/968 carry reviewed question-level AO mappings; A-without-M and FT-with-B-only flags are zero.\n` +
+`- Visuals: 971/971 objects pass inventory/display checks; 784/784 Stage 10 images have two Reviewed semantic passes and Approved status. Mobile Stage 10 panels use the full transcript instead of a 720 px overflow container.\n` +
+`- Browser/accessibility: 154 pages / 308 viewport rows are Approved in the Stage 6 and Stage 7 ledgers.\n` +
 `- Defects: all 30 frozen defects are reconciled as Resolved with P0=0, P1=0, P2=0, P3=0 and Unknown=0.\n\n` +
 `## Failed\n\nNone.\n\n` +
 `## Unverified\n\nNone within the frozen audit scope. Remote publication is outside this report.\n\n` +

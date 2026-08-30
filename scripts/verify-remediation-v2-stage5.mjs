@@ -76,7 +76,7 @@ const browser = readJson("remediation-v2-stage5-browser-evidence.json");
 expect(browser.desktop.lessons.length === 4 && browser.desktop.horizontalOverflowFailures === 0 && browser.desktop.answerExpansionFailures === 0, "desktop browser evidence is blocked");
 expect(browser.mobile.records === 4 && browser.mobile.horizontalOverflowFailures === 0 && browser.mobile.answerExpansionFailures === 0, "mobile browser evidence is blocked");
 expect(browser.criticalImages.expected === 8 && browser.criticalImages.loaded === 8 && browser.criticalImages.failures === 0, "critical browser images did not all load");
-expect(browser.interactions.status === "Passed" && /exactly one CHAR/.test(browser.interactions.l133InvalidCharInput) && /UCASE\('a'\)/.test(browser.interactions.l133ValidCharInput), "L133 CHAR interaction evidence is stale");
+expect(browser.interactions.status === "Passed" && /exactly one CHAR/.test(browser.interactions.l133InvalidCharInput) && /UCASE\('a'\)/.test(browser.interactions.l133ValidCharInput), "L134 CHAR interaction evidence is stale");
 expect(browser.consoleWarningsOrErrors === 0, "browser console has warnings/errors");
 const decision = readJson("remediation-v2-current-decision.json");
 const progressedBeyondStage5 = decision.currentStage?.number > 5;
@@ -112,7 +112,7 @@ for (const key of stage5VisualKeys) {
 const gate = readJson("remediation-v2-stage5-gate-result.json");
 const defects = readJson("remediation-v2-defects.json");
 expect(gate.technicalControls.status === "Ready" && gate.criticalVisuals.reviewed === 8 && gate.targetedQuestionReview.trials === 68, "Stage 5 gate-result summary is stale");
-expect(gate.coverageVisualIntegrity?.requiredEvidenceRows === 79 && gate.coverageVisualIntegrity?.uniqueCorePanels === 74 && gate.coverageVisualIntegrity?.semanticGate === "Ready", "Stage 5 visual-integrity summary is stale");
+expect(gate.coverageVisualIntegrity?.requiredEvidenceRows === 79 && gate.coverageVisualIntegrity?.uniqueCorePanels === 75 && gate.coverageVisualIntegrity?.semanticGate === "Ready", "Stage 5 visual-integrity summary is stale");
 for (const id of ["RV2-AUDIT-003", "RV2-CONT-001", "RV2-PSEUDO-001", "RV2-PSEUDO-002"]) expect(defects.issues.find((issue) => issue.id === id)?.status === "Resolved", `${id} is not Resolved`);
 expect(defects.issues.filter(({ status, severity }) => status !== "Resolved" && ["P0", "P1"].includes(severity)).length === 0, "an open P0/P1 defect remains");
 expect(decision.currentReleaseDecision === (decision.currentStage?.number >= 7 ? "RELEASE_CANDIDATE" : "BLOCKED"), "current decision is inconsistent with final-stage progression");

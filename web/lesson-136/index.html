@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 136 | File handling patterns in pseudocode and Java</title>
+    <title>AS9618 Lesson 136 | Input and output formatting</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>File handling patterns in pseudocode and Java</h1>
+        <h1>Input and output formatting</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,16 +29,15 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#purpose">Purpose</a>
-        <a href="#modes">File modes</a>
-        <a href="#read">Read pattern</a>
-        <a href="#write">Write pattern</a>
-        <a href="#append">Append pattern</a>
-        <a href="#eof">EOF loop</a>
-        <a href="#close">Close files</a>
+        <a href="#input">INPUT</a>
+        <a href="#output">OUTPUT</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#formatting">Formatting</a>
+        <a href="#types">Types</a>
+        <a href="#tables">Tables</a>
         <a href="#java">Java support</a>
-        <a href="#builder">Pattern builder</a>
-        <a href="#chooser">Mode chooser</a>
+        <a href="#formatter">Formatter</a>
+        <a href="#chooser">Command chooser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -50,353 +49,344 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 136 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
-            <h2>Open the file. Use the file. Close the file. The file is not a mind reader.</h2>
+            <p class="lesson-meta">Lesson 136 | 45 minutes | Paper 2 Section 11 | 5-minute quiz</p>
+            <h2>Good input gets data in. Good output lets humans understand it.</h2>
             <p>
-              File handling lets a program store data between runs. Cambridge-style pseudocode uses commands such as
-              <code>OPENFILE</code>, <code>READFILE</code>, <code>WRITEFILE</code>, <code>EOF</code> and
-              <code>CLOSEFILE</code>. The pattern matters: choose the correct mode, process the file safely, then close it.
+              <code>INPUT</code> stores data entered by the user. <code>OUTPUT</code> displays data to the user.
+              Formatting controls how information is presented: labels, spacing, order, decimal places and line breaks.
+              Algorithms do not get extra marks for being mysterious. If the output reads like a printer having an
+              existential crisis, fix the format.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Choose</strong><span>READ, WRITE or APPEND based on the scenario</span></div>
-              <div><strong>Write</strong><span>Cambridge-style file handling patterns with <code>EOF</code> and <code>CLOSEFILE</code></span></div>
-              <div><strong>Separate</strong><span>exam pseudocode from Java file handling syntax</span></div>
+              <div><strong>Use</strong><span><code>INPUT</code> and <code>OUTPUT</code> precisely in Cambridge-style pseudocode</span></div>
+              <div><strong>Format</strong><span>labels, concatenated strings, numeric values and table-like output</span></div>
+              <div><strong>Avoid</strong><span>confusing prompts, output text and stored input values</span></div>
             </div>
           </div>
-          <div class="file-visual" aria-label="File handling visual">
-            <div><strong>OPENFILE</strong><span>choose mode</span><em>READ / WRITE / APPEND</em></div>
-            <div><strong>READFILE / WRITEFILE</strong><span>process data</span><em>line by line or record by record</em></div>
-            <div><strong>CLOSEFILE</strong><span>finish safely</span><em>release the file</em></div>
-            <p>Skipping <code>CLOSEFILE</code> is like leaving the classroom door open and hoping the exam board finds it charming.</p>
+          <div class="io-visual" aria-label="Input output visual">
+            <div><strong>INPUT Mark</strong><span>read and store</span><em>data enters the algorithm</em></div>
+            <div><strong>OUTPUT Mark</strong><span>display value</span><em>data leaves to screen</em></div>
+            <div><strong>OUTPUT "Mark: " &amp; Mark</strong><span>formatted message</span><em>clear for humans</em></div>
+            <p>Prompting tells the user what to enter. INPUT actually receives it.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 file questions reward the pattern: open in the correct mode, loop until EOF when reading, process records, then close.</p>
+            <p>Paper 2 answers often lose marks when candidates output a prompt but never input the value, or calculate correctly but display unclearly.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p><code>WRITE</code> may overwrite existing contents. Use <code>APPEND</code> when new data must be added to the end.</p>
+            <p><code>OUTPUT "Enter mark"</code> is only a prompt. It does not store the user's mark. Use <code>INPUT Mark</code>.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Which file mode keeps old scores and adds a new score?</h2>
-            <p>The file already contains previous scores. The program must add one more line without deleting the old data.</p>
+            <h2>Which line actually stores the user's name?</h2>
+            <p>A prompt can be very polite and still store absolutely nothing.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="read">FOR READ</button>
-            <button class="choice-card" type="button" data-hook="write">FOR WRITE</button>
-            <button class="choice-card" type="button" data-hook="append">FOR APPEND</button>
-            <button class="choice-card" type="button" data-hook="close">CLOSEFILE first</button>
+            <button class="choice-card" type="button" data-hook="output">OUTPUT "Enter name"</button>
+            <button class="choice-card" type="button" data-hook="input">INPUT Name</button>
+            <button class="choice-card" type="button" data-hook="assign">Name &lt;- "Enter name"</button>
+            <button class="choice-card" type="button" data-hook="display">OUTPUT Name</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the mode for adding to the end of an existing file.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line that reads and stores user data.</div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel" id="input" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="input">
           <div class="section-title">
-            <p class="eyebrow">Purpose</p>
-            <h2>Files store data outside the running program</h2>
-            <p>Chinese support: file 文件, record 记录, read 读取, write 写入, append 追加, end of file 文件末尾。</p>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Volatile variable</h3>
-              <p>A variable value is lost when the program ends unless it is saved elsewhere.</p>
-            </article>
-            <article>
-              <h3>Persistent file</h3>
-              <p>A file such as <code>Scores.txt</code> can keep records for the next time the program runs.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="purpose">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">Files store data outside the running program</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Files store data outside the running program with a structured visual model." />
-            <figcaption class="explanation-sr-only">Files store data outside the running program: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Volatile variable</li><li><strong>Lesson fact:</strong> A variable value is lost when the program ends unless it is saved elsewhere.</li><li><strong>Lesson fact:</strong> Persistent file</li><li><strong>Lesson fact:</strong> A file such as Scores.txt can keep records for the next time the program runs.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="modes" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modes">
-          <div class="section-title">
-            <p class="eyebrow">File modes</p>
-            <h2>The mode controls what the program intends to do with the file</h2>
-          </div>
-          <div class="data-table compare-table" role="table" aria-label="File modes">
-            <div class="table-row table-head"><div>Mode</div><div>Use</div><div>Exam warning</div></div>
-            <div class="table-row"><div><code>FOR READ</code></div><div>read existing data from a file</div><div>do not use it to add new records</div></div>
-            <div class="table-row"><div><code>FOR WRITE</code></div><div>write new file contents</div><div>may overwrite existing contents</div></div>
-            <div class="table-row"><div><code>FOR APPEND</code></div><div>add new data to the end of an existing file</div><div>keeps previous records</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start modes -->
-        <section class="panel explanation-panel" id="explanation-modes" data-explains="modes" data-explanation-kind="mechanism" aria-labelledby="explanation-modes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="modes">
-          <h2 class="explanation-sr-only" id="explanation-modes-title">The mode controls what the program intends to do with the file</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The mode controls what the program intends to do with the file with a structured visual model." />
-            <figcaption class="explanation-sr-only">The mode controls what the program intends to do with the file: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> File modes</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> FOR READ</li><li><strong>Lesson fact:</strong> read existing data from a file</li><li><strong>Lesson fact:</strong> do not use it to add new records</li><li><strong>Lesson fact:</strong> FOR WRITE</li><li><strong>Lesson fact:</strong> write new file contents</li><li><strong>Lesson fact:</strong> may overwrite existing contents</li><li><strong>Lesson fact:</strong> FOR APPEND</li><li><strong>Lesson fact:</strong> add new data to the end of an existing file</li><li><strong>Lesson fact:</strong> keeps previous records</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end modes -->
-        <section class="panel" id="read" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="read">
-          <div class="section-title">
-            <p class="eyebrow">Read pattern</p>
-            <h2>Read every line using <code>WHILE NOT EOF</code></h2>
+            <p class="eyebrow">INPUT</p>
+            <h2><code>INPUT</code> reads data and stores it in a variable</h2>
+            <p>Chinese support: input 输入, store 存储, variable 变量, prompt 提示信息。</p>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>OPENFILE "Scores.txt" FOR READ
-WHILE NOT EOF("Scores.txt")
-    READFILE "Scores.txt", Line
-    OUTPUT Line
-ENDWHILE
-CLOSEFILE "Scores.txt"</code></pre>
+              <pre><code>OUTPUT "Enter mark"
+INPUT Mark</code></pre>
             </article>
             <article>
-              <h3>Trace idea</h3>
+              <h3>Trace</h3>
               <div class="trace-list">
-                <div><strong>Open</strong><span>prepare <code>Scores.txt</code> for reading</span></div>
-                <div><strong>EOF check</strong><span>continue while records remain</span></div>
-                <div><strong>Read</strong><span>store one line in <code>Line</code></span></div>
-                <div><strong>Close</strong><span>release the file after the loop</span></div>
+                <div><strong>Prompt</strong><span>screen shows <code>Enter mark</code></span></div>
+                <div><strong>Input</strong><span>user enters a value such as <code>72</code></span></div>
+                <div><strong>Storage</strong><span><code>Mark</code> now stores <code>72</code></span></div>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start read -->
-        <section class="panel explanation-panel" id="explanation-read" data-explains="read" data-explanation-kind="mechanism" aria-labelledby="explanation-read-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="read">
-          <h2 class="explanation-sr-only" id="explanation-read-title">Read every line using WHILE NOT EOF</h2>
+        <!-- stage10-explanation:start input -->
+        <section class="panel explanation-panel" id="explanation-input" data-explains="input" data-explanation-kind="mechanism" aria-labelledby="explanation-input-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="input">
+          <h2 class="explanation-sr-only" id="explanation-input-title">INPUT reads data and stores it in a variable</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-read.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read every line using WHILE NOT EOF with a structured visual model." />
-            <figcaption class="explanation-sr-only">Read every line using WHILE NOT EOF: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-input.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INPUT reads data and stores it in a variable with a structured visual model." />
+            <figcaption class="explanation-sr-only">INPUT reads data and stores it in a variable: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Read pattern</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> Trace idea</li><li><strong>Lesson fact:</strong> Open prepare Scores.txt for reading</li><li><strong>Lesson fact:</strong> EOF check continue while records remain</li><li><strong>Lesson fact:</strong> Read store one line in Line</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark&quot;</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Prompt screen shows Enter mark</li><li><strong>Lesson fact:</strong> Input user enters a value such as 72</li><li><strong>Lesson fact:</strong> Storage Mark now stores 72</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end read -->
-        <section class="panel" id="write" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="write">
+        <!-- stage10-explanation:end input -->
+        <section class="panel" id="output" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="output">
           <div class="section-title">
-            <p class="eyebrow">Write pattern</p>
-            <h2><code>FOR WRITE</code> writes new contents</h2>
+            <p class="eyebrow">OUTPUT</p>
+            <h2><code>OUTPUT</code> displays text, values or expressions</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>OPENFILE "Report.txt" FOR WRITE
-WRITEFILE "Report.txt", "Name,Mark"
-WRITEFILE "Report.txt", "Ada,72"
-CLOSEFILE "Report.txt"</code></pre>
+              <h3>Display text and values</h3>
+              <pre><code>Name &lt;- "Ada"
+Mark &lt;- 72
+OUTPUT "Student: " &amp; Name
+OUTPUT "Mark: " &amp; Mark</code></pre>
             </article>
             <article>
-              <h3>Reasoning</h3>
-              <p>Use <code>FOR WRITE</code> when the program is creating or replacing the file contents.</p>
-              <div class="callout">If old contents must be preserved, <code>FOR WRITE</code> is the suspicious choice. It may wipe the slate clean with too much confidence.</div>
+              <h3>Displayed output</h3>
+              <div class="screen-box">
+                <p>Student: Ada</p>
+                <p>Mark: 72</p>
+              </div>
+              <p>Labels make the output meaningful. A lonely <code>72</code> on a screen is not a user interface; it is a small mystery.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start write -->
-        <section class="panel explanation-panel" id="explanation-write" data-explains="write" data-explanation-kind="mechanism" aria-labelledby="explanation-write-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="write">
-          <h2 class="explanation-sr-only" id="explanation-write-title">FOR WRITE writes new contents</h2>
+        <!-- stage10-explanation:start output -->
+        <section class="panel explanation-panel" id="explanation-output" data-explains="output" data-explanation-kind="mechanism" aria-labelledby="explanation-output-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="output">
+          <h2 class="explanation-sr-only" id="explanation-output-title">OUTPUT displays text, values or expressions</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-write.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining FOR WRITE writes new contents with a structured visual model." />
-            <figcaption class="explanation-sr-only">FOR WRITE writes new contents: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-output.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining OUTPUT displays text, values or expressions with a structured visual model." />
+            <figcaption class="explanation-sr-only">OUTPUT displays text, values or expressions: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Write pattern</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Report.txt&quot; FOR WRITE</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Report.txt&quot;, &quot;Name,Mark&quot;</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Report.txt&quot;, &quot;Ada,72&quot;</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Report.txt&quot;</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Use FOR WRITE when the program is creating or replacing the file contents.</li><li><strong>Lesson fact:</strong> If old contents must be preserved, FOR WRITE is the suspicious choice. It may wipe the slate clean with too much confidence.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Display text and values</li><li><strong>Lesson fact:</strong> Name &lt;- &quot;Ada&quot;</li><li><strong>Lesson fact:</strong> Mark &lt;- 72</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Student: &quot; &amp; Name</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Mark: &quot; &amp; Mark</li><li><strong>Lesson fact:</strong> Displayed output</li><li><strong>Lesson fact:</strong> Student: Ada</li><li><strong>Lesson fact:</strong> Mark: 72</li><li><strong>Lesson fact:</strong> Labels make the output meaningful. A lonely 72 on a screen is not a user interface; it is a small mystery.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end write -->
-        <section class="panel" id="append" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="append">
+        <!-- stage10-explanation:end output -->
+        <section class="panel" id="prompts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="prompts">
           <div class="section-title">
-            <p class="eyebrow">Append pattern</p>
-            <h2><code>FOR APPEND</code> adds new data to the end</h2>
+            <p class="eyebrow">Prompts</p>
+            <h2>A good prompt tells the user what to enter and the expected format</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Prompt comparison">
+            <div class="table-row table-head"><div>Prompt</div><div>Quality</div><div>Reason</div></div>
+            <div class="table-row"><div><code>OUTPUT "Input"</code></div><div>weak</div><div>does not say what value is needed</div></div>
+            <div class="table-row"><div><code>OUTPUT "Enter mark"</code></div><div>better</div><div>states the required data item</div></div>
+            <div class="table-row"><div><code>OUTPUT "Enter mark 0 to 100"</code></div><div>best</div><div>states expected range and reduces invalid input</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start prompts -->
+        <section class="panel explanation-panel" id="explanation-prompts" data-explains="prompts" data-explanation-kind="mechanism" aria-labelledby="explanation-prompts-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="prompts">
+          <h2 class="explanation-sr-only" id="explanation-prompts-title">A good prompt tells the user what to enter and the expected format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-prompts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A good prompt tells the user what to enter and the expected format with a structured visual model." />
+            <figcaption class="explanation-sr-only">A good prompt tells the user what to enter and the expected format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> OUTPUT &quot;Input&quot;</li><li><strong>Lesson fact:</strong> does not say what value is needed</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark&quot;</li><li><strong>Lesson fact:</strong> states the required data item</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark 0 to 100&quot;</li><li><strong>Lesson fact:</strong> states expected range and reduces invalid input</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end prompts -->
+        <section class="panel" id="formatting" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formatting">
+          <div class="section-title">
+            <p class="eyebrow">Formatting output</p>
+            <h2>Formatting means controlling how values are shown</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>OPENFILE "Scores.txt" FOR APPEND
-WRITEFILE "Scores.txt", "Lin,85"
-CLOSEFILE "Scores.txt"</code></pre>
+              <h3>Unformatted</h3>
+              <pre><code>OUTPUT Name
+OUTPUT Mark
+OUTPUT Grade</code></pre>
+              <div class="screen-box compact"><p>Ada</p><p>72</p><p>B</p></div>
+            </article>
+            <article>
+              <h3>Formatted</h3>
+              <pre><code>OUTPUT "Name: " &amp; Name
+OUTPUT "Mark: " &amp; Mark
+OUTPUT "Grade: " &amp; Grade</code></pre>
+              <div class="screen-box compact"><p>Name: Ada</p><p>Mark: 72</p><p>Grade: B</p></div>
+            </article>
+          </div>
+          <div class="callout">In Cambridge-style pseudocode, clear labels and logical order often matter more than language-specific formatting syntax.</div>
+        </section>
+
+        <!-- stage10-explanation:start formatting -->
+        <section class="panel explanation-panel" id="explanation-formatting" data-explains="formatting" data-explanation-kind="mechanism" aria-labelledby="explanation-formatting-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="formatting">
+          <h2 class="explanation-sr-only" id="explanation-formatting-title">Formatting means controlling how values are shown</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-formatting.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Formatting means controlling how values are shown with a structured visual model." />
+            <figcaption class="explanation-sr-only">Formatting means controlling how values are shown: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Formatting output</li><li><strong>Lesson fact:</strong> Unformatted</li><li><strong>Lesson fact:</strong> OUTPUT Name</li><li><strong>Lesson fact:</strong> OUTPUT Mark</li><li><strong>Lesson fact:</strong> OUTPUT Grade</li><li><strong>Lesson fact:</strong> Formatted</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Name: &quot; &amp; Name</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Mark: &quot; &amp; Mark</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Grade: &quot; &amp; Grade</li><li><strong>Lesson fact:</strong> Name: Ada</li><li><strong>Lesson fact:</strong> Mark: 72</li><li><strong>Lesson fact:</strong> Grade: B</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end formatting -->
+        <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
+          <div class="section-title">
+            <p class="eyebrow">Input type handling</p>
+            <h2>Input data must be used with the correct data type</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Numeric calculation</h3>
+              <pre><code>OUTPUT "Enter price"
+INPUT Price
+Total &lt;- Price * 1.20
+OUTPUT "Total: " &amp; Total</code></pre>
             </article>
             <article>
               <h3>Reasoning</h3>
-              <p>Use <code>FOR APPEND</code> when previous records should remain and new records should be added after them.</p>
+              <p><code>Price</code> must be treated as numeric for multiplication. If a language reads all input as text, conversion may be needed.</p>
+              <div class="callout">Cambridge pseudocode usually focuses on the algorithm. If the question demands conversion, show it clearly.</div>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start types -->
+        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="types">
+          <h2 class="explanation-sr-only" id="explanation-types-title">Input data must be used with the correct data type</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Input data must be used with the correct data type with a structured visual model." />
+            <figcaption class="explanation-sr-only">Input data must be used with the correct data type: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input type handling</li><li><strong>Lesson fact:</strong> Numeric calculation</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter price&quot;</li><li><strong>Lesson fact:</strong> INPUT Price</li><li><strong>Lesson fact:</strong> Total &lt;- Price * 1.20</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Total: &quot; &amp; Total</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Price must be treated as numeric for multiplication. If a language reads all input as text, conversion may be needed.</li><li><strong>Lesson fact:</strong> Cambridge pseudocode usually focuses on the algorithm. If the question demands conversion, show it clearly.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end types -->
+        <section class="panel" id="tables" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tables">
+          <div class="section-title">
+            <p class="eyebrow">Table-like output</p>
+            <h2>Formatted output can make repeated records readable</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pseudocode idea</h3>
+              <pre><code>OUTPUT "Name    Mark"
+OUTPUT "Ada     72"
+OUTPUT "Lin     85"</code></pre>
+            </article>
+            <article>
+              <h3>Displayed output</h3>
               <div class="screen-box mono">
-                <p>Ada,72</p>
-                <p>Lin,85</p>
+                <p>Name    Mark</p>
+                <p>Ada     72</p>
+                <p>Lin     85</p>
               </div>
+              <p>Headings, spacing and row order make the values interpretable.</p>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start append -->
-        <section class="panel explanation-panel" id="explanation-append" data-explains="append" data-explanation-kind="mechanism" aria-labelledby="explanation-append-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="append">
-          <h2 class="explanation-sr-only" id="explanation-append-title">FOR APPEND adds new data to the end</h2>
+        <!-- stage10-explanation:start tables -->
+        <section class="panel explanation-panel" id="explanation-tables" data-explains="tables" data-explanation-kind="mechanism" aria-labelledby="explanation-tables-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tables">
+          <h2 class="explanation-sr-only" id="explanation-tables-title">Formatted output can make repeated records readable</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-append.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining FOR APPEND adds new data to the end with a structured visual model." />
-            <figcaption class="explanation-sr-only">FOR APPEND adds new data to the end: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-tables.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Formatted output can make repeated records readable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Formatted output can make repeated records readable: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Append pattern</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR APPEND</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Scores.txt&quot;, &quot;Lin,85&quot;</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Use FOR APPEND when previous records should remain and new records should be added after them.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Table-like output</li><li><strong>Lesson fact:</strong> Pseudocode idea</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Name Mark&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Ada 72&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Lin 85&quot;</li><li><strong>Lesson fact:</strong> Displayed output</li><li><strong>Lesson fact:</strong> Name Mark</li><li><strong>Lesson fact:</strong> Headings, spacing and row order make the values interpretable.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end append -->
-        <section class="panel" id="eof" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="eof">
-          <div class="section-title">
-            <p class="eyebrow">EOF loop</p>
-            <h2><code>EOF</code> prevents reading past the end of the file</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Count records</h3>
-              <pre><code>Count &lt;- 0
-OPENFILE "Orders.txt" FOR READ
-WHILE NOT EOF("Orders.txt")
-    READFILE "Orders.txt", OrderLine
-    Count &lt;- Count + 1
-ENDWHILE
-CLOSEFILE "Orders.txt"
-OUTPUT Count</code></pre>
-            </article>
-            <article>
-              <h3>Common trace</h3>
-              <p>If <code>Orders.txt</code> has 3 lines, the loop runs 3 times and <code>Count</code> becomes <code>3</code>.</p>
-              <div class="callout">Do not put <code>READFILE</code> after the EOF check has already failed.</div>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start eof -->
-        <section class="panel explanation-panel" id="explanation-eof" data-explains="eof" data-explanation-kind="mechanism" aria-labelledby="explanation-eof-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="eof">
-          <h2 class="explanation-sr-only" id="explanation-eof-title">EOF prevents reading past the end of the file</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-eof.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining EOF prevents reading past the end of the file with a structured visual model." />
-            <figcaption class="explanation-sr-only">EOF prevents reading past the end of the file: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> EOF loop</li><li><strong>Lesson fact:</strong> Count records</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Orders.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Orders.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Orders.txt&quot;, OrderLine</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Orders.txt&quot;</li><li><strong>Lesson fact:</strong> OUTPUT Count</li><li><strong>Lesson fact:</strong> Common trace</li><li><strong>Lesson fact:</strong> If Orders.txt has 3 lines, the loop runs 3 times and Count becomes 3 .</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end eof -->
-        <section class="panel" id="close" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="close">
-          <div class="section-title">
-            <p class="eyebrow">Closing files</p>
-            <h2><code>CLOSEFILE</code> completes the pattern</h2>
-          </div>
-          <div class="pattern-grid">
-            <article><strong>Reliability</strong><span>Data written to a file should be properly finished and released.</span></article>
-            <article><strong>Resources</strong><span>The operating system can free the file handle or lock.</span></article>
-            <article><strong>Exam pattern</strong><span>Questions often expect <code>CLOSEFILE</code> after reading or writing.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start close -->
-        <section class="panel explanation-panel" id="explanation-close" data-explains="close" data-explanation-kind="mechanism" aria-labelledby="explanation-close-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="close">
-          <h2 class="explanation-sr-only" id="explanation-close-title">CLOSEFILE completes the pattern</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-close.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining CLOSEFILE completes the pattern with a structured visual model." />
-            <figcaption class="explanation-sr-only">CLOSEFILE completes the pattern: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Closing files</li><li><strong>Lesson fact:</strong> Reliability Data written to a file should be properly finished and released.</li><li><strong>Lesson fact:</strong> Resources The operating system can free the file handle or lock.</li><li><strong>Lesson fact:</strong> Exam pattern Questions often expect CLOSEFILE after reading or writing.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end close -->
+        <!-- stage10-explanation:end tables -->
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
-            <h2>Java file handling helps understanding, but does not replace pseudocode</h2>
+            <h2>Java I/O syntax is not Cambridge pseudocode</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>OPENFILE "Scores.txt" FOR READ
-WHILE NOT EOF("Scores.txt")
-    READFILE "Scores.txt", Line
-    OUTPUT Line
-ENDWHILE
-CLOSEFILE "Scores.txt"</code></pre>
+              <pre><code>OUTPUT "Enter mark"
+INPUT Mark
+OUTPUT "Mark: " &amp; Mark</code></pre>
             </article>
             <article>
               <h3>Java support example only</h3>
-              <pre><code>try (Scanner file = new Scanner(new File("Scores.txt"))) {
-    while (file.hasNextLine()) {
-        System.out.println(file.nextLine());
-    }
-}</code></pre>
-              <p>Do not use <code>Scanner</code>, braces or <code>hasNextLine()</code> as a Cambridge pseudocode answer.</p>
+              <pre><code>Scanner input = new Scanner(System.in);
+System.out.print("Enter mark: ");
+int mark = input.nextInt();
+System.out.println("Mark: " + mark);</code></pre>
+              <p>Do not copy <code>Scanner</code>, semicolons or Java method calls into Paper 2 pseudocode unless Java is explicitly requested.</p>
             </article>
           </div>
         </section>
 
         <!-- stage10-explanation:start java -->
         <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="java">
-          <h2 class="explanation-sr-only" id="explanation-java-title">Java file handling helps understanding, but does not replace pseudocode</h2>
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java I/O syntax is not Cambridge pseudocode</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java file handling helps understanding, but does not replace pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Java file handling helps understanding, but does not replace pseudocode: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java I/O syntax is not Cambridge pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java I/O syntax is not Cambridge pseudocode: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> try (Scanner file = new Scanner(new File(&quot;Scores.txt&quot;))) {</li><li><strong>Lesson fact:</strong> while (file.hasNextLine()) {</li><li><strong>Lesson fact:</strong> System.out.println(file.nextLine());</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark&quot;</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Mark: &quot; &amp; Mark</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> Scanner input = new Scanner(System.in);</li><li><strong>Lesson fact:</strong> System.out.print(&quot;Enter mark: &quot;);</li><li><strong>Lesson fact:</strong> int mark = input.nextInt();</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Mark: &quot; + mark);</li><li><strong>Lesson fact:</strong> Do not copy Scanner , semicolons or Java method calls into Paper 2 pseudocode unless Java is explicitly requested.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="formatter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formatter">
           <div class="section-title">
-            <p class="eyebrow">Interactive pattern builder</p>
-            <h2>Generate the core file pattern</h2>
-            <p>Choose a task and compare the pattern. This is a scaffold, not a replacement for understanding.</p>
+            <p class="eyebrow">Interactive output formatter</p>
+            <h2>Build a readable result line</h2>
+            <p>Enter values and choose a format. The goal is not decoration; it is clarity.</p>
           </div>
           <div class="converter-grid">
             <label>
-              File name
-              <input id="fileInput" type="text" value="Scores.txt" maxlength="24" />
+              Name
+              <input id="nameInput" type="text" value="Ada" maxlength="20" />
             </label>
             <label>
-              Task
-              <select id="taskInput">
-                <option value="read">read all lines</option>
-                <option value="count">count records</option>
-                <option value="write">write new file</option>
-                <option value="append">append one record</option>
+              Mark
+              <input id="markInput" type="number" min="0" max="100" step="1" value="72" />
+            </label>
+            <label>
+              Format
+              <select id="formatInput">
+                <option value="plain">plain values</option>
+                <option value="labels">with labels</option>
+                <option value="sentence">sentence</option>
+                <option value="table">table row</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="buildBtn">Build</button>
+            <button class="primary-button" type="button" id="formatBtn">Format</button>
           </div>
-          <div class="trace-output" id="builderResult" aria-live="polite">Choose a task and build the pattern.</div>
+          <div class="trace-output" id="formatResult" aria-live="polite">Choose values and format the output.</div>
         </section>
 
+        <!-- stage10-explanation:start formatter -->
+        <section class="panel explanation-panel" id="explanation-formatter" data-explains="formatter" data-explanation-kind="mechanism" aria-labelledby="explanation-formatter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="formatter">
+          <h2 class="explanation-sr-only" id="explanation-formatter-title">Build a readable result line</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-formatter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Build a readable result line with a structured visual model." />
+            <figcaption class="explanation-sr-only">Build a readable result line: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive output formatter</li><li><strong>Lesson fact:</strong> Enter values and choose a format. The goal is not decoration; it is clarity.</li><li><strong>Lesson fact:</strong> Choose values and format the output.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end formatter -->
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
-            <p class="eyebrow">Mode chooser</p>
-            <h2>Which mode should the program use?</h2>
-            <p>Select a scenario to see the mode and exam reasoning.</p>
+            <p class="eyebrow">Command chooser</p>
+            <h2>Is this input, output, or formatting?</h2>
+            <p>Select a scenario to see the command and exam reasoning.</p>
           </div>
           <div class="scenario-grid" id="scenarioGrid"></div>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
@@ -405,7 +395,7 @@ CLOSEFILE "Scores.txt"</code></pre>
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Trace the file operation pattern</h2>
+            <h2>Trace what is stored and what is displayed</h2>
           </div>
           <div class="tabs" id="exampleTabs" role="tablist"></div>
           <div class="example-output" id="exampleOutput"></div>
@@ -414,8 +404,8 @@ CLOSEFILE "Scores.txt"</code></pre>
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers, exact commands</h2>
-            <p>Type the mode, command or final trace value.</p>
+            <h2>Short answers, precise commands</h2>
+            <p>Type the command keyword, displayed output, or missing line.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -423,7 +413,7 @@ CLOSEFILE "Scores.txt"</code></pre>
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the file handling error</h2>
+            <h2>Find the I/O error</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -432,7 +422,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
-            <p>Questions are original Cambridge-style practice. MS notes are strict about mode, EOF and close-file steps.</p>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about storing input, displaying output and readable formatting.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -443,31 +433,31 @@ CLOSEFILE "Scores.txt"</code></pre>
             <h2>Three rules to keep</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Mode first</strong><span><code>READ</code>, <code>WRITE</code> and <code>APPEND</code> mean different things.</span></div>
-            <div><strong>EOF loop</strong><span>Use <code>WHILE NOT EOF</code> when reading all records.</span></div>
-            <div><strong>Close</strong><span>Finish the pattern with <code>CLOSEFILE</code>.</span></div>
+            <div><strong><code>INPUT</code></strong><span>reads data and stores it in a variable.</span></div>
+            <div><strong><code>OUTPUT</code></strong><span>displays text, values or expression results.</span></div>
+            <div><strong>Formatting</strong><span>uses labels, order and spacing so output is meaningful.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Read, write, append</h2>
+            <h2>Prompt, input, display</h2>
           </div>
           <ol class="homework-list">
-            <li>Write Cambridge-style pseudocode to read every line from <code>Names.txt</code> and output it.</li>
-            <li>Write pseudocode to count records in <code>Orders.txt</code> and output the count.</li>
-            <li>Write pseudocode to append <code>"Ada,72"</code> to <code>Scores.txt</code> without deleting existing records.</li>
-            <li>Answer a 4-mark question explaining why Java <code>Scanner</code> syntax should not replace Cambridge file pseudocode.</li>
+            <li>Write pseudocode that prompts for a name and mark, inputs both values, and outputs <code>Name: Ada, Mark: 72</code>-style text.</li>
+            <li>Rewrite three unclear outputs from today's lesson using labels and sensible ordering.</li>
+            <li>Write a small table-like output for three products and their prices using headings.</li>
+            <li>Answer a 4-mark question explaining why <code>OUTPUT "Enter mark"</code> alone is not enough to read a mark.</li>
           </ol>
-          <div class="callout">Marking focus: use the correct file mode, include the file command sequence, and close the file.</div>
+          <div class="callout">Marking focus: include both prompt and input where needed, then output values with clear labels.</div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

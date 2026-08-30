@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 123 | Choosing appropriate data structures</title>
+    <title>AS9618 Lesson 123 | Stacks and queues as abstract data types</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Choosing appropriate data structures</h1>
+        <h1>Stacks and queues as abstract data types</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,431 +29,291 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#criteria">Criteria</a>
-        <a href="#array">Array</a>
-        <a href="#record">Record</a>
-        <a href="#file">File</a>
-        <a href="#adt">Stack/queue</a>
-        <a href="#decision">Decision table</a>
+        <a href="#concept">Concept</a>
+        <a href="#stack">Stack</a>
+        <a href="#queue">Queue</a>
+        <a href="#operations">Operations</a>
+        <a href="#errors">Overflow/underflow</a>
+        <a href="#implementation">Implementation</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#chooser">Chooser</a>
-        <a href="#ranker">Reason ranker</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#trace">Trace</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Choosing stack, queue or linked list</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</p>
-            <p>Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.</p>
-            <p>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</p>
-            <p>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose structures</h3>
-            <p>Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Choosing stack, queue or linked list: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Suggest an ADT for breadth-first waiting jobs.</p>
-              <details><summary>Show answer</summary><p>Queue, because first in is first out.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Suggest an ADT for nested function return addresses.</p>
-              <details><summary>Show answer</summary><p>Stack, because the most recent call returns first.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What must be checked before pushing to a full array stack?</p>
-              <details><summary>Show answer</summary><p>Overflow/capacity.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Justify a suitable ADT for browser Back history and contrast it with a queue.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>selects stack</td><td>Do not award the structure name without its access-order consequence.</td><td>1</td></tr>
-                  <tr><td>most recently visited page is returned to first / LIFO</td><td></td><td>1</td></tr>
-                  <tr><td>queue removes earliest item first / FIFO</td><td></td><td>1</td></tr>
-                  <tr><td>explains why FIFO gives the wrong access order</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 123 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
-            <h2>The best data structure is the one whose access pattern matches the problem.</h2>
+            <h2>An abstract data type is defined by what you can do with it, not by the box it lives in.</h2>
             <p>
-              Paper 2 rarely rewards “because it is easier” on its own. A strong answer chooses a structure and explains
-              the reason: same-type repeated values, mixed fields about one entity, persistent storage, LIFO removal,
-              FIFO service order, or a need to process many records.
+              A stack and a queue may both be implemented using arrays, but their rules are different. A stack removes
+              the most recently added item. A queue removes the item that has waited longest. That one rule difference
+              explains many exam traces.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Choose</strong><span>array, record, file, stack or queue for a scenario</span></div>
-              <div><strong>Justify</strong><span>link structure features to scenario requirements</span></div>
-              <div><strong>Avoid</strong><span>vague answers that do not earn Cambridge-style marks</span></div>
+              <div><strong>Define</strong><span>stack, queue and abstract data type accurately</span></div>
+              <div><strong>Trace</strong><span>push/pop and enqueue/dequeue operation sequences</span></div>
+              <div><strong>Check</strong><span>overflow and underflow before invalid operations</span></div>
             </div>
           </div>
-          <div class="decision-visual" aria-label="Data structure decision visual">
-            <div class="decision-card">
-              <strong>Scenario clue</strong>
-              <span>many same-type values -> array</span>
-              <span>one entity, mixed fields -> record</span>
-              <span>survives program end -> file</span>
-              <span>LIFO/FIFO rule -> stack/queue</span>
+          <div class="adt-visual" aria-label="Stack and queue visual">
+            <div class="mini-adt">
+              <strong>Stack</strong>
+              <span>top: C</span>
+              <span>B</span>
+              <span>A</span>
+              <em>LIFO</em>
             </div>
-            <div class="decision-caption">Structure + reason + consequence = marks</div>
-            <p>The structure is not a vibe. It is a design choice with evidence.</p>
+            <div class="mini-adt queue-line">
+              <strong>Queue</strong>
+              <span>front: A</span>
+              <span>B</span>
+              <span>rear: C</span>
+              <em>FIFO</em>
+            </div>
+            <p>Same data items. Different access rules. Exams enjoy that distinction.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam questions often ask for a suitable data structure and a reason. The reason usually carries the marks.</p>
+            <p>Paper 2 can ask for definitions, operation traces, pointer updates, or checks for full and empty structures.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>“It is efficient” is not enough unless the answer explains why the structure matches the operation needed.</p>
+            <p>Do not define a stack as “an array”. The ADT rule is LIFO; an array is only one possible implementation.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Would you store a class register as 28 separate variables?</h2>
-            <p>Choose the best structure for 28 students, each with name, mark and attendance status.</p>
+            <h2>Who leaves first?</h2>
+            <p>Items arrive in this order: A, then B, then C. Which item leaves first in a normal service queue?</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="separate">28 groups of separate variables</button>
-            <button class="choice-card" type="button" data-hook="array">ARRAY[1:84] OF STRING</button>
-            <button class="choice-card" type="button" data-hook="records">ARRAY[1:28] OF TStudent</button>
-            <button class="choice-card" type="button" data-hook="stack">Stack of student names</button>
+            <button class="choice-card" type="button" data-hook="a">A</button>
+            <button class="choice-card" type="button" data-hook="b">B</button>
+            <button class="choice-card" type="button" data-hook="c">C</button>
+            <button class="choice-card" type="button" data-hook="all">All at once</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that stores many students while preserving fields for each student.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the item that has waited the longest.</div>
         </section>
 
-        <section class="panel" id="criteria" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
-            <p class="eyebrow">Selection criteria</p>
-            <h2>Start with the data and operations, not the keyword</h2>
-            <p>Chinese support: criteria 是“选择标准”；access pattern 是“访问方式”；justification 是“理由说明”。</p>
+            <p class="eyebrow">Concept</p>
+            <h2>ADT means behaviour first, implementation second</h2>
+            <p>Chinese support: abstract data type 是“抽象数据类型”；LIFO 是“后进先出”；FIFO 是“先进先出”。</p>
           </div>
-          <div class="data-table criteria-table" role="table" aria-label="Selection criteria">
-            <div class="table-row table-head" role="row"><div>Question to ask</div><div>Why it matters</div><div>Likely structure</div></div>
-            <div class="table-row" role="row"><div>Are there many values of the same type?</div><div>indexed traversal/search</div><div>Array</div></div>
-            <div class="table-row" role="row"><div>Does one item have several named fields?</div><div>mixed types and meaningful field names</div><div>Record</div></div>
-            <div class="table-row" role="row"><div>Are there many entities with the same fields?</div><div>repeat a record shape</div><div>Array of records</div></div>
-            <div class="table-row" role="row"><div>Must the data survive after the program ends?</div><div>persistent storage</div><div>Text file / CSV file</div></div>
-            <div class="table-row" role="row"><div>Is removal order LIFO or FIFO?</div><div>restricted access rule</div><div>Stack / Queue</div></div>
+          <div class="data-table concept-table" role="table" aria-label="ADT concepts">
+            <div class="table-row table-head" role="row"><div>Term</div><div>Rule</div><div>Common operations</div></div>
+            <div class="table-row" role="row"><div>Stack</div><div>LIFO: last in, first out</div><div>push, pop, peek</div></div>
+            <div class="table-row" role="row"><div>Queue</div><div>FIFO: first in, first out</div><div>enqueue, dequeue, peek/front</div></div>
+            <div class="table-row" role="row"><div>ADT</div><div>defined by allowed operations and behaviour</div><div>can be implemented using arrays or linked structures</div></div>
+          </div>
+        </section>
+        <section class="panel" id="stack" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+          <div class="section-title">
+            <p class="eyebrow">Stack</p>
+            <h2>Push adds to the top; pop removes from the top</h2>
+          </div>
+          <pre><code>PUSH A
+PUSH B
+PUSH C
+POP returns C</code></pre>
+          <div class="callout">A stack behaves like a pile of plates: the newest item blocks the older items until it is removed.</div>
+        </section>
+        <section class="panel" id="queue" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+          <div class="section-title">
+            <p class="eyebrow">Queue</p>
+            <h2>Enqueue adds at the rear; dequeue removes from the front</h2>
+          </div>
+          <pre><code>ENQUEUE A
+ENQUEUE B
+ENQUEUE C
+DEQUEUE returns A</code></pre>
+          <div class="callout">A queue behaves like a waiting line: the earliest item is served first.</div>
+        </section>
+        <section class="panel" id="operations" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+          <div class="section-title">
+            <p class="eyebrow">Operations</p>
+            <h2>Use the operation name that matches the ADT</h2>
+          </div>
+          <div class="data-table ops-table" role="table" aria-label="Stack and queue operations">
+            <div class="table-row table-head" role="row"><div>Operation</div><div>Stack</div><div>Queue</div></div>
+            <div class="table-row" role="row"><div>Add item</div><div><code>PUSH(Item)</code></div><div><code>ENQUEUE(Item)</code></div></div>
+            <div class="table-row" role="row"><div>Remove item</div><div><code>POP()</code> from top</div><div><code>DEQUEUE()</code> from front</div></div>
+            <div class="table-row" role="row"><div>Inspect item</div><div><code>PEEK()</code> top item</div><div><code>PEEK()</code> or front item</div></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start criteria -->
-        <section class="panel explanation-panel" id="explanation-criteria" data-explains="criteria" data-explanation-kind="process" aria-labelledby="explanation-criteria-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-criteria-title">Start with the data and operations, not the keyword</h2>
+        <!-- stage10-explanation:start operations -->
+        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="comparison" aria-labelledby="explanation-operations-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+          <h2 class="explanation-sr-only" id="explanation-operations-title">Why operation names preserve meaning</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-criteria.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Start with the data and operations, not the keyword with a structured visual model." />
-            <figcaption class="explanation-sr-only">Start with the data and operations, not the keyword: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-operations.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why operation names preserve meaning through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why operation names preserve meaning: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Selection criteria</li><li><strong>Lesson fact:</strong> Question to ask</li><li><strong>Lesson fact:</strong> Why it matters</li><li><strong>Lesson fact:</strong> Likely structure</li><li><strong>Lesson fact:</strong> Are there many values of the same type?</li><li><strong>Lesson fact:</strong> indexed traversal/search</li><li><strong>Lesson fact:</strong> Does one item have several named fields?</li><li><strong>Lesson fact:</strong> mixed types and meaningful field names</li><li><strong>Lesson fact:</strong> Are there many entities with the same fields?</li><li><strong>Lesson fact:</strong> repeat a record shape</li><li><strong>Lesson fact:</strong> Array of records</li><li><strong>Lesson fact:</strong> Must the data survive after the program ends?</li></ol>
+            <ol><li><strong>Mechanism:</strong> Push and pop describe changes at a stack's top.</li><li><strong>Reason:</strong> Enqueue and dequeue describe changes at opposite queue ends.</li><li><strong>Result:</strong> Using the correct operation prevents accidental access-rule changes.</li></ol>
 
+            <p><strong>Analogy:</strong> Door names matter when one room has one entrance and another has two.</p>
+            <p><strong>Boundary:</strong> Generic array insertion is not equivalent unless it preserves the ADT rule.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end criteria -->
-        <section class="panel" id="array" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+        <!-- stage10-explanation:end operations -->
+        <section class="panel" id="errors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
-            <p class="eyebrow">Array</p>
-            <h2>Use arrays for many similar values accessed by index</h2>
-          </div>
-          <pre><code>DECLARE Scores : ARRAY[1:30] OF INTEGER
-FOR Index &lt;- 1 TO 30
-    Total &lt;- Total + Scores[Index]
-NEXT Index</code></pre>
-          <div class="callout">Good reason: all elements are INTEGER scores and can be traversed using an index.</div>
-        </section>
-
-        <!-- stage10-explanation:start array -->
-        <section class="panel explanation-panel" id="explanation-array" data-explains="array" data-explanation-kind="mechanism" aria-labelledby="explanation-array-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-array-title">Use arrays for many similar values accessed by index</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-array.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use arrays for many similar values accessed by index with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use arrays for many similar values accessed by index: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise Total &lt;- 0 before using Total as an accumulator.</li><li><strong>Lesson fact:</strong> Add each Scores[Index] value during the traversal.</li><li><strong>Lesson fact:</strong> Total &lt;- 0
-FOR Index &lt;- 1 TO 10
-    Total &lt;- Total + Scores[Index]
-NEXT Index
-OUTPUT Total</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end array -->
-        <section class="panel" id="record" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <div class="section-title">
-            <p class="eyebrow">Record / array of records</p>
-            <h2>Use records when named fields belong to one entity</h2>
+            <p class="eyebrow">Overflow and underflow</p>
+            <h2>Check before doing the operation</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>One student</h3>
-              <pre><code>TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-    DECLARE Present : BOOLEAN
-ENDTYPE</code></pre>
+              <h3>Underflow</h3>
+              <pre><code>IF StackPointer = 0 THEN
+    OUTPUT "Stack is empty"
+ELSE
+    POP()
+ENDIF</code></pre>
             </article>
             <article>
-              <h3>Many students</h3>
-              <pre><code>DECLARE Students : ARRAY[1:28] OF TStudent
-OUTPUT Students[1].Name</code></pre>
+              <h3>Overflow</h3>
+              <pre><code>IF StackPointer = MaxSize THEN
+    OUTPUT "Stack is full"
+ELSE
+    PUSH(NewItem)
+ENDIF</code></pre>
             </article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start record -->
-        <section class="panel explanation-panel" id="explanation-record" data-explains="record" data-explanation-kind="mechanism" aria-labelledby="explanation-record-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-record-title">Use records when named fields belong to one entity</h2>
+        <!-- stage10-explanation:start errors -->
+        <section class="panel explanation-panel" id="explanation-errors" data-explains="errors" data-explanation-kind="tradeoff" aria-labelledby="explanation-errors-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+          <h2 class="explanation-sr-only" id="explanation-errors-title">Why boundary checks come first</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-record.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use records when named fields belong to one entity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use records when named fields belong to one entity: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-errors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why boundary checks come first through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why boundary checks come first: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:28] OF TStudent
-This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> An array of records combines explicit array bounds with a complete record type.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Underflow occurs when removal is requested from an empty structure.</li><li><strong>Reason:</strong> Overflow occurs when fixed storage has no free position.</li><li><strong>Result:</strong> Checking first prevents invalid reads, writes and pointer changes.</li></ol>
 
+            <p><strong>Analogy:</strong> Check whether a shelf is empty or full before moving an item.</p>
+            <p><strong>Boundary:</strong> Dynamic storage changes the capacity strategy but can still exhaust memory.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end record -->
-        <section class="panel" id="file" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+        <!-- stage10-explanation:end errors -->
+        <section class="panel" id="implementation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
-            <p class="eyebrow">File</p>
-            <h2>Use files when data must persist or be exchanged</h2>
+            <p class="eyebrow">Implementation note</p>
+            <h2>An array can store the items, but the ADT rule controls access</h2>
           </div>
-          <pre><code>OPENFILE "Scores.csv" FOR APPEND
-WRITEFILE "Scores.csv", NewLine
-CLOSEFILE "Scores.csv"</code></pre>
-          <div class="callout">Good reason: the data must be stored after the program has finished, so memory-only structures are not enough.</div>
-        </section>
-
-        <!-- stage10-explanation:start file -->
-        <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" aria-labelledby="explanation-file-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-file-title">Use files when data must persist or be exchanged</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-file.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use files when data must persist or be exchanged with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use files when data must persist or be exchanged: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.csv&quot; FOR APPEND</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Scores.csv&quot;, NewLine</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.csv&quot;</li><li><strong>Lesson fact:</strong> Good reason: the data must be stored after the program has finished, so memory-only structures are not enough.</li></ol>
-
+          <div class="data-table impl-table" role="table" aria-label="ADT implementation contrast">
+            <div class="table-row table-head" role="row"><div>Structure</div><div>Possible array pointers</div><div>Meaning</div></div>
+            <div class="table-row" role="row"><div>Stack</div><div><code>TopPointer</code></div><div>index of the current top item</div></div>
+            <div class="table-row" role="row"><div>Queue</div><div><code>FrontPointer</code>, <code>RearPointer</code></div><div>front leaves; rear receives new items</div></div>
+            <div class="table-row" role="row"><div>ADT</div><div>implementation detail</div><div>marks often focus on behaviour and trace correctness</div></div>
           </div>
         </section>
-        <!-- stage10-explanation:end file -->
-        <section class="panel" id="adt" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <div class="section-title">
-            <p class="eyebrow">Stack and queue</p>
-            <h2>Use ADTs when the removal rule matters</h2>
-          </div>
-          <div class="data-table adt-table" role="table" aria-label="Stack and queue choices">
-            <div class="table-row table-head" role="row"><div>Scenario clue</div><div>Structure</div><div>Reason</div></div>
-            <div class="table-row" role="row"><div>undo last action</div><div>Stack</div><div>most recent action is reversed first</div></div>
-            <div class="table-row" role="row"><div>print jobs in arrival order</div><div>Queue</div><div>first job submitted should print first</div></div>
-            <div class="table-row" role="row"><div>customer service line</div><div>Queue</div><div>fair FIFO order</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start adt -->
-        <section class="panel explanation-panel" id="explanation-adt" data-explains="adt" data-explanation-kind="mechanism" aria-labelledby="explanation-adt-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-adt-title">Use ADTs when the removal rule matters</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-adt.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use ADTs when the removal rule matters with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use ADTs when the removal rule matters: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Stack and queue</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> Structure</li><li><strong>Lesson fact:</strong> undo last action</li><li><strong>Lesson fact:</strong> most recent action is reversed first</li><li><strong>Lesson fact:</strong> print jobs in arrival order</li><li><strong>Lesson fact:</strong> first job submitted should print first</li><li><strong>Lesson fact:</strong> customer service line</li><li><strong>Lesson fact:</strong> fair FIFO order</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end adt -->
-        <section class="panel" id="decision" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <div class="section-title">
-            <p class="eyebrow">Decision table</p>
-            <h2>Match scenario evidence to structure features</h2>
-          </div>
-          <div class="data-table decision-table" role="table" aria-label="Decision table">
-            <div class="table-row table-head" role="row"><div>Need</div><div>Choose</div><div>Do not choose just because...</div></div>
-            <div class="table-row" role="row"><div>calculate average of 50 readings</div><div>array of REAL</div><div>records sound more advanced</div></div>
-            <div class="table-row" role="row"><div>store one book's ISBN, title and pages</div><div>record</div><div>ISBN has digits</div></div>
-            <div class="table-row" role="row"><div>store 200 books with same fields</div><div>array of records</div><div>one record is not enough</div></div>
-            <div class="table-row" role="row"><div>save transactions for next run</div><div>text/CSV file</div><div>array works during one run</div></div>
-            <div class="table-row" role="row"><div>serve requests in arrival order</div><div>queue</div><div>stack is also an ADT</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start decision -->
-        <section class="panel explanation-panel" id="explanation-decision" data-explains="decision" data-explanation-kind="mechanism" aria-labelledby="explanation-decision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-decision-title">Match scenario evidence to structure features</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-decision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match scenario evidence to structure features with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match scenario evidence to structure features: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Store one book as a record with ISBN, title and pages fields.</li><li><strong>Lesson fact:</strong> Store ISBN as STRING because it is an identifier, may contain leading zeroes or hyphens, and ISBN-10 may end in X.</li><li><strong>Lesson fact:</strong> Store many books with the same fields as an array of records.</li><li><strong>Lesson fact:</strong> Use a file when data must remain available for a later program run.</li><li><strong>Lesson fact:</strong> Choose a queue when requests must be served in arrival order.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end decision -->
         <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Cambridge answers should justify the structure, not advertise a Java class</h2>
+            <h2>Use Cambridge-style operations in exam answers</h2>
           </div>
           <div class="code-grid">
             <article>
-              <h3>Cambridge-style modelling</h3>
-              <pre><code>TYPE TBook
-    DECLARE ISBN : STRING
-    DECLARE Title : STRING
-    DECLARE Pages : INTEGER
-ENDTYPE
-
-DECLARE Books : ARRAY[1:200] OF TBook</code></pre>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PUSH(Stack, "A")
+PUSH(Stack, "B")
+Item &lt;- POP(Stack)</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>class Book {
-    String isbn;
-    String title;
-    int pages;
-}
-
-Book[] books = new Book[200];</code></pre>
+              <pre><code>Stack&lt;String&gt; stack = new Stack&lt;&gt;();
+stack.push("A");
+stack.push("B");
+String item = stack.pop();</code></pre>
             </article>
           </div>
-          <div class="callout">Paper 2 may accept many clear pseudocode styles, but the explanation must still match the scenario.</div>
+          <div class="callout">Java library classes can support understanding, but Paper 2 answers should show the requested ADT operations and checks.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Justify the data structure in Cambridge answers</h2>
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Why pseudocode must expose state change</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Justify the data structure in Cambridge answers with a structured visual model." />
-            <figcaption class="explanation-sr-only">Justify the data structure in Cambridge answers: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why pseudocode must expose state change through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why pseudocode must expose state change: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> TYPE TBook
-    DECLARE Title : STRING
-    DECLARE Pages : INTEGER
-ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Books : ARRAY[1:200] OF TBook
-This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> A record definition must be complete before an array uses that type.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Test the empty or full condition before accessing storage.</li><li><strong>Reason:</strong> Read or write the element at the correct pointer.</li><li><strong>Result:</strong> Update the pointer so the invariant remains true.</li></ol>
 
+            <p><strong>Analogy:</strong> A clear procedure shows the safety check, action and new boundary marker.</p>
+            <p><strong>Boundary:</strong> Hiding pointer updates makes correctness impossible to verify.</p>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
-            <p class="eyebrow">Interactive chooser</p>
-            <h2>Select the best structure for a scenario</h2>
+            <p class="eyebrow">Interactive simulator</p>
+            <h2>Compare stack and queue behaviour</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario
-              <select id="scenarioSelect">
-                <option value="scores">30 integer test scores, calculate average</option>
-                <option value="student">one student's name, mark and enrolled status</option>
-                <option value="class">28 students, each with name, mark and attendance</option>
-                <option value="log">append each login event for next run</option>
-                <option value="undo">undo the most recent edit first</option>
-                <option value="printer">print jobs in arrival order</option>
-              </select>
+              Item
+              <input id="itemInput" type="text" maxlength="6" value="A" />
             </label>
-            <label>
-              Structure
-              <select id="structureSelect">
-                <option value="array">Array</option>
-                <option value="record">Record</option>
-                <option value="array-records">Array of records</option>
-                <option value="file">Text/CSV file</option>
-                <option value="stack">Stack</option>
-                <option value="queue">Queue</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="chooseBtn">Check choice</button>
+            <button class="primary-button" type="button" id="stackPushBtn">Push stack</button>
+            <button class="answer-toggle" type="button" id="stackPopBtn">Pop stack</button>
+            <button class="primary-button" type="button" id="queueEnqBtn">Enqueue</button>
+            <button class="answer-toggle" type="button" id="queueDeqBtn">Dequeue</button>
           </div>
-          <div class="trace-output" id="choiceResult">Choose a scenario and a structure.</div>
+          <div class="sim-grid">
+            <article>
+              <h3>Stack</h3>
+              <div class="adt-state" id="stackState"></div>
+            </article>
+            <article>
+              <h3>Queue</h3>
+              <div class="adt-state" id="queueState"></div>
+            </article>
+          </div>
+          <div class="trace-output" id="simResult">Capacity is 4. Try the same items in both structures.</div>
         </section>
 
-        <section class="panel" id="ranker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
-            <p class="eyebrow">Reason ranker</p>
-            <h2>Spot the answer that would earn marks</h2>
+            <p class="eyebrow">Interactive trace</p>
+            <h2>Step through a mixed operation sequence</h2>
           </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-reason="vague">Use an array because it is easier.</button>
-            <button class="choice-card" type="button" data-reason="precise">Use an array because all readings are REAL values and can be processed using the same indexed loop.</button>
-            <button class="choice-card" type="button" data-reason="wrong">Use a stack because it stores many values.</button>
-            <button class="choice-card" type="button" data-reason="generic">Use a record because it is a data structure.</button>
+          <div class="trace-actions">
+            <button class="primary-button" type="button" id="traceStepBtn">Step trace</button>
+            <button class="answer-toggle" type="button" id="traceResetBtn">Reset</button>
           </div>
-          <div class="feedback" id="reasonFeedback" aria-live="polite">Choose the answer with scenario evidence and consequence.</div>
+          <div class="trace-output" id="traceOutput">Ready: PUSH A, PUSH B, POP, PUSH C, POP.</div>
         </section>
 
-        <!-- stage10-explanation:start ranker -->
-        <section class="panel explanation-panel" id="explanation-ranker" data-explains="ranker" data-explanation-kind="mechanism" aria-labelledby="explanation-ranker-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
-          <h2 class="explanation-sr-only" id="explanation-ranker-title">Spot the answer that would earn marks</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-ranker.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spot the answer that would earn marks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Spot the answer that would earn marks: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Reason ranker</li><li><strong>Lesson fact:</strong> Choose the answer with scenario evidence and consequence.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end ranker -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Selection answers that explain the choice</h2>
+            <h2>ADT traces and checks</h2>
           </div>
           <div class="tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="array">Array</button>
-            <button class="tab" type="button" data-example="record">Record</button>
-            <button class="tab" type="button" data-example="file">File</button>
-            <button class="tab" type="button" data-example="adt">ADT</button>
+            <button class="tab active" type="button" data-example="stackTrace">Stack trace</button>
+            <button class="tab" type="button" data-example="queueTrace">Queue trace</button>
+            <button class="tab" type="button" data-example="underflow">Underflow</button>
+            <button class="tab" type="button" data-example="compare">Compare</button>
           </div>
           <div class="example-output" id="exampleOutput"></div>
         </section>
@@ -461,7 +321,7 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> A record
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
-            <h2>Ten quick data-structure choices</h2>
+            <h2>Ten quick ADT checks</h2>
             <p>Type a concise answer, then check. Each question also has its own answer button.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -470,7 +330,7 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> A record
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix weak structure choices</h2>
+            <h2>Fix common stack and queue errors</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -479,7 +339,7 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> A record
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>These questions focus on structure choice, precise reasons and rejecting unsuitable alternatives.</p>
+            <p>These questions focus on definitions, traces, operation order and strict overflow/underflow wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -487,32 +347,32 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> A record
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-123">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Choice checklist</h2>
+            <h2>Stack and queue checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Data</strong><span>same type, mixed fields, or persistent text?</span></div>
-            <div><strong>Operation</strong><span>traverse, search, append, undo or serve?</span></div>
-            <div><strong>Reason</strong><span>state why the feature fits the scenario.</span></div>
+            <div><strong>Stack</strong><span>LIFO: push and pop at the top.</span></div>
+            <div><strong>Queue</strong><span>FIFO: enqueue rear, dequeue front.</span></div>
+            <div><strong>Check</strong><span>full before add; empty before remove.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Choose, justify, reject</h2>
+            <h2>Trace before you code</h2>
           </div>
           <ol class="homework-list">
             <li>
-              <strong>Task 1: Three choices</strong>
-              <span>For a library system, choose structures for one book, 1000 books, and saved borrowing history. Give one precise reason for each.</span>
+              <strong>Task 1: Stack trace</strong>
+              <span>Trace: PUSH A, PUSH B, PUSH C, POP, PUSH D, POP. State each item returned by POP and the final stack contents.</span>
             </li>
             <li>
-              <strong>Task 2: Reject a weak answer</strong>
-              <span>Improve this answer: “Use a queue because it is efficient.” The scenario is print jobs processed in arrival order.</span>
+              <strong>Task 2: Queue trace</strong>
+              <span>Trace: ENQUEUE A, ENQUEUE B, ENQUEUE C, DEQUEUE, ENQUEUE D, DEQUEUE. State each item returned by DEQUEUE and final queue contents.</span>
             </li>
             <li>
-              <strong>Task 3: Exam paragraph</strong>
-              <span>Write a 6-mark comparison of using an array of records versus three separate arrays for student records.</span>
+              <strong>Task 3: Explain the common error</strong>
+              <span>Write a 5-mark explanation of why “a stack is an array” is not a complete definition of a stack ADT.</span>
             </li>
           </ol>
         </section>
@@ -520,8 +380,8 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> A record
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

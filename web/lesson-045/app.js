@@ -1,99 +1,98 @@
-const instructionSet = {
-  "0001": { operation: "load", meaning: "load the value from the operand address into ACC" },
-  "0010": { operation: "store", meaning: "store the ACC value into the operand address" },
-  "0011": { operation: "add", meaning: "add the value at the operand address to ACC" },
-  "0100": { operation: "jump", meaning: "jump to the operand address" },
-};
-
-const decodeData = {
-  "000101011010": {
-    result: "LOAD address 90",
-    method: "Opcode 0001 means LOAD. Operand 01011010 is denary 90, so the instruction loads from address 90.",
-    trap: "The operand is interpreted as an address in this simplified format, not as the operation.",
+const busMap = {
+  address500: {
+    result: "Address bus",
+    method: "500 identifies a memory location, so it is carried on the address bus.",
+    trap: "Do not treat an address as the data stored at that address.",
   },
-  "001001011010": {
-    result: "STORE address 90",
-    method: "Opcode 0010 means STORE. Operand 01011010 is denary 90, so the ACC value is stored at address 90.",
-    trap: "STORE writes a value to memory; it is not the same as LOAD.",
+  instruction: {
+    result: "Data bus",
+    method: "An instruction transferred from memory to CPU is the value being transferred, so it travels on the data bus.",
+    trap: "Instructions can travel on the data bus because they are transferred as bit patterns.",
   },
-  "001101011010": {
-    result: "ADD value at address 90",
-    method: "Opcode 0011 means ADD. Operand 01011010 gives the address of the value used by the addition.",
-    trap: "The opcode says ADD; the operand identifies what is added.",
+  read: {
+    result: "Control bus",
+    method: "A read signal tells memory what operation to perform, so it is a control signal.",
+    trap: "Do not put read/write signals on the address bus.",
   },
-  "010000001100": {
-    result: "JMP address 12",
-    method: "Opcode 0100 means jump. Operand 00001100 is denary 12, so the PC would be changed to address 12.",
-    trap: "A jump affects program flow by changing the next instruction address.",
+  write: {
+    result: "Control bus",
+    method: "A write signal controls the operation that stores data into memory.",
+    trap: "The data being written is on the data bus; the write command is on the control bus.",
   },
-  "111101011010": {
-    result: "Unknown opcode in this instruction set",
-    method: "Opcode 1111 is not defined in the example instruction set, so this CPU cannot decode it using this table.",
-    trap: "A bit pattern only has meaning if the processor's instruction set defines that opcode.",
+  interrupt: {
+    result: "Control bus",
+    method: "Interrupts are control signals used to get the processor's attention.",
+    trap: "An interrupt is not the same as the data produced by a device.",
+  },
+  width16: {
+    result: "2^16 = 65,536 addresses",
+    method: "With 16 address lines, there are 2^16 possible binary address combinations.",
+    trap: "Do not confuse address bus width with data bus width.",
   },
 };
 
 const examples = {
-  decode: {
-    title: "Example 1: decode a 12-bit instruction",
-    problem: "Decode 0011 01011010 using the lesson instruction set.",
+  read: {
+    title: "Example 1: memory read",
+    problem: "The CPU reads the value stored at address 120.",
     steps: [
-      "Split the instruction into opcode and operand: 0011 | 01011010.",
-      "Look up opcode 0011: it means ADD.",
-      "Convert operand 01011010 to denary: 64 + 16 + 8 + 2 = 90.",
-      "Interpretation: ADD the value at address 90 to the accumulator.",
+      "Address bus: carries address 120 from the CPU to memory.",
+      "Control bus: carries a read signal.",
+      "Data bus: carries the value stored at address 120 from memory back to the CPU.",
+      "Exam sentence: the address identifies where; the data bus carries what is returned.",
     ],
   },
-  compatibility: {
-    title: "Example 2: processor compatibility",
-    problem: "Why might machine code for Processor A not run on Processor B?",
+  write: {
+    title: "Example 2: memory write",
+    problem: "The CPU writes value 37 to address 900.",
     steps: [
-      "Machine code uses binary opcodes defined by an instruction set.",
-      "Processor B may use a different instruction set.",
-      "The same opcode may be undefined or may mean a different operation.",
-      "Therefore Processor B may not recognise or correctly execute the machine-code instructions.",
+      "Address bus: carries address 900 to select the memory location.",
+      "Data bus: carries value 37 to memory.",
+      "Control bus: carries a write signal.",
+      "Memory stores value 37 at the selected address.",
     ],
   },
-  capacity: {
-    title: "Example 3: instruction-format capacity",
-    problem: "How many different opcodes can four opcode bits represent?",
+  width: {
+    title: "Example 3: address bus width",
+    problem: "How many memory locations can a 12-bit address bus address?",
     steps: [
-      "Four bits have 2⁴ different patterns.",
-      "Therefore the format can represent at most 16 distinct opcodes.",
-      "Using more bits for the opcode can represent more operations, but leaves fewer bits for the operand when the instruction length is fixed.",
+      "An n-bit address bus can represent 2^n addresses.",
+      "Here n = 12.",
+      "2^12 = 4096.",
+      "A 12-bit address bus can address 4096 different memory locations.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the set of instructions a processor can recognise and execute called?", accepted: ["instruction set"], answer: "Instruction set" },
-  { id: "p2", prompt: "What type of code consists of binary instructions executed directly by the CPU?", accepted: ["machine code"], answer: "Machine code" },
-  { id: "p3", prompt: "Which part of an instruction specifies the operation?", accepted: ["opcode", "operation code"], answer: "Opcode / operation code" },
-  { id: "p4", prompt: "Which part of an instruction gives the data/address/register used by the operation?", accepted: ["operand"], answer: "Operand" },
-  { id: "p5", prompt: "In 0011 01011010, using this lesson format, what is the opcode?", accepted: ["0011"], answer: "0011" },
-  { id: "p6", prompt: "In 0011 01011010, using this lesson format, what is the operand?", accepted: ["01011010"], answer: "01011010" },
-  { id: "p7", prompt: "Using the lesson table, what operation does opcode 0001 perform?", accepted: ["load"], answer: "Load" },
-  { id: "p8", prompt: "Using the lesson table, what operation does opcode 0100 perform?", accepted: ["jump"], answer: "Jump" },
-  { id: "p9", prompt: "How many different patterns can a 4-bit opcode have?", accepted: ["16", "sixteen"], answer: "16" },
-  { id: "p10", prompt: "Can machine code for one instruction set always run on a different instruction set? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p1", prompt: "Which bus carries a memory address?", accepted: ["address bus"], answer: "Address bus" },
+  { id: "p2", prompt: "Which bus carries data or instructions?", accepted: ["data bus"], answer: "Data bus" },
+  { id: "p3", prompt: "Which bus carries read/write signals?", accepted: ["control bus"], answer: "Control bus" },
+  { id: "p4", prompt: "During a memory read, which bus carries the requested value back to the CPU?", accepted: ["data bus"], answer: "Data bus" },
+  { id: "p5", prompt: "During a memory write, which bus carries the target memory location?", accepted: ["address bus"], answer: "Address bus" },
+  { id: "p6", prompt: "During a memory write, which bus carries the value to be stored?", accepted: ["data bus"], answer: "Data bus" },
+  { id: "p7", prompt: "Which bus carries an interrupt signal?", accepted: ["control bus"], answer: "Control bus" },
+  { id: "p8", prompt: "A 10-bit address bus can address how many locations?", accepted: ["1024", "1,024"], answer: "1024" },
+  { id: "p9", prompt: "A 16-bit address bus can address how many locations?", accepted: ["65536", "65,536"], answer: "65,536" },
+  { id: "p10", prompt: "Is the data bus usually bidirectional? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
 ];
 
 const mistakes = [
   {
-    wrong: "Machine code is any instruction written for a computer.",
-    fix: "Machine code consists of binary instructions that the processor can execute directly.",
+    wrong: "The address bus carries the data stored in memory.",
+    fix: "The address bus carries the location/address. The data bus carries the data or instruction value.",
   },
   {
-    wrong: "The operand tells the CPU which operation to perform.",
-    fix: "The opcode specifies the operation. The operand supplies the data, address, register or value used by that operation.",
+    wrong: "The data bus carries read and write commands.",
+    fix: "The control bus carries read and write signals. The data bus carries transferred data or instructions.",
   },
   {
-    wrong: "Any CPU can execute any machine-code program because all machine code is binary.",
-    fix: "Machine code is binary, but opcode meanings depend on the processor's instruction set. A different CPU may not recognise the instructions.",
+    wrong: "A wider data bus means the CPU can address more memory locations.",
+    fix: "A wider address bus increases the number of addressable locations. A wider data bus transfers more bits at once.",
   },
   {
-    wrong: "An instruction set is the list of high-level programming languages installed on a computer.",
-    fix: "An instruction set is the collection of low-level instructions that a processor can recognise and execute.",
+    wrong: "During a memory read, only the data bus is used.",
+    fix: "A memory read uses the address bus for the location, the control bus for the read signal and the data bus for the returned value.",
   },
 ];
 
@@ -106,102 +105,97 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Define instruction set and machine code.",
-    answer: "An instruction set is the set of instructions that a particular processor can recognise and execute. Machine code consists of binary instructions that can be executed directly by the processor.",
+    marks: "6 marks",
+    prompt: "Describe the roles of the address bus, data bus and control bus.",
+    answer: "The address bus carries the address of the memory or I/O location to be accessed. The data bus carries data or instructions being transferred between the CPU, memory and other components. The control bus carries control and timing signals, such as read, write or interrupt signals, so that the transfer is coordinated.",
     marking: [
-      { mark: "B1", text: "instruction set is a set/collection of instructions" },
-      { mark: "B1", text: "processor can recognise/execute those instructions" },
-      { mark: "B1", text: "machine code consists of binary instructions" },
-      { mark: "B1", text: "machine code can be executed directly by the CPU/processor" },
+      { mark: "B1", text: "address bus carries address/location" },
+      { mark: "B1", text: "address is for memory or I/O location being accessed" },
+      { mark: "B1", text: "data bus carries data/instructions" },
+      { mark: "B1", text: "data bus transfer is between CPU, memory or components/devices" },
+      { mark: "B1", text: "control bus carries control/timing signals" },
+      { mark: "B1", text: "valid signal example such as read, write, interrupt or clock/timing" },
     ],
     strict: [
-      "Do not accept instruction set as high-level program library.",
-      "Do not accept a high-level program as machine code.",
-      "Allow 'CPU' for processor.",
+      "Do not accept 'bus carries information' for all three without distinguishing roles.",
+      "Do not accept address bus carries data value.",
+      "Allow instructions on data bus because instructions are transferred as bit patterns.",
+      "Award each bus independently.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Explain the difference between opcode and operand.",
-    answer: "The opcode is the part of a machine-code instruction that specifies the operation to be performed, such as ADD or LOAD. The operand is the part of the instruction that supplies the data, address, register or value used by the operation. The meaning of both is defined by the processor's instruction set.",
+    prompt: "Complete a trace table for how the system buses are used when the CPU reads data from memory.",
+    answer: "The CPU places the required memory address on the address bus. A read signal is sent on the control bus. Memory uses the address to locate the data. The data is placed on the data bus and transferred from memory to the CPU, often into the MDR.",
     marking: [
-      { mark: "B1", text: "opcode is part of an instruction" },
-      { mark: "B1", text: "opcode specifies operation to perform" },
-      { mark: "B1", text: "operand is part of an instruction" },
-      { mark: "B1", text: "operand supplies data/address/register/value used by operation" },
-      { mark: "B1", text: "meaning is defined by instruction set or valid example of opcode/operand" },
+      { mark: "B1", text: "CPU places required address on address bus" },
+      { mark: "B1", text: "read signal sent on control bus" },
+      { mark: "B1", text: "memory uses address to locate data/instruction" },
+      { mark: "B1", text: "data/instruction placed on data bus" },
+      { mark: "B1", text: "data transferred from memory to CPU/MDR" },
     ],
     strict: [
-      "Do not accept operand as the operation.",
-      "Do not require all operand forms; one valid form such as address can earn the mark.",
-      "Allow operation examples such as ADD, LOAD, STORE, JMP.",
+      "Do not award read-signal mark if answer puts read command on data bus.",
+      "Do not require MDR unless the question asks for registers.",
+      "Allow instruction read as a valid memory read.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A simplified CPU uses 4 opcode bits followed by 8 operand bits. Opcode 0011 means ADD. Give the decoded form of 0011 01011010.",
-    answer: "The opcode is the first 4 bits, 0011, which means ADD. The operand is the last 8 bits, 01011010. Converting the operand gives 64 + 16 + 8 + 2 = 90. Therefore the instruction means ADD using the value/address represented by 90, depending on the instruction format.",
+    prompt: "Complete a trace table for how the system buses are used when the CPU writes data to memory.",
+    answer: "The CPU places the target memory address on the address bus. It places the data to be stored on the data bus. A write signal is sent on the control bus. Memory uses the address to select the location and stores the data at that location.",
     marking: [
-      { mark: "M1", text: "splits instruction into 0011 and 01011010" },
-      { mark: "B1", text: "identifies opcode 0011 as ADD" },
-      { mark: "M1", text: "converts operand using relevant binary place values" },
-      { mark: "A1", text: "converts 01011010 to 90" },
-      { mark: "B1", text: "interprets instruction as ADD using operand 90" },
+      { mark: "B1", text: "target address placed on address bus" },
+      { mark: "B1", text: "data/value to be stored placed on data bus" },
+      { mark: "B1", text: "write signal sent on control bus" },
+      { mark: "B1", text: "memory uses address to select location" },
+      { mark: "B1", text: "data stored/written at selected location" },
     ],
     strict: [
-      "Do not award final interpretation if candidate treats operand as opcode.",
-      "Allow operand to be described as address 90 if consistent with the simplified format.",
-      "Do not require leading subscript notation.",
+      "Do not accept data bus for the address.",
+      "Do not accept address bus for the value being stored.",
+      "Allow any sensible ordering of address/data/control if roles are clear.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "Explain why machine code written for one processor may not run on a different processor.",
-    answer: "Machine code uses binary opcodes defined by a processor's instruction set. A different processor may use a different instruction set. The same bit pattern may be undefined or may represent a different operation. Therefore the second processor may not recognise, decode or execute the instructions correctly. The program may need to be recompiled, translated or emulated.",
+    marks: "2 marks",
+    prompt: "A processor has a 16-bit address bus. Calculate the maximum number of different memory addresses it can represent.",
+    answer: "An n-bit address bus can represent 2^n addresses. For n = 16, 2^16 = 65,536. Therefore it can represent 65,536 different memory addresses.",
     marking: [
-      { mark: "B1", text: "machine code uses binary opcodes/instructions" },
-      { mark: "B1", text: "opcodes are defined by an instruction set" },
-      { mark: "B1", text: "different processor may have different instruction set" },
-      { mark: "B1", text: "same bit pattern may be unrecognised or have different meaning" },
-      { mark: "B1", text: "needs recompilation/translation/emulation or cannot execute correctly" },
+      { mark: "M1", text: "uses 2^16 for the number of address patterns" },
+      { mark: "A1", text: "65,536 different addresses/locations" },
     ],
     strict: [
-      "Do not accept only 'the processor is different' without instruction set explanation.",
-      "Do not require named architectures.",
-      "Allow 'CPU cannot decode the opcode' for recognition/execution mark.",
+      "Do not award full marks for 16 x 2 or 16^2.",
+      "Do not require conversion to KiB unless memory location size is specified.",
+      "Allow 65536 without comma.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A fixed 12-bit instruction changes from a 4-bit opcode and 8-bit operand to a 5-bit opcode and 7-bit operand. Explain two effects of this change.",
-    answer: "Five opcode bits provide 32 patterns instead of 16, so the instruction set can define more operations. The operand becomes seven bits, so it provides 128 patterns instead of 256. If the operand represents an address, the directly represented address range becomes smaller. This is a trade-off because the total instruction length remains 12 bits.",
+    marks: "5 marks",
+    prompt: "A candidate writes: 'The address bus carries instructions, the data bus carries addresses, and the control bus stores data.' Explain why this is incorrect and give the correct roles.",
+    answer: "The statement is incorrect because the bus roles are confused. The address bus carries the address of the memory or I/O location being accessed. The data bus carries the data or instructions being transferred. The control bus carries control signals such as read or write; it does not store data. Buses transfer signals rather than permanently storing values.",
     marking: [
-      { mark: "B1", text: "uses 2⁵ for the new opcode capacity" },
-      { mark: "B1", text: "states 32 opcode patterns instead of 16" },
-      { mark: "B1", text: "links the extra opcode bit to more possible operations" },
-      { mark: "B1", text: "uses 2⁷ for the new operand capacity" },
-      { mark: "B1", text: "states 128 operand patterns instead of 256" },
-      { mark: "B1", text: "links the smaller operand to a reduced value/address range" },
+      { mark: "B1", text: "address bus carries address/location" },
+      { mark: "B1", text: "data bus carries data/instructions being transferred" },
+      { mark: "B1", text: "control bus carries control signals" },
+      { mark: "B1", text: "valid control signal example such as read/write" },
+      { mark: "B1", text: "buses transfer signals/do not store data permanently" },
     ],
     strict: [
-      "Do not award the pattern counts without the corresponding effect explanation.",
-      "Allow equivalent maximum-range wording if the counting convention is stated.",
-      "The instruction remains 12 bits; do not award claims that it becomes longer.",
+      "Do not accept 'control bus controls the computer' without signal wording.",
+      "Do not reject instructions on data bus if the answer explains they are transferred as data.",
+      "Allow 'commands' for control signals only if read/write/control meaning is clear.",
     ],
   },
 ];
 
 function normalise(value) {
   return value.trim().toLowerCase().replace(/[-_\s]+/g, " ");
-}
-
-function toDenary(binary) {
-  return parseInt(binary, 2);
 }
 
 function setupPrint() {
@@ -211,10 +205,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    isa: "Correct. The instruction set defines what each opcode means.",
-    ram: "No. RAM capacity or appearance does not define opcode meaning.",
-    font: "Tempting, but the CPU does not care about your font choices.",
-    bus: "No. Buses transfer signals; the instruction set defines instruction meaning.",
+    address: "Correct. 500 is the memory location, so it travels on the address bus.",
+    data: "Not this time. The data bus carries the value stored at address 500, not the address 500 itself.",
+    control: "The control bus can carry the read signal, but not the address 500.",
+    register: "MDR may hold transferred data, but the question asks which bus carries the address.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -225,24 +219,20 @@ function setupHook() {
   });
 }
 
-function setupDecoder() {
-  const select = document.querySelector("#instructionInput");
-  const result = document.querySelector("#decodeResult");
-  const method = document.querySelector("#decodeMethod");
-  const trap = document.querySelector("#decodeTrap");
-  function decode() {
-    const raw = select.value;
-    const opcode = raw.slice(0, 4);
-    const operand = raw.slice(4);
-    const item = decodeData[raw];
-    const lookup = instructionSet[opcode];
+function setupMapper() {
+  const select = document.querySelector("#busInput");
+  const result = document.querySelector("#mapResult");
+  const method = document.querySelector("#mapMethod");
+  const trap = document.querySelector("#mapTrap");
+  function mapBus() {
+    const item = busMap[select.value];
     result.textContent = item.result;
-    method.innerHTML = `<strong>Split:</strong> opcode ${opcode}, operand ${operand} (${toDenary(operand)} denary). <strong>Reason:</strong> ${item.method}`;
-    trap.innerHTML = `<strong>Common error:</strong> ${lookup ? item.trap : `${item.trap} Opcode ${opcode} is not in the table.`}`;
+    method.innerHTML = `<strong>Reason:</strong> ${item.method}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
-  select.addEventListener("change", decode);
-  document.querySelector("#decodeBtn").addEventListener("click", decode);
-  decode();
+  select.addEventListener("change", mapBus);
+  document.querySelector("#mapBtn").addEventListener("click", mapBus);
+  mapBus();
 }
 
 function renderExample(key) {
@@ -262,7 +252,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("decode");
+  renderExample("read");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -344,7 +334,7 @@ function renderExamQuestions() {
 
 setupPrint();
 setupHook();
-setupDecoder();
+setupMapper();
 setupExamples();
 renderPractice();
 renderMistakes();

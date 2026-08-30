@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 075 | Open source, proprietary software, and ownership trade-offs</title>
+    <title>AS9618 Lesson 075 | Copyright legislation, FSF, OSI and licence permissions</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
-        <h1>Open source, proprietary software, and ownership trade-offs</h1>
+        <h1>Copyright legislation, FSF, OSI and licence permissions</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#open-source">Open source</a>
-        <a href="#proprietary">Proprietary</a>
-        <a href="#tradeoffs">Trade-offs</a>
-        <a href="#ownership">Ownership</a>
-        <a href="#method">Answer method</a>
-        <a href="#advisor">Choice advisor</a>
-        <a href="#checker">Trade-off checker</a>
+        <a href="#ip">IP basics</a>
+        <a href="#copyright">Copyright</a>
+        <a href="#patents">Patents</a>
+        <a href="#licensing">Licensing</a>
+        <a href="#compare">Compare</a>
+        <a href="#matcher">Licence matcher</a>
+        <a href="#checker">IP checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -54,50 +54,75 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Shareware and commercial licences</h2>
+            <h2>Copyright legislation, FSF, OSI and licence permissions</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Shareware is distributed for trial or limited use, with payment commonly required for continued, full or unrestricted use. A commercial/proprietary licence grants defined use while normally restricting copying, modification and redistribution.</p>
-            <p>Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.</p>
+            <p>Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment. It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue. Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.</p>
+            <p>A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.</p>
+            <p>The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.</p>
             <p>The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Trial accounting package</h3>
-            <p>A company tests a limited shareware edition for 30 days, then buys commercial licences for continued use, vendor support and full reporting features.</p>
+            <h3>Worked example: Modify and redistribute a library</h3>
+            <p>A developer finds source code in a public repository. Copyright still protects the code, so visibility alone is not permission. An OSI-approved licence may allow modification and redistribution, while an FSF-aligned copyleft licence may require a distributed derivative to preserve notices and use compatible terms. The developer must check and follow the exact licence before copying the library into a product.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start licensing -->
+        <section class="panel explanation-panel" id="explanation-licensing" data-explains="licensing" data-explanation-kind="mechanism" aria-labelledby="explanation-licensing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="licensing">
+          <h2 class="explanation-sr-only" id="explanation-licensing-title">A licence grants permission under conditions</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-licensing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A licence grants permission under conditions with a structured visual model." />
+            <figcaption class="explanation-sr-only">A licence grants permission under conditions: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Licence idea</li><li><strong>Lesson fact:</strong> What it allows or limits</li><li><strong>Lesson fact:</strong> Exam caution</li><li><strong>Lesson fact:</strong> Proprietary licence</li><li><strong>Lesson fact:</strong> Usually permits use under conditions but restricts copying, modification or redistribution.</li><li><strong>Lesson fact:</strong> Paying for software usually buys permission to use, not ownership of the code.</li><li><strong>Lesson fact:</strong> Open-source licence</li><li><strong>Lesson fact:</strong> Allows source code access and certain rights to use, modify and share.</li><li><strong>Lesson fact:</strong> Still has conditions such as attribution or sharing changes under the same licence.</li><li><strong>Lesson fact:</strong> Creative Commons style</li><li><strong>Lesson fact:</strong> Often used for media/text; may require attribution or block commercial use.</li><li><strong>Lesson fact:</strong> Check exact terms; symbols are not decoration.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end licensing -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Shareware and commercial licences: apply and assess</h2>
+            <h2>Copyright legislation, FSF, OSI and licence permissions: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What commonly changes after a shareware trial?</p>
-              <details><summary>Show answer</summary><p>Payment is required or features/time become restricted.</p></details>
+              <p><strong>1.</strong> Why is copyright legislation needed for software?</p>
+              <details><summary>Show answer</summary><p>It gives creators enforceable control over copying, distribution and adaptation, supporting permission, revenue and investment despite easy digital copying.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Can a buyer normally redistribute unlimited copies of commercial software?</p>
-              <details><summary>Show answer</summary><p>No, unless the licence explicitly permits it.</p></details>
+              <p><strong>2.</strong> How does a licence differ from copyright ownership?</p>
+              <details><summary>Show answer</summary><p>Copyright establishes the owner's rights; a licence grants a user specified permissions without normally transferring ownership.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one reason to choose a commercial licence.</p>
-              <details><summary>Show answer</summary><p>Vendor support, warranty, specialist features or compatibility, developed for the scenario.</p></details>
+              <p><strong>3.</strong> Which organisation emphasises the freedoms to run, study, modify and share software?</p>
+              <details><summary>Show answer</summary><p>Free Software Foundation (FSF).</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> What is the role of the OSI?</p>
+              <details><summary>Show answer</summary><p>It defines open-source criteria and approves licences that meet them.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Can open-source software be sold or remain copyrighted?</p>
+              <details><summary>Show answer</summary><p>Yes. Open source concerns licence permissions and conditions, not zero price or absence of copyright.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A school needs supported examination software but cannot modify or redistribute it. Justify a commercial licence and state one restriction.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain why copyright legislation is needed for software and how an FSF- or OSI-aligned licence changes what a user may do with protected source code.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>vendor support/updates appropriate to examination use</td><td>Do not award 'commercial is better' without a scenario-linked reason.</td><td>1</td></tr>
-                  <tr><td>reliability/compatibility/accountability developed</td><td></td><td>1</td></tr>
-                  <tr><td>use limited to licensed users/devices</td><td></td><td>1</td></tr>
-                  <tr><td>copying/modification/redistribution restricted</td><td></td><td>1</td></tr>
+                  <tr><td>software is easy to copy/distribute while creation requires skill, time or investment</td><td>Do not accept that copyright protects every idea, that a paid download transfers copyright, or that open source means public domain.</td><td>1</td></tr>
+                  <tr><td>copyright gives the holder control over protected expression and restricted acts</td><td></td><td>1</td></tr>
+                  <tr><td>licence grants specified permissions without normally transferring ownership</td><td></td><td>1</td></tr>
+                  <tr><td>FSF freedom or OSI licence-approval role is stated accurately</td><td></td><td>1</td></tr>
+                  <tr><td>source inspection/modification/redistribution permission is linked to the licence</td><td></td><td>1</td></tr>
+                  <tr><td>licence conditions such as notices, attribution or compatible redistribution terms remain binding</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -107,284 +132,283 @@
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 075 | 45 minutes | Paper 1 Section 7 | 5-minute quiz</p>
-            <h2>Free software is not always free of responsibility.</h2>
+            <p class="lesson-meta">Lesson 075 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
+            <h2>If you can download it, that does not mean you own it.</h2>
             <p>
-              This lesson compares open-source and proprietary software. The exam skill is not to declare
-              one side "better"; it is to explain the trade-off for a given user, organisation or project:
-              cost, control, support, security, customisation, compatibility and licensing.
+              Intellectual property protects creations of the mind. In Computer Science this includes
+              software code, algorithms, designs, documentation, media and inventions. The exam skill is
+              to distinguish ownership, copyright, patent protection and licence conditions.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>open source, proprietary software and ownership restrictions</span></div>
-              <div><strong>Compare</strong><span>cost, support, customisation, security and lock-in trade-offs</span></div>
-              <div><strong>Recommend</strong><span>a suitable choice using scenario-specific evidence</span></div>
+              <div><strong>Define</strong><span>intellectual property, copyright, patent and licence</span></div>
+              <div><strong>Distinguish</strong><span>ownership from permission to use, copy or modify</span></div>
+              <div><strong>Apply</strong><span>licensing and infringement ideas to computing scenarios</span></div>
             </div>
           </div>
-          <div class="software-card" aria-label="Software choice chain">
-            <div class="software-stack">
-              <span>Source visible?</span>
-              <span>Can modify?</span>
-              <span>Who supports it?</span>
-              <span>What licence terms?</span>
-              <span>What costs?</span>
-              <span>What risk?</span>
+          <div class="ip-card" aria-label="IP decision chain">
+            <div class="ip-stack">
+              <span>Who created it?</span>
+              <span>Who owns it?</span>
+              <span>What is protected?</span>
+              <span>What licence applies?</span>
+              <span>What use is allowed?</span>
+              <span>What is infringement?</span>
             </div>
-            <p>Choosing software by slogan is like choosing a database by logo colour. Entertaining, not evidence.</p>
+            <p>A licence is not a decorative scroll. It is the rulebook you agreed to read later.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Marks come from trade-offs: low cost may mean less formal support; vendor support may mean less control.</p>
+            <p>Exam answers need legal/ethical vocabulary plus consequences: infringement, loss of revenue, liability, attribution or licence breach.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Open source does not mean no copyright, no licence, no security risk or no maintenance cost.</p>
+            <p>Free to download does not always mean free to reuse commercially, modify or redistribute.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A school wants free software for its network servers. Should it automatically choose open source?</h2>
-            <p>"Free download" is a starting price, not the total cost of ownership wearing a tiny hat.</p>
+            <h2>A student copies code from an online repository into coursework. The repository is public. Is the copying automatically allowed?</h2>
+            <p>Public code is like a glass shop window: visible, not automatically yours to carry home.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="depends">It depends on support, skills, security updates, compatibility and licence terms</button>
-            <button class="choice-card" type="button" data-hook="always">Yes. Open source is always free and always safer</button>
-            <button class="choice-card" type="button" data-hook="never">No. Proprietary software is always more professional</button>
-            <button class="choice-card" type="button" data-hook="owner">Yes. Open source means the school owns the code</button>
+            <button class="choice-card" type="button" data-hook="licence">No. The licence and coursework rules decide what use is allowed</button>
+            <button class="choice-card" type="button" data-hook="public">Yes. Public means nobody owns it</button>
+            <button class="choice-card" type="button" data-hook="rename">Yes, if the variable names are changed</button>
+            <button class="choice-card" type="button" data-hook="private">No, because only private repositories can have licences</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The exam likes trade-offs more than fan clubs.
+            Choose one. Look for ownership and permission, not just visibility.
           </div>
         </section>
 
-        <section class="panel" id="open-source" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+        <section class="panel" id="ip" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Open-source software makes source code available under a licence</h2>
+            <h2>Intellectual property protects created ideas and expressions</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Source code available</strong><span>Users can inspect the program code rather than only using compiled software.</span></article>
-            <article><strong>Modify</strong><span>Licence may allow users to adapt the code for their own needs.</span></article>
-            <article><strong>Redistribute</strong><span>Licence may allow sharing original or modified versions under conditions.</span></article>
-            <article><strong>Community</strong><span>Development and support may come from volunteers, companies or mixed communities.</span></article>
+            <article><strong>Intellectual property</strong><span>Creations of the mind that may be legally protected, such as software, designs and inventions.</span></article>
+            <article><strong>Owner</strong><span>The person or organisation holding legal rights to control use of the work.</span></article>
+            <article><strong>Infringement</strong><span>Using protected work without permission or outside licence conditions.</span></article>
+            <article><strong>Attribution</strong><span>Giving credit to the creator or source when required.</span></article>
           </div>
-          <div class="callout">Chinese support: open source = 开源；source code = 源代码；modify = 修改；redistribute = 再分发。</div>
+          <div class="callout">Chinese support: intellectual property = 知识产权；owner = 所有者；infringement = 侵权；attribution = 署名/注明来源。</div>
         </section>
 
-        <!-- stage10-explanation:start open-source -->
-        <section class="panel explanation-panel" id="explanation-open-source" data-explains="open-source" data-explanation-kind="mechanism" aria-labelledby="explanation-open-source-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
-          <h2 class="explanation-sr-only" id="explanation-open-source-title">Open-source software makes source code available under a licence</h2>
+        <!-- stage10-explanation:start ip -->
+        <section class="panel explanation-panel" id="explanation-ip" data-explains="ip" data-explanation-kind="mechanism" aria-labelledby="explanation-ip-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+          <h2 class="explanation-sr-only" id="explanation-ip-title">What intellectual property can protect</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-open-source.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Open-source software makes source code available under a licence with a structured visual model." />
-            <figcaption class="explanation-sr-only">Open-source software makes source code available under a licence: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-ip.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What intellectual property can protect with a structured visual model." />
+            <figcaption class="explanation-sr-only">What intellectual property can protect: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Source code available Users can inspect the program code rather than only using compiled software.</li><li><strong>Lesson fact:</strong> Modify Licence may allow users to adapt the code for their own needs.</li><li><strong>Lesson fact:</strong> Redistribute Licence may allow sharing original or modified versions under conditions.</li><li><strong>Lesson fact:</strong> Community Development and support may come from volunteers, companies or mixed communities.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Copyright protects qualifying expression, not an abstract idea by itself.</li><li><strong>Lesson fact:</strong> Patents may protect qualifying inventions subject to legal requirements.</li><li><strong>Lesson fact:</strong> Intellectual property can protect qualifying creations, expressions, designs and inventions; do not state that every idea is automatically protected.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end open-source -->
-        <section class="panel" id="proprietary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+        <!-- stage10-explanation:end ip -->
+        <section class="panel" id="copyright" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Proprietary software keeps control with the owner</h2>
+            <h2>Copyright protects expression, including software code</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Closed source</strong><span>Source code is usually not available to users.</span></article>
-            <article><strong>Restricted rights</strong><span>Licences often restrict copying, modification and redistribution.</span></article>
-            <article><strong>Vendor support</strong><span>Users may receive official updates, warranties, help desk or service agreements.</span></article>
-            <article><strong>Vendor lock-in</strong><span>Users may depend on one supplier, format, subscription or ecosystem.</span></article>
+            <article><strong>Copyright</strong><span>Protects original expression such as source code, documentation, graphics or text.</span></article>
+            <article><strong>Automatic protection</strong><span>Copyright usually exists when the work is created; registration is not always needed for protection.</span></article>
+            <article><strong>Restricted acts</strong><span>Copying, distributing, adapting or using beyond permission can breach copyright.</span></article>
+            <article><strong>Fair use/dealing caution</strong><span>Exceptions are limited and context-specific; do not assume every educational use is allowed.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start proprietary -->
-        <section class="panel explanation-panel" id="explanation-proprietary" data-explains="proprietary" data-explanation-kind="mechanism" aria-labelledby="explanation-proprietary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
-          <h2 class="explanation-sr-only" id="explanation-proprietary-title">Proprietary software keeps control with the owner</h2>
+        <!-- stage10-explanation:start copyright -->
+        <section class="panel explanation-panel" id="explanation-copyright" data-explains="copyright" data-explanation-kind="mechanism" aria-labelledby="explanation-copyright-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+          <h2 class="explanation-sr-only" id="explanation-copyright-title">Copyright protects expression, including software code</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-proprietary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Proprietary software keeps control with the owner with a structured visual model." />
-            <figcaption class="explanation-sr-only">Proprietary software keeps control with the owner: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-copyright.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Copyright protects expression, including software code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Copyright protects expression, including software code: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Closed source Source code is usually not available to users.</li><li><strong>Lesson fact:</strong> Restricted rights Licences often restrict copying, modification and redistribution.</li><li><strong>Lesson fact:</strong> Vendor support Users may receive official updates, warranties, help desk or service agreements.</li><li><strong>Lesson fact:</strong> Vendor lock-in Users may depend on one supplier, format, subscription or ecosystem.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Copyright Protects original expression such as source code, documentation, graphics or text.</li><li><strong>Lesson fact:</strong> Automatic protection Copyright usually exists when the work is created; registration is not always needed for protection.</li><li><strong>Lesson fact:</strong> Restricted acts Copying, distributing, adapting or using beyond permission can breach copyright.</li><li><strong>Lesson fact:</strong> Fair use/dealing caution Exceptions are limited and context-specific; do not assume every educational use is allowed.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end proprietary -->
-        <section class="panel" id="tradeoffs" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+        <!-- stage10-explanation:end copyright -->
+        <section class="panel" id="patents" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Compare by factor, not by favourite label</h2>
-          </div>
-          <div class="risk-table" role="table" aria-label="Open source proprietary trade-offs">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Factor</div>
-              <div role="columnheader">Open source may offer</div>
-              <div role="columnheader">Proprietary may offer</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Cost</div>
-              <div role="cell">Low or no licence fee, but support and training can still cost money.</div>
-              <div role="cell">Licence/subscription cost, but bundled support may reduce operational risk.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Control</div>
-              <div role="cell">More ability to inspect, modify and adapt code.</div>
-              <div role="cell">Less control over internals; vendor controls source and roadmap.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Security</div>
-              <div role="cell">Code can be reviewed publicly, but someone must apply updates and assess trust.</div>
-              <div role="cell">Vendor may provide tested updates, but users must trust closed code and vendor response.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Support</div>
-              <div role="cell">Community help or paid third-party support may vary.</div>
-              <div role="cell">Official support agreements may be clearer for organisations.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start tradeoffs -->
-        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="comparison" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
-          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Compare by factor, not by favourite label</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by factor, not by favourite label with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare by factor, not by favourite label: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Open source may offer</li><li><strong>Lesson fact:</strong> Proprietary may offer</li><li><strong>Lesson fact:</strong> Low or no licence fee, but support and training can still cost money.</li><li><strong>Lesson fact:</strong> Licence/subscription cost, but bundled support may reduce operational risk.</li><li><strong>Lesson fact:</strong> More ability to inspect, modify and adapt code.</li><li><strong>Lesson fact:</strong> Less control over internals; vendor controls source and roadmap.</li><li><strong>Lesson fact:</strong> Security</li><li><strong>Lesson fact:</strong> Code can be reviewed publicly, but someone must apply updates and assess trust.</li><li><strong>Lesson fact:</strong> Vendor may provide tested updates, but users must trust closed code and vendor response.</li><li><strong>Lesson fact:</strong> Community help or paid third-party support may vary.</li><li><strong>Lesson fact:</strong> Official support agreements may be clearer for organisations.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tradeoffs -->
-        <section class="panel" id="ownership" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Ownership and licence obligations still matter</h2>
+            <h2>Patents protect inventions, not every line of code</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Copyright remains</strong><span>Open-source software is still protected; the licence grants permissions.</span></article>
-            <article><strong>Attribution</strong><span>Some licences require credit or notices to be kept.</span></article>
-            <article><strong>Share-alike</strong><span>Some licences require modified versions to be shared under similar terms.</span></article>
-            <article><strong>Compliance</strong><span>Organisations must track third-party components and meet licence conditions.</span></article>
+            <article><strong>Patent</strong><span>A legal right protecting an invention for a limited time, often requiring novelty and inventive step.</span></article>
+            <article><strong>Invention</strong><span>A new technical solution, product or process; software patent rules vary by jurisdiction.</span></article>
+            <article><strong>Disclosure</strong><span>Patent applications normally require public description of the invention.</span></article>
+            <article><strong>Limitation</strong><span>Patents are expensive and time-limited; they do not protect all ideas or ordinary code automatically.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start ownership -->
-        <section class="panel explanation-panel" id="explanation-ownership" data-explains="ownership" data-explanation-kind="mechanism" aria-labelledby="explanation-ownership-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
-          <h2 class="explanation-sr-only" id="explanation-ownership-title">Ownership and licence obligations still matter</h2>
+        <!-- stage10-explanation:start patents -->
+        <section class="panel explanation-panel" id="explanation-patents" data-explains="patents" data-explanation-kind="mechanism" aria-labelledby="explanation-patents-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+          <h2 class="explanation-sr-only" id="explanation-patents-title">Patents protect inventions, not every line of code</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-ownership.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ownership and licence obligations still matter with a structured visual model." />
-            <figcaption class="explanation-sr-only">Ownership and licence obligations still matter: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-patents.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Patents protect inventions, not every line of code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Patents protect inventions, not every line of code: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Copyright remains Open-source software is still protected; the licence grants permissions.</li><li><strong>Lesson fact:</strong> Attribution Some licences require credit or notices to be kept.</li><li><strong>Lesson fact:</strong> Share-alike Some licences require modified versions to be shared under similar terms.</li><li><strong>Lesson fact:</strong> Compliance Organisations must track third-party components and meet licence conditions.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Patent A legal right protecting an invention for a limited time, often requiring novelty and inventive step.</li><li><strong>Lesson fact:</strong> Invention A new technical solution, product or process; software patent rules vary by jurisdiction.</li><li><strong>Lesson fact:</strong> Disclosure Patent applications normally require public description of the invention.</li><li><strong>Lesson fact:</strong> Limitation Patents are expensive and time-limited; they do not protect all ideas or ordinary code automatically.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end ownership -->
-        <section class="panel" id="method" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+        <!-- stage10-explanation:end patents -->
+        <section class="panel" id="licensing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>A licence grants permission under conditions</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Licence condition table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Licence idea</div>
+              <div role="columnheader">What it allows or limits</div>
+              <div role="columnheader">Exam caution</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Proprietary licence</div>
+              <div role="cell">Usually permits use under conditions but restricts copying, modification or redistribution.</div>
+              <div role="cell">Paying for software usually buys permission to use, not ownership of the code.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Open-source licence</div>
+              <div role="cell">Allows source code access and certain rights to use, modify and share.</div>
+              <div role="cell">Still has conditions such as attribution or sharing changes under the same licence.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Creative Commons style</div>
+              <div role="cell">Often used for media/text; may require attribution or block commercial use.</div>
+              <div role="cell">Check exact terms; symbols are not decoration.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Use a scenario-based comparison structure</h2>
+            <h2>Do not confuse protection type with permission type</h2>
           </div>
-          <div class="flow-grid">
-            <article><strong>1. Need</strong><span>Identify the user's priority: cost, support, control, reliability, security or compatibility.</span></article>
-            <article><strong>2. Open source point</strong><span>Explain one benefit or risk linked to that priority.</span></article>
-            <article><strong>3. Proprietary point</strong><span>Explain a contrasting benefit or risk.</span></article>
-            <article><strong>4. Judgement</strong><span>Recommend one option with conditions and trade-offs.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Answer frame:</strong>
-            <span>For [scenario], [option] may be suitable because [factor]. However, [trade-off]. Therefore, the best choice depends on [condition/evidence].</span>
+          <div class="comparison-table" role="table" aria-label="IP comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Concept</div>
+              <div role="columnheader">Protects / controls</div>
+              <div role="columnheader">Common misconception</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Copyright</div>
+              <div role="cell">Original expression, including source code and media.</div>
+              <div role="cell">Changing a few names does not automatically avoid infringement.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Patent</div>
+              <div role="cell">An invention or technical process for a limited time.</div>
+              <div role="cell">Not every software idea or algorithm is patentable.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Licence</div>
+              <div role="cell">Permission to use protected work under conditions.</div>
+              <div role="cell">A licence does not always transfer ownership.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Ownership</div>
+              <div role="cell">Legal control over rights to the work.</div>
+              <div role="cell">Using software is not the same as owning its source code.</div>
+            </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
-          <h2 class="explanation-sr-only" id="explanation-method-title">Use a scenario-based comparison structure</h2>
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Do not confuse protection type with permission type</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a scenario-based comparison structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use a scenario-based comparison structure: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not confuse protection type with permission type with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not confuse protection type with permission type: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Need Identify the user's priority: cost, support, control, reliability, security or compatibility.</li><li><strong>Lesson fact:</strong> 2. Open source point Explain one benefit or risk linked to that priority.</li><li><strong>Lesson fact:</strong> 3. Proprietary point Explain a contrasting benefit or risk.</li><li><strong>Lesson fact:</strong> 4. Judgement Recommend one option with conditions and trade-offs.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> For [scenario], [option] may be suitable because [factor]. However, [trade-off]. Therefore, the best choice depends on [condition/evidence].</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Protects / controls</li><li><strong>Lesson fact:</strong> Common misconception</li><li><strong>Lesson fact:</strong> Copyright</li><li><strong>Lesson fact:</strong> Original expression, including source code and media.</li><li><strong>Lesson fact:</strong> Changing a few names does not automatically avoid infringement.</li><li><strong>Lesson fact:</strong> An invention or technical process for a limited time.</li><li><strong>Lesson fact:</strong> Not every software idea or algorithm is patentable.</li><li><strong>Lesson fact:</strong> Permission to use protected work under conditions.</li><li><strong>Lesson fact:</strong> A licence does not always transfer ownership.</li><li><strong>Lesson fact:</strong> Ownership</li><li><strong>Lesson fact:</strong> Legal control over rights to the work.</li><li><strong>Lesson fact:</strong> Using software is not the same as owning its source code.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end method -->
-        <section class="panel" id="advisor" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+        <!-- stage10-explanation:end compare -->
+        <section class="panel" id="matcher" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
-            <p class="eyebrow">Interactive software choice advisor</p>
-            <h2>Match the software type to the scenario</h2>
-            <p>Select a scenario and compare the recommendation with its trade-off.</p>
+            <p class="eyebrow">Interactive licence matcher</p>
+            <h2>Choose the likely permission issue</h2>
+            <p>Select a scenario and compare the relevant IP concept with the common error.</p>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="startup">Startup needs to customise server software with a skilled developer team.</option>
-                <option value="hospital">Hospital needs guaranteed vendor support for a critical system.</option>
-                <option value="school">School has limited budget but limited technical support staff.</option>
-                <option value="research">Research group wants to inspect and modify algorithms.</option>
-                <option value="office">Small business wants familiar office software and training materials.</option>
+                <option value="publicRepo">Public repository has no visible licence file.</option>
+                <option value="stockPhoto">A website says a stock image is free for personal use only.</option>
+                <option value="companyApp">Employee writes code for a company app during paid work.</option>
+                <option value="patentMethod">A startup invents a new technical compression method.</option>
+                <option value="library">A developer uses an open-source library requiring attribution.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="adviseBtn">Advise</button>
+            <button class="primary-button" type="button" id="matchBtn">Check issue</button>
           </div>
-          <div class="result-box" id="adviseResult" aria-live="polite"></div>
-          <div class="method-box" id="adviseReason"></div>
-          <div class="reject-box" id="adviseTrap"></div>
+          <div class="result-box" id="matchResult" aria-live="polite"></div>
+          <div class="method-box" id="matchReason"></div>
+          <div class="reject-box" id="matchTrap"></div>
         </section>
 
-        <!-- stage10-explanation:start advisor -->
-        <section class="panel explanation-panel" id="explanation-advisor" data-explains="advisor" data-explanation-kind="mechanism" aria-labelledby="explanation-advisor-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
-          <h2 class="explanation-sr-only" id="explanation-advisor-title">Match the software type to the scenario</h2>
+        <!-- stage10-explanation:start matcher -->
+        <section class="panel explanation-panel" id="explanation-matcher" data-explains="matcher" data-explanation-kind="mechanism" aria-labelledby="explanation-matcher-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
+          <h2 class="explanation-sr-only" id="explanation-matcher-title">Choose the likely permission issue</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-advisor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the software type to the scenario with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match the software type to the scenario: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-075-matcher.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the likely permission issue with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the likely permission issue: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive software choice advisor</li><li><strong>Lesson fact:</strong> Select a scenario and compare the recommendation with its trade-off.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Interactive licence matcher</li><li><strong>Lesson fact:</strong> Select a scenario and compare the relevant IP concept with the common error.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end advisor -->
+        <!-- stage10-explanation:end matcher -->
         <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
-            <p class="eyebrow">Interactive trade-off checker</p>
-            <h2>Spot the missing qualification</h2>
+            <p class="eyebrow">Interactive IP decision checker</p>
+            <h2>Does this use sound permitted?</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Claim
-              <select id="claimInput">
-                <option value="free">Open source is always free.</option>
-                <option value="secure">Open source is always more secure.</option>
-                <option value="support">Proprietary software always has better support.</option>
-                <option value="own">Buying proprietary software means owning the source code.</option>
+              Proposed use
+              <select id="useInput">
+                <option value="copyVariables">Copy code and change variable names.</option>
+                <option value="readLicence">Use a library after checking and following its licence.</option>
+                <option value="buyOwnership">Buy one app licence and claim ownership of source code.</option>
+                <option value="creditOnly">Use non-commercial media commercially with attribution only.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="claimBtn">Improve claim</button>
+            <button class="primary-button" type="button" id="useBtn">Judge</button>
           </div>
-          <div class="result-box" id="claimResult" aria-live="polite"></div>
-          <div class="method-box" id="claimReason"></div>
+          <div class="result-box" id="useResult" aria-live="polite"></div>
+          <div class="method-box" id="useReason"></div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with trade-off reasoning</h2>
+            <h2>Four model answers for IP and licensing scenarios</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="startup">Startup</button>
-            <button class="tab" type="button" data-example="hospital">Hospital</button>
-            <button class="tab" type="button" data-example="school">School</button>
-            <button class="tab" type="button" data-example="research">Research</button>
+            <button class="tab active" type="button" data-example="repo">Public repository</button>
+            <button class="tab" type="button" data-example="employee">Employee code</button>
+            <button class="tab" type="button" data-example="patent">Patent idea</button>
+            <button class="tab" type="button" data-example="licence">Licence breach</button>
           </div>
           <div class="example-box" id="exampleBox" aria-live="polite"></div>
         </section>
@@ -392,7 +416,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Check vocabulary before writing comparisons</h2>
+            <h2>Check core vocabulary before writing scenario answers</h2>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
@@ -400,7 +424,7 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix answers that sound certain but are not scenario-based</h2>
+            <h2>Fix IP answers that confuse access, ownership and permission</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -408,8 +432,8 @@
         <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style software ownership questions with expandable MS</h2>
-            <p>Attempt first. Then check whether your answer balances factors and links them to the user or organisation.</p>
+            <h2>Cambridge-style IP questions with expandable MS</h2>
+            <p>Attempt first. Then open the mark scheme and check whether your answer uses precise IP vocabulary and scenario consequences.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -417,35 +441,35 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-075">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Open source vs proprietary in six exam-ready ideas</h2>
+            <h2>IP and licensing in six exam-ready ideas</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Open source</strong><span>Source code is available and can often be modified under licence.</span></div>
-            <div><strong>Proprietary</strong><span>Owner controls source code and licence restrictions.</span></div>
-            <div><strong>Cost</strong><span>Licence price is not the same as total cost.</span></div>
-            <div><strong>Support</strong><span>Community support and vendor support suit different risks.</span></div>
-            <div><strong>Security</strong><span>Reviewability and responsibility for updates both matter.</span></div>
-            <div><strong>Judgement</strong><span>Recommend by scenario, not by slogan.</span></div>
+            <div><strong>IP</strong><span>Protects creations such as software, media, designs and inventions.</span></div>
+            <div><strong>Copyright</strong><span>Protects original expression, including source code.</span></div>
+            <div><strong>Patent</strong><span>Protects inventions for a limited time if requirements are met.</span></div>
+            <div><strong>Licence</strong><span>Gives permission under conditions; it may not transfer ownership.</span></div>
+            <div><strong>Infringement</strong><span>Using protected work without permission can breach rights or licence terms.</span></div>
+            <div><strong>Exam habit</strong><span>Say what is protected, what use is allowed and what consequence follows.</span></div>
           </div>
         </section>
 
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Practise balanced comparison</h2>
+            <h2>Practise permission-based reasoning</h2>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Comparison table</strong>
-              <span>Compare one open-source and one proprietary tool for the same task. Use columns: cost, support, customisation, security updates, compatibility, licence obligations.</span>
+              <strong>Task 1: Licence audit</strong>
+              <span>Find three software/media items you use. For each, state owner/source, licence or terms, allowed use, restricted use and attribution requirement.</span>
             </article>
             <article>
-              <strong>Task 2: Rewrite weak claims</strong>
-              <span>Rewrite these with qualifications: "Open source is free", "Proprietary is safer", "Open source has no owner", "Paid software gives ownership".</span>
+              <strong>Task 2: Rewrite a weak answer</strong>
+              <span>Rewrite: "It is online so anyone can copy it." Add ownership, copyright/licence condition, possible infringement and consequence.</span>
             </article>
             <article>
               <strong>Task 3: Timed response</strong>
-              <span>Answer in 8 minutes: "A school is choosing between open-source and proprietary software for a learning platform. Discuss the trade-offs." Include a final recommendation.</span>
+              <span>Answer in 8 minutes: "A company uses code from an online repository in a commercial product. Discuss IP and licensing issues." Include at least three precise terms.</span>
             </article>
           </div>
         </section>
@@ -453,8 +477,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

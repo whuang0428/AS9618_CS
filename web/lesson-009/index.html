@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 009 | Image file size calculations and metadata</title>
+    <title>AS9618 Lesson 009 | Bitmap file-size calculations and metadata</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Image file size calculations and metadata</h1>
+        <h1>Bitmap file-size calculations and metadata</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -52,12 +52,12 @@
             <h2>Bitmap file-size calculations and metadata</h2>
           </div>
           <div class="stage2-explanation">
-            <p>For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question and state whether a decimal or binary prefix is being used.</p>
-            <p>Bitmap metadata is stored separately from the pixel values, commonly in a file header. It can include the format, dimensions, colour depth and other information needed to interpret the pixel data. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.</p>
+            <p>For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.</p>
+            <p>Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.</p>
           </div>
           <article class="stage2-example">
             <h3>Worked example: Calculate pixel data and then account for metadata</h3>
-            <p>A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. If the question supplies a 54-byte header, the uncompressed total is 921,654 bytes; if it says to ignore metadata, the answer remains 921,600 bytes.</p>
+            <p>A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. With a supplied 54-byte header, the total is 921,654 bytes.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
@@ -77,12 +77,12 @@
             </article>
             <article class="stage2-question">
               <p><strong>3.</strong> Why must a header not be invented in a file-size calculation?</p>
-              <details><summary>Show answer</summary><p>Its size and contents depend on the file format; add it only when the question supplies the metadata size.</p></details>
+              <details><summary>Show answer</summary><p>Its size depends on the file format; add it only when the question supplies the metadata size.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A 1024 x 768 bitmap uses 16-bit colour and has a supplied 128-byte header. Calculate (i) its pixel-data size and (ii) its total uncompressed file size in bytes.</p>
+            <p>A 1024 x 768 bitmap uses 16-bit colour and has a supplied 128-byte header. Calculate its pixel-data size and total uncompressed size in bytes.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
@@ -393,8 +393,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

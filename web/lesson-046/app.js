@@ -1,187 +1,99 @@
-const lineMap = {
-  load: {
-    result: "Mnemonic: LOAD | Operand: count",
-    method: "LOAD is the operation mnemonic. count is a symbolic operand that the assembler resolves to an address or value depending on the instruction set.",
-    trap: "The word LOAD is not machine code; it must be assembled into a binary opcode.",
+const instructionSet = {
+  "0001": { operation: "load", meaning: "load the value from the operand address into ACC" },
+  "0010": { operation: "store", meaning: "store the ACC value into the operand address" },
+  "0011": { operation: "add", meaning: "add the value at the operand address to ACC" },
+  "0100": { operation: "jump", meaning: "jump to the operand address" },
+};
+
+const decodeData = {
+  "000101011010": {
+    result: "LOAD address 90",
+    method: "Opcode 0001 means LOAD. Operand 01011010 is denary 90, so the instruction loads from address 90.",
+    trap: "The operand is interpreted as an address in this simplified format, not as the operation.",
   },
-  add: {
-    result: "Mnemonic: ADD | Operand: value",
-    method: "ADD represents the addition operation. value tells the instruction what data/address/register to use.",
-    trap: "Do not call value the opcode. ADD is the readable operation mnemonic.",
+  "001001011010": {
+    result: "STORE address 90",
+    method: "Opcode 0010 means STORE. Operand 01011010 is denary 90, so the ACC value is stored at address 90.",
+    trap: "STORE writes a value to memory; it is not the same as LOAD.",
   },
-  jump: {
-    result: "Label: LOOP | Mnemonic: JMP | Operand: START",
-    method: "LOOP names this line. JMP is the jump mnemonic. START is a label used as the jump target.",
-    trap: "A label is not executed as an instruction; it is resolved to an address by the assembler.",
+  "001101011010": {
+    result: "ADD value at address 90",
+    method: "Opcode 0011 means ADD. Operand 01011010 gives the address of the value used by the addition.",
+    trap: "The opcode says ADD; the operand identifies what is added.",
   },
-  comment: {
-    result: "Mnemonic: STORE | Operand: total | Comment: save result",
-    method: "STORE represents the operation. total identifies where the value is stored. Text after the semicolon is for humans.",
-    trap: "Comments are ignored by the assembler and do not become machine code.",
+  "010000001100": {
+    result: "JMP address 12",
+    method: "Opcode 0100 means jump. Operand 00001100 is denary 12, so the PC would be changed to address 12.",
+    trap: "A jump affects program flow by changing the next instruction address.",
   },
-  directive: {
-    result: "Label: COUNT | Directive: DAT | Value: 5",
-    method: "DAT is treated here as an assembler directive to reserve or define data, not as a CPU operation.",
-    trap: "Directives guide the assembler; they are not the same as executable mnemonics.",
+  "111101011010": {
+    result: "Unknown opcode in this instruction set",
+    method: "Opcode 1111 is not defined in the example instruction set, so this CPU cannot decode it using this table.",
+    trap: "A bit pattern only has meaning if the processor's instruction set defines that opcode.",
   },
 };
 
 const examples = {
-  parse: {
-    title: "Example 1: parse an assembly line",
-    problem: "Parse `LOOP: ADD value ; add next item`.",
+  decode: {
+    title: "Example 1: decode a 12-bit instruction",
+    problem: "Decode 0011 01011010 using the lesson instruction set.",
     steps: [
-      "LOOP is a label that names the line or address.",
-      "ADD is the mnemonic representing an addition operation.",
-      "value is the operand used by the instruction.",
-      "The text after the semicolon is a comment and is ignored during assembly.",
+      "Split the instruction into opcode and operand: 0011 | 01011010.",
+      "Look up opcode 0011: it means ADD.",
+      "Convert operand 01011010 to denary: 64 + 16 + 8 + 2 = 90.",
+      "Interpretation: ADD the value at address 90 to the accumulator.",
     ],
   },
-  translate: {
-    title: "Example 2: assembler translation",
-    problem: "Explain how `ADD value` becomes executable.",
+  compatibility: {
+    title: "Example 2: processor compatibility",
+    problem: "Why might machine code for Processor A not run on Processor B?",
     steps: [
-      "The assembler looks up the mnemonic ADD in the instruction set.",
-      "It translates ADD into the corresponding binary opcode.",
-      "It resolves the operand value to an address, register code or immediate value depending on the instruction format.",
-      "The output is machine code that the CPU can fetch, decode and execute.",
+      "Machine code uses binary opcodes defined by an instruction set.",
+      "Processor B may use a different instruction set.",
+      "The same opcode may be undefined or may mean a different operation.",
+      "Therefore Processor B may not recognise or correctly execute the machine-code instructions.",
     ],
   },
-  compare: {
-    title: "Example 3: compare language levels",
-    problem: "Compare assembly language with machine code and high-level language.",
+  capacity: {
+    title: "Example 3: instruction-format capacity",
+    problem: "How many different opcodes can four opcode bits represent?",
     steps: [
-      "Machine code is binary and can be executed directly by the CPU.",
-      "Assembly language uses mnemonics and maps closely to machine code, but needs an assembler.",
-      "High-level language is more problem-oriented and usually needs a compiler or interpreter.",
-      "Assembly is low-level and processor-specific, not portable like many high-level languages.",
+      "Four bits have 2⁴ different patterns.",
+      "Therefore the format can represent at most 16 distinct opcodes.",
+      "Using more bits for the opcode can represent more operations, but leaves fewer bits for the operand when the instruction length is fixed.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What low-level language uses mnemonics?", accepted: ["assembly language", "assembly"], answer: "Assembly language" },
-  { id: "p2", prompt: "What is a readable abbreviation such as ADD called?", accepted: ["mnemonic", "mnemonics"], answer: "Mnemonic" },
-  { id: "p3", prompt: "What translates assembly language into machine code?", accepted: ["assembler", "an assembler"], answer: "Assembler" },
-  { id: "p4", prompt: "What type of code does the assembler output?", accepted: ["machine code", "object code"], answer: "Machine code / object code" },
-  { id: "p5", prompt: "In `ADD value`, what is the mnemonic?", accepted: ["add"], answer: "ADD" },
-  { id: "p6", prompt: "In `ADD value`, what is the operand?", accepted: ["value"], answer: "value" },
-  { id: "p7", prompt: "In `LOOP: JMP START`, what is LOOP?", accepted: ["label", "a label"], answer: "Label" },
-  { id: "p8", prompt: "What character often begins a comment in the examples on this page?", accepted: [";", "semicolon"], answer: "Semicolon / ;" },
-  { id: "p9", prompt: "Is assembly language directly executed as text by the CPU? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Is assembly language generally processor-specific? Answer yes or no.", accepted: ["yes"], answer: "Yes" },
+  { id: "p1", prompt: "What is the set of instructions a processor can recognise and execute called?", accepted: ["instruction set"], answer: "Instruction set" },
+  { id: "p2", prompt: "What type of code consists of binary instructions executed directly by the CPU?", accepted: ["machine code"], answer: "Machine code" },
+  { id: "p3", prompt: "Which part of an instruction specifies the operation?", accepted: ["opcode", "operation code"], answer: "Opcode / operation code" },
+  { id: "p4", prompt: "Which part of an instruction gives the data/address/register used by the operation?", accepted: ["operand"], answer: "Operand" },
+  { id: "p5", prompt: "In 0011 01011010, using this lesson format, what is the opcode?", accepted: ["0011"], answer: "0011" },
+  { id: "p6", prompt: "In 0011 01011010, using this lesson format, what is the operand?", accepted: ["01011010"], answer: "01011010" },
+  { id: "p7", prompt: "Using the lesson table, what operation does opcode 0001 perform?", accepted: ["load"], answer: "Load" },
+  { id: "p8", prompt: "Using the lesson table, what operation does opcode 0100 perform?", accepted: ["jump"], answer: "Jump" },
+  { id: "p9", prompt: "How many different patterns can a 4-bit opcode have?", accepted: ["16", "sixteen"], answer: "16" },
+  { id: "p10", prompt: "Can machine code for one instruction set always run on a different instruction set? Answer yes or no.", accepted: ["no"], answer: "No" },
 ];
 
 const mistakes = [
   {
-    wrong: "Assembly language is binary machine code.",
-    fix: "Assembly language uses mnemonics and symbolic names. Machine code is binary. An assembler translates assembly into machine code.",
+    wrong: "Machine code is any instruction written for a computer.",
+    fix: "Machine code consists of binary instructions that the processor can execute directly.",
   },
   {
-    wrong: "A compiler translates assembly language into machine code.",
-    fix: "An assembler translates assembly language into machine code. A compiler usually translates high-level language.",
+    wrong: "The operand tells the CPU which operation to perform.",
+    fix: "The opcode specifies the operation. The operand supplies the data, address, register or value used by that operation.",
   },
   {
-    wrong: "Comments in assembly become instructions for the CPU.",
-    fix: "Comments are for human readers and are ignored by the assembler.",
+    wrong: "Any CPU can execute any machine-code program because all machine code is binary.",
+    fix: "Machine code is binary, but opcode meanings depend on the processor's instruction set. A different CPU may not recognise the instructions.",
   },
   {
-    wrong: "A label is the same as a mnemonic.",
-    fix: "A label names an address or line. A mnemonic represents an operation such as ADD or JMP.",
-  },
-];
-
-const assemblyFoundationQuestions = [
-  {
-    title: "Question 1",
-    marks: "4 marks",
-    prompt: "Define assembly language and mnemonic.",
-    answer: "Assembly language is a low-level programming language that uses symbolic instructions related closely to machine-code instructions. A mnemonic is a short human-readable abbreviation, such as ADD or LOAD, used to represent an operation in assembly language.",
-    marking: [
-      { mark: "B1", text: "assembly language is low-level" },
-      { mark: "B1", text: "assembly uses symbolic instructions/mnemonics" },
-      { mark: "B1", text: "mnemonic is a short human-readable abbreviation" },
-      { mark: "B1", text: "mnemonic represents an operation/instruction, e.g. ADD/LOAD" },
-    ],
-    strict: [
-      "Do not accept assembly as a high-level language.",
-      "Do not accept mnemonic as the operand/data value.",
-      "Allow valid mnemonic examples such as JMP, STORE, SUB.",
-    ],
-  },
-  {
-    title: "Question 2",
-    marks: "5 marks",
-    prompt: "Explain the purpose of an assembler.",
-    answer: "An assembler translates assembly language source code into machine code. It converts mnemonics into binary opcodes, encodes operands, and resolves labels into addresses. The translated code can then be linked or loaded as required before the processor executes the resulting machine code.",
-    marking: [
-      { mark: "B1", text: "assembler translates assembly language" },
-      { mark: "B1", text: "output is machine code or an object-code module" },
-      { mark: "B1", text: "mnemonics converted into opcodes/binary instructions" },
-      { mark: "B1", text: "labels/symbolic addresses resolved or operands encoded" },
-      { mark: "B1", text: "translated code can be linked/loaded as required for processor execution" },
-    ],
-    strict: [
-      "Do not accept compiler unless clearly described as assembler-like for assembly language.",
-      "Do not accept assembler as the CPU component that executes instructions.",
-      "Allow two-pass assembler explanation if accurate.",
-    ],
-  },
-  {
-    title: "Question 3",
-    marks: "4 marks",
-    prompt: "For the line `LOOP: ADD value ; add next item`, identify the label, mnemonic, operand and comment.",
-    answer: "LOOP is the label. ADD is the mnemonic. value is the operand. The comment is 'add next item', which is for the programmer and is ignored by the assembler.",
-    marking: [
-      { mark: "B1", text: "LOOP identified as label" },
-      { mark: "B1", text: "ADD identified as mnemonic" },
-      { mark: "B1", text: "value identified as operand" },
-      { mark: "B1", text: "add next item identified as comment" },
-    ],
-    strict: [
-      "Do not require the colon as part of the label name.",
-      "Do not award mnemonic mark if candidate says value is the operation.",
-      "Allow comment including the semicolon.",
-      "Mark each line part independently.",
-    ],
-  },
-  {
-    title: "Question 4",
-    marks: "6 marks",
-    prompt: "Compare assembly language with machine code.",
-    answer: "Machine code is binary instructions that the CPU can execute directly. Assembly language uses mnemonics such as ADD or LOAD, labels and symbolic operands, making it easier for humans to read than raw binary. Assembly language is still low-level and processor-specific. It must be translated by an assembler into machine code before direct execution.",
-    marking: [
-      { mark: "B1", text: "machine code is binary instructions" },
-      { mark: "B1", text: "machine code executed directly by CPU" },
-      { mark: "B1", text: "assembly uses mnemonics/symbolic instructions" },
-      { mark: "B1", text: "assembly is more human-readable than machine code" },
-      { mark: "B1", text: "assembly is low-level/processor-specific or close to machine code" },
-      { mark: "B1", text: "assembly must be translated by assembler" },
-    ],
-    strict: [
-      "Do not accept assembly as directly executed by CPU as text.",
-      "Do not accept machine code as mnemonics.",
-      "Allow labels/operands as symbolic features of assembly.",
-    ],
-  },
-  {
-    title: "Question 5",
-    marks: "6 marks",
-    prompt: "A student writes: 'Assembly language is portable high-level code that is interpreted by the CPU.' Explain why this is incorrect.",
-    answer: "Assembly language is low-level, not high-level. It is usually processor-specific because its mnemonics map closely to a processor's instruction set. The CPU does not interpret assembly source text directly. Assembly language must be translated by an assembler into machine code. Machine code is the binary form that the CPU executes.",
-    marking: [
-      { mark: "B1", text: "assembly is low-level, not high-level" },
-      { mark: "B1", text: "assembly is processor-specific/not generally portable" },
-      { mark: "B1", text: "mnemonics map to instruction set/machine instructions" },
-      { mark: "B1", text: "CPU does not execute assembly text directly" },
-      { mark: "B1", text: "assembler translates assembly into machine code" },
-      { mark: "B1", text: "machine code/binary is executed by CPU" },
-    ],
-    strict: [
-      "Do not require discussion of every architecture.",
-      "Do not accept interpreted by CPU as correct wording.",
-      "Allow 'not portable' if linked to instruction set/processor.",
-    ],
+    wrong: "An instruction set is the list of high-level programming languages installed on a computer.",
+    fix: "An instruction set is the collection of low-level instructions that a processor can recognise and execute.",
   },
 ];
 
@@ -194,100 +106,102 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Identify the following instruction purposes: data movement, input/output, arithmetic, unconditional branch and conditional branch/compare. Give one valid mnemonic for each group.",
-    answer: "Data movement includes LDM/LDD/LDI/LDX/LDR/MOV/STO; input/output includes IN/OUT; arithmetic includes ADD/SUB/INC/DEC; JMP is an unconditional branch; CMP/CMI/JPE/JPN form the conditional branch/compare group.",
+    marks: "4 marks",
+    prompt: "Define instruction set and machine code.",
+    answer: "An instruction set is the set of instructions that a particular processor can recognise and execute. Machine code consists of binary instructions that can be executed directly by the processor.",
     marking: [
-      { mark: "B1", text: "data movement with a valid example" },
-      { mark: "B1", text: "input/output with IN or OUT" },
-      { mark: "B1", text: "arithmetic with ADD, SUB, INC or DEC" },
-      { mark: "B1", text: "unconditional branch with JMP" },
-      { mark: "B1", text: "conditional branch/compare with CMP, CMI, JPE or JPN" },
+      { mark: "B1", text: "instruction set is a set/collection of instructions" },
+      { mark: "B1", text: "processor can recognise/execute those instructions" },
+      { mark: "B1", text: "machine code consists of binary instructions" },
+      { mark: "B1", text: "machine code can be executed directly by the CPU/processor" },
     ],
     strict: [
-      "Do not classify JPE by guessing that it means equality.",
-      "One accurate mnemonic is required for each group.",
+      "Do not accept instruction set as high-level program library.",
+      "Do not accept a high-level program as machine code.",
+      "Allow 'CPU' for processor.",
     ],
   },
   {
     title: "Question 2",
-    marks: "7 marks",
-    prompt: "State the effects of LDM #n, LDD <address>, LDI <address>, LDX <address>, LDR #n, MOV <register> and STO <address>.",
-    answer: "LDM loads immediate n to ACC; LDD loads the directly addressed value to ACC; LDI loads ACC through an indirect address; LDX loads ACC from address plus IX; LDR loads immediate n to IX; MOV transfers ACC to IX; STO stores ACC at the address.",
+    marks: "5 marks",
+    prompt: "Explain the difference between opcode and operand.",
+    answer: "The opcode is the part of a machine-code instruction that specifies the operation to be performed, such as ADD or LOAD. The operand is the part of the instruction that supplies the data, address, register or value used by the operation. The meaning of both is defined by the processor's instruction set.",
     marking: [
-      { mark: "B1", text: "LDM: immediate n to ACC" },
-      { mark: "B1", text: "LDD: directly addressed value to ACC" },
-      { mark: "B1", text: "LDI: indirectly addressed value to ACC" },
-      { mark: "B1", text: "LDX: value at address plus IX to ACC" },
-      { mark: "B1", text: "LDR: immediate n to IX" },
-      { mark: "B1", text: "MOV: ACC to IX" },
-      { mark: "B1", text: "STO: ACC to addressed memory location" },
+      { mark: "B1", text: "opcode is part of an instruction" },
+      { mark: "B1", text: "opcode specifies operation to perform" },
+      { mark: "B1", text: "operand is part of an instruction" },
+      { mark: "B1", text: "operand supplies data/address/register/value used by operation" },
+      { mark: "B1", text: "meaning is defined by instruction set or valid example of opcode/operand" },
     ],
     strict: [
-      "Do not accept LDR as relative addressing.",
-      "Do not reverse MOV or STO data direction.",
+      "Do not accept operand as the operation.",
+      "Do not require all operand forms; one valid form such as address can earn the mark.",
+      "Allow operation examples such as ADD, LOAD, STORE, JMP.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "State the permitted operand forms and effects of ADD, SUB, INC and DEC.",
-    answer: "ADD and SUB use a memory address or an immediate denary (#n), binary (Bn) or hexadecimal (&n) value and update ACC. INC <register> and DEC <register> add or subtract one from ACC or IX.",
+    marks: "5 marks",
+    prompt: "A simplified CPU uses 4 opcode bits followed by 8 operand bits. Opcode 0011 means ADD. Give the decoded form of 0011 01011010.",
+    answer: "The opcode is the first 4 bits, 0011, which means ADD. The operand is the last 8 bits, 01011010. Converting the operand gives 64 + 16 + 8 + 2 = 90. Therefore the instruction means ADD using the value/address represented by 90, depending on the instruction format.",
     marking: [
-      { mark: "B1", text: "ADD updates ACC using addressed or immediate data" },
-      { mark: "B1", text: "SUB updates ACC using addressed or immediate data" },
-      { mark: "B1", text: "#n denotes immediate denary" },
-      { mark: "B1", text: "Bn denotes immediate binary and &n immediate hexadecimal" },
-      { mark: "B1", text: "INC adds one to ACC or IX" },
-      { mark: "B1", text: "DEC subtracts one from ACC or IX" },
+      { mark: "M1", text: "splits instruction into 0011 and 01011010" },
+      { mark: "B1", text: "identifies opcode 0011 as ADD" },
+      { mark: "M1", text: "converts operand using relevant binary place values" },
+      { mark: "A1", text: "converts 01011010 to 90" },
+      { mark: "B1", text: "interprets instruction as ADD using operand 90" },
     ],
     strict: [
-      "Do not treat #, B and & as part of an address.",
-      "The changed register must be ACC or IX.",
+      "Do not award final interpretation if candidate treats operand as opcode.",
+      "Allow operand to be described as address 90 if consistent with the simplified format.",
+      "Do not require leading subscript notation.",
     ],
   },
   {
     title: "Question 4",
-    marks: "8 marks",
-    prompt: "State the exact effects of CMP <address>, CMP #n, CMI <address>, JPE <address>, JPN <address>, IN, OUT and END.",
-    answer: "CMP compares ACC with a directly addressed or immediate value. CMI compares ACC with an indirectly addressed value. JPE branches after a True comparison and JPN after a False comparison. IN inputs an ASCII code to ACC; OUT outputs the character represented by the ASCII code in ACC; END returns control to the operating system.",
+    marks: "5 marks",
+    prompt: "Explain why machine code written for one processor may not run on a different processor.",
+    answer: "Machine code uses binary opcodes defined by a processor's instruction set. A different processor may use a different instruction set. The same bit pattern may be undefined or may represent a different operation. Therefore the second processor may not recognise, decode or execute the instructions correctly. The program may need to be recompiled, translated or emulated.",
     marking: [
-      { mark: "B1", text: "CMP <address>: compare ACC with directly addressed value" },
-      { mark: "B1", text: "CMP #n: compare ACC with immediate n" },
-      { mark: "B1", text: "CMI: indirect comparison with ACC" },
-      { mark: "B1", text: "JPE: jump after True comparison" },
-      { mark: "B1", text: "JPN: jump after False comparison" },
-      { mark: "B1", text: "IN: ASCII input code to ACC" },
-      { mark: "B1", text: "OUT: character whose ASCII code is in ACC" },
-      { mark: "B1", text: "END: return control to operating system" },
+      { mark: "B1", text: "machine code uses binary opcodes/instructions" },
+      { mark: "B1", text: "opcodes are defined by an instruction set" },
+      { mark: "B1", text: "different processor may have different instruction set" },
+      { mark: "B1", text: "same bit pattern may be unrecognised or have different meaning" },
+      { mark: "B1", text: "needs recompilation/translation/emulation or cannot execute correctly" },
     ],
     strict: [
-      "Do not accept immediate CMI, equal/zero JPE or negative JPN.",
-      "ASCII data direction must be correct for IN and OUT.",
+      "Do not accept only 'the processor is different' without instruction set explanation.",
+      "Do not require named architectures.",
+      "Allow 'CPU cannot decode the opcode' for recognition/execution mark.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Explain a two-pass assembler and Compare LOOP: ADD ONE from ONE: 1.",
-    answer: "Pass 1 assigns addresses and builds the symbol table, so forward references can be recorded before their values are known. Pass 2 translates instructions and substitutes resolved addresses. LOOP labels an instruction containing opcode ADD and operand ONE; ONE is a symbolic data address for the memory location containing 1.",
+    prompt: "A fixed 12-bit instruction changes from a 4-bit opcode and 8-bit operand to a 5-bit opcode and 7-bit operand. Explain two effects of this change.",
+    answer: "Five opcode bits provide 32 patterns instead of 16, so the instruction set can define more operations. The operand becomes seven bits, so it provides 128 patterns instead of 256. If the operand represents an address, the directly represented address range becomes smaller. This is a trade-off because the total instruction length remains 12 bits.",
     marking: [
-      { mark: "B1", text: "pass 1 assigns addresses/builds symbol table" },
-      { mark: "B1", text: "forward references can be recorded" },
-      { mark: "B1", text: "pass 2 translates using resolved symbols" },
-      { mark: "B1", text: "LOOP is an instruction label" },
-      { mark: "B1", text: "ADD is opcode/mnemonic and ONE is operand" },
-      { mark: "B1", text: "ONE labels the data location containing 1" },
+      { mark: "B1", text: "uses 2⁵ for the new opcode capacity" },
+      { mark: "B1", text: "states 32 opcode patterns instead of 16" },
+      { mark: "B1", text: "links the extra opcode bit to more possible operations" },
+      { mark: "B1", text: "uses 2⁷ for the new operand capacity" },
+      { mark: "B1", text: "states 128 operand patterns instead of 256" },
+      { mark: "B1", text: "links the smaller operand to a reduced value/address range" },
     ],
     strict: [
-      "Do not state that either pass executes the program.",
-      "Do not call a data label an opcode.",
+      "Do not award the pattern counts without the corresponding effect explanation.",
+      "Allow equivalent maximum-range wording if the counting convention is stated.",
+      "The instruction remains 12 bits; do not award claims that it becomes longer.",
     ],
   },
 ];
 
 function normalise(value) {
   return value.trim().toLowerCase().replace(/[-_\s]+/g, " ");
+}
+
+function toDenary(binary) {
+  return parseInt(binary, 2);
 }
 
 function setupPrint() {
@@ -297,10 +211,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    add: "Correct. ADD is the mnemonic because it represents the operation.",
-    ninety: "90 is the operand in this example, not the mnemonic.",
-    both: "The whole line is an assembly instruction, but only ADD is the mnemonic.",
-    cpu: "The CPU executes machine code. CPU is not a part of the assembly line.",
+    isa: "Correct. The instruction set defines what each opcode means.",
+    ram: "No. RAM capacity or appearance does not define opcode meaning.",
+    font: "Tempting, but the CPU does not care about your font choices.",
+    bus: "No. Buses transfer signals; the instruction set defines instruction meaning.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -311,20 +225,24 @@ function setupHook() {
   });
 }
 
-function setupParser() {
-  const select = document.querySelector("#lineInput");
-  const result = document.querySelector("#parseResult");
-  const method = document.querySelector("#parseMethod");
-  const trap = document.querySelector("#parseTrap");
-  function parseLine() {
-    const item = lineMap[select.value];
+function setupDecoder() {
+  const select = document.querySelector("#instructionInput");
+  const result = document.querySelector("#decodeResult");
+  const method = document.querySelector("#decodeMethod");
+  const trap = document.querySelector("#decodeTrap");
+  function decode() {
+    const raw = select.value;
+    const opcode = raw.slice(0, 4);
+    const operand = raw.slice(4);
+    const item = decodeData[raw];
+    const lookup = instructionSet[opcode];
     result.textContent = item.result;
-    method.innerHTML = `<strong>Explanation:</strong> ${item.method}`;
-    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
+    method.innerHTML = `<strong>Split:</strong> opcode ${opcode}, operand ${operand} (${toDenary(operand)} denary). <strong>Reason:</strong> ${item.method}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${lookup ? item.trap : `${item.trap} Opcode ${opcode} is not in the table.`}`;
   }
-  select.addEventListener("change", parseLine);
-  document.querySelector("#parseBtn").addEventListener("click", parseLine);
-  parseLine();
+  select.addEventListener("change", decode);
+  document.querySelector("#decodeBtn").addEventListener("click", decode);
+  decode();
 }
 
 function renderExample(key) {
@@ -344,7 +262,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("parse");
+  renderExample("decode");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -426,7 +344,7 @@ function renderExamQuestions() {
 
 setupPrint();
 setupHook();
-setupParser();
+setupDecoder();
 setupExamples();
 renderPractice();
 renderMistakes();

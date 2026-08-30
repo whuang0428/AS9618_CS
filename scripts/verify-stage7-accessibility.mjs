@@ -5,7 +5,7 @@ import { pageDefinitions, pageHash, read, root } from "./stage6-qa-utils.mjs";
 
 const expect = (condition, message) => { if (!condition) throw new Error(message); };
 const occurrences = (source, token) => source.split(token).length - 1;
-expect(pageDefinitions.length === 153, "Stage 7 must inventory 150 lessons and three hub pages");
+expect(pageDefinitions.length === 154, "Stage 7 must inventory 151 lessons and three hub pages");
 for (const definition of pageDefinitions) {
   const html = read(definition.html);
   const prefix = definition.page === "index" ? "./" : "../";
@@ -26,12 +26,12 @@ execFileSync(process.execPath, ["--check", path.join(root, "web", "stage7-access
 
 const browser = JSON.parse(read("audits/remediation-v2-stage7-browser-evidence.json"));
 expect(browser.sourceApprovalImported === false && browser.oldApprovedRowsUsedForDecision === false, "Stage 7 inherited an old browser approval");
-expect(browser.records.length === 306 && browser.failedRecords === 0, "Stage 7 current-browser matrix is incomplete");
+expect(browser.records.length === 308 && browser.failedRecords === 0, "Stage 7 current-browser matrix is incomplete");
 expect(browser.keyboard?.status === "PassedSystemKeyboard" && browser.keyboard.checks.length === 8 && browser.keyboard.checks.every(({ status }) => status === "Pass"), "Stage 7 real keyboard evidence is incomplete");
 const evidenceByKey = new Map(browser.records.map((row) => [`${row.page}/${row.viewport}`, row]));
 const lines = read("audits/stage7-accessibility-register.csv").trim().split("\n");
 expect(lines.shift() === "page,semantics,keyboard,contrast,language,status,content_hash,reviewer,review_round,evidence", "Stage 7 register header is invalid");
-expect(lines.length === 153, "Stage 7 register count is invalid");
+expect(lines.length === 154, "Stage 7 register count is invalid");
 for (const line of lines) {
   const cells = line.split(",");
   expect(cells.length === 10, `Invalid Stage 7 register row: ${line}`);
@@ -43,4 +43,4 @@ for (const line of lines) {
   for (const viewport of ["1440x900", "390x844"]) expect(evidenceByKey.get(`${cells[0]}/${viewport}`)?.sourceHash === currentHash, `${cells[0]}/${viewport}: browser evidence is stale`);
 }
 expect(fs.existsSync(path.join(root, "audits", "stage7-accessibility-report.md")), "Stage 7 report is missing");
-console.log("Stage 7 accessibility verification passed: 153 current-hash pages, 306 live viewport records and 8 real system-keyboard flows.");
+console.log("Stage 7 accessibility verification passed: 154 current-hash pages, 308 live viewport records and 8 real system-keyboard flows.");

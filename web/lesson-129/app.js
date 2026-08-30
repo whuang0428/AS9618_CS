@@ -1,106 +1,108 @@
 const loopScenarios = [
   {
+    id: "fixedArray",
+    text: "Output every value in Marks[1:30].",
+    recommendation: "Use FOR",
+    reason: "The loop must run once for each known index from 1 to 30.",
+  },
+  {
     id: "password",
-    text: "Keep asking for a password while it is incorrect.",
-    recommendation: "WHILE",
-    reason: "The number of attempts is not known and the condition can be checked before repeating.",
+    text: "Keep asking for a password until it is correct.",
+    recommendation: "Use WHILE or REPEAT UNTIL, not usually FOR",
+    reason: "The number of attempts is not known before the loop starts.",
   },
   {
-    id: "mark",
-    text: "Ask for a mark at least once and repeat until it is between 0 and 100.",
-    recommendation: "REPEAT...UNTIL",
-    reason: "The input must be requested once before it can be tested.",
+    id: "sumTen",
+    text: "Add the integers from 1 to 10.",
+    recommendation: "Use FOR",
+    reason: "The counter range is known exactly.",
   },
   {
-    id: "array",
-    text: "Process exactly 30 array elements.",
-    recommendation: "FOR",
-    reason: "The number of repetitions is known from the fixed array bounds.",
-  },
-  {
-    id: "sentinel",
-    text: "Keep adding numbers until the user enters -1.",
-    recommendation: "WHILE with a sentinel value",
-    reason: "The number of inputs is not known and -1 marks the stopping point.",
+    id: "readUntilEOF",
+    text: "Read records until the end of a file is reached.",
+    recommendation: "Use WHILE, not usually FOR",
+    reason: "The number of records may not be known in advance.",
   },
 ];
 
 const examples = {
-  password: {
-    title: "Example 1: Password WHILE loop",
-    problem: "Keep asking while the password is incorrect.",
+  sum: {
+    title: "Example 1: Sum 1 to 5",
+    problem: "Use a FOR loop to calculate 1 + 2 + 3 + 4 + 5.",
     rows: [
-      ["open", "false", "body skipped"],
-      ["wrong, then open", "true then false", "one retry"],
-      ["wrong, wrong, open", "true, true, false", "two retries"],
+      ["1", "1", "first update"],
+      ["2", "3", "1 + 2"],
+      ["3", "6", "3 + 3"],
+      ["4", "10", "6 + 4"],
+      ["5", "15", "10 + 5"],
     ],
-    code: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"",
-    points: ["WHILE checks before the body.", "Password must be updated inside the loop.", "If the first input is correct, the loop runs zero times."],
+    code: "Total <- 0\nFOR Count <- 1 TO 5\n    Total <- Total + Count\nNEXT Count\nOUTPUT Total",
+    points: ["Total is initialised before the loop.", "Count controls the loop.", "The final output is 15."],
   },
-  mark: {
-    title: "Example 2: Mark validation with REPEAT",
-    problem: "Input Mark until it is between 0 and 100 inclusive.",
+  array: {
+    title: "Example 2: Total an array",
+    problem: "Find the total of 30 marks stored in Marks[1:30].",
     rows: [
-      ["-5", "condition false", "repeat"],
-      ["120", "condition false", "repeat"],
-      ["85", "condition true", "stop"],
+      ["Initialise", "Total <- 0", "sets accumulator"],
+      ["Loop", "FOR Index <- 1 TO 30", "matches array bounds"],
+      ["Update", "Total <- Total + Marks[Index]", "adds one element per iteration"],
     ],
-    code: "REPEAT\n    INPUT Mark\nUNTIL Mark >= 0 AND Mark <= 100",
-    points: ["REPEAT runs at least once.", "The UNTIL condition is the valid condition.", "Use AND because both limits must be satisfied."],
+    code: "Total <- 0\nFOR Index <- 1 TO 30\n    Total <- Total + Marks[Index]\nNEXT Index\nOUTPUT Total",
+    points: ["Use Index to access each element.", "The bounds should match Marks[1:30].", "Do not use Java's index 0 unless the pseudocode array is declared that way."],
   },
-  sentinel: {
-    title: "Example 3: Sentinel total",
-    problem: "Add numbers until -1 is entered.",
+  count: {
+    title: "Example 3: Count matching values",
+    problem: "Count how many of 20 temperatures are above 30.",
     rows: [
-      ["4", "4", "accepted"],
-      ["7", "11", "accepted"],
-      ["-1", "11", "sentinel, not added"],
+      ["Initialise", "HotDays <- 0", "sets counter for matches"],
+      ["Loop", "FOR Day <- 1 TO 20", "known 20 readings"],
+      ["Selection", "IF Temperatures[Day] > 30", "checks each item"],
     ],
-    code: "Total <- 0\nINPUT Number\nWHILE Number <> -1\n    Total <- Total + Number\n    INPUT Number\nENDWHILE\nOUTPUT Total",
-    points: ["The sentinel stops the loop.", "-1 is not added to Total.", "The next input must be inside the loop."],
+    code: "HotDays <- 0\nFOR Day <- 1 TO 20\n    IF Temperatures[Day] > 30 THEN\n        HotDays <- HotDays + 1\n    ENDIF\nNEXT Day\nOUTPUT HotDays",
+    points: ["The FOR loop controls the fixed number of readings.", "The IF decides whether to increment HotDays.", "HotDays is a match counter, not the loop counter."],
   },
-  infinite: {
-    title: "Example 4: Infinite loop fix",
-    problem: "A WHILE loop tests Number but never changes Number.",
+  offByOne: {
+    title: "Example 4: Off-by-one error",
+    problem: "A student must process 50 records but writes 1 TO 49.",
     rows: [
-      ["Problem", "Number is not updated", "condition may stay true forever"],
-      ["Fix", "INPUT Number inside loop", "condition can change"],
-      ["Test", "eventually enter -1", "loop stops"],
+      ["Required", "50 records", "indexes 1 to 50"],
+      ["Student loop", "1 TO 49", "only 49 iterations"],
+      ["Correction", "1 TO 50", "processes all records"],
     ],
-    code: "INPUT Number\nWHILE Number <> -1\n    OUTPUT Number\n    INPUT Number\nENDWHILE",
-    points: ["A condition-controlled loop needs a route to termination.", "Update the variable used in the condition.", "Trace two iterations to check the update."],
+    code: "FOR Index <- 1 TO 50\n    PROCESS Record[Index]\nNEXT Index",
+    points: ["Check whether the end bound is included.", "1 TO 49 misses item 50.", "A trace of counter values exposes the error."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which loop checks the condition before the body may run?", accepted: ["while", "while loop"], answer: "WHILE loop." },
-  { id: "p2", prompt: "Which loop runs at least once before checking the condition?", accepted: ["repeat", "repeat until", "repeat...until"], answer: "REPEAT...UNTIL." },
-  { id: "p3", prompt: "Can a WHILE loop run zero times? yes or no.", accepted: ["yes"], answer: "Yes. If the condition is false before the first iteration, the body is skipped." },
-  { id: "p4", prompt: "Can a REPEAT...UNTIL loop run zero times? yes or no.", accepted: ["no"], answer: "No. It runs the body once before checking the UNTIL condition." },
-  { id: "p5", prompt: "What is the sentinel value in a loop that stops when Number = -1?", accepted: ["-1"], answer: "-1." },
-  { id: "p6", prompt: "Should a sentinel such as -1 be added to the total? yes or no.", accepted: ["no"], answer: "No. It is used only to stop the loop." },
-  { id: "p7", prompt: "What keyword closes a WHILE loop in Cambridge-style pseudocode?", accepted: ["endwhile"], answer: "ENDWHILE." },
-  { id: "p8", prompt: "What keyword pair is used for a post-condition loop?", accepted: ["repeat until", "repeat...until"], answer: "REPEAT...UNTIL." },
-  { id: "p9", prompt: "For valid mark 0 to 100, should the UNTIL condition use AND or OR?", accepted: ["and"], answer: "AND, because Mark must be >= 0 and <= 100." },
-  { id: "p10", prompt: "What common error happens when the condition variable is never updated?", accepted: ["infinite loop", "infinite", "endless loop"], answer: "An infinite loop." },
+  { id: "p1", prompt: "Which loop is normally used when the number of repetitions is known?", accepted: ["for", "for loop"], answer: "FOR loop." },
+  { id: "p2", prompt: "What keyword closes a Cambridge-style FOR loop?", accepted: ["next", "next count", "next index"], answer: "NEXT, often written as NEXT Count or NEXT Index." },
+  { id: "p3", prompt: "How many iterations are there in FOR Count <- 1 TO 5?", accepted: ["5", "five"], answer: "5 iterations." },
+  { id: "p4", prompt: "Trace: Total <- 0; FOR Count <- 1 TO 4; Total <- Total + Count. Final Total?", accepted: ["10"], answer: "10." },
+  { id: "p5", prompt: "What is the loop counter in FOR Index <- 1 TO 30?", accepted: ["index"], answer: "Index." },
+  { id: "p6", prompt: "What variable role is Total in Total <- Total + Count?", accepted: ["accumulator", "running total"], answer: "Total is an accumulator or running total." },
+  { id: "p7", prompt: "To process Marks[1:30], should the loop normally use 1 TO 30 or 0 TO 29?", accepted: ["1 to 30", "1 TO 30", "1"], answer: "1 TO 30, matching the pseudocode array bounds." },
+  { id: "p8", prompt: "What common error means a loop runs one too many or one too few times?", accepted: ["off-by-one", "off by one", "offbyone"], answer: "Off-by-one error." },
+  { id: "p9", prompt: "Should you use FOR to keep asking for input until it is valid? yes or no.", accepted: ["no"], answer: "No, usually use WHILE or REPEAT UNTIL because the number of attempts is not known." },
+  { id: "p10", prompt: "What should be initialised before a loop that calculates a total?", accepted: ["total", "accumulator"], answer: "The accumulator, for example Total <- 0." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student writes WHILE Password <> CorrectPassword but never inputs Password inside the loop.",
-    fix: "Input or otherwise update Password inside the loop so the condition can eventually become false.",
+    wrong: "A student writes FOR Index <- 1 TO 29 to process Marks[1:30].",
+    fix: "Use FOR Index <- 1 TO 30. The end bound should include the last declared element.",
   },
   {
-    wrong: "A student writes UNTIL Mark >= 0 OR Mark <= 100 for validation.",
-    fix: "Use AND for the valid range: UNTIL Mark >= 0 AND Mark <= 100. With OR, almost every value becomes valid.",
+    wrong: "A student uses a FOR loop to repeat until a password is correct.",
+    fix: "Use WHILE or REPEAT UNTIL unless a fixed maximum number of attempts is stated.",
   },
   {
-    wrong: "A student adds the sentinel value -1 to Total before stopping.",
-    fix: "Check the sentinel before adding. -1 is the stopping marker, not part of the data.",
+    wrong: "A student updates Total but never initialises it before the loop.",
+    fix: "Set Total <- 0 before the loop so the accumulator has a known starting value.",
   },
   {
-    wrong: "A student uses Java while (condition) { } syntax as the Cambridge pseudocode answer.",
-    fix: "Use WHILE Condition ... ENDWHILE or REPEAT ... UNTIL Condition. Java is support only.",
+    wrong: "A student writes Java syntax for (int i = 0; i < 30; i++) in a Cambridge pseudocode answer.",
+    fix: "Use Cambridge-style pseudocode such as FOR Index <- 1 TO 30 ... NEXT Index. Java is support only.",
   },
 ];
 
@@ -114,96 +116,96 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode that repeatedly inputs Password while it is not equal to CorrectPassword. Output Access granted when the loop ends.",
-    answer: "INPUT Password\nWHILE Password <> CorrectPassword\n    OUTPUT \"Try again\"\n    INPUT Password\nENDWHILE\nOUTPUT \"Access granted\"",
+    prompt: "Write Cambridge-style pseudocode to output the numbers 1 to 10 using a count-controlled loop.",
+    answer: "FOR Count <- 1 TO 10\n    OUTPUT Count\nNEXT Count",
     marking: [
-      { mark: "B1", text: "inputs Password before the loop condition is tested" },
-      { mark: "M1", text: "uses a WHILE loop with Password <> CorrectPassword or equivalent" },
-      { mark: "B1", text: "outputs a retry message inside the loop" },
-      { mark: "A1", text: "updates/re-inputs Password inside the loop" },
-      { mark: "B1", text: "closes loop using ENDWHILE or equivalent" },
-      { mark: "A1", text: "outputs Access granted after the loop, not inside the retry-only path" },
+      { mark: "B1", text: "uses a FOR/count-controlled loop" },
+      { mark: "B1", text: "uses Count or equivalent loop counter" },
+      { mark: "M1", text: "sets start value to 1" },
+      { mark: "A1", text: "sets end value to 10" },
+      { mark: "B1", text: "outputs the counter inside the loop" },
+      { mark: "A1", text: "closes the loop with NEXT or equivalent" },
     ],
     strict: [
-      "Do not award update mark if Password cannot change inside the loop.",
-      "Allow NOT Password = CorrectPassword as equivalent condition.",
-      "Do not accept Java braces and while syntax alone as Cambridge pseudocode.",
+      "Do not award pseudocode style marks for Java-only for-loop syntax.",
+      "Allow another meaningful counter identifier if used consistently.",
+      "Do not accept a loop that outputs 0 to 9 unless the question has been reinterpreted and explained.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "Write pseudocode to input Mark until it is in the range 0 to 100 inclusive. Use REPEAT...UNTIL.",
-    answer: "REPEAT\n    INPUT Mark\nUNTIL Mark >= 0 AND Mark <= 100",
+    marks: "7 marks",
+    prompt: "Complete a trace table for this pseudocode: Total <- 0; FOR Count <- 1 TO 5; Total <- Total + Count; NEXT Count; OUTPUT Total. Give the values of Total after each iteration and the final output.",
+    answer: "Total after each iteration: 1, 3, 6, 10, 15. Final output: 15.",
     marking: [
-      { mark: "B1", text: "uses REPEAT" },
-      { mark: "B1", text: "inputs Mark inside the loop body" },
-      { mark: "M1", text: "uses UNTIL condition" },
-      { mark: "A1", text: "tests Mark >= 0 or equivalent lower bound" },
-      { mark: "A1", text: "tests Mark <= 100 or equivalent upper bound" },
-      { mark: "A1", text: "combines valid-range conditions using AND" },
+      { mark: "M1", text: "initialises Total to 0" },
+      { mark: "B1", text: "traces Count = 1 giving Total = 1" },
+      { mark: "B1", text: "traces Count = 2 giving Total = 3" },
+      { mark: "B1", text: "traces Count = 3 giving Total = 6" },
+      { mark: "B1", text: "traces Count = 4 giving Total = 10" },
+      { mark: "B1", text: "traces Count = 5 giving Total = 15" },
+      { mark: "A1", text: "states final output 15" },
     ],
     strict: [
-      "Do not award final logic mark for OR between the valid lower and upper bound tests.",
-      "Allow 0 <= Mark <= 100 if written clearly.",
-      "Do not accept WHILE if the question specifically requires REPEAT...UNTIL.",
-      "Allow an equivalent variable if it is used consistently.",
+      "Do not award final output mark for 10 unless the candidate incorrectly stops at 4.",
+      "Allow a clear trace table instead of prose.",
+      "Do not accept only the final answer without trace values where trace is requested.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 3",
     marks: "7 marks",
-    prompt: "Complete a trace table for this sentinel loop for inputs 4, 7, -1: Total <- 0; INPUT Number; WHILE Number <> -1; Total <- Total + Number; INPUT Number; ENDWHILE; OUTPUT Total.",
-    answer: "Input 4 is added so Total becomes 4. Input 7 is added so Total becomes 11. Input -1 stops the loop and is not added. The final output is 11.",
+    prompt: "An array Marks is declared as ARRAY[1:30] OF INTEGER. Write pseudocode to calculate and output the total of all marks.",
+    answer: "Total <- 0\nFOR Index <- 1 TO 30\n    Total <- Total + Marks[Index]\nNEXT Index\nOUTPUT Total",
     marking: [
-      { mark: "M1", text: "initialises Total to 0" },
-      { mark: "B1", text: "adds 4 to give Total = 4" },
-      { mark: "B1", text: "continues loop because 4 <> -1" },
-      { mark: "B1", text: "adds 7 to give Total = 11" },
-      { mark: "M1", text: "recognises -1 is the sentinel that stops the loop" },
-      { mark: "A1", text: "does not add -1 to Total" },
-      { mark: "A1", text: "states final output 11" },
+      { mark: "B1", text: "initialises Total or equivalent accumulator" },
+      { mark: "M1", text: "uses a FOR loop to process a known number of elements" },
+      { mark: "A1", text: "uses bounds 1 TO 30 matching the declared array" },
+      { mark: "B1", text: "uses an index to access Marks[Index]" },
+      { mark: "M1", text: "adds each array element to the accumulator" },
+      { mark: "A1", text: "closes loop after processing each element" },
+      { mark: "B1", text: "outputs the total after the loop" },
     ],
     strict: [
-      "Do not award final output mark for 10 if -1 has been added.",
-      "Allow a clear trace table instead of prose.",
-      "Do not accept only 'it stops' without showing Total values where trace is requested.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award bounds mark for 0 TO 29 unless array bounds are explicitly changed.",
+      "Allow Sum instead of Total.",
+      "Do not accept output inside the loop as the final total unless a final output is also given.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Compare WHILE and REPEAT...UNTIL loops. Include when the condition is checked and the minimum number of iterations.",
-    answer: "A WHILE loop checks the condition before the loop body and may run zero times. A REPEAT...UNTIL loop runs the body first, checks the condition after the body, and therefore runs at least once.",
+    marks: "5 marks",
+    prompt: "Explain why a FOR loop is suitable for processing 100 sensor readings stored in an array, and why it may not be suitable for reading input until a valid value is entered.",
+    answer: "A FOR loop is suitable for 100 sensor readings because the number of repetitions is known and each array index can be processed once. It may not be suitable for input until valid because the number of attempts is not known before the loop starts.",
     marking: [
-      { mark: "B1", text: "states WHILE checks condition before the body" },
-      { mark: "B1", text: "states WHILE may run zero times" },
-      { mark: "B1", text: "states REPEAT...UNTIL body runs before condition is checked" },
-      { mark: "B1", text: "states REPEAT...UNTIL runs at least once" },
+      { mark: "B1", text: "states FOR loop is suitable when repetition count is known" },
+      { mark: "B1", text: "applies known count to 100 readings" },
+      { mark: "B1", text: "states array indexes can be processed systematically" },
+      { mark: "B1", text: "states validation attempts are not known in advance" },
+      { mark: "B1", text: "contrasts count-controlled and condition-controlled repetition" },
     ],
     strict: [
-      "Do not award comparison marks for only saying one is easier.",
-      "Allow pre-test/post-test terminology.",
-      "Do not accept that both always run once.",
+      "Do not award contrast mark for vague 'FOR is easier'.",
+      "Allow fixed maximum attempts as a reason FOR could be used if explicitly stated.",
+      "Do not accept that FOR is never suitable for validation without explanation.",
     ],
   },
   {
     title: "Question 5",
     marks: "4 marks",
-    prompt: "A loop is intended to repeat until the user enters 0, but the variable tested by the WHILE condition is never changed inside the loop. Explain the error and give a correction.",
-    answer: "The loop may be infinite because the condition can stay true forever. The variable tested in the condition must be updated inside the loop, for example by inputting the value again before ENDWHILE.",
+    prompt: "A student writes FOR Index <- 1 TO 49 to process an array Data[1:50]. Identify the error and give a corrected loop header. Explain the effect of the error.",
+    answer: "The loop has an off-by-one error. It should be FOR Index <- 1 TO 50. The original loop processes only 49 elements and misses Data[50].",
     marking: [
-      { mark: "B1", text: "explains the variable is not changed/updated in the loop body" },
-      { mark: "B1", text: "states this can cause an infinite loop" },
-      { mark: "B1", text: "gives a correction that updates or re-inputs the variable inside the loop" },
-      { mark: "B1", text: "places the update before the next condition check / before ENDWHILE" },
+      { mark: "B1", text: "identifies an off-by-one or incorrect end-bound error" },
+      { mark: "B1", text: "gives corrected loop header FOR Index <- 1 TO 50 or equivalent" },
+      { mark: "B1", text: "states the original loop runs 49 times" },
+      { mark: "B1", text: "states Data[50] is missed" },
     ],
     strict: [
-      "Do not award correction mark for merely saying 'fix the condition' without an update.",
-      "Allow changing another state variable if it is the variable tested by the condition.",
-      "Do not accept switching to FOR without explaining a fixed repetition count.",
-      "Allow an equivalent variable if it is used consistently.",
+      "Do not award correction mark for 0 TO 49 unless bounds are changed and explained.",
+      "Allow 'last element is not processed' for Data[50] missed.",
+      "Do not accept 'syntax error' alone.",
     ],
   },
 ];
@@ -237,10 +239,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    zero: "Correct. The WHILE condition is false before the first pass, so the loop body is skipped.",
-    one: "Not here. A WHILE loop checks before running, so it can run zero times.",
-    forever: "No. It would only risk running forever if the condition were true and never changed.",
-    unknown: "We can tell: both values are already equal, so the condition is false.",
+    four: "Not quite. The end value 5 is included, so 1, 2, 3, 4 and 5 all run.",
+    five: "Correct. The loop runs for Count values 1 through 5 inclusive.",
+    six: "No. That would count 0 through 5 or 1 through 6, not 1 through 5.",
+    unknown: "The count is known because both the start and end bounds are given.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -251,36 +253,36 @@ function setupHook() {
   });
 }
 
-function setupSentinelTrace() {
+function setupTraceBuilder() {
   const result = document.querySelector("#traceResult");
   document.querySelector("#traceBtn").addEventListener("click", () => {
-    const values = document.querySelector("#sequenceInput").value
-      .split(",")
-      .map((value) => Number(value.trim()))
-      .filter((value) => Number.isFinite(value));
-
-    if (values.length === 0) {
-      result.textContent = "Enter at least one numeric value.";
+    const start = Number(document.querySelector("#startInput").value);
+    const end = Number(document.querySelector("#endInput").value);
+    if (!Number.isInteger(start) || !Number.isInteger(end)) {
+      result.textContent = "Use integer bounds for this trace.";
+      return;
+    }
+    if (end < start) {
+      result.textContent = "This simple builder expects the end bound to be greater than or equal to the start bound.";
+      return;
+    }
+    if (end - start > 30) {
+      result.textContent = "Use a smaller range for the classroom trace table.";
       return;
     }
 
     let total = 0;
     const rows = [];
-    let stopped = false;
-    for (const value of values) {
-      if (value === -1) {
-        rows.push([String(value), String(total), "sentinel reached; stop"]);
-        stopped = true;
-        break;
-      }
-      total += value;
-      rows.push([String(value), String(total), "accepted and added"]);
+    for (let count = start; count <= end; count += 1) {
+      total += count;
+      rows.push([String(count), String(total)]);
     }
 
     result.innerHTML = `
-      ${tableMarkup(["Input", "Total", "Action"], rows)}
-      <p><strong>Final output:</strong> ${total}</p>
-      <p><strong>Sentinel found:</strong> ${stopped ? "yes" : "no; this input sequence would need another input"}</p>
+      <p><strong>Loop:</strong> FOR Count &lt;- ${start} TO ${end}</p>
+      ${tableMarkup(["Count", "Total after update"], rows)}
+      <p><strong>Iterations:</strong> ${rows.length}</p>
+      <p><strong>Final Total:</strong> ${total}</p>
     `;
   });
 }
@@ -304,7 +306,7 @@ function renderExample(key) {
     <article class="worked-card">
       <h3>${escapeHtml(example.title)}</h3>
       <p><strong>Problem:</strong> ${escapeHtml(example.problem)}</p>
-      ${tableMarkup(["Input / case", "Condition / total", "Result"], example.rows)}
+      ${tableMarkup(["Count / step", "Value", "Reason"], example.rows)}
       <p><strong>Cambridge-style pseudocode:</strong></p>
       <pre><code>${escapeHtml(example.code)}</code></pre>
       <ul>${example.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
@@ -313,7 +315,7 @@ function renderExample(key) {
 }
 
 function setupExamples() {
-  renderExample("password");
+  renderExample("sum");
   document.querySelectorAll(".tab").forEach((button) => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -347,7 +349,7 @@ function renderPractice() {
       const mark = document.querySelector(`#${item.id}-mark`);
       const response = normalise(input.value);
       const correct = item.accepted.some((answer) => response === normalise(answer) || response.includes(normalise(answer)));
-      mark.textContent = correct ? "Correct. The condition-controlled loop idea is precise." : "Not quite. Check the condition timing, update or stopping value.";
+      mark.textContent = correct ? "Correct. The loop concept or trace value is accurate." : "Not quite. Check the counter, bounds or accumulator.";
       mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -413,7 +415,7 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupSentinelTrace();
+setupTraceBuilder();
 setupChooser();
 setupExamples();
 renderPractice();

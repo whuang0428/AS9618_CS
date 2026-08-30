@@ -1,106 +1,74 @@
-const gateRules = {
-  NOT: {
-    inputs: ["A"],
-    rule: "Q = NOT A. The output is the inverse of the input.",
-    rows: [
-      [0, 1],
-      [1, 0],
-    ],
+const scenarios = {
+  greenhouse: {
+    result: "Temperature sensor + fan motor / vent actuator",
+    method: "The temperature sensor reads the greenhouse temperature. The controller compares it with a threshold. If it is too high, a fan motor or vent actuator is switched on, then readings continue so the output can change later.",
   },
-  AND: {
-    inputs: ["A", "B"],
-    rule: "Q = A AND B. The output is 1 only when both inputs are 1.",
-    rows: [
-      [0, 0, 0],
-      [0, 1, 0],
-      [1, 0, 0],
-      [1, 1, 1],
-    ],
+  irrigation: {
+    result: "Moisture sensor + pump / valve actuator",
+    method: "A soil moisture sensor detects dryness. The controller compares the reading with a threshold. If the soil is too dry, it activates a pump or valve, then uses later readings as feedback.",
   },
-  OR: {
-    inputs: ["A", "B"],
-    rule: "Q = A OR B. The output is 1 when at least one input is 1.",
-    rows: [
-      [0, 0, 0],
-      [0, 1, 1],
-      [1, 0, 1],
-      [1, 1, 1],
-    ],
+  street: {
+    result: "Light sensor + lamp output",
+    method: "A light sensor detects light intensity. If the reading is below a threshold, the controller sends an output signal to switch the street lamp on.",
   },
-  NAND: {
-    inputs: ["A", "B"],
-    rule: "Q = A NAND B. It is the inverse of AND.",
-    rows: [
-      [0, 0, 1],
-      [0, 1, 1],
-      [1, 0, 1],
-      [1, 1, 0],
-    ],
+  parking: {
+    result: "Distance/proximity sensor + buzzer/display",
+    method: "A distance sensor measures how close an obstacle is. The processor compares the distance with safe limits and triggers a buzzer, display or haptic output.",
   },
-  NOR: {
-    inputs: ["A", "B"],
-    rule: "Q = A NOR B. It is the inverse of OR.",
-    rows: [
-      [0, 0, 1],
-      [0, 1, 0],
-      [1, 0, 0],
-      [1, 1, 0],
-    ],
+  freezer: {
+    result: "Temperature sensor + alarm output",
+    method: "A temperature sensor detects that the freezer is too warm. The controller compares the reading with a maximum threshold and switches on a buzzer or warning light.",
   },
-  XOR: {
-    inputs: ["A", "B"],
-    rule: "Q = A XOR B. The output is 1 when exactly one input is 1.",
-    rows: [
-      [0, 0, 0],
-      [0, 1, 1],
-      [1, 0, 1],
-      [1, 1, 0],
-    ],
+  door: {
+    result: "Motion/proximity sensor + door motor actuator",
+    method: "A sensor detects a person approaching. The controller decides whether to open the door and sends an output signal to a motor actuator.",
   },
 };
 
 const examples = {
-  compound: {
-    title: "Example 1: Q = (A AND B) OR NOT C",
-    problem: "Complete the row A = 1, B = 0, C = 0.",
+  greenhouse: {
+    title: "Example 1: greenhouse cooling",
+    problem: "Explain how a greenhouse fan can be controlled automatically.",
     steps: [
-      "Find A AND B: 1 AND 0 = 0.",
-      "Find NOT C: NOT 0 = 1.",
-      "Combine the intermediate values: 0 OR 1 = 1.",
-      "Final output Q = 1. The intermediate columns prove the method.",
+      "A temperature sensor reads the air temperature.",
+      "The processor compares the reading with a stored threshold, for example 28 degrees Celsius.",
+      "If the temperature is above the threshold, an output signal activates a fan motor or opens a vent.",
+      "The system keeps taking readings so the fan can be turned off when the temperature falls.",
     ],
   },
-  xor: {
-    title: "Example 2: OR vs XOR",
-    problem: "Compare A OR B and A XOR B for A = 1, B = 1.",
+  irrigation: {
+    title: "Example 2: soil irrigation",
+    problem: "Explain how a closed-loop irrigation system controls watering.",
     steps: [
-      "A OR B = 1 because at least one input is 1.",
-      "A XOR B = 0 because XOR requires exactly one input to be 1.",
-      "This is the row that exposes the common mistake.",
+      "A moisture sensor measures the water content of the soil.",
+      "The controller compares the reading with a dryness threshold.",
+      "If the soil is too dry, a pump or valve actuator starts water flow.",
+      "New moisture readings provide feedback so watering can stop when the soil is wet enough.",
     ],
   },
-  nand: {
-    title: "Example 3: NAND from AND",
-    problem: "Find A NAND B for A = 1, B = 1.",
+  parking: {
+    title: "Example 3: car parking warning",
+    problem: "Explain how a parking sensor warning changes as the car approaches an obstacle.",
     steps: [
-      "First find A AND B: 1 AND 1 = 1.",
-      "NAND means NOT AND, so invert the AND result.",
-      "Final output Q = 0.",
+      "A distance or proximity sensor measures the distance to the obstacle.",
+      "The processor compares the distance with stored ranges.",
+      "If the obstacle is close, output such as a buzzer or display is triggered.",
+      "As distance decreases, the warning may become faster or louder based on repeated readings.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which gate inverts a single input?", accepted: ["not"], answer: "NOT" },
-  { id: "p2", prompt: "For A AND B, what is Q when A = 1 and B = 0?", accepted: ["0", "false"], answer: "0" },
-  { id: "p3", prompt: "For A OR B, what is Q when A = 0 and B = 1?", accepted: ["1", "true"], answer: "1" },
-  { id: "p4", prompt: "For A XOR B, what is Q when A = 1 and B = 1?", accepted: ["0", "false"], answer: "0" },
-  { id: "p5", prompt: "Which two-input gate is 1 only when both inputs are 0?", accepted: ["nor"], answer: "NOR" },
-  { id: "p6", prompt: "Which gate is the inverse of AND?", accepted: ["nand"], answer: "NAND" },
-  { id: "p7", prompt: "Which gate is true when exactly one input is 1?", accepted: ["xor", "exclusive or"], answer: "XOR" },
-  { id: "p8", prompt: "For A NAND B, what is Q when A = 1 and B = 1?", accepted: ["0", "false"], answer: "0" },
-  { id: "p9", prompt: "For NOT A, what is Q when A = 0?", accepted: ["1", "true"], answer: "1" },
-  { id: "p10", prompt: "What is the usual output label used in this lesson?", accepted: ["q"], answer: "Q" },
+  { id: "p1", prompt: "Which device detects a physical quantity?", accepted: ["sensor"], answer: "Sensor" },
+  { id: "p2", prompt: "Which device causes physical action?", accepted: ["actuator"], answer: "Actuator" },
+  { id: "p3", prompt: "Which sensor detects light intensity?", accepted: ["light sensor"], answer: "Light sensor" },
+  { id: "p4", prompt: "Which sensor is suitable for greenhouse temperature control?", accepted: ["temperature sensor"], answer: "Temperature sensor" },
+  { id: "p5", prompt: "Which actuator might move an automatic door?", accepted: ["motor", "door motor", "actuator"], answer: "Motor / actuator" },
+  { id: "p6", prompt: "What value is used as a boundary for deciding an action?", accepted: ["threshold"], answer: "Threshold" },
+  { id: "p7", prompt: "Open-loop or closed-loop: uses sensor feedback to adjust output?", accepted: ["closed loop", "closed-loop"], answer: "Closed-loop" },
+  { id: "p8", prompt: "Open-loop or closed-loop: sprinkler runs for a fixed time without measuring soil?", accepted: ["open loop", "open-loop"], answer: "Open-loop" },
+  { id: "p9", prompt: "Does a sensor itself perform the physical action? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Name one actuator used in a control system.", accepted: ["motor", "valve", "heater", "lamp", "light", "lock", "brake", "pump", "fan"], answer: "Motor / valve / heater / lamp / lock / pump" },
 ];
 
 
@@ -112,88 +80,97 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Complete the truth table for A AND B.",
-    answer: "00 -> 0, 01 -> 0, 10 -> 0, 11 -> 1.",
+    marks: "5 marks",
+    prompt: "Describe how a greenhouse cooling system can use a temperature sensor and actuator.",
+    answer: "A temperature sensor captures the current greenhouse temperature. The processor/controller compares this reading with a stored threshold. If the temperature is above the threshold, it sends an output signal to an actuator such as a fan motor or vent motor. The sensor continues to take readings so the output can be changed or stopped when the temperature falls.",
     marking: [
-      { mark: "B1", text: "row A=0, B=0 gives Q=0" },
-      { mark: "B1", text: "row A=0, B=1 gives Q=0" },
-      { mark: "B1", text: "row A=1, B=0 gives Q=0" },
-      { mark: "B1", text: "row A=1, B=1 gives Q=1" },
+      { mark: "B1", text: "temperature sensor captures/inputs temperature reading" },
+      { mark: "B1", text: "processor/controller receives or processes reading" },
+      { mark: "B1", text: "reading compared with threshold/rule" },
+      { mark: "B1", text: "output sent to actuator such as fan/vent motor" },
+      { mark: "B1", text: "feedback/repeated readings adjust or stop output" },
     ],
     strict: [
-      "Do not award a row mark if the input row is missing or ambiguous.",
-      "Allow True/False if used consistently and mapped correctly to 1/0.",
-      "Award marks for correct outputs if row order is different but clearly labelled.",
+      "Do not award actuator mark if the answer says the sensor cools the greenhouse.",
+      "Do not require a numeric threshold.",
+      "Allow microcontroller in place of processor/controller.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Explain the difference between OR and XOR.",
-    answer: "OR outputs 1 when at least one input is 1, including the case where both inputs are 1. XOR outputs 1 only when exactly one input is 1; if both inputs are 1, XOR outputs 0.",
+    prompt: "Explain the difference between a sensor and an actuator.",
+    answer: "A sensor is an input device that detects a physical quantity such as temperature, light, pressure or distance. An actuator is an output device that converts an electrical signal into physical action, such as moving a motor, opening a valve or switching a heater.",
     marking: [
-      { mark: "B1", text: "OR identified as true when at least one input is 1" },
-      { mark: "B1", text: "OR includes the 1,1 row as output 1" },
-      { mark: "B1", text: "XOR identified as true when exactly one input is 1" },
-      { mark: "B1", text: "XOR gives 0 for the 1,1 row" },
+      { mark: "B1", text: "sensor identified as input device" },
+      { mark: "B1", text: "sensor detects physical quantity/condition" },
+      { mark: "B1", text: "actuator identified as output device" },
+      { mark: "B1", text: "actuator causes physical action/movement/control" },
     ],
     strict: [
-      "Do not accept vague everyday wording such as 'one or the other' unless the 1,1 case is made clear.",
-      "Allow 'inputs are different' for XOR.",
+      "Do not accept 'sensor performs the action' for actuator credit.",
+      "Do not accept 'actuator measures the environment' as its role.",
+      "Allow examples such as motor, pump, valve, heater, lamp or brake.",
     ],
   },
   {
     title: "Question 3",
-    marks: "3 marks",
-    prompt: "For Q = (A AND B) OR NOT C, find Q when A = 1, B = 0 and C = 0. Demonstrate your working.",
-    answer: "A AND B = 0. NOT C = 1. Q = 0 OR 1 = 1.",
+    marks: "5 marks",
+    prompt: "A street light turns on automatically when it is dark. Describe the control system.",
+    answer: "A light sensor detects the light intensity. The controller compares the reading with a stored threshold. If the light level is below the threshold, the controller sends an output signal to switch on the lamp. The sensor continues to take readings so the lamp can be switched off when the light level rises.",
     marking: [
-      { mark: "M1", text: "A AND B = 0" },
-      { mark: "B1", text: "NOT C = 1" },
-      { mark: "A1", text: "final output Q = 1, with follow-through from the candidate's intermediate values" },
+      { mark: "B1", text: "light sensor detects light intensity" },
+      { mark: "B1", text: "controller/processes reading" },
+      { mark: "B1", text: "reading compared with threshold for darkness" },
+      { mark: "B1", text: "lamp/light output switched on" },
+      { mark: "B1", text: "continued readings/feedback allow switch off or adjustment" },
     ],
     strict: [
-      "Do not award final answer mark from unsupported guessing if intermediate work contradicts it.",
-      "Allow equivalent True/False notation if clearly mapped.",
-      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
+      "Do not accept an answer that identifies the light sensor as the lamp.",
+      "Do not require analogue-to-digital conversion unless asked.",
+      "Allow LED/street lamp as output device.",
     ],
   },
   {
     title: "Question 4",
-    marks: "2 marks",
-    prompt: "State the output rule for NAND and complete the row A = 1, B = 1.",
-    answer: "NAND is NOT AND / inverse of AND. For A = 1 and B = 1, AND gives 1, so NAND gives Q = 0.",
+    marks: "4 marks",
+    prompt: "Compare open-loop and closed-loop control systems.",
+    answer: "An open-loop system carries out an action without using feedback about the result, such as a timer that waters plants for a fixed time. A closed-loop system uses sensor feedback to adjust output, such as a moisture sensor controlling a pump until soil is wet enough.",
     marking: [
-      { mark: "B1", text: "NAND described as NOT AND or inverse of AND" },
-      { mark: "B1", text: "for A=1 and B=1, the NAND output is 0" },
+      { mark: "B1", text: "open-loop has no feedback/check of the result" },
+      { mark: "B1", text: "open-loop output is not adjusted in response to the measured result" },
+      { mark: "B1", text: "closed-loop uses sensor feedback about the result" },
+      { mark: "B1", text: "closed-loop uses feedback to adjust or stop the output" },
     ],
     strict: [
-      "Do not accept 'same as AND' for the rule mark.",
-      "Allow direct statement 'NAND is 0 only when both inputs are 1'.",
+      "Do not accept 'closed loop repeats forever' as the definition.",
+      "Do not require advanced control theory.",
+      "Allow thermostat or greenhouse examples for closed loop.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A door unlocks only if a card is valid and the emergency stop is not active. Define variables and write a Boolean expression for the output Unlock.",
-    answer: "Let C represent card valid and E represent emergency stop active. Unlock = C AND NOT E. The output is 1 only when C = 1 and E = 0.",
+    marks: "6 marks",
+    prompt: "A car parking system warns the driver when the car is close to an obstacle. Describe how sensors, processing and output devices are used.",
+    answer: "A distance or proximity sensor measures how close the obstacle is. The processor receives the sensor reading and compares it with stored distance limits. If the obstacle is within a warning range, it sends output to a buzzer, display or haptic device. As the car gets closer, repeated readings can make the warning more frequent, louder or more urgent.",
     marking: [
-      { mark: "B1", text: "defines a variable for card valid" },
-      { mark: "B1", text: "defines a variable for emergency stop active" },
-      { mark: "M1", text: "uses AND to require the card condition and emergency condition together" },
-      { mark: "M1", text: "uses NOT on the emergency stop condition" },
-      { mark: "A1", text: "correct expression such as Unlock = C AND NOT E" },
+      { mark: "B1", text: "distance/proximity sensor measures obstacle distance" },
+      { mark: "B1", text: "processor/controller receives/processes sensor reading" },
+      { mark: "B1", text: "reading compared with stored limit/range" },
+      { mark: "B1", text: "valid output device such as buzzer/display/haptic device" },
+      { mark: "B1", text: "output changes or warning triggered when too close" },
+      { mark: "B1", text: "repeated readings/feedback update warning as distance changes" },
     ],
     strict: [
-      "Do not award expression mark if NOT is applied to the card instead of the emergency stop.",
-      "Allow alternative variable letters if defined clearly.",
+      "Do not award sensor mark for camera unless distance/proximity detection is made clear.",
+      "Do not accept output device alone without processing sequence for full credit.",
+      "Allow visual/audio/haptic output if role is clear.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/[-_\s]+/g, " ");
+  return value.trim().toLowerCase().replace(/[-\s]+/g, " ");
 }
 
 function setupPrint() {
@@ -203,10 +180,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    open: "Correct. Key = 1 and NOT Exam = 1, so 1 AND 1 gives output 1.",
-    locked1: "Locked. The exam condition is fine, but the key input is 0, so AND cannot output 1.",
-    locked2: "Locked. The key is present, but NOT Exam becomes 0 because Exam = 1.",
-    locked3: "Locked. Both required parts fail: no key and NOT Exam is 0.",
+    sensor: "Sensor: it reports the temperature reading. It does not physically cool anything.",
+    compare: "Processor/controller: it compares the reading with a threshold or rule.",
+    actuator: "Actuator: fan motor or vent motor creates the physical cooling action.",
+    feedback: "Feedback: repeated readings show whether the action worked and whether output should change.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -217,25 +194,18 @@ function setupHook() {
   });
 }
 
-function renderTruthTable() {
-  const gate = document.querySelector("#gateInput").value;
-  const rule = gateRules[gate];
-  const headers = [...rule.inputs, "Q"];
-  document.querySelector("#gateRule").textContent = rule.rule;
-  document.querySelector("#truthTable").innerHTML = `
-    <table class="truth-table">
-      <thead><tr>${headers.map((header) => `<th>${header}</th>`).join("")}</tr></thead>
-      <tbody>
-        ${rule.rows.map((row) => `<tr>${row.map((value) => `<td>${value}</td>`).join("")}</tr>`).join("")}
-      </tbody>
-    </table>
-  `;
-}
-
-function setupTruthTool() {
-  document.querySelector("#gateInput").addEventListener("change", renderTruthTable);
-  document.querySelector("#truthBtn").addEventListener("click", renderTruthTable);
-  renderTruthTable();
+function setupChoiceTool() {
+  const select = document.querySelector("#scenarioInput");
+  const result = document.querySelector("#componentResult");
+  const method = document.querySelector("#componentMethod");
+  function choose() {
+    const item = scenarios[select.value];
+    result.textContent = item.result;
+    method.textContent = item.method;
+  }
+  select.addEventListener("change", choose);
+  document.querySelector("#chooseBtn").addEventListener("click", choose);
+  choose();
 }
 
 function renderExample(key) {
@@ -255,7 +225,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("compound");
+  renderExample("greenhouse");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -295,12 +265,15 @@ function setupPractice() {
       const input = container.querySelector("input");
       const mark = container.querySelector(".mark");
       const response = normalise(input.value);
-      const isCorrect = item.accepted.some((answer) => response === normalise(answer));
+      const isCorrect = item.accepted.some((answer) => {
+        const expected = normalise(answer);
+        return response === expected || response.includes(expected);
+      });
       mark.textContent = isCorrect ? "Correct" : "Try again";
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check exact gate rules before checking the answer panel.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, check sensor, threshold, actuator and feedback roles.`;
   });
 }
 
@@ -337,7 +310,7 @@ function renderExamQuestions() {
 function init() {
   setupPrint();
   setupHook();
-  setupTruthTool();
+  setupChoiceTool();
   setupExamples();
   setupAnswerToggles();
   renderPractice();

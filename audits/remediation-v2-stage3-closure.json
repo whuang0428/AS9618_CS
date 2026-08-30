@@ -48,7 +48,7 @@
       "stage3Disposition": "Resolved",
       "closureEvidence": [
         "S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production",
-        "L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment"
+        "L012, L145 construction practice and L146 production practice are retained only as labelled Optional enrichment"
       ],
       "nextStage": null
     },
@@ -78,7 +78,7 @@
       "stage3Disposition": "Resolved",
       "closureEvidence": [
         "All 150 stable lesson IDs and URLs are preserved; Markdown titles, HTML h1, course catalogue, paper and section ranges reconcile",
-        "L137 no longer claims Section 12 ownership inside the Section 11 lesson range; L137/L138 legacy bodies are Optional enrichment"
+        "L138 no longer claims Section 12 ownership inside the Section 11 lesson range; L138/L139 legacy bodies are Optional enrichment"
       ],
       "nextStage": null
     },

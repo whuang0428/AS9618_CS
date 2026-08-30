@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 068 | Firewalls, proxies, and network monitoring</title>
+    <title>AS9618 Lesson 068 | Digital signatures and encryption</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Firewalls, proxies, and network monitoring</h1>
+        <h1>Digital signatures and encryption</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -30,13 +30,14 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#core">Core idea</a>
-        <a href="#firewall">Firewall</a>
-        <a href="#rules">Rules</a>
-        <a href="#proxy">Proxy</a>
-        <a href="#monitoring">Monitoring</a>
-        <a href="#limits">Limits</a>
-        <a href="#tool">Rule checker</a>
-        <a href="#event-tool">Event tool</a>
+        <a href="#encryption">Encryption</a>
+        <a href="#keys">Keys</a>
+        <a href="#hashing">Hashing</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#https">HTTPS flow</a>
+        <a href="#compare">Compare</a>
+        <a href="#tool">Method tool</a>
+        <a href="#hash-demo">Hash demo</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -55,57 +56,57 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Firewall protection from a stand-alone PC to a network</h2>
+            <h2>Digital signatures and encryption</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A firewall filters traffic entering or leaving a computer or network by comparing packet or connection information with configured rules. Rules may use source/destination address, port, protocol or connection state and then allow, block, reject or log the traffic.</p>
-            <p>A host firewall can protect a stand-alone PC; a network firewall can protect a boundary between networks. This satisfies different scales of computer-system protection, but neither placement makes a firewall an anti-virus scanner or guarantees that allowed traffic is harmless.</p>
-            <p>Firewalls restrict risk from unwanted connections and some unauthorised-access routes. They should be combined with accounts/passwords, authentication, access rights, anti-virus, anti-spyware, encryption, patching, user training and monitoring because those controls address different threats.</p>
+            <p>A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.</p>
+            <p>Matching hashes provide evidence of integrity and origin/authenticity; a valid signature does not keep the message confidential. Certificates help bind a public key to an identity.</p>
+            <p>Encryption is a separate security measure: it transforms readable plaintext into ciphertext and requires the correct key for decryption. A message may be signed for integrity/authenticity, encrypted for confidentiality, or both; neither mechanism should be credited for a property it does not provide.</p>
             <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Protect a home laptop and a school network</h3>
-            <p>The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.</p>
+            <h3>Worked example: Verify and protect a signed update</h3>
+            <p>The publisher signs a hash of the update with its private key. The device uses the publisher's public key, independently hashes the received update and compares the values; a mismatch rejects the update. If the update must also remain confidential in transit, it is separately encrypted for an authorised recipient.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Firewall protection from a stand-alone PC to a network: apply and assess</h2>
+            <h2>Digital signatures and encryption: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What information may a firewall rule inspect?</p>
-              <details><summary>Show answer</summary><p>Source/destination address, port, protocol or connection state.</p></details>
+              <p><strong>1.</strong> Which key creates a sender's digital signature?</p>
+              <details><summary>Show answer</summary><p>The sender's private key.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Compare a host firewall from a network firewall.</p>
-              <details><summary>Show answer</summary><p>A host firewall runs on and protects one computer; a network firewall filters traffic at a boundary for multiple connected systems.</p></details>
+              <p><strong>2.</strong> What does the receiver compare?</p>
+              <details><summary>Show answer</summary><p>The verified signed hash with a newly calculated message hash.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Can a firewall replace anti-virus software?</p>
-              <details><summary>Show answer</summary><p>No. A firewall controls traffic; anti-virus scans for detected malicious code.</p></details>
+              <p><strong>3.</strong> Does a digital signature encrypt the whole message for confidentiality?</p>
+              <details><summary>Show answer</summary><p>No. The content requires separate encryption if confidentiality is needed.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why may allowed traffic still be dangerous?</p>
-              <details><summary>Show answer</summary><p>A permitted connection can carry phishing content, stolen credentials or malware that the rule does not recognise.</p></details>
+              <p><strong>4.</strong> What property does message encryption provide?</p>
+              <details><summary>Show answer</summary><p>Confidentiality: ciphertext should be unreadable without the correct key.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe how a firewall can protect both a stand-alone PC and a network, then explain two limitations that require other security measures.</p>
+            <p>Describe how a digital signature is created and checked, then explain why separate encryption may also be required.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>firewall compares traffic/connection information with configured rules</td><td>Do not claim that a firewall removes viruses, detects every malicious payload or makes a computer system completely secure.</td><td>1</td></tr>
-                  <tr><td>allows/blocks/rejects/logs according to a rule</td><td></td><td>1</td></tr>
-                  <tr><td>host firewall protects one PC</td><td></td><td>1</td></tr>
-                  <tr><td>network firewall protects a network boundary</td><td></td><td>1</td></tr>
-                  <tr><td>allowed traffic or misconfiguration limitation</td><td></td><td>1</td></tr>
-                  <tr><td>matching additional measure such as anti-virus, authentication, access rights or user training</td><td></td><td>1</td></tr>
+                  <tr><td>sender creates a hash of the message</td><td>Do not award confidentiality as the purpose of a signature or integrity/authenticity as an automatic result of encryption alone.</td><td>1</td></tr>
+                  <tr><td>hash is signed/encrypted using sender's private key</td><td></td><td>1</td></tr>
+                  <tr><td>receiver uses sender's public key and hashes received message</td><td></td><td>1</td></tr>
+                  <tr><td>matching hashes provide integrity and sender-authenticity evidence</td><td></td><td>1</td></tr>
+                  <tr><td>separate encryption converts message plaintext to ciphertext</td><td></td><td>1</td></tr>
+                  <tr><td>confidentiality requires the correct decryption key</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -116,303 +117,325 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 068 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Network security is not just one locked door.</h2>
+            <h2>Three security tools, three different jobs.</h2>
             <p>
-              Firewalls filter traffic using rules. Proxies sit between client and destination to forward,
-              filter, cache or log requests. Network monitoring observes traffic and events so unusual
-              behaviour can be detected and investigated.
+              Encryption protects confidentiality by making data unreadable without a key.
+              Hashing creates a fixed digest used for checking or password verification, not for recovery.
+              Digital certificates help users trust that a public key belongs to the claimed website.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>how firewalls, proxies and monitoring work</span></div>
-              <div><strong>Apply</strong><span>rules and logs to realistic network scenarios</span></div>
-              <div><strong>Evaluate</strong><span>benefits and limits while recognising the limitations of each control</span></div>
+              <div><strong>Separate</strong><span>encryption, hashing and digital certificates by purpose</span></div>
+              <div><strong>Explain</strong><span>how keys, hashes and certificate authorities support security</span></div>
+              <div><strong>Apply</strong><span>the correct method to password storage, payment data and HTTPS scenarios</span></div>
             </div>
           </div>
-          <div class="network-card" aria-label="Network control map">
-            <div class="network-stack">
-              <span>Firewall -> allow/block traffic</span>
-              <span>Proxy -> intermediary request handler</span>
-              <span>Monitoring -> observe and alert</span>
-              <span>Logs -> evidence for investigation</span>
+          <div class="crypto-card" aria-label="Protection method map">
+            <div class="crypto-stack">
+              <span>Encrypt -> hide readable data</span>
+              <span>Decrypt -> recover plaintext with key</span>
+              <span>Hash -> one-way fixed digest</span>
+              <span>Certificate -> trust website public key</span>
             </div>
-            <p>A firewall is a filter, not a cybersecurity force field.</p>
+            <p>If you can "decrypt" a hash, congratulations, you have invented the wrong answer.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam answers should say what traffic is inspected or logged and what decision is made.</p>
+            <p>Cambridge-style answers often reject vague "secure it" wording. Name the method and its mechanism.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Monitoring detects suspicious activity; it does not automatically prevent every attack unless linked to a response.</p>
+            <p>Passwords are normally stored as salted hashes rather than as plaintext or reversibly encrypted values.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A school blocks outgoing traffic to port 25 except from the mail server. What control is doing the work?</h2>
-            <p>The network is saying, "Not everyone gets to run their own postal service from a backpack."</p>
+            <h2>A website stores a digest of your password, not the password itself. What method is being used?</h2>
+            <p>The website is not trying to remember your secret. It is trying to recognise the fingerprint of your secret.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="firewall">Firewall rule, because traffic is allowed or blocked by port/source</button>
-            <button class="choice-card" type="button" data-hook="proxy">Proxy, because all network controls are proxies</button>
-            <button class="choice-card" type="button" data-hook="hashing">Hashing, because the port number is checked</button>
-            <button class="choice-card" type="button" data-hook="validation">Validation, because the number 25 is in range</button>
+            <button class="choice-card" type="button" data-hook="hashing">Hashing, because the stored value is used for comparison and is not meant to be reversed</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption, because all protected data is encrypted</button>
+            <button class="choice-card" type="button" data-hook="certificate">Digital certificate, because login pages need HTTPS</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup, because the password can be restored later</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The clue is filtering by traffic rule.
+            Choose one. Look for "digest" and "comparison".
           </div>
         </section>
 
         <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Network controls sit between traffic and risk</h2>
+            <h2>Security methods have different purposes</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Traffic</strong><span>Data packets or requests moving across a network.</span></article>
-            <article><strong>Rule</strong><span>A condition that allows, blocks or logs traffic based on properties.</span></article>
-            <article><strong>Log</strong><span>A record of events, traffic, blocked attempts or user activity.</span></article>
-            <article><strong>Alert</strong><span>A warning generated when traffic or behaviour matches a suspicious pattern.</span></article>
+            <article><strong>Plaintext</strong><span>Readable original data before encryption.</span></article>
+            <article><strong>Ciphertext</strong><span>Unreadable encrypted data produced from plaintext and a key.</span></article>
+            <article><strong>Hash / digest</strong><span>Fixed output created from input data, usually used for comparison or integrity checking.</span></article>
+            <article><strong>Certificate</strong><span>Digital evidence that links an identity, such as a website, to a public key.</span></article>
           </div>
-          <div class="callout">Chinese support: firewall = 防火墙；proxy = 代理服务器；network monitoring = 网络监控；log = 日志。</div>
+          <div class="callout">Chinese support: plaintext = 明文；ciphertext = 密文；hash/digest = 哈希值/摘要；digital certificate = 数字证书。</div>
         </section>
 
         <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Network controls sit between traffic and risk</h2>
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="comparison" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Why security methods cannot substitute</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network controls sit between traffic and risk with a structured visual model." />
-            <figcaption class="explanation-sr-only">Network controls sit between traffic and risk: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why security methods cannot substitute through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why security methods cannot substitute: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traffic Data packets or requests moving across a network.</li><li><strong>Lesson fact:</strong> Rule A condition that allows, blocks or logs traffic based on properties.</li><li><strong>Lesson fact:</strong> Log A record of events, traffic, blocked attempts or user activity.</li><li><strong>Lesson fact:</strong> Alert A warning generated when traffic or behaviour matches a suspicious pattern.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Encryption hides readable content from unauthorised viewers.</li><li><strong>Reason:</strong> Hashing creates a comparison value for integrity checks.</li><li><strong>Result:</strong> Certificates bind an identity to a public key through trust.</li></ol>
 
+            <p><strong>Analogy:</strong> A sealed case, an evidence imprint and verified identity solve different problems.</p>
+            <p><strong>Boundary:</strong> Using one mechanism does not automatically provide the other properties.</p>
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-        <section class="panel" id="firewall" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+        <section class="panel" id="encryption" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Firewalls filter traffic using rules</h2>
+            <h2>Encryption protects confidentiality</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Purpose</strong><span>Control traffic entering or leaving a network/device.</span></article>
-            <article><strong>Checks</strong><span>Can inspect source/destination IP address, port number, protocol or connection state.</span></article>
-            <article><strong>Decision</strong><span>Allow, deny, reject or log traffic depending on rule match.</span></article>
-            <article><strong>Placement</strong><span>Can protect a network boundary or run on an individual host.</span></article>
+            <article><strong>Mechanism</strong><span>Uses an algorithm and key to convert plaintext into ciphertext.</span></article>
+            <article><strong>Decryption</strong><span>Uses the correct key to convert ciphertext back into readable plaintext.</span></article>
+            <article><strong>Use cases</strong><span>Protecting data stored on a device or transmitted across a network.</span></article>
+            <article><strong>Limitation</strong><span>It does not prove data has not been changed unless integrity checks are also used.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start firewall -->
-        <section class="panel explanation-panel" id="explanation-firewall" data-explains="firewall" data-explanation-kind="mechanism" aria-labelledby="explanation-firewall-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
-          <h2 class="explanation-sr-only" id="explanation-firewall-title">Firewalls filter traffic using rules</h2>
+        <!-- stage10-explanation:start encryption -->
+        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <h2 class="explanation-sr-only" id="explanation-encryption-title">How encryption protects confidentiality</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-firewall.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewalls filter traffic using rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Firewalls filter traffic using rules: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-encryption.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How encryption protects confidentiality through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How encryption protects confidentiality: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Control traffic entering or leaving a network/device.</li><li><strong>Lesson fact:</strong> Checks Can inspect source/destination IP address, port number, protocol or connection state.</li><li><strong>Lesson fact:</strong> Decision Allow, deny, reject or log traffic depending on rule match.</li><li><strong>Lesson fact:</strong> Placement Can protect a network boundary or run on an individual host.</li></ol>
+            <ol><li><strong>Mechanism:</strong> An algorithm combines plaintext with a key.</li><li><strong>Reason:</strong> The output is ciphertext that lacks readable meaning without the key.</li><li><strong>Result:</strong> An authorised key reverses the transformation for the recipient.</li></ol>
 
+            <p><strong>Analogy:</strong> A locked document case hides the contents while it travels.</p>
+            <p><strong>Boundary:</strong> Encryption alone does not prove who sent the message or that it is unchanged.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end firewall -->
-        <section class="panel" id="rules" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+        <!-- stage10-explanation:end encryption -->
+        <section class="panel" id="keys" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Firewall rules should be specific and ordered</h2>
+            <h2>Keys control who can encrypt or decrypt</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Firewall rule examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Rule</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Reason</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Allow HTTPS from internal users to internet</div>
-              <div role="cell">Permit web traffic on port 443.</div>
-              <div role="cell">Needed for secure website access.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Block inbound unknown traffic</div>
-              <div role="cell">Deny unsolicited external connections.</div>
-              <div role="cell">Reduces unauthorised access attempts.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Allow admin only from management subnet</div>
-              <div role="cell">Restrict sensitive admin ports by source.</div>
-              <div role="cell">Limits attack surface and misuse.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Log repeated denied connections</div>
-              <div role="cell">Record unusual or repeated blocked attempts.</div>
-              <div role="cell">Supports monitoring and investigation.</div>
-            </div>
+          <div class="concept-grid">
+            <article><strong>Symmetric key</strong><span>The same secret key is used to encrypt and decrypt; key sharing must be protected.</span></article>
+            <article><strong>Public key</strong><span>A key that can be shared openly, often used to support secure communication setup.</span></article>
+            <article><strong>Private key</strong><span>A key kept secret by its owner; if exposed, trust is damaged.</span></article>
+            <article><strong>Common error</strong><span>Encryption strength depends on keeping keys secure, not hiding the algorithm in a drawer.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start rules -->
-        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
-          <h2 class="explanation-sr-only" id="explanation-rules-title">Firewall rules should be specific and ordered</h2>
+        <!-- stage10-explanation:start keys -->
+        <section class="panel explanation-panel" id="explanation-keys" data-explains="keys" data-explanation-kind="mechanism" aria-labelledby="explanation-keys-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <h2 class="explanation-sr-only" id="explanation-keys-title">Why key ownership changes capability</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewall rules should be specific and ordered with a structured visual model." />
-            <figcaption class="explanation-sr-only">Firewall rules should be specific and ordered: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-keys.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why key ownership changes capability through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why key ownership changes capability: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Allow HTTPS from internal users to internet</li><li><strong>Lesson fact:</strong> Permit web traffic on port 443.</li><li><strong>Lesson fact:</strong> Needed for secure website access.</li><li><strong>Lesson fact:</strong> Block inbound unknown traffic</li><li><strong>Lesson fact:</strong> Deny unsolicited external connections.</li><li><strong>Lesson fact:</strong> Reduces unauthorised access attempts.</li><li><strong>Lesson fact:</strong> Allow admin only from management subnet</li><li><strong>Lesson fact:</strong> Restrict sensitive admin ports by source.</li><li><strong>Lesson fact:</strong> Limits attack surface and misuse.</li><li><strong>Lesson fact:</strong> Log repeated denied connections</li><li><strong>Lesson fact:</strong> Record unusual or repeated blocked attempts.</li><li><strong>Lesson fact:</strong> Supports monitoring and investigation.</li></ol>
+            <ol><li><strong>Mechanism:</strong> A symmetric key can both encrypt and decrypt shared data.</li><li><strong>Reason:</strong> An asymmetric key pair separates public and private operations.</li><li><strong>Result:</strong> Protecting the private or shared secret preserves the security boundary.</li></ol>
 
+            <p><strong>Analogy:</strong> A public deposit slot can be open while only the owner opens the safe.</p>
+            <p><strong>Boundary:</strong> If a secret key is copied, the algorithm cannot detect the impostor.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end rules -->
-        <section class="panel" id="proxy" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+        <!-- stage10-explanation:end keys -->
+        <section class="panel" id="hashing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>A proxy acts as an intermediary</h2>
+            <h2>Hashing is one-way comparison, not secret recovery</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Forward requests</strong><span>Client sends request to proxy; proxy requests the resource from the destination.</span></article>
-            <article><strong>Filtering</strong><span>Can block sites, content types, categories or requests that break policy.</span></article>
-            <article><strong>Caching</strong><span>Can store copies of frequently requested resources to reduce bandwidth and latency.</span></article>
-            <article><strong>Logging</strong><span>Can record user requests for audit, investigation or policy enforcement.</span></article>
+            <article><strong>One-way</strong><span>A hash is designed so the original input cannot feasibly be found from the digest.</span></article>
+            <article><strong>Fixed length</strong><span>The digest has a standard length even if the input length changes.</span></article>
+            <article><strong>Password storage</strong><span>Store the hash; when a user logs in, hash the entered password and compare.</span></article>
+            <article><strong>Integrity check</strong><span>If data changes, the hash should change, so tampering can be detected.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start proxy -->
-        <section class="panel explanation-panel" id="explanation-proxy" data-explains="proxy" data-explanation-kind="mechanism" aria-labelledby="explanation-proxy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
-          <h2 class="explanation-sr-only" id="explanation-proxy-title">A proxy acts as an intermediary</h2>
+        <!-- stage10-explanation:start hashing -->
+        <section class="panel explanation-panel" id="explanation-hashing" data-explains="hashing" data-explanation-kind="mechanism" aria-labelledby="explanation-hashing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <h2 class="explanation-sr-only" id="explanation-hashing-title">Why a hash supports comparison</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-proxy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A proxy acts as an intermediary with a structured visual model." />
-            <figcaption class="explanation-sr-only">A proxy acts as an intermediary: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-hashing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a hash supports comparison through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a hash supports comparison: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Forward requests Client sends request to proxy; proxy requests the resource from the destination.</li><li><strong>Lesson fact:</strong> Filtering Can block sites, content types, categories or requests that break policy.</li><li><strong>Lesson fact:</strong> Caching Can store copies of frequently requested resources to reduce bandwidth and latency.</li><li><strong>Lesson fact:</strong> Logging Can record user requests for audit, investigation or policy enforcement.</li></ol>
+            <ol><li><strong>Mechanism:</strong> A hash function maps input data to a fixed-length digest.</li><li><strong>Reason:</strong> A small input change should produce a substantially different digest.</li><li><strong>Result:</strong> Matching digests provide evidence that the checked data is unchanged.</li></ol>
 
+            <p><strong>Analogy:</strong> Compare a tamper-evident imprint instead of storing the original object.</p>
+            <p><strong>Boundary:</strong> Hashing is one-way comparison, not encryption and later decryption.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end proxy -->
-        <section class="panel" id="monitoring" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+        <!-- stage10-explanation:end hashing -->
+        <section class="panel" id="certificates" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
-            <h2>Network monitoring watches for patterns and evidence</h2>
+            <h2>Digital certificates help authenticate websites</h2>
           </div>
           <div class="concept-grid">
-            <article><strong>Traffic volume</strong><span>Unusual spikes may suggest DoS, malware activity or misconfiguration.</span></article>
-            <article><strong>Connection attempts</strong><span>Repeated failed access attempts may suggest probing or brute force activity.</span></article>
-            <article><strong>Alerts</strong><span>Monitoring systems can notify staff when thresholds or signatures are triggered.</span></article>
-            <article><strong>Investigation</strong><span>Logs help reconstruct what happened, when, and from where.</span></article>
+            <article><strong>Contains</strong><span>Owner identity, public key, issuer, expiry date and digital signature information.</span></article>
+            <article><strong>Certificate authority</strong><span>A trusted organisation that issues or signs certificates after checks.</span></article>
+            <article><strong>Purpose</strong><span>Helps the browser trust that a public key belongs to the claimed site.</span></article>
+            <article><strong>Warning</strong><span>Expired, mismatched or untrusted certificates can trigger browser warnings.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start monitoring -->
-        <section class="panel explanation-panel" id="explanation-monitoring" data-explains="monitoring" data-explanation-kind="mechanism" aria-labelledby="explanation-monitoring-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
-          <h2 class="explanation-sr-only" id="explanation-monitoring-title">Network monitoring watches for patterns and evidence</h2>
+        <!-- stage10-explanation:start certificates -->
+        <section class="panel explanation-panel" id="explanation-certificates" data-explains="certificates" data-explanation-kind="mechanism" aria-labelledby="explanation-certificates-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <h2 class="explanation-sr-only" id="explanation-certificates-title">How a certificate supports trust</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-monitoring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network monitoring watches for patterns and evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">Network monitoring watches for patterns and evidence: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-certificates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How a certificate supports trust through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How a certificate supports trust: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traffic volume Unusual spikes may suggest DoS, malware activity or misconfiguration.</li><li><strong>Lesson fact:</strong> Connection attempts Repeated failed access attempts may suggest probing or brute force activity.</li><li><strong>Lesson fact:</strong> Alerts Monitoring systems can notify staff when thresholds or signatures are triggered.</li><li><strong>Lesson fact:</strong> Investigation Logs help reconstruct what happened, when, and from where.</li></ol>
+            <ol><li><strong>Mechanism:</strong> A certificate contains an identity and its public key.</li><li><strong>Reason:</strong> A trusted authority digitally signs that binding.</li><li><strong>Result:</strong> Software verifies the signature before trusting the presented key.</li></ol>
 
+            <p><strong>Analogy:</strong> An independent registrar verifies which key belongs to which identity.</p>
+            <p><strong>Boundary:</strong> A valid certificate does not guarantee that the website itself is honest.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end monitoring -->
-        <section class="panel" id="limits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+        <!-- stage10-explanation:end certificates -->
+        <section class="panel" id="https" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
-            <h2>Controls reduce risk but have limits</h2>
+            <h2>HTTPS combines identity checking with encrypted communication</h2>
           </div>
-          <div class="concept-grid">
-            <article><strong>Firewall limit</strong><span>Allowed traffic can still carry attacks, and rules may be misconfigured.</span></article>
-            <article><strong>Proxy limit</strong><span>Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.</span></article>
-            <article><strong>Monitoring limit</strong><span>Alerts need review and response; too many false positives can be ignored.</span></article>
-            <article><strong>Layering</strong><span>Use with authentication, permissions, patching, encryption and user training.</span></article>
+          <div class="flow-grid">
+            <article><strong>1. Request</strong><span>Browser asks a website to start a secure connection.</span></article>
+            <article><strong>2. Certificate</strong><span>Website sends its digital certificate containing its public key.</span></article>
+            <article><strong>3. Trust check</strong><span>Browser checks issuer, expiry, domain match and signature chain.</span></article>
+            <article><strong>4. Encryption</strong><span>A secure session is established so transmitted data is unreadable to eavesdroppers.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start limits -->
-        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="mechanism" aria-labelledby="explanation-limits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
-          <h2 class="explanation-sr-only" id="explanation-limits-title">Controls reduce risk but have limits</h2>
+        <!-- stage10-explanation:start https -->
+        <section class="panel explanation-panel" id="explanation-https" data-explains="https" data-explanation-kind="process" aria-labelledby="explanation-https-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <h2 class="explanation-sr-only" id="explanation-https-title">How HTTPS combines trust and privacy</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls reduce risk but have limits with a structured visual model." />
-            <figcaption class="explanation-sr-only">Controls reduce risk but have limits: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-https.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How HTTPS combines trust and privacy through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How HTTPS combines trust and privacy: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Firewall limit Allowed traffic can still carry attacks, and rules may be misconfigured.</li><li><strong>Lesson fact:</strong> Proxy limit Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.</li><li><strong>Lesson fact:</strong> Monitoring limit Alerts need review and response; too many false positives can be ignored.</li><li><strong>Lesson fact:</strong> Layering Use with authentication, permissions, patching, encryption and user training.</li></ol>
+            <ol><li><strong>Mechanism:</strong> The server presents its certificate and public-key information.</li><li><strong>Reason:</strong> The browser verifies the trust chain and agreed connection details.</li><li><strong>Result:</strong> Both sides establish session keys for efficient encrypted transport.</li></ol>
 
+            <p><strong>Analogy:</strong> Check the recipient's identity before sending a locked stream of parcels.</p>
+            <p><strong>Boundary:</strong> HTTPS protects the connection, not unsafe content downloaded through it.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end limits -->
+        <!-- stage10-explanation:end https -->
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Select the method that provides the required security property</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Protection method comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Method</div>
+              <div role="columnheader">Main job</div>
+              <div role="columnheader">Good use</div>
+              <div role="columnheader">Common wrong use</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Encryption</div>
+              <div role="cell">Protect confidentiality by hiding readable data.</div>
+              <div role="cell">Payment data in transit; sensitive files at rest.</div>
+              <div role="cell">Storing passwords so they can be decrypted later.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Hashing</div>
+              <div role="cell">Create a one-way digest for comparison or integrity.</div>
+              <div role="cell">Password verification; checking a file has not changed.</div>
+              <div role="cell">Trying to recover the original message from the hash.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Digital certificate</div>
+              <div role="cell">Link a public key to a trusted identity.</div>
+              <div role="cell">Browser checking a bank website before HTTPS.</div>
+              <div role="cell">Encrypting files directly by itself.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="tradeoff" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">How the required property chooses the method</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How the required property chooses the method through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How the required property chooses the method: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> First identify confidentiality, integrity, authentication or several needs.</li><li><strong>Reason:</strong> Choose the mechanism whose operation creates that property.</li><li><strong>Result:</strong> Combine methods when the communication needs multiple properties.</li></ol>
+
+            <p><strong>Analogy:</strong> Choose a lock, evidence seal or identity check according to the threat.</p>
+            <p><strong>Boundary:</strong> More mechanisms add management cost and do not repair poor key handling.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
-            <p class="eyebrow">Interactive firewall rule checker</p>
-            <h2>Allow, block or log?</h2>
-            <p>Select traffic and compare the decision with the reason and common wrong answer.</p>
+            <p class="eyebrow">Interactive method selector</p>
+            <h2>Which security method fits the scenario?</h2>
+            <p>Select a scenario and compare the method, reason and common wrong answer.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Traffic event
+              Scenario
               <select id="scenarioInput">
-                <option value="https">Internal user opens an HTTPS website on port 443.</option>
-                <option value="sshExternal">Unknown internet host tries SSH to a school server.</option>
-                <option value="mailServer">School mail server sends SMTP on port 25.</option>
-                <option value="studentSmtp">Student laptop sends SMTP directly on port 25.</option>
-                <option value="adminSubnet">Admin connects from management subnet to admin panel.</option>
+                <option value="payment">Payment card details are sent from browser to online shop.</option>
+                <option value="password">A site wants to verify passwords without storing plaintext passwords.</option>
+                <option value="download">A user checks whether a downloaded file has changed.</option>
+                <option value="bank">A browser checks that a public key really belongs to the bank website.</option>
+                <option value="lostLaptop">A laptop may be stolen and contains sensitive local files.</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Check rule</button>
+            <button class="primary-button" type="button" id="simulateBtn">Choose method</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="event-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
+        <section class="panel" id="hash-demo" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
-            <p class="eyebrow">Interactive event classifier</p>
-            <h2>Which control is most relevant?</h2>
+            <p class="eyebrow">Interactive hash demo</p>
+            <h2>A tiny demonstration hash, not a real security hash</h2>
+            <p>This toy digest shows the idea that a small input change creates a different digest. Real systems use cryptographic hash algorithms.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Event
-              <select id="eventInput">
-                <option value="category">Block social media during exam hours.</option>
-                <option value="cache">Reduce repeated downloads of the same update file.</option>
-                <option value="spike">Alert staff to a sudden traffic spike.</option>
-                <option value="logs">Find which account repeatedly attempted a blocked site.</option>
-              </select>
+              Practice input
+              <input type="text" id="hashInput" value="AS9618" autocomplete="off" />
             </label>
-            <button class="primary-button" type="button" id="eventBtn">Classify</button>
+            <button class="primary-button" type="button" id="hashBtn">Make digest</button>
           </div>
-          <div class="result-box" id="eventResult" aria-live="polite"></div>
-          <div class="method-box" id="eventReason"></div>
+          <div class="result-box" id="hashResult" aria-live="polite"></div>
+          <div class="method-box" id="hashAdvice"></div>
         </section>
 
-        <!-- stage10-explanation:start event-tool -->
-        <section class="panel explanation-panel" id="explanation-event-tool" data-explains="event-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-event-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
-          <h2 class="explanation-sr-only" id="explanation-event-tool-title">Which control is most relevant?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-event-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which control is most relevant? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Which control is most relevant?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive event classifier</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end event-tool -->
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with mechanism and limitation</h2>
+            <h2>Four model answers with strict method boundaries</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="firewall">Firewall</button>
-            <button class="tab" type="button" data-example="proxy">Proxy</button>
-            <button class="tab" type="button" data-example="monitoring">Monitoring</button>
-            <button class="tab" type="button" data-example="layered">Layered controls</button>
+            <button class="tab active" type="button" data-example="password">Password hash</button>
+            <button class="tab" type="button" data-example="payment">Payment encryption</button>
+            <button class="tab" type="button" data-example="certificate">Certificate</button>
+            <button class="tab" type="button" data-example="integrity">Integrity check</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
@@ -420,7 +443,7 @@
         <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: name the control and mechanism</h2>
+            <h2>Short answers: choose the exact method</h2>
             <p>Type a concise answer. Use the local answer button if you need a model response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -446,12 +469,12 @@
         <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Each control has a different job</h2>
+            <h2>Do not swap the three methods</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Firewall</strong><span>Filters traffic by rules such as port, protocol, address or state.</span></div>
-            <div><strong>Proxy</strong><span>Acts as intermediary for requests; can filter, cache and log.</span></div>
-            <div><strong>Monitoring</strong><span>Observes traffic/events and produces alerts or evidence.</span></div>
+            <div><strong>Encryption</strong><span>Reversible with the correct key; protects confidentiality.</span></div>
+            <div><strong>Hashing</strong><span>One-way digest; supports comparison and integrity checks.</span></div>
+            <div><strong>Certificates</strong><span>Bind public keys to trusted identities for secure communication.</span></div>
           </div>
         </section>
 
@@ -462,16 +485,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Rule table</strong>
-              <span>Create five firewall rules for a school network. For each, state allow/block/log and the reason.</span>
+              <strong>Task 1: Method table</strong>
+              <span>Create a table for encryption, hashing and digital certificates. For each, state purpose, one use case and one common misconception.</span>
             </article>
             <article>
-              <strong>Task 2: Proxy vs monitoring</strong>
-              <span>Write one paragraph explaining how a proxy can enforce web policy and one paragraph explaining how monitoring helps incident response.</span>
+              <strong>Task 2: Website security paragraph</strong>
+              <span>Explain how an online shop should protect payment data, stored passwords and website identity. Use all three methods correctly.</span>
             </article>
             <article>
               <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how firewalls, proxies and network monitoring can reduce network security risks. Include one limitation." Use mechanism-first wording.</span>
+              <span>Answer: "Compare encryption and hashing, and explain why a digital certificate is useful for HTTPS." Use precise security-goal vocabulary.</span>
             </article>
           </div>
         </section>
@@ -479,8 +502,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

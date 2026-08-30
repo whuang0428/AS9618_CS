@@ -1,122 +1,156 @@
-const scenarioMap = {
-  school: {
-    result: "Suitable: frequent incremental backups plus regular full backups, with offsite copies.",
-    method: "The database changes during the day, so incremental backups reduce possible data loss and storage use; full backups simplify restore points.",
-    trap: "Do not keep the only backup on the same server as the live database.",
+const checkRules = {
+  range: {
+    test: (value) => Number.isFinite(Number(value)) && Number(value) >= 0 && Number(value) <= 75,
+    pass: "Pass: the mark is numeric and within 0-75.",
+    fail: "Fail: a range check rejects values outside 0-75, or non-numeric input.",
+    limitation: "A mark of 57 passes the rule, but it could still be the wrong mark for that student.",
   },
-  photos: {
-    result: "Suitable: full archive backup after project completion, with offsite/cloud storage.",
-    method: "Finished photo projects change rarely, so a full archived copy with clear retention is practical.",
-    trap: "Do not confuse archive copies with frequent operational backups for changing data.",
+  length: {
+    test: (value) => value.length === 8,
+    pass: "Pass: the student ID has exactly 8 characters.",
+    fail: "Fail: a length check rejects IDs that are not exactly 8 characters.",
+    limitation: "An 8-character ID can still belong to the wrong student.",
   },
-  hospital: {
-    result: "Suitable: very frequent backups/replication and a tested disaster recovery plan.",
-    method: "Patient systems have low tolerance for data loss and downtime, so RPO/RTO must be small.",
-    trap: "Do not recommend weekly backup only for a system needed continuously.",
+  type: {
+    test: (value) => /^-?\d+$/.test(value.trim()),
+    pass: "Pass: the quantity is a whole number.",
+    fail: "Fail: a type check rejects values that are not whole numbers.",
+    limitation: "A whole number can still be unrealistic unless range or other checks are also used.",
   },
-  ransomware: {
-    result: "Suitable: isolated/offline or immutable offsite backups.",
-    method: "If ransomware can reach connected drives, backups must be separated so the same attack cannot encrypt every copy.",
-    trap: "Do not leave the only backup permanently connected to the infected network.",
+  format: {
+    test: (value) => /^[A-Za-z]{2}\d{4}$/.test(value.trim()),
+    pass: "Pass: the input follows two letters then four digits.",
+    fail: "Fail: a format check rejects input that does not match the required pattern.",
+    limitation: "A correctly formatted code can still be a code that does not exist.",
   },
-  laptop: {
-    result: "Suitable: automatic cloud/offsite backup plus local sync checks.",
-    method: "A portable device can be lost, stolen or damaged, so local files need copies away from the device.",
-    trap: "Do not rely only on the laptop's internal drive as a backup of itself.",
+  presence: {
+    test: (value) => value.trim().length > 0,
+    pass: "Pass: the required field is not blank.",
+    fail: "Fail: a presence check rejects blank required fields.",
+    limitation: "Typing 'unknown' may pass presence but still be poor or false data.",
+  },
+  existence: {
+    test: (value) => ["P100", "P200", "P350"].includes(value.trim().toUpperCase()),
+    pass: "Pass: the product code exists in the stored practice lookup list.",
+    fail: "Fail: an existence check rejects a value that is not found in the specified stored list.",
+    limitation: "An existing product code can still be the wrong product code for this transaction.",
+  },
+  limit: {
+    test: (value) => Number.isFinite(Number(value)) && Number(value) <= 10,
+    pass: "Pass: the value satisfies the one stated upper limit of 10 MiB.",
+    fail: "Fail: an upper limit check rejects a value greater than 10 MiB.",
+    limitation: "A limit check uses one upper or lower limit; a range check uses both a lower and an upper bound.",
+  },
+  checkDigit: {
+    test: (value) => /^\d{6}$/.test(value.trim())
+      && Number(value.trim()[5]) === [...value.trim().slice(0, 5)].reduce((sum, digit) => sum + Number(digit), 0) % 10,
+    pass: "Pass: the final digit matches the digit calculated from the other five digits.",
+    fail: "Fail: the calculated check digit does not match the entered final digit.",
+    limitation: "A matching check digit detects many entry errors but does not prove that this is the intended identifier.",
   },
 };
 
-const rpoMap = {
-  hour: {
-    result: "Suggested frequency: hourly or near-continuous backup/replication.",
-    reason: "If only about one hour of data loss is acceptable, the backup interval must be short enough to meet that RPO.",
+const verifyMap = {
+  password: {
+    result: "Verification by double entry / repeat entry.",
+    reason: "The second entry is compared with the first to detect typing errors before the value is accepted.",
   },
-  day: {
-    result: "Suggested frequency: daily backups, with clear timing.",
-    reason: "Daily backup may be acceptable if losing work since the last backup would not exceed the business tolerance.",
+  paper: {
+    result: "Verification by visual check.",
+    reason: "A person compares the entered address with the original paper source to detect copying errors.",
   },
-  week: {
-    result: "Suggested frequency: weekly full backup may be enough for low-change data.",
-    reason: "This is suitable only when the data changes slowly or can be recreated without major impact.",
+  typedTwice: {
+    result: "Verification by double entry.",
+    reason: "Two entries of the same data are compared. A mismatch suggests a data entry error.",
   },
-  none: {
-    result: "Suggested approach: replication/high availability plus tested backups.",
-    reason: "If meaningful data loss is not acceptable, ordinary periodic backups alone are not enough.",
+  copy: {
+    result: "Verification by checksum after transfer.",
+    reason: "The receiver recalculates a checksum from the received data block and compares it with the transmitted checksum.",
+  },
+  parityByte: {
+    result: "Verification by parity check on a byte.",
+    reason: "The receiver checks whether the byte, including its parity bit, has the agreed odd or even parity. A mismatch indicates a likely transmission error.",
+  },
+  blockParity: {
+    result: "Verification by block parity.",
+    reason: "Parity is checked across rows and columns of a block of bytes, allowing many single-bit errors to be detected and located.",
   },
 };
 
 const examples = {
-  ransomware: {
-    title: "Example 1: Ransomware and isolated backups",
-    problem: "A shared drive and connected USB backup are both encrypted by ransomware.",
+  range: {
+    title: "Example 1: Range check for exam marks",
+    problem: "A paper is marked out of 75. A user enters 82.",
     steps: [
-      "The backup was reachable by the same attack as the live data.",
-      "A better strategy includes offline, offsite or immutable backups.",
-      "Recent versions should be retained so clean data can be restored.",
-      "Restores must be tested so the organisation knows the backup is usable.",
+      "A range check tests whether the mark is between 0 and 75.",
+      "82 is rejected because it is outside the allowed range.",
+      "This prevents an impossible mark entering the system.",
+      "It would not detect a wrong but possible mark, such as 62 instead of 52.",
     ],
   },
-  hospital: {
-    title: "Example 2: Hospital disaster recovery",
-    problem: "A hospital patient system becomes unavailable after a server failure.",
+  format: {
+    title: "Example 2: Format check for a student code",
+    problem: "A student code must use two letters followed by four digits.",
     steps: [
-      "The disaster recovery plan should identify critical systems and responsibilities.",
-      "Recent backups or replication reduce possible patient data loss.",
-      "A standby server or cloud recovery can reduce downtime.",
-      "After restoration, staff must check that records are complete and accessible.",
+      "A format check tests the pattern of the data.",
+      "AB1234 passes because it has two letters then four digits.",
+      "A12345 fails because it does not match the required pattern.",
+      "A code can pass the format check but still not belong to a real student.",
     ],
   },
-  audit: {
-    title: "Example 3: Audit trail investigation",
-    problem: "A customer record was deleted and the company needs to know what happened.",
+  double: {
+    title: "Example 3: Double entry for a new password",
+    problem: "A website asks users to enter a new password twice.",
     steps: [
-      "An audit trail can show the user account that deleted the record.",
-      "It can include timestamp, device/IP address and action performed.",
-      "This supports accountability and incident investigation.",
-      "The audit trail does not restore the record; a backup may be needed for recovery.",
+      "This is verification because two entries are compared.",
+      "If the entries do not match, a typing error is likely.",
+      "The method does not check whether the password is strong unless validation rules are also applied.",
+      "A user can type the same weak password twice, so the data is verified but still poor.",
     ],
   },
-  testing: {
-    title: "Example 4: Testing backup restores",
-    problem: "A school has nightly backups but has never restored from them.",
+  combined: {
+    title: "Example 4: Admissions form using both methods",
+    problem: "A school admissions form records date of birth and postcode.",
     steps: [
-      "A backup strategy is incomplete unless restore testing is performed.",
-      "A test restore checks that backup files are not corrupted or missing.",
-      "Testing also reveals how long recovery takes.",
-      "Results can be used to improve the disaster recovery plan.",
+      "Validation can check date format and whether the date is within a sensible range.",
+      "Validation can check the postcode follows an expected format.",
+      "Verification can compare the entered data with the original application document.",
+      "Both reduce errors, but neither proves the applicant gave truthful information.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is a separate copy of data used for recovery called?", accepted: ["backup", "back up"], answer: "Backup" },
-  { id: "p2", prompt: "Which backup type copies all selected data?", accepted: ["full backup", "full"], answer: "Full backup" },
-  { id: "p3", prompt: "Which backup type copies only data changed since the last backup?", accepted: ["incremental backup", "incremental"], answer: "Incremental backup" },
-  { id: "p4", prompt: "Where should a copy be stored to reduce risk from fire or theft at the main site?", accepted: ["offsite", "off-site", "cloud", "remote location"], answer: "Offsite / cloud / remote location" },
-  { id: "p5", prompt: "What plan describes how systems and services are restored after a major incident?", accepted: ["disaster recovery plan", "disaster recovery", "dr plan"], answer: "Disaster recovery plan" },
-  { id: "p6", prompt: "What record shows who performed an action and when?", accepted: ["audit trail", "audit log", "log"], answer: "Audit trail / audit log" },
-  { id: "p7", prompt: "What does RPO describe: acceptable data loss or restore time?", accepted: ["acceptable data loss", "data loss"], answer: "Acceptable data loss" },
-  { id: "p8", prompt: "What does RTO describe: acceptable data loss or restore time?", accepted: ["restore time", "recovery time", "time to restore"], answer: "Restore/recovery time" },
-  { id: "p9", prompt: "Does an audit trail restore deleted files by itself? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p10", prompt: "Name one reason backups should be tested.", accepted: ["corrupt", "corrupted", "usable", "restore works", "missing files", "recovery time", "verify"], answer: "To check backups are usable, not corrupted/missing, and that recovery time is acceptable" },
+  { id: "p1", prompt: "Which method checks input against rules before it is accepted?", accepted: ["validation", "data validation"], answer: "Validation / data validation" },
+  { id: "p2", prompt: "Which method checks that data has been copied or entered accurately?", accepted: ["verification", "data verification"], answer: "Verification / data verification" },
+  { id: "p3", prompt: "Which validation check tests whether a value is between allowed limits?", accepted: ["range", "range check"], answer: "Range check" },
+  { id: "p4", prompt: "Which validation check tests the number of characters?", accepted: ["length", "length check"], answer: "Length check" },
+  { id: "p5", prompt: "Which validation check tests whether data follows a required pattern?", accepted: ["format", "format check"], answer: "Format check" },
+  { id: "p6", prompt: "Which validation check tests whether required data has been entered?", accepted: ["presence", "presence check"], answer: "Presence check" },
+  { id: "p7", prompt: "Which validation check can detect common transcription errors in long numbers such as barcodes?", accepted: ["check digit", "check digit check"], answer: "Check digit" },
+  { id: "p8", prompt: "Entering data twice and comparing the two entries is what method?", accepted: ["double entry", "verification", "data verification"], answer: "Double entry verification" },
+  { id: "p9", prompt: "Can validation prove data is true? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Can verification prove the original source data was true? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p11", prompt: "Which check tests one stated maximum or minimum rather than two bounds?", accepted: ["limit", "limit check", "upper limit check", "lower limit check"], answer: "Limit check" },
+  { id: "p12", prompt: "Which check confirms that a code is present in a specified stored lookup file?", accepted: ["existence", "existence check"], answer: "Existence check" },
 ];
 
 const mistakes = [
   {
-    wrong: "A backup is useful even if it has never been restored.",
-    fix: "A backup must be tested by restoring data. Otherwise the organisation may not know whether the backup is complete, uncorrupted or usable.",
+    wrong: "Validation checks that the data is correct.",
+    fix: "Validation checks that data follows rules. It can reject impossible or unsuitable data, but valid data can still be factually wrong.",
   },
   {
-    wrong: "An audit trail can recover deleted files.",
-    fix: "An audit trail records actions and supports investigation. A backup is needed to restore the deleted data.",
+    wrong: "Verification is a range check.",
+    fix: "A range check is validation. Verification checks that data has been copied or entered accurately, often by comparison.",
   },
   {
-    wrong: "Keeping a backup on the same server is enough.",
-    fix: "A same-server copy can be lost in the same hardware failure, theft, fire or ransomware attack. At least one copy should be isolated or offsite.",
+    wrong: "A presence check proves the entered email address is real.",
+    fix: "A presence check only proves the field is not blank. Format or other checks may be needed, and even then the email may not belong to the user.",
   },
   {
-    wrong: "Incremental backup is always better than full backup.",
-    fix: "Incremental backup is faster and smaller, but restore can be more complex because a full backup and later increments may be needed.",
+    wrong: "Double entry guarantees the value is true.",
+    fix: "Double entry can detect typing differences. If the same wrong value is entered twice, the data can still be false.",
   },
 ];
 
@@ -129,93 +163,96 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "Describe two factors that should be considered when designing a backup strategy for a school database.",
-    answer: "The backup frequency should match how often the data changes and how much data loss is acceptable. If the database is updated throughout the day, frequent backups reduce possible loss. The backup location should include an offsite or isolated copy so fire, theft or ransomware at the main site does not destroy every copy. The strategy should also include retention and testing restores.",
+    marks: "5 marks",
+    prompt: "Explain the difference between validation and verification and how both methods help protect data integrity.",
+    answer: "Validation checks that input data follows rules before it is accepted, such as a range, length, type or format rule. Verification checks that data has been entered, copied or transferred accurately compared with a source or a second entry. By detecting or preventing many input, copying and transfer errors, both methods reduce the chance that inaccurate or corrupted data are accepted and therefore help protect data integrity. Neither method proves that the original data is true.",
     marking: [
-      { mark: "B1", text: "frequency considered" },
-      { mark: "B1", text: "frequency linked to data changes or acceptable data loss/RPO" },
-      { mark: "B1", text: "location/offsite/isolated backup considered" },
-      { mark: "B1", text: "location linked to site disaster/ransomware/theft/hardware failure" },
+      { mark: "B1", text: "validation checks data against rules/criteria" },
+      { mark: "B1", text: "valid validation example, e.g. range/length/type/format/presence" },
+      { mark: "B1", text: "verification checks entered/copied/transferred data against source/repeat entry" },
+      { mark: "B1", text: "valid verification example, e.g. double entry/visual check/comparison" },
+      { mark: "B1", text: "both reduce input/copy/transfer errors and therefore help protect data integrity" },
     ],
     strict: [
-      "Do not accept only 'make backups regularly' without scenario reason.",
-      "Do not award offsite mark for a copy on the same server.",
-      "Allow cloud storage if offsite/remote idea is clear.",
+      "Do not accept validation and verification as the same process.",
+      "Do not award validation mark for only saying 'checks it is correct'.",
+      "Allow 'reasonable' for validation only when rule/criteria idea is clear.",
+      "Do not award the integrity mark for merely repeating the word integrity without an error-reduction link.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Compare full and incremental backups.",
-    answer: "A full backup copies all selected data, so it usually takes more time and storage, but restoration is simpler because the full copy contains the complete dataset. An incremental backup copies only data changed since the previous backup, so it is faster and uses less storage. However, restoring may require the last full backup plus each later incremental backup, making recovery more complex if one part is missing or corrupted.",
+    marks: "7 marks",
+    prompt: "A school form accepts an age from 3 to 19, a file no larger than 10 MiB, a fixed-format student ID, a required email address and a product code that must already be stored in the product file. Suggest suitable validation checks and Compare the age rule from the file-size rule.",
+    answer: "Age should use a range check because both a lower bound of 3 and an upper bound of 19 apply. File size should use an upper limit check because there is one maximum of 10 MiB. The student ID can use a length check and a format check for its fixed pattern. The email address can use a presence check so it is not blank and a format check for the required pattern. The product code should use an existence check against the stored product file.",
     marking: [
-      { mark: "B1", text: "full backup copies all selected data" },
-      { mark: "B1", text: "full backup uses more time/storage or simpler restore" },
-      { mark: "B1", text: "incremental backup copies changes since previous backup" },
-      { mark: "B1", text: "incremental uses less time/storage" },
-      { mark: "B1", text: "incremental restore complexity/needs chain/part missing risk" },
+      { mark: "B1", text: "age linked to a range check" },
+      { mark: "B1", text: "range check explained as applying lower and upper bounds 3 and 19" },
+      { mark: "B1", text: "file size linked to an upper limit check with maximum 10 MiB" },
+      { mark: "B1", text: "student ID linked to length and/or format check with its rule explained" },
+      { mark: "B1", text: "email linked to a presence check" },
+      { mark: "B1", text: "email linked to a format check with an expected pattern" },
+      { mark: "B1", text: "product code linked to an existence check against the stored product file" },
     ],
     strict: [
-      "Do not accept incremental as copying all data.",
-      "Do not award comparison marks for vague 'better' or 'faster' without which method.",
-      "Allow changed since last backup for incremental.",
+      "Do not award marks for verification methods when validation is requested.",
+      "Do not call the one-sided file maximum a two-bound range check.",
+      "Do not accept vague 'check it is right' without naming and explaining the rule.",
+      "Award each field independently.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Explain why a disaster recovery plan is needed after a major server failure.",
-    answer: "A disaster recovery plan sets out the actions needed to restore systems and services after a major incident. It identifies critical systems, people responsible, communication steps and the order of recovery. It should include restoring data from backups and checking that restored data is complete and usable. It reduces downtime and supports availability because staff do not have to invent a response during the incident.",
+    marks: "4 marks",
+    prompt: "Describe two verification methods used to reduce data entry errors.",
+    answer: "Double entry requires the same data to be entered twice, possibly by the same user or by two different operators. The two entries are compared and a mismatch suggests an input error. A visual check involves comparing the entered data with the original source document or screen. This can detect typing or copying errors, but depends on the person checking carefully.",
     marking: [
-      { mark: "B1", text: "DR plan restores systems/services after major incident" },
-      { mark: "B1", text: "critical systems or recovery order identified" },
-      { mark: "B1", text: "roles/responsibilities or communication described" },
-      { mark: "B1", text: "restore from backup described" },
-      { mark: "B1", text: "testing/checking restored data/system described" },
-      { mark: "B1", text: "consequence linked to reduced downtime/availability/organised response" },
+      { mark: "B1", text: "double entry described as entering same data twice" },
+      { mark: "B1", text: "two entries compared/mismatch detected" },
+      { mark: "B1", text: "visual check described as comparing entered data with original/source" },
+      { mark: "B1", text: "detects typing/copying/transcription errors" },
     ],
     strict: [
-      "Do not accept only 'use a backup' as a complete disaster recovery plan.",
-      "Do not award communication mark for vague 'tell people' without role/user/staff context.",
-      "Allow alternative valid DR actions such as standby hardware or alternative site.",
+      "Do not accept range/format/type check as verification method.",
+      "Do not award comparison mark for only 'enter it carefully'.",
+      "Allow proofreading if source comparison is clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Describe what an audit trail may record and how it can be used after unauthorised changes to data.",
-    answer: "An audit trail may record the user account, action performed, timestamp, device or IP address, and the data record affected. After unauthorised changes, it can show who changed the data and when the change occurred. This helps investigate the incident, identify whether an account was misused and provide evidence for accountability. It does not restore the original data by itself, so a backup may also be needed.",
+    prompt: "Explain how a check digit can help detect errors in a long number such as a barcode.",
+    answer: "A check digit is an extra digit calculated from the other digits in the number using a defined method. When the number is entered or scanned, the system recalculates the check digit and compares it with the entered check digit. If they do not match, the number is likely to contain an error such as a mistyped digit. It can detect many common transcription errors, but it does not prove the number belongs to the correct item.",
     marking: [
-      { mark: "B1", text: "valid recorded item such as user/account/action/timestamp/device/IP/record" },
-      { mark: "B1", text: "second distinct recorded item" },
-      { mark: "B1", text: "used to identify who/when/what changed" },
-      { mark: "B1", text: "used for investigation/accountability/evidence/misuse detection" },
+      { mark: "B1", text: "check digit described as extra/calculated digit" },
+      { mark: "B1", text: "calculated from other digits using a method/algorithm" },
+      { mark: "B1", text: "system recalculates and compares with entered/provided check digit" },
+      { mark: "B1", text: "mismatch indicates likely input/transcription/scanning error" },
     ],
     strict: [
-      "Do not accept audit trail as a copy of all files.",
-      "Do not award both recorded-item marks for two wordings of time only.",
-      "Allow audit log as audit trail.",
+      "Do not accept check digit as just 'the last digit' without calculated/comparison idea.",
+      "Do not require a specific arithmetic algorithm unless question asks for it.",
+      "Allow barcode/account number/ISBN examples.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A company is attacked by ransomware. Suggest backup and recovery measures.",
-    answer: "The company should keep isolated or offsite backups so ransomware cannot encrypt every backup copy. Backups should be frequent enough to meet the acceptable data loss, and several versions should be retained so the company can restore a clean copy from before the infection. The restore process should be tested. The disaster recovery plan should isolate infected systems, restore data to clean systems, verify the restored data and communicate with users.",
+    marks: "7 marks",
+    prompt: "Describe how parity check on a byte, block parity and a checksum can detect errors during data transfer.",
+    answer: "A parity check adds or uses a parity bit so each received byte should have the agreed odd or even parity; a mismatch indicates a likely error. Block parity arranges bytes as rows and checks parity across rows and columns, so many single-bit errors can be detected and located. For a checksum, the sender calculates a value from the data block and sends it; the receiver recalculates the checksum from the received block and compares the values. These methods detect many errors but do not automatically correct every error.",
     marking: [
-      { mark: "B1", text: "isolated/offline/offsite backup recommended" },
-      { mark: "B1", text: "reason linked to ransomware not reaching/encrypting all copies" },
-      { mark: "B1", text: "frequency or RPO linked to acceptable data loss" },
-      { mark: "B1", text: "retention/versioning to restore clean pre-infection copy" },
-      { mark: "B1", text: "restore testing/verify restored data described" },
-      { mark: "B1", text: "DR response action such as isolate infected systems/clean restore/communication" },
+      { mark: "B1", text: "byte parity uses a parity bit and an agreed odd/even rule" },
+      { mark: "B1", text: "receiver checks parity and a mismatch indicates a likely transfer error" },
+      { mark: "B1", text: "block parity applies parity across rows and columns of a block" },
+      { mark: "B1", text: "row/column evidence can locate many single-bit errors" },
+      { mark: "B1", text: "sender calculates and transmits a checksum for the data block" },
+      { mark: "B1", text: "receiver recalculates and compares the checksum" },
+      { mark: "B1", text: "methods detect many errors but do not automatically correct every error" },
     ],
     strict: [
-      "Do not accept paying the ransom as a recovery strategy.",
-      "Do not award isolation mark for permanently connected backup drive.",
-      "Allow immutable backup if isolation from ransomware is clear.",
-      "Award each measure independently.",
+      "Do not substitute a validation check digit for a transfer checksum.",
+      "Do not merge byte parity and block parity into one unexplained use of the word parity.",
+      "Do not claim that error detection automatically corrects the transferred data.",
     ],
   },
 ];
@@ -231,10 +268,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    offsite: "Correct. A backup reachable by the same ransomware is not sufficiently isolated.",
-    audit: "No. Audit trails help investigation, but they do not restore encrypted files.",
-    validation: "No. Validation checks input rules; it does not protect backup copies from ransomware.",
-    frequency: "No. Frequency matters, but connection and isolation matter in this scenario.",
+    validation: "Correct. A range rule is being applied before accepting the input.",
+    verification: "No. Verification compares entered data with a source or repeated entry.",
+    truth: "No. Passing or failing a validation rule does not prove real-world truth.",
+    backup: "No. Backup is recovery; this is input checking.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -245,34 +282,48 @@ function setupHook() {
   });
 }
 
-function setupSimulator() {
-  const select = document.querySelector("#scenarioInput");
-  const result = document.querySelector("#simulateResult");
-  const method = document.querySelector("#simulateMethod");
-  const trap = document.querySelector("#simulateTrap");
-  function simulate() {
-    const item = scenarioMap[select.value];
-    result.textContent = item.result;
-    method.innerHTML = `<strong>Reasoning:</strong> ${item.method}`;
-    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
+function setupRuleTester() {
+  const type = document.querySelector("#checkType");
+  const input = document.querySelector("#checkInput");
+  const result = document.querySelector("#checkResult");
+  const reason = document.querySelector("#checkReason");
+  const defaults = {
+    range: "76",
+    length: "STU12345",
+    type: "12.5",
+    format: "AB1234",
+    presence: "",
+    existence: "P200",
+    limit: "12",
+    checkDigit: "123455",
+  };
+  function test() {
+    const rule = checkRules[type.value];
+    const pass = rule.test(input.value);
+    result.textContent = pass ? rule.pass : rule.fail;
+    reason.innerHTML = `<strong>Limitation:</strong> ${rule.limitation}`;
   }
-  select.addEventListener("change", simulate);
-  document.querySelector("#simulateBtn").addEventListener("click", simulate);
-  simulate();
+  type.addEventListener("change", () => {
+    input.value = defaults[type.value];
+    test();
+  });
+  input.addEventListener("input", test);
+  document.querySelector("#checkBtn").addEventListener("click", test);
+  test();
 }
 
-function setupRpoTool() {
-  const select = document.querySelector("#rpoInput");
-  const result = document.querySelector("#rpoResult");
-  const reason = document.querySelector("#rpoReason");
-  function suggest() {
-    const item = rpoMap[select.value];
+function setupVerifyTool() {
+  const select = document.querySelector("#verifyInput");
+  const result = document.querySelector("#verifyResult");
+  const reason = document.querySelector("#verifyReason");
+  function classify() {
+    const item = verifyMap[select.value];
     result.textContent = item.result;
     reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
   }
-  select.addEventListener("change", suggest);
-  document.querySelector("#rpoBtn").addEventListener("click", suggest);
-  suggest();
+  select.addEventListener("change", classify);
+  document.querySelector("#verifyBtn").addEventListener("click", classify);
+  classify();
 }
 
 function renderExample(key) {
@@ -292,7 +343,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("ransomware");
+  renderExample("range");
 }
 
 function renderPractice() {
@@ -378,8 +429,8 @@ function renderExam() {
 
 setupPrint();
 setupHook();
-setupSimulator();
-setupRpoTool();
+setupRuleTester();
+setupVerifyTool();
 setupExamples();
 renderPractice();
 renderMistakes();

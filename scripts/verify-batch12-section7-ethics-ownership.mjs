@@ -64,11 +64,11 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["072", ["professional ethics", "purpose", "joining", "British Computer Society", "BCS", "Institute of Electrical and Electronics Engineers", "IEEE", "ethical", "unethical", "impact"]],
-  ["074", ["copyright legislation", "needed", "software", "Free Software Foundation", "FSF", "Open Source Initiative", "OSI", "licence"]],
-  ["075", ["shareware", "commercial", "licence", "scenario"]],
-  ["076", ["AI applications", "social impacts", "economic impacts", "environmental impacts", "Evaluation"]],
-  ["077", ["professional ethics", "British Computer Society", "IEEE", "copyright legislation", "Free Software Foundation", "OSI", "shareware", "commercial software", "Artificial intelligence", "social, economic and environmental impacts"]],
+  ["073", ["professional ethics", "purpose", "joining", "British Computer Society", "BCS", "Institute of Electrical and Electronics Engineers", "IEEE", "ethical", "unethical", "impact"]],
+  ["075", ["copyright legislation", "needed", "software", "Free Software Foundation", "FSF", "Open Source Initiative", "OSI", "licence"]],
+  ["076", ["shareware", "commercial", "licence", "scenario"]],
+  ["077", ["AI applications", "social impacts", "economic impacts", "environmental impacts", "Evaluation"]],
+  ["078", ["professional ethics", "British Computer Society", "IEEE", "copyright legislation", "Free Software Foundation", "OSI", "shareware", "commercial software", "Artificial intelligence", "social, economic and environmental impacts"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -82,19 +82,19 @@ for (const [lesson, terms] of lessonChecks) {
 }
 
 const assessmentChecks = [
-  ["AQ075-Q1", ["professional", "code of conduct", "public interest"]],
-  ["AR077-Q1", ["professional codes of conduct", "public interest"]],
-  ["L072-Q5", ["ethical implications", "stakeholder", "impact"]],
-  ["AR077-Q2", ["AI", "facial recognition", "privacy", "bias", "recommendation"]],
-  ["L074-Q3", ["copyright", "licence", "software"]],
-  ["AQ075-Q4", ["FSF", "OSI", "licences"]],
-  ["AQ075-Q5", ["shareware", "commercial"]],
-  ["AM080-Q5", ["licence", "copyright", "recommends"]],
-  ["L076-Q5", ["AI application", "social", "economic", "environmental", "judges whether"]],
-  ["AQ080-Q1", ["AI", "social"]],
-  ["AQ080-Q2", ["AI", "environmental"]],
-  ["AM080-Q3", ["AI", "ethical", "consequence", "control"]],
-  ["L077-Q5", ["AI", "facial recognition", "biometric templates", "privacy", "bias"]],
+  ["AQ076-Q1", ["professional", "code of conduct", "public interest"]],
+  ["AR078-Q1", ["professional codes of conduct", "public interest"]],
+  ["L073-Q5", ["ethical implications", "stakeholder", "impact"]],
+  ["AR078-Q2", ["AI", "facial recognition", "privacy", "bias", "recommendation"]],
+  ["L075-Q3", ["copyright", "licence", "software"]],
+  ["AQ076-Q4", ["FSF", "OSI", "licences"]],
+  ["AQ076-Q5", ["shareware", "commercial"]],
+  ["AM081-Q5", ["licence", "copyright", "recommends"]],
+  ["L077-Q5", ["AI application", "social", "economic", "environmental", "judges whether"]],
+  ["AQ081-Q1", ["AI", "social"]],
+  ["AQ081-Q2", ["AI", "environmental"]],
+  ["AM081-Q3", ["AI", "ethical", "consequence", "control"]],
+  ["L078-Q5", ["AI", "facial recognition", "biometric templates", "privacy", "bias"]],
 ];
 for (const [id, terms] of assessmentChecks) includesAll(questionText(id), terms, `${id} Section 7 assessment`);
 
@@ -109,13 +109,13 @@ for (const [label, pattern] of [
 ]) expect(!pattern.test(acceptedAssessment), `accepted assessment semantics still contain ${label}`);
 
 for (const [file, label] of [
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-072-ethics.jpg", "L072 ethics visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-072-stakeholders.jpg", "L072 stakeholder visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-074-copyright.jpg", "L074 copyright visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-074-licensing.jpg", "L074 licensing visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-075-tradeoffs.jpg", "L075 licence trade-off visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-076-environment.jpg", "L076 environmental visual"],
-  ["web/assets/diagrams/stage10-infographics/stage10-lesson-076-social.jpg", "L076 social visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-073-ethics.jpg", "L073 ethics visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-073-stakeholders.jpg", "L073 stakeholder visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-075-copyright.jpg", "L075 copyright visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-075-licensing.jpg", "L075 licensing visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-076-tradeoffs.jpg", "L076 licence trade-off visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-077-environment.jpg", "L077 environmental visual"],
+  ["web/assets/diagrams/stage10-infographics/stage10-lesson-077-social.jpg", "L077 social visual"],
 ]) {
   const dimensions = jpegDimensions(file);
   expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${label}: expected 1536x1024 JPEG`);
@@ -140,8 +140,8 @@ for (const [id, pattern] of mutations) {
 }
 
 for (const [requirementId, questionIds, pattern, label] of [
-  ["S7.05", ["AQ075-Q4", "AQ075-Q5", "L075-Q1", "AM080-Q5"], /licen[cs]e|FSF|OSI|shareware|commercial|open-source|proprietary/gi, "licence assessment"],
-  ["S7.06", ["L076-Q5", "AQ080-Q1", "AQ080-Q2", "AM080-Q3"], /AI|social|economic|environmental/gi, "AI impact assessment"],
+  ["S7.05", ["AQ076-Q4", "AQ076-Q5", "L076-Q1", "AM081-Q5"], /licen[cs]e|FSF|OSI|shareware|commercial|open-source|proprietary/gi, "licence assessment"],
+  ["S7.06", ["L077-Q5", "AQ081-Q1", "AQ081-Q2", "AM081-Q3"], /AI|social|economic|environmental/gi, "AI impact assessment"],
 ]) {
   const mutation = evaluateRequirement(requirements.get(requirementId), {
     questionTransform: (question) => questionIds.includes(question.id)
@@ -158,7 +158,7 @@ for (const [requirementId, questionIds, pattern, label] of [
 }
 
 const ledger = JSON.parse(read("audits/repair-batch-12-section7-ethics-ownership.json"));
-expect(ledger.status === "Resolved" && ledger.records.length === 8, "Batch 12 ledger must resolve six requirements, the L076-Q5 assessment defect and the L077 review gap");
+expect(ledger.status === "Resolved" && ledger.records.length === 8, "Batch 12 ledger must resolve six requirements, the L077-Q5 assessment defect and the L078 review gap");
 expect(ledger.records.every(({ status, confidence }) => status === "Resolved" && confidence === "High"), "Batch 12 ledger contains an unresolved or non-high-confidence record");
 
 if (failures.length) {

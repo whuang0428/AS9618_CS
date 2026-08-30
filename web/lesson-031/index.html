@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 031 | Secondary storage: magnetic, optical and solid-state media</title>
+    <title>AS9618 Lesson 031 | Output, storage devices and primary memory</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Secondary storage: magnetic, optical and solid-state media</h1>
+        <h1>Output, storage devices and primary memory</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,10 +29,9 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#purpose">Storage purpose</a>
-        <a href="#media">Media types</a>
-        <a href="#storage-visual">Visual guide</a>
-        <a href="#compare">Comparison</a>
+        <a href="#primary">Primary storage</a>
+        <a href="#ram-rom">RAM vs ROM</a>
+        <a href="#cache-vm">Cache and VM</a>
         <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -47,54 +46,119 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>cache and virtual-memory detail in the hardware section. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S3.05-S3.07 RAM, ROM, SRAM, DRAM, PROM, EPROM and EEPROM; cache belongs to S4.05.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>HDD, flash and optical reader/writer operation</h2>
+            <h2>Output, storage devices and primary memory</h2>
           </div>
           <div class="stage2-explanation">
+            <p>A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.</p>
+            <p>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</p>
             <p>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</p>
             <p>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</p>
+            <p>A magnetic HDD uses moving read/write heads over rotating platters. Flash memory stores charge electronically with no moving parts. An optical disc reader/writer uses a laser to read marks and, on writable media, to create or alter marks.</p>
+            <p>RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.</p>
+            <p>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</p>
+            <p>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.</p>
+            <p>A buffer temporarily holds data when connected components operate at a different speed or transfer data in different-sized bursts.</p>
             <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Read an HDD block</h3>
-            <p>The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer.</p>
+            <h3>Worked example: Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system</h3>
+            <p>The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>HDD, flash and optical reader/writer operation: apply and assess</h2>
+            <h2>Output, storage devices and primary memory: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Why is flash storage resistant to mechanical shock?</p>
+              <p><strong>1.</strong> What permanently bonds toner to laser-printer paper?</p>
+              <details><summary>Show answer</summary><p>Heat and pressure in the fuser.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does a 3D printer build an object?</p>
+              <details><summary>Show answer</summary><p>It deposits/solidifies successive layers.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does a speaker produce sound from digital output?</p>
+              <details><summary>Show answer</summary><p>A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is a print buffer needed?</p>
+              <details><summary>Show answer</summary><p>It handles the speed difference and lets the producer continue while the printer consumes data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why is flash storage resistant to mechanical shock?</p>
               <details><summary>Show answer</summary><p>It has no moving read/write head or spinning platter.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What physical property stores HDD data?</p>
+              <p><strong>6.</strong> What physical property stores HDD data?</p>
               <details><summary>Show answer</summary><p>Magnetic orientation/patterns on a platter.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> How does an optical reader Compare stored data?</p>
+              <p><strong>7.</strong> How does an optical reader Compare stored data?</p>
               <details><summary>Show answer</summary><p>It detects differences in reflected laser light.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> Which device uses rotating platters?</p>
+              <details><summary>Show answer</summary><p>An HDD.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> Which device uses a laser?</p>
+              <details><summary>Show answer</summary><p>An optical reader/writer.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>10.</strong> Compare RAM from ROM by volatility and use.</p>
+              <details><summary>Show answer</summary><p>RAM is volatile and holds current programs/data; ROM is non-volatile and holds persistent firmware or start-up instructions.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>11.</strong> Why is DRAM refreshed?</p>
+              <details><summary>Show answer</summary><p>Charge in its storage capacitors leaks and must be restored.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>12.</strong> Why is SRAM used for cache while DRAM is used for main memory?</p>
+              <details><summary>Show answer</summary><p>SRAM is faster and needs no refresh; DRAM is denser and cheaper per bit for a larger capacity.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>13.</strong> Compare PROM, EPROM and EEPROM.</p>
+              <details><summary>Show answer</summary><p>PROM is programmed once; EPROM is erased with ultraviolet light; EEPROM is erased and rewritten electrically.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Describe how data is read from a magnetic hard disk drive.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>15 marks</span></div>
+            <p>Explain why a buffer is used when a computer sends a large document to a laser printer. Describe how data is read from a magnetic hard disk drive. Explain how an HDD, flash memory and an optical reader/writer store or retrieve data. Compare SRAM and DRAM and explain why DRAM is normally used for main memory.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>platters rotate</td><td>Do not accept a laser-based explanation for an HDD; lasers apply to optical media.</td><td>1</td></tr>
+                  <tr><td>processor/computer and printer operate at different speeds</td><td>Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences. Do not accept a laser-based explanation for an HDD; lasers apply to optical media. Do not describe every storage device as magnetic. Do not award both comparison marks for merely expanding the abbreviations.</td><td>1</td></tr>
+                  <tr><td>buffer temporarily stores print data</td><td></td><td>1</td></tr>
+                  <tr><td>printer reads data at its own rate</td><td></td><td>1</td></tr>
+                  <tr><td>computer/processor can continue other processing without waiting for the full print</td><td></td><td>1</td></tr>
+                  <tr><td>platters rotate</td><td></td><td>1</td></tr>
                   <tr><td>actuator positions read/write head over the required track</td><td></td><td>1</td></tr>
                   <tr><td>required sector passes beneath the head</td><td></td><td>1</td></tr>
                   <tr><td>head senses magnetic patterns which are decoded as data</td><td></td><td>1</td></tr>
+                  <tr><td>HDD mechanism</td><td></td><td>1</td></tr>
+                  <tr><td>flash mechanism</td><td></td><td>1</td></tr>
+                  <tr><td>optical reader/writer mechanism</td><td></td><td>1</td></tr>
+                  <tr><td>SRAM is faster / does not require refresh</td><td></td><td>1</td></tr>
+                  <tr><td>DRAM requires refresh / is slower</td><td></td><td>1</td></tr>
+                  <tr><td>DRAM has greater density / lower cost per bit</td><td></td><td>1</td></tr>
+                  <tr><td>main memory needs large capacity, making DRAM more economical</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>
@@ -105,258 +169,187 @@
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 031 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Secondary storage is where data survives the power switch.</h2>
+            <h2>Primary storage is the computer's working desk, not its filing cabinet.</h2>
             <p>
-              This lesson compares magnetic, optical and solid-state storage. The exam
-              skill is choosing a suitable medium for a scenario and justifying it with
-              capacity, speed, portability, durability and cost.
+              This lesson explains RAM, ROM, cache and virtual memory. The main exam skill
+              is explaining what each type is used for, whether it is volatile, and how it
+              affects performance.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>magnetic, optical and solid-state storage media</span></div>
-              <div><strong>Compare</strong><span>capacity, speed, durability, portability and cost</span></div>
-              <div><strong>Justify</strong><span>storage choices for backups, software distribution and portable devices</span></div>
+              <div><strong>Distinguish</strong><span>RAM, ROM, cache and virtual memory</span></div>
+              <div><strong>Explain</strong><span>volatility, speed and purpose using precise terms</span></div>
+              <div><strong>Apply</strong><span>primary storage ideas to startup, multitasking and performance scenarios</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Secondary storage examples">
-            <span>HDD | optical disc | SSD | flash drive</span>
-            <p>Storage is not just "big memory". It is the long-term cupboard, and some cupboards survive being dropped better than others.</p>
+          <div class="system-card" aria-label="Primary storage hierarchy">
+            <span>cache -> RAM -> virtual memory</span>
+            <p>Closer to the CPU usually means faster, smaller and more expensive. Convenient, like a front-row seat with a tiny desk.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam marks usually come from matching a characteristic to the scenario. "SSD is fast" is a start; "SSD is fast and shock-resistant for a laptop" is stronger.</p>
+            <p>Cambridge-style answers often require exact contrasts. "RAM is temporary" is weaker than "RAM is volatile and stores data/instructions currently in use."</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Secondary storage is non-volatile, but that does not mean every device is equally reliable, fast or suitable.</p>
+            <p>Virtual memory is not extra physical RAM. It uses secondary storage as if it were memory, which is slower than RAM.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>A student stores videos on an external HDD, installs apps on an SSD, shares photos with a flash drive and finds an old DVD. Why are these not all the same?</h2>
+            <h2>Your laptop has 30 browser tabs, a video call and an IDE open. Which memory areas are being stressed?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="hdd">HDD: high capacity and low cost per GB</button>
-            <button class="choice-card" type="button" data-hook="ssd">SSD: fast and shock-resistant</button>
-            <button class="choice-card" type="button" data-hook="flash">Flash drive: portable removable storage</button>
-            <button class="choice-card" type="button" data-hook="disc">Optical disc: cheap distribution or archive</button>
+            <button class="choice-card" type="button" data-hook="ram">RAM holds active programs and data</button>
+            <button class="choice-card" type="button" data-hook="cache">Cache keeps frequently used data close to the CPU</button>
+            <button class="choice-card" type="button" data-hook="vm">Virtual memory helps when RAM is insufficient</button>
+            <button class="choice-card" type="button" data-hook="rom">ROM handled startup instructions earlier</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one storage type. The useful exam habit is linking medium -> property -> scenario.
+            Click one memory area. The useful exam habit is linking storage type -> role -> consequence.
           </div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
+        <section class="panel" id="primary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>What secondary storage does</h2>
+            <h2>Primary storage is directly involved in current processing</h2>
           </div>
           <div class="flow-grid">
-            <article><strong>Non-volatile</strong><span>Data remains when power is switched off.</span></article>
-            <article><strong>Long-term</strong><span>Stores files, programs, backups and operating system data.</span></article>
-            <article><strong>Usually slower</strong><span>Secondary storage is usually slower than RAM for direct access.</span></article>
-            <article><strong>Scenario-based</strong><span>The best medium depends on speed, capacity, durability, portability and cost.</span></article>
+            <article><strong>RAM</strong><span>Stores programs, data and instructions currently in use. It is volatile.</span></article>
+            <article><strong>ROM</strong><span>Stores startup/boot instructions. It is non-volatile and normally read-only.</span></article>
+            <article><strong>Cache</strong><span>Very fast memory close to/on the CPU for frequently used data and instructions.</span></article>
+            <article><strong>Virtual memory</strong><span>Uses part of secondary storage when RAM is full, but access is slower.</span></article>
           </div>
-          <div class="callout">Chinese support: secondary storage = 辅助存储/外存；magnetic = 磁存储；optical = 光存储；solid-state = 固态存储；non-volatile = 非易失性。</div>
+          <div class="callout">Chinese support: primary storage = 主存/主存储；volatile = 易失性；non-volatile = 非易失性；cache = 高速缓存；virtual memory = 虚拟内存。</div>
         </section>
 
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">What secondary storage does</h2>
+        <!-- stage10-explanation:start primary -->
+        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" aria-labelledby="explanation-primary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
+          <h2 class="explanation-sr-only" id="explanation-primary-title">Why active data stays close to the CPU</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What secondary storage does with a structured visual model." />
-            <figcaption class="explanation-sr-only">What secondary storage does: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-primary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why active data stays close to the CPU through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why active data stays close to the CPU: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Non-volatile Data remains when power is switched off.</li><li><strong>Lesson fact:</strong> Long-term Stores files, programs, backups and operating system data.</li><li><strong>Lesson fact:</strong> Usually slower Secondary storage is usually slower than RAM for direct access.</li><li><strong>Lesson fact:</strong> Scenario-based The best medium depends on speed, capacity, durability, portability and cost.</li></ol>
+            <ol><li><strong>Mechanism:</strong> The CPU repeatedly requests current instructions and data.</li><li><strong>Reason:</strong> Nearby electronic storage answers with less delay than secondary storage.</li><li><strong>Result:</strong> Faster access prevents the processor waiting as often.</li></ol>
 
+            <p><strong>Analogy:</strong> Keep today's papers on the desk, not in a distant archive.</p>
+            <p><strong>Boundary:</strong> Closer and faster storage is smaller and more expensive per byte.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="media" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
+        <!-- stage10-explanation:end primary -->
+        <section class="panel" id="ram-rom" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
-            <h2>Three main storage media</h2>
+            <h2>RAM and ROM: similar letters, very different jobs</h2>
           </div>
-          <div class="media-grid">
-            <article>
-              <h3>Magnetic storage</h3>
-              <p>Stores data using magnetised areas on a medium.</p>
-              <p><strong>Examples:</strong> hard disk drive (HDD), magnetic tape.</p>
-              <p><strong>Typical strengths:</strong> high capacity, relatively low cost per GB; tape is useful for large backups.</p>
-              <p><strong>Limitations:</strong> moving parts in HDDs, slower than SSDs, vulnerable to shock and magnetic fields.</p>
-            </article>
-            <article>
-              <h3>Optical storage</h3>
-              <p>Uses laser light to read marks/pits on a disc surface.</p>
-              <p><strong>Examples:</strong> CD, DVD, Blu-ray.</p>
-              <p><strong>Typical strengths:</strong> cheap, portable, useful for distributing or archiving data that changes rarely.</p>
-              <p><strong>Limitations:</strong> lower capacity and slower access than HDD/SSD; discs can scratch.</p>
-            </article>
-            <article>
-              <h3>Solid-state storage</h3>
-              <p>Stores data electronically in flash memory with no moving parts.</p>
-              <p><strong>Examples:</strong> SSD, USB flash drive, memory card.</p>
-              <p><strong>Typical strengths:</strong> fast access, durable in portable devices, quiet and low power.</p>
-              <p><strong>Limitations:</strong> often higher cost per GB than HDD; finite write cycles.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start media -->
-        <section class="panel explanation-panel" id="explanation-media" data-explains="media" data-explanation-kind="mechanism" aria-labelledby="explanation-media-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <h2 class="explanation-sr-only" id="explanation-media-title">Three main storage media</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-media.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three main storage media with a structured visual model." />
-            <figcaption class="explanation-sr-only">Three main storage media: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Magnetic storage uses magnetised areas; examples include HDD and tape.</li><li><strong>Lesson fact:</strong> Optical storage uses laser light to read marks on a disc.</li><li><strong>Lesson fact:</strong> Solid-state secondary storage uses non-volatile flash memory with no moving parts; an SSD or NAND flash chip is the correct illustration.</li><li><strong>Lesson fact:</strong> A volatile RAM DIMM is primary memory and is not an SSD.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end media -->
-        <section class="panel" id="storage-visual" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Look at the storage mechanism before comparing performance</h2>
-            <p>The physical mechanism helps explain speed, durability and suitable uses.</p>
-          </div>
-
-          <figure class="storage-visual">
-            <img
-              src="../assets/diagrams/lesson-031-storage-media.jpg"
-              width="1672"
-              height="941"
-              loading="lazy"
-              decoding="async"
-              alt="An opened magnetic hard disk with platter and actuator arm, an optical disc and drive, and a solid-state drive circuit board with flash-memory chips."
-            />
-            <div class="storage-label-strip" aria-hidden="true">
-              <span>Magnetic</span>
-              <span>Optical</span>
-              <span>Solid-state</span>
+          <div class="compare-table" role="table" aria-label="RAM and ROM comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">RAM</div>
+              <div role="columnheader">ROM</div>
             </div>
-            <figcaption>Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.</figcaption>
-          </figure>
-
-          <div class="mechanism-grid">
-            <article>
-              <h3>Magnetic HDD</h3>
-              <p>Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.</p>
-              <strong>Consequence:</strong><span> high capacity and low cost per GB, but mechanical parts are vulnerable to shock.</span>
-            </article>
-            <article>
-              <h3>Optical disc</h3>
-              <p>A laser reads changes such as pits and lands on the disc surface.</p>
-              <strong>Consequence:</strong><span> portable and cheap to distribute, but generally slower and lower-capacity.</span>
-            </article>
-            <article>
-              <h3>Solid-state drive</h3>
-              <p>Electronic flash-memory cells store data with no moving parts.</p>
-              <strong>Consequence:</strong><span> fast and shock-resistant, but often costs more per GB than HDD storage.</span>
-            </article>
+            <div class="table-row" role="row">
+              <div role="cell">Purpose</div>
+              <div role="cell">Holds data, programs and instructions currently being used.</div>
+              <div role="cell">Stores firmware/startup instructions needed to boot the computer.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Volatility</div>
+              <div role="cell">Volatile: contents are lost when power is off.</div>
+              <div role="cell">Non-volatile: contents remain when power is off.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Write access</div>
+              <div role="cell">Can be read from and written to during normal use.</div>
+              <div role="cell">Normally read-only or not easily changed by the user.</div>
+            </div>
           </div>
-
-          <details class="diagram-check">
-            <summary>Check your reading: why is an SSD often suitable for a laptop?</summary>
-            <p>It has no moving parts, so it is more resistant to knocks and vibration, and it normally provides faster access than an HDD. This does not mean an SSD can never fail.</p>
-          </details>
         </section>
 
-        <!-- stage10-explanation:start storage-visual -->
-        <section class="panel explanation-panel" id="explanation-storage-visual" data-explains="storage-visual" data-explanation-kind="tradeoff" aria-labelledby="explanation-storage-visual-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <h2 class="explanation-sr-only" id="explanation-storage-visual-title">Look at the storage mechanism before comparing performance</h2>
+        <!-- stage10-explanation:start ram-rom -->
+        <section class="panel explanation-panel" id="explanation-ram-rom" data-explains="ram-rom" data-explanation-kind="comparison" aria-labelledby="explanation-ram-rom-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
+          <h2 class="explanation-sr-only" id="explanation-ram-rom-title">Why RAM changes while ROM remains stable</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-storage-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Look at the storage mechanism before comparing performance with a structured visual model." />
-            <figcaption class="explanation-sr-only">Look at the storage mechanism before comparing performance: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-ram-rom.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why RAM changes while ROM remains stable through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why RAM changes while ROM remains stable: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> The physical mechanism helps explain speed, durability and suitable uses.</li><li><strong>Lesson fact:</strong> Magnetic</li><li><strong>Lesson fact:</strong> Solid-state</li><li><strong>Lesson fact:</strong> Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.</li><li><strong>Lesson fact:</strong> Magnetic HDD</li><li><strong>Lesson fact:</strong> Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.</li><li><strong>Lesson fact:</strong> Consequence: high capacity and low cost per GB, but mechanical parts are vulnerable to shock.</li><li><strong>Lesson fact:</strong> Optical disc</li><li><strong>Lesson fact:</strong> A laser reads changes such as pits and lands on the disc surface.</li><li><strong>Lesson fact:</strong> Consequence: portable and cheap to distribute, but generally slower and lower-capacity.</li><li><strong>Lesson fact:</strong> Solid-state drive</li></ol>
+            <ol><li><strong>Mechanism:</strong> RAM holds the changing state of running programs.</li><li><strong>Reason:</strong> Most RAM needs continuous power to preserve that state.</li><li><strong>Result:</strong> ROM retains fixed startup instructions when power is removed.</li></ol>
 
+            <p><strong>Analogy:</strong> A working notepad changes constantly; a printed reference card should not.</p>
+            <p><strong>Boundary:</strong> ROM can sometimes be updated, but not as ordinary working memory.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end storage-visual -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
+        <!-- stage10-explanation:end ram-rom -->
+        <section class="panel" id="cache-vm" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Compare by scenario, not by favourite brand</h2>
+            <h2>Cache and virtual memory affect performance in opposite directions</h2>
           </div>
-          <div class="device-table" role="table" aria-label="Secondary storage comparison">
+          <div class="memory-stack" aria-label="Memory hierarchy">
+            <div><strong>Cache</strong><span>Fastest, smallest, closest to CPU</span></div>
+            <div><strong>RAM</strong><span>Fast working memory for active programs</span></div>
+            <div><strong>Virtual memory</strong><span>Slower extension using secondary storage</span></div>
+            <div><strong>Secondary storage</strong><span>Persistent storage, covered next lesson</span></div>
+          </div>
+          <div class="compare-table" role="table" aria-label="Cache and virtual memory comparison">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Medium</div>
-              <div role="columnheader">Speed</div>
-              <div role="columnheader">Capacity/cost</div>
-              <div role="columnheader">Good scenario</div>
+              <div role="columnheader">Concept</div>
+              <div role="columnheader">Why it is useful</div>
+              <div role="columnheader">Exam warning</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Magnetic HDD</div>
-              <div role="cell">Slower than SSD; mechanical parts.</div>
-              <div role="cell">High capacity and low cost per GB.</div>
-              <div role="cell">Desktop storage, large file libraries, cost-sensitive backups.</div>
+              <div role="cell">Cache</div>
+              <div role="cell">Stores frequently/recently used data or instructions so the CPU can access them faster than from RAM.</div>
+              <div role="cell">Do not say cache permanently stores user files.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Magnetic tape</div>
-              <div role="cell">Slow sequential access.</div>
-              <div role="cell">Very high capacity and low cost for backups.</div>
-              <div role="cell">Archiving and large organisation backups.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Optical disc</div>
-              <div role="cell">Generally slower access.</div>
-              <div role="cell">Lower capacity; cheap to produce.</div>
-              <div role="cell">Distributing fixed content or offline archive copies.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Solid-state SSD</div>
-              <div role="cell">Fast access, no moving parts.</div>
-              <div role="cell">Often higher cost per GB than HDD.</div>
-              <div role="cell">Laptops, operating system drive, fast application loading.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">USB flash / memory card</div>
-              <div role="cell">Fast enough for portable transfer; varies by device.</div>
-              <div role="cell">Portable, small, removable; capacity varies.</div>
-              <div role="cell">Moving files between devices, cameras, phones, embedded devices.</div>
+              <div role="cell">Virtual memory</div>
+              <div role="cell">Allows the system to continue running more/larger programs than RAM alone can hold.</div>
+              <div role="cell">Do not say it is as fast as RAM; using it heavily can slow the system.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by scenario, not by favourite brand</h2>
+        <!-- stage10-explanation:start cache-vm -->
+        <section class="panel explanation-panel" id="explanation-cache-vm" data-explains="cache-vm" data-explanation-kind="comparison" aria-labelledby="explanation-cache-vm-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
+          <h2 class="explanation-sr-only" id="explanation-cache-vm-title">Why cache helps and virtual memory slows</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by scenario, not by favourite brand with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare by scenario, not by favourite brand: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why cache helps and virtual memory slows through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why cache helps and virtual memory slows: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An HDD provides high capacity at relatively low cost and suits large file libraries or cost-sensitive backups.</li><li><strong>Lesson fact:</strong> Magnetic tape provides high capacity with sequential access and suits archival backups.</li><li><strong>Lesson fact:</strong> Optical media suits distributing read-only content or archiving data that changes rarely.</li></ol>
+            <ol><li><strong>Mechanism:</strong> Cache holds copies of recently or frequently used instructions and data close to the CPU.</li><li><strong>Reason:</strong> A cache hit avoids a slower main-memory access.</li><li><strong>Result:</strong> Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.</li></ol>
 
+            <p><strong>Analogy:</strong> A desk tray saves a walk; using the archive as desk space creates walks.</p>
+            <p><strong>Boundary:</strong> Virtual memory increases capacity, not physical RAM speed.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
+        <!-- stage10-explanation:end cache-vm -->
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Choose the storage medium</h2>
+            <h2>Choose the memory concept</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="laptop">A laptop needs fast startup and resistance to knocks</option>
-                <option value="backup">A company needs low-cost long-term backup of huge data sets</option>
-                <option value="archive">A photographer wants offline copies of finished albums that rarely change</option>
-                <option value="desktop">A desktop PC needs cheap high-capacity storage for videos</option>
-                <option value="camera">A camera needs small removable storage</option>
-                <option value="software">A publisher distributes fixed read-only media to many users</option>
+                <option value="active">A program and its current data are being edited</option>
+                <option value="boot">The computer needs startup instructions before the OS loads</option>
+                <option value="repeat">The CPU repeatedly needs the same instructions in a tight loop</option>
+                <option value="full">Many applications are open and RAM is nearly full</option>
+                <option value="power">Power is turned off and contents are lost</option>
+                <option value="slow">System becomes slow because pages are swapped to disk frequently</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Recommend storage</button>
+            <button type="button" id="chooseBtn">Identify concept</button>
           </div>
           <div class="result-box" id="componentResult" aria-live="polite"></div>
           <div class="method-box" id="componentMethod"></div>
@@ -365,12 +358,12 @@
         <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Choosing storage with reasons</h2>
+            <h2>Precise explanations for primary storage</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="laptop">Laptop SSD</button>
-            <button class="tab" type="button" data-example="backup">Tape backup</button>
-            <button class="tab" type="button" data-example="optical">Optical archive</button>
+            <button class="tab active" type="button" data-example="ram">RAM</button>
+            <button class="tab" type="button" data-example="rom">ROM</button>
+            <button class="tab" type="button" data-example="virtual">Virtual memory</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -388,18 +381,18 @@
         <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak storage answer</h2>
+            <h2>Fix the weak memory answer</h2>
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"Use RAM for backups because it is fast."</p>
+              <p class="wrong">"ROM is faster RAM that stores open programs."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Backups need non-volatile secondary storage. RAM is volatile, so backup data would be lost when power is off.</p>
+              <p class="answer" id="mistake1">ROM is non-volatile memory used for firmware/startup instructions. RAM stores currently running programs and data and is volatile.</p>
             </article>
             <article>
-              <p class="wrong">"SSD is always best because it is fastest."</p>
+              <p class="wrong">"Virtual memory gives the computer more real RAM."</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">SSD is fast and durable, but it may cost more per GB than HDD or tape. For huge low-cost archives, magnetic storage may be more suitable.</p>
+              <p class="answer" id="mistake2">Virtual memory uses part of secondary storage as if it were RAM. It can let more programs run, but it is slower than RAM and heavy use reduces performance.</p>
             </article>
           </div>
         </section>
@@ -408,7 +401,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on naming the storage type and linking its characteristics to the scenario.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on exact terms: volatile, non-volatile, currently in use, startup instructions and slower secondary storage.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -416,15 +409,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Secondary storage in six exam sentences</h2>
+            <h2>Primary storage in six exam sentences</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Secondary storage</strong><span>Non-volatile long-term storage for files, programs and backups.</span></div>
-            <div><strong>Magnetic HDD</strong><span>High capacity and low cost per GB, but mechanical and slower than SSD.</span></div>
-            <div><strong>Magnetic tape</strong><span>Good for huge sequential backups and archives.</span></div>
-            <div><strong>Optical disc</strong><span>Cheap removable media for fixed content or archive copies.</span></div>
-            <div><strong>Solid-state</strong><span>Fast, durable, no moving parts, often higher cost per GB.</span></div>
-            <div><strong>Suitability</strong><span>Always connect the medium to capacity, speed, durability, portability and cost.</span></div>
+            <div><strong>RAM</strong><span>Volatile memory for programs/data currently in use.</span></div>
+            <div><strong>ROM</strong><span>Non-volatile memory for startup/firmware instructions.</span></div>
+            <div><strong>Cache</strong><span>Very fast memory for frequently used data/instructions.</span></div>
+            <div><strong>Virtual memory</strong><span>Uses secondary storage when RAM is insufficient.</span></div>
+            <div><strong>Performance</strong><span>More cache/RAM can improve performance; heavy virtual memory use can slow it.</span></div>
+            <div><strong>Common error</strong><span>Primary storage is not the same as long-term secondary storage.</span></div>
           </div>
         </section>
 
@@ -434,25 +427,25 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a comparison table for magnetic, optical and solid-state storage with examples and two characteristics each.</li>
-            <li>Write a 4-mark answer recommending storage for a laptop used by a travelling student.</li>
-            <li>Write a 4-mark answer recommending storage for a company archive that stores huge backups for years.</li>
-            <li>Explain why "SSD is always best" is not a full exam answer.</li>
+            <li>Create a comparison table for RAM, ROM, cache and virtual memory: purpose, volatility and performance effect.</li>
+            <li>Write a 4-mark answer explaining why a computer may slow down when virtual memory is used heavily.</li>
+            <li>Explain why ROM is needed during startup in two precise sentences.</li>
+            <li>Write one common misconception and correct it using the terms volatile or non-volatile.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Comparison:</strong> magnetic HDD/tape; optical CD/DVD/Blu-ray; solid-state SSD/USB/memory card.</p>
-            <p><strong>Laptop:</strong> SSD is suitable because it is fast, has no moving parts and is less vulnerable to knocks.</p>
-            <p><strong>Archive:</strong> magnetic tape may be suitable because it offers very high capacity and low cost for long-term sequential backups.</p>
-            <p><strong>Evaluation:</strong> fastest is not always most suitable; cost, capacity, write patterns and durability also matter.</p>
+            <p><strong>Comparison:</strong> RAM = current volatile working memory; ROM = non-volatile startup instructions; cache = very fast frequently used data; virtual memory = slower secondary storage used when RAM is full.</p>
+            <p><strong>Virtual memory:</strong> it involves moving data between RAM and secondary storage, which is slower than accessing RAM directly.</p>
+            <p><strong>ROM startup:</strong> ROM retains boot instructions when power is off, so the system can start before the operating system is loaded.</p>
+            <p><strong>Misconception:</strong> "RAM keeps files after power off" is wrong because RAM is volatile.</p>
           </div>
         </section>
       </div>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -1,65 +1,93 @@
 const classifierMap = {
-  image: {
-    topic: "Image file size",
-    reason: "Use width x height x colour depth to get bits, then convert to bytes and larger units.",
+  flat: {
+    topic: "Relational design / normalisation",
+    reason: "Repeated address data suggests duplication. Separate student details from booking records to reduce update errors.",
   },
-  sound: {
-    topic: "Sound file size",
-    reason: "Use sample rate x sampling resolution x duration. Include channels only if stated.",
+  pk: {
+    topic: "Primary key",
+    reason: "The clue 'uniquely identifies a record' points to a primary key.",
   },
-  rle: {
-    topic: "Run-length encoding",
-    reason: "Count consecutive repeated characters and store each run as a count plus value.",
+  join: {
+    topic: "SQL join",
+    reason: "StudentName and DueDate are stored in Student and Loan, so the two related tables must be joined using their matching StudentID fields.",
   },
-  packet: {
-    topic: "Packet switching",
-    reason: "Large data is split into packets so packets can be routed, checked and reassembled.",
+  group: {
+    topic: "Aggregate and GROUP BY",
+    reason: "The phrase 'in each category' asks for one summary per group.",
   },
-  dns: {
-    topic: "DNS",
-    reason: "DNS translates a domain name into the IP address needed to locate a server.",
+  backup: {
+    topic: "Backup and recovery",
+    reason: "Restoring records after failure needs a separate backup copy and a tested restore process.",
+  },
+};
+
+const books = [
+  { BookID: "B01", Title: "Networks", Category: "Computing", Copies: 4 },
+  { BookID: "B02", Title: "Poems", Category: "Literature", Copies: 7 },
+  { BookID: "B03", Title: "Databases", Category: "Computing", Copies: 3 },
+  { BookID: "B04", Title: "Drama", Category: "Literature", Copies: 2 },
+];
+
+const queryMap = {
+  q1: {
+    fields: ["Title"],
+    rows: books.filter((row) => row.Category === "Computing").map((row) => ({ Title: row.Title })),
+  },
+  q2: {
+    fields: ["Title", "Copies"],
+    rows: [...books]
+      .sort((a, b) => b.Copies - a.Copies)
+      .map((row) => ({ Title: row.Title, Copies: row.Copies })),
+  },
+  q3: {
+    fields: ["Category", "COUNT(*)"],
+    rows: groupByCategory((rows) => rows.length, "COUNT(*)"),
+  },
+  q4: {
+    fields: ["Category", "SUM(Copies)"],
+    rows: groupByCategory((rows) => rows.reduce((total, row) => total + row.Copies, 0), "SUM(Copies)"),
   },
 };
 
 const examples = {
-  image: {
-    title: "Example 1: Image file size",
-    problem: "Calculate the size of a 640 x 480 bitmap image using 24-bit colour depth.",
+  design: {
+    title: "Example 1: Design answer with marks annotated",
+    problem: "A flat file repeats student details for every library loan. Explain one problem and one relational design improvement.",
     steps: [
-      "Pixels = 640 x 480 = 307200 pixels.",
-      "Bits = 307200 x 24 = 7372800 bits.",
-      "Bytes = 7372800 / 8 = 921600 bytes.",
-      "KiB = 921600 / 1024 = 900 KiB. Include the unit for the final mark.",
+      "Problem mark: repeated student details cause data duplication.",
+      "Consequence mark: if an address changes, every repeated copy must be updated or the data becomes inconsistent.",
+      "Improvement mark: store Student details once in a Student table with StudentID as primary key.",
+      "Relationship mark: store StudentID as a foreign key in Loan to link each loan to the correct student.",
     ],
   },
-  sound: {
-    title: "Example 2: Sound file size",
-    problem: "Calculate the size of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution.",
+  sql: {
+    title: "Example 2: SQL topic recognition",
+    problem: "Write a query to show the number of books in each category.",
     steps: [
-      "Samples = 44100 x 30 = 1323000 samples.",
-      "Bits = 1323000 x 16 = 21168000 bits.",
-      "Bytes = 21168000 / 8 = 2646000 bytes.",
-      "MiB = 2646000 / 1024 / 1024 = about 2.52 MiB.",
+      "Topic clue: 'number of books' means COUNT; 'each category' means GROUP BY.",
+      "Output the group label and the aggregate: SELECT Category, COUNT(*).",
+      "Use the correct table: FROM Book.",
+      "Complete answer: SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
     ],
   },
-  packet: {
-    title: "Example 3: Packet switching explanation",
-    problem: "Explain why a large file is divided into packets before transmission.",
+  protect: {
+    title: "Example 3: Protection vocabulary",
+    problem: "A typed email should be checked against a paper form.",
     steps: [
-      "Data is split into smaller packets.",
-      "Each packet contains address/control information and a sequence number.",
-      "Packets may travel by different routes through the network.",
-      "At the destination, packets are checked and reassembled in the correct order.",
+      "This is not validation because the problem is not only format.",
+      "It is verification because typed data is compared with a source.",
+      "Method: proofreading against the form.",
+      "Limitation: this checks copying accuracy, not whether the form itself was correct.",
     ],
   },
-  dns: {
-    title: "Example 4: DNS explanation",
-    problem: "Explain the role of DNS when a user enters a URL.",
+  improve: {
+    title: "Example 4: Improve a weak answer",
+    problem: "Weak answer: 'Backups are good because they make the database safe.'",
     steps: [
-      "The user enters a human-readable domain name.",
-      "DNS looks up the matching IP address.",
-      "The browser uses the IP address to contact the correct server.",
-      "This avoids users needing to remember numeric IP addresses.",
+      "Name the mechanism: a backup is a separate copy of database data.",
+      "Give the consequence: it allows recovery after data loss, corruption or hardware failure.",
+      "Add quality detail: backups should be regular, stored separately and tested.",
+      "Improved answer: regular off-site backups allow the school to restore recent records after failure, reducing data loss.",
     ],
   },
 };
@@ -67,82 +95,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "How many bits are in one byte?",
-    accepted: ["8", "eight"],
-    answer: "8",
+    prompt: "Which key uniquely identifies each record in a table?",
+    accepted: ["primary key", "primary"],
+    answer: "Primary key",
   },
   {
     id: "p2",
-    prompt: "What is the formula for bitmap image size in bits?",
-    accepted: ["width x height x colour depth", "width * height * colour depth", "width x height x color depth", "pixels x colour depth"],
-    answer: "width x height x colour depth",
+    prompt: "Which key links to a primary key in another table?",
+    accepted: ["foreign key", "foreign"],
+    answer: "Foreign key",
   },
   {
     id: "p3",
-    prompt: "What is the formula for mono sound size in bits?",
-    accepted: ["sample rate x sampling resolution x duration", "sample rate * sampling resolution * duration", "sample rate x duration x sampling resolution"],
-    answer: "sample rate x sampling resolution x duration",
+    prompt: "Which design process reduces duplication by separating repeated data into related tables?",
+    accepted: ["normalisation", "normalization"],
+    answer: "Normalisation",
   },
   {
     id: "p4",
-    prompt: "Which character set can represent many more characters than ASCII?",
-    accepted: ["unicode"],
-    answer: "Unicode",
+    prompt: "Which SQL clause filters records?",
+    accepted: ["where"],
+    answer: "WHERE",
   },
   {
     id: "p5",
-    prompt: "Which compression type allows the original file to be reconstructed exactly?",
-    accepted: ["lossless"],
-    answer: "Lossless",
+    prompt: "Which SQL clause sorts result rows?",
+    accepted: ["order by"],
+    answer: "ORDER BY",
   },
   {
     id: "p6",
-    prompt: "Which address identifies a device on a network at the network layer?",
-    accepted: ["ip address", "ip"],
-    answer: "IP address",
+    prompt: "Which aggregate function counts records?",
+    accepted: ["count", "count()"],
+    answer: "COUNT",
   },
   {
     id: "p7",
-    prompt: "Which address is usually associated with a network interface card?",
-    accepted: ["mac address", "mac"],
-    answer: "MAC address",
+    prompt: "Which SQL clause is needed for a summary per category?",
+    accepted: ["group by"],
+    answer: "GROUP BY",
   },
   {
     id: "p8",
-    prompt: "Which service translates domain names to IP addresses?",
-    accepted: ["dns", "domain name system"],
-    answer: "DNS",
+    prompt: "Which SQL command changes existing records?",
+    accepted: ["update"],
+    answer: "UPDATE",
   },
   {
     id: "p9",
-    prompt: "Which term means data transfer capacity per second?",
-    accepted: ["bandwidth"],
-    answer: "Bandwidth",
+    prompt: "Which term checks data follows rules before being accepted?",
+    accepted: ["validation"],
+    answer: "Validation",
   },
   {
     id: "p10",
-    prompt: "Which term means delay before data begins or continues to transfer?",
-    accepted: ["latency"],
-    answer: "Latency",
+    prompt: "Which term checks entered data against the original source?",
+    accepted: ["verification"],
+    answer: "Verification",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "640 x 480 x 24 = 7372800 bytes.",
-    fix: "That product gives bits, not bytes. Divide by 8 to convert bits to bytes.",
+    wrong: "A student's name is a good primary key because every student has a name.",
+    fix: "A primary key must uniquely and reliably identify a record. Names may be duplicated or change; use a StudentID.",
   },
   {
-    wrong: "Lossy compression is best when the file must be restored exactly.",
-    fix: "Use lossless compression when the original data must be reconstructed exactly.",
+    wrong: "SELECT * is fine because it shows everything the examiner could want.",
+    fix: "Exam questions usually specify required fields. SELECT only those fields unless all fields are requested.",
   },
   {
-    wrong: "DNS makes a website secure.",
-    fix: "DNS translates domain names to IP addresses. HTTPS/TLS is used for encrypted secure communication.",
+    wrong: "GROUP BY sorts the output into alphabetical order.",
+    fix: "GROUP BY forms groups for aggregate summaries. ORDER BY sorts output rows.",
   },
   {
-    wrong: "Higher bandwidth always means lower latency.",
-    fix: "Bandwidth is capacity per second. Latency is delay. They affect performance differently.",
+    wrong: "Validation proves that data is correct.",
+    fix: "Validation checks data follows rules. It cannot prove that a plausible value is true.",
   },
 ];
 
@@ -155,95 +183,99 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Calculate the file size in KiB of a 640 by 480 bitmap image using 24-bit colour depth. Demonstrate your working.",
-    answer: "640 x 480 x 24 = 7372800 bits. 7372800 / 8 = 921600 bytes. 921600 / 1024 = 900 KiB.",
+    marks: "4 marks",
+    prompt: "A school stores library loans in one flat file. StudentName, TutorGroup and BookTitle are repeated for every loan. Explain two advantages of using a relational database design instead.",
+    answer: "Student data can be stored once in a Student table and linked to Loan using StudentID, reducing duplication. If a tutor group changes, only one Student record needs updating, reducing inconsistency. Book data can also be stored once in a Book table and linked using BookID, so each loan references the correct book without repeating all book details.",
     marking: [
-      { mark: "M1", text: "multiplies width by height to find number of pixels" },
-      { mark: "M1", text: "multiplies by colour depth 24" },
-      { mark: "A1", text: "7372800 bits" },
-      { mark: "M1", text: "divides by 8 and 1024 to convert to KiB" },
-      { mark: "A1", text: "900 KiB with correct unit" },
+      { mark: "B1", text: "identifies reduced data duplication" },
+      { mark: "B1", text: "applies duplication to repeated student/book details" },
+      { mark: "B1", text: "identifies reduced update inconsistency / easier update" },
+      { mark: "B1", text: "explains single update reduces conflicting copies" },
     ],
     strict: [
-      "Do not award final A1 if answer is labelled bytes instead of KiB.",
-      "Allow colour spelling as color.",
-      "Do not require metadata to be included unless specified.",
-      "Allow FT from the candidate's earlier bit total only when the subsequent conversions to bytes and KiB are correct.",
+      "Do not award full credit for vague 'more efficient' without cause and consequence.",
+      "Allow reduced storage if linked to less repeated data.",
+      "Do not accept 'primary keys stop duplication' unless table separation or relationship is explained.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Calculate the file size in MiB of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution. Demonstrate your working.",
-    answer: "44100 x 30 x 16 = 21168000 bits. 21168000 / 8 = 2646000 bytes. 2646000 / 1024 / 1024 = about 2.52 MiB.",
+    marks: "4 marks",
+    prompt: "The Book table has fields BookID, Title, Category and Copies. Write an SQL query to output each Category and the total number of Copies in that category.",
+    answer: "SELECT Category, SUM(Copies) FROM Book GROUP BY Category;",
     marking: [
-      { mark: "M1", text: "multiplies sample rate by duration" },
-      { mark: "M1", text: "multiplies by sampling resolution 16" },
-      { mark: "A1", text: "21168000 bits" },
-      { mark: "M1", text: "converts bits to bytes and then MiB" },
-      { mark: "A1", text: "approximately 2.52 MiB with correct unit" },
+      { mark: "B1", text: "SELECT Category" },
+      { mark: "B1", text: "uses SUM(Copies)" },
+      { mark: "B1", text: "FROM Book" },
+      { mark: "M1", text: "GROUP BY Category" },
     ],
     strict: [
-      "Do not multiply by 2 channels because mono is stated.",
-      "Allow 2.5 MiB if rounding is clear.",
-      "Do not accept MB if binary conversion to MiB was requested.",
+      "Do not accept COUNT(Copies) for total copies.",
+      "Do not award GROUP BY mark for ORDER BY Category.",
+      "Allow field order SUM(Copies), Category unless output order is specified.",
     ],
   },
   {
     title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain why Unicode can represent more characters than ASCII.",
-    answer: "Unicode uses more bits / more possible code points than ASCII, so it can assign codes to many more characters. This allows characters from many languages and symbols to be represented, whereas ASCII has a much smaller character set.",
+    marks: "6 marks",
+    prompt: "Student(StudentID, StudentName) and Loan(LoanID, StudentID, DueDate, Returned) are related tables. Write SQL to output StudentName and DueDate for current loans.",
+    answer: "SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE;",
     marking: [
-      { mark: "B1", text: "states characters are represented by character codes / bit patterns" },
-      { mark: "B1", text: "states Unicode has more possible codes / uses more bits than ASCII" },
-      { mark: "B1", text: "links more codes to more representable characters" },
-      { mark: "B1", text: "applies to many languages/symbols or wider character set" },
+      { mark: "B1", text: "SELECT includes Student.StudentName" },
+      { mark: "B1", text: "SELECT includes Loan.DueDate" },
+      { mark: "B1", text: "FROM Student" },
+      { mark: "B1", text: "INNER JOIN Loan" },
+      { mark: "M1", text: "ON Student.StudentID = Loan.StudentID" },
+      { mark: "A1", text: "WHERE Loan.Returned = FALSE" },
     ],
     strict: [
-      "Do not accept 'Unicode is newer' without explaining code capacity.",
-      "Allow reference to ASCII being 7-bit or limited if accurate.",
-      "Do not require exact bit lengths for Unicode.",
+      "Do not accept a three-table or comma-style join.",
+      "Require explicit INNER JOIN ... ON between the two named tables.",
+      "Do not require semicolon.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Explain how packet switching can be used to send a file across a network.",
-    answer: "The file is divided into packets. Each packet contains data plus address/control information such as sequence number. Packets may be routed independently through the network. At the destination, packets are checked and reassembled in the correct order; missing or corrupted packets can be requested again.",
+    prompt: "Explain the purposes of a DBMS developer interface and query processor, and describe how they support a database application.",
+    answer: "The developer interface provides tools or an interface for a developer to define forms, reports, queries or application access to the database. The query processor parses and validates a query, chooses how to execute it and obtains the required data. Together they let application code submit database operations and receive results through controlled DBMS services.",
     marking: [
-      { mark: "B1", text: "file/data is split into packets" },
-      { mark: "B1", text: "packets include address/control/sequence information" },
-      { mark: "B1", text: "packets are routed independently / may take different routes" },
-      { mark: "B1", text: "destination reassembles packets in order" },
-      { mark: "B1", text: "mentions error checking/retransmission or handling missing/corrupt packets" },
+      { mark: "B1", text: "developer interface provides development tools/access" },
+      { mark: "B1", text: "valid developer task such as forms/reports/queries" },
+      { mark: "B1", text: "query processor parses/validates a query" },
+      { mark: "B1", text: "query processor plans/executes and retrieves results" },
+      { mark: "B1", text: "links both components to application database access" },
     ],
     strict: [
-      "Do not award routing mark for only saying 'sent through wires'.",
-      "Allow header/trailer wording for control information.",
-      "Do not require all packets to take different routes.",
+      "Do not describe the query processor as the human who writes the query.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
-    prompt: "A student says: 'Bandwidth and latency both mean the network is fast.' Explain why this is weak, using a video call as an example.",
-    answer: "Bandwidth is the amount of data that can be transferred per second, while latency is the delay before data is received. A video call needs enough bandwidth to carry audio and video data without reducing quality. It also needs low latency so speech and video arrive with little delay. The answer is weak because the two terms affect performance in different ways.",
+    marks: "4 marks",
+    prompt: "A student writes: SELECT * FROM Book GROUP BY Category; for the request 'output each Category and the number of books in that category'. Identify and correct the errors.",
+    answer: "SELECT * outputs all fields instead of only Category and the count. GROUP BY Category groups the records but an aggregate function is missing. A corrected query is SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
     marking: [
-      { mark: "B1", text: "defines bandwidth as data transfer capacity/rate" },
-      { mark: "B1", text: "defines latency as delay" },
-      { mark: "B1", text: "applies bandwidth to amount/quality of audio-video data" },
-      { mark: "B1", text: "applies latency to delay in conversation/video" },
-      { mark: "B1", text: "explicitly contrasts the two terms" },
+      { mark: "B1", text: "identifies SELECT * outputs too many / wrong fields" },
+      { mark: "B1", text: "identifies missing COUNT aggregate" },
+      { mark: "B1", text: "corrects output to Category and COUNT(*) or another valid count aggregate" },
+      { mark: "B1", text: "complete corrected query retains FROM Book and GROUP BY Category" },
     ],
     strict: [
-      "Do not accept 'bandwidth is speed' as a full definition without data per second.",
-      "Do not accept latency as amount of data.",
-      "Allow lag as explanation of latency if delay is clear.",
+      "Do not award count mark for SUM(Copies), because the request asks for number of books.",
+      "Allow COUNT(BookID) if BookID is a non-null key field.",
+      "Do not require a semicolon.",
     ],
   },
 ];
+
+function groupByCategory(calculate, outputField) {
+  const categories = [...new Set(books.map((row) => row.Category))].sort();
+  return categories.map((category) => {
+    const rows = books.filter((row) => row.Category === category);
+    return { Category: category, [outputField]: calculate(rows) };
+  });
+}
 
 function normalise(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";");
@@ -256,10 +288,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    image: "Topic: bitmap image size. First move: width x height x colour depth.",
-    packet: "Topic: packet switching. First move: explain splitting, addressing and reassembly.",
-    unicode: "Topic: character sets. First move: link bit patterns/code points to characters.",
-    dns: "Topic: DNS. First move: domain name is translated into an IP address.",
+    normalise: "Topic: normalisation / relational design. Repeated data suggests a table design problem.",
+    sql: "Topic: SQL SELECT with WHERE. The clue is a filtered output request.",
+    verify: "Topic: verification. The typed value is compared with a source.",
+    key: "Topic: primary key. The clue is unique identification of a record.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -279,31 +311,23 @@ function setupClassifier() {
   });
 }
 
-function setupCalculator() {
-  const result = document.querySelector("#calcResult");
-  document.querySelector("#calcBtn").addEventListener("click", () => {
-    const type = document.querySelector("#calcType").value;
-    const a = Number(document.querySelector("#valueA").value);
-    const b = Number(document.querySelector("#valueB").value);
-    const c = Number(document.querySelector("#valueC").value);
-    if (![a, b, c].every((value) => Number.isFinite(value) && value > 0)) {
-      result.textContent = "Enter positive numeric values before calculating.";
-      return;
-    }
-    const bits = a * b * c;
-    const bytes = bits / 8;
-    const kib = bytes / 1024;
-    const mib = kib / 1024;
-    const label = type === "image" ? "width x height x colour depth" : "sample rate x duration x sampling resolution";
-    result.innerHTML = `
-      <div class="calc-card">
-        <strong>${type === "image" ? "Image" : "Sound"} method:</strong> ${label}<br />
-        Bits: ${bits.toLocaleString()}<br />
-        Bytes: ${bytes.toLocaleString(undefined, { maximumFractionDigits: 2 })}<br />
-        KiB: ${kib.toLocaleString(undefined, { maximumFractionDigits: 2 })}<br />
-        MiB: ${mib.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-      </div>
-    `;
+function renderResultTable(fields, rows) {
+  if (rows.length === 0) {
+    return "<p>No matching rows.</p>";
+  }
+  const head = `<div class="table-row table-head">${fields.map((field) => `<div>${field}</div>`).join("")}</div>`;
+  const body = rows
+    .map((row) => `<div class="table-row">${fields.map((field) => `<div>${row[field]}</div>`).join("")}</div>`)
+    .join("");
+  return `<div class="mini-result" style="--cols:${fields.length}">${head}${body}</div>`;
+}
+
+function setupQueryTracer() {
+  const input = document.querySelector("#queryInput");
+  const result = document.querySelector("#queryResult");
+  document.querySelector("#queryBtn").addEventListener("click", () => {
+    const query = queryMap[input.value];
+    result.innerHTML = renderResultTable(query.fields, query.rows);
   });
 }
 
@@ -327,7 +351,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("image");
+  renderExample("design");
 }
 
 function renderPractice() {
@@ -427,7 +451,7 @@ function init() {
   setupPrint();
   setupHook();
   setupClassifier();
-  setupCalculator();
+  setupQueryTracer();
   setupExamples();
   renderPractice();
   renderMistakes();

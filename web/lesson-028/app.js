@@ -1,74 +1,74 @@
 const scenarios = {
-  checkout: {
-    result: "Barcode reader or QR scanner",
-    method: "It captures encoded product IDs quickly and reduces errors compared with typing long product numbers repeatedly.",
+  barcode: {
+    result: "Input device: barcode reader",
+    method: "A barcode reader captures book IDs quickly and accurately, reducing typing errors at the library desk.",
+  },
+  weather: {
+    result: "Input device: sensor",
+    method: "A temperature sensor automatically captures data from the environment without a person typing readings.",
+  },
+  attendance: {
+    result: "Secondary storage",
+    method: "Attendance records must remain after power is off, so they need non-volatile secondary storage such as an SSD or database storage.",
   },
   exam: {
-    result: "OMR scanner",
-    method: "It detects the positions of shaded marks on multiple-choice answer sheets, so many scripts can be processed quickly.",
+    result: "Output device: printer",
+    method: "A printer produces a physical copy of candidate timetables that can be handed out or filed.",
   },
-  passport: {
-    result: "OCR scanner",
-    method: "It recognises printed characters from the passport text, reducing the need for manual typing.",
+  driver: {
+    result: "Output device: screen",
+    method: "A screen gives visual feedback such as maps and turn-by-turn directions while the driver is working.",
   },
-  greenhouse: {
-    result: "Temperature or humidity sensor",
-    method: "A sensor captures physical measurements automatically at regular intervals without a person entering readings.",
-  },
-  warehouse: {
-    result: "RFID reader",
-    method: "RFID can read tag data without direct line of sight, which is useful when stock is boxed or moving through a gate.",
-  },
-  podcast: {
-    result: "Microphone",
-    method: "A microphone captures sound waves as input so they can be digitised and stored or edited.",
+  editing: {
+    result: "Primary memory: RAM",
+    method: "The image data is in current use while editing, so RAM temporarily holds it for fast access by the processor.",
   },
 };
 
 const examples = {
-  checkout: {
-    title: "Example 1: supermarket checkout",
-    problem: "Recommend an input method for entering product IDs at a busy checkout.",
+  attendance: {
+    title: "Example 1: school attendance system",
+    problem: "Choose suitable hardware for recording students entering a school gate.",
     steps: [
-      "Weak answer: use a barcode reader because it is easy.",
-      "Better answer: use a barcode reader because it captures the product code directly from the label.",
-      "Exam-ready answer: use a barcode reader because it captures product IDs faster than typing and reduces transcription errors during repeated checkout scanning.",
-      "Boundary: a keyboard may still be needed for exceptions, but it is not the best main method for high-volume product IDs.",
+      "Input: an ID card reader or barcode/QR scanner can capture student IDs quickly and accurately.",
+      "Processing: the processor checks the ID against stored records and updates attendance.",
+      "Storage: non-volatile storage is needed because attendance records must persist after power is off.",
+      "Output: a screen or speaker gives immediate feedback such as accepted or not recognised.",
     ],
   },
-  exam: {
-    title: "Example 2: multiple-choice exam sheets",
-    problem: "An exam board must process thousands of shaded answer sheets.",
+  weather: {
+    title: "Example 2: automatic weather station",
+    problem: "A weather station records temperature every minute without a human operator.",
     steps: [
-      "OMR is suitable because it detects the position of shaded marks on a prepared form.",
-      "It is faster than manual marking and can reduce human data-entry errors.",
-      "The form must be designed for OMR, and badly marked boxes may still need checking.",
-      "Do not confuse OMR with OCR: printed candidate names would need OCR or manual entry, not OMR.",
+      "Input: a temperature sensor captures readings from the environment automatically.",
+      "Processing: the processor compares readings with rules or prepares data for storage/transmission.",
+      "Storage: readings are saved so trends can be analysed later.",
+      "Output: a display or network message can show current conditions or warnings.",
     ],
   },
-  greenhouse: {
-    title: "Example 3: greenhouse monitoring",
-    problem: "A greenhouse must record temperature and humidity every minute.",
+  library: {
+    title: "Example 3: library checkout desk",
+    problem: "A librarian needs to issue books quickly during a busy lunch break.",
     steps: [
-      "A temperature sensor and humidity sensor capture measurements automatically.",
-      "This is suitable because readings are needed frequently and at regular intervals.",
-      "Automatic capture reduces the need for a person to repeatedly type readings.",
-      "The sensor may need calibration so the captured data is reliable.",
+      "Input: barcode reader is suitable because it is faster and less error-prone than typing book IDs.",
+      "Memory: current transaction data may be held temporarily while the checkout is processed.",
+      "Storage: the database is updated so the loan record persists.",
+      "Output: a screen or receipt confirms the loan to the librarian and borrower.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which device is best for capturing product codes at a checkout?", accepted: ["barcode reader", "barcode scanner", "qr scanner", "qr reader"], answer: "Barcode reader / QR scanner" },
-  { id: "p2", prompt: "Which input device detects shaded marks on a form?", accepted: ["omr", "omr scanner", "optical mark recognition"], answer: "OMR scanner" },
-  { id: "p3", prompt: "Which input method recognises printed characters?", accepted: ["ocr", "ocr scanner", "optical character recognition"], answer: "OCR" },
-  { id: "p4", prompt: "Which input device captures physical measurements such as temperature?", accepted: ["sensor", "temperature sensor"], answer: "Sensor" },
-  { id: "p5", prompt: "Manual keyboard entry is usually faster or slower than scanning repeated product codes?", accepted: ["slower"], answer: "Slower" },
-  { id: "p6", prompt: "RFID usually needs direct line of sight. Answer true or false.", accepted: ["false", "no"], answer: "False" },
-  { id: "p7", prompt: "Name one advantage of automatic data capture.", accepted: ["faster", "speed", "fewer errors", "less error", "reduces errors", "accuracy", "consistent"], answer: "Faster / fewer errors / more consistent" },
-  { id: "p8", prompt: "Which device captures spoken audio?", accepted: ["microphone", "mic"], answer: "Microphone" },
-  { id: "p9", prompt: "Which device captures an image or video scene?", accepted: ["camera", "digital camera", "webcam"], answer: "Camera / webcam" },
-  { id: "p10", prompt: "In an exam answer, should you only name the device, or also justify it?", accepted: ["justify", "also justify it", "justify it", "give a reason"], answer: "Also justify it" },
+  { id: "p1", prompt: "Which category captures data entering a system?", accepted: ["input", "input device"], answer: "Input" },
+  { id: "p2", prompt: "Which category presents results from a system?", accepted: ["output", "output device"], answer: "Output" },
+  { id: "p3", prompt: "Which component executes instructions?", accepted: ["processor", "cpu", "central processing unit"], answer: "Processor / CPU" },
+  { id: "p4", prompt: "Which primary memory is volatile and used for current tasks?", accepted: ["ram"], answer: "RAM" },
+  { id: "p5", prompt: "Which type of storage keeps files after power is off?", accepted: ["secondary storage", "storage", "non volatile storage", "non-volatile storage"], answer: "Secondary storage" },
+  { id: "p6", prompt: "A camera in a ticket scanner is input or output?", accepted: ["input"], answer: "Input" },
+  { id: "p7", prompt: "A monitor showing results is input or output?", accepted: ["output"], answer: "Output" },
+  { id: "p8", prompt: "Does the CPU normally store user files long term? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p9", prompt: "Name one characteristic used to justify hardware suitability.", accepted: ["speed", "capacity", "durability", "cost", "accuracy", "portability", "reliability"], answer: "Speed / capacity / durability / cost / accuracy / portability / reliability" },
+  { id: "p10", prompt: "Which memory stores startup instructions and is non-volatile?", accepted: ["rom"], answer: "ROM" },
 ];
 
 
@@ -81,89 +81,89 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A supermarket currently uses keyboard entry for product codes. Explain why a barcode reader may be more suitable.",
-    answer: "A barcode reader captures the product code directly from the barcode. It is faster than typing codes manually and reduces transcription errors. This is suitable at a checkout because many products are scanned repeatedly and customers should be served quickly.",
+    prompt: "Describe the role of input, processor and output in a computer system.",
+    answer: "Input devices capture data and enter it into the system. The processor executes instructions and processes the data. Output devices present the results to a user or cause an action in the physical world.",
     marking: [
-      { mark: "B1", text: "identifies barcode reader as an input device / captures barcode data" },
-      { mark: "B1", text: "states speed advantage over manual keyboard entry" },
-      { mark: "B1", text: "states reduced typing/transcription errors" },
-      { mark: "B1", text: "links advantage to checkout/high-volume/repeated product entry context" },
+      { mark: "B1", text: "input devices capture/enter data into the system" },
+      { mark: "B1", text: "processor executes instructions/processes data" },
+      { mark: "B1", text: "output devices present results/give feedback" },
+      { mark: "B1", text: "clear relationship or example showing data moves through the system" },
     ],
     strict: [
-      "Do not award a mark for vague 'it is easier' unless a cause is given.",
-      "Do not accept that the barcode reader stores the product data by itself.",
-      "Allow QR scanner if the answer describes encoded product data and the scenario supports QR codes.",
+      "Do not award full credit for only listing device names.",
+      "Do not say the processor stores all files.",
+      "Allow actuator as output if described as causing a physical action.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
-    prompt: "Compare OCR and OMR as input methods.",
-    answer: "OCR recognises printed or handwritten characters from a document and converts them into editable digital text. OMR detects the position of shaded marks or ticks on a prepared form. OCR is suitable for printed documents such as passports or forms. OMR is suitable for multiple-choice answer sheets where the possible mark positions are known.",
+    marks: "6 marks",
+    prompt: "A school attendance system scans student ID cards and records entry. Suggest one input device, one storage choice and one output device, justifying each.",
+    answer: "An ID card reader or barcode/QR scanner is suitable as an input device because it captures student IDs quickly and accurately. Non-volatile secondary storage such as an SSD/database is suitable because attendance records must be kept after power is off. A screen or speaker is suitable as output because it gives immediate feedback such as accepted or not recognised.",
     marking: [
-      { mark: "B1", text: "OCR recognises characters/text" },
-      { mark: "B1", text: "OMR detects shaded marks/ticks/positions" },
-      { mark: "B1", text: "OCR example linked to printed document/form/passport" },
-      { mark: "B1", text: "OMR example linked to prepared form/multiple-choice sheet" },
-      { mark: "B1", text: "contrasts OCR output as recognised character data with OMR output as detected predefined mark positions" },
+      { mark: "B1", text: "suitable input device such as card reader/barcode/QR scanner" },
+      { mark: "B1", text: "input justification linked to quick/accurate capture of student ID" },
+      { mark: "B1", text: "suitable secondary/non-volatile storage choice" },
+      { mark: "B1", text: "storage justification linked to persistent attendance records" },
+      { mark: "B1", text: "suitable output device such as screen or speaker" },
+      { mark: "B1", text: "output justification linked to immediate accepted/not-recognised feedback" },
     ],
     strict: [
-      "Do not accept 'OCR scans pictures' without character recognition.",
-      "Do not accept 'OMR reads words' because OMR detects marks.",
-      "Allow handwritten text for OCR only if recognition of characters is clearly stated.",
+      "Do not award justification marks for vague 'it is better'.",
+      "Do not award storage justification if it says RAM is used for long-term records.",
+      "Allow database as storage context if persistence is clear.",
     ],
   },
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "A greenhouse records temperature every minute. Suggest an input device and justify your choice.",
-    answer: "A temperature sensor is suitable because it automatically captures temperature readings from the environment. This avoids a person manually reading and typing the value every minute. It provides regular data for monitoring or control, although the sensor may need calibration for reliability.",
+    prompt: "Compare primary memory and secondary storage.",
+    answer: "Primary memory holds data and instructions currently in use by the processor. RAM is volatile, so contents are lost when power is off. Secondary storage stores files and data long term and is non-volatile, so data remains after power is off.",
     marking: [
-      { mark: "B1", text: "names temperature sensor or suitable environmental sensor" },
-      { mark: "B1", text: "captures temperature/physical measurement from environment" },
-      { mark: "B1", text: "automatic/frequent/regular capture advantage" },
-      { mark: "B1", text: "links reason to greenhouse monitoring/control context" },
+      { mark: "B1", text: "primary memory holds data/instructions currently in use" },
+      { mark: "B1", text: "RAM/primary memory can be volatile/lost without power" },
+      { mark: "B1", text: "secondary storage holds files/data long term" },
+      { mark: "B1", text: "secondary storage is non-volatile/persistent" },
     ],
     strict: [
-      "Do not award full credit for only naming 'sensor'.",
-      "Do not accept keyboard as the best device unless justified for manual occasional readings.",
-      "Allow humidity sensor if the response adapts the measured data to greenhouse monitoring.",
+      "Do not accept only 'both store data'.",
+      "Do not require detailed cache/virtual memory discussion in this overview lesson.",
+      "Allow examples such as RAM and SSD if roles are clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain two advantages of automatic data capture compared with manual keyboard entry.",
-    answer: "Automatic data capture can be faster because a device scans or senses the data directly. It can reduce transcription errors because a person does not have to retype long codes or repeated readings. It is also suitable for high-volume or continuous data collection.",
+    prompt: "A librarian could type book IDs manually or use a barcode reader. Explain why a barcode reader may be more suitable.",
+    answer: "A barcode reader is an input device that can capture book IDs automatically. It is faster than typing many IDs manually and reduces human typing errors. This is suitable for a busy library desk where books must be issued quickly and accurately.",
     marking: [
-      { mark: "B1", text: "advantage: faster data entry/capture" },
-      { mark: "B1", text: "explanation linked to scanning/sensing/direct capture" },
-      { mark: "B1", text: "advantage: fewer transcription/typing errors" },
-      { mark: "B1", text: "explanation linked to reduced manual re-entry/repeated input" },
+      { mark: "B1", text: "identifies barcode reader as input device" },
+      { mark: "B1", text: "captures book ID/barcode automatically" },
+      { mark: "B1", text: "advantage such as faster or fewer errors" },
+      { mark: "B1", text: "links advantage to library/busy checkout scenario" },
     ],
     strict: [
-      "Do not accept two advantages with no explanation if the command word is explain.",
-      "Do not accept 'more accurate' twice as separate points unless different causes are given.",
-      "Allow reliability/consistency for one advantage if linked to a valid cause.",
+      "Do not accept only 'barcode reader is easier' without reason.",
+      "Do not award output-device credit for barcode reader.",
+      "Allow QR scanner if scenario is adapted to QR codes.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "Describe the principal operation of a microphone, a capacitive touchscreen and a virtual reality headset.",
-    answer: "A microphone uses a diaphragm and transducer to convert sound vibrations into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in capacitance or electric field and calculates touch coordinates. A VR headset presents separate images to the two eyes and uses motion/orientation sensors so the processor can update the displayed viewpoint when the user's head moves.",
+    marks: "5 marks",
+    prompt: "Complete a trace table for how data flows through a simple weather station that records temperature and shows a warning if it is too hot.",
+    answer: "A temperature sensor captures the temperature as input. The processor compares the reading with a stored threshold or rule. The current reading and rule may be held in memory while being processed. The reading may be saved in secondary storage for later analysis. If the reading is too high, an output device such as a display, speaker or actuator presents a warning or triggers an action.",
     marking: [
-      { mark: "B1", text: "microphone diaphragm/transducer converts sound vibration to an analogue electrical signal" },
-      { mark: "B1", text: "ADC samples/converts the microphone signal into digital values" },
-      { mark: "B1", text: "capacitive touchscreen detects a change in capacitance/electric field" },
-      { mark: "B1", text: "touch position/coordinates are calculated" },
-      { mark: "B1", text: "VR headset presents separate views to the two eyes" },
-      { mark: "B1", text: "motion/orientation sensors cause the displayed viewpoint to be updated" },
+      { mark: "B1", text: "sensor captures temperature as input" },
+      { mark: "B1", text: "processor compares/processes reading with threshold/rule" },
+      { mark: "B1", text: "memory used for current reading/rule/instructions" },
+      { mark: "B1", text: "secondary storage saves readings for later/persistent use" },
+      { mark: "B1", text: "output device gives warning or actuator action" },
     ],
     strict: [
-      "Do not accept that a microphone directly produces stored binary without analogue-to-digital conversion.",
-      "Do not award a generic pressure-only explanation for a capacitive touchscreen.",
-      "Do not describe VR as only a screen; head tracking and viewpoint update are required.",
+      "Do not require detailed control-loop terminology here.",
+      "Do not award storage mark for RAM if answer says long-term records are only in RAM.",
+      "Allow display, buzzer, speaker or actuator as output if role is clear.",
     ],
   },
 ];
@@ -179,10 +179,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    barcode: "Barcode reader: captures the encoded product ID so the system can look up price and stock data.",
-    scale: "Sensor: captures mass/weight as input. The computer can then calculate a price for loose items.",
-    keyboard: "Keyboard: captures typed data such as a discount code or exception entry. Useful, but not ideal for every product code.",
-    rfid: "RFID/card reader: captures customer or tag data from a card/tag, often without direct contact.",
+    camera: "Input: the camera captures data from the QR code so the system can process it.",
+    processor: "Processor: it executes instructions to check the ticket data against a rule or record.",
+    storage: "Storage: the attendance record must persist after the scan, so non-volatile storage is needed.",
+    screen: "Output: the screen presents feedback to the user.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -224,7 +224,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("checkout");
+  renderExample("attendance");
 }
 
 function setupAnswerToggles(scope = document) {
@@ -272,7 +272,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, ask: what data is captured, and why is this device suitable?`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For each wrong answer, ask whether the component captures, processes, stores or presents data.`;
   });
 }
 

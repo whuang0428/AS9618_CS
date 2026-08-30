@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { loadAllQuestions } from "./ms-review-utils.mjs";
+import { unitForLesson } from "./course-structure.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const output = path.join(root, "scripts", "question-ao-contract.json");
@@ -22,7 +23,8 @@ const startsWith = (prompt, commands) => new RegExp(`^(?:${commands.join("|")})\
 
 function classify(question) {
   const prompt = normalisePrompt(question.prompt);
-  const paper = question.lesson <= 97 ? "Paper 1" : "Paper 2";
+  const paper = unitForLesson(question.lesson)?.paper;
+  if (!paper) throw new Error(`${question.id}: no paper mapping for Lesson ${question.lesson}`);
 
   if (paper === "Paper 1") {
     const applied = startsWith(prompt, [

@@ -1,88 +1,65 @@
 const classifierMap = {
-  fde: {
-    topic: "Fetch-decode-execute cycle",
-    reason: "Use PC, MAR, MDR and CIR to explain how the instruction is fetched before decoding.",
+  image: {
+    topic: "Image file size",
+    reason: "Use width x height x colour depth to get bits, then convert to bytes and larger units.",
   },
-  cache: {
-    topic: "Processor performance / cache",
-    reason: "Cache stores frequently used data/instructions close to the CPU, reducing slower RAM access.",
+  sound: {
+    topic: "Sound file size",
+    reason: "Use sample rate x sampling resolution x duration. Include channels only if stated.",
   },
-  ssd: {
-    topic: "Hardware selection / secondary storage",
-    reason: "Justify SSD using characteristics such as no moving parts, durability, speed and portability.",
+  rle: {
+    topic: "Run-length encoding",
+    reason: "Count consecutive repeated characters and store each run as a count plus value.",
   },
-  interrupt: {
-    topic: "Interrupt handling",
-    reason: "Explain interrupt signal, priority checking, saving state, ISR execution and restoring state.",
+  packet: {
+    topic: "Packet switching",
+    reason: "Large data is split into packets so packets can be routed, checked and reassembled.",
   },
-  logic: {
-    topic: "Logic gates / truth table",
-    reason: "XOR outputs 1 only when the two inputs are different.",
-  },
-};
-
-const fdeMap = {
-  pcToMar: {
-    title: "PC to MAR",
-    detail: "The Program Counter stores the address of the next instruction. This address is copied to the Memory Address Register so memory can be accessed.",
-  },
-  memoryToMdr: {
-    title: "Memory to MDR",
-    detail: "The instruction at the address in MAR is fetched from memory and placed in the Memory Data Register.",
-  },
-  mdrToCir: {
-    title: "MDR to CIR",
-    detail: "The fetched instruction is copied from MDR to the Current Instruction Register so it can be decoded and executed.",
-  },
-  incrementPc: {
-    title: "Increment PC",
-    detail: "The Program Counter is incremented so it points to the next instruction, unless a branch or interrupt changes the sequence.",
-  },
-  decode: {
-    title: "Decode",
-    detail: "The Control Unit decodes the opcode in the CIR and identifies the operation, addressing mode and operands needed.",
+  dns: {
+    topic: "DNS",
+    reason: "DNS translates a domain name into the IP address needed to locate a server.",
   },
 };
 
 const examples = {
-  hardware: {
-    title: "Example 1: Hardware choice",
-    problem: "Justify using an SSD rather than a hard disk in a student tablet.",
+  image: {
+    title: "Example 1: Image file size",
+    problem: "Calculate the size of a 640 x 480 bitmap image using 24-bit colour depth.",
     steps: [
-      "Name the characteristic: SSD has no moving parts.",
-      "Link to scenario: a tablet may be carried and knocked, so SSD is more resistant to shock.",
-      "Add performance: SSD has faster access times than magnetic hard disk.",
-      "Avoid vague wording: 'better' earns little unless it is linked to durability, speed, weight or power use.",
+      "Pixels = 640 x 480 = 307200 pixels.",
+      "Bits = 307200 x 24 = 7372800 bits.",
+      "Bytes = 7372800 / 8 = 921600 bytes.",
+      "KiB = 921600 / 1024 = 900 KiB. Include the unit for the final mark.",
     ],
   },
-  fde: {
-    title: "Example 2: Fetch step marks",
-    problem: "Describe how the processor fetches the next instruction.",
+  sound: {
+    title: "Example 2: Sound file size",
+    problem: "Calculate the size of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution.",
     steps: [
-      "PC stores the address of the next instruction.",
-      "Address is copied to MAR.",
-      "Instruction is fetched from memory into MDR.",
-      "Instruction is copied into CIR and the PC is incremented.",
+      "Samples = 44100 x 30 = 1323000 samples.",
+      "Bits = 1323000 x 16 = 21168000 bits.",
+      "Bytes = 21168000 / 8 = 2646000 bytes.",
+      "MiB = 2646000 / 1024 / 1024 = about 2.52 MiB.",
     ],
   },
-  interrupt: {
-    title: "Example 3: Interrupt handling",
-    problem: "Explain how a processor responds when a printer sends an interrupt.",
+  packet: {
+    title: "Example 3: Packet switching explanation",
+    problem: "Explain why a large file is divided into packets before transmission.",
     steps: [
-      "The interrupt signal indicates the device needs attention.",
-      "The processor completes the current instruction and checks interrupt priority.",
-      "The current state is saved so the program can resume later.",
-      "The relevant interrupt service routine is executed, then the saved state is restored.",
+      "Data is split into smaller packets.",
+      "Each packet contains address/control information and a sequence number.",
+      "Packets may travel by different routes through the network.",
+      "At the destination, packets are checked and reassembled in the correct order.",
     ],
   },
-  performance: {
-    title: "Example 4: Performance factor answer",
-    problem: "Explain how cache size can affect processor performance.",
+  dns: {
+    title: "Example 4: DNS explanation",
+    problem: "Explain the role of DNS when a user enters a URL.",
     steps: [
-      "Cache stores frequently used data and instructions.",
-      "Cache is faster to access than RAM.",
-      "A larger cache can reduce the number of slower main memory accesses.",
-      "Performance may improve if the program reuses data/instructions that fit in cache.",
+      "The user enters a human-readable domain name.",
+      "DNS looks up the matching IP address.",
+      "The browser uses the IP address to contact the correct server.",
+      "This avoids users needing to remember numeric IP addresses.",
     ],
   },
 };
@@ -90,82 +67,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "Which register stores the address of the next instruction?",
-    accepted: ["pc", "program counter"],
-    answer: "PC / Program Counter",
+    prompt: "How many bits are in one byte?",
+    accepted: ["8", "eight"],
+    answer: "8",
   },
   {
     id: "p2",
-    prompt: "Which register stores the address currently being accessed in memory?",
-    accepted: ["mar", "memory address register"],
-    answer: "MAR / Memory Address Register",
+    prompt: "What is the formula for bitmap image size in bits?",
+    accepted: ["width x height x colour depth", "width * height * colour depth", "width x height x color depth", "pixels x colour depth"],
+    answer: "width x height x colour depth",
   },
   {
     id: "p3",
-    prompt: "Which register stores data or an instruction being transferred to/from memory?",
-    accepted: ["mdr", "memory data register", "memory buffer register", "mbr"],
-    answer: "MDR / Memory Data Register",
+    prompt: "What is the formula for mono sound size in bits?",
+    accepted: ["sample rate x sampling resolution x duration", "sample rate * sampling resolution * duration", "sample rate x duration x sampling resolution"],
+    answer: "sample rate x sampling resolution x duration",
   },
   {
     id: "p4",
-    prompt: "Which register stores the current instruction?",
-    accepted: ["cir", "current instruction register"],
-    answer: "CIR / Current Instruction Register",
+    prompt: "Which character set can represent many more characters than ASCII?",
+    accepted: ["unicode"],
+    answer: "Unicode",
   },
   {
     id: "p5",
-    prompt: "Which CPU component performs arithmetic and logic operations?",
-    accepted: ["alu", "arithmetic logic unit", "arithmetic and logic unit"],
-    answer: "ALU",
+    prompt: "Which compression type allows the original file to be reconstructed exactly?",
+    accepted: ["lossless"],
+    answer: "Lossless",
   },
   {
     id: "p6",
-    prompt: "Which CPU component coordinates and controls processor operations?",
-    accepted: ["cu", "control unit"],
-    answer: "CU / Control Unit",
+    prompt: "Which address identifies a device on a network at the network layer?",
+    accepted: ["ip address", "ip"],
+    answer: "IP address",
   },
   {
     id: "p7",
-    prompt: "Which bus carries memory addresses?",
-    accepted: ["address bus"],
-    answer: "Address bus",
+    prompt: "Which address is usually associated with a network interface card?",
+    accepted: ["mac address", "mac"],
+    answer: "MAC address",
   },
   {
     id: "p8",
-    prompt: "Which logic gate outputs 1 when inputs are different?",
-    accepted: ["xor", "exclusive or", "exclusive-or"],
-    answer: "XOR",
+    prompt: "Which service translates domain names to IP addresses?",
+    accepted: ["dns", "domain name system"],
+    answer: "DNS",
   },
   {
     id: "p9",
-    prompt: "Which type of storage has no moving parts and is common in tablets?",
-    accepted: ["ssd", "solid state", "solid-state storage", "solid state drive"],
-    answer: "SSD / solid-state storage",
+    prompt: "Which term means data transfer capacity per second?",
+    accepted: ["bandwidth"],
+    answer: "Bandwidth",
   },
   {
     id: "p10",
-    prompt: "What routine handles a specific interrupt?",
-    accepted: ["isr", "interrupt service routine"],
-    answer: "ISR / Interrupt Service Routine",
+    prompt: "Which term means delay before data begins or continues to transfer?",
+    accepted: ["latency"],
+    answer: "Latency",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "The PC stores the current instruction.",
-    fix: "The PC stores the address of the next instruction. The CIR stores the current instruction.",
+    wrong: "640 x 480 x 24 = 7372800 bytes.",
+    fix: "That product gives bits, not bytes. Divide by 8 to convert bits to bytes.",
   },
   {
-    wrong: "The data bus carries addresses.",
-    fix: "The address bus carries addresses. The data bus carries data/instructions between components.",
+    wrong: "Lossy compression is best when the file must be restored exactly.",
+    fix: "Use lossless compression when the original data must be reconstructed exactly.",
   },
   {
-    wrong: "More cores always make every program faster.",
-    fix: "More cores help when tasks can run in parallel. A single-threaded program may not benefit much.",
+    wrong: "DNS makes a website secure.",
+    fix: "DNS translates domain names to IP addresses. HTTPS/TLS is used for encrypted secure communication.",
   },
   {
-    wrong: "An interrupt stops the processor permanently.",
-    fix: "An interrupt pauses normal processing, saves state, runs an ISR, then returns to the interrupted program if appropriate.",
+    wrong: "Higher bandwidth always means lower latency.",
+    fix: "Bandwidth is capacity per second. Latency is delay. They affect performance differently.",
   },
 ];
 
@@ -179,92 +156,91 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Describe the fetch part of the fetch-decode-execute cycle, naming the registers used.",
-    answer: "The Program Counter stores the address of the next instruction. This address is copied to the MAR. The instruction is fetched from memory and placed in the MDR. The instruction is copied to the CIR. The PC is incremented to point to the next instruction.",
+    prompt: "Calculate the file size in KiB of a 640 by 480 bitmap image using 24-bit colour depth. Demonstrate your working.",
+    answer: "640 x 480 x 24 = 7372800 bits. 7372800 / 8 = 921600 bytes. 921600 / 1024 = 900 KiB.",
     marking: [
-      { mark: "B1", text: "PC stores address of next instruction" },
-      { mark: "B1", text: "address copied to MAR" },
-      { mark: "B1", text: "instruction/data fetched from memory into MDR" },
-      { mark: "B1", text: "instruction copied to CIR" },
-      { mark: "B1", text: "PC incremented / updated for next instruction" },
+      { mark: "M1", text: "multiplies width by height to find number of pixels" },
+      { mark: "M1", text: "multiplies by colour depth 24" },
+      { mark: "A1", text: "7372800 bits" },
+      { mark: "M1", text: "divides by 8 and 1024 to convert to KiB" },
+      { mark: "A1", text: "900 KiB with correct unit" },
     ],
     strict: [
-      "Do not accept PC stores the current instruction.",
-      "Allow MDR described as memory buffer register if used consistently.",
-      "Do not require decode or execute details for this question.",
+      "Do not award final A1 if answer is labelled bytes instead of KiB.",
+      "Allow colour spelling as color.",
+      "Do not require metadata to be included unless specified.",
+      "Allow FT from the candidate's earlier bit total only when the subsequent conversions to bytes and KiB are correct.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
-    prompt: "A tablet computer needs secondary storage. Justify why solid-state storage may be suitable.",
-    answer: "Solid-state storage has no moving parts, so it is more resistant to damage if the tablet is moved or knocked. It has fast access times, so apps and files can load quickly. It is also lightweight and uses less power than a magnetic hard disk, which suits a portable battery-powered device.",
+    marks: "5 marks",
+    prompt: "Calculate the file size in MiB of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution. Demonstrate your working.",
+    answer: "44100 x 30 x 16 = 21168000 bits. 21168000 / 8 = 2646000 bytes. 2646000 / 1024 / 1024 = about 2.52 MiB.",
     marking: [
-      { mark: "B1", text: "states SSD has no moving parts / is solid-state" },
-      { mark: "B1", text: "links this to durability/being moved/knocked in a tablet" },
-      { mark: "B1", text: "states fast access / low power / lightweight" },
-      { mark: "B1", text: "links second characteristic to portable tablet use" },
+      { mark: "M1", text: "multiplies sample rate by duration" },
+      { mark: "M1", text: "multiplies by sampling resolution 16" },
+      { mark: "A1", text: "21168000 bits" },
+      { mark: "M1", text: "converts bits to bytes and then MiB" },
+      { mark: "A1", text: "approximately 2.52 MiB with correct unit" },
     ],
     strict: [
-      "Do not award full credit for saying only 'it is better'.",
-      "Allow shock-resistant, durable, fast access or low power as valid characteristics.",
-      "Do not require comparison with magnetic disk if suitability is clear.",
+      "Do not multiply by 2 channels because mono is stated.",
+      "Allow 2.5 MiB if rounding is clear.",
+      "Do not accept MB if binary conversion to MiB was requested.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
-    prompt: "Explain how an interrupt from an input/output device is handled by the processor.",
-    answer: "The device sends an interrupt signal to request attention. The processor completes the current instruction, checks the interrupt and may compare priority. It saves the current program state, then runs the appropriate interrupt service routine. After the ISR, the saved state is restored and the original program can continue.",
+    marks: "4 marks",
+    prompt: "Explain why Unicode can represent more characters than ASCII.",
+    answer: "Unicode uses more bits / more possible code points than ASCII, so it can assign codes to many more characters. This allows characters from many languages and symbols to be represented, whereas ASCII has a much smaller character set.",
     marking: [
-      { mark: "B1", text: "device sends interrupt signal / request for attention" },
-      { mark: "B1", text: "processor completes current instruction / checks interrupt" },
-      { mark: "B1", text: "current state/context is saved" },
-      { mark: "B1", text: "appropriate ISR is executed" },
-      { mark: "B1", text: "state restored / original program resumes" },
+      { mark: "B1", text: "states characters are represented by character codes / bit patterns" },
+      { mark: "B1", text: "states Unicode has more possible codes / uses more bits than ASCII" },
+      { mark: "B1", text: "links more codes to more representable characters" },
+      { mark: "B1", text: "applies to many languages/symbols or wider character set" },
     ],
     strict: [
-      "Do not accept an interrupt as an error message only.",
-      "Allow priority checking as part of checking the interrupt.",
-      "Do not require exact stack terminology.",
+      "Do not accept 'Unicode is newer' without explaining code capacity.",
+      "Allow reference to ASCII being 7-bit or limited if accurate.",
+      "Do not require exact bit lengths for Unicode.",
     ],
   },
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "Complete and explain the truth table for A XOR B.",
-    answer: "XOR outputs 1 when the inputs are different. The outputs for A B = 00, 01, 10, 11 are 0, 1, 1, 0.",
+    prompt: "Explain how packet switching can be used to send a file across a network.",
+    answer: "The file is divided into packets. Each packet contains data plus address/control information such as sequence number. Packets may be routed independently through the network. At the destination, packets are checked and reassembled in the correct order; missing or corrupted packets can be requested again.",
     marking: [
-      { mark: "B1", text: "states XOR outputs 1 when inputs are different" },
-      { mark: "B1", text: "output for 00 is 0" },
-      { mark: "B1", text: "output for 01 is 1" },
-      { mark: "B1", text: "output for 10 is 1" },
-      { mark: "B1", text: "output for 11 is 0" },
+      { mark: "B1", text: "file/data is split into packets" },
+      { mark: "B1", text: "packets include address/control/sequence information" },
+      { mark: "B1", text: "packets are routed independently / may take different routes" },
+      { mark: "B1", text: "destination reassembles packets in order" },
+      { mark: "B1", text: "mentions error checking/retransmission or handling missing/corrupt packets" },
     ],
     strict: [
-      "Do not accept OR truth table because 11 would be 1 for OR.",
-      "Allow row order variations if inputs and outputs are clearly matched.",
-      "Do not require Boolean expression unless asked.",
-      "Individual row marks are independent.",
+      "Do not award routing mark for only saying 'sent through wires'.",
+      "Allow header/trailer wording for control information.",
+      "Do not require all packets to take different routes.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A student says: 'Increasing clock speed, cache size and number of cores all make the CPU faster in the same way.' Explain why this is weak.",
-    answer: "Clock speed affects how many cycles per second the CPU can perform. Cache size affects how often frequently used data/instructions can be accessed from fast cache rather than slower RAM. More cores can allow parallel processing, but only if the workload can be split between cores. The statement is weak because these factors affect performance in different ways and do not improve every program equally.",
+    marks: "5 marks",
+    prompt: "A student says: 'Bandwidth and latency both mean the network is fast.' Explain why this is weak, using a video call as an example.",
+    answer: "Bandwidth is the amount of data that can be transferred per second, while latency is the delay before data is received. A video call needs enough bandwidth to carry audio and video data without reducing quality. It also needs low latency so speech and video arrive with little delay. The answer is weak because the two terms affect performance in different ways.",
     marking: [
-      { mark: "B1", text: "defines clock speed as cycles/instructions per second idea" },
-      { mark: "B1", text: "explains cache stores frequently used data/instructions close to CPU" },
-      { mark: "B1", text: "links cache to reduced access to slower RAM" },
-      { mark: "B1", text: "explains cores can process tasks in parallel" },
-      { mark: "B1", text: "states parallel benefit depends on workload/software" },
-      { mark: "B1", text: "explicitly states the three factors affect performance differently" },
+      { mark: "B1", text: "defines bandwidth as data transfer capacity/rate" },
+      { mark: "B1", text: "defines latency as delay" },
+      { mark: "B1", text: "applies bandwidth to amount/quality of audio-video data" },
+      { mark: "B1", text: "applies latency to delay in conversation/video" },
+      { mark: "B1", text: "explicitly contrasts the two terms" },
     ],
     strict: [
-      "Do not accept 'more cores always faster' without workload condition.",
-      "Do not accept cache as the same as RAM.",
-      "Allow clock speed described as fetch-decode-execute cycles per second.",
+      "Do not accept 'bandwidth is speed' as a full definition without data per second.",
+      "Do not accept latency as amount of data.",
+      "Allow lag as explanation of latency if delay is clear.",
     ],
   },
 ];
@@ -280,10 +256,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    cache: "Topic: cache/performance. First phrase: frequently used data/instructions can be accessed faster than RAM.",
-    interrupt: "Topic: interrupt handling. First phrase: device requests processor attention and an ISR handles it.",
-    ssd: "Topic: hardware selection. First phrase: no moving parts, fast access and durable for portable use.",
-    xor: "Topic: logic gates. First phrase: XOR outputs 1 when inputs are different.",
+    image: "Topic: bitmap image size. First move: width x height x colour depth.",
+    packet: "Topic: packet switching. First move: explain splitting, addressing and reassembly.",
+    unicode: "Topic: character sets. First move: link bit patterns/code points to characters.",
+    dns: "Topic: DNS. First move: domain name is translated into an IP address.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -303,12 +279,31 @@ function setupClassifier() {
   });
 }
 
-function setupFdeTracer() {
-  const input = document.querySelector("#fdeInput");
-  const result = document.querySelector("#fdeResult");
-  document.querySelector("#fdeBtn").addEventListener("click", () => {
-    const item = fdeMap[input.value];
-    result.innerHTML = `<div class="calc-card"><strong>${item.title}</strong><br />${item.detail}</div>`;
+function setupCalculator() {
+  const result = document.querySelector("#calcResult");
+  document.querySelector("#calcBtn").addEventListener("click", () => {
+    const type = document.querySelector("#calcType").value;
+    const a = Number(document.querySelector("#valueA").value);
+    const b = Number(document.querySelector("#valueB").value);
+    const c = Number(document.querySelector("#valueC").value);
+    if (![a, b, c].every((value) => Number.isFinite(value) && value > 0)) {
+      result.textContent = "Enter positive numeric values before calculating.";
+      return;
+    }
+    const bits = a * b * c;
+    const bytes = bits / 8;
+    const kib = bytes / 1024;
+    const mib = kib / 1024;
+    const label = type === "image" ? "width x height x colour depth" : "sample rate x duration x sampling resolution";
+    result.innerHTML = `
+      <div class="calc-card">
+        <strong>${type === "image" ? "Image" : "Sound"} method:</strong> ${label}<br />
+        Bits: ${bits.toLocaleString()}<br />
+        Bytes: ${bytes.toLocaleString(undefined, { maximumFractionDigits: 2 })}<br />
+        KiB: ${kib.toLocaleString(undefined, { maximumFractionDigits: 2 })}<br />
+        MiB: ${mib.toLocaleString(undefined, { maximumFractionDigits: 2 })}
+      </div>
+    `;
   });
 }
 
@@ -332,7 +327,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("hardware");
+  renderExample("image");
 }
 
 function renderPractice() {
@@ -432,7 +427,7 @@ function init() {
   setupPrint();
   setupHook();
   setupClassifier();
-  setupFdeTracer();
+  setupCalculator();
   setupExamples();
   renderPractice();
   renderMistakes();

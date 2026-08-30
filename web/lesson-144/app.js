@@ -1,116 +1,101 @@
-const artefacts = {
-  steps: {
-    artefact: "Algorithm design",
-    reason: "The task is about processing logic: compare the requested room, date and time against existing booking records.",
-    warning: "Do not write final Java code as the whole design answer. Cambridge-style pseudocode or a flowchart is better for the design stage.",
+const rewrites = {
+  easy: {
+    vague: "Make it easy to use",
+    requirement: "Teachers should be able to create a room booking by selecting date, period and room from labelled controls.",
+    criterion: "At least 8 out of 10 teachers can create a booking without help in under 2 minutes after one demonstration.",
+    test: "Ask 10 teachers to create a sample booking and record completion time and help needed.",
   },
-  field: {
-    artefact: "Data dictionary",
-    reason: "The task defines a data item, its type and its format. That belongs in the data dictionary.",
-    warning: "Do not confuse a data dictionary with sample records stored in a table.",
+  fast: {
+    vague: "Make it fast",
+    requirement: "The system should search room availability for a selected day and period.",
+    criterion: "Search results should be displayed within 2 seconds for at least 95 out of 100 searches.",
+    test: "Run 100 searches using representative data and record response times.",
   },
-  screen: {
-    artefact: "Interface design",
-    reason: "The task is about what the user sees and uses: controls, navigation, prompts and feedback.",
-    warning: "Do not reduce interface design to colours and logos.",
-  },
-  need: {
-    artefact: "Requirements specification",
-    reason: "The task states what users need the system to do. It comes before detailed design.",
-    warning: "Do not jump to implementation before the requirement is clear.",
+  safe: {
+    vague: "Make it secure",
+    requirement: "Only authenticated staff should be able to create or cancel bookings.",
+    criterion: "Unauthenticated users and student accounts cannot create, edit or cancel bookings.",
+    test: "Attempt booking actions using guest, student and staff accounts and record access results.",
   },
 };
 
-const fieldDefinitions = {
-  RoomID: {
-    type: "STRING",
-    size: "6 characters",
-    format: "one letter followed by digits, such as R102A",
-    validation: "not blank; must exist in the room file",
-    purpose: "uniquely identifies the room being booked",
+const criteriaChecks = {
+  vague: {
+    verdict: "Weak",
+    reason: "Reliable is important, but this sentence does not say what reliability means or how it will be measured.",
+    improve: "Example: the system is available for 99% of school hours during a one-month trial.",
   },
-  BookingDate: {
-    type: "DATE",
-    size: "fixed date value",
-    format: "YYYY-MM-DD",
-    validation: "valid school day; not in the past",
-    purpose: "stores the date of the booking",
+  measurable: {
+    verdict: "Strong",
+    reason: "It gives a measurable target: booking request processed in under 3 seconds.",
+    improve: "Add test conditions, such as typical school-day load, for an even stronger criterion.",
   },
-  StartTime: {
-    type: "TIME",
-    size: "fixed time value",
-    format: "HH:MM using school period start times",
-    validation: "must match a valid period start time",
-    purpose: "stores when the booking begins",
-  },
-  StaffID: {
-    type: "STRING",
-    size: "8 characters",
-    format: "staff code",
-    validation: "must match an authorised staff record",
-    purpose: "identifies the member of staff making the booking",
+  opinion: {
+    verdict: "Weak",
+    reason: "Beautiful is subjective, so different users may judge it differently.",
+    improve: "Example: 8 out of 10 trial users rate the interface at least 4 out of 5 for clarity.",
   },
 };
 
 const examples = {
-  algorithm: {
-    title: "Example 1: Algorithm design for clash checking",
+  booking: {
+    title: "Example 1: Room booking system",
     rows: [
-      ["Requirement", "Reject a booking if the room is already booked at the requested time."],
-      ["Design artefact", "Pseudocode or flowchart showing how each existing booking is checked."],
-      ["Useful detail", "Compare RoomID, BookingDate, StartTime and EndTime; output a clash message if overlap is found."],
-      ["Exam point", "Credit is for clear processing logic, not for saying 'the program checks it'."],
+      ["Vague request", "Teachers should book rooms easily."],
+      ["Functional requirement", "Teachers can create, edit and cancel room bookings."],
+      ["Success criterion", "A teacher can create a booking in under 2 minutes without help."],
+      ["Acceptance test", "Give teachers a sample booking task and record time and help needed."],
     ],
   },
-  dictionary: {
-    title: "Example 2: Data dictionary entry",
+  library: {
+    title: "Example 2: Library search system",
     rows: [
-      ["Data item", "NumberOfStudents"],
-      ["Type and range", "INTEGER, 1 to room capacity"],
-      ["Validation", "must be numeric and cannot exceed the selected room capacity"],
-      ["Exam point", "A data dictionary should define field rules, not list many example values."],
+      ["Vague request", "Search should be good."],
+      ["Functional requirement", "Users can search books by title, author or ISBN."],
+      ["Success criterion", "At least 95% of searches return matching results within 2 seconds."],
+      ["Acceptance test", "Run a set of known title, author and ISBN searches and record result accuracy and time."],
     ],
   },
-  interface: {
-    title: "Example 3: Interface design for booking form",
+  security: {
+    title: "Example 3: Staff access control",
     rows: [
-      ["Screen", "Create room booking"],
-      ["Controls", "date picker, period drop-down, room list, submit button"],
-      ["Feedback", "availability result and validation messages are shown before saving"],
-      ["Exam point", "Interface design includes navigation and user feedback, not just visual style."],
+      ["Vague request", "The system should be secure."],
+      ["Functional requirement", "Only staff accounts can create or cancel bookings."],
+      ["Success criterion", "Guest and student accounts are denied booking actions in all test cases."],
+      ["Acceptance test", "Attempt create and cancel actions using guest, student and staff accounts."],
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which lifecycle stage produces detailed algorithm, data and interface designs?", accepted: ["design"], answer: "Design." },
-  { id: "p2", prompt: "Which document lists data item names, data types, sizes, formats and validation rules?", accepted: ["data dictionary", "dictionary"], answer: "Data dictionary." },
-  { id: "p3", prompt: "Which design artefact is best for processing steps such as checking for a clash?", accepted: ["algorithm", "pseudocode", "flowchart"], answer: "Algorithm design, such as pseudocode or a flowchart." },
-  { id: "p4", prompt: "Which design artefact shows screen layout, input controls, navigation and messages?", accepted: ["interface", "interface design", "screen design"], answer: "Interface design." },
-  { id: "p5", prompt: "What data type is most suitable for BookingDate?", accepted: ["date"], answer: "DATE." },
-  { id: "p6", prompt: "Why include validation rules in a data dictionary?", accepted: ["consistent", "testing", "validation", "rules", "errors"], answer: "So validation is implemented consistently and can be tested against clear rules." },
-  { id: "p7", prompt: "Is 'make it look nice' enough for interface design? yes or no", accepted: ["no"], answer: "No. Interface design should include controls, navigation, prompts, validation and feedback." },
-  { id: "p8", prompt: "Is final Java code the same as an algorithm design document? yes or no", accepted: ["no"], answer: "No. Java may implement the design, but the design should describe the logic before coding." },
-  { id: "p9", prompt: "The requirement is 'reject double bookings'. Which design artefact should describe the clash-checking logic?", accepted: ["algorithm", "pseudocode", "flowchart"], answer: "An algorithm design, commonly pseudocode or a flowchart." },
-  { id: "p10", prompt: "Give one reason design documentation helps maintenance.", accepted: ["understand", "rules", "structure", "future", "changes", "maintain"], answer: "It helps future developers understand existing data rules, algorithms and interface behaviour before changing the system." },
+  { id: "p1", prompt: "Which lifecycle stage produces the requirements specification?", accepted: ["analysis"], answer: "Analysis." },
+  { id: "p2", prompt: "What type of requirement describes what the system must do?", accepted: ["functional"], answer: "Functional requirement." },
+  { id: "p3", prompt: "What type of requirement describes qualities such as performance or usability?", accepted: ["non-functional", "non functional"], answer: "Non-functional requirement." },
+  { id: "p4", prompt: "What term describes a measurable target used to judge whether the system is successful?", accepted: ["success criterion", "success criteria"], answer: "Success criterion / success criteria." },
+  { id: "p5", prompt: "What test checks whether a requirement has been met before acceptance?", accepted: ["acceptance"], answer: "Acceptance test." },
+  { id: "p6", prompt: "Is 'easy to use' measurable enough by itself? yes or no", accepted: ["no"], answer: "No. It needs a measurable criterion." },
+  { id: "p7", prompt: "Name one method for gathering requirements.", accepted: ["interview", "questionnaire", "observation", "document"], answer: "Interview, questionnaire, observation, or document analysis." },
+  { id: "p8", prompt: "Who provides user needs and constraints during analysis?", accepted: ["stakeholder", "user", "client"], answer: "Stakeholders / users / client." },
+  { id: "p9", prompt: "Give one measurable word or phrase often useful in success criteria.", accepted: ["seconds", "minutes", "percent", "%", "at least", "within", "under"], answer: "Examples: within 2 seconds, under 2 minutes, at least 95%." },
+  { id: "p10", prompt: "Why do success criteria help evaluation?", accepted: ["measure", "compare", "evidence", "judge"], answer: "They provide measurable evidence to compare against objectives." },
 ];
 
 const mistakes = [
   {
-    wrong: "A student says a data dictionary is a list of all stored records.",
-    fix: "Correction: a data dictionary defines metadata about data items, such as name, type, size, format, validation and purpose. It is not the table contents.",
+    wrong: "A student writes: 'The system should be good and modern.'",
+    fix: "Replace opinion words with measurable criteria, such as task completion time, error rate, uptime or user rating with a threshold.",
   },
   {
-    wrong: "A student writes only 'use blue buttons and a logo' for interface design.",
-    fix: "Correction: include controls, labels, navigation, validation messages, error feedback and how users complete the task. Appearance alone is too thin for strong marks.",
+    wrong: "A student lists a design feature before saying what users need.",
+    fix: "Start with analysis: identify stakeholders, tasks, data and constraints before design choices.",
   },
   {
-    wrong: "A student skips algorithm design because 'the developer can just code it'.",
-    fix: "Correction: algorithm design records the processing logic before coding, which reduces ambiguity and supports testing. Java implementation is not a substitute for the design explanation.",
+    wrong: "A student says a success criterion is the same as a functional requirement.",
+    fix: "A functional requirement states what the system must do; a success criterion states how success will be judged.",
   },
   {
-    wrong: "A student mixes requirements and design by saying 'the requirement is to use a drop-down list'.",
-    fix: "Correction: the requirement might be 'select a room quickly and accurately'. The drop-down list is a design choice that helps satisfy that requirement.",
+    wrong: "A student gives an acceptance test but no expected result.",
+    fix: "Add expected result, such as access denied, booking created, or results displayed within 2 seconds.",
   },
 ];
 
@@ -124,96 +109,95 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A login system has Main calling ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid). Describe the structure chart, derive equivalent pseudocode headers and calls, and state how a state-transition diagram would document LoggedOut, LoggedIn and Locked.",
-    answer: "The structure chart places Main above ReadCredentials and CheckLogin, with labelled parameter arrows for UserID, Password and IsValid. Equivalent pseudocode has complete subprogram headers declaring those parameters and Main calls each subprogram with matching arguments. The state-transition diagram has a marked start at LoggedOut, a valid-login transition to LoggedIn, logout back to LoggedOut and three invalid attempts from LoggedOut to Locked.",
+    prompt: "A school wants a room booking system. Give two functional requirements and one non-functional requirement.",
+    answer: "Functional requirements: teachers can create, edit and cancel room bookings; the system rejects a booking if the room is already booked at that time. Non-functional requirement: search results for room availability should display within 2 seconds.",
     marking: [
-      { mark: "B1", text: "places Main above the two called modules in a hierarchy" },
-      { mark: "B1", text: "labels the data/control parameters passed between modules" },
-      { mark: "M1", text: "derives complete headers with corresponding parameters" },
-      { mark: "A1", text: "derives matching calls from Main with arguments" },
-      { mark: "B1", text: "marks LoggedOut as the start and gives valid-login/logout transitions" },
-      { mark: "B1", text: "gives the three-invalid-attempts transition from LoggedOut to Locked" },
+      { mark: "B1", text: "gives a valid functional requirement linked to booking actions" },
+      { mark: "B1", text: "functional requirement is specific to the school booking context" },
+      { mark: "B1", text: "gives a second distinct functional requirement" },
+      { mark: "B1", text: "second requirement includes a clear rule/action/output" },
+      { mark: "B1", text: "gives a valid non-functional requirement such as performance/usability/security" },
+      { mark: "B1", text: "non-functional requirement is measurable or scenario-specific" },
     ],
     strict: [
-      "Do not accept a flowchart in place of the module hierarchy and parameter arrows.",
-      "Headers and calls must use matching parameter/argument roles.",
-      "The state-transition diagram must show persistent states and directed event-labelled transitions.",
+      "Do not award full marks for vague statements such as 'easy' or 'fast' without detail.",
+      "Allow equivalent booking-system requirements.",
+      "Do not accept implementation details alone as requirements.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Develop suitable data dictionary details for RoomID, BookingDate and NumberOfStudents in a room booking system.",
-    answer: "RoomID: STRING, length 6, must not be blank and must match an existing room record. BookingDate: DATE, format YYYY-MM-DD, must be a valid school day and not in the past. NumberOfStudents: INTEGER, range 1 to room capacity, must be numeric and cannot exceed the selected room capacity.",
+    prompt: "Write a measurable success criterion and an acceptance test for the vague requirement 'the system should be easy to use'.",
+    answer: "Success criterion: at least 8 out of 10 teachers can create a room booking without help in under 2 minutes after one demonstration. Acceptance test: ask 10 teachers to create a sample booking and record whether they complete it, how long it takes and whether help is needed.",
     marking: [
-      { mark: "B1", text: "RoomID has a suitable data type such as STRING" },
-      { mark: "B1", text: "RoomID includes size/format and a valid validation rule" },
-      { mark: "B1", text: "BookingDate has a suitable type such as DATE" },
-      { mark: "B1", text: "BookingDate includes format or date validation" },
-      { mark: "B1", text: "NumberOfStudents has a suitable numeric type such as INTEGER" },
-      { mark: "B1", text: "NumberOfStudents includes valid range or room-capacity validation" },
+      { mark: "B1", text: "recognises the original requirement is vague" },
+      { mark: "M1", text: "success criterion includes a measurable threshold" },
+      { mark: "A1", text: "criterion is linked to usability in the booking context" },
+      { mark: "B1", text: "acceptance test states a user task" },
+      { mark: "M1", text: "acceptance test records evidence such as time/help/completion" },
+      { mark: "A1", text: "test evidence matches the success criterion" },
     ],
     strict: [
-      "Do not award validation marks for vague 'must be correct' without a rule.",
-      "Allow alternative reasonable lengths and formats if consistent.",
-      "Do not accept sample values only; the answer must describe field definitions.",
+      "Do not award measurable threshold mark for 'users like it' alone.",
+      "Allow different valid thresholds if measurable.",
+      "Do not require exactly 10 teachers if sample size and evidence are clear.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
-    prompt: "Explain how design documentation can help during implementation, testing and maintenance.",
-    answer: "During implementation, design documentation tells developers what data fields, processing logic and interface behaviour to build. During testing, expected validation rules and algorithm behaviour can be compared with actual program output. During maintenance, future developers can understand existing rules and assumptions before changing the system, reducing the risk of introducing faults.",
+    marks: "5 marks",
+    prompt: "Explain why requirements analysis is important before design and implementation.",
+    answer: "Requirements analysis identifies users, tasks, data and constraints. Design should be based on these requirements, otherwise the system may be designed for the wrong problem. Implementation may then build features users do not need, causing rework, extra cost or a system that fails evaluation.",
     marking: [
-      { mark: "B1", text: "states design documentation guides implementation" },
-      { mark: "B1", text: "explains implementation using fields, algorithms, interface behaviour or structure" },
-      { mark: "B1", text: "states design documentation helps testing" },
-      { mark: "B1", text: "explains testing by comparing actual behaviour with designed rules or expected results" },
-      { mark: "B1", text: "states design documentation helps maintenance" },
-      { mark: "B1", text: "explains maintenance using future understanding, safer changes or reduced faults" },
+      { mark: "B1", text: "states analysis identifies requirements/user needs/tasks/constraints" },
+      { mark: "B1", text: "explains design should be based on requirements" },
+      { mark: "B1", text: "links weak/missing analysis to wrong implementation/features" },
+      { mark: "B1", text: "explains consequence such as rework, cost, delay or unsuitable system" },
+      { mark: "B1", text: "links to later testing/evaluation or acceptance" },
     ],
     strict: [
-      "Do not award explanation marks for 'it makes it easier' without saying what becomes easier and why.",
-      "Allow references to traceability between requirements, design and tests.",
-      "Do not require all three design artefacts if the lifecycle links are clear.",
+      "Do not award consequence mark for vague 'it will be bad'.",
+      "Allow stakeholders/users/client as source of requirements.",
+      "Do not accept coding first as good practice without justification.",
     ],
   },
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "A requirement says: 'The system must prevent double bookings.' Describe one algorithm design feature and one interface design feature that could help meet this requirement.",
-    answer: "The algorithm design should compare the requested RoomID, date and time interval with existing bookings and set a clash flag or reject the booking if an overlap is found. The interface design could include a Check availability button and display a clear error message before the booking is saved if the room is already booked.",
+    prompt: "State three methods of gathering requirements and give one advantage of each.",
+    answer: "Interviews allow detailed questions and follow-up. Questionnaires can collect answers from many users quickly. Observation shows how users actually carry out current tasks. Document analysis can reveal existing forms, reports and data rules.",
     marking: [
-      { mark: "B1", text: "identifies comparison with existing bookings as part of the algorithm" },
-      { mark: "B1", text: "uses relevant fields such as RoomID, date and time interval" },
-      { mark: "B1", text: "describes a reject/clash outcome from the algorithm" },
-      { mark: "B1", text: "identifies a relevant interface feature such as availability check or disabled submit" },
-      { mark: "B1", text: "describes user feedback such as a clear clash/error message" },
-      { mark: "B1", text: "links interface behaviour to preventing the invalid booking before saving" },
+      { mark: "B1", text: "names interview as a method" },
+      { mark: "B1", text: "gives valid interview advantage" },
+      { mark: "B1", text: "names questionnaire/survey as a method" },
+      { mark: "B1", text: "gives valid questionnaire advantage" },
+      { mark: "B1", text: "names observation or document analysis as a method" },
+      { mark: "B1", text: "gives valid advantage for third method" },
     ],
     strict: [
-      "Do not award full algorithm marks for 'check it' without saying what is checked.",
-      "Allow equivalent overlap logic using start and end times.",
-      "Do not accept colour-only interface features.",
+      "Method and advantage must match.",
+      "Allow workshop, prototype feedback or examining current system if explained.",
+      "Do not award advantage marks for 'it is better' without reason.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A draft design document only says: 'The booking screen should be nice and the program should check bookings.' Identify three weaknesses and suggest an improvement for each.",
-    answer: "Weakness: 'nice' is subjective. Improvement: specify controls, labels, navigation and error messages for the booking screen. Weakness: 'check bookings' is vague. Improvement: write pseudocode or a flowchart that compares RoomID, date and time with existing records. Weakness: there are no data definitions. Improvement: add a data dictionary for fields such as RoomID, BookingDate and StaffID with types and validation rules.",
+    prompt: "A requirement says 'the system should be secure'. Explain why this is weak and improve it with two measurable criteria.",
+    answer: "The requirement is weak because secure is vague and does not say what access or protection is needed. Improved criteria: only authenticated staff can create or cancel bookings; after five failed login attempts the account is locked for 10 minutes; all booking changes are recorded with username and timestamp.",
     marking: [
-      { mark: "B1", text: "identifies subjective or vague interface wording as a weakness" },
-      { mark: "B1", text: "improves it with concrete interface design details" },
-      { mark: "B1", text: "identifies vague processing/checking as a weakness" },
-      { mark: "B1", text: "improves it with algorithm design detail such as pseudocode or flowchart" },
-      { mark: "B1", text: "identifies missing data definitions or validation as a weakness" },
-      { mark: "B1", text: "improves it with data dictionary content" },
+      { mark: "B1", text: "identifies 'secure' as vague/not measurable" },
+      { mark: "B1", text: "explains it does not specify access/protection rule" },
+      { mark: "B1", text: "first improved criterion is measurable/testable" },
+      { mark: "B1", text: "first criterion is security-related" },
+      { mark: "B1", text: "second improved criterion is measurable/testable" },
+      { mark: "B1", text: "second criterion is distinct and security-related" },
     ],
     strict: [
-      "Improvement must match the identified weakness.",
-      "Allow other valid weaknesses, such as missing navigation, missing error messages or no link to requirements.",
-      "Do not award improvement marks for simply saying 'add more detail' without naming the detail.",
+      "Do not award both improved criteria marks for two versions of the same vague wording.",
+      "Allow authentication, authorisation, audit log, backup or lockout criteria if measurable.",
+      "Do not require the exact examples in the answer.",
     ],
   },
 ];
@@ -234,7 +218,7 @@ function normalise(value) {
 function tableMarkup(rows) {
   return `
     <div class="data-table two-col">
-      <div class="table-row table-head"><div>Focus</div><div>Detail</div></div>
+      <div class="table-row table-head"><div>Step</div><div>Answer</div></div>
       ${rows.map((row) => `<div class="table-row"><div>${escapeHtml(row[0])}</div><div>${escapeHtml(row[1])}</div></div>`).join("")}
     </div>
   `;
@@ -247,10 +231,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    requirements: { text: "Close, but requirements usually state the need. Field type and validation belong in the data dictionary.", correct: false },
-    dictionary: { text: "Correct. A data dictionary defines data item type, size, format, validation and purpose.", correct: true },
-    interface: { text: "The interface may show a RoomID input, but it should not be the main source of the field rule.", correct: false },
-    code: { text: "Java may implement the rule later. It is not the best design artefact for defining the field.", correct: false },
+    nice: { text: "Nice is an opinion. The examiner cannot time or measure it.", correct: false },
+    fast: { text: "Correct. It states a user, task and measurable time threshold.", correct: true },
+    modern: { text: "Modern is subjective unless you define measurable evidence.", correct: false },
+    good: { text: "Good is too vague. Good at what, and how will we prove it?", correct: false },
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -263,67 +247,71 @@ function setupHook() {
   });
 }
 
-function setupArtefactChooser() {
-  const select = document.querySelector("#artefactSelect");
-  const output = document.querySelector("#artefactOutput");
+function setupRewriter() {
+  const select = document.querySelector("#rewriteSelect");
+  const output = document.querySelector("#rewriteOutput");
   const render = () => {
-    const item = artefacts[select.value];
+    const item = rewrites[select.value];
     output.innerHTML = `
-      <p><strong>Best artefact:</strong> ${escapeHtml(item.artefact)}</p>
-      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Common error:</strong> ${escapeHtml(item.warning)}</p>
+      <p><strong>Vague request:</strong> ${escapeHtml(item.vague)}</p>
+      <p><strong>Requirement:</strong> ${escapeHtml(item.requirement)}</p>
+      <p><strong>Success criterion:</strong> ${escapeHtml(item.criterion)}</p>
+      <p><strong>Acceptance test:</strong> ${escapeHtml(item.test)}</p>
     `;
   };
-  document.querySelector("#artefactBtn").addEventListener("click", render);
+  document.querySelector("#rewriteBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
 }
 
-function setupFieldChecker() {
-  const select = document.querySelector("#fieldSelect");
-  const output = document.querySelector("#fieldOutput");
+function setupCriteriaTool() {
+  const select = document.querySelector("#criteriaSelect");
+  const output = document.querySelector("#criteriaOutput");
   const render = () => {
-    const item = fieldDefinitions[select.value];
+    const item = criteriaChecks[select.value];
     output.innerHTML = `
-      <p><strong>Type:</strong> ${escapeHtml(item.type)}</p>
-      <p><strong>Size:</strong> ${escapeHtml(item.size)}</p>
-      <p><strong>Format:</strong> ${escapeHtml(item.format)}</p>
-      <p><strong>Validation:</strong> ${escapeHtml(item.validation)}</p>
-      <p><strong>Purpose:</strong> ${escapeHtml(item.purpose)}</p>
+      <p><strong>Verdict:</strong> ${escapeHtml(item.verdict)}</p>
+      <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
+      <p><strong>Improvement:</strong> ${escapeHtml(item.improve)}</p>
     `;
   };
-  document.querySelector("#fieldBtn").addEventListener("click", render);
+  document.querySelector("#criteriaBtn").addEventListener("click", render);
   select.addEventListener("change", render);
   render();
+}
+
+function renderExample(key) {
+  const example = examples[key];
+  document.querySelector("#exampleOutput").innerHTML = `
+    <article class="example-card">
+      <h3>${escapeHtml(example.title)}</h3>
+      ${tableMarkup(example.rows)}
+    </article>
+  `;
 }
 
 function setupExamples() {
-  const output = document.querySelector("#exampleOutput");
-  const render = (key) => {
-    const item = examples[key];
-    output.innerHTML = `<h3>${escapeHtml(item.title)}</h3>${tableMarkup(item.rows)}`;
-    document.querySelectorAll("[data-example]").forEach((button) => {
-      button.classList.toggle("active", button.dataset.example === key);
-    });
-  };
   document.querySelectorAll("[data-example]").forEach((button) => {
-    button.addEventListener("click", () => render(button.dataset.example));
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-example]").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      renderExample(button.dataset.example);
+    });
   });
-  render("algorithm");
+  renderExample("booking");
 }
 
 function setupPractice() {
-  const list = document.querySelector("#practiceList");
-  list.innerHTML = practice.map((item, index) => `
+  const container = document.querySelector("#practiceList");
+  container.innerHTML = practice.map((item, index) => `
     <article class="practice-card">
-      <h3>Practice ${index + 1}</h3>
-      <p>${escapeHtml(item.prompt)}</p>
-      <div class="answer-row">
-        <input id="${item.id}" type="text" autocomplete="off" aria-label="Answer for practice ${index + 1}" />
+      <label for="${item.id}"><strong>${index + 1}.</strong> ${escapeHtml(item.prompt)}</label>
+      <div class="practice-row">
+        <input id="${item.id}" type="text" autocomplete="off" />
         <button class="check-btn" type="button" data-check="${item.id}">Check</button>
+        <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
       </div>
-      <div class="feedback" id="${item.id}-feedback" aria-live="polite">Enter an answer, then check.</div>
-      <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
+      <div class="feedback" id="${item.id}-feedback" aria-live="polite"></div>
       <div class="answer-panel hidden" id="${item.id}-answer">${escapeHtml(item.answer)}</div>
     </article>
   `).join("");
@@ -331,11 +319,10 @@ function setupPractice() {
   document.querySelectorAll("[data-check]").forEach((button) => {
     button.addEventListener("click", () => {
       const item = practice.find((entry) => entry.id === button.dataset.check);
-      const input = document.querySelector(`#${item.id}`);
+      const value = normalise(document.querySelector(`#${item.id}`).value);
       const feedback = document.querySelector(`#${item.id}-feedback`);
-      const response = normalise(input.value);
-      const correct = item.accepted.some((accepted) => response.includes(accepted));
-      feedback.textContent = correct ? "Correct or close enough for this short check." : "Not quite. Tighten the keyword or reveal the model answer.";
+      const correct = item.accepted.some((answer) => value.includes(answer));
+      feedback.textContent = correct ? "Correct." : "Not quite. Reveal the answer and tighten the requirement term.";
       feedback.className = `feedback ${correct ? "correct" : "incorrect"}`;
     });
   });
@@ -350,8 +337,8 @@ function setupPractice() {
 }
 
 function setupMistakes() {
-  const list = document.querySelector("#mistakeList");
-  list.innerHTML = mistakes.map((item, index) => `
+  const container = document.querySelector("#mistakeList");
+  container.innerHTML = mistakes.map((item, index) => `
     <article>
       <h3>Mistake ${index + 1}</h3>
       <p>${escapeHtml(item.wrong)}</p>
@@ -370,20 +357,20 @@ function setupMistakes() {
 }
 
 function setupExam() {
-  const list = document.querySelector("#examList");
-  list.innerHTML = examQuestions.map((item, index) => `
+  const container = document.querySelector("#examList");
+  container.innerHTML = examQuestions.map((question, index) => `
     <article class="exam-card">
       <div class="exam-head">
-        <h3>${escapeHtml(item.title)}</h3>
-        <span>${escapeHtml(item.marks)}</span>
+        <h3>${escapeHtml(question.title)}</h3>
+        <span>${escapeHtml(question.marks)}</span>
       </div>
-      <p>${escapeHtml(item.prompt)}</p>
+      <p>${escapeHtml(question.prompt)}</p>
       <button class="ms-toggle" type="button" data-ms="q${index}">Show MS</button>
       <div class="ms-panel hidden" id="q${index}-ms">
-        <h4>Indicative answer</h4>
-        <p>${escapeHtml(item.answer)}</p>
+        <h4>Answer</h4>
+        <p>${escapeHtml(question.answer)}</p>
         <h4>Mark scheme</h4>
-        ${renderStudentMarkPoints(item)}
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");
@@ -400,12 +387,12 @@ function setupExam() {
 function init() {
   setupPrint();
   setupHook();
-  setupArtefactChooser();
-  setupFieldChecker();
+  setupRewriter();
+  setupCriteriaTool();
   setupExamples();
   setupPractice();
   setupMistakes();
   setupExam();
 }
 
-document.addEventListener("DOMContentLoaded", init);
+init();

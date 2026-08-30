@@ -108,21 +108,21 @@ pre {
 .hero h2 { font-size: clamp(2rem, 4vw, 4rem); line-height: 1.02; }
 .lesson-meta { margin: 0 0 10px; color: var(--muted); font-weight: 700; }
 
-.objective-grid, .summary-grid, .audit-list { display: grid; gap: 12px; margin-top: 24px; }
-.objective-grid, .summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.objective-grid div, .summary-grid div, .audit-list div {
+.objective-grid, .summary-grid, .audit-list, .flow-grid { display: grid; gap: 12px; margin-top: 24px; }
+.objective-grid, .summary-grid, .flow-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.objective-grid div, .summary-grid div, .audit-list div, .flow-grid div {
   padding: 14px;
   background: #f8fafc;
   border: 1px solid var(--line);
   border-radius: 8px;
 }
-.objective-grid strong, .summary-grid strong, .audit-list strong {
+.objective-grid strong, .summary-grid strong, .audit-list strong, .flow-grid strong {
   display: block;
   color: var(--accent-dark);
   margin-bottom: 4px;
 }
 
-.csv-visual {
+.file-visual {
   display: grid;
   gap: 14px;
   align-content: center;
@@ -143,7 +143,7 @@ pre {
 .file-card strong { color: #92400e; font-size: 1.2rem; }
 .file-card span { padding: 8px; border: 1px solid #dbeafe; border-radius: 6px; font-family: "SFMono-Regular", Consolas, monospace; }
 .file-caption { text-align: center; }
-.csv-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.file-visual p { margin: 8px 0 0; color: #e0f2fe; text-align: center; font-weight: 750; }
 
 .guidance-grid {
   display: grid;
@@ -188,7 +188,7 @@ pre {
   border-radius: 8px;
   overflow: hidden;
 }
-.concept-table .table-row, .csv-table .table-row, .validate-table .table-row {
+.concept-table .table-row, .modes-table .table-row, .records-table .table-row {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .result-table .table-row { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
@@ -218,12 +218,12 @@ pre {
 
 .converter-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(150px, 0.7fr) auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   align-items: end;
 }
 .converter-grid label { display: grid; gap: 6px; color: var(--muted); font-weight: 700; }
-.converter-grid input, .converter-grid select, .practice-card input {
+.converter-grid select, .practice-card input {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -313,15 +313,15 @@ pre {
 @media (max-width: 980px) {
   .layout { grid-template-columns: 1fr; }
   .lesson-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid { grid-template-columns: 1fr; }
-  .csv-visual { min-height: 320px; }
+  .hero, .code-grid, .guidance-grid, .objective-grid, .summary-grid, .converter-grid, .flow-grid { grid-template-columns: 1fr; }
+  .file-visual { min-height: 320px; }
 }
 
 @media (max-width: 640px) {
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
   .hook-grid, .mistake-grid, .answer-row { grid-template-columns: 1fr; }
-  .concept-table .table-row, .csv-table .table-row, .validate-table .table-row, .result-table .table-row {
+  .concept-table .table-row, .modes-table .table-row, .records-table .table-row, .result-table .table-row {
     grid-template-columns: 1fr;
   }
   .table-row > div { border-right: 0; }
@@ -335,3 +335,16 @@ pre {
   .hero, .panel, .guidance-grid > article { box-shadow: none; break-inside: avoid; }
   body { background: #ffffff; }
 }
+
+/* Stage 2 syllabus completion:start */
+.stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
+.stage2-practice-block { border-top: 2px solid var(--accent, #176b5b); }
+.stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
+.stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
+.stage2-question + .stage2-question { margin-top: 10px; }
+.stage2-completion details { margin-top: 10px; }
+.stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
+.stage2-completion .mark-scheme-table { width: 100%; border-collapse: collapse; }
+.stage2-completion .mark-scheme-table :where(th, td) { border: 1px solid var(--line, #d7ddd9); padding: 8px; text-align: left; vertical-align: top; }
+.stage2-completion .mark-scheme-table :where(th, td):last-child { width: 5rem; text-align: center; }
+/* Stage 2 syllabus completion:end */

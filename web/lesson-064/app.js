@@ -1,103 +1,108 @@
 const scenarioMap = {
-  access: {
-    result: "Most likely: hacking.",
-    method: "The attacker has gained unauthorised access to an account or system and can alter records.",
-    trap: "Do not call every unauthorised login phishing. Phishing may be how credentials were obtained, but the access itself is hacking.",
+  host: {
+    result: "Most likely: virus.",
+    method: "A virus attaches to a host file or program and spreads when the host is run or shared.",
+    trap: "Do not call it a worm if it depends on a host file being opened.",
   },
-  email: {
-    result: "Most likely: phishing.",
-    method: "A deceptive message appears trustworthy and persuades the user to enter account details.",
-    trap: "Do not define phishing as only 'a virus'. The key point is tricking the user into revealing information or using a fake link/page.",
+  network: {
+    result: "Most likely: worm.",
+    method: "A worm self-replicates and spreads across networks without needing to attach to a host file.",
+    trap: "Do not say all self-replicating malware is a virus.",
   },
-  redirect: {
-    result: "Most likely: pharming.",
-    method: "The user is redirected to a fraudulent website even though the intended URL may be correct.",
-    trap: "Do not describe this as only phishing unless the clue is a deceptive message or link.",
+  disguise: {
+    result: "Most likely: Trojan.",
+    method: "A Trojan is disguised as legitimate or useful software but performs a malicious action.",
+    trap: "Do not require a Trojan to self-replicate.",
   },
-  flood: {
-    result: "Most likely: denial-of-service attack.",
-    method: "The service is overwhelmed by requests/traffic so legitimate users cannot access it.",
-    trap: "Do not focus on stolen data unless the scenario says data was accessed. The main security goal is availability.",
+  keys: {
+    result: "Most likely: spyware / keylogger.",
+    method: "Spyware secretly monitors user activity or collects data such as keystrokes and credentials.",
+    trap: "Do not describe only availability; the main risk is confidential data or credentials being stolen.",
   },
-  botnet: {
-    result: "Most likely: distributed denial-of-service attack.",
-    method: "Many devices or sources generate traffic against one target, making the service unavailable.",
-    trap: "Do not require the attacker to log into the target system for DDoS; overwhelming traffic is enough.",
+  locked: {
+    result: "Most likely: ransomware.",
+    method: "Ransomware encrypts or locks files/systems and demands payment for restoration.",
+    trap: "Do not treat payment as a reliable recovery control; backups and prevention are better exam answers.",
+  },
+  urgent: {
+    result: "Most likely: social engineering.",
+    method: "The attacker manipulates the person using urgency or authority to obtain information or action.",
+    trap: "Do not focus only on technical controls; training and verification procedures matter.",
   },
 };
 
 const examples = {
-  hacking: {
-    title: "Example 1: Hacking a student records system",
-    problem: "A former employee uses an old account to access and change student records.",
+  worm: {
+    title: "Example 1: Worm spreading across a school network",
+    problem: "Several computers become slow after one unpatched machine connects to the network.",
     steps: [
-      "This is hacking because the account is used for unauthorised access.",
-      "The impact includes loss of integrity because records are changed without permission.",
-      "Confidentiality may also be affected if records are viewed or copied.",
-      "Suitable controls include disabling old accounts, access rights, audit logs and strong authentication.",
+      "A worm is likely if the malware self-replicates across the network.",
+      "It can consume bandwidth and processing resources, affecting availability.",
+      "Controls include patching, anti-malware, network monitoring and segmenting the network.",
+      "The answer should mention self-replication, not just 'virus'.",
     ],
   },
-  phishing: {
-    title: "Example 2: Phishing message from 'IT support'",
-    problem: "A message asks staff to click a link and confirm their password before the end of the day.",
+  trojan: {
+    title: "Example 2: Trojan disguised as a useful app",
+    problem: "A student installs a free tool that secretly opens remote access.",
     steps: [
-      "This is phishing because a deceptive message tries to obtain confidential information.",
-      "Urgency is used to pressure the user into entering credentials.",
-      "If credentials are stolen, the attacker may later gain unauthorised access.",
-      "Controls include user training, checking sender/URL, reporting suspicious messages, email filtering and MFA.",
+      "A Trojan is disguised as legitimate software.",
+      "The user may install it because it appears useful.",
+      "It may open a backdoor, steal data or install further malware.",
+      "Controls include trusted download sources, permissions review, anti-malware and user education.",
     ],
   },
-  pharming: {
-    title: "Example 3: Pharming through fake redirection",
-    problem: "A user types the correct shop address but is taken to a fake login page.",
+  ransomware: {
+    title: "Example 3: Ransomware locking files",
+    problem: "A department cannot access shared work because files have been encrypted and a payment is demanded.",
     steps: [
-      "This is pharming because traffic is redirected to a fraudulent website.",
-      "The user may trust the page because the typed address was correct.",
-      "The impact can be stolen usernames, passwords or payment details.",
-      "Controls include secure DNS, certificate/HTTPS checks, browser updates and anti-malware.",
+      "This is ransomware because data is locked/encrypted and payment is demanded.",
+      "The main security goal affected is availability because authorised users cannot access files.",
+      "Offline backups and disaster recovery can restore data without relying on the attacker.",
+      "Patching, least privilege and anti-malware can reduce infection risk.",
     ],
   },
-  dos: {
-    title: "Example 4: Denial-of-service against an online booking system",
-    problem: "A ticket website receives many automated requests and real customers cannot load the page.",
+  social: {
+    title: "Example 4: Social engineering call",
+    problem: "A caller claims to be IT support and asks urgently for a staff password.",
     steps: [
-      "This is a denial-of-service attack because the service is overwhelmed.",
-      "The main security goal affected is availability.",
-      "A distributed attack uses many devices or sources, making blocking harder.",
-      "Controls include rate limiting, traffic filtering, firewalls, load balancing and DDoS mitigation.",
+      "This is social engineering because the attacker manipulates a person rather than exploiting only code.",
+      "Urgency and authority are used to pressure the user.",
+      "The risk is credential theft, threatening confidentiality and authenticity.",
+      "Controls include training, identity verification procedures, MFA and a clear reporting route.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which attack means gaining unauthorised access to a computer system or data?", accepted: ["hacking", "hack"], answer: "Hacking" },
-  { id: "p2", prompt: "Which attack uses deceptive messages or fake pages to trick a user into revealing information?", accepted: ["phishing"], answer: "Phishing" },
-  { id: "p3", prompt: "Which attack redirects a user to a fake website, even if the intended address seems correct?", accepted: ["pharming"], answer: "Pharming" },
-  { id: "p4", prompt: "Which attack overwhelms a service so legitimate users cannot access it?", accepted: ["dos", "denial of service", "denial-of-service", "denial of service attack", "denial of service attacks"], answer: "Denial-of-service / DoS" },
-  { id: "p5", prompt: "What does the first D in DDoS stand for?", accepted: ["distributed"], answer: "Distributed" },
-  { id: "p6", prompt: "Which security goal is mainly affected by a DoS attack?", accepted: ["availability"], answer: "Availability" },
-  { id: "p7", prompt: "A fake bank email asks for a password. Is this phishing or pharming?", accepted: ["phishing"], answer: "Phishing" },
-  { id: "p8", prompt: "A user types the correct URL but reaches a fake site. Is this phishing or pharming?", accepted: ["pharming"], answer: "Pharming" },
-  { id: "p9", prompt: "Name one control that helps reduce phishing risk.", accepted: ["training", "user training", "checking url", "check url", "checking sender", "email filtering", "mfa", "multi factor", "reporting"], answer: "User training, checking sender/URL, email filtering, reporting procedures or MFA" },
-  { id: "p10", prompt: "Name one control that helps reduce DoS impact.", accepted: ["rate limiting", "traffic filtering", "firewall", "firewalls", "load balancing", "ddos mitigation", "monitoring"], answer: "Rate limiting, traffic filtering, firewalls, load balancing, monitoring or DDoS mitigation" },
+  { id: "p1", prompt: "Which malware attaches to a host file or program?", accepted: ["virus"], answer: "Virus" },
+  { id: "p2", prompt: "Which malware self-replicates across a network without a host file?", accepted: ["worm"], answer: "Worm" },
+  { id: "p3", prompt: "Which malware is disguised as legitimate software?", accepted: ["trojan", "trojan horse"], answer: "Trojan / Trojan horse" },
+  { id: "p4", prompt: "Which malware secretly monitors activity or records keystrokes?", accepted: ["spyware", "keylogger", "key logger"], answer: "Spyware / keylogger" },
+  { id: "p5", prompt: "Which malware encrypts or locks files and demands payment?", accepted: ["ransomware"], answer: "Ransomware" },
+  { id: "p6", prompt: "What attack method manipulates people into revealing information or taking unsafe action?", accepted: ["social engineering"], answer: "Social engineering" },
+  { id: "p7", prompt: "Which security goal is mainly threatened when spyware steals passwords?", accepted: ["confidentiality", "authenticity"], answer: "Confidentiality; also authenticity if credentials are used to impersonate the user" },
+  { id: "p8", prompt: "Name one control against ransomware.", accepted: ["backup", "backups", "offline backups", "patching", "anti malware", "antimalware", "least privilege", "training"], answer: "Offline backups, patching, anti-malware, least privilege or user training" },
+  { id: "p9", prompt: "Name one control against social engineering.", accepted: ["training", "verification", "mfa", "multi factor", "reporting", "least privilege"], answer: "User training, verification procedures, MFA, reporting routes or least privilege" },
+  { id: "p10", prompt: "Does encryption remove malware from a device? Answer yes or no.", accepted: ["no"], answer: "No" },
 ];
 
 const mistakes = [
   {
-    wrong: "Pharming is when a fake email asks a user to click a link.",
-    fix: "That is phishing. Pharming redirects users to a fake website, possibly even when they type the correct URL.",
+    wrong: "A worm and a virus are the same because both spread.",
+    fix: "A virus attaches to a host file/program and often needs it to run. A worm self-replicates across networks without needing a host file.",
   },
   {
-    wrong: "A DoS attack steals usernames and passwords.",
-    fix: "A DoS attack mainly affects availability by overwhelming a service so legitimate users cannot access it. Stolen credentials are not the defining feature.",
+    wrong: "A Trojan is malware that spreads by copying itself.",
+    fix: "A Trojan is defined by disguise as legitimate software. It may install other malware or open a backdoor, but self-replication is not required.",
   },
   {
-    wrong: "Hacking means any attack on a computer.",
-    fix: "Hacking means unauthorised access to a system, account or data. Other attacks have different mechanisms.",
+    wrong: "Ransomware mainly threatens confidentiality because it encrypts files.",
+    fix: "Ransomware mainly threatens availability because authorised users cannot access their files. Confidentiality may also be threatened if data is stolen.",
   },
   {
-    wrong: "MFA completely prevents phishing.",
-    fix: "MFA reduces the damage from stolen passwords and makes account takeover harder, but user training and verification are still needed.",
+    wrong: "Social engineering is fixed by antivirus software only.",
+    fix: "Anti-malware may help if a file is involved, but social engineering targets human behaviour, so training, verification, MFA and reporting procedures are important.",
   },
 ];
 
@@ -111,91 +116,91 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Describe phishing and explain how it can lead to unauthorised access.",
-    answer: "Phishing uses deceptive emails, messages or websites that appear to be from a trusted source. The attacker tricks the user into entering confidential information such as a password or payment details. If the password is stolen, the attacker can use it to log in as the user. This leads to unauthorised access and may allow data to be viewed, changed or copied.",
+    prompt: "Compare a virus and a worm.",
+    answer: "A virus is malware that attaches to a host file or program and often spreads when that host is run, copied or shared. A worm is malware that self-replicates, often across a network, without needing to attach to a host file. Both can damage data, consume resources or install further malware, but the key difference is the method of propagation.",
     marking: [
-      { mark: "B1", text: "phishing described as deceptive message/email/site appearing trustworthy" },
-      { mark: "B1", text: "user tricked into revealing confidential information/credentials" },
-      { mark: "B1", text: "stolen credentials/password used by attacker" },
-      { mark: "B1", text: "attacker gains unauthorised access or impersonates user" },
-      { mark: "B1", text: "valid consequence such as data viewed/changed/copied or financial loss" },
+      { mark: "B1", text: "virus described as malware attached to host file/program" },
+      { mark: "B1", text: "virus spread linked to running/copying/sharing infected host" },
+      { mark: "B1", text: "worm described as self-replicating malware" },
+      { mark: "B1", text: "worm spread linked to network or no host file required" },
+      { mark: "B1", text: "valid shared impact or clear propagation comparison" },
     ],
     strict: [
-      "Do not accept 'a virus' as a definition of phishing.",
-      "Do not award both mechanism marks for only saying 'fake website' unless deception and user information are clear.",
-      "Allow fake text message or fake login page.",
+      "Do not accept 'both are viruses' as comparison.",
+      "Do not award worm mark for host-file attachment only.",
+      "Allow 'replicates itself' for self-replicating.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Explain the difference between phishing and pharming.",
-    answer: "Phishing tricks a user using a deceptive message, link or website so the user reveals confidential information. Pharming redirects a user to a fake website, possibly after the user enters the correct URL. Both may result in credentials being entered into a fraudulent site, but phishing relies on persuading the user while pharming relies on redirection.",
+    prompt: "Explain how a Trojan can lead to unauthorised access.",
+    answer: "A Trojan is malware disguised as legitimate or useful software. A user may install or run it because they believe it is safe. Once installed, it may open a backdoor, change permissions, download further malware or send credentials to an attacker. This can allow unauthorised access to the device or data.",
     marking: [
-      { mark: "B1", text: "phishing involves deceptive message/link/site or trusted-looking communication" },
-      { mark: "B1", text: "phishing user reveals confidential information/credentials" },
-      { mark: "B1", text: "pharming redirects user/traffic to a fake website" },
-      { mark: "B1", text: "clear contrast: persuasion by message vs redirection, or correct URL clue" },
+      { mark: "B1", text: "Trojan disguised as legitimate/useful software" },
+      { mark: "B1", text: "user is tricked into installing/running it" },
+      { mark: "B1", text: "valid malicious action such as backdoor/credential theft/further malware" },
+      { mark: "B1", text: "consequence linked to unauthorised access to device/data/account" },
     ],
     strict: [
-      "Do not accept definitions that make phishing and pharming identical.",
-      "Do not award pharming mark for only 'fake email'.",
-      "Allow DNS/name-resolution redirection as pharming mechanism.",
+      "Do not require self-replication for Trojan.",
+      "Do not accept 'Trojan is a virus' without disguise mechanism.",
+      "Allow remote access tool/backdoor if malicious context is clear.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A school website becomes unavailable after receiving a very large number of automated requests. Identify the attack and explain two controls.",
-    answer: "The attack is a denial-of-service attack because the website is flooded with requests and legitimate users cannot access it. The main security goal affected is availability. Rate limiting or traffic filtering can block or slow excessive requests. Load balancing or DDoS mitigation can distribute/filter traffic so the website remains available to legitimate users.",
+    prompt: "Describe ransomware and Suggest two controls to reduce its impact.",
+    answer: "Ransomware is malware that encrypts or locks files or systems and demands payment for restoring access. It mainly threatens availability because authorised users cannot access their data. Offline or isolated backups can reduce impact because data can be restored without relying on the attacker. Patching, anti-malware, restricted permissions and user training can reduce the chance of infection or limit what files can be encrypted.",
     marking: [
-      { mark: "B1", text: "attack identified as DoS/denial-of-service" },
-      { mark: "B1", text: "flooding/large number of requests overwhelms service" },
-      { mark: "B1", text: "availability impact explained" },
-      { mark: "B1", text: "first valid control with mechanism, e.g. rate limiting/traffic filtering/firewall" },
-      { mark: "B1", text: "second distinct valid control with mechanism, e.g. load balancing/DDoS mitigation/monitoring" },
+      { mark: "B1", text: "ransomware encrypts/locks files or systems" },
+      { mark: "B1", text: "payment/ransom demanded for access/restoration" },
+      { mark: "B1", text: "availability impact described" },
+      { mark: "B1", text: "valid control such as offline backups with recovery explanation" },
+      { mark: "B1", text: "second valid control with mechanism, e.g. patching/anti-malware/least privilege/training" },
     ],
     strict: [
-      "Do not accept hacking as the attack unless unauthorised access is described.",
-      "Do not accept backup as a main DoS prevention control without service-availability explanation.",
-      "Allow DDoS if many sources/devices are implied.",
+      "Do not accept paying ransom as a reliable control.",
+      "Do not award backup mark without recovery idea.",
+      "Allow confidentiality impact only as an additional point, not the main ransomware definition.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Define hacking and describe two possible impacts on a company's data.",
-    answer: "Hacking is gaining unauthorised access to a computer system, account, network or data. One impact is loss of confidentiality because sensitive data may be viewed or copied. Another impact is loss of integrity because data may be changed or deleted without permission. It may also lead to further unauthorised actions if accounts or permissions are misused.",
+    marks: "5 marks",
+    prompt: "Explain social engineering and give two controls that reduce the risk.",
+    answer: "Social engineering is a method of manipulating people into revealing confidential information or performing an unsafe action. It may use trust, urgency, authority, curiosity or fear. Controls include user training so users recognise suspicious requests, verification procedures such as calling a known number before sharing information, multi-factor authentication to reduce damage from stolen passwords, and reporting routes for suspicious contact.",
     marking: [
-      { mark: "B1", text: "hacking defined as unauthorised access" },
-      { mark: "B1", text: "target is system/account/network/data" },
-      { mark: "B1", text: "confidentiality impact: data viewed/copied/disclosed" },
-      { mark: "B1", text: "integrity impact: data changed/deleted/corrupted" },
+      { mark: "B1", text: "manipulates/tricks people rather than only exploiting software" },
+      { mark: "B1", text: "user reveals information or performs unsafe action" },
+      { mark: "B1", text: "valid persuasion method such as urgency/authority/trust/fear/curiosity" },
+      { mark: "B1", text: "first valid control with mechanism, e.g. training/verification/MFA/reporting" },
+      { mark: "B1", text: "second distinct valid control with mechanism" },
     ],
     strict: [
-      "Do not accept only 'breaking a computer' without unauthorised access.",
-      "Do not award both impact marks for two vague phrases such as 'bad security' and 'data problem'.",
-      "Allow availability impact if system is disrupted, but data impact must be explicit for full credit.",
+      "Do not accept only 'hacking people' without manipulation/action idea.",
+      "Do not award both control marks for repeated wording of training only.",
+      "Allow security awareness training as user training.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, identify the attack and justify it: a fake invoice email asks for login details; a correct URL opens a fake page; many devices flood a server.",
-    answer: "The fake invoice email is phishing because it uses a deceptive message to persuade the user to reveal login details. The correct URL opening a fake page is pharming because the user is redirected to a fraudulent site. Many devices flooding a server is a distributed denial-of-service attack because traffic from multiple sources overwhelms the server and prevents legitimate access.",
+    prompt: "A downloaded host file contains a virus and a separate keylogger records credentials as spyware. Explain how anti-virus and anti-spyware software can reduce the two risks.",
+    answer: "Anti-virus scans files, memory or behaviour for virus signatures or suspicious activity and can block, quarantine or remove the infected host file before it spreads or damages the system. Anti-spyware scans for secret monitoring or credential-capture behaviour and can block, quarantine or remove the keylogger. Updated definitions or rules improve recognition of newly identified threats, but neither measure guarantees detection of every new or concealed threat.",
     marking: [
-      { mark: "B1", text: "fake invoice email classified as phishing" },
-      { mark: "B1", text: "justification linked to deceptive message and revealing login details" },
-      { mark: "B1", text: "correct URL/fake page classified as pharming" },
-      { mark: "B1", text: "justification linked to redirection to fraudulent site" },
-      { mark: "B1", text: "many devices flooding server classified as DDoS/DoS" },
-      { mark: "B1", text: "justification linked to multiple sources overwhelming service/preventing legitimate access" },
+      { mark: "B1", text: "anti-virus scans files/memory/behaviour for virus signatures or suspicious activity" },
+      { mark: "B1", text: "anti-virus blocks/quarantines/removes the infected host file" },
+      { mark: "B1", text: "anti-spyware scans for secret monitoring or credential-capture behaviour" },
+      { mark: "B1", text: "anti-spyware blocks/quarantines/removes the keylogger/spyware" },
+      { mark: "B1", text: "updated definitions/rules improve detection of newly identified threats" },
+      { mark: "B1", text: "neither security measure guarantees detection of every threat" },
     ],
     strict: [
-      "Do not award justification marks for repeating only the attack name.",
-      "Do not classify correct URL redirection as phishing unless deceptive message evidence is added.",
-      "Allow DoS for final scenario; award DDoS if distributed/many devices is stated.",
-      "Award each classification independently.",
+      "Do not make anti-virus and anti-spyware universal guarantees.",
+      "Do not replace the requested mechanisms with only the word anti-malware.",
+      "Do not claim quarantine repairs credentials already stolen.",
     ],
   },
 ];
@@ -211,10 +216,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    pharming: "Correct. Pharming redirects the user to a fake website; the correct URL clue is important.",
-    phishing: "Not quite. A fake site can be used in phishing, but this clue says the correct URL was redirected.",
-    dos: "No. DoS makes a service unavailable; here the service loads, but it is fraudulent.",
-    hacking: "No. Hacking is unauthorised access. The given clue is redirection to a fake website.",
+    "trojan-spyware": "Correct. The game update disguise suggests a Trojan; recording keystrokes is spyware/keylogger behaviour.",
+    worm: "No. A worm self-replicates, often across a network. The clue is disguise plus monitoring.",
+    availability: "No. Keystroke recording mainly threatens confidentiality and authenticity.",
+    backup: "No. Backups help recovery, but they do not stop credentials being recorded.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -258,36 +263,32 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("hacking");
+  renderExample("worm");
 }
 
 function renderPractice() {
   const list = document.querySelector("#practiceList");
-  list.innerHTML = practice.map((item) => `
+  list.innerHTML = practice.map((item, index) => `
     <article class="practice-item">
-      <p><strong>${item.id.toUpperCase()}.</strong> ${item.prompt}</p>
+      <p><strong>${index + 1}.</strong> ${item.prompt}</p>
       <div class="practice-row">
-        <input type="text" aria-label="Answer for ${item.id}" data-practice="${item.id}" />
-        <span class="mark" id="${item.id}Mark">Not checked</span>
+        <input id="${item.id}" type="text" autocomplete="off" aria-label="Answer for question ${index + 1}" />
+        <button class="primary-button" type="button" data-check="${item.id}">Check</button>
       </div>
+      <div class="mark" id="${item.id}Mark" aria-live="polite"></div>
       <button class="answer-toggle" type="button" data-answer="${item.id}">Show answer</button>
-      <div class="answer-panel" id="${item.id}Answer"><strong>Answer:</strong> ${item.answer}</div>
+      <div class="answer-panel" id="${item.id}Answer">${item.answer}</div>
     </article>
   `).join("");
 
-  document.querySelectorAll("[data-practice]").forEach((input) => {
-    input.addEventListener("input", () => {
-      const item = practice.find((entry) => entry.id === input.dataset.practice);
+  document.querySelectorAll("[data-check]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = practice.find((entry) => entry.id === button.dataset.check);
+      const value = normalise(document.querySelector(`#${item.id}`).value);
+      const correct = item.accepted.some((answer) => value.includes(normalise(answer)));
       const mark = document.querySelector(`#${item.id}Mark`);
-      const value = normalise(input.value);
-      const correct = item.accepted.some((answer) => value === normalise(answer));
-      if (!value) {
-        mark.textContent = "Not checked";
-        mark.className = "mark";
-        return;
-      }
-      mark.textContent = correct ? "Correct" : "Try again";
-      mark.className = correct ? "mark correct" : "mark incorrect";
+      mark.textContent = correct ? "Correct." : "Not quite. Reveal the answer, then improve the wording.";
+      mark.className = `mark ${correct ? "correct" : "incorrect"}`;
     });
   });
 
@@ -303,14 +304,15 @@ function renderPractice() {
 function renderMistakes() {
   document.querySelector("#mistakeGrid").innerHTML = mistakes.map((item, index) => `
     <article>
-      <p class="wrong"><strong>Wrong:</strong> ${item.wrong}</p>
-      <button class="answer-toggle" type="button" data-fix="${index}">Show correction</button>
-      <div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div>
+      <p class="wrong"><strong>Mistake ${index + 1}:</strong> ${item.wrong}</p>
+      <button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button>
+      <div class="answer-panel" id="fix${index}">${item.fix}</div>
     </article>
   `).join("");
+
   document.querySelectorAll("[data-fix]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#fix${button.dataset.fix}`);
+      const panel = document.querySelector(`#${button.dataset.fix}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction";
     });
@@ -318,24 +320,26 @@ function renderMistakes() {
 }
 
 function renderExam() {
-  document.querySelector("#examList").innerHTML = examQuestions.map((item, index) => `
+  document.querySelector("#examList").innerHTML = examQuestions.map((question, index) => `
     <article class="exam-card">
       <div class="exam-head">
-        <h3>${item.title}</h3>
-        <span>${item.marks}</span>
+        <h3>${question.title}</h3>
+        <span>${question.marks}</span>
       </div>
-      <p>${item.prompt}</p>
-      <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
+      <p>${question.prompt}</p>
+      <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
+        <h4>Indicative answer</h4>
+        <p>${question.answer}</p>
         <h4>Mark scheme</h4>
-        <p><strong>Model answer:</strong> ${item.answer}</p>
-        ${renderStudentMarkPoints(item)}
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");
+
   document.querySelectorAll("[data-ms]").forEach((button) => {
     button.addEventListener("click", () => {
-      const panel = document.querySelector(`#ms${button.dataset.ms}`);
+      const panel = document.querySelector(`#${button.dataset.ms}`);
       panel.classList.toggle("visible");
       button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS";
     });

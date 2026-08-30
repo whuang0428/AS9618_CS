@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 061 | Section 5 review: precise software comparisons</title>
+    <title>AS9618 Lesson 061 | Choosing translation approaches for development and deployment</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Section 5 review: precise software comparisons</h1>
+        <h1>Choosing translation approaches for development and deployment</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,10 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#retrieval">Retrieval grid</a>
-        <a href="#compare">Comparisons</a>
-        <a href="#precision">Precision rules</a>
-        <a href="#tool">Review tool</a>
+        <a href="#decision">Decision frame</a>
+        <a href="#development">Development</a>
+        <a href="#deployment">Deployment</a>
+        <a href="#lowlevel">Low-level code</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#diagnostics">Diagnostics</a>
+        <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -42,247 +45,324 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 061 | 45 minutes | Paper 1 Section 5 | Stage review</p>
-            <h2>Effective review combines retrieval, selection of the relevant concept and timed application.</h2>
+            <p class="lesson-meta">Lesson 061 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>The best translator depends on the stage, the code, and the job.</h2>
             <p>
-              This review connects Section 5 ideas: operating systems, utility software, interfaces,
-              translators, compilation stages, linkers/loaders/libraries and error diagnostics.
-              The aim is precise comparison: name the correct tool, show the mechanism, and link it to the scenario.
+              This lesson pulls together translators, compilation stages, linkers, loaders and diagnostics.
+              The exam usually gives a scenario; the answer must choose a suitable approach and justify it with precise technical reasons.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Retrieve</strong><span>key Section 5 definitions without notes</span></div>
-              <div><strong>Compare</strong><span>similar concepts using mechanism-level differences</span></div>
-              <div><strong>Improve</strong><span>weak answers into mark-worthy Cambridge-style responses</span></div>
+              <div><strong>Choose</strong><span>compiler, interpreter or assembler for realistic scenarios</span></div>
+              <div><strong>Justify</strong><span>development, deployment and low-level programming decisions</span></div>
+              <div><strong>Connect</strong><span>translation choices to linking, loading and diagnostics</span></div>
             </div>
           </div>
-          <div class="review-card" aria-label="Section 5 review map">
-            <div class="review-stack">
-              <span>OS manages resources</span>
-              <span>Utility performs maintenance</span>
-              <span>Translator converts code</span>
-              <span>Linker connects modules</span>
-              <span>Loader loads into memory</span>
+          <div class="choice-card-visual" aria-label="Translation choice sketch">
+            <div class="choice-stack">
+              <span>Development? interpreter may help</span>
+              <span>Distribution? compiler often fits</span>
+              <span>Assembly code? assembler</span>
+              <span>Object modules? linker</span>
+              <span>Ready to run? loader</span>
             </div>
-            <p>Keyword first. Mechanism next. Scenario consequence last.</p>
+            <p>Do not pick the fanciest word. Pick the tool that matches the evidence.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Mixed questions often look easy until students explain the wrong tool. Recognition is part of the mark.</p>
+            <p>Section 5 comparison questions often mix several tools. Marks come from separating their roles cleanly.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not use "makes it work" for everything. A linker, loader, compiler and OS do different jobs.</p>
+            <p>Do not recommend an assembler for every low-level-looking task. Assemblers translate assembly language only.</p>
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Three answers say "it helps the computer run". Which one earns marks?</h2>
-            <p>Click the best answer. Vague answers are comfortable until the mark scheme arrives.</p>
+            <h2>A beginner wants to test one statement at a time and see errors quickly. Which approach fits best?</h2>
+            <p>Select the most appropriate answer. Debugging follows a systematic process.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="precise">A loader places executable code into main memory ready for execution.</button>
-            <button class="choice-card" type="button" data-hook="vague">A loader makes the program work.</button>
-            <button class="choice-card" type="button" data-hook="wrong">A loader translates source code into object code.</button>
-            <button class="choice-card" type="button" data-hook="mixed">A loader resolves library references and checks syntax.</button>
+            <button class="choice-card" type="button" data-hook="interpreter">Use an interpreter during development.</button>
+            <button class="choice-card" type="button" data-hook="compiler">Use only a compiler because all programs should be final immediately.</button>
+            <button class="choice-card" type="button" data-hook="assembler">Use an assembler for the high-level source code.</button>
+            <button class="choice-card" type="button" data-hook="loader">Use a loader to find syntax errors.</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Full marks need a mechanism, not just a friendly label.
+            Choose one. Match the tool to the stage of work.
           </div>
         </section>
 
-        <section class="panel" id="retrieval" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="retrieval">
+        <section class="panel" id="decision" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
-            <p class="eyebrow">Retrieval grid</p>
-            <h2>Section 5 in one screen</h2>
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>A good translator choice starts with four questions</h2>
           </div>
-          <div class="retrieval-grid">
-            <article><strong>Operating system</strong><span>Manages resources and provides services such as process, memory, file and device management.</span></article>
-            <article><strong>Utility software</strong><span>Performs a maintenance/protection task such as backup, compression, encryption, defragmentation or antivirus.</span></article>
-            <article><strong>User interface</strong><span>Allows the user to interact with the system: CLI, GUI, menu-driven or natural language.</span></article>
-            <article><strong>Compiler</strong><span>Translates a whole high-level program before execution and can produce object/executable code.</span></article>
-            <article><strong>Interpreter</strong><span>Translates and executes high-level code statement by statement.</span></article>
-            <article><strong>Assembler</strong><span>Translates assembly language mnemonics into machine code/object code.</span></article>
-            <article><strong>Compilation stages</strong><span>Lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.</span></article>
-            <article><strong>Linker / loader</strong><span>Linker resolves external references; loader places executable code into main memory.</span></article>
+          <div class="concept-grid">
+            <article><strong>What code?</strong><span>High-level source code, assembly language, object modules or executable code?</span></article>
+            <article><strong>What stage?</strong><span>Development, testing, deployment, linking or running?</span></article>
+            <article><strong>What output?</strong><span>Immediate execution, object code, executable code or program loaded in memory?</span></article>
+            <article><strong>What feedback?</strong><span>Line-by-line diagnostics, a compiler error list, linker errors or runtime messages?</span></article>
           </div>
-          <div class="callout">Chinese support: precise comparison = 精准对比；mechanism = 机制/工作原理；scenario consequence = 场景中的结果或影响。</div>
+          <div class="callout">Chinese support: development = 开发阶段；deployment = 部署/发布阶段；translation approach = 翻译方式；diagnostics = 诊断信息；executable = 可执行文件。</div>
         </section>
 
-        <!-- stage10-explanation:start retrieval -->
-        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="retrieval">
-          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Section 5 in one screen</h2>
+        <!-- stage10-explanation:start decision -->
+        <section class="panel explanation-panel" id="explanation-decision" data-explains="decision" data-explanation-kind="mechanism" aria-labelledby="explanation-decision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <h2 class="explanation-sr-only" id="explanation-decision-title">A good translator choice starts with four questions</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 5 in one screen with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 5 in one screen: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-decision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A good translator choice starts with four questions with a structured visual model." />
+            <figcaption class="explanation-sr-only">A good translator choice starts with four questions: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A compiler translates a whole high-level program into object code before execution.</li><li><strong>Lesson fact:</strong> An assembler translates assembly language into machine or object code.</li><li><strong>Lesson fact:</strong> A linker combines object modules and libraries, and a loader places an executable into memory.</li><li><strong>Lesson fact:</strong> An interpreter translates and executes source during runtime without producing a permanent object file for the linker path.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> What code? High-level source code, assembly language, object modules or executable code?</li><li><strong>Lesson fact:</strong> What stage? Development, testing, deployment, linking or running?</li><li><strong>Lesson fact:</strong> What output? Immediate execution, object code, executable code or program loaded in memory?</li><li><strong>Lesson fact:</strong> What feedback? Line-by-line diagnostics, a compiler error list, linker errors or runtime messages?</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end retrieval -->
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <!-- stage10-explanation:end decision -->
+        <section class="panel" id="development" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
-            <p class="eyebrow">High-value comparisons</p>
-            <h2>Similar terms that the exam likes to separate</h2>
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>During development, an interpreter can support rapid testing</h2>
           </div>
-          <div class="comparison-table" role="table" aria-label="Section 5 comparison table">
+          <div class="concept-grid">
+            <article><strong>Useful when</strong><span>The programmer wants immediate feedback while writing and testing code.</span></article>
+            <article><strong>Mechanism</strong><span>Translates and executes statements as the program runs.</span></article>
+            <article><strong>Benefit</strong><span>Can stop at or near the statement with an error, helping debugging.</span></article>
+            <article><strong>Trade-off</strong><span>Execution may be slower and source code/interpreter may be needed.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start development -->
+        <section class="panel explanation-panel" id="explanation-development" data-explains="development" data-explanation-kind="mechanism" aria-labelledby="explanation-development-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <h2 class="explanation-sr-only" id="explanation-development-title">During development, an interpreter can support rapid testing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-development.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining During development, an interpreter can support rapid testing with a structured visual model." />
+            <figcaption class="explanation-sr-only">During development, an interpreter can support rapid testing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Useful when The programmer wants immediate feedback while writing and testing code.</li><li><strong>Lesson fact:</strong> Mechanism Translates and executes statements as the program runs.</li><li><strong>Lesson fact:</strong> Benefit Can stop at or near the statement with an error, helping debugging.</li><li><strong>Lesson fact:</strong> Trade-off Execution may be slower and source code/interpreter may be needed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end development -->
+        <section class="panel" id="deployment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>For deployment, a compiler often produces a distributable executable</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Useful when</strong><span>A finished program will be distributed to users or run many times.</span></article>
+            <article><strong>Mechanism</strong><span>Translates the whole high-level program before execution.</span></article>
+            <article><strong>Benefit</strong><span>Executable/object code can run without giving users the source code.</span></article>
+            <article><strong>Trade-off</strong><span>Compilation must complete before running; errors may be reported as a list.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start deployment -->
+        <section class="panel explanation-panel" id="explanation-deployment" data-explains="deployment" data-explanation-kind="mechanism" aria-labelledby="explanation-deployment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <h2 class="explanation-sr-only" id="explanation-deployment-title">For deployment, a compiler often produces a distributable executable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-deployment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining For deployment, a compiler often produces a distributable executable with a structured visual model." />
+            <figcaption class="explanation-sr-only">For deployment, a compiler often produces a distributable executable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Useful when A finished program will be distributed to users or run many times.</li><li><strong>Lesson fact:</strong> Mechanism Translates the whole high-level program before execution.</li><li><strong>Lesson fact:</strong> Benefit Executable/object code can run without giving users the source code.</li><li><strong>Lesson fact:</strong> Trade-off Compilation must complete before running; errors may be reported as a list.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end deployment -->
+        <section class="panel" id="lowlevel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>For assembly language, use an assembler</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Input</strong><span>Assembly language mnemonics for a specific processor.</span></article>
+            <article><strong>Output</strong><span>Machine code/object code.</span></article>
+            <article><strong>Use case</strong><span>Low-level code close to hardware or processor instructions.</span></article>
+            <article><strong>Boundary</strong><span>Assembler is not the correct tool for Java, Python or Cambridge pseudocode.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start lowlevel -->
+        <section class="panel explanation-panel" id="explanation-lowlevel" data-explains="lowlevel" data-explanation-kind="mechanism" aria-labelledby="explanation-lowlevel-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <h2 class="explanation-sr-only" id="explanation-lowlevel-title">For assembly language, use an assembler</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-lowlevel.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining For assembly language, use an assembler with a structured visual model." />
+            <figcaption class="explanation-sr-only">For assembly language, use an assembler: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input Assembly language mnemonics for a specific processor.</li><li><strong>Lesson fact:</strong> Output Machine code/object code.</li><li><strong>Lesson fact:</strong> Use case Low-level code close to hardware or processor instructions.</li><li><strong>Lesson fact:</strong> Boundary Assembler is not the correct tool for Java, Python or Cambridge pseudocode.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lowlevel -->
+        <section class="panel" id="pipeline" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>After translation, linking and loading may still be needed</h2>
+          </div>
+          <div class="pipeline-table" role="table" aria-label="Translation pipeline">
             <div class="table-row table-head" role="row">
-              <div role="columnheader">Pair</div>
-              <div role="columnheader">Difference that earns marks</div>
-              <div role="columnheader">Common wrong answer</div>
+              <div role="columnheader">Stage</div>
+              <div role="columnheader">Tool</div>
+              <div role="columnheader">Precise role</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">OS vs utility</div>
-              <div role="cell">OS manages resources; a utility performs a specific maintenance/protection task.</div>
-              <div role="cell">"Both are apps."</div>
+              <div role="cell">High-level source to object code</div>
+              <div role="cell">Compiler</div>
+              <div role="cell">Translates whole program before execution.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Compiler vs interpreter</div>
-              <div role="cell">Compiler translates whole program before execution; interpreter translates/executes statement by statement.</div>
-              <div role="cell">"Interpreter is a bad compiler."</div>
+              <div role="cell">High-level source during execution</div>
+              <div role="cell">Interpreter</div>
+              <div role="cell">Translates and executes statement by statement.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Syntax vs semantic</div>
-              <div role="cell">Syntax checks grammar; semantic checks meaning such as type, scope and declarations.</div>
-              <div role="cell">"Both mean spelling mistakes."</div>
+              <div role="cell">Assembly to machine code</div>
+              <div role="cell">Assembler</div>
+              <div role="cell">Translates mnemonics into machine code.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Linker vs loader</div>
-              <div role="cell">Linker combines object modules/resolves references; loader places executable code into memory.</div>
-              <div role="cell">"Both run the program."</div>
+              <div role="cell">Object modules to executable</div>
+              <div role="cell">Linker</div>
+              <div role="cell">Combines modules and resolves external references.</div>
             </div>
             <div class="table-row" role="row">
-              <div role="cell">Logic vs runtime error</div>
-              <div role="cell">Logic runs but gives wrong output; runtime fails while executing.</div>
-              <div role="cell">"Wrong output means runtime error."</div>
+              <div role="cell">Executable to memory</div>
+              <div role="cell">Loader</div>
+              <div role="cell">Places code/data into main memory ready to run.</div>
             </div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="synthesis" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Similar terms that the exam likes to separate</h2>
+        <!-- stage10-explanation:start pipeline -->
+        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <h2 class="explanation-sr-only" id="explanation-pipeline-title">After translation, linking and loading may still be needed</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Similar terms that the exam likes to separate with a structured visual model." />
-            <figcaption class="explanation-sr-only">Similar terms that the exam likes to separate: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-pipeline.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining After translation, linking and loading may still be needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">After translation, linking and loading may still be needed: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> High-value comparisons</li><li><strong>Lesson fact:</strong> Difference that earns marks</li><li><strong>Lesson fact:</strong> Common wrong answer</li><li><strong>Lesson fact:</strong> OS vs utility</li><li><strong>Lesson fact:</strong> OS manages resources; a utility performs a specific maintenance/protection task.</li><li><strong>Lesson fact:</strong> &quot;Both are apps.&quot;</li><li><strong>Lesson fact:</strong> Compiler vs interpreter</li><li><strong>Lesson fact:</strong> Compiler translates whole program before execution; interpreter translates/executes statement by statement.</li><li><strong>Lesson fact:</strong> &quot;Interpreter is a bad compiler.&quot;</li><li><strong>Lesson fact:</strong> Syntax vs semantic</li><li><strong>Lesson fact:</strong> Syntax checks grammar; semantic checks meaning such as type, scope and declarations.</li><li><strong>Lesson fact:</strong> &quot;Both mean spelling mistakes.&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A compiler translates a whole high-level program before execution.</li><li><strong>Lesson fact:</strong> An interpreter translates and executes high-level source statement by statement during execution.</li><li><strong>Lesson fact:</strong> An interpreter normally does not create a separate permanent executable file.</li><li><strong>Lesson fact:</strong> An assembler translates assembly mnemonics into machine or object code.</li><li><strong>Lesson fact:</strong> A linker combines object modules and resolves references; a loader places executable code and data into memory.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel" id="precision" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precision">
+        <!-- stage10-explanation:end pipeline -->
+        <section class="panel" id="diagnostics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
-            <p class="eyebrow">Precision rules</p>
-            <h2>Turn a weak answer into marks</h2>
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Error feedback affects the best choice during development</h2>
           </div>
-          <div class="precision-grid">
-            <article><strong>Weak</strong><span>"A compiler changes code so it can run."</span><em>Too vague: no input, output or timing.</em></article>
-            <article><strong>Better</strong><span>"A compiler translates the whole high-level source program into object/executable code before execution."</span><em>Names input, output and timing.</em></article>
-            <article><strong>Weak</strong><span>"Encryption makes data safe."</span><em>Too broad: safe from what?</em></article>
-            <article><strong>Better</strong><span>"Encryption converts plaintext into ciphertext using a key so unauthorised users cannot read it."</span><em>Names mechanism and security goal.</em></article>
+          <div class="concept-grid">
+            <article><strong>Compiler</strong><span>May provide a list of syntax/translation errors after trying to compile.</span></article>
+            <article><strong>Interpreter</strong><span>May stop at the current statement, useful for step-by-step testing.</span></article>
+            <article><strong>Linker</strong><span>May report unresolved external references after object code exists.</span></article>
+            <article><strong>Testing</strong><span>Logic errors may still need test data and tracing regardless of translator.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start precision -->
-        <section class="panel explanation-panel" id="explanation-precision" data-explains="precision" data-explanation-kind="synthesis" aria-labelledby="explanation-precision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="precision">
-          <h2 class="explanation-sr-only" id="explanation-precision-title">Turn a weak answer into marks</h2>
+        <!-- stage10-explanation:start diagnostics -->
+        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
+          <h2 class="explanation-sr-only" id="explanation-diagnostics-title">Error feedback affects the best choice during development</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-precision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn a weak answer into marks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn a weak answer into marks: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-diagnostics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Error feedback affects the best choice during development with a structured visual model." />
+            <figcaption class="explanation-sr-only">Error feedback affects the best choice during development: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Precision rules</li><li><strong>Lesson fact:</strong> Weak &quot;A compiler changes code so it can run.&quot; Too vague: no input, output or timing.</li><li><strong>Lesson fact:</strong> Better &quot;A compiler translates the whole high-level source program into object/executable code before execution.&quot; Names input, output and timing.</li><li><strong>Lesson fact:</strong> Weak &quot;Encryption makes data safe.&quot; Too broad: safe from what?</li><li><strong>Lesson fact:</strong> Better &quot;Encryption converts plaintext into ciphertext using a key so unauthorised users cannot read it.&quot; Names mechanism and security goal.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Compiler May provide a list of syntax/translation errors after trying to compile.</li><li><strong>Lesson fact:</strong> Interpreter May stop at the current statement, useful for step-by-step testing.</li><li><strong>Lesson fact:</strong> Linker May report unresolved external references after object code exists.</li><li><strong>Lesson fact:</strong> Testing Logic errors may still need test data and tracing regardless of translator.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end precision -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <!-- stage10-explanation:end diagnostics -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Mixed topic classifier</h2>
-            <p>Select a clue and identify the Section 5 topic before answering.</p>
+            <h2>Translation approach selector</h2>
+            <p>Select a scenario and identify the most suitable tool or approach.</p>
           </div>
           <div class="converter-grid">
             <label>
-              Exam clue
+              Scenario
               <select id="scenarioInput">
-                <option value="memory">Allocates RAM to running programs</option>
-                <option value="restore">Restores deleted coursework from a previous copy</option>
-                <option value="prompt">User types precise commands at a prompt</option>
-                <option value="tokens">Groups source-code characters into tokens</option>
-                <option value="references">Resolves references between object modules</option>
-                <option value="wrongresult">Program runs but gives the wrong result</option>
+                <option value="debug">Student wants line-by-line feedback while coding</option>
+                <option value="deploy">Company distributes a finished program without source code</option>
+                <option value="assembly">Programmer writes processor mnemonics</option>
+                <option value="modules">Object modules refer to routines in a library</option>
+                <option value="run">Executable must be placed in memory</option>
+                <option value="logic">Program compiles but gives wrong tax calculation</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+            <button class="primary-button" type="button" id="simulateBtn">Choose</button>
           </div>
           <div class="result-box" id="simulateResult" aria-live="polite"></div>
           <div class="method-box" id="simulateMethod"></div>
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Answer, annotate, improve</h2>
+            <h2>Scenario choice with exam wording</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="translator">Translator comparison</button>
-            <button class="tab" type="button" data-example="utility">Utility choice</button>
-            <button class="tab" type="button" data-example="linkload">Linker/loader</button>
-            <button class="tab" type="button" data-example="errors">Error diagnosis</button>
+            <button class="tab active" type="button" data-example="debug">Development</button>
+            <button class="tab" type="button" data-example="deploy">Deployment</button>
+            <button class="tab" type="button" data-example="assembly">Assembly</button>
+            <button class="tab" type="button" data-example="pipeline">Pipeline</button>
           </div>
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
-            <h2>Instant-check mixed retrieval</h2>
+            <h2>Instant-check questions</h2>
             <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak review answers</h2>
+            <h2>Fix the almost-right answers</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
-            <p class="eyebrow">Exam-style stage review</p>
+            <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style mixed Section 5 questions. The MS rewards precision and scenario linkage.</p>
+            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Section 5 review rule</h2>
+            <h2>Choice memory map</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Recognise</strong><span>Identify the topic before writing the answer.</span></div>
-            <div><strong>Define</strong><span>Use precise input, action and output/result.</span></div>
-            <div><strong>Compare</strong><span>State the mechanism difference, not only a vague benefit.</span></div>
-            <div><strong>Apply</strong><span>Link the tool to the scenario evidence.</span></div>
-            <div><strong>Correct</strong><span>Rewrite weak answers using mark scheme phrases.</span></div>
-            <div><strong>Boundary</strong><span>Section 6 security begins next lesson.</span></div>
+            <div><strong>Interpreter</strong><span>Development, rapid feedback, statement-by-statement execution.</span></div>
+            <div><strong>Compiler</strong><span>Deployment, whole program translation, executable/object code.</span></div>
+            <div><strong>Assembler</strong><span>Assembly mnemonics into machine code.</span></div>
+            <div><strong>Linker</strong><span>Object modules and libraries into linked executable code.</span></div>
+            <div><strong>Loader</strong><span>Executable into main memory ready to run.</span></div>
+            <div><strong>Testing</strong><span>Still needed for logic errors and scenario confidence.</span></div>
           </div>
         </section>
 
@@ -293,24 +373,24 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Ten-card retrieval deck</strong>
-              <span>Create 10 cards from Section 5. Each back must include input/action/output or problem/mechanism/result.</span>
+              <strong>Task 1: Decision table</strong>
+              <span>Create a table for compiler, interpreter, assembler, linker and loader: input, output/result, best scenario and one limitation.</span>
             </article>
             <article>
-              <strong>Task 2: Two comparison paragraphs</strong>
-              <span>Write one paragraph comparing compiler and interpreter, and one comparing linker and loader.</span>
+              <strong>Task 2: 6-mark answer</strong>
+              <span>Compare using an interpreter during development with using a compiler for final deployment.</span>
             </article>
             <article>
-              <strong>Task 3: Timed answer repair</strong>
-              <span>Answer one 6-mark mixed Section 5 question in 7 minutes, then rewrite it using a different colour to add missing mark points.</span>
+              <strong>Task 3: Mixed pipeline</strong>
+              <span>Explain how high-level source code can become a running program, including compilation, linking and loading.</span>
             </article>
           </div>
         </section>
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

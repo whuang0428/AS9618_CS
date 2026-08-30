@@ -1,98 +1,94 @@
-const bookRows = [
-  { BookID: "B01", Title: "Networks", Category: "Computing", Price: 12.5, Copies: 4 },
-  { BookID: "B02", Title: "Poems", Category: "Literature", Price: 8.0, Copies: 7 },
-  { BookID: "B03", Title: "Databases", Category: "Computing", Price: 15.0, Copies: 3 },
-  { BookID: "B04", Title: "Drama", Category: "Literature", Price: 9.5, Copies: 2 },
+const loanRows = [
+  { LoanID: "L01", Title: "Networks", Borrower: "Amira", Category: "Computing", DaysOverdue: 5, Returned: false },
+  { LoanID: "L02", Title: "Poems", Borrower: "Leo", Category: "Literature", DaysOverdue: 0, Returned: true },
+  { LoanID: "L03", Title: "Databases", Borrower: "Maya", Category: "Computing", DaysOverdue: 12, Returned: false },
 ];
 
 const builderMap = {
-  priceDesc: {
-    sql: "SELECT Title, Price\nFROM Book\nORDER BY Price DESC;",
-    reason: "The request asks for individual rows sorted highest first, so use ORDER BY Price DESC.",
+  overdueTitles: {
+    sql: "SELECT Title, Borrower\nFROM Loan\nWHERE Returned = FALSE;",
+    reason: "Output fields are Title and Borrower; the source table is Loan; the condition is Returned = FALSE.",
   },
-  countAll: {
-    sql: "SELECT COUNT(*)\nFROM Book;",
-    reason: "COUNT(*) counts all records in the Book table.",
+  computingBooks: {
+    sql: "SELECT Title\nFROM Loan\nWHERE Category = 'Computing';",
+    reason: "Text value 'Computing' is quoted because it is a string.",
   },
-  avgPrice: {
-    sql: "SELECT AVG(Price)\nFROM Book;",
-    reason: "AVG calculates the mean of a numeric field.",
+  bigOverdue: {
+    sql: "SELECT LoanID, Title\nFROM Loan\nWHERE DaysOverdue > 7;",
+    reason: "DaysOverdue is numeric, so the value 7 is not quoted.",
   },
-  countCategory: {
-    sql: "SELECT Category, COUNT(*)\nFROM Book\nGROUP BY Category;",
-    reason: "The words 'in each Category' mean one count per group, so GROUP BY Category is needed.",
+  leoLoans: {
+    sql: "SELECT Title, DaysOverdue\nFROM Loan\nWHERE Borrower = 'Leo';",
+    reason: "Borrower is text, so 'Leo' is quoted.",
   },
-  sumCopiesCategory: {
-    sql: "SELECT Category, SUM(Copies)\nFROM Book\nGROUP BY Category;",
-    reason: "SUM(Copies) gives a total; GROUP BY Category gives a separate total for each category.",
+  notReturned: {
+    sql: "SELECT LoanID\nFROM Loan\nWHERE Returned = FALSE;",
+    reason: "Boolean condition returns only rows where Returned is false.",
   },
 };
 
 const queryMap = {
   q1: {
-    fields: ["Title", "Price"],
-    rows: [...bookRows]
-      .sort((a, b) => b.Price - a.Price)
-      .map((row) => ({ Title: row.Title, Price: row.Price.toFixed(2) })),
+    fields: ["Title", "Borrower"],
+    filter: (row) => row.Returned === false,
   },
   q2: {
-    fields: ["COUNT(*)"],
-    rows: [{ "COUNT(*)": bookRows.length }],
+    fields: ["Title"],
+    filter: (row) => row.Category === "Computing",
   },
   q3: {
-    fields: ["AVG(Price)"],
-    rows: [{ "AVG(Price)": average(bookRows.map((row) => row.Price)).toFixed(2) }],
+    fields: ["LoanID", "Title"],
+    filter: (row) => row.DaysOverdue > 7,
   },
   q4: {
-    fields: ["Category", "COUNT(*)"],
-    rows: groupByCategory((rows) => rows.length, "COUNT(*)"),
+    fields: ["Title", "DaysOverdue"],
+    filter: (row) => row.Borrower === "Leo",
   },
   q5: {
-    fields: ["Category", "SUM(Copies)"],
-    rows: groupByCategory((rows) => rows.reduce((total, row) => total + row.Copies, 0), "SUM(Copies)"),
+    fields: ["Borrower"],
+    filter: (row) => row.DaysOverdue === 0,
   },
 };
 
 const examples = {
-  sort: {
-    title: "Example 1: Sort by a numeric field",
-    problem: "Show Title and Price sorted from most expensive to least expensive.",
+  returned: {
+    title: "Example 1: Boolean condition",
+    problem: "Show Title and Borrower for loans that have not been returned.",
     steps: [
-      "Fields needed: Title, Price.",
-      "Table: Book.",
-      "Sort field: Price.",
-      "Highest first means descending: ORDER BY Price DESC.",
-      "SQL: SELECT Title, Price FROM Book ORDER BY Price DESC;",
+      "Fields needed: Title, Borrower.",
+      "Table: Loan.",
+      "Condition: Returned = FALSE.",
+      "SQL: SELECT Title, Borrower FROM Loan WHERE Returned = FALSE;",
     ],
   },
-  count: {
-    title: "Example 2: Count all records",
-    problem: "Find the number of books in the table.",
+  text: {
+    title: "Example 2: Text condition",
+    problem: "Show Title for loans where Category is Computing.",
     steps: [
-      "The request asks for a count, not a list of rows.",
-      "Use COUNT(*) to count all records.",
-      "No GROUP BY is needed because there is only one overall count.",
-      "SQL: SELECT COUNT(*) FROM Book;",
+      "Fields needed: Title.",
+      "Table: Loan.",
+      "Condition: Category = 'Computing'.",
+      "Text values such as 'Computing' need quotes.",
     ],
   },
-  average: {
-    title: "Example 3: Calculate a mean",
-    problem: "Find the average price of all books.",
+  number: {
+    title: "Example 3: Numeric condition",
+    problem: "Show LoanID and Title for loans more than 7 days overdue.",
     steps: [
-      "The field is numeric, so an aggregate function can be applied.",
-      "AVG(Price) returns one summary value.",
-      "Calculation from the table: (12.50 + 8.00 + 15.00 + 9.50) / 4 = 11.25.",
-      "SQL: SELECT AVG(Price) FROM Book;",
+      "Fields needed: LoanID, Title.",
+      "Table: Loan.",
+      "Condition: DaysOverdue > 7.",
+      "Numeric values are not quoted in this basic SQL style.",
     ],
   },
-  group: {
-    title: "Example 4: Count per category",
-    problem: "Find the number of books in each category.",
+  star: {
+    title: "Example 4: Avoid SELECT * unless needed",
+    problem: "The question asks for Title only. A student writes SELECT * FROM Loan WHERE Category = 'Computing';",
     steps: [
-      "The phrase 'each category' signals grouping.",
-      "Output Category so the result identifies each group.",
-      "Use COUNT(*) to count records in each group.",
-      "SQL: SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+      "The condition may be correct, but SELECT * outputs every field.",
+      "If the question asks for Title only, write SELECT Title.",
+      "Cambridge mark schemes often credit the exact required fields.",
+      "Better: SELECT Title FROM Loan WHERE Category = 'Computing';",
     ],
   },
 };
@@ -100,82 +96,82 @@ const examples = {
 const practice = [
   {
     id: "p1",
-    prompt: "Which SQL clause sorts result rows?",
-    accepted: ["order by"],
-    answer: "ORDER BY",
+    prompt: "Which SQL clause names the fields to output?",
+    accepted: ["select"],
+    answer: "SELECT",
   },
   {
     id: "p2",
-    prompt: "Which keyword sorts from high to low or Z to A?",
-    accepted: ["desc", "descending"],
-    answer: "DESC",
+    prompt: "Which SQL clause names the table?",
+    accepted: ["from"],
+    answer: "FROM",
   },
   {
     id: "p3",
-    prompt: "Which keyword sorts from low to high or A to Z?",
-    accepted: ["asc", "ascending"],
-    answer: "ASC",
+    prompt: "Which SQL clause filters records using a condition?",
+    accepted: ["where"],
+    answer: "WHERE",
   },
   {
     id: "p4",
-    prompt: "Which aggregate function counts records?",
-    accepted: ["count", "count()"],
-    answer: "COUNT",
+    prompt: "Write the condition for records where Category is Computing.",
+    accepted: ["category = 'computing'", "category='computing'", "category = \"computing\"", "category=\"computing\""],
+    answer: "Category = 'Computing'",
   },
   {
     id: "p5",
-    prompt: "Which aggregate function totals numeric values?",
-    accepted: ["sum", "sum()"],
-    answer: "SUM",
+    prompt: "Write the condition for records where DaysOverdue is greater than 7.",
+    accepted: ["daysoverdue > 7", "daysoverdue>7"],
+    answer: "DaysOverdue > 7",
   },
   {
     id: "p6",
-    prompt: "Which aggregate function calculates the mean?",
-    accepted: ["avg", "avg()", "average"],
-    answer: "AVG",
+    prompt: "Should text values in WHERE conditions usually be quoted? yes or no.",
+    accepted: ["yes"],
+    answer: "Yes",
   },
   {
     id: "p7",
-    prompt: "Which aggregate function finds the smallest value?",
-    accepted: ["min", "min()"],
-    answer: "MIN",
+    prompt: "Should field names in SELECT usually be written in quotes? yes or no.",
+    accepted: ["no"],
+    answer: "No",
   },
   {
     id: "p8",
-    prompt: "Which aggregate function finds the largest value?",
-    accepted: ["max", "max()"],
-    answer: "MAX",
+    prompt: "Write the SQL keyword used to mean all fields.",
+    accepted: ["*"],
+    answer: "*",
   },
   {
     id: "p9",
-    prompt: "Which SQL clause groups records for a per-category summary?",
-    accepted: ["group by"],
-    answer: "GROUP BY",
+    prompt: "If the question asks for Title only, is SELECT * usually the best answer? yes or no.",
+    accepted: ["no"],
+    answer: "No",
   },
   {
     id: "p10",
-    prompt: "If selecting Category with COUNT(*) per Category, do you need GROUP BY? yes or no.",
-    accepted: ["yes", "y"],
-    answer: "Yes. Use GROUP BY Category.",
+    prompt: "What comparison operator means not equal to in standard SQL style?",
+    accepted: ["<>"],
+    answer: "<>",
   },
 ];
 
 const mistakes = [
   {
-    wrong: "SELECT Title FROM Book WHERE Price DESC;",
-    fix: "WHERE filters rows; it does not sort rows. Use SELECT Title FROM Book ORDER BY Price DESC;",
+    wrong: "SELECT * FROM Loan WHERE Category = 'Computing' when the question asks for Title only.",
+    fix: "Use SELECT Title so only the requested field is output.",
   },
   {
-    wrong: "SELECT Category, COUNT(*) FROM Book;",
-    fix: "This mixes a normal field with an aggregate but does not group. Use SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+    wrong: "SELECT 'Title' FROM Loan WHERE Category = 'Computing';",
+    fix: "Do not quote field names in this basic SQL style. Use SELECT Title. Quote text values such as 'Computing'.",
   },
   {
-    wrong: "SELECT COUNT(Price) FROM Book; when the request asks for the total price.",
-    fix: "COUNT(Price) counts non-null Price values. Use SUM(Price) to calculate a total.",
+    wrong: "SELECT Title WHERE Category = 'Computing';",
+    fix: "The FROM clause is missing. SQL needs the table name: SELECT Title FROM Loan WHERE Category = 'Computing';",
   },
   {
-    wrong: "SELECT Title, Price FROM Book ORDER BY Price ASC; when the request asks for highest price first.",
-    fix: "ASC gives low to high. Use ORDER BY Price DESC for highest first.",
+    wrong: "SELECT Title FROM Loan WHERE DaysOverdue = '> 7';",
+    fix: "The comparison operator is part of the condition, not a quoted string. Use WHERE DaysOverdue > 7.",
   },
 ];
 
@@ -188,105 +184,93 @@ function renderStudentMarkPoints(question) {
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
-    prompt: "The table Book has fields BookID, Title, Category, Price and Copies. Write an SQL query to output Title and Price for all books, sorted by Price from highest to lowest.",
-    answer: "SELECT Title, Price FROM Book ORDER BY Price DESC;",
+    marks: "3 marks",
+    prompt: "Write an SQL query to output Title and Borrower from Loan for records where Returned is FALSE.",
+    answer: "SELECT Title, Borrower FROM Loan WHERE Returned = FALSE;",
     marking: [
-      { mark: "B1", text: "SELECT Title, Price" },
-      { mark: "B1", text: "FROM Book" },
-      { mark: "M1", text: "ORDER BY Price" },
-      { mark: "A1", text: "DESC used to sort highest to lowest" },
+      { mark: "B1", text: "SELECT Title, Borrower" },
+      { mark: "B1", text: "FROM Loan" },
+      { mark: "B1", text: "WHERE Returned = FALSE" },
     ],
     strict: [
-      "Do not award the SELECT mark for SELECT * unless Title and Price are explicitly identified as the required output.",
-      "Allow field order Price, Title unless the question specifies output order.",
-      "Do not accept ASC for highest to lowest.",
+      "Do not award SELECT mark for SELECT * unless all required fields are also clearly specified.",
+      "Do not require semicolon.",
+      "Allow field order Borrower, Title unless question specifies order.",
     ],
   },
   {
     title: "Question 2",
-    marks: "2 marks",
-    prompt: "Write an SQL query to find the number of records in the Book table.",
-    answer: "SELECT COUNT(*) FROM Book;",
+    marks: "4 marks",
+    prompt: "Write an SQL query to output Title for loans where Category is Computing.",
+    answer: "SELECT Title FROM Loan WHERE Category = 'Computing';",
     marking: [
-      { mark: "B1", text: "SELECT COUNT(*) or equivalent valid COUNT aggregate" },
-      { mark: "B1", text: "FROM Book" },
+      { mark: "B1", text: "SELECT Title" },
+      { mark: "B1", text: "FROM Loan" },
+      { mark: "M1", text: "WHERE Category = ..." },
+      { mark: "A1", text: "text value 'Computing' correctly quoted or clearly shown as string literal" },
     ],
     strict: [
-      "Do not accept SELECT * because it outputs records rather than a count.",
-      "Allow COUNT(BookID) if BookID is a required non-null key field.",
-      "Do not require a semicolon.",
+      "Do not award A1 if Computing is treated as a field name without quotes and no alternative string notation.",
+      "Do not award SELECT mark for extra fields unless the mark scheme allows additional fields; here it asks for Title.",
+      "Allow double quotes if used consistently for string literal.",
     ],
   },
   {
     title: "Question 3",
-    marks: "2 marks",
-    prompt: "Write an SQL query to find the average price of books in the Book table.",
-    answer: "SELECT AVG(Price) FROM Book;",
+    marks: "4 marks",
+    prompt: "Write an SQL query to output LoanID and Title for loans more than 7 days overdue.",
+    answer: "SELECT LoanID, Title FROM Loan WHERE DaysOverdue > 7;",
     marking: [
-      { mark: "B1", text: "SELECT AVG(Price)" },
-      { mark: "B1", text: "FROM Book" },
+      { mark: "B1", text: "SELECT LoanID, Title" },
+      { mark: "B1", text: "FROM Loan" },
+      { mark: "M1", text: "WHERE DaysOverdue uses greater-than comparison" },
+      { mark: "A1", text: "correct condition DaysOverdue > 7" },
     ],
     strict: [
-      "Do not accept SUM(Price) because it returns a total, not a mean.",
-      "Do not accept COUNT(Price) because it counts values.",
-      "Allow AVERAGE(Price) only if the question or course notation has explicitly allowed it; otherwise use AVG.",
+      "Do not accept DaysOverdue >= 7 because 'more than 7' excludes 7.",
+      "Do not quote the whole comparison as a string.",
+      "Allow Title, LoanID order unless question requires order.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Write an SQL query to output each Category and the number of books in that category.",
-    answer: "SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+    marks: "5 marks",
+    prompt: "The table Book has fields BookID, Title, Category and Price. Write an SQL query to output BookID and Title for books with Price less than 10.00.",
+    answer: "SELECT BookID, Title FROM Book WHERE Price < 10.00;",
     marking: [
-      { mark: "B1", text: "SELECT Category" },
-      { mark: "B1", text: "COUNT(*) or valid count aggregate included" },
+      { mark: "B1", text: "SELECT BookID, Title" },
       { mark: "B1", text: "FROM Book" },
-      { mark: "M1", text: "GROUP BY Category used" },
+      { mark: "M1", text: "WHERE Price condition" },
+      { mark: "A1", text: "correct less-than operator <" },
+      { mark: "A1", text: "correct numeric value 10.00 or 10 not quoted" },
     ],
     strict: [
-      "Do not award the GROUP BY mark for ORDER BY Category because sorting is not grouping.",
-      "Do not accept a query that gives only one overall count.",
-      "Allow COUNT(BookID) if BookID is a required non-null key field.",
+      "Do not accept Price <= 10.00 for 'less than 10.00'.",
+      "Do not require 10.00 rather than 10 if numeric meaning is same.",
+      "Do not award SELECT mark for Title only or BookID only.",
     ],
   },
   {
     title: "Question 5",
-    marks: "3 marks",
-    prompt: "A student writes SELECT Category, COUNT(*) FROM Book ORDER BY Category; for the request: output the number of books in each category. Identify and correct the main error.",
-    answer: "The query sorts by Category but does not group records by Category. ORDER BY should not replace GROUP BY. A corrected query is SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
+    marks: "4 marks",
+    prompt: "A student writes SELECT * FROM Loan WHERE Borrower = Leo; for the request: output Title and DaysOverdue for loans borrowed by Leo. Identify and correct two errors.",
+    answer: "The first error is SELECT * because it outputs all fields instead of only Title and DaysOverdue. It should be SELECT Title, DaysOverdue. The second error is Leo is a text value and should be quoted as 'Leo'. A corrected query is SELECT Title, DaysOverdue FROM Loan WHERE Borrower = 'Leo';",
     marking: [
-      { mark: "B1", text: "identifies ORDER BY only sorts the result" },
-      { mark: "B1", text: "identifies grouping by Category is required for 'each category'" },
-      { mark: "B1", text: "corrects ORDER BY to GROUP BY Category in a valid query" },
+      { mark: "B1", text: "identifies SELECT * outputs all fields / wrong selected fields" },
+      { mark: "B1", text: "corrects to SELECT Title, DaysOverdue" },
+      { mark: "B1", text: "identifies Leo is a string/text value" },
+      { mark: "B1", text: "corrects to Borrower = 'Leo'" },
     ],
     strict: [
-      "Do not award the main correction mark for adding WHERE Category because no filtering condition is requested.",
-      "Allow ORDER BY Category after GROUP BY Category if the grouped result is also sorted.",
-      "Do not require a semicolon.",
+      "Do not award correction mark for only saying 'do not use star' without fields.",
+      "Allow double quotes around Leo if used as string literal.",
+      "Do not penalise missing semicolon.",
     ],
   },
 ];
 
-function average(values) {
-  return values.reduce((total, value) => total + value, 0) / values.length;
-}
-
-function groupByCategory(calculate, outputField) {
-  const categories = [...new Set(bookRows.map((row) => row.Category))].sort();
-  return categories.map((category) => {
-    const rows = bookRows.filter((row) => row.Category === category);
-    return { Category: category, [outputField]: calculate(rows) };
-  });
-}
-
 function normalise(value) {
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .replace(/\(\s*\)/g, "()")
-    .replace(/ ;$/, ";");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";");
 }
 
 function setupPrint() {
@@ -296,10 +280,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    group: "Correct. COUNT(*) gives the summary; GROUP BY Category makes it one count per category.",
-    order: "Not enough. ORDER BY sorts rows; it does not calculate a count for each category.",
-    where: "No. WHERE filters records before grouping and cannot be used like WHERE COUNT(*).",
-    star: "Too broad. SELECT * outputs records, but the request asks for a grouped summary.",
+    select: "Correct. It selects the needed field, names the table, and filters unreturned books.",
+    all: "Too broad. SELECT * returns all fields and has no condition for overdue/unreturned.",
+    from: "No. The SELECT clause is missing, so no output field is named.",
+    where: "No. Clause order and FROM are wrong for basic SQL.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -337,7 +321,8 @@ function setupQueryRunner() {
   const result = document.querySelector("#queryResult");
   document.querySelector("#queryBtn").addEventListener("click", () => {
     const query = queryMap[input.value];
-    result.innerHTML = renderResultTable(query.fields, query.rows);
+    const rows = loanRows.filter(query.filter);
+    result.innerHTML = renderResultTable(query.fields, rows);
   });
 }
 
@@ -361,7 +346,7 @@ function setupExamples() {
       renderExample(button.dataset.example);
     });
   });
-  renderExample("sort");
+  renderExample("returned");
 }
 
 function renderPractice() {

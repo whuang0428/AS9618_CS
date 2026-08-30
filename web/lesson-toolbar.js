@@ -19,7 +19,7 @@
   if (lessonNav && actionPanel) setupContentsToggle();
 
   function lessonHref(number) {
-    return number >= 1 && number <= 150 ? `../lesson-${String(number).padStart(3, "0")}/` : "";
+    return number >= 1 && number <= 151 ? `../lesson-${String(number).padStart(3, "0")}/` : "";
   }
 
   function navLink(className, label, number) {

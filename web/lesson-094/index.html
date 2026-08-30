@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 094 | Paper 1 mixed question strategy</title>
+    <title>AS9618 Lesson 094 | Paper 1 review: ethics and databases</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 1-8</p>
-        <h1>Paper 1 mixed question strategy</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 7-8</p>
+        <h1>Paper 1 review: ethics and databases</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#map">Paper map</a>
-        <a href="#strategy">Strategy</a>
-        <a href="#commands">Command words</a>
-        <a href="#answer">Answer frames</a>
+        <a href="#map">Retrieval map</a>
+        <a href="#ethics">Ethics review</a>
+        <a href="#databases">Database review</a>
+        <a href="#sql">SQL review</a>
         <a href="#classifier">Classifier</a>
-        <a href="#decoder">Command decoder</a>
-        <a href="#builder">Answer builder</a>
+        <a href="#builder">Judgement builder</a>
+        <a href="#tracer">SQL tracer</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -47,264 +47,270 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 094 | 45 minutes | Paper 1 Sections 1-8 | mixed review strategy</p>
-            <h2>Mixed questions require careful identification of topic, command word and response form.</h2>
+            <p class="lesson-meta">Lesson 094 | 45 minutes | Paper 1 Sections 7-8 | informal questioning</p>
+            <h2>Ethics needs judgement. Databases need structure. Both punish waffle politely but firmly.</h2>
             <p>
-              This lesson trains the strategy for Paper 1 mixed questions. You will classify the syllabus area,
-              read the command word, choose the method, and write answers with mechanism, context and consequence.
-              The content spans representation, communication, hardware, processor fundamentals, system software,
-              security, ethics and databases.
+              This review connects Section 7 evaluation answers with Section 8 database design and SQL.
+              You will identify whether a question wants balanced judgement, relational design, SQL, or data
+              protection, then answer with precise terms and scenario consequences.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>use clues to identify which Paper 1 section is being tested</span></div>
-              <div><strong>Decode</strong><span>match command words to the expected answer shape</span></div>
-              <div><strong>Construct</strong><span>write concise mark-worthy responses under mixed-topic pressure</span></div>
+              <div><strong>Classify</strong><span>separate ethics/ownership questions from database/SQL questions</span></div>
+              <div><strong>Apply</strong><span>stakeholder judgement, relational design rules and SQL clauses</span></div>
+              <div><strong>Improve</strong><span>turn vague opinion or database wording into mark-worthy answers</span></div>
             </div>
           </div>
-          <div class="sql-visual" aria-label="Mixed question strategy visual">
-            <span class="keyword">1</span><span>Topic clue: representation, network, CPU, OS, security, ethics, database</span>
-            <span class="keyword">2</span><span>Command word: state, describe, explain, compare, justify, evaluate</span>
-            <span class="keyword">3</span><span>Response: term, method, mechanism, context, consequence</span>
-            <p>Do not answer the question you revised. Answer the question they actually asked.</p>
+          <div class="sql-visual" aria-label="Ethics and database review visual">
+            <span class="keyword">Evaluate</span><span>stakeholder, benefit, concern, safeguard, judgement</span>
+            <span class="keyword">Design</span><span>table, record, field, primary key, foreign key, normalisation</span>
+            <span class="keyword">Query</span><span>SELECT, WHERE, ORDER BY, GROUP BY, JOIN</span>
+            <p>If the question says "discuss", do not write SQL. If it says "query", do not write a speech about society.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 1 often tests familiar knowledge in unfamiliar scenarios. Strategy turns recognition into marks.</p>
+            <p>Paper 1 review questions often mix command words. Topic recognition prevents a correct fact being used in the wrong answer.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>A correct keyword is not a complete answer. "Encryption" starts the answer; mechanism and consequence earn the rest.</p>
+            <p>Privacy is not a primary key problem. A database can store personal data accurately and still be ethically questionable.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>What is the first move?</h2>
-            <p>Four questions walk into an exam. Only one wants a calculation, one wants comparison, one wants SQL, and one wants judgement.</p>
+            <h2>Identify the relevant syllabus concept</h2>
+            <p>A supermarket loyalty system can trigger both ethics and database questions. The mark scheme depends on the command word.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="calc">Calculate the file size of a bitmap image.</button>
-            <button class="choice-card" type="button" data-hook="compare">Compare compiler and interpreter.</button>
-            <button class="choice-card" type="button" data-hook="sql">Write a query to output books in each category.</button>
-            <button class="choice-card" type="button" data-hook="evaluate">Discuss using surveillance cameras in a town centre.</button>
+            <button class="choice-card" type="button" data-hook="privacy">Discuss privacy concerns of tracking customer purchases.</button>
+            <button class="choice-card" type="button" data-hook="key">Choose a field to uniquely identify each customer record.</button>
+            <button class="choice-card" type="button" data-hook="sql">Output customers with more than 1000 points.</button>
+            <button class="choice-card" type="button" data-hook="licence">Explain why copied proprietary software may be illegal.</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose a card to identify the required response shape.
+            Choose a card to classify the topic and first answer move.
           </div>
         </section>
 
         <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
           <div class="section-title">
-            <p class="eyebrow">Paper map</p>
-            <h2>Paper 1 sections and question clues</h2>
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Sections 7-8 knowledge map</h2>
           </div>
           <div class="retrieval-grid">
-            <article><strong>Section 1</strong><span>binary/hex, storage units, images, sound, compression, file size calculations</span></article>
-            <article><strong>Section 2</strong><span>LAN/WAN, packets, protocols, IP/MAC/DNS, hardware, performance</span></article>
-            <article><strong>Section 3</strong><span>input/output/storage, RAM/ROM/cache, embedded systems, logic gates</span></article>
-            <article><strong>Section 4</strong><span>CPU, registers, buses, FDE cycle, interrupts, performance factors</span></article>
-            <article><strong>Sections 5-6</strong><span>OS roles, utilities, translators, errors, security threats and controls</span></article>
-            <article><strong>Sections 7-8</strong><span>ethics, ownership, impacts, relational design, SQL and data protection</span></article>
+            <article><strong>Ethics</strong><span>stakeholders, consent, fairness, responsibility, proportionality and safeguards</span></article>
+            <article><strong>Privacy and data protection</strong><span>personal data, collection purpose, access, retention, monitoring and transparency</span></article>
+            <article><strong>Ownership</strong><span>copyright, patents, licences, open-source/proprietary software and obligations</span></article>
+            <article><strong>Impact</strong><span>environmental impact, e-waste, energy use, automation, digital divide and social consequences</span></article>
+            <article><strong>Database design</strong><span>data/information, DBMS, tables, records, fields, keys, relationships and normalisation</span></article>
+            <article><strong>SQL and protection</strong><span>SELECT, WHERE, ORDER BY, GROUP BY, joins, INSERT/UPDATE/DELETE, validation, verification and backup</span></article>
           </div>
         </section>
 
         <!-- stage10-explanation:start map -->
         <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="map">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Paper 1 sections and question clues</h2>
+          <h2 class="explanation-sr-only" id="explanation-map-title">Sections 7-8 knowledge map</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Paper 1 sections and question clues with a structured visual model." />
-            <figcaption class="explanation-sr-only">Paper 1 sections and question clues: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sections 7-8 knowledge map with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sections 7-8 knowledge map: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Paper map</li><li><strong>Lesson fact:</strong> Section 1 binary/hex, storage units, images, sound, compression, file size calculations</li><li><strong>Lesson fact:</strong> Section 2 LAN/WAN, packets, protocols, IP/MAC/DNS, hardware, performance</li><li><strong>Lesson fact:</strong> Section 3 input/output/storage, RAM/ROM/cache, embedded systems, logic gates</li><li><strong>Lesson fact:</strong> Section 4 CPU, registers, buses, FDE cycle, interrupts, performance factors</li><li><strong>Lesson fact:</strong> Sections 5-6 OS roles, utilities, translators, errors, security threats and controls</li><li><strong>Lesson fact:</strong> Sections 7-8 ethics, ownership, impacts, relational design, SQL and data protection</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Ethics stakeholders, consent, fairness, responsibility, proportionality and safeguards</li><li><strong>Lesson fact:</strong> Privacy and data protection personal data, collection purpose, access, retention, monitoring and transparency</li><li><strong>Lesson fact:</strong> Ownership copyright, patents, licences, open-source/proprietary software and obligations</li><li><strong>Lesson fact:</strong> Impact environmental impact, e-waste, energy use, automation, digital divide and social consequences</li><li><strong>Lesson fact:</strong> Database design data/information, DBMS, tables, records, fields, keys, relationships and normalisation</li><li><strong>Lesson fact:</strong> SQL and protection SELECT, WHERE, ORDER BY, GROUP BY, joins, INSERT/UPDATE/DELETE, validation, verification and backup</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end map -->
-        <section class="panel" id="strategy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strategy">
+        <section class="panel" id="ethics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ethics">
           <div class="section-title">
-            <p class="eyebrow">Mixed question strategy</p>
-            <h2>The 30-second annotation routine</h2>
+            <p class="eyebrow">Ethics review</p>
+            <h2>Evaluation answers need both sides and a condition</h2>
           </div>
-          <div class="data-table strategy-table" role="table" aria-label="Mixed question strategy">
-            <div class="table-row table-head" role="row"><div>Step</div><div>What to mark</div><div>Why it protects marks</div></div>
-            <div class="table-row" role="row"><div>1. Topic clue</div><div>underline the syllabus clue: register, packet, licence, primary key, etc.</div><div>prevents selection of an unrelated syllabus concept</div></div>
-            <div class="table-row" role="row"><div>2. Command word</div><div>circle state, describe, explain, compare, justify or evaluate</div><div>sets depth and answer structure</div></div>
-            <div class="table-row" role="row"><div>3. Output type</div><div>calculation, table, SQL, diagram label, prose explanation</div><div>prevents writing paragraphs when a method/result is needed</div></div>
-            <div class="table-row" role="row"><div>4. Context link</div><div>name the school, business, network, database or user from the scenario</div><div>turns generic knowledge into applied marks</div></div>
+          <div class="data-table review-table" role="table" aria-label="Ethics review">
+            <div class="table-row table-head" role="row"><div>Topic</div><div>Question clue</div><div>Mark-worthy phrase</div></div>
+            <div class="table-row" role="row"><div>Privacy</div><div>personal data, tracking, surveillance</div><div>collect only necessary data with consent, clear purpose and controlled access</div></div>
+            <div class="table-row" role="row"><div>Ownership</div><div>copyright, licence, copied software</div><div>a licence gives permission under conditions; copyright still applies</div></div>
+            <div class="table-row" role="row"><div>Environmental impact</div><div>energy use, disposal, replacement</div><div>reduce e-waste through recycling, repair and longer device life</div></div>
+            <div class="table-row" role="row"><div>Social impact</div><div>automation, access, jobs</div><div>benefits must be weighed against exclusion, deskilling or job displacement</div></div>
           </div>
-          <div class="callout">Chinese support: command word = 指令词；mechanism = 机制；context = 题目情境；consequence = 结果/影响；follow-through = 后续得分。</div>
+          <div class="callout">Chinese support: stakeholder = 利益相关者；consent = 同意；licence = 许可；e-waste = 电子垃圾；judgement = 有依据的判断。</div>
         </section>
 
-        <!-- stage10-explanation:start strategy -->
-        <section class="panel explanation-panel" id="explanation-strategy" data-explains="strategy" data-explanation-kind="synthesis" aria-labelledby="explanation-strategy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="strategy">
-          <h2 class="explanation-sr-only" id="explanation-strategy-title">The 30-second annotation routine</h2>
+        <!-- stage10-explanation:start ethics -->
+        <section class="panel explanation-panel" id="explanation-ethics" data-explains="ethics" data-explanation-kind="synthesis" aria-labelledby="explanation-ethics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="ethics">
+          <h2 class="explanation-sr-only" id="explanation-ethics-title">Evaluation answers need both sides and a condition</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-strategy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The 30-second annotation routine with a structured visual model." />
-            <figcaption class="explanation-sr-only">The 30-second annotation routine: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-ethics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Evaluation answers need both sides and a condition with a structured visual model." />
+            <figcaption class="explanation-sr-only">Evaluation answers need both sides and a condition: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mixed question strategy</li><li><strong>Lesson fact:</strong> What to mark</li><li><strong>Lesson fact:</strong> Why it protects marks</li><li><strong>Lesson fact:</strong> 1. Topic clue</li><li><strong>Lesson fact:</strong> underline the syllabus clue: register, packet, licence, primary key, etc.</li><li><strong>Lesson fact:</strong> prevents selection of an unrelated syllabus concept</li><li><strong>Lesson fact:</strong> 2. Command word</li><li><strong>Lesson fact:</strong> circle state, describe, explain, compare, justify or evaluate</li><li><strong>Lesson fact:</strong> sets depth and answer structure</li><li><strong>Lesson fact:</strong> 3. Output type</li><li><strong>Lesson fact:</strong> calculation, table, SQL, diagram label, prose explanation</li><li><strong>Lesson fact:</strong> prevents writing paragraphs when a method/result is needed</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Ethics review</li><li><strong>Lesson fact:</strong> Question clue</li><li><strong>Lesson fact:</strong> Mark-worthy phrase</li><li><strong>Lesson fact:</strong> personal data, tracking, surveillance</li><li><strong>Lesson fact:</strong> collect only necessary data with consent, clear purpose and controlled access</li><li><strong>Lesson fact:</strong> Ownership</li><li><strong>Lesson fact:</strong> copyright, licence, copied software</li><li><strong>Lesson fact:</strong> a licence gives permission under conditions; copyright still applies</li><li><strong>Lesson fact:</strong> Environmental impact</li><li><strong>Lesson fact:</strong> energy use, disposal, replacement</li><li><strong>Lesson fact:</strong> reduce e-waste through recycling, repair and longer device life</li><li><strong>Lesson fact:</strong> Social impact</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end strategy -->
-        <section class="panel" id="commands" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="commands">
+        <!-- stage10-explanation:end ethics -->
+        <section class="panel" id="databases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="databases">
           <div class="section-title">
-            <p class="eyebrow">Command words</p>
-            <h2>What each command word usually demands</h2>
-          </div>
-          <div class="data-table command-table" role="table" aria-label="Command word review">
-            <div class="table-row table-head" role="row"><div>Command</div><div>Answer shape</div><div>Weak answer pattern</div></div>
-            <div class="table-row" role="row"><div>State / identify</div><div>one precise term or value</div><div>writing a paragraph and hiding the answer</div></div>
-            <div class="table-row" role="row"><div>Describe</div><div>what happens or what it is</div><div>saying only why it is useful</div></div>
-            <div class="table-row" role="row"><div>Explain</div><div>cause plus consequence, usually with because/so that</div><div>listing a keyword without mechanism</div></div>
-            <div class="table-row" role="row"><div>Compare</div><div>paired differences using both items</div><div>two isolated descriptions with no contrast</div></div>
-            <div class="table-row" role="row"><div>Justify / evaluate</div><div>choice plus reason, limitation or judgement</div><div>opinion without scenario evidence</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start commands -->
-        <section class="panel explanation-panel" id="explanation-commands" data-explains="commands" data-explanation-kind="synthesis" aria-labelledby="explanation-commands-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="commands">
-          <h2 class="explanation-sr-only" id="explanation-commands-title">What each command word usually demands</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-commands.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What each command word usually demands with a structured visual model." />
-            <figcaption class="explanation-sr-only">What each command word usually demands: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Command words</li><li><strong>Lesson fact:</strong> Answer shape</li><li><strong>Lesson fact:</strong> Weak answer pattern</li><li><strong>Lesson fact:</strong> State / identify</li><li><strong>Lesson fact:</strong> one precise term or value</li><li><strong>Lesson fact:</strong> writing a paragraph and hiding the answer</li><li><strong>Lesson fact:</strong> Describe</li><li><strong>Lesson fact:</strong> what happens or what it is</li><li><strong>Lesson fact:</strong> saying only why it is useful</li><li><strong>Lesson fact:</strong> cause plus consequence, usually with because/so that</li><li><strong>Lesson fact:</strong> listing a keyword without mechanism</li><li><strong>Lesson fact:</strong> paired differences using both items</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end commands -->
-        <section class="panel" id="answer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="answer">
-          <div class="section-title">
-            <p class="eyebrow">Answer frames</p>
-            <h2>Use the smallest frame that fits the command</h2>
+            <p class="eyebrow">Database review</p>
+            <h2>Relational design: structure before SQL</h2>
           </div>
           <div class="clause-grid">
-            <article><strong>Calculation</strong><span>write formula, substitute values, show unit conversion, state final unit.</span></article>
-            <article><strong>Comparison</strong><span>Item A does X whereas item B does Y; link to scenario if asked.</span></article>
-            <article><strong>Security control</strong><span>threat, control, mechanism, consequence, limitation if needed.</span></article>
-            <article><strong>Processor trace</strong><span>name register/bus, state transfer/action, then next step.</span></article>
-            <article><strong>Ethics evaluation</strong><span>stakeholder, benefit, concern, safeguard and justified judgement.</span></article>
-            <article><strong>SQL</strong><span>SELECT fields, FROM table(s), WHERE filter, GROUP BY/ORDER BY if required.</span></article>
+            <article><strong>Primary key</strong><span>Unique, reliable field that identifies each record in one table.</span></article>
+            <article><strong>Foreign key</strong><span>Field that stores a matching primary key value from another table to create a relationship.</span></article>
+            <article><strong>Normalisation</strong><span>Separates repeated data into related tables to reduce duplication, inconsistency and update errors.</span></article>
           </div>
         </section>
 
-        <!-- stage10-explanation:start answer -->
-        <section class="panel explanation-panel" id="explanation-answer" data-explains="answer" data-explanation-kind="synthesis" aria-labelledby="explanation-answer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="answer">
-          <h2 class="explanation-sr-only" id="explanation-answer-title">Use the smallest frame that fits the command</h2>
+        <!-- stage10-explanation:start databases -->
+        <section class="panel explanation-panel" id="explanation-databases" data-explains="databases" data-explanation-kind="synthesis" aria-labelledby="explanation-databases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="databases">
+          <h2 class="explanation-sr-only" id="explanation-databases-title">Relational design: structure before SQL</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-answer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the smallest frame that fits the command with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the smallest frame that fits the command: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-databases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relational design: structure before SQL with a structured visual model." />
+            <figcaption class="explanation-sr-only">Relational design: structure before SQL: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Answer frames</li><li><strong>Lesson fact:</strong> Calculation write formula, substitute values, show unit conversion, state final unit.</li><li><strong>Lesson fact:</strong> Comparison Item A does X whereas item B does Y; link to scenario if asked.</li><li><strong>Lesson fact:</strong> Security control threat, control, mechanism, consequence, limitation if needed.</li><li><strong>Lesson fact:</strong> Processor trace name register/bus, state transfer/action, then next step.</li><li><strong>Lesson fact:</strong> Ethics evaluation stakeholder, benefit, concern, safeguard and justified judgement.</li><li><strong>Lesson fact:</strong> SQL SELECT fields, FROM table(s), WHERE filter, GROUP BY/ORDER BY if required.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Normalisation must retain every original attribute and fact so the original information remains reconstructable.</li><li><strong>Lesson fact:</strong> If the original rows contain A and B values, the decomposition must keep each B value with its relevant key.</li><li><strong>Lesson fact:</strong> A relation containing only a foreign key to A loses the represented B facts.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end answer -->
+        <!-- stage10-explanation:end databases -->
+        <section class="panel" id="sql" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sql">
+          <div class="section-title">
+            <p class="eyebrow">SQL review</p>
+            <h2>Clause choice is not decoration</h2>
+          </div>
+          <div class="data-table sql-table" role="table" aria-label="SQL review">
+            <div class="table-row table-head" role="row"><div>Request</div><div>SQL feature</div><div>Example phrase</div></div>
+            <div class="table-row" role="row"><div>choose output fields</div><div><code>SELECT</code></div><div><code>SELECT Name, Points</code></div></div>
+            <div class="table-row" role="row"><div>filter records</div><div><code>WHERE</code></div><div><code>WHERE Points &gt; 1000</code></div></div>
+            <div class="table-row" role="row"><div>sort records</div><div><code>ORDER BY</code></div><div><code>ORDER BY Points DESC</code></div></div>
+            <div class="table-row" role="row"><div>summary per group</div><div><code>GROUP BY</code></div><div><code>SELECT Category, COUNT(*) ... GROUP BY Category</code></div></div>
+            <div class="table-row" role="row"><div>combine tables</div><div>join condition</div><div><code>Customer.CustomerID = Purchase.CustomerID</code></div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start sql -->
+        <section class="panel explanation-panel" id="explanation-sql" data-explains="sql" data-explanation-kind="synthesis" aria-labelledby="explanation-sql-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="sql">
+          <h2 class="explanation-sr-only" id="explanation-sql-title">Clause choice is not decoration</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-sql.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Clause choice is not decoration with a structured visual model." />
+            <figcaption class="explanation-sr-only">Clause choice is not decoration: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> SELECT, WHERE, GROUP BY and ORDER BY are clause choices with different effects, not mandatory consecutive stages.</li><li><strong>Lesson fact:</strong> SELECT controls fields, WHERE filters rows, GROUP BY forms groups and ORDER BY sorts final rows.</li><li><strong>Lesson fact:</strong> When combined in written SQL, GROUP BY appears before ORDER BY.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sql -->
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive question classifier</p>
-            <h2>Choose the section and first method</h2>
+            <h2>Identify the topic and first move</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Question clue
+              Mixed clue
               <select id="classifierInput">
-                <option value="bitmap">Image has 1024 x 768 pixels and 24-bit colour depth.</option>
-                <option value="packet">Data is split into packets and routed across a WAN.</option>
-                <option value="fde">The PC is copied to the MAR during instruction fetch.</option>
-                <option value="translator">Source code is translated one statement at a time.</option>
-                <option value="licence">A company modifies open-source code under licence terms.</option>
-                <option value="sql">A query must output total sales for each region.</option>
+                <option value="face">A school uses facial recognition at the entrance.</option>
+                <option value="copy">A business installs one purchased software copy on many machines.</option>
+                <option value="repeat">A table repeats customer details for every purchase.</option>
+                <option value="group">A query asks for total sales in each product category.</option>
+                <option value="verify">A clerk checks typed customer data against a paper form.</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="classifyBtn">Classify</button>
           </div>
-          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the answer type.</div>
         </section>
 
-        <section class="panel" id="decoder" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decoder">
-          <div class="section-title">
-            <p class="eyebrow">Interactive command decoder</p>
-            <h2>Decode the command word before writing</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Command word
-              <select id="commandInput">
-                <option value="state">State one advantage of lossless compression.</option>
-                <option value="describe">Describe the fetch part of the FDE cycle.</option>
-                <option value="explain">Explain why MFA improves account security.</option>
-                <option value="compare">Compare compiler and interpreter.</option>
-                <option value="justify">Justify using SSD storage in a tablet.</option>
-                <option value="evaluate">Evaluate the use of surveillance cameras in public spaces.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="decodeBtn">Decode</button>
-          </div>
-          <div class="answer-frame" id="decodeResult">Choose a command word to see the expected answer shape.</div>
-        </section>
-
-        <!-- stage10-explanation:start decoder -->
-        <section class="panel explanation-panel" id="explanation-decoder" data-explains="decoder" data-explanation-kind="synthesis" aria-labelledby="explanation-decoder-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="decoder">
-          <h2 class="explanation-sr-only" id="explanation-decoder-title">Decode the command word before writing</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-decoder.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Decode the command word before writing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Decode the command word before writing: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive command decoder</li><li><strong>Lesson fact:</strong> Command word</li><li><strong>Lesson fact:</strong> Choose a command word to see the expected answer shape.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end decoder -->
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
-            <p class="eyebrow">Interactive answer builder</p>
-            <h2>Build a mechanism-context-consequence sentence</h2>
+            <p class="eyebrow">Interactive judgement builder</p>
+            <h2>Build a balanced ethics paragraph</h2>
           </div>
           <div class="builder-grid">
             <label>
-              Topic
-              <select id="topicInput">
-                <option value="encryption">encryption</option>
-                <option value="cache">cache</option>
-                <option value="normalisation">normalisation</option>
-                <option value="firewall">firewall</option>
+              Benefit
+              <select id="benefitInput">
+                <option value="safety">improves safety by identifying risks quickly</option>
+                <option value="access">improves access or convenience for users</option>
+                <option value="efficiency">reduces cost or manual work for an organisation</option>
               </select>
             </label>
             <label>
-              Context
-              <select id="contextInput">
-                <option value="school">school records system</option>
-                <option value="tablet">student tablet</option>
-                <option value="library">library database</option>
-                <option value="network">company network</option>
+              Concern
+              <select id="concernInput">
+                <option value="privacy">may reduce privacy by collecting personal data</option>
+                <option value="fairness">may treat some groups unfairly if data or algorithms are biased</option>
+                <option value="environment">may increase energy use or e-waste</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="buildBtn">Build answer</button>
+            <label>
+              Safeguard
+              <select id="safeguardInput">
+                <option value="consent">clear consent, limited retention and controlled access are used</option>
+                <option value="audit">regular audit and appeal processes are available</option>
+                <option value="recycle">repair, recycling and energy-efficient devices are planned</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build paragraph</button>
           </div>
-          <div class="answer-frame" id="builderResult">Choose options, then build a sentence.</div>
+          <div class="answer-frame" id="builderResult">Choose options, then build a paragraph.</div>
         </section>
 
+        <section class="panel" id="tracer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tracer">
+          <div class="section-title">
+            <p class="eyebrow">Interactive SQL tracer</p>
+            <h2>Trace one customer table query</h2>
+          </div>
+          <div class="data-table customer-table" role="table" aria-label="Customer table">
+            <div class="table-row table-head" role="row"><div>CustomerID</div><div>Name</div><div>Region</div><div>Points</div></div>
+            <div class="table-row" role="row"><div>C01</div><div>Ada</div><div>North</div><div>1280</div></div>
+            <div class="table-row" role="row"><div>C02</div><div>Bo</div><div>South</div><div>760</div></div>
+            <div class="table-row" role="row"><div>C03</div><div>Chen</div><div>North</div><div>1540</div></div>
+            <div class="table-row" role="row"><div>C04</div><div>Dia</div><div>South</div><div>1110</div></div>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Query
+              <select id="queryInput">
+                <option value="q1">SELECT Name FROM Customer WHERE Points &gt; 1000</option>
+                <option value="q2">SELECT Name, Points FROM Customer ORDER BY Points DESC</option>
+                <option value="q3">SELECT Region, COUNT(*) FROM Customer GROUP BY Region</option>
+                <option value="q4">SELECT Region, SUM(Points) FROM Customer GROUP BY Region</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="queryBtn">Trace result</button>
+          </div>
+          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
+        </section>
+
+        <!-- stage10-explanation:start tracer -->
+        <section class="panel explanation-panel" id="explanation-tracer" data-explains="tracer" data-explanation-kind="synthesis" aria-labelledby="explanation-tracer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tracer">
+          <h2 class="explanation-sr-only" id="explanation-tracer-title">Trace one customer table query</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-094-tracer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace one customer table query with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace one customer table query: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive SQL tracer</li><li><strong>Lesson fact:</strong> CustomerID</li><li><strong>Lesson fact:</strong> Choose a query to see the result.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end tracer -->
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Four mixed questions with strategy annotations</h2>
+            <h2>Annotate where the marks are</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="calc">Calculation</button>
-            <button class="tab" type="button" data-example="processor">Processor</button>
-            <button class="tab" type="button" data-example="security">Security</button>
-            <button class="tab" type="button" data-example="ethics">Evaluation</button>
+            <button class="tab active" type="button" data-example="ethics">Ethics</button>
+            <button class="tab" type="button" data-example="licence">Licensing</button>
+            <button class="tab" type="button" data-example="design">Database design</button>
+            <button class="tab" type="button" data-example="sql">SQL</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -312,7 +318,7 @@
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Strategy retrieval check</h2>
+            <h2>Mixed retrieval check</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -321,7 +327,7 @@
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak mixed-question approaches</h2>
+            <h2>Repair weak Section 7-8 answers</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -329,8 +335,8 @@
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style mixed review with expandable MS</h2>
-            <p>These questions sample the response shapes used across Paper 1. The MS rewards classification, method, precision and scenario links.</p>
+            <h2>Original Cambridge-style review with expandable MS</h2>
+            <p>These questions mix ethics, ownership, relational design, SQL and data protection. The MS rewards precise terms and scenario links.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -338,12 +344,12 @@
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Mixed-question checklist</h2>
+            <h2>Review checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Label first</strong><span>Topic, command word and output type before writing.</span></div>
-            <div><strong>Answer shape</strong><span>Calculation, comparison, explanation, SQL, trace or evaluation.</span></div>
-            <div><strong>Mark phrase</strong><span>Use mechanism, context and consequence, not only a memorised keyword.</span></div>
+            <div><strong>Classify</strong><span>Decide whether the question asks for judgement, design, SQL or protection.</span></div>
+            <div><strong>Use exact terms</strong><span>Stakeholder, consent, licence, primary key, foreign key, validation, verification.</span></div>
+            <div><strong>Link consequence</strong><span>Explain harm, benefit, legal risk, duplication, inconsistency, output or recovery.</span></div>
           </div>
         </section>
 
@@ -354,16 +360,16 @@
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Annotation drill</strong>
-              <span>Choose eight Paper 1 questions from your notes. For each, label topic, command word and output type before answering.</span>
+              <strong>Task 1: Balanced evaluation</strong>
+              <span>Write a 6-mark response about facial recognition in school. Include stakeholder, benefit, concern, safeguard and judgement.</span>
             </article>
             <article>
-              <strong>Task 2: Rewrite weak answers</strong>
-              <span>Rewrite three one-keyword answers into full mechanism-context-consequence answers.</span>
+              <strong>Task 2: Database redesign</strong>
+              <span>Take a flat file with repeated CustomerName, Address and ProductName. Propose three related tables and identify primary/foreign keys.</span>
             </article>
             <article>
-              <strong>Task 3: Mixed mini-set</strong>
-              <span>Create one calculation, one comparison, one SQL question and one evaluation question. Add a 3-point mark scheme for each.</span>
+              <strong>Task 3: SQL mini-set</strong>
+              <span>Write three queries for the customer table: filter points over 1000, sort by points descending, and total points by region.</span>
             </article>
           </div>
         </section>
@@ -371,8 +377,8 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=2"></script>
-    <script src="../lesson-toolbar.js?v=2"></script>
+    <script src="../course-catalog.js?v=3"></script>
+    <script src="../lesson-toolbar.js?v=3"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>
